@@ -73,7 +73,7 @@ if($help){
 #
 # Show extra files
 if($svn_check){ 
- &command("svn st | grep -v '.gz' | grep -v 'SAVE/ns.' | grep -v 'elph_gkkp' |grep -v 'SAVE_backup'");
+ &command("svn st | grep -v '?'");
  die "\n";
 };
 #
