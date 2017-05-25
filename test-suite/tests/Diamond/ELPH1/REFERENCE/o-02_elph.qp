@@ -1,0 +1,63 @@
+#                                                           
+#                                                           
+# Y88b    /   e           e    e      888~~\    ,88~-_      
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \     
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |    
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |    
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /     
+#    /   /      Y88b /          Y888b 888__/    `88_-~      
+#                                                           
+#                                                           
+#              Version 4.0.2 Revision 4806                  
+#                    MPI+OpenMP Build                       
+#               http://www.yambo-code.org                   
+#
+# GW [Newton Solver]
+#
+#  == El-Ph Self-Energy ==
+#  [ph] dS/dw steps        : 2
+#  [ph] dS/dw step     [ev]:  0.10000
+#  [ph] Sc/G damping   [ev]:  0.10000
+#  El-Ph correlation      : yes
+#  El-Ph Sc. G bands      :   1 100
+#  El-Ph phonon branches  :  1  6
+#  El-Ph momenta used     :  8
+#  Energy treshold   [FAN]:0.1000E-5
+#  Energy treshold    [DW]:0.1000E-5
+#  QP @ K 001 - 001 : b 001 - 010
+#
+#  K-point    Band       Eo         E-Eo       Sc(Eo)     Width[meV]
+#
+  1.000      1.000     -21.47     -.3813E-1  -.3867E-1  0.1386E-4
+  1.000000   2.000000   0.000000   0.170380   0.207716   3.418045
+  1.000000   3.000000   0.000000   0.170380   0.207716   3.418045
+  1.000000   4.000000   0.000000   0.170380   0.207716   3.418045
+   1.00000    5.00000    5.65266   -0.17508   -0.40788   63.88549
+   1.00000    6.00000    5.65266   -0.17508   -0.40788   63.88549
+   1.00000    7.00000    5.65266   -0.17508   -0.40788   63.88549
+  1.000      8.000      13.16     0.2796E-1  -.6911      283.6   
+  1.000      9.000      18.68     0.9016E-2  0.1013E-1  -.2804E-1
+  1.000      10.00      26.18     0.4690     0.4325      588.4   
+# 
+# 10/06/2015 at 11:43 YAMBO_PH @ anomaly [start]
+# 10/06/2015 at 11:44                    [end]
+#  
+# Timing   [Min/Max/Average]: 05s/05s/05s
+#
+# .-Input file : yambo.in
+# | gw0                          # [R GW] GoWo Quasiparticle energy levels
+# | el_ph_corr                   # [R] Electron-Phonon Correlation
+# | BoseTemp= 0.000000     eV    # Bosonic Temperature
+# | SE_Threads= 1                # [OPENMP/GW] Number of threads for self-energy
+# | DysSolver= "n"               # [GW] Dyson Equation solver ("n","s","g")
+# | GphBRnge= 20                 # [ELPH] G[W] bands range
+# | % ElPhModes
+# |   1 |  6 |                   # [ELPH] Phonon modes included
+# | %
+# | GDamping=  0.10000     eV    # [GW] G[W] damping
+# | dScStep=  0.10000      eV    # [GW] Energy step to evaluate Z factors
+# | RandQpts=0                   # [RIM] Number of random q-points in the BZ
+# | #WRgFsq                      # [ELPH] Dump on file gFsq coefficients
+# | %QPkrange                    # [GW] QP generalized Kpoint/Band indices
+# |   1|  1|  1| 10|
+# | %

@@ -1,0 +1,60 @@
+#                                                           
+#  **    **    **     ****     ****  ******     *******     
+# //**  **    ****   /**/**   **/** /*////**   **/////**    
+#  //****    **//**  /**//** ** /** /*   /**  **     //**   
+#   //**    **  //** /** //***  /** /******  /**      /**   
+#    /**   **********/**  //*   /** /*//// **/**      /**   
+#    /**  /**//////**/**   /    /** /*    /**//**     **    
+#    /**  /**     /**/**        /** /*******  //*******     
+#    //   //      // //         //  ///////    ///////      
+#                                                           
+#             GPL Version 3.3.1 Revision 2132               
+#                http://www.yambo-code.org                  
+#
+sursp                        # [R] Surface Spectroscopy
+reels                        # [R] Reflection EELS (3-layer model)
+Nelectro= 192.0000           # Electrons number
+ElecTemp= 0.000000     eV    # Electronic Temperature
+BoseTemp= 0.000000     eV    # Bosonic Temperature
+OccTresh=0.1000E-4           # Occupation treshold (metallic bands)
+% BndsRnXd
+   1 | 200 |                 # [Xd] Polarization function bands
+%
+% EnRngeXd
+ 0.000000 | 6.000000 | eV    # [Xd] Energy range
+%
+% DmRngeXd
+   0.0060 |   0.0060 | eV    # [Xd] Damping range
+%
+ETStpsXd=  601               # [Xd] Total Energy steps
+FFTGvecs=  1007        RL    # [FFT] Plane-waves
+% XfnQP_E
+ 0.500000 | 1.000000 | 1.000000 |        # [EXTQP Xd] E parameters  (c/v) eV|adim|adim
+%
+BulkFile= "Experiment/EPSILON_Si_bulk_RPA.dat" # [RAS] File containing bulk
+BulkForm= "3ir"              # [RAS] Format of bulk (`3ri`,`3ir`,`2KK`,`3KK`)
+BlkShift= 0.500000     eV    # [RAS] GW shift of bulk eps
+BlkBroad= 0.000000     eV    # [RAS] Broadening of bulk eps
+% Layers
+ 22.00000 | 12.00000 |  0.00000 |        # [RAS] Atomic layers in cell/slab/bulk
+%
+% q0x
+ 1.000000 | 0.000000 | 0.000000 |        # [RAS] [cc] X-polarization direction
+%
+% q0y
+ 0.000000 | 1.000000 | 0.000000 |        # [RAS] [cc] Y-polarization direction
+%
+#Cutoff                      # [RAS] Cutoff mode (Uncomment to use)
+CutZero= 0.000000            # [RAS] Zero position of cutoff fn (Frac)
+CutStep= 1.000000            # [RAS] Width of cutoff function (Frac)
+E0= 40.00000           eV    # [REELS] Incident energy
+Theta0= 60.00000             # [REELS] Incident angle   (deg)
+Thetap= 0.000000             # [REELS] Deflection angle (deg)
+Phi= 0.000000                # [REELS] Azimuthal angle  (deg)
+DetAngle= 1.500000           # [REELS] Detector window  (deg)
+LossForm= "ar"               # [REELS] Functional form of loss (1b/2b/2e/aq/az/ar/ig/iq/id/ip/ap/is)
+ImpactFt= 0.000000           # [REELS] Impact Factor (a.u.)
+DetIntMd= "av"               # [REELS] Detector integration (`av`,`no`,`nu`)
+NumIntPt= 1000               # [REELS] Number of points for integral
+PenDepth= 12.00000           # [REELS] Penetration depth of electron (a.u.)
+GausConv= 0.700000     eV    # [REELS] Gaussian convolution (FWHM)

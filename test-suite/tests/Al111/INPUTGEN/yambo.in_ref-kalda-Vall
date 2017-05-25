@@ -1,0 +1,85 @@
+#  __      __   ______   __       __  _______    ______     
+# |  \    /  \ /      \ |  \     /  \|       \  /      \    
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\   
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$   
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$   
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$   
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$   
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
+#                                                           
+#               Version 4.0.2 Revision 5061                 
+#                    MPI+OpenMP Build                       
+#                http://www.yambo-code.org                  
+#
+optics                       # [R OPT] Optics
+bse                          # [R BSE] Bethe Salpeter Equation.
+tddft                        # [R   K] Use TDDFT kernel
+bsk                          # [R BSK] Bethe Salpeter Equation kernel
+StdoHash=  40                # [IO] Live-timing Hashes
+Nelectro= 33.00000           # Electrons number
+ElecTemp= 0.000000     eV    # Electronic Temperature
+BoseTemp=-1.000000     eV    # Bosonic Temperature
+OccTresh=0.1000E-4           # Occupation treshold (metallic bands)
+NLogCPUs=0                   # [PARALLEL] Live-timing CPU`s (0 for all)
+DBsIOoff= "none"             # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,W,SC,BS,ALL)
+DBsFRAGpm= "none"            # [IO] Space-separated list of +DB to be FRAG and -DB NOT to be FRAG. DB=(DIP,X,W,HF,COLLS,K,BS,QINDX,
+FFTGvecs= 2733         RL    # [FFT] Plane-waves
+#WFbuffIO                    # [IO] Wave-functions buffered I/O
+BS_CPU= ""                   # [PARALLEL] CPUs for each role
+BS_ROLEs= ""                 # [PARALLEL] CPUs roles (k,eh,t)
+BS_nCPU_invert=0             # [PARALLEL] CPUs for matrix inversion
+BS_nCPU_diago=0              # [PARALLEL] CPUs for matrix diagonalization
+X_Threads= 1                 # [OPENMP/X] Number of threads for response functions
+DIP_Threads= 1               # [OPENMP/X] Number of threads for dipoles
+NonPDirs= "none"             # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
+BSEmod= "causal"             # [BSE] resonant/causal/x_coupling/xc_coupling
+BSKmod= "ALDA"               # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSENGexx= 2913         RL    # [BSK] Exchange components
+#ALLGexx                     # [BSS] Force the use use all RL vectors for the exchange part
+KfnQPdb= "none"              # [EXTQP BSK BSS] Database
+KfnQP_N= 1                   # [EXTQP BSK BSS] Interpolation neighbours
+% KfnQP_E
+ 0.000000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+KfnQP_Z= ( 1.000000 , 0.000000 )       # [EXTQP BSK BSS] Z factor  (c/v)
+KfnQP_Wv_E= 0.000000   eV    # [EXTQP BSK BSS] W Energy reference  (valence)
+% KfnQP_Wv
+ 0.00     | 0.00     | 0.00     |        # [EXTQP BSK BSS] W parameters  (valence) eV|adim|eV^-1
+%
+KfnQP_Wc_E= 0.000000   eV    # [EXTQP BSK BSS] W Energy reference  (conduction)
+% KfnQP_Wc
+ 0.00     | 0.00     | 0.00     |        # [EXTQP BSK BSS] W parameters  (conduction) eV|adim|eV^-1
+%
+DipApproach= "G-space v"     # [Xd] [G-space v/R-space x/Covariant/Shifted grids]
+#DipPDirect                  # [Xd] Directly compute <v> also when using other approaches for dipoles
+ShiftedPaths= ""             # [Xd] Shifted grids paths (separated by a space)
+Gauge= "length"              # [BSE] Gauge (length|velocity)
+#NoCondSumRule               # [BSE] Do not impose the conductivity sum rule in velocity gauge
+#MetDamp                     # [BSE] Define \w+=sqrt(\w*(\w+i\eta))
+DrudeWBS= ( 0.00     , 0.00     )  eV  # [BSE] Drude plasmon
+#Reflectivity                # [BSS] Compute reflectivity at normal incidence
+BoseCut=  0.10000            # [BOSE] Finite T Bose function cutoff
+% BEnRange
+  0.00000 | 10.00000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
+%
+BDmERef= 0.000000      eV    # [BSS] Damping energy reference
+BEnSteps= 100                # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEQptR
+ 1 | 1 |                     # [BSK] Transferred momenta range
+%
+% BSEBands
+   1 |  50 |                 # [BSK] Bands range
+%
+% BSEEhEny
+-1.000000 |-1.000000 | eV    # [BSK] Electron-hole energy range
+%
+% BSehWind
+ 100.0000 | 100.0000 |       # [BSK] [o/o] E/h coupling pairs energy window
+%

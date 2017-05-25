@@ -1,0 +1,71 @@
+#                                                           
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
+#                                                           
+#                Version 3.4.0 Revision 2938                
+#                 http://www.yambo-code.org                 
+#
+collisions                   # [R] Eval the extended Collisions
+negf                         # [R] Real-Time dynamics
+em1s                         # [R Xs] Static Inverse Dielectric Matrix
+Threads= 1                   # [OPENMP] Number of threads (leave 0 to use default value)
+DBsIOoff= "DIP COLLs"            # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,OCCs,WF,SC)
+#WFbuffIO                     # [IO] Wave-functions buffered I/O
+FFTGvecs=  2000        RL 
+EXXRLvcs=  109        RL    # [XX] Exchange RL components
+CORRLvcs=  109        RL    # [XX] Exchange RL components
+Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+% BndsRnXs
+   1 |  30 |                 # [Xs] Polarization function bands
+%
+NGsBlkXs= 109           RL    # [Xs] Response block size
+% LongDrXs
+ 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%
+# OLD
+Potential= "COHSEX"          # [SC] SC Potential
+EXXRLvcs=  109        RL    # [XX] Exchange RL components
+# NEW
+HXC_Potential= "HARTREE+SEX"
+% RTBands
+  25 |  28 |                 # [RT] Bands
+%
+EXXRLvcs=  109        RL    # [XX] Exchange RL components
+HARRLvcs= 2005        RL    # [XX] Exchange RL components
+Integrator= "RK2 RWA"            # [RT] Integrator (RK2 | EULER | EULEREXP | RK2EXP )
+RADLifeTime= 0.000000  fs    # [RT] Radiative life-time
+PhLifeTime= 0.000000   fs    # [RT] Phase Relaxation Time
+RTstep=   40       as    # [RT] Real Time step length
+NEsteps= 1                   # [RT] Non-equilibrium Time steps
+NETime= 20.00000       fs    # [RT] Simulation Time (alternative to NEsteps)
+% IOtime
+   0.0100 |  1.0000 |  0.1000 |  fs    # [RT] Time between to consecutive I/O (J,P,OCCs - GF - OUTPUT)
+%
+# OLD INPUT STRUCTURE
+% Probe_Freq
+ 0.00     | 0.00     | eV    # [RT Probe] Frequency
+%
+Probe_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Probe_Int= 1.E3        kWLm2 # [RT Probe] Intensity
+Probe_Damp= 0.000000   fs    # [RT Probe] Damping
+Probe_kind= "DELTA"           # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+% Probe_Dir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT Probe] Versor
+%
+# NEW INPUT STRUCTURE
+% Field1_Freq
+ 0.00     | 0.00     | eV    # [RT Probe] Frequency
+%
+Field1_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Field1_Int= 1.E3        kWLm2 # [RT Probe] Intensity
+Field1_Damp= 0.000000   fs    # [RT Probe] Damping
+Field1_kind= "DELTA"           # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol=  "linear"         #
+% Field1_Dir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT Probe] Versor
+%

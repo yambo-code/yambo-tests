@@ -1,0 +1,44 @@
+
+# Generation of the KSS file for YAMBO
+
+prtvol 3
+
+# Non-self consistent calculation and writing KSS file
+symmorphi 0
+irdden    1
+nband    16
+iscf -2
+tolwfr 1.0d-16
+nbandkss   16
+kssform     3
+kptopt      0
+nkpt        7
+kpt      0.0000000    0.0000408    0.0000000
+         0.1666667    0.0000408    0.0000000
+         0.3333333    0.0000408    0.0000000
+         0.4999999    0.0000408    0.0000000
+         0.1666667    0.1667074    0.0000000
+         0.3333333    0.1667075    0.0000000
+         0.3333333    0.3333741    0.0000000
+istwfk    *1
+
+# geometry optimized
+acell   5.9203808995E+00  5.9203808994E+00  3.0000000000E+01 Bohr
+xcart  -4.7589664109E-28  7.7088221179E-28  8.4493613244E-21
+        2.9601904497E+00  1.7090667530E+00  2.9330827955E+00
+        2.9601904497E+00  1.7090667530E+00 -2.9330827955E+00
+rprim   1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+       -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
+        0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
+#Definition of the atom types
+ntypat 2          # There are two types of atoms
+znucl 42 16       # The keyword "zatnum" refers to the atomic number of the
+#Definition of the atoms
+natom 3           # There are two atoms
+typat  1 2 2
+#Definition of the planewave basis set
+ecut   15.0       # Minimal kinetic energy cut-off, in Hartree
+#Definition of the SCF procedure
+nstep 100         # Maximal number of SCF cycles
+diemac 4.50       # Although this is not mandatory, it is worth to
+

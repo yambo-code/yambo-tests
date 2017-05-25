@@ -1,0 +1,70 @@
+negf                         # [R] Real-Time dynamics
+el_ph_scatt                  # [R] Electron-Phonon   Scattering
+BoseTemp= 300.0000     Kn    # Bosonic Temperature
+DBsIOoff= "DIP"              # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,W,SC,BS,ALL)
+GfnQP_Wv_E=-1.200000   eV    # [EXTQP G] W Energy reference  (valence)
+% GfnQP_Wv
+   0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (valence) eV| eV|eV^-1
+%
+GfnQP_Wc_E= 1.200000   eV    # [EXTQP G] W Energy reference  (conduction)
+% GfnQP_Wc
+   0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (conduction) eV| eV|eV^-1
+%
+GfnRTdb= "f @ 0 fs < 02_carriers_DB_ypp/ndb.RT_carriers" # [EXTRT G] Database
+% RTBands
+  2 |  7 |                   # [RT] Bands
+%
+#LifeExtrapolation
+% LifeExtrapSteps
+  0.900 |  0.300 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+%
+#RTskipImposeN
+
+#
+# ELEL CORR
+#
+# OLD
+Potential= "IP"          # [SC] SC Potential
+# NEW
+HXC_Potential= "IP"
+
+#
+# ELEL SCATT
+#
+
+
+#
+# ELPH SCATT
+#
+BoseTemp=300 K               #
+% ElPhModes
+  1 |  6 |                   # [ELPH] Phonon modes included
+%
+#RT_T_evol                   # [RT] Use a complete Time evolution instead of the CCA
+#UseDebyeE                   # [RT] Use a single Debye energy for all phonon modes
+#UpdtDebyeT                  # [RT] Update Bose Temp assuming phonons are always at equilibrium
+
+
+#
+# External Field (or manual pump)
+#
+# OLD
+% RTpumpEhEn
+ 0.000000 | 2.000000 | eV    # [RT] Energy centers of the levels to be inverted by hand
+%
+RTpumpEhWd=  0.10000   eV    # [RT] Energy window of the levels to be inverted by hand
+RTpumpNel= 1.000000          # [RT] Number of electrons pumbed by hand per unit cell
+# NEW
+GfnRTdb="f @ 0 fs < 02_carriers_DB_ypp/ndb.RT_carriers"
+GfnQPdb="E < ../../GW/4x4x4/03GoWo_PPA_corrections/ndb.QP"
+
+#
+# OTHER
+#
+Integrator= "RK2"            # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA")
+RTstep= 10.00000       as    # [RT] Real Time step length
+NETime= 100.0000       fs    # [RT] Simulation Time
+GrKind = "QP"
+% IOtime
+ 0.500000 | 0.500000 | 0.500000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+%

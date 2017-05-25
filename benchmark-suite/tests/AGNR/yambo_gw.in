@@ -1,0 +1,79 @@
+#                                                           
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+#                                                           
+#                                                           
+#               Version 4.0.2 Revision 5444                 
+#                    MPI+OpenMP Build                       
+#                http://www.yambo-code.org                  
+#
+# RUNLEVELS
+#
+rim_cut                      # [R RIM CUT] Coulomb potential
+ppa                          # [R Xp] Plasmon Pole Approximation
+gw0                          # [R GW] GoWo Quasiparticle energy levels
+HF_and_locXC                 # [R XX] Hartree-Fock Self-energy and Vxc
+em1d                         # [R Xd] Dynamical Inverse Dielectric Matrix
+
+FFTGvecs=  59267       RL    # [FFT] Plane-waves
+
+#
+#Parallel variables
+#
+X_all_q_ROLEs= "q k c v"     # [PARALLEL] CPUs roles (q,k,c,v)
+X_all_q_CPU= "1 1 8 2"       # [PARALLEL] CPUs for each role
+X_all_q_nCPU_invert=0        # [PARALLEL] CPUs for matrix inversion
+X_Threads= 0                 # [OPENMP/X] Number of threads for response functions
+DIP_Threads= 0               # [OPENMP/X] Number of threads for dipoles
+SE_ROLEs= "q qp b"           # [PARALLEL] CPUs roles (q,qp,b)
+SE_CPU= "1 1 16"             # [PARALLEL] CPUs for each role
+SE_Threads= 0                # [OPENMP/GW] Number of threads for self-energy
+
+#
+# RIM variables
+#
+RandQpts=1000000             # [RIM] Number of random q-points in the BZ
+RandGvec= 1            RL    # [RIM] Coulomb interaction RS components
+CUTGeo= "box xy"             # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
+% CUTBox
+ 58.00    | 20.00    | 0.00     |        # [CUT] [au] Box sides
+%
+CUTRadius= 0.000000          # [CUT] [au] Sphere/Cylinder radius
+CUTCylLen= 0.000000          # [CUT] [au] Cylinder length
+
+
+#
+# HF variables
+#
+EXXRLvcs=  402821      RL    # [XX] Exchange RL components
+
+#
+# Screening variables
+#
+Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+% BndsRnXp
+    1 |  256 |               # [Xp] Polarization function bands
+%
+NGsBlkXp= 3            Ry    # [Xp] Response block size
+% LongDrXp
+ 0.000000 | 0.000000 | 1.000000 |        # [Xp] [cc] Electric Field
+%
+PPAPntXp= 20.0     eV    # [Xp] PPA imaginary energy
+
+#
+# GW variables
+#
+% GbndRnge
+    1 | 512 |               # [GW] G[W] bands range
+%
+GDamping=  0.10000     eV    # [GW] G[W] damping
+dScStep=  0.10000      eV    # [GW] Energy step to evaluate Z factors
+DysSolver= "n"               # [GW] Dyson Equation solver ("n","s","g")
+%QPkrange                    # [GW] QP generalized Kpoint/Band indices
+  1| 8|  29|32|
+%

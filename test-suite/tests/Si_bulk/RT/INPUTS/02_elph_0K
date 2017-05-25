@@ -1,0 +1,98 @@
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+#                                                           
+#               Version 3.4.0 Revision 2811                 
+#                http://www.yambo-code.org                  
+#
+negf                         # [R] Real-Time dynamics
+el_ph_scatt                   # [R] Electron-Phonon Scattering
+ElecTemp=0 K                 #
+Gauge= "length"               # [Xd,RT] Gauge type (length|velocity)
+% RTBands
+  2 |  7 |                   # [RT] Bands
+%
+
+#
+# G ret
+#
+GrKind= "QP"                 # [RT] G-ret kind: Lorentzian (QP)/ Hyperbolic secant (HS)
+#TwoAlpha= 1                  # [RT] C_nk ~ alpha*Gamma_nk^2
+GfnQP_Wv_E=-1.2000   eV      # [EXTQP G] W Energy reference  (valence)
+% GfnQP_Wv
+  0.300 |  0.0000 |  0.010 | # [EXTQP G] W parameters  (valence) eV|adim|eV^-1
+%
+GfnQP_Wc_E= 1.200   eV       # [EXTQP G] W Energy reference  (conduction)
+% GfnQP_Wc
+  0.300 |  0.0000 |  0.010 | # [EXTQP G] W parameters  (conduction) eV|adim|eV^-1
+%
+
+
+#
+# RT Parameters
+#
+Integrator= "RK2 RWA"    # [RT] Integrator ( "RK2 / EULER" "EXP" "RWA" )
+NETime= 200.00000       fs   # [RT] Simulation Time (alternative to NEsteps)
+RTstep=   20           as    # [RT] Real Time step length
+#LifeInterpolation
+% LifeInterpSteps
+  1.500 |  0.500 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+%
+#LifeExtrapolation
+% LifeExtrapSteps
+  1.500 |  0.500 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+%
+#RTskipImposeN
+LifeFitTemp                 # [RT] Fit on the fly  lifetimes ratio to a Fermi distribution
+
+#
+# ELEL CORR
+#
+# OLD
+Potential= "IP"          # [SC] SC Potential
+# NEW
+HXC_Potential= "IP"          # [SC] SC Potential
+
+#
+# ELEL SCATT
+#
+
+
+#
+# ELPH SCATT
+#
+BoseTemp=0 K                 #
+% ElPhModes
+  1 |  6 |                   # [ELPH] Phonon modes included
+%
+#RT_T_evol                   # [RT] Use a complete Time evolution instead of the CCA
+#UseDebyeE                   # [RT] Use a single Debye energy for all phonon modes
+#UpdtDebyeT                  # [RT] Update Bose Temp assuming phonons are always at equilibrium
+
+
+#
+# External Field (or manual pump)
+#
+# OLD
+% RTpumpEhEn
+ 0.000000 | 2.000000 | eV    # [RT] Energy centers of the levels to be inverted by hand
+%
+RTpumpEhWd=  0.10000   eV    # [RT] Energy window of the levels to be inverted by hand
+RTpumpNel= 1.000000          # [RT] Number of electrons pumbed by hand per unit cell
+# NEW
+GfnRTdb="f @ 0 fs < 02_carriers_DB_ypp/ndb.RT_carriers"
+
+#
+# OTHER
+#
+% IOtime
+ 0.5 |0.5 |0.5 |  fs    # [RT] Time between to consecutive I/O (J,P,OCCs - GF - OUTPUT)
+%
+DBsIOoff= "DIP"         # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,OCCs,WF,SC)
+
+
+

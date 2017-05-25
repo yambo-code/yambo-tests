@@ -1,0 +1,104 @@
+#!/bin/bash -x
+#
+#PBS -N TiO2 
+#PBS -j oe
+#PBS -q  s3par8cv3  
+#PBS -l nodes=4:ppn=16
+#PBS -l walltime=24:00:00
+
+ntasks=32
+ntasks_per_node=8
+nthreads=1
+
+#ntasks=1
+#ntasks_per_node=1
+#nthreads=1
+
+MYHOSTFILE=`pwd`/hostfile
+
+if [ ! -z "$PBS_NODEFILE" ] ; then
+    cat $PBS_NODEFILE | awk -v ntasks=$ntasks_per_node '
+                       {a[$i]++}
+                       END{ for(i in a) {
+                                for (j=1; j<=ntasks; j++) { printf"%s\n",i }
+                          }
+                       }' > $MYHOSTFILE
+fi
+
+
+#=============================
+
+ulimit -d unlimited
+ulimit -m unlimited
+ulimit -s unlimited
+ulimit -v unlimited
+ulimit -c unlimited
+
+#cd $PBS_O_WORKDIR
+
+#=============================
+# environment
+
+module purge
+module load psxe_2015
+
+export OMP_NUM_THREADS=$nthreads
+export MKL_NUM_THREADS=$nthreads
+
+
+#=============================
+# parallelism
+
+MYHOME="/s3_home/imarri/"
+MYSCRA="/scratch/imarri/"
+
+#PBS_NODEFILE="$MYHOME/para/hostfile.HT"
+
+#PARA_PREFIX="mpirun -np $ntasks "
+PARA_PREFIX="mpirun -machinefile ./hostfile -n $ntasks"
+#PARA_POSTFIX="-npool 4"
+
+
+#=============================
+# filesystem locations
+
+#BINDIR=/unimore/prod_impi/espresso-5.2.1/bin
+
+BINDIR_ESPRESSO=/s3_home/imarri/espresso-5.3.0/bin
+BINDIR_YAMBO=/s3_home/imarri/yambo-git-ORIG/bin
+
+#DIR_JOB=$MYHOME/Systems/Si_terminator
+#PSEUDO_DIR=$MYHOME/Pseudo
+
+DIR_JOB=$MYSCRA/TiO2_NC_10_Shiftato_fast_TEST_ORIG/TiO2-3.save   #for p2y
+#DIR_JOB=$MYSCRA/TiO2         #for the setup
+PSEUDO_DIR=$MYHOME/PSEUDO
+
+
+cp $MYHOSTFILE $DIR_JOB
+cd $DIR_JOB
+
+#
+#==============
+# main loop
+#==============
+# 
+  #  IN=$DIR_JOB/scf.in
+     IN=/scratch/imarri/TiO2_NC_10_Shiftato_fast_TEST_ORIG/TiO2-3.save/yambo.in
+     OUT=$DIR_JOB/scf.out 
+     JDIR=X_term_test_RIM_0_X_960_GW_960  
+
+    #=============================
+    # running
+
+    echo "Running GW"
+
+    cd $DIR_JOB
+##    $PARA_PREFIX $BINDIR_ESPRESSO/pw.x $PARA_POSTFIX < $IN  >  $OUT
+##    $PARA_PREFIX $BINDIR_YAMBO/p2y  -v -O ..
+#      $PARA_PREFIX $BINDIR_YAMBO/p2y  -v     # su un solo core  
+#      $PARA_PREFIX $BINDIR_YAMBO/yambo       #setup, su un solo core
+#     $PARA_PREFIX $BINDIR_YAMBO/yambo -r -p p -g n -V all # per generare l'input. Senza il -V all genera un input con meno informazioni.
+#       $PARA_PREFIX $BINDIR_YAMBO/yambo -r -p p -g n   #su un solo core
+       $PARA_PREFIX $BINDIR_YAMBO/yambo -F $IN -J $JDIR 
+

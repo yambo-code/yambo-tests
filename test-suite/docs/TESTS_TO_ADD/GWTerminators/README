@@ -1,0 +1,38 @@
+I implemented the 0-order terminator effective-energy technique(EET), and
+the Bruneval-Gonze terminator only for the self-energy
+References:
+
+PRB 85, 085126 (2012)
+PRB 78, 085125 (2008)
+
+with the verbosity -V qp it is sufficile to uncomment the line:
+
+#GWTerm                      # [GW] Use a terminator for the self-energy
+
+to have the 0-order EET terminator
+
+If one uncomments the GWTerm flag and gives the pole position it is possible to use the 
+Brouneval-Gonze terminato
+
+GwEnComp=-27.21138     eV    # [GW] If <= 0 use 0-order EET ; > 0 the Bruneval-Gonze terminator
+
+
+
+PROBLEMS and KNOWN ISSUES
+
+Both terminators do not work for the head and the wings of the dielectric constant
+therefore all conduction bands are required to converge this two parts. This is explained
+in the paper of Berger, Sottile and Reining, and that's the reason why I did not implemented
+it for the dielectric constant but only for the self-energy.
+Another important point the terminator have a strong effect on the absolute value of the 
+correction but a smaller effect on the relative differences as the gap.
+
+Some convergence test in the PNG figures
+
+I added the Bruneval-Gonze terminator on request of Fabio Trani, ask to him for tests
+and results, anyway the formula is the same of the EET with the only difference
+that the pole is given as input
+
+
+
+

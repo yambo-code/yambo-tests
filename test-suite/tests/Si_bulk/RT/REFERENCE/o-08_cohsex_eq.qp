@@ -1,0 +1,84 @@
+#                                                           
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
+#                                                           
+#                                                           
+#         Version 4.2.0 Revision 14428 Hash 698a636         
+#                   MPI+SLK+OpenMP Build                    
+#                 http://www.yambo-code.org                 
+#
+# GW [Newton Solver]
+#
+#  == COHSEX GW ==
+#  GW SC iterations       :0
+#  X G`s            [used]:  59
+#  X G`s            [disk]:  59
+#  X bands                :  1   8
+#  X poles           [o/o]: 100.0000
+#  X e/h E range      [ev]:-1.000000 -1.000000
+#  X xc-Kernel            : none
+#  X BZ energy Double Grid: no
+#  X BZ Double Grid points:0
+#  Sc bands terminator    : no
+#  Sx RL components       :  609
+#  QP @ K 001 - 003 : b 002 - 007
+#
+#    K-point      Band         Eo           E-Eo         Sc|Eo
+#
+    1.000000     2.000000     0.000000    -1.498777     0.575758
+    1.000000     3.000000     0.000000    -1.391989     0.682555
+    1.000000     4.000000     0.000000    -1.240064     0.834470
+    1.000000     5.000000     2.440868     0.347634    -4.718122
+    1.000000     6.000000     2.440868     0.346352    -4.719409
+    1.000000     7.000000     2.440868     0.338098    -4.727666
+    2.000000     2.000000    -7.200430    -2.022552     1.413237
+    2.000000     3.000000    -1.262054    -1.341646     0.860853
+    2.000000     4.000000    -1.262054    -1.341951     0.860548
+    2.000000     5.000000     1.519058     0.247855    -4.789276
+    2.000000     6.000000     3.185880     0.570875    -4.621420
+    2.000000     7.000000     3.185880     0.575362    -4.616927
+    3.000000     2.000000    -7.895731    -1.864890     2.264624
+    3.000000     3.000000    -3.010587    -1.445395     0.995084
+    3.000000     4.000000    -3.010587    -1.362955     1.077513
+    3.000000     5.000000     0.437631     0.136848    -4.614837
+    3.000000     6.000000     0.437640     0.136803    -4.614839
+     3.00000      7.00000     10.15807      0.67646     -6.06794
+# 
+# 04/10/2017 at 17:09 YAMBO_RT @ anomaly [start]
+# 04/10/2017 at 17:09                    [end]
+#
+# .-Input file : yambo.in
+# | em1s                         # [R Xs] Static Inverse Dielectric Matrix
+# | HF_and_locXC                 # [R XX] Hartree-Fock Self-energy and Vxc
+# | gw0                          # [R GW] GoWo Quasiparticle energy levels
+# | cohsex                       # [R Xp] COlumb Hole Screened EXchange
+# | BoseTemp= 0.000000     eV    # Bosonic Temperature
+# | FFTGvecs=  387         RL    # [FFT] Plane-waves
+# | X_Threads= 1                 # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1               # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                # [OPENMP/GW] Number of threads for self-energy
+# | EXXRLvcs=  609         RL    # [XX] Exchange RL components
+# | Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+# | % BndsRnXs
+# |   1 |  8 |                   # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs=  59          RL    # [Xs] Response block size
+# | GrFnTpXs= "R"                # [Xs] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
+# | % DmRngeXs
+# |   0.10000 |  0.10000 | eV    # [Xs] Damping range
+# | %
+# | % LongDrXs
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# | %
+# | XTermEn= 40.81708      eV    # [X] X terminator energy (only for kind="BG")
+# | % GbndRnge
+# |   1 |  7 |                   # [GW] G[W] bands range
+# | %
+# | %QPkrange                    # [GW] QP generalized Kpoint/Band indices
+# |   1|  3|  2|  7|
+# | %

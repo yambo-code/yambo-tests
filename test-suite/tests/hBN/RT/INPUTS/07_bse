@@ -1,0 +1,49 @@
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+#                                                           
+#               Version 3.4.0 Revision 2900                 
+#                http://www.yambo-code.org                  
+#
+optics                       # [R OPT] Optics
+bse                          # [R BSE] Bethe Salpeter Equation.
+bsk                          # [R BSK] Bethe Salpeter Equation kernel
+bss                          # [R BSS] Bethe Salpeter Equation solver
+em1s                         # [R Xs] Static Inverse Dielectric Matrix
+Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+BSEmod= "coupling"             # [BSE] resonant/causal/coupling
+BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "d"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx=  3413        RL    # [BSK] Exchange components
+BSENGBlk= 107          RL    # [BSK] Screened interaction block size
+#WehCpl                      # [BSK] eh interaction included also in coupling
+% BEnRange
+  3.00000 |  8.00000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
+%
+BEnSteps= 501               # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% KfnQP_E
+ 1.500000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+% BSEBands
+  7 | 10 |                   # [BSK] Bands range
+%
+% BndsRnXs
+   1 |  50 |                 # [Xs] Polarization function bands
+%
+NGsBlkXs= 107          RL    # [Xs] Response block size
+% LongDrXs
+ 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%
+% DmRngeXs
+  0.00100 |  0.00100 | eV    # [Xs] Damping range
+%

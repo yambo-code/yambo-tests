@@ -1,0 +1,83 @@
+#  __      __   ______   __       __  _______    ______     
+# |  \    /  \ /      \ |  \     /  \|       \  /      \    
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\   
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$   
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$   
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$   
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$   
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
+#                                                           
+#               Version 4.0.2 Revision 4605                 
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+negf                         # [R] Real-Time dynamics
+el_ph_scatt                  # [R] Electron-Phonon   Scattering
+BoseTemp = 5000 K
+# OLD
+Potential= "COHSEX"
+% SCBands
+  25 |  28 |                 # [RT] Bands
+%
+# NEW
+HXC_Potential= "HARTREE+SEX"
+% RTBands
+  25 |  28 |                 # [RT] Bands
+%
+
+
+FFTGvecs= 2005         RL    # [FFT] Plane-waves
+Gauge= "length"              # [BSE/Xd] Gauge (length|velocity)
+Integrator= "RK2 RWA"        # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA" "INTERPOLATE")
+RTstep= 20.00000       as    # [RT] Real Time step length
+NETime= 50.00000       fs    # [RT] Simulation Time (alternative to NEsteps)
+#LifeExtrapolation           # [RT] Skipped Lifetimes are extrapolated
+% LifeExtrapSteps
+ 0.500000 | 0.500000 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+%
+% IOtime
+   1.0000 |   1.0000 |   1.0000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+%
+#OLD
+% Field1_Freq
+ 1.64      | 1.64      | eV    # [RT Probe] Frequency
+%
+Probe_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Probe_Int= 30000.       kWLm2 # [RT Probe] Intensity
+Probe_Damp=5.000   fs      # [RT Probe] Damping
+Probe_Width=5.000   fs      # [RT Probe] Damping
+Probe_kind= "QSSIN"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Probe_pol= "circular"
+% Probe_Dir
+ 1.00     | 0.00     | 0.00     |        # [RT Probe] Versor
+%
+% Probe_Dir_circ
+ 0.00     | 1.00     | 0.00     |        # [RT Probe] Versor
+%
+#NEW
+% Field1_Freq
+ 1.64      | 1.64      | eV    # [RT Probe] Frequency
+%
+Field1_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Field1_Int= 30000.       kWLm2 # [RT Probe] Intensity
+Field1_Damp=5.000   fs      # [RT Probe] Damping
+Field1_Width=5.000   fs      # [RT Probe] Damping
+Field1_kind= "QSSIN"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "circular"
+% Field1_Dir
+ 1.00     | 0.00     | 0.00     |        # [RT Probe] Versor
+%
+% Field1_Dir_circ
+ 0.00     | 1.00     | 0.00     |        # [RT Probe] Versor
+%
+
+% GfnQP_Wv
+   0.150 |   0.0000 |   0.0000 |        # [EXTQP G] W parameters  (valence) eV|adim|eV^-1
+%
+% GfnQP_Wc
+   0.150 |   0.0000 |   0.0000 |        # [EXTQP G] W parameters  (conduction) eV|adim|eV^-1
+%
+#dTupdateTime=  35.000000 fs    # [RT] Initial Time for deltaT update (active only if non-zero)
+#dTupdateJump=   0.050000 fs    # [RT] Time betweem two deltaT updates
+#dTupdateTresh=  0.000001      # [RT][o/o] Treshold of deltaT updates

@@ -1,0 +1,50 @@
+#                                                           
+# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
+#    ###  ###     ### ###       ### #########   ########    
+#                                                           
+#               Version 3.3.1 Revision 2093                 
+#                http://www.yambo-code.org                  
+#
+optics                       # [R OPT] Optics
+bse                          # [R BSE] Bethe Salpeter Equation.
+bsk                          # [R BSK] Bethe Salpeter Equation kernel
+bss                          # [R BSS] Bethe Salpeter Equation solver
+em1s                         # [R Xs] Static Inverse Dielectric Matrix
+Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+BSEmod= "resonant"           # [BSE] resonant/causal/coupling
+BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "hdi"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx=  109         RL    # [BSK] Exchange components
+BSENGBlk= 55           RL    # [BSK] Screened interaction block size
+% KfnQP_E
+ 1.00000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+% BEnRange
+ 0.100000 | 4.000000 | eV    # [Xd] Energy range
+%
+% BDmRange
+  0.0500 |  0.0500 | eV    # [BSS] Damping range
+%
+BEnSteps=  300               # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+ 21 | 30 |                   # [BSK] Bands range
+%
+BSHayTrs=  0.0010           # [BSS] [o/o] Haydock treshold. Strict(>0)/Average(<0)
+% BndsRnXs
+ 1 | 40 |                   # [Xs] Polarization function bands
+%
+NGsBlkXs= 55           RL    # [Xs] Response block size
+% DmRngeXs
+  0.001000 |  0.00100 | eV    # [Xs] Damping range
+%
+% LongDrXs
+ 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%

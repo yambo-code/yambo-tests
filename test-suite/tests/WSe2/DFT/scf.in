@@ -1,0 +1,30 @@
+&control
+         calculation = 'scf'
+              prefix = 'wse2'
+          wf_collect = .true.
+          pseudo_dir = '.',
+/&end
+&system
+    force_symmorphic = .true.
+             ecutwfc = 10
+         occupations = 'fixed'
+           celldm(1) = 6.35
+               ibrav = 4
+           celldm(3) = 6.29921259843
+            lspinorb = .true.
+                 nat = 3
+            noncolin = .true.
+                ntyp = 2
+/&end
+&electrons
+            conv_thr = 1e-08
+/&end
+ATOMIC_SPECIES
+  Se    78.97   Se.rel-pz-n-nc.UPF
+   W   183.84 W_RL_withPS_PZ_ape.UPF
+ATOMIC_POSITIONS { crystal }
+  W   0.3333333330   0.6666666670   0.0000000000
+ Se   0.6666666670   0.3333333330   0.0789464000
+ Se   0.6666666670   0.3333333330  -0.0789464000
+K_POINTS { automatic }
+ 6 6  1  0  0  0

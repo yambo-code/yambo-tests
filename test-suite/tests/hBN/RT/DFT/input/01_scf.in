@@ -1,0 +1,41 @@
+#h-BN, input for self
+#Ground state calculation (self consistent part)
+ 
+toldfe   1.0d-10
+accesswff 3
+prtden   1        # Print the density, for use by dataset 2
+kptopt   1        # Option for the automatic generation of k points
+nshiftk  1
+shiftk   0 0 0.0
+ngkpt    4 4 4
+nband    10
+
+#supercell 
+acell    4.7163728  4.7163728 12.1758362
+rprim    1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+        -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
+         0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
+ 
+#Definition of the atom types
+ntypat  2           # There are two types of atoms
+znucl   5 7         # The keyword "zatnum" refers to the atomic number of the
+                    # possible type(s) of atom. The pseudopotential(s)
+                    # mentioned in the "files" file must correspond
+                    # to the type(s) of atom.
+                           
+ 
+#Definition of the atoms
+natom   4           # There are two atoms
+typat   1 2 1 2
+xcart         2.3581864000E+00  1.3614995528E+00  0.0000000000E+00
+             -2.3581864000E+00 -1.3614995528E+00  0.0000000000E+00
+             -2.3581864000E+00 -1.3614995528E+00  6.0879181000E+00
+              2.3581864000E+00  1.3614995528E+00  6.0879181000E+00
+
+#Definition of the planewave basis set
+ecut       40.0        # Minimal kinetic energy cut-off, in Hartree
+symmorphi     0
+ 
+#Definition of the SCF procedure
+nstep       100          # Maximal number of SCF cycles
+diemac      4.50

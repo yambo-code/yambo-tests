@@ -1,0 +1,52 @@
+#   __   __     _        __  __       ____      U  ___  u   
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
+#                                                           
+#               Version 3.4.0 Revision 2925                 
+#                http://www.yambo-code.org                  
+#
+negf                         # [R] Real-Time dynamics
+DBsIOoff= "GF OCCs"          # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,OCCs,WF,SC)
+# OLD
+Potential= "HARTREE"         # [SC] SC Potential
+# NEW 
+HXC_Potential= "HARTREE"         # [SC] SC Potential
+% RTBands
+  1 |  5 |                   # [SC] Bands
+%
+Integrator= "RK2 RWA"            # [RT] Integrator (RK2 | EULER | EULEREXP | RK2EXP )
+RADLifeTime= 0.000000  fs    # [RT] Radiative life-time
+PhLifeTime= 0.000000   fs    # [RT] Phase Relaxation Time
+RTstep=   0.010       fs    # [RT] Real Time step length
+NEsteps= 1                   # [RT] Non-equilibrium Time steps
+NETime= 19.98000       fs    # [RT] Simulation Time (alternative to NEsteps)
+% IOtime
+0.01000 | 0.020000 | 0.020000 |  fs    # [RT] Time between to consecutive I/O (J,P,OCCs - GF - OUTPUT)
+%
+# OLD INPUT FORMAT
+% Probe_Freq
+ 0.00     | 0.00     | eV    # [RT Probe] Frequency
+%
+Probe_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Probe_Int=0.1000E+5    kWLm2 # [RT Probe] Intensity
+Probe_Damp= 0.000000   fs    # [RT Probe] Damping
+Probe_kind= "DELTA"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+% Probe_Dir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT Probe] Versor
+%
+# NEW INPUT FORMAT
+% Field1_Freq
+ 0.00     | 0.00     | eV    # [RT Probe] Frequency
+%
+Field1_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Field1_Int=0.1000E+5    kWLm2 # [RT Probe] Intensity
+Field1_Damp= 0.000000   fs    # [RT Probe] Damping
+Field1_kind= "DELTA"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"          #
+% Field1_Dir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT Probe] Versor
+%

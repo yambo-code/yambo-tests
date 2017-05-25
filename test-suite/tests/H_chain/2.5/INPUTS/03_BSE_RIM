@@ -1,0 +1,57 @@
+#                                                           
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$     
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$    
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$    
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$    
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$    
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$    
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/    
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/     
+#                                                           
+#              Version 3.3.1 Revision 2093                  
+#               http://www.yambo-code.org                   
+#
+rim_cut                      # [R RIM CUT] Coulomb interaction
+optics                       # [R OPT] Optics
+bse                          # [R BSE] Bethe Salpeter Equation.
+bsk                          # [R BSK] Bethe Salpeter Equation kernel
+bss                          # [R BSS] Bethe Salpeter Equation solver
+em1s                         # [R Xs] Static Inverse Dielectric Matrix
+RandQpts=1000000                   # [RIM] Number of random q-points in the BZ
+RandGvec= 1            RL    # [RIM] Coulomb interaction RS components
+Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+BSEmod= "resonant"             # [BSE] resonant/causal/coupling
+BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "d"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx=  111        RL    # [BSK] Exchange components
+BSENGBlk= 111          RL    # [BSK] Screened interaction block size
+% KfnQP_E
+ 3.500000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+% BEnRange
+  0.00000 | 10.00000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
+%
+BEnSteps= 1000               # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+ 1 | 2 |                     # [BSK] Bands range
+%
+% QpntsRXs
+   1 |  41 |                 # [Xs] Transferred momenta
+%
+% BndsRnXs
+ 1 | 2 |                   # [Xs] Polarization function bands
+%
+NGsBlkXs= 111          RL    # [Xs] Response block size
+% DmRngeXs
+  0.001000 |  0.00100 | eV    # [Xs] Damping range
+%
+% LongDrXs
+ 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%
+WRbsWF                       # [BSS] Write to disk excitonic the FWs

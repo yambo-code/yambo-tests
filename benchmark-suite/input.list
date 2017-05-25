@@ -1,0 +1,235 @@
+!
+!        Copyright (C) 2000-2016 the YAMBO team
+!              http://www.yambo-code.org
+!
+! Authors (see AUTHORS file for details): AF
+! 
+! This file is distributed under the terms of the GNU 
+! General Public License. You can redistribute it and/or 
+! modify it under the terms of the GNU General Public 
+! License as published by the Free Software Foundation; 
+! either version 2, or (at your option) any later version.
+!
+! This program is distributed in the hope that it will 
+! be useful, but WITHOUT ANY WARRANTY; without even the 
+! implied warranty of MERCHANTABILITY or FITNESS FOR A 
+! PARTICULAR PURPOSE.  See the GNU General Public License 
+! for more details.
+!
+! You should have received a copy of the GNU General Public 
+! License along with this program; if not, write to the Free 
+! Software Foundation, Inc., 59 Temple Place - Suite 330,Boston, 
+! MA 02111-1307, USA or visit http://www.gnu.org/copyleft/gpl.txt.
+!
+
+! 
+! The following structure is freely taken 
+! from the QE benchmark repository
+!
+! Calculation purpose:
+!   * SMALL SCALE    tests meant to benchmark the single
+!                    node (or a limited number of them) 
+!   * MEDIUM SCALE   tests meant to benchmark parallelism
+!                    (runs on several nodes)
+!   * LARGE SCALE    tests aimed at extreme parallelism to
+!                    benchmark the largest possible machine exploitation
+!                    (should target a 0.5-1.0 Pflop/s partition, i.e. 
+!                     2-5 racks of BGQ)
+
+################
+# TEMPLATE #
+################
+
+Owner               :
+Institution         :
+e-mail              :
+public              :  yes/no
+purpose             :  SMALL/MEDIUM/LARGE SCALE
+yambo databases     :  N/A or link
+Type of calculation :  GW/BSE/...
+Size of DFT calc    :
+Size of GW  calc    :
+Size of BSE calc    :
+Annotation          :
+
+
+
+################
+# chevron-poly #
+################
+
+Owner               : Andrea Ferretti
+Institution         : Istituto Nanoscienze CNR-NANO-S3 (Italy)
+e-mail              : andrea.ferretti@nano.cnr.it
+public              : yes
+purpose             : LARGE SCALE
+yambo databases     : http://potzie.fisica.unimo.it/ferretti/chevron-poly.tgz
+Type of calculation : GW
+
+Size of DFT calc    :
+
+     bravais-lattice index     =            8
+     lattice parameter (alat)  =      32.1136  a.u.
+     unit-cell volume          =   84780.0096 (a.u.)^3
+     number of atoms/cell      =          136
+     number of atomic types    =            2
+     number of electrons       =       388.00
+     number of Kohn-Sham states=          194
+     kinetic-energy cutoff     =      45.0000  Ry
+     charge density cutoff     =     180.0000  Ry
+     convergence threshold     =      1.0E-08
+     mixing beta               =       0.3000
+     number of iterations used =            8  plain     mixing
+     Exchange-correlation      =  SLA  PZ   NOGX NOGC ( 1 1 0 0 0)
+     EXX-fraction              =        0.00
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (   1.000000   0.000000   0.000000 )
+               a(2) = (   0.000000   2.055201   0.000000 )
+               a(3) = (   0.000000   0.000000   1.245577 )
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.000000  0.000000  0.000000 )
+               b(2) = (  0.000000  0.486570  0.000000 )
+               b(3) = (  0.000000  0.000000  0.802841 )
+
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min         237     237     60                27011    27011    3512
+     Max         238     238     61                27017    27017    3521
+     Sum       30357   30357   7795              3457819  3457819  450349
+
+     Dense  grid:  3457819 G-vectors     FFT dimensions: ( 140, 288, 176)
+
+     number of k points=     8
+     number of bands=     1200
+
+Size of GW calc     :
+     EXXRLvcs=    40    Ry
+     BndsRnXp=     1 | 1000 |
+     NGsBlkXp=     6    Ry
+     PPAPntXp=    16    eV
+     GbndRnge=     1 | 1000 |
+     QPkrange=     1 |  2|  190| 205| 
+
+Annotation          : none
+
+
+
+################
+# AGNR #
+################
+
+Owner               : Andrea Ferretti
+Institution         : Istituto Nanoscienze CNR-NANO-S3 (Italy)
+e-mail              : andrea.ferretti@nano.cnr.it
+public              : yes
+purpose             : SMALL SCALE
+yambo databases     : http://potzie.fisica.unimo.it/ferretti/AGNR.tgz
+Type of calculation : GW
+
+Size of DFT calc    :
+
+     bravais-lattice index     =            8
+     lattice parameter (alat)  =      60.0000  a.u.
+     unit-cell volume          =    9874.3015 (a.u.)^3
+     number of atoms/cell      =           18
+     number of atomic types    =            2
+     number of electrons       =        60.00
+     number of Kohn-Sham states=           30
+     kinetic-energy cutoff     =      45.0000  Ry
+     charge density cutoff     =     180.0000  Ry
+     convergence threshold     =      1.0E-08
+     mixing beta               =       0.3000
+     number of iterations used =            8  plain     mixing
+     Exchange-correlation      =  SLA  PZ   NOGX NOGC ( 1  1  0  0 0 0)
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (   1.000000   0.000000   0.000000 )
+               a(2) = (   0.000000   0.340000   0.000000 )
+               a(3) = (   0.000000   0.000000   0.134454 )
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.000000  0.000000  0.000000 )
+               b(2) = (  0.000000  2.941176  0.000000 )
+               b(3) = (  0.000000  0.000000  7.437488 )
+
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min         486     486    134                11189    11189    1644
+     Max         488     488    136                11190    11190    1645
+     Sum       17531   17531   4877               402821   402821   59195
+
+     Dense  grid:   402821 G-vectors     FFT dimensions: ( 270,  90,  36)
+
+     number of k points=    32
+     number of bands=      512
+
+Size of GW calc     :
+     EXXRLvcs=    45    Ry
+     BndsRnXp=     1 | 128 |
+     NGsBlkXp=     4    Ry
+     PPAPntXp=    20    eV
+     GbndRnge=     1 | 128 |
+     QPkrange=     1 |  1  |  29| 32|
+
+Annotation          : none
+
+
+################
+# Cobalt #
+################
+
+Owner               : Andrea Ferretti
+Institution         : Istituto Nanoscienze CNR-NANO-S3 (Italy)
+e-mail              : andrea.ferretti@nano.cnr.it
+public              : yes
+purpose             : SMALL SCALE
+yambo databases     : http://potzie.fisica.unimo.it/ferretti/cobalt.tgz
+Type of calculation : GW
+
+Size of DFT calc    :
+
+     bravais-lattice index     =            4
+     lattice parameter (alat)  =       4.5876  a.u.
+     unit-cell volume          =     136.5437 (a.u.)^3
+     number of atoms/cell      =            2
+     number of atomic types    =            1
+     number of electrons       =        34.00
+     number of Kohn-Sham states=           21
+     kinetic-energy cutoff     =      75.0000  Ry
+     charge density cutoff     =     300.0000  Ry
+     convergence threshold     =      1.0E-08
+     mixing beta               =       0.3000
+     number of iterations used =            8  plain     mixing
+     Exchange-correlation      = PZ ( 1  1  0  0 0 0)
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (   1.000000   0.000000   0.000000 )
+               a(2) = (  -0.500000   0.866025   0.000000 )
+               a(3) = (   0.000000   0.000000   1.632993 )
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.000000  0.577350  0.000000 )
+               b(2) = (  0.000000  1.154701  0.000000 )
+               b(3) = (  0.000000  0.000000  0.612372 )
+
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min          54      54     15                 1498     1498     245
+     Max          55      55     16                 1505     1505     252
+     Sum         433     433    127                12005    12005    1985
+
+     Dense  grid:    12005 G-vectors     FFT dimensions: (  25,  25,  45)
+
+     number of k points=   190  (12 12 8)
+     number of bands=      100
+
+Size of GW calc     :
+     EXXRLvcs=    75    Ry
+     BndsRnXp=     1 | 100 |
+     NGsBlkXp=    70    Ry
+     PPAPntXp=     8    eV
+     GbndRnge=     1 | 104 |
+     QPkrange=     1 |  8  |   9| 32|
+
+Annotation          : none
+
+

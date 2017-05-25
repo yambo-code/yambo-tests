@@ -1,0 +1,76 @@
+#  __      __   ______   __       __  _______    ______     
+# |  \    /  \ /      \ |  \     /  \|       \  /      \    
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\   
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$   
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$   
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$   
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$   
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
+#                                                           
+#               Version 4.0.2 Revision 4605                 
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+negf                         # [R] Real-Time dynamics
+el_ph_scatt                  # [R] Electron-Phonon   Scattering
+# OLD
+Potential= "COHSEX"          # [SC] SC Potential
+# NEW
+HXC_Potential= "HARTREE+SEX"
+FFTGvecs= 2005         RL    # [FFT] Plane-waves
+Gauge= "length"              # [BSE/Xd] Gauge (length|velocity)
+% RTBands
+  23 |  30 |                 # [RT] Bands
+%
+% GfnQP_E
+ 1.500000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+Integrator= "RK2 RWA"        # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA" "INTERPOLATE")
+RTstep= 40.00000       as    # [RT] Real Time step length
+NETime= 50.00000       fs    # [RT] Simulation Time (alternative to NEsteps)
+# OLD
+LifeInterpKIND= "NONE"       # [RT] Step interpolation mode (DEFAULT / FIELD / FLAT / NONE)
+% LifeInterpSteps
+-1.000000 |-1.000000 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+%
+# NEW
+#LifeExtrapolation           # [RT] Skipped Lifetimes are extrapolated
+% LifeExtrapSteps
+ 0.480000 | 0.480000 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+%
+% IOtime
+   0.2400 |   1.0000 |   0.5000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+%
+# OLD INPUT STRUCTURE
+% Probe_Freq
+ 2.685     | 2.685     | eV    # [RT Probe] Frequency
+%
+Probe_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Probe_Int= 3000.       kWLm2 # [RT Probe] Intensity
+Probe_Width=3.000   fs      # [RT Probe] Damping
+Probe_Damp=3.000   fs      # [RT Probe] Damping
+Probe_kind= "QSSIN"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+% Probe_Dir
+ 1.00     | 0.00     | 0.00     |        # [RT Probe] Versor
+%
+# NEW INPUT STRUCTURE
+% Field1_Freq
+ 2.685     | 2.685     | eV    # [RT Probe] Frequency
+%
+Field1_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Field1_Int= 3000.       kWLm2 # [RT Probe] Intensity
+Field1_Damp=3.000   fs      # [RT Probe] Damping
+Field1_Width=3.000   fs      # [RT Probe] Damping
+Field1_kind= "QSSIN"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"
+% Field1_Dir
+ 1.00     | 0.00     | 0.00     |        # [RT Probe] Versor
+%
+#
+% GfnQP_Wv
+   0.1 |   0.0000 |   0.0000 |        # [EXTQP G] W parameters  (valence) eV|adim|eV^-1
+%
+% GfnQP_Wc
+   0.1 |   0.0000 |   0.0000 |        # [EXTQP G] W parameters  (conduction) eV|adim|eV^-1
+%

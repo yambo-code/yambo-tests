@@ -1,0 +1,90 @@
+#                                                           
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
+#                                                           
+#                                                           
+#         Version 4.2.0 Revision 14153 Hash 049dad1         
+#                     MPI+OpenMP Build                      
+#                 http://www.yambo-code.org                 
+#
+# GW [Newton Solver]
+#
+#  PPA imaginary pt   [ev]: 27.21138
+#  GW SC iterations       :0
+#  dS/dw steps            : 2
+#  dS/dw step         [ev]:  0.10000
+#  X G`s            [used]: 20197
+#  X G`s            [disk]: 20197
+#  X bands                :    1   960
+#  X poles           [o/o]: 100.0000
+#  X e/h E range      [ev]:-1.000000 -1.000000
+#  X xc-Kernel            : none
+#  X BZ energy Double Grid: no
+#  X BZ Double Grid points:0
+#  Sc/G bands             :    1   960
+#  Sc/G damping       [ev]:  0.10000
+#  Sc bands terminator    : no
+#  Sx RL components       :  6186431
+#  QP @ K 001 - 001 : b 118 - 123
+#
+#  K-point    Band       Eo         E-Eo       Sc|Eo
+#
+    1.0000   118.0000    -0.8208    -0.9115     3.6726
+    1.0000   119.0000    -0.2299    -0.6547     2.8129
+    1.0000   120.0000     0.0000    -0.7858     3.6351
+    1.0000   121.0000     0.8751     3.7242    -3.4207
+    1.0000   122.0000     0.9297     3.6014    -2.7255
+    1.0000   123.0000     0.9328     3.7362    -3.1306
+# 
+# 01/03/2017 at 11:28 YAMBO @ s3node35 [start]
+# 01/03/2017 at 18:21                  [end]
+#  
+# Timing   [Min/Max/Average]: 06h-53m-42s/06h-53m-42s/06h-53m-42s
+#
+# .-Input file : /scratch/imarri/TiO2_NC_10_Shiftato_fast_TEST_new/TiO2-3.save/yambo.in
+# | em1d                         # [R Xd] Dynamical Inverse Dielectric Matrix
+# | ppa                          # [R Xp] Plasmon Pole Approximation
+# | HF_and_locXC                 # [R XX] Hartree-Fock Self-energy and Vxc
+# | gw0                          # [R GW] GoWo Quasiparticle energy levels
+# | rim_cut                      # [R RIM CUT] Coulomb potential
+# | BoseTemp= 0.000000     eV    # Bosonic Temperature
+# | X_all_q_CPU= "1 1 16 2"      # [PARALLEL] CPUs for each role
+# | X_all_q_ROLEs= "q k c v"     # [PARALLEL] CPUs roles (q,k,c,v)
+# | X_all_q_nCPU_LinAlg_INV=  32 # [PARALLEL] CPUs for Linear Algebra
+# | X_Threads= 1                 # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1               # [OPENMP/X] Number of threads for dipoles
+# | SE_CPU= "1 2 16"             # [PARALLEL] CPUs for each role
+# | SE_ROLEs= "q qp b"           # [PARALLEL] CPUs roles (q,qp,b)
+# | SE_Threads= 1                # [OPENMP/GW] Number of threads for self-energy
+# | RandQpts=0                   # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1            RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "sphere xyz"         # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
+# | % CUTBox
+# |  0.00     | 0.00     | 0.00     |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 32.00000          # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000          # [CUT] [au] Cylinder length
+# | EXXRLvcs=  6186431     RL    # [XX] Exchange RL components
+# | Chimod= ""                   # [X] IP/Hartree/ALDA/LRC/BSfxc
+# | % BndsRnXp
+# |     1 |  960 |               # [Xp] Polarization function bands
+# | %
+# | NGsBlkXp=  7           Ry    # [Xp] Response block size
+# | % LongDrXp
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xp] [cc] Electric Field
+# | %
+# | PPAPntXp= 27.21138     eV    # [Xp] PPA imaginary energy
+# | % GbndRnge
+# |     1 |  960 |               # [GW] G[W] bands range
+# | %
+# | GDamping=  0.10000     eV    # [GW] G[W] damping
+# | dScStep=  0.10000      eV    # [GW] Energy step to evaluate Z factors
+# | DysSolver= "n"               # [GW] Dyson Equation solver ("n","s","g")
+# | %QPkrange                    # [GW] QP generalized Kpoint/Band indices
+# |   1|  1|118|123|
+# | %

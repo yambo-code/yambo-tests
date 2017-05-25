@@ -1,0 +1,45 @@
+#                                                           
+#  **    **    **     ****     ****  ******     *******     
+# //**  **    ****   /**/**   **/** /*////**   **/////**    
+#  //****    **//**  /**//** ** /** /*   /**  **     //**   
+#   //**    **  //** /** //***  /** /******  /**      /**   
+#    /**   **********/**  //*   /** /*//// **/**      /**   
+#    /**  /**//////**/**   /    /** /*    /**//**     **    
+#    /**  /**     /**/**        /** /*******  //*******     
+#    //   //      // //         //  ///////    ///////      
+#                                                           
+#               Version 3.3.1 Revision 2087                 
+#                http://www.yambo-code.org                  
+#
+sursp                        # [R] Surface Spectroscopy
+ras                          # [R] Reflectance anisotropy spectroscopy (RAS)
+% BndsRnXd
+   1 | 200 |                 # [Xd] Polarization function bands
+%
+% EnRngeXd
+ 0.000000 | 6.000000 | eV    # [Xd] Energy range
+%
+% DmRngeXd
+ 0.150000 | 0.150000 | eV    # [Xd] Damping range
+%
+ETStpsXd= 101                # [Xd] Total Energy steps
+FFTGvecs= 1007         RL    # [FFT] Plane-waves
+% XfnQP_E
+ 0.500000 | 1.000000 | 1.000000 |        # [EXTQP Xd] E parameters  (c/v) eV|adim|adim
+%
+BulkFile= "Experiment/EPSILON_Si_bulk_RPA.dat" # [RAS] File containing bulk
+BulkForm= "3ir"              # [RAS] Format of bulk (`3ri`,`3ir`,`2KK`,`3KK`)
+BlkShift= 0.500000     eV    # [RAS] GW shift of bulk eps
+BlkBroad= 0.000000     eV    # [RAS] Broadening of bulk eps
+% Layers
+ 20.00000 | 10.00000 |  0.00000 |        # [RAS] Atomic layers in cell/slab/bulk
+%
+% q0x
+ 1.000000 | 0.000000 | 0.000000 |        # [RAS] [cc] X-polarization direction
+%
+% q0y
+ 0.000000 | 1.000000 | 0.000000 |        # [RAS] [cc] Y-polarization direction
+%
+#Cutoff                      # [RAS] Cutoff mode (Uncomment to use)
+CutZero= 0.000000            # [RAS] Zero position of cutoff fn (Frac)
+CutStep= 1.000000            # [RAS] Width of cutoff function (Frac)

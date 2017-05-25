@@ -1,0 +1,34 @@
+
+# Generation of the KSS file for YAMBO
+
+prtvol 3
+
+# Ground state
+
+toldfe 1.0d-8
+prtden   1       # Print the density, for use by dataset 2
+kptopt  1        # Option for the automatic generation of k points
+nshiftk 1
+shiftk  0.0 0.0 0.0
+ngkpt   6 6 1
+
+# geometry optimized
+acell   5.9203808995E+00  5.9203808994E+00  3.0000000000E+01 Bohr
+xcart   0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+        2.9601904497E+00  1.7090667530E+00  2.9330827955E+00
+        2.9601904497E+00  1.7090667530E+00 -2.9330827955E+00
+rprim   1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+       -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
+        0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
+#Definition of the atom types
+ntypat 2          # There are two types of atoms
+znucl 42 16       # The keyword "zatnum" refers to the atomic number of the
+#Definition of the atoms
+natom 3           # There are two atoms
+typat  1 2 2
+#Definition of the planewave basis set
+ecut   15.0       # Minimal kinetic energy cut-off, in Hartree
+#Definition of the SCF procedure
+nstep 100         # Maximal number of SCF cycles
+diemac 4.50       # Although this is not mandatory, it is worth to
+

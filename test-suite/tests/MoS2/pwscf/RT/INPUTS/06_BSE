@@ -1,0 +1,52 @@
+#  __      __   ______   __       __  _______    ______     
+# |  \    /  \ /      \ |  \     /  \|       \  /      \    
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\   
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$   
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$   
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$   
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$   
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
+#                                                           
+#        Version 4.2.0 Revision 14234 Hash 4aaa215          
+#                      MPI+SLK Build                        
+#                http://www.yambo-code.org                  
+#
+em1s                         # [R Xs] Static Inverse Dielectric Matrix
+optics                       # [R OPT] Optics
+bss                          # [R BSS] Bethe Salpeter Equation solver
+bse                          # [R BSE] Bethe Salpeter Equation.
+bsk                          # [R BSK] Bethe Salpeter Equation kernel
+Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+BSEmod= "retarded"           # [BSE] resonant/retarded/coupling
+BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "d"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx= 2005         RL    # [BSK] Exchange components
+BSENGBlk= 19           RL    # [BSK] Screened interaction block size
+#WehCpl                      # [BSK] eh interaction included also in coupling
+% KfnQP_E
+ 1.500000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+% BEnRange
+ 0.000000 | 6.000000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
+%
+BEnSteps= 1000               # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+  23 |  30 |                 # [BSK] Bands range
+%
+% BndsRnXs
+   1 |  30 |                 # [Xs] Polarization function bands
+%
+NGsBlkXs= 19            RL    # [Xs] Response block size
+% DmRngeXs
+  0.00100 |  0.0010000 | eV    # [Xs] Damping range
+%
+% LongDrXs
+ 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%

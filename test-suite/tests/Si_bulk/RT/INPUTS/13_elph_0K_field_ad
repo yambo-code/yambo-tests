@@ -1,0 +1,67 @@
+#                                                           
+#  **    **    **     ****     ****  ******     *******     
+# //**  **    ****   /**/**   **/** /*////**   **/////**    
+#  //****    **//**  /**//** ** /** /*   /**  **     //**   
+#   //**    **  //** /** //***  /** /******  /**      /**   
+#    /**   **********/**  //*   /** /*//// **/**      /**   
+#    /**  /**//////**/**   /    /** /*    /**//**     **    
+#    /**  /**     /**/**        /** /*******  //*******     
+#    //   //      // //         //  ///////    ///////      
+#                                                           
+#               Version 4.0.2 Revision 5707                 
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+negf                         # [R] Real-Time dynamics
+el_ph_scatt                  # [R] Electron-Phonon   Scattering
+BoseTemp= 0.000000     eV    # Bosonic Temperature
+DBsIOoff= "DIP"              # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,W,SC,BS,ALL)
+GfnQP_Wv_E=-1.200000   eV    # [EXTQP G] W Energy reference  (valence)
+% GfnQP_Wv
+   0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (valence) eV|adim|eV^-1
+%
+GfnQP_Wc_E= 1.200000   eV    # [EXTQP G] W Energy reference  (conduction)
+% GfnQP_Wc
+   0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (conduction) eV|adim|eV^-1
+%
+% RTBands
+  2 |  7 |                   # [RT] Bands
+%
+# OLD
+Potential= "IP"          # [SC] SC Potential
+# NEW
+HXC_Potential= "IP"          # [SC] SC Potential
+Integrator= "RK2 RWA"        # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA" "INTERPOLATE")
+GrKind= "QP"                 # [RT] G-ret kind: Lorentzian (QP)/ Hyperbolic QP_secant (HS)
+NETime= 500.0000       fs    # [RT] Simulation Time
+
+RTstep= 20.00000       as    # [RT] Real Time step length
+#
+#dT update
+dTupdateTime= 60.000000 fs    # [RT] Initial Time for deltaT update (active only if non-zero)
+dTupdateJump= 5.000000 fs    # [RT] Time betweem two deltaT updates
+dTupdateTresh= 5.000000      # [RT][o/o] Treshold of deltaT updates
+#
+#LifeInterpolation           # [RT] Skipped Lifetimes are interpolated
+#% LifeInterpSteps
+# 1.50     | 0.50     | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+#%
+#
+% IOtime
+ 0.500000 | 0.500000 | 0.500000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+%
+% Field1_Freq
+ 2.600000 | 2.600000 | eV    # [RT Field1] Frequency
+%
+Field1_Int=0.1000E+5   kWLm2 # [RT Field1] Intensity
+Field1_Damp= 10.00000  fs    # [RT Field1] Damping
+Field1_Width= 10.00000  fs    # [RT Field1] Damping
+Field1_kind= "QSSIN"         # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"         # [RT Field1] Pol(linear|circular)
+% Field1_Dir
+ 1.000000 | 1.000000 | 1.000000 |        # [RT Field1] Versor
+%
+% Field1_Dir_circ
+ 0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
+%
+Field1_Tstart= 0.000000fs    # [RT Field1] Initial Time

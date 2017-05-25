@@ -1,0 +1,44 @@
+A new subroutine to interpolate generic quantities in the Brillouin zone has been
+implemented. The subroutine implements the method described in PRB 38 p2721
+a smooth Fourier interpolation with symmetries
+
+To call the subroutine do like this:
+
+*) Initialize the interpolation:
+
+   call bz_interp_setup(Xk)
+
+*) calculate interpolation coefficients
+
+   call eval_interpolation_coeff(R1D or R2D or C1D or C2D=data,k=Xk,ID=ID_interp)
+
+   data can be:
+   1) one dimensional real numbers R1D       data(ndata,nkibz)
+   2) two dimensional real numbers R2D       data(ndata1,ndata2,nkibz)
+   3) one dimensional complex numbers C1D    data(ndata,nkibz) 
+   4) two dimensional complex numbers C2D    data(ndata1,ndata2,nkibz)
+
+
+*) interpolate on a new grid of k-points
+
+   call bz_interpolation(USER_k=CIRCUIT_k,R2D=data,ID=ID_interp)
+
+
+*) reset the interpolation
+
+   call reset_interpolation(ID_interp)
+
+
+An example for bands interpolation can be found in ypp/electron_bands.F
+and used with the command line: ypp -s b
+
+
+PROBLEMS and KNOWN ISSUES
+
+There is a residual interpolation error for large number of k-points (in input) due
+to the lack of precision. If you compile yambo in double precision this error disappears.
+
+
+
+
+

@@ -1,0 +1,105 @@
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+#                                                           
+#               Version 4.0.0 Revision 3791                 
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+# GW [Newton Solver]
+#
+#  PPA imaginary pt   [ev]: 27.21138
+#  RIM G`s                :  9
+#  RIM random pts         :  5000000
+#  GW SC iterations       :0
+#  dS/dw steps            : 2
+#  dS/dw step         [ev]:  0.10000
+#  X G`s            [used]:  367
+#  X G`s            [disk]:  367
+#  X bands                :   1   50
+#  X poles           [o/o]: 100.0000
+#  X e/h E range      [ev]:-1.000000 -1.000000
+#  X xc-Kernel            :none
+#  X BZ energy RIM        : no
+#  X BZ RIM points        :0
+#  Sc/G bands             :  10   40
+#  Sc/G damping       [ev]:  0.10000
+#  Sc bands terminator    : no
+#  Sx RL components       : 17279
+#  QP @ K 001 - 001 : b 014 - 034
+#
+#  K-point    Band       Eo         E-Eo       Sc(Eo)
+#
+   1.00000   14.00000   -4.30638   -0.99426    3.05862
+   1.00000   15.00000   -3.16767   -1.93242    2.12387
+   1.00000   16.00000   -3.16162   -1.92400    2.12938
+   1.00000   17.00000   -2.88215   -1.65925    2.23246
+   1.00000   18.00000   -2.86722   -1.58273    2.29849
+   1.00000   19.00000   -1.55961   -2.06378    2.08098
+   1.00000   20.00000   -1.55559   -2.12676    2.01389
+   1.00000   21.00000   -1.22484   -1.88964    2.08607
+   1.00000   22.00000   -1.21531   -1.74967    2.10904
+  1.000      23.00     -.9604E-2  -.8239      1.530   
+   1.00000   24.00000    0.00000   -0.79107    1.58155
+   1.00000   25.00000    4.36661    3.58925   -0.71274
+   1.00000   26.00000    4.43125    3.63178   -0.74906
+   1.00000   27.00000    5.00289    3.38817   -1.29320
+   1.00000   28.00000    5.32593    1.63489   -0.83925
+   1.00000   29.00000    5.86946    3.03491   -1.13207
+   1.00000   30.00000    6.33601    3.83608   -1.29839
+   1.00000   31.00000    6.69770    1.85462   -0.75574
+   1.00000   32.00000    6.83714    1.67948   -0.78605
+   1.00000   33.00000    6.92262    1.94356   -0.79406
+   1.00000   34.00000    7.23205    1.95632   -0.90661
+# 
+# 10/09/2014 at 09:42 YAMBO @ anomaly [start]
+# 10/09/2014 at 09:42                 [end]
+#  
+# Timing   [Min/Max/Average]: 18s/18s/18s
+#
+# .-Input file : yambo.in
+# | em1d                         # [R Xd] Dynamical Inverse Dielectric Matrix
+# | ppa                          # [R Xp] Plasmon Pole Approximation
+# | HF_and_locXC                 # [R XX] Hartree-Fock Self-energy and Vxc
+# | gw0                          # [R GW] GoWo Quasiparticle energy levels
+# | rim_cut                      # [R RIM CUT] Coulomb potential
+# | X_all_q_CPU= ""              # [PARALLEL] CPUs for each role
+# | X_all_q_ROLEs= ""            # [PARALLEL] CPUs roles (q,k,c,v)
+# | X_all_q_nCPU_invert=0        # [PARALLEL] CPUs for matrix inversion
+# | SE_CPU= ""                   # [PARALLEL] CPUs for each role
+# | SE_ROLEs= ""                 # [PARALLEL] CPUs roles (q,qp,b)
+# | RandQpts=  5000000           # [RIM] Number of random q-points in the BZ
+# | RandGvec=  9           RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "none"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
+# | % CUTBox
+# |  0.00     | 0.00     | 0.00     |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000          # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000          # [CUT] [au] Cylinder length
+# | EXXRLvcs= 17279        RL    # [XX] Exchange RL components
+# | Chimod= ""                   # [X] IP/Hartree/ALDA/LRC/BSfxc
+# | % BndsRnXp
+# |    1 |  50 |                 # [Xp] Polarization function bands
+# | %
+# | NGsBlkXp= 1535         mHa   # [Xp] Response block size
+# | % LongDrXp
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xp] [cc] Electric Field
+# | %
+# | PPAPntXp= 27.21138     eV    # [Xp] PPA imaginary energy
+# | % GbndRnge
+# |   10 |  40 |                 # [GW] G[W] bands range
+# | %
+# | GDamping=  0.10000     eV    # [GW] G[W] damping
+# | dScStep=  0.10000      eV    # [GW] Energy step to evalute Z factors
+# | GTermKind= "none"            # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
+# | DysSolver= "n"               # [GW] Dyson Equation solver (`n`,`s`,`g`)
+# | %QPkrange                    # [GW] QP generalized Kpoint/Band indices
+# |   1|  1| 14| 34|
+# | %
+# | %QPerange                    # [GW] QP generalized Kpoint/Energy indices
+# |   1|  1| 0.0|-1.0|
+# | %

@@ -1,0 +1,28 @@
+&control
+    calculation='scf'
+    restart_mode='from_scratch',
+    pseudo_dir = './',
+    outdir='./'
+    prefix='Fe_scf_e70_k10_nb20_so',
+    tprnfor = .true.,
+    tstress = .true.,
+    wf_collect= .true., 
+ /
+ &system
+    ibrav=3, celldm(1) = 5.42, nat=1, ntyp=1,
+    starting_magnetization(1)=2.0,
+    ecutwfc = 70.0, lspinorb=.true., noncolin=.true.,
+    occupations='smearing', degauss=0.025
+ /
+ &electrons
+    diagonalization='david',
+    conv_thr = 1.0e-8,
+    mixing_beta = 0.7,
+    diago_full_acc=.true.,
+ /
+ATOMIC_SPECIES
+ Fe  55.845 Fe.rel-pbe-n-nc.UPF
+ATOMIC_POSITIONS
+ Fe 0.0 0.0 0.0
+K_POINTS {automatic}
+   10 10 10 1 1 1

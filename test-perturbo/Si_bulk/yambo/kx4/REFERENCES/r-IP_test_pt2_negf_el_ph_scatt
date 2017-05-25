@@ -1,0 +1,489 @@
+                                                                
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.     
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb    
+      `88. .8" .8"88.    888b     d"88  88     888 88      88   
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88   
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88   
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"   
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"    
+                                                                
+                                                                
+            Version 4.1.1 Revision 13971 Hash 30179e0           
+                            MPI Build                           
+                    http://www.yambo-code.org                   
+ 
+ 10/26/2016 at 23:40 YAMBO_RT @ narro
+
+ [01] CPU structure, Files & I/O Directories
+ ===========================================
+
+ * CPU             : 1
+ * THREADS    (max): 1
+ * THREADS TOT(max): 1
+ * I/O NODES       : 1
+ * Fragmented WFs  :yes
+
+ CORE databases in   .
+ Additional I/O in   .
+ Communications in   IP_test_pt2
+ Input file     is   ../INPUTS/03Dyn_elph
+ Report file    is   IP_test_pt2/r-IP_test_pt2_negf_el_ph_scatt
+ Job string(main): IP_test_pt2
+             (#1): GKKP_pt2_exp
+ Log files      in IP_test_pt2/LOG
+  
+ [RD./SAVE//ns.db1]------------------------------------------
+  Bands                           : 16
+  K-points                        : 20
+  G-vectors             [RL space]: 2085
+  Components       [wavefunctions]: 268
+  Symmetries             [spatial]:  6
+  Spinor components               : 1
+  Spin polarizations              : 1
+  Temperature                 [ev]: 0.000000
+  Electrons                       : 8.000000
+  WF G-vectors                    :  411
+  Max atoms/species               : 2
+  No. of atom species             : 1
+  Magnetic symmetries             : no
+ - S/N 008281 -------------------------- v.04.01.01 r.13971 -
+
+ [02] CORE Variables Setup
+ =========================
+
+
+  [02.01] Unit cells
+  ==================
+
+  Unit cell is FCC
+
+  ... containing 2Si atoms
+
+  ... with scaling factors [a.u.]: 10.18300  10.18300  10.18300
+
+  Direct Lattice(DL) unit cell [iru  /  cc(a.u.)]
+  A1 =-0.500000  0.000000  0.500000     -5.091500  0.000000  5.091500
+  A2 = 0.000000  0.500000  0.500000      0.000000  5.091500  5.091500
+  A3 =-0.500000  0.500000  0.000000     -5.091500  5.091500  0.000000
+
+  DL volume [au]: 263.9777
+
+  Reciprocal Lattice(RL) unit cell [iku  /  cc]
+  B1 =-1.000000 -1.000000  1.000000     -0.617027 -0.617027  0.617027
+  B2 = 1.000000  1.000000  1.000000      0.617027  0.617027  0.617027
+  B3 =-1.000000  1.000000 -1.000000     -0.617027  0.617027 -0.617027
+
+
+  [02.02] Symmetries
+  ==================
+
+  DL (S)ymmetries [cc]
+  [S1] 1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000  1.000000
+  [S2] 0.000000  0.000000  1.000000  1.000000  0.000000  0.000000  0.000000  1.000000  0.000000
+  [S3] 0.000000  1.000000  0.000000  0.000000  0.000000  1.000000  1.000000  0.000000  0.000000
+  [S4] 0.000000  1.000000  0.000000  1.000000  0.000000  0.000000  0.000000  0.000000  1.000000
+  [S5] 0.000000  0.000000  1.000000  0.000000  1.000000  0.000000  1.000000  0.000000  0.000000
+  [S6] 1.000000  0.000000  0.000000  0.000000  0.000000  1.000000  0.000000  1.000000  0.000000
+
+  [SYMs] K-space Time-reversal not included
+  [SYMs] Group table built correctly
+
+  [02.03] RL shells
+  =================
+
+  Shells, format: [S#] G_RL(mHa)
+
+   [S54]:2085(0.2951E+5) [S53]:1989(0.2893E+5) [S52]:1917(0.2817E+5) [S51]:1893(0.2798E+5)
+   [S50]:1837(0.2741E+5) [S49]:1807(0.2665E+5) [S48]:1759(0.2646E+5) [S47]:1687(0.2589E+5)
+   [S46]:1639(0.2513E+5) [S45]:1591(0.2494E+5) [S44]:1471(0.2437E+5) [S43]:1459(0.2341E+5)
+   [S42]:1411(0.2284E+5) [S41]:1363(0.2208E+5) [S40]:1291(0.2189E+5) [S39]:1243(0.2056E+5)
+   [S38]:1211(0.2037E+5) [S37]:1139(0.1980E+5) [S36]:1067(0.1904E+5) [S35]:1037(0.1885E+5)
+   [S34]:965(0.1827E+5) [S33]:941(0.1732E+5) [S32]:893(0.1675E+5) [S31]:869(0.1599E+5)
+   [S30]:821(0.1580E+5) [S29]:749(0.1523E+5) [S28]:725(0.1447E+5) [S27]:701(0.1428E+5)
+   ...
+   [S12]:181( 6092.) [S11]:169( 5140.) [S10]:137( 4569.) [S9]:113( 3807.)
+   [S8]:89( 3617.) [S7]:65( 3046.) [S6]:59( 2284.) [S5]:51( 2094.)
+   [S4]:27( 1523.) [S3]:15( 761.4446) [S2]:9( 571.0835) [S1]:1( 0.000000)
+
+  [02.04] K-grid lattice
+  ======================
+
+  Compatible Grid is 3D
+  B1 [rlu]= 0.000000  0.000000 -0.250000
+  B2      = 0.000000 -0.250000  0.000000
+  B3      = 0.250000  0.000000  0.000000
+  Grid dimensions               :  4   4   4
+  K lattice UC volume       [au]:  0.01468
+
+  [02.05] Energies [ev] & Occupations
+  ===================================
+
+  Fermi Level        [ev]:  0.000000
+  VBM / CBm          [ev]:  0.000000  0.637191
+  Electronic Temp. [ev K]:  0.00      0.00    
+  Bosonic    Temp. [ev K]: 0.2585E-1  300.0   
+  El. density      [cm-3]: 0.205E+24
+  States summary         : Full        Metallic    Empty
+                           0001-0004               0005-0016
+  Indirect Gaps      [ev]: 0.637191  4.626091
+  Direct Gaps        [ev]: 2.576519  8.242220
+  X BZ K-points :  64
+
+  Energy unit is electronVolt [eV]
+
+  *X* K [1] : 0.000000  0.000000  0.000000 ( cc) * Comp.s 259 * weight   0.01562
+              0.000000  0.000000  0.000000 (rlu)
+  E -12.07262   0.00000   0.00000   0.00000   2.57652   2.57652   2.57652   3.53247
+  E   7.79161   7.91799   7.91799  11.28769  11.28769  11.28769  15.19262  23.46522
+   
+  *X* K [2] :-0.154257  0.154257 -0.154257 ( cc) * Comp.s 268 * weight   0.04688
+             -0.250000  0.250000 -0.250000 (rlu)
+  E -11.27075  -3.97194  -0.78627  -0.78627   2.08290   3.53751   3.53751   6.96228
+  E   7.32518   7.32518   8.89761  11.81027  14.83897  14.83897  18.08421  18.09932
+   
+  *X* K [3] : 0.308513 -0.308513  0.308513 ( cc) * Comp.s 266 * weight   0.04688
+              0.500000 -0.500000  0.500000 (rlu)
+  E -9.683596 -7.092723 -1.231808 -1.231808  1.609203  3.354090  3.354090  7.599095
+  E  10.79429  10.79429  11.33985  11.50295  11.50295  13.02363  19.48648  20.09099
+   
+  *X* K [4] : 0.000000  0.308513  0.000000 ( cc) * Comp.s 258 * weight   0.04688
+              0.000000  0.500000  0.000000 (rlu)
+  E -10.97655  -3.48675  -1.94582  -1.94582   1.07989   3.13146   5.84536   5.84536
+  E   8.17798   9.15999  11.34785  13.13595  13.13595  13.77429  17.57092  17.57092
+   
+  *X* K [5] : 0.462770 -0.154257  0.462770 ( cc) * Comp.s 254 * weight   0.04688
+              0.750000 -0.250000  0.750000 (rlu)
+  E -9.297704 -6.420449 -3.633610 -2.268178  1.481130  4.460238  5.829238  6.009262
+  E  10.27803  10.74938  12.43146  12.80333  13.05785  16.96151  18.04387  18.84516
+   
+  *X* K [6] : 0.308513  0.000000  0.308513 ( cc) * Comp.s 256 * weight   0.04688
+              0.500000  0.000000  0.500000 (rlu)
+  E -9.990775 -5.496009 -3.874980 -1.364807  2.461573  4.847536  5.174012  6.195334
+  E   6.55535   9.72605  12.67129  13.41396  13.47838  16.78983  17.42419  17.62045
+   
+  *X* K [7] : 0.000000 -0.617027  0.000000 ( cc) * Comp.s 254 * weight   0.04688
+              0.000000 -1.000000  0.000000 (rlu)
+  E  -7.84827  -7.84827  -2.93314  -2.93314   0.63719   0.63720  10.22512  10.22512
+  E  11.22876  11.22876  12.83469  12.83469  13.06925  13.06928  19.01175  19.01176
+   
+  *X* K [8] :-0.308513 -0.617027  0.000000 ( cc) * Comp.s 264 * weight   0.09375
+             -0.500000 -1.000000  0.000000 (rlu)
+  E -7.676652 -7.676649 -3.988900 -3.988899  4.253320  4.253324  5.071419  5.071434
+  E  10.75188  10.75189  13.21711  13.21712  16.56570  16.56571  18.62405  18.62408
+   
+  *X* K [9] : 0.000000 -0.308513  0.000000 ( cc) * Comp.s 258 * weight   0.04688
+              0.000000 -0.500000  0.000000 (rlu)
+  E -10.97655  -3.48675  -1.94582  -1.94582   1.07989   3.13146   5.84536   5.84536
+  E   8.17798   9.15999  11.34785  13.13595  13.13595  13.77429  17.57092  17.57092
+   
+  *X* K [10] :-0.154257 -0.154257 -0.154257 ( cc) * Comp.s 268 * weight   0.01562
+              -0.250000 -0.250000 -0.250000 (rlu)
+  E -11.27075  -3.97194  -0.78627  -0.78627   2.08290   3.53751   3.53751   6.96228
+  E   7.32518   7.32518   8.89761  11.81027  14.83897  14.83897  18.08421  18.09932
+   
+  *X* K [11] :-0.462770  0.154257  0.462770 ( cc) * Comp.s 254 * weight   0.09375
+              -0.750000  0.250000  0.750000 (rlu)
+  E -9.297704 -6.420449 -3.633610 -2.268178  1.481130  4.460238  5.829238  6.009262
+  E  10.27803  10.74938  12.43146  12.80333  13.05785  16.96151  18.04387  18.84516
+   
+  *X* K [12] :-0.462770 -0.154257 -0.462770 ( cc) * Comp.s 254 * weight   0.04688
+              -0.750000 -0.250000 -0.750000 (rlu)
+  E -9.297704 -6.420449 -3.633610 -2.268178  1.481130  4.460238  5.829238  6.009262
+  E  10.27803  10.74938  12.43146  12.80333  13.05785  16.96151  18.04387  18.84516
+   
+  *X* K [13] :-0.462770  0.154257 -0.462770 ( cc) * Comp.s 254 * weight   0.04688
+              -0.750000  0.250000 -0.750000 (rlu)
+  E -9.297704 -6.420449 -3.633610 -2.268178  1.481130  4.460238  5.829238  6.009262
+  E  10.27803  10.74938  12.43146  12.80333  13.05785  16.96151  18.04387  18.84516
+   
+  *X* K [14] : 0.462770 -0.154257 -0.462770 ( cc) * Comp.s 254 * weight   0.09375
+               0.750000 -0.250000 -0.750000 (rlu)
+  E -9.297704 -6.420449 -3.633610 -2.268178  1.481130  4.460238  5.829238  6.009262
+  E  10.27803  10.74938  12.43146  12.80333  13.05785  16.96151  18.04387  18.84516
+   
+  *X* K [15] : 0.462770  0.154257  0.462770 ( cc) * Comp.s 254 * weight   0.04688
+               0.750000  0.250000  0.750000 (rlu)
+  E -9.297704 -6.420449 -3.633610 -2.268178  1.481130  4.460238  5.829238  6.009262
+  E  10.27803  10.74938  12.43146  12.80333  13.05785  16.96151  18.04387  18.84516
+   
+  *X* K [16] : 0.154257  0.154257  0.154257 ( cc) * Comp.s 268 * weight   0.01562
+               0.250000  0.250000  0.250000 (rlu)
+  E -11.27075  -3.97194  -0.78627  -0.78627   2.08290   3.53751   3.53751   6.96228
+  E   7.32518   7.32518   8.89761  11.81027  14.83897  14.83897  18.08421  18.09932
+   
+  *X* K [17] :-0.308513  0.000000  0.308513 ( cc) * Comp.s 256 * weight   0.09375
+              -0.500000  0.000000  0.500000 (rlu)
+  E -9.990775 -5.496009 -3.874980 -1.364807  2.461573  4.847536  5.174012  6.195334
+  E   6.55535   9.72605  12.67129  13.41396  13.47838  16.78983  17.42419  17.62045
+   
+  *X* K [18] :-0.308513  0.000000 -0.308513 ( cc) * Comp.s 256 * weight   0.04688
+              -0.500000  0.000000 -0.500000 (rlu)
+  E -9.990775 -5.496009 -3.874980 -1.364807  2.461573  4.847536  5.174012  6.195334
+  E   6.55535   9.72605  12.67129  13.41396  13.47838  16.78983  17.42419  17.62045
+   
+  *X* K [19] :-0.308513 -0.308513 -0.308513 ( cc) * Comp.s 266 * weight   0.01562
+              -0.500000 -0.500000 -0.500000 (rlu)
+  E -9.683596 -7.092723 -1.231808 -1.231808  1.609203  3.354090  3.354090  7.599095
+  E  10.79429  10.79429  11.33985  11.50295  11.50295  13.02363  19.48648  20.09099
+   
+  *X* K [20] : 0.154257 -0.154257  0.154257 ( cc) * Comp.s 268 * weight   0.04688
+               0.250000 -0.250000  0.250000 (rlu)
+  E -11.27075  -3.97194  -0.78627  -0.78627   2.08290   3.53751   3.53751   6.96228
+  E   7.32518   7.32518   8.89761  11.81027  14.83897  14.83897  18.08421  18.09932
+
+ [03] Transferred momenta grid
+ =============================
+
+ [RD./SAVE//ndb.kindx]---------------------------------------
+  Fragmentation                    :no
+  Polarization last K   : 20
+  QP states             :  1  20
+  X grid is uniform     :yes
+  BS scattering         :yes
+  COLL scattering       :no
+ - S/N 008281 -------------------------- v.04.01.01 r.13971 -
+
+ IBZ Q-points : 20
+ BZ  Q-points :  64
+
+ Q [00001] : 0.00      0.00      0.00     (iku) * weight   0.01562
+ Q [00002] :-0.250000  0.250000 -0.250000 (iku) * weight   0.04688
+ Q [00003] : 0.500000 -0.500000  0.500000 (iku) * weight   0.04688
+ Q [00004] : 0.000000  0.500000  0.000000 (iku) * weight   0.04688
+ Q [00005] :-0.250000  0.750000 -0.250000 (iku) * weight   0.04688
+ Q [00006] : 0.500000  0.000000  0.500000 (iku) * weight   0.04688
+ Q [00007] : 0.000000 -1.000000  0.000000 (iku) * weight   0.04688
+ Q [00008] :-0.500000 -1.000000  0.000000 (iku) * weight   0.09375
+ Q [00009] : 0.000000 -0.500000  0.000000 (iku) * weight   0.04688
+ Q [00010] :-0.250000 -0.250000 -0.250000 (iku) * weight   0.01562
+ Q [00011] : 0.250000 -0.750000 -0.250000 (iku) * weight   0.09375
+ Q [00012] : 0.250000  0.750000  0.250000 (iku) * weight   0.04688
+ Q [00013] : 0.250000 -0.750000  0.250000 (iku) * weight   0.04688
+ Q [00014] :-0.250000  0.750000  0.250000 (iku) * weight   0.09375
+ Q [00015] :-0.250000 -0.750000 -0.250000 (iku) * weight   0.04688
+ Q [00016] : 0.250000  0.250000  0.250000 (iku) * weight   0.01562
+ Q [00017] :-0.500000  0.000000  0.500000 (iku) * weight   0.09375
+ Q [00018] :-0.500000  0.000000 -0.500000 (iku) * weight   0.04688
+ Q [00019] :-0.500000 -0.500000 -0.500000 (iku) * weight   0.01562
+ Q [00020] : 0.250000 -0.250000  0.250000 (iku) * weight   0.04688
+  
+ Q [00001] : 0.00      0.00      0.00     (cc ) * weight   0.01562
+ Q [00002] :-0.154257  0.154257 -0.154257 (cc ) * weight   0.04688
+ Q [00003] : 0.308513 -0.308513  0.308513 (cc ) * weight   0.04688
+ Q [00004] : 0.000000  0.308513  0.000000 (cc ) * weight   0.04688
+ Q [00005] :-0.154257  0.462770 -0.154257 (cc ) * weight   0.04688
+ Q [00006] : 0.308513  0.000000  0.308513 (cc ) * weight   0.04688
+ Q [00007] : 0.000000 -0.617027  0.000000 (cc ) * weight   0.04688
+ Q [00008] :-0.308513 -0.617027  0.000000 (cc ) * weight   0.09375
+ Q [00009] : 0.000000 -0.308513  0.000000 (cc ) * weight   0.04688
+ Q [00010] :-0.154257 -0.154257 -0.154257 (cc ) * weight   0.01562
+ Q [00011] : 0.154257 -0.462770 -0.154257 (cc ) * weight   0.09375
+ Q [00012] : 0.154257  0.462770  0.154257 (cc ) * weight   0.04688
+ Q [00013] : 0.154257 -0.462770  0.154257 (cc ) * weight   0.04688
+ Q [00014] :-0.154257  0.462770  0.154257 (cc ) * weight   0.09375
+ Q [00015] :-0.154257 -0.462770 -0.154257 (cc ) * weight   0.04688
+ Q [00016] : 0.154257  0.154257  0.154257 (cc ) * weight   0.01562
+ Q [00017] :-0.308513  0.000000  0.308513 (cc ) * weight   0.09375
+ Q [00018] :-0.308513  0.000000 -0.308513 (cc ) * weight   0.04688
+ Q [00019] :-0.308513 -0.308513 -0.308513 (cc ) * weight   0.01562
+ Q [00020] : 0.154257 -0.154257  0.154257 (cc ) * weight   0.04688
+
+ [04] External corrections
+ =========================
+
+
+ [05] IP Real-Time Dynamics
+ ==========================
+
+
+  [05.01] Initialization
+  ======================
+
+  [RD./SAVE//ns.kb_pp_pwscf]----------------------------------
+   Fragmentation                    :yes
+  - S/N 008281 -------------------------- v.04.01.01 r.13964 -
+  [WF] Performing Wave-Functions I/O from ./SAVE
+
+  [WF loader] Normalization (few states)  min/max  :0.74656E-8  1.0000   
+
+  [WF] Performing Wave-Functions I/O from ./SAVE
+
+  [FFT-RT] Mesh size: 12  12  12
+
+
+  [05.02] External QP corrections (G)
+  ===================================
+
+  -- [QP@G] DOS/Linear/Quadratic extrapolation -------------------
+  === QP/DB derived ===
+  === Additional ===
+   Energies 0th order c/v [ev]: 0.8000000  0.0000000
+   Energies 1st order         : 1.0000000  1.0000000
+   Widths 0th order c/v [ev]: 0.3000000  0.3000000
+                        [fs]: 2.1940396  2.1940396
+   Widths dos prop.     [eV]: 0.000      0.000    
+   Widths 2st order   [1/eV]: 0.000      0.000    
+  ------------------------------------------------------------
+  [QP] Fermi level variation [ev]: 0.0000000
+  [QP] Last Filled/Metallic band :  4   4
+  [QP] Ind. Gap Correction  [ev]: 0.8000001
+
+  [05.03] Dephasing matrix setup
+  ==============================
+
+  [RT] Quasiparticle database Dephasing applied
+
+  [WARNING]Field starting time corrected to respect the I/O times.
+
+  [05.04] El-Ph matrix elements loading and setup
+  ===============================================
+
+  [RD./GKKP_pt2_exp//ndb.elph_gkkp_expanded]------------------
+   Brillouin Zone Q/K grids (IBZ/BZ):   8   64    8   64
+   Fragmentation                    :yes
+   Phonon modes           :  6
+   Q points        [avail]:  64
+   K points (BZ)          :  64
+   El-PH bands            :  8
+   Using the Q-grid       :yes
+  - S/N 008281 -------------------------- v.04.01.01 r.13971 -
+
+  [05.05] Messaging
+  =================
+
+  ---General---
+  Integrator                 :RK2 + RWA
+  Simulation time        [fs]:  99.99999
+  Basic time step        [fs]:   0.01000
+        time step   (now)[fs]:   0.01000
+             steps           : 10001
+  ---Memory---
+  Memory depth(G)        [fs]: 0.0000000
+  Memory steps(G)            : 2
+
+  ---Lifetimes---
+  Point groups (inter/intra) [fs]: 10.000000   2.500000
+  Extrapolation                  :no
+  Memory steps                   :  4
+  Evaluated Time points          :  41
+
+  ---Flags (if any)---
+  Hxc approximation          :IP
+  El-Ph         scattering   :yes
+
+  ---I/O---
+  T between I/O of J,P,f [fs]: 2.5000000
+            I/O of   GFs [fs]: 5.0000000
+                 outputs [fs]: 1.0000001
+
+  ---Damping and retarded GF---
+  Retarded Green`s function   :HS
+  Damping (Phase)    [fs/meV]: 0.000       Infinity
+  Damping (Radiative)[fs/meV]: 0.000       Infinity
+
+  ---Conservation Rules---
+  dN (e-p) and N (e-p + e-e)  :yes
+
+  ---RIM---
+  Energy RIM support           :no
+
+  ---Fields---
+  Gauge                       :length
+  Field1 field                       :QSSIN
+  Field1 polarization                :linear
+  Field1 energy window/period [eV/fs]: 3.0999999  3.0999999  1.3340863  1.3340863
+  Field1 elemental oscillation   [fs]:  Infinity
+  Field1 damping                 [fs]: 10.000000
+  Field1 energy steps                : 1
+  Field1 electric field         [V/m]:0.61378E+8
+  Field1 max intensity      [kW/cm^2]:0.10000E+7
+  Field1 max fluence        [nJ/cm^2]: 8861.8   
+  Field1 final time              [fs]: 62.500000
+
+  [05.06] Start and Restart
+  =========================
+
+  [xc] Functional Slater exchange(X)+Perdew & Zunger(C)
+  [xc] LIBXC used to calculate xc functional
+   
+
+  [05.07] Real-Time dynamics
+  ==========================
+
+
+ CpuTiming [Min/Max/Average]: 13s/13s/13s
+
+ [06] Game Over & Game summary
+ =============================
+
+ 10/26/2016 at 23:40 YAMBO_RT @ narro [start]
+ 10/26/2016 at 23:40                  [end]
+
+ Timing   [Min/Max/Average]: 13s/13s/13s
+
+ .-ACKNOWLEDGMENT
+ |
+ | The users of YAMBO have little formal obligations with respect to
+ | the YAMBO group (those specified in the GNU General Public
+ | License, http://www.gnu.org/copyleft/gpl.txt). However, it is
+ | common practice in the scientific literature, to acknowledge the
+ | efforts of people that have made the research possible. In this
+ | spirit, please find below the reference we kindly ask you to use
+ | in order to acknowledge YAMBO:
+ |
+ | Yambo: An ab initio tool for excited state calculations
+ | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
+ | Computer Physics Communications  180, 1392 (2009).
+ |
+  
+ .-Input file : ../INPUTS/03Dyn_elph
+ | negf                         # [R] Real-Time dynamics
+ | el_ph_scatt                  # [R] Electron-Phonon   Scattering
+ | BoseTemp= 300.0000     Kn    # Bosonic Temperature
+ | DBsIOoff= "DIP J"            # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,W,SC,BS,ALL)
+ | % GfnQP_E
+ |  0.800000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
+ | %
+ | GfnQP_Wv_E=-1.200000   eV    # [EXTQP G] W Energy reference  (valence)
+ | % GfnQP_Wv
+ |  0.300000 | 0.000000 | 0.000000 |        # [EXTQP G] W parameters  (valence) eV| eV|eV^-1
+ | %
+ | GfnQP_Wc_E= 1.200000   eV    # [EXTQP G] W Energy reference  (conduction)
+ | % GfnQP_Wc
+ |  0.300000 | 0.000000 | 0.000000 |        # [EXTQP G] W parameters  (conduction) eV| eV|eV^-1
+ | %
+ | % RTBands
+ |   2 |  7 |                   # [RT] Bands
+ | %
+ | HXC_Potential= "IP"          # [SC] SC HXC Potential
+ | Integrator= "RK2 + RWA"      # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA")
+ | % RTehEny
+ |  -7.84827 | 11.02512 | eV    # [RT] Electron-hole energy range
+ | %
+ | RTstep= 10.00000       as    # [RT] Real Time step length
+ | NETime= 100.0000       fs    # [RT] Simulation Time
+ | #LifeExtrapolation           # [RT] Skipped Lifetimes are extrapolated
+ | % LifeExtrapSteps
+ |  10.00000 |  2.50000 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+ | %
+ | RandQpts=0                   # [RIM] Number of random q-points in the BZ
+ | % ElPhModes
+ |   1 |  6 |                   # [ELPH] Phonon modes included
+ | %
+ | % IOtime
+ |  2.500000 | 5.000000 | 1.000000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+ | %
+ | % Field1_Freq
+ |  3.100000 | 3.100000 | eV    # [RT Field1] Frequency
+ | %
+ | Field1_Int=0.1000E+7   kWLm2 # [RT Field1] Intensity
+ | Field1_Damp= 10.00000  fs    # [RT Field1] Damping
+ | Field1_kind= "QSSIN"         # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+ | Field1_pol= "linear"         # [RT Field1] Pol(linear|circular)
+ | % Field1_Dir
+ |  0.577350 | 0.577350 | 0.577350 |        # [RT Field1] Versor
+ | %
+ | % Field1_Dir_circ
+ |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
+ | %
+ | Field1_Tstart= 2.500000fs    # [RT Field1] Initial Time

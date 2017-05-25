@@ -1,0 +1,54 @@
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+#                                                           
+#               Version 3.3.1 Revision 2087                 
+#                http://www.yambo-code.org                  
+#
+em1s                         # [R Xs] Static Inverse Dielectric Matrix
+optics                       # [R OPT] Optics
+bse                          # [R BSE] Bethe Salpeter Equation.
+bsk                          # [R BSK] Bethe Salpeter Equation kernel
+bss                          # [R BSS] Bethe Salpeter Equation solver
+FFTGvecs= 1007         RL    # [FFT] Plane-waves
+NonPDirs= "Z"                # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
+Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+BSEmod= "causal"             # [BSE] resonant/causal/coupling
+BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "h"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx= 1007         RL    # [BSK] Exchange components
+BSENGBlk=  53          RL    # [BSK] Screened interaction block size
+#WehCpl                      # [BSK] eh interaction included also in coupling
+% KfnQP_E
+ 0.600000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+% BEnRange
+ 0.000000 | 3.000000 | eV    # [BSS] Energy range
+%
+% BDmRange
+ 0.150000 | 0.150000 | eV    # [BSS] Damping range
+%
+BEnSteps= 100                # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+   1 | 200 |                 # [BSK] Bands range
+%
+% BSEEhEny
+-1.000000 | 3.000000 | eV    # [BSK] Electron-hole energy range
+%
+% QpntsRXs
+  1 |  4 |                   # [Xs] Transferred momenta
+%
+% BndsRnXs
+   1 | 200 |                 # [Xs] Polarization function bands
+%
+NGsBlkXs=  53          RL    # [Xs] Response block size
+% LongDrXs
+ 1.000000 | 1.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%

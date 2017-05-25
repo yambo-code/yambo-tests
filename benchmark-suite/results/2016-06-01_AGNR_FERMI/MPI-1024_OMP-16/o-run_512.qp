@@ -1,0 +1,124 @@
+#                                                           
+#   __   __     _        __  __       ____      U  ___  u   
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
+#                                                           
+#                                                           
+#        Version 4.0.2 Revision 13600 Hash 166c0d7          
+#                    MPI+OpenMP Build                       
+#                http://www.yambo-code.org                  
+#
+# GW [Newton Solver]
+#
+#  PPA imaginary pt   [ev]: 20.00000
+#  RIM G`s                : 1
+#  RIM random pts         : 1000000
+#  GW SC iterations       :0
+#  dS/dw steps            : 2
+#  dS/dw step         [ev]:  0.10000
+#  X G`s            [used]:  867
+#  X G`s            [disk]:  867
+#  X bands                :   1  256
+#  X poles           [o/o]: 100.0000
+#  X e/h E range      [ev]:-1.000000 -1.000000
+#  X xc-Kernel            : none
+#  X BZ energy Double Grid: no
+#  X BZ Double Grid points:0
+#  Sc/G bands             :    1   512
+#  Sc/G damping       [ev]:  0.10000
+#  Sc bands terminator    : no
+#  Sx RL components       :  402821
+#  QP @ K 001 - 008 : b 029 - 032
+#
+#  K-point    Band       Eo         E-Eo       Sc|Eo
+#
+   1.00000   29.00000   -0.16221   -0.10002    0.94168
+   1.00000   30.00000    0.00000   -0.13718    0.79906
+   1.00000   31.00000    1.62582    1.51081   -1.30516
+   1.00000   32.00000    1.68644    1.50763   -1.31513
+   2.00000   29.00000   -0.17828   -0.10169    0.95190
+  2.000      30.00     -.6616E-2  -.1377     0.8062   
+   2.00000   31.00000    1.63059    1.51096   -1.31112
+   2.00000   32.00000    1.70185    1.50929   -1.32500
+   3.00000   29.00000   -0.22357   -0.10717    0.98189
+  3.000      30.00     -.2503E-1  -.1397     0.8268   
+   3.00000   31.00000    1.64431    1.51175   -1.32860
+   3.00000   32.00000    1.74804    1.51354   -1.35501
+   4.00000   29.00000   -0.29372   -0.11612    1.03059
+   4.00000   30.00000   -0.05497   -0.14307    0.85998
+   4.00000   31.00000    1.66695    1.51291   -1.35684
+   4.00000   32.00000    1.82073    1.52013   -1.40410
+   5.00000   29.00000   -0.38533   -0.12717    1.09667
+   5.00000   30.00000   -0.09571   -0.14758    0.90433
+   5.00000   31.00000    1.69666    1.51475   -1.39401
+   5.00000   32.00000    1.91455    1.52896   -1.47014
+   6.00000   29.00000   -0.49147   -0.14019    1.17632
+   6.00000   30.00000   -0.14625   -0.15307    0.95818
+   6.00000   31.00000    1.73421    1.51661   -1.43911
+   6.00000   32.00000    2.02513    1.53861   -1.55027
+   7.00000   29.00000   -0.60925   -0.15376    1.26670
+   7.00000   30.00000   -0.20467   -0.15966    1.01945
+   7.00000   31.00000    1.77786    1.51868   -1.49021
+   7.00000   32.00000    2.14769    1.54844   -1.64089
+   8.00000   29.00000   -0.73546   -0.16716    1.36472
+   8.00000   30.00000   -0.27109   -0.16665    1.08690
+   8.00000   31.00000    1.82670    1.52085   -1.54565
+   8.00000   32.00000    2.28011    1.55721   -1.73914
+# 
+# 05/29/2016 at 19:14 YAMBO @ ion062 [start]
+# 05/29/2016 at 19:50                [end]
+#  
+# Timing   [Min/Max/Average]: 35m-53s/35m-53s/35m-53s
+#
+# .-Input file : yambo_gw512.in
+# | em1d                         # [R Xd] Dynamical Inverse Dielectric Matrix
+# | ppa                          # [R Xp] Plasmon Pole Approximation
+# | HF_and_locXC                 # [R XX] Hartree-Fock Self-energy and Vxc
+# | gw0                          # [R GW] GoWo Quasiparticle energy levels
+# | rim_cut                      # [R RIM CUT] Coulomb potential
+# | BoseTemp= 0.000000     eV    # Bosonic Temperature
+# | FFTGvecs=  59267       RL    # [FFT] Plane-waves
+# | X_all_q_CPU= "1 4 64 4"      # [PARALLEL] CPUs for each role
+# | X_all_q_ROLEs= "q k c v"     # [PARALLEL] CPUs roles (q,k,c,v)
+# | X_all_q_nCPU_invert= 1024    # [PARALLEL] CPUs for matrix inversion
+# | X_Threads= 16                # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 16              # [OPENMP/X] Number of threads for dipoles
+# | SE_CPU= "1 16 64"            # [PARALLEL] CPUs for each role
+# | SE_ROLEs= "q qp b"           # [PARALLEL] CPUs roles (q,qp,b)
+# | SE_Threads= 16               # [OPENMP/GW] Number of threads for self-energy
+# | RandQpts= 1000000            # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1            RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "box xy"             # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
+# | % CUTBox
+# |  58.00000 | 20.00000 |  0.00000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000          # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000          # [CUT] [au] Cylinder length
+# | EXXRLvcs=  402821      RL    # [XX] Exchange RL components
+# | Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+# | % XfnQP_E
+# |  0.000000 | 0.000000 | 1.000000 |        # [EXTQP Xd] E parameters  (c/v) eV|adim|adim
+# | %
+# | % BndsRnXp
+# |    1 | 256 |                 # [Xp] Polarization function bands
+# | %
+# | NGsBlkXp= 3            Ry    # [Xp] Response block size
+# | % LongDrXp
+# |  0.000    | 0.000    |0.1000E-4 |        # [Xp] [cc] Electric Field
+# | %
+# | PPAPntXp= 20.00000     eV    # [Xp] PPA imaginary energy
+# | % GbndRnge
+# |     1 |  512 |               # [GW] G[W] bands range
+# | %
+# | GDamping=  0.10000     eV    # [GW] G[W] damping
+# | dScStep=  0.10000      eV    # [GW] Energy step to evaluate Z factors
+# | GTermKind= "none"            # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
+# | GTermEn= 40.81708      eV    # [GW] GW terminator energy (only for kind="BG")
+# | DysSolver= "n"               # [GW] Dyson Equation solver ("n","s","g")
+# | %QPkrange                    # [GW] QP generalized Kpoint/Band indices
+# |   1|  8| 29| 32|
+# | %

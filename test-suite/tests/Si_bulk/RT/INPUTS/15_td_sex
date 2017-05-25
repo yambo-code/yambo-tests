@@ -1,0 +1,111 @@
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+#                                                           
+#               Version 3.4.0 Revision 2811                 
+#                http://www.yambo-code.org                  
+#
+negf                         # [R] Real-Time dynamics
+scpot                        # [R] Self-Consistent potentials
+ElecTemp=0 K                 #
+Gauge= "length"               # [Xd,RT] Gauge type (length|velocity)
+% RTBands
+  2 |  7 |                   # [RT] Bands
+%
+
+#
+# G ret
+#
+#GrKind= "HS"                 # [RT] G-ret kind: Lorentzian (QP)/ Hyperbolic secant (HS)
+#TwoAlpha= 1                  # [RT] C_nk ~ alpha*Gamma_nk^2
+GfnQP_Wv_E=-1.2000   eV      # [EXTQP G] W Energy reference  (valence)
+% GfnQP_Wv
+  0.300 |  0.0000 |  0.010 | # [EXTQP G] W parameters  (valence) eV|adim|eV^-1
+%
+GfnQP_Wc_E= 1.200   eV       # [EXTQP G] W Energy reference  (conduction)
+% GfnQP_Wc
+  0.300 |  0.0000 |  0.010 | # [EXTQP G] W parameters  (conduction) eV|adim|eV^-1
+%
+
+
+#
+# RT Parameters
+#
+Integrator= "RK2 RWA"    # [RT] Integrator ( "RK2 / EULER" "EXP" "RWA" )
+NETime= 150.00000       fs   # [RT] Simulation Time (alternative to NEsteps)
+RTstep=   20           as    # [RT] Real Time step length
+#LifeInterpKIND= "NONE"               # [RT] Step distribution mode
+#% LifeInterpSteps
+#  1.500 |  0.500 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+#%
+#RTskipImposeN
+
+#
+# ELEL CORR
+#
+# OLD
+Potential= "COHSEX"          # [SC] SC Potential
+# NEW
+HXC_Potential= "HARTREE+SEX"          # [SC] SC Potential
+
+#
+# ELEL SCATT
+#
+
+
+#
+# ELPH SCATT
+#
+#BoseTemp=0 K                 #
+#% ElPhModes
+#  1 |  6 |                   # [ELPH] Phonon modes included
+#%
+#RT_T_evol                   # [RT] Use a complete Time evolution instead of the CCA
+#UseDebyeE                   # [RT] Use a single Debye energy for all phonon modes
+#UpdtDebyeT                  # [RT] Update Bose Temp assuming phonons are always at equilibrium
+
+
+#
+# External Field (or manual pump)
+#
+
+# OLD IO FORMAT
+% Probe_Freq
+ 2.60     | 2.60     | eV    # [RT Probe] Frequency
+%
+Probe_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Probe_Int= 1.E+4    kWLm2    # [RT Probe] Intensity
+Probe_Damp= 10.00000   fs    # [RT Probe] Damping
+Probe_Width= 10.00000   fs    # [RT Probe] Damping
+Probe_kind= "QSSIN"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+% Probe_Dir
+ 1.00     | 1.00     | 1.00     |        # [RT Probe] Versor
+%
+
+# NEW IO FORMAT
+% Field1_Freq
+ 2.60     | 2.60     | eV    # [RT Probe] Frequency
+%
+Field1_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Field1_Int= 1.E+4    kWLm2    # [RT Probe] Intensity
+Field1_Damp= 10.00000   fs    # [RT Probe] Damping
+Field1_Width= 10.00000   fs    # [RT Probe] Damping
+Field1_kind= "QSSIN"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"
+% Field1_Dir
+ 1.00     | 1.00     | 1.00     |        # [RT Probe] Versor
+%
+
+
+#
+# OTHER
+#
+% IOtime
+ 0.5 |0.5 |0.5 |  fs    # [RT] Time between to consecutive I/O (J,P,OCCs - GF - OUTPUT)
+%
+DBsIOoff= "DIP"         # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,OCCs,WF,SC)
+SaveGhistory

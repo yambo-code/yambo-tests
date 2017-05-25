@@ -1,0 +1,44 @@
+#                                                           
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
+#                                                           
+#                Version 3.3.1 Revision 2087                
+#                 http://www.yambo-code.org                 
+#
+sursp                        # [R] Surface Spectroscopy
+ras                          # [R] Reflectance anisotropy spectroscopy (RAS)
+% BndsRnXd
+   1 | 200 |                 # [Xd] Polarization function bands
+%
+% EnRngeXd
+ 0.000000 | 6.000000 | eV    # [Xd] Energy range
+%
+% DmRngeXd
+ 0.150000 | 0.150000 | eV    # [Xd] Damping range
+%
+ETStpsXd=  601               # [Xd] Total Energy steps
+FFTGvecs=  1000        RL    # [FFT] Plane-waves
+% XfnQP_E
+ 0.500000 | 1.000000 | 1.000000 |        # [EXTQP Xd] E parameters  (c/v) eV|adim|adim
+%
+BulkFile= "Experiment/EPSILON_GaAs_bulk.dat" # [RAS] File containing bulk
+BulkForm= "2KK"              # [RAS] Format of bulk (`3ri`,`3ir`,`2KK`,`3KK`)
+BlkShift= 0.000000     eV    # [RAS] GW shift of bulk eps
+BlkBroad=  0.10000     eV    # [RAS] Broadening of bulk eps
+% Layers
+ 20.00000 | 10.00000 |  0.00000 |        # [RAS] Atomic layers in cell/slab/bulk
+%
+% q0x
+ 1.000000 | 1.000000 | 0.000000 |        # [RAS] [cc] X-polarization direction
+%
+% q0y
+-1.000000 | 1.000000 | 0.000000 |        # [RAS] [cc] Y-polarization direction
+%
+Cutoff                      # [RAS] Cutoff mode (Uncomment to use)
+CutZero= 0.250000            # [RAS] Zero position of cutoff fn (Frac)
+CutStep= 0.500000            # [RAS] Width of cutoff function (Frac)

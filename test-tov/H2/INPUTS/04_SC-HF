@@ -1,0 +1,32 @@
+#                                                           
+#   __   __     _        __  __       ____      U  ___  u   
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
+#                                                           
+#                                                           
+#        Version 4.1.0 Revision 13915 Hash aec9c80          
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+scrun                        # [R] Self-Consistent single-particle calculation
+HXC_Potential= "HARTREE+FOCK" # [SC] SC HXC Potential
+% SCBands
+  1 |  5 |                   # [SC] Bands
+%
+EXXCut=0.5000E-3             # [SC,RT] Cutoff on the exchange, 0=full 1=none
+HARRLvcs=  39127       RL    # [XX] Exchange RL components
+EXXRLvcs=  39127       RL    # [XX] Exchange RL components
+#ALLGexx                     # [XX] Force the use use all RL vectors for the exchange part
+SCIter= 200                  # [SC] SC Iterations
+SCEtresh=   0.0100     eV    # [SC] Energy convergence threshold
+SCRhoTresh=0.1000E-10         # [SC] Rho convergence threshold
+SC_precondition= "none"    # [SC] Kind of preconditionin: thomas-fermi, simple, none
+#SCmixing= 1.00000            # [SC] SC Cycle Mixing (< 1.)
+#SCnlMix                      # [SC] Use SC non-local mixing
+#BandMix= 100.0000            # [SC] Band mixing
+#SCdiag                      # [SC] Diagonal approximation for the self-energy(WF unchaged)
+#Mean_Potential              # [SC] Real-space Mean Potential

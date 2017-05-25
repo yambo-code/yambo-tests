@@ -1,0 +1,62 @@
+#  __      __   ______   __       __  _______    ______     
+# |  \    /  \ /      \ |  \     /  \|       \  /      \    
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\   
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$   
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$   
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$   
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$   
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
+#                                                           
+#        Version 4.1.1 Revision 13953 Hash 80be4d7          
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+# Unit cell atoms                 :2Si
+# xc Functional                   :HARTREE+COHSEX
+# [SC] Local Potential            : no
+# [SC] Bands                      :1 - 8
+# [SC] K-points                   :4
+# [SC] Bands mixing               : 100.0000
+# [SC] Sx RL components           :363
+# [SC] Response function bands    :1 - 10
+# [SC] Response function size     :51
+# [SC] COHSEX use empty bands     : yes
+# [SC] W update steps             :0
+# [SC] Diagonal approximation     : no
+# [SC] FFT mesh points            :1728
+#
+#  Iteration  E_b3_k1    E_b4_k1    E_b5_k1    E_b3_k2    E_b4_k2    E_b5_k2    E_b3_k3    E_b4_k3    E_b5_k3    E_b3_k4    E_b4_k4    E_b5_k4
+#
+  1.000     -.1248E-3   0.000      3.775     -1.528     -1.527      2.552     -3.650     -3.649      1.214     -1.527     -1.525      2.552   
+  2.000     -.9144E-4   0.000      3.777     -1.527     -1.526      2.557     -3.648     -3.647      1.220     -1.526     -1.525      2.557   
+  3.000     -.8515E-4   0.000      3.779     -1.527     -1.526      2.560     -3.647     -3.646      1.223     -1.526     -1.524      2.559   
+# 
+# 10/19/2016 at 00:04 YAMBO_SC @ narro [start]
+# 10/19/2016 at 00:04                  [end]
+#
+# .-Input file : yambo.in
+# | em1s                         # [R Xs] Static Inverse Dielectric Matrix
+# | cohsex                       # [R Xp] COlumb Hole Screened EXchange
+# | scrun                        # [R] Self-Consistent single-particle calculation
+# | FFTGvecs=  363         RL    # [FFT] Plane-waves
+# | Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+# | % BndsRnXs
+# |   1 | 10 |                   # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs=  51          RL    # [Xs] Response block size
+# | % DmRngeXs
+# | 0.1000E-2 |0.1000E-2 | eV    # [Xs] Damping range
+# | %
+# | % LongDrXs
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# | %
+# | HXC_Potential= "HARTREE+COHSEX" # [SC] SC HXC Potential
+# | % SCBands
+# |   1 |  8 |                   # [SC] Bands
+# | %
+# | SCIter= 3                    # [SC] SC Iterations
+# | SCEtresh=   0.0100     eV    # [SC] Energy convergence threshold
+# | SCRhoTresh=0.1000E-4         # [SC] Rho convergence threshold
+# | SCnlMix                      # [SC] Use SC non-local mixing
+# | BandMix= 100.0000            # [SC] Band mixing

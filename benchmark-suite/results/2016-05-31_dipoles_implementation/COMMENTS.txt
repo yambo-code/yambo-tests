@@ -1,0 +1,29 @@
+Conclusions:  (runs were checked also for output correctness)
+- Native BLAS are hugely more efficient. Avoid ad-hoc OMP solutions
+- V_dot_V_omp might show useful speed up for many threads + huge G’s
+- Simpler code (from Davide) is much faster; gives same results at least for nspinor=1
+- parallel do over three variables seems to kill performance
+- Limiting factor for scaling with system size is the KB matrix size (KBV):
+- complex KB(wf_ng, pp_kbv_dim, 4, spin) ,
+  at 30Ry (full convergence for Ag), KB(45705,1014,4,1) = 1.4Gb
+- Scaling of DIPOLES with MPI is excellent
+  Recommended OMP_NUM_THREADS = 4 or 8, not more
+  COMMENT by DS:
+  * no scaling including "size 1" i_spinor index
+  * no scaling above 4 threads including "size 4" i2 index
+  make me suspect that a OMP do loop only on i1  (which is size 1024)
+  !$omp parallel do default(shared), private(i1)
+  could display much better scaling above 4 threads.
+  COMMENT by AF:
+   I think omp do applies by default to the
+   first look only, and one needs to specify the clause "collapse(n)"
+   to have omp working up to the n-th nested loop...
+   in the case of OPENMP + MOD (4) I think one should specify
+   omp parallel do default(shared), private(i1,i2,i_spinor), collaps(2)
+
+- Loop unrolling/reordering in KB_fast2 MOD(3) did not help
+- Did not succeed in using Fortran array reduction.
+  An example of how to do this is given in the PDF shared in the OpenMP drive folder
+- Initial checks on magnitude of Cc and Cv to cycle loops was not tried
+  e.g  if ( Cc(i_spinor)==cZERO .and. Cv(i_spinor)==cZERO ) cycle
+

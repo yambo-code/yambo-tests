@@ -1,0 +1,56 @@
+#                                                           
+#   __   __     _        __  __       ____      U  ___  u   
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
+#                                                           
+#                                                           
+#               Version 4.0.2 Revision 4575                 
+#                   Serial+OpenMP Build                     
+#                http://www.yambo-code.org                  
+#
+ppa                          # [R Xp] Plasmon Pole Approximation
+gw0                          # [R GW] GoWo Quasiparticle energy levels
+HF_and_locXC                 # [R XX] Hartree-Fock Self-energy and Vxc
+em1d                         # [R Xd] Dynamical Inverse Dielectric Matrix
+DBsIOoff= "DIP"              # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,OCCs,WF,SC)
+#WFbuffIO                    # [IO] Wave-functions buffered I/O
+X_all_q_CPU= "2 4 32 4"      # [PARALLEL] CPUs for each role                       
+X_all_q_ROLEs= "q k c v"     # [PARALLEL] CPUs roles (q,k,c,v)                     
+X_all_q_nCPU_invert=256      # [PARALLEL] CPUs for matrix inversion                
+X_Threads=16                 # [OPENMP/X] Number of threads for response functions 
+DIP_Threads=16               # [OPENMP/X] Number of threads for dipoles
+SE_CPU= "1 64 16"            # [PARALLEL] CPUs for each role          
+SE_ROLEs= "q qp b"           # [PARALLEL] CPUs roles (q,qp,b)         
+SE_Threads= 64               # [OPENMP/X] Number of threads for sigma 
+EXXRLvcs= 75           Ry    # [XX] Exchange RL components
+Chimod= "Hartree"                   # [X] IP/Hartree/ALDA/LRC/BSfxc
+% QpntsRXp
+   1 |  95 |                 # [Xp] Transferred momenta
+%
+% BndsRnXp
+   1 | 100 |                 # [Xp] Polarization function bands
+%
+NGsBlkXp= 70           Ry    # [Xp] Response block size
+% LongDrXp
+ 1.000000 | 0.000000 | 0.000000 |        # [Xp] [cc] Electric Field
+%
+PPAPntXp= 8.00000     eV    # [Xp] PPA imaginary energy
+% GbndRnge
+   1 | 104 |                 # [GW] G[W] bands range
+%
+GDamping=  0.10000     eV    # [GW] G[W] damping
+dScStep=  0.10000      eV    # [GW] Energy step to evalute Z factors
+#GTermKind= "none"           # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
+#GTermKind= "BG"             # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
+GTermEn= 40.0          eV    # [GW] GW terminator energy (only for kind="BG")
+DysSolver= "n"               # [GW] Dyson Equation solver (`n`,`s`,`g`)
+%QPkrange                    # [GW] QP generalized Kpoint/Band indices
+ 1| 8|  9| 32|
+%
+%QPerange                    # [GW] QP generalized Kpoint/Energy indices
+  1| 2| 0.0|-1.0|
+%

@@ -1,0 +1,115 @@
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+#                                                           
+#               Version 3.4.0 Revision 2578                 
+#                http://www.yambo-code.org                  
+#
+#STOP_NOW
+#
+
+#
+# RUN KIND
+#
+negf                         # [R] Real-Time dynamics
+scpot                        # [R] Self-Consistent potentials
+#el_el_scatt                  # [R] Electron-Electron Scattering
+el_ph_scatt                  # [R] Electron-Phonon Correlation
+
+
+#
+# ELEL CORRELATION
+#
+HXC_Potential= "IP"           # [SC] SC Potential
+Gauge= "length"               # [Xd,RT] Gauge type (length|velocity)
+#InducedField
+EXXRLvcs= 59         RL    # [XX] Exchange RL components
+
+#
+# RT PARAMETERS
+#
+% RTBands
+  2 |  7 |                # [SC] Bands
+%
+Integrator= "RK2 RWA"     # [RT] Integrator (RK2 | EULER | EULEREXP | RK2EXP )
+RTstep= 10          as   # [RT] Real Time step length
+NETime=100.00       fs   # [RT] Simulation Time (alternative to NEsteps)
+#% RTehEny
+#-3.0 | 4.5 | eV
+#%
+
+#
+# Lifetimes paramiters
+#
+#LifeExtrapolation
+% LifeExtrapSteps
+ 10.000 |  2.500 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+%
+#RTskipImposeN
+ScatTresh=1.5 eV
+
+
+#
+# ELEL SCATTERING
+#
+#PlasmaPerc= 100.000000         # [RT] Plasma approx (0-100): % of eh pair considered
+
+#
+# ELPH SCATTERING
+#
+BoseTemp=300.0 K               #
+% ElPhModes
+  1 |  6 |                   # [ELPH] Phonon modes included
+%
+
+#
+# Gret parametrs
+#
+% GfnQP_E
+ 0.800000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
+%
+GfnQP_Z= ( 1.000000 , 0.000000 )       # [EXTQP G] Z factor  (c/v)
+#
+GfnQP_Wv_E=-1.200000   eV    # [EXTQP G] W Energy reference  (valence)
+% GfnQP_Wv
+   0.30 |   0.0000 |   0.000 |        # [EXTQP G] W parameters  (valence) eV|adim|eV^-1
+%
+GfnQP_Wc_E= 1.200000   eV    # [EXTQP G] W Energy reference  (conduction)
+% GfnQP_Wc
+   0.30 |   0.0000 |   0.000 |        # [EXTQP G] W parameters  (conduction) eV|adim|eV^-1
+%
+#
+GrKind="HS"                  # [RT] G-ret kind
+TwoAlpha= 1                  # [RT] C_nk ~ alpha*Gamma_nk^2
+
+#
+# External Field (or manual pump)
+#
+% Field1_Freq
+ 3.10     | 3.10     | eV    # [RT Probe] Frequency
+%
+Field1_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Field1_Int= 1.E+6    kWLm2    # [RT Probe] Intensity
+Field1_Damp= 10.000   fs     # [RT Probe] Damping
+Field1_kind= "QSSIN"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"
+% Field1_Dir
+ 1.00     | 1.00     | 1.00     |        # [RT Probe] Versor
+%
+
+
+#
+# Other
+#
+DBsIOoff= "DIP J"             # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,OCCs,WF,SC)
+% IOtime
+ 2.5 | 5.0 | 1.0 |     fs    # [RT] Time between to consecutive I/O  (J,P,OCCs - GF - OUTPUT)
+%
+RT_CPU="4.1"               #
+RT_ROLEs="k.b"             #
+
+

@@ -1,0 +1,103 @@
+
+#                                                           
+#               Version 3.4.0 Revision 3049                 
+#                  OpenMPI+OpenMP Build                     
+#                http://www.yambo-code.org                  
+#
+rim_cut                      # [R RIM CUT] Coulomb potential
+gw0                          # [R GW] GoWo Quasiparticle energy levels
+ppa                          # [R Xp] Plasmon Pole Approximation
+HF_and_locXC                 # [R XX] Hartree-Fock Self-energy and Vxc
+em1d                         # [R Xd] Dynamical Inverse Dielectric Matrix
+StdoHash=  40                # [IO] Live-timing Hashes
+Nelectro= 388.0000           # Electrons number
+ElecTemp= 0.000000     eV    # Electronic Temperature
+BoseTemp=-1.000000     eV    # Bosonic Temperature
+OccTresh=0.1000E-4           # Occupation treshold 
+FFTGvecs=  40  Ry            # [FFT] Plane-waves
+#WFbuffIO                    # [IO] Wave-functions buffered I/O
+X_all_q_CPU= "2 2 16 16"     # [PARALLEL] CPUs for each role
+X_all_q_ROLEs= "q k c v"     # [PARALLEL] CPUs roles (q,k,c,v)
+X_all_q_nCPU_invert=0        # [PARALLEL] CPUs for matrix inversion
+X_Threads=  8                # [OPENMP/X] Number of threads for response functions
+DIP_Threads= 16              # [OPENMP/X] Number of threads for dipoles
+SE_CPU= "2 16 32"            # [PARALLEL] CPUs for each role
+SE_ROLEs= "q qp b"           # [PARALLEL] CPUs roles (q,qp,b)
+SE_Threads=  64              # [OPENMP/GW] Number of threads for self-energy
+RandQpts=1000000             # [RIM] Number of random q-points in the BZ
+RandGvec= 1            RL    # [RIM] Coulomb interaction RS components
+#QpgFull                     # [F RIM] Coulomb interaction: Full matrix
+% Em1Anys
+ 0.00     | 0.00     | 0.00     |        # [RIM] X Y Z Static Inverse dielectric matrix
+%
+IDEm1Ref=0                   # [RIM] Dielectric matrix reference component
+CUTGeo= "box yz"             # [CUT] Coulomb Cutoff geometry: 
+% CUTBox
+  0.00000 | 80.00000 | 30.00000 |        # [CUT] [au] Box sides
+%
+CUTRadius= 0.000000          # [CUT] [au] Sphere/Cylinder radius
+CUTCylLen= 0.000000          # [CUT] [au] Cylinder length
+#CUTCol_test                 # [CUT] Perform a cutoff test in R-space
+EXXRLvcs=  40   Ry    # [XX] Exchange RL components
+Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+XfnQPdb= "none"              # [EXTQP Xd] Database
+XfnQP_N= 1                   # [EXTQP Xd] Interpolation neighbours
+% XfnQP_E
+ 0.000000 | 1.000000 | 1.000000 |        # [EXTQP Xd] E parameters  
+%
+XfnQP_Z= ( 1.000000 , 0.000000 )       # [EXTQP Xd] Z factor 
+XfnQP_Wv_E= 0.000000   eV    # [EXTQP Xd] W Energy reference  (valence)
+% XfnQP_Wv
+ 0.00     | 0.00     | 0.00     |        # [EXTQP Xd] W parameters  (valence)
+%
+XfnQP_Wc_E= 0.000000   eV    # [EXTQP Xd] W Energy reference  (conduction)
+% XfnQP_Wc
+ 0.00     | 0.00     | 0.00     |        # [EXTQP Xd] W parameters  (conduction) 
+%
+OCCTime= 0.000000      fs    # NEGF Occupations loading time
+ShiftedPath= "none"          # [Xd] Shifted grids path
+% QpntsRXp
+  1 |  8 |                   # [Xp] Transferred momenta
+%
+% BndsRnXp
+    1 | 1000 |               # [Xp] Polarization function bands
+%
+NGsBlkXp= 6    Ry            # [Xp] Response block size
+CGrdSpXp= 100.0000           # [Xp] Coarse grid controller
+% EhEngyXp
+-1.000000 |-1.000000 | eV    # [Xp] Electron-hole energy range
+%
+% LongDrXp
+ 1.000000 | 0.000000 | 0.000000 |        # [Xp] [cc] Electric Field
+%
+PPAPntXp= 16    eV    # [Xp] PPA imaginary energy
+GfnQPdb= "none"              # [EXTQP G] Database
+GfnQP_N= 1                   # [EXTQP G] Interpolation neighbours
+% GfnQP_E
+ 0.000000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters 
+%
+GfnQP_Z= ( 1.000000 , 0.000000 )       # [EXTQP G] Z factor 
+GfnQP_Wv_E= 0.000000   eV    # [EXTQP G] W Energy reference  (valence)
+% GfnQP_Wv
+ 0.00     | 0.00     | 0.00     |        # [EXTQP G] W parameters  (valence)
+%
+GfnQP_Wc_E= 0.000000   eV    # [EXTQP G] W Energy reference  (conduction)
+% GfnQP_Wc
+ 0.00     | 0.00     | 0.00     |        # [EXTQP G] W parameters  (conduction)
+%
+BoseCut=  0.10000            # [BOSE] Finite T Bose function cutoff
+% GbndRnge
+    1 | 1000 |               # [GW] G[W] bands range
+%
+GDamping=  0.10000     eV    # [GW] G[W] damping
+dScStep=  0.10000      eV    # [GW] Energy step to evalute Z factors
+#GWTerm                      # [GW] Use a terminator for the self-energy
+#GwEnComp=40.0         eV    # [GW] 
+DysSolver= "n"               # [GW] Dyson Equation solver 
+GWoIter=0                    # [GW] GWo SC iterations
+%QPkrange                    # [GW] QP generalized Kpoint/Band indices
+  1|  2|  190| 205|
+%
+%QPerange                    # [GW] QP generalized Kpoint/Energy indices
+  1|  8| 0.0|-1.0|
+%
