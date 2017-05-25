@@ -4,8 +4,6 @@
 #
 # Authors (see AUTHORS file for details): AM
 #
-# Based on the original driver written by CH
-#
 # This file is distributed under the terms of the GNU
 # General Public License. You can redistribute it and/or
 # modify it under the terms of the GNU General Public
@@ -22,25 +20,23 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-sub FTP_list
+sub UTILS_upload
 {
-if (!$ncftpls) {die "Undefined ncftp ( $ncftpls)"};
-&command("$ncftpls -l -u 1945528\@aruba.it -p 5fv94ktp ftp://ftp.yambo-code.org/www.yambo-code.org/@_");
-die "\n";
+@paths = split(/\//,$upload_test);
+$archive = $upload_test;
+$archive =~ s/\//_/;
+$test_dir   =$upload_test;
+$test_subdir=".";
+if ( scalar @paths > 1) {
+  $test_dir=@paths[0];
+  $test_subdir=$upload_test;
+  $test_subdir =~ s/$test_dir\///;
 }
-sub FTP_it
-{
-if (!$ncftp) {die "Undefined ncftp ( $ncftp)"};
-&command("$ncftp -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org");
-die "\n";
-}
-sub FTP_upload_it
-{
-if (!$ncftpput) {return};
-#
-my $what  = shift;
-my $where = shift;
-#
-&command("$ncftpput -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org www.yambo-code.org/$where $what");
+chdir("tests/$test_dir");
+&command("find $test_subdir -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | xargs tar cvf $archive.tar");
+&command("gzip $archive.tar");
+&FTP_upload_it("$archive.tar.gz","testing-robots/databases")
+&command("rm -f $archive.tar.gz");
+die;
 }
 1;

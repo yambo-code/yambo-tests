@@ -117,16 +117,7 @@ if ($update_test){
  die;
 }
 #
-if ($upload_test){
- $archive = $upload_test;
- $archive =~ s/\//_/;
- chdir("tests/$upload_test");
- &command("find . -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | xargs tar cvf $archive.tar");
- &command("gzip $archive.tar");
- &command("$ncftpput -u 1945528\@aruba.it -p 5fv94ktp -R ftp.yambo-code.org www.yambo-code.org/testing-robots/databases $archive.tar.gz");
- &command("rm -f $archive.tar.gz");
- die;
-}
+if ($upload_test){ &UTILS_upload };
 #
 # FTP-related actions
 if($ftp){ &FTP_it };

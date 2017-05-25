@@ -4,8 +4,6 @@
 #
 # Authors (see AUTHORS file for details): AM
 #
-# Based on the original driver written by CH
-#
 # This file is distributed under the terms of the GNU
 # General Public License. You can redistribute it and/or
 # modify it under the terms of the GNU General Public
