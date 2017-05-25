@@ -113,7 +113,7 @@ if ("@_" eq "NOT_RUN"){
 };
 if ("@_" eq "SKIPPED"){
  $test_skipped++;
- &MESSAGE("LOG","[$r_s $CHECK_error  $r_e]");
+ &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
  &command("pkill yambo") ;
  &command("pkill ypp") ;
 };

@@ -1,0 +1,88 @@
+#                                                           
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
+#                                                           
+#                                                           
+#         Version 4.2.0 Revision 14538 Hash 4ca83dc         
+#                   MPI+SLK+OpenMP Build                    
+#                 http://www.yambo-code.org                 
+#
+#
+# GW solver              : Newton
+# PPA imaginary pt   [ev]: 27.21138
+# GW SC iterations       :0
+# dS/dw steps            : 2
+# dS/dw step         [ev]:  0.10000
+# X G`s            [used]: 1
+# X G`s            [disk]: 1
+# X bands                :  1   7
+# X poles           [o/o]: 100.0000
+# X e/h E range      [ev]:-1.000000 -1.000000
+# X xc-Kernel            : none
+# X BZ energy Double Grid: no
+# X BZ Double Grid points:0
+# Sc/G bands             :  1   7
+# Sc/G damping       [ev]:  0.10000
+# Sc bands terminator    : no
+# Sx RL components       :  363
+# QP @ K 001 - 001 : b 001 - 007
+#
+#    Eo [eV]      DeltaE [eV]
+#
+   -12.13005     -1.32858
+    -0.03899      0.64933
+    -0.01863      0.65061
+    0.000000     0.649812
+    2.548473     2.102764
+    2.556324     2.112454
+    2.569935     2.105988
+# 
+# 05/25/2017 at 07:38 YAMBO_MAGNETIC @ anomaly [start]
+# 05/25/2017 at 07:38                          [end]
+#
+# .-Input file : yambo.in
+# | optics                         # [R OPT] Optics
+# | bse                            # [R BSE] Bethe Salpeter Equation.
+# | bsk                            # [R BSK] Bethe Salpeter Equation kernel
+# | bss                            # [R BSS] Bethe Salpeter Equation solver
+# | em1s                           # [R Xs] Static Inverse Dielectric Matrix
+# | FFTGvecs=  363         RL      # [FFT] Plane-waves
+# | X_Threads= 2                   # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 2                 # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 2                   # [OPENMP/BSK] Number of threads for response functions
+# | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
+# | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
+# | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "d"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+# | BSENGexx=  363         RL      # [BSK] Exchange components
+# | BSENGBlk= 1            RL      # [BSK] Screened interaction block size
+# | #WehCpl                        # [BSK] eh interaction included also in coupling
+# | KfnQPdb= " E < 03_gw_magnetic/ndb.QP" # [EXTQP BSK BSS] Database
+# | % BEnRange
+# |   0.00000 | 10.00000 | eV      # [BSS] Energy range
+# | %
+# | % BDmRange
+# |   0.10000 |  0.10000 | eV      # [BSS] Damping range
+# | %
+# | BEnSteps= 1000                 # [BSS] Energy steps
+# | % BLongDir
+# | 0.1000E-4 | 0.000    | 0.000    |        # [BSS] [cc] Electric Field
+# | %
+# | % BSEBands
+# |   1 |  7 |                     # [BSK] Bands range
+# | %
+# | % BndsRnXs
+# |   1 |  7 |                     # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs= 1            RL      # [Xs] Response block size
+# | % DmRngeXs
+# |   0.10000 |  0.10000 | eV      # [Xs] Damping range
+# | %
+# | % LongDrXs
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# | %

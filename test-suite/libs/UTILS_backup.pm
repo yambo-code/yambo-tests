@@ -67,7 +67,7 @@ sub UTILS_backup_upload
 #
 if ($report) {
  &command("echo '<pre>' > LOG_$host.php");
- &command("cat $BACKUP_dir/$global_report >> LOG_$host.php");
+ &command("cat $BACKUP_dir/LATEST-TEST/$global_report >> LOG_$host.php");
  &command("echo '</pre>' >> LOG_$host.php");
  &FTP_upload_it("LOG_$host.php","testing-robots");
  &command("cp $BACKUP_dir/$BACKUP_subdir/$DATA_backup_file.tar.gz $host.tar.gz");

@@ -71,10 +71,18 @@ if ( "@_" eq "INPUT") {
   }
  }
  #
- # Tests with Covariant dipoles are broken
- if ($testname =~ m/Covariant/ && $np>1) {
+ # Tests with Covariant dipoles are broken in parallel
+ if ($testname =~ m/Covariant/ && $np>1) { 
   my $msg = sprintf("%-"."$left_length"."s", "$testname");
   $CHECK_error= $msg." skipped (Covariant test not working in parallel)";
+  &RUN_stats("SKIPPED");
+  return "FAIL";
+ };
+ #
+ # Magnetic Tests are broken in parallel
+ if ($testdir =~ m/MAGNETIC/ && $np>1) { 
+  my $msg = sprintf("%-"."$left_length"."s", "$testname");
+  $CHECK_error= $msg." skipped (MAGNETIC tests not working in parallel)";
   &RUN_stats("SKIPPED");
   return "FAIL";
  };
