@@ -99,11 +99,12 @@ if("$do_it" eq "yes") {
  &MY_PRINT($stdout, "                         > Compiling : ");
  open( COMPLOGFILE,'>',$comp_logfile);
  @executables = split(/ /, $target_list);
- while($make_exec = shift(@executables)) {
+ foreach $make_exec (@executables) {
    &MY_PRINT($stdout, "$make_exec ...");
    $result = `make -j $make_exec 2>&1`;
    print COMPLOGFILE $result;
  }
+ die;
  close(COMPLOGFILE);
  &MY_PRINT($stdout, "done.");
  #
