@@ -104,7 +104,6 @@ if("$do_it" eq "yes") {
    $result = `make -j $make_exec 2>&1`;
    print COMPLOGFILE $result;
  }
- die;
  close(COMPLOGFILE);
  &MY_PRINT($stdout, "done.");
  #

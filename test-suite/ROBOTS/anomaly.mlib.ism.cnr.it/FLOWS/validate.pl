@@ -4,12 +4,12 @@
 {
  ACTIVE      => "yes",
  CONFIG      => "default.sh", 
- TESTS       => "LiF/GW-OPTICS",
+ TESTS       => "LiF/GW-OPTICS; hBN/RT",
 # TESTS       => "hBN/RT",
  KEYS        => "all hard",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP,
  PAR_MODE    => "default",
 },
