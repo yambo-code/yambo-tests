@@ -74,6 +74,7 @@ my $ret = &GetOptions("h"    => \$help,
             "report"         => \$report,
             "force"          => \$force,
             "ftp"            => \$ftp,
+            "keep_dbs"       => \$keep_dbs,
             "failed=s"       => \$failed
                       );
 #
@@ -112,6 +113,7 @@ sub UTILS_usage {
              -report                Commit the final report to the ML
              -off                   Switch off specific objects (mpi,openmp,io)
              -force                 Run even BROKEN tests
+             -keep_dbs              Keep databases at the end of the tests cycle
              -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS, for example)
 
    (parallel options)

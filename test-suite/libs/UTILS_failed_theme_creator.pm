@@ -27,14 +27,24 @@ sub UTILS_failed_theme_creator
 my $testline=" ";
 if (-e "$failed"){
  open(ERROR,"<","$failed");
- open(THEME,">","failed.pl");
- print THEME "#!/usr/bin/perl\n";
- print THEME "\@flow = (\n";
  @lines = <ERROR>;
  LINE: while($line = shift(@lines)) {
   chomp($line);
   $line =~ s\ \\;
   if ($line eq '') {next LINE};
+  if ($line =~ "Build") { 
+   $line =~ s/\://g;
+   my @build = split(/\s+/, $line);
+   $theme_file="failed_"."@build[1]".".pl";
+   if (not -f "$theme_file") 
+   {
+    open(THEME,">","$theme_file"); 
+    print THEME "#!/usr/bin/perl\n";
+    print THEME "\@flow = (\n";
+    close(THEME);
+   }
+  }
+  open(THEME,">>","$theme_file"); 
   if ($line =~ "Parallel") { 
    $line =~ s/\://g;
    $line =~ s/\[//g;
@@ -56,10 +66,11 @@ if (-e "$failed"){
    my $testline=" ";
    next LINE;
   }; 
-  if ($line =~ "Section Duration"){
+  if ($line =~ "%Section"){
    print THEME "ACTIVE      => 'yes',\n";
    print THEME "TESTS     => '$testline',\n";
    print THEME "},\n";
+   $testline=" ";
   };
   if ($line =~ "===" or $line =~ "%%%" or $line =~ "Running" or $line =~ "Projects") { next LINE };
   if ($line =~ "Build" or $line =~ "Date" or $line =~ "-----") { next LINE };
@@ -79,10 +90,14 @@ if (-e "$failed"){
   if ($directory =~ "Si_bulk/ELPH/BSE/") {
     $testline = "Si_bulk/ELPH/ELPH_for_BSE/ all ;".$testline;
   }
+  close(THEME);
  }
- print THEME ");\n";
  close(ERROR);
- close(THEME);
+ foreach $theme_file (<failed*.pl>) {
+  open(THEME,">>","$theme_file"); 
+  print THEME ");\n";
+  close(THEME);
+ };
 }
 }
 1;

@@ -117,6 +117,10 @@ if ("@_" eq "SKIPPED"){
  &command("pkill yambo") ;
  &command("pkill ypp") ;
 };
+if ("@_" eq "WRONG_DEP"){
+ $test_skipped++;
+ &MESSAGE("LOG","[$r_s $CHECK_error  $r_e]");
+};
 if ("@_" eq "OK"){
  $RUN_result="OK";
  $test_ok++;

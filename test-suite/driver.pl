@@ -137,6 +137,8 @@ if ($backup_logs and !$RUNNING_suite) {
 #=================
 if ($RUNNING_suite) {
  #
+ &UTILS_clean("ALL");
+ #
  # Global Report
  &RUN_global_report("INIT");
  #

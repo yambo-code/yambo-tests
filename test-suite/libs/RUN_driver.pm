@@ -91,7 +91,10 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   &RUN_executables;
   #
   $error=&RUN_skip_the_test("INPUT");
-  if ($error !~ "OK") { next LOOP_INPUTS };
+  if ($error !~ "OK") { 
+   &MY_PRINT($stdout, "ERROR: $CHECK_error\n") if ($verb);
+   next LOOP_INPUTS;
+  };
   #
   # Overwrite specific options from .conf for this input file
   &RUN_load_conf;
@@ -123,7 +126,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
     #
    }else{
     $CHECK_error="Source-Run FAILED";
-    &RUN_stats("SKIPPED");
+    &RUN_stats("WRONG_DEP");
    }
   }
   #

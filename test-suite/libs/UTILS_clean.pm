@@ -23,23 +23,42 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub UTILS_clean{
+#
 my @paths=("tests");
 if ( "@_" eq "ALL" or "@_" eq "DEEP") {
- &command("rm -f *.log");
  @paths=("tests","find_the_diff","config");
 }
+#
+if ("@_" eq "SAVEs") {
+ my @files;
+ find( sub { push @files, $File::Find::name if /\.gops$/ }, "tests" );
+ foreach my $file (@files){
+   $dirname  = dirname($file);
+   if (-d $dirname."_backup") {
+    &command("rm -fr $dirname")
+   }else{
+    &command("rm -fr $dirname/ndb*")
+   };
+ }
+}else{
+ my $CMD="svn st | grep -v 'MODULES.pl' | grep -v 'TOOLS.pl' | grep -v '.gz' | grep -v 'SAVE/ns.' | grep -v 'elph_gkkp' |grep -v 'SAVE_backup' | grep '?'|  $awk '{print \$2}' | xargs rm -fr";
+ LOOP_CONF: foreach  my $clean_path (@paths){
+  &CWD_save;
+  chdir("$suite_dir/$clean_path");
+  &command($CMD);
+  &CWD_go;
+ };
+}
+#
 &command("rm -f find_the_diff/*.o");
-LOOP_CONF: foreach  my $clean_path (@paths){
- &CWD_save;
- chdir("$suite_dir/$clean_path");
- &command("svn st | grep -v 'MODULES.pl' | grep -v 'TOOLS.pl' | grep -v '.gz' | grep -v 'SAVE/ns.' | grep -v 'elph_gkkp' |grep -v 'SAVE_backup' | grep '?'|  $awk '{print \$2}' | xargs rm -fr");
- &CWD_go;
-}
+#
 if ( "@_" eq "ALL") {
- &command("rm -f outputs*");
+ &command("rm -f outputs* *.log");
 }
+#
 if ( "@_" eq "DEEP") {
- &command("rm -f config/MODULES.pl config/TOOLS.pl");
+ &command("rm -f config/MODULES.pl config/TOOLS.pl *.log");
 }
+#
 }
 1;
