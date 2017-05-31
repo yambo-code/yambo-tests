@@ -24,7 +24,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub UTILS_commit{
-&command("svn -q propset dummyproperty '$date"."-"."$time' ROBOTS/$host/TIME_ID");
-&command("svn -q commit ROBOTS/$host/TIME_ID -F $BACKUP_dir/LATEST-REPORT");
+&command("svn -q propset dummyproperty '$date"."-"."$time' ROBOTS/$host/$user/TIME_ID");
+&command("svn -q commit ROBOTS/$host/$user/TIME_ID -F $BACKUP_dir/LATEST-REPORT");
 }
 1;

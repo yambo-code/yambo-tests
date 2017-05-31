@@ -44,10 +44,10 @@ if ($report) {$backup_logs="yes"};
 #
 if ($edit){
  if ($edit eq "filters" ) {system("vim config/RULES.h");die;};
- if ($edit eq "branches") {system("vim ROBOTS/$host/BRANCHES");die;};
- if ($edit eq "flags") {system("vim ROBOTS/$host/FLAGS");die;};
- if (-e "ROBOTS/$host/FLOWS/$edit.pl"){
-  system("vim ROBOTS/$host/FLOWS/$edit.pl");
+ if ($edit eq "branches") {system("vim ROBOTS/$host/$user/BRANCHES");die;};
+ if ($edit eq "flags") {system("vim ROBOTS/$host/$user/FLAGS");die;};
+ if (-e "ROBOTS/$host/$user/FLOWS/$edit.pl"){
+  system("vim ROBOTS/$host/$user/FLOWS/$edit.pl");
  };
  die;
 }

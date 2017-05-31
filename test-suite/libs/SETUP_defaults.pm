@@ -29,7 +29,7 @@ $|=1;
 #
 &UTILS_time($date,$time);
 #
-$BACKUP_dir   ="$host";
+$BACKUP_dir   ="$host/$user";
 $BACKUP_subdir="$date-$time";
 #
 # Predefs (before options scan)
@@ -63,7 +63,7 @@ if ($SYSTEM_NP>4     ) { $SYSTEM_SLK=4 };
 if ($SYSTEM_NP>16    ) { $SYSTEM_SLK=16 };
 #
 # Default Branches
-open(BRANCHES_file,"<","ROBOTS/$host/BRANCHES");
+open(BRANCHES_file,"<","ROBOTS/$host/$user/BRANCHES");
 @branches = <BRANCHES_file>;
 close(BRANCHES_file);
 }

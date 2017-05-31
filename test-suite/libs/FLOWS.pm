@@ -52,8 +52,8 @@ sub FLOW_load
 }
 sub FLOW_init
 {
- if (-e "ROBOTS/$host/FLOWS/@_.pl") {
-  do "ROBOTS/$host/FLOWS/@_.pl";
+ if (-e "ROBOTS/$host/$user/FLOWS/@_.pl") {
+  do "ROBOTS/$host/$user/FLOWS/@_.pl";
   if ($#flow<0) {return "FAIL"};
    return "OK";
  }else{

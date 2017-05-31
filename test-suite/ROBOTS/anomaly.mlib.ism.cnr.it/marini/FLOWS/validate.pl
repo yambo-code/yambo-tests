@@ -2,10 +2,10 @@
 #
 @flow = (
 {
- ACTIVE      => "yes",
- CONFIG      => "default.sh", 
- TESTS       => "LiF/GW-OPTICS; hBN/RT",
-# TESTS       => "hBN/RT",
+ ACTIVE      => "no",
+# CONFIG      => "default.sh", 
+# TESTS       => "LiF/GW-OPTICS; hBN/RT",
+ TESTS       => "all",
  KEYS        => "all hard",
 },
 {
@@ -14,21 +14,21 @@
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP,
  PAR_MODE    => "random",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP_half,
  PAR_MODE    => "loop",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  THREADS     => "2",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP,
  SLK_CPU     => $SYSTEM_NP_half,
  PAR_MODE    => "default",

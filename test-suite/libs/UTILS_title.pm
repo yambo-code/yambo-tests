@@ -43,6 +43,7 @@ $verbosity_level = "highest" if ($verb ge 2);
 &MY_PRINT( $fh, "\n            Verbosity : $verbosity_level ") if (!$reduced_log);
 &MY_PRINT( $fh, "\n            Precision : $prec ") if (!$reduced_log);
 &MY_PRINT( $fh, "\n             Hostname : $host ") if (!$reduced_log);
+&MY_PRINT( $fh, "\n                 User : $user ") if (!$reduced_log);
 #
 if ($branch) {
  &MY_PRINT( $fh,  "\n             revision : $REVISION ");

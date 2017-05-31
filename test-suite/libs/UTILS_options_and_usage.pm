@@ -27,15 +27,15 @@ sub UTILS_options
 #
 # Glob available configurations/flows
 #
-if (-e "./ROBOTS/$host/CONFIGURATIONS"){
- opendir(DIR,"./ROBOTS/$host/CONFIGURATIONS");
- @files = grep { (!/^\./) && -f "./ROBOTS/$host/CONFIGURATIONS/$_" } readdir(DIR);
+if (-e "./ROBOTS/$host/$user/CONFIGURATIONS"){
+ opendir(DIR,"./ROBOTS/$host/$user/CONFIGURATIONS");
+ @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/CONFIGURATIONS/$_" } readdir(DIR);
  closedir DIR;
 }
 $conf_avail = join(" ", @files);
-if (-e "./ROBOTS/$host/FLOWS"){
- opendir(DIR,"./ROBOTS/$host/FLOWS");
- @files = grep { (!/^\./) && -f "./ROBOTS/$host/FLOWS/$_" } readdir(DIR);
+if (-e "./ROBOTS/$host/$user/FLOWS"){
+ opendir(DIR,"./ROBOTS/$host/$user/FLOWS");
+ @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/FLOWS/$_" } readdir(DIR);
  closedir DIR;
 }
 $flows_avail = join(" ", @files);
@@ -86,6 +86,7 @@ sub UTILS_usage {
  print <<EndOfUsage
 
    Running on host: $host
+   By user        : $user
    Version        : $version
    Available CPU's: $SYSTEM_NP
    Available confs: $conf_avail
@@ -103,7 +104,7 @@ sub UTILS_usage {
              -theme  <THEME>        Use predefined list of tests, defined in THEMES/ directory
 
    (test options)
-             -flow   <FILE>         Use the flow of calculations defined in <FILE> (refer to ROBOTS/$host/FLOWS/<FILE>.pl)
+             -flow   <FILE>         Use the flow of calculations defined in <FILE> (refer to ROBOTS/$host/$user/FLOWS/<FILE>.pl)
              -autotest              Perform a simple serial minimal auto-test
              -gpl    <yes/no>       Test only GPL features              (default: no)
              -keys   <string>       Test keys (see below*)

@@ -27,26 +27,28 @@ AC_CONFIG_AUX_DIR([config])
 #
 # ============================================================================
 # ROBOT setup
-#
 AC_CANONICAL_HOST
 domainame=`domainname -d`
 hostname=`uname -n`
+username=`whoami`
 robot="$hostname"
+user="$username"
 if test "$domainame" != ""; then robot="$hostname.$domainame"; fi
-AC_MSG_CHECKING([the $robot ROBOT])
-if test -d ROBOTS/$robot && test -d ROBOTS/$robot/CONFIGURATIONS && test -d ROBOTS/$robot/FLOWS; then
+AC_MSG_CHECKING([the $robot/$user ROBOT])
+if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -d ROBOTS/$robot/$user/FLOWS; then
  AC_MSG_RESULT(found)
 else
  AC_MSG_RESULT(created)
- mkdir -p ROBOTS/$robot
- mkdir -p ROBOTS/$robot/CONFIGURATIONS/
- mkdir -p ROBOTS/$robot/FLOWS/
- cp config/SAMPLE_config.sh   ROBOTS/$robot/CONFIGURATIONS/default.sh
- cp config/SAMPLE_flow.pl     ROBOTS/$robot/FLOWS/default.pl
- cp config/SAMPLE_validate.pl ROBOTS/$robot/FLOWS/validate.pl
- touch ROBOTS/$robot/TIME_ID
- svn --force add ROBOTS/$robot/
+ mkdir -p ROBOTS/$robot/$user
+ mkdir -p ROBOTS/$robot/$user/CONFIGURATIONS/
+ mkdir -p ROBOTS/$robot/$user/FLOWS/
+ cp config/SAMPLE_config.sh   ROBOTS/$robot/$user/CONFIGURATIONS/default.sh
+ cp config/SAMPLE_flow.pl     ROBOTS/$robot/$user/FLOWS/default.pl
+ cp config/SAMPLE_validate.pl ROBOTS/$robot/$user/FLOWS/validate.pl
+ touch ROBOTS/$robot/$user/TIME_ID
+ svn --force add ROBOTS/$robot/$user/
 fi
+AC_SUBST(user)
 AC_SUBST(robot)
 # ============================================================================
 # TOOLS
@@ -85,18 +87,18 @@ AC_ARG_WITH(yambo, AC_HELP_STRING([--with-yambo=<path>],[Path to the yambo sourc
 AC_MSG_CHECKING([the Yambo source])
 case $with_yambo in
   "") 
-   if test ! -f ROBOTS/$robot/BRANCHES; then
+   if test ! -f ROBOTS/$robot/$user/BRANCHES; then
      AC_MSG_ERROR([Please provide the path to the Yambo source using the --with-yambo=<PATH> option])
    fi
    AC_MSG_RESULT(found an existing BRANCHES file)
    ;;
   *) 
-    if test -f ROBOTS/$robot/BRANCHES; then
-      GREP=`grep $with_yambo ROBOTS/$robot/BRANCHES |wc -l`
+    if test -f ROBOTS/$robot/$user/BRANCHES; then
+      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
       if ! test x"$GREP" = "x0"; then 
        if test -f $with_yambo/driver/yambo.h ; then
          AC_MSG_RESULT($with_yambo)
-         echo "$with_yambo" >> ROBOTS/$robot/BRANCHES
+         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
        else
          AC_MSG_ERROR([could not locate the Yambo source])
        fi
@@ -106,7 +108,7 @@ case $with_yambo in
     else
       if test -f $with_yambo/driver/yambo.h ; then
          AC_MSG_RESULT($with_yambo)
-         echo "$with_yambo" >> ROBOTS/$robot/BRANCHES
+         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
       fi
     fi
     ;;

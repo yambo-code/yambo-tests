@@ -60,7 +60,7 @@ LOOP_BRANCH: foreach $branchdir (@running_branches) {
  # Loop on CONFIGURATIONS 
  #-------------------------------#
  $precompiled_is_run="";
- LOOP_CONF: foreach $conf_path (<ROBOTS/$host/CONFIGURATIONS/*>){
+ LOOP_CONF: foreach $conf_path (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
   #
   # Basic Setup
   &SETUP("DIR");

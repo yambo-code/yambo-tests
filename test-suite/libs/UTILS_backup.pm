@@ -66,13 +66,13 @@ sub UTILS_backup_upload
 # Upload (if $report) to w^3
 #
 if ($report) {
- &command("echo '<pre>' > LOG_$host.php");
- &command("cat $BACKUP_dir/LATEST-TEST/$global_report >> LOG_$host.php");
- &command("echo '</pre>' >> LOG_$host.php");
- &FTP_upload_it("LOG_$host.php","testing-robots");
- &command("cp $BACKUP_dir/$BACKUP_subdir/$DATA_backup_file.tar.gz $host.tar.gz");
- &FTP_upload_it("$host.tar.gz","testing-robots/results/");
- &command("rm -f LOG_$host.php $host.tar.gz");
+ &command("echo '<pre>' > LOG_$host_$user.php");
+ &command("cat $BACKUP_dir/LATEST-TEST/$global_report >> LOG_$host_$user.php");
+ &command("echo '</pre>' >> LOG_$host_$user.php");
+ &FTP_upload_it("LOG_$host_$user.php","testing-robots");
+ &command("cp $BACKUP_dir/$BACKUP_subdir/$DATA_backup_file.tar.gz $host_$user.tar.gz");
+ &FTP_upload_it("$host_$user.tar.gz","testing-robots/results/");
+ &command("rm -f LOG_$host_$user.php $host_$user.tar.gz");
 }
 }
 1;

@@ -594,6 +594,7 @@ ncftpls
 ncftp
 nccopy
 robot
+user
 host_os
 host_vendor
 host_cpu
@@ -1735,7 +1736,6 @@ ac_configure="$SHELL $ac_aux_dir/configure"  # Please don't use this var.
 #
 # ============================================================================
 # ROBOT setup
-#
 # Make sure we can run config.sub.
 $SHELL "$ac_aux_dir/config.sub" sun4 >/dev/null 2>&1 ||
   as_fn_error $? "cannot run $SHELL $ac_aux_dir/config.sub" "$LINENO" 5
@@ -1809,25 +1809,28 @@ case $host_os in *\ *) host_os=`echo "$host_os" | sed 's/ /-/g'`;; esac
 
 domainame=`domainname -d`
 hostname=`uname -n`
+username=`whoami`
 robot="$hostname"
+user="$username"
 if test "$domainame" != ""; then robot="$hostname.$domainame"; fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking the $robot ROBOT" >&5
-$as_echo_n "checking the $robot ROBOT... " >&6; }
-if test -d ROBOTS/$robot && test -d ROBOTS/$robot/CONFIGURATIONS && test -d ROBOTS/$robot/FLOWS; then
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking the $robot/$user ROBOT" >&5
+$as_echo_n "checking the $robot/$user ROBOT... " >&6; }
+if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -d ROBOTS/$robot/$user/FLOWS; then
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: found" >&5
 $as_echo "found" >&6; }
 else
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: created" >&5
 $as_echo "created" >&6; }
- mkdir -p ROBOTS/$robot
- mkdir -p ROBOTS/$robot/CONFIGURATIONS/
- mkdir -p ROBOTS/$robot/FLOWS/
- cp config/SAMPLE_config.sh   ROBOTS/$robot/CONFIGURATIONS/default.sh
- cp config/SAMPLE_flow.pl     ROBOTS/$robot/FLOWS/default.pl
- cp config/SAMPLE_validate.pl ROBOTS/$robot/FLOWS/validate.pl
- touch ROBOTS/$robot/TIME_ID
- svn --force add ROBOTS/$robot/
+ mkdir -p ROBOTS/$robot/$user
+ mkdir -p ROBOTS/$robot/$user/CONFIGURATIONS/
+ mkdir -p ROBOTS/$robot/$user/FLOWS/
+ cp config/SAMPLE_config.sh   ROBOTS/$robot/$user/CONFIGURATIONS/default.sh
+ cp config/SAMPLE_flow.pl     ROBOTS/$robot/$user/FLOWS/default.pl
+ cp config/SAMPLE_validate.pl ROBOTS/$robot/$user/FLOWS/validate.pl
+ touch ROBOTS/$robot/$user/TIME_ID
+ svn --force add ROBOTS/$robot/$user/
 fi
+
 
 # ============================================================================
 # TOOLS
@@ -2166,20 +2169,20 @@ fi
 $as_echo_n "checking the Yambo source... " >&6; }
 case $with_yambo in
   "")
-   if test ! -f ROBOTS/$robot/BRANCHES; then
+   if test ! -f ROBOTS/$robot/$user/BRANCHES; then
      as_fn_error $? "Please provide the path to the Yambo source using the --with-yambo=<PATH> option" "$LINENO" 5
    fi
    { $as_echo "$as_me:${as_lineno-$LINENO}: result: found an existing BRANCHES file" >&5
 $as_echo "found an existing BRANCHES file" >&6; }
    ;;
   *)
-    if test -f ROBOTS/$robot/BRANCHES; then
-      GREP=`grep $with_yambo ROBOTS/$robot/BRANCHES |wc -l`
+    if test -f ROBOTS/$robot/$user/BRANCHES; then
+      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
       if ! test x"$GREP" = "x0"; then
        if test -f $with_yambo/driver/yambo.h ; then
          { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
 $as_echo "$with_yambo" >&6; }
-         echo "$with_yambo" >> ROBOTS/$robot/BRANCHES
+         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
        else
          as_fn_error $? "could not locate the Yambo source" "$LINENO" 5
        fi
@@ -2191,7 +2194,7 @@ $as_echo "$with_yambo already in the BRANCHES file" >&6; }
       if test -f $with_yambo/driver/yambo.h ; then
          { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
 $as_echo "$with_yambo" >&6; }
-         echo "$with_yambo" >> ROBOTS/$robot/BRANCHES
+         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
       fi
     fi
     ;;

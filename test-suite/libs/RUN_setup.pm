@@ -58,7 +58,7 @@ if ("@_" =~ "before_run"){
  #
  # input file
  &command("cat $cpu $input_folder/$testname > yambo.in");
- if( -e "$suite_dir/$host/FLAGS") {&command("cat $suite_dir/$host/FLAGS >> yambo.in")};
+ if( -e "$suite_dir/$host/$user/FLAGS") {&command("cat $suite_dir/$host/$user/FLAGS >> yambo.in")};
  #
  # append specs
  @specs = split(/\s+/,$string);
