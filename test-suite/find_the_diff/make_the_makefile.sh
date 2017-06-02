@@ -13,7 +13,7 @@ find_the_diff : \$(f_objs)
 #
 .F.o:
 	@rm -f \$*\$(f90suffix)
-	@eval \$(fpp) \$(cppflags) \$(dopts) \$*.F > \$*\$(f90suffix)
+	@eval \$(fpp) \$(dopts) \$*.F > \$*\$(f90suffix)
 	@eval \$(fc) -c \$(f90flags) -I\$(includedir) \$*\$(f90suffix)
 	@rm -f \$*\$(f90suffix)
 EOF
