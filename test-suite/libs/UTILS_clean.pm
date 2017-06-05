@@ -40,7 +40,7 @@ if ("@_" eq "SAVEs") {
     &command("rm -fr $dirname/ndb*")
    };
  }
-}else{
+}elsif("@_" eq "ALL") {
  my $CMD="svn st | grep -v 'MODULES.pl' | grep -v 'TOOLS.pl' | grep -v '.gz' | grep -v 'SAVE/ns.' | grep -v 'elph_gkkp' |grep -v 'SAVE_backup' | grep '?'|  $awk '{print \$2}' | xargs rm -fr";
  LOOP_CONF: foreach  my $clean_path (@paths){
   &CWD_save;
@@ -48,6 +48,15 @@ if ("@_" eq "SAVEs") {
   &command($CMD);
   &CWD_go;
  };
+}elsif("@_" eq "BINs" ) {
+ foreach $branchdir (@branches) {
+  chomp($branchdir);
+  foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
+   $conf_file = (split(/\//, $conf_file))[-1];
+   $conf_bin  = "$branchdir/bin-$conf_file";
+   if (-d $conf_bin) { &command("rm -fr $conf_bin")};
+  }
+ }
 }
 #
 &command("rm -f find_the_diff/*.o");

@@ -1,6 +1,11 @@
-gcc4
+IF_COMPILE=`which ifort`
+FC=gfortran 
+if [ -e "$IF_COMPILE" ]
+then
+ FC=ifort 
+fi
 ./configure \
-FC=gfortran \
+FC=$FC \
 --with-extlibs-path=$YAMBO_EXT_LIBS \
 --enable-memory-profile=yes \
 --enable-int-linalg=yes \

@@ -27,11 +27,12 @@ sub UTILS_backup_save{
   &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
  };
  &command("mv $DATA_backup_file.tar.gz $BACKUP_dir/$BACKUP_subdir");
+ &CWD_save;
  chdir("$BACKUP_dir");
  &command("rm -f LATEST-TEST LATEST-REPORT");
  &command("ln -s $BACKUP_subdir LATEST-TEST");
  &command("ln -s LATEST-TEST/$global_report LATEST-REPORT");
- chdir("../");
+ &CWD_go;
 }
 sub UTILS_backup
 {

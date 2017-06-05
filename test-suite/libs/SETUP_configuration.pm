@@ -73,7 +73,9 @@ if("$do_it" eq "yes") {
  $conf_logfile = "$suite_dir/$extension"."_config.log";
  $comp_logfile = "$suite_dir/$extension"."_compile.log";
  # If Makefile present, clean sources
- if(-e "Makefile") {$result = `make clean_all 2>&1`};
+ if(-e "Makefile") {
+  $result = `make clean_all 2>&1`;
+ };
  #
  # Run this configure script, and log (append) the output, including STDOUT and STDERR
  # Backticks capture the output
@@ -157,6 +159,10 @@ if(! -x "$BRANCH/$conf_bin/yambo"){
  return "FAIL";
 }
 $branch=$dir."-".$conf_file;
+#
+# Get the FC kind
+#
+&SETUP_FC_kind;
 #
 # Get the build string (useful to understand if the code is compiled with MPI,SLK and OpenMP)
 #

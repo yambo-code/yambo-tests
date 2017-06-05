@@ -1,4 +1,3 @@
-#!/usr/bin/perl
 #
 #        Copyright (C) 2000-2017 the YAMBO team
 #              http://www.yambo-code.org
@@ -23,8 +22,14 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-sub UTILS_commit{
-&command("echo '$date"."-"."$time' > ROBOTS/$host/$user/TIME_ID");
-&command("svn -q commit ROBOTS/$host/$user/TIME_ID -F $BACKUP_dir/LATEST-REPORT");
+sub SETUP_FC_kind{
+open(SETUP_file,"<","$BRANCH/config/setup");
+while(<SETUP_file>) {
+ chomp($_);
+ if($_ =~ /fc_kind/) { 
+  ($desc, $equal, $FC_kind) = split(/\s+/,$_);
+ }
+};
+close(SETUP_file);
 }
 1;

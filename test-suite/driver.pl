@@ -90,6 +90,7 @@ if($download){
 if($clean){ 
  print "Cleaning...\n";
  &UTILS_clean("ALL");
+ &UTILS_clean("BINs");
  die "Test databases/outputs and local logfiles removed.\n";
 };
 # List tests and exit
@@ -193,6 +194,8 @@ if ($RUNNING_suite) {
  print "Tests string missing"; 
  die "\n";
 }
+#
+&UTILS_clean("BINs");
 #
 &COMPILE_find_the_diff("clean");
 #
