@@ -70,7 +70,7 @@ sub CHECK_the_error_list{
  # Check if the run that is called via the flags has been or not labelled as FAILED
  #
  foreach my $line (@ERROR_entries) {
-  if ($line =~ /@_[0]/) {
+  if ($line =~ /@_[0]/ and $line =~ /FAILED/) {
    return "FAIL";
   }
  }

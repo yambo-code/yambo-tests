@@ -24,6 +24,15 @@
 #
 sub SETUP_build{
 #
+open(SETUP_file,"<","$BRANCH/config/setup");
+while(<SETUP_file>) {
+ chomp($_);
+ if($_ =~ /fc_kind/) { 
+  ($desc, $equal, $FC_kind) = split(/\s+/,$_);
+ }
+};
+close(SETUP_file);
+#
 my $result=`$BRANCH/$conf_bin/yambo -h 2>&1`;
 #
 @build_patters= split(/\s+/,$result);

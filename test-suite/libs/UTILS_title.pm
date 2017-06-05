@@ -48,6 +48,7 @@ $verbosity_level = "highest" if ($verb ge 2);
 if ($branch) {
  &MY_PRINT( $fh,  "\n             revision : $REVISION ");
  &MY_PRINT( $fh,  "\n                build : $BUILD ");
+ &MY_PRINT( $fh,  "\n             compiler : $FC_kind ");
  &MY_PRINT( $fh,  "\n              bin dir : $conf_bin ");
  &MY_PRINT( $fh,  "\n           shortname  : $branch_key");
 }

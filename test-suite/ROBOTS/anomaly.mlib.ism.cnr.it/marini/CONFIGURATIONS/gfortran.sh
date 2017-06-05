@@ -1,3 +1,4 @@
+gcc4
 ./configure \
 FC=gfortran \
 --with-extlibs-path=$YAMBO_EXT_LIBS \

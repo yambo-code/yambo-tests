@@ -47,6 +47,7 @@ call add_RULE("o-05_KERR_IP-RPA_vel.off_q1_IP","whitelist",MATERIAL="Iron")
 !
 ! QP
 !====
+call add_RULE("o-03_QP_COHSEX_drude.ndb.em1s_fragment_1","whitelist",MATERIAL="Al_bulk")
 !
 ! BSE
 !=====

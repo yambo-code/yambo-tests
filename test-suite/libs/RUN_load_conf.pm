@@ -34,7 +34,8 @@ if( -e "$input_folder/$testname.conf") {
    &MY_PRINT($stdout, "** Changing precision for $testname to: $value \n");
    $prec = $value;
   }
- }
+ };
+ close(CONF);
 }
 }
 1;

@@ -2,9 +2,7 @@
 #
 @flow = (
 {
- ACTIVE      => "no",
-# CONFIG      => "default.sh", 
-# TESTS       => "LiF/GW-OPTICS; hBN/RT",
+ ACTIVE      => "yes",
  TESTS       => "all",
  KEYS        => "all hard",
 },
@@ -34,7 +32,7 @@
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP_half,
  THREADS     => "2",
  SLK_CPU     => $SYSTEM_SLK,

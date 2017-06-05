@@ -25,6 +25,6 @@
 #
 sub UTILS_commit{
 &command("svn -q propset dummyproperty '$date"."-"."$time' ROBOTS/$host/$user/TIME_ID");
-&command("svn -q commit ROBOTS/$host/$user/TIME_ID -F $BACKUP_dir/LATEST-REPORT");
+&command("svn -q commit ROBOTS/$host/$user/TIME_ID -F $BACKUP_dir/$user/LATEST-REPORT");
 }
 1;
