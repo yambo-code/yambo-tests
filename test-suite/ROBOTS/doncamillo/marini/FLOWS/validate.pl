@@ -8,6 +8,7 @@
  KEYS        => "all hard",
 },
 {
+ ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP,
  PAR_MODE    => "default",
 },
