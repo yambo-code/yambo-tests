@@ -155,7 +155,7 @@ for $check_exec (@executables){
 if(! -x "$BRANCH/$conf_bin/yambo"){  
  # Should decide on test behaviour if some fails are present
  # Create separate .error files?
- &MY_PRINT($stdout, "Core executable missing from $BRANCH, skipping...\n");
+ &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH, skipping...\n");
  return "FAIL";
 }
 $branch=$dir."-".$conf_file;

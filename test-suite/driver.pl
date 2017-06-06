@@ -168,7 +168,12 @@ if ($RUNNING_suite) {
    #
    my $ERROR=&FLOW_load();
    #
-   if ("$active" eq "yes" and "$ERROR" eq "OK" ) {&driver()};
+   if ("$active" eq "yes" and "$ERROR" eq "OK" ) 
+   {
+    &driver();
+    $FLOWS_done++;
+   };
+   #
    #
   }
   #
@@ -195,18 +200,23 @@ if ($RUNNING_suite) {
  die "\n";
 }
 #
+#
 &UTILS_clean("BINs");
 #
 &COMPILE_find_the_diff("clean");
 #
+if (not $FLOWS_done) {die "\n"};
+#
 &RUN_global_report("FINAL");
 #
-if ($backup_logs) {
- &UTILS_backup_save();
-}
-if ($report){ 
- &UTILS_commit();
- &UTILS_backup_upload();
+if ($DATA_backup_file) {
+ if ($backup_logs) {
+  &UTILS_backup_save();
+ }
+ if ($report){ 
+  &UTILS_commit();
+  &UTILS_backup_upload();
+ }
 }
 close $rlog;
 close $tlog;

@@ -3,7 +3,7 @@
 {
 KEYS        => 'all hard',
 ACTIVE      => 'yes',
-TESTS     => 'Si_bulk/RT/ all ;Si_bulk/SC/ all ;WSe2/RT/ all ;hBN/RT/ all ',
+TESTS     => 'WSe2/RT/ all; Si_bulk/RT/ all ;Si_bulk/SC/ all',
 #TESTS     => 'Si_bulk/RT/ all ;Si_bulk/ELPH/base_for_BSE/ all ;Si_bulk/ELPH/BSE/ all ;Si_bulk/SC/ all ;Si_bulk/MAGNETIC/ all ;WSe2/RT/ all ;AlAs/ all ;Diamond/ELPH1/ all ;Iron/pwscf/ all ;Iron/abinit/Without-SOC/ all ;MoS2/pwscf/RT/ all ;MoS2/abinit/OPTICS/With-SOC/ all ;MoS2/abinit/OPTICS/Without-SOC-sp1/ all ;hBN/RT/ all ',
 },
 {
