@@ -21,9 +21,9 @@
 ! Software Foundation, Inc., 59 Temple Place - Suite 330,Boston, 
 ! MA 02111-1307, USA or visit http://www.gnu.org/copyleft/gpl.txt.
 !
-subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL)
+subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,VAL_treshold)
   !
-  use DIFF, ONLY:RULES,i_c,i_t,i_rule,N_max_col
+  use DIFF, ONLY:SP,RULES,i_c,i_t,i_rule,N_max_col
   !
   implicit none
   character(*) :: PATTERN,RULE
@@ -32,6 +32,8 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL)
   character(*), optional ::MATERIAL
   integer,      optional ::COL
   integer,      optional ::COLS(:)
+  real(SP),     optional ::USER_prec
+  real(SP),     optional ::VAL_treshold
   !
   integer        :: N,i_r
   character(256) :: str(N_max_col)
@@ -75,6 +77,16 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL)
       do i_t=1,size(TITLES)
         RULES(i_rule)%title(i_t)=trim(TITLES(i_t))
       enddo
+    endif
+    !
+    if (present(USER_prec)) then
+      RULES(i_rule)%action=trim(RULES(i_rule)%action)//" USER_prec"
+      RULES(i_rule)%prec=USER_prec
+    endif
+    !
+    if (present(VAL_treshold)) then
+      RULES(i_rule)%action=trim(RULES(i_rule)%action)//" TRESHOLD"
+      RULES(i_rule)%treshold=VAL_treshold
     endif
     !
     if (present(TITLE)) then

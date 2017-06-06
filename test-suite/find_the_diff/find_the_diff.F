@@ -29,13 +29,16 @@ program find_the_diff
  !
  interface
    !
-   subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL)
+   subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,VAL_treshold)
+    use DIFF, ONLY:SP
     character(*) :: PATTERN,RULE
     character(*), optional ::TITLE
     character(*), optional ::TITLES(:)
     character(*), optional ::MATERIAL
     integer,      optional ::COL
     integer,      optional ::COLS(:)
+    real(SP),     optional ::USER_prec
+    real(SP),     optional ::VAL_treshold
    end subroutine
    !
  end interface
@@ -138,10 +141,17 @@ program find_the_diff
  no_statistics=.FALSE.
  average_column=.FALSE.
  l_whitelisted=.FALSE.
+ TRESHOLD=1.E-12
+ PREC=0.1
+ ERROR=1.
  !
  do i_r=1,N_max_rules
    if ( (index(out%name,trim(RULES(i_r)%pattern))  >0 .or. trim(RULES(i_r)%pattern)=="any" ).and. &
 &       (index(MATERIAL,trim(RULES(i_r)%material)) >0 .or. trim(RULES(i_r)%material)=="any") ) then
+     !
+     if (index(RULES(i_r)%action,"USER_prec")>0) PREC=RULES(i_r)%prec
+     if (index(RULES(i_r)%action,"TRESHOLD") >0) TRESHOLD=RULES(i_r)%treshold
+     !
      if (.not.broad_data)broad_data=index(RULES(i_r)%action,"broad")>0
      if (.not.last_row)  last_row  =index(RULES(i_r)%action,"last_row")>0
      if (.not.align)     align     =index(RULES(i_r)%action,"align")>0
@@ -157,7 +167,7 @@ program find_the_diff
        enddo
      endif
      if (index(RULES(i_r)%action,"average")>0) average_column=(RULES(i_r)%column==1)
-     if (index(RULES(i_r)%action,"double_precision")>0) ERROR=PREC*ref%Max*2.
+     if (index(RULES(i_r)%action,"double_precision")>0) ERROR=2.
      !
      if (.not.l_whitelisted) l_whitelisted=RULES(i_r)%whitelisted
      !
@@ -186,6 +196,9 @@ program find_the_diff
  !
  call eval_the_moments(ref) 
  call eval_the_moments(out)
+ do i_c=1,ref%N_col
+   ERROR(i_c)=ERROR(i_c)*PREC*ref%Max(i_c)
+ enddo
  !
  if ( VERB  ) then 
    write(*,"(a)") 
@@ -218,13 +231,6 @@ program find_the_diff
    write (*,'(a)') trim(CHECK_result)
    stop
  endif
- !
- ! ERRORs
- !
- do i_c=1,ref%N_col
-   if (ref%Max(i_c)>=1.E-12) ERROR(i_c)=PREC*ref%Max(i_c)
-   if (ref%Max(i_c)< 1.E-12) ERROR(i_c)=1.E-12
- enddo
  !
  MAX_ERR=0.
  i_c_ref=0

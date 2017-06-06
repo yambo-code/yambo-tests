@@ -66,7 +66,7 @@ if("$do_it" eq "yes") {
  chdir $BRANCH;
  &MY_PRINT($stdout, "\n             Compiling using $conf_file >");
  &MY_PRINT($stdout, "Updating ...\n");
- &command("chdir $BRANCH; git pull 2>&1");
+ &command("git pull &> /dev/null");
  &MY_PRINT($stdout, "                          > Configuring sources...");
  # Configure and compilation logs (full paths)
  my $extension=$branch_key.'-'.$conf_file.'-'.$host;

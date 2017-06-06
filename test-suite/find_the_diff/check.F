@@ -30,8 +30,11 @@ subroutine check(R,O,REPORT,FIELD)
   !
   R_average=0.
   O_average=0.
+  i_c_ref=0
   !
   do i_c=1,ref%N_col
+    !
+    if (abs(R(i_c))<TRESHOLD.and.abs(O(i_c))<TRESHOLD) cycle
     !
     if (average_column(i_c)) then
       R_average=R_average+R(i_c)
@@ -54,7 +57,8 @@ subroutine check(R,O,REPORT,FIELD)
     endif
   enddo
   !
-  if (any(average_column)) then
+  if (any(average_column).and.abs(R_average)>TRESHOLD.and.abs(O_average)>TRESHOLD) then
+    !
     DATA_diff=abs(R_average-O_average)
     if (DATA_diff>maxval(ERROR(:ref%N_col))) then 
       if (DATA_diff>MAX_ERR) then

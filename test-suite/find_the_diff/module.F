@@ -30,7 +30,7 @@ module DIFF
  character(256) :: data_str(N_max_col),titles(N_max_col)
  integer        :: ind,ierr,ivar,N,i_c,i_m,i_d,i_r,i_c_ref,i_t,i_rule=0
  character(13)  :: subname="find_the_diff"
- real(SP)       :: PREC=0.01,MAX_ERR,O_ref,R_ref,delta_ref
+ real(SP)       :: PREC=0.01,MAX_ERR,O_ref,R_ref,delta_ref,TRESHOLD
  real(SP)       :: ERROR(N_max_col)
  logical        :: VERB=.FALSE.,skip_column(N_max_col)=.FALSE.,average_column(N_max_col)=.FALSE.,&
 &                  l_out_exists,l_ref_exists,broad_data,last_row,align,no_statistics,l_whitelisted
@@ -42,6 +42,8 @@ module DIFF
    integer                :: column(N_max_col) = 0
    character(256)         :: title(N_max_col)  = " "
    logical                :: whitelisted=.FALSE.
+   real(SP)               :: prec = 0.1
+   real(SP)               :: treshold = 0
  end type rule
  !
  type obj 
