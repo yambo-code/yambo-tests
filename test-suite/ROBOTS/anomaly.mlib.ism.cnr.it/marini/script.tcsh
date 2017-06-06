@@ -9,5 +9,4 @@ cd /home/marini/Yambo/sources/svn/yambo-tests/test-suite
 
 module purge 
 module load intel/yambo/parallel_2017/pre_compiled
-#./driver.pl -flow validate -report -keep_dbs 
-./driver.pl -flow failed_devel-qp-dbs 
+./driver.pl -flow validate -report -keep_dbs 
