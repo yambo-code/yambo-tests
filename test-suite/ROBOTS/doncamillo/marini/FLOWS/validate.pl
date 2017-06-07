@@ -2,13 +2,12 @@
 #
 @flow = (
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  CONFIG      => "default.sh",
  TESTS       => "all",
  KEYS        => "all hard",
 },
 {
- ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP,
  PAR_MODE    => "default",
 },
