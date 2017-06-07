@@ -30,7 +30,6 @@ subroutine check(R,O,REPORT,FIELD)
   !
   R_average=0.
   O_average=0.
-  i_c_ref=0
   !
   do i_c=1,ref%N_col
     !
@@ -43,6 +42,7 @@ subroutine check(R,O,REPORT,FIELD)
     endif
     !
     if (skip_column(i_c)) cycle
+    !
     DATA_diff=abs(R(i_c)-O(i_c))
     if (DATA_diff>ERROR(i_c)) then 
       if (DATA_diff>MAX_ERR) then
@@ -55,6 +55,7 @@ subroutine check(R,O,REPORT,FIELD)
         if (i_d>0) write (str,'(a,i4,a)') FIELD//'(#',i_d,')'
       endif
     endif
+    !
   enddo
   !
   if (any(average_column).and.abs(R_average)>TRESHOLD.and.abs(O_average)>TRESHOLD) then

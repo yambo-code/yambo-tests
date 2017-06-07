@@ -28,6 +28,7 @@ call add_RULE("o-04_fit_elel_plasma.YPP-RT_E_Fermi","whitelist",MATERIAL="Si_bul
 call add_RULE("o-04_fit_elel_plasma.YPP-RT_NEQ_linewidths","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-04_fit_elel_plasma.YPP-RT_Temperatures","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-14_plot_0K_field_ad.YPP-RT_occupations","whitelist",MATERIAL="Si_bulk")
+call add_RULE("o-04_ypp_fit_occ.","whitelist",MATERIAL="WSe2")
 !
 ! It seems like in a parallel run the energy explodes. Accumulation of errors?
 call add_RULE("o-03_tdlda.energy","whitelist",MATERIAL="H2")

@@ -29,12 +29,14 @@ program find_the_diff
  !
  interface
    !
-   subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,VAL_treshold)
+   subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
+&                      VAL_treshold,REF_col)
     use DIFF, ONLY:SP
     character(*) :: PATTERN,RULE
     character(*), optional ::TITLE
     character(*), optional ::TITLES(:)
     character(*), optional ::MATERIAL
+    integer,      optional ::REF_col
     integer,      optional ::COL
     integer,      optional ::COLS(:)
     real(SP),     optional ::USER_prec
@@ -152,6 +154,8 @@ program find_the_diff
      if (index(RULES(i_r)%action,"USER_prec")>0) PREC=RULES(i_r)%prec
      if (index(RULES(i_r)%action,"TRESHOLD") >0) TRESHOLD=RULES(i_r)%treshold
      !
+     if (RULES(i_r)%REF_col>0) i_REF_col=RULES(i_r)%REF_col
+     !
      if (.not.broad_data)broad_data=index(RULES(i_r)%action,"broad")>0
      if (.not.last_row)  last_row  =index(RULES(i_r)%action,"last_row")>0
      if (.not.align)     align     =index(RULES(i_r)%action,"align")>0
@@ -166,6 +170,7 @@ program find_the_diff
          enddo
        enddo
      endif
+     !
      if (index(RULES(i_r)%action,"average")>0) average_column=(RULES(i_r)%column==1)
      if (index(RULES(i_r)%action,"double_precision")>0) ERROR=2.
      !
@@ -182,8 +187,20 @@ program find_the_diff
  endif
  if (align) then
    do i_r=1,ref%N
-     delta_ref=ref%D(i_r,2)-out%D(i_r,2)
+     if (i_REF_col>0) then
+       delta_ref=ref%D(i_r,i_REF_col)-out%D(i_r,i_REF_col)
+     endif
      out%D(i_r,:)=out%D(i_r,:)+delta_ref
+   enddo
+ else if (i_REF_col>0) then
+   do i_r=1,ref%N
+     do i_c=1,ref%N_col
+       if (i_c==i_REF_col) cycle
+       out%D(i_r,i_c)=out%D(i_r,i_c)-out%D(i_r,i_REF_col)
+       ref%D(i_r,i_c)=ref%D(i_r,i_c)-ref%D(i_r,i_REF_col)
+     enddo
+     out%D(i_r,i_REF_col)=0.
+     ref%D(i_r,i_REF_col)=0.
    enddo
  endif
  !
@@ -198,6 +215,7 @@ program find_the_diff
  call eval_the_moments(out)
  do i_c=1,ref%N_col
    ERROR(i_c)=ERROR(i_c)*PREC*ref%Max(i_c)
+   if (ERROR(i_c)<TRESHOLD) ERROR(i_c)=1.E-5
  enddo
  !
  if ( VERB  ) then 

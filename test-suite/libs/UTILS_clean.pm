@@ -37,7 +37,9 @@ if ("@_" eq "SAVEs") {
    if (-d $dirname."_backup") {
     &command("rm -fr $dirname")
    }else{
-    &command("rm -fr $dirname/ndb*")
+    foreach my $to_remove (< $dirname/ndb*>) {
+     if (not $to_remove =~ /gkkp/ ){ &command("rm -fr $to_remove") }
+    }
    };
  }
 }elsif("@_" eq "ALL") {

@@ -78,8 +78,7 @@ LOOP_BRANCH: foreach $branchdir (@running_branches) {
   #
   foreach $np (@NP_set) {
    #
-   if (not $keep_dbs) {&UTILS_clean("TESTs")};
-   if (    $keep_dbs) {&UTILS_clean("SAVEs")};
+   &UTILS_clean("SAVEs");
    #
    &RUN_driver;
    #

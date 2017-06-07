@@ -28,7 +28,7 @@ module DIFF
  !
  character(256) :: str,str1,CHECK_result="OK",MATERIAL="any"
  character(256) :: data_str(N_max_col),titles(N_max_col)
- integer        :: ind,ierr,ivar,N,i_c,i_m,i_d,i_r,i_c_ref,i_t,i_rule=0
+ integer        :: ind,ierr,ivar,N,i_c,i_m,i_d,i_r,i_c_ref,i_t,i_rule=0,i_REF_col
  character(13)  :: subname="find_the_diff"
  real(SP)       :: PREC=0.01,MAX_ERR,O_ref,R_ref,delta_ref,TRESHOLD
  real(SP)       :: ERROR(N_max_col)
@@ -39,6 +39,7 @@ module DIFF
    character(256)         :: pattern  = "fake-pattern"
    character(256)         :: action   = " "
    character(256)         :: material = "any"
+   integer                :: REF_col=0
    integer                :: column(N_max_col) = 0
    character(256)         :: title(N_max_col)  = " "
    logical                :: whitelisted=.FALSE.

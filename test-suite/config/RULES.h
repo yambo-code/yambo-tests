@@ -50,6 +50,4 @@ call add_RULE(".exc_weights_at","skip",COL=4)
 !
 ! SC
 !=====
-call add_RULE(".SC_E_History","last_row",MATERIAL="Si_bulk")
-call add_RULE(".SC_E_History","average",COLS=(/2,3,4/),MATERIAL="Si_bulk")
-call add_RULE(".SC_E_History","no_statistics")
+call add_RULE(".SC_E_History","last_row no_statistics",REF_col=2,MATERIAL="Si_bulk")

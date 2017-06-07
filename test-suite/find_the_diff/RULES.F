@@ -21,7 +21,7 @@
 ! Software Foundation, Inc., 59 Temple Place - Suite 330,Boston, 
 ! MA 02111-1307, USA or visit http://www.gnu.org/copyleft/gpl.txt.
 !
-subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,VAL_treshold)
+subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,VAL_treshold,REF_col)
   !
   use DIFF, ONLY:SP,RULES,i_c,i_t,i_rule,N_max_col
   !
@@ -30,6 +30,7 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,VAL_tr
   character(*), optional ::TITLE
   character(*), optional ::TITLES(:)
   character(*), optional ::MATERIAL
+  integer,      optional ::REF_col
   integer,      optional ::COL
   integer,      optional ::COLS(:)
   real(SP),     optional ::USER_prec
@@ -91,6 +92,10 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,VAL_tr
     !
     if (present(TITLE)) then
       RULES(i_rule)%title(1)=trim(TITLE)
+    endif
+    !
+    if (present(REF_col)) then
+      RULES(i_rule)%REF_col=REF_col
     endif
     !
   enddo
