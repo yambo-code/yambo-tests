@@ -13,12 +13,12 @@
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => $SYSTEM_NP,
  PAR_MODE    => "random",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => $SYSTEM_NP_half,
  PAR_MODE    => "loop",
 },
@@ -33,7 +33,7 @@
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => $SYSTEM_NP_half,
  THREADS     => "2",
  SLK_CPU     => $SYSTEM_SLK,
