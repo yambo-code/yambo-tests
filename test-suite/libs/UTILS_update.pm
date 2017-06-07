@@ -30,16 +30,9 @@ my $TEST_todo= $update_test;
 #
 &RUN_global_report("INIT");
 #
-if ($keys) {$keys_save=$keys};
-print "$keys_save";
 &FLOW_reset("ALL");
-if ($keys_save) {$keys=$keys_save};
-$compile="no";
-#
-if (not -d "tests/$TEST_todo/REFERENCE"){
- &command("mkdir tests/$TEST_todo/REFERENCE");
- &command("svn add tests/$TEST_todo/REFERENCE");
-}
+undef $compile;
+$keys="all hard";
 #
 if (-d "tests/$TEST_todo/INPUTS"){
  #
@@ -61,28 +54,41 @@ if (-d "tests/$TEST_todo/INPUTS"){
 }
 chdir("tests/$DIR_here");
 #
-foreach my $file (<REFERENCE/o*>,<REFERENCE/l-*>,<REFERENCE/r-*>) {
- if ($file =~ /$TEST_here/ or "$TEST_here" eq "any"){
-#  print "Do you want to remove $file (Y/N)?"; # first question yes/no
-#  my $input = <STDIN>;
-#  chomp $input;
-#  if ($input =~ m/^[Y]$/i){&command("svn --force del $file") };
-  &command("svn --force del $file");
+if (not -f "SAVE/ndb.gops") 
+{
+ die "\n\n It seems the test-suite could not run";
+}
+#
+if ($branch_key eq "master") 
+{
+ $REF="REFERENCE";
+}else{
+ $REF="REFERENCE_".$branch_key;
+ if (not -d $REF) 
+ { 
+  &command("mkdir $REF");
+  &command("svn add $REF"."@");
  }
 }
+#
 DIR_loop: foreach my $dir (<*>) {
  if (not -d $dir) {next DIR_loop};
+ if (-l $dir) {next DIR_loop};
  if ($dir =~ /REFERENCE/){next DIR_loop};
+ if ($dir =~ /$REF/){next DIR_loop};
  if ($dir =~ /BROKEN/){next DIR_loop};
  if ($dir =~ /DFT/){next DIR_loop};
  if ($dir =~ /INPUTS/){next DIR_loop};
- if ($dir =~ /$TEST_here/ or "$TEST_here" eq "any"){
-  foreach my $file (<$dir/o*>,<$dir/l*>,<$dir/r*> ) {
-   &command("cp $file REFERENCE");
-   $file =~  s/\// /;
-   my @string = split(/ /, "$file");
-   &command("svn add REFERENCE/$string[1]"."@");
+ foreach my $file (<$dir/o*>,<$dir/l*>,<$dir/r*> ) {
+  $svn_file = $file;
+  $svn_file =~  s/\// /;
+  my @string = split(/ /, "$svn_file");
+  if ( $REF eq "REFERENCE")
+  {
+   &command("svn --force del REFERENCE/$string[1]"."@");
   }
+  &command("cp $file $REF");
+  &command("svn add $REF/$string[1]"."@");
  }
 }
 #
