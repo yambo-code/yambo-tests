@@ -86,6 +86,7 @@ if (-e "$failed"){
   }
   $directory =~ s/\///;
   if ($testline =~ $directory) {next LINE};
+  if ($directory eq '') {next LINE};
   $testline = "$directory all ;".$testline;
   if ($directory =~ "Si_bulk/ELPH/BSE/") {
     $testline = "Si_bulk/ELPH/ELPH_for_BSE/ all ;".$testline;

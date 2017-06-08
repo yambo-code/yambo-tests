@@ -30,7 +30,7 @@ program find_the_diff
  interface
    !
    subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
-&                      VAL_treshold,REF_col)
+&                      VAL_treshold,REF_col,USER_error)
     use DIFF, ONLY:SP
     character(*) :: PATTERN,RULE
     character(*), optional ::TITLE
@@ -39,6 +39,7 @@ program find_the_diff
     integer,      optional ::REF_col
     integer,      optional ::COL
     integer,      optional ::COLS(:)
+    real(SP),     optional ::USER_error
     real(SP),     optional ::USER_prec
     real(SP),     optional ::VAL_treshold
    end subroutine
@@ -146,13 +147,15 @@ program find_the_diff
  TRESHOLD=1.E-12
  PREC=0.1
  ERROR=1.
+ USER_error=0.
  !
  do i_r=1,N_max_rules
    if ( (index(out%name,trim(RULES(i_r)%pattern))  >0 .or. trim(RULES(i_r)%pattern)=="any" ).and. &
 &       (index(MATERIAL,trim(RULES(i_r)%material)) >0 .or. trim(RULES(i_r)%material)=="any") ) then
      !
-     if (index(RULES(i_r)%action,"USER_prec")>0) PREC=RULES(i_r)%prec
-     if (index(RULES(i_r)%action,"TRESHOLD") >0) TRESHOLD=RULES(i_r)%treshold
+     if (index(RULES(i_r)%action,"USER_error")>0) USER_error=RULES(i_r)%error
+     if (index(RULES(i_r)%action,"USER_prec")>0)  PREC=RULES(i_r)%prec
+     if (index(RULES(i_r)%action,"TRESHOLD") >0)  TRESHOLD=RULES(i_r)%treshold
      !
      if (RULES(i_r)%REF_col>0) i_REF_col=RULES(i_r)%REF_col
      !
@@ -216,6 +219,7 @@ program find_the_diff
  do i_c=1,ref%N_col
    ERROR(i_c)=ERROR(i_c)*PREC*ref%Max(i_c)
    if (ERROR(i_c)<TRESHOLD) ERROR(i_c)=1.E-5
+   if (USER_error>0.) ERROR(i_c)=USER_error
  enddo
  !
  if ( VERB  ) then 
