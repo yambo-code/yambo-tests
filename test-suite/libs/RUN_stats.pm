@@ -107,15 +107,11 @@ if ("@_" eq "NOT_RUN"){
  &MESSAGE("ERROR","\n"."$err_msg"." $CHECK_error");
  my $msg = sprintf("%-10s", $cpu_conf."] ".$testname);
  &MESSAGE("LOG","\n"."$msg"." $CHECK_error");
- &command("pkill -U $user yambo") ;
- &command("pkill -U $user ypp") ;
  &its_a_fail();
 };
 if ("@_" eq "SKIPPED"){
  $test_skipped++;
  &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
- &command("pkill -U $user yambo") ;
- &command("pkill -U $user ypp") ;
 };
 if ("@_" eq "WRONG_DEP"){
  $test_skipped++;

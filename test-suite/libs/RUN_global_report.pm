@@ -51,7 +51,7 @@ if ("$what" eq "INIT") {
  &MESSAGE("REPORT ERROR WHITE","\nProjects                :$project");
  &MESSAGE("REPORT ERROR WHITE","\nDate - Time             :$date_now - $time_now");
  if ($select_conf_file) {&MESSAGE("REPORT ERROR WHITE","\nCompilation Scheme      :$select_conf_file")};
- &MESSAGE("REPORT ERROR WHITE","\nBuild                   :$branch_key - $BUILD - rev.$REVISION");
+ &MESSAGE("REPORT ERROR WHITE","\nBuild                   :$branch_key - $BUILD - $FC_kind - rev.$REVISION");
  &MESSAGE("REPORT ERROR WHITE","\nParallel Conf           :$cpu_global_conf - $PAR_mode");
  &MESSAGE("REPORT ERROR WHITE","\n$line");
 }elsif ("$what" eq "RUNTIME"){

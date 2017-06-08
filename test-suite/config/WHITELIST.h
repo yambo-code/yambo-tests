@@ -15,11 +15,11 @@
 !
 ! Dummy
 !=======
-call add_RULE("o-03_optics.eps_q1_inv_rpa_dyso","whitelist",MATERIAL="Dummy")
+call add_RULE("o-03_optics.eps_q1_inv_rpa_dyson","whitelist",MATERIAL="Dummy")
 !
 ! RT
 !====
-! Noise...
+! Noise...(?)
 call add_RULE("_FIT_holes","whitelist")
 call add_RULE("_FIT_electrons","whitelist")
 call add_RULE("_FIT_electrons","whitelist")
@@ -29,6 +29,12 @@ call add_RULE("o-04_fit_elel_plasma.YPP-RT_NEQ_linewidths","whitelist",MATERIAL=
 call add_RULE("o-04_fit_elel_plasma.YPP-RT_Temperatures","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-14_plot_0K_field_ad.YPP-RT_occupations","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-04_ypp_fit_occ.","whitelist",MATERIAL="WSe2")
+call add_RULE("o-06_fit_elph_0K_DbGd.YPP-RT_E_Fermi","whitelist",MATERIAL="Si_bulk")
+call add_RULE("o-06_fit_elph_0K_DbGd.YPP-RT_Temperatures","whitelist",MATERIAL="Si_bulk")
+call add_RULE("o-07_ypp_fit_occ.YPP-RT_E_Fermi","whitelist",MATERIAL="WSe2")
+call add_RULE("o-07_ypp_fit_occ.YPP-RT_E_Temperatures","whitelist",MATERIAL="WSe2")
+call add_RULE("o-08_ypp_dos_occ_DbGd.YPP-2D_occ_dos","whitelist",MATERIAL="MoS2")
+call add_RULE("o-08_ypp_plot_occ_DbGd.YPP-RT_occupations_k3_kRT16_b24","whitelist",MATERIAL="MoS2")
 !
 ! It seems like in a parallel run the energy explodes. Accumulation of errors?
 call add_RULE("o-03_tdlda.energy","whitelist",MATERIAL="H2")

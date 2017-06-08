@@ -34,9 +34,9 @@ do "config/TOOLS.pl";
 &UTILS_options;
 #
 if ($kill_me){
- system("pkill driver.pl");
- system("pkill yambo");
- system("pkill ypp");
+ &command("pkill driver.pl");
+ &command("pkill yambo");
+ &command("pkill ypp");
  die;
 }
 #
@@ -149,6 +149,8 @@ if ($RUNNING_suite) {
   #
   &driver();
   #
+  $FLOWS_done++;
+  #
  }
  #
  if ($flow) {
@@ -205,7 +207,10 @@ if ($RUNNING_suite) {
 #
 &COMPILE_find_the_diff("clean");
 #
-if (not $FLOWS_done) {die "\n"};
+if (not $FLOWS_done) {
+ print "\nDone.\n";
+ die "\n";
+}
 #
 &RUN_global_report("FINAL");
 #
@@ -224,4 +229,6 @@ close $elog;
 close $wlog;
 #
 print "\nDone.\n";
+die "\n";
+#
 #

@@ -22,6 +22,13 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
+sub KILL{
+$cmd="@_";
+my $pid = `ps -awu | grep $user | grep '$cmd' | grep -v grep | grep -v mpi | grep -v kill |grep -v null | awk '{P=P" "\$2}END{print P}'`;
+chomp($pid);
+print "\n Killing @_ with PID |$pid|\n" if ($verb);
+&command("kill -9 $pid");
+}
 sub command{
 $cmd="@_";
 if ($verb ge 2){
