@@ -52,34 +52,45 @@ if ($@) {
 #
 # Clean the RUN
 &KILL("$yambo_exec -F yambo.in");
+#
+# Clock update
 $test_end   = [gettimeofday]; 
 $elapsed = tv_interval($test_start, $test_end);
-if ($elapsed > $run_duration) {
- $CHECK_error="FAILED (Runtime above $run_duration secs.)";
- &RUN_stats("NOT_RUN");
- return "FAIL";
-}else{
+#
+# Check if a wrong CPU conf has been used...
+#
+undef  $wrong_cpu_conf;
+LOG_LOOP: {
  foreach $file (<LOG/l-*>) {
   open $fh, $file or die;
   while (my $line = <$fh>) {
    if ($line =~ /Empty workload/ ||  $line =~ /n_t_CPU > n_blocks/) { 
     $wrong_cpu_conf = 1;
     if ($verb) {
-     &MESSAGE("LOG ERROR WHITE","WRONG CPU configuration (empty workload for some CPU)");
-    }
+     &MESSAGE("LOG ERROR WHITE"," WRONG CPU configuration (empty workload for some CPU)");
+    };
+    last LOG_LOOP;
    }
   }
- };
- if ($wrong_cpu_conf) 
- {
-  $CHECK_error="FAILED (exit code $system_error)";
+ }
+}
+#
+# Final Report
+#
+if ($system_error == 0) {
+ if ($elapsed > $run_duration) {
+  $CHECK_error="FAILED (Runtime above $run_duration secs.)";
   &RUN_stats("NOT_RUN");
   return "FAIL";
  }else{
   my $msg = sprintf("%8.1f", $elapsed);
   &MESSAGE("LOG",$msg."s");
  }
-}
+}else{
+ $CHECK_error="FAILED (exit code $system_error)";
+ &RUN_stats("NOT_RUN");
+ return "FAIL";
+};
 return "OK";
 }
 1;
