@@ -66,8 +66,9 @@ if ("$what" eq "BASIC") {
  if($is_GPL eq "no"){
   $exec_rt   = " yambo_rt ypp_rt";
   $exec_sc   = " yambo_sc ypp_rt ypp_sc";
-  $exec_pl   = " yambo_pl ypp_pl";
-  $exec_nl   = " yambo_nl ypp_nl";
+  $exec_pl   = " yambo_pl";
+  #$exec_pl   = " yambo_pl ypp_pl";
+  #$exec_nl   = " yambo_nl ypp_nl";
   $exec_magn = " yambo_magnetic ypp_magnetic";
  }
  $exec_elph = " yambo_ph ypp_ph";

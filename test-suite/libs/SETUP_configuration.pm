@@ -149,14 +149,14 @@ chdir $suite_dir;
 &MY_PRINT($stdout, "\n -  Executable checks : ");
 @executables = split(/ /, $exec_list);
 for $check_exec (@executables){
- if( -x "$BRANCH/$conf_bin/$check_exec") { &MY_PRINT($stdout, "($check_exec $g_s OK $g_e) ")};
- if(!-x "$BRANCH/$conf_bin/$check_exec") { &MY_PRINT($stdout, "($check_exec $r_s FAIL $r_e)")};
-}
-if(! -x "$BRANCH/$conf_bin/yambo"){  
- # Should decide on test behaviour if some fails are present
- # Create separate .error files?
- &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH, skipping...\n");
- return "FAIL";
+ if( -x "$BRANCH/$conf_bin/$check_exec") 
+ { 
+  &MY_PRINT($stdout, "($check_exec $g_s OK $g_e) ")
+ }else{
+  &MY_PRINT($stdout, "($check_exec $r_s FAIL $r_e)")
+  &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH, skipping...\n");
+  return "FAIL";
+ };
 }
 $branch=$dir."-".$conf_file;
 #
