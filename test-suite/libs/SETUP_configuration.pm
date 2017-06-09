@@ -30,7 +30,12 @@ sub SETUP_configuration{
 $conf_file = (split(/\//, $conf_path))[-1];
 $conf_bin  = "bin-$conf_file";
 if ($select_conf_file){
- if (not $conf_file =~ $select_conf_file and $select_conf_file ne "all"){ return "FAIL"};
+ my $conf_match;
+ my @confs = split(/ /,$select_conf_file);
+ foreach my $conf (@confs) {
+  if ($conf_file =~ /$conf/ or $conf eq "all"){ $conf_match=1};
+ }
+ if (not $conf_match) {return "FAIL"};
 } 
 else {
  if ($compile) {
@@ -69,9 +74,8 @@ if("$do_it" eq "yes") {
  &command("git pull &> /dev/null");
  &MY_PRINT($stdout, "                          > Configuring sources...");
  # Configure and compilation logs (full paths)
- my $extension=$branch_key.'-'.$conf_file.'-'.$host;
- $conf_logfile = "$suite_dir/$extension"."_config.log";
- $comp_logfile = "$suite_dir/$extension"."_compile.log";
+ $conf_logfile = "$suite_dir/"."config.log";
+ $comp_logfile = "$suite_dir/"."compile.log";
  # If Makefile present, clean sources
  if(-e "Makefile") {
   $result = `make clean_all 2>&1`;
@@ -163,6 +167,12 @@ $branch=$dir."-".$conf_file;
 # Get the FC kind
 #
 &SETUP_FC_kind;
+#
+# Rename the conf/comp logs
+#
+my $extension=$branch_key.'-'.$conf_file.'-'.$FC_kind.'-'.$host;
+&command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
+&command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");
 #
 # Get the build string (useful to understand if the code is compiled with MPI,SLK and OpenMP)
 #

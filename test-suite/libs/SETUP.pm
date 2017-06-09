@@ -37,12 +37,6 @@ if ("$what" eq "BASIC") {
   $g_e=$color_end{green};
  }
  #
- # Check the requested configuration exists, if any
- if($compile && $select_conf_file && not $select_conf_file eq "all"){
-  if(!-e "ROBOTS/$host/$user/CONFIGURATIONS/$select_conf_file") {
-   &MY_PRINT($stdout, "Couldn't find conf file $select_conf_file in ROBOTS/$host/$user/CONFIGURATIONS/. Stopping.\n") and exit;
-  }
- }
  # Initialize parallelism
  $mpiexec = ""; 
  if($np_min) { 
