@@ -170,9 +170,11 @@ $branch=$dir."-".$conf_file;
 #
 # Rename the conf/comp logs
 #
-my $extension=$branch_key.'-'.$conf_file.'-'.$FC_kind.'-'.$host;
-&command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
-&command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");
+if("$do_it" eq "yes") {
+ my $extension=$branch_key.'-'.$conf_file.'-'.$FC_kind.'-'.$host;
+ &command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
+ &command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");
+}
 #
 # Get the build string (useful to understand if the code is compiled with MPI,SLK and OpenMP)
 #

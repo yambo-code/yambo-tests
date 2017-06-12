@@ -31,8 +31,10 @@ if($CHECK_error =~ /OK/) {
  my $msg = sprintf("%-"."$left_length"."s", "  $run_filename");
  &MESSAGE("LOG","\n"."$msg"."[$g_s  OK  $g_e]");
  &RUN_stats("OK");
+ return "OK";
 } else {
  &RUN_stats("ERR_OUT");
+ return "FAIL";
 }
 }
 1;

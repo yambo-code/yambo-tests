@@ -87,8 +87,8 @@ if ("@_" eq "ERR_DB"){
 };
 if ("@_" eq "NO_REF"){
  my $msg = sprintf("%-"."$left_length"."s", "  $run_filename");
- &MESSAGE("LOG","\n"."$msg"."[$r_s  NO in REFERENCE  $r_e]");
- &MESSAGE("ERROR","\n"."$err_msg"."$r_s  NO $run_filename in REFERENCE  $r_e");
+ &MESSAGE("LOG","\n"."$msg"."[$r_s  NO in REFERENCE(s)  $r_e]");
+ &MESSAGE("ERROR","\n"."$err_msg"."$r_s  NO $run_filename in REFERENCE(s)  $r_e");
  $ref_not_found++;
  &its_a_fail();
 };

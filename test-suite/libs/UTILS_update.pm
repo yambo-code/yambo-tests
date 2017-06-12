@@ -71,24 +71,32 @@ if ($branch_key eq "master")
  }
 }
 #
-DIR_loop: foreach my $dir (<*>) {
- if (not -d $dir) {next DIR_loop};
- if (-l $dir) {next DIR_loop};
- if ($dir =~ /REFERENCE/){next DIR_loop};
- if ($dir =~ /$REF/){next DIR_loop};
- if ($dir =~ /BROKEN/){next DIR_loop};
- if ($dir =~ /DFT/){next DIR_loop};
- if ($dir =~ /INPUTS/){next DIR_loop};
- foreach my $file (<$dir/o*>,<$dir/l*>,<$dir/r*> ) {
-  $svn_file = $file;
-  $svn_file =~  s/\// /;
-  my @string = split(/ /, "$svn_file");
-  if ( $REF eq "REFERENCE")
-  {
-   &command("svn --force del REFERENCE/$string[1]"."@");
-  }
-  &command("cp $file $REF");
-  &command("svn add $REF/$string[1]"."@");
+die;
+#
+}
+sub UPDATE_action{
+#
+if ($branch_key eq "master") 
+{
+ $REF_folder="REFERENCE";
+}else{
+ $REF_folder="REFERENCE_".$branch_key;
+};
+if (not -d $REF_folder) 
+{ 
+ &command("mkdir $REF_folder");
+ &command("svn --force add $REF_folder"."@");
+};
+if ("@_" eq "RM"){
+ &command("svn --force del $ref_filename"."@");
+}
+if ("@_" eq "ADD")
+{
+ &command("cp $run_filename $REF_folder");
+ &command("svn --force add $REF_folder/$run_filename"."@");
+ foreach my $file (<r*$testname*>,<l*$testname*>) {
+  &command("cp $file* $REF_folder");
+  &command("svn --force add $REF_folder/$file"."@");
  }
 }
 #

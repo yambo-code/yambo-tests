@@ -42,9 +42,15 @@ if ( $is_OLD_IO eq "no"   ) { &CHECK_database("Sx,Vxc","ndb.HF_and_locXC")};
 O_file_loop: foreach $run_filename (<o-$testname.*>){
  &gimme_reference($run_filename);
  if (!-e "$ref_filename") { 
+  if ($update_test) {&UPDATE_action("ADD")};
   &RUN_stats("NO_REF");
  }else{
-  &CHECK_file;
+  my $ERR=&CHECK_file;
+  if ($ERR eq "FAIL" and $update_test)
+  {
+   &UPDATE_action("RM");
+   &UPDATE_action("ADD");
+  }
  }
 }
 #
@@ -63,6 +69,10 @@ O_file_loop: foreach $ref_filename (@OFILES){
  if ( $ext=~ /hf/  and $is_STABLE=~"yes" ) { next O_file_loop};
  #
  if (!-e "$run_filename") { 
+  if ($update_test) 
+  {
+   &UPDATE_action("RM");
+  }
   &RUN_stats("NO_OUT");
  }
 }
