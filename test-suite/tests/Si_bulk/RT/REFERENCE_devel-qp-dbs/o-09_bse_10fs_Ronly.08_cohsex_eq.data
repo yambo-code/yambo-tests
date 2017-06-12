@@ -1,16 +1,16 @@
 #                                                           
-#  __  __   ________   ___ __ __    _______   ______        
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
 #                                                           
 #                                                           
-#        Version 4.2.0 Revision 14544 Hash 1911cc9          
-#                      MPI+SLK Build                        
-#                http://www.yambo-code.org                  
+#         Version 4.2.0 Revision 14590 Hash 701964b         
+#                   MPI+SLK+OpenMP Build                    
+#                 http://www.yambo-code.org                 
 #
 #
 # GW solver              : Newton
@@ -26,52 +26,35 @@
 # X BZ Double Grid points:0
 # Sc bands terminator    : no
 # Sx RL components       :  609
-# GW solver              : Newton
-# PPA imaginary pt   [ev]: 27.21138
-# GW SC iterations       :0
-# dS/dw steps            : 2
-# dS/dw step         [ev]:  0.10000
-# X G`s            [used]: 1
-# X G`s            [disk]: 1
-# X bands                :  1   8
-# X poles           [o/o]: 100.0000
-# X e/h E range      [ev]:-1.000000 -1.000000
-# X xc-Kernel            : none
-# X BZ energy Double Grid: no
-# X BZ Double Grid points:0
-# Sc/G bands             :  1   8
-# Sc/G damping       [ev]:  0.10000
-# Sc bands terminator    : no
-# Sx RL components       :  609
 # QP @ K 001 - 003 : b 002 - 007
 #
 #    Eo [eV]      DeltaE [eV]
 #
-   -7.895731     0.776445
-   -7.200430     0.986139
-   -3.010587     0.513523
-   -3.010587     0.603059
-   -1.262054     0.534313
-   -1.262054     0.536071
-    0.000000     0.492700
-    0.000000     0.757219
-    0.000000     0.647659
-    0.437631    -0.569409
-    0.437640    -0.567609
-    1.519058    -0.653308
-    2.440868    -0.707206
-    2.440868    -0.711808
-    2.440868    -0.706600
-    3.185880    -0.900687
-    3.185880    -0.893033
-    10.15807     -1.12796
+   -7.895731    -1.864918
+   -7.200430    -2.022501
+   -3.010587    -1.362968
+   -3.010587    -1.445394
+   -1.262054    -1.341656
+   -1.262054    -1.341952
+    0.000000    -1.240073
+    0.000000    -1.498783
+    0.000000    -1.391992
+    0.437631     0.136844
+    0.437640     0.136790
+    1.519058     0.247849
+    2.440868     0.338082
+    2.440868     0.346346
+    2.440868     0.347629
+    3.185880     0.575358
+    3.185880     0.570859
+    10.15807      0.67645
 # 
-# 05/18/2017 at 16:45 YAMBO_RT @ anomaly [start]
-# 05/18/2017 at 16:46                    [end]
+# 06/12/2017 at 16:36 YAMBO_RT @ anomaly [start]
+# 06/12/2017 at 16:36                    [end]
 #  
-# Timing   [Min/Max/Average]: 07s/07s/07s
+# Timing   [Min/Max/Average]: 13s/13s/13s
 #
-# .-Input file : INPUTS/09_bse_10fs
+# .-Input file : yambo.in
 # | optics                         # [R OPT] Optics
 # | bse                            # [R BSE] Bethe Salpeter Equation.
 # | bsk                            # [R BSK] Bethe Salpeter Equation kernel
@@ -79,6 +62,9 @@
 # | em1s                           # [R Xs] Static Inverse Dielectric Matrix
 # | BoseTemp= 0.000000     eV      # Bosonic Temperature
 # | FFTGvecs=  387         RL      # [FFT] Plane-waves
+# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
 # | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
 # | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
 # | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
@@ -86,8 +72,7 @@
 # | BSENGexx=  531         RL      # [BSK] Exchange components
 # | BSENGBlk=  59          RL      # [BSK] Screened interaction block size
 # | #WehCpl                        # [BSK] eh interaction included also in coupling
-# | KfnQPdb= "E < 08_ypp_gw_10fs/ndb.QP_merged_1_gw_ppa" # [EXTQP BSK BSS] Database
-# | KfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT BSK BSS] Database
+# | KfnQPdb= "E < 08_cohsex_eq/ndb.QP" # [EXTQP BSK BSS] Database
 # | RfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT R] Database
 # | % BEnRange
 # |   0.00000 | 10.00000 | eV      # [BSS] Energy range
@@ -103,7 +88,6 @@
 # |   2 |  7 |                     # [BSK] Bands range
 # | %
 # | BSHayTrs=  0.02000             # [BSS] Relative [o/o] Haydock treshold. Strict(>0)/Average(<0)
-# | XfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT Xd] Database
 # | % BndsRnXs
 # |   1 |  8 |                     # [Xs] Polarization function bands
 # | %

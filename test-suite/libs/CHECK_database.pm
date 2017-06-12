@@ -45,7 +45,6 @@ if( -e "$testname/$DB" ){
   &RUN_stats("ERR_DB");
   return;
  }
- &CHECK_file();
 } else{
  if (-e "$ref_filename"){
   &RUN_stats("ERR_DB");

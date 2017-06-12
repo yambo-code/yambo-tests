@@ -1,16 +1,16 @@
 #                                                           
-#  **    **    **     ****     ****  ******     *******     
-# //**  **    ****   /**/**   **/** /*////**   **/////**    
-#  //****    **//**  /**//** ** /** /*   /**  **     //**   
-#   //**    **  //** /** //***  /** /******  /**      /**   
-#    /**   **********/**  //*   /** /*//// **/**      /**   
-#    /**  /**//////**/**   /    /** /*    /**//**     **    
-#    /**  /**     /**/**        /** /*******  //*******     
-#    //   //      // //         //  ///////    ///////      
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$     
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$    
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$    
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$    
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$    
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$    
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/    
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/     
 #                                                           
-#        Version 4.2.0 Revision 14544 Hash 1911cc9          
-#                      MPI+SLK Build                        
-#                http://www.yambo-code.org                  
+#       Version 4.2.0 Revision 14590 Hash 701964b           
+#                  MPI+SLK+OpenMP Build                     
+#               http://www.yambo-code.org                   
 #
 #
 # GW solver              : Newton
@@ -30,31 +30,31 @@
 #
 #    Eo [eV]      DeltaE [eV]
 #
-   -7.895731    -1.864890
-   -7.200430    -2.022552
-   -3.010587    -1.362955
-   -3.010587    -1.445395
-   -1.262054    -1.341646
-   -1.262054    -1.341951
-    0.000000    -1.240064
-    0.000000    -1.498777
-    0.000000    -1.391989
-    0.437631     0.136848
-    0.437640     0.136803
-    1.519058     0.247855
-    2.440868     0.338098
-    2.440868     0.346352
-    2.440868     0.347634
-    3.185880     0.575362
-    3.185880     0.570875
-    10.15807      0.67646
+   -7.895731    -1.864918
+   -7.200430    -2.022501
+   -3.010587    -1.362968
+   -3.010587    -1.445394
+   -1.262054    -1.341656
+   -1.262054    -1.341952
+    0.000000    -1.240073
+    0.000000    -1.498783
+    0.000000    -1.391992
+    0.437631     0.136844
+    0.437640     0.136790
+    1.519058     0.247849
+    2.440868     0.338082
+    2.440868     0.346346
+    2.440868     0.347629
+    3.185880     0.575358
+    3.185880     0.570859
+    10.15807      0.67645
 # 
-# 05/18/2017 at 16:42 YAMBO_RT @ anomaly [start]
-# 05/18/2017 at 16:42                    [end]
+# 06/12/2017 at 16:36 YAMBO_RT @ anomaly [start]
+# 06/12/2017 at 16:36                    [end]
 #  
-# Timing   [Min/Max/Average]: 04s/04s/04s
+# Timing   [Min/Max/Average]: 11s/11s/11s
 #
-# .-Input file : INPUTS/09_bse_10fs_Ronly
+# .-Input file : yambo.in
 # | optics                         # [R OPT] Optics
 # | bse                            # [R BSE] Bethe Salpeter Equation.
 # | bsk                            # [R BSK] Bethe Salpeter Equation kernel
@@ -62,6 +62,9 @@
 # | em1s                           # [R Xs] Static Inverse Dielectric Matrix
 # | BoseTemp= 0.000000     eV      # Bosonic Temperature
 # | FFTGvecs=  387         RL      # [FFT] Plane-waves
+# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
 # | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
 # | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
 # | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
@@ -70,7 +73,6 @@
 # | BSENGBlk=  59          RL      # [BSK] Screened interaction block size
 # | #WehCpl                        # [BSK] eh interaction included also in coupling
 # | KfnQPdb= "E < 08_cohsex_eq/ndb.QP" # [EXTQP BSK BSS] Database
-# | RfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT R] Database
 # | % BEnRange
 # |   0.00000 | 10.00000 | eV      # [BSS] Energy range
 # | %

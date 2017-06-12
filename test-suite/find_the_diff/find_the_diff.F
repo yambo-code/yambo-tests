@@ -145,7 +145,7 @@ program find_the_diff
  average_column=.FALSE.
  l_whitelisted=.FALSE.
  TRESHOLD=1.E-12
- PREC=0.01
+ PREC=0.05
  ERROR=1.
  USER_error=0.
  !
