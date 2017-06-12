@@ -3,9 +3,8 @@
 @flow = (
 {
  ACTIVE      => "yes",
- TESTS       => "hBN/GW-OPTICS 01_init", 
-# CONFIG      => "default.sh",
- KEYS        => "nopj elph hard",
+ CONFIG      => "default.sh",
+ KEYS        => "nopj elph sc hard",
 },
 {
  MPI_CPU     => $SYSTEM_NP,

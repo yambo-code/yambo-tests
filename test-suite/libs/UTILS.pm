@@ -24,7 +24,7 @@
 #
 sub KILL{
 $cmd="@_";
-my $pid = `ps -awu | grep $user | grep '$cmd' | grep -v grep | grep -v mpi | grep -v kill |grep -v null | awk '{P=P" "\$2}END{print P}'`;
+my $pid = `ps -awu | grep $user | grep '$cmd' | grep -v grep |  grep -v kill |grep -v null | awk '{P=P" "\$2}END{print P}'`;
 chomp($pid);
 print "\n Killing @_ with PID |$pid|\n" if ($verb);
 &command("kill -9 $pid");

@@ -34,9 +34,9 @@ do "config/TOOLS.pl";
 &UTILS_options;
 #
 if ($kill_me){
- &command("pkill driver.pl");
  &command("pkill yambo");
  &command("pkill ypp");
+ &command("pkill driver.pl");
  die;
 }
 #
