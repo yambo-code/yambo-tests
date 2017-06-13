@@ -46,6 +46,7 @@ else
  cp config/SAMPLE_flow.pl     ROBOTS/$robot/$user/FLOWS/default.pl
  cp config/SAMPLE_validate.pl ROBOTS/$robot/$user/FLOWS/validate.pl
  touch ROBOTS/$robot/$user/TIME_ID
+ svn --force add ROBOTS/$robot/
  svn --force add ROBOTS/$robot/$user/
 fi
 AC_SUBST(user)
