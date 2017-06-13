@@ -4,7 +4,7 @@
 {
  ACTIVE      => "yes",
  CONFIG      => "default.sh",
- TESTS       => "all",
+ TESTS       => "PA_chain; Al_bulk/GW-OPTICS; WSe2/RT; hBN/SC; Diamond/ELPH1",
  KEYS        => "all hard",
 },
 {
