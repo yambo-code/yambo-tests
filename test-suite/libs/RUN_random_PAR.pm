@@ -43,19 +43,17 @@ while ($ic<=$n_fields-1) {
 };
 #
 $np_now=$np;
+my $max_random_np=8;
 $ic=0;
 while ($ic<=$n_fields-1) {
  $icp=$icpu[$ic]-1;
  if ($np_now!=1) {
-  $int_np_now=$np_now;
-  $running_np=$np_now-0.1;
-  while ($int_np_now-$running_np != 0) {
-   $random_cpu = int(rand($np_now))+1;
-   $running_np=$np_now/$random_cpu;
-   $int_np_now=int($running_np);
-   $ncpu[$icp]=$random_cpu;
+  $random_cpu = int(rand($max_random_np))+1;
+  while (int($np_now/$random_cpu) != $np_now/$random_cpu){
+    $random_cpu = int(rand($max_random_np))+1;
   }
-  $np_now=$running_np;
+  $np_now=$np_now/$random_cpu;
+  $ncpu[$icp]=$random_cpu;
  }
  $ic++;
 }
