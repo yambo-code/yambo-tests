@@ -21,19 +21,11 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub RUN_PAR_constrains{
- foreach $file ( <KPT_*> ){
-  $file =~ s/KPT_//g;
-  if ($q>$file){ return -1};
-  if ($k>$file){ return -1};
- };
- foreach $file ( <VALENCE_*> ){
-  $file =~ s/VALENCE_//g;
-  if ($v>$file){ return -1};
- };
- foreach $file ( <CONDUCTION_*> ){
-  $file =~ s/CONDUCTION_//g;
-  if ($c>$file){ return -1};
- };
- return 0;
+ $MAX_k=$np;
+ $MAX_v=$np;
+ $MAX_c=$np;
+ foreach $file ( <KPT_*> ){ $file =~ s/KPT_//g; $MAX_k=$file};
+ foreach $file ( <VALENCE_*> ){ $file =~ s/VALENCE_//g; $MAX_v=$file};
+ foreach $file ( <CONDUCTION_*> ){ $file =~ s/CONDUCTION_//g; $MAX_c=$file};
 }
 1;

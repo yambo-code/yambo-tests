@@ -143,7 +143,7 @@ if ($RUNNING_suite) {
  # Global Report
  &RUN_global_report("INIT");
  #
- &command("cd $suite_dir; svn up");
+ if (! $dry_run) {&command("cd $suite_dir; svn up")};
  #
  if ($user_tests or $theme or $compile) {
   #

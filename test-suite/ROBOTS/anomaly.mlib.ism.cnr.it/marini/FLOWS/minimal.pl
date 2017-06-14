@@ -3,21 +3,22 @@
 @flow = (
 {
  ACTIVE      => "no",
- CONFIG      => "default.sh",
+# CONFIG      => "default.sh",
  TESTS       => "PA_chain; Al_bulk/GW-OPTICS; WSe2/RT; hBN/SC; Diamond/ELPH1",
  KEYS        => "all hard",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => $SYSTEM_NP,
  PAR_MODE    => "default",
 },
 {
+ ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP,
  PAR_MODE    => "random",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP_half,
  PAR_MODE    => "loop",
 },
@@ -26,7 +27,7 @@
  THREADS     => $SYSTEM_NP_half,
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => $SYSTEM_NP,
  SLK_CPU     => $SYSTEM_NP_half,
  PAR_MODE    => "default",

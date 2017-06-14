@@ -43,7 +43,7 @@ $test_start = [gettimeofday];
 eval { 
  local $SIG{ALRM} = sub { die "alarm\n" };
  alarm $run_duration;         # schedule alarm 
- &command("$command_line");   # launch the yambo job
+ if (not $dry_run) {&command("$command_line")};   # launch the yambo job
  alarm 0;                     # cancel the alarm
 };
 if ($@) {

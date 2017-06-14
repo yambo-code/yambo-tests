@@ -44,12 +44,12 @@ if ( ! $default_parallel and $np>1) {
  $PAR_field[13]="X_all_q_ROLEs= \"q.k.c.v\"";
  $PAR_field[14]="SE_ROLEs= \"q.qp.b\"";
  $PAR_field[15]="BS_ROLEs= \"k.eh.t\"";
- $PAR_field[16]="RT_ROLEs= \"k.b.q.qp\"";
+ $PAR_field[16]="RT_ROLEs= \"q.k.qp.b\"";
 }
 #
 $Nr="1";
-#
 @RUN_spec=();
+#
 if ($np==1) { 
  $RUN_spec[1]="serial";
  return;
@@ -58,95 +58,153 @@ if ($SETUP=="1" or $yambo_exec =~ /ypp/) {
  $RUN_spec[1]="serial";
  return;
 }
-#
-$ir=0;
-@CPUs= qw(1 2);
-if ($np>4){ @CPUs= qw(1 2 3 4) };
 if ( $default_parallel ){ 
  $RUN_spec[1]="default";
  return;
 };
-&RUN_random_PAR(3);
-&RUN_random_PAR(4);
+#
+# LOOP/RANDOM PARALLEL section
+#
+# SE_CPU=\"$q.$qp.$b\" => QQPB
+# X_all_q_CPU=\"$q.$k.$c.$v\" => QKCV
+# X_q_0_CPU=\"$k.$c.$v\" => KCF
+# X_finite_q_CPU=\"$q.$k.$c.$v\" => QKCV
+# BS_CPU=\"$k.$eh.$t\"  => KEHT
+# RT_CPU=\"$q.$k.${qp}.$b\" => QKQPB
+#
+# Constrains
+&RUN_PAR_constrains();
+#
+if ($random_parallel)
+{
+ &RUN_random_PAR(3);
+ while (&CHECK_me($ncpu[0],$ncpu[1],$ncpu[2]) eq 1){&RUN_random_PAR(3)};
+ @KCV[0]=[@ncpu];
+ #
+ &RUN_random_PAR(4);
+ while (&CHECK_me($ncpu[0],$ncpu[2],$ncpu[3]) eq 1 and &CHECK_me($ncpu[1],$ncpu[2],$ncpu[3])){&RUN_random_PAR(4)};
+ @QKCV[0]=[@ncpu];
+ #
+ &RUN_random_PAR(3);
+ while (&CHECK_me($ncpu[0],$ncpu[2],$ncpu[2]) eq 1){&RUN_random_PAR(3)};
+ @QQPB[0]=[@ncpu];
+ #
+ &RUN_random_PAR(3);
+ while (&CHECK_me($ncpu[0],0,0) eq 1 and $ncpu[2]<=$ncpu[0]*$ncpu[1]){&RUN_random_PAR(3)};
+ @KEHT[0]=[@ncpu];
+ #
+ &RUN_random_PAR(4);
+ while (&CHECK_me($ncpu[0],$ncpu[3],$ncpu[3]) eq 1 and &CHECK_me($ncpu[1],$ncpu[3],$ncpu[3])){&RUN_random_PAR(3)};
+ @QKQPB[0]=[@ncpu];
+ #
+}else{
+ my $SINGLE;
+ @SINGLE = (1,2,4);
+ my $QK;
+ @QK[0] = [(1,1)];
+ @QK[1] = [(1,2)];
+ @QK[2] = [(2,2)];
+ my $CV;
+ @CV=@QK;
+ my $QPB;
+ @QPB=@QK;
+ #
+ $iconf=0;
+ my $trace;
+ foreach $cv (@CV){ foreach $k (@SINGLE){
+  @conf = ( $k , @$cv[0], @$cv[1] );
+  $trace=&trace( @conf );
+  &CHECK_me($k,@$cv[0], @$cv[1]);
+  if ($trace eq $np and &CHECK_me($k,@$cv[0], @$cv[1]) eq 0) {
+   @KCV[$iconf]= [ @conf ];
+   $iconf++; 
+  }
+ }};
+ $iconf=0;
+ foreach $cv (@CV){ foreach $qk (@QK){
+  @conf = ( @$qk[0], @$qk[1] , @$cv[0], @$cv[1] );
+  $trace=&trace( @conf );
+  if ($trace eq $np and &CHECK_me(@qk[0],@$cv[0], @$cv[1]) eq 0 and &CHECK_me(@qk[1],@$cv[0], @$cv[1]) eq 0) {
+   @QKCV[$iconf]= [ @conf ];
+   $iconf++; 
+  }
+ }};
+ $iconf=0;
+ foreach $q (@SINGLE){ foreach $qpb (@QPB){
+  @conf = ( $q, @$qpb[0], @$qpb[1] );
+  $trace=&trace( @conf );
+  if ($trace eq $np and &CHECK_me($q,@$qpb[1],@$qpb[1])  eq 0) {
+   @QQPB[$iconf]= [ @conf ];
+   $iconf++; 
+  }
+ }};
+ $iconf=0;
+ foreach $k (@SINGLE){foreach $eh (@SINGLE){ 
+  $t_max=$k*$eh;
+  for( $t = 1; $t < $t_max; $t = $t + 2 ){
+   @conf = ( $k, $eh, $t );
+   $trace=&trace( @conf );
+   if ($trace eq $np and &CHECK_me($k,0,0)  eq 0) {
+    @KEHT[$iconf]= [ @conf ];
+    $iconf++; 
+   }
+ }}};
+ $iconf=0;
+ foreach $q (@SINGLE){ foreach $k (@SINGLE){ foreach $qpb (@QPB){
+  @conf = ( $q, $k, @$qpb[0], @$qpb[1] );
+  $trace=&trace( @conf );
+  if ($trace eq $np and &CHECK_me($q,@$qpb[1],@$qpb[1]) eq 0 and &CHECK_me($k,@$qpb[1],@$qpb[1]) eq 0) {
+   @QKQPB[$iconf]= [ @conf ];
+   $iconf++; 
+  }
+ }}};
+}
+#
+if ($verb >2) { 
+ foreach $var (@KCV){ print "\n KCV @$var"};
+ foreach $var (@QKCV){ print "\n QKCV @$var"};
+ foreach $var (@QQPB){print "\n QQPB @$var"};
+ foreach $var (@KEHT){ print "\n KEHT @$var"};
+ foreach $var (@QKQPB){print "\n QKQPB @$var"};
+}
 #
 # GW & Lifetimes
+$Nr=0;
 #
 if ( $LIFE=="1" or ( $GW=="1" and $EM1D=="1" ) or ($COHSEX=="1" and $COLL=="0") or ($COHSEX=="1" and $COLL=="1" and $EM1S=="0") ) { 
- if ( ! $random_parallel ){
-  foreach $q (@CPUs){ foreach $qp (@CPUs){ foreach $b (@CPUs){
-   foreach $k (@CPUs){foreach $c (@CPUs){foreach $v (@CPUs){
-    $CONDITION="no";
-    if ($q*$qp*$b==$np and $q*$k*$c*$v==$np){ $CONDITION="yes"};
-    if ( $CONDITION=~"yes" and &RUN_PAR_constrains() eq 0){
-     $ir++;
-     $RUN_spec[$ir]="SE_CPU=\"$q.$qp.$b\" X_all_q_CPU=\"$q.$k.$c.$v\"";
-  }}}}}}}
-  $Nr=$ir
- } else {
-  $Nr=1;
-  $RUN_spec[1]="SE_CPU=\"$cpu_3_conf\" X_all_q_CPU=\"$cpu_4_conf\"";
- }
- return
+ foreach $f1 (@QQPB){ foreach $f2 (@QKCV){ 
+  $Nr++;
+  $RUN_spec[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\" X_all_q_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3]\"";
+ }}
+ return;
 }
 #
 # Standard linear-response (G-space)
 #
 if ( $OPTICS=="1" and $CHI=="1" ) { 
- if ( ! $random_parallel ){
-  foreach $q (@CPUs){ foreach $k (@CPUs){ foreach $c (@CPUs){
-   foreach $v (@CPUs){
-    $CONDITION="no";
-    if ($k*$c*$v==$np and $q*$k*$c*$v==$np){ $CONDITION="yes"};
-    if ( $CONDITION=~"yes" and &RUN_PAR_constrains() eq 0){
-     $ir++;
-     $RUN_spec[$ir]="X_q_0_CPU=\"$k.$c.$v\" X_finite_q_CPU=\"$q.$k.$c.$v\"";
-  }}}}}
-  $Nr=$ir
- } else {
-  $Nr=1;
-  $RUN_spec[1]="X_q_0_CPU=\"$cpu_3_conf\" X_finite_q_CPU=\"$cpu_4_conf\"";
- }
- return
+ foreach $f1 (@KCV){ foreach $f2 (@QKCV){ 
+  $Nr++;
+  $RUN_spec[$Nr]="X_q_0_CPU=\"@$f1[0].@$f1[1].@$f1[2]\" X_finite_q_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3]\"";
+ }}
+ return;
 }
 #
 # EM1S
 #
 if ($GW=="0" and $EM1S=="1" and $BSE=="0" and $COLL=="0") { 
- if ( ! $random_parallel ){
-  foreach $q (@CPUs){ foreach $k (@CPUs){ foreach $c (@CPUs){
-   foreach $v (@CPUs){
-    $CONDITION="no";
-    if ($q*$k*$c*$v==$np){ $CONDITION="yes"};
-    if ( $CONDITION=~"yes" and &RUN_PAR_constrains() eq 0){
-     $ir++;
-     $RUN_spec[$ir]="X_all_q_CPU=\"$q.$k.$c.$v\"";
-  }}}}}
-  $Nr=$ir
- } else {
-  $Nr=1;
-  $RUN_spec[1]="X_all_q_CPU=\"$cpu_4_conf\"";
+ foreach $f1 (@QKCV){
+  $Nr++;
+  $RUN_spec[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3]\"";
  }
- return
+ return;
 }
 #
 # BSE
 #
 if ($BSE=="1" and $EM1S=="0") { 
- if ( ! $random_parallel ){
-  foreach $k (@CPUs){ foreach $eh (@CPUs){ foreach $t (@CPUs){
-    $CONDITION="no";
-    $t_max=($eh*$k+1)/2;
-    if ($k*$eh*$t==$np){ $CONDITION="yes"};
-    if ( $t>$t_max ) { $CONDITION="no"};
-    if ( $CONDITION=~"yes" and &RUN_PAR_constrains() eq 0){
-     $ir++;
-     $RUN_spec[$ir]="BS_CPU=\"$k.$eh.$t\"";
-    };
-  }}};
-  $Nr=$ir
- } else {
-  $Nr=1;
-  $RUN_spec[1]="BS_CPU=\"$cpu_3_conf\"";
+ foreach $f1 (@KEHT){
+  $Nr++;
+  $RUN_spec[$Nr]="BS_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
  }
  return;
 }
@@ -154,42 +212,19 @@ if ($BSE=="1" and $EM1S=="0") {
 # BSE and EM1S
 #
 if ($BSE=="1" and $EM1S=="1" ) { 
- if ( ! $random_parallel ){
-  foreach $q (@CPUs){ foreach $k (@CPUs){ foreach $c (@CPUs){ foreach $v (@CPUs){
-  foreach $kp (@CPUs){ foreach $eh (@CPUs){ foreach $t (@CPUs){
-    $CONDITION="no";
-    $t_max=($eh*$kp+1)/2;
-    if ($q*$k*$c*$v==$np and $kp*$eh*$t==$np){ $CONDITION="yes"};
-    if ( $t>$t_max ) { $CONDITION="no"};
-    if ( $CONDITION=~"yes" and &RUN_PAR_constrains() eq 0){
-     $ir++;
-     $RUN_spec[$ir]="X_all_q_CPU=\"$q.$k.$c.$v\" BS_CPU=\"$kp.$eh.$t\"";
-    };
-  }}}}}}};
-  $Nr=$ir
- } else {
-  $Nr=1;
-  $RUN_spec[1]="X_all_q_CPU=\"$cpu_4_conf\" BS_CPU=\"$cpu_3_conf\"";
- }
+ foreach $f1 (@QKCV){ foreach $f2 (@KEHT){
+  $Nr++;
+  $RUN_spec[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3]\" BS_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
+ }}
  return;
 }
 #
 # HF, SC or e-p
 #
 if ( (($HF=="1" and $GW=="0") or $SC=="1" or ($GW=="1" and $EP=="1") or ($GW=="1" and $EPHOT=="1")) and $COLL=="0" and $NEGF=="0" ) { 
- if ( ! $random_parallel ){
-  foreach $q (@CPUs){ foreach $qp (@CPUs){ foreach $b (@CPUs){
-    $CONDITION="no";
-    if ($q*$qp*$b==$np){ $CONDITION="yes"};
-    if ( $CONDITION=~"yes" and &RUN_PAR_constrains() eq 0){
-     $ir++;
-     $RUN_spec[$ir]="SE_CPU=\"$q.$qp.$b\"";
-    };
-  }}};
-  $Nr=$ir
- } else {
-  $Nr=1;
-  $RUN_spec[1]="SE_CPU=\"$cpu_3_conf\"";
+ foreach $f1 (@QQPB){
+  $Nr++;
+  $RUN_spec[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
  }
  return;
 }
@@ -197,77 +232,56 @@ if ( (($HF=="1" and $GW=="0") or $SC=="1" or ($GW=="1" and $EP=="1") or ($GW=="1
 # RT
 #
 if ($SC=="0" and $NEGF=="1" and $COLL=="0") {
- if ( ! $random_parallel ){
-  foreach $k (@CPUs){ foreach $b (@CPUs){ foreach $q (@CPUs){ foreach $qp (@CPUs){
-    $CONDITION="no";
-    if ($k*$b*$q*${qp}==$np){ $CONDITION="yes"};
-    if ( $CONDITION=~"yes" and &RUN_PAR_constrains() eq 0){
-     $ir++;
-     $RUN_spec[$ir]="RT_CPU=\"$k.$b.$q.${qp}\"";
-  }}}}}
-  $Nr=$ir
- } else {
-  $Nr=1;
-  $RUN_spec[1]="RT_CPU=\"$cpu_4_conf\"";
+ foreach $f1 (@QKQPB){
+  $Nr++;
+  $RUN_spec[$Nr]="RT_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3]\"";
  }
  return;
 }
 #
-# EM1S+Collisions
+# EM1S+Collisions (_RT)
 #
-if ($EM1S=="1" and $COLL=="1") { 
- if ( ! $random_parallel ){
-  foreach $q (@CPUs){ foreach $k (@CPUs){ foreach $c (@CPUs){ foreach $v (@CPUs){
-   foreach $kp (@CPUs){ foreach $b (@CPUs){ foreach $qp (@CPUs){
-    $CONDITION="no";
-    if ($yambo_exec=~"yambo_rt") {
-     if ($q*$k*$c*$v==$np and $kp*$b*$q*${qp}==$np){ $CONDITION="yes"};
-    } else {
-     if ($q*$k*$c*$v==$np and $b*$q*${qp}==$np){ $CONDITION="yes"};
-    }
-    if ( $CONDITION=~"yes" and &RUN_PAR_constrains() eq 0){
-     if ($yambo_exec=~"yambo_rt" ) {
-      $ir++;
-      $RUN_spec[$ir]="X_all_q_CPU=\"$q.$k.$c.$v\" RT_CPU=\"$kp.$b.$q.${qp}\"";
-     }
-     else
-     {
-      $ir++;
-      $RUN_spec[$ir]="X_all_q_CPU=\"$q.$k.$c.$v\" SE_CPU=\"$q.$qp.$b\"";
-     };
-    };
-  }}}}}}};
-  $Nr=$ir
- } else {
-  $Nr=1;
-  if ($yambo_exec=~"yambo_rt" ) {
-   $RUN_spec[1]="X_all_q_CPU=\"$cpu_4_conf\" RT_CPU=\"$cpu_4_conf\"";
-  }
-  else
-  {
-   $RUN_spec[1]="X_all_q_CPU=\"$cpu_4_conf\" SE_CPU=\"$cpu_3_conf\"";
-  };
+if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_rt") { 
+ foreach $f1 (@QKCV){ foreach $f2 (@QKQPB){
+  $Nr++;
+  $RUN_spec[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3]\" RT_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3]\"";
+ }}
+ return;
+}
+#
+# EM1S+Collisions (_SC)
+#
+if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_sc") { 
+ foreach $f1 (@QKCV){ foreach $f2 (@QQPB){
+  $Nr++;
+  $RUN_spec[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
+ }}
+ return;
+}
+#
+# COLLISIONS (_RT)
+#
+if ($COLL=="1" and $yambo_exec=~"yambo_rt"  ) { 
+ foreach $f1 (@QKQPB){
+  $Nr++;
+  $RUN_spec[$Nr]="RT_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3]\"";
  }
  return;
 }
 #
-# COLLISIONS
+# COLLISIONS (_RT)
 #
-if ($COLL=="1" ) { 
- if ( ! $random_parallel ){
-  foreach $q (@CPUs){ foreach $qp (@CPUs){ foreach $b (@CPUs){
-    $CONDITION="no";
-    if ($q*$qp*$b==$np){ $CONDITION="yes"};
-    if ( $CONDITION=~"yes" and &RUN_PAR_constrains() eq 0){
-     $ir++;
-     $RUN_spec[$ir]="SE_CPU=\"$q.$qp.$b\"";
-  }}}}
-  $Nr=$ir
- } else {
-  $Nr=1;
-  $RUN_spec[1]="SE_CPU=\"$cpu_3_conf\"";
+if ($COLL=="1" and $yambo_exec=~"yambo_sc"  ) { 
+ foreach $f1 (@QQPB){
+  $Nr++;
+  $RUN_spec[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
  }
  return;
 }
+# END @
+}
+sub CHECK_me{
+ if (@_[0] <= $MAX_k and  @_[1] <= $MAX_c and @_[2] <= $MAX_v) { return 0};
+ return 1;
 }
 1;

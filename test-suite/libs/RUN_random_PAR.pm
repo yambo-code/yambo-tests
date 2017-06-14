@@ -67,11 +67,5 @@ if ($np_now!=1) {
   $ic++
  }
 }
-if ($n_fields == 3) {
- $cpu_3_conf="$ncpu[0].$ncpu[1].$ncpu[2]";
-}
-if ($n_fields == 4) {
- $cpu_4_conf="$ncpu[0].$ncpu[1].$ncpu[2].$ncpu[3]";
-}
 }
 1;

@@ -23,6 +23,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub COMPILE_find_the_diff{
+if ($dry_run) {return};
 # Try to compile the find_the_diff fortran code if necessary
 if ("@_" =~ "clean"){
  &command("rm -f find_the_diff/find_the_diff.o find_the_diff/find_the_diff find_the_diff/Makefile");

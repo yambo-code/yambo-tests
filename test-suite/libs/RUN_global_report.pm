@@ -42,7 +42,6 @@ if ("$what" eq "INIT") {
  &MESSAGE("REPORT ERROR WHITE","\n$wiggly_line");
  $INITIAL_time   = [gettimeofday];
  $REFERENCE_time = [gettimeofday];
- print $REFERENCE_time;
 }elsif ("$what" eq "TITLE"){
  &RUN_setup("INIT");
  &UTILS_time($date_now,$time_now);

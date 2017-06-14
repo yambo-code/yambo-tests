@@ -22,6 +22,11 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
+sub trace{
+ $trace=1;
+ $trace *= $_ for @_;
+ return $trace;
+}
 sub KILL{
 $cmd="@_";
 my $pid = `ps -awu | grep $user | grep '$cmd' | grep -v grep |  grep -v kill |grep -v null | awk '{P=P" "\$2}END{print P}'`;

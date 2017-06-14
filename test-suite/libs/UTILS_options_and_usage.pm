@@ -74,6 +74,7 @@ my $ret = &GetOptions("h"    => \$help,
             "report"         => \$report,
             "force"          => \$force,
             "ftp"            => \$ftp,
+            "dry"            => \$dry_run,
             "failed=s"       => \$failed
                       );
 #
@@ -132,6 +133,7 @@ sub UTILS_usage {
              -upload <TEST>         Upload the tests/<TEST> directory.
              -failed <ERROR>        Create a failed.pl theme reading the ERROR file
              -b                     BACKUP the LOGs (automatically used when -report is given)
+             -dry                   Run the script in dry mode. Not actual job is launched.
 
    (FTP actions)           
              -u                     UPLOAD the LOGs at the end
