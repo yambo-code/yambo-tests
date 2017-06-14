@@ -1,31 +1,42 @@
 #                                                           
+#   __   __     _        __  __       ____      U  ___  u   
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
 #                                                           
-# Y88b    /   e           e    e      888~~\    ,88~-_      
-#  Y88b  /   d8b         d8b  d8b     888   |  d888   \     
-#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |    
-#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |    
-#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /     
-#    /   /      Y88b /          Y888b 888__/    `88_-~      
 #                                                           
-#                                                           
-#       Version 4.1.2 Revision 14036 Hash 354a690           
-#                       MPI Build                           
-#               http://www.yambo-code.org                   
+#        Version 4.2.0 Revision 14624 Hash 61a2eae          
+#                      MPI+SLK Build                        
+#                http://www.yambo-code.org                  
 #
-RealTime                     # [R] RealTime
-Nbasis=5                     # Number of basis functions
-Nsteps= 15000                # Number of time steps
-Nel= 1                       # Number of active electrons per spin channel
-Tstep=      0.1        au    # Time step
-TstepRhoIO= 100.       au    # Time step
-Vcut_HF=0.1000E-7            # Cutoff on HF Coulomb integrals
-Vcut_2B=0.1000E-7            # Cutoff on 2B Coulomb integrals
-HXC_kind= "HF"               # Approx for self-energy. Available HF / 2B
-Path_eq= "H2_DFT"            # Folder containing dat files
-E_amp=100.000                 # Probe amplitude
-E_time_delay= 0.000000 fs    # Probe delay
-E_duration=  5.        au    # Probe duration
-E_freq= 8.010000       eV    # Probe dominant frequency
-% E_pol
+RealTime                       # [R] RealTime
+Nbasis=  5                     # Number of basis functions
+Nbasis_IO1=  5                 # Number of basis functions in Eks, Vxc, dipoles
+Nbasis_IO2=  5                 # Number of basis functions in collisions
+Nbasis_EMB=0                   # Number of basis functions for embedding self-energy
+Nsteps= 15000                  # Number of time steps
+Nel= 1                         # Number of active electrons per spin channel
+Tstep=  0.10000        au      # Time step
+TstepRhoIO= 100.0000   au      # Time step for rho I/O (No I/O if negative)
+Vcut_HF=0.1000E-7              # Cutoff on HF Coulomb integrals
+Vcut_2B=0.1000E-7              # Cutoff on 2B Coulomb integrals
+HXC_kind= "HF"                 # Approx for self-energy. Available HF / 2B
+ION_kind= "NONE"               # How to describe the ionization process. Available NONE / EMB / WBL / CAP
+Path_eq= "H2_DFT"              # Folder containing dat files
+E_amp1= 0.000000               # Pump amplitude
+E_time_delay1= 0.000000fs      # Pump delay
+E_duration1= 0.000000  fs      # Pump duration
+E_freq1= 0.000000      eV      # Pump dominant frequency
+% E_pol1
+ 2 | 1 | 1 |                             # Pump polarization [xyz]
+%
+E_amp2= 100.0000               # Probe amplitude
+E_time_delay2= 0.000000fs      # Probe delay
+E_duration2= 5.000000  au      # Probe duration
+E_freq2= 8.010000      eV      # Probe dominant frequency
+% E_pol2
  1 | 2 | 1 |                             # Probe polarization [xyz]
 %
