@@ -64,11 +64,11 @@ LOG_LOOP: {
  foreach $file (<LOG/l-*>) {
   open $fh, $file or die;
   while (my $line = <$fh>) {
-   if ($line =~ /Empty workload/ ||  $line =~ /n_t_CPU > n_blocks/) { 
-    $wrong_cpu_conf = 1;
+   if ($line =~ /Empty workload/ || $line =~ /n_t_CPU > n_blocks/) { 
     if ($verb) {
-     &MESSAGE("LOG ERROR WHITE"," WRONG CPU configuration (empty workload for some CPU)");
+     &MESSAGE("LOG"," WRONG CPU configuration (empty workload for some CPU)");
     };
+    $wrong_cpu_conf = 1;
     last LOG_LOOP;
    }
   }
