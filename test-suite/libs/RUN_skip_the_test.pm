@@ -51,9 +51,11 @@ if ( "@_" eq "DIR" ){
  }
  if (!-e "SAVE/ns.db1" and !-e "SAVE_backup/ns.db1") { $message=" skipped (missing CORE databases)"};
  if (-e "BROKEN" and ! $force) {$message=" (broken)"};
- if (-e "PARALLEL_2" && $np>2 ) {$message=" skipped (Too many CPU's)"};
- if (-e "PARALLEL_4" && $np>4 ) {$message=" skipped (Too many CPU's)"};
- if (-e "PARALLEL_8" && $np>8 ) {$message=" skipped (Too many CPU's)"};
+ if (-e "PARALLEL_2" && $np>2   ) {$message=" skipped (Too many CPUs)"};
+ if (-e "PARALLEL_4" && $np>4   ) {$message=" skipped (Too many CPUs)"};
+ if (-e "PARALLEL_8" && $np>8   ) {$message=" skipped (Too many CPUs)"};
+ if (-e "PARALLEL_16" && $np>16 ) {$message=" skipped (Too many CPUs)"};
+ if (-e "THREADS_8"   && $nt>8  ) {$message=" skipped (Too many Threads)"};
  if (-e "HARD" and $project !~ /hard/) {$message= " skipped (H)"};
 }
 #
