@@ -169,7 +169,9 @@ program find_the_diff
          do i_t=1,ref%N_col
            if (len_trim(titles(i_c))==0) cycle
            if (len_trim(RULES(i_r)%title(i_t))==0) cycle
-           if (.not.skip_column(i_c)) skip_column(i_c)=index(titles(i_c),trim(RULES(i_r)%title(i_t)))>0
+           if (.not.skip_column(i_c).and.len_trim(RULES(i_r)%title(i_t))>0) then
+             skip_column(i_c)=index(titles(i_c),trim(RULES(i_r)%title(i_t)))>0
+           endif
          enddo
        enddo
      endif

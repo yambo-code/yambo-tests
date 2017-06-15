@@ -58,10 +58,6 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
       RULES(i_rule)%whitelisted=.TRUE.
     endif
     !
-    if (RULE=="skip".and..not.present(COL).and..not.present(COLS)) then
-      RULES(i_rule)%column=1
-    endif
-    !
     if (present(MATERIAL)) then
       RULES(i_rule)%material=trim(str(i_r))
     endif
@@ -103,6 +99,10 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
     !
     if (present(REF_col)) then
       RULES(i_rule)%REF_col=REF_col
+    endif
+    !
+    if (RULE=="skip".and..not.present(COL).and..not.present(COLS).and..not.present(TITLE).and..not.present(TITLEs)) then
+      RULES(i_rule)%column=1
     endif
     !
   enddo
