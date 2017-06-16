@@ -83,7 +83,6 @@ if ("$what" eq "BASIC") {
  if (!$reduced_log) {
   # find_the_diff
   &MY_PRINT($stdout, " - Check requirements : ");
-  if($nccopy)   {&MY_PRINT($stdout, "...$nccopy")};
   if($ncftp)    {&MY_PRINT($stdout, "...$ncftp")};
   if($ncftpls)  {&MY_PRINT($stdout, "...$ncftpls")};
   if($ncftpput) {&MY_PRINT($stdout, "...$ncftpput")};

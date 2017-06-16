@@ -53,11 +53,7 @@ AC_SUBST(user)
 AC_SUBST(robot)
 # ============================================================================
 # TOOLS
-# ncftp/ncftpls/ncftpput/nccopy
-with_nccopy="nccopy"
-AC_ARG_WITH(nccopy, AC_HELP_STRING([--with-nccopy=<exe>],[User-defined nccopy],[32]),[],[with_nccopy="nccopy"]) 
-AC_CHECK_PROGS(nccopy,[$with_nccopy],[none])
-AC_SUBST(nccopy)
+# ncftp/ncftpls/ncftpput
 with_ncftp="ncftp"
 AC_ARG_WITH(ncftp, AC_HELP_STRING([--with-ncftp=<exe>],[User-defined ncftp],[32]),[],[with_ncftp="ncftp"]) 
 AC_CHECK_PROGS(ncftp,[$with_ncftp],[none])
