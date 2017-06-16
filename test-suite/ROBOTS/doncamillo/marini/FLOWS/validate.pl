@@ -8,11 +8,11 @@
  KEYS        => "all hard",
 },
 {
- MPI_CPU     => $SYSTEM_NP,
+ MPI_CPU     => 8,
  PAR_MODE    => "default",
 },
 {
- MPI_CPU     => $SYSTEM_NP,
+ MPI_CPU     => 8,
  PAR_MODE    => "random",
 },
 {
@@ -20,10 +20,10 @@
  PAR_MODE    => "loop",
 },
 {
- THREADS     => $SYSTEM_NP,
+ THREADS     => 4,
 },
 {
- MPI_CPU     => $SYSTEM_NP,
+ MPI_CPU     => 8,
  SLK_CPU     => 4,
  PAR_MODE    => "default",
 },
