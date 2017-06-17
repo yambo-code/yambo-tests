@@ -2,16 +2,17 @@
 #
 @flow = (
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  CONFIG      => "default.sh",
- KEYS        => "nopj elph sc hard",
+ TESTS       => "all",
+ KEYS        => "all hard",
 },
 {
- MPI_CPU     => 16,
+ MPI_CPU     => 8,
  PAR_MODE    => "default",
 },
 {
- MPI_CPU     => 16,
+ MPI_CPU     => 8,
  PAR_MODE    => "random",
 },
 {
@@ -19,15 +20,15 @@
  PAR_MODE    => "loop",
 },
 {
- THREADS     => 16,
+ THREADS     => 8,
 },
 {
- MPI_CPU     => 32,
- SLK_CPU     => 16,
+ MPI_CPU     => 8,
+ SLK_CPU     => 4,
  PAR_MODE    => "default",
 },
 {
- MPI_CPU     => 16,
+ MPI_CPU     => 8,
  THREADS     => 2,
  SLK_CPU     => 4,
  PAR_MODE    => "default",

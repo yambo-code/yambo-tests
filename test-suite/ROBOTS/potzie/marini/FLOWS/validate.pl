@@ -2,7 +2,7 @@
 #
 @flow = (
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  CONFIG      => "default.sh",
  TESTS       => "all",
  KEYS        => "all hard",
@@ -28,7 +28,7 @@
  PAR_MODE    => "default",
 },
 {
- MPI_CPU     => $SYSTEM_NP,
+ MPI_CPU     => 8,
  THREADS     => 2,
  SLK_CPU     => 4,
  PAR_MODE    => "default",
