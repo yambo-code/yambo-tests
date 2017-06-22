@@ -23,6 +23,7 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
+use lib ".";
 do "config/MODULES.pl";
 do "config/TOOLS.pl";
 #
