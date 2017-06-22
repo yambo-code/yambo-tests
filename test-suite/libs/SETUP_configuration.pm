@@ -158,7 +158,7 @@ for $check_exec (@executables){
   &MY_PRINT($stdout, "($check_exec $g_s OK $g_e) ")
  }else{
   &MY_PRINT($stdout, "($check_exec $r_s FAIL $r_e)")
-  &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH, skipping...\n");
+  &MY_PRINT($stdout, "\n\nCore executable $check_exec missing from $BRANCH, skipping...\n");
   return "FAIL";
  };
 }

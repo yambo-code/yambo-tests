@@ -35,6 +35,9 @@ call add_RULE(".YPP-RT_Temperatures","whitelist")
 ! It seems like in a parallel run the energy explodes. Accumulation of errors?
 call add_RULE("o-03_tdlda.energy","whitelist",MATERIAL="H2")
 !
+! Thermodynamics is affected by numerical noise due to addition/removal of values.
+call add_RULE(".thermodynamics","whitelist")
+!
 ! MAGNETIC
 !==========
 ! Potential bugs and/or numerical problems.
