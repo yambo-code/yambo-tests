@@ -33,7 +33,12 @@ LOOP: for (my $il=0; $il<=$#INPUT ; $il++){
 return "$result";
 }
 sub RUN_input_load{
-open(INFILE,"<","$input_folder/$testname");
+if (-f "BASE_input") 
+{
+ open(INFILE,"<","BASE_input");
+}else{
+ open(INFILE,"<","$input_folder/$testname");
+}
 @INPUT=" ";
 my $il=-1;
 LOOP: while(<INFILE>) { 

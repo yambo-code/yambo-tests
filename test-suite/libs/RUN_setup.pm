@@ -57,7 +57,7 @@ if ("@_" =~ "before_run"){
  &command("rm -fr $dir_name $testname");
  #
  # input file
- &command("cat $cpu $input_folder/$testname > yambo.in");
+ &command("cat $cpu $input_folder/$testname >> yambo.in");
  if( -e "$suite_dir/$host/$user/FLAGS") {&command("cat $suite_dir/$host/$user/FLAGS >> yambo.in")};
  #
  # append specs

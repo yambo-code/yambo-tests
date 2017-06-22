@@ -79,13 +79,15 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
   &MY_PRINT($stdout, "\nRunning input: $testname\n") if ($verb);
   #
+  # Do actions (if any)
+  &RUN_load_actions;
+  #
   # Input file dump
   #
   &RUN_input_load;
   #
   # Runlevels
-  &RUN_get_runlevels("$input_folder/$testname");
-  if (-f "BASE_input") {&RUN_get_runlevels("BASE_input")};
+  &RUN_get_runlevels;
   #
   # EXE for this runlevel
   &RUN_executables;
@@ -109,9 +111,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    #
    &RUN_setup("before_run");
    #
-   # Do actions (if any)
-   &RUN_load_actions;
-   #
    # Check if extra flags are needed (JOB specific)
    $error=&RUN_user_flags($ir);
    if ($error =~ "OK") { 
@@ -128,6 +127,9 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
     $CHECK_error="Source-Run FAILED";
     &RUN_stats("WRONG_DEP");
    }
+   #
+   &command("rm -f yambo.in");
+   #
   }
   #
  } # End loop on input files
