@@ -3,7 +3,7 @@
 @flow = (
 {
  ACTIVE      => "no",
- CONFIG      => "default.sh",
+# CONFIG      => "default.sh",
  TESTS       => "all",
  KEYS        => "all hard",
 },
