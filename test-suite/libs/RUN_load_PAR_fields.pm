@@ -82,7 +82,7 @@ if ($random_parallel)
  @KCV[0]=[@ncpu];
  #
  &RUN_random_PAR(4);
- while (&CHECK_me($ncpu[0],$ncpu[2],$ncpu[3]) eq 1 and &CHECK_me($ncpu[1],$ncpu[2],$ncpu[3])){&RUN_random_PAR(4)};
+ while (&CHECK_me($ncpu[0],$ncpu[2],$ncpu[3]) eq 1 or &CHECK_me($ncpu[1],$ncpu[2],$ncpu[3])){&RUN_random_PAR(4)};
  @QKCV[0]=[@ncpu];
  #
  &RUN_random_PAR(3);
@@ -90,11 +90,11 @@ if ($random_parallel)
  @QQPB[0]=[@ncpu];
  #
  &RUN_random_PAR(3);
- while (&CHECK_me($ncpu[0],0,0) eq 1 and $ncpu[2]<=$ncpu[0]*$ncpu[1]){&RUN_random_PAR(3)};
+ while (&CHECK_me($ncpu[0],0,0) eq 1 or $ncpu[2]<=$ncpu[0]*$ncpu[1]){&RUN_random_PAR(3)};
  @KEHT[0]=[@ncpu];
  #
  &RUN_random_PAR(4);
- while (&CHECK_me($ncpu[0],$ncpu[3],$ncpu[3]) eq 1 and &CHECK_me($ncpu[1],$ncpu[3],$ncpu[3])){&RUN_random_PAR(3)};
+ while (&CHECK_me($ncpu[0],$ncpu[3],$ncpu[3]) eq 1 or &CHECK_me($ncpu[1],$ncpu[3],$ncpu[3]) eq 1){&RUN_random_PAR(4)};
  @QKQPB[0]=[@ncpu];
  #
 }else{
@@ -283,5 +283,76 @@ if ($COLL=="1" and $yambo_exec=~"yambo_sc"  ) {
 sub CHECK_me{
  if (@_[0] <= $MAX_k and  @_[1] <= $MAX_c and @_[2] <= $MAX_v) { return 0};
  return 1;
+}
+1;
+#
+#        Copyright (C) 2000-2017 the YAMBO team
+#              http://www.yambo-code.org
+#
+# Authors (see AUTHORS file for details): AM
+#
+# Based on the original driver written by CH
+#
+# This file is distributed under the terms of the GNU
+# General Public License. You can redistribute it and/or
+# modify it under the terms of the GNU General Public
+# License as published by the Free Software Foundation;
+# either version 2, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will
+# be useful, but WITHOUT ANY WARRANTY; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License
+# for more details.
+#
+# You should have received a copy of the GNU General Public
+# License along with this program; if not, write to the Free
+# Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
+#
+sub RUN_random_PAR{
+$n_fields=$_[0];
+if ($n_fields == 3) {
+@icpu = qw(1 2 3);
+@ncpu = qw(1 1 1)
+}
+if ($n_fields == 4) {
+@icpu = qw(1 2 3 4);
+@ncpu = qw(1 1 1 1)
+}
+#
+$ic=0;
+while ($ic<=$n_fields-1) {
+  my $random_i = int(rand($n_fields));
+  $i_dummy=$icpu[$ic];
+  $icpu[$ic]=$icpu[$random_i];
+  $icpu[$random_i]=$i_dummy;
+  $ic++
+};
+#
+$np_now=$np;
+my $max_random_np=8;
+$ic=0;
+while ($ic<=$n_fields-1) {
+ $icp=$icpu[$ic]-1;
+ if ($np_now!=1) {
+  $random_cpu = int(rand($max_random_np))+1;
+  while (int($np_now/$random_cpu) != $np_now/$random_cpu){
+    $random_cpu = int(rand($max_random_np))+1;
+  }
+  $np_now=$np_now/$random_cpu;
+  $ncpu[$icp]=$random_cpu;
+ }
+ $ic++;
+}
+$ic=0;
+if ($np_now!=1) {
+ while ($ic<=$n_fields-1) {
+  if ($ncpu[$ic] == 1) { 
+    $ncpu[$ic]=$np_now;
+    $np_now=1;
+  }
+  $ic++
+ }
+}
 }
 1;

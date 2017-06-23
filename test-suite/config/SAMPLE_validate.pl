@@ -4,7 +4,7 @@
 {
  ACTIVE      => "yes",
  CONFIG      => "default.sh",
- KEYS        => "nopj elph sc hard",
+ KEYS        => "all hard",
 },
 {
  MPI_CPU     => $SYSTEM_NP,

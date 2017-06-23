@@ -73,6 +73,9 @@ sub CHECK_the_error_list{
   if ($line =~ /@_[0]/ and $line =~ /FAILED/) {
    return "FAIL";
   }
+  if ($line =~ /@_[0]/ and $line =~ /NO/ and $line =~ /in OUTPUT/) {
+   return "FAIL";
+  }
  }
  return "OK";
 }
