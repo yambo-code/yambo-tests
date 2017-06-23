@@ -32,7 +32,7 @@ $cmd="@_";
 my $pid = `ps -awu | grep $user | grep '$cmd' | grep -v grep |  grep -v kill |grep -v null | awk '{P=P" "\$2}END{print P}'`;
 chomp($pid);
 print "\n Killing @_ with PID |$pid|\n" if ($verb);
-&command("kill -9 $pid");
+if (not "$pid" eq "") {&command("kill -9 $pid")};
 }
 sub command{
 $cmd="@_";

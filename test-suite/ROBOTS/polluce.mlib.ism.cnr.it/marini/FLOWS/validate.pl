@@ -4,7 +4,8 @@
 {
  ACTIVE      => "yes",
  CONFIG      => "default.sh",
- KEYS        => "all hard",
+ KEYS        => "rt hard",
+# KEYS        => "all hard",
 },
 {
  MPI_CPU     => 8,
