@@ -71,7 +71,7 @@ if ("@_" eq "ERR_OUT"){
  $err_msg=$testdir."/".$dir_name."/".$run_filename."  :";
  if ($CHECK_error =~ /WHITELISTED/) {
   &MESSAGE("LOG","\n"."$msg"."[$r_s WHITELISTED $r_e]");
-  $CHECK_error =~ s/\[\>WHITELISTED\<\]/ /;
+  if (not $update_test) {$CHECK_error =~ s/\[\>WHITELISTED\<\]/ /};
   &MESSAGE("WHITE","\n"."$err_msg"."$r_s $CHECK_error   $r_e");
   $whitelist_err++;
  }else{

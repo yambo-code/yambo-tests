@@ -31,7 +31,6 @@ call add_RULE(".energy","skip",TITLES=(/"dE_xc [eV]","dE_tot[eV]"/),MATERIAL="Mo
 call add_RULE(".YPP-RT_","no_statistics",MATERIAL="Si_bulk")
 call add_RULE(".carriers","no_statistics",VAL_treshold=1.E-7,MATERIAL="hBN AlAs")
 call add_RULE(".energy","no_statistics",USER_prec=5/100.,MATERIAL="hBN AlAs")
-call add_RULE(".YPP-RT_occupations_"," ",USER_error=0.001,MATERIAL="Si_bulk")
 !
 ! KERR
 !======

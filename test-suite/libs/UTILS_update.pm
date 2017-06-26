@@ -87,7 +87,7 @@ if (not -d $REF_folder)
  &command("mkdir $REF_folder");
  &command("svn --force add $REF_folder"."@");
 };
-if ("@_" eq "RM"){
+if ("@_" eq "RM" and "$REF_folder" eq "REFERENCE"){
  &command("svn --force del $ref_filename"."@");
 }
 if ("@_" eq "ADD")
