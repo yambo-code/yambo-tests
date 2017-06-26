@@ -18,18 +18,16 @@
 ! RT
 !====
 call add_RULE(".YPP-RT_occupations_DATA","skip",MATERIAL="Si_bulk")
+call add_RULE(".YPP-RT_","no_statistics",MATERIAL="Si_bulk")
 call add_RULE(".mean_EPlifetimes","skip",TITLES=(/"T Hole  [K]","T Elec  [K]"/),MATERIAL="Si_bulk")
 call add_RULE(".current","average",COLS=(/2,3,4/),VAL_treshold=1.E-10,MATERIAL="hBN AlAs Si_bulk")
 call add_RULE(".polarization","average",COLS=(/2,3,4/),MATERIAL="hBN AlAs")
 call add_RULE("-eps_along_E","skip",TITLES=(/"eps_d2","eps_d3"/),MATERIAL="hBN AlAs MoS2 WSe2 H2")
 call add_RULE("-eels_along_E","skip",TITLES=(/"eel_d2","eel_d3"/),MATERIAL="hBN AlAs MoS2 WSe2 H2")
-call add_RULE(".carriers","skip",TITLE="dN",MATERIAL="Si_bulk")
-call add_RULE(".carriers","skip",TITLES=(/"T(hol) [K]","T(el)  [K]"/),MATERIAL="MoS2 WSe2 Si_bulk")
-call add_RULE(".energy","skip",TITLES=(/"dE_xc [eV]","dE_tot[eV]"/),MATERIAL="MoS2 WSe2")
 call add_RULE(".N_dN_E_conservation_factors","skip",MATERIAL="Si_bulk")
+call add_RULE(".carriers","skip",TITLES=(/"T(hol) [K]","T(el)  [K]"/),MATERIAL="MoS2 WSe2 Si_bulk")
+call add_RULE(".carriers","no_statistics",VAL_treshold=1.E-7,MATERIAL="hBN AlAs MoS2 WSe2 Si_bulk")
 call add_RULE(".energy","skip",TITLES=(/"dE_xc [eV]","dE_tot[eV]"/),MATERIAL="MoS2 WSe2")
-call add_RULE(".YPP-RT_","no_statistics",MATERIAL="Si_bulk")
-call add_RULE(".carriers","no_statistics",VAL_treshold=1.E-7,MATERIAL="hBN AlAs")
 call add_RULE(".energy","no_statistics",USER_prec=5/100.,MATERIAL="hBN AlAs")
 !
 ! KERR

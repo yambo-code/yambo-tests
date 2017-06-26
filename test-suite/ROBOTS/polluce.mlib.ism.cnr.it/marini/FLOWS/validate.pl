@@ -4,8 +4,8 @@
 {
  ACTIVE      => "yes",
  CONFIG      => "default.sh",
- KEYS        => "rt hard",
-# KEYS        => "all hard",
+# KEYS        => "rt hard",
+ KEYS        => "all hard",
 },
 {
  MPI_CPU     => 8,
@@ -16,6 +16,7 @@
  PAR_MODE    => "random",
 },
 {
+ ACTIVE      => "no",
  MPI_CPU     => 4,
  PAR_MODE    => "loop",
 },
