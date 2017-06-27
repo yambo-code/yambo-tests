@@ -28,6 +28,7 @@ my $path="@_/$input_folder";
 LOOP: foreach $test ( <$path/*> ) { 
  if (index($test, ".conf")>0) {next LOOP};
  if (index($test, ".actions")>0) {next LOOP};
+ if (index($test, ".input")>0) {next LOOP};
  if (index($test, ".flags")>0) {next LOOP};
  my $name = substr($test,length($path)+1,length($test)) ;
  $tests_list="$tests_list $name";

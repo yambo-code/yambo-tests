@@ -25,16 +25,16 @@
 sub RUN_load_actions{
 ## Actions files must direct STDERR to /dev/null
 ## A cleaner way would be to parse mkdir, cp etc into perl commands.
-if( -e "$input_folder/$testname.actions") {
- open(ACTIONS,"<","$input_folder/$testname.actions");
- &MY_PRINT($stdout, "ACTION file:$input_folder/$testname.actions \n") if ($verb);
+if( -e "$input_folder/$testname"."$_[0]") {
+ open(ACTIONS,"<","$input_folder/$testname"."$_[0]");
+ &MY_PRINT($stdout, "ACTION file:$input_folder/$testname"."$_[0] \n") if ($verb);
  @actions_file = <ACTIONS>;
  while($actions_cmd = shift(@actions_file)) {
   chomp($actions_cmd);
   &command("$actions_cmd");
  }
  close(ACTIONS);
- if( -e "BASE_input") {  &command("cat BASE_input >> yambo.in") };
+ if ( -e "BASE_input" and "$_[0]" eq ".input") {  &command("cat BASE_input >> yambo.in") };
 }
 }
 1;

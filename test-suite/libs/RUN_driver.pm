@@ -79,8 +79,9 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
   &MY_PRINT($stdout, "\nRunning input: $testname\n") if ($verb);
   #
-  # Do actions (if any)
-  &RUN_load_actions;
+  # Do actions and create the input (if any)
+  &RUN_load_actions(".actions");
+  &RUN_load_actions(".input");
   #
   # Input file dump
   #
@@ -106,6 +107,9 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
   # Do the actual run!
   LOOP: for ($ir=1; $ir<=$Nr ; $ir++){
+   #
+   # Re-Create the input (if any)
+   &RUN_load_actions(".input");
    #
    $string=$RUN_spec[$ir];
    #

@@ -21,6 +21,7 @@ call add_RULE("o-03_optics.eps_q1_inv_rpa_dyson","whitelist",MATERIAL="Dummy")
 !====
 ! Noise...(?)
 call add_RULE("03_fit_elel.YPP-RT_NEQ_linewidths","whitelist",MATERIAL="Si_bulk")
+call add_RULE("o-03_elel_SEX.carriers","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-04_fit_elel_plasma.YPP-RT_NEQ_linewidths","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-14_plot_0K_field_ad.YPP-RT_occupations","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-04_ypp_fit_occ.","whitelist",MATERIAL="WSe2")
@@ -65,4 +66,3 @@ call add_RULE("o-06_ypp_sort.exc_I_sorted","whitelist",MATERIAL="hBN")
 ! SC
 !=====
 call add_RULE("o-06_h_using_colls.SC_E_History","whitelist",MATERIAL="Si_bulk")
-
