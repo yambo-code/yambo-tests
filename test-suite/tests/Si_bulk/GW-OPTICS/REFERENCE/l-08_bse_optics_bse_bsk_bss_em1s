@@ -1,12 +1,12 @@
 
 
- __   __  _______  __   __  _______  _______
-|  | |  ||   _   ||  |_|  ||  _    ||       |
-|  |_|  ||  |_|  ||       || |_|   ||   _   |
-|       ||       ||       ||       ||  | |  |
-|_     _||       ||       ||  _   | |  |_|  |
-  |   |  |   _   || ||_|| || |_|   ||       |
-  |___|  |__| |__||_|   |_||_______||_______|
+ __    __ ______           ____     _____
+/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
+\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
+ `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
+   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
+     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
+      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
 
 
  <---> [01] CPU structure, Files & I/O Directories
@@ -17,157 +17,405 @@
  <---> [02.04] K-grid lattice
  <---> [02.05] Energies [ev] & Occupations
  <---> [03] Transferred momenta grid
- <---> [04] External corrections
- <---> [04.01] External QP corrections (K)
- <---> [QP@K] E<03GoWo_PPA_corrections/ndb.QP[ PPA XG:9 Xb:1  10 Scb:1  10]
- <---> [QP] Kpts covered exactly  [o/o]: 80.00000
- <---> [Interpolate] Nighbours         : 1
- <---> [Interpolate] Kpts covered [o/o]: 20.00000
- <---> [05] Static Dielectric Matrix
- <---> [06] Response Functions in Transition space
- <---> [06.01] Transition Groups build-up
- <---> [06.02] CPU-dependent Block structure
- <---> [M  0.024 Gb] Alloc BSK ( 0.022)
+ <---> [MEMORY] Alloc qindx_B(512Kb) TOTAL: 1Mb (traced) 14Mb (memstat)
+ <---> [MEMORY] Alloc bare_qpg(309Kb) TOTAL: 1Mb (traced) 14Mb (memstat)
+ <---> [03.01] External/Internal QP corrections
+ <---> E<03GoWo_PPA_corrections/ndb.QP[ E-E PPA: 27.21138 XG:  9 Xb:  1  10 Scb:  1  10]
+ <---> [QP_ctl (Nearest K-pt)] Kpts covered exactly  [o/o]: 80.00000
+ <---> [QP_ctl (Nearest K-pt)] Nighbours         : 1
+ <---> [QP_ctl (Nearest K-pt)] Kpts covered [o/o]: 20.00000
+ <---> [04] Static Dielectric Matrix
+ <---> [MEMORY] 512Kb :qindx_B ([03] Transferred momenta grid)
+ <---> [MEMORY]TOTAL unallocated : 1Mb
+ <---> [05] Response Functions in Transition space
+ <---> [05.01] Transition Groups build-up
+ <---> [05.02] CPU-dependent Block structure
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 1Mb (traced) 15Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 1Mb (traced) 15Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 1Mb (traced) 15Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 1Mb (traced) 15Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(243Kb) TOTAL: 2Mb (traced) 15Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(243Kb) TOTAL: 2Mb (traced) 16Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 2Mb (traced) 16Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 2Mb (traced) 16Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 3Mb (traced) 16Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 3Mb (traced) 17Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 3Mb (traced) 17Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 4Mb (traced) 17Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 4Mb (traced) 18Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 5Mb (traced) 19Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 5Mb (traced) 19Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 6Mb (traced) 19Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 6Mb (traced) 20Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 6Mb (traced) 20Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 7Mb (traced) 20Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 7Mb (traced) 21Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 8Mb (traced) 21Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 8Mb (traced) 22Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 9Mb (traced) 22Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 9Mb (traced) 22Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 9Mb (traced) 23Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 10Mb (traced) 23Mb (memstat)
+ <---> [MEMORY] In use: TOTAL: 10Mb (traced) 23Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 10Mb (traced) 24Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 11Mb (traced) 24Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 11Mb (traced) 25Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 12Mb (traced) 25Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 12Mb (traced) 25Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 12Mb (traced) 26Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 13Mb (traced) 26Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 13Mb (traced) 27Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 14Mb (traced) 28Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 14Mb (traced) 28Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 14Mb (traced) 28Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 15Mb (traced) 29Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(1Mb) TOTAL: 16Mb (traced) 30Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(1Mb) TOTAL: 18Mb (traced) 31Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 18Mb (traced) 32Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(243Kb) TOTAL: 19Mb (traced) 32Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 19Mb (traced) 33Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(1Mb) TOTAL: 21Mb (traced) 34Mb (memstat)
+ <---> [MEMORY] In use: TOTAL: 21Mb (traced) 34Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 21Mb (traced) 35Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(243Kb) TOTAL: 22Mb (traced) 35Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(729Kb) TOTAL: 22Mb (traced) 36Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 23Mb (traced) 36Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 23Mb (traced) 36Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 23Mb (traced) 37Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(121Kb) TOTAL: 23Mb (traced) 37Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%mat(364Kb) TOTAL: 24Mb (traced) 37Mb (memstat)
  <---> [BSK] Size (resonant) 2304
  <---> [BSK]         (total) 2304
- <---> [06.03] Independent Particles absorption
+ <---> [05.03] Independent Particles absorption
  <---> [DIP] Checking dipoles header
- <---> [06.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
- <---> [06.04.01] Screened interaction header I/O
+ <---> [05.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
+ <---> [05.04.01] Screened interaction header I/O
+ <---> [MEMORY] Alloc fft_rot_r(324Kb) TOTAL: 24Mb (traced) 38Mb (memstat)
+ <---> [MEMORY] Alloc WF%c(810Kb) TOTAL: 25Mb (traced) 39Mb (memstat)
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
  <---> [FFT-BSK] Mesh size: 12  12  12
- <---> [06.04.02] Wave-Function Phases
- <---> [06.04.03] Kernel loop
+ <---> [05.04.02] Wave-Function Phases
+ <---> [MEMORY] Alloc BS_W(216Kb) TOTAL: 25Mb (traced) 39Mb (memstat)
+ <---> [05.04.03] Kernel loop
  <---> Kernel |                                        | [000%] --(E) --(X)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(128Kb) TOTAL: 25Mb (traced) 40Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(214Kb) TOTAL: 26Mb (traced) 40Mb (memstat)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(386Kb) TOTAL: 26Mb (traced) 40Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 27Mb (traced) 41Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(214Kb) TOTAL: 26Mb (traced) 41Mb (memstat)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(386Kb) TOTAL: 27Mb (traced) 41Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 28Mb (traced) 42Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 27Mb (traced) 42Mb (memstat)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(386Kb) TOTAL: 27Mb (traced) 41Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 28Mb (traced) 42Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 27Mb (traced) 42Mb (memstat)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(386Kb) TOTAL: 28Mb (traced) 42Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 28Mb (traced) 42Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 28Mb (traced) 42Mb (memstat)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(772Kb) TOTAL: 28Mb (traced) 42Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 29Mb (traced) 44Mb (memstat)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(772Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <---> [MEMORY] In use: TOTAL: 31Mb (traced) 45Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(386Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(128Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(257Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 29Mb (traced) 44Mb (memstat)
+ <---> [MEMORY] Alloc BS_T_grp(iG)%O_x(386Kb) TOTAL: 29Mb (traced) 44Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(257Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(644Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <---> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <---> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <01s> [MEMORY] Free BS_blk(iB)%O_c(644Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <01s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <01s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <01s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <01s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <01s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 32Mb (traced) 45Mb (memstat)
+ <01s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <01s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 32Mb (traced) 47Mb (memstat)
+ <01s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <01s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 32Mb (traced) 47Mb (memstat)
+ <02s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <02s> [MEMORY] Alloc BS_blk(iB)%O_c(601Kb) TOTAL: 31Mb (traced) 44Mb (memstat)
+ <02s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <02s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 44Mb (memstat)
+ <02s> [MEMORY] Free BS_blk(iB)%O_c(601Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <02s> [MEMORY] Alloc BS_blk(iB)%O_c(644Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <02s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <02s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <02s> [MEMORY] Free BS_blk(iB)%O_c(644Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <02s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <02s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <02s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 32Mb (traced) 46Mb (memstat)
+ <02s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 46Mb (memstat)
+ <02s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 32Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 32Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Alloc BS_blk(iB)%O_c(601Kb) TOTAL: 31Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Free BS_blk(iB)%O_c(601Kb) TOTAL: 30Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Alloc BS_blk(iB)%O_c(644Kb) TOTAL: 31Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Free BS_blk(iB)%O_c(644Kb) TOTAL: 30Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 32Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 46Mb (memstat)
+ <03s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 32Mb (traced) 47Mb (memstat)
+ <04s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <04s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 32Mb (traced) 47Mb (memstat)
+ <04s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <04s> [MEMORY] Alloc BS_blk(iB)%O_c(601Kb) TOTAL: 31Mb (traced) 44Mb (memstat)
+ <04s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <04s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 44Mb (memstat)
+ <04s> [MEMORY] Free BS_blk(iB)%O_c(601Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <04s> [MEMORY] Alloc BS_blk(iB)%O_c(644Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <04s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <04s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 46Mb (memstat)
+ <04s> [MEMORY] Free BS_blk(iB)%O_c(644Kb) TOTAL: 31Mb (traced) 46Mb (memstat)
+ <04s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 32Mb (traced) 48Mb (memstat)
+ <04s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 48Mb (memstat)
+ <04s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 32Mb (traced) 48Mb (memstat)
+ <05s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 48Mb (memstat)
+ <05s> [MEMORY] Alloc BS_blk(iB)%O_c(601Kb) TOTAL: 31Mb (traced) 44Mb (memstat)
+ <05s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <05s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 44Mb (memstat)
+ <05s> [MEMORY] Free BS_blk(iB)%O_c(601Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <05s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <05s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
  <05s> Kernel |###########################             | [068%] 05s(E) 07s(X)
- <08s> Kernel |########################################| [100%] 07s(E) 07s(X)
- <08s> [07] BSE solver(s)
- <08s> [07.01] Haydock solver
- <08s> [Haydock] Iteration 1
- <08s> [Haydock] Iteration 2
- <08s> [Haydock] Iteration 3 Accuracy : 15.37329|0.1000E-2
- <08s> [Haydock] Iteration 4 Accuracy : 8.293165|0.1000E-2
- <08s> [Haydock] Iteration 5 Accuracy : 5.161300|0.1000E-2
- <08s> [Haydock] Iteration 6 Accuracy : 14.65844|0.1000E-2
- <08s> [Haydock] Iteration 7 Accuracy : 6.276601|0.1000E-2
- <08s> [Haydock] Iteration 8 Accuracy : 2.742774|0.1000E-2
- <08s> [Haydock] Iteration 9 Accuracy : 2.690126|0.1000E-2
- <08s> [Haydock] Iteration 10 Accuracy : 6.587289|0.1000E-2
- <08s> [Haydock] Iteration 11 Accuracy : 7.098918|0.1000E-2
- <08s> [Haydock] Iteration 12 Accuracy : 1.926624|0.1000E-2
- <08s> [Haydock] Iteration 13 Accuracy : 6.154417|0.1000E-2
- <08s> [Haydock] Iteration 14 Accuracy : 3.059206|0.1000E-2
- <08s> [Haydock] Iteration 15 Accuracy : 3.106702|0.1000E-2
- <08s> [Haydock] Iteration 16 Accuracy : 3.578727|0.1000E-2
- <09s> [Haydock] Iteration 17 Accuracy : 2.855330|0.1000E-2
- <09s> [Haydock] Iteration 18 Accuracy : 2.090729|0.1000E-2
- <09s> [Haydock] Iteration 19 Accuracy : 1.978310|0.1000E-2
- <09s> [Haydock] Iteration 20 Accuracy : 1.995402|0.1000E-2
- <09s> [Haydock] Iteration 21 Accuracy : 1.919862|0.1000E-2
- <09s> [Haydock] Iteration 22 Accuracy : 0.921229|0.1000E-2
- <09s> [Haydock] Iteration 23 Accuracy : 2.153605|0.1000E-2
- <09s> [Haydock] Iteration 24 Accuracy : 1.273003|0.1000E-2
- <09s> [Haydock] Iteration 25 Accuracy : 1.281835|0.1000E-2
- <09s> [Haydock] Iteration 26 Accuracy : 1.481783|0.1000E-2
- <09s> [Haydock] Iteration 27 Accuracy : 1.368252|0.1000E-2
- <09s> [Haydock] Iteration 28 Accuracy : 1.201062|0.1000E-2
- <09s> [Haydock] Iteration 29 Accuracy : 1.006770|0.1000E-2
- <09s> [Haydock] Iteration 30 Accuracy : 1.126033|0.1000E-2
- <09s> [Haydock] Iteration 31 Accuracy : 0.996088|0.1000E-2
- <09s> [Haydock] Iteration 32 Accuracy : 0.900922|0.1000E-2
- <09s> [Haydock] Iteration 33 Accuracy : 0.875056|0.1000E-2
- <09s> [Haydock] Iteration 34 Accuracy : 0.836660|0.1000E-2
- <09s> [Haydock] Iteration 35 Accuracy : 0.563923|0.1000E-2
- <10s> [Haydock] Iteration 36 Accuracy : 0.711920|0.1000E-2
- <10s> [Haydock] Iteration 37 Accuracy : 0.619831|0.1000E-2
- <10s> [Haydock] Iteration 38 Accuracy : 0.575678|0.1000E-2
- <10s> [Haydock] Iteration 39 Accuracy : 0.502954|0.1000E-2
- <10s> [Haydock] Iteration 40 Accuracy : 0.508360|0.1000E-2
- <10s> [Haydock] Iteration 41 Accuracy : 0.402800|0.1000E-2
- <10s> [Haydock] Iteration 42 Accuracy : 0.457147|0.1000E-2
- <10s> [Haydock] Iteration 43 Accuracy : 0.385608|0.1000E-2
- <10s> [Haydock] Iteration 44 Accuracy : 0.416587|0.1000E-2
- <10s> [Haydock] Iteration 45 Accuracy : 0.348970|0.1000E-2
- <10s> [Haydock] Iteration 46 Accuracy : 0.218374|0.1000E-2
- <10s> [Haydock] Iteration 47 Accuracy : 0.367821|0.1000E-2
- <10s> [Haydock] Iteration 48 Accuracy : 0.216488|0.1000E-2
- <10s> [Haydock] Iteration 49 Accuracy : 0.264001|0.1000E-2
- <10s> [Haydock] Iteration 50 Accuracy : 0.238595|0.1000E-2
- <10s> [Haydock] Iteration 51 Accuracy : 0.247663|0.1000E-2
- <10s> [Haydock] Iteration 52 Accuracy : 0.194982|0.1000E-2
- <10s> [Haydock] Iteration 53 Accuracy : 0.168744|0.1000E-2
- <11s> [Haydock] Iteration 54 Accuracy : 0.192808|0.1000E-2
- <11s> [Haydock] Iteration 55 Accuracy : 0.161243|0.1000E-2
- <11s> [Haydock] Iteration 56 Accuracy : 0.154097|0.1000E-2
- <11s> [Haydock] Iteration 57 Accuracy : 0.149231|0.1000E-2
- <11s> [Haydock] Iteration 58 Accuracy : 0.115148|0.1000E-2
- <11s> [Haydock] Iteration 59 Accuracy : 0.107564|0.1000E-2
- <11s> [Haydock] Iteration 60 Accuracy :  0.07797|0.1000E-2
- <11s> [Haydock] Iteration 61 Accuracy : 0.125833|0.1000E-2
- <11s> [Haydock] Iteration 62 Accuracy :  0.08573|0.1000E-2
- <11s> [Haydock] Iteration 63 Accuracy :  0.09381|0.1000E-2
- <11s> [Haydock] Iteration 64 Accuracy :  0.09659|0.1000E-2
- <11s> [Haydock] Iteration 65 Accuracy :  0.08313|0.1000E-2
- <11s> [Haydock] Iteration 66 Accuracy :  0.07594|0.1000E-2
- <11s> [Haydock] Iteration 67 Accuracy :  0.07925|0.1000E-2
- <11s> [Haydock] Iteration 68 Accuracy :  0.04364|0.1000E-2
- <11s> [Haydock] Iteration 69 Accuracy :  0.04465|0.1000E-2
- <11s> [Haydock] Iteration 70 Accuracy :  0.04957|0.1000E-2
- <11s> [Haydock] Iteration 71 Accuracy :  0.04458|0.1000E-2
- <11s> [Haydock] Iteration 72 Accuracy :  0.04745|0.1000E-2
- <12s> [Haydock] Iteration 73 Accuracy :  0.03596|0.1000E-2
- <12s> [Haydock] Iteration 74 Accuracy :  0.03892|0.1000E-2
- <12s> [Haydock] Iteration 75 Accuracy :  0.03403|0.1000E-2
- <12s> [Haydock] Iteration 76 Accuracy :  0.03436|0.1000E-2
- <12s> [Haydock] Iteration 77 Accuracy :  0.03417|0.1000E-2
- <12s> [Haydock] Iteration 78 Accuracy :  0.03280|0.1000E-2
- <12s> [Haydock] Iteration 79 Accuracy :  0.02141|0.1000E-2
- <12s> [Haydock] Iteration 80 Accuracy :  0.02465|0.1000E-2
- <12s> [Haydock] Iteration 81 Accuracy :  0.02030|0.1000E-2
- <12s> [Haydock] Iteration 82 Accuracy :  0.02436|0.1000E-2
- <12s> [Haydock] Iteration 83 Accuracy :  0.02172|0.1000E-2
- <12s> [Haydock] Iteration 84 Accuracy :  0.01126|0.1000E-2
- <12s> [Haydock] Iteration 85 Accuracy :  0.01949|0.1000E-2
- <12s> [Haydock] Iteration 86 Accuracy :  0.01614|0.1000E-2
- <12s> [Haydock] Iteration 87 Accuracy :  0.01768|0.1000E-2
- <12s> [Haydock] Iteration 88 Accuracy :  0.01430|0.1000E-2
- <12s> [Haydock] Iteration 89 Accuracy :  0.01638|0.1000E-2
- <12s> [Haydock] Iteration 90 Accuracy :  0.01438|0.1000E-2
- <12s> [Haydock] Iteration 91 Accuracy :  0.01293|0.1000E-2
- <13s> [Haydock] Iteration 92 Accuracy :  0.01379|0.1000E-2
- <13s> [Haydock] Iteration 93 Accuracy :  0.01107|0.1000E-2
- <13s> [Haydock] Iteration 94 Accuracy :   0.0055|0.1000E-2
- <13s> [Haydock] Iteration 95 Accuracy :   0.0099|0.1000E-2
- <13s> [Haydock] Iteration 96 Accuracy :   0.0066|0.1000E-2
- <13s> [Haydock] Iteration 97 Accuracy :   0.0086|0.1000E-2
- <13s> [Haydock] Iteration 98 Accuracy :   0.0041|0.1000E-2
- <13s> [Haydock] Iteration 99 Accuracy :   0.0074|0.1000E-2
- <13s> [Haydock] Iteration 100 Accuracy :   0.0067|0.1000E-2
- <13s> [Haydock] Iteration 101 Accuracy :   0.0059|0.1000E-2
- <13s> [Haydock] Iteration 102 Accuracy :   0.0060|0.1000E-2
- <13s> [Haydock] Iteration 103 Accuracy :   0.0053|0.1000E-2
- <13s> [Haydock] Iteration 104 Accuracy :   0.0032|0.1000E-2
- <13s> [Haydock] Iteration 105 Accuracy :   0.0038|0.1000E-2
- <13s> [Haydock] Iteration 106 Accuracy :   0.0034|0.1000E-2
- <13s> [Haydock] Iteration 107 Accuracy :   0.0029|0.1000E-2
- <13s> [Haydock] Iteration 108 Accuracy :   0.0033|0.1000E-2
- <13s> [Haydock] Iteration 109 Accuracy :   0.0034|0.1000E-2
- <14s> [Haydock] Iteration 110 Accuracy :   0.0028|0.1000E-2
- <14s> [Haydock] Iteration 111 Accuracy :   0.0030|0.1000E-2
- <14s> [Haydock] Iteration 112 Accuracy :   0.0030|0.1000E-2
- <14s> [Haydock] Iteration 113 Accuracy :   0.0027|0.1000E-2
- <14s> [Haydock] Iteration 114 Accuracy :   0.0023|0.1000E-2
- <14s> [Haydock] Iteration 115 Accuracy :   0.0025|0.1000E-2
- <14s> [Haydock] Iteration 116 Accuracy :   0.0023|0.1000E-2
- <14s> [Haydock] Iteration 117 Accuracy :   0.0017|0.1000E-2
- <14s> [Haydock] Iteration 118 Accuracy :   0.0019|0.1000E-2
- <14s> [Haydock] Iteration 119 Accuracy :   0.0014|0.1000E-2
- <14s> [Haydock] Iteration 120 Accuracy :   0.0019|0.1000E-2
- <14s> [Haydock] Iteration 121 Accuracy :   0.0015|0.1000E-2
- <14s> [Haydock] Iteration 122 Accuracy :   0.0014|0.1000E-2
- <14s> [Haydock] Iteration 123 Accuracy :   0.0010|0.1000E-2
- <14s> [Haydock] Iteration 124 Accuracy :   0.0013|0.1000E-2
- <14s> [Haydock] Iteration 125 Accuracy :   0.0014|0.1000E-2
- <14s> [Haydock] Iteration 126 Accuracy :0.9665E-3|0.1000E-2
- <14s> [08] Timing Overview
- <14s> [09] Game Over & Game summary
+ <05s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 32Mb (traced) 47Mb (memstat)
+ <05s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <06s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 32Mb (traced) 47Mb (memstat)
+ <06s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <06s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <06s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <06s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <06s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <06s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <06s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <06s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Alloc BS_blk(iB)%O_c(1Mb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(1Mb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Alloc BS_blk(iB)%O_c(644Kb) TOTAL: 31Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Alloc BS_blk(iB)%O_c(601Kb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(644Kb) TOTAL: 30Mb (traced) 47Mb (memstat)
+ <07s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 31Mb (traced) 44Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(601Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <07s> [MEMORY] Alloc BS_blk(iB)%O_c(214Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 29Mb (traced) 44Mb (memstat)
+ <07s> [MEMORY] Alloc BS_blk(iB)%O_c(772Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(214Kb) TOTAL: 30Mb (traced) 44Mb (memstat)
+ <07s> [MEMORY] Alloc BS_blk(iB)%O_c(644Kb) TOTAL: 31Mb (traced) 45Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(644Kb) TOTAL: 30Mb (traced) 45Mb (memstat)
+ <07s> [MEMORY] Free BS_blk(iB)%O_c(772Kb) TOTAL: 29Mb (traced) 45Mb (memstat)
+ <07s> Kernel |########################################| [100%] 07s(E) 07s(X)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(386Kb) TOTAL: 29Mb (traced) 45Mb (memstat)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(128Kb) TOTAL: 29Mb (traced) 45Mb (memstat)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(386Kb) TOTAL: 28Mb (traced) 45Mb (memstat)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(772Kb) TOTAL: 28Mb (traced) 45Mb (memstat)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(772Kb) TOTAL: 27Mb (traced) 42Mb (memstat)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(386Kb) TOTAL: 26Mb (traced) 42Mb (memstat)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(386Kb) TOTAL: 26Mb (traced) 42Mb (memstat)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(386Kb) TOTAL: 26Mb (traced) 42Mb (memstat)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(386Kb) TOTAL: 25Mb (traced) 42Mb (memstat)
+ <07s> [MEMORY] Free BS_T_grp(iG)%O_x(128Kb) TOTAL: 25Mb (traced) 42Mb (memstat)
+ <07s> [MEMORY] Free BS_W(216Kb) TOTAL: 25Mb (traced) 42Mb (memstat)
+ <07s> [MEMORY] Free WF%c(810Kb) TOTAL: 24Mb (traced) 42Mb (memstat)
+ <07s> [MEMORY] Free fft_rot_r(324Kb) TOTAL: 24Mb (traced) 41Mb (memstat)
+ <07s> [06] BSE solver(s)
+ <07s> [06.01] Haydock solver
+ <07s> [Haydock] Iteration 1
+ <07s> [Haydock] Iteration 2
+ <08s> [Haydock] Iteration 3 Accuracy : 15.37283|0.1000E-2
+ <08s> [Haydock] Iteration 4 Accuracy : 8.293172|0.1000E-2
+ <08s> [Haydock] Iteration 5 Accuracy : 5.161394|0.1000E-2
+ <08s> [Haydock] Iteration 6 Accuracy : 14.65796|0.1000E-2
+ <08s> [Haydock] Iteration 7 Accuracy : 6.276609|0.1000E-2
+ <09s> [Haydock] Iteration 8 Accuracy : 2.742800|0.1000E-2
+ <09s> [Haydock] Iteration 9 Accuracy : 2.689977|0.1000E-2
+ <09s> [Haydock] Iteration 10 Accuracy : 6.588844|0.1000E-2
+ <09s> [Haydock] Iteration 11 Accuracy : 7.098692|0.1000E-2
+ <09s> [Haydock] Iteration 12 Accuracy : 1.926081|0.1000E-2
+ <10s> [Haydock] Iteration 13 Accuracy : 6.154863|0.1000E-2
+ <10s> [Haydock] Iteration 14 Accuracy : 3.059099|0.1000E-2
+ <10s> [Haydock] Iteration 15 Accuracy : 3.107242|0.1000E-2
+ <10s> [Haydock] Iteration 16 Accuracy : 3.593288|0.1000E-2
+ <10s> [Haydock] Iteration 17 Accuracy : 2.884027|0.1000E-2
+ <10s> [Haydock] Iteration 18 Accuracy : 2.095609|0.1000E-2
+ <11s> [Haydock] Iteration 19 Accuracy : 2.009509|0.1000E-2
+ <11s> [Haydock] Iteration 20 Accuracy : 1.994159|0.1000E-2
+ <11s> [Haydock] Iteration 21 Accuracy : 1.919786|0.1000E-2
+ <11s> [Haydock] Iteration 22 Accuracy : 0.920662|0.1000E-2
+ <11s> [Haydock] Iteration 23 Accuracy : 2.153316|0.1000E-2
+ <12s> [Haydock] Iteration 24 Accuracy : 1.286709|0.1000E-2
+ <12s> [Haydock] Iteration 25 Accuracy : 1.282990|0.1000E-2
+ <12s> [Haydock] Iteration 26 Accuracy : 1.478785|0.1000E-2
+ <12s> [Haydock] Iteration 27 Accuracy : 1.364746|0.1000E-2
+ <12s> [Haydock] Iteration 28 Accuracy : 1.200751|0.1000E-2
+ <13s> [Haydock] Iteration 29 Accuracy : 1.006744|0.1000E-2
+ <13s> [Haydock] Iteration 30 Accuracy : 1.125975|0.1000E-2
+ <13s> [Haydock] Iteration 31 Accuracy : 0.996124|0.1000E-2
+ <13s> [Haydock] Iteration 32 Accuracy : 0.901913|0.1000E-2
+ <13s> [Haydock] Iteration 33 Accuracy : 0.875008|0.1000E-2
+ <14s> [Haydock] Iteration 34 Accuracy : 0.836802|0.1000E-2
+ <14s> [Haydock] Iteration 35 Accuracy : 0.563670|0.1000E-2
+ <14s> [Haydock] Iteration 36 Accuracy : 0.711951|0.1000E-2
+ <14s> [Haydock] Iteration 37 Accuracy : 0.619768|0.1000E-2
+ <14s> [Haydock] Iteration 38 Accuracy : 0.575733|0.1000E-2
+ <14s> [Haydock] Iteration 39 Accuracy : 0.503282|0.1000E-2
+ <15s> [Haydock] Iteration 40 Accuracy : 0.506010|0.1000E-2
+ <15s> [Haydock] Iteration 41 Accuracy : 0.397731|0.1000E-2
+ <15s> [Haydock] Iteration 42 Accuracy : 0.456976|0.1000E-2
+ <15s> [Haydock] Iteration 43 Accuracy : 0.368894|0.1000E-2
+ <15s> [Haydock] Iteration 44 Accuracy : 0.416734|0.1000E-2
+ <16s> [Haydock] Iteration 45 Accuracy : 0.348830|0.1000E-2
+ <16s> [Haydock] Iteration 46 Accuracy : 0.219280|0.1000E-2
+ <16s> [Haydock] Iteration 47 Accuracy : 0.368988|0.1000E-2
+ <16s> [Haydock] Iteration 48 Accuracy : 0.210058|0.1000E-2
+ <16s> [Haydock] Iteration 49 Accuracy : 0.263147|0.1000E-2
+ <17s> [Haydock] Iteration 50 Accuracy : 0.225248|0.1000E-2
+ <17s> [Haydock] Iteration 51 Accuracy : 0.248919|0.1000E-2
+ <17s> [Haydock] Iteration 52 Accuracy : 0.194927|0.1000E-2
+ <17s> [Haydock] Iteration 53 Accuracy : 0.168721|0.1000E-2
+ <17s> [Haydock] Iteration 54 Accuracy : 0.192808|0.1000E-2
+ <18s> [Haydock] Iteration 55 Accuracy : 0.161255|0.1000E-2
+ <18s> [Haydock] Iteration 56 Accuracy : 0.154172|0.1000E-2
+ <18s> [Haydock] Iteration 57 Accuracy : 0.149254|0.1000E-2
+ <18s> [Haydock] Iteration 58 Accuracy : 0.115247|0.1000E-2
+ <18s> [Haydock] Iteration 59 Accuracy : 0.107559|0.1000E-2
+ <18s> [Haydock] Iteration 60 Accuracy :  0.07796|0.1000E-2
+ <19s> [Haydock] Iteration 61 Accuracy : 0.125810|0.1000E-2
+ <19s> [Haydock] Iteration 62 Accuracy :  0.08717|0.1000E-2
+ <19s> [Haydock] Iteration 63 Accuracy :  0.09363|0.1000E-2
+ <19s> [Haydock] Iteration 64 Accuracy :  0.09742|0.1000E-2
+ <19s> [Haydock] Iteration 65 Accuracy :  0.08294|0.1000E-2
+ <20s> [Haydock] Iteration 66 Accuracy :  0.07588|0.1000E-2
+ <20s> [Haydock] Iteration 67 Accuracy :  0.07925|0.1000E-2
+ <20s> [Haydock] Iteration 68 Accuracy :  0.04362|0.1000E-2
+ <20s> [Haydock] Iteration 69 Accuracy :  0.04477|0.1000E-2
+ <20s> [Haydock] Iteration 70 Accuracy :  0.04877|0.1000E-2
+ <21s> [Haydock] Iteration 71 Accuracy :  0.04458|0.1000E-2
+ <21s> [Haydock] Iteration 72 Accuracy :  0.04630|0.1000E-2
+ <21s> [Haydock] Iteration 73 Accuracy :  0.03613|0.1000E-2
+ <21s> [Haydock] Iteration 74 Accuracy :  0.03892|0.1000E-2
+ <21s> [Haydock] Iteration 75 Accuracy :  0.03402|0.1000E-2
+ <22s> [Haydock] Iteration 76 Accuracy :  0.03435|0.1000E-2
+ <22s> [Haydock] Iteration 77 Accuracy :  0.03417|0.1000E-2
+ <22s> [Haydock] Iteration 78 Accuracy :  0.03273|0.1000E-2
+ <22s> [Haydock] Iteration 79 Accuracy :  0.02119|0.1000E-2
+ <22s> [Haydock] Iteration 80 Accuracy :  0.02477|0.1000E-2
+ <22s> [Haydock] Iteration 81 Accuracy :  0.02010|0.1000E-2
+ <23s> [Haydock] Iteration 82 Accuracy :  0.02432|0.1000E-2
+ <23s> [Haydock] Iteration 83 Accuracy :  0.02172|0.1000E-2
+ <23s> [Haydock] Iteration 84 Accuracy :  0.01130|0.1000E-2
+ <23s> [Haydock] Iteration 85 Accuracy :  0.01948|0.1000E-2
+ <23s> [Haydock] Iteration 86 Accuracy :  0.01598|0.1000E-2
+ <24s> [Haydock] Iteration 87 Accuracy :  0.01768|0.1000E-2
+ <24s> [Haydock] Iteration 88 Accuracy :  0.01409|0.1000E-2
+ <24s> [Haydock] Iteration 89 Accuracy :  0.01637|0.1000E-2
+ <24s> [Haydock] Iteration 90 Accuracy :  0.01438|0.1000E-2
+ <24s> [Haydock] Iteration 91 Accuracy :  0.01295|0.1000E-2
+ <25s> [Haydock] Iteration 92 Accuracy :  0.01379|0.1000E-2
+ <25s> [Haydock] Iteration 93 Accuracy :  0.01101|0.1000E-2
+ <25s> [Haydock] Iteration 94 Accuracy :   0.0056|0.1000E-2
+ <25s> [Haydock] Iteration 95 Accuracy :   0.0098|0.1000E-2
+ <25s> [Haydock] Iteration 96 Accuracy :   0.0067|0.1000E-2
+ <26s> [Haydock] Iteration 97 Accuracy :   0.0086|0.1000E-2
+ <26s> [Haydock] Iteration 98 Accuracy :   0.0041|0.1000E-2
+ <26s> [Haydock] Iteration 99 Accuracy :   0.0074|0.1000E-2
+ <26s> [Haydock] Iteration 100 Accuracy :   0.0067|0.1000E-2
+ <26s> [Haydock] Iteration 101 Accuracy :   0.0060|0.1000E-2
+ <26s> [Haydock] Iteration 102 Accuracy :   0.0060|0.1000E-2
+ <27s> [Haydock] Iteration 103 Accuracy :   0.0054|0.1000E-2
+ <27s> [Haydock] Iteration 104 Accuracy :   0.0032|0.1000E-2
+ <27s> [Haydock] Iteration 105 Accuracy :   0.0038|0.1000E-2
+ <27s> [Haydock] Iteration 106 Accuracy :   0.0034|0.1000E-2
+ <27s> [Haydock] Iteration 107 Accuracy :   0.0029|0.1000E-2
+ <28s> [Haydock] Iteration 108 Accuracy :   0.0033|0.1000E-2
+ <28s> [Haydock] Iteration 109 Accuracy :   0.0034|0.1000E-2
+ <28s> [Haydock] Iteration 110 Accuracy :   0.0028|0.1000E-2
+ <28s> [Haydock] Iteration 111 Accuracy :   0.0030|0.1000E-2
+ <28s> [Haydock] Iteration 112 Accuracy :   0.0030|0.1000E-2
+ <29s> [Haydock] Iteration 113 Accuracy :   0.0027|0.1000E-2
+ <29s> [Haydock] Iteration 114 Accuracy :   0.0023|0.1000E-2
+ <29s> [Haydock] Iteration 115 Accuracy :   0.0025|0.1000E-2
+ <29s> [Haydock] Iteration 116 Accuracy :   0.0023|0.1000E-2
+ <29s> [Haydock] Iteration 117 Accuracy :   0.0016|0.1000E-2
+ <30s> [Haydock] Iteration 118 Accuracy :   0.0019|0.1000E-2
+ <30s> [Haydock] Iteration 119 Accuracy :   0.0013|0.1000E-2
+ <30s> [Haydock] Iteration 120 Accuracy :   0.0019|0.1000E-2
+ <30s> [Haydock] Iteration 121 Accuracy :   0.0014|0.1000E-2
+ <30s> [Haydock] Iteration 122 Accuracy :   0.0014|0.1000E-2
+ <30s> [Haydock] Iteration 123 Accuracy :   0.0010|0.1000E-2
+ <31s> [Haydock] Iteration 124 Accuracy :   0.0013|0.1000E-2
+ <31s> [Haydock] Iteration 125 Accuracy :   0.0014|0.1000E-2
+ <31s> [Haydock] Iteration 126 Accuracy :0.9636E-3|0.1000E-2
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 24Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 23Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 23Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 23Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(243Kb) TOTAL: 23Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(243Kb) TOTAL: 23Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 23Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 22Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 22Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 22Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 21Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 21Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 20Mb (traced) 41Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 20Mb (traced) 40Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 19Mb (traced) 39Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 19Mb (traced) 39Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 19Mb (traced) 39Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 18Mb (traced) 39Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 18Mb (traced) 39Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 18Mb (traced) 39Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 17Mb (traced) 39Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 16Mb (traced) 39Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 16Mb (traced) 38Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 16Mb (traced) 38Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 15Mb (traced) 38Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 15Mb (traced) 38Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 15Mb (traced) 38Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 14Mb (traced) 38Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 13Mb (traced) 37Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 13Mb (traced) 37Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 13Mb (traced) 37Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 13Mb (traced) 37Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 12Mb (traced) 37Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 11Mb (traced) 37Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 11Mb (traced) 36Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 10Mb (traced) 35Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 10Mb (traced) 35Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 10Mb (traced) 35Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(1Mb) TOTAL: 8Mb (traced) 35Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(1Mb) TOTAL: 7Mb (traced) 34Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 6Mb (traced) 32Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(243Kb) TOTAL: 6Mb (traced) 32Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 5Mb (traced) 32Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(1Mb) TOTAL: 4Mb (traced) 31Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 3Mb (traced) 29Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(243Kb) TOTAL: 3Mb (traced) 29Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(729Kb) TOTAL: 2Mb (traced) 29Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 2Mb (traced) 28Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 2Mb (traced) 28Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 1Mb (traced) 28Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(121Kb) TOTAL: 1Mb (traced) 28Mb (memstat)
+ <31s> [MEMORY] Free BS_blk(iB)%mat(364Kb) TOTAL: 1Mb (traced) 28Mb (memstat)
+ <31s> [MEMORY] 512Kb :qindx_B ([03] Transferred momenta grid)
+ <31s> [MEMORY]TOTAL unallocated : 1Mb
+ <31s> [07] Timing Overview
+ <31s> [08] Memory Overview
+ <31s> [09] Game Over & Game summary

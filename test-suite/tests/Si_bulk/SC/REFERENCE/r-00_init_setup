@@ -1,18 +1,18 @@
+     __      __   ______   __       __  _______    ______       
+    |  \    /  \ /      \ |  \     /  \|       \  /      \      
+     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\     
+      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$     
+       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$     
+        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$     
+        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$     
+        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$     
+         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$      
                                                                 
-    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.     
-     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb    
-      `88. .8" .8"88.    888b     d"88  88     888 88      88   
-       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88   
-        `88" .88ooo888.  8  `888"   88  88    `88b 88      88   
-         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"   
-        o88o88o      888o8          88 o88bood8P"   `Ybod8P"    
-                                                                
-                                                                
-            Version 4.1.1 Revision 13953 Hash 80be4d7           
-                            MPI Build                           
-                    http://www.yambo-code.org                   
+           Version 4.2.0 Revision 14580 Hash b498665            
+                     MPI+SLK+OpenMP Build                       
+                   http://www.yambo-code.org                    
  
- 10/19/2016 at 00:03 YAMBO_SC @ narro
+ 06/07/2017 at 16:29 YAMBO_SC @ anomaly
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -189,17 +189,41 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 008306 -------------------------- v.04.01.01 r.13953 -
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
 
- [04] External corrections
- =========================
+ [04] Timing Overview
+ ====================
 
+ Routines: global (Only MASTER cpu here)
+                               io_WF :     0.00s CPU
+                             io_GROT :     0.00s CPU (       3 calls,   0.000 s avg)
+                            io_QINDX :     0.00s CPU (       3 calls,   0.000 s avg)
+                          io_COL_CUT :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU
+                               io_HF :     0.00s CPU
+                          io_DIPOLES :     0.00s CPU
+                         io_KB_pwscf :     0.00s CPU
+                        io_KB_abinit :     0.00s CPU
+                               io_BS :     0.00s CPU
+                    io_SC_components :     0.00s CPU (       5 calls,   0.000 s avg)
+                       io_COLLISIONS :     0.00s CPU (       2 calls,   0.000 s avg)
+                     bz_samp_indexes :     0.00s CPU
 
- [05] Game Over & Game summary
+ [05] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are:109Kb (basic treshold) 1Mb (SAVEs treshold)
+
+         TOTAL unallocated : 73Kb
+
+         Max memory used   : 41Kb
+
+ [06] Game Over & Game summary
  =============================
 
- 10/19/2016 at 00:03 YAMBO_SC @ narro [start]
- 10/19/2016 at 00:03                  [end]
+ 06/07/2017 at 16:29 YAMBO_SC @ anomaly [start]
+ 06/07/2017 at 16:29                    [end]
 
   
  .-ACKNOWLEDGMENT
@@ -213,10 +237,10 @@
  | in order to acknowledge YAMBO:
  |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
+ | A. Marini, C. Hogan, M. Gr"uning, D. Varsano
  | Computer Physics Communications  180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | setup                        # [R INI] Initialization
- | BoseTemp= 0.000000     eV    # Bosonic Temperature
+ | setup                          # [R INI] Initialization
+ | BoseTemp= 0.000000     eV      # Bosonic Temperature

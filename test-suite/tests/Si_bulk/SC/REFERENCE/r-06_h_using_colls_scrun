@@ -1,18 +1,18 @@
                                                                 
-     __  __   ________   ___ __ __    _______   ______          
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\         
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \        
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \       
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \      
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \     
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/     
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.     
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb    
+      `88. .8" .8"88.    888b     d"88  88     888 88      88   
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88   
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88   
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"   
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"    
                                                                 
                                                                 
-           Version 4.1.1 Revision 13965 Hash c66c563            
-                           MPI Build                            
-                   http://www.yambo-code.org                    
+            Version 4.2.0 Revision 14580 Hash b498665           
+                      MPI+SLK+OpenMP Build                      
+                    http://www.yambo-code.org                   
  
- 11/10/2016 at 12:06 YAMBO_SC @ anomaly
+ 06/07/2017 at 16:30 YAMBO_SC @ anomaly
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -29,7 +29,7 @@
  Input file     is   yambo.in
  Report file    is   ./r-06_h_using_colls_scrun
  Job string(main): 06_h_using_colls
-             (#1): 04_h_colls
+             (#1): 04_h_colls-serial-devel-qp-dbs
  Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
@@ -173,7 +173,7 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 008306 -------------------------- v.04.01.01 r.13965 -
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
 
  IBZ Q-points :  4
  BZ  Q-points :  8
@@ -188,11 +188,7 @@
  Q [00003] : 0.000000  0.000000  0.617027 (cc ) * weight  0.375000
  Q [00004] : 0.308513  0.308513  0.308513 (cc ) * weight  0.125000
 
- [04] External corrections
- =========================
-
-
- [05] Self-Consistent HARTREE
+ [04] Self-Consistent HARTREE
  ============================
 
 
@@ -209,7 +205,7 @@
  [SC] Imposed accuracy on density      :0.1000E-4
  [SC]                  on energies [ev]:   0.0100
 
- [RD./04_h_colls//ndb.COLLISIONS_HXC]------------------------
+ [RD./04_h_colls-serial-devel-qp-dbs//ndb.COLLISIONS_HXC]----
   Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
   RL vectors                   (WF):  363
   COLLISIONS name                 :HARTREE
@@ -217,19 +213,18 @@
   COLLISIONS kind                 : 1000
   Bands                           :  1   8
   Bands mixing                    : 100.0000
-  Interaction Kind                :Hartree
   Exchange Cutoff                 : 0.000000
   Hartree  RL vectors             :  363
   RIM RL components      :0
   RIM random points      :0
- - S/N 008306 -------------------------- v.04.01.01 r.13965 -
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
  [SC] Extented collisions              :yes
   
  [WF] Performing Wave-Functions I/O from ./SAVE
 
  [FFT-SC] Mesh size:  9   9   9
 
- [WF loader] Normalization (few states)  min/max  :0.2889E-8  1.000   
+ [WF loader] Normalization (few states)  min/max  :0.2730E-8  1.000   
 
  [xc] Functional Teter 93(XC)
  [xc] LIBXC used to calculate xc functional
@@ -246,16 +241,16 @@
   [SC] K-points                   :  4
   [SC] Bands mixing               : 100.0000
   [SC] FFT mesh points            :  729
- - S/N 008306 -------------------------- v.04.01.01 r.13965 -
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
 
  [SC] Iterations               : 3
- [SC] Accuracy on density      :  0.08473
- [SC]          on energies [ev]: 0.469448
- [SC] Total Energy (no Ewald) [Ha/Ry]: 1.097415  2.194831
- [SC] Hartree Energy          [Ha/Ry]: 0.461614  0.923229
- Fermi Level        [ev]:  0.000000
+ [SC] Accuracy on density      :  0.08239
+ [SC]          on energies [ev]: 0.154466
+ [SC] Total Energy (no Ewald) [Ha/Ry]: 1.095897  2.191794
+ [SC] Hartree Energy          [Ha/Ry]: 0.462970  0.925941
+ Fermi Level        [ev]: -.3041E-6
  VBM / CBm          [ev]:  0.00      0.00    
- Electronic Temp. [ev K]:  0.00      0.00    
+ Electronic Temp. [ev K]: 0.2585E-4 0.3000   
  Bosonic    Temp. [ev K]:  0.00      0.00    
  El. density      [cm-3]: 0.205E+24
  States summary         : Full        Metallic    Empty
@@ -270,61 +265,87 @@
 
  *X* K [1] : 0.000000  0.000000  0.000000 ( cc) * Comp.s 259 * weight  0.125000
              0.000000  0.000000  0.000000 (rlu)
- E   -11.77136   0.88400   0.90889   0.93154   2.62948   2.63518   2.71184   3.90649
+ E   -11.82530   0.69978   0.82584   1.05826   2.53496   2.63055   2.65406   3.86488
  occ  2.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
  E_o -12.11390   0.00000   0.00000   0.00000   2.57339   2.57339   2.57339   3.42296
- d_E   0.34254   0.88400   0.90889   0.93154   0.05608   0.06178   0.13845   0.48354
- Spr  99.99699  99.99995  99.99873  99.99845  99.99941  99.99949  99.45602  99.45485
- MxO  1.000000  2.000000  3.000000  4.000000  6.000000  7.000000  5.000000  8.000000
- Bnd  1.000000  2.000000  3.000000  4.000000  7.000000  5.000000  6.000000  8.000000
+ d_E   0.28860   0.69978   0.82584   1.05826  -0.03843   0.05715   0.08067   0.44193
+ Spr  99.96169  99.99481  99.99415  99.97282  99.00686  99.99505  99.99303  98.99500
+ MxO  1.000000  3.000000  4.000000  2.000000  6.000000  5.000000  7.000000  8.000000
+ Bnd  1.000000  4.000000  2.000000  3.000000  6.000000  5.000000  7.000000  8.000000
   
  *X* K [2] :-0.308513 -0.308513  0.308513 ( cc) * Comp.s 266 * weight  0.375000
             -0.250000 -0.250000  0.250000 (rlu)
- E   -9.172856 -6.955550 -0.490341 -0.470976  1.648429  3.121862  3.256725  6.178428
+ E   -9.127960 -7.185872 -0.616171 -0.387581  1.618261  3.103283  3.347766  6.221652
  occ  2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
  E_o -9.723893 -7.100585 -1.226122 -1.226122  1.550016  3.351941  3.351941  7.590647
- d_E   0.55104   0.14503   0.73578   0.75515   0.09841  -0.23008  -0.09522  -1.41222
- Spr  99.89187  99.24398  99.99860  99.99721  99.11239  99.99909  99.86804  99.89563
- MxO  1.000000  2.000000  4.000000  3.000000  5.000000  6.000000  7.000000  8.000000
- Bnd  1.000000  2.000000  4.000000  3.000000  5.000000  6.000000  7.000000  8.000000
+ d_E    0.5959   -0.0853    0.6100    0.8385    0.0682   -0.2487   -0.0042   -1.3690
+ Spr  99.84047  99.43532  99.99201  99.95193  98.89322  99.46629  99.99004  99.89032
+ MxO  1.000000  2.000000  3.000000  4.000000  5.000000  7.000000  6.000000  8.000000
+ Bnd  1.000000  2.000000  3.000000  4.000000  5.000000  7.000000  6.000000  8.000000
   
  *X* K [3] : 0.000000  0.000000  0.617027 ( cc) * Comp.s 254 * weight  0.375000
              0.000000  0.000000  0.500000 (rlu)
- E    -7.35096  -7.32175  -2.49540  -2.45439   0.00000   0.09435  10.51719  10.60299
+ E    -7.43453  -7.34861  -2.53776  -2.51213  -0.07047   0.08337  10.48171  10.52656
  occ  2.000000  2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000
  E_o  -7.88461  -7.88461  -2.92270  -2.92270   0.61954   0.61954  10.18124  10.18124
- d_E  0.533649  0.562857  0.427299  0.468310 -0.619536 -0.525188  0.335953  0.421748
- Spr   99.5649   99.5728   99.9992   99.9778   99.5750   99.5790  100.0000   99.9978
- MxO  2.000000  1.000000  3.000000  4.000000  5.000000  6.000000  7.000000  8.000000
- Bnd  2.000000  1.000000  3.000000  4.000000  5.000000  6.000000  7.000000  8.000000
+ d_E  0.450075  0.536002  0.384938  0.410573 -0.690007 -0.536170  0.300474  0.345320
+ Spr  99.60847  99.24195  99.98926  99.69228  99.49546  99.61958  99.99371  99.99986
+ MxO  2.000000  1.000000  3.000000  4.000000  5.000000  6.000000  8.000000  7.000000
+ Bnd  2.000000  1.000000  3.000000  4.000000  5.000000  6.000000  8.000000  7.000000
   
  *X* K [4] : 0.308513  0.308513  0.308513 ( cc) * Comp.s 266 * weight  0.125000
              0.250000  0.250000  0.250000 (rlu)
- E   -9.117201 -7.050014 -0.521672 -0.490648  1.745766  3.220016  3.242800  6.298894
+ E   -9.324378 -6.822588 -0.608393 -0.495503  1.579240  3.003636  3.087836  6.024654
  occ  2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
  E_o -9.723893 -7.100585 -1.226122 -1.226122  1.550016  3.351941  3.351941  7.590647
- d_E   0.60669   0.05057   0.70445   0.73547   0.19575  -0.13192  -0.10914  -1.29175
- Spr  99.88750  99.35396  99.99947  99.99952  99.34915  99.99755  99.99758  99.88813
- MxO  1.000000  2.000000  3.000000  4.000000  5.000000  7.000000  6.000000  8.000000
- Bnd  1.000000  2.000000  3.000000  4.000000  5.000000  7.000000  6.000000  8.000000
+ d_E   0.39951   0.27800   0.61773   0.73062   0.02922  -0.34831  -0.26410  -1.56599
+ Spr  99.88355  99.00990  99.99403  99.99400  98.94557  99.96622  99.96926  99.89215
+ MxO  1.000000  2.000000  4.000000  3.000000  5.000000  6.000000  7.000000  8.000000
+ Bnd  1.000000  2.000000  4.000000  3.000000  5.000000  6.000000  7.000000  8.000000
 
- [06] Timing Overview
+ [05] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                io_WF :     0.00s CPU (       6 calls,   0.000 s avg)
-                io_HF :     0.00s CPU
-           io_DIPOLES :     0.00s CPU
-                 io_X :     0.00s CPU (       4 calls,   0.000 s avg)
-     io_SC_components :     0.00s CPU (      40 calls,   0.000 s avg)
-        io_COLLISIONS :     0.00s CPU (     292 calls,   0.000 s avg)
-       LINEAR ALGEBRA :     0.00s CPU (      12 calls,   0.000 s avg)
+                               io_WF :     0.00s CPU (       7 calls,   0.000 s avg)
+                             io_GROT :     0.00s CPU (       3 calls,   0.000 s avg)
+                            io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
+                          io_COL_CUT :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU
+                               io_HF :     0.00s CPU
+                          io_DIPOLES :     0.00s CPU
+                         io_KB_pwscf :     0.00s CPU
+                        io_KB_abinit :     0.00s CPU
+                                io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+                               io_BS :     0.00s CPU
+                    io_SC_components :     0.00s CPU (      40 calls,   0.000 s avg)
+                       io_COLLISIONS :     0.00s CPU (     292 calls,   0.000 s avg)
+             IO_and_Messaging_switch :     0.00s CPU (      18 calls,   0.000 s avg)
+                     COLLISIONS_load :     0.00s CPU (       2 calls,   0.046 s avg)
+                         io_fragment :     0.00s CPU (     600 calls,   0.000 s avg)
+                    Bare_Hamiltonian :     0.00s CPU
+                           V_Hartree :     0.00s CPU (       5 calls,   0.000 s avg)
+                   V_real_space_to_H :     0.00s CPU (       4 calls,   0.000 s avg)
+                     V_qp_basis_to_H :     0.00s CPU (      16 calls,   0.000 s avg)
+               COLLISIONS_compose_sc :     0.00s CPU (       3 calls,   0.000 s avg)
+                      LINEAR ALGEBRA :     0.00s CPU (      12 calls,   0.000 s avg)
+    SERIAL_HERMITIAN_diagonalization :     0.00s CPU (      12 calls,   0.000 s avg)
+
+ [06] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are:109Kb (basic treshold) 1Mb (SAVEs treshold)
+
+         TOTAL unallocated : 100Kb
+
+         Max memory used   : 828Kb
 
  [07] Game Over & Game summary
  =============================
 
- 11/10/2016 at 12:06 YAMBO_SC @ anomaly [start]
- 11/10/2016 at 12:06                    [end]
+ 06/07/2017 at 16:30 YAMBO_SC @ anomaly [start]
+ 06/07/2017 at 16:30                    [end]
 
   
  .-ACKNOWLEDGMENT
@@ -338,20 +359,24 @@
  | in order to acknowledge YAMBO:
  |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
+ | A. Marini, C. Hogan, M. Gr"uning, D. Varsano
  | Computer Physics Communications  180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | scrun                        # [R] Self-Consistent single-particle calculation
- | BoseTemp= 0.000000     eV    # Bosonic Temperature
- | HXC_Potential= "HARTREE"     # [SC] SC HXC Potential
- | FFTGvecs=  363         RL    # [FFT] Plane-waves
+ | scrun                          # [R] Self-Consistent single-particle calculation
+ | ElecTemp=0.2585E-4     eV      # Electronic Temperature
+ | BoseTemp= 0.000000     eV      # Bosonic Temperature
+ | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
+ | HXC_Potential= "HARTREE"       # [SC] SC HXC Potential
+ | FFTGvecs=  363         RL      # [FFT] Plane-waves
+ | HARRLvcs=  363         RL      # [HA] Hartree  RL components
+ | ALLGHAR                        # [HA] Force the use use all RL vectors for the Hartree potential
  | % SCBands
- |   1 |  8 |                   # [SC] Bands
+ |   1 |  8 |                     # [SC] Bands
  | %
- | SCIter= 3                    # [SC] SC Iterations
- | SCEtresh=   0.0100     eV    # [SC] Energy convergence threshold
- | SCRhoTresh=0.1000E-4         # [SC] Rho convergence threshold
- | SCnlMix                      # [SC] Use SC non-local mixing
- | BandMix= 100.0000            # [SC] Band mixing
+ | SCIter= 3                      # [SC] SC Iterations
+ | SCEtresh=   0.0100     eV      # [SC] Energy convergence threshold
+ | SCRhoTresh=0.1000E-4           # [SC] Rho convergence threshold
+ | SCnlMix                        # [SC] Use SC non-local mixing
+ | BandMix= 100.0000              # [SC] Band mixing

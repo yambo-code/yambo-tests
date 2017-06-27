@@ -1,18 +1,18 @@
                                                                 
-     **    **    **     ****     ****  ******     *******       
-    //**  **    ****   /**/**   **/** /*////**   **/////**      
-     //****    **//**  /**//** ** /** /*   /**  **     //**     
-      //**    **  //** /** //***  /** /******  /**      /**     
-       /**   **********/**  //*   /** /*//// **/**      /**     
-       /**  /**//////**/**   /    /** /*    /**//**     **      
-       /**  /**     /**/**        /** /*******  //*******       
-       //   //      // //         //  ///////    ///////        
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$       
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$      
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$      
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$      
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$      
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$      
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/      
+        |__/   |__/  |__/|__/     |__/|_______/  \______/       
                                                                 
-           Version 4.1.1 Revision 14052 Hash e109ff3            
-                           MPI Build                            
-                   http://www.yambo-code.org                    
+          Version 4.2.0 Revision 14590 Hash 701964b             
+                     MPI+SLK+OpenMP Build                       
+                  http://www.yambo-code.org                     
  
- 11/17/2016 at 21:46 YAMBO @ anomaly
+ 06/12/2017 at 13:32 YAMBO @ anomaly
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -150,7 +150,7 @@
   X grid is uniform     :yes
   BS scattering         :yes
   COLL scattering       :no
- - S/N 009976 -------------------------- v.04.01.01 r.14052 -
+ - S/N 009976 -------------------------- v.04.02.00 r.14590 -
 
  IBZ Q-points : 1
  BZ  Q-points : 1
@@ -159,12 +159,8 @@
   
  Q [00001] : 0.00      0.00      0.00     (cc ) * weight  1.000000
 
- [04] External corrections
- =========================
-
-
-  [04.01] External QP corrections (K)
-  ===================================
+  [03.01] External/Internal QP corrections
+  ========================================
 
   [RD./04_QP/ndb.QP]------------------------------------------
    Lattice constants                : 18.89726  11.33836  18.89726
@@ -195,25 +191,30 @@
    Sc bands terminator    : no
    Sx RL components       : 17279
    QP @ K 001 - 001 : b 014 - 034
-  - S/N 009976 -------------------------- v.04.01.01 r.14052 -
+  - S/N 009976 -------------------------- v.04.02.00 r.14590 -
 
-  [QP] Kpts covered exactly  [o/o]: 100.0000
+  E<04_QP/ndb.QP[ E-E PPA: 27.21138 XG:  367 Xb:   1   50 Scb:  10   40]
+
+  [QP_ctl (Nearest K-pt)] Kpts covered exactly  [o/o]: 100.0000
+   
+
 
   [WARNING] Fit order on energies [c] reduced to 0
-  -- [QP@K] DOS/Linear/Quadratic extrapolation -------------------
-  === QP/DB derived ===
-   Gap correction (database) [ev]: 3.515626
-                       (FIT) [ev]: 2.213868
-   Energies 0th order c/v [ev]: 4.149130 -1.580364
-   Energies 1st order         : 1.000000  1.096877
-                         Error:  0.14285   0.04356
-  === Additional ===
-  ------------------------------------------------------------
-  [QP] Fermi level variation [ev]:-0.953029
-  [QP] Last Filled/Metallic band : 24  24
-  [QP] Ind. Gap Correction  [ev]: 4.472193
+  = FIT report for E<04_QP/ndb.QP[ E-E PPA: 27.21138 XG:  367 Xb:   1   50 Scb:  10   40] =
+  = First column (conduction), Second column (valence) =
 
- [05] Static Dielectric Matrix
+   Gap correction (database) [ev]: 3.515904
+   Additional GAP corr. (FIT)[ev]: 2.213834
+   Energies 0th order        [ev]: 4.149177 -1.580561
+   Energies 1st order            : 1.000000  1.096909
+                            Error:  0.14285   0.04355
+   
+
+  [QP apply] Fermi level variation [ev]:-0.953354
+  [QP apply] Last Filled/Metallic band : 24  24
+  [QP apply] Ind. Gap Correction   [ev]: 4.472687
+
+ [04] Static Dielectric Matrix
  =============================
 
  [RD./06_BSE//ndb.dip_iR_and_P]------------------------------
@@ -234,12 +235,12 @@
   Direct v evaluation    :no
   Field momentum norm    :0.1000E-4
   Wavefunctions          :Teter 93(XC)
- - S/N 009976 -------------------------- v.04.01.01 r.14052 -
+ - S/N 009976 -------------------------- v.04.02.00 r.14590 -
  [WF] Performing Wave-Functions I/O from ./SAVE
 
  [FFT-X] Mesh size:  39   24   39
 
- [WF loader] Normalization (few states)  min/max  :0.401E-09  1.00    
+ [WF loader] Normalization (few states)  min/max  :0.230E-09  1.00    
 
  [X-CG] R(p) Tot o/o(of R)  :  617   624   100
  [WR./06_BSE//ndb.em1s]--------------------------------------
@@ -264,30 +265,31 @@
   Field direction        :0.1000E-4  0.000     0.000   
   BZ energy Double Grid  :no
   BZ energy DbGd points  :0
+ [WR./06_BSE//ndb.em1s_fragment_1]---------------------------
   :: Current Q-pt index     : 1
   :: X energy range     [ev]: 0.00      0.00    
   :: X damping range    [ev]:0.1000E-2 0.1000E-2
   :: Number of frequencies  : 1
- - S/N 009976 -------------------------- v.04.01.01 r.14052 -
+ - S/N 009976 -------------------------- v.04.02.00 r.14590 -
 
- CpuTiming [Min/Max/Average]: 01s/01s/01s
+ Timing [Min/Max/Average]: 01s/01s/01s
 
- [06] Response Functions in Transition space
+ [05] Response Functions in Transition space
  ===========================================
 
 
-  [06.01] Transition Groups build-up
+  [05.01] Transition Groups build-up
   ==================================
 
   [BSK] Transition groups (total) 1
 
-  [06.02] CPU-dependent Block structure
+  [05.02] CPU-dependent Block structure
   =====================================
 
   [BSK] Size (resonant) 110
   [BSK]         (total) 110
 
-  [06.03] Independent Particles absorption
+  [05.03] Independent Particles absorption
   ========================================
 
   Optical renormalization   [au]: 4049.   
@@ -311,14 +313,14 @@
    Direct v evaluation    :no
    Field momentum norm    :0.1000E-4
    Wavefunctions          :Teter 93(XC)
-  - S/N 009976 -------------------------- v.04.01.01 r.14052 -
+  - S/N 009976 -------------------------- v.04.02.00 r.14590 -
 
-  [06.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
+  [05.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
   =======================================================
 
   [BSE] Exchange components :  367
 
-   [06.04.01] Screened interaction header I/O
+   [05.04.01] Screened interaction header I/O
    ==========================================
 
    [RD./06_BSE//ndb.em1s]--------------------------------------
@@ -343,17 +345,18 @@
     Field direction        :0.1000E-4  0.000     0.000   
     BZ energy Double Grid  :no
     BZ energy DbGd points  :0
+   [RD./06_BSE//ndb.em1s_fragment_1]---------------------------
     :: Current Q-pt index     : 1
     :: X energy range     [ev]: 0.00      0.00    
     :: X damping range    [ev]:0.1000E-2 0.1000E-2
     :: Number of frequencies  : 1
-   - S/N 009976 -------------------------- v.04.01.01 r.14052 -
+   - S/N 009976 -------------------------- v.04.02.00 r.14590 -
    [WF] Performing Wave-Functions I/O from ./SAVE
 
    [FFT-BSK] Mesh size:  39   24   39
 
 
-   [06.04.02] Wave-Function Phases
+   [05.04.02] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found  [o/o]: 100.0000
@@ -367,7 +370,7 @@
     BS kernel          wavefunctions :Teter 93(XC)
     Static diel. fun.  energies      :Teter 93(XC)
                        wavefunctions :Teter 93(XC)
-    BSK|Identifier              :  8077
+    BSK|Identifier              :  8680
        |Dimension               : 110
        |Bands                   :  14   34
        |Exchange           [res]:yes
@@ -393,55 +396,83 @@
        |xc-Kernel               :none
     RIM|RL components      [col]:0
        |Random points      [col]:0
-   - S/N 009976 -------------------------- v.04.01.01 r.14052 -
+   - S/N 009976 -------------------------- v.04.02.00 r.14590 -
 
-   [06.04.03] Kernel loop
+   [05.04.03] Kernel loop
    ======================
 
 
- [07] BSE solver(s)
+ [06] BSE solver(s)
  ==================
 
 
-  [07.01] Diagonalization solver
+  [06.01] Diagonalization solver
   ==============================
 
   [WR./06_BSE//ndb.BS_diago_Q01]------------------------------
-   BS kernel          energies      :GoWo Plasmon Pole appox.
-   BSK Identifier                  :  8077
+   BS kernel          energies      : E < 04_QP/ndb.QP + E Fit
+   BSK Identifier                  :  8680
    Excitonic eigenstates included  :no
    Field direction                 :0.5774E-5 0.5774E-5 0.5774E-5
-  - S/N 009976 -------------------------- v.04.01.01 r.14052 -
+  - S/N 009976 -------------------------- v.04.02.00 r.14590 -
 
- [08] Timing Overview
+ [07] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                io_WF :     0.00s CPU (       5 calls,   0.007 s avg)
-                io_HF :     0.00s CPU
-           io_DIPOLES :     0.00s CPU (       5 calls,   0.001 s avg)
-                 io_X :     0.00s CPU (       9 calls,   0.001 s avg)
-              Dipoles :     0.00s CPU (       2 calls,   0.002 s avg)
-       Xo (procedure) :     0.00s CPU
-           Xo (REDUX) :     0.00s CPU
-        X (procedure) :     0.00s CPU
-       LINEAR ALGEBRA :     0.00s CPU (       2 calls,   0.060 s avg)
-            X (REDUX) :     0.00s CPU
-       eval_G_minus_G :     0.00s CPU
-           T_space IP :     0.00s CPU
-     X T_space Kernel :     0.00s CPU
-     T_space EXX Osc. :     0.00s CPU
-    T_space CORR Osc. :     0.00s CPU
- Diagonalization Solv :     0.00s CPU
+                               io_WF :     0.00s CPU (       7 calls,   0.004 s avg)
+                             io_GROT :     0.00s CPU (       2 calls,   0.000 s avg)
+                            io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
+                          io_COL_CUT :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU
+                               io_HF :     0.00s CPU
+                          io_DIPOLES :     0.00s CPU (       5 calls,   0.000 s avg)
+                         io_KB_pwscf :     0.00s CPU
+                        io_KB_abinit :     0.00s CPU
+                                io_X :     0.00s CPU (       9 calls,   0.001 s avg)
+                               io_BS :     0.00s CPU (       4 calls,   0.001 s avg)
+                        io_QP_and_GF :     0.00s CPU
+             IO_and_Messaging_switch :     0.00s CPU (       4 calls,   0.000 s avg)
+                             Dipoles :     0.00s CPU (       2 calls,   0.001 s avg)
+                         io_fragment :     0.00s CPU (       7 calls,   0.000 s avg)
+                      Xo (procedure) :     0.00s CPU
+                          Xo (REDUX) :     0.00s CPU
+                       X (procedure) :     0.00s CPU
+                      LINEAR ALGEBRA :     0.00s CPU (       2 calls,   0.028 s avg)
+                   SERIAL_lin_system :     0.00s CPU
+                           X (REDUX) :     0.00s CPU
+                      eval_G_minus_G :     0.00s CPU
+                          T_space IP :     0.00s CPU
+                    X T_space Kernel :     0.00s CPU
+                    T_space EXX Osc. :     0.00s CPU
+                   T_space CORR Osc. :     0.00s CPU
+              Diagonalization Solver :     0.00s CPU
+                        io_BSS_diago :     0.00s CPU (       2 calls,   0.000 s avg)
+    SERIAL_HERMITIAN_diagonalization :     0.00s CPU
+
+ [08] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are:674Kb (basic treshold) 6Mb (SAVEs treshold)
+
+         TOTAL unallocated : 690Kb
+
+ MAX allocations:
+
+                           WF%c [%c] : 13Mb ([04] Static Dielectric Matrix)
+                             wf_disk : 6Mb ([05.04.01] Screened interaction header I/O)
+
+         Max memory used   : 23Mb
 
  [09] Game Over & Game summary
  =============================
 
- 11/17/2016 at 21:46 YAMBO @ anomaly [start]
- 11/17/2016 at 21:46                 [end]
+ 06/12/2017 at 13:32 YAMBO @ anomaly [start]
+ 06/12/2017 at 13:32                 [end]
 
  Timing   [Min/Max/Average]: 02s/02s/02s
-              [Time-Profile]:  2.284000s
+             [Time-Profile]:  2.484403s
 
  .-ACKNOWLEDGMENT
  |
@@ -454,44 +485,47 @@
  | in order to acknowledge YAMBO:
  |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
+ | A. Marini, C. Hogan, M. Gr"uning, D. Varsano
  | Computer Physics Communications  180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | optics                       # [R OPT] Optics
- | bse                          # [R BSE] Bethe Salpeter Equation.
- | bsk                          # [R BSK] Bethe Salpeter Equation kernel
- | bss                          # [R BSS] Bethe Salpeter Equation solver
- | em1s                         # [R Xs] Static Inverse Dielectric Matrix
- | NonPDirs= "XYZ"              # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
- | Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
- | BSEmod= "resonant"           # [BSE] resonant/retarded/coupling
- | BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
- | BSSmod= "d"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
- | BSENGexx= 1535         mHa   # [BSK] Exchange components
- | BSENGBlk=  595         mHa   # [BSK] Screened interaction block size
- | #WehCpl                      # [BSK] eh interaction included also in coupling
+ | optics                         # [R OPT] Optics
+ | bse                            # [R BSE] Bethe Salpeter Equation.
+ | bsk                            # [R BSK] Bethe Salpeter Equation kernel
+ | bss                            # [R BSS] Bethe Salpeter Equation solver
+ | em1s                           # [R Xs] Static Inverse Dielectric Matrix
+ | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+ | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+ | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
+ | NonPDirs= "XYZ"                # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
+ | Chimod= "Hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
+ | BSEmod= "resonant"             # [BSE] resonant/retarded/coupling
+ | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSSmod= "d"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+ | BSENGexx= 1535         mHa     # [BSK] Exchange components
+ | BSENGBlk=  595         mHa     # [BSK] Screened interaction block size
+ | #WehCpl                        # [BSK] eh interaction included also in coupling
  | KfnQPdb= "E < 04_QP/ndb.QP uki" # [EXTQP BSK BSS] Database
  | % BEnRange
- |   5.00000 | 15.00000 | eV    # [BSS] Energy range
+ |   5.00000 | 15.00000 | eV      # [BSS] Energy range
  | %
  | % BDmRange
- |   0.10000 |  0.10000 | eV    # [BSS] Damping range
+ |   0.10000 |  0.10000 | eV      # [BSS] Damping range
  | %
- | BEnSteps=  500               # [BSS] Energy steps
+ | BEnSteps=  500                 # [BSS] Energy steps
  | % BLongDir
  | 0.5774E-5 |0.5774E-5 |0.5774E-5 |        # [BSS] [cc] Electric Field
  | %
  | % BSEBands
- |   14 |  34 |                 # [BSK] Bands range
+ |   14 |  34 |                   # [BSK] Bands range
  | %
  | % BndsRnXs
- |    1 |  50 |                 # [Xs] Polarization function bands
+ |    1 |  50 |                   # [Xs] Polarization function bands
  | %
- | NGsBlkXs= 1535         mHa   # [Xs] Response block size
+ | NGsBlkXs= 1535         mHa     # [Xs] Response block size
  | % DmRngeXs
- | 0.1000E-2 |0.1000E-2 | eV    # [Xs] Damping range
+ | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
  | %
  | % LongDrXs
  | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field

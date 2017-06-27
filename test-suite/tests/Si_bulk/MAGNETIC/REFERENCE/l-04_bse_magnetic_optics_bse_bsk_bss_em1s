@@ -1,16 +1,15 @@
 
 
-  __ __  ____ ___ ___ ____   ___
- |  |  |/    |   |   |    \ /   \
- |  |  |  o  | _   _ |  o  )     |
- |  ~  |     |  \_/  |     |  O  |
- |___, |  _  |   |   |  O  |     |
- |     |  |  |   |   |     |     |
- |____/|__|__|___|___|_____|\___/
+ __   __  _______  __   __  _______  _______
+|  | |  ||   _   ||  |_|  ||  _    ||       |
+|  |_|  ||  |_|  ||       || |_|   ||   _   |
+|       ||       ||       ||       ||  | |  |
+|_     _||       ||       ||  _   | |  |_|  |
+  |   |  |   _   || ||_|| || |_|   ||       |
+  |___|  |__| |__||_|   |_||_______||_______|
 
 
  <---> [01] CPU structure, Files & I/O Directories
- <---> CPU-Threads:1(CPU)-4(threads)
  <---> [02] CORE Variables Setup
  <---> [02.01] Unit cells
  <---> [02.02] Symmetries
@@ -20,14 +19,13 @@
  <---> [02.05] Energies [ev] & Occupations
  <---> [WARNING]SC HARTREE +Teter 93(XC)+Landau Magnetism wavefunctions found. Bands check at loading time.
  <---> [03] Transferred momenta grid
- <---> [04] External corrections
- <---> [04.01] External QP corrections (K)
- <---> [QP@K] E<03_gw_magnetic/ndb.QP[ PPA XG:1 Xb:1   7 Scb:1   7]
- <---> [QP] Kpts covered exactly  [o/o]: 12.50000
- <---> [Interpolate] Nighbours         : 1
- <---> [Interpolate] Kpts covered [o/o]: 87.50000
+ <---> [03.01] External/Internal QP corrections
+ <---> E<03_gw_magnetic/ndb.QP[ E-E PPA: 27.21138 XG: 1 Xb:  1   7 Scb:  1   7]
+ <---> [QP_ctl (Nearest K-pt)] Kpts covered exactly  [o/o]: 12.50000
+ <---> [QP_ctl (Nearest K-pt)] Nighbours         : 1
+ <---> [QP_ctl (Nearest K-pt)] Kpts covered [o/o]: 87.50000
  <---> [WARNING] Fit order on energies [c] reduced to 0
- <---> [05] Static Dielectric Matrix
+ <---> [04] Static Dielectric Matrix
  <---> [LA] SERIAL linear algebra
  <---> [DIP] Checking dipoles header
  <---> [x,Vnl] computed using 18 projectors
@@ -42,6 +40,7 @@
  <---> Xo@q[1] |########################################| [100%] --(E) --(X)
  <---> X@q[1] |                                        | [000%] --(E) --(X)
  <---> X@q[1] |########################################| [100%] --(E) --(X)
+ <---> [MEMORY] Alloc WF%c(318Kb) TOTAL: 410Kb (traced) 13Mb (memstat)
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
  <---> [FFT-X] Mesh size:  9   9   9
  <---> [WF loader] SC HARTREE +Teter 93(XC)+Landau Magnetism wavefunctions loaded
@@ -75,35 +74,42 @@
  <---> Xo@q[7] |########################################| [100%] --(E) --(X)
  <---> X@q[7] |                                        | [000%] --(E) --(X)
  <---> X@q[7] |########################################| [100%] --(E) --(X)
- <---> [X-CG] R(p) Tot o/o(of R)  :  92   96  100
+ <---> [X-CG] R(p) Tot o/o(of R)  :  93   96  100
  <---> Xo@q[8] |                                        | [000%] --(E) --(X)
  <---> Xo@q[8] |########################################| [100%] --(E) --(X)
  <---> X@q[8] |                                        | [000%] --(E) --(X)
  <---> X@q[8] |########################################| [100%] --(E) --(X)
- <---> [06] Response Functions in Transition space
- <---> [06.01] Transition Groups build-up
- <---> [06.02] CPU-dependent Block structure
+ <---> [MEMORY] Free WF%c(318Kb) TOTAL: 90Kb (traced) 13Mb (memstat)
+ <---> [MEMORY]TOTAL unallocated : 112Kb
+ <---> [05] Response Functions in Transition space
+ <---> [05.01] Transition Groups build-up
+ <---> [05.02] CPU-dependent Block structure
  <---> [BSK] Size (resonant)  96
  <---> [BSK]         (total)  96
- <---> [06.03] Independent Particles absorption
+ <---> [05.03] Independent Particles absorption
  <---> [DIP] Checking dipoles header
- <---> [06.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
- <---> [06.04.01] Screened interaction header I/O
+ <---> [05.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
+ <---> [05.04.01] Screened interaction header I/O
  <---> [WARNING] [WF] WF-distribution turned off, not compatible with SC wave functions
+ <---> [MEMORY] Alloc WF%c(318Kb) TOTAL: 514Kb (traced) 13Mb (memstat)
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
  <---> [FFT-BSK] Mesh size:  9   9   9
  <---> [WF loader] SC HARTREE +Teter 93(XC)+Landau Magnetism wavefunctions loaded
- <---> [06.04.02] Wave-Function Phases
- <01s> [06.04.03] Kernel loop
- <01s> Kernel |                                        | [000%] --(E) --(X)
- <01s> Kernel |########################################| [100%] --(E) --(X)
- <01s> [07] BSE solver(s)
- <01s> [LA] SERIAL linear algebra
- <01s> [07.01] Diagonalization solver
- <01s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <01s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <01s> EPS   residuals |                                        | [000%] --(E) --(X)
- <01s> EPS   residuals |########################################| [100%] --(E) --(X)
- <01s> BSK     epsilon |                                        | [000%] --(E) --(X)
- <01s> BSK     epsilon |########################################| [100%] --(E) --(X)
- <01s> [08] Game Over & Game summary
+ <---> [05.04.02] Wave-Function Phases
+ <---> [05.04.03] Kernel loop
+ <---> Kernel |                                        | [000%] --(E) --(X)
+ <---> Kernel |########################################| [100%] --(E) --(X)
+ <---> [MEMORY] Free WF%c(318Kb) TOTAL: 244Kb (traced) 14Mb (memstat)
+ <---> [06] BSE solver(s)
+ <---> [LA] SERIAL linear algebra
+ <---> [06.01] Diagonalization solver
+ <---> BSK diagonalize |                                        | [000%] --(E) --(X)
+ <---> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <---> EPS   residuals |                                        | [000%] --(E) --(X)
+ <---> EPS   residuals |########################################| [100%] --(E) --(X)
+ <---> BSK     epsilon |                                        | [000%] --(E) --(X)
+ <---> BSK     epsilon |########################################| [100%] --(E) --(X)
+ <01s> [MEMORY]TOTAL unallocated : 148Kb
+ <01s> [07] Timing Overview
+ <01s> [08] Memory Overview
+ <01s> [09] Game Over & Game summary

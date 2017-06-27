@@ -1,18 +1,18 @@
-     __      __   ______   __       __  _______    ______       
-    |  \    /  \ /      \ |  \     /  \|       \  /      \      
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\     
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$     
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$     
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$     
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$     
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$     
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$      
                                                                 
-           Version 4.1.1 Revision 13953 Hash 80be4d7            
-                           MPI Build                            
-                   http://www.yambo-code.org                    
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.     
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb    
+      `88. .8" .8"88.    888b     d"88  88     888 88      88   
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88   
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88   
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"   
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"    
+                                                                
+                                                                
+            Version 4.2.0 Revision 14580 Hash b498665           
+                      MPI+SLK+OpenMP Build                      
+                    http://www.yambo-code.org                   
  
- 10/19/2016 at 00:04 YAMBO_SC @ narro
+ 06/07/2017 at 16:30 YAMBO_SC @ anomaly
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -29,7 +29,7 @@
  Input file     is   yambo.in
  Report file    is   ./r-06_h_coh_sex_using_colls_em1s_cohsex_scrun
  Job string(main): 06_h_coh_sex_using_colls
-             (#1): 04_h_coh_sex_colls
+             (#1): 04_h_coh_sex_colls-serial-devel-qp-dbs
  Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
@@ -173,7 +173,7 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 008306 -------------------------- v.04.01.01 r.13953 -
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
 
  IBZ Q-points :  4
  BZ  Q-points :  8
@@ -188,14 +188,10 @@
  Q [00003] : 0.000000  0.000000  0.617027 (cc ) * weight  0.375000
  Q [00004] : 0.308513  0.308513  0.308513 (cc ) * weight  0.125000
 
- [04] External corrections
- =========================
-
-
- [05] Static Dielectric Matrix
+ [04] Static Dielectric Matrix
  =============================
 
- [RD./04_h_coh_sex_colls//ndb.em1s]--------------------------
+ [RD./04_h_coh_sex_colls-serial-devel-qp-dbs//ndb.em1s]------
   Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
   RL vectors                   (WF):  363
   Coulomb cutoff potential         :none
@@ -217,9 +213,21 @@
   Field direction        :0.1000E-4  0.000     0.000   
   BZ energy Double Grid  :no
   BZ energy DbGd points  :0
- - S/N 008306 -------------------------- v.04.01.01 r.13953 -
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
+ [RD./04_h_coh_sex_colls-serial-devel-qp-dbs//ndb.em1s_fragment_1]-
+  :: Current Q-pt index     : 1
+  :: X energy range     [ev]: 0.00      0.00    
+  :: X damping range    [ev]:0.1000E-2 0.1000E-2
+  :: Number of frequencies  : 1
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
+ [RD./04_h_coh_sex_colls-serial-devel-qp-dbs//ndb.em1s_fragment_2]-
+  :: Current Q-pt index     : 2
+  :: X energy range     [ev]: 0.00      0.00    
+  :: X damping range    [ev]:0.1000E-2 0.1000E-2
+  :: Number of frequencies  : 1
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
 
- [06] Self-Consistent HARTREE+COHSEX
+ [05] Self-Consistent HARTREE+COHSEX
  ===================================
 
 
@@ -236,7 +244,7 @@
  [SC] Imposed accuracy on density      :0.1000E-4
  [SC]                  on energies [ev]:   0.0100
 
- [RD./04_h_coh_sex_colls//ndb.COLLISIONS_COH]----------------
+ [RD./04_h_coh_sex_colls-serial-devel-qp-dbs//ndb.COLLISIONS_COH]-
   Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
   RL vectors                   (WF):  363
   COLLISIONS name                 :COH
@@ -244,13 +252,12 @@
   COLLISIONS kind                 :  326
   Bands                           :  1   8
   Bands mixing                    : 100.0000
-  Interaction Kind                :SC COH
   X matrix size          :51
   X band range           :1 - 10
   X e/h energy range [ev]:-1.000000 - -1.000000
   X Time ordering        :T
   X xc-Kernel            :none
-  X Drude frequency      : 0.000000 -  0.000000
+  X Drude frequency      : 0.000000 0.000000
   X poles           [o/o]: 100.0000
   RL vectors in the sum  :363
   [r,Vnl] included       : yes
@@ -259,8 +266,8 @@
   BZ energy DbGd points  :0
   RIM RL components      :0
   RIM random points      :0
- - S/N 008306 -------------------------- v.04.01.01 r.13953 -
- [RD./04_h_coh_sex_colls//ndb.COLLISIONS_HXC]----------------
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
+ [RD./04_h_coh_sex_colls-serial-devel-qp-dbs//ndb.COLLISIONS_HXC]-
   Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
   RL vectors                   (WF):  363
   COLLISIONS name                 :HARTREE+SEX
@@ -268,7 +275,6 @@
   COLLISIONS kind                 : 1327
   Bands                           :  1   8
   Bands mixing                    : 100.0000
-  Interaction Kind                :SC HARTREE +SC SEX
   Exchange Cutoff                 : 0.000000
   Hartree  RL vectors             :  363
   Exchange RL vectors             :  363
@@ -277,7 +283,7 @@
   X e/h energy range [ev]:-1.000000 - -1.000000
   X Time ordering        :T
   X xc-Kernel            :none
-  X Drude frequency      : 0.000000 -  0.000000
+  X Drude frequency      : 0.000000 0.000000
   X poles           [o/o]: 100.0000
   RL vectors in the sum  :363
   [r,Vnl] included       : yes
@@ -286,21 +292,21 @@
   BZ energy DbGd points  :0
   RIM RL components      :0
   RIM random points      :0
- - S/N 008306 -------------------------- v.04.01.01 r.13953 -
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
  [SC] Extented collisions              :yes
   
  [WF] Performing Wave-Functions I/O from ./SAVE
 
  [FFT-SC] Mesh size: 12  12  12
 
- [WF loader] Normalization (few states)  min/max  :0.1673E-8  1.000   
+ [WF loader] Normalization (few states)  min/max  :0.1781E-8  1.000   
 
  [xc] Functional Teter 93(XC)
  [xc] LIBXC used to calculate xc functional
  [WR./06_h_coh_sex_using_colls//ndb.scWFs]-------------------
   Coulomb cutoff potential         :none
   Fragmentation                    :yes
-  Electronic Temperature        [K]: 0.000000
+  Electronic Temperature        [K]:  0.10000
   Bosonic    Temperature        [K]: 0.000000
   Unit cell atoms                 :2Si
   xc Functional                   :HARTREE+COHSEX
@@ -316,70 +322,109 @@
   [SC] W update steps             :0
   [SC] Diagonal approximation     :no
   [SC] FFT mesh points            : 1728
- - S/N 008306 -------------------------- v.04.01.01 r.13953 -
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
 
  [SC] Iterations               : 3
- [SC] Accuracy on density      :0.1465E-4
+ [SC] Accuracy on density      :0.1470E-4
  [SC]          on energies [ev]:   0.0024
   
  [SC] Hartree Energy          [Ha/Ry]: 0.637484  1.274967
- Fermi Level        [ev]:  0.000000
- VBM / CBm          [ev]:  0.000000  1.223289
- Electronic Temp. [ev K]:  0.00      0.00    
+ Fermi Level        [ev]: 0.5069E-7
+ VBM / CBm          [ev]: -0.639086  0.584212
+ Electronic Temp. [ev K]: 0.3447E-4 0.4000   
  Bosonic    Temp. [ev K]:  0.00      0.00    
  El. density      [cm-3]: 0.205E+24
  States summary         : Full        Metallic    Empty
                           0001-0004               0005-0100
- Indirect Gaps      [ev]: 1.223289  4.869579
- Direct Gaps        [ev]: 3.778739  4.869579
+ Indirect Gaps      [ev]: 1.223298  4.869562
+ Direct Gaps        [ev]: 3.778764  4.869562
   
  Energy unit is electronVolt [eV]
 
  *X* K [1] : 0.000000  0.000000  0.000000 ( cc) * Comp.s 259 * weight  0.125000
              0.000000  0.000000  0.000000 (rlu)
- E   -14.91    -.9606E-3 -.8515E-4  0.000     3.779     3.782     3.786     4.914   
+ E   -15.54507  -0.64005  -0.63917  -0.63909   3.13968   3.14294   3.14654   4.27466
  occ  2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
  E_o -12.11390   0.00000   0.00000   0.00000   2.57339   2.57339   2.57339   3.42296
- d_E -2.792    -.9606E-3 -.8515E-4  0.000     1.205     1.209     1.212     1.491   
- Spr  99.99998  99.99929  99.99949  99.99929  99.99934  99.99987  99.99922  99.99945
+ d_E -3.431169 -0.640052 -0.639173 -0.639086  0.566284  0.569547  0.573145  0.851703
+ Spr  99.99991  99.99929  99.99944  99.99924  99.99932  99.99984  99.99923  99.99945
  MxO  1.000000  4.000000  2.000000  2.000000  6.000000  7.000000  5.000000  8.000000
  Bnd  1.000000  4.000000  4.000000  2.000000  6.000000  5.000000  6.000000  8.000000
   
  *X* K [2] :-0.308513 -0.308513  0.308513 ( cc) * Comp.s 266 * weight  0.375000
             -0.250000 -0.250000  0.250000 (rlu)
- E   -11.95092  -8.82012  -1.52693  -1.52599   2.55966   4.73128   4.73539   8.54986
+ E   -12.58999  -9.45919  -2.16600  -2.16506   1.92062   4.09219   4.09631   7.91078
  occ  2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
  E_o -9.723893 -7.100585 -1.226122 -1.226122  1.550016  3.351941  3.351941  7.590647
- d_E -2.227025 -1.719534 -0.300806 -0.299866  1.009647  1.379342  1.383445  0.959212
- Spr  99.99982  99.99586  99.99931  99.99960  99.99495  99.99944  99.99971  99.99955
+ d_E -2.866101 -2.358607 -0.939881 -0.938940  0.370604  0.740251  0.744365  0.320131
+ Spr  99.99986  99.99586  99.99934  99.99959  99.99495  99.99948  99.99975  99.99957
  MxO  1.000000  2.000000  4.000000  3.000000  5.000000  7.000000  6.000000  8.000000
  Bnd  1.000000  2.000000  4.000000  3.000000  5.000000  7.000000  6.000000  8.000000
   
  *X* K [3] : 0.000000  0.000000  0.617027 ( cc) * Comp.s 254 * weight  0.375000
              0.000000  0.000000  0.500000 (rlu)
- E    -9.70940  -9.70748  -3.64706  -3.64629   1.22329   1.22500  12.55373  12.55387
+ E   -10.34852 -10.34660  -4.28612  -4.28535   0.58421   0.58593  11.91467  11.91482
  occ  2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
  E_o  -7.88461  -7.88461  -2.92270  -2.92270   0.61954   0.61954  10.18124  10.18124
- d_E -1.824789 -1.822875 -0.724362 -0.723592  0.603753  0.605463  2.372493  2.372635
- Spr   99.9859   99.9849   99.9996   99.9996   99.9857   99.9844  100.0000  100.0000
+ d_E  -2.46391  -2.46199  -1.36342  -1.36265  -0.03532  -0.03361   1.73343   1.73358
+ Spr  99.98588  99.98495  99.99962  99.99963  99.98576  99.98448  99.99997  99.99997
  MxO  1.000000  2.000000  3.000000  4.000000  5.000000  6.000000  8.000000  7.000000
  Bnd  1.000000  2.000000  3.000000  4.000000  5.000000  6.000000  8.000000  7.000000
   
  *X* K [4] : 0.308513  0.308513  0.308513 ( cc) * Comp.s 266 * weight  0.125000
              0.250000  0.250000  0.250000 (rlu)
- E   -11.94763  -8.81726  -1.52609  -1.52435   2.55921   4.73092   4.73643   8.54886
+ E   -12.58671  -9.45634  -2.16517  -2.16343   1.92016   4.09185   4.09735   7.90978
  occ  2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
  E_o -9.723893 -7.100585 -1.226122 -1.226122  1.550016  3.351941  3.351941  7.590647
- d_E -2.223734 -1.716679 -0.299971 -0.298230  1.009192  1.378981  1.384494  0.958209
- Spr  99.99989  99.99595  99.99972  99.99960  99.99546  99.99976  99.99980  99.99988
+ d_E -2.862817 -2.355753 -0.939051 -0.937311  0.370142  0.739905  0.745413  0.319133
+ Spr  99.99986  99.99600  99.99973  99.99960  99.99547  99.99984  99.99985  99.99985
  MxO  1.000000  2.000000  4.000000  3.000000  5.000000  7.000000  6.000000  8.000000
  Bnd  1.000000  2.000000  4.000000  3.000000  5.000000  7.000000  6.000000  8.000000
 
- [07] Game Over & Game summary
+ [06] Timing Overview
+ ====================
+
+ Routines: global (Only MASTER cpu here)
+                               io_WF :     0.00s CPU (       7 calls,   0.000 s avg)
+                             io_GROT :     0.00s CPU (       3 calls,   0.000 s avg)
+                            io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
+                          io_COL_CUT :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU
+                               io_HF :     0.00s CPU
+                          io_DIPOLES :     0.00s CPU
+                         io_KB_pwscf :     0.00s CPU
+                        io_KB_abinit :     0.00s CPU
+                                io_X :     0.00s CPU (       9 calls,   0.000 s avg)
+                         io_fragment :     0.00s CPU (    1181 calls,   0.000 s avg)
+                               io_BS :     0.00s CPU
+                    io_SC_components :     0.00s CPU (      39 calls,   0.000 s avg)
+                       io_COLLISIONS :     0.00s CPU (     582 calls,   0.000 s avg)
+             IO_and_Messaging_switch :     0.00s CPU (      18 calls,   0.000 s avg)
+                      eval_G_minus_G :     0.00s CPU
+                     COLLISIONS_load :     0.00s CPU (       2 calls,   0.106 s avg)
+                    Bare_Hamiltonian :     0.00s CPU
+                           V_Hartree :     0.00s CPU (       5 calls,   0.000 s avg)
+                   V_real_space_to_H :     0.00s CPU (       4 calls,   0.000 s avg)
+                     V_qp_basis_to_H :     0.00s CPU (      28 calls,   0.000 s avg)
+               COLLISIONS_compose_sc :     0.00s CPU (       3 calls,   0.000 s avg)
+                      LINEAR ALGEBRA :     0.00s CPU (      12 calls,   0.000 s avg)
+    SERIAL_HERMITIAN_diagonalization :     0.00s CPU (      12 calls,   0.000 s avg)
+
+ [07] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are:109Kb (basic treshold) 1Mb (SAVEs treshold)
+
+         TOTAL unallocated : 115Kb
+
+         Max memory used   : 1Mb
+
+ [08] Game Over & Game summary
  =============================
 
- 10/19/2016 at 00:04 YAMBO_SC @ narro [start]
- 10/19/2016 at 00:04                  [end]
+ 06/07/2017 at 16:30 YAMBO_SC @ anomaly [start]
+ 06/07/2017 at 16:30                    [end]
 
   
  .-ACKNOWLEDGMENT
@@ -393,32 +438,41 @@
  | in order to acknowledge YAMBO:
  |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
+ | A. Marini, C. Hogan, M. Gr"uning, D. Varsano
  | Computer Physics Communications  180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | em1s                         # [R Xs] Static Inverse Dielectric Matrix
- | cohsex                       # [R Xp] COlumb Hole Screened EXchange
- | scrun                        # [R] Self-Consistent single-particle calculation
- | FFTGvecs=  363         RL    # [FFT] Plane-waves
- | Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+ | em1s                           # [R Xs] Static Inverse Dielectric Matrix
+ | cohsex                         # [R Xp] COlumb Hole Screened EXchange
+ | scrun                          # [R] Self-Consistent single-particle calculation
+ | ElecTemp=0.3447E-4     eV      # Electronic Temperature
+ | FFTGvecs=  363         RL      # [FFT] Plane-waves
+ | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+ | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+ | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
+ | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
  | % BndsRnXs
- |   1 | 10 |                   # [Xs] Polarization function bands
+ |   1 | 10 |                     # [Xs] Polarization function bands
  | %
- | NGsBlkXs=  51          RL    # [Xs] Response block size
+ | NGsBlkXs=  51          RL      # [Xs] Response block size
  | % DmRngeXs
- | 0.1000E-2 |0.1000E-2 | eV    # [Xs] Damping range
+ | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
  | %
  | % LongDrXs
  | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
  | %
  | HXC_Potential= "HARTREE+COHSEX" # [SC] SC HXC Potential
+ | HARRLvcs=  363         RL      # [HA] Hartree  RL components
+ | ALLGHAR                        # [HA] Force the use use all RL vectors for the Hartree potential
+ | EXXRLvcs=  363         RL      # [XX] Exchange RL components
+ | CORRLvcs=  51          RL      # [GW] Correlat RL components
+ | ALLGexx                        # [XX] Force the use use all RL vectors for the exchange part
  | % SCBands
- |   1 |  8 |                   # [SC] Bands
+ |   1 |  8 |                     # [SC] Bands
  | %
- | SCIter= 3                    # [SC] SC Iterations
- | SCEtresh=   0.0100     eV    # [SC] Energy convergence threshold
- | SCRhoTresh=0.1000E-4         # [SC] Rho convergence threshold
- | SCnlMix                      # [SC] Use SC non-local mixing
- | BandMix= 100.0000            # [SC] Band mixing
+ | SCIter= 3                      # [SC] SC Iterations
+ | SCEtresh=   0.0100     eV      # [SC] Energy convergence threshold
+ | SCRhoTresh=0.1000E-4           # [SC] Rho convergence threshold
+ | SCnlMix                        # [SC] Use SC non-local mixing
+ | BandMix= 100.0000              # [SC] Band mixing

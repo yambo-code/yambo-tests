@@ -1,11 +1,13 @@
 
- ___ __  _____  __ __  _____   _____
-|   Y  ||  _  ||  Y  ||  _  \ |  _  |
-|   |  ||. |  ||.    ||. |  / |. |  |
- \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
-  |: |  |: |  ||: |  ||: |   \|: |  |
-  |::|  |:.|:.||:.|:.||::.   /|::.  |
-  `--"  `-- --"`-- --"`-----" `-----"
+
+ __    __ ______           ____     _____
+/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
+\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
+ `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
+   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
+     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
+      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
+
 
  <---> [01] CPU structure, Files & I/O Directories
  <---> [02] CORE Variables Setup
@@ -16,40 +18,63 @@
  <---> [02.05] Non periodic geometry
  <---> [02.06] Energies [ev] & Occupations
  <---> [03] Transferred momenta grid
+ <---> [03.01] External/Internal QP corrections
+ <---> E<04_QP/ndb.QP[ E-E PPA: 27.21138 XG:  367 Xb:   1   50 Scb:  10   40]
+ <---> [QP_ctl (Nearest K-pt)] Kpts covered exactly  [o/o]: 100.0000
+ <---> [WARNING] Fit order on energies [c] reduced to 0
  <---> [04] Static Dielectric Matrix
- <---> [M  0.015 Gb] Alloc WF ( 0.014)
- <---> [WF] Performing Wave-Functions I/O
+ <---> [LA] SERIAL linear algebra
+ <---> [MEMORY] Alloc X_mat(1Mb) TOTAL: 1Mb (traced) 15Mb (memstat)
+ <---> [DIP] Checking dipoles header
+ <---> [MEMORY] Alloc WF%c(13Mb) TOTAL: 16Mb (traced) 29Mb (memstat)
+ <---> [WF] Performing Wave-Functions I/O from ./SAVE
  <---> [FFT-X] Mesh size:  39   24   39
- <---> [X-CG] R(p) Tot o/o(of R)  :  624   624   100
+ <---> [MEMORY] Alloc wf_disk(6Mb) TOTAL: 23Mb (traced) 36Mb (memstat)
+ <---> [MEMORY] Free wf_disk(6Mb) TOTAL: 16Mb (traced) 36Mb (memstat)
+ <---> [X-CG] R(p) Tot o/o(of R)  :  617   624   100
  <---> [X] Upper matrix triangle filled
  <---> Xo@q[1] |                                        | [000%] --(E) --(X)
- <---> Xo@q[1] |########################################| [100%] --(E) --(X)
- <---> X@q[1] |                                        | [000%] --(E) --(X)
+ <---> [MEMORY] Alloc Xo_res(1Mb) TOTAL: 17Mb (traced) 29Mb (memstat)
+ <01s> Xo@q[1] |########################################| [100%] --(E) --(X)
+ <01s> [MEMORY] Free Xo_res(1Mb) TOTAL: 17Mb (traced) 30Mb (memstat)
+ <01s> [MEMORY] Alloc tddftk(1Mb) TOTAL: 17Mb (traced) 30Mb (memstat)
+ <01s> [MEMORY] Alloc Xo(1Mb) TOTAL: 18Mb (traced) 30Mb (memstat)
+ <01s> X@q[1] |                                        | [000%] --(E) --(X)
  <01s> X@q[1] |########################################| [100%] --(E) --(X)
- <01s> [M  0.001 Gb] Free WF ( 0.014)
+ <01s> [MEMORY] Free tddftk(1Mb) TOTAL: 17Mb (traced) 30Mb (memstat)
+ <01s> [MEMORY] Free Xo(1Mb) TOTAL: 16Mb (traced) 30Mb (memstat)
+ <01s> [MEMORY] Free X_mat(1Mb) TOTAL: 15Mb (traced) 30Mb (memstat)
+ <01s> [MEMORY] Free WF%c(13Mb) TOTAL: 1Mb (traced) 29Mb (memstat)
+ <01s> [MEMORY]TOTAL unallocated : 672Kb
  <01s> [05] Response Functions in Transition space
- <01s> [06] External QP corrections (K)
- <01s> [QP@K] E<04_QP/ndb.QP[ PPA XG:367 Xb:1   50 Scb:10   40]
- <01s> [QP] Kpts covered exactly  [o/o]: 100.0000
- <01s> [06.01] Transition Groups build-up
- <01s> [06.02] CPU-dependent Block structure
- <01s> [BSK] Size   (total) 110
- <01s> [06.03] Independent Particles absorption
- <01s> [06.04] Bethe-Salpeter Kernel ( Res. COR Res. EXX)
- <01s> [06.04.01] Screened interaction header I/O
- <01s> [WF] Performing Wave-Functions I/O
+ <01s> [05.01] Transition Groups build-up
+ <01s> [05.02] CPU-dependent Block structure
+ <01s> [BSK] Size (resonant) 110
+ <01s> [BSK]         (total) 110
+ <01s> [05.03] Independent Particles absorption
+ <01s> [DIP] Checking dipoles header
+ <01s> [05.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
+ <01s> [05.04.01] Screened interaction header I/O
+ <01s> [MEMORY] Alloc WF%c(5Mb) TOTAL: 7Mb (traced) 19Mb (memstat)
+ <01s> [WF] Performing Wave-Functions I/O from ./SAVE
  <01s> [FFT-BSK] Mesh size:  39   24   39
- <01s> [06.04.02] Wave-Function Phases
- <01s> [06.04.03] Kernel loop
+ <01s> [MEMORY] Alloc wf_disk(6Mb) TOTAL: 14Mb (traced) 26Mb (memstat)
+ <01s> [MEMORY] Free wf_disk(6Mb) TOTAL: 7Mb (traced) 27Mb (memstat)
+ <01s> [05.04.02] Wave-Function Phases
+ <01s> [05.04.03] Kernel loop
  <01s> Kernel |                                        | [000%] --(E) --(X)
  <01s> Kernel |########################################| [100%] --(E) --(X)
- <01s> [07] BSE solver(s)
- <01s> [07.01] Diagonalization solver
+ <01s> [MEMORY] Free WF%c(5Mb) TOTAL: 3Mb (traced) 27Mb (memstat)
+ <01s> [06] BSE solver(s)
+ <01s> [LA] SERIAL linear algebra
+ <01s> [06.01] Diagonalization solver
  <01s> BSK diagonalize |                                        | [000%] --(E) --(X)
  <01s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <01s> BSK   residuals |                                        | [000%] --(E) --(X)
- <01s> BSK   residuals |########################################| [100%] --(E) --(X)
+ <01s> EPS   residuals |                                        | [000%] --(E) --(X)
+ <01s> EPS   residuals |########################################| [100%] --(E) --(X)
  <01s> BSK     epsilon |                                        | [000%] --(E) --(X)
  <01s> BSK     epsilon |########################################| [100%] --(E) --(X)
- <01s> [08] Timing Overview
- <01s> [09] Game Over & Game summary
+ <02s> [MEMORY]TOTAL unallocated : 690Kb
+ <02s> [07] Timing Overview
+ <02s> [08] Memory Overview
+ <02s> [09] Game Over & Game summary

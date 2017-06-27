@@ -1,18 +1,18 @@
                                                                 
-    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.     
-     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb    
-      `88. .8" .8"88.    888b     d"88  88     888 88      88   
-       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88   
-        `88" .88ooo888.  8  `888"   88  88    `88b 88      88   
-         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"   
-        o88o88o      888o8          88 o88bood8P"   `Ybod8P"    
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$       
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$      
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$      
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$      
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$      
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$      
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/      
+        |__/   |__/  |__/|__/     |__/|_______/  \______/       
                                                                 
-                                                                
-            Version 4.2.0 Revision 14291 Hash 302f8f0           
-                          MPI+SLK Build                         
-                    http://www.yambo-code.org                   
+          Version 4.2.0 Revision 14590 Hash 701964b             
+                     MPI+SLK+OpenMP Build                       
+                  http://www.yambo-code.org                     
  
- 02/19/2017 at 00:55 YAMBO @ narro
+ 06/12/2017 at 13:38 YAMBO @ anomaly
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -29,7 +29,7 @@
  Input file     is   yambo.in
  Report file    is   ./r-08_bse_optics_bse_bsk_bss_em1s
  Job string(main): 08_bse
-             (#1): 02Cohsex
+             (#1): 02Cohsex-serial-devel-qp-dbs
  Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
@@ -230,7 +230,7 @@
   X grid is uniform     :yes
   BS scattering         :yes
   COLL scattering       :no
- - S/N 002577 -------------------------- v.04.02.00 r.14291 -
+ - S/N 002577 -------------------------- v.04.02.00 r.14590 -
 
  IBZ Q-points : 19
  BZ  Q-points : 256
@@ -275,12 +275,8 @@
  Q [00018] :0.4628    0.1490E-7 0.4628    (cc ) * weight   0.04688
  Q [00019] : 0.000000 -0.617027  0.000000 (cc ) * weight   0.01172
 
- [04] External corrections
- =========================
-
-
-  [04.01] External QP corrections (K)
-  ===================================
+  [03.01] External/Internal QP corrections
+  ========================================
 
   [RD./03GoWo_PPA_corrections/ndb.QP]-------------------------
    Lattice constants                : 10.18300  10.18300  10.18300
@@ -311,28 +307,33 @@
    Sc bands terminator    : no
    Sx RL components       :  89
    QP @ K 001 - 008 : b 001 - 010
-  - S/N 002577 -------------------------- v.04.02.00 r.14291 -
+  - S/N 002577 -------------------------- v.04.02.00 r.14590 -
 
-  [QP] Kpts covered exactly  [o/o]: 80.00000
-  [Interpolate] Nighbours         : 1
-  [Interpolate] Kpts covered [o/o]: 20.00000
-  -- [QP@K] DOS/Linear/Quadratic extrapolation -------------------
-  === QP/DB derived ===
-   Gap correction (database) [ev]: 0.622186
-                       (FIT) [ev]:  0.08274
-   Energies 0th order c/v [ev]: 1.314225  0.609300
-   Energies 1st order         : 1.121781  1.082777
-                         Error:   0.0022    0.0017
-  === Additional ===
-  ------------------------------------------------------------
-  [QP] Fermi level variation [ev]: 0.658732
-  [QP] Last Filled/Metallic band :  4   4
-  [QP] Ind. Gap Correction  [ev]: 0.622186
+  E<03GoWo_PPA_corrections/ndb.QP[ E-E PPA: 27.21138 XG:  9 Xb:  1  10 Scb:  1  10]
 
- [05] Static Dielectric Matrix
+  [QP_ctl (Nearest K-pt)] Kpts covered exactly  [o/o]: 80.00000
+  [QP_ctl (Nearest K-pt)] Nighbours         : 1
+  [QP_ctl (Nearest K-pt)] Kpts covered [o/o]: 20.00000
+   
+
+  = FIT report for E<03GoWo_PPA_corrections/ndb.QP[ E-E PPA: 27.21138 XG:  9 Xb:  1  10 Scb:  1  10] =
+  = First column (conduction), Second column (valence) =
+
+   Gap correction (database) [ev]: 0.622188
+   Additional GAP corr. (FIT)[ev]:  0.08274
+   Energies 0th order        [ev]: 1.314229  0.609300
+   Energies 1st order            : 1.121778  1.082777
+                            Error:   0.0022    0.0017
+   
+
+  [QP apply] Fermi level variation [ev]: 0.658732
+  [QP apply] Last Filled/Metallic band :  4   4
+  [QP apply] Ind. Gap Correction   [ev]: 0.622188
+
+ [04] Static Dielectric Matrix
  =============================
 
- [RD./02Cohsex//ndb.em1s]------------------------------------
+ [RD./02Cohsex-serial-devel-qp-dbs//ndb.em1s]----------------
   Brillouin Zone Q/K grids (IBZ/BZ):  19  256   10  256
   RL vectors                   (WF):  411
   Coulomb cutoff potential         :none
@@ -354,27 +355,39 @@
   Field direction        :0.1000E-4  0.000     0.000   
   BZ energy Double Grid  :no
   BZ energy DbGd points  :0
- - S/N 002577 -------------------------- v.04.02.00 r.14291 -
+ - S/N 002577 -------------------------- v.04.02.00 r.14590 -
+ [RD./02Cohsex-serial-devel-qp-dbs//ndb.em1s_fragment_1]-----
+  :: Current Q-pt index     : 1
+  :: X energy range     [ev]: 0.00      0.00    
+  :: X damping range    [ev]:0.1000E-2 0.1000E-2
+  :: Number of frequencies  : 1
+ - S/N 002577 -------------------------- v.04.02.00 r.14590 -
+ [RD./02Cohsex-serial-devel-qp-dbs//ndb.em1s_fragment_2]-----
+  :: Current Q-pt index     : 2
+  :: X energy range     [ev]: 0.00      0.00    
+  :: X damping range    [ev]:0.1000E-2 0.1000E-2
+  :: Number of frequencies  : 1
+ - S/N 002577 -------------------------- v.04.02.00 r.14590 -
 
- [06] Response Functions in Transition space
+ [05] Response Functions in Transition space
  ===========================================
 
 
-  [06.01] Transition Groups build-up
+  [05.01] Transition Groups build-up
   ==================================
 
   [BSK] Transition groups (total) 10
 
-  [06.02] CPU-dependent Block structure
+  [05.02] CPU-dependent Block structure
   =====================================
 
   [BSK] Size (resonant) 2304
   [BSK]         (total) 2304
 
-  [06.03] Independent Particles absorption
+  [05.03] Independent Particles absorption
   ========================================
 
-  [RD./02Cohsex//ndb.dip_iR_and_P]----------------------------
+  [RD./02Cohsex-serial-devel-qp-dbs//ndb.dip_iR_and_P]--------
    Brillouin Zone Q/K grids (IBZ/BZ):  19  256   10  256
    RL vectors                   (WF):  411
    Fragmentation                    :yes
@@ -392,17 +405,17 @@
    Direct v evaluation    :no
    Field momentum norm    :0.1000E-4
    Wavefunctions          :Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 002577 -------------------------- v.04.02.00 r.14291 -
+  - S/N 002577 -------------------------- v.04.02.00 r.14590 -
 
-  [06.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
+  [05.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
   =======================================================
 
   [BSE] Exchange components : 229
 
-   [06.04.01] Screened interaction header I/O
+   [05.04.01] Screened interaction header I/O
    ==========================================
 
-   [RD./02Cohsex//ndb.em1s]------------------------------------
+   [RD./02Cohsex-serial-devel-qp-dbs//ndb.em1s]----------------
     Brillouin Zone Q/K grids (IBZ/BZ):  19  256   10  256
     RL vectors                   (WF):  411
     Coulomb cutoff potential         :none
@@ -424,19 +437,20 @@
     Field direction        :0.1000E-4  0.000     0.000   
     BZ energy Double Grid  :no
     BZ energy DbGd points  :0
+   [RD./02Cohsex-serial-devel-qp-dbs//ndb.em1s_fragment_1]-----
     :: Current Q-pt index     : 1
     :: X energy range     [ev]: 0.00      0.00    
     :: X damping range    [ev]:0.1000E-2 0.1000E-2
     :: Number of frequencies  : 1
-   - S/N 002577 -------------------------- v.04.02.00 r.14291 -
+   - S/N 002577 -------------------------- v.04.02.00 r.14590 -
    [WF] Performing Wave-Functions I/O from ./SAVE
 
    [FFT-BSK] Mesh size: 12  12  12
 
-   [WF loader] Normalization (few states)  min/max  :0.1129E-8  1.000   
+   [WF loader] Normalization (few states)  min/max  :0.1516E-8  1.000   
 
 
-   [06.04.02] Wave-Function Phases
+   [05.04.02] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found  [o/o]: 89.44444
@@ -450,7 +464,7 @@
     BS kernel          wavefunctions :Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies      :Slater exchange(X)+Perdew & Zunger(C)
                        wavefunctions :Slater exchange(X)+Perdew & Zunger(C)
-    BSK|Identifier              :  9818
+    BSK|Identifier              :  7024
        |Dimension               : 2304
        |Bands                   :  2   7
        |Exchange           [res]:yes
@@ -476,51 +490,81 @@
        |xc-Kernel               :none
     RIM|RL components      [col]:0
        |Random points      [col]:0
-   - S/N 002577 -------------------------- v.04.02.00 r.14291 -
+   - S/N 002577 -------------------------- v.04.02.00 r.14590 -
 
-   [06.04.03] Kernel loop
+   [05.04.03] Kernel loop
    ======================
 
 
- CpuTiming [Min/Max/Average]: 07s/07s/07s
+ Timing [Min/Max/Average]: 07s/07s/07s
 
- [07] BSE solver(s)
+ [06] BSE solver(s)
  ==================
 
 
-  [07.01] Haydock solver
+  [06.01] Haydock solver
   ======================
 
   Accuracy (requested) [o/o]:0.1000E-2
-  Accuracy (reached)   [o/o]:0.9665E-3
+  Accuracy (reached)   [o/o]:0.9636E-3
   Iterations                : 126
 
- CpuTiming [Min/Max/Average]: 06s/06s/06s
+ Timing [Min/Max/Average]: 23s/23s/23s
 
- [08] Timing Overview
+ [07] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                io_WF :     0.00s CPU (      13 calls,   0.000 s avg)
-                io_HF :     0.00s CPU
-           io_DIPOLES :     0.00s CPU (      12 calls,   0.000 s avg)
-                 io_X :     0.00s CPU (      45 calls,   0.001 s avg)
-       eval_G_minus_G :     0.00s CPU
-           T_space IP :     0.00s CPU
-              Dipoles :     0.00s CPU
-     X T_space Kernel :     7.00s CPU
-     T_space EXX Osc. :     0.00s CPU (      10 calls,   0.000 s avg)
-    T_space CORR Osc. :     1.00s CPU (      55 calls,   0.021 s avg)
-       Haydock Solver :     6.00s CPU
+                               io_WF :     0.00s CPU (      13 calls,   0.000 s avg)
+                             io_GROT :     0.00s CPU (       2 calls,   0.001 s avg)
+                            io_QINDX :     0.00s CPU (       2 calls,   0.001 s avg)
+                          io_COL_CUT :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU
+                               io_HF :     0.00s CPU
+                        io_QP_and_GF :     0.00s CPU (       2 calls,   0.001 s avg)
+                          io_DIPOLES :     0.00s CPU (      12 calls,   0.000 s avg)
+                         io_KB_pwscf :     0.00s CPU
+                        io_KB_abinit :     0.00s CPU
+                                io_X :     0.00s CPU (      45 calls,   0.000 s avg)
+                         io_fragment :     0.00s CPU (      60 calls,   0.000 s avg)
+                               io_BS :     0.00s CPU (      58 calls,   0.001 s avg)
+                      eval_G_minus_G :     0.00s CPU
+             IO_and_Messaging_switch :     0.00s CPU (       3 calls,   0.000 s avg)
+                          T_space IP :     0.00s CPU
+                             Dipoles :     0.00s CPU
+                    X T_space Kernel :     7.00s CPU
+                    T_space EXX Osc. :     0.00s CPU (      10 calls,   0.001 s avg)
+                   T_space CORR Osc. :     1.00s CPU (      55 calls,   0.021 s avg)
+                      Haydock Solver :    23.00s CPU
+
+ [08] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are:100Kb (basic treshold) 1000Kb (SAVEs treshold)
+
+
+ Unallocated components:
+
+                             qindx_B : 512Kb ([03] Transferred momenta grid)
+         TOTAL unallocated : 1Mb
+
+ MAX allocations:
+
+               BS_blk(iB)%mat [%mat] : 22Mb ([05.02] CPU-dependent Block structure)
+               BS_blk(iB)%O_c [%O_c] : 1Mb ([05.04.03] Kernel loop)
+             BS_T_grp(iG)%O_x [%O_x] : 4Mb ([05.04.03] Kernel loop)
+
+         Max memory used   : 32Mb
 
  [09] Game Over & Game summary
  =============================
 
- 02/19/2017 at 00:55 YAMBO @ narro [start]
- 02/19/2017 at 00:55               [end]
+ 06/12/2017 at 13:38 YAMBO @ anomaly [start]
+ 06/12/2017 at 13:38                 [end]
 
- Timing   [Min/Max/Average]: 14s/14s/14s
-             [Time-Profile]:  14.89200s
+ Timing   [Min/Max/Average]: 31s/31s/31s
+             [Time-Profile]:  31.55923s
 
  .-ACKNOWLEDGMENT
  |
@@ -533,45 +577,48 @@
  | in order to acknowledge YAMBO:
  |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
+ | A. Marini, C. Hogan, M. Gr"uning, D. Varsano
  | Computer Physics Communications  180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | optics                       # [R OPT] Optics
- | bse                          # [R BSE] Bethe Salpeter Equation.
- | bsk                          # [R BSK] Bethe Salpeter Equation kernel
- | bss                          # [R BSS] Bethe Salpeter Equation solver
- | em1s                         # [R Xs] Static Inverse Dielectric Matrix
- | FFTGvecs=  411         RL    # [FFT] Plane-waves
- | Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
- | BSEmod= "retarded"           # [BSE] resonant/retarded/coupling
- | BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
- | BSSmod= "h"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
- | BSENGexx= 229          RL    # [BSK] Exchange components
- | BSENGBlk= 27           RL    # [BSK] Screened interaction block size
- | #WehCpl                      # [BSK] eh interaction included also in coupling
+ | optics                         # [R OPT] Optics
+ | bse                            # [R BSE] Bethe Salpeter Equation.
+ | bsk                            # [R BSK] Bethe Salpeter Equation kernel
+ | bss                            # [R BSS] Bethe Salpeter Equation solver
+ | em1s                           # [R Xs] Static Inverse Dielectric Matrix
+ | FFTGvecs=  411         RL      # [FFT] Plane-waves
+ | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+ | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+ | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
+ | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
+ | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
+ | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSSmod= "h"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+ | BSENGexx= 229          RL      # [BSK] Exchange components
+ | BSENGBlk= 27           RL      # [BSK] Screened interaction block size
+ | #WehCpl                        # [BSK] eh interaction included also in coupling
  | KfnQPdb= "E < 03GoWo_PPA_corrections/ndb.QP" # [EXTQP BSK BSS] Database
  | % BEnRange
- |  1.000000 | 6.000000 | eV    # [BSS] Energy range
+ |  1.000000 | 6.000000 | eV      # [BSS] Energy range
  | %
  | % BDmRange
- |   0.10000 |  0.10000 | eV    # [BSS] Damping range
+ |   0.10000 |  0.10000 | eV      # [BSS] Damping range
  | %
- | BEnSteps= 101                # [BSS] Energy steps
+ | BEnSteps= 101                  # [BSS] Energy steps
  | % BLongDir
  | 0.1000E-4 | 0.000    | 0.000    |        # [BSS] [cc] Electric Field
  | %
  | % BSEBands
- |   2 |  7 |                   # [BSK] Bands range
+ |   2 |  7 |                     # [BSK] Bands range
  | %
- | BSHayTrs=0.1000E-2           # [BSS] Relative [o/o] Haydock treshold. Strict(>0)/Average(<0)
+ | BSHayTrs=0.1000E-2             # [BSS] Relative [o/o] Haydock treshold. Strict(>0)/Average(<0)
  | % BndsRnXs
- |   1 | 20 |                   # [Xs] Polarization function bands
+ |   1 | 20 |                     # [Xs] Polarization function bands
  | %
- | NGsBlkXs= 27           RL    # [Xs] Response block size
+ | NGsBlkXs= 27           RL      # [Xs] Response block size
  | % DmRngeXs
- | 0.1000E-2 |0.1000E-2 | eV    # [Xs] Damping range
+ | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
  | %
  | % LongDrXs
  | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field

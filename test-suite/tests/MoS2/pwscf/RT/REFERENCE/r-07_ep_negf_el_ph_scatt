@@ -1,18 +1,18 @@
-     __      __   ______   __       __  _______    ______       
-    |  \    /  \ /      \ |  \     /  \|       \  /      \      
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\     
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$     
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$     
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$     
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$     
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$     
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$      
                                                                 
-           Version 4.2.0 Revision 14428 Hash 698a636            
+      __   __     _        __  __       ____      U  ___  u     
+      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/      
+       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |      
+      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |      
+        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/       
+    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\         
+     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)        
+                                                                
+                                                                
+          Version 4.2.0 Revision 14610 Hash 7a0742ccf           
                      MPI+SLK+OpenMP Build                       
                    http://www.yambo-code.org                    
  
- 04/10/2017 at 17:44 YAMBO_RT @ anomaly
+ 06/26/2017 at 13:54 YAMBO_RT @ anomaly
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -29,7 +29,7 @@
  Input file     is   yambo.in
  Report file    is   ./r-07_ep_negf_el_ph_scatt
  Job string(main): 07_ep
-             (#1): 05_collisions
+             (#1): 05_collisions-serial-devel-qp-dbs
              (#2): GKKP
  Log files      in ./LOG
   
@@ -47,7 +47,7 @@
   Max atoms/species               : 2
   No. of atom species             : 2
   Magnetic symmetries             : no
- - S/N 000945 -------------------------- v.04.02.00 r.14428 -
+ - S/N 000945 -------------------------- v.04.02.00 r.14610 -
 
  [02] CORE Variables Setup
  =========================
@@ -70,9 +70,9 @@
   DL volume [au]: 897.4163
 
   Reciprocal Lattice(RL) unit cell [iku  /  cc]
-  B1 = 2.000000  1.000000  0.000000      1.069077  0.617232 -0.000000
+  B1 = 2.000000  1.000000  0.000000      1.069077  0.617232  0.000000
   B2 = 0.000000  2.000000  0.000000      0.000000  1.234463  0.000000
-  B3 = 0.000000  0.000000  2.000000      0.000000 -0.000000  0.209440
+  B3 = 0.000000  0.000000  2.000000      0.000000  0.000000  0.209440
 
 
   [02.02] Symmetries
@@ -114,15 +114,16 @@
   [02.05] Energies [ev] & Occupations
   ===================================
 
-  Fermi Level        [ev]:  0.000000
-  VBM / CBm          [ev]:  0.000000  1.794775
-  Electronic Temp. [ev K]:  0.00      0.00    
-  Bosonic    Temp. [ev K]:  0.00      0.00    
-  El. density      [cm-3]: 0.196E+24
-  States summary         : Full        Metallic    Empty
-                           0001-0026               0027-0040
-  Indirect Gaps      [ev]: 1.794775  2.958979
-  Direct Gaps        [ev]: 1.794775  3.435702
+  [X]Fermi Level        [ev]:  0.000000
+  [X]VBM / CBm          [ev]:  0.000000  1.794775
+  [X]Electronic Temp. [ev K]:  0.00      0.00    
+  [X]Bosonic    Temp. [ev K]:  0.00      0.00    
+  [X]Finite Temperature mode: no
+  [X]El. density      [cm-3]: 0.196E+24
+  [X]States summary         : Full        Metallic    Empty
+                                 0001-0026               0027-0040
+  [X]Indirect Gaps      [ev]: 1.794775  2.958979
+  [X]Direct Gaps        [ev]: 1.794775  3.435702
   X BZ K-points :  9
 
   Energy unit is electronVolt [eV]
@@ -209,7 +210,7 @@
   X grid is uniform     :yes
   BS scattering         :yes
   COLL scattering       :no
- - S/N 000945 -------------------------- v.04.02.00 r.14428 -
+ - S/N 000945 -------------------------- v.04.02.00 r.14610 -
 
  IBZ Q-points :  9
  BZ  Q-points :  9
@@ -234,15 +235,11 @@
  Q [00008] :-0.356359 -0.205744  0.000000 (cc ) * weight  0.111111
  Q [00009] :-0.356359  0.617232  0.000000 (cc ) * weight  0.111111
 
- [04] External corrections
- =========================
-
-
- [05] HARTREE+SEX Real-Time Dynamics
+ [04] HARTREE+SEX Real-Time Dynamics
  ===================================
 
 
-  [05.01] Initialization
+  [04.01] Initialization
   ======================
 
   [RD./SAVE//ns.kb_pp_pwscf]----------------------------------
@@ -250,7 +247,7 @@
   - S/N 000945 -------------------------- v.04.02.00 r.14233 -
   [WF] Performing Wave-Functions I/O from ./SAVE
 
-  [WF loader] Normalization (few states)  min/max  :0.2918E-09 0.9991    
+  [WF loader] Normalization (few states)  min/max  : 0.0000000  0.9990637
 
   [WF] Performing Wave-Functions I/O from ./SAVE
 
@@ -274,37 +271,25 @@
    Direct v evaluation    :no
    Field momentum norm    :0.10000E-4
    Wavefunctions          :Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 000945 -------------------------- v.04.02.00 r.14428 -
+  - S/N 000945 -------------------------- v.04.02.00 r.14610 -
   [WF] Performing Wave-Functions I/O from ./SAVE
 
   [FFT-RT] Mesh size:  12   12   60
 
 
-  [05.02] External QP corrections (G)
-  ===================================
+  [04.02] External/Internal QP corrections
+  ========================================
 
-  -- [QP@G] DOS/Linear/Quadratic extrapolation -------------------
-  === QP/DB derived ===
-  === Additional ===
-   Energies 0th order c/v [ev]: 1.5000000  0.0000000
-   Energies 1st order         : 1.0000000  1.0000000
-   Widths 0th order c/v [ev]:  0.100000   0.100000
-                        [fs]: 6.5821185  6.5821185
-   Widths dos prop.     [eV]: 0.000      0.000    
-   Widths 2st order   [1/eV]: 0.000      0.000    
-  ------------------------------------------------------------
-  [QP] Fermi level variation [ev]: 0.0000000
-  [QP] Last Filled/Metallic band : 26  26
-  [QP] Ind. Gap Correction  [ev]: 1.4999999
+  [QP apply] Ind. Gap Correction   [ev]: 1.4999999
 
-  [05.03] Dephasing matrix setup
+  [04.03] Dephasing matrix setup
   ==============================
 
   [RT] Quasiparticle database Dephasing applied
 
   [WARNING]Field starting time corrected to respect the I/O times.
 
-  [05.04] El-Ph matrix elements loading and setup
+  [04.04] El-Ph matrix elements loading and setup
   ===============================================
 
 
@@ -319,10 +304,12 @@
    Using the Q-grid       :yes
   - S/N 008527 -------------------------- v.04.00.02 r.04605 -
 
-  [05.05] Electronic Collisions loading and setup
+  [WARNING]Allocation of k%ptbz failed. Object was already allocated in [%ptbz]
+
+  [04.05] Electronic Collisions loading and setup
   ===============================================
 
-  [RD./05_collisions//ndb.COLLISIONS_HXC]---------------------
+  [RD./05_collisions-serial-devel-qp-dbs//ndb.COLLISIONS_HXC]-
    Brillouin Zone Q/K grids (IBZ/BZ):  9   9   9   9
    RL vectors                   (WF): 2005
    COLLISIONS name                 :HARTREE+SEX
@@ -347,9 +334,9 @@
    BZ energy DbGd points  :0
    RIM RL components      :0
    RIM random points      :0
-  - S/N 000945 -------------------------- v.04.02.00 r.14428 -
+  - S/N 000945 -------------------------- v.04.02.00 r.14610 -
 
-  [05.06] Messaging
+  [04.06] Messaging
   =================
 
   ---General---
@@ -381,7 +368,11 @@
   ---Damping and retarded GF---
   Retarded Green`s function   :HS
   Damping (Phase)    [fs/meV]: 0.000       Infinity
-  Damping (Radiative)[fs/meV]: 0.000       Infinity
+          (Radiative)[fs/meV]: 0.000       Infinity
+          Energy ref  (c)[eV]: 0.0000000
+                      (v)[eV]: 0.0000000
+          Analytic term (c)[eV,adim,eV^-1]:  0.100000   0.000000   0.000000
+                        (v)[eV,adim,eV^-1]:  0.100000   0.000000   0.000000
 
   ---Conservation Rules---
   dN (e-p) and N (e-p + e-e)  :yes
@@ -399,52 +390,82 @@
   Field1 energy steps                : 1
   Field1 electric field         [V/m]:0.33618E+7
   Field1 max intensity      [kW/cm^2]: 3000.0   
-  Field1 max fluence        [nJ/cm^2]: 7.9757791
+  Field1 max fluence        [nJ/cm^2]: 7.9758558
   Field1 final time              [fs]: 18.240002
   Field1 half maximum full width [fs]: 7.0644603
 
-  [05.07] Start and Restart
+  [04.07] Start and Restart
   =========================
 
   [xc] Functional Slater exchange(X)+Perdew & Zunger(C)
   [xc] LIBXC used to calculate xc functional
    
 
-  [05.08] Real-Time dynamics
+  [WARNING]Allocation of k%ptbz failed. Object was already allocated in [%ptbz]
+
+  [WARNING]Allocation of k%ptbz failed. Object was already allocated in [%ptbz]
+
+  [04.08] Real-Time dynamics
   ==========================
 
 
- CpuTiming [Min/Max/Average]: 10s/10s/10s
+ Timing [Min/Max/Average]: 09s/09s/09s
 
- [06] Timing Overview
+ [05] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                io_WF :     0.00s CPU (      34 calls,   0.007 s avg)
-                io_HF :     0.00s CPU
-           io_DIPOLES :     0.00s CPU (      12 calls,   0.000 s avg)
-                 io_X :     0.00s CPU (       4 calls,   0.000 s avg)
-              io_ELPH :     0.00s CPU (      12 calls,   0.027 s avg)
-     io_RT_components :     2.00s CPU (    1354 calls,   0.002 s avg)
-        io_COLLISIONS :     0.00s CPU (     653 calls,   0.000 s avg)
-       eval_G_minus_G :     0.00s CPU
-              Dipoles :     0.00s CPU
-  RT relaxation (e-p) :     0.00s CPU (     131 calls,   0.004 s avg)
-            RT output :     0.00s CPU (     635 calls,   0.001 s avg)
-        RT average Op :     0.00s CPU (    5328 calls,   0.000 s avg)
-       RT observables :     2.00s CPU (     105 calls,   0.022 s avg)
-   RT occupations fit :     2.00s CPU (     105 calls,   0.022 s avg)
-       RT Hamiltonian :     1.00s CPU (    2501 calls,   0.001 s avg)
-        RT integrator :     0.00s CPU (    2500 calls,   0.000 s avg)
+                               io_WF :     0.00s CPU (      34 calls,   0.005 s avg)
+                             io_GROT :     0.00s CPU (       3 calls,   0.001 s avg)
+                            io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
+                          io_COL_CUT :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU
+                               io_HF :     0.00s CPU
+                          io_DIPOLES :     0.00s CPU (      12 calls,   0.000 s avg)
+                         io_KB_pwscf :     0.00s CPU (      11 calls,   0.001 s avg)
+                        io_KB_abinit :     0.00s CPU
+                                io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+                         io_fragment :     0.00s CPU (    1810 calls,   0.000 s avg)
+                               io_BS :     0.00s CPU
+                             io_ELPH :     0.00s CPU (      12 calls,   0.002 s avg)
+                    io_RT_components :     2.00s CPU (    1354 calls,   0.002 s avg)
+                       io_COLLISIONS :     0.00s CPU (     653 calls,   0.000 s avg)
+                      eval_G_minus_G :     0.00s CPU
+             IO_and_Messaging_switch :     0.00s CPU (    2507 calls,   0.000 s avg)
+                             Dipoles :     0.00s CPU
+                   DIPOLE_transverse :     0.00s CPU
+                     COLLISIONS_load :     0.00s CPU (       2 calls,   0.133 s avg)
+                    Bare_Hamiltonian :     0.00s CPU
+                           V_Hartree :     0.00s CPU
+                   V_real_space_to_H :     0.00s CPU (      27 calls,   0.001 s avg)
+                     V_qp_basis_to_H :     0.00s CPU (       9 calls,   0.000 s avg)
+                 RT relaxation (e-p) :     0.00s CPU (     131 calls,   0.006 s avg)
+                           RT output :     1.00s CPU (     635 calls,   0.002 s avg)
+                       RT average Op :     0.00s CPU (    5328 calls,   0.000 s avg)
+                      RT observables :     1.00s CPU (     105 calls,   0.012 s avg)
+                  RT occupations fit :     1.00s CPU (     105 calls,   0.012 s avg)
+                      RT Hamiltonian :     1.00s CPU (    2501 calls,   0.001 s avg)
+               COLLISIONS_compose_rt :     1.00s CPU (    2501 calls,   0.001 s avg)
+                       RT integrator :     0.00s CPU (    2500 calls,   0.000 s avg)
+
+ [06] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are:4Mb (basic treshold) 48Mb (SAVEs treshold)
+
+         TOTAL unallocated : 3Mb
+
+         Max memory used   : 49Mb
 
  [07] Game Over & Game summary
  =============================
 
- 04/10/2017 at 17:44 YAMBO_RT @ anomaly [start]
- 04/10/2017 at 17:44                    [end]
+ 06/26/2017 at 13:54 YAMBO_RT @ anomaly [start]
+ 06/26/2017 at 13:54                    [end]
 
- Timing   [Min/Max/Average]: 10s/10s/10s
-             [Time-Profile]:  10.21169s
+ Timing   [Min/Max/Average]: 09s/09s/09s
+             [Time-Profile]:  9.286121s
 
  .-ACKNOWLEDGMENT
  |
@@ -457,60 +478,60 @@
  | in order to acknowledge YAMBO:
  |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
+ | A. Marini, C. Hogan, M. Gr"uning, D. Varsano
  | Computer Physics Communications  180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | negf                         # [R] Real-Time dynamics
- | el_ph_scatt                  # [R] Electron-Phonon   Scattering
- | RT_Threads= 1                # [OPENMP/RT] Number of threads for real-time
- | HXC_Potential= "HARTREE+SEX" # [SC] SC HXC Potential
- | FFTGvecs= 2005         RL    # [FFT] Plane-waves
- | HARRLvcs= 1095         RL    # [HA] Hartree  RL components
- | EXXRLvcs= 29           RL    # [XX] Exchange RL components
- | CORRLvcs=  56613       RL    # [GW] Correlat RL components
+ | negf                           # [R] Real-Time dynamics
+ | el_ph_scatt                    # [R] Electron-Phonon   Scattering
+ | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
+ | HXC_Potential= "HARTREE+SEX"   # [SC] SC HXC Potential
+ | FFTGvecs= 2005         RL      # [FFT] Plane-waves
+ | HARRLvcs= 1095         RL      # [HA] Hartree  RL components
+ | EXXRLvcs= 29           RL      # [XX] Exchange RL components
+ | CORRLvcs=  56613       RL      # [GW] Correlat RL components
  | % GfnQP_E
  |  1.500000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
  | %
  | % GfnQP_Wv
- |   0.10000 |  0.00000 |  0.00000 |        # [EXTQP G] W parameters  (valence) eV| eV|eV^-1
+ |   0.10000 |  0.00000 |  0.00000 |        # [EXTQP G] W parameters  (valence) eV| 1|eV^-1
  | %
  | % GfnQP_Wc
- |   0.10000 |  0.00000 |  0.00000 |        # [EXTQP G] W parameters  (conduction) eV| eV|eV^-1
+ |   0.10000 |  0.00000 |  0.00000 |        # [EXTQP G] W parameters  (conduction) eV| 1 |eV^-1
  | %
  | % RTBands
- |  23 | 30 |                   # [RT] Bands
+ |  23 | 30 |                     # [RT] Bands
  | %
- | Integrator= "RK2 + RWA"      # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA")
+ | Integrator= "RK2 + RWA"        # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA")
  | % RTehEny
- | -2.370570 | 4.429352 | eV    # [RT] Electron-hole energy range
+ | -2.370570 | 4.429352 | eV      # [RT] Electron-hole energy range
  | %
- | RTstep= 40.00000       as    # [RT] Real Time step length
- | NETime= 50.00000       fs    # [RT] Simulation Time
- | #LifeExtrapolation           # [RT] Skipped Lifetimes are extrapolated
+ | RTstep= 40.00000       as      # [RT] Real Time step length
+ | NETime= 50.00000       fs      # [RT] Simulation Time
+ | #LifeExtrapolation             # [RT] Skipped Lifetimes are extrapolated
  | % LifeExtrapSteps
- |  1.440000 | 0.480000 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+ |  1.440000 | 0.480000 | fs      # [RT] Step length between and inside two consecutive groups of lifetimes
  | %
- | RandQpts=0                   # [RIM] Number of random q-points in the BZ
+ | RandQpts=0                     # [RIM] Number of random q-points in the BZ
  | % ElPhModes
- |   1 |  9 |                   # [ELPH] Phonon modes included
+ |   1 |  9 |                     # [ELPH] Phonon modes included
  | %
  | % IOtime
  |  0.240000 | 1.000000 | 0.480000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
  | %
  | % Field1_Freq
- |  2.685000 | 2.685000 | eV    # [RT Field1] Frequency
+ |  2.685000 | 2.685000 | eV      # [RT Field1] Frequency
  | %
- | Field1_Int= 3000.      kWLm2 # [RT Field1] Intensity
- | Field1_Width= 3.000000 fs    # [RT Field1] Width
- | Field1_FWHM= 7.064460  fs    # [RT Field1] Full Width at Half Maximum (alternative to Width)
- | Field1_kind= "QSSIN"         # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
- | Field1_pol= "linear"         # [RT Field1] Pol(linear|circular)
+ | Field1_Int= 3000.      kWLm2   # [RT Field1] Intensity
+ | Field1_Width= 3.000000 fs      # [RT Field1] Width
+ | Field1_FWHM= 7.064460  fs      # [RT Field1] Full Width at Half Maximum (alternative to Width)
+ | Field1_kind= "QSSIN"           # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+ | Field1_pol= "linear"           # [RT Field1] Pol(linear|circular)
  | % Field1_Dir
  |  1.000000 | 0.000000 | 0.000000 |        # [RT Field1] Versor
  | %
  | % Field1_Dir_circ
  |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
  | %
- | Field1_Tstart= 0.240000fs    # [RT Field1] Initial Time
+ | Field1_Tstart= 0.240000fs      # [RT Field1] Initial Time

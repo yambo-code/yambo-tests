@@ -1,18 +1,18 @@
                                                                 
-      __   __     _        __  __       ____      U  ___  u     
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/      
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |      
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |      
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/       
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\         
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)        
+     **    **    **     ****     ****  ******     *******       
+    //**  **    ****   /**/**   **/** /*////**   **/////**      
+     //****    **//**  /**//** ** /** /*   /**  **     //**     
+      //**    **  //** /** //***  /** /******  /**      /**     
+       /**   **********/**  //*   /** /*//// **/**      /**     
+       /**  /**//////**/**   /    /** /*    /**//**     **      
+       /**  /**     /**/**        /** /*******  //*******       
+       //   //      // //         //  ///////    ///////        
                                                                 
-                                                                
-           Version 4.1.1 Revision 13953 Hash 80be4d7            
-                           MPI Build                            
+           Version 4.2.0 Revision 14580 Hash b498665            
+                     MPI+SLK+OpenMP Build                       
                    http://www.yambo-code.org                    
  
- 10/19/2016 at 00:04 YAMBO_SC @ narro
+ 06/07/2017 at 16:30 YAMBO_SC @ anomaly
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -172,7 +172,7 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 008306 -------------------------- v.04.01.01 r.13953 -
+ - S/N 008306 -------------------------- v.04.02.00 r.14580 -
 
  IBZ Q-points :  4
  BZ  Q-points :  8
@@ -187,15 +187,11 @@
  Q [00003] : 0.000000  0.000000  0.617027 (cc ) * weight  0.375000
  Q [00004] : 0.308513  0.308513  0.308513 (cc ) * weight  0.125000
 
- [04] External corrections
- =========================
-
-
- [05] Extended collisions
+ [04] Extended collisions
  ========================
 
 
-  [05.01] HARTREE+FOCK (e-e correlation)
+  [04.01] HARTREE+FOCK (e-e correlation)
   ======================================
 
 
@@ -214,7 +210,7 @@
 
   [FFT-HARTREE+FOCK Collisions] Mesh size: 12  12  12
 
-  [WF loader] Normalization (few states)  min/max  :0.1673E-8  1.000   
+  [WF loader] Normalization (few states)  min/max  :0.1781E-8  1.000   
 
   [WR./04_h_f_colls//ndb.COLLISIONS_HXC]----------------------
    Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
@@ -224,23 +220,56 @@
    COLLISIONS kind                 : 1302
    Bands                           :  1   8
    Bands mixing                    : 100.0000
-   Interaction Kind                :SC HARTREE +SC Fock
    Exchange Cutoff                 : 0.000000
    Hartree  RL vectors             :  363
    Exchange RL vectors             :  363
    RIM RL components      :0
    RIM random points      :0
-  - S/N 008306 -------------------------- v.04.01.01 r.13953 -
+  - S/N 008306 -------------------------- v.04.02.00 r.14580 -
 
- CpuTiming [Min/Max/Average]: 02s/02s/02s
+ Timing [Min/Max/Average]: 02s/02s/02s
 
- [06] Game Over & Game summary
+ [05] Timing Overview
+ ====================
+
+ Routines: global (Only MASTER cpu here)
+                               io_WF :     0.00s CPU (       7 calls,   0.000 s avg)
+                             io_GROT :     0.00s CPU (       3 calls,   0.000 s avg)
+                            io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
+                          io_COL_CUT :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU
+                               io_HF :     0.00s CPU
+                          io_DIPOLES :     0.00s CPU
+                         io_KB_pwscf :     0.00s CPU
+                        io_KB_abinit :     0.00s CPU
+                                io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+                               io_BS :     0.00s CPU
+                    io_SC_components :     0.00s CPU (       6 calls,   0.000 s avg)
+                       io_COLLISIONS :     0.00s CPU (     148 calls,   0.000 s avg)
+                     COLLISIONS_eval :     2.00s CPU
+             IO_and_Messaging_switch :     0.00s CPU (       2 calls,   0.000 s avg)
+             HARTREE+FOCK Collisions :     2.00s CPU
+         COLLISIONS_linearize_and_IO :     0.00s CPU (     144 calls,   0.000 s avg)
+                         io_fragment :     0.00s CPU (     144 calls,   0.000 s avg)
+
+ [06] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are:109Kb (basic treshold) 1Mb (SAVEs treshold)
+
+         TOTAL unallocated : 319Kb
+
+         Max memory used   : 792Kb
+
+ [07] Game Over & Game summary
  =============================
 
- 10/19/2016 at 00:04 YAMBO_SC @ narro [start]
- 10/19/2016 at 00:04                  [end]
+ 06/07/2017 at 16:30 YAMBO_SC @ anomaly [start]
+ 06/07/2017 at 16:30                    [end]
 
  Timing   [Min/Max/Average]: 02s/02s/02s
+             [Time-Profile]:  2.282359s
 
  .-ACKNOWLEDGMENT
  |
@@ -253,20 +282,21 @@
  | in order to acknowledge YAMBO:
  |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
+ | A. Marini, C. Hogan, M. Gr"uning, D. Varsano
  | Computer Physics Communications  180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | collisions                   # [R] Eval the extended Collisions
- | BoseTemp= 0.000000     eV    # Bosonic Temperature
- | HXC_Potential= "HARTREE+FOCK" # [SC] SC HXC Potential
- | FFTGvecs=  363         RL    # [FFT] Plane-waves
+ | collisions                     # [R] Eval the extended Collisions
+ | BoseTemp= 0.000000     eV      # Bosonic Temperature
+ | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
  | % COLLBands
- |   1 |  8 |                   # [COLL] Bands for the collisions
+ |   1 |  8 |                     # [COLL] Bands for the collisions
  | %
- | EXXCut= 0.000000             # [SC,RT] Cutoff on the exchange, 0=full 1=none
- | EXXRLvcs=  363         RL    # [XX] Exchange RL components
- | ALLGexx                      # [XX] Force the use use all RL vectors for the exchange part
- | HARRLvcs=  363         RL    # [HA] Hartree  RL components
- | ALLGHAR                      # [HA] Force the use use all RL vectors for the Hartree potential
+ | HXC_Potential= "HARTREE+FOCK"  # [SC] SC HXC Potential
+ | FFTGvecs=  363         RL      # [FFT] Plane-waves
+ | HARRLvcs=  363         RL      # [HA] Hartree  RL components
+ | ALLGHAR                        # [HA] Force the use use all RL vectors for the Hartree potential
+ | EXXCut= 0.000000               # [SC,RT] Cutoff on the exchange, 0=full 1=none
+ | EXXRLvcs=  363         RL      # [XX] Exchange RL components
+ | ALLGexx                        # [XX] Force the use use all RL vectors for the exchange part
