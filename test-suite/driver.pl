@@ -132,6 +132,10 @@ if ($user_tests or $theme or $compile or $flow or $autotest) {$RUNNING_suite="ye
 if ($backup_logs and !$RUNNING_suite) {
  &UTILS_backup();
  &UTILS_backup_save();
+ if ($report){ 
+  &UTILS_commit();
+  &UTILS_backup_upload();
+ }
  die;
 }
 #

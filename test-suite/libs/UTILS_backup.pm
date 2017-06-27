@@ -25,6 +25,7 @@
 sub UTILS_backup_save{
  foreach $conf_file (<LOG*.log>,<ERROR*.log>,<REPORT*.log>,<WHITELIST*.log>) {
   &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
+  if ($conf_file =~ /REPORT-/) {$global_report=$conf_file};
  };
  &command("mv $DATA_backup_file.tar.gz $BACKUP_dir/$BACKUP_subdir");
  &CWD_save;
@@ -55,6 +56,7 @@ my $DIR=$PAR_string;
 if ($openmp_is_off) {$DIR="$PAR_string-OpenMPoff"};
 &command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
 foreach $conf_file (<*config.log>,<*compile.log>) {
+ &command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation");
  &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir/compilation/");
 };
 foreach $conf_file (<LOG*.log>){
