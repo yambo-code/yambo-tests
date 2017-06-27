@@ -4,7 +4,7 @@ source /opt/modules/init/modules_init.csh
 #
 module purge
 module load profile/gnu-ompi
-cd yambo/branches/devel-qp-dbs/
+cd yambo/master
 make distclean
 git pull
 ~/test-suite/ROBOTS/potzie/marini/CONFIGURATIONS/default.sh
