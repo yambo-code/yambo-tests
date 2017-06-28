@@ -37,7 +37,7 @@ sub FLOW_load
  }
  if ($user_branch) {
   undef @branches;
-  $branches[0]=$user_branch;
+  ($branches[0],$branch_identity[0]) = split(/ /, $user_branch);
  };
  if (not "$select_conf_file" eq "") {$compile="yes"};
  if ($np_single>1) { 

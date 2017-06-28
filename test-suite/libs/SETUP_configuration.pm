@@ -70,8 +70,29 @@ if("$do_it" eq "yes") {
  #
  chdir $BRANCH;
  &MY_PRINT($stdout, "\n             Compiling using $conf_file >");
+ if ($branch_id eq "") 
+ {
+  $branch_id=$dir_id
+ }else{
+  $branch_key=$branch_id
+ };
+ &MY_PRINT($stdout, "Checking ...\n");
+ &command("git checkout $branch_id");
  &MY_PRINT($stdout, "Updating ...\n");
- &command("git pull &> /dev/null");
+ &command("git pull");
+ #
+ $result=`git log |head|grep Date`;
+ chomp($result);
+ my @rs=split(' ', $result);
+ my $day= &UTILS_day($rs[2],$rs[3]);
+ my $delay=$current_day-$day;
+ #
+ if ($delay > $max_delay_commits)
+ {
+  &MY_PRINT($stdout, "Branch $BRANCH checked out as $branch_id is too old. Skipping.\n");
+  chdir $suite_dir;
+  return "FAIL";
+ }
  &MY_PRINT($stdout, "                          > Configuring sources...");
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config.log";
@@ -91,9 +112,11 @@ if("$do_it" eq "yes") {
  #
  # Basic check that configure worked
  #
- if (-e "Makefile"){ &MY_PRINT($stdout, "success.\n")}
- else {
+ if (-e "Makefile"){ 
+  &MY_PRINT($stdout, "success.\n")
+ } else {
   &MY_PRINT($stdout, "FAILED! Skipping.\n");
+  chdir $suite_dir;
   return "FAIL";
  }
  #

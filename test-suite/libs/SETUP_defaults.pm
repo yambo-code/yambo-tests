@@ -38,6 +38,7 @@ $listtests="default";
 $version="4.1";
 $prec=0.01;
 $project="none"; 
+$max_delay_commits = 2; # days
 $run_duration = 1200; # 20 minutes
 $default_prec=0.01;
 $use_colors="no";
@@ -64,7 +65,14 @@ if ($SYSTEM_NP>16    ) { $SYSTEM_SLK=16 };
 #
 # Default Branches
 open(BRANCHES_file,"<","ROBOTS/$host/$user/BRANCHES");
-@branches = <BRANCHES_file>;
+my @BLINES = <BRANCHES_file>;
+my $line;
+my $ib=-1;
+while($line = shift(@BLINES)) {
+ chomp($line);
+ $ib++;
+ ($branches[$ib],$branch_identity[$ib]) = split(/ /, $line);
+}
 close(BRANCHES_file);
 }
 #

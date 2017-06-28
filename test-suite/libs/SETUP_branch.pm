@@ -44,6 +44,8 @@ elsif($branchdir =~ /^\//) {
  my @subdirs = File::Spec->splitdir( $branchdir );  
  # Make shortname from last two subdirs in full path
  $dir= @subdirs[-2]."_".@subdirs[-1];
+ # Make shortname from last two subdirs in full path
+ $dir_id= @subdirs[-1];
 }
 if( ! -f "$BRANCH/driver/driver.c")  { &MY_PRINT($stdout, "ERROR: cannot find $branchdir, skipping!\n"); return "FAIL"; };
 #

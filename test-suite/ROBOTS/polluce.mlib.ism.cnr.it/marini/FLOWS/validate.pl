@@ -4,7 +4,6 @@
 {
  ACTIVE      => "yes",
  CONFIG      => "default.sh",
-# KEYS        => "rt hard",
  KEYS        => "all hard",
 },
 {
@@ -21,6 +20,7 @@
  PAR_MODE    => "loop",
 },
 {
+ ACTIVE      => "yes",
  THREADS     => 4,
 },
 {

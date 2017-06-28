@@ -207,12 +207,11 @@ if ($RUNNING_suite) {
  die "\n";
 }
 #
-#
 &UTILS_clean("BINs");
 #
 &COMPILE_find_the_diff("clean");
 #
-if (not $FLOWS_done) {
+if (not $FLOWS_done or not $AT_LEAST_ONE) {
  print "\nDone.\n";
  die "\n";
 }

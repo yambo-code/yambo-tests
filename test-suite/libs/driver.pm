@@ -39,16 +39,15 @@ if ($is_GPL eq "yes"){ $input_folder = "INPUTS-GPL"; }
 # Tests input
 &UTILS_get_inputs_tests_list;
 #
-my $AT_LEAST_ONE="no";
+undef $AT_LEAST_ONE;
 #---------------------------#
 # Loop on BRANCHES
 #---------------------------#
 #
-my @running_branches=@branches;
-#
-LOOP_BRANCH: foreach $branchdir (@running_branches) {
+LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
  #
- chomp($branchdir);
+ $branchdir=@branches[$ib];
+ $branch_id=@branch_identity[$ib];
  #
  # Stats
  &RUN_stats("INIT");
