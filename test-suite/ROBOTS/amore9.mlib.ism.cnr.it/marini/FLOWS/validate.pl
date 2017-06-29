@@ -16,10 +16,12 @@
  PAR_MODE    => "random",
 },
 {
+ ACTIVE      => "no",
  MPI_CPU     => 4,
  PAR_MODE    => "loop",
 },
 {
+ ACTIVE      => "yes",
  THREADS     => 8,
 },
 {
