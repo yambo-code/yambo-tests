@@ -23,17 +23,22 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub UTILS_backup_save{
- foreach $conf_file (<LOG*.log>,<ERROR*.log>,<REPORT*.log>,<WHITELIST*.log>) {
-  &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
-  if ($conf_file =~ /REPORT-/) {$global_report=$conf_file};
- };
- &command("mv $DATA_backup_file.tar.gz $BACKUP_dir/$BACKUP_subdir");
- &CWD_save;
- chdir("$BACKUP_dir");
- &command("rm -f LATEST-TEST LATEST-REPORT");
- &command("ln -s $BACKUP_subdir LATEST-TEST");
- &command("ln -s LATEST-TEST/$global_report LATEST-REPORT");
- &CWD_go;
+$BACKUP_dir   ="$host/$user/$FC_kind";
+$BACKUP_subdir="$date-$time";
+&command("mkdir -p $BACKUP_dir");
+&command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
+if ($compile) {&command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation")};
+foreach $conf_file (<LOG*.log>,<ERROR*.log>,<REPORT*.log>,<WHITELIST*.log>) {
+ &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
+ if ($conf_file =~ /REPORT-/) {$global_report=$conf_file};
+};
+&command("mv $DATA_backup_file.tar.gz $BACKUP_dir/$BACKUP_subdir");
+&CWD_save;
+chdir("$BACKUP_dir");
+&command("rm -f LATEST-TEST LATEST-REPORT");
+&command("ln -s $BACKUP_subdir LATEST-TEST");
+&command("ln -s LATEST-TEST/$global_report LATEST-REPORT");
+&CWD_go;
 }
 sub UTILS_backup
 {
@@ -62,6 +67,7 @@ foreach $conf_file (<*config.log>,<*compile.log>) {
 foreach $conf_file (<LOG*.log>){
  &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
 };
+&command("cp LOG $BACKUP_dir/$BACKUP_subdir");
 }
 sub UTILS_backup_upload
 {

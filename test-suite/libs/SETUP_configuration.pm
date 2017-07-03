@@ -73,8 +73,6 @@ if("$do_it" eq "yes") {
  if ($branch_id eq "") 
  {
   $branch_id=$dir_id
- }else{
-  $branch_key=$branch_id
  };
  &MY_PRINT($stdout, "Checking ...\n");
  &command("git checkout $branch_id");
@@ -85,7 +83,7 @@ if("$do_it" eq "yes") {
  chomp($result);
  my @rs=split(' ', $result);
  my $day= &UTILS_day($rs[2],$rs[3]);
- my $delay=$current_day-$day;
+ my $delay=$current_day-$day+($current_year-$rs[5])*365;
  #
  if ($delay > $max_delay_commits)
  {
@@ -185,7 +183,7 @@ for $check_exec (@executables){
   return "FAIL";
  };
 }
-$branch=$dir."-".$conf_file;
+$branch=$branch_key."-".$conf_file;
 #
 # Get the FC kind
 #

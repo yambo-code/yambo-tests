@@ -3,17 +3,18 @@
 @flow = (
 {
  ACTIVE      => "yes",
- TESTS       => "MoS2/pwscf/RT  00_init",
- CONFIG      => "gfortran.sh",
- KEYS        => "all hard",
-},
-{
- TESTS       => "MoS2/pwscf/RT  00_init",
- CONFIG      => "intel.sh",
- KEYS        => "all hard",
+ TESTS       => "hBN/GW-OPTICS 01_init 02_HF",
+ CONFIG      => "default.sh",
+# KEYS        => "all hard",
 },
 {
  ACTIVE      => "no",
+# TESTS       => "MoS2/pwscf/RT  00_init",
+# CONFIG      => "intel.sh",
+# KEYS        => "all hard",
+},
+{
+ ACTIVE      => "yes",
  MPI_CPU     => "2",
  PAR_MODE    => "default",
 },

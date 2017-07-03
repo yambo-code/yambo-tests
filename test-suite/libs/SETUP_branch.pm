@@ -27,6 +27,7 @@ sub SETUP_branch{
 # Branch record starts with # means skip
 # $BRANCH is the absolute path to the branch
 # $dir is short string of BRANCH for filenames, / swapped with _
+#
 $BRANCH=$branchdir;
 #
 # Chomp last "/"
@@ -68,10 +69,15 @@ if ($BRANCH=~m/4.1/ix) {$is_OLD_IO="yes"};
 $is_NEW_WF="no";
 if ($BRANCH=~m/devel-wf-io/ix) {$is_NEW_WF="yes"};
 #
-$branch_key=$dir;
-$branch_key =~ s/_/ /;
-my @locals = split(' ', $branch_key);
-$branch_key=@locals[1];
+if ($branch_id eq "") 
+{
+ $branch_key=$dir;
+ $branch_key =~ s/_/ /;
+ my @locals = split(' ', $branch_key);
+ $branch_key=@locals[1];
+}else{
+ $branch_key=$branch_id
+};
 return "OK";
 }
 1;

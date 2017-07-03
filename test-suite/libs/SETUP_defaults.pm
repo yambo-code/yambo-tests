@@ -29,9 +29,6 @@ $|=1;
 #
 &UTILS_time($date,$time);
 #
-$BACKUP_dir   ="$host/$user";
-$BACKUP_subdir="$date-$time";
-#
 # Predefs (before options scan)
 $listtests="default";
 #

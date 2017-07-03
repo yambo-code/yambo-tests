@@ -28,9 +28,9 @@ sub UTILS_time
 my @months = qw( Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec );
 my @days = qw(Sun Mon Tue Wed Thu Fri Sat Sun);
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
-my $year=$year+1900;
+$current_year=$year+1900;
 $current_day=$mon*31+$mday;
-$_[0]="$days[$wday]-$mday-$months[$mon]";
+$_[0]="$months[$mon]-$mday-$days[$wday]";
 $_[1]="$hour-$min";
 }
 sub UTILS_day

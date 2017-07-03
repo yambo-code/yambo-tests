@@ -105,13 +105,6 @@ if ("$what" eq "BASIC") {
  #
  if (!$np_min and !$np_single and !$nt) {$PAR_string="SERIAL"};
  #
- # Local directories to collect logs
- if ($backup_logs){
-  &command("mkdir -p $BACKUP_dir");
-  &command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
-  if ($compile) {&command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation")};
- };
- #
 }
 }
 1;

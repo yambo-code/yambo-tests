@@ -37,14 +37,15 @@ $PAR_field[7]="X_q_0_nCPU_LinAlg_INV=$nl_here";
 $PAR_field[8]="X_finite_q_nCPU_LinAlg_INV=$nl_here";
 $PAR_field[9]="BS_nCPU_LinAlg_INV=$nl_here";
 $PAR_field[10]="BS_nCPU_LinAlg_DIAGO=$nl_here";
+$PAR_field[11]="SE_nCPU_LinAlg_DIAGO=$nl_here";
 #
 if ( ! $default_parallel and $np>1) {
- $PAR_field[11]="X_q_0_ROLEs= \"k.c.v\"";
- $PAR_field[12]="X_finite_q_ROLEs= \"q.k.c.v\"";
- $PAR_field[13]="X_all_q_ROLEs= \"q.k.c.v\"";
- $PAR_field[14]="SE_ROLEs= \"q.qp.b\"";
- $PAR_field[15]="BS_ROLEs= \"k.eh.t\"";
- $PAR_field[16]="RT_ROLEs= \"q.k.qp.b\"";
+ $PAR_field[12]="X_q_0_ROLEs= \"k.c.v\"";
+ $PAR_field[13]="X_finite_q_ROLEs= \"q.k.c.v\"";
+ $PAR_field[14]="X_all_q_ROLEs= \"q.k.c.v\"";
+ $PAR_field[15]="SE_ROLEs= \"q.qp.b\"";
+ $PAR_field[16]="BS_ROLEs= \"k.eh.t\"";
+ $PAR_field[17]="RT_ROLEs= \"q.k.qp.b\"";
 }
 #
 $Nr="1";

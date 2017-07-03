@@ -15,7 +15,7 @@
  PAR_MODE    => "random",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => 4,
  PAR_MODE    => "loop",
 },
