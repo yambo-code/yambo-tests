@@ -23,10 +23,6 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub UTILS_backup_save{
-$BACKUP_dir   ="$host/$user/$FC_kind";
-$BACKUP_subdir="$date-$time";
-&command("mkdir -p $BACKUP_dir");
-&command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
 if ($compile) {&command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation")};
 foreach $conf_file (<LOG*.log>,<ERROR*.log>,<REPORT*.log>,<WHITELIST*.log>) {
  &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
@@ -43,6 +39,10 @@ chdir("$BACKUP_dir");
 sub UTILS_backup
 {
 chdir("$suite_dir");
+$BACKUP_dir   ="$host/$user/$FC_kind";
+$BACKUP_subdir="$date-$time";
+&command("mkdir -p $BACKUP_dir");
+&command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
 &command("find tests -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep -v 'REFERENCE' > list");
 $DATA_backup_file="outputs_and_reports_ALL";
 if (!-f "$DATA_backup_file.tar.gz") {&command("tar cf $DATA_backup_file.tar -T list")};

@@ -74,7 +74,7 @@ if($help){
 #
 # Show extra files
 if($svn_check){ 
- &command("svn st | grep -v -e 'ns.' -e 'ndb.' -e '.tar' -e '_backup' -e 'MODULES.pl' -e 'TOOLS.pl' -e 'configure.ac' -e 'config.status'");
+ &command("svn st | grep -v -e 'ns.' -e 'ndb.' -e '.tar' -e 'SAVE_backup' -e 'MODULES.pl' -e 'TOOLS.pl' -e 'configure.ac' -e 'config.status'");
  die "\n";
 };
 #
