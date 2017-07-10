@@ -1,12 +1,6 @@
 #!/bin/sh
 
-#
-#modules
-#
-source /opt/modules/init/modules_init.sh
-module purge
-module load openmpi/intel
-module load mkl
+if [ -e Makefile ] ; then make distclean ; fi
 #
 ./configure \
   --with-blas-libs="-L/opt/blas/gnu/lib -lblas" \

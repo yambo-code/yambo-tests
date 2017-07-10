@@ -1,5 +1,7 @@
 #!/bin/sh
 
+if [ -e Makefile ] ; then make distclean ; fi
+
 ./configure \
   --with-blas-libs="-L/opt/blas/gnu/lib -lblas" \
   --with-lapack-libs="-L/opt/lapack/3.5.0-gnu/lib -llapack" \

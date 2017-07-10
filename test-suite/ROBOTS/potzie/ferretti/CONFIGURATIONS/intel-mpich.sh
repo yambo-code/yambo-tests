@@ -2,6 +2,8 @@
 MKL_seq_libs="-lmkl_core -lmkl_intel_lp64 -lmkl_sequential"
 MKL_th_libs="-lmkl_intel_ilp64 -lmkl_intel_thread -lmkl_core -openmp"
 
+if [ -e Makefile ] ; then make distclean ; fi
+
 ./configure \
   --with-blas-libs="$MKL_seq_libs" \
   --with-lapack-libs="$MKL_seq_libs" \
