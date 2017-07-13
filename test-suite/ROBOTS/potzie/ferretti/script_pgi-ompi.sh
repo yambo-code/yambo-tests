@@ -21,10 +21,10 @@ cd /scratch/ferretti/yambo-tests
 svn up
 cd /scratch/ferretti/yambo-tests/test-suite
 
-#
-# compiling
-#
-./driver.pl -compile -conf $conf_file $flags
+##
+## compiling
+##
+#./driver.pl -compile -conf $conf_file $flags
 
 #
 # running

@@ -3,7 +3,7 @@
 @flow = (
 {
  ACTIVE      => "yes",
- CONFIG      => "pgi-ompi.sh",
+ CONFIG      => "gnu-ompi.sh",
  KEYS        => "nopj hard",
  MPI_CPU     => 8,
  PAR_MODE    => "default",
