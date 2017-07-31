@@ -75,6 +75,7 @@ my $ret = &GetOptions("h"    => \$help,
             "force"          => \$force,
             "ftp"            => \$ftp,
             "dry"            => \$dry_run,
+            "newer=i"        => \$max_delay_commits,
             "failed=s"       => \$failed
                       );
 #
@@ -124,6 +125,7 @@ sub UTILS_usage {
              -nl     <L>            # of CPU used for linear algebra
              -def_par               Use the default parallelization scheme
              -rand_par              Use randomly generated parallel structures
+             -newer  <D>            Run only if the source is newer than <D> days
 
    (miscellaneous options)
              -v [-v]                Verbose output (use -v -v for extra verbosity)

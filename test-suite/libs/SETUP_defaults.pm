@@ -35,7 +35,6 @@ $listtests="default";
 $version="4.1";
 $prec=0.01;
 $project="none"; 
-$max_delay_commits = 2; # days
 $run_duration = 1200; # 20 minutes
 $default_prec=0.01;
 $use_colors="no";

@@ -79,18 +79,23 @@ if("$do_it" eq "yes") {
  &MY_PRINT($stdout, "Updating ...\n");
  &command("git pull");
  #
- $result=`git log |head|grep Date`;
- chomp($result);
- my @rs=split(' ', $result);
- my $day= &UTILS_day($rs[2],$rs[3]);
- my $delay=$current_day-$day+($current_year-$rs[5])*365;
+ # Check if source is newer than $max_delay_commits
  #
- if ($delay > $max_delay_commits)
- {
-  &MY_PRINT($stdout, "Branch $BRANCH checked out as $branch_id is too old. Skipping.\n");
-  chdir $suite_dir;
-  return "FAIL";
+ if ($max_delay_commits) {
+  $result=`git log --pretty=format:"%cd" | head -n 1`;
+  chomp($result);
+  my @rs=split(' ', $result);
+  my $day= &UTILS_day($rs[1],$rs[2]);
+  my $delay=$current_day-$day+($current_year-$rs[4])*365;
+  #
+  if ($delay > $max_delay_commits)
+  {
+   &MY_PRINT($stdout, "Branch $BRANCH checked out as $branch_id latest commit is $delay day(s) old. Skipping.\n");
+   chdir $suite_dir;
+   return "FAIL";
+  }
  }
+ #
  &MY_PRINT($stdout, "                          > Configuring sources...");
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config.log";
