@@ -28,7 +28,12 @@ sub RUN_convert_the_SAVE{
   &command("cp -r SAVE_backup SAVE");
  }
  # initialization
- &command("$BRANCH/$conf_bin/yambo");
+ if(-e "$BRANCH/$conf_bin/yambo_ph") {
+   &command("$BRANCH/$conf_bin/yambo_ph");
+ }
+ else {
+   &command("$BRANCH/$conf_bin/yambo"); 
+ }
  # conversions
  if(-e "$BRANCH/$conf_bin/ypp_ph") {
    &command("$BRANCH/$conf_bin/ypp_ph -z");
