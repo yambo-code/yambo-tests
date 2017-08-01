@@ -2,7 +2,7 @@
 #        Copyright (C) 2000-2017 the YAMBO team
 #              http://www.yambo-code.org
 #
-# Authors (see AUTHORS file for details): AM
+# Authors (see AUTHORS file for details): AM, DS
 #
 # Based on the original driver written by CH
 #
@@ -42,6 +42,7 @@ sub RUN_convert_the_SAVE{
    &command("$BRANCH/$conf_bin/ypp -z"); 
  }
  if(-e "SAVE_backup") {
+  &command("rm -r SAVE");
   &command("mv SAVE_backup SAVE_backup_old");
   &command("mv FixSAVE/SAVE SAVE_backup");
  }
