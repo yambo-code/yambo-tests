@@ -24,23 +24,20 @@
 #
 sub RUN_convert_the_SAVE{
  &MY_PRINT($stdout, "\nConverting SAVE folder to new format");
- if(-e "SAVE_backup") {
-  &command("cp -r SAVE_backup SAVE");
- }
+ #
+ $YAMBO_local="$BRANCH/$conf_bin/yambo";
+ $YPP_local="$BRANCH/$conf_bin/ypp";
+ if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$BRANCH/$conf_bin/yambo_ph"; }
+ if(-e "$BRANCH/$conf_bin/yambo_ph") { $YPP_local="$BRANCH/$conf_bin/ypp_ph"; }
+ #
+ # Main SAVE folder
+ #
+ if(-e "SAVE_backup") { &command("cp -r SAVE_backup SAVE"); }
  # initialization
- if(-e "$BRANCH/$conf_bin/yambo_ph") {
-   &command("$BRANCH/$conf_bin/yambo_ph");
- }
- else {
-   &command("$BRANCH/$conf_bin/yambo"); 
- }
+ &command("$YAMBO_local");
  # conversions
- if(-e "$BRANCH/$conf_bin/ypp_ph") {
-   &command("$BRANCH/$conf_bin/ypp_ph -z");
- }
- else {
-   &command("$BRANCH/$conf_bin/ypp -z"); 
- }
+ &command("$YPP_local -z");
+ #
  if(-e "SAVE_backup") {
   &command("rm -r SAVE");
   &command("mv SAVE_backup SAVE_backup_old");
@@ -50,7 +47,43 @@ sub RUN_convert_the_SAVE{
   &command("mv SAVE SAVE_old");
   &command("mv FixSAVE/SAVE SAVE");
  }
+ #
+ # SAVE for shifted grids
+ #
+ if(-e "SHIFTED_grids") {
+  &MY_PRINT($stdout, "\nConverting SAVE folder with shifted grids to new format");
+  &command("cd SHIFTED_grids");
+  if(-e "shift_1") {
+   &command("cd shift_1");
+   &command("$YAMBO_local");
+   &command("$YPP_local -z");
+   &command("mv SAVE SAVE_old");
+   &command("mv FixSAVE/SAVE SAVE");
+   &command("cd ..");
+  }
+  if(-e "shift_2") {
+   &command("cd shift_2");
+   &command("$YAMBO_local");
+   &command("$YPP_local -z");
+   &command("mv SAVE SAVE_old");
+   &command("mv FixSAVE/SAVE SAVE");
+   &command("cd ..");
+  }
+  if(-e "shift_3") {
+   &command("cd shift_3");
+   &command("$YAMBO_local");
+   &command("$YPP_local -z");
+   &command("mv SAVE SAVE_old");
+   &command("mv FixSAVE/SAVE SAVE");
+   &command("cd ..");
+  }
+  &command("cd ..");
+ }
+ #
+ # GKKP
+ #
  if(-e "GKKP") {
+  &MY_PRINT($stdout, "\nConverting GKKP folder to new format");
   &command("mv GKKP GKKP_old");
   &command("mv FixSAVE/GKKP GKKP");
  }
