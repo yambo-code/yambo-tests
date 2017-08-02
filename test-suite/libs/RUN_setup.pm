@@ -102,6 +102,20 @@ if ("@_" =~ "after_tests_loop"){
   &command("rm -fr GKKP");
   &command("mv GKKP_old GKKP");
  }
+ if(-e "SHIFTED_grids") {
+  if(-e "SHIFTED_grids/shift_1/SAVE_old") {
+    &command("rm -fr SHIFTED_grids/shift_1/SAVE");
+    &command("mv SHIFTED_grids/shift_1/SAVE_old SHIFTED_grids/shift_1/SAVE");
+  }
+  if(-e "SHIFTED_grids/shift_2/SAVE_old") {
+    &command("rm -fr SHIFTED_grids/shift_2/SAVE");
+    &command("mv SHIFTED_grids/shift_2/SAVE_old SHIFTED_grids/shift_2/SAVE");
+  }
+  if(-e "SHIFTED_grids/shift_3/SAVE_old") {
+    &command("rm -fr SHIFTED_grids/shift_3/SAVE");
+    &command("mv SHIFTED_grids/shift_3/SAVE_old SHIFTED_grids/shift_3/SAVE");
+  }
+ }
  if ($error eq "DIR_SKIPPED") { 
   &MY_PRINT($stdout, "$CHECK_error\n") if ($verb);
  }else{

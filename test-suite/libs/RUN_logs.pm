@@ -25,7 +25,7 @@
 sub RUN_logs{
 #
 $extension=$branch.'-'.$BUILD.'-'.$FC_kind.'-'.$PAR_string;
-$tests_log = "LOG-".$extension.".log";
+$tests_log="LOG-$date"."_"."$time".$extension.".log";
 #
 open($tlog, '>', $tests_log) or die "Could not open file '$tests_log' $!";
 #
