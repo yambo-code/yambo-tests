@@ -23,21 +23,24 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub RUN_convert_the_SAVE{
- &MY_PRINT($stdout, "\nConverting SAVE folder to new format");
  #
  $YAMBO_local="$BRANCH/$conf_bin/yambo";
- $YPP_local="$BRANCH/$conf_bin/ypp";
+ $YPP_local="$BRANCH/$conf_bin/ypp -z";
  if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$BRANCH/$conf_bin/yambo_ph"; }
- if(-e "$BRANCH/$conf_bin/yambo_ph") { $YPP_local="$BRANCH/$conf_bin/ypp_ph"; }
+ if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$BRANCH/$conf_bin/ypp_ph -z"; }
  #
- # Main SAVE folder
+ # Main SAVE folder and eventually GKKP
+ #
+ $MESSAGE="\nConverting SAVE folder to new format";
+ if(-e "GKKP") {
+  $MESSAGE="\nConverting SAVE and GKKP folders to new format";
+  $YPP_local="$YPP_local -J GKKP"
+ }
+ &MY_PRINT($stdout, "$MESSAGE");
  #
  if(-e "SAVE_backup") { &command("cp -r SAVE_backup SAVE"); }
- # initialization
  &command("$YAMBO_local");
- # conversions
- &command("$YPP_local -z");
- #
+ &command("$YPP_local");
  if(-e "SAVE_backup") {
   &command("rm -r SAVE");
   &command("mv SAVE_backup SAVE_backup_old");
@@ -47,45 +50,42 @@ sub RUN_convert_the_SAVE{
   &command("mv SAVE SAVE_old");
   &command("mv FixSAVE/SAVE SAVE");
  }
+ if(-e "GKKP") {
+  &command("mv GKKP GKKP_old");
+  &command("mv FixSAVE/GKKP GKKP");
+ }
  #
  # SAVE for shifted grids
  #
  if(-e "SHIFTED_grids") {
   &MY_PRINT($stdout, "\nConverting SAVE folder with shifted grids to new format");
-  &command("cd SHIFTED_grids");
+  chdir("SHIFTED_grids");
   if(-e "shift_1") {
-   &command("cd shift_1");
+   &MY_PRINT($stdout, "\nConverting shift 1");
+   chdir("shift_1");
    &command("$YAMBO_local");
-   &command("$YPP_local -z");
+   &command("$YPP_local");
    &command("mv SAVE SAVE_old");
    &command("mv FixSAVE/SAVE SAVE");
-   &command("cd ..");
+   chdir("..");
   }
   if(-e "shift_2") {
-   &command("cd shift_2");
+   chdir("shift_2");
    &command("$YAMBO_local");
-   &command("$YPP_local -z");
+   &command("$YPP_local");
    &command("mv SAVE SAVE_old");
    &command("mv FixSAVE/SAVE SAVE");
-   &command("cd ..");
+   chdir("..");
   }
   if(-e "shift_3") {
-   &command("cd shift_3");
+   chdir("shift_3");
    &command("$YAMBO_local");
-   &command("$YPP_local -z");
+   &command("$YPP_local");
    &command("mv SAVE SAVE_old");
    &command("mv FixSAVE/SAVE SAVE");
-   &command("cd ..");
+   chdir("..");
   }
-  &command("cd ..");
- }
- #
- # GKKP
- #
- if(-e "GKKP") {
-  &MY_PRINT($stdout, "\nConverting GKKP folder to new format");
-  &command("mv GKKP GKKP_old");
-  &command("mv FixSAVE/GKKP GKKP");
+  chdir("..");
  }
 }
 1;
