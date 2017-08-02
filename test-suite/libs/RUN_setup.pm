@@ -102,19 +102,22 @@ if ("@_" =~ "after_tests_loop"){
   &command("rm -fr GKKP");
   &command("mv GKKP_old GKKP");
  }
- if(-e "SHIFTED_grids") {
-  if(-e "SHIFTED_grids/shift_1/SAVE_old") {
-    &command("rm -fr SHIFTED_grids/shift_1/SAVE");
-    &command("mv SHIFTED_grids/shift_1/SAVE_old SHIFTED_grids/shift_1/SAVE");
+ if(-e "SHIFTED_grids" || -e "SHIFTED_GRID") {
+  if(-e "SHIFTED_grids") { chdir("SHIFTED_grids"); }
+  if(-e "SHIFTED_GRID")  { chdir("SHIFTED_GRID"); }
+  if(-e "shift_1/SAVE_old") {
+    &command("rm -fr shift_1/SAVE");
+    &command("mv shift_1/SAVE_old shift_1/SAVE");
   }
-  if(-e "SHIFTED_grids/shift_2/SAVE_old") {
-    &command("rm -fr SHIFTED_grids/shift_2/SAVE");
-    &command("mv SHIFTED_grids/shift_2/SAVE_old SHIFTED_grids/shift_2/SAVE");
+  if(-e "shift_2/SAVE_old") {
+    &command("rm -fr shift_2/SAVE");
+    &command("mv shift_2/SAVE_old shift_2/SAVE");
   }
-  if(-e "SHIFTED_grids/shift_3/SAVE_old") {
-    &command("rm -fr SHIFTED_grids/shift_3/SAVE");
-    &command("mv SHIFTED_grids/shift_3/SAVE_old SHIFTED_grids/shift_3/SAVE");
+  if(-e "shift_3/SAVE_old") {
+    &command("rm -fr shift_3/SAVE");
+    &command("mv shift_3/SAVE_old shift_3/SAVE");
   }
+  chdir("..");
  }
  if ($error eq "DIR_SKIPPED") { 
   &MY_PRINT($stdout, "$CHECK_error\n") if ($verb);
