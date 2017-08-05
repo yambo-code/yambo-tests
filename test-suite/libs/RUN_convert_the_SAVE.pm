@@ -88,5 +88,19 @@ sub RUN_convert_the_SAVE{
   }
   chdir("..");
  }
+ #
+ # SAVE for SOC mapping
+ #
+ if(-e "SAVE_SOC") {
+  &MY_PRINT($stdout, "\nConverting SAVE folder with SOC to new format");
+  &command("mv SAVE_SOC SAVE_SOC_old");
+  &command("mkdir -p SOC_tmp_dir/SAVE");
+  &command("cp SAVE_SOC_old/* SOC_tmp_dir/SAVE");
+  chdir("SOC_tmp_dir");
+  &command("$YAMBO_local");
+  &command("$YPP_local");
+  &command("mv FixSAVE/SAVE ../SAVE_SOC");
+  chdir("..");
+ }
 }
 1;

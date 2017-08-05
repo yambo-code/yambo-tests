@@ -119,6 +119,10 @@ if ("@_" =~ "after_tests_loop"){
   }
   chdir("..");
  }
+ if(-e "SAVE_SOC_old") {
+  &command("rm -fr SAVE_SOC");
+  &command("mv SAVE_SOC_old SAVE_SOC");
+ }
  if ($error eq "DIR_SKIPPED") { 
   &MY_PRINT($stdout, "$CHECK_error\n") if ($verb);
  }else{
