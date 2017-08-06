@@ -16,19 +16,17 @@
 #
 @flow = (
 {
- BRANCH      => "/home/marini/Yambo/sources/git/yambo/branches/SLK",
  TESTS       => "hBN/GW-OPTICS 01_init",
  ACTIVE      => "yes",
 },
 {
- CONFIG      => "gfortran_all_external.sh",
  ACTIVE      => "yes",
  MPI_CPU     => "2",
  PAR_MODE    => "default",
 },
 {
  CONFIG      => "gfortran_all_external_slk.sh",
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => "2",
  PAR_MODE    => "default",
  THREADS     => "2",

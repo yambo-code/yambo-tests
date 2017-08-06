@@ -12,6 +12,6 @@ cd /scratch/marini/yambo-tests/test-suite
 
 module purge
 module load openmpi/intel/1.6.5-intel
-./driver.pl -flow validate -report 
+./driver.pl -flow validate -report -newer 2
 
 
