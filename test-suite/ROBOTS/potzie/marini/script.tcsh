@@ -10,4 +10,4 @@ git pull
 ~/test-suite/ROBOTS/potzie/marini/CONFIGURATIONS/default.sh
 make all
 cd /scratch/marini/yambo-tests/test-suite/
-./driver.pl -flow validate -report 
+./driver.pl -flow validate -report -newer 2
