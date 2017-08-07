@@ -71,6 +71,7 @@ sub RUN_convert_the_SAVE{
    chdir("..");
   }
   if(-e "shift_2") {
+   &MY_PRINT($stdout, "\nConverting shift 2");
    chdir("shift_2");
    &command("$YAMBO_local");
    &command("$YPP_local");
@@ -79,6 +80,7 @@ sub RUN_convert_the_SAVE{
    chdir("..");
   }
   if(-e "shift_3") {
+   &MY_PRINT($stdout, "\nConverting shift 3");
    chdir("shift_3");
    &command("$YAMBO_local");
    &command("$YPP_local");
