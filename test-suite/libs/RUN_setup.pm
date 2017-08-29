@@ -87,42 +87,6 @@ if ("@_" =~ "after_run"){
  #
 }
 if ("@_" =~ "after_tests_loop"){
- # 
- # Restore SAVE/SAVE_backup and GKKP to old format
- #
- if(-e "SAVE_backup_old") {
-  &command("rm -fr SAVE_backup");
-  &command("mv SAVE_backup_old SAVE_backup");
- }
- elsif (-e "SAVE_old") {
-  &command("rm -fr SAVE");
-  &command("mv SAVE_old SAVE");
- }
- if(-e "GKKP_old") {
-  &command("rm -fr GKKP");
-  &command("mv GKKP_old GKKP");
- }
- if(-e "SHIFTED_grids" || -e "SHIFTED_GRID") {
-  if(-e "SHIFTED_grids") { chdir("SHIFTED_grids"); }
-  if(-e "SHIFTED_GRID")  { chdir("SHIFTED_GRID"); }
-  if(-e "shift_1/SAVE_old") {
-    &command("rm -fr shift_1/SAVE");
-    &command("mv shift_1/SAVE_old shift_1/SAVE");
-  }
-  if(-e "shift_2/SAVE_old") {
-    &command("rm -fr shift_2/SAVE");
-    &command("mv shift_2/SAVE_old shift_2/SAVE");
-  }
-  if(-e "shift_3/SAVE_old") {
-    &command("rm -fr shift_3/SAVE");
-    &command("mv shift_3/SAVE_old shift_3/SAVE");
-  }
-  chdir("..");
- }
- if(-e "SAVE_SOC_old") {
-  &command("rm -fr SAVE_SOC");
-  &command("mv SAVE_SOC_old SAVE_SOC");
- }
  if ($error eq "DIR_SKIPPED") { 
   &MY_PRINT($stdout, "$CHECK_error\n") if ($verb);
  }else{

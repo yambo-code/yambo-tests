@@ -22,45 +22,21 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-sub SETUP_defaults{
+sub CHECK_GPL_skip{
 #
-# Flush output
-$|=1;
-#
-&UTILS_time($date,$time);
-#
-# Predefs (before options scan)
-$listtests="default";
-#
-$version="4.1";
-$prec=0.01;
-$project="none"; 
-$run_duration = 1200; # 20 minutes
-$default_prec=0.01;
-$use_colors="no";
-$left_length=50;
-$double_line=("=") x ($left_length+32);
-$wiggly_line=("%") x ($left_length+32);
-$line=("-") x ($left_length+30);
-$line="=".$line."=";
-$stdout = *STDOUT;
-$input_folder= "INPUTS";
-# ERROR log
-@ERROR_entries;
-$N_errors=0;
-# Default precision
-$prec=0.01;
-# Log
-$log = "> /dev/null 2>&1";
-#
-$SYSTEM_NP=1;
-chomp($SYSTEM_NP = `grep -c -P '^processor\\s+:' /proc/cpuinfo`);
-$SYSTEM_NP_half=$SYSTEM_NP/2;
-if ($SYSTEM_NP_half<1) { $SYSTEM_NP_half=1 };
-$SYSTEM_SLK=1;
-if ($SYSTEM_NP>4     ) { $SYSTEM_SLK=4 };
-if ($SYSTEM_NP>16    ) { $SYSTEM_SLK=16 };
+if ($is_GPL) 
+{
+ undef $skip_the_file;
+ if ("@_" =~ /.external_field/ ) { $skip_the_file="yes" };
+ if ("@_" =~ /.energy/         ) { $skip_the_file="yes" };
+ if ("@_" =~ /.carriers/       ) { $skip_the_file="yes" };
+ if ("@_" =~ /.thermodynamics/ ) { $skip_the_file="yes" };
+ #
+ if ($skip_the_file){
+  return "SKIP";
+ }
+}
+return "OK";
 #
 }
-#
 1;

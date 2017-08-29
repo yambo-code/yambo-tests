@@ -23,6 +23,25 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SETUP_branch{
+#
+if ("@_" eq "load_the_branches") {
+#
+undef $branches;
+undef $branch_identity;
+# Default Branches
+open(BRANCHES_file,"<","$suite_dir/ROBOTS/$host/$user/BRANCHES");
+my @BLINES = <BRANCHES_file>;
+my $line;
+my $ib=-1;
+while($line = shift(@BLINES)) {
+ chomp($line);
+ $ib++;
+ ($branches[$ib],$branch_identity[$ib]) = split(/ /, $line);
+}
+close(BRANCHES_file);
+return;
+}
+#
 # Branch record starts with / means full path
 # Branch record starts with # means skip
 # $BRANCH is the absolute path to the branch
@@ -71,6 +90,8 @@ if ($BRANCH=~m/devel-wf-io/ix) {$is_NEW_WF="yes"};
 if ($BRANCH=~m/master/ix)      {$is_NEW_WF="yes"};
 if ($BRANCH=~m/SLK/ix)         {$is_NEW_WF="yes"};
 if ($BRANCH=~m/devel-io/ix)    {$is_NEW_WF="yes"};
+if ($BRANCH=~m/max-release/ix) {$is_NEW_WF="yes"};
+if ($BRANCH=~m/max-release-GPL/ix) {$is_GPL="yes"};
 #
 if ($branch_id eq "") 
 {

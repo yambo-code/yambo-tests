@@ -57,7 +57,7 @@ my $ret = &GetOptions("h"    => \$help,
             "b"              => \$backup_logs,
             "v+"             => \$verb,
             "conf=s"         => \$select_conf_file,
-            "gpl=s"          => \$is_GPL,
+            "gpl"            => \$is_GPL,
             "tests=s"        => \$user_tests,
             "theme=s"        => \$theme,
             "prec=s"         => \$prec,
@@ -78,9 +78,6 @@ my $ret = &GetOptions("h"    => \$help,
             "newer=i"        => \$max_delay_commits,
             "failed=s"       => \$failed
                       );
-#
-# Defaults
-if(!$is_GPL){ $is_GPL="no";}
 #
 }
 sub UTILS_usage {
@@ -107,7 +104,7 @@ sub UTILS_usage {
    (test options)
              -flow   <FILE>         Use the flow of calculations defined in <FILE> (refer to ROBOTS/$host/$user/FLOWS/<FILE>.pl)
              -autotest              Perform a simple serial minimal auto-test
-             -gpl    <yes/no>       Test only GPL features              (default: no)
+             -gpl                   Only GPL-compliant test
              -keys   <string>       Test keys (see below*)
              -colors                Use colors in messages
              -conf   <NAME>         Use configuration NAME              (default: no options, all: cycle among all confs)

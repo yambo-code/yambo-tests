@@ -24,19 +24,19 @@
 #
 sub RUN_convert_the_SAVE{
  #
- $YAMBO_local="$BRANCH/$conf_bin/yambo";
- $YPP_local="$BRANCH/$conf_bin/ypp -z";
- if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$BRANCH/$conf_bin/yambo_ph"; }
- if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$BRANCH/$conf_bin/ypp_ph -z"; }
+ $YAMBO_local="$BRANCH/$conf_bin/yambo $log";
+ $YPP_local="$BRANCH/$conf_bin/ypp -z $log";
+ if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$BRANCH/$conf_bin/yambo_ph $log"; }
+ if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$BRANCH/$conf_bin/ypp_ph -z $log"; }
  #
  # Main SAVE folder and eventually GKKP
  #
  $MESSAGE="\nConverting SAVE folder to new format";
  if(-e "GKKP") {
   $MESSAGE="\nConverting SAVE and GKKP folders to new format";
-  $YPP_local="$YPP_local -J GKKP"
+  $YPP_local="$YPP_local -J GKKP $log" 
  }
- &MY_PRINT($stdout, "$MESSAGE");
+ &MY_PRINT($stdout, "$MESSAGE") if ($verb ge 2);;
  #
  if(-e "SAVE_backup") { &command("cp -r SAVE_backup SAVE"); }
  &command("$YAMBO_local");
@@ -58,11 +58,11 @@ sub RUN_convert_the_SAVE{
  # SAVE for shifted grids
  #
  if(-e "SHIFTED_grids" || -e "SHIFTED_GRID") {
-  &MY_PRINT($stdout, "\nConverting SAVE folder with shifted grids to new format");
+  &MY_PRINT($stdout, "\nConverting SAVE folder with shifted grids to new format") if ($verb ge 2);;
   if(-e "SHIFTED_grids") { chdir("SHIFTED_grids"); }
   if(-e "SHIFTED_GRID")  { chdir("SHIFTED_GRID"); }
   if(-e "shift_1") {
-   &MY_PRINT($stdout, "\nConverting shift 1");
+   &MY_PRINT($stdout, "\nConverting shift 1") if ($verb ge 2);;
    chdir("shift_1");
    &command("$YAMBO_local");
    &command("$YPP_local");
@@ -71,7 +71,7 @@ sub RUN_convert_the_SAVE{
    chdir("..");
   }
   if(-e "shift_2") {
-   &MY_PRINT($stdout, "\nConverting shift 2");
+   &MY_PRINT($stdout, "\nConverting shift 2") if ($verb ge 2);;
    chdir("shift_2");
    &command("$YAMBO_local");
    &command("$YPP_local");
@@ -80,7 +80,7 @@ sub RUN_convert_the_SAVE{
    chdir("..");
   }
   if(-e "shift_3") {
-   &MY_PRINT($stdout, "\nConverting shift 3");
+   &MY_PRINT($stdout, "\nConverting shift 3") if ($verb ge 2);;
    chdir("shift_3");
    &command("$YAMBO_local");
    &command("$YPP_local");
@@ -94,7 +94,7 @@ sub RUN_convert_the_SAVE{
  # SAVE for SOC mapping
  #
  if(-e "SAVE_SOC") {
-  &MY_PRINT($stdout, "\nConverting SAVE folder with SOC to new format");
+  &MY_PRINT($stdout, "\nConverting SAVE folder with SOC to new format") if ($verb ge 2);;
   &command("mv SAVE_SOC SAVE_SOC_old");
   &command("mkdir -p SOC_tmp_dir/SAVE");
   &command("cp SAVE_SOC_old/* SOC_tmp_dir/SAVE");

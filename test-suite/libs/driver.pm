@@ -31,11 +31,6 @@ sub driver{
 # Basic Setup
 &SETUP("BASIC");
 #
-# DEFINE input_folder
-#
-if ($is_GPL eq "no" ){ $input_folder = "INPUTS"; }
-if ($is_GPL eq "yes"){ $input_folder = "INPUTS-GPL"; }
-#
 # Tests input
 &UTILS_get_inputs_tests_list;
 #

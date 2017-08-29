@@ -138,6 +138,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
  } # End loop on input files
  #
+ &RUN_restore_the_SAVE( );
+ #
  &RUN_setup("after_tests_loop");
  #
 }

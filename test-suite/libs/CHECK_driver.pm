@@ -61,12 +61,14 @@ if ( -d "REFERENCE_$branch_key" and -f "REFERENCE_$branch_key/$testname" )
 }else{
  @OFILES = (<REFERENCE/o-$testname.*>, <REFERENCE_$branch_key/o-$testname.*>)
 }
-O_file_loop: foreach $ref_filename (@OFILES){
+R_file_loop: foreach $ref_filename (@OFILES){
+ my $CHECK=&CHECK_GPL_skip("$ref_filename");
+ if ($CHECK eq "SKIP") {next R_file_loop};
  $run_filename = $ref_filename;
  $run_filename =~ s{.*/}{};
  ($base, $dir, $ext) = fileparse($run_filename, qr/\.[^.]*/);
  #
- if ( $ext=~ /hf/  and $is_STABLE=~"yes" ) { next O_file_loop};
+ if ( $ext=~ /hf/  and $is_STABLE=~"yes" ) { next R_file_loop};
  #
  if (!-e "$run_filename") { 
   &RUN_stats("NO_OUT");

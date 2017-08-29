@@ -27,10 +27,6 @@ sub RUN_it{
 # Report the input file
 if($verb ge 2) { &PRINT_input };
 #
-# yambo output log is directed to /dev/null unless verbosity highest
-$log = "> /dev/null 2>&1";
-if ($verb ge 2) { $log = "" };
-#
 # CMD line
 if ($np==1 or $RUN_spec[1] eq "serial") {
  $command_line = "$yambo_exec -F yambo.in -J $flags $force_serial $log";

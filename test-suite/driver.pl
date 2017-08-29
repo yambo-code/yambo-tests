@@ -27,6 +27,9 @@ use lib ".";
 do "config/MODULES.pl";
 do "config/TOOLS.pl";
 #
+# The location of the test-suite directory
+$suite_dir=abs_path();
+#
 # Defaults
 #
 &SETUP_defaults;
@@ -40,6 +43,7 @@ if ($kill_me){
  &command("pkill driver.pl");
  die;
 }
+if ($verb ge 2) { $log = "" };
 #
 if ($report) {$backup_logs="yes"};
 #
@@ -62,9 +66,6 @@ if(-t STDOUT) {
  $color_start{green}="\033[32m";
  $color_end{green}="\033[0m";
 }
-#
-# The location of the test-suite directory
-$suite_dir=abs_path();
 #
 # help
 if($help){ 
@@ -149,6 +150,8 @@ if ($RUNNING_suite) {
  &RUN_global_report("INIT");
  #
  if (! $dry_run) {&command("cd $suite_dir; svn up")};
+ #
+ &SETUP_branch("load_the_branches");
  #
  if ($user_tests or $theme or $compile) {
   #
