@@ -101,6 +101,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
   # Overwrite specific options from .conf for this input file
   &RUN_load_conf;
+  if ($skip_this_test) {next LOOP_INPUTS};
   #
   # Prepare the input file
   &RUN_load_PAR_fields;

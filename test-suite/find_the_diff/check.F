@@ -24,18 +24,22 @@
 subroutine check(R,O,REPORT,FIELD)
   use DIFF
   real(SP) :: R(N_max_col),O(N_max_col),DATA_diff
-  real(SP) :: R_average,O_average
+  real(SP) :: R_average,O_average,E_average
   logical  :: REPORT
+  integer  :: N_average
   character(*) :: FIELD
   !
   R_average=0.
   O_average=0.
+  E_average=0.
+  N_average=count(average_column)
   !
   do i_c=1,ref%N_col
     !
     if (abs(R(i_c))<TRESHOLD.and.abs(O(i_c))<TRESHOLD) cycle
     !
     if (average_column(i_c)) then
+      E_average=E_average+ERROR(i_c)
       R_average=R_average+R(i_c)
       O_average=O_average+O(i_c)
       cycle
@@ -60,13 +64,17 @@ subroutine check(R,O,REPORT,FIELD)
   !
   if (any(average_column).and.abs(R_average)>TRESHOLD.and.abs(O_average)>TRESHOLD) then
     !
+    R_average=R_average/N_average
+    O_average=O_average/N_average
+    E_average=E_average/N_average
+    !
     DATA_diff=abs(R_average-O_average)
-    if (DATA_diff>maxval(ERROR(:ref%N_col))) then 
+    if (DATA_diff>E_average) then 
       if (DATA_diff>MAX_ERR) then
         MAX_ERR=DATA_diff
         O_ref=O_average
         R_ref=R_average
-        if (abs(maxval(ERROR(:ref%N_col)))>0.) delta_ref=DATA_diff/maxval(ERROR(:ref%N_col))*PREC
+        if (abs(E_average)>0.) delta_ref=DATA_diff/E_average*PREC
         i_c_ref=-1
         str=FIELD
         if (i_d>0) write (str,'(a,i4,a)') FIELD//'(#',i_d,')'
