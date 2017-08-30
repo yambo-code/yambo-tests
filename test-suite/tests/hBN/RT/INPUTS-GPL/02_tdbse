@@ -1,0 +1,60 @@
+#                                                           
+# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
+#    ###  ###     ### ###       ### #########   ########    
+#                                                           
+#                                                           
+#            GPL Version 4.2.0 Revision 14617               
+#                  MPI+SLK+OpenMP Build                     
+#                http://www.yambo-code.org                  
+#
+em1s                           # [R Xs] Static Inverse Dielectric Matrix
+tdBSE                          # [R] Real-Time Bethe-Salpeter
+collisions                     # [R] Eval the extended Collisions
+DBsIOoff= "DIP COLLs"          # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,W,SC,BS,ALL)
+X_Threads=0                    # [OPENMP/X] Number of threads for response functions
+DIP_Threads=0                  # [OPENMP/X] Number of threads for dipoles
+RT_Threads=0                   # [OPENMP/RT] Number of threads for real-time
+Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
+% BndsRnXs
+   1 |  50 |                   # [Xs] Polarization function bands
+%
+% GfnQP_E
+ 1.500000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+NGsBlkXs= 107          RL      # [Xs] Response block size
+% DmRngeXs
+0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
+%
+% LongDrXs
+ 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%
+HARRLvcs=  3413        RL      # [HA] Hartree  RL components
+CORRLvcs= 107          RL      # [GW] Correlat RL components
+% RTBands
+  7 | 10 |                     # [RT] Bands
+%
+Integrator= "RK2"              # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA")
+RTstep=   0.0100       fs      # [RT] Real Time step length
+NETime= 20.00000       fs      # [RT] Simulation Time
+% IOtime
+   0.0100 |   1.0000 |   0.1000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+%
+% Field1_Freq
+ 0.00     | 0.00     | eV      # [RT Field1] Frequency
+%
+Field1_Int= 1000.      kWLm2   # [RT Field1] Intensity
+Field1_Width= 0.000000 fs      # [RT Field1] Width
+Field1_kind= "DELTA"           # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"           # [RT Field1] Pol(linear|circular)
+% Field1_Dir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT Field1] Versor
+%
+% Field1_Dir_circ
+ 0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
+%
+Field1_Tstart= 0.000000fs      # [RT Field1] Initial Time

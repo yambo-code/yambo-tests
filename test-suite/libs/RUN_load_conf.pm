@@ -22,7 +22,7 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-sub RUN_{
+sub RUN_load_conf{
 $prec = $default_prec;
 undef $skip_this_test;
 if( -e "$input_folder/$testname.conf") {
@@ -34,8 +34,9 @@ if( -e "$input_folder/$testname.conf") {
   if($desc =~ m/precision/) { 
    &MY_PRINT($stdout, "** Changing precision for $testname to: $value \n");
    $prec = $value;
-  }
-  if($desc =~ m/no GPL/) { 
+  };
+  # GPL 
+  if($confline=="no GPL") { 
    $skip_this_test = "1";
   }
  };

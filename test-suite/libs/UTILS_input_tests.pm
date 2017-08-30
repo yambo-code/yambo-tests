@@ -25,6 +25,7 @@
 sub UTILS_tests_in_the_dir{
 $tests_list=" ";
 if ($is_GPL and -d "@_/INPUTS-GPL"){ $input_folder = "INPUTS-GPL"}
+print "\n\n $is_GPL $input_folder \n\n";
 my $path="@_/$input_folder";
 LOOP: foreach $test ( <$path/*> ) { 
  if (index($test, ".conf")>0) {next LOOP};
