@@ -32,7 +32,6 @@ sub driver{
 &SETUP("BASIC");
 #
 # Tests input
-&UTILS_get_inputs_tests_list;
 #
 undef $AT_LEAST_ONE;
 #---------------------------#
@@ -49,6 +48,9 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
  #
  $error=&SETUP_branch( );
  if ($error eq "FAIL") {next LOOP_BRANCH};
+ #
+ # Test List
+ &UTILS_get_inputs_tests_list;
  #
  #-------------------------------#
  # Loop on CONFIGURATIONS 
