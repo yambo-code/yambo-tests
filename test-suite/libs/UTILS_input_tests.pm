@@ -24,6 +24,7 @@
 #
 sub UTILS_tests_in_the_dir{
 $tests_list=" ";
+$input_folder = "INPUTS";
 if ($is_GPL and -d "@_/INPUTS-GPL"){ $input_folder = "INPUTS-GPL"}
 my $path="@_/$input_folder";
 LOOP: foreach $test ( <$path/*> ) { 
