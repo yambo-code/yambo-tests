@@ -1,18 +1,18 @@
                                                                 
-     __  __   ________   ___ __ __    _______   ______          
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\         
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \        
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \       
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \      
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \     
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/     
+     **    **    **     ****     ****  ******     *******       
+    //**  **    ****   /**/**   **/** /*////**   **/////**      
+     //****    **//**  /**//** ** /** /*   /**  **     //**     
+      //**    **  //** /** //***  /** /******  /**      /**     
+       /**   **********/**  //*   /** /*//// **/**      /**     
+       /**  /**//////**/**   /    /** /*    /**//**     **      
+       /**  /**     /**/**        /** /*******  //*******       
+       //   //      // //         //  ///////    ///////        
                                                                 
-                                                                
-           Version 4.2.0 Revision 14428 Hash 698a636            
+               GPL Version 4.2.0 Revision 14617                 
                      MPI+SLK+OpenMP Build                       
                    http://www.yambo-code.org                    
  
- 04/10/2017 at 17:42 YAMBO_RT @ anomaly
+ 08/31/2017 at 11:15 YAMBO_RT @ anomaly
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -45,7 +45,7 @@
   Max atoms/species               : 2
   No. of atom species             : 2
   Magnetic symmetries             : no
- - S/N 000945 -------------------------- v.04.02.00 r.14233 -
+ - S/N 000945 -------------------------- v.04.02.00 r.00076 -
 
  [02] CORE Variables Setup
  =========================
@@ -123,15 +123,16 @@
   [02.05] Energies [ev] & Occupations
   ===================================
 
-  Fermi Level        [ev]:  0.524108
-  VBM / CBm          [ev]:  0.000000  1.794775
-  Electronic Temp. [ev K]:  0.00      0.00    
-  Bosonic    Temp. [ev K]:  0.00      0.00    
-  El. density      [cm-3]: 0.196E+24
-  States summary         : Full        Metallic    Empty
-                           0001-0026               0027-0040
-  Indirect Gaps      [ev]: 1.794775  2.958979
-  Direct Gaps        [ev]: 1.794775  3.435702
+  [X]Fermi Level        [ev]:  0.524108
+  [X]VBM / CBm          [ev]:  0.000000  1.794775
+  [X]Electronic Temp. [ev K]:  0.00      0.00    
+  [X]Bosonic    Temp. [ev K]:  0.00      0.00    
+  [X]Finite Temperature mode: no
+  [X]El. density      [cm-3]: 0.196E+24
+  [X]States summary         : Full        Metallic    Empty
+                                 0001-0026               0027-0040
+  [X]Indirect Gaps      [ev]: 1.794775  2.958979
+  [X]Direct Gaps        [ev]: 1.794775  3.435702
   X BZ K-points :  9
 
   Energy unit is electronVolt [eV]
@@ -185,28 +186,40 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 000945 -------------------------- v.04.02.00 r.14428 -
+ - S/N 000945 -------------------------- v.04.02.00 r.14617 -
 
- [04] External corrections
- =========================
-
-
- [05] Timing Overview
+ [04] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                io_WF :     0.00s CPU
-                io_HF :     0.00s CPU
-           io_DIPOLES :     0.00s CPU
-              io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
-     io_RT_components :     0.00s CPU (       2 calls,   0.000 s avg)
-        io_COLLISIONS :     0.00s CPU (       3 calls,   0.000 s avg)
+                               io_WF :     0.00s CPU
+                             io_GROT :     0.00s CPU (       3 calls,   0.004 s avg)
+                            io_QINDX :     0.00s CPU (       3 calls,   0.000 s avg)
+                          io_COL_CUT :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU
+                               io_HF :     0.00s CPU
+                          io_DIPOLES :     0.00s CPU
+                         io_KB_pwscf :     0.00s CPU
+                        io_KB_abinit :     0.00s CPU
+                               io_BS :     0.00s CPU
+                    io_RT_components :     0.00s CPU (       2 calls,   0.000 s avg)
+                     bz_samp_indexes :     0.00s CPU
+
+ [05] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are:1Mb (basic treshold) 16Mb (SAVEs treshold)
+
+         TOTAL unallocated : 7Mb
+
+         Max memory used   : 7Mb
 
  [06] Game Over & Game summary
  =============================
 
- 04/10/2017 at 17:42 YAMBO_RT @ anomaly [start]
- 04/10/2017 at 17:42                    [end]
+ 08/31/2017 at 11:15 YAMBO_RT @ anomaly [start]
+ 08/31/2017 at 11:15                    [end]
 
   
  .-ACKNOWLEDGMENT
@@ -225,5 +238,5 @@
  |
   
  .-Input file : yambo.in
- | setup                        # [R INI] Initialization
- | BoseTemp= 0.000000     eV    # Bosonic Temperature
+ | setup                          # [R INI] Initialization
+ | BoseTemp= 0.000000     eV      # Bosonic Temperature

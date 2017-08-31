@@ -92,7 +92,6 @@ if ($BRANCH=~m/SLK/ix)         {$is_NEW_WF="yes"};
 if ($BRANCH=~m/devel-io/ix)    {$is_NEW_WF="yes"};
 if ($BRANCH=~m/max-release/ix) {$is_NEW_WF="yes"};
 if ($BRANCH=~m/max-release-GPL/ix) {$is_GPL="yes"};
-print " >>>> $is_GPL <<<<<";
 #
 if ($branch_id eq "") 
 {

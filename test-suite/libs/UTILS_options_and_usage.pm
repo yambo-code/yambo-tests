@@ -73,6 +73,7 @@ my $ret = &GetOptions("h"    => \$help,
             "autotest"       => \$autotest,
             "report"         => \$report,
             "force"          => \$force,
+            "freeze"         => \$freeze,
             "ftp"            => \$ftp,
             "dry"            => \$dry_run,
             "newer=i"        => \$max_delay_commits,
@@ -112,6 +113,7 @@ sub UTILS_usage {
              -report                Commit the final report to the ML
              -off                   Switch off specific objects (mpi,openmp,io)
              -force                 Run even BROKEN tests
+             -freeze                Freeze the test-suite status (do not restore SAVE/clean at the end)
              -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS, for example)
 
    (parallel options)
