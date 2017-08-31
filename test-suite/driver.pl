@@ -91,6 +91,7 @@ if($download){
 # Clean and exit
 if($clean){ 
  print "Cleaning...\n";
+ &UTILS_clean("RESTORE");
  &UTILS_clean("ALL");
  &UTILS_clean("BINs");
  die "Test databases/outputs and local logfiles removed.\n";

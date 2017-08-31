@@ -29,18 +29,18 @@ if ( "@_" eq "ALL" or "@_" eq "DEEP") {
  @paths=("tests","find_the_diff","config");
 }
 #
-#if ( "@_" eq "ALL") {
-# &CWD_save;
-# chdir("$suite_dir/tests");
-# DIR_LOOP: foreach $dir (<*>,<*/*>,<*/*/*>,<*/*/*/*>,<*/*/*/*/*>) {      # Glob all files
-#   if ( -d $dir."/SAVE_old" ) { 
-#    &command("cd $dir");
-#    &RUN_restore_the_SAVE( ) ;
-#    chdir("$suite_dir/tests");
-#   }
-# }
-# &CWD_go;
-#}
+if ("@_" eq "RESTORE") {
+ &CWD_save;
+ chdir("$suite_dir/tests");
+ DIR_LOOP: foreach $dir (<*>,<*/*>,<*/*/*>,<*/*/*/*>,<*/*/*/*/*>) {      # Glob all files
+   if ( -d $dir."/SAVE_old" ) { 
+    chdir("$dir");
+    &RUN_restore_the_SAVE( ) ;
+    chdir("$suite_dir/tests");
+   }
+ }
+ &CWD_go;
+}
 #
 if ("@_" eq "SAVEs") {
  my @files;
