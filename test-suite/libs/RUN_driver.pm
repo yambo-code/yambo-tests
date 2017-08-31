@@ -59,6 +59,9 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  }
  chdir($testdir);
  #
+ $input_folder = "INPUTS";
+ if ($is_GPL and -d "INPUTS-GPL"){ $input_folder = "INPUTS-GPL"}
+ #
  $error=&RUN_skip_the_test("DIR");
  if ($error !~ "OK") { 
   &RUN_setup("after_tests_loop");
