@@ -35,6 +35,14 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
     push(@testdirs,$dir);
     $P_str="";
     $HARD_str="";
+    if ( $is_GPL ){
+      if (-e $dir."/NO_GPL")  { next DIR_LOOP };
+      if (-e $dir."/QED")  { next DIR_LOOP };
+      if (-e $dir."/PL")  { next DIR_LOOP };
+      if (-e $dir."/NL")  { next DIR_LOOP };
+      if (-e $dir."/SC")  { next DIR_LOOP };
+      if (-e $dir."/MAGNETIC")  { next DIR_LOOP };
+    }
     if (-e $dir."/BROKEN")  {
       $BROKEN_tests="$BROKEN_tests"." "."$dir"."$HARD_str"."$P_str";
       if (-e $dir."/RT")   {$BROKEN_tests="$BROKEN_tests"."[RT]"}
