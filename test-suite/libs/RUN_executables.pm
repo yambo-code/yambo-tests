@@ -33,14 +33,14 @@ if (-e "RT") {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_rt";
  if ($YPP_RT=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_rt"};
 }
-if (-e "QED" && !$YPP=="1") {
+if (-e "QED" && !$YPP=="1" && !$is_GPL) {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_qed";
 }
-if (-e "PL") {
+if (-e "PL" && !$is_GPL) {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_pl";
  if ($YPP_RT=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_rt"};
 }
-if (-e "NL") {
+if (-e "NL" && !$is_GPL) {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_nl";
  if ($YPP_NL=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_nl"};
 }
@@ -48,11 +48,11 @@ if (-e "ELPH") {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_ph";
  if ($YPP_PH=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_ph"};
 }
- if (-e "SC") {
+ if (-e "SC" && !$is_GPL) {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_sc";
  if ($YPP_SC=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_sc"};
 }
- if (-e "MAGNETIC") {
+ if (-e "MAGNETIC" && !$is_GPL) {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_magnetic";
  if ($YPP_MAGNETIC=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_magnetic"};
 }
