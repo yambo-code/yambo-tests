@@ -26,6 +26,8 @@ sub RUN_convert_the_SAVE{
  #
  $YAMBO_local="$BRANCH/$conf_bin/yambo $log";
  $YPP_local="$BRANCH/$conf_bin/ypp -z $log";
+ if(-e "$BRANCH/$conf_bin/yambo_rt") { $YAMBO_local="$BRANCH/$conf_bin/yambo_rt $log"; }
+ if(-e "$BRANCH/$conf_bin/ypp_rt")   { $YPP_local="$BRANCH/$conf_bin/ypp_rt -z $log"; }
  if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$BRANCH/$conf_bin/yambo_ph $log"; }
  if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$BRANCH/$conf_bin/ypp_ph -z $log"; }
  #
