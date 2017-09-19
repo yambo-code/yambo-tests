@@ -58,7 +58,7 @@ if($user_tests){
    my $fullpath = $File::Find::name;
    if($fullpath =~ m|INPUTS$|){    # The only folder ending ../$input_folder
     if ( -d "SAVE" || -d "SAVE_backup"){		      # Check ./SAVE also present
-     $testdir = substr($fullpath,8,-7); 
+     $testdir = substr($fullpath,19,-7); 
      $alltests .= "$testdir all; ";
     }
    }
