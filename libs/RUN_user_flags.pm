@@ -61,7 +61,7 @@ if( -e "$input_folder/$testname.flags") {
  close(FLAGS);
  if (not $found) { return "FAIL" };
 }
-$flags = '"' . "$testname$flags" . '"';
+$flags = '"' . "$testname$flags,$ROBOT_string" . '"';
 &MY_PRINT($stdout, "FLAGS: $flags\n") if ($verb);
 return "OK";
 }

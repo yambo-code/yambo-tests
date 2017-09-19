@@ -23,7 +23,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub CHECK_file{
-$system_command = "$suite_dir/find_the_diff/find_the_diff -r $ref_filename -o $run_filename -p $prec -m $material";
+$system_command = "$suite_dir/find_the_diff/$find_the_diff -r $ref_filename -o $run_filename -p $prec -m $material";
 if($verb) {&MY_PRINT($stdout, "Running floating point test: $system_command \n\n");}
 $CHECK_error = `$system_command 2>&1`;
 chomp($CHECK_error);

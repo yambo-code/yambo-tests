@@ -59,6 +59,15 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  }
  chdir($testdir);
  #
+ # Folder mirrored preparation
+ #
+ if ($ROBOT_wd){
+  &command("mkdir ./.$ROBOT_wd");
+  &command("cp -R * ./.$ROBOT_wd");
+  &command("mv ./.$ROBOT_wd $ROBOT_wd");
+  chdir($ROBOT_wd);
+ }
+ #
  $input_folder = "INPUTS";
  if ($is_GPL and -d "INPUTS-GPL"){ $input_folder = "INPUTS-GPL"}
  #

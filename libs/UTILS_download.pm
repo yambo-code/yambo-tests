@@ -23,6 +23,14 @@
 sub UTILS_download
 {
 &CWD_save;
+#
+my $LINK="http://www.yambo-code.org/testing-robots/databases/";
+my $EXTENSION="tar.gz";
+if ($mode eq "bench") {
+ $LINK="http://potzie.fisica.unimo.it/ferretti/";
+ $EXTENSION="tgz";
+};
+#
 chdir("$suite_dir/$TESTS_folder");
 foreach $dir (<*>) {
  if ($download ne " ") {
@@ -34,49 +42,50 @@ foreach $dir (<*>) {
  chdir($dir);
  if ($veryclean) {&clean};
  my $do_it="no";
- if ($download or $extract) { $do_it = "yes" };
+ if ($download) { $do_it = "yes" };
  if ($do_it eq "yes"){
    if (-e "./BROKEN" and ! $force) { $do_it = "no" };
  }
  if ( $do_it eq "yes"){
-  &MY_PRINT($stdout, "\n=> ".$dir." ...");
+  &MY_PRINT($stdout, "\n=> [".$dir."]\n");
   $i1=0;
   $filename[$i1] = $dir;
   foreach $subdir (<*>) {
+   next if (not -d $subdir);
+   next if ($subdir =~ /INPUTS/ or $subdir =~ /REFERENCE/ or $subdir =~ /SAVE/ or $subdir =~ /BROKEN/ or $subdir =~ /DFT/ );
    $i1=$i1+1;
    $filename[$i1] = "${dir}_${subdir}";
+  }
+  if ($mode eq "bench")
+  {
+   if ($dir =~ /AGNR/)   {$filename[0] = "agnr_v4.2-IO"};
+   if ($dir =~ /cobalt/) {$filename[0] = "cobalt_v4.2-IO"};
+   $i1=0;
   }
   $imax=$i1;
   $i1=0;
   $icheck=0;
   do{
-   if ( $extract){
-    if (-e "$filename[$i1].tar.gz") {
-     &MY_PRINT($stdout, "[$filename[$i1]]opening ...");
-     &command( "gunzip $filename[$i1].tar.gz");
-     &command("tar xf $filename[$i1].tar");
+   $cmd = "wget --spider -q $LINK/$filename[$i1].$EXTENSION && echo exists || echo not exist";
+   my $file_exist = `$cmd`;
+   if ( "$file_exist" eq "exists\n") {
+    &MY_PRINT($stdout, "...$filename[$i1].$EXTENSION [YES] ...");
+    &MY_PRINT($stdout, " downloading ...\n");
+    &command( "wget --show-progress -qc $LINK/$filename[$i1].$EXTENSION");
+    &MY_PRINT($stdout, "   opening ...");
+    &command( "gunzip $filename[$i1].$EXTENSION");
+    &command( "tar xf $filename[$i1].tar");
+    if (not $mode eq "bench")
+    {
      &MY_PRINT($stdout, " recompressing ...");
      &command( "gzip $filename[$i1].tar");
      &MY_PRINT($stdout, "done");
     }
-   }else{
-    $cmd = "wget --spider -q http://www.yambo-code.org/testing-robots/databases/$filename[$i1].tar.gz && echo exists || echo not exist";
-    my $file_exist = `$cmd`;
-    if ( "$file_exist" eq "exists\n") {
-      if( $icheck>0 ){ &MY_PRINT($stdout, "\n   ".$dir." ...") };
-     &MY_PRINT($stdout, " found $filename[$i1].tar.gz ...");
-     &command( "rm -f $filename[$i1].tar.gz");
-     &MY_PRINT($stdout, " downloading ...");
-     &command( "wget -qc http://www.yambo-code.org/testing-robots/databases/$filename[$i1].tar.gz");
-     &MY_PRINT($stdout, " opening ...");
-     &command( "gunzip $filename[$i1].tar.gz");
-     &command( "tar xf $filename[$i1].tar");
-     &MY_PRINT($stdout, " recompressing ...");
-     &command( "gzip $filename[$i1].tar");
-     &MY_PRINT($stdout, "done");
-     $icheck=$icheck+1;
-    }
-   } 
+    $icheck=$icheck+1;
+   }else {
+    &MY_PRINT($stdout, "...$filename[$i1].$EXTENSION [NO]");
+   }
+   &MY_PRINT($stdout, "\n");
    $i1=$i1+1;          
   } until ( $i1 == $imax+1 );
  }

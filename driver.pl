@@ -48,7 +48,8 @@ if ($kill_me){
 #
 if ($verb ge 2) { $log = "" };
 if ($report) {$backup_logs="yes"};
-if ($mode eq "bench") {$TESTS_folder="benchmark-suite/tests"};
+if ($mode eq "bench")    {$TESTS_folder="benchmark-suite/tests"};
+if ($mode eq "perturbo") {$TESTS_folder="test-perturbo"};
 #
 # Edit
 #
@@ -80,7 +81,7 @@ if($help){
 #
 # Show extra files
 if($svn_check){ 
- &command("svn st | grep -v -e 'ns.' -e 'ndb.' -e '.tar' -e 'SAVE_backup' -e 'MODULES.pl' -e 'TOOLS.pl' -e 'configure.ac' -e 'config.status'");
+ &command("svn st | grep -v -e 'ns.' -e 'ndb.' -e '.tar' -e '.tgz' -e 'SAVE' -e '_grid' -e 'MODULES.pl' -e 'TOOLS.pl' -e 'configure.ac' -e 'config.status'");
  die "\n";
 };
 #
@@ -151,7 +152,17 @@ if ($backup_logs and !$RUNNING_suite) {
 #=================
 if ($RUNNING_suite) {
  #
- &UTILS_clean("ALL");
+ foreach my $i_ROBOT (1...100) {
+  $ROBOT_wd="ROBOT_Nr_".$i_ROBOT;
+  $ROBOT_string="R".$i_ROBOT;
+  if (not -e "$suite_dir/$ROBOT_wd") {
+   &command("touch $suite_dir/$ROBOT_wd");
+   $find_the_diff="find_the_diff_$ROBOT_string";
+   last;
+  }
+ }
+ #
+ #&UTILS_clean("ALL");
  #
  # Global Report
  &RUN_global_report("INIT");
@@ -169,11 +180,6 @@ if ($RUNNING_suite) {
  }
  #
  if ($flow) {
-  #
-  # Restore all databases
-  #
-  $download="all";
-  &UTILS_download;
   #
   my $ERROR=&FLOW_init($flow);
   #
@@ -222,7 +228,7 @@ if ($RUNNING_suite) {
  die "\n";
 }
 #
-&UTILS_clean("BINs");
+#&UTILS_clean("BINs");
 #
 &COMPILE_find_the_diff("clean");
 #

@@ -47,7 +47,7 @@ if ($@) {
 }
 #
 # Clean the RUN
-&KILL("$yambo_exec -F yambo.in");
+&KILL("$yambo_exec","$ROBOT_string");
 #
 # Clock update
 $test_end   = [gettimeofday]; 

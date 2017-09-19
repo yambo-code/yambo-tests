@@ -28,8 +28,9 @@ sub trace{
  return $trace;
 }
 sub KILL{
-$cmd="@_";
-my $pid = `ps -awu | grep $user | grep '$cmd' | grep -v grep |  grep -v kill |grep -v null | awk '{P=P" "\$2}END{print P}'`;
+$cmd="@_[0]";
+$ID="@_[1]";
+my $pid = `ps -awu | grep $user | grep '$cmd' | grep '$ID' | grep -v grep |  grep -v kill |grep -v null | awk '{P=P" "\$2}END{print P}'`;
 chomp($pid);
 print "\n Killing @_ with PID |$pid|\n" if ($verb);
 if (not "$pid" eq "") {&command("kill -9 $pid")};

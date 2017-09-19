@@ -24,17 +24,11 @@
 #
 sub UTILS_backup_save{
 if ($compile) {&command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation")};
-foreach $conf_file (<LOG*.log>,<ERROR*.log>,<REPORT*.log>,<WHITELIST*.log>) {
+foreach $conf_file (<LOG*$ROBOT_string*.log>,<ERROR*$ROBOT_string*.log>,<REPORT*$ROBOT_string*.log>,<WHITELIST*$ROBOT_string*.log>) {
  &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
  if ($conf_file =~ /REPORT-/) {$global_report=$conf_file};
 };
 &command("mv $DATA_backup_file.tar.gz $BACKUP_dir/$BACKUP_subdir");
-&CWD_save;
-chdir("$BACKUP_dir");
-&command("rm -f LATEST-TEST LATEST-REPORT");
-&command("ln -s $BACKUP_subdir LATEST-TEST");
-&command("ln -s LATEST-TEST/$global_report LATEST-REPORT");
-&CWD_go;
 }
 sub UTILS_backup
 {
@@ -43,7 +37,7 @@ $BACKUP_dir   ="$host/$user/$FC_kind";
 $BACKUP_subdir="$date-$time";
 &command("mkdir -p $BACKUP_dir");
 &command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
-&command("find tests -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep -v 'REFERENCE' > list");
+&command("find tests -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep  '$ROBOT_string' | grep  grep -v 'REFERENCE' > list");
 $DATA_backup_file="outputs_and_reports_ALL";
 if (!-f "$DATA_backup_file.tar.gz") {&command("tar cf $DATA_backup_file.tar -T list")};
 if ( -f "$DATA_backup_file.tar.gz") {
