@@ -59,7 +59,6 @@ my $ret = &GetOptions("h"    => \$help,
             "conf=s"         => \$select_conf_file,
             "gpl"            => \$is_GPL,
             "tests=s"        => \$user_tests,
-            "theme=s"        => \$theme,
             "prec=s"         => \$prec,
             "keys=s"         => \$keys,
             "svn"            => \$svn_check,
@@ -101,7 +100,6 @@ sub UTILS_usage {
              -d      <SET>|all|list Download & Update the core databases 
              -compile               Compile the sources
              -tests  <TESTS>|all    List* of tests to perform, or all "-tests all"
-             -theme  <THEME>        Use predefined list of tests, defined in THEMES/ directory
 
    (Control options)
              -mode                  Can be "tests/perturbo/tov/bench". It selects which suite to use. Default is "tests"

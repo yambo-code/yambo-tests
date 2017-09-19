@@ -56,7 +56,9 @@ if ("@_" eq "SAVEs") {
    };
  }
 }elsif("@_" eq "ALL") {
- my $CMD="svn st | grep -v 'MODULES.pl' | grep -v 'TOOLS.pl' | grep -v '.gz' | grep -v 'SAVE/ns.' | grep -v 'elph_gkkp' |grep -v 'SAVE_backup' | grep '?'|  $awk '{print \$2}' | xargs rm -fr";
+ my $CMD="svn st | grep -v 'MODULES.pl' | grep -v 'TOOLS.pl' | grep -v '.gz' | grep -v 'SAVE/ns.' | grep -v 'elph_gkkp'";
+ $CMD=$CMD." |grep -v '.empty' |grep -v 'NO_GPL' ";
+ $CMD=$CMD." |grep -v 'SAVE_backup' | grep '?'|  $awk '{print \$2}' | xargs rm -fr";
  LOOP_CONF: foreach  my $clean_path (@paths){
   &CWD_save;
   chdir("$suite_dir/$clean_path");

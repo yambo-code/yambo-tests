@@ -37,7 +37,7 @@ $count_tests=0;
 LOOP_DIRS: foreach my $testline (@input_tests_list) {
  #
  &CWD_go;
- chdir("tests");
+ chdir("$TESTS_folder");
  #
  &RUN_stats("INIT_DIR");
  #

@@ -70,14 +70,6 @@ if($user_tests){
   &MY_PRINT($stdout, " -     Test selection : from input");
  }
 }
-if($theme){
- open(THEME,"<","THEMES/$theme") or die "Error opening theme file THEMES/$theme\n";
-  while($theme_line = <THEME>) {
-   chomp $theme_line;
-   $input_tests .= $theme_line."; ";
- }
- &MY_PRINT($stdout,        " -     Test selection : from theme file $theme");
-}
 @dummy= split(/\s*;\s*/, $input_tests);  # split 0+ spaces before/after
 &CWD_save;
 chdir("$suite_dir/$TESTS_folder");
