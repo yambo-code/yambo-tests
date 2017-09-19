@@ -84,7 +84,8 @@ if($download){
  if ($download eq "list") {
   &FTP_list("testing-robots/databases")
  }else{
-  &UTILS_download
+  &UTILS_download;
+  die "Download complete.\n";
  }
 }
 #
@@ -163,6 +164,11 @@ if ($RUNNING_suite) {
  }
  #
  if ($flow) {
+  #
+  # Restore all databases
+  #
+  $download="all";
+  &UTILS_download;
   #
   my $ERROR=&FLOW_init($flow);
   #

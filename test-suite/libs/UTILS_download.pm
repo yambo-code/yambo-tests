@@ -83,7 +83,6 @@ foreach $dir (<*>) {
  chdir("$suite_dir/tests");
 }
 &MY_PRINT($stdout, "\n");
-die "Download complete.\n";
 &CWD_go;
 chdir("$suite_dir");
 }

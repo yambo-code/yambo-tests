@@ -28,6 +28,7 @@ my @FTs = ("gw", "bse", "rpa","all");
 $project= '';
 foreach my $index (0..$#PJs) {
     next if ($keys !~ /$PJs[$index]/ and $keys !~ /all/);
+    next if ($keys =~ /all/ and $PJs[$index] =~ /nl/ );
     $project .= " ".$PJs[$index];
 }
 $if=-1;
@@ -37,7 +38,6 @@ foreach my $index (0..$#FTs) {
     @features[$if] = $FTs[$index];
 }
 if ($keys eq "all"  ) {
- $project="all";
  @features[0]="all";
 }
 if ($project eq ''  ) {$project="nopj"};
