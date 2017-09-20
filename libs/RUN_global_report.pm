@@ -35,7 +35,8 @@ if ("$what" eq "INIT") {
  open($rlog, '>', $global_report) or die "Could not open file '$global_report' $!";
  open($elog, '>', $tests_error) or die "Could not open file '$tests_error' $!";
  open($wlog, '>', $whitelist) or die "Could not open file '$whitelist' $!";
- &MESSAGE("REPORT ERROR WHITE","\n$wiggly_line");
+ &MESSAGE("REPORT","$wiggly_line");
+ &MESSAGE("ERROR WHITE","\n$wiggly_line");
  &MESSAGE("REPORT","\n% Yambo test suite global REPORT");
  &MESSAGE("WHITE" ,"\n% Yambo test suite WHITELISTEd files log");
  &MESSAGE("ERROR" ,"\n% Yambo test suite ERRORs log");
