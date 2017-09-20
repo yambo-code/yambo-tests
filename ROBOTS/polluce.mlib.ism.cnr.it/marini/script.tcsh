@@ -1,11 +1,23 @@
 #!/usr/bin/tcsh
 
-cd /home/marini/Yambo/test-suite/
+cd /home/marini/Yambo/yambo-tests/
 
-module purge 
-module load gcc6/gcc-6.3.0 gcc6/mpich-3.2
-./driver.pl -flow validate -report -newer 2
+if ( "$1" == "clean") then
+./driver.pl -c
+./driver.pl -d all 
+endif
 
-module purge 
-module load intel/composer_xe_12 intel/parallel_2017
-./driver.pl -flow validate -report -newer 2
+if ( "$2" == "gfortran") then
+module purge
+module load gcc6/gcc-6.3.0 gcc6/mpich-3.2  
+endif
+
+if ( "$2" == "intel") then
+module purge
+module load gcc6/gcc-6.3.0 gcc6/mpich-3.2  
+endif
+
+if ( "$1" == "run") then
+./driver.pl -flow validate -report -robot $3 
+#-newer 2
+endif

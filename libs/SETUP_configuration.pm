@@ -98,8 +98,8 @@ if("$do_it" eq "yes") {
  #
  &MY_PRINT($stdout, "                          > Configuring sources...");
  # Configure and compilation logs (full paths)
- $conf_logfile = "$suite_dir/"."config.log";
- $comp_logfile = "$suite_dir/"."compile.log";
+ $conf_logfile = "$suite_dir/"."config-$ROBOT_string.log";
+ $comp_logfile = "$suite_dir/"."compile-$ROBOT_string.log";
  # If Makefile present, clean sources
  if(-e "Makefile") {
   $result = `make clean_all 2>&1`;
