@@ -157,13 +157,22 @@ if ($backup_logs and !$RUNNING_suite) {
 #=================
 if ($RUNNING_suite) {
  #
- foreach my $i_ROBOT (1...100) {
-  $ROBOT_wd="ROBOT_Nr_".$i_ROBOT;
-  $ROBOT_string="R".$i_ROBOT;
-  if (not -e "$suite_dir/$ROBOT_wd") {
-   &command("touch $suite_dir/$ROBOT_wd");
-   $find_the_diff="find_the_diff_$ROBOT_string";
-   last;
+ # Robot ID definition
+ #
+ if ($ROBOT_id) {
+  $ROBOT_wd="ROBOT_Nr_".$ROBOT_id;
+  $ROBOT_string="R".$ROBOT_id;
+  if (-e "$suite_dir/$ROBOT_wd") {die "\n ROBOT #$ROBOT_id already running"};
+  $find_the_diff="find_the_diff_$ROBOT_string";
+ }else{
+  foreach my $i_ROBOT (1...100) {
+   $ROBOT_wd="ROBOT_Nr_".$i_ROBOT;
+   $ROBOT_string="R".$i_ROBOT;
+   if (not -e "$suite_dir/$ROBOT_wd") {
+    &command("touch $suite_dir/$ROBOT_wd");
+    $find_the_diff="find_the_diff_$ROBOT_string";
+    last;
+   }
   }
  }
  #

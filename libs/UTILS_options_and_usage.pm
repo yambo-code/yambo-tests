@@ -76,6 +76,7 @@ my $ret = &GetOptions("h"    => \$help,
             "ftp"            => \$ftp,
             "dry"            => \$dry_run,
             "newer=i"        => \$max_delay_commits,
+            "robot=i"        => \$ROBOT_id,
             "failed=s"       => \$failed,
             "mode=s"         => \$mode
                       );
@@ -103,6 +104,7 @@ sub UTILS_usage {
 
    (Control options)
              -mode                  Can be "tests/perturbo/tov/bench". It selects which suite to use. Default is "tests"
+             -robot                 Robot ID
 
    (test options)
              -flow   <FILE>         Use the flow of calculations defined in <FILE> (refer to ROBOTS/$host/$user/FLOWS/<FILE>.pl)
