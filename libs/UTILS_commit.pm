@@ -26,6 +26,7 @@
 sub UTILS_commit{
 &command("echo '$date"."-"."$time' > ROBOTS/$host/$user/TIME_ID");
 #&command("svn -q commit ROBOTS/$host/$user/TIME_ID -F $BACKUP_dir/LATEST-REPORT");
-#&command("git commit ROBOTS/$host/$user/TIME_ID -F $BACKUP_dir/LATEST-REPORT");
+&command("git commit -a -F $BACKUP_dir/LATEST-REPORT");
+&command("git push");
 }
 1;

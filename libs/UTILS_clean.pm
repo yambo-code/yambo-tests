@@ -59,6 +59,12 @@ if("@_" eq "ALL") {
  &command("git ls-files --others --exclude-standard | xargs rm -fr");
 };
 #
+# DEEP
+if("@_" eq "DEEP") {
+ print "HERE";
+ &command("git status --ignored | grep -e '/ns.' -e '/ndb.' | xargs rm -fr");
+};
+#
 # BINs
 if("@_" eq "BINs" ) {
  foreach $branchdir (@branches) {
