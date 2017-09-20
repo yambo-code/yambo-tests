@@ -80,8 +80,9 @@ if($help){
 };
 #
 # Show extra files
-if($svn_check){ 
- &command("svn st | grep -v -e 'ns.' -e 'ndb.' -e '.tar' -e '.tgz' -e 'SAVE' -e '_grid' -e 'MODULES.pl' -e 'TOOLS.pl' -e 'configure.ac' -e 'config.status'");
+if($repo_check){ 
+ #&command("svn st | grep -v -e 'ns.' -e 'ndb.' -e '.tar' -e '.tgz' -e 'SAVE' -e '_grid' -e 'MODULES.pl' -e 'TOOLS.pl' -e 'configure.ac' -e 'config.status'");
+ &command("git status --untracked-files=no");
  die "\n";
 };
 #
@@ -118,8 +119,9 @@ if ($failed) {&UTILS_failed_theme_creator(); die;};
 #Tag broken
 if ($tag_test_as_broken)
 {
- &command("touch ./tests/$tag_test_as_broken/BROKEN");
- &command("svn add ./tests/$tag_test_as_broken/BROKEN");
+ &command("touch ./test-suite/tests/$tag_test_as_broken/BROKEN");
+ #&command("svn add ./tests/$tag_test_as_broken/BROKEN");
+ &command("git add ./test-suite/tests/$tag_test_as_broken/BROKEN");
  die;
 }
 if ($update_test){
@@ -165,7 +167,7 @@ if ($RUNNING_suite) {
  # Global Report
  &RUN_global_report("INIT");
  #
- if (! $dry_run) {&command("cd $suite_dir; svn up")};
+ if (! $dry_run) {&command("cd $suite_dir; git pull")};
  #
  &SETUP_branch("load_the_branches");
  #

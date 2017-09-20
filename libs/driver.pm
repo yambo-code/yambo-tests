@@ -1,4 +1,3 @@
-#$system_command = "svn commit -F $upload/ERROR-$upload";!/usr/bin/perl
 #
 #        Copyright (C) 2000-2017 the YAMBO team
 #              http://www.yambo-code.org

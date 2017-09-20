@@ -61,7 +61,7 @@ my $ret = &GetOptions("h"    => \$help,
             "tests=s"        => \$user_tests,
             "prec=s"         => \$prec,
             "keys=s"         => \$keys,
-            "svn"            => \$svn_check,
+            "status"         => \$repo_check,
             "broken=s"       => \$tag_test_as_broken,
             "update=s"       => \$update_test,
             "upload=s"       => \$upload_test,
@@ -94,7 +94,7 @@ sub UTILS_usage {
            < > are variable parameters, [ ] are optional, | indicates choice
            
    where <ARGS> must include at least one of:
-             -h                     This help & svn status
+             -h                     This help & status
              -l       [<SET>]       List available SETs (-l) or input files for a SET (-l <SET>)
              -c                     Clean
              -d      <SET>|all|list Download & Update the core databases 
@@ -130,7 +130,7 @@ sub UTILS_usage {
 
    (miscellaneous options)
              -v [-v]                Verbose output (use -v -v for extra verbosity)
-             -svn                   List SVN new/untracked files
+             -status                List SVN/GIT new/untracked files
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken 
              -update <TEST>         Update all REFERENCE files of the <TEST>. Format is <TEST/testdir> or <TEST/testdir/test>.
              -upload <TEST>         Upload the <TEST_folder>/<TEST> directory.
