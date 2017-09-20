@@ -24,11 +24,7 @@
 #
 sub UTILS_clean{
 #
-my @paths=("tests");
-if ( "@_" eq "ALL" or "@_" eq "DEEP") {
- @paths=("tests","find_the_diff","config");
-}
-#
+# RESTORE
 if ("@_" eq "RESTORE") {
  &CWD_save;
  chdir("$suite_dir/$TESTS_folder");
@@ -42,6 +38,7 @@ if ("@_" eq "RESTORE") {
  &CWD_go;
 }
 #
+# SAVEs
 if ("@_" eq "SAVEs") {
  my @files;
  find( sub { push @files, $File::Find::name if /\.gops$/ }, "tests" );
@@ -55,17 +52,15 @@ if ("@_" eq "SAVEs") {
     }
    };
  }
-}elsif("@_" eq "ALL") {
-# my $CMD="svn st | grep -v 'MODULES.pl' | grep -v 'TOOLS.pl' | grep -v '.gz' | grep -v 'SAVE/ns.' | grep -v 'elph_gkkp'";
-# $CMD=$CMD." |grep -v '.empty' |grep -v 'NO_GPL' ";
-# $CMD=$CMD." |grep -v 'SAVE_backup' | grep '?'|  $awk '{print \$2}' | xargs rm -fr";
- LOOP_CONF: foreach  my $clean_path (@paths){
-  &CWD_save;
-  chdir("$suite_dir/$clean_path");
-  &command($CMD);
-  &CWD_go;
- };
-}elsif("@_" eq "BINs" ) {
+};
+#
+# ALL
+if("@_" eq "ALL") {
+ &command("git ls-files --others --exclude-standard | xargs rm -fr");
+};
+#
+# BINs
+if("@_" eq "BINs" ) {
  foreach $branchdir (@branches) {
   chomp($branchdir);
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
@@ -75,17 +70,7 @@ if ("@_" eq "SAVEs") {
    &command("rm -fr $conf_bin*");
   }
  }
-}
-#
-&command("rm -f find_the_diff/*.o");
-#
-if ( "@_" eq "ALL") {
- &command("rm -f outputs* *.log");
-}
-#
-if ( "@_" eq "DEEP") {
- &command("rm -f config/MODULES.pl config/TOOLS.pl *.log");
-}
+};
 #
 }
 1;
