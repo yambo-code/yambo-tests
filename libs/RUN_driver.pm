@@ -118,6 +118,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   # Do the actual run!
   LOOP: for ($ir=1; $ir<=$Nr ; $ir++){
    #
+   $first_in_the_run="1";
+   #
    # Re-Create the input (if any)
    &RUN_load_actions(".input");
    #
@@ -148,7 +150,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
  } # End loop on input files
  #
- &command("pwd");
  if (!$freeze) {&RUN_restore_the_SAVE( )};
  #
  &RUN_setup("after_tests_loop");

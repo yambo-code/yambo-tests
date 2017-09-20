@@ -26,6 +26,7 @@ sub RUN_stats{
 #
 if ("@_" eq "INIT"){
  $test_skipped=0;
+ $run_with_failures=0;
  $test_failed=0;
  $test_ok=0;
  $test_not_run=0;
@@ -45,16 +46,19 @@ if ("@_" eq "INIT_DIR"){
 }
 if ("@_" eq "REPORT"){
  &MESSAGE("LOG","\n$line");
- &MESSAGE("LOG","\n$r_s"."Tests  : FAIL[$test_failed"."] OK[$test_ok"."] NOT RUN [$test_not_run"."] SKIPPED [$test_skipped"."] WHITELISTED [$whitelist_err] $r_e");
+ my $MSG="\n$r_s"."Tests: FAIL[$run_with_failures"."] ";
+ $MSG=$MSG." Checks: FAIL[$test_failed"."] OK[$test_ok"."] NOT RUN [$test_not_run"."] SKIPPED [$test_skipped"."] WHITELISTED [$whitelist_err] $r_e";
+ &MESSAGE("LOG","$MSG");
  &MESSAGE("LOG","\n$line");
- &MESSAGE("LOG","\nOutputs: FAIL[$wrong_out"."] no REFs[$ref_not_found"."] no OUTs[$out_not_found"."]");
- &MESSAGE("LOG","\nDBs    : MISSING[$missing_db"."]\n\n");
+ $MSG="\nOutputs: FAIL[$wrong_out"."] no REFs[$ref_not_found"."] no OUTs[$out_not_found"."]";
+ $MSG=$MSG." DBs: MISSING[$missing_db"."]\n\n";
+ &MESSAGE("LOG","$MSG");
  #
  # REPORT
  #
- &MESSAGE("REPORT","\nFAIL: $test_failed & NO RUN: $test_not_run & SKIPS: $test_skipped % WHITELIST: $whitelist_err % OKs: $test_ok");
+ &MESSAGE("REPORT","\nRUNS_FAIL: $run_with_failures => CHECKS_FAIL: $test_failed & NO RUN: $test_not_run & SKIPS: $test_skipped % WHITELIST: $whitelist_err % OKs: $test_ok");
  if ($test_failed>0) {
-  &MESSAGE("REPORT","\nFAIL details:");
+  &MESSAGE("REPORT","\nCHECK details:");
   if ($wrong_out>0) {&MESSAGE("REPORT"," $wrong_out wrong output %")};
   if ($ref_not_found>0) {&MESSAGE("REPORT"," $ref_not_found no reference %")};
   if ($out_not_found>0) {&MESSAGE("REPORT"," $out_not_found no output %")};
@@ -127,5 +131,9 @@ sub its_a_fail{
  $RUN_result="FAIL";
  $test_failed++;
  $dir_failed++;
+ if ($first_in_the_run) {
+  $run_with_failures++; 
+  undef $first_in_the_run;
+ };
 }
 1;
