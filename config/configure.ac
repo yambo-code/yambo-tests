@@ -48,6 +48,7 @@ else
  touch ROBOTS/$robot/$user/TIME_ID
  svn --force add ROBOTS/$robot/
  svn --force add ROBOTS/$robot/$user/
+ echo "$robot" >> .gitignore
 fi
 AC_SUBST(user)
 AC_SUBST(robot)

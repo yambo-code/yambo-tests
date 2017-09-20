@@ -3,12 +3,12 @@
 @flow = (
 {
  ACTIVE      => "yes",
- CONFIG      => "default.sh",
- TESTS       => "MoS2/pwscf/RT",
-# TESTS       => "hBN/GW-OPTICS 01_init 02_HF",
+# CONFIG      => "default.sh",
+# TESTS       => "MoS2/pwscf/RT",
+ TESTS       => "hBN/GW-OPTICS 01_init 02_HF",
 # TESTS       => "PA_chain; Al_bulk/GW-OPTICS; WSe2/RT; hBN/SC; Diamond/ELPH1",
 # KEYS        => "all hard",
- KEYS        => "rt hard",
+# KEYS        => "rt hard",
 },
 {
  ACTIVE      => "no",
