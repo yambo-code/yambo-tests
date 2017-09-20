@@ -62,9 +62,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  # Folder mirrored preparation
  #
  if ($ROBOT_wd){
-  &command("mkdir ./.$ROBOT_wd");
-  &command("cp -R * ./.$ROBOT_wd");
-  &command("mv ./.$ROBOT_wd $ROBOT_wd");
+  &command("mkdir $ROBOT_wd");
+  &command("find . -type f -o -type l | grep -v ROBOT | xargs xargs cp --parents -t $ROBOT_wd");
   chdir($ROBOT_wd);
  }
  #

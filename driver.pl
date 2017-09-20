@@ -162,8 +162,6 @@ if ($RUNNING_suite) {
   }
  }
  #
- #&UTILS_clean("ALL");
- #
  # Global Report
  &RUN_global_report("INIT");
  #
@@ -228,7 +226,7 @@ if ($RUNNING_suite) {
  die "\n";
 }
 #
-#&UTILS_clean("BINs");
+&UTILS_clean("BINs");
 #
 &COMPILE_find_the_diff("clean");
 #

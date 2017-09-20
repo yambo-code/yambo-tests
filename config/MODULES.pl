@@ -23,7 +23,7 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-use lib "/home/sangalli/data/Lavoro/Codici/yambo/yambo-tests/libs";
+use lib "/home/marini/Yambo/sources/svn/yambo-tests/libs";
 #
 #  SYSTEM
 #

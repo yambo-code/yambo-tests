@@ -139,6 +139,12 @@ if("$do_it" eq "yes") {
  close(COMPLOGFILE);
  &MY_PRINT($stdout, "done.");
  #
+ # FC kind
+ &SETUP_FC_kind;
+ #
+ # Rename the bin
+ $conf_bin = $conf_bin."-$FC_kind";
+ #
  # Copy executables to a config-dependent directory
  # This will OVERWRITE any existing files
  #
@@ -190,7 +196,7 @@ for $check_exec (@executables){
 }
 $branch=$branch_key."-".$conf_file;
 #
-# Get the FC kind
+# Get (again) the FC kind
 #
 &SETUP_FC_kind;
 #

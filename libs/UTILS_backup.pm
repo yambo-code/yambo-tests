@@ -37,8 +37,8 @@ $BACKUP_dir   ="$host/$user/$FC_kind";
 $BACKUP_subdir="$date-$time";
 &command("mkdir -p $BACKUP_dir");
 &command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
-&command("find tests -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep  '$ROBOT_string' | grep  grep -v 'REFERENCE' > list");
-$DATA_backup_file="outputs_and_reports_ALL";
+&command("find test-suite -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep  '$ROBOT_string' | grep -v 'REFERENCE' > list");
+$DATA_backup_file="outputs_and_reports_ALL-$ROBOT_string";
 if (!-f "$DATA_backup_file.tar.gz") {&command("tar cf $DATA_backup_file.tar -T list")};
 if ( -f "$DATA_backup_file.tar.gz") {
  &command("gunzip -f $DATA_backup_file.tar.gz");
@@ -58,25 +58,25 @@ foreach $conf_file (<*config.log>,<*compile.log>) {
  &command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation");
  &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir/compilation/");
 };
-foreach $conf_file (<LOG*.log>){
+foreach $conf_file (<LOG*$ROBOT_string*.log>){
  &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
 };
-&command("cp LOG $BACKUP_dir/$BACKUP_subdir");
+if (-f LOG*$ROBOT_string) {&command("cp LOG*$ROBOT_string $BACKUP_dir/$BACKUP_subdir")};
 }
 sub UTILS_backup_upload
 {
 #
 # Upload (if $report) to w^3
 #
-if ($report) {
- &command("echo '<pre>' > LOG_$host_$user.php");
- &command("cat $BACKUP_dir/LATEST-TEST/$global_report >> LOG_$host_$user.php");
- &command("echo '</pre>' >> LOG_$host_$user.php");
- &FTP_upload_it("LOG_$host_$user.php","testing-robots");
- &command("cp $BACKUP_dir/$BACKUP_subdir/$DATA_backup_file.tar.gz $host_$user.tar.gz");
- &FTP_upload_it("$host_$user.tar.gz","testing-robots/results/");
- &command("rm -f LOG_$host_$user.php $host_$user.tar.gz");
-}
+#if ($report) {
+# &command("echo '<pre>' > LOG_$host_$user.php");
+# &command("cat $BACKUP_dir/LATEST-TEST/$global_report >> LOG_$host_$user.php");
+# &command("echo '</pre>' >> LOG_$host_$user.php");
+# &FTP_upload_it("LOG_$host_$user.php","testing-robots");
+# &command("cp $BACKUP_dir/$BACKUP_subdir/$DATA_backup_file.tar.gz $host_$user.tar.gz");
+# &FTP_upload_it("$host_$user.tar.gz","testing-robots/results/");
+# &command("rm -f LOG_$host_$user.php $host_$user.tar.gz");
+#}
 }
 1;
 

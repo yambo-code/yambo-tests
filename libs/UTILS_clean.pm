@@ -71,7 +71,8 @@ if ("@_" eq "SAVEs") {
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
    $conf_bin  = "$branchdir/bin-$conf_file";
-   if (-d $conf_bin) { &command("rm -fr $conf_bin")};
+   $conf_bin  = $conf_bin."-$FC_kind";
+   &command("rm -fr $conf_bin*");
   }
  }
 }

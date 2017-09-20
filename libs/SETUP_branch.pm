@@ -28,6 +28,7 @@ if ("@_" eq "load_the_branches") {
 #
 undef $branches;
 undef $branch_identity;
+undef $branch_robot;
 # Default Branches
 open(BRANCHES_file,"<","$suite_dir/ROBOTS/$host/$user/BRANCHES");
 my @BLINES = <BRANCHES_file>;
@@ -35,8 +36,9 @@ my $line;
 my $ib=-1;
 while($line = shift(@BLINES)) {
  chomp($line);
+ next if ($line =~ /#/);
  $ib++;
- ($branches[$ib],$branch_identity[$ib]) = split(/ /, $line);
+ ($branches[$ib],$branch_identity[$ib],$branch_robot[$ib]) = split(/ /, $line);
 }
 close(BRANCHES_file);
 return;

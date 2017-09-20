@@ -40,14 +40,18 @@ undef $AT_LEAST_ONE;
 #
 LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
  #
- $branchdir=@branches[$ib];
- $branch_id=@branch_identity[$ib];
+ $branchdir =@branches[$ib];
+ $branch_id =@branch_identity[$ib];
  #
  # Stats
  &RUN_stats("INIT");
  #
  $error=&SETUP_branch( );
  if ($error eq "FAIL") {next LOOP_BRANCH};
+ #
+ if (not @branch_robot[$ib] eq "" ) {
+  if (not @branch_robot[$ib] eq $ROBOT_string) {next LOOP_BRANCH};
+ }
  #
  # Test List
  &UTILS_get_inputs_tests_list;
