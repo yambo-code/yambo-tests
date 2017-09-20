@@ -48,8 +48,8 @@ if ($kill_me){
 #
 if ($verb ge 2) { $log = "" };
 if ($report) {$backup_logs="yes"};
-if ($mode eq "bench")    {$TESTS_folder="benchmark-suite/tests"};
-if ($mode eq "perturbo") {$TESTS_folder="test-perturbo"};
+if ($mode eq "bench")    {$TESTS_folder="TESTS/BENCHMARKS"};
+if ($mode eq "perturbo") {$TESTS_folder="TESTS/PERTURBO"};
 #
 # Edit
 #
@@ -81,8 +81,7 @@ if($help){
 #
 # Show extra files
 if($repo_check){ 
- #&command("svn st | grep -v -e 'ns.' -e 'ndb.' -e '.tar' -e '.tgz' -e 'SAVE' -e '_grid' -e 'MODULES.pl' -e 'TOOLS.pl' -e 'configure.ac' -e 'config.status'");
- &command("git status --untracked-files=no");
+ &command("git status --ignored | grep -v SAVE | grep -v GKKP | grep -v .gz");
  die "\n";
 };
 #
@@ -124,9 +123,8 @@ if ($failed) {&UTILS_failed_theme_creator(); die;};
 #Tag broken
 if ($tag_test_as_broken)
 {
- &command("touch ./test-suite/tests/$tag_test_as_broken/BROKEN");
- #&command("svn add ./tests/$tag_test_as_broken/BROKEN");
- &command("git add ./test-suite/tests/$tag_test_as_broken/BROKEN");
+ &command("touch   $TESTS_folder/$tag_test_as_broken/BROKEN");
+ &command("git add $TESTS_folder/$tag_test_as_broken/BROKEN");
  die;
 }
 if ($update_test){

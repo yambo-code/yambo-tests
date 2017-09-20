@@ -57,6 +57,7 @@ if ("@_" eq "SAVEs") {
 # ALL
 if("@_" eq "ALL") {
  &command("git ls-files --others --exclude-standard | xargs rm -fr");
+ &command("find . -name 'ROBOT_*' -type d | xargs rm -fr");
 };
 #
 # DEEP

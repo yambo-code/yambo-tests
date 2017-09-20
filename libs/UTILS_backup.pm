@@ -37,7 +37,7 @@ $BACKUP_dir   ="$host/$user/$FC_kind";
 $BACKUP_subdir="$date-$time";
 &command("mkdir -p $BACKUP_dir");
 &command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
-&command("find test-suite -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep  '$ROBOT_string' | grep -v 'REFERENCE' > list");
+&command("find $TESTS_folder -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep  '$ROBOT_string' | grep -v 'REFERENCE' > list");
 $DATA_backup_file="outputs_and_reports_ALL-$ROBOT_string";
 if (!-f "$DATA_backup_file.tar.gz") {&command("tar cf $DATA_backup_file.tar -T list")};
 if ( -f "$DATA_backup_file.tar.gz") {

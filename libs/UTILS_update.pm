@@ -34,7 +34,7 @@ my $TEST_todo= $update_test;
 undef $compile;
 $keys="all hard";
 #
-if (-d "tests/$TEST_todo/INPUTS"){
+if (-d "$TESTS_folder/$TEST_todo/INPUTS"){
  #
  $user_tests="$TEST_todo";
  $DIR_here=$TEST_todo;
@@ -52,7 +52,7 @@ if (-d "tests/$TEST_todo/INPUTS"){
  $DIR_here=$dummy[0];
  $TEST_here=$dummy[1];
 }
-chdir("tests/$DIR_here");
+chdir("$TESTS_folder/$DIR_here");
 #
 if (not -f "SAVE/ndb.gops") 
 {

@@ -78,6 +78,11 @@ with_txt2html="txt2html"
 AC_ARG_WITH(txt2html, AC_HELP_STRING([--with-txt2html=<exe>],[User-defined txt2html],[32]),[],[with_txt2html="txt2html"]) 
 AC_CHECK_PROGS(txt2html,[$with_txt2html],[none])
 AC_SUBST(txt2html)
+# rsync
+with_rsync="rsync"
+AC_ARG_WITH(rsync, AC_HELP_STRING([--with-rsync=<exe>],[User-defined rsync],[32]),[],[with_rsync="rsync"]) 
+AC_CHECK_PROGS(rsync,[$with_rsync],[none])
+if test $rsync = "none"; then AC_MSG_ERROR([Please provide the path to a working rsync]); fi
 # ============================================================================
 # YAMBO
 #

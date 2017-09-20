@@ -55,7 +55,7 @@ $log = "> /dev/null 2>&1";
 # DIRs
 $REF_folder="REFERENCE";
 $ROBOT_folder="R1";
-$TESTS_folder="test-suite/tests";
+$TESTS_folder="TESTS/MAIN";
 #
 $SYSTEM_NP=1;
 chomp($SYSTEM_NP = `grep -c -P '^processor\\s+:' /proc/cpuinfo`);

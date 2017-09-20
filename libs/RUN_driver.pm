@@ -61,11 +61,9 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  #
  # Folder mirrored preparation
  #
- if ($ROBOT_wd){
-  &command("mkdir $ROBOT_wd");
-  &command("find . -type f -o -type l | grep -v ROBOT | xargs xargs cp --parents -t $ROBOT_wd");
-  chdir($ROBOT_wd);
- }
+ &command("mkdir $ROBOT_wd");
+ &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
+ chdir($ROBOT_wd);
  #
  $input_folder = "INPUTS";
  if ($is_GPL and -d "INPUTS-GPL"){ $input_folder = "INPUTS-GPL"}
@@ -150,6 +148,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
  } # End loop on input files
  #
+ &command("pwd");
  if (!$freeze) {&RUN_restore_the_SAVE( )};
  #
  &RUN_setup("after_tests_loop");
