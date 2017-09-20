@@ -4,6 +4,8 @@ cat << EOF >> Makefile
 f_objs = module.o routines.o data.o check.o RULES.o find_the_diff.o
 find_the_diff : \$(f_objs)
 	@eval \$(fc) \$(f90flags) -I\$(includedir) -o \$@ \$(f_objs)
+clean:
+	@rm -f \$(f_objs) diff.mod
 #
 # Suffixes
 #

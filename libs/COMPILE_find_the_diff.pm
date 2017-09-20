@@ -25,17 +25,17 @@
 sub COMPILE_find_the_diff{
 if ($dry_run) {return};
 # Try to compile the find_the_diff fortran code if necessary
+chdir("find_the_diff");
 if ("@_" =~ "clean"){
- &command("rm -f find_the_diff/find_the_diff.o find_the_diff/$find_the_diff find_the_diff/Makefile");
+ &command("make clean");
 }
 if ("@_" =~ "compile" and !-f "./find_the_diff/find_the_diff" ){
- &command("rm -f find_the_diff/find_the_diff.o find_the_diff/$find_the_diff find_the_diff/Makefile");
- &command("cp $BRANCH/config/setup find_the_diff/Makefile");
- chdir("find_the_diff");
+ &command("cp $BRANCH/config/setup Makefile");
  &command("./make_the_makefile.sh");
  &command("mv find_the_diff $find_the_diff");
- chdir "../";
- if(! -e "./find_the_diff/$find_the_diff") { die "Missing ./find_the_diff/$find_the_diff executable. Make it manually.\n"};
+ if(! -e "$find_the_diff") { die "Missing $find_the_diff executable. Make it manually.\n"};
+ &command("make clean");
 }
+chdir "../";
 }
 1;

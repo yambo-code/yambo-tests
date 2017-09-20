@@ -61,8 +61,10 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  #
  # Folder mirrored preparation
  #
- &command("mkdir $ROBOT_wd");
- &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
+ if (not -e "$ROBOT_wd") {
+  &command("mkdir $ROBOT_wd");
+  &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
+ }
  chdir($ROBOT_wd);
  #
  $input_folder = "INPUTS";
