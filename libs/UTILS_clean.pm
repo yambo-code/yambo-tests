@@ -61,7 +61,6 @@ if("@_" eq "ALL") {
 #
 # DEEP
 if("@_" eq "DEEP") {
- print "HERE";
  &command("git status --ignored | grep -e '/ns.' -e '/ndb.' | xargs rm -fr");
 };
 #

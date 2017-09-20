@@ -98,12 +98,16 @@ if($download){
 #
 # Clean and exit
 if($clean){ 
- print "Cleaning...\n";
+ print "Cleaning";
  &UTILS_clean("RESTORE");
  &UTILS_clean("ALL");
  &UTILS_clean("BINs");
- if ($clean > 1) {&UTILS_clean("DEEP")};
- die "Test databases/outputs and local logfiles removed.\n";
+ print "... test databases/outputs and local logfiles";
+ if ($clean > 1) {
+  &UTILS_clean("DEEP");
+  print "... core databases";
+ }
+ die "\n";
 };
 # List tests and exit
 # The -l:s means optional argument to -l: "default"|""|$listtests

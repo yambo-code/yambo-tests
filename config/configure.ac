@@ -21,7 +21,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 # MA 02111-1307, USA or visit http://www.gnu.org/copyleft/gpl.txt.
 #
-AC_INIT(driver.pl, 3.0, yambo@yambo-code.org)
+AC_INIT(driver.pl, 5.0, yambo@yambo-code.org)
 #
 AC_CONFIG_AUX_DIR([config])
 #

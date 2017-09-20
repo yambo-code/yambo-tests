@@ -32,7 +32,7 @@ $mode="tests";
 # Predefs (before options scan)
 $listtests="default";
 #
-$version="4.1";
+$version="5.0";
 $prec=0.01;
 $project="none"; 
 $run_duration = 1200; # 20 minutes
