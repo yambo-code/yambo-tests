@@ -4,15 +4,15 @@
 {
  ACTIVE      => "yes",
 # CONFIG      => "default.sh",
-# TESTS       => "MoS2/pwscf/RT",
- TESTS       => "hBN/GW-OPTICS 01_init 02_HF",
+ TESTS       => "MoS2/pwscf/RT 00_init 01_fix_symm 02_init",
+# TESTS       => "hBN/GW-OPTICS 01_init 02_HF",
 # TESTS       => "PA_chain; Al_bulk/GW-OPTICS; WSe2/RT; hBN/SC; Diamond/ELPH1",
 # KEYS        => "all hard",
-# KEYS        => "rt hard",
+ KEYS        => "rt hard",
 },
 {
- ACTIVE      => "no",
- MPI_CPU     => $SYSTEM_NP,
+ ACTIVE      => "yes",
+ MPI_CPU     => 4,
  PAR_MODE    => "default",
 },
 {

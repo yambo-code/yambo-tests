@@ -64,7 +64,8 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   # Basic Setup
   &SETUP("DIR");
   #
-  $error=&SETUP_configuration( );
+  $error=&SOURCE_driver( );
+  #$error=&SETUP_configuration( );
   if ($error eq "FAIL") {next LOOP_CONF};
   #
   # find_the_diff
@@ -77,8 +78,6 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   &RUN_logs;
   #
   foreach $np (@NP_set) {
-   #
-   #&UTILS_clean("SAVEs");
    #
    &RUN_driver;
    #

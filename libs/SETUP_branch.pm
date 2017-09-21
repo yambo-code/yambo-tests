@@ -29,18 +29,7 @@ if ("@_" eq "load_the_branches") {
 undef $branches;
 undef $branch_identity;
 undef $branch_robot;
-# Default Branches
-open(BRANCHES_file,"<","$suite_dir/ROBOTS/$host/$user/BRANCHES");
-my @BLINES = <BRANCHES_file>;
-my $line;
-my $ib=-1;
-while($line = shift(@BLINES)) {
- chomp($line);
- next if ($line =~ /#/);
- $ib++;
- ($branches[$ib],$branch_identity[$ib],$branch_robot[$ib]) = split(/ /, $line);
-}
-close(BRANCHES_file);
+&LOAD_branches;
 return;
 }
 #
@@ -110,5 +99,18 @@ if ($branch_id eq "")
  $branch_key=$branch_id
 };
 return "OK";
+}
+sub LOAD_branches{
+open(BRANCHES_file,"<","$suite_dir/ROBOTS/$host/$user/BRANCHES");
+my @BLINES = <BRANCHES_file>;
+my $line;
+my $ib=-1;
+while($line = shift(@BLINES)) {
+ chomp($line);
+ next if ($line =~ /#/);
+ $ib++;
+ ($branches[$ib],$branch_identity[$ib],$branch_robot[$ib]) = split(/ /, $line);
+}
+close(BRANCHES_file);
 }
 1;

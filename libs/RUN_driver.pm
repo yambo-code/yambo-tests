@@ -83,7 +83,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  &MESSAGE("LOG","\n$line");
  #
  # Check if I need to convert the folder
- if($is_NEW_WF eq "yes") {&RUN_convert_the_SAVE};
+ &RUN_convert_the_SAVE;
  #
  # Loop over each test file
  LOOP_INPUTS: foreach $testname (@inputs) {

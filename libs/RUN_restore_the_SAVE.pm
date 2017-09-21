@@ -24,6 +24,7 @@
 #
 sub RUN_restore_the_SAVE{
  if(-e "SAVE_backup_old") {
+  &command("rm -fr SAVE");
   &command("rm -fr SAVE_backup");
   &command("mv SAVE_backup_old SAVE_backup");
  }

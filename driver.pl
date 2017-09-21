@@ -101,7 +101,7 @@ if($clean){
  &UTILS_clean("RESTORE");
  &UTILS_clean("ALL");
  &UTILS_clean("BINs");
- print "... test databases/outputs and local logfiles";
+ print "... test databases outputs logfiles bin(s)";
  if ($clean > 1) {
   &UTILS_clean("DEEP");
   print "... core databases";
@@ -240,8 +240,6 @@ if ($RUNNING_suite) {
  print "Tests string missing"; 
  die "\n";
 }
-#
-&UTILS_clean("BINs");
 #
 &COMPILE_find_the_diff("clean");
 #

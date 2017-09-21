@@ -67,16 +67,15 @@ if("@_" eq "DEEP") {
 #
 # BINs
 if("@_" eq "BINs" ) {
- foreach $branchdir (@branches) {
-  chomp($branchdir);
+ &LOAD_branches;
+ for $ib ( 0 .. $#branches ) {
+  $branchdir =@branches[$ib];
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
-   $conf_bin  = "$branchdir/bin-$conf_file";
-   $conf_bin  = $conf_bin."-$FC_kind";
-   &command("rm -fr $conf_bin*");
+   $conf_bin  = "$branchdir/bin-$conf_file-$FC_kind";
+   &command("rm -fr $conf_bin* $branchdir/bin-precompiled*");
   }
  }
-};
-#
+}
 }
 1;
