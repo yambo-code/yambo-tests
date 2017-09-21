@@ -263,6 +263,7 @@ close $rlog;
 close $tlog;
 close $elog;
 close $wlog;
+close $flog;
 #
 print "\nDone.\n";
 die "\n";

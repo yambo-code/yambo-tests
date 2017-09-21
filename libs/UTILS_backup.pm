@@ -24,7 +24,7 @@
 #
 sub UTILS_backup_save{
 if ($compile) {&command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation")};
-foreach $conf_file (<LOG*$ROBOT_string*.log>,<ERROR*$ROBOT_string*.log>,<REPORT*$ROBOT_string*.log>,<WHITELIST*$ROBOT_string*.log>) {
+foreach $conf_file (<*$ROBOT_string*.log>){
  &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
  if ($conf_file =~ /REPORT-/) {$global_report=$conf_file};
 };
@@ -37,18 +37,28 @@ $BACKUP_dir   ="$host/$user/$FC_kind";
 $BACKUP_subdir="$date-$time";
 &command("mkdir -p $BACKUP_dir");
 &command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
-&command("find $TESTS_folder -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep  '$ROBOT_string' | grep -v 'REFERENCE' > list");
+#
+&command("rm -f list");
+open(FAILED,"<","$suite_dir/$failed_log");
+my @FLINES = <FAILED>;
+my $line;
+while($line = shift(@FLINES)) {
+ chomp($line);
+ &command("find $line -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep -v 'REFERENCE' >> list");
+}
+close(FAILED);
 $DATA_backup_file="outputs_and_reports_ALL-$ROBOT_string";
 if (!-f "$DATA_backup_file.tar.gz") {&command("tar cf $DATA_backup_file.tar -T list")};
 if ( -f "$DATA_backup_file.tar.gz") {
  &command("gunzip -f $DATA_backup_file.tar.gz");
  &command("tar rf $DATA_backup_file.tar -T list");
 }
+
 foreach $conf_file (<*log>) {
  &command("tar rf  $DATA_backup_file.tar $conf_file");
 };
 &command("gzip -f $DATA_backup_file.tar");
-&command("rm -f list");
+#&command("rm -f list");
 #
 # Archive
 my $DIR=$PAR_string;
@@ -57,9 +67,6 @@ if ($openmp_is_off) {$DIR="$PAR_string-OpenMPoff"};
 foreach $conf_file (<*config.log>,<*compile.log>) {
  &command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation");
  &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir/compilation/");
-};
-foreach $conf_file (<LOG*$ROBOT_string*.log>){
- &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
 };
 if (-f LOG*$ROBOT_string) {&command("cp LOG*$ROBOT_string $BACKUP_dir/$BACKUP_subdir")};
 }

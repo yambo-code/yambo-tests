@@ -76,6 +76,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   next LOOP_DIRS;
  };
  #
+ undef $FAILED_test;
+ #
  &MY_PRINT($stdout, $msg);
  #
  &MESSAGE("LOG","\n$line");

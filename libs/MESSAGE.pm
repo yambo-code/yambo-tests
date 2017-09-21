@@ -31,5 +31,6 @@ if ("@_[0]" =~ m/ERROR/)  {
 }
 if ("@_[0]" =~ m/LOG/)    {&MY_PRINT($tlog, "@_[1]")}; 
 if ("@_[0]" =~ m/REPORT/) {&MY_PRINT($rlog, "@_[1]")}; 
+if ("@_[0]" =~ m/FAILED/) {&MY_PRINT($flog, "@_[1]")}; 
 }
 1;
