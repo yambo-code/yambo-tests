@@ -270,8 +270,8 @@ if ($DATA_backup_file) {
  }
  if ($report){ 
   &PHP_generate();
-  #&UTILS_commit();
-  &UTILS_report_upload();
+  &UTILS_commit();
+  #&UTILS_report_upload();
  }
 }
 #
