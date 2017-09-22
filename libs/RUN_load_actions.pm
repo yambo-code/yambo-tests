@@ -31,6 +31,7 @@ if( -e "$input_folder/$testname"."$_[0]") {
  @actions_file = <ACTIONS>;
  while($actions_cmd = shift(@actions_file)) {
   chomp($actions_cmd);
+  $actions_cmd =~ s/<ROBOT>/$ROBOT_wd/g;
   &command("$actions_cmd");
  }
  close(ACTIONS);

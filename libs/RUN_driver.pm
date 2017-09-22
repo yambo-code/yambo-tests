@@ -50,6 +50,10 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  #
  my $msg=sprintf(" > $b_s [%-3s/%-3s] %-20s $b_e ",$count_tests,$numtests,$testdir."$cpu_global_conf");
  #
+ &MESSAGE("LOG","\n$line");
+ &MESSAGE("LOG","\n$b_s $testdir-$branch-$cpu_global_conf $b_e");
+ &MESSAGE("LOG","\n$line");
+ #
  if (!-d $testdir){
    if ($verb){
     &MY_PRINT($stdout, $msg);
@@ -58,14 +62,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    next LOOP_DIRS;
  }
  chdir($testdir);
- #
- # Folder mirrored preparation
- #
- if (not -e "$ROBOT_wd") {
-  &command("mkdir $ROBOT_wd");
-  &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
- }
- chdir($ROBOT_wd);
  #
  $input_folder = "INPUTS";
  if ($is_GPL and -d "INPUTS-GPL"){ $input_folder = "INPUTS-GPL"}
@@ -76,13 +72,17 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   next LOOP_DIRS;
  };
  #
+ # Folder mirrored preparation
+ #
+ if (not -e "$ROBOT_wd") {
+  &command("mkdir $ROBOT_wd");
+  &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
+ }
+ chdir($ROBOT_wd);
+ #
  undef $FAILED_test;
  #
  &MY_PRINT($stdout, $msg);
- #
- &MESSAGE("LOG","\n$line");
- &MESSAGE("LOG","\n$b_s $testdir-$branch-$cpu_global_conf $b_e");
- &MESSAGE("LOG","\n$line");
  #
  # Check if I need to convert the folder
  &RUN_convert_the_SAVE;

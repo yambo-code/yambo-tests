@@ -31,7 +31,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   DIR_LOOP: foreach $dir (<*>,<*/*>,<*/*/*>,<*/*/*/*>,<*/*/*/*/*>) {      # Glob all files
    # Loop through all files and directories, and save those 'active' dirs containing
    # SAVE and INPUTS folders into @testdirs
-   if ( (-d $dir."/SAVE" || -d $dir."/SAVE_backup") && -d $dir."/$input_folder" ) {
+   if ( (-d $dir."/SAVE" || -d $dir."/SAVE_backup") && -d $dir."/$input_folder" && not $dir  =~ /ROBOT/  ) {
     push(@testdirs,$dir);
     $P_str="";
     $HARD_str="";

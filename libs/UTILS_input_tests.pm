@@ -59,11 +59,16 @@ if($user_tests){
    if($fullpath =~ m|INPUTS$| and not $fullpath =~ /ROBOT/){    # The only folder ending ../$input_folder
     if ( -d "SAVE" || -d "SAVE_backup"){		      # Check ./SAVE also present
      $testdir = substr($fullpath,13,-7); 
-     $alltests .= "$testdir all; ";
+     $alltests .= "$testdir ";
     }
    }
   }
-  $input_tests = $alltests;
+  #
+  # Order alphabetically
+  my @list = split(/ /,$alltests);
+  my @sorted_list = sort { lc($a) cmp lc($b) } @list;
+  undef $input_tests;
+  foreach my $element (@sorted_list) {$input_tests .= "$element all; "};
   &MY_PRINT($stdout, " -     Test selection : full suite");
  } 
  else {
