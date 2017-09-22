@@ -1,6 +1,6 @@
 #!/usr/bin/tcsh
 
-cd /home/marini/Yambo/yambo-tests/
+cd /scratch/marini/yambo-tests/
 
 if ( "$1" == "clean") then
 ./driver.pl -c
@@ -14,7 +14,7 @@ endif
 
 if ( "$2" == "intel") then
 module purge
-module load gcc6/gcc-6.3.0 gcc6/mpich-3.2  
+module load intel/composer_xe_12 intel/parallel_2017
 endif
 
 if ( "$1" == "run") then
