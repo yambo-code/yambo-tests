@@ -65,7 +65,6 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   &SETUP("DIR");
   #
   $error=&SOURCE_driver( );
-  #$error=&SETUP_configuration( );
   if ($error eq "FAIL") {next LOOP_CONF};
   #
   # find_the_diff
@@ -100,6 +99,7 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
  } # End LOOP_CONF configurations
  # 
  &MY_PRINT($stdout,"\n$line");
+ #
 }; # End loop on BRANCHES
 #
 chdir("$suite_dir");

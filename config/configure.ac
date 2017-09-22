@@ -125,5 +125,5 @@ PERL_LIB=`pwd`
 PERL_LIB="${PERL_LIB}/libs"
 AC_SUBST(PERL_LIB)
 # ============================================================================
-AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl config/TEMPLATE.php])
+AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl])
 AC_OUTPUT

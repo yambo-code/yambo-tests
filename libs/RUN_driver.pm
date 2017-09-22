@@ -80,8 +80,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  }
  chdir($ROBOT_wd);
  #
- undef $FAILED_test;
- #
  &MY_PRINT($stdout, $msg);
  #
  # Check if I need to convert the folder

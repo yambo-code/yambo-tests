@@ -118,6 +118,14 @@ if ( $listtests and  $listtests !~ "default") {&UTILS_list_tests("$listtests"); 
 #
 if ($failed) {&UTILS_failed_theme_creator(); die;};
 #
+# PHP generation 
+#
+if ($php) {
+ &PHP_generate(); 
+ &UTILS_report_upload();
+ die;
+}
+#
 # SVN section
 #
 #Tag broken
@@ -248,6 +256,12 @@ if (not $FLOWS_done or not $AT_LEAST_ONE) {
  die "\n";
 }
 #
+close $rlog;
+close $tlog;
+close $elog;
+close $wlog;
+close $flog;
+#
 &RUN_global_report("FINAL");
 #
 if ($DATA_backup_file) {
@@ -255,15 +269,11 @@ if ($DATA_backup_file) {
   &UTILS_backup_save();
  }
  if ($report){ 
-  &UTILS_commit();
-  &UTILS_backup_upload();
+  &PHP_generate();
+  #&UTILS_commit();
+  &UTILS_report_upload();
  }
 }
-close $rlog;
-close $tlog;
-close $elog;
-close $wlog;
-close $flog;
 #
 print "\nDone.\n";
 die "\n";

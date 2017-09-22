@@ -35,30 +35,35 @@ sub UTILS_backup
 chdir("$suite_dir");
 $BACKUP_dir   ="$host/$user/$FC_kind";
 $BACKUP_subdir="$date-$time";
+&command("mkdir -p $host/www");
 &command("mkdir -p $BACKUP_dir");
 &command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
 #
 &command("rm -f list");
 open(FAILED,"<","$suite_dir/$failed_log");
 my @FLINES = <FAILED>;
+close(FAILED);
+for(@FLINES){ 
+    push @out, $_ if (not @out) or ($out[-1] ne $_);
+};
 my $line;
-while($line = shift(@FLINES)) {
+while($line = shift(@out)) {
  chomp($line);
  &command("find $line -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep -v 'REFERENCE' >> list");
 }
-close(FAILED);
 $DATA_backup_file="outputs_and_reports_ALL-$ROBOT_string";
-if (!-f "$DATA_backup_file.tar.gz") {&command("tar cf $DATA_backup_file.tar -T list")};
 if ( -f "$DATA_backup_file.tar.gz") {
  &command("gunzip -f $DATA_backup_file.tar.gz");
- &command("tar rf $DATA_backup_file.tar -T list");
+ if (-s "list") {&command("tar rf $DATA_backup_file.tar -T list")};
+}else{
+ if (-s "list") {&command("tar cf $DATA_backup_file.tar -T list")};
 }
 
-foreach $conf_file (<*log>) {
+foreach $conf_file (<*$ROBOT_string*log>) {
  &command("tar rf  $DATA_backup_file.tar $conf_file");
 };
 &command("gzip -f $DATA_backup_file.tar");
-#&command("rm -f list");
+&command("rm -f list");
 #
 # Archive
 my $DIR=$PAR_string;
@@ -70,20 +75,15 @@ foreach $conf_file (<*config.log>,<*compile.log>) {
 };
 if (-f LOG*$ROBOT_string) {&command("cp LOG*$ROBOT_string $BACKUP_dir/$BACKUP_subdir")};
 }
-sub UTILS_backup_upload
+sub UTILS_report_upload
 {
 #
 # Upload (if $report) to w^3
 #
-#if ($report) {
-# &command("echo '<pre>' > LOG_$host_$user.php");
-# &command("cat $BACKUP_dir/LATEST-TEST/$global_report >> LOG_$host_$user.php");
-# &command("echo '</pre>' >> LOG_$host_$user.php");
-# &FTP_upload_it("LOG_$host_$user.php","testing-robots");
-# &command("cp $BACKUP_dir/$BACKUP_subdir/$DATA_backup_file.tar.gz $host_$user.tar.gz");
-# &FTP_upload_it("$host_$user.tar.gz","testing-robots/results/");
-# &command("rm -f LOG_$host_$user.php $host_$user.tar.gz");
-#}
+foreach $file (<$host/www/*.php>) 
+{
+ &FTP_upload_it("$file","robots");
+}
 }
 1;
 

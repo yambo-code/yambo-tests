@@ -131,13 +131,10 @@ sub its_a_fail{
  $RUN_result="FAIL";
  $test_failed++;
  $dir_failed++;
+ &MESSAGE("FAILED","$TESTS_folder/$testdir/$ROBOT_wd/$dir_name\n");
  if ($first_in_the_run) {
   $run_with_failures++; 
   undef $first_in_the_run;
-  if (!$FAILED_test) {
-   &MESSAGE("FAILED","$TESTS_folder/$testdir/$ROBOT_wd\n");
-   $FAILED_test="1";
-  }
  };
 }
 1;
