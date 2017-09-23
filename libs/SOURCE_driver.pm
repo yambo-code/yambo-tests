@@ -104,7 +104,7 @@ if ($compile)
  #
  # Check if already compiled
  #
- &MY_PRINT($stdout, "\n -       Source Check : precompiled ($conf_bin) ... ");
+ &MY_PRINT($stdout,  "\n -       Source Check : precompiled ($conf_bin) ... ");
  $bin_check=&exe_check;
  #
  if ( "$bin_check" eq "FAIL") { 
@@ -112,6 +112,12 @@ if ($compile)
   &SOURCE_compile;
   chdir $BRANCH;
   &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
+  &MY_PRINT($stdout,  "\n -       Source Check : compiled ($conf_bin) ... ");
+  $bin_check=&exe_check;
+  if ( "$bin_check" eq "FAIL") {
+   &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH, skipping...\n");
+   return "FAIL";
+  }
   chdir $suite_dir;
  }else{
   undef $compile;
@@ -140,7 +146,7 @@ if (-e "$BRANCH/$conf_bin/nccopy") {
  $nccopy = "$sys_nccopy"; 
  &MY_PRINT($stdout, "\n               nccopy : $nccopy");
 }else{ 
- undef $nccopy;
+ die "\n nccopy not found\n";
 }
 #
 # Rename the conf/comp logs
