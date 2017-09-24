@@ -74,6 +74,8 @@ if($user_tests){
  else {
   &MY_PRINT($stdout, " -     Test selection : from input");
  }
+}else{
+ &MY_PRINT($stdout, " -     Test selection : (none)");
 }
 @dummy= split(/\s*;\s*/, $input_tests);  # split 0+ spaces before/after
 &CWD_save;

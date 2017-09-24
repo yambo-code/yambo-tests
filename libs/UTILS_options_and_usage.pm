@@ -53,6 +53,7 @@ my $ret = &GetOptions("h"    => \$help,
             "d=s"            => \$download,
             "c+"             => \$clean,
             "compile"        => \$compile,
+            "i"              => \$info,
             "u"              => \$upload,
             "b"              => \$backup_logs,
             "v+"             => \$verb,
@@ -78,13 +79,13 @@ my $ret = &GetOptions("h"    => \$help,
             "newer=i"        => \$max_delay_commits,
             "robot=i"        => \$ROBOT_id,
             "failed=s"       => \$failed,
-            "php=s"          => \$php,
+            "php"            => \$php,
             "mode=s"         => \$mode
                       );
 #
 }
-sub UTILS_usage {
- print <<EndOfUsage
+sub UTILS_robot_info {
+ print <<ROBOT_info
 
    Running on host: $host
    By user        : $user
@@ -92,34 +93,46 @@ sub UTILS_usage {
    Available CPU's: $SYSTEM_NP
    Available confs: $conf_avail
    Available flows: $flows_avail
+ROBOT_info
+}
+sub UTILS_usage {
+ print <<EndOfUsage
    Syntax: driver.pl <ARGS>
            < > are variable parameters, [ ] are optional, | indicates choice
            
    where <ARGS> must include at least one of:
              -h                     This help & status.
+             -i                     Robot info
              -l       [<SET>]       List available SETs (-l) or input files for a SET (-l <SET>).
              -c                     Clean.
              -d      <SET>|all|list Download & Update the core databases.
              -compile               Compile the sources.
              -tests  <TESTS>|all    List* of tests to perform, or all "-tests all".
 
-   (Control options)
+   (General options)
+             -dry                   Run the script in dry mode. Not actual job is launched.
              -mode                  Can be "tests/perturbo/tov/bench". It selects which suite to use. Default is "tests".
              -robot                 Robot ID.
-
-   (test options)
-             -flow   <FILE>         Use the flow of calculations defined in <FILE> (refer to ROBOTS/$host/$user/FLOWS/<FILE>.pl).
-             -autotest              Perform a simple serial minimal auto-test.
-             -gpl                   Only GPL-compliant test.
-             -keys   <string>       Test keys (see below*).
+             -status                List SVN/GIT new/untracked files.
+             -v [-v]                Verbose output (use -v -v for extra verbosity)
              -colors                Use colors in messages.
+
+   (SOURCEs)
              -conf   <NAME>         Use configuration NAME              (default: no options, all: cycle among all confs)
+             -gpl                   Only GPL-compliant test.
+
+   (TEST selection)
+             -flow   <FILE>         Use the flow of calculations defined in <FILE> (refer to ROBOTS/$host/$user/FLOWS/<FILE>.pl).
+             -keys   <string>       Test keys (see below*).
+             -off    <string>       Switch off specific objects (mpi,openmp,io).
              -prec   <PREC>         Precision of data comparisons       (default: 0.01 = 1% of MAX value)
-             -report                Commit the final report to the ML.
-             -off                   Switch off specific objects (mpi,openmp,io).
              -force                 Run even BROKEN tests.
              -freeze                Freeze the test-suite status (do not restore SAVE/clean at the end).
-             -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS, for example).
+
+   (TEST control)
+             -update <TEST>         Update all REFERENCE files of the <TEST>. Format is <TEST/testdir> or <TEST/testdir/test>.
+             -upload <TEST>         Upload the <TEST_folder>/<TEST> directory.
+             -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
 
    (parallel options)
              -np     <N>            Fixed number of CPU used.
@@ -131,19 +144,18 @@ sub UTILS_usage {
              -rand_par              Use randomly generated parallel structures.
              -newer  <D>            Run only if the source is newer than <D> days.
 
-   (miscellaneous options)
-             -v [-v]                Verbose output (use -v -v for extra verbosity)
-             -status                List SVN/GIT new/untracked files.
-             -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
-             -update <TEST>         Update all REFERENCE files of the <TEST>. Format is <TEST/testdir> or <TEST/testdir/test>.
-             -upload <TEST>         Upload the <TEST_folder>/<TEST> directory.
+   (Auto-testing)
+             -autotest              Perform a simple serial minimal auto-test.
+
+   (REPORTING and more)
              -b                     BACKUP the LOGs (automatically used when -report is given)>
-             -dry                   Run the script in dry mode. Not actual job is launched.
              -failed <ERROR>        Create a failed.pl theme reading the ERROR file.
-             -php    <REPORT>       Translate the REPORT file in an php format ready to be uploaded.
+             -php                   Translate the latest 20 REPORT files in the ROBOT history in a php format and upload.
+             -report                Commit the final report to the ML.
+             -u                     UPLOAD the LOGs at the end
 
    (FTP actions)           
-             -u                     UPLOAD the LOGs at the end
+             -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS, for example).
              -ftp                   Log in FTP server
 
  * <TESTS> has form: "<SET1> {<input1> [<input2>]|all}; <SET2> {<input1> [<input2>]|all}"

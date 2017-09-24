@@ -75,15 +75,5 @@ foreach $conf_file (<*config.log>,<*compile.log>) {
 };
 if (-f LOG*$ROBOT_string) {&command("cp LOG*$ROBOT_string $BACKUP_dir/$BACKUP_subdir")};
 }
-sub UTILS_report_upload
-{
-#
-# Upload (if $report) to w^3
-#
-foreach $file (<$host/www/*.php>) 
-{
- &FTP_upload_it("$file","robots");
-}
-}
 1;
 

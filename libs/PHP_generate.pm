@@ -24,6 +24,35 @@
 #
 sub PHP_generate{
 #
+my @dir = ( "$host/$user" );
+my @dirs;
+find( sub { push @dirs, $File::Find::name if -d }, @dir );
+my @dirs_to_process;
+foreach $dir (@dirs) {
+ @files = glob("$dir/REPORT*");
+ next if (scalar(@files) eq 0);
+ @dir_splitted = split(/\//,$dir);
+ push @dirs_to_process, @dir_splitted[$#dir_splitted];
+}
+my $a = {
+Jan =>-6,
+Feb =>-5,
+Mar =>-4,
+Apr =>-3,
+May =>-2,
+Jun =>-1,
+Jul => 1,
+Aug => 2,
+Sep => 3,
+Oct => 4,
+Nov => 5,
+Dec => 6
+};
+my @sorted_dirs = sort { $a->{our $a} <=> $a->{our $b} } @dirs_to_process;
+foreach $dir (@sorted_dirs) {
+ print "$dir\n";
+}
+die;
 if ($php) {
  open(REPORT,"<","$php") or die "Could not open file '$php' $!";;
  $dir = dirname($php);
@@ -31,6 +60,11 @@ if ($php) {
  open(REPORT,"<","$BACKUP_dir/$BACKUP_subdir/$global_report");
  $dir="$BACKUP_dir/$BACKUP_subdir";
 }
+#&PHP_operate;
+}
+#
+sub PHP_extract{
+#
 @lines = <REPORT>;
 #
 &get_line("Build");
@@ -126,6 +160,17 @@ foreach $file (<$dir/REPORT*.log>) {
 return
 }
 #
+sub PHP_upload
+{
+#
+# Upload (if $report) to w^3
+#
+foreach $file (<$host/www/*.php>) 
+{
+ &FTP_upload_it("$file","robots");
+}
+}
+#
 sub get_line{
 undef @pattern;
 $n_patterns=0;
@@ -137,7 +182,6 @@ foreach $line (@lines) {
   push(@pattern, [ split(/\s+/, $line) ]);
   $n_patterns++;
  }
-}
 }
 }
 1;
