@@ -39,7 +39,6 @@ my @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017'
 foreach $dir (@sorted_dirs) {
  @files = glob("$dir/REPORT*");
  foreach $file (@files) {
-  print "$suite_dir/$file\n";
   open(REPORT,"<","$suite_dir/$file");
   &PHP_extract;
   close(REPORT);
@@ -170,13 +169,7 @@ return
 #
 sub PHP_upload
 {
-#
-# Upload (if $report) to w^3
-#
-foreach $file (<$host/www/*.php>) 
-{
- &FTP_upload_it("$file","robots");
-}
+&command("$ncftpput -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org www.yambo-code.org/robots $host/www/*.php")
 }
 #
 sub get_line{
