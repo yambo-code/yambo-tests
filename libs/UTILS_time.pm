@@ -24,16 +24,18 @@
 #
 sub UTILS_time
 {
-# Date
+$numParameters = @_ ;
 my @months = qw( Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec );
 my @days = qw(Sun Mon Tue Wed Thu Fri Sat Sun);
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
 $current_year=$year+1900;
 $current_day=$mon*31+$mday;
-$month_number=$mon;
-$day_number=$mday;
 $_[0]="$months[$mon]-$mday-$days[$wday]";
 $_[1]="$hour-$min";
+if ($numParameters > 1){
+ $_[2]=$mon+1;
+ $_[3]=$mday;
+}
 }
 sub UTILS_day
 {

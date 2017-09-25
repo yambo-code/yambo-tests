@@ -28,7 +28,7 @@ $|=1;
 # mode
 $mode="tests";
 # Date & Time
-&UTILS_time($date,$time);
+&UTILS_time($date,$time,$current_month,$day);
 # Predefs (before options scan)
 $listtests="default";
 #

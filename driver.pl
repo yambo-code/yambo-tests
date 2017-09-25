@@ -155,14 +155,13 @@ if($upload){ &FTP_upload_it("$upload","testing-robots/databases") };
 #
 if ($user_tests or $theme or $compile or $flow or $autotest) {$RUNNING_suite="yes"};
 #
-# Post-Run backup
-#
 if ($backup_logs and !$RUNNING_suite) {
  &UTILS_backup();
  &UTILS_backup_save();
  if ($report){ 
-  &UTILS_commit();
-  &UTILS_backup_upload();
+  &PHP_generate(); 
+  &PHP_upload();
+  #&UTILS_commit();
  }
  die;
 }
@@ -273,11 +272,11 @@ close $flog;
 if ($DATA_backup_file) {
  if ($backup_logs) {
   &UTILS_backup_save();
- }
- if ($report){ 
-  &PHP_generate(); 
-  &PHP_upload();
-  &UTILS_commit();
+  if ($report){ 
+   &PHP_generate(); 
+   &PHP_upload();
+   #&UTILS_commit();
+  }
  }
 }
 #

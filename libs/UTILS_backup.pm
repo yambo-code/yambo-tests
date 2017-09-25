@@ -23,21 +23,25 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub UTILS_backup_save{
-if ($compile) {&command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation")};
+if ($compile) {&command("mkdir -p $BACKUP_dir/compilation")};
 foreach $conf_file (<*$ROBOT_string*.log>){
- &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir");
+ &command("mv $conf_file $BACKUP_dir");
  if ($conf_file =~ /REPORT-/) {$global_report=$conf_file};
 };
-&command("mv $DATA_backup_file.tar.gz $BACKUP_dir/$BACKUP_subdir");
+&command("mv $DATA_backup_file.tar.gz $BACKUP_dir");
 }
 sub UTILS_backup
 {
 chdir("$suite_dir");
-$BACKUP_dir   ="$host/$user/$FC_kind";
-$BACKUP_subdir="$date-$time";
+$BACKUP_dir   ="$host/$user/$FC_kind/$current_year/$current_month/$day/$date-$time";
 &command("mkdir -p $host/www");
-&command("mkdir -p $BACKUP_dir");
-&command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
+&command("mkdir -p $host/$user");
+&command("mkdir -p $host/$user/$FC_kind");
+&command("mkdir -p $host/$user/$FC_kind");
+&command("mkdir -p $host/$user/$FC_kind/$current_year");
+&command("mkdir -p $host/$user/$FC_kind/$current_year/$current_month");
+&command("mkdir -p $host/$user/$FC_kind/$current_year/$current_month/$day");
+&command("mkdir -p $host/$user/$FC_kind/$current_year/$current_month/$day/$date-$time");
 #
 &command("rm -f list");
 open(FAILED,"<","$suite_dir/$failed_log");
@@ -68,12 +72,11 @@ foreach $conf_file (<*$ROBOT_string*log>) {
 # Archive
 my $DIR=$PAR_string;
 if ($openmp_is_off) {$DIR="$PAR_string-OpenMPoff"};
-&command("mkdir -p $BACKUP_dir/$BACKUP_subdir");
 foreach $conf_file (<*config.log>,<*compile.log>) {
- &command("mkdir -p $BACKUP_dir/$BACKUP_subdir/compilation");
- &command("mv $conf_file $BACKUP_dir/$BACKUP_subdir/compilation/");
+ &command("mkdir -p $BACKUP_dir/compilation");
+ &command("mv $conf_file $BACKUP_dir/compilation/");
 };
-if (-f LOG*$ROBOT_string) {&command("cp LOG*$ROBOT_string $BACKUP_dir/$BACKUP_subdir")};
+if (-f LOG*$ROBOT_string) {&command("cp LOG*$ROBOT_string $BACKUP_dir")};
 }
 1;
 
