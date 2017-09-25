@@ -74,7 +74,12 @@ if(-t STDOUT) {
 }
 #
 # help
+if($info){ 
+ &UTILS_robot_info ;
+ die "\n";
+}
 if($help){ 
+ &UTILS_robot_info ;
  &UTILS_usage ;
  die "\n";
 };
@@ -122,7 +127,7 @@ if ($failed) {&UTILS_failed_theme_creator(); die;};
 #
 if ($php) {
  &PHP_generate(); 
- &UTILS_report_upload();
+ &PHP_upload();
  die;
 }
 #
@@ -269,13 +274,11 @@ if ($DATA_backup_file) {
   &UTILS_backup_save();
  }
  if ($report){ 
-  &PHP_generate();
+  #&PHP_generate( );
+  #&PHP_upload();
   &UTILS_commit();
-  #&UTILS_report_upload();
  }
 }
 #
 print "\nDone.\n";
 die "\n";
-#
-#

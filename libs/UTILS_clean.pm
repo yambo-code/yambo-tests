@@ -38,26 +38,19 @@ if ("@_" eq "RESTORE") {
  &CWD_go;
 }
 #
-# SAVEs
-if ("@_" eq "SAVEs") {
- my @files;
- find( sub { push @files, $File::Find::name if /\.gops$/ }, "tests" );
- foreach my $file (@files){
-   $dirname  = dirname($file);
-   if (-d $dirname."_backup") {
-    &command("rm -fr $dirname")
-   }else{
-    foreach my $to_remove (< $dirname/ndb*>) {
-     if (not $to_remove =~ /gkkp/ ){ &command("rm -fr $to_remove") }
-    }
-   };
- }
-};
-#
 # ALL
 if("@_" eq "ALL") {
- &command("git ls-files --others --exclude-standard | xargs rm -fr");
- &command("find . -name 'ROBOT_*' -type d | xargs rm -fr");
+ if ($ROBOT_id) 
+ {
+  $cmd="git ls-files --others --exclude-standard | grep -e R$ROBOT_id. -e ROBOT_Nr_$ROBOT_id|  xargs rm -f";
+  &command("$cmd");
+  $cmd="find . -name 'ROBOT_Nr_$ROBOT_id' -o -name 'R$ROBOT_id' -type d | xargs rm -fr";
+  &command("$cmd");
+ }else{
+  &command("git ls-files --others --exclude-standard | xargs rm -fr");
+  &command("find . -name 'ROBOT_*' -type d | xargs rm -fr");
+ }
+ &command("rm -f find_the_diff/Makefile");
 };
 #
 # DEEP

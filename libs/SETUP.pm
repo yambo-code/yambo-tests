@@ -78,17 +78,6 @@ if ("$what" eq "BASIC") {
  &MY_PRINT($stdout, "\n= Starting Yambo test-suite") if (!$reduced_log);
  &MY_PRINT($stdout, "\n$double_line\n") if (!$reduced_log);
  #
- # Check (optional) external programs
- #
- if (!$reduced_log) {
-  # find_the_diff
-  &MY_PRINT($stdout, " - Check requirements : ");
-  if($ncftp)    {&MY_PRINT($stdout, "...$ncftp")};
-  if($ncftpls)  {&MY_PRINT($stdout, "...$ncftpls")};
-  if($ncftpput) {&MY_PRINT($stdout, "...$ncftpput")};
-  if($txt2html) {&MY_PRINT($stdout, "...$txt2html")};
-  &MY_PRINT($stdout, "\n");
- }
 }elsif ("$what" == "DIR"){
  #
  $PAR_string="SERIAL";
