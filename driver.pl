@@ -126,8 +126,9 @@ if ($failed) {&UTILS_failed_theme_creator(); die;};
 # PHP generation 
 #
 if ($php) {
+ #&PHP_folders_rename(); 
  &PHP_generate(); 
- &PHP_upload();
+ #&PHP_upload();
  die;
 }
 #

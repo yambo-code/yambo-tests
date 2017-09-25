@@ -30,6 +30,8 @@ my @days = qw(Sun Mon Tue Wed Thu Fri Sat Sun);
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
 $current_year=$year+1900;
 $current_day=$mon*31+$mday;
+$month_number=$mon;
+$day_number=$mday;
 $_[0]="$months[$mon]-$mday-$days[$wday]";
 $_[1]="$hour-$min";
 }

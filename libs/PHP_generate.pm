@@ -24,6 +24,8 @@
 #
 sub PHP_generate{
 #
+&command("rm -f $host/www/*");
+#
 my @dir = ( "$host/$user" );
 my @dirs;
 find( sub { push @dirs, $File::Find::name if -d }, @dir );
@@ -31,36 +33,19 @@ my @dirs_to_process;
 foreach $dir (@dirs) {
  @files = glob("$dir/REPORT*");
  next if (scalar(@files) eq 0);
- @dir_splitted = split(/\//,$dir);
- push @dirs_to_process, @dir_splitted[$#dir_splitted];
+ push @dirs_to_process, $dir;
 }
-my $a = {
-Jan =>-6,
-Feb =>-5,
-Mar =>-4,
-Apr =>-3,
-May =>-2,
-Jun =>-1,
-Jul => 1,
-Aug => 2,
-Sep => 3,
-Oct => 4,
-Nov => 5,
-Dec => 6
-};
-my @sorted_dirs = sort { $a->{our $a} <=> $a->{our $b} } @dirs_to_process;
+my @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process;
 foreach $dir (@sorted_dirs) {
- print "$dir\n";
+ @files = glob("$dir/REPORT*");
+ foreach $file (@files) {
+  print "$suite_dir/$file\n";
+  open(REPORT,"<","$suite_dir/$file");
+  &PHP_extract;
+  close(REPORT);
+ }
 }
-die;
-if ($php) {
- open(REPORT,"<","$php") or die "Could not open file '$php' $!";;
- $dir = dirname($php);
-}else{
- open(REPORT,"<","$BACKUP_dir/$BACKUP_subdir/$global_report");
- $dir="$BACKUP_dir/$BACKUP_subdir";
-}
-#&PHP_operate;
+
 }
 #
 sub PHP_extract{
@@ -68,6 +53,7 @@ sub PHP_extract{
 @lines = <REPORT>;
 #
 &get_line("Build");
+if ($n_patterns eq 0) {return};
 $branch_key=$pattern[0][1];
 $BUILD=$pattern[0][3];
 $FC_kind=$pattern[0][5];
@@ -78,45 +64,61 @@ $date=$pattern[0][3];
 $time=$pattern[0][5];
 #
 # Name choosing
-$MAX_phps=3;
-undef $found;
+$MAX_phps=20;
 chdir("$host/www");
-my @files = glob("*report.php");
-for( $i = 1; $i < $MAX_phps; $i = $i + 1 )
+#
+for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
- $test_file=$hostname."_".$branch_key."_".$i."_report.php";
- @match = grep(/^$test_file/i, @files);
- if ($match[0] eq "") {$found=1;last};
-}
-if ($i == $MAX_phps and not $found){
- for( $j = 2; $j <= $MAX_phps; $j = $j + 1 )
-  {
-   my @files = glob("*$j*.php");
-   foreach $file (@files){ 
-    $new_file =  $file;
-    $k=$j-1;
-    $new_file =~ s/$j/$k/g;
-    &command("mv $file $new_file");
-   }
+ $k=$j+1;
+ $main_php = $hostname."_".$branch_key."_".$j."_main.php";
+ $error_php=$hostname."_".$branch_key."_".$j."_error.php";
+ $report_php=$hostname."_".$branch_key."_".$j."_report.php";
+ if (-f $main_php){
+  ($file = $error_php) =~ s/$j/$k/g;
+  &command("mv $error_php $file");
+  ($file = $report_php) =~ s/$j/$k/g;
+  &command("mv $report_php $file");
+  ($file = $main_php) =~ s/$j/$k/g;
+  &command("mv $main_php $file");
+  open(my $fh1, '<', $file) ;
+  open(my $fh2, '>', 'dummy') ;
+  while( $line = <$fh1>) {
+   $line =~ s/${branch_key}_$j/${branch_key}_$k/ig;
+   print $fh2 "$line";
   }
+  close($fh1);
+  close($fh2);
+  &command("mv dummy $file");
+ }
 }
+#
 chdir("$suite_dir");
-$main_php = $hostname."_".$branch_key."_".$i."_main.php";
-$error_php=$hostname."_".$branch_key."_".$i."_error.php";
-$report_php=$hostname."_".$branch_key."_".$i."_report.php";
+$main_php = $hostname."_".$branch_key."_1_main.php";
+$error_php=$hostname."_".$branch_key."_1_error.php";
+$report_php=$hostname."_".$branch_key."_1_report.php";
 open($php, '>', $main_php) or die "Could not open file '$main_php' $!";
 #
 # Line #1
 &MESSAGE("PHP","<table>\n")
 &MESSAGE("PHP","<tr>\n")
-&MESSAGE("PHP"," <th>Robot</th>")
-&MESSAGE("PHP"," <th>Branch</th>")
+&MESSAGE("PHP"," <th>Robot</th>\n")
+&MESSAGE("PHP"," <th>Branch</th>\n")
 &MESSAGE("PHP"," <th>Compiler</th>\n");
 &MESSAGE("PHP"," <th>Date</th>\n");
 &MESSAGE("PHP"," <th>Revision</th>\n");
 &get_line("Parallel");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
- &MESSAGE("PHP"," <th>$pattern[$i][2]</th>\n");
+ $field_1=$pattern[$i][4];
+ $field_2=$pattern[$i][5];
+ if ($field_2 =~ /default/){
+  &MESSAGE("PHP"," <td>$pattern[$i][2]<br>DEFAULT</td>\n");
+ }elsif ($field_2 =~ /random/){
+  &MESSAGE("PHP"," <td>$pattern[$i][2]<br>RANDOM</td>\n");
+ }elsif ($field_1 =~ /loop/){
+  &MESSAGE("PHP"," <td>$pattern[$i][2]<br>LOOP</td>\n");
+ }else{
+  &MESSAGE("PHP"," <td>$pattern[$i][2]</td>\n");
+ }
 }
 &MESSAGE("PHP","</tr>\n")
 #
@@ -132,6 +134,12 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &get_line("RUNS_FAIL");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  &MESSAGE("PHP"," <td>$pattern[$i][1]</td>\n");
+}
+if ($n_patterns eq 0){
+ &get_line("FAIL:");
+ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+  &MESSAGE("PHP"," <td>$pattern[$i][1]</td>\n");
+ }
 }
 &MESSAGE("PHP","</tr>\n")
 #
