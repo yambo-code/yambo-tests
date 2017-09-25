@@ -128,7 +128,7 @@ if ($failed) {&UTILS_failed_theme_creator(); die;};
 if ($php) {
  #&PHP_folders_rename(); 
  &PHP_generate(); 
- #&PHP_upload();
+ &PHP_upload();
  die;
 }
 #
@@ -275,8 +275,8 @@ if ($DATA_backup_file) {
   &UTILS_backup_save();
  }
  if ($report){ 
-  #&PHP_generate( );
-  #&PHP_upload();
+  &PHP_generate(); 
+  &PHP_upload();
   &UTILS_commit();
  }
 }
