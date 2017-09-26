@@ -46,9 +46,11 @@ if("@_" eq "ALL") {
   &command("$cmd");
   $cmd="find . -name 'ROBOT_Nr_$ROBOT_id' -o -name 'R$ROBOT_id' -type d | grep -v $hostname | xargs rm -fr";
   &command("$cmd");
+  &command("rm -f outputs_and_reports_ALL-$ROBOT_string");
  }else{
   &command("git ls-files --others --exclude-standard | grep -v $hostname | xargs rm -fr");
   &command("find . -name 'ROBOT_*' -type d | grep -v $hostname | xargs rm -fr");
+  &command("rm -f outputs_and_reports_ALL-*");
  }
  &command("rm -f find_the_diff/Makefile");
 };

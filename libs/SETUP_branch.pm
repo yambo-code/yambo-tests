@@ -98,6 +98,7 @@ if ($branch_id eq "")
 }else{
  $branch_key=$branch_id
 };
+if ($is_GPL) {$branch_key.="_gpl"};
 return "OK";
 }
 sub LOAD_branches{

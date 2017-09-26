@@ -33,15 +33,19 @@ foreach $conf_file (<*$ROBOT_string*.log>){
 sub UTILS_backup
 {
 chdir("$suite_dir");
-$BACKUP_dir   ="$host/$user/$FC_kind/$current_year/$current_month/$day/$date-$time";
+$str1="$current_month";
+if ($current_month<10) {$str1="0$current_month"};
+$str2="$day";
+if ($day<10) {$str2="0$day"};
+$BACKUP_dir   ="$host/$user/$FC_kind/$current_year/$str1/$str2/$time";
 &command("mkdir -p $host/www");
 &command("mkdir -p $host/$user");
 &command("mkdir -p $host/$user/$FC_kind");
 &command("mkdir -p $host/$user/$FC_kind");
 &command("mkdir -p $host/$user/$FC_kind/$current_year");
-&command("mkdir -p $host/$user/$FC_kind/$current_year/$current_month");
-&command("mkdir -p $host/$user/$FC_kind/$current_year/$current_month/$day");
-&command("mkdir -p $host/$user/$FC_kind/$current_year/$current_month/$day/$date-$time");
+&command("mkdir -p $host/$user/$FC_kind/$current_year/$str1");
+&command("mkdir -p $host/$user/$FC_kind/$current_year/$str1/$str2");
+&command("mkdir -p $host/$user/$FC_kind/$current_year/$str1/$str2/$time");
 #
 &command("rm -f list");
 open(FAILED,"<","$suite_dir/$failed_log");
