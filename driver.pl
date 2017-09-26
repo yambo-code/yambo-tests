@@ -103,7 +103,7 @@ if($download){
 # Clean and exit
 if($clean){ 
  print "Cleaning";
- &UTILS_clean("RESTORE");
+ #&UTILS_clean("RESTORE");
  &UTILS_clean("ALL");
  &UTILS_clean("BINs");
  print "... test databases outputs logfiles bin(s)";
