@@ -37,9 +37,10 @@ sub SOURCE_config{
  # Backticks capture the output
  #
  &MY_PRINT($stdout, "Configuring ...");
- $result = `$suite_dir/$conf_path 2>&1`;
- open( CONFLOGFILE,'>>',$conf_logfile);
- print CONFLOGFILE $result;
+ open( CONFLOGFILE,'>',$conf_logfile);
+ &command("$suite_dir/$conf_path >> $conf_logfile 2>&1");
+ #$result = `$suite_dir/$conf_path 2>&1`;
+ #print CONFLOGFILE $result;
  close(CONFLOGFILE);
  #
  if (-e "Makefile"){ 
