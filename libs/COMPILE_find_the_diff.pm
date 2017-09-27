@@ -26,7 +26,7 @@ sub COMPILE_find_the_diff{
 if ($dry_run) {return};
 # Try to compile the find_the_diff fortran code if necessary
 chdir("find_the_diff");
-if ("@_" =~ "clean"){
+if ("@_" =~ "clean" and -f "Makefile"){
  &command("make clean");
 }
 if ("@_" =~ "compile" and !-f "./find_the_diff/find_the_diff" ){

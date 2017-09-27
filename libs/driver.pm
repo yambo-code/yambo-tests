@@ -49,7 +49,11 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
  if ($error eq "FAIL") {next LOOP_BRANCH};
  #
  if (not @branch_robot[$ib] eq "" ) {
-  if (not @branch_robot[$ib] eq $ROBOT_string) {next LOOP_BRANCH};
+  if (not @branch_robot[$ib] eq $ROBOT_string) 
+  {
+   &MY_PRINT($stdout, "\n Branch is assigned to robot Nr.@branch_robot[$ib] while current Robot is $ROBOT_string.\n") if ($verb);
+   next LOOP_BRANCH;
+  }
  }
  #
  # Test List
