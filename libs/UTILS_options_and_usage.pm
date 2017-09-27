@@ -73,7 +73,6 @@ my $ret = &GetOptions("h"    => \$help,
             "autotest"       => \$autotest,
             "report"         => \$report,
             "force"          => \$force,
-            "freeze"         => \$freeze,
             "ftp"            => \$ftp,
             "dry"            => \$dry_run,
             "newer=i"        => \$max_delay_commits,
@@ -127,7 +126,6 @@ sub UTILS_usage {
              -off    <string>       Switch off specific objects (mpi,openmp,io).
              -prec   <PREC>         Precision of data comparisons       (default: 0.01 = 1% of MAX value)
              -force                 Run even BROKEN tests.
-             -freeze                Freeze the test-suite status (do not restore SAVE/clean at the end).
 
    (TEST control)
              -update <TEST>         Update all REFERENCE files of the <TEST>. Format is <TEST/testdir> or <TEST/testdir/test>.

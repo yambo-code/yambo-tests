@@ -73,13 +73,15 @@ if ($LIFE eq "1") { $description .= " lifetimes" };
 #
 if (&RUN_feature("Shifted_Grid") eq "1" or &RUN_feature("WFs_map") eq "1" or &RUN_feature("density") eq "1"){$YPP=1}
 if (&RUN_feature("bzgrids") eq "1" or &RUN_feature("kpts_map") eq "1" or &RUN_feature("wavefunction") eq "1"){$YPP=1}
+if (&RUN_feature("QPDBs") eq "1") {$YPP=1}
+$II=&RUN_feature("QPDBs");
 if (&RUN_feature("exciton") eq "1") {$YPP=1}
 if (&RUN_feature("sort") eq "1") {$YPP=2}
 if ($YPP eq "1") { $description .= " post-processing" };
 if ($YPP eq "2") { $description .= " sorting" };
 #
 if (&RUN_feature("gkkp") eq "1" or &RUN_feature("eliashberg") eq "1") {$YPP_PH=1}
-if (&RUN_feature("RealTime") eq "1" or &RUN_feature("RT_X") eq "1"  or &RUN_feature("QPDBs") eq "1" or &RUN_feature("RTDBs") eq "1") {$YPP_RT=1}
+if (&RUN_feature("RealTime") eq "1" or &RUN_feature("RT_X") eq "1" or &RUN_feature("RTDBs") eq "1") {$YPP_RT=1}
 if ($YPP_PH eq "1") { $description .= " e-p post-processing" };
 #
 $YPP_NL=&RUN_feature("nonlinear");

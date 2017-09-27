@@ -37,6 +37,7 @@ $count_tests=0;
 LOOP_DIRS: foreach my $testline (@input_tests_list) {
  #
  &CWD_go;
+ #
  chdir("$TESTS_folder");
  #
  &RUN_stats("INIT_DIR");
@@ -63,8 +64,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  }
  chdir($testdir);
  #
- $input_folder = "INPUTS";
- if ($is_GPL and -d "INPUTS-GPL"){ $input_folder = "INPUTS-GPL"}
+ &UTILS_INPUT_folder;
  #
  $error=&RUN_skip_the_test("DIR");
  if ($error !~ "OK") { 
@@ -83,7 +83,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  &MY_PRINT($stdout, $msg);
  #
  # Check if I need to convert the folder
- &RUN_convert_the_SAVE;
+ if ($ib==0) {&RUN_convert_the_SAVE};
  #
  # Loop over each test file
  LOOP_INPUTS: foreach $testname (@inputs) {
@@ -151,8 +151,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   }
   #
  } # End loop on input files
- #
- if (!$freeze) {&RUN_restore_the_SAVE( )};
  #
  &RUN_setup("after_tests_loop");
  #

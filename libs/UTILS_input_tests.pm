@@ -22,10 +22,17 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-sub UTILS_tests_in_the_dir{
-$tests_list=" ";
+sub UTILS_INPUT_folder{
 $input_folder = "INPUTS";
-if ($is_GPL and -d "@_/INPUTS-GPL"){ $input_folder = "INPUTS-GPL"}
+my $prefix="";
+if (@_) {$prefix="@_/"};
+if ($branch_key and -d "${prefix}INPUTS-$branch_key"){ $input_folder = "INPUTS-$branch_key"}
+if ($is_GPL and -d "${prefix}INPUTS-master_gpl"){ $input_folder = "INPUTS-master_gpl"}
+}
+#
+sub UTILS_tests_in_the_dir{
+&UTILS_INPUT_folder("@_");
+$tests_list=" ";
 my $path="@_/$input_folder";
 LOOP: foreach $test ( <$path/*> ) { 
  if (index($test, ".conf")>0) {next LOOP};
