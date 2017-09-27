@@ -109,5 +109,7 @@ sub RUN_convert_the_SAVE{
   chdir("..");
  }
  #
+ &command("touch CONVERTED");
+ #
 }
 1;
