@@ -24,7 +24,7 @@
 #
 sub SOURCE_compile{
  chdir $BRANCH;
- open( COMPLOGFILE,'>',$comp_logfile);
+ open( COMPLOGFILE,'>>',$comp_logfile);
  &MY_PRINT($stdout, "ext-libs ...");
  &command("make $make_exec >> $comp_logfile 2>&1");
  @executables = split(/ /, $target_list);
