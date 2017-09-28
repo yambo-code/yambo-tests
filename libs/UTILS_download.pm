@@ -25,10 +25,10 @@ sub UTILS_download
 &CWD_save;
 #
 my $LINK="http://www.yambo-code.org/testing-robots/databases/";
-my $EXTENSION="tar.gz";
+my $EXTENSION=".tar.gz";
 if ($mode eq "bench") {
- $LINK="http://potzie.fisica.unimo.it/ferretti/";
- $EXTENSION="tgz";
+ $LINK="http://potzie.fisica.unimo.it/ferretti/yambo-benchmarks-databases";
+ $EXTENSION="";
 };
 #
 chdir("$suite_dir/$TESTS_folder");
@@ -47,47 +47,85 @@ foreach $dir (<*>) {
    if (-e "./BROKEN" and ! $force) { $do_it = "no" };
  }
  if ( $do_it eq "yes"){
+  #
   &MY_PRINT($stdout, "\n=> [".$dir."]\n");
-  $i1=0;
-  $filename[$i1] = $dir;
-  foreach $subdir (<*>) {
-   next if (not -d $subdir);
-   next if ($subdir =~ /INPUTS/ or $subdir =~ /REFERENCE/ or $subdir =~ /SAVE/ or $subdir =~ /BROKEN/ or $subdir =~ /DFT/ );
-   $i1=$i1+1;
-   $filename[$i1] = "${dir}_${subdir}";
-  }
+  #
+  # Filename choosing
+  #
   if ($mode eq "bench")
   {
-   if ($dir =~ /AGNR/)   {$filename[0] = "agnr_v4.2-IO"};
-   if ($dir =~ /cobalt/) {$filename[0] = "cobalt_v4.2-IO"};
+   $i1=-1;
+   if ($dir =~ /AGNR/)    {
+    $BASE = "agnr_v4.2-IO.tar";
+    $last_ch ="a";
+    $last_chp="z";
+   }
+   if ($dir =~ /cobalt/)  {
+    $BASE = "cobalt_v4.2-IO.tar";
+    $last_ch ="a";
+    $last_chp="b";
+   }
+   if ($dir =~ /chevron/) {
+    $BASE = "chevron_poly_v4.2-IO.tar";
+    $last_ch ="e";
+    $last_chp="w";
+   }
+   for my $char ('a' .. "$last_ch") { 
+    for my $charp ('a' .. "$last_chp") { 
+     $i1=$i1+1;
+     $filename[$i1] = "$BASE".".$char$charp";
+    }
+   }
+  }else{
    $i1=0;
+   $filename[$i1] = $dir;
+   foreach $subdir (<*>) {
+    next if (not -d $subdir);
+    next if ($subdir =~ /INPUTS/ or $subdir =~ /REFERENCE/ or $subdir =~ /SAVE/ or $subdir =~ /BROKEN/ or $subdir =~ /DFT/ );
+    $i1=$i1+1;
+    $filename[$i1] = "${dir}_${subdir}";
+   }
   }
   $imax=$i1;
   $i1=0;
-  $icheck=0;
-  do{
-   $cmd = "wget --spider -q $LINK/$filename[$i1].$EXTENSION && echo exists || echo not exist";
+  WWW: while($i1 < $imax+1) {
+   $cmd = "wget --spider -q $LINK/$filename[$i1]$EXTENSION && echo exists || echo not exist";
    my $file_exist = `$cmd`;
-   if ( "$file_exist" eq "exists\n") {
-    &MY_PRINT($stdout, "...$filename[$i1].$EXTENSION [YES] ...");
-    &MY_PRINT($stdout, " downloading ...\n");
-    &command( "wget --show-progress -qc $LINK/$filename[$i1].$EXTENSION");
-    &MY_PRINT($stdout, "   opening ...");
-    &command( "gunzip $filename[$i1].$EXTENSION");
-    &command( "tar xf $filename[$i1].tar");
-    if (not $mode eq "bench")
-    {
-     &MY_PRINT($stdout, " recompressing ...");
-     &command( "gzip $filename[$i1].tar");
-     &MY_PRINT($stdout, "done");
+   if ($mode eq "tests"){
+    if ( "$file_exist" eq "exists\n") {
+     &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
+     &MY_PRINT($stdout, " downloading ...\n");
+     &command( "wget --show-progress -qc $LINK/$filename[$i1]$EXTENSION");
+     &MY_PRINT($stdout, "   opening ...");
+     &command( "tar zxf $filename[$i1]$EXTENSION");
+     &MY_PRINT($stdout, "done\n");
+    }else {
+     &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [NO]");
+     &MY_PRINT($stdout, "\n");
     }
-    $icheck=$icheck+1;
-   }else {
-    &MY_PRINT($stdout, "...$filename[$i1].$EXTENSION [NO]");
+   }else{
+    if ( "$file_exist" eq "exists\n" and  not -f $BASE) {
+     &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
+     &MY_PRINT($stdout, " downloading ...\n");
+     &command( "wget --show-progress -qc $LINK/$filename[$i1]");
+     $CAT_cmd.=" $filename[$i1]";
+    }else{
+     &MY_PRINT($stdout, "...$BASE [FOUND]\n");
+     last WWW;
+    }
    }
-   &MY_PRINT($stdout, "\n");
    $i1=$i1+1;          
-  } until ( $i1 == $imax+1 );
+  } 
+ }
+ if ($mode eq "bench" and not -f $BASE) {
+  &MY_PRINT($stdout, "   concatenating ...");
+  &command( "cat $CAT_cmd >  $BASE");
+  &MY_PRINT($stdout, " cleaning the fragments ...");
+  &command( "rm -f $CAT_cmd");
+ }
+ if ($mode eq "bench" and not -f "SAVE/ns.db1") {
+  &MY_PRINT($stdout, "   opening ...");
+  &command( "tar xf $BASE");
  }
  chdir("$suite_dir/$TESTS_folder");
 }
