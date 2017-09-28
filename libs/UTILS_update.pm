@@ -67,7 +67,7 @@ if ($branch_key eq "master")
  if (not -d $REF) 
  { 
   &command("mkdir $REF");
-  &command("git add $REF"."@");
+  &command("$git add $REF"."@");
  }
 }
 #
@@ -85,18 +85,18 @@ if ($branch_key eq "master")
 if (not -d $REF_folder) 
 { 
  &command("mkdir $REF_folder");
- &command("git --force add $REF_folder"."@");
+ &command("$git --force add $REF_folder"."@");
 };
 if ("@_" eq "RM" and "$REF_folder" eq "REFERENCE"){
- &command("git --force rm $ref_filename"."@");
+ &command("$git --force rm $ref_filename"."@");
 }
 if ("@_" eq "ADD")
 {
  &command("cp $run_filename $REF_folder");
- &command("git --force add $REF_folder/$run_filename"."@");
+ &command("$git --force add $REF_folder/$run_filename"."@");
  foreach my $file (<r*$testname*>,<l*$testname*>) {
   &command("cp $file* $REF_folder");
-  &command("git --force add $REF_folder/$file"."@");
+  &command("$git --force add $REF_folder/$file"."@");
  }
 }
 #

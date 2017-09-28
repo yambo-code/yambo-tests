@@ -42,13 +42,13 @@ if ("@_" eq "RESTORE") {
 if("@_" eq "ALL") {
  if ($ROBOT_id) 
  {
-  $cmd="git ls-files --others --exclude-standard | grep -e R$ROBOT_id. -e ROBOT_Nr_$ROBOT_id | grep -v $hostname |  xargs rm -f";
+  $cmd="$git ls-files --others --exclude-standard | grep -e R$ROBOT_id. -e ROBOT_Nr_$ROBOT_id | grep -v $hostname |  xargs rm -f";
   &command("$cmd");
   $cmd="find . -name 'ROBOT_Nr_$ROBOT_id' -o -name 'R$ROBOT_id' -type d | grep -v $hostname | xargs rm -fr";
   &command("$cmd");
   &command("rm -f outputs_and_reports_ALL-$ROBOT_string");
  }else{
-  &command("git ls-files --others --exclude-standard | grep -v $hostname | xargs rm -fr");
+  &command("$git ls-files --others --exclude-standard | grep -v $hostname | xargs rm -fr");
   &command("find . -name 'ROBOT_*' -type d | grep -v $hostname | xargs rm -fr");
   &command("rm -f outputs_and_reports_ALL-* *compile*log *config*log");
  }
@@ -57,7 +57,7 @@ if("@_" eq "ALL") {
 #
 # DEEP
 if("@_" eq "DEEP") {
- &command("git status --ignored | grep -e '/ns.' -e '/ndb.' | xargs rm -fr");
+ &command("$git status --ignored | grep -e '/ns.' -e '/ndb.' | xargs rm -fr");
 };
 #
 # BINs

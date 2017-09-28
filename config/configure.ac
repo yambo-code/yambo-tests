@@ -68,6 +68,11 @@ with_ncftpput="ncftpput"
 AC_ARG_WITH(ncftpput, AC_HELP_STRING([--with-ncftpput=<exe>],[User-defined ncftpput],[32]),[],[with_ncftpput="ncftpput"]) 
 AC_CHECK_PROGS(ncftpput,[$with_ncftpput],[none])
 AC_SUBST(ncftpput)
+# git
+with_git="git"
+AC_ARG_WITH(git, AC_HELP_STRING([--with-git=<exe>],[User-defined git],[32]),[],[with_git="git"]) 
+AC_CHECK_PROGS(git,[$with_git],[none])
+AC_SUBST(git)
 # awk
 with_awk="awk"
 AC_ARG_WITH(awk, AC_HELP_STRING([--with-awk=<exe>],[User-defined awk],[32]),[],[with_awk="awk"]) 
