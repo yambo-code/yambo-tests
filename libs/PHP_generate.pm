@@ -39,20 +39,24 @@ foreach $dir (@sorted_dirs) {
 
 }
 #
-sub PHP_extract{
-#
-@lines = <REPORT>;
-#
-&get_line("Build");
-if ($n_patterns eq 0) {return};
-$branch_key=$pattern[0][1];
-$BUILD=$pattern[0][3];
-$FC_kind=$pattern[0][5];
-$REVISION=$pattern[0][7];
+sub PHP_key_words{
+ &get_line("Build");
+ if ($n_patterns eq 0) {return};
+ $branch_key=$pattern[0][1];
+ $BUILD=$pattern[0][3];
+ $FC_kind=$pattern[0][5];
+ $REVISION=$pattern[0][7];
 #
 &get_line("Date");
 $date=$pattern[0][3];
 $time=$pattern[0][5];
+}
+#
+sub PHP_extract{
+#
+@lines = <REPORT>;
+#
+&PHP_key_words;
 #
 # Name choosing
 $MAX_phps=20;

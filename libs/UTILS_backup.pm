@@ -36,13 +36,23 @@ sub UTILS_list_backups{
  if ("@_" eq "list")
  {
   foreach $dir (@sorted_dirs) {
-   @files = glob("$dir/*_ALL*");
-   my $size = -s $files[0];
+   #
+   @REPS = glob("$dir/REPORT*");
+   open(REPORT,"<","$suite_dir/$REPS[0]");
+   @lines = <REPORT>;
+   &PHP_key_words;
+   print "DATE  : $date\n";
+   print "TIME  : $time\n";
+   print "BRANCH: $branch_key\n";
+   print "FC    : $FC_kind\n";
+   close(REPORT);
+   #
+   @DATAS = glob("$dir/*_ALL*");
+   my $size = -s $DATAS[0];
    $size=int($size/1024/1000);
    my $show = (split ( "$user/", $dir )) [1];
-   print "$show";
-   if ($size>100) {
-    &command("rm -f $files[0]");
+   if ($size>100 and $clean) {
+    &command("rm -f $DATAS[0]");
     print "...cleaning DATA's\n";
    }else{
     print "\n";
