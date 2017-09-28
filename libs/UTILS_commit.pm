@@ -25,8 +25,8 @@
 #
 sub UTILS_commit{
 &command("echo '$date"."-"."$time' > ROBOTS/$host/$user/TIME_ID");
-&command("git pull -q");
-&command("git commit -a -F $BACKUP_dir/$BACKUP_subdir/$global_report");
-&command("git push");
+&command("$git pull -q");
+&command("$git commit -a -F $BACKUP_dir/$BACKUP_subdir/$global_report");
+&command("$git push");
 }
 1;

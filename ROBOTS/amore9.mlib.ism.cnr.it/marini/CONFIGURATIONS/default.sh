@@ -15,6 +15,7 @@ $CONF_LINE \
 --enable-keep-extlibs \
 --enable-iotk \
 --enable-time-profile \
+--enable-memory-profile=yes \
 --enable-msgs-comps \
 --enable-int-linalg \
 --enable-par-linalg \

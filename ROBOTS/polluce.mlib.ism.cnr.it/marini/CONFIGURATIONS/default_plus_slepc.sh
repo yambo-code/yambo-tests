@@ -1,4 +1,7 @@
 #!/bin/sh
+#--enable-time-profile \
+#--enable-memory-profile=yes \
+#--enable-open-mp \
 CONF_LINE="FC=gfortran"
 IF_COMPILE=`which ifort`
 if [ -e "$IF_COMPILE" ]
@@ -14,11 +17,9 @@ fi
 $CONF_LINE \
 --enable-keep-extlibs \
 --enable-iotk \
---enable-time-profile \
 --enable-msgs-comps \
 --enable-int-linalg \
 --enable-par-linalg \
---enable-open-mp \
 --with-blacs-libs="yes" \
 --with-scalapack-libs="yes" \
 --with-petsc-libs \

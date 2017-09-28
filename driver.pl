@@ -86,7 +86,7 @@ if($help){
 #
 # Show extra files
 if($repo_check){ 
- &command("git status --ignored | grep -v SAVE | grep -v GKKP | grep -v .gz");
+ &command("$git status --ignored | grep -v SAVE | grep -v GKKP | grep -v .gz");
  die "\n";
 };
 #
@@ -136,8 +136,8 @@ if ($php) {
 #Tag broken
 if ($tag_test_as_broken)
 {
- &command("touch   $TESTS_folder/$tag_test_as_broken/BROKEN");
- &command("git add $TESTS_folder/$tag_test_as_broken/BROKEN");
+ &command("touch    $TESTS_folder/$tag_test_as_broken/BROKEN");
+ &command("$git add $TESTS_folder/$tag_test_as_broken/BROKEN");
  die;
 }
 if ($update_test){
@@ -186,7 +186,7 @@ if ($RUNNING_suite) {
  # Global Report
  &RUN_global_report("INIT");
  #
- if (! $dry_run) {&command("cd $suite_dir; git pull")};
+ if (! $dry_run) {&command("cd $suite_dir; $git pull")};
  #
  &SETUP_branch("load_the_branches");
  #

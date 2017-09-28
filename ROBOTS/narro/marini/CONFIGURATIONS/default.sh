@@ -16,6 +16,7 @@ fi
 FC=$FC \
 --enable-keep-extlibs \
 --enable-iotk \
+--enable-memory-profile=yes \
 --enable-time-profile \
 --enable-msgs-comps \
 --enable-int-linalg \

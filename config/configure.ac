@@ -56,31 +56,30 @@ AC_SUBST(hostname)
 # ============================================================================
 # TOOLS
 # ncftp/ncftpls/ncftpput
-with_ncftp="ncftp"
 AC_ARG_WITH(ncftp, AC_HELP_STRING([--with-ncftp=<exe>],[User-defined ncftp],[32]),[],[with_ncftp="ncftp"]) 
 AC_CHECK_PROGS(ncftp,[$with_ncftp],[none])
 AC_SUBST(ncftp)
-with_ncftpls="ncftpls"
 AC_ARG_WITH(ncftpls, AC_HELP_STRING([--with-ncftpls=<exe>],[User-defined ncftpls],[32]),[],[with_ncftpls="ncftpls"]) 
 AC_CHECK_PROGS(ncftpls,[$with_ncftpls],[none])
 AC_SUBST(ncftpls)
-with_ncftpput="ncftpput"
 AC_ARG_WITH(ncftpput, AC_HELP_STRING([--with-ncftpput=<exe>],[User-defined ncftpput],[32]),[],[with_ncftpput="ncftpput"]) 
 AC_CHECK_PROGS(ncftpput,[$with_ncftpput],[none])
 AC_SUBST(ncftpput)
+# git
+AC_ARG_WITH(git, AC_HELP_STRING([--with-git=<exe>],[User-defined git],[32]),[],[with_git="git"]) 
+AC_CHECK_PROGS(git,[$with_git],[none])
+if test $git = "none"; then AC_MSG_ERROR([Please provide the path to a working git]); fi
+AC_SUBST(git)
 # awk
-with_awk="awk"
 AC_ARG_WITH(awk, AC_HELP_STRING([--with-awk=<exe>],[User-defined awk],[32]),[],[with_awk="awk"]) 
 AC_CHECK_PROGS(awk,[$with_awk],[none])
 if test $awk = "none"; then AC_MSG_ERROR([Please provide the path to a working awk]); fi
 AC_SUBST(awk)
 # txt2html
-with_txt2html="txt2html"
 AC_ARG_WITH(txt2html, AC_HELP_STRING([--with-txt2html=<exe>],[User-defined txt2html],[32]),[],[with_txt2html="txt2html"]) 
 AC_CHECK_PROGS(txt2html,[$with_txt2html],[none])
 AC_SUBST(txt2html)
 # rsync
-with_rsync="rsync"
 AC_ARG_WITH(rsync, AC_HELP_STRING([--with-rsync=<exe>],[User-defined rsync],[32]),[],[with_rsync="rsync"]) 
 AC_CHECK_PROGS(rsync,[$with_rsync],[none])
 if test $rsync = "none"; then AC_MSG_ERROR([Please provide the path to a working rsync]); fi
