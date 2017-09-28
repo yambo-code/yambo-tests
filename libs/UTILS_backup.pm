@@ -22,6 +22,35 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
+sub UTILS_list_backups{
+ my @dir = ( "$host/$user" );
+ my @dirs;
+ find( sub { push @dirs, $File::Find::name if -d }, @dir );
+ my @dirs_to_process;
+ foreach $dir (@dirs) {
+  @files = glob("$dir/REPORT*");
+  next if (scalar(@files) eq 0);
+  push @dirs_to_process, $dir;
+ }
+ @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process;
+ if ("@_" eq "list")
+ {
+  foreach $dir (@sorted_dirs) {
+   @files = glob("$dir/*_ALL*");
+   my $size = -s $files[0];
+   $size=int($size/1024/1000);
+   my $show = (split ( "$user/", $dir )) [1];
+   print "$show";
+   if ($size>100) {
+    &command("rm -f $files[0]");
+    print "...cleaning DATA's\n";
+   }else{
+    print "\n";
+   }
+  }
+ }
+}
+#
 sub UTILS_backup_save{
 if ($compile) {&command("mkdir -p $BACKUP_dir/compilation")};
 foreach $conf_file (<*$ROBOT_string*.log>){

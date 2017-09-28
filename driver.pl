@@ -101,9 +101,8 @@ if($download){
 }
 #
 # Clean and exit
-if($clean){ 
+if($clean and not $backup_logs){ 
  print "Cleaning";
- #&UTILS_clean("RESTORE");
  &UTILS_clean("ALL");
  &UTILS_clean("BINs");
  print "... test databases outputs logfiles bin(s)";
@@ -156,13 +155,7 @@ if($upload){ &FTP_upload_it("$upload","testing-robots/databases") };
 if ($user_tests or $theme or $compile or $flow or $autotest) {$RUNNING_suite="yes"};
 #
 if ($backup_logs and !$RUNNING_suite) {
- &UTILS_backup();
- &UTILS_backup_save();
- if ($report){ 
-  &PHP_generate(); 
-  &PHP_upload();
-  #&UTILS_commit();
- }
+ &UTILS_list_backups("list");
  die;
 }
 #

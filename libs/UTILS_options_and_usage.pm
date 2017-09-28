@@ -145,12 +145,15 @@ sub UTILS_usage {
    (Auto-testing)
              -autotest              Perform a simple serial minimal auto-test.
 
-   (REPORTING and more)
-             -b                     BACKUP the LOGs (automatically used when -report is given)>
+   (Reporting)
              -failed <ERROR>        Create a failed.pl theme reading the ERROR file.
              -php                   Translate the latest 20 REPORT files in the ROBOT history in a php format and upload.
              -report                Commit the final report to the ML.
              -u                     UPLOAD the LOGs at the end
+
+   (Backup)
+             -b                     If running BACKUP the LOGs (automatically used when -report is given)
+                                    Otherwise list the BACKUPs available
 
    (FTP actions)           
              -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS, for example).

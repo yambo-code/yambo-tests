@@ -26,16 +26,8 @@ sub PHP_generate{
 #
 &command("rm -f $host/www/*");
 #
-my @dir = ( "$host/$user" );
-my @dirs;
-find( sub { push @dirs, $File::Find::name if -d }, @dir );
-my @dirs_to_process;
-foreach $dir (@dirs) {
- @files = glob("$dir/REPORT*");
- next if (scalar(@files) eq 0);
- push @dirs_to_process, $dir;
-}
-my @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process;
+&UTILS_list_backups;
+#
 foreach $dir (@sorted_dirs) {
  @files = glob("$dir/REPORT*");
  foreach $file (@files) {

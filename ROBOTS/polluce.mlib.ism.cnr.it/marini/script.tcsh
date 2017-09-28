@@ -18,6 +18,9 @@ module load intel/composer_xe_12 intel/parallel_2017
 endif
 
 if ( "$1" == "run") then
-./driver.pl -flow validate -report -robot $3 
-#-newer 2
+ if ( "$3" == "5" || "$3" == "6" ) then
+  ./driver.pl -flow validate_slepc -report -newer 3 -robot $3 
+ else
+  ./driver.pl -flow validate -report -newer 3 -robot $3 
+ endif
 endif
