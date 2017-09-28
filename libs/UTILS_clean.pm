@@ -68,6 +68,7 @@ if("@_" eq "BINs" ) {
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
    $conf_bin  = "$branchdir/bin-$conf_file-$FC_kind";
+   if ($ROBOT_id) {$conf_bin  = "$branchdir/bin-$conf_file-$FC_kind-$ROBOT_string"};
    &command("rm -fr $conf_bin* $branchdir/bin-precompiled*");
   }
  }
