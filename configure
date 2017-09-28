@@ -1842,7 +1842,6 @@ fi
 # ============================================================================
 # TOOLS
 # ncftp/ncftpls/ncftpput
-with_ncftp="ncftp"
 
 # Check whether --with-ncftp was given.
 if test "${with_ncftp+set}" = set; then :
@@ -1895,7 +1894,6 @@ done
 test -n "$ncftp" || ncftp="none"
 
 
-with_ncftpls="ncftpls"
 
 # Check whether --with-ncftpls was given.
 if test "${with_ncftpls+set}" = set; then :
@@ -1948,7 +1946,6 @@ done
 test -n "$ncftpls" || ncftpls="none"
 
 
-with_ncftpput="ncftpput"
 
 # Check whether --with-ncftpput was given.
 if test "${with_ncftpput+set}" = set; then :
@@ -2002,7 +1999,6 @@ test -n "$ncftpput" || ncftpput="none"
 
 
 # git
-with_git="git"
 
 # Check whether --with-git was given.
 if test "${with_git+set}" = set; then :
@@ -2054,9 +2050,9 @@ fi
 done
 test -n "$git" || git="none"
 
+if test $git = "none"; then as_fn_error $? "Please provide the path to a working git" "$LINENO" 5; fi
 
 # awk
-with_awk="awk"
 
 # Check whether --with-awk was given.
 if test "${with_awk+set}" = set; then :
@@ -2111,13 +2107,12 @@ test -n "$awk" || awk="none"
 if test $awk = "none"; then as_fn_error $? "Please provide the path to a working awk" "$LINENO" 5; fi
 
 # txt2html
-with_txt2html="txt2html"
 
 # Check whether --with-txt2html was given.
 if test "${with_txt2html+set}" = set; then :
   withval=$with_txt2html;
 else
-  with_txt2html="txt2html"
+  with_txt2html="txt2htmla"
 fi
 
 for ac_prog in $with_txt2html
@@ -2165,7 +2160,6 @@ test -n "$txt2html" || txt2html="none"
 
 
 # rsync
-with_rsync="rsync"
 
 # Check whether --with-rsync was given.
 if test "${with_rsync+set}" = set; then :
