@@ -22,6 +22,7 @@
 #
 sub UTILS_upload
 {
+chdir("$suite_dir");
 @paths = split(/\//,$upload_test);
 $archive = $upload_test;
 $archive =~ s/\//_/;
@@ -33,10 +34,10 @@ if ( scalar @paths > 1) {
   $test_subdir =~ s/$test_dir\///;
 }
 chdir("$TESTS_folder/$test_dir");
-&command("find $test_subdir -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | xargs tar cvf $archive.tar");
+&command("find $test_subdir -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
 &command("gzip $archive.tar");
-&FTP_upload_it("$archive.tar.gz","testing-robots/databases")
-&command("rm -f $archive.tar.gz");
-die;
+&FTP_upload_it("$archive.tar.gz","testing-robots/databases");
+&command("rm -f $test_subdir/SAVE/*");
+&command("git add $test_subdir/SAVE");
 }
 1;

@@ -54,7 +54,7 @@ if (-d "$TESTS_folder/$TEST_todo/INPUTS"){
 }
 chdir("$TESTS_folder/$DIR_here");
 #
-if (not -f "SAVE/ndb.gops") 
+if (not -f "$ROBOT_wd/SAVE/ndb.gops") 
 {
  die "\n\n It seems the test-suite could not run";
 }
@@ -66,12 +66,13 @@ if ($branch_key eq "master")
  $REF="REFERENCE_".$branch_key;
  if (not -d $REF) 
  { 
-  &command("mkdir $REF");
-  &command("$git add $REF"."@");
+  &command("mkdir -p ../$REF");
+  &command("$git add ../$REF");
  }
 }
 #
-die;
+&command("$git add INPUTS");
+&command("$git add $REF");
 #
 }
 sub UPDATE_action{
@@ -84,19 +85,19 @@ if ($branch_key eq "master")
 };
 if (not -d $REF_folder) 
 { 
- &command("mkdir $REF_folder");
- &command("$git --force add $REF_folder"."@");
+ &command("mkdir -p ../$REF_folder");
+ &command("$git add ../$REF_folder");
 };
 if ("@_" eq "RM" and "$REF_folder" eq "REFERENCE"){
- &command("$git --force rm $ref_filename"."@");
+ &command("$git rm ../$ref_filename");
 }
 if ("@_" eq "ADD")
 {
- &command("cp $run_filename $REF_folder");
- &command("$git --force add $REF_folder/$run_filename"."@");
+ &command("cp $run_filename ../$REF_folder");
+ &command("$git  add ../$REF_folder/$run_filename");
  foreach my $file (<r*$testname*>,<l*$testname*>) {
-  &command("cp $file* $REF_folder");
-  &command("$git --force add $REF_folder/$file"."@");
+  &command("cp $file* ../$REF_folder");
+  &command("$git add ../$REF_folder/$file");
  }
 }
 #

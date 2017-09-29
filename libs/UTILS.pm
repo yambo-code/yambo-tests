@@ -37,7 +37,7 @@ if (not "$pid" eq "") {&command("kill -9 $pid")};
 }
 sub command{
 $cmd="@_";
-if ($verb ge 2){
+if ($verb){
  my $cwd=abs_path();
  &MY_PRINT($stdout, "$cmd @ $cwd\n");
 }

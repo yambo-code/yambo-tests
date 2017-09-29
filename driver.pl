@@ -140,19 +140,13 @@ if ($tag_test_as_broken)
  &command("$git add $TESTS_folder/$tag_test_as_broken/BROKEN");
  die;
 }
-if ($update_test){
- &UTILS_update;
- &UTILS_clean("ALL");
- die;
-}
-#
 if ($upload_test){ &UTILS_upload };
 #
 # FTP-related actions
 if($ftp){ &FTP_it };
 if($upload){ &FTP_upload_it("$upload","testing-robots/databases") };
 #
-if ($user_tests or $theme or $compile or $flow or $autotest) {$RUNNING_suite="yes"};
+if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$RUNNING_suite="yes"};
 #
 if ($backup_logs and !$RUNNING_suite) {
  &UTILS_list_backups("list");
@@ -228,6 +222,13 @@ if ($RUNNING_suite) {
    #
   }
   #
+ }
+ #
+ if ($update_test){
+  &UTILS_update;
+  $upload_test=$update_test;
+  &UTILS_upload;
+  die;
  }
  #
  if ($autotest) {
