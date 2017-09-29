@@ -35,6 +35,9 @@ call add_RULE("_FIT_electrons","whitelist")
 call add_RULE(".YPP-RT_E_Fermi","whitelist")
 call add_RULE(".YPP-RT_Temperatures","whitelist")
 !
+! Requested by Davide for devel-rt
+call add_RULE(".energies","whitelist")
+!
 ! It seems like in a parallel run the energy explodes. Accumulation of errors?
 call add_RULE("o-03_tdlda.energy","whitelist",MATERIAL="H2")
 !
