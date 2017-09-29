@@ -258,13 +258,13 @@ if (not $FLOWS_done or not $AT_LEAST_ONE) {
  die "\n";
 }
 #
+&RUN_global_report("FINAL");
+#
 close $rlog;
 close $tlog;
 close $elog;
 close $wlog;
 close $flog;
-#
-&RUN_global_report("FINAL");
 #
 if ($DATA_backup_file) {
  if ($backup_logs) {
