@@ -68,8 +68,15 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   # Basic Setup
   &SETUP("DIR");
   #
-  $error=&SOURCE_driver( );
-  if ($error eq "FAIL") {next LOOP_CONF};
+  if (not $BRANCH_is_correctly_compiled[$ib])  {
+   $error=&SOURCE_driver( );
+   if ($error eq "FAIL") {next LOOP_CONF};
+  }
+  #
+  # MSGs
+  #
+  &UTILS_title($stdout);
+  &MY_PRINT($stdout, "\n$line");
   #
   # find_the_diff
   &COMPILE_find_the_diff("compile");

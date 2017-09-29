@@ -119,7 +119,7 @@ foreach $conf_file (<*config.log>,<*compile.log>) {
  &command("mkdir -p $BACKUP_dir/compilation");
  &command("mv $conf_file $BACKUP_dir/compilation/");
 };
-if (-f LOG*$ROBOT_string) {&command("cp LOG*$ROBOT_string $BACKUP_dir")};
+if (-f "LOG_$ROBOT_id") {&command("cp LOG_$ROBOT_id $BACKUP_dir")};
 }
 1;
 

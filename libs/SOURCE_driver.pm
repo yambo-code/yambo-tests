@@ -168,10 +168,9 @@ if (not "$ERROR" eq "OK") {
  return "FAIL";
 }
 #
-# MSGs
+# LOCK
+$BRANCH_is_correctly_compiled[$ib]=1;
 #
-&UTILS_title($stdout);
-&MY_PRINT($stdout, "\n$line");
 return "OK";
 }
 sub exe_check{

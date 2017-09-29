@@ -28,13 +28,13 @@ my $fh = shift;
 #
 # tests
 if ($verb ge 2) {
- &MY_PRINT( $fh, "\n        Running tests : ".join("\n                ",@input_tests_list)) if (!$reduced_log) ;
+ &MY_PRINT( $fh, "\n        Running tests : ".join("\n                ",@input_tests_list));
 }else{
- &MY_PRINT( $fh, "\n        Running tests : ".$user_tests) if (!$reduced_log) ;
+ &MY_PRINT( $fh, "\n        Running tests : ".$user_tests);
 };
 #
 # Projects
-&MY_PRINT( $fh,  "\n             Projects : $project") if (!$reduced_log);
+&MY_PRINT( $fh,  "\n             Projects : $project");
 #
 # Verb
 $verbosity_level = "low";
@@ -46,18 +46,18 @@ $verbosity_level = "highest" if ($verb ge 2);
 &MY_PRINT( $fh, "\n                 User : $user ") if (!$reduced_log);
 #
 if ($branch) {
- &MY_PRINT( $fh,  "\n             revision : $REVISION ");
- &MY_PRINT( $fh,  "\n                build : $BUILD ");
- &MY_PRINT( $fh,  "\n             compiler : $FC_kind ");
+ &MY_PRINT( $fh,  "\n             revision : $REVISION ") if (!$reduced_log);
+ &MY_PRINT( $fh,  "\n                build : $BUILD ") if (!$reduced_log);
+ &MY_PRINT( $fh,  "\n             compiler : $FC_kind ") if (!$reduced_log);
  &MY_PRINT( $fh,  "\n              bin dir : $conf_bin ");
- &MY_PRINT( $fh,  "\n           shortname  : $branch_key");
+ &MY_PRINT( $fh,  "\n           shortname  : $branch_key") if (!$reduced_log);
 }
-#
-# PARALLEL stuff
 #
 if ($branch) {
  &MY_PRINT( $fh,  "\n               source : $branch ");
 }
+#
+# PARALLEL stuff
 #
 $PAR_mode="none";
 if($#NP_set > 1 or $NP_set[0]>1) { 
