@@ -124,6 +124,16 @@ if ($compile)
  }
 }
 #
+# Get the build string (useful to understand if the code is compiled with MPI,SLK and OpenMP)
+#
+my $ERROR=&SETUP_build;
+if (not "$ERROR" eq "OK") {
+ &MY_PRINT($stdout, "\n$ERROR. Code build is $BUILD, skipping...\n");
+ return "FAIL";
+}
+#
+if ($BRANCH_is_correctly_compiled[$ib])  {return "OK"};
+#
 # NCDUMP/NCCOPY
 #
 my $sys_ncdump = `which ncdump`; chomp($sys_ncdump);
@@ -158,14 +168,6 @@ if ($compile)
  &command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
  &command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");
  chdir $suite_dir;
-}
-#
-# Get the build string (useful to understand if the code is compiled with MPI,SLK and OpenMP)
-#
-my $ERROR=&SETUP_build;
-if (not "$ERROR" eq "OK") {
- &MY_PRINT($stdout, "\n$ERROR. Code build is $BUILD, skipping...\n");
- return "FAIL";
 }
 #
 # LOCK

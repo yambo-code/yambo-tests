@@ -68,10 +68,8 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   # Basic Setup
   &SETUP("DIR");
   #
-  if (not $BRANCH_is_correctly_compiled[$ib])  {
-   $error=&SOURCE_driver( );
-   if ($error eq "FAIL") {next LOOP_CONF};
-  }
+  $error=&SOURCE_driver( );
+  if ($error eq "FAIL") {next LOOP_CONF};
   #
   # MSGs
   #

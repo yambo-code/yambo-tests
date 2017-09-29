@@ -3,8 +3,8 @@
 @flow = (
 {
  ACTIVE      => "yes",
-# CONFIG      => "default.sh",
- CONFIG      => "default_precompiled.sh",
+ CONFIG      => "default.sh",
+# CONFIG      => "default_precompiled.sh",
  TESTS       => "all",
  KEYS        => "all hard",
 },

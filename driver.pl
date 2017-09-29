@@ -159,7 +159,7 @@ if ($RUNNING_suite) {
  #
  # Array to avoid double configure of branches
  #
- undef @BRANCH_is_correctly_compiled;
+ undef $BRANCH_is_correctly_compiled;
  #
  # Robot ID definition
  #

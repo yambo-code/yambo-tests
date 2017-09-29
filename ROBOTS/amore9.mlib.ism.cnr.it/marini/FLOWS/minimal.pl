@@ -2,9 +2,10 @@
 #
 @flow = (
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
 # CONFIG      => "default.sh",
- TESTS       => "PA_chain; Al_bulk/GW-OPTICS; WSe2/RT; hBN/SC; Diamond/ELPH1",
+ TESTS       => "Al_bulk/GW-OPTICS 01_init",
+# TESTS       => "PA_chain; Al_bulk/GW-OPTICS; WSe2/RT; hBN/SC; Diamond/ELPH1",
  KEYS        => "all hard",
 },
 {
@@ -13,6 +14,7 @@
  PAR_MODE    => "default",
 },
 {
+ ACTIVE      => "no",
  MPI_CPU     => 8,
  PAR_MODE    => "random",
 },
@@ -22,17 +24,17 @@
  PAR_MODE    => "loop",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  THREADS     => 8,
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => 8,
  SLK_CPU     => 4,
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => 8,
  THREADS     => 4,
  SLK_CPU     => 4,
