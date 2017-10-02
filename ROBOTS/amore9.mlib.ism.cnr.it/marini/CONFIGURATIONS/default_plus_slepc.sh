@@ -20,4 +20,6 @@ $CONF_LINE \
 --enable-msgs-comps \
 --enable-int-linalg \
 --enable-par-linalg \
---enable-keep-src   
+--enable-keep-src \
+--with-petsc-libs \
+--with-slepc-libs 

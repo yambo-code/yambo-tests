@@ -36,10 +36,10 @@ call add_RULE(".YPP-RT_E_Fermi","whitelist")
 call add_RULE(".YPP-RT_Temperatures","whitelist")
 !
 ! Requested by Davide for devel-rt
-call add_RULE(".energies","whitelist")
+call add_RULE(".energy","whitelist")
 !
 ! It seems like in a parallel run the energy explodes. Accumulation of errors?
-call add_RULE("o-03_tdlda.energy","whitelist",MATERIAL="H2")
+!call add_RULE("o-03_tdlda.energy","whitelist",MATERIAL="H2")
 !
 ! Thermodynamics is affected by numerical noise due to addition/removal of values.
 call add_RULE(".thermodynamics","whitelist")
