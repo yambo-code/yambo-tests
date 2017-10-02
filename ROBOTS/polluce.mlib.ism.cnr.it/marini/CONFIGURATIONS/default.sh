@@ -1,9 +1,9 @@
 #!/bin/sh
-CONF_LINE="FC=gfortran"
+CONF_LINE="FC=gfortran --with-extlibs-path=/scratch/marini/LIBS"
 IF_COMPILE=`which ifort`
 if [ -e "$IF_COMPILE" ]
 then
- CONF_LINE="FC=ifort"
+CONF_LINE="FC=ifort --with-extlibs-path=/scratch/marini/LIBS"
 fi
 IF_COMPILE=`which pgf90`
 if [ -e "$IF_COMPILE" ]
@@ -15,9 +15,9 @@ $CONF_LINE \
 --enable-keep-extlibs \
 --enable-iotk \
 --enable-time-profile \
+--enable-memory-profile \
+--enable-open-mp \
 --enable-msgs-comps \
 --enable-int-linalg \
 --enable-par-linalg \
---enable-open-mp \
---with-blacs-libs="yes" \
---with-scalapack-libs="yes"
+--enable-keep-src 

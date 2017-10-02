@@ -19,8 +19,8 @@ endif
 
 if ( "$1" == "run") then
  if ( "$3" == "5" || "$3" == "6" ) then
-  ./driver.pl -flow validate_slepc -report -newer 3 -robot $3 
+  ./driver.pl -flow validate_slepc -report -newer 10 -robot $3 
  else
-  ./driver.pl -flow validate -report -newer 3 -robot $3 
+  ./driver.pl -flow validate -report -newer 10 -robot $3 
  endif
 endif
