@@ -33,7 +33,10 @@ sub SOURCE_compile{
    &command("make -j $make_exec >> $comp_logfile 2>&1");
    if (not $make_exec =~ /ext-libs/ and not $make_exec =~ /interfaces/)
    {
-     if (not -x "$BRANCH/$conf_bin/$make_exec") {return "FAIL"};
+     if (not -x "$BRANCH/bin/$make_exec") {
+      &MY_PRINT($stdout, "FAILED! Skipping.\n");
+      return "FAIL";
+     }
    }
  }
  close(COMPLOGFILE);

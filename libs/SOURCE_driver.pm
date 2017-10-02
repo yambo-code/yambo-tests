@@ -170,7 +170,7 @@ if (-e "$BRANCH/$conf_bin/nccopy") {
 #
 # Rename the conf/comp logs
 #
-if ($compile) {&LOGS_move};
+if ($compile) {&LOGs_move};
 #
 # LOCK
 $BRANCH_is_correctly_compiled[$ib]=1;
