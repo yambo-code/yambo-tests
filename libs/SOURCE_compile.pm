@@ -31,9 +31,14 @@ sub SOURCE_compile{
  foreach $make_exec (@executables) {
    &MY_PRINT($stdout, "$make_exec ...");
    &command("make -j $make_exec >> $comp_logfile 2>&1");
+   if (not $make_exec =~ /ext-libs/ and not $make_exec =~ /interfaces/)
+   {
+     if (not -x "$BRANCH/$conf_bin/$make_exec") {return "FAIL"};
+   }
  }
  close(COMPLOGFILE);
  &MY_PRINT($stdout, "done.");
  chdir $suite_dir;
+ return "OK";
 }
 1;

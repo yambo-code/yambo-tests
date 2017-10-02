@@ -75,7 +75,10 @@ if ($compile) {
  #
  # CONFIG
  $ERROR=&SOURCE_config;
- if ("$ERROR" eq "FAIL") {return "FAIL"};
+ if ("$ERROR" eq "FAIL") {
+  &LOGs_move;
+  return "FAIL";
+ }
  #
  chdir $suite_dir;
  #
@@ -109,13 +112,18 @@ if ($compile)
  #
  if ( "$bin_check" eq "FAIL") { 
   &MY_PRINT($stdout, "\n - Source compilation : bin is $conf_bin...");
-  &SOURCE_compile;
+  $ERROR=&SOURCE_compile;
+  if ("$ERROR" eq "FAIL") {
+   &LOGs_move;
+   return "FAIL";
+  }
   chdir $BRANCH;
   &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
   &MY_PRINT($stdout,  "\n -       Source Check : compiled ($conf_bin) ... ");
   $bin_check=&exe_check;
   if ( "$bin_check" eq "FAIL") {
    &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH, skipping...\n");
+   &LOGs_move;
    return "FAIL";
   }
   chdir $suite_dir;
@@ -129,6 +137,7 @@ if ($compile)
 my $ERROR=&SETUP_build;
 if (not "$ERROR" eq "OK") {
  &MY_PRINT($stdout, "\n$ERROR. Code build is $BUILD, skipping...\n");
+ &LOGs_move;
  return "FAIL";
 }
 #
@@ -161,14 +170,7 @@ if (-e "$BRANCH/$conf_bin/nccopy") {
 #
 # Rename the conf/comp logs
 #
-if ($compile)
-{
- chdir $BRANCH;
- my $extension=$branch_key.'-'.$conf_file.'-'.$ROBOT_string.'-'.$host;
- &command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
- &command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");
- chdir $suite_dir;
-}
+if ($compile) {&LOGS_move};
 #
 # LOCK
 $BRANCH_is_correctly_compiled[$ib]=1;
@@ -201,5 +203,12 @@ sub SOURCE_delay{
   chdir $suite_dir;
   return "FAIL";
  }
+}
+sub LOGs_move{
+ chdir $BRANCH;
+ my $extension=$branch_key.'-'.$FC_kind.'-'.$conf_file.'-'.$ROBOT_string.'-'.$host;
+ &command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
+ &command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");
+ chdir $suite_dir;
 }
 1;
