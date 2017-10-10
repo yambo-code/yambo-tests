@@ -7,14 +7,19 @@ if ( "$1" == "clean") then
 ./driver.pl -d all 
 endif
 
-if ( "$2" == "gfortran") then
+if ( "$2" == "gf_mpich") then
 module purge
-module load gcc6/gcc-6.3.0 gcc6/mpich-3.2  
+module load local/gcc6/yambo/mpich-3.2
+endif
+
+if ( "$2" == "gf_openmpi") then
+module purge
+module load local/gcc6/yambo/openmpi-2.1.0 
 endif
 
 if ( "$2" == "intel") then
 module purge
-module load intel/composer_xe_12 intel/parallel_2017
+module load local/intel/parallel_2017
 endif
 
 if ( "$1" == "run") then
