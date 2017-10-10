@@ -1,9 +1,9 @@
 #!/bin/sh
-CONF_LINE="FC=gfortran --with-extlibs-path=/data/marini/LIBS"
+CONF_LINE="FC=gfortran"
 IF_COMPILE=`which ifort`
 if [ -e "$IF_COMPILE" ]
 then
-CONF_LINE="FC=ifort --with-extlibs-path=/data/marini/LIBS"
+CONF_LINE="FC=ifort"
 fi
 IF_COMPILE=`which pgf90`
 if [ -e "$IF_COMPILE" ]
@@ -12,6 +12,7 @@ then
 fi
 ./configure \
 $CONF_LINE \
+--with-extlibs-path=$YAMBO_EXT_LIBS \
 --enable-keep-extlibs \
 --enable-iotk \
 --enable-time-profile \
