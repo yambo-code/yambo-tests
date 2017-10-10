@@ -195,7 +195,7 @@ sub SOURCE_delay{
  chomp($result);
  my @rs=split(' ', $result);
  my $day= &UTILS_day($rs[1],$rs[2]);
- my $delay=$current_day-$day+($current_year-$rs[4])*365;
+ my $delay=$INITIAL_day-$day+($INITIAL_year-$rs[4])*365;
  #
  if ($delay > $max_delay_commits)
  {

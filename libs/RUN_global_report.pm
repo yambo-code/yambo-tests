@@ -43,6 +43,9 @@ if ("$what" eq "INIT") {
  &MESSAGE("WHITE" ,"\n% Yambo test suite WHITELISTEd files log");
  &MESSAGE("ERROR" ,"\n% Yambo test suite ERRORs log");
  &MESSAGE("REPORT ERROR WHITE","\n$wiggly_line");
+ $INITIAL_day    = $current_day;
+ $INITIAL_year   = $current_year;
+ $INITIAL_month  = $current_month;
  $INITIAL_time   = [gettimeofday];
  $REFERENCE_time = [gettimeofday];
 }elsif ("$what" eq "TITLE"){
