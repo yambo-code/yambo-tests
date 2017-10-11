@@ -184,7 +184,7 @@ if ($RUNNING_suite) {
  # Global Report
  &RUN_global_report("INIT");
  #
- if (! $dry_run) {&command("cd $suite_dir; $git pull")};
+ #if (! $dry_run) {&command("cd $suite_dir; $git pull")};
  #
  &SETUP_branch("load_the_branches");
  #

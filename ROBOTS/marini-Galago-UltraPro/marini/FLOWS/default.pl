@@ -16,6 +16,7 @@
 #
 @flow = (
 {
+ CONFIG      => "default.sh",
  TESTS       => "hBN/GW-OPTICS 01_init",
  ACTIVE      => "yes",
 },

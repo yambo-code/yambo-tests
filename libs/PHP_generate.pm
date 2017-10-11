@@ -44,8 +44,9 @@ sub PHP_key_words{
  if ($n_patterns eq 0) {return};
  $branch_key=$pattern[0][1];
  $BUILD=$pattern[0][3];
- $FC_kind=$pattern[0][5];
- $REVISION=$pattern[0][7];
+ $MPI_kind=$pattern[0][5];
+ $FC_kind=$pattern[0][7];
+ $REVISION=$pattern[0][9];
 #
 &get_line("Date");
 $date=$pattern[0][3];
@@ -123,7 +124,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP"," <br><a href='$report_php'> report</a>")
 &MESSAGE("PHP"," <br><a href='$error_php'> error</a></td>")
 &MESSAGE("PHP"," <td>$branch_key</td>\n");
-&MESSAGE("PHP"," <td>$FC_kind</td>\n");
+&MESSAGE("PHP"," <td>$FC_kind<br>$MPI_kind</td>\n");
 &MESSAGE("PHP"," <td>$date<br>$time</td>\n");
 &MESSAGE("PHP"," <td>$REVISION<br>$BUILD</td>\n");
 &get_line("RUNS_FAIL");

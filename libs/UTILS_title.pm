@@ -48,8 +48,8 @@ $verbosity_level = "highest" if ($verb ge 2);
 if ($branch) {
  &MY_PRINT( $fh,  "\n             revision : $REVISION ") if (!$reduced_log);
  &MY_PRINT( $fh,  "\n                build : $BUILD ") if (!$reduced_log);
- &MY_PRINT( $fh,  "\n             compiler : $FC_kind ") if (!$reduced_log);
- &MY_PRINT( $fh,  "\n              bin dir : $conf_bin ");
+ &MY_PRINT( $fh,  "\n             compiler : $FC_kind $MPI_kind ") if (!$reduced_log);
+ &MY_PRINT( $fh,  "\n              bin dir : $conf_bin");
  &MY_PRINT( $fh,  "\n           shortname  : $branch_key") if (!$reduced_log);
 }
 #

@@ -24,12 +24,18 @@
 #
 sub SETUP_FC_kind{
 open(SETUP_file,"<","$BRANCH/config/setup");
+$MPI_kind="unknown";
 while(<SETUP_file>) {
  chomp($_);
  if($_ =~ /fc_kind/) { 
   ($desc, $equal, $FC_kind) = split(/\s+/,$_);
  }
+ if($_ =~ /mpi_kind/) { 
+  ($desc, $MPI_kind) = split(/=/,$_);
+ }
 };
 close(SETUP_file);
+if($MPI_kind =~ /Open/ ) { $MPI_kind_short="OpenMPI" }; 
+if($MPI_kind =~ /MPICH/) { $MPI_kind_short="MPICH" }; 
 }
 1;
