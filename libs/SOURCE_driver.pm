@@ -86,7 +86,11 @@ if ($compile) {
 #
 # FC kind
 #
-&SETUP_FC_kind;
+if ($compile) { 
+ &SETUP_FC_kind 
+}elsif (not $FC_kind){
+ &SETUP_FC_kind 
+};
 #
 # BIN's
 if ("$precompiled_is_run" eq "yes") {
