@@ -44,7 +44,7 @@ sub UTILS_list_backups{
    print "DATE  : $date\n";
    print "TIME  : $time\n";
    print "BRANCH: $branch_key\n";
-   print "FC    : $FC_kind\n";
+   print "FC    : $FC_kind $MPI_kind\n";
    close(REPORT);
    #
    @DATAS = glob("$dir/*_ALL*");

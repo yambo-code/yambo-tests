@@ -37,5 +37,6 @@ while(<SETUP_file>) {
 close(SETUP_file);
 if($MPI_kind =~ /Open/ ) { $MPI_kind_short="OpenMPI" }; 
 if($MPI_kind =~ /MPICH/) { $MPI_kind_short="MPICH" }; 
+if($MPI_kind =~ /Intel/) { $MPI_kind_short="IntelMPI"}; 
 }
 1;

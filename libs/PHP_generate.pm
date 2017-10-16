@@ -47,6 +47,12 @@ sub PHP_key_words{
  $MPI_kind=$pattern[0][5];
  $FC_kind=$pattern[0][7];
  $REVISION=$pattern[0][9];
+ if ($FC_kind =~ /rev./) 
+ {
+  $REVISION=$FC_kind;
+  $FC_kind=$MPI_kind;
+  $MPI_kind=" ";
+ }
 #
 &get_line("Date");
 $date=$pattern[0][3];
