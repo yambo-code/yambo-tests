@@ -34,6 +34,7 @@ sub FLOW_load
   if ( "$field" eq "TESTS"   ) {$user_tests = $flow[$i]{$field}};
   if ( "$field" eq "KEYS"    ) {$keys = $flow[$i]{$field}};
   if ( "$field" eq "PAR_MODE") {$par_mode = $flow[$i]{$field}};
+  if ( "$field" eq "CPU_CONF") {$cpu_conf_file = $flow[$i]{$field}};
  }
  if ($user_branch) {
   undef @branches;
@@ -47,7 +48,9 @@ sub FLOW_load
    $random_parallel="yes"
   }
  }
- #
+ if ($cpu_conf_file) 
+ {
+ }
  return "OK";
 }
 sub FLOW_init
@@ -76,6 +79,7 @@ undef $np_max;
 undef $np_single;
 undef $nt;
 undef $nl;
+undef $cpu_conf_file;
 $par_mode="";
 undef $default_parallel;
 undef $random_parallel;

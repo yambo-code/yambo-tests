@@ -65,6 +65,8 @@ if($#NP_set > 1 or $NP_set[0]>1) {
   $PAR_mode="single, default parallelization";
  }elsif ($random_parallel) {
   $PAR_mode="single, random parallelization";
+ }elsif ($cpu_conf_file) {
+  $PAR_mode="single, user defined parallelization";
  }else{
   $PAR_mode="loop over combinations";
  }

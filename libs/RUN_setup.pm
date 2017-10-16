@@ -64,7 +64,9 @@ if ("@_" =~ "before_run"){
  @specs = split(/\s+/,$string);
  open IN, ">>", "yambo.in" or die "Couldn't open file: $!\n";
  foreach $field (@PAR_field) {print IN "$field \n"};
- foreach $spec (@specs)      {print IN "$spec \n"};
+ foreach $field (@LA_field)  {print IN "$field \n"};
+ foreach $field (@OMP_field) {print IN "$field \n"};
+ foreach $spec  (@specs)     {print IN "$spec \n"};
  close IN;
 }
 if ("@_" =~ "after_run"){

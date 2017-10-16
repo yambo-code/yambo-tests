@@ -4,8 +4,6 @@
 #
 # Authors (see AUTHORS file for details): AM
 #
-# Based on the original driver written by CH
-#
 # This file is distributed under the terms of the GNU
 # General Public License. You can redistribute it and/or
 # modify it under the terms of the GNU General Public
@@ -22,20 +20,16 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-sub RUN_logs{
+sub RUN_load_OPENMP_fields{
 #
-$extension=$branch.'-'.$BUILD.'-'.$FC_kind.'-'.$PAR_string;
-$tests_log="LOG-$ROBOT_string-$date"."_"."$time"."_".$extension.".log";
+my $nt_here=1;
+$nt_here=$nt if ($nt);
 #
-open($tlog, '>', $tests_log) or die "Could not open file '$tests_log' $!";
-#
-# Summary of requested options
-&MESSAGE("LOG","\n$line");
-&MESSAGE("LOG","\n= Yambo test suite log");
-&MESSAGE("LOG","\n$line");
-#
-&UTILS_title($tlog);
-&MY_PRINT($stdout, "\n");
+$OMP_field[1]="K_Threads= $nt_here";
+$OMP_field[2]="X_Threads= $nt_here";
+$OMP_field[3]="DIP_Threads= $nt_here";
+$OMP_field[4]="SE_Threads= $nt_here";
+$OMP_field[5]="RT_Threads= $nt_here";
 #
 }
 1;

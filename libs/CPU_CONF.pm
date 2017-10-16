@@ -22,20 +22,38 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-sub RUN_logs{
-#
-$extension=$branch.'-'.$BUILD.'-'.$FC_kind.'-'.$PAR_string;
-$tests_log="LOG-$ROBOT_string-$date"."_"."$time"."_".$extension.".log";
-#
-open($tlog, '>', $tests_log) or die "Could not open file '$tests_log' $!";
-#
-# Summary of requested options
-&MESSAGE("LOG","\n$line");
-&MESSAGE("LOG","\n= Yambo test suite log");
-&MESSAGE("LOG","\n$line");
-#
-&UTILS_title($tlog);
-&MY_PRINT($stdout, "\n");
-#
+sub CPU_CONF_setup{
+ #
+ if( -e "./ROBOTS/$host/$user/CPU_CONFIGURATIONS/$cpu_conf_file"){
+  my $file="./ROBOTS/$host/$user/CPU_CONFIGURATIONS/$cpu_conf_file";
+  open(CPU_CONF_point,"<","$file");
+  &MY_PRINT($stdout, "CPU_CONF file:$file\n") if ($verb);
+  @CPU_CONF = <CPU_CONF_point>;
+  foreach $CONF (@CPU_CONF){
+   chomp($CONF);
+   my @field = split(/ /, $CONF);
+   if ($field[1] =~ /_CPU/)
+   {
+    my @cpu_field = split(/\./, $field[2]);
+    my $prod=1;
+    for(@cpu_field){$prod *= $_;}
+    if ($np_single<$prod) {$np_single=$prod};
+   }
+  }
+  $Nr=1;
+  $CPU_flag="-E $suite_dir/ROBOTS/$host/$user/CPU_CONFIGURATIONS/$cpu_conf_file";
+  $cpu_conf_key = $cpu_conf_file;
+  $cpu_conf_key =~ s/\.cpu//;
+  close(CPU_CONF_point);
+ }
+ #
+}
+sub CPU_CONF_load{
+ print "@CPU_CONF\n";
+ foreach $CONF (@CPU_CONF){
+  chomp($CONF);
+  print "$CONF\n";
+ }
+ die;
 }
 1;

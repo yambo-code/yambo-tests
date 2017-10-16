@@ -42,9 +42,11 @@ else
  mkdir -p ROBOTS/$robot/$user
  mkdir -p ROBOTS/$robot/$user/CONFIGURATIONS/
  mkdir -p ROBOTS/$robot/$user/FLOWS/
+ mkdir -p ROBOTS/$robot/$user/CPU_CONFIGURATIONS/
  cp config/SAMPLE_config.sh   ROBOTS/$robot/$user/CONFIGURATIONS/default.sh
  cp config/SAMPLE_flow.pl     ROBOTS/$robot/$user/FLOWS/default.pl
  cp config/SAMPLE_validate.pl ROBOTS/$robot/$user/FLOWS/validate.pl
+ cp config/SAMPLE_conf.cpu    ROBOTS/$robot/$user/CPU_CONFIGURATIONS/
  touch ROBOTS/$robot/$user/TIME_ID
  svn --force add ROBOTS/$robot/
  svn --force add ROBOTS/$robot/$user/

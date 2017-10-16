@@ -115,7 +115,13 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   if ($skip_this_test) {next LOOP_INPUTS};
   #
   # Prepare the input file
-  &RUN_load_PAR_fields;
+  &RUN_load_OPENMP_fields;
+  if ($cpu_conf_file) {
+   #&CPU_CONF_load;
+  }else{
+   &RUN_load_LA_fields;
+   &RUN_load_PAR_fields;
+  }
   #
   # Do the actual run!
   LOOP: for ($ir=1; $ir<=$Nr ; $ir++){
@@ -125,7 +131,11 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    # Re-Create the input (if any)
    &RUN_load_actions(".input");
    #
-   $string=$RUN_spec[$ir];
+   if ($cpu_conf_file) {
+    $string=$cpu_conf_key;
+   }else{
+    $string=$MPI_CPU_conf[$ir];
+   }
    #
    &RUN_setup("before_run");
    #

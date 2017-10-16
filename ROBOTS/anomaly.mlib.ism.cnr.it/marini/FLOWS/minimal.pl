@@ -3,7 +3,8 @@
 @flow = (
 {
  ACTIVE      => "yes",
- CONFIG      => "default.sh",
+ CPU_CONF     => "SAMPLE_conf.cpu",
+# CONFIG      => "default.sh",
 # TESTS       => "MoS2/pwscf/RT 00_init 01_fix_symm 02_init",
 # TESTS       => "Iron/abinit/With-SOC 01_init 02_fix_symm 03_init 04_IP-RPA_len",
  TESTS       => "Al_bulk/GW-OPTICS; hBN/GW-OPTICS 01_init 02_HF 03_QP",

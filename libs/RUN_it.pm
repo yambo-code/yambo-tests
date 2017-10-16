@@ -28,10 +28,10 @@ sub RUN_it{
 if($verb ge 2) { &PRINT_input };
 #
 # CMD line
-if ($np==1 or $RUN_spec[1] eq "serial") {
+if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
  $command_line = "$yambo_exec -F yambo.in -J $flags $force_serial $log";
 }else{
- $command_line = "$mpiexec -np $np $yambo_exec -F yambo.in -J $flags $force_serial $log";
+ $command_line = "$mpiexec -np $np $yambo_exec -F yambo.in -J $flags $force_serial $CPU_flag $log";
 }
 #
 # *** RUN ***

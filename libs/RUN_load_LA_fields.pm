@@ -4,8 +4,6 @@
 #
 # Authors (see AUTHORS file for details): AM
 #
-# Based on the original driver written by CH
-#
 # This file is distributed under the terms of the GNU
 # General Public License. You can redistribute it and/or
 # modify it under the terms of the GNU General Public
@@ -22,20 +20,17 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-sub RUN_logs{
+sub RUN_load_LA_fields{
 #
-$extension=$branch.'-'.$BUILD.'-'.$FC_kind.'-'.$PAR_string;
-$tests_log="LOG-$ROBOT_string-$date"."_"."$time"."_".$extension.".log";
+my $nl_here=1;
+$nl_here=$nl if ($nl);
 #
-open($tlog, '>', $tests_log) or die "Could not open file '$tests_log' $!";
-#
-# Summary of requested options
-&MESSAGE("LOG","\n$line");
-&MESSAGE("LOG","\n= Yambo test suite log");
-&MESSAGE("LOG","\n$line");
-#
-&UTILS_title($tlog);
-&MY_PRINT($stdout, "\n");
+$LA_field[1]="X_all_q_nCPU_LinAlg_INV=$nl_here";
+$LA_field[2]="X_q_0_nCPU_LinAlg_INV=$nl_here";
+$LA_field[3]="X_finite_q_nCPU_LinAlg_INV=$nl_here";
+$LA_field[4]="BS_nCPU_LinAlg_INV=$nl_here";
+$LA_field[5]="BS_nCPU_LinAlg_DIAGO=$nl_here";
+$LA_field[6]="SE_nCPU_LinAlg_DIAGO=$nl_here";
 #
 }
 1;

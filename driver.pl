@@ -60,6 +60,12 @@ if ($edit){
  if (-e "ROBOTS/$host/$user/FLOWS/$edit.pl"){
   system("vim ROBOTS/$host/$user/FLOWS/$edit.pl");
  };
+ if (-e "ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit.cpu"){
+  system("vim ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit.cpu");
+ };
+ if (-e "ROBOTS/$host/$user/CONFIGURATIONS/$edit.sh"){
+  system("vim ROBOTS/$host/$user/CONFIGURATIONS/$edit.sh");
+ };
  die;
 }
 #
@@ -182,13 +188,16 @@ if ($RUNNING_suite) {
  }
  #
  # Global Report
+ #
  &RUN_global_report("INIT");
  #
- #if (! $dry_run) {&command("cd $suite_dir; $git pull")};
+ if (! $dry_run) {&command("cd $suite_dir; $git pull")};
  #
  &SETUP_branch("load_the_branches");
  #
  if ($user_tests or $theme or $compile) {
+  #
+  if ($cpu_conf_file) { &CPU_CONF_setup }; 
   #
   &driver();
   #

@@ -75,9 +75,13 @@ if ($nt>1) {$dir_extension.="-Omp${nt}"};
 if ($nl>1) {$dir_extension.="-Slk${nl}"};
 if ($np>1) {$dir_extension.="-Nmpi${np}"};
 if ($default_parallel) {$dir_extension.="-def_par"};
-if ($random_parallel) {$dir_extension.="-rand_par"};
+if ($random_parallel)  {$dir_extension.="-rand_par"};
 if ($np eq 1 and !$nt and !$nt) {$dir_extension.="-serial"};
-if(!$default_parallel && !$random_parallel && $np>1){$dir_extension.="-${run_id}"};
+if ($cpu_conf_file) {
+ $dir_extension.="-$cpu_conf_key";
+}elsif (!$default_parallel && !$random_parallel && $np>1) {
+ $dir_extension.="-${run_id}";
+}
 return "$prefix"."$dir_extension"."-$branch_key";
 }
 sub debug{

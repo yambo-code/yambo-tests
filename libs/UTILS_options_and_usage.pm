@@ -39,6 +39,12 @@ if (-e "./ROBOTS/$host/$user/FLOWS"){
  closedir DIR;
 }
 $flows_avail = join(" ", @files);
+if (-e "./ROBOTS/$host/$user/CPU_CONFIGURATIONS"){
+ opendir(DIR,"./ROBOTS/$host/$user/CPU_CONFIGURATIONS");
+ @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/CPU_CONFIGURATIONS/$_" } readdir(DIR);
+ closedir DIR;
+}
+$cpu_avail = join(" ", @files);
 #
 my $ret = &GetOptions("h"    => \$help,
             "np=i"           => \$np_single,
@@ -57,6 +63,7 @@ my $ret = &GetOptions("h"    => \$help,
             "u"              => \$upload,
             "b"              => \$backup_logs,
             "v+"             => \$verb,
+            "cpu_conf=s"     => \$cpu_conf_file,
             "conf=s"         => \$select_conf_file,
             "gpl"            => \$is_GPL,
             "tests=s"        => \$user_tests,
@@ -86,12 +93,13 @@ my $ret = &GetOptions("h"    => \$help,
 sub UTILS_robot_info {
  print <<ROBOT_info
 
-   Running on host: $host
-   By user        : $user
-   Version        : $version
-   Available CPU's: $SYSTEM_NP
-   Available confs: $conf_avail
-   Available flows: $flows_avail
+   Running on host    : $host
+   By user            : $user
+   Version            : $version
+   Available     CPU's: $SYSTEM_NP
+   Available  CPU conf: $cpu_avail
+   Available Compilers: $conf_avail
+   Available     flows: $flows_avail
 ROBOT_info
 }
 sub UTILS_usage {
@@ -133,6 +141,7 @@ sub UTILS_usage {
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
 
    (parallel options)
+             -cpu_conf <FILE>       Use the CPU configuration defined in <FILE> (refer to ROBOTS/$host/$user/CPU_CONFIGURATION/<FILE>.cpu).
              -np     <N>            Fixed number of CPU used.
              -np_min <N>            Minimum number of CPU used.
              -np_max <N>            Maximum number of CPU used.
