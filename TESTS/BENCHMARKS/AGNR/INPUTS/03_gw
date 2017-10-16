@@ -1,0 +1,47 @@
+#                                                           
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$     
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$    
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$    
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$    
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$    
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$    
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/    
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/     
+#                                                           
+#       Version 4.3.0 Revision 14893 Hash 6352519           
+#                  MPI+SLK+OpenMP Build                     
+#               http://www.yambo-code.org                   
+#
+gw0                            # [R GW] GoWo Quasiparticle energy levels
+ppa                            # [R Xp] Plasmon Pole Approximation
+rim_cut                        # [R RIM CUT] Coulomb potential
+HF_and_locXC                   # [R XX] Hartree-Fock Self-energy and Vxc
+em1d                           # [R Xd] Dynamical Inverse Dielectric Matrix
+FFTGvecs=  59267       RL      # [FFT] Plane-waves
+RandQpts= 1000000              # [RIM] Number of random q-points in the BZ
+RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
+CUTGeo= "box xy"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
+% CUTBox
+ 58.00000 | 20.00000 |  0.00000 |        # [CUT] [au] Box sides
+%
+CUTRadius= 0.000000            # [CUT] [au] Sphere/Cylinder radius
+CUTCylLen= 0.000000            # [CUT] [au] Cylinder length
+EXXRLvcs=  402821      RL      # [XX] Exchange RL components
+Chimod= ""                     # [X] IP/Hartree/ALDA/LRC/BSfxc
+% BndsRnXp
+   1 | 256 |                   # [Xp] Polarization function bands
+%
+NGsBlkXp= 3            Ry      # [Xp] Response block size
+% LongDrXp
+ 0.000000 | 0.000000 | 1.000000 |        # [Xp] [cc] Electric Field
+%
+PPAPntXp= 20.00000     eV      # [Xp] PPA imaginary energy
+% GbndRnge
+    1 |  512 |                 # [GW] G[W] bands range
+%
+GDamping=  0.10000     eV      # [GW] G[W] damping
+dScStep=  0.10000      eV      # [GW] Energy step to evaluate Z factors
+DysSolver= "n"                 # [GW] Dyson Equation solver ("n","s","g")
+%QPkrange                    # [GW] QP generalized Kpoint/Band indices
+  1|  8| 29| 32|
+%

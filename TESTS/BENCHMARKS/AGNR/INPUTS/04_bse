@@ -1,0 +1,48 @@
+#                                                           
+#  **    **    **     ****     ****  ******     *******     
+# //**  **    ****   /**/**   **/** /*////**   **/////**    
+#  //****    **//**  /**//** ** /** /*   /**  **     //**   
+#   //**    **  //** /** //***  /** /******  /**      /**   
+#    /**   **********/**  //*   /** /*//// **/**      /**   
+#    /**  /**//////**/**   /    /** /*    /**//**     **    
+#    /**  /**     /**/**        /** /*******  //*******     
+#    //   //      // //         //  ///////    ///////      
+#                                                           
+#        Version 4.3.0 Revision 14893 Hash 6352519          
+#                  MPI+SLK+OpenMP Build                     
+#                http://www.yambo-code.org                  
+#
+optics                         # [R OPT] Optics
+bss                            # [R BSS] Bethe Salpeter Equation solver
+rim_cut                        # [R RIM CUT] Coulomb potential
+bse                            # [R BSE] Bethe Salpeter Equation.
+bsk                            # [R BSK] Bethe Salpeter Equation kernel
+FFTGvecs=  59267       RL      # [FFT] Plane-waves
+RandQpts= 1000000              # [RIM] Number of random q-points in the BZ
+RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
+CUTGeo= "box xy"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
+% CUTBox
+ 58.00000 | 20.00000 |  0.00000 |        # [CUT] [au] Box sides
+%
+CUTRadius= 0.000000            # [CUT] [au] Sphere/Cylinder radius
+CUTCylLen= 0.000000            # [CUT] [au] Cylinder length
+BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
+BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "h"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx=  402821      RL      # [BSK] Exchange components
+BSENGBlk= 3            Ry      # [BSK] Screened interaction block size
+#WehCpl                        # [BSK] eh interaction included also in coupling
+% BEnRange
+  0.00000 | 10.00000 | eV      # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV      # [BSS] Damping range
+%
+BEnSteps= 500                  # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+   23 |  38 |                 # [BSK] Bands range
+%
+BSHayTrs= -0.02000             # [BSS] Relative [o/o] Haydock treshold. Strict(>0)/Average(<0)
