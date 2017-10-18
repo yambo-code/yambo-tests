@@ -33,7 +33,6 @@ my @files;
 find( sub { push @files, $File::Find::name if /l-/ }, @dirs );
 #
 $ntests_by_ncpu=0;
-$ntests=0;
 #
 for $file (@files) 
 {
@@ -52,13 +51,16 @@ for $file (@files)
 #
 &command("rm -fr PROFILING");
 #
-for $itest (1...$ntests) {
+for $itest (1...$ntests_by_ncpu) {
  #
- print "\n Processing ... $FOLDER[$itest] $TESTNAME[$itest] $PAR_CONF[$itest]\n";
+ if (not $PROF_test[$itest]->{CPU} eq 1) {next};
  #
- $testname=$TESTNAME[$itest];
- $par_conf=$PAR_CONF[$itest];
- $prof_folder=$FOLDER[$itest];
+ $testname=$PROF_test[$itest]->{TEST_NAME};
+ $par_conf=$PROF_test[$itest]->{PAR_CONF};
+ $prof_folder=$PROF_test[$itest]->{TEST_FOLDER};
+ #
+ print "\n Processing ... $prof_folder $testname $par_conf\n";
+ #
  $prof_folder=~ s/\//_/gs;
  #
  # Directories
@@ -68,12 +70,23 @@ for $itest (1...$ntests) {
  &command("mkdir -p PROFILING/$prof_folder/$testname");
  &command("mkdir -p PROFILING/$prof_folder/$testname/$par_conf");
  $current_dir="PROFILING/$prof_folder/$testname";
+ #
+ $legend_file ="$current_dir/LEGEND.dat";
+ open($legend_log, '>>',$legend_file);
+ #
+ print $legend_log "\n\n";
+ print $legend_log "PARALLEL CONFIGURATION: $PROF_test[$itest]->{PAR_CONF}\n";
+ print $legend_log "MPI CPU's : $PROF_test[$itest]->{N_CPU}\n";
+ print $legend_log "THREADS   : $PROF_test[$itest]->{N_T}\n";
+ print $legend_log "PAR STR.  : $PROF_test[$itest]->{SHORT_PAR_STRUCTURE}";
+ print $legend_log "$PROF_test[$itest]->{PAR_STRUCTURE}";
+ #
  $tot_time_file ="$current_dir/TOTAL_TIME_vs_PAR_CONF.dat";
- if ($itest eq 1){&command("rm -f $tot_time_file")};
  open($tot_time_log, '>>',$tot_time_file);
  #
- &PROF_data_dump( { FOLDER => "$FOLDER[$itest]", TESTNAME => "$TESTNAME[$itest]", PAR_CONF => "$PAR_CONF[$itest]"} );
+ &PROF_data_dump( { FOLDER => "$PROF_test[$itest]->{TEST_FOLDER}", TESTNAME => "$PROF_test[$itest]->{TEST_NAME}", PAR_CONF => "$PROF_test[$itest]->{PAR_CONF}"} );
  #
+ close($legend_log);
  close($tot_time_log);
 }
 }
@@ -94,16 +107,16 @@ my $OFFSET=0;
 if ($log =~ /_CPU_/) { 
  $CPU=(split('_CPU_',$log))[1];
  $OFFSET=1;
+ $REP = substr($file, 0, index($file, '_CPU_') );
+}else{
+ $REP = $file;
 }
-$REP = $file;
-if ($log =~ /_CPU_1/) {  $REP =~ s/_CPU_1// };
 $REP =~ s/l-$testname/r-$testname/;
 if (-f $REP) {
-print $REP."\n";
  open(REP,"<","$REP");
  my @REPLINES = <REP>;
  close(REP);
- $PAR_STRUCTURE="";
+ $SHORT_PAR_STRUCTURE="";
  for $repline (@REPLINES){ 
    chomp($repline);
    if ($repline =~ /\* CPU/ or $repline =~ /MPI CPU/) {$N_CPU=(split(': ',$repline))[1] };
@@ -112,8 +125,9 @@ print $REP."\n";
     $TXT=(split('\|',$repline))[1];
     $TXT=(split('#',$TXT))[0];
     chomp($TXT);
-    $PAR_STRUCTURE.="$TXT\n";
+    $SHORT_PAR_STRUCTURE.="$TXT\n";
    };
+
  }
 }
 #
@@ -121,6 +135,7 @@ print $REP."\n";
 #print "TEST: $testname\n"; ###
 #print "PAR_CONF: $par_conf\n"; ###
 #print "CPU: $CPU\n"; ###
+$PAR_STRUCTURE="";
 open(LOG,"<","$file");
 my @LOGLINES = <LOG>;
 close(LOG);
@@ -139,6 +154,13 @@ for $logline (@LOGLINES){
  $time =~ s/h/*60*60+/;
  $test=eval("$time");
  $time=$test;
+ #
+ if ($logline =~ /PARALLEL/) {
+  $TXT=(split('\[',$logline))[1];
+  $TXT=(split('\]',$TXT))[0];
+  chomp($TXT);
+  $PAR_STRUCTURE.="$TXT\n";
+ };
  #
  if ( $section_id =~ /\[/ and $section_id =~ /\]/)
  {
@@ -206,16 +228,13 @@ for $it_and_cpu (1...$ntests_by_ncpu) {
  if ($args->{TESTNAME} ne $testname) {next};
  if ($args->{PAR_CONF} ne $par_conf) {next};
  #
- #print $tot_time_log "# $PROF_test[$mytest]->{N_T}\n";
- #print $tot_time_log "# $PROF_test[$mytest]->{N_CPU}\n";
- #print $tot_time_log "# $PROF_test[$mytest]->{PAR_STRUCTURE}";
- #
  $mem_file  ="$current_dir/$par_conf/MEMORY_vs_TIME_CPU_"."$CPU".".dat";
  $time_file ="$current_dir/$par_conf/TIME_vs_SECTION_CPU_"."$CPU".".dat";
  open($mem_log, '>>', $mem_file);
  open($time_log, '>>',$time_file);
  #
- print $tot_time_log "$PROF_test[$it_and_cpu]->{N_CPU} $total_time[$CPU] #CPU Nr.$CPU\n";
+ #print "$PROF_test[$it_and_cpu]->{N_CPU} $total_time[$CPU]\ #CPU Nr.$CPU of $par_conf\n";
+ print $tot_time_log "$PROF_test[$it_and_cpu]->{N_CPU} $total_time[$CPU]\ #CPU Nr.$CPU of $par_conf\n";
  #
  for $idata (1...$ndata[$it_and_cpu]) {
   undef $section;
@@ -230,7 +249,7 @@ for $it_and_cpu (1...$ntests_by_ncpu) {
   }
   if ( $DATA[$it_and_cpu][$idata]->{MEMORY} ) {$memory=$DATA[$it_and_cpu][$idata]->{MEMORY}};
   #
-  if ($memory) {print $mem_log "$time_to_print $memory #$section\n";}
+  if ($memory) {print $mem_log "$time_to_print $memory\n";} #$section\n";}
   #
   if ($delta_time) {print $time_log "$section $delta_time\n";}
  }
@@ -258,15 +277,10 @@ if ($mytest eq -1 ) {
  $PROF_test[$mytest]->{PAR_CONF}="$par_conf";
  $PROF_test[$mytest]->{CPU}="$CPU";
  $PROF_test[$mytest]->{N_CPU}="$N_CPU";
- $PROF_test[$mytest]->{PAR_STRUCTURE}="$PAR_STRUCTURE";
  $PROF_test[$mytest]->{N_T}="$N_THREADS";
- if ($CPU eq 1) {
-  $ntests++;
-  $FOLDER[$ntests]="$testfolder";
-  $TESTNAME[$ntests]="$testname";
-  $PAR_CONF[$ntests]="$par_conf";
- }
 }
+$PROF_test[$mytest]->{SHORT_PAR_STRUCTURE}="$SHORT_PAR_STRUCTURE";
+$PROF_test[$mytest]->{PAR_STRUCTURE}="$PAR_STRUCTURE";
 if ( $args->{total_time}   ) { $PROF_test[$mytest]->{TOTAL_TIME}=$args->{total_time}};
 $ndata[$mytest]++;
 if ( $args->{section_name} ) { $DATA[$mytest][$ndata[$mytest]]->{SECTION}= $args->{section_name}};
