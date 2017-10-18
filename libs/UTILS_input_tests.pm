@@ -28,6 +28,12 @@ my $prefix="";
 if (@_) {$prefix="@_/"};
 if ($branch_key and -d "${prefix}INPUTS-$branch_key"){ $input_folder = "INPUTS-$branch_key"}
 if ($is_GPL and -d "${prefix}INPUTS-master_gpl"){ $input_folder = "INPUTS-master_gpl"}
+$REF_prefix   = "";
+if ($mode eq "bench") {
+ $in_dir_cmd_line = "-I ../ -O .";
+ $input_folder = "../$input_folder";
+ $REF_prefix   = "../";
+}
 }
 #
 sub UTILS_tests_in_the_dir{

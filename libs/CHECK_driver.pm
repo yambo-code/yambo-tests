@@ -55,11 +55,11 @@ O_file_loop: foreach $run_filename (<o-$testname.*>){
 }
 #
 # REF files
-if ( -d "REFERENCE_$branch_key" and -f "REFERENCE_$branch_key/$testname" ) 
+if ( -d $REF_prefix."REFERENCE_$branch_key" and -f $REF_prefix."REFERENCE_$branch_key/$testname" ) 
 {
- @OFILES = (<REFERENCE_$branch_key/o-$testname.*>)
+ @OFILES = (<$REF_prefix.REFERENCE_$branch_key/o-$testname.*>)
 }else{
- @OFILES = (<REFERENCE/o-$testname.*>, <REFERENCE_$branch_key/o-$testname.*>)
+ @OFILES = (<$REF_prefix.REFERENCE/o-$testname.*>, <$REF_prefix.REFERENCE_$branch_key/o-$testname.*>)
 }
 R_file_loop: foreach $ref_filename (@OFILES){
  my $CHECK=&CHECK_GPL_skip("$ref_filename");

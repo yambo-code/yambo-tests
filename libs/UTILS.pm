@@ -52,15 +52,15 @@ sub CWD_go{
 }
 sub gimme_reference
 {
-$ref_filename = "REFERENCE_$branch_key/".$_[0]; 
+$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$_[0]; 
 if(! -e "$ref_filename" ) { 
- $ref_filename = "REFERENCE_$branch_key/".$testname."/".$_[0]
+ $ref_filename = $REF_prefix."REFERENCE_$branch_key/".$testname."/".$_[0]
 };
 if(! -e "$ref_filename" ) { 
- $ref_filename = "REFERENCE/".$_[0]; 
+ $ref_filename = $REF_prefix."REFERENCE/".$_[0]; 
 }
 if(! -e "$ref_filename" ) { 
- $ref_filename = "REFERENCE/".$testname."/".$_[0];
+ $ref_filename = $REF_prefix."REFERENCE/".$testname."/".$_[0];
 }
 if(! -e "$ref_filename" ) { 
  $ref_filename = "FAIL";
@@ -77,7 +77,6 @@ if ($np>1) {$dir_extension.="-Nmpi${np}"};
 if ($default_parallel) {$dir_extension.="-def_par"};
 if ($random_parallel)  {$dir_extension.="-rand_par"};
 if ($np eq 1 and !$nt and !$nt) {$dir_extension.="-serial"};
-if ($mode eq "bench") {$dir_extension.="-$ROBOT_string"};
 if ($cpu_conf_file) {
  $dir_extension.="-$cpu_conf_key";
 }elsif (!$default_parallel && !$random_parallel && $np>1) {
