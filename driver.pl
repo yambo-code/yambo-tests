@@ -47,13 +47,15 @@ if ($kill_me){
 # Post options setups
 #
 if ($verb ge 2) { $log = "" };
-if ($report) {$backup_logs="yes"};
+my $len= length($backup_logs);
+if ($len eq 0) {$backup_logs="yes"};
+if (($report or $profile) and $len eq 0) {$backup_logs="yes"};
 if ($mode eq "bench")    {$TESTS_folder="TESTS/BENCHMARKS"};
 if ($mode eq "perturbo") {$TESTS_folder="TESTS/PERTURBO"};
 #
 # Edit
 #
-if ($edit){
+if ($edit and not $edit eq "backup"){
  if ($edit eq "filters" ) {system("vim config/RULES.h");die;};
  if ($edit eq "branches") {system("vim ROBOTS/$host/$user/BRANCHES");die;};
  if ($edit eq "flags") {system("vim ROBOTS/$host/$user/FLAGS");die;};
@@ -107,7 +109,7 @@ if($download){
 }
 #
 # Clean and exit
-if($clean and not $backup_logs){ 
+if($clean and $backup_logs eq "no"){ 
  print "Cleaning";
  &UTILS_clean("ALL");
  &UTILS_clean("BINs");
@@ -154,8 +156,8 @@ if($upload){ &FTP_upload_it("$upload","testing-robots/databases") };
 #
 if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$RUNNING_suite="yes"};
 #
-if ($backup_logs and !$RUNNING_suite) {
- &UTILS_list_backups("list");
+if (!$RUNNING_suite) {
+ if (not $backup_logs eq "no" or $profile) {&UTILS_list_backups("list")};
  die;
 }
 #
@@ -224,6 +226,7 @@ if ($RUNNING_suite) {
    #
    if ("$active" eq "yes" and "$ERROR" eq "OK" ) 
    {
+    if ($cpu_conf_file) { &CPU_CONF_setup }; 
     &driver();
     $FLOWS_done++;
    };
@@ -277,7 +280,7 @@ close $wlog;
 close $flog;
 #
 if ($DATA_backup_file) {
- if ($backup_logs) {
+ if ($backup_logs eq "yes") {
   &UTILS_backup_save();
   if ($report){ 
    &PHP_generate(); 

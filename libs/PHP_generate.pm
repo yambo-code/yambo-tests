@@ -36,7 +36,6 @@ foreach $dir (@sorted_dirs) {
   close(REPORT);
  }
 }
-
 }
 #
 sub PHP_key_words{

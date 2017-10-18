@@ -48,12 +48,4 @@ sub CPU_CONF_setup{
  }
  #
 }
-sub CPU_CONF_load{
- print "@CPU_CONF\n";
- foreach $CONF (@CPU_CONF){
-  chomp($CONF);
-  print "$CONF\n";
- }
- die;
-}
 1;

@@ -103,7 +103,7 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   # Files closing
   close $tlog;
   #
-  if ($backup_logs){ &UTILS_backup };
+  if ($backup_logs eq "yes"){ &UTILS_backup };
   #
  } # End LOOP_CONF configurations
  # 

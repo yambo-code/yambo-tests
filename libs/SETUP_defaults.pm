@@ -31,6 +31,7 @@ $mode="tests";
 &UTILS_time($date,$time,$current_month,$day);
 # Predefs (before options scan)
 $listtests="default";
+$backup_logs="no";
 #
 $version="5.0";
 $prec=0.01;

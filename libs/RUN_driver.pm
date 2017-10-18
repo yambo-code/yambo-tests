@@ -72,13 +72,16 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   next LOOP_DIRS;
  };
  #
- # Folder mirrored preparation
- #
- if (not -e "$ROBOT_wd") {
-  &command("mkdir $ROBOT_wd");
-  &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
+ if (not $mode eq "bench") {
+  #
+  # Folder mirrored preparation
+  #
+  if (not -e "$ROBOT_wd") {
+   &command("mkdir $ROBOT_wd");
+   &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
+  }
+  chdir($ROBOT_wd);
  }
- chdir($ROBOT_wd);
  #
  &MY_PRINT($stdout, $msg);
  #
@@ -117,6 +120,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   # Prepare the input file
   &RUN_load_OPENMP_fields;
   if ($cpu_conf_file) {
+   $MPI_CPU_conf[1]=$cpu_conf_key;
    #&CPU_CONF_load;
   }else{
    &RUN_load_LA_fields;

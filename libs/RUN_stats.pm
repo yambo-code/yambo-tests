@@ -70,6 +70,8 @@ if ("@_" eq "REPORT"){
 #
 my $err_msg=$testdir."/".$dir_name."  :";
 #
+if ($profile) {&MESSAGE("FAILED","$TESTS_folder/$testdir/$ROBOT_wd/$dir_name\n")};
+#
 if ("@_" eq "ERR_OUT"){
  my $msg = sprintf("%-"."$left_length"."s", "  $run_filename");
  $err_msg=$testdir."/".$dir_name."/".$run_filename."  :";

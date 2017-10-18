@@ -33,6 +33,8 @@ sub UTILS_list_backups{
   push @dirs_to_process, $dir;
  }
  @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process;
+ #
+ $data_id=0;
  if ("@_" eq "list")
  {
   foreach $dir (@sorted_dirs) {
@@ -41,22 +43,37 @@ sub UTILS_list_backups{
    open(REPORT,"<","$suite_dir/$REPS[0]");
    @lines = <REPORT>;
    &PHP_key_words;
-   print "DATE  : $date\n";
-   print "TIME  : $time\n";
-   print "BRANCH: $branch_key\n";
-   print "FC    : $FC_kind $MPI_kind\n";
+   $data_id++;
    close(REPORT);
    #
-   @DATAS = glob("$dir/*_ALL*");
-   my $size = -s $DATAS[0];
-   $size=int($size/1024/1000);
-   my $show = (split ( "$user/", $dir )) [1];
-   if ($size>100 and $clean) {
-    &command("rm -f $DATAS[0]");
-    print "...cleaning DATA's\n";
-   }else{
-    print "\n";
+   if ($backup_logs eq "yes" or $backup_logs eq $data_id) 
+   {
+    print "ID    : $data_id\n";
+    print "DATE  : $date\n";
+    print "TIME  : $time\n";
+    print "BRANCH: $branch_key\n";
+    print "FC    : $FC_kind $MPI_kind\n";
    }
+   #
+   #@DATAS = glob("$dir/*_ALL*");
+   #my $size = -s $DATAS[0];
+   #$size=int($size/1024/1000);
+   #if ($size>100 and $clean) {
+    #&command("rm -f $DATAS[0]");
+    #print "...cleaning DATA's\n";
+   if ($backup_logs eq $data_id) 
+   {
+    #
+    if ($profile) {&PROFILE($dir)};
+    #
+    if ($clean)
+    {
+     &command("rm -fr $dir");
+     print "\n...cleaning BACKUP #$data_id\n";
+    }
+    if ($edit) {&command("vim $dir/REPORT*")};
+   }
+   print "\n";
   }
  }
 }
@@ -87,6 +104,7 @@ $BACKUP_dir   ="$host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time";
 &command("mkdir -p $host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time");
 #
 &command("rm -f list");
+$DATA_backup_file="outputs_and_reports_ALL-$ROBOT_string";
 open(FAILED,"<","$suite_dir/$failed_log");
 my @FLINES = <FAILED>;
 close(FAILED);
@@ -98,14 +116,12 @@ while($line = shift(@out)) {
  chomp($line);
  &command("find $line -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep -v 'REFERENCE' >> list");
 }
-$DATA_backup_file="outputs_and_reports_ALL-$ROBOT_string";
 if ( -f "$DATA_backup_file.tar.gz") {
  &command("gunzip -f $DATA_backup_file.tar.gz");
  if (-s "list") {&command("tar rf $DATA_backup_file.tar -T list")};
 }else{
  if (-s "list") {&command("tar cf $DATA_backup_file.tar -T list")};
 }
-
 foreach $conf_file (<*$ROBOT_string*log>) {
  &command("tar rf  $DATA_backup_file.tar $conf_file");
 };

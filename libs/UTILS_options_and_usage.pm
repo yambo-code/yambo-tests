@@ -61,7 +61,7 @@ my $ret = &GetOptions("h"    => \$help,
             "compile"        => \$compile,
             "i"              => \$info,
             "u"              => \$upload,
-            "b"              => \$backup_logs,
+            "b:s"            => \$backup_logs,
             "v+"             => \$verb,
             "cpu_conf=s"     => \$cpu_conf_file,
             "conf=s"         => \$select_conf_file,
@@ -86,6 +86,7 @@ my $ret = &GetOptions("h"    => \$help,
             "robot=i"        => \$ROBOT_id,
             "failed=s"       => \$failed,
             "php"            => \$php,
+            "profile"        => \$profile,
             "mode=s"         => \$mode
                       );
 #
@@ -160,12 +161,16 @@ sub UTILS_usage {
              -report                Commit the final report to the ML.
              -u                     UPLOAD the LOGs at the end
 
+   (Profiling)
+             -profile               Create a Profile analysis
+
    (Backup)
-             -b                     If running BACKUP the LOGs (automatically used when -report is given)
+             -b [ID's]              If running BACKUP the LOGs (automatically used when -report is given)
                                     Otherwise list the BACKUPs available
 
    (FTP actions)           
-             -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS, for example).
+             -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS and CPU_CONFIGURATION, for example).
+                                    Use -e backup with -b ## to edit the REPORT of the backupd REPORT number ##
              -ftp                   Log in FTP server
 
  * <TESTS> has form: "<SET1> {<input1> [<input2>]|all}; <SET2> {<input1> [<input2>]|all}"

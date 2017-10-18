@@ -77,6 +77,7 @@ if ($np>1) {$dir_extension.="-Nmpi${np}"};
 if ($default_parallel) {$dir_extension.="-def_par"};
 if ($random_parallel)  {$dir_extension.="-rand_par"};
 if ($np eq 1 and !$nt and !$nt) {$dir_extension.="-serial"};
+if ($mode eq "bench") {$dir_extension.="-$ROBOT_string"};
 if ($cpu_conf_file) {
  $dir_extension.="-$cpu_conf_key";
 }elsif (!$default_parallel && !$random_parallel && $np>1) {
