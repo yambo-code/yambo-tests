@@ -73,7 +73,9 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  };
  #
  if (not -e "$ROBOT_wd") { &command("mkdir $ROBOT_wd") };
- if (not $mode eq "bench") {
+ if ($mode eq "bench") {
+  $input_folder = "../$input_folder";
+ }else{
   #
   # Folder mirrored preparation
   #

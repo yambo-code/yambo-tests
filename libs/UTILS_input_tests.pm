@@ -31,7 +31,6 @@ if ($is_GPL and -d "${prefix}INPUTS-master_gpl"){ $input_folder = "INPUTS-master
 $REF_prefix   = "";
 if ($mode eq "bench") {
  $in_dir_cmd_line = "-I ../ -O .";
- $input_folder = "../$input_folder";
  $REF_prefix   = "../";
 }
 }
