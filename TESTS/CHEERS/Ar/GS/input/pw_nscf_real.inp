@@ -1,0 +1,26 @@
+&CONTROL
+    calculation = 'nscf', 
+    restart_mode='from_scratch',
+    prefix='Ar',
+    outdir= '.',
+    pseudo_dir= './psps',
+    wf_collect = .true.
+ /
+ &SYSTEM
+                   ibrav = 1,
+                   celldm(1) = 35.0,
+                         nat = 1,
+                        ntyp = 1,
+                     ecutwfc = 25,
+                       nspin = 1
+                        nbnd = 6,
+			force_symmorphic=.true.
+ /
+ &ELECTRONS
+          diago_thr_init = 1.d-5
+ /
+ATOMIC_SPECIES
+    Ar   39.95  Ar.pz-rrkj.UPF
+ATOMIC_POSITIONS (angstrom)
+Ar      0.000000000     0.000000000     0.0000000000
+K_POINTS {gamma}

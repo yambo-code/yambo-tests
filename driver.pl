@@ -52,6 +52,7 @@ my $len= length($backup_logs);
 if ($len eq 0) {$backup_logs="yes"};
 if ($profile and $len eq 0) {$backup_logs="yes"};
 if ($report) {$backup_logs="yes"};
+if ($mode eq "cheers")   {$TESTS_folder="TESTS/CHEERS"};
 if ($mode eq "bench")    {$TESTS_folder="TESTS/BENCHMARKS"};
 if ($mode eq "perturbo") {$TESTS_folder="TESTS/PERTURBO"};
 #
