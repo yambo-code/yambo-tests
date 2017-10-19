@@ -49,7 +49,8 @@ if ($kill_me){
 if ($verb ge 2) { $log = "" };
 my $len= length($backup_logs);
 if ($len eq 0) {$backup_logs="yes"};
-if (($report or $profile) and $len eq 0) {$backup_logs="yes"};
+if ($profile and $len eq 0) {$backup_logs="yes"};
+if ($report) {$backup_logs="yes"};
 if ($mode eq "bench")    {$TESTS_folder="TESTS/BENCHMARKS"};
 if ($mode eq "perturbo") {$TESTS_folder="TESTS/PERTURBO"};
 #
@@ -157,6 +158,15 @@ if($upload){ &FTP_upload_it("$upload","testing-robots/databases") };
 if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$RUNNING_suite="yes"};
 #
 if (!$RUNNING_suite) {
+ if ($ROBOT_id and $backup_logs eq "yes") {
+  &UTILS_backup();
+  &UTILS_backup_save();
+  if ($report){ 
+   &PHP_generate(); 
+   &PHP_upload();
+  }
+  die;
+ };
  if (not $backup_logs eq "no" or $profile) {&UTILS_list_backups("list")};
  die;
 }
@@ -285,7 +295,6 @@ if ($DATA_backup_file) {
   if ($report){ 
    &PHP_generate(); 
    &PHP_upload();
-   #&UTILS_commit();
   }
  }
 }

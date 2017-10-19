@@ -89,6 +89,21 @@ foreach $conf_file (<*$ROBOT_string*.log>){
 sub UTILS_backup
 {
 chdir("$suite_dir");
+if (not $RUNNING_suite) 
+{
+ @files = glob("REPORT*$ROBOT_id*");
+ if (scalar(@files) eq 0) {die "\nNo files to backup\n\n"};
+ foreach $file (@files) {
+  open(REPORT,"<","$suite_dir/$file");
+  &PHP_extract;
+  close(REPORT);
+ }
+ $day=(split("-",$date))[1];
+ $str1=(split("-",$date))[0];
+ ( $INITIAL_month )= grep { $months[$_] eq $str1 } 0..$#months;
+ $INITIAL_month++;
+ $INITIAL_year=$current_year;
+}
 $str1="$INITIAL_month";
 if ($INITIAL_month<10) {$str1="0$INITIAL_month"};
 $str2="$day";
