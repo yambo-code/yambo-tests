@@ -22,10 +22,14 @@ module purge
 module load local/intel/parallel_2017
 endif
 
-if ( "$1" == "run") then
+if ( "$1" == "tests") then
  if ( "$3" == "5" || "$3" == "6" ) then
   ./driver.pl -flow validate_slepc -report -newer 3 -robot $3 
  else
   ./driver.pl -flow validate -report -newer 3 -robot $3 
  endif
 endif
+if ( "$1" == "bench") then
+ ./driver.pl -flow benchmark -robot $3 -m bench
+endif
+
