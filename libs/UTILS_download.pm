@@ -45,6 +45,7 @@ foreach $dir (<*>) {
  if ($download) { $do_it = "yes" };
  if ($do_it eq "yes"){
    if (-e "./BROKEN" and ! $force) { $do_it = "no" };
+   if ($dir =~ /docs/) { $do_it = "no" };
  }
  if ( $do_it eq "yes"){
   #
@@ -91,7 +92,7 @@ foreach $dir (<*>) {
   WWW: while($i1 < $imax+1) {
    $cmd = "wget --spider -q $LINK/$filename[$i1]$EXTENSION && echo exists || echo not exist";
    my $file_exist = `$cmd`;
-   if ($mode eq "tests"){
+   if ($mode eq "tests" or $mode eq "cheers"){
     if ( "$file_exist" eq "exists\n") {
      &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
      &MY_PRINT($stdout, " downloading ...\n");

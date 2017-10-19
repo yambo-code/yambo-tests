@@ -79,7 +79,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
   # Folder mirrored preparation (only for tests)
   #
-  if ($mode eq "tests") {&command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd")};
+  if (not $mode eq "bench") {&command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd")};
   #
  }
  chdir($ROBOT_wd);

@@ -29,6 +29,8 @@ $YPP="0";
 $YPP_RT="0";
 $YPP_PH="0";
 # Runlevels
+$GKBA=&RUN_feature("Nbasis");
+if ($GKBA eq "1") { $GKBA=1; $description .= " GKBA" };
 $fixsyms=&RUN_feature("fixsyms");
 if ($fixsyms eq "1") { $YPP=1; $description .= " Symmetries Compatibility Operations" };
 $RT_X=&RUN_feature("RT_X");
