@@ -72,14 +72,15 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   next LOOP_DIRS;
  };
  #
- if (not -e "$ROBOT_wd") { &command("mkdir $ROBOT_wd") };
- if ($mode eq "bench") {
-  $input_folder = "../$input_folder";
- }else{
+ if ($mode eq "bench") { $input_folder = "../$input_folder" };
+ if (not -e "$ROBOT_wd") { 
   #
-  # Folder mirrored preparation
+  &command("mkdir $ROBOT_wd");
   #
-  &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
+  # Folder mirrored preparation (only for tests)
+  #
+  if ($mode eq "tests") {&command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd")};
+  #
  }
  chdir($ROBOT_wd);
  #
