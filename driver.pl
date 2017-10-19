@@ -46,6 +46,7 @@ if ($kill_me){
 #
 # Post options setups
 #
+if ($mode eq "bench") { $run_duration = 24*60*60*7 };
 if ($verb ge 2) { $log = "" };
 my $len= length($backup_logs);
 if ($len eq 0) {$backup_logs="yes"};
