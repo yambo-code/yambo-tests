@@ -91,13 +91,12 @@ sub UTILS_backup
 chdir("$suite_dir");
 if (not $RUNNING_suite) 
 {
- @files = glob("REPORT*$ROBOT_id*");
- if (scalar(@files) eq 0) {die "\nNo files to backup\n\n"};
- foreach $file (@files) {
-  open(REPORT,"<","$suite_dir/$file");
-  &PHP_extract;
-  close(REPORT);
- }
+ $ROBOT_string="R".$ROBOT_id;
+ $file= (glob("REPORT*R${ROBOT_id}*"))[0];
+ if (not $file) {die "\nNo files to backup\n\n"};
+ open(REPORT,"<","$suite_dir/$file");
+ &PHP_extract;
+ close(REPORT);
  $day=(split("-",$date))[1];
  $str1=(split("-",$date))[0];
  ( $INITIAL_month )= grep { $months[$_] eq $str1 } 0..$#months;
@@ -120,6 +119,7 @@ $BACKUP_dir   ="$host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time";
 #
 &command("rm -f list");
 $DATA_backup_file="outputs_and_reports_ALL-$ROBOT_string";
+if (not $RUNNING_suite) {$failed_log=(glob("FAILED*R${ROBOT_id}*"))[0]};
 open(FAILED,"<","$suite_dir/$failed_log");
 my @FLINES = <FAILED>;
 close(FAILED);
