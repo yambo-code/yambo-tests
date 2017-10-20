@@ -7,11 +7,8 @@
 # CONFIG      => "default.sh",
 # TESTS       => "MoS2/pwscf/RT 00_init 01_fix_symm 02_init",
 # TESTS       => "Iron/abinit/With-SOC 01_init 02_fix_symm 03_init 04_IP-RPA_len",
- TESTS       => "Al_bulk/GW-OPTICS 01_init",
-# 03_QP",
-# TESTS       => "Dummy",
-#; WSe2/RT; hBN/SC; Diamond/ELPH1",
-# KEYS        => "all hard",
+ TESTS       => "Si_bulk/MAGNETIC; Si_bulk/ELPH/QP_CTL; Si_bulk/ELPH/base_for_BSE; Si_bulk/ELPH/OPTICS; Si_bulk/GW-OPTICS; Si_bulk/RT; C6H3Cl3",
+ KEYS        => "all hard",
 # KEYS        => "rt hard",
 },
 {
