@@ -1,0 +1,26 @@
+#                                                           
+# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
+#    ###  ###     ### ###       ### #########   ########    
+#                                                           
+#                                                           
+#        Version 4.2.0 Revision 14652 Hash c7e4d0a          
+#                      MPI+SLK Build                        
+#                http://www.yambo-code.org                  
+#
+RealTime                       # [R] Real-Time Post-Processing
+RTdeltaRho                     # [R] Analize the density
+RTtime                         # [R] Post-Processing kind: function of time
+TimeStep= 1.0           au      # Time step
+% TimeRange
+ 0.000000 | 5.00000 | au      # Time-window where processing is done
+%
+LoadGhistory                  # [NEGF] Build the NEQ density from the G_lesser
+#IntegrateRho                  # [NEGF] Integrate the NEQ density around a given region in real space
+Format= "g"                    # Output format [(c)ube/(g)nuplot/(x)crysden]
+Direction= "1"                 # [rlu] [1/2/3] for 1d or [12/13/23] for 2d [123] for 3D
+FFTGvecs=  90447       RL      # [FFT] Plane-waves

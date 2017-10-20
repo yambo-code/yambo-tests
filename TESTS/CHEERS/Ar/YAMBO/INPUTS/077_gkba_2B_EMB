@@ -17,10 +17,15 @@ Nbasis= 6                     # Number of basis functions
 Nbasis_IO1= 6                 # Number of basis functions in Eks, Vxc, dipoles
 Nbasis_IO2= 6                 # Number of basis functions in collisions
 Nbasis_EMB=2000                # Number of basis functions for embedding self-energy
-Nsteps= 50                  # Number of time steps
+Nsteps= 51                  # Number of time steps
 Nel= 4                        # Number of active electrons per spin channel
 Tstep=   0.1        au         # Time step
-TstepRhoIO=  5.     au         # Time step for rho I/O (No I/O if negative)
+#OLD
+TstepRhoIO=  1.0    au         # Time step for rho I/O (No I/O if negative)
+#NEW
+% IOtime
+ 0.0 | 1.0 | 0.0 |  au    # [RT] Time between to consecutive I/O (J,P,OCCs - GF - OUTPUT)
+%
 Tswitch= 0.2        au         # Switching time for 2B correlations
 Vcut_HF=1.000E-5               # Cutoff on HF Coulomb integrals
 Vcut_2B=1.000E-2               # Cutoff on 2B Coulomb integrals
