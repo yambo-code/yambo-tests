@@ -61,11 +61,23 @@ if($user_tests){
  # Sort into @input_tests_list[] array:
  # $input_tests_list[0] = "Al111/GW 00_init 01_init" $dir $testname
  # $input_tests_list[1] = "Si_bulk 00_init 01_init"
- $input_tests=$user_tests;
- # If I find SAVE and $input_folder, treat as a working test dir.
- # Could also exclude BROKEN/HARD here.
- if($input_tests eq "all"){
-  find(\&testdirs, "./$TESTS_folder");
+ #
+ if(index($user_tests,"0") ne -1 || index($user_tests,";") ne -1){
+  &MY_PRINT($stdout, " -     Test selection : from input files/folders");
+  $input_tests = $user_tests;
+ } 
+ else{
+  if($user_tests ne "all"){
+   &MY_PRINT($stdout, " -     Test selection : from input path");
+   $TESTS_folder_scan = "$TESTS_folder/$user_tests";
+  }
+  elsif($user_tests eq "all"){
+   &MY_PRINT($stdout, " -     Test selection : full suite");
+   $TESTS_folder_scan = $TESTS_folder;
+  }
+  # If I find SAVE and $input_folder, treat as a working test dir.
+  # Could also exclude BROKEN/HARD here.
+  find(\&testdirs, "./$TESTS_folder_scan");
   sub testdirs {
    my $fullpath = $File::Find::name;
    if($fullpath =~ m|INPUTS$| and not $fullpath =~ /ROBOT/){    # The only folder ending ../$input_folder
@@ -81,10 +93,6 @@ if($user_tests){
   my @sorted_list = sort { lc($a) cmp lc($b) } @list;
   undef $input_tests;
   foreach my $element (@sorted_list) {$input_tests .= "$element all; "};
-  &MY_PRINT($stdout, " -     Test selection : full suite");
- } 
- else {
-  &MY_PRINT($stdout, " -     Test selection : from input");
  }
 }else{
  &MY_PRINT($stdout, " -     Test selection : (none)");
