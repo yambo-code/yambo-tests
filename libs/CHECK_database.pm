@@ -40,7 +40,7 @@ if( -e "$testname/$DB" ){
   &command("mv $testname/$DB $testname/$DB_d0"); 
   &command("mv $testname/$DB_tmp $testname/$DB"); 
  };
- &command("$ncdump -v $VAR $testname/$DB | $awk -f $suite_dir/find_the_diff/ndb2o.awk | head -n 10000 > $run_filename") ;
+ &command("$ncdump -v $VAR $testname/$DB | $awk -f $suite_dir/scripts/find_the_diff/ndb2o.awk | head -n 10000 > $run_filename") ;
  if(! -e "$ref_filename" ) {
   &RUN_stats("ERR_DB");
   return;

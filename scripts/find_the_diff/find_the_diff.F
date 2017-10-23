@@ -48,8 +48,8 @@ program find_the_diff
  !
  integer        :: iargc,nargs
  !
- INCLUDE '../config/RULES.h'
- INCLUDE '../config/WHITELIST.h'
+ INCLUDE '../../config/RULES.h'
+ INCLUDE '../../config/WHITELIST.h'
  !
  ! get cmd line options
  !
