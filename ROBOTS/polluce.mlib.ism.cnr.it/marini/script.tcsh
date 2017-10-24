@@ -2,9 +2,12 @@
 
 cd /scratch/marini/yambo-tests/
 
+if ( "$1" == "down") then
+./driver.pl -d all 
+endif
+
 if ( "$1" == "clean") then
 ./driver.pl -c
-./driver.pl -d all 
 endif
 
 if ( "$2" == "gf_mpich") then
@@ -24,12 +27,12 @@ endif
 
 if ( "$1" == "tests") then
  if ( "$3" == "5" || "$3" == "6" ) then
-  ./driver.pl -flow validate_slepc -report -newer 3 -robot $3 
+  ./driver.pl -flow validate_slepc -report -newer 3 -robot $3 -c
  else
-  ./driver.pl -flow validate -report -newer 3 -robot $3 
+  ./driver.pl -flow validate -report -newer 3 -robot $3 -c
  endif
 endif
 if ( "$1" == "bench") then
- ./driver.pl -flow benchmark -robot $3 -m bench -profile -b
+ ./driver.pl -flow benchmark -robot $3 -m bench -profile -b -c
 endif
 

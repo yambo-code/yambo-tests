@@ -37,6 +37,8 @@ $suite_dir=abs_path();
 # Options list
 &UTILS_options;
 #
+if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$RUNNING_suite="yes"};
+#
 if ($USER_host and -d "ROBOTS/$USER_host") {$host=$USER_host};
 #
 # Glob available configurations/flows
@@ -123,7 +125,7 @@ if($download){
 }
 #
 # Clean and exit
-if($clean and $backup_logs eq "no"){ 
+if ($clean and $backup_logs eq "no" and not $RUNNING_suite){ 
  print "Cleaning";
  &UTILS_clean("ALL");
  &UTILS_clean("BINs");
@@ -168,8 +170,6 @@ if ($upload_test){ &UTILS_upload };
 if($ftp){ &FTP_it };
 if($upload){ &FTP_upload_it("$upload","testing-robots/databases") };
 #
-if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$RUNNING_suite="yes"};
-#
 if (!$RUNNING_suite) {
  if ($ROBOT_id and $backup_logs eq "yes") {
   &UTILS_backup();
@@ -191,6 +191,8 @@ if (!$RUNNING_suite) {
 # RUNNING SECTION
 #=================
 if ($RUNNING_suite) {
+ #
+ if ($clean) {&UTILS_clean("ALL") };
  #
  # Array to avoid double configure of branches
  #

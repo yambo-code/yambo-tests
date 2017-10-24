@@ -52,7 +52,7 @@ if ("$precompiled_is_run" eq "yes") {
  $conf_bin  = "bin";
  $bin_check=&exe_check;
  if ( "$bin_check" eq "FAIL") {
-  &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH, skipping...\n");
+  &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH/$conf_bin, skipping...\n");
   return "FAIL";
  }
 }
@@ -126,7 +126,7 @@ if ($compile)
   &MY_PRINT($stdout,  "\n -       Source Check : compiled ($conf_bin) ... ");
   $bin_check=&exe_check;
   if ( "$bin_check" eq "FAIL") {
-   &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH, skipping...\n");
+   &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH/$conf_bin, skipping...\n");
    &LOGs_move;
    return "FAIL";
   }
