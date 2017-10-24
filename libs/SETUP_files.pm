@@ -22,19 +22,28 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-sub CHECK_file{
-$system_command = "$suite_dir/scripts/find_the_diff/$find_the_diff -r $ref_filename -o $run_filename -p $prec -m $material";
-if($verb) {&MY_PRINT($stdout, "Running floating point test: $system_command \n\n");}
-$CHECK_error = `$system_command 2>&1`;
-chomp($CHECK_error);
-if($CHECK_error =~ /OK/) {
- my $msg = sprintf("%-"."$left_length"."s", "  $run_filename");
- &MESSAGE("LOG","\n"."$msg"."[$g_s  OK  $g_e]");
- &RUN_stats("OK");
- return "OK";
-} else {
- &RUN_stats("ERR_OUT");
- return "FAIL";
+sub SETUP_files
+{
+#
+# Glob available configurations/flows
+#
+if (-e "./ROBOTS/$host/$user/CONFIGURATIONS"){
+ opendir(DIR,"./ROBOTS/$host/$user/CONFIGURATIONS");
+ @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/CONFIGURATIONS/$_" } readdir(DIR);
+ closedir DIR;
 }
+$conf_avail = join(" ", @files);
+if (-e "./ROBOTS/$host/$user/FLOWS"){
+ opendir(DIR,"./ROBOTS/$host/$user/FLOWS");
+ @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/FLOWS/$_" } readdir(DIR);
+ closedir DIR;
+}
+$flows_avail = join(" ", @files);
+if (-e "./ROBOTS/$host/$user/CPU_CONFIGURATIONS"){
+ opendir(DIR,"./ROBOTS/$host/$user/CPU_CONFIGURATIONS");
+ @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/CPU_CONFIGURATIONS/$_" } readdir(DIR);
+ closedir DIR;
+}
+$cpu_avail = join(" ", @files);
 }
 1;

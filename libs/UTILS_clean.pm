@@ -52,7 +52,7 @@ if("@_" eq "ALL") {
   &command("find . -name 'ROBOT_*' -o -name '*-R*' -type d | grep -v $hostname | xargs rm -fr");
   &command("rm -f outputs_and_reports_ALL-* *compile*log *config*log");
  }
- &command("rm -f find_the_diff/Makefile");
+ &command("rm -f scripts/find_the_diff/Makefile");
 };
 #
 # DEEP

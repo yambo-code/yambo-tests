@@ -37,6 +37,12 @@ $suite_dir=abs_path();
 # Options list
 &UTILS_options;
 #
+if ($USER_host and -d "ROBOTS/$USER_host") {$host=$USER_host};
+#
+# Glob available configurations/flows
+#
+&SETUP_files;
+#
 if ($kill_me){
  &command("pkill yambo");
  &command("pkill ypp");
@@ -48,17 +54,22 @@ if ($kill_me){
 #
 if ($mode eq "bench") { $run_duration = 24*60*60*7 };
 if ($verb ge 2) { $log = "" };
+#
 my $len= length($backup_logs);
 if ($len eq 0) {$backup_logs="yes"};
-if ($profile and $len eq 0) {$backup_logs="yes"};
 if ($report) {$backup_logs="yes"};
+my $len= length($edit);
+if ($len eq 0) {$edit=1};
+my $len= length($profile);
+if ($len eq 0) {$profile=1};
+#
 if ($mode eq "cheers")   {$TESTS_folder="TESTS/CHEERS"};
 if ($mode eq "bench")    {$TESTS_folder="TESTS/BENCHMARKS"};
 if ($mode eq "perturbo") {$TESTS_folder="TESTS/PERTURBO"};
 #
 # Edit
 #
-if ($edit and not $edit eq "backup"){
+if ($edit and $backup_logs eq "no" and $edit ne 1){
  if ($edit eq "filters" ) {system("vim config/RULES.h");die;};
  if ($edit eq "branches") {system("vim ROBOTS/$host/$user/BRANCHES");die;};
  if ($edit eq "flags") {system("vim ROBOTS/$host/$user/FLAGS");die;};
@@ -169,7 +180,11 @@ if (!$RUNNING_suite) {
   }
   die;
  };
- if (not $backup_logs eq "no" or $profile) {&UTILS_list_backups("list")};
+ if ($profile) {
+  if (not $backup_logs eq "no" and not $backup_logs eq "yes") {&UTILS_list_backups("list")};
+ }else{
+  if ($backup_logs) {&UTILS_list_backups("list")};
+ }
  die;
 }
 #
@@ -205,7 +220,7 @@ if ($RUNNING_suite) {
  #
  &RUN_global_report("INIT");
  #
- if (! $dry_run) {&command("cd $suite_dir; $git pull")};
+ &command("cd $suite_dir; $git pull");
  #
  &SETUP_branch("load_the_branches");
  #

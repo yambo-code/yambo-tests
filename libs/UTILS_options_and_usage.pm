@@ -24,28 +24,6 @@
 #
 sub UTILS_options
 {
-#
-# Glob available configurations/flows
-#
-if (-e "./ROBOTS/$host/$user/CONFIGURATIONS"){
- opendir(DIR,"./ROBOTS/$host/$user/CONFIGURATIONS");
- @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/CONFIGURATIONS/$_" } readdir(DIR);
- closedir DIR;
-}
-$conf_avail = join(" ", @files);
-if (-e "./ROBOTS/$host/$user/FLOWS"){
- opendir(DIR,"./ROBOTS/$host/$user/FLOWS");
- @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/FLOWS/$_" } readdir(DIR);
- closedir DIR;
-}
-$flows_avail = join(" ", @files);
-if (-e "./ROBOTS/$host/$user/CPU_CONFIGURATIONS"){
- opendir(DIR,"./ROBOTS/$host/$user/CPU_CONFIGURATIONS");
- @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/CPU_CONFIGURATIONS/$_" } readdir(DIR);
- closedir DIR;
-}
-$cpu_avail = join(" ", @files);
-#
 my $ret = &GetOptions("h"    => \$help,
             "np=i"           => \$np_single,
             "np_min=i"       => \$np_min,
@@ -75,7 +53,7 @@ my $ret = &GetOptions("h"    => \$help,
             "upload=s"       => \$upload_test,
             "colors"         => \$use_colors,
             "kill"           => \$kill_me,
-            "edit=s"         => \$edit,
+            "edit:s"         => \$edit,
             "flow=s"         => \$flow,
             "autotest"       => \$autotest,
             "report"         => \$report,
@@ -84,9 +62,10 @@ my $ret = &GetOptions("h"    => \$help,
             "dry"            => \$dry_run,
             "newer=i"        => \$max_delay_commits,
             "robot=i"        => \$ROBOT_id,
+            "host=s"         => \$USER_host,
             "failed=s"       => \$failed,
             "php"            => \$php,
-            "profile"        => \$profile,
+            "profile:s"      => \$profile,
             "mode=s"         => \$mode
                       );
 #
@@ -120,7 +99,8 @@ sub UTILS_usage {
    (General options)
              -dry                   Run the script in dry mode. Not actual job is launched.
              -mode                  Can be "tests/perturbo/cheers/bench". It selects which suite to use. Default is "tests".
-             -robot                 Robot ID.
+             -host  <string>        Robot ID.
+             -robot <ID>            Robot ID.
              -status                List SVN/GIT new/untracked files.
              -v [-v]                Verbose output (use -v -v for extra verbosity)
              -colors                Use colors in messages.
@@ -162,7 +142,7 @@ sub UTILS_usage {
              -u                     UPLOAD the LOGs at the end
 
    (Profiling)
-             -profile               Create a Profile analysis
+             -profile <string(s)>   Create a Profile analysis
 
    (Backup)
              -b [ID's]              If running BACKUP the LOGs (automatically used when -report is given)

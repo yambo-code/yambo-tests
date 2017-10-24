@@ -34,23 +34,34 @@ username=`whoami`
 robot="$hostname"
 user="$username"
 if test "$domainame" != ""; then robot="$hostname.$domainame"; fi
+AC_ARG_WITH(host, AC_HELP_STRING([--with-host=<HOST>],[User-defined HOST],[32]),[],[with_host="$robot"]) 
+robot="$with_host"
 AC_MSG_CHECKING([the $robot/$user ROBOT])
 if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -d ROBOTS/$robot/$user/FLOWS; then
  AC_MSG_RESULT(found)
 else
  AC_MSG_RESULT(created)
  mkdir -p ROBOTS/$robot/$user
- mkdir -p ROBOTS/$robot/$user/CONFIGURATIONS/
- mkdir -p ROBOTS/$robot/$user/FLOWS/
+ touch ROBOTS/$robot/$user/TIME_ID
+ git add ROBOTS/$robot/
+ git add ROBOTS/$robot/$user/
+ echo "$robot" >> .gitignore
+fi
+if ! test -d ROBOTS/$robot/$user/CPU_CONFIGURATIONS; then
+ AC_MSG_NOTICE(Filling $robot/$user/CPU_CONFIGURATIONS)
  mkdir -p ROBOTS/$robot/$user/CPU_CONFIGURATIONS/
+ cp config/SAMPLE_conf.cpu    ROBOTS/$robot/$user/CPU_CONFIGURATIONS/
+fi
+if ! test -d ROBOTS/$robot/$user/CONFIGURATIONS; then
+ AC_MSG_NOTICE(Filling $robot/$user/CONFIGURATIONS)
+ mkdir -p ROBOTS/$robot/$user/CONFIGURATIONS/
  cp config/SAMPLE_config.sh   ROBOTS/$robot/$user/CONFIGURATIONS/default.sh
+fi
+if ! test -d ROBOTS/$robot/$user/FLOWS; then
+ AC_MSG_NOTICE(Filling $robot/$user/FLOWS)
+ mkdir -p ROBOTS/$robot/$user/FLOWS/
  cp config/SAMPLE_flow.pl     ROBOTS/$robot/$user/FLOWS/default.pl
  cp config/SAMPLE_validate.pl ROBOTS/$robot/$user/FLOWS/validate.pl
- cp config/SAMPLE_conf.cpu    ROBOTS/$robot/$user/CPU_CONFIGURATIONS/
- touch ROBOTS/$robot/$user/TIME_ID
- svn --force add ROBOTS/$robot/
- svn --force add ROBOTS/$robot/$user/
- echo "$robot" >> .gitignore
 fi
 AC_SUBST(user)
 AC_SUBST(robot)

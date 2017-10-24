@@ -36,10 +36,6 @@ $ntests_by_ncpu=0;
 #
 for $file (@files) 
 {
- if (not "$file" =~ /Lifetimes/ ) {next};
-# if (not "$file" =~ /CPU_4/ ) {next};
-# if (not "$file" =~ /Nmpi8/ ) {next};
-# if (not "$file" =~ /serial/ ) {next};
  if ("$file" =~ /.sw/ ) {next};
  if (-d $file) {next};
  &PROFILE_scan_the_log($file);
@@ -59,20 +55,25 @@ for $itest (1...$ntests_by_ncpu) {
  $par_conf=$PROF_test[$itest]->{PAR_CONF};
  $prof_folder=$PROF_test[$itest]->{TEST_FOLDER};
  #
- print "\n Processing ... $prof_folder $testname $par_conf\n";
+ print "\n Found ... $prof_folder $testname $par_conf\n";
  #
  $prof_folder=~ s/\//_/gs;
  #
- # Directories
- #
- &command("mkdir -p PROFILING");
- &command("mkdir -p PROFILING/$prof_folder");
- &command("mkdir -p PROFILING/$prof_folder/$testname");
- &command("mkdir -p PROFILING/$prof_folder/$testname/$par_conf");
- $current_dir="PROFILING/$prof_folder/$testname";
- #
- $legend_file ="$current_dir/LEGEND.dat";
- open($legend_log, '>>',$legend_file);
+ if ($profile) {
+  #
+  # Directories
+  #
+  &command("mkdir -p PROFILING");
+  &command("mkdir -p PROFILING/$prof_folder");
+  &command("mkdir -p PROFILING/$prof_folder/$testname");
+  &command("mkdir -p PROFILING/$prof_folder/$testname/$par_conf");
+  $current_dir="PROFILING/$prof_folder/$testname";
+  #
+  $legend_file ="$current_dir/LEGEND.dat";
+  open($legend_log, '>>',$legend_file);
+ }else{
+  next;
+ }
  #
  print $legend_log "\n\n";
  print $legend_log "PARALLEL CONFIGURATION: $PROF_test[$itest]->{PAR_CONF}\n";

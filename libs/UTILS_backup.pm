@@ -71,7 +71,10 @@ sub UTILS_list_backups{
      &command("rm -fr $dir");
      print "\n...cleaning BACKUP #$data_id\n";
     }
-    if ($edit) {&command("vim $dir/REPORT*")};
+    if ($edit) {
+     #&PROFILE($dir);
+     &command("vim $dir/REPORT*");
+    };
    }
    print "\n";
   }
