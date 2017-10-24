@@ -18,6 +18,15 @@
 # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
 # 
 # For more information see the manual pages of crontab(5) and cron(8)
+#
+#*     *     *   *    *        command to be executed
+#-     -     -   -    -
+#|     |     |   |    |
+#|     |     |   |    +----- day of week (0 - 6) (Sunday=0)
+#|     |     |   +------- month (1 - 12)
+#|     |     +--------- day of        month (1 - 31)
+#|     +----------- hour (0 - 23)
+#+------------- min (0 - 59)
 # 
 # m  h   dom mon dow   command
 00 21  *   *   *    /home/marini/Yambo/test-suite/ROBOTS/anomaly.mlib.ism.cnr.it/marini/script.tcsh > /home/marini/Yambo/test-suite/LOG 2>&1

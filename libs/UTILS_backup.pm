@@ -24,6 +24,7 @@
 #
 sub UTILS_list_backups{
  my @dir = ( "$host/$user" );
+ if ($mode eq "bench") {@dir = ( "$host/$user/BENCHMARKS" )};
  my @dirs;
  find( sub { push @dirs, $File::Find::name if -d }, @dir );
  my @dirs_to_process;
@@ -87,7 +88,8 @@ foreach $conf_file (<*$ROBOT_string*.log>){
  &command("mv $conf_file $BACKUP_dir");
  if ($conf_file =~ /REPORT-/) {$global_report=$conf_file};
 };
-&command("mv $DATA_backup_file.tar.gz $BACKUP_dir");
+&command("mv $OUTPUT_backup_file.tar.gz $BACKUP_dir");
+if ($DBS_backup_file) {&command("mv $DBS_backup_file.tar $BACKUP_dir")};
 }
 sub UTILS_backup
 {
@@ -98,7 +100,8 @@ if (not $RUNNING_suite)
  $file= (glob("REPORT*R${ROBOT_id}*"))[0];
  if (not $file) {die "\nNo files to backup\n\n"};
  open(REPORT,"<","$suite_dir/$file");
- &PHP_extract;
+ @lines = <REPORT>;
+ &PHP_key_words;
  close(REPORT);
  $day=(split("-",$date))[1];
  $str1=(split("-",$date))[0];
@@ -110,9 +113,12 @@ $str1="$INITIAL_month";
 if ($INITIAL_month<10) {$str1="0$INITIAL_month"};
 $str2="$day";
 if ($day<10) {$str2="0$day"};
-$BACKUP_dir   ="$host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time";
+$BACKUP_dir   ="$host/$user/";
+if ($mode eq "bench") {$BACKUP_dir.="BENCHMARKS/"};
+$BACKUP_dir   .="$FC_kind/$INITIAL_year/$str1/$str2/$time";
 &command("mkdir -p $host/www");
 &command("mkdir -p $host/$user");
+if ($mode eq "bench") {&command("mkdir -p $host/$user/BENCHMARKS")};
 &command("mkdir -p $host/$user/$FC_kind");
 &command("mkdir -p $host/$user/$FC_kind");
 &command("mkdir -p $host/$user/$FC_kind/$INITIAL_year");
@@ -120,30 +126,45 @@ $BACKUP_dir   ="$host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time";
 &command("mkdir -p $host/$user/$FC_kind/$INITIAL_year/$str1/$str2");
 &command("mkdir -p $host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time");
 #
+if ($mode eq "bench") {&command("mkdir -p $host/$user/BENCHMARKS")};
+#
+$OUTPUT_backup_file="outputs_and_reports_ALL-$ROBOT_string";
+undef $DBS_backup_file;
+if ($mode eq "bench") {$DBS_backup_file="DATABASES-$ROBOT_string"};
+#
+# OUTPUT filling
+#
 &command("rm -f list");
-$DATA_backup_file="outputs_and_reports_ALL-$ROBOT_string";
-if (not $RUNNING_suite) {$failed_log=(glob("FAILED*R${ROBOT_id}*"))[0]};
-open(FAILED,"<","$suite_dir/$failed_log");
-my @FLINES = <FAILED>;
-close(FAILED);
-for(@FLINES){ 
-    push @out, $_ if (not @out) or ($out[-1] ne $_);
-};
-my $line;
-while($line = shift(@out)) {
- chomp($line);
- &command("find $line -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep -v 'REFERENCE' >> list");
-}
-if ( -f "$DATA_backup_file.tar.gz") {
- &command("gunzip -f $DATA_backup_file.tar.gz");
- if (-s "list") {&command("tar rf $DATA_backup_file.tar -T list")};
+if ($mode eq "bench") 
+{
+ &command("find . -name 'ROBOT_Nr_${ROBOT_id}' > list");
+ if (-s "list") {&command("tar rf $DBS_backup_file.tar -T list")};
+ &command("find . -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep 'ROBOT_Nr_${ROBOT_id}' > list");
 }else{
- if (-s "list") {&command("tar cf $DATA_backup_file.tar -T list")};
+ if (not $RUNNING_suite) {$failed_log=(glob("FAILED*R${ROBOT_id}*"))[0]};
+ open(FAILED,"<","$suite_dir/$failed_log");
+ my @FLINES = <FAILED>;
+ close(FAILED);
+ for(@FLINES){ 
+     push @out, $_ if (not @out) or ($out[-1] ne $_);
+ };
+ my $line;
+ while($line = shift(@out)) {
+  chomp($line);
+  &command("find $line -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep -v 'REFERENCE' >> list");
+ }
+}
+#
+if ( -f "$OUTPUT_backup_file.tar.gz") {
+ &command("gunzip -f $OUTPUT_backup_file.tar.gz");
+ if (-s "list") {&command("tar rf $OUTPUT_backup_file.tar -T list")};
+}else{
+ if (-s "list") {&command("tar cf $OUTPUT_backup_file.tar -T list")};
 }
 foreach $conf_file (<*$ROBOT_string*log>) {
- &command("tar rf  $DATA_backup_file.tar $conf_file");
+ &command("tar rf  $OUTPUT_backup_file.tar $conf_file");
 };
-&command("gzip -f $DATA_backup_file.tar");
+&command("gzip -f $OUTPUT_backup_file.tar");
 &command("rm -f list");
 #
 # Archive

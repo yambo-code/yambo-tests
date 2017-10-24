@@ -30,6 +30,6 @@ if ( "$1" == "tests") then
  endif
 endif
 if ( "$1" == "bench") then
- ./driver.pl -flow benchmark -robot $3 -m bench
+ ./driver.pl -flow benchmark -robot $3 -m bench -profile -b
 endif
 

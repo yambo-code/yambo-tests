@@ -5,32 +5,9 @@
  ACTIVE      => "yes",
  CONFIG      => "default.sh", 
  TESTS       => "AGNR",
+ CPU_CONF    => "32.2.cpu",
 },
 {
- ACTIVE      => "no",
- MPI_CPU     => 8,
- PAR_MODE    => "default",
-},
-{
- MPI_CPU     => 8,
- PAR_MODE    => "random",
-},
-{
- MPI_CPU     => 4,
- PAR_MODE    => "loop",
-},
-{
- THREADS     => 4,
-},
-{
- MPI_CPU     => 8,
- SLK_CPU     => 4,
- PAR_MODE    => "default",
-},
-{
- MPI_CPU     => 8,
- THREADS     => 2,
- SLK_CPU     => 4,
- PAR_MODE    => "default",
+ CPU_CONF    => "32.3.cpu"
 },
 );

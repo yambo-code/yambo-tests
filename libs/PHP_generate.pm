@@ -32,6 +32,8 @@ foreach $dir (@sorted_dirs) {
  @files = glob("$dir/REPORT*");
  foreach $file (@files) {
   open(REPORT,"<","$suite_dir/$file");
+  @lines = <REPORT>;
+  &PHP_key_words;
   &PHP_extract;
   close(REPORT);
  }
@@ -61,13 +63,11 @@ $time=$pattern[0][5];
 sub PHP_extract{
 #
 @lines = <REPORT>;
-#
 &PHP_key_words;
 #
 # Name choosing
 $MAX_phps=20;
 chdir("$host/www");
-#
 for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
  $k=$j+1;

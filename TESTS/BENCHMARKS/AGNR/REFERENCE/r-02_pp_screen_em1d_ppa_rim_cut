@@ -1,11 +1,11 @@
                                                                 
-      __   __     _        __  __       ____      U  ___  u     
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/      
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |      
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |      
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/       
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\         
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)        
+    :::   :::   :::     ::::    ::::  :::::::::   ::::::::      
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:     
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+     
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+     
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+     
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#     
+       ###  ###     ### ###       ### #########   ########      
                                                                 
                                                                 
            Version 4.3.0 Revision 14898 Hash 17125ef            
@@ -27,8 +27,8 @@
  Additional I/O in   .
  Communications in   .
  Input file     is   yambo.in
- Report file    is   ./r-01_init_setup
- Job string(main): 01_init
+ Report file    is   ./r-02_pp_screen_em1d_ppa_rim_cut
+ Job string(main): 02_pp_screen
              (#1): R14
  Log files      in ./LOG
   
@@ -1400,40 +1400,231 @@
 
  Timing [Min/Max/Average]: 01s/01s/01s
 
- [04] Timing Overview
+ [04] Coloumb potential Random Integration (RIM)
+ ===============================================
+
+
+  [04.01] RIM initialization
+  ==========================
+
+  * Diagonal components only detected *
+
+  8 x (sBL volume)    [au]:   0.0032
+  sBZ random points       : 1000000
+  Points outside the sBZ  :  7997866
+  RL volume           [au]:  0.02512
+  Integrated volume   [au]:  0.02513
+
+
+  [04.02] RIM integrals
+  =====================
+
+  Gamma point sphere radius         [au]:  0.02670
+  Points outside the sphere             :  931943
+  [Int_sBZ(q=0) 1/q^2]*(Vol_sBZ)^(-1/3) = 5.778462
+                                 should be < 7.795600
+  [WR./02_pp_screen//ndb.RIM]---------------------------------
+   Brillouin Zone Q/K grids (IBZ/BZ):  32   63   32   63
+   Coulombian RL components        : 1
+   Coulombian diagonal components  :yes
+   RIM random points               : 1000000
+   RIM  RL volume             [a.u.]:  0.02513
+   Real RL volume             [a.u.]:  0.02512
+   Eps^-1 reference component       :0
+   Eps^-1 components                : 0.00      0.00      0.00    
+   RIM anysotropy factor            : 0.000000
+  - S/N 000348 -------------------------- v.04.03.00 r.14898 -
+
+  Summary of Coulomb integrals for non-metallic bands |Q|[au] RIM/Bare:
+
+  Q [1]:0.1000E-40.7412 * Q [2]:  0.01236  0.05895
+  Q [3]:  0.02473  0.15412 * Q [4]:  0.03709  0.25192
+  Q [5]:  0.04945  0.34219 * Q [6]:  0.06181  0.42227
+  Q [7]:  0.07418  0.49213 * Q [8]:  0.08654  0.55260
+  Q [9]:  0.09890  0.60478 * Q [10]: 0.111265 0.649756
+  Q [11]: 0.123627 0.688544 * Q [12]: 0.135990 0.722040
+  Q [13]: 0.148353 0.751028 * Q [14]: 0.160716 0.776178
+  Q [15]: 0.173078 0.798064 * Q [16]: 0.185441 0.817169
+  Q [17]: 0.197804 0.833902 * Q [18]: 0.210166 0.848609
+  Q [19]: 0.222529 0.861578 * Q [20]: 0.234892 0.873054
+  Q [21]: 0.247255 0.883244 * Q [22]: 0.259617 0.892322
+  Q [23]: 0.271980 0.900435 * Q [24]: 0.284343 0.907708
+  Q [25]: 0.296706 0.914249 * Q [26]: 0.309068 0.920147
+  Q [27]: 0.321431 0.925482 * Q [28]: 0.333794 0.930320
+  Q [29]: 0.346156 0.934719 * Q [30]: 0.358519 0.938728
+  Q [31]: 0.370882 0.942391 * Q [32]: 0.383245 0.945746
+
+ Timing [Min/Max/Average]: 02s/02s/02s
+
+ [05] Coloumb potential CutOff :box
+ ==================================
+
+ Cut directions       :XY
+ Box sides        [au]: 58.00000  20.00000
+ Symmetry test passed :yes
+
+ [WR./02_pp_screen//ndb.cutoff]------------------------------
+  Brillouin Zone Q/K grids (IBZ/BZ):  32   63   32   63
+  CutOff Geometry                 :box xy
+  Coulomb cutoff potential        :box xy 58.00020.000
+  Box sides length            [au]: 58.00000  20.00000   0.00000
+  Sphere/Cylinder radius      [au]: 0.000000
+  Cylinder length             [au]: 0.000000
+  RL components                   :  59267
+  RL components used in the sum   :  402821
+  RIM corrections included        :yes
+  RIM RL components               : 1
+  RIM random points               : 1000000
+ - S/N 000348 -------------------------- v.04.03.00 r.14898 -
+
+ Timing [Min/Max/Average]: 01h-01m-28s/01h-01m-28s/01h-01m-28s
+
+ [06] Dynamic Dielectric Matrix (PPA)
+ ====================================
+
+ [RD..//SAVE//ns.kb_pp_pwscf]--------------------------------
+  Fragmentation                    :yes
+ - S/N 000348 -------------------------- v.04.00.02 r.05444 -
+ [WF] Performing Wave-Functions I/O from ..//SAVE
+
+ [WF loader] Normalization (few states)  min/max  :0.638E-13  1.00    
+
+ [WR./02_pp_screen//ndb.dip_iR_and_P]------------------------
+  Brillouin Zone Q/K grids (IBZ/BZ):  32   63   32   63
+  RL vectors                   (WF):  59267
+  Fragmentation                    :yes
+  Electronic Temperature        [K]: 0.000000
+  Bosonic    Temperature        [K]: 0.000000
+  X band range           :   1  256
+  X band range limits    : 30  31
+  X e/h energy range [ev]:-1.000000 -1.000000
+  RL vectors in the sum  :  59267
+  [r,Vnl] included       :yes
+  Using shifted grids    :no
+  Using covariant dipoles:no
+  Using G-space approach :yes
+  Using R-space approach :no
+  Direct v evaluation    :no
+  Field momentum norm    :0.1000E-4
+  Wavefunctions          :Slater exchange(X)+Perdew & Zunger(C)
+ - S/N 000348 -------------------------- v.04.03.00 r.14898 -
+ [WF] Performing Wave-Functions I/O from ..//SAVE
+
+ [FFT-X] Mesh size: 135   48   20
+
+ [X-CG] R(p) Tot o/o(of R)  :   68269   427140      100
+ [WR./02_pp_screen//ndb.pp]----------------------------------
+  Brillouin Zone Q/K grids (IBZ/BZ):  32   63   32   63
+  RL vectors                   (WF):  59267
+  Coulomb cutoff potential         :box xy 58.00020.000
+  Fragmentation                    :yes
+  Electronic Temperature        [K]: 0.000000
+  Bosonic    Temperature        [K]: 0.000000
+  PPA    diel. fun.  energies      :Slater exchange(X)+Perdew & Zunger(C)
+                     wavefunctions :Slater exchange(X)+Perdew & Zunger(C)
+  Global Gauge                     :length
+  X matrix size          :  867
+  X band range           :   1  256
+  X e/h energy range [ev]:-1.000000 -1.000000
+  X Time ordering        :R
+  X xc-Kernel            :none
+  X Drude frequency      : 0.00      0.00    
+  X poles           [o/o]: 100.0000
+  RL vectors in the sum  :  59267
+  [r,Vnl] included       :yes
+  Field direction        : 0.000     0.000    0.1000E-4
+  BZ energy Double Grid  :no
+  BZ energy DbGd points  :0
+ [WR./02_pp_screen//ndb.pp_fragment_1]-----------------------
+  PPA Im  energy     [ev]: 20.00000
+ - S/N 000348 -------------------------- v.04.03.00 r.14898 -
+ [X-CG] R(p) Tot o/o(of R)  :   83944   427140      100
+ [WR./02_pp_screen//ndb.pp_fragment_2]-----------------------
+  PPA Im  energy     [ev]: 20.00000
+ - S/N 000348 -------------------------- v.04.03.00 r.14898 -
+ [X-CG] R(p) Tot o/o(of R)  :   84039   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84102   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84047   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84112   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   83980   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84082   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84102   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84262   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84177   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84105   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84107   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84201   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84133   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84066   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84087   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84072   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84166   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84184   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84182   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84214   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84108   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84137   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84284   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84204   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84129   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84262   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84159   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84167   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84106   427140      100
+ [X-CG] R(p) Tot o/o(of R)  :   84226   427140      100
+
+ Timing [Min/Max/Average]: 01d-03h-14m-32s/01d-03h-14m-32s/01d-03h-14m-32s
+
+ [07] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                               io_WF :     0.00s CPU
-                             io_GROT :     0.00s CPU (       2 calls,   0.015 s avg)
+                               io_WF :    24.00s CPU (      69 calls,   0.357 s avg)
+                             io_GROT :     0.00s CPU (       2 calls,   0.017 s avg)
                             io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
-                          io_COL_CUT :     0.00s CPU
+                          io_COL_CUT :     0.00s CPU (       4 calls,   0.007 s avg)
                       io_Double_Grid :     0.00s CPU
                                io_HF :     0.00s CPU
-                          io_DIPOLES :     0.00s CPU
-                         io_KB_pwscf :     0.00s CPU
+                          io_DIPOLES :     0.00s CPU (      35 calls,   0.001 s avg)
+                         io_KB_pwscf :     0.00s CPU (      34 calls,   0.001 s avg)
                         io_KB_abinit :     0.00s CPU
-                                io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+                                io_X :     0.00s CPU (      37 calls,   0.018 s avg)
                                io_BS :     0.00s CPU
+                                 RIM :     2.00s CPU
+                      Coulomb Cutoff :     1h 1m CPU
+             IO_and_Messaging_switch :     0.00s CPU (       4 calls,   0.000 s avg)
+                             Dipoles : 39m58.00s CPU
+                   DIPOLE_transverse : 39m58.00s CPU
+                         io_fragment :     0.00s CPU (     160 calls,   0.000 s avg)
+                      Xo (procedure) :     1d 2h CPU (      32 calls,2983.233 s avg)
+                          Xo (REDUX) :     0.00s CPU (      32 calls,   0.000 s avg)
+                       X (procedure) :  1m42.00s CPU (      32 calls,   3.216 s avg)
+                      LINEAR ALGEBRA :  1m40.00s CPU (      64 calls,   1.576 s avg)
+                   SERIAL_lin_system :  1m40.00s CPU (      64 calls,   1.576 s avg)
+                           X (REDUX) :     0.00s CPU (      32 calls,   0.002 s avg)
 
- [05] Memory Overview
+ [08] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
  Memory treshold are: 10.24000Gb (basic treshold)  102.4000Gb (SAVEs treshold)
 
-         TOTAL unallocated :  129.7715Gb
+         TOTAL unallocated :  137.3737Gb
 
-         Max memory used   :  126.7340Mb
+ MAX allocations:
 
- [06] Game Over & Game summary
+                             wf_disk :  103.3318Gb ([06] Dynamic Dielectric Matrix (PPA))
+
+         Max memory used   :  8.577074Gb
+
+ [09] Game Over & Game summary
  =============================
 
  10/19/2017 at 14:02 YAMBO @ polluce [start]
- 10/19/2017 at 14:02                 [end]
+ 10/20/2017 at 18:18                 [end]
 
- Timing   [Min/Max/Average]: 02s/02s/02s
-             [Time-Profile]:  2.103860s
+ Timing   [Min/Max/Average]: 01d-04h-16m-05s/01d-04h-16m-05s/01d-04h-16m-05s
+             [Time-Profile]: 0.1018E+6s
 
  .-ACKNOWLEDGMENT
  |
@@ -1451,6 +1642,28 @@
  |
   
  .-Input file : yambo.in
- | setup                          # [R INI] Initialization
+ | em1d                           # [R Xd] Dynamical Inverse Dielectric Matrix
+ | ppa                            # [R Xp] Plasmon Pole Approximation
+ | rim_cut                        # [R RIM CUT] Coulomb potential
  | BoseTemp= 0.000000     eV      # Bosonic Temperature
  | MEM_tresh= 10000       Kb      # [MEMORY] Treshold on traced memory allocations/deallocations
+ | FFTGvecs=  59267       RL      # [FFT] Plane-waves
+ | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+ | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+ | RandQpts= 1000000              # [RIM] Number of random q-points in the BZ
+ | RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
+ | CUTGeo= "box xy"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
+ | % CUTBox
+ |  58.00000 | 20.00000 |  0.00000 |        # [CUT] [au] Box sides
+ | %
+ | CUTRadius= 0.000000            # [CUT] [au] Sphere/Cylinder radius
+ | CUTCylLen= 0.000000            # [CUT] [au] Cylinder length
+ | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
+ | % BndsRnXp
+ |    1 | 256 |                   # [Xp] Polarization function bands
+ | %
+ | NGsBlkXp= 3            Ry      # [Xp] Response block size
+ | % LongDrXp
+ |  0.000    | 0.000    |0.1000E-4 |        # [Xp] [cc] Electric Field
+ | %
+ | PPAPntXp= 20.00000     eV      # [Xp] PPA imaginary energy
