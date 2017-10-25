@@ -33,6 +33,11 @@ if ($n_fields == 4) {
 @ncpu = qw(1 1 1 1)
 }
 #
+if ($n_fields == 5) {
+@icpu = qw(1 2 3 4 5);
+@ncpu = qw(1 1 1 1 1)
+}
+#
 $ic=0;
 while ($ic<=$n_fields-1) {
   my $random_i = int(rand($n_fields));
