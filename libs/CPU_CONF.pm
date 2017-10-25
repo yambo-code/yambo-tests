@@ -31,7 +31,7 @@ sub CPU_CONF_setup{
   @CPU_CONF = <CPU_CONF_point>;
   foreach $CONF (@CPU_CONF){
    chomp($CONF);
-   my @field = split(/ /, $CONF);
+   my @field = split(/\s+/, $CONF);
    if ($field[1] =~ /_CPU/)
    {
     my @cpu_field = split(/\./, $field[2]);

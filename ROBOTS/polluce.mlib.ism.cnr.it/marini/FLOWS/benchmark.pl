@@ -13,4 +13,7 @@
 {
  CPU_CONF    => "32.3.cpu"
 },
+{
+ CPU_CONF    => "32.4.cpu"
+},
 );

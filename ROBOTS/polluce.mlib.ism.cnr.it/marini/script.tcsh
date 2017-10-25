@@ -35,4 +35,3 @@ endif
 if ( "$1" == "bench") then
  ./driver.pl -flow benchmark -robot $3 -m bench -profile -b -c
 endif
-
