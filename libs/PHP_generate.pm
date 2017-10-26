@@ -62,9 +62,6 @@ $time=$pattern[0][5];
 #
 sub PHP_extract{
 #
-@lines = <REPORT>;
-&PHP_key_words;
-#
 # Name choosing
 $MAX_phps=20;
 chdir("$host/www");

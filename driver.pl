@@ -308,13 +308,11 @@ close $elog;
 close $wlog;
 close $flog;
 #
-if ($DATA_backup_file) {
- if ($backup_logs eq "yes") {
-  &UTILS_backup_save();
-  if ($report){ 
-   &PHP_generate(); 
-   &PHP_upload();
-  }
+if ($backup_logs eq "yes") {
+ &UTILS_backup_save();
+ if ($report){ 
+  &PHP_generate(); 
+  &PHP_upload();
  }
 }
 #
