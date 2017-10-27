@@ -59,8 +59,8 @@ if (-e "MAGNETIC" && !$is_GPL) {
 if (-e "KERR"  && !$YPP=="1") {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_kerr";
 }
-if ($GKBA =="1") {
- $yambo_exec = "$BRANCH/$conf_bin/gkba";
+if ($CHEERS =="1") {
+ $yambo_exec = "$BRANCH/$conf_bin/cheers";
 }
 #
 if ($openmp_is_off) {$yambo_exec="$yambo_exec -N";}
