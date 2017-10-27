@@ -47,7 +47,7 @@ my $last = chop($chr);
 if ($last eq "/") {
  my $last = chop($branchdir);
 }
-if($branchdir =~ /^#/ || $branchdir == "") {
+if($branchdir =~ /^#/ || $branchdir eq "") {
  &MY_PRINT($stdout, "Skipping branch: $branchdir\n") if ($verb);
  return "FAIL";
 }
@@ -87,6 +87,7 @@ if ($BRANCH=~m/devel-slepc/ix)  {$is_NEW_WF="yes"};
 if ($BRANCH=~m/devel-rt/ix)     {$is_NEW_WF="yes"};
 if ($BRANCH=~m/devel-dipoles/ix){$is_NEW_WF="yes"};
 if ($BRANCH=~m/max-release/ix)  {$is_NEW_WF="yes"};
+if ($BRANCH=~m/cheers/ix)       {$is_NEW_WF="yes"};
 #
 if ($BRANCH=~m/max-release-GPL/ix) {$is_GPL="yes"};
 if ($is_GPL)  {$is_NEW_WF="yes"};
