@@ -49,12 +49,12 @@ if ( $default_parallel ){
 #
 # LOOP/RANDOM PARALLEL section
 #
-# SE_CPU=\"$q.${qp}.$b\" => QSB
+# SE_CPU=\"$q.$s.$b\" => QSB
 # X_all_q_CPU=\"$g.$q.$k.$c.$v\" => GQKCV
 # X_q_0_CPU=\"$g.$k.$c.$v\" => GKCV
 # X_finite_q_CPU=\"$g.$q.$k.$c.$v\" => GQKCV
 # BS_CPU=\"$k.$eh.$t\"  => KEHT
-# RT_CPU=\"$q.$k.${qp}.$b\" => QKSB
+# RT_CPU=\"$q.$k.$s.$b\" => QKSB
 #
 # Constrains
 &RUN_PAR_constrains();
@@ -62,23 +62,23 @@ if ( $default_parallel ){
 if ($random_parallel)
 {
  &RUN_random_PAR(4);
- while (&CHECK_me($ncpu[1],$ncpu[2],$ncpu[3]) eq 1){&RUN_random_PAR(4)};
+ while (&CHECK_me( {G=>$ncpu[0], k=>$ncpu[1], c=>$ncpu[2], v=>$ncpu[3] } ) eq 1){&RUN_random_PAR(4)};
  @GKCV[0]=[@ncpu];
  #
  &RUN_random_PAR(5);
- while (&CHECK_me($ncpu[1],$ncpu[3],$ncpu[4]) eq 1 or &CHECK_me($ncpu[2],$ncpu[3],$ncpu[4])){&RUN_random_PAR(5)};
+ while (&CHECK_me( {G=>$ncpu[0], k=>$ncpu[1], c=>$ncpu[3], v=>$ncpu[4] } ) eq 1 or &CHECK_me( {G=>$ncpu[0], k=>$ncpu[2], c=>$ncpu[3], v=>$ncpu[4] } ) eq 1  ){&RUN_random_PAR(5)};
  @GQKCV[0]=[@ncpu];
  #
  &RUN_random_PAR(3);
- while (&CHECK_me($ncpu[0],$ncpu[2],$ncpu[2]) eq 1){&RUN_random_PAR(3)};
+ while (&CHECK_me( {k=>$ncpu[0], c=>$ncpu[2], v=>$ncpu[2] } ) eq 1){&RUN_random_PAR(3)};
  @QSB[0]=[@ncpu];
  #
  &RUN_random_PAR(3);
- while (&CHECK_me($ncpu[0],0,0) eq 1 or $ncpu[2]<=$ncpu[0]*$ncpu[1]){&RUN_random_PAR(3)};
+ while (&CHECK_me( {k=>$ncpu[0]}) eq 1 or $ncpu[2]<=$ncpu[0]*$ncpu[1]){&RUN_random_PAR(3)};
  @KEHT[0]=[@ncpu];
  #
  &RUN_random_PAR(4);
- while (&CHECK_me($ncpu[0],$ncpu[3],$ncpu[3]) eq 1 or &CHECK_me($ncpu[1],$ncpu[3],$ncpu[3]) eq 1){&RUN_random_PAR(4)};
+ while (&CHECK_me( {k=>$ncpu[0], c=>$ncpu[3], v=>$ncpu[3] } ) eq 1 or &CHECK_me( {k=>$ncpu[1], c=>$ncpu[3], v=>$ncpu[3] } ) eq 1){&RUN_random_PAR(4)};
  @QKSB[0]=[@ncpu];
  #
 }else{
@@ -100,55 +100,65 @@ if ($random_parallel)
  @CV=@QK;
  @SB=@QK;
  #
- $iconf=0;
+ $N_gkcv=0;
+ $N_gqkcv=0;
  my $trace;
- foreach $cv (@CV){ foreach $gk (@GK){
-  @conf = ( @$gk[0], @$gk[1] , @$cv[0], @$cv[1] );
-  $trace=&trace( @conf );[1]
-  &CHECK_me(@$gk[1],@$cv[0], @$cv[1]);
-  if ($trace eq $np and &CHECK_me(@$gk[1],@$cv[0], @$cv[1]) eq 0) {
-   @GKCV[$iconf]= [ @conf ];
-   $iconf++; 
-  }
- }};
- $iconf=0;
- foreach $cv (@CV){ foreach $gqk (@GQK){
-  @conf = ( @$gqk[0], @$gqk[1], @$gqk[2] , @$cv[0], @$cv[1] );
-  $trace=&trace( @conf );
-  if ($trace eq $np and &CHECK_me(@gqk[1],@$cv[0], @$cv[1]) eq 0 and &CHECK_me(@gqk[2],@$cv[0], @$cv[1]) eq 0) {
-   @GQKCV[$iconf]= [ @conf ];
-   $iconf++; 
-  }
- }};
- $iconf=0;
- foreach $q (@SINGLE){ foreach $qpb (@SB){
-  @conf = ( $q, @$qpb[0], @$qpb[1] );
-  $trace=&trace( @conf );
-  if ($trace eq $np and &CHECK_me($q,@$qpb[1],@$qpb[1])  eq 0) {
-   @QSB[$iconf]= [ @conf ];
-   $iconf++; 
-  }
- }};
- $iconf=0;
- foreach $k (@SINGLE){foreach $eh (@SINGLE){ 
-  $t_max=$k*$eh;
-  for( $t = 1; $t < $t_max; $t = $t + 2 ){
-   @conf = ( $k, $eh, $t );
+ foreach $cv (@CV){ 
+  if (&CHECK_me({c=>@$cv[0],v=>@$cv[1]}) eq 1){next};
+  foreach $gk (@GK){
+   if (&CHECK_me({G=>@$gk[0],k=>@$gk[1]}) eq 1){next};
+   @conf = ( @$gk[0], @$gk[1] , @$cv[0], @$cv[1] );
    $trace=&trace( @conf );
-   if ($trace eq $np and &CHECK_me($k,0,0)  eq 0) {
-    @KEHT[$iconf]= [ @conf ];
-    $iconf++; 
-   }
- }}};
- $iconf=0;
- foreach $q (@SINGLE){ foreach $k (@SINGLE){ foreach $qpb (@SB){
-  @conf = ( $q, $k, @$qpb[0], @$qpb[1] );
-  $trace=&trace( @conf );
-  if ($trace eq $np and &CHECK_me($q,@$qpb[1],@$qpb[1]) eq 0 and &CHECK_me($k,@$qpb[1],@$qpb[1]) eq 0) {
-   @QKSB[$iconf]= [ @conf ];
-   $iconf++; 
+   if (not $trace eq $np) {next};
+   @GKCV[$N_gkcv]= [ @conf ];
+   $N_gkcv++; 
   }
- }}};
+  foreach $gqk (@GQK){
+   if (&CHECK_me({G=>@$gqk[0],k=>@$gqk[1]}) eq 1){next};
+   if (&CHECK_me({G=>@$gqk[0],k=>@$gqk[2]}) eq 1){next};
+   @conf = ( @$gqk[0], @$gqk[0], @$gqk[1] , @$cv[0], @$cv[1] );
+   $trace=&trace( @conf );
+   if (not $trace eq $np) {next};
+   @GQKCV[$N_gqkcv]= [ @conf ];
+   $N_gqkcv++; 
+  }
+ };
+ #
+ $N_qksb=0;
+ $N_qsb=0;
+ foreach $q (@SINGLE){ 
+  if (&CHECK_me({k=>$q}) eq 1){next};
+  foreach $sb (@SB){
+   if (&CHECK_me({c=>@$sb[1],v=>@$sb[1]}) eq 1){next};
+   foreach $k (@SINGLE){ 
+    if (&CHECK_me({k=>$k}) eq 1){next};
+    $trace=&trace( @conf );
+    if (not $trace eq $np) {next};
+    @conf = ( $q, $k, @$sb[0], @$sb[1] );
+    @QKSB[$N_qksb]= [ @conf ];
+    $N_qksb++; 
+   }
+   @conf = ( $q, @$sb[0], @$sb[1] );
+   $trace=&trace( @conf );
+   if (not $trace eq $np) {next};
+   @QSB[$N_qsb]= [ @conf ];
+   $N_qsb++; 
+  }
+ };
+ $N_keht=0;
+ foreach $k (@SINGLE){
+  foreach $eh (@SINGLE){ 
+   if (&CHECK_me({k=>$k}) eq 1){next};
+   $t_max=$k*$eh;
+   for( $t = 1; $t < $t_max; $t = $t + 2 ){
+    @conf = ( $k, $eh, $t );
+    $trace=&trace( @conf );
+    if (not $trace eq $np) {next};
+    @KEHT[$N_keht]= [ @conf ];
+    $N_keht++; 
+   }
+  }
+ }
 }
 #
 if ($verb >2) { 
@@ -272,7 +282,11 @@ if ($COLL=="1" and $yambo_exec=~"yambo_sc"  ) {
 # END @
 }
 sub CHECK_me{
- if (@_[0] <= $MAX_k and  @_[1] <= $MAX_c and @_[2] <= $MAX_v) { return 0};
- return 1;
+ my ($args) = @_;
+ if ($args->{k} and $args->{k} > $MAX_k) {return 1};
+ if ($args->{c} and $args->{c} > $MAX_c) {return 1};
+ if ($args->{v} and $args->{v} > $MAX_v) {return 1};
+ if ($args->{G} and $args->{G} > $MAX_G) {return 1};
+ return 0;
 }
 1;

@@ -27,7 +27,7 @@ sub RUN_logs{
 $extension=$branch.'-'.$BUILD.'-'.$FC_kind.'-'.$PAR_string;
 $tests_log="LOG-$ROBOT_string-$date"."_"."$time"."_".$extension.".log";
 #
-open($tlog, '>', $tests_log) or die "Could not open file '$tests_log' $!";
+open($tlog, '>>', $tests_log) or die "Could not open file '$tests_log' $!";
 #
 # Summary of requested options
 &MESSAGE("LOG","\n$line");

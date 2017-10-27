@@ -42,7 +42,7 @@ if ("@_" eq "RESTORE") {
 if("@_" eq "ALL") {
  if ($ROBOT_id) 
  {
-  $cmd="$git ls-files --others --exclude-standard | grep -e R$ROBOT_id. -e ROBOT_Nr_$ROBOT_id -e LOG_$ROBOT_id | grep -v $hostname |  xargs rm -f";
+  $cmd="$git ls-files --others --exclude-standard | grep -e R$ROBOT_id -e ROBOT_Nr_$ROBOT_id | grep -v $hostname |  xargs rm -f";
   &command("$cmd");
   $cmd="find . -name 'ROBOT_Nr_$ROBOT_id' -o -name 'R$ROBOT_id' -type d | grep -v $hostname | xargs rm -fr";
   &command("$cmd");
@@ -70,7 +70,7 @@ if("@_" eq "BINs" ) {
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
    $conf_bin  = "$branchdir/bin-$conf_file-$FC_kind";
-   if ($ROBOT_id) {$conf_bin  = "$branchdir/bin-$conf_file-$FC_kind-$ROBOT_string"};
+   if ($ROBOT_id) {$conf_bin  = "$branchdir/bin-$conf_file-*R$ROBOT_id"};
    &command("rm -fr $conf_bin* $branchdir/bin-precompiled*");
   }
  }
