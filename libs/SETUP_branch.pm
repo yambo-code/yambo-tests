@@ -47,11 +47,10 @@ my $last = chop($chr);
 if ($last eq "/") {
  my $last = chop($branchdir);
 }
-if($branchdir =~ /^#/ || $branchdir == "") {
+if ($branchdir =~ /^#/ or $branchdir eq "") {
  &MY_PRINT($stdout, "Skipping branch: $branchdir\n") if ($verb);
  return "FAIL";
-}
-elsif($branchdir =~ /^\//) {
+}elsif($branchdir =~ /^\//) {
  my @subdirs = File::Spec->splitdir( $branchdir );  
  # Make shortname from last two subdirs in full path
  $dir= @subdirs[-2]."_".@subdirs[-1];

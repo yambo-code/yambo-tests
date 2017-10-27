@@ -17,7 +17,6 @@ time_conv = {'m': 60,
              's': 1,
              'h': 3600}
 
-
 def list_subdirs(path):
     return next(os.walk(path))[1]
     #return filter(os.path.isdir, [os.path.join(d,f) for f in os.listdir(d)])
@@ -35,8 +34,37 @@ class YamboTestSuiteRun():
         self.root = root
         walker = os.walk(root) 
 
+        regex = 'CPU Nr\.([0-9]+) of ([0-9a-zA-Z\-\_]+)'
         #read the total time
-        self.total_time = np.loadtxt('%s/TOTAL_TIME_vs_PAR_CONF.dat'%root,unpack=True)
+        total_time_dict = {}
+        with open('%s/TOTAL_TIME_vs_PAR_CONF.dat'%root) as f:
+            for line in f:
+                #read values
+                cpu_time, cpu_number_paralel_conf = line.strip().split('#')
+                cpu_number, paralel_conf = re.findall(regex, cpu_number_paralel_conf)[0]
+                cpu, time = cpu_time.strip().split()
+
+                #create dictionary entrey
+                if paralel_conf not in total_time_dict:
+                    total_time_dict[paralel_conf] = {}
+               
+                total_time_dict[paralel_conf][int(cpu_number)] = float(time)
+        self.total_time_dict = total_time_dict
+
+        legend_dict = {}        
+        with open('%s/LEGEND.dat'%root) as f:
+            for line in f:
+                if 'PARALLEL CONFIGURATION' in line:
+                    paralel_config = line.split(':')[-1].strip()
+                if 'PAR STR.' in line:
+                    par_str = line.split(':')[-1].strip()
+                    while True:
+                        line = next(f)
+                        if 'PARALLEL' in line or line == '\n':
+                            break
+                        par_str += '\n'+line.strip()
+                    legend_dict[paralel_config] = par_str
+        self.legend_dict = legend_dict
 
         #read the folders inside PROFILING folder
         subdirs = next(walker)[1]
@@ -73,16 +101,41 @@ class YamboTestSuiteRun():
         self.time_section = time_section
         self.memory_time = memory_time
 
-    def plot_time_cpu(self,ax=plt):
+    def plot_time_cpu(self,ax=plt, labels='ticks'):
         """
         Plot total runtime vs cpu
         """
-        cpus, time = self.total_time
-        ax.plot( cpus, time )
+        if labels=='ticks': 
+            plt.axes([0.2,0.4,0.7,0.5])
+
+        legend_dict = self.legend_dict
+        total_time = []
+        legend = []
+        for paralel_conf, times in self.total_time_dict.items():
+            max_time = max([ time       for cpu_number, time in times.items()])
+            ncpu     = max([ cpu_number for cpu_number, time in times.items()])
+            label = paralel_conf+'\n'+legend_dict[paralel_conf]
+
+            total_time.append((ncpu, max_time))
+            legend.append(label)
+
+            if labels=='text': 
+                plt.text(ncpu, max_time, label)
+
+        total_time, legend = zip(*sorted(zip(total_time, legend)))
+        cpus, time = np.array(total_time).T
+
+        ax.plot( cpus, time, '-+' )
+        if labels == 'ticks': 
+            plt.xticks(cpus, legend, rotation='vertical')
+        if labels == 'legend':
+            for cpu,t,l in zip(cpus,time,legend):
+                plt.plot(cpu,t,'o',label=l)
+            plt.legend()
+
         ax.title(self.root)
-        ax.xlabel('ncpus')
         ax.ylabel('time (s)')
-        ax.savefig('TOTAL_TIME_vs_PAR_CONF.pdf')
+        ax.savefig('TOTAL_TIME_vs_PAR_CONF_%s.pdf'%labels)
         ax.clf()
 
     def plot_memory_time(self,ax=plt,size='mb',time='s'):
@@ -193,7 +246,9 @@ if __name__ == "__main__":
     print(r)
   
     #plot1 
-    ax = r.plot_time_cpu()
+    ax = r.plot_time_cpu(labels='ticks')
+    ax = r.plot_time_cpu(labels='text')
+    ax = r.plot_time_cpu(labels='legend')
 
     #plot2
     ax = r.plot_memory_time(time='s',size='mb')

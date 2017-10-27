@@ -67,6 +67,10 @@ LOG_LOOP: {
     $wrong_cpu_conf = 1;
     last LOG_LOOP;
    }
+   if ($line =~ /USER parallel structure does not fit the current run parameters/) { 
+    $wrong_cpu_conf = 1;
+    last LOG_LOOP;
+   }
   }
  }
 }
@@ -82,6 +86,10 @@ if ($system_error == 0) {
   my $msg = sprintf("%8.1f", $elapsed);
   &MESSAGE("LOG",$msg."s");
  }
+}elsif($wrong_cpu_conf){
+ $CHECK_error="WRONG CPU configuration";
+ &RUN_stats("WRONG_CPU_CONF");
+ return "OK";
 }else{
  $CHECK_error="FAILED (exit code $system_error)";
  &RUN_stats("NOT_RUN");

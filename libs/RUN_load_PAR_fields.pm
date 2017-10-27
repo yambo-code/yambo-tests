@@ -89,14 +89,19 @@ if ($random_parallel)
  @GQK[1] = [(1,1,2)];
  @GQK[2] = [(1,2,2)];
  @GQK[3] = [(2,2,2)];
+ @GQK[4] = [(2,1,2)];
+ @GQK[5] = [(2,2,1)];
+ if (-f "KPT_1") {@GQK[6] = [(4,1,1)]};
  my $QK;
  @QK[0] = [(1,1)];
  @QK[1] = [(1,2)];
- @QK[2] = [(2,2)];
+ @QK[2] = [(2,1)];
+ @QK[3] = [(2,2)];
  my $GK;
  my $CV;
  my $SB;
  @GK=@QK;
+ if (-f "KPT_1") {@GK[4] = [(4,1)]};
  @CV=@QK;
  @SB=@QK;
  #
@@ -104,33 +109,33 @@ if ($random_parallel)
  $N_gqkcv=0;
  my $trace;
  foreach $cv (@CV){ 
-  if (&CHECK_me({c=>@$cv[0],v=>@$cv[1]}) eq 1){next};
+  foreach $gqk (@GQK){
+   if (&CHECK_me({c=>@$cv[0],v=>@$cv[1]}) eq 1){next};
+   if (&CHECK_me({k=>@$gqk[1]}) eq 1){next};
+   if (&CHECK_me({k=>@$gqk[1]}) eq 1){next};
+   @conf = ( @$gqk[0], @$gqk[1], @$gqk[2] , @$cv[0], @$cv[1] );
+   $trace=&trace( @conf );
+   if (not $trace eq $np) {next};
+   @GQKCV[$N_gqkcv]= [ @conf ];
+   $N_gqkcv++; 
+  }
   foreach $gk (@GK){
-   if (&CHECK_me({G=>@$gk[0],k=>@$gk[1]}) eq 1){next};
+   if (&CHECK_me({c=>@$cv[0],v=>@$cv[1]}) eq 1){next};
+   if (&CHECK_me({k=>@$gk[1]}) eq 1){next};
    @conf = ( @$gk[0], @$gk[1] , @$cv[0], @$cv[1] );
    $trace=&trace( @conf );
    if (not $trace eq $np) {next};
    @GKCV[$N_gkcv]= [ @conf ];
    $N_gkcv++; 
   }
-  foreach $gqk (@GQK){
-   if (&CHECK_me({G=>@$gqk[0],k=>@$gqk[1]}) eq 1){next};
-   if (&CHECK_me({G=>@$gqk[0],k=>@$gqk[2]}) eq 1){next};
-   @conf = ( @$gqk[0], @$gqk[0], @$gqk[1] , @$cv[0], @$cv[1] );
-   $trace=&trace( @conf );
-   if (not $trace eq $np) {next};
-   @GQKCV[$N_gqkcv]= [ @conf ];
-   $N_gqkcv++; 
-  }
  };
  #
  $N_qksb=0;
  $N_qsb=0;
  foreach $q (@SINGLE){ 
-  if (&CHECK_me({k=>$q}) eq 1){next};
   foreach $sb (@SB){
-   if (&CHECK_me({c=>@$sb[1],v=>@$sb[1]}) eq 1){next};
    foreach $k (@SINGLE){ 
+    if (&CHECK_me({k=>$q}) eq 1){next};
     if (&CHECK_me({k=>$k}) eq 1){next};
     $trace=&trace( @conf );
     if (not $trace eq $np) {next};
@@ -138,6 +143,8 @@ if ($random_parallel)
     @QKSB[$N_qksb]= [ @conf ];
     $N_qksb++; 
    }
+   if (&CHECK_me({k=>$q}) eq 1){next};
+   if (&CHECK_me({c=>@$sb[1],v=>@$sb[1]}) eq 1){next};
    @conf = ( $q, @$sb[0], @$sb[1] );
    $trace=&trace( @conf );
    if (not $trace eq $np) {next};
