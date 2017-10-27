@@ -47,7 +47,7 @@ my $last = chop($chr);
 if ($last eq "/") {
  my $last = chop($branchdir);
 }
-if ($branchdir =~ /^#/ or $branchdir eq "") {
+if($branchdir =~ /^#/ || $branchdir eq "") {
  &MY_PRINT($stdout, "Skipping branch: $branchdir\n") if ($verb);
  return "FAIL";
 }elsif($branchdir =~ /^\//) {
