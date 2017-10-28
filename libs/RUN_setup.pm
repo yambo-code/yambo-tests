@@ -73,7 +73,7 @@ if ("@_" =~ "after_run"){
  #
  # Collect all the outputs into $dir_name (e.g. ./01_init_N1-M1)
  #
- if (-d $testname){
+ if (-d $testname and $RUN_result =~ "OK"){
   if (!-d $dir_name) {&command("mv $testname $dir_name")}; 
   if ($ir == $Nr and  not "$dir_name" eq "$testname" ) {&command("ln -s $dir_name $testname")};
  }else{

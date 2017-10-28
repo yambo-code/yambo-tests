@@ -120,7 +120,7 @@ if ("@_" eq "SKIPPED"){
  &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "WRONG_CPU_CONF"){
- &MESSAGE("LOG","[$r_s $CHECK_error  $r_e]");
+ &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "WRONG_DEP"){
  $test_skipped++;

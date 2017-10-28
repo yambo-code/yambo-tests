@@ -84,6 +84,7 @@ if ($random_parallel)
 }else{
  my $SINGLE;
  @SINGLE = (1,2);
+ if (-f "KPT_1") {@SINGLE = (1,2,4)};
  my $GQK;
  @GQK[0] = [(1,1,1)];
  @GQK[1] = [(1,1,2)];
@@ -101,7 +102,9 @@ if ($random_parallel)
  my $CV;
  my $SB;
  @GK=@QK;
- if (-f "KPT_1") {@GK[4] = [(4,1)]};
+ if (-f "KPT_1") {
+ @GK[4] = [(4,1)]
+};
  @CV=@QK;
  @SB=@QK;
  #

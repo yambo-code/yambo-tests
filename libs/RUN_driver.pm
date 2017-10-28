@@ -122,7 +122,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   &RUN_load_OPENMP_fields;
   if ($cpu_conf_file) {
    $MPI_CPU_conf[1]=$cpu_conf_key;
-   #&CPU_CONF_load;
   }else{
    &RUN_load_LA_fields;
    &RUN_load_PAR_fields;

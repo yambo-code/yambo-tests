@@ -89,7 +89,7 @@ if ($system_error == 0) {
 }elsif($wrong_cpu_conf){
  $CHECK_error="WRONG CPU configuration";
  &RUN_stats("WRONG_CPU_CONF");
- return "OK";
+ return "FAIL";
 }else{
  $CHECK_error="FAILED (exit code $system_error)";
  &RUN_stats("NOT_RUN");
