@@ -192,7 +192,10 @@ if (!$RUNNING_suite) {
 #=================
 if ($RUNNING_suite) {
  #
- if ($clean) {&UTILS_clean("ALL") };
+ if ($clean) {
+  &UTILS_clean("ALL");
+  &UTILS_clean("BINs");
+ }
  #
  # Array to avoid double configure of branches
  #
