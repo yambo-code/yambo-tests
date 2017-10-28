@@ -39,6 +39,8 @@ if ("@_" =~ "INIT"){
 };
 if ("@_" =~ "before_run"){
  #
+ undef $LAST_COMPLETED_RUN;
+ #
  # cpu_conf
  $cpu_conf="[".$string;
  if (not $string eq "serial"){
@@ -75,7 +77,7 @@ if ("@_" =~ "after_run"){
  #
  if (-d $testname and $RUN_result =~ "OK"){
   if (!-d $dir_name) {&command("mv $testname $dir_name")}; 
-  if ($ir == $Nr and  not "$dir_name" eq "$testname" ) {&command("ln -s $dir_name $testname")};
+  if ($ir == $Nr and $LAST_COMPLETED_RUN) {&command("ln -s $LAST_COMPLETED_RUN $testname")};
  }else{
    &command("mkdir $dir_name");
  }

@@ -95,6 +95,8 @@ if ($system_error == 0) {
  &RUN_stats("NOT_RUN");
  return "FAIL";
 };
+#
+$LAST_COMPLETED_RUN=$dir_name;
 return "OK";
 }
 1;
