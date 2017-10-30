@@ -57,7 +57,7 @@ if ("@_" =~ "before_run"){
  #
  # dir name
  $dir_name=&test_dir_name($testname,$ir);
- &command("rm -fr $dir_name $testname");
+ &command("rm -fr $dir_name *$testname*");
  #
  # input file
  &command("cat $cpu $input_folder/$testname >> yambo.in");
