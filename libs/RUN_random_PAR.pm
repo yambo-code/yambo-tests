@@ -23,6 +23,9 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub RUN_random_PAR{
+#
+srand (time ^ ($$ + ($$ << 11)));
+#
 $n_fields=$_[0];
 if ($n_fields == 3) {
 @icpu = qw(1 2 3);
@@ -48,14 +51,14 @@ while ($ic<=$n_fields-1) {
 };
 #
 $np_now=$np;
-my $max_random_np=8;
+my $max_random_np=$np;
 $ic=0;
 while ($ic<=$n_fields-1) {
  $icp=$icpu[$ic]-1;
  if ($np_now!=1) {
   $random_cpu = int(rand($max_random_np))+1;
   while (int($np_now/$random_cpu) != $np_now/$random_cpu){
-    $random_cpu = int(rand($max_random_np))+1;
+   $random_cpu = int(rand($max_random_np))+1;
   }
   $np_now=$np_now/$random_cpu;
   $ncpu[$icp]=$random_cpu;

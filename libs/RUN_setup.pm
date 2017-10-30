@@ -45,6 +45,7 @@ if ("@_" =~ "before_run"){
  $cpu_conf="[".$string;
  if (not $string eq "serial"){
   if($np gt 1){ $cpu_conf=$cpu_conf."(N=$np)" };
+  if(not $random_parallel and not $default_parallel){ $cpu_conf=$cpu_conf."(ID=$ir)" };
  }
  if($nt){ $cpu_conf=$cpu_conf."(Threads=$nt)" };
  if($nl){ $cpu_conf=$cpu_conf."(SLK=$nl)" };

@@ -97,6 +97,7 @@ if ($system_error == 0) {
 };
 #
 $LAST_COMPLETED_RUN=$dir_name;
+$CHECK_error="";
 return "OK";
 }
 1;

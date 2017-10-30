@@ -145,10 +145,27 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    #
    # Check if extra flags are needed (JOB specific)
    $error=&RUN_user_flags($ir);
+   # 
+   $N_random_tries=0;
+   #
    if ($error =~ "OK") { 
     #
     # Actual run
     $RUN_result=&RUN_it;
+    #
+    # ...Random PAR and FAILED conf?
+    #
+    while ($random_parallel and $CHECK_error eq "WRONG CPU configuration" and $N_random_tries<10) { 
+     #print "$testname INIT\n";
+     &RUN_load_PAR_fields;
+     $string=$MPI_CPU_conf[1];
+     &command("rm -fr yambo.in");
+     #print "$testname B\n";
+     &RUN_setup("before_run");
+     $N_random_tries++;
+     $RUN_result=&RUN_it;
+     #print "$testname CHECK_error $CHECK_error\n";
+    }
     #
     # Check
     if ($RUN_result =~ "OK" and not $mode eq "bench" ){&CHECK_driver};
