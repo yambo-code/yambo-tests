@@ -46,9 +46,9 @@ if("@_" eq "ALL") {
   &command("$cmd");
   $cmd="find . -name 'ROBOT_Nr_$ROBOT_id' -o -name 'R$ROBOT_id' -type d | grep -v $hostname | xargs rm -fr";
   &command("$cmd");
-  &command("rm -f outputs_and_reports_ALL-$ROBOT_string*");
-  &command("rm -f DATABASES-$ROBOT_string*");
-  &command("rm -f R${ROBOT_id}*.log");
+  &command("rm -f outputs_and_reports_ALL-R$ROBOT_id*");
+  &command("rm -f DATABASES-R$ROBOT_id*");
+  &command("rm -f *R${ROBOT_id}*.log");
  }else{
   &command("$git ls-files --others --exclude-standard | grep -v $hostname | xargs rm -fr");
   &command("find . -name 'ROBOT_*' -o -name '*-R*' -type d | grep -v $hostname | xargs rm -fr");

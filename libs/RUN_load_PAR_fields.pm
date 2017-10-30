@@ -56,6 +56,14 @@ if ( $default_parallel ){
 # BS_CPU=\"$k.$eh.$t\"  => KEHT
 # RT_CPU=\"$q.$k.$s.$b\" => QKSB
 #
+# Resets
+#
+undef @GKCV;
+undef @GQKCV;
+undef @QSB;
+undef @KEHT;
+undef @QKSB;
+#
 # Constrains
 &RUN_PAR_constrains();
 #
@@ -171,7 +179,7 @@ if ($random_parallel)
  }
 }
 #
-if ($verb >2) { 
+if ($verb) { 
  foreach $var (@GKCV){ print "\n GKCV @$var"};
  foreach $var (@GQKCV){ print "\n GQKCV @$var"};
  foreach $var (@QSB){print "\n QSB @$var"};
