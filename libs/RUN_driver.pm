@@ -157,7 +157,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
     #print "START $testname CHECK_error $CHECK_error\n";
     #
     while ($random_parallel and $CHECK_error eq "WRONG CPU configuration" and $N_random_tries<10) { 
-     print "$testname INIT\n";
+     #print "$testname INIT\n";
      &RUN_load_PAR_fields;
      $string=$MPI_CPU_conf[1];
      &command("rm -fr yambo.in LOG");

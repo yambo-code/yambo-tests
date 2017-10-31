@@ -4,16 +4,20 @@
 {
  ACTIVE      => "yes",
  CONFIG      => "default.sh", 
- TESTS       => "PA_chain",
- CPU_CONF    => "32.1.cpu",
+ KEYS        => "all",
+ TESTS       => "AGNR",
+ CPU_CONF    => "32.2.cpu",
 },
 {
+ ACTIVE      => "no",
  CPU_CONF    => "32.2.cpu"
 },
 {
+ ACTIVE      => "yes",
  CPU_CONF    => "32.3.cpu"
 },
 {
+ ACTIVE      => "no",
  CPU_CONF    => "32.4.cpu"
 },
 );

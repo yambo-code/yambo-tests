@@ -3,6 +3,7 @@
 {
 KEYS        => 'all hard',
 ACTIVE      => 'yes',
+CONFIG      => 'default.sh',
 TESTS     => ' ',
 },
 {

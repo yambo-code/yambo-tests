@@ -29,10 +29,12 @@ my $what = shift;
 # RLOG:		Global Report
 #
 if ("$what" eq "INIT") {
- $global_report = "REPORT-$ROBOT_string-$date"."_"."$time.log";
- $failed_log  = "FAILED-$ROBOT_string-$date"."_"."$time.log";
- $tests_error = "ERROR-$ROBOT_string-$date"."_"."$time.log";
- $whitelist = "WHITELIST-$ROBOT_string-$date"."_"."$time.log";
+ my $string="";
+ if ($mode eq "bench") {$string="BENCH-"};
+ $global_report = "REPORT-$string$ROBOT_string-$date"."_"."$time.log";
+ $failed_log  = "FAILED-$string$ROBOT_string-$date"."_"."$time.log";
+ $tests_error = "ERROR-$string$ROBOT_string-$date"."_"."$time.log";
+ $whitelist = "WHITELIST-$string$ROBOT_string-$date"."_"."$time.log";
  open($flog, '>', $failed_log) or die "Could not open file '$failed_log' $!";
  open($rlog, '>', $global_report) or die "Could not open file '$global_report' $!";
  open($elog, '>', $tests_error) or die "Could not open file '$tests_error' $!";

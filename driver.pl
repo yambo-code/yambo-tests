@@ -220,7 +220,6 @@ if ($RUNNING_suite) {
    }
   }
  }
- if ($mode eq "bench") { $ROBOT_string="BENCH-".$ROBOT_string };
  #
  # Global Report
  #
