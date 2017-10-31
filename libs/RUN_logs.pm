@@ -27,7 +27,7 @@ sub RUN_logs{
 $extension=$branch.'-'.$BUILD.'-'.$FC_kind.'-'.$PAR_string;
 $tests_log="LOG-";
 if ($mode eq "bench") {$tests_log="LOG-BENCH-"};
-$tests_log="$test_log-$ROBOT_string-$date_$time_$extension.log";
+$tests_log="$tests_log"."$ROBOT_string"."-"."$date_$time_$extension.log";
 #
 open($tlog, '>>', $tests_log) or die "Could not open file '$tests_log' $!";
 #
