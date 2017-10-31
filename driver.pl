@@ -194,7 +194,7 @@ if ($RUNNING_suite) {
  #
  if ($clean) {
   &UTILS_clean("ALL");
-  &UTILS_clean("BINs");
+  if ($clean>1) {&UTILS_clean("BINs")};
  }
  #
  # Array to avoid double configure of branches
@@ -220,6 +220,7 @@ if ($RUNNING_suite) {
    }
   }
  }
+ if ($mode eq "bench") { $ROBOT_string="BENCH-".$ROBOT_string };
  #
  # Global Report
  #

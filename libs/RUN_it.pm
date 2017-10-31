@@ -55,6 +55,7 @@ $elapsed = tv_interval($test_start, $test_end);
 #
 # Check if a wrong CPU conf has been used...
 #
+$CHECK_error="";
 undef  $wrong_cpu_conf;
 LOG_LOOP: {
  foreach $file (<LOG/l-*>) {
@@ -77,6 +78,12 @@ LOG_LOOP: {
 #
 # Final Report
 #
+if($wrong_cpu_conf){
+ $CHECK_error="WRONG CPU configuration";
+ &RUN_stats("WRONG_CPU_CONF");
+ return "FAIL";
+}
+#
 if ($system_error == 0) {
  if ($elapsed > $run_duration) {
   $CHECK_error="FAILED (Runtime above $run_duration secs.)";
@@ -86,10 +93,6 @@ if ($system_error == 0) {
   my $msg = sprintf("%8.1f", $elapsed);
   &MESSAGE("LOG",$msg."s");
  }
-}elsif($wrong_cpu_conf){
- $CHECK_error="WRONG CPU configuration";
- &RUN_stats("WRONG_CPU_CONF");
- return "FAIL";
 }else{
  $CHECK_error="FAILED (exit code $system_error)";
  &RUN_stats("NOT_RUN");
@@ -97,7 +100,6 @@ if ($system_error == 0) {
 };
 #
 $LAST_COMPLETED_RUN=$dir_name;
-$CHECK_error="";
 return "OK";
 }
 1;

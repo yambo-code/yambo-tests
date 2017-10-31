@@ -46,6 +46,7 @@ $line=("-") x ($left_length+30);
 $line="=".$line."=";
 $stdout = *STDOUT;
 $input_folder= "INPUTS";
+$RANDOM_seed=1;
 # ERROR log
 @ERROR_entries;
 $N_errors=0;

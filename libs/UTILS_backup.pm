@@ -54,6 +54,7 @@ sub UTILS_list_backups{
     print "TIME  : $time\n";
     print "BRANCH: $branch_key\n";
     print "FC    : $FC_kind $MPI_kind\n";
+    print "DIR   : $dir\n";
    }
    #
    #@DATAS = glob("$dir/*_ALL*");
@@ -73,7 +74,7 @@ sub UTILS_list_backups{
      print "\n...cleaning BACKUP #$data_id\n";
     }
     if ($edit) {
-     #&PROFILE($dir);
+     &PROFILE($dir);
      &command("vim $dir/REPORT*");
     };
    }

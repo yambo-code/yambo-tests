@@ -24,7 +24,9 @@
 #
 sub RUN_random_PAR{
 #
-srand ($N_random_tries+time ^ ($$ + ($$ << 11)));
+$RANDOM_seed++;
+$I=$RANDOM_seed+time ^ ($$ + ($$ << 11));
+srand ($I);
 #
 $n_fields=$_[0];
 if ($n_fields == 3) {

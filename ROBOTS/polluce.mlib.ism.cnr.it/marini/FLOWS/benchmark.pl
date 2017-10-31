@@ -4,7 +4,7 @@
 {
  ACTIVE      => "yes",
  CONFIG      => "default.sh", 
- TESTS       => "AGNR",
+ TESTS       => "PA_chain",
  CPU_CONF    => "32.1.cpu",
 },
 {
