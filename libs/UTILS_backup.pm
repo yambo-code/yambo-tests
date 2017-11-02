@@ -100,6 +100,7 @@ if (not $RUNNING_suite)
  $ROBOT_string="R".$ROBOT_id;
  $file= (glob("REPORT*R${ROBOT_id}*"))[0];
  if (not $file) {die "\nNo files to backup\n\n"};
+ if ($file =~ /BENCH/) {$mode="bench"};
  open(REPORT,"<","$suite_dir/$file");
  @lines = <REPORT>;
  &PHP_key_words;
@@ -114,20 +115,18 @@ $str1="$INITIAL_month";
 if ($INITIAL_month<10) {$str1="0$INITIAL_month"};
 $str2="$day";
 if ($day<10) {$str2="0$day"};
-$BACKUP_dir   ="$host/$user/";
-if ($mode eq "bench") {$BACKUP_dir.="BENCHMARKS/"};
-$BACKUP_dir   .="$FC_kind/$INITIAL_year/$str1/$str2/$time";
-&command("mkdir -p $host/www");
-&command("mkdir -p $host/$user");
-if ($mode eq "bench") {&command("mkdir -p $host/$user/BENCHMARKS")};
-&command("mkdir -p $host/$user/$FC_kind");
-&command("mkdir -p $host/$user/$FC_kind");
-&command("mkdir -p $host/$user/$FC_kind/$INITIAL_year");
-&command("mkdir -p $host/$user/$FC_kind/$INITIAL_year/$str1");
-&command("mkdir -p $host/$user/$FC_kind/$INITIAL_year/$str1/$str2");
-&command("mkdir -p $host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time");
+$BACKUP_dir   ="";
+if ($mode eq "bench") {$BACKUP_dir="benchmark-results/"};
+$BACKUP_dir   .="$host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time";
 #
-if ($mode eq "bench") {&command("mkdir -p $host/$user/BENCHMARKS")};
+# Directories
+&command("mkdir -p $host/www");
+my @subdirs=split /\//,$BACKUP_dir;
+my $tmp_dir="./";
+foreach $subd (@subdirs){
+ $tmp_dir .="$subd/";
+ &command("mkdir -p $tmp_dir");
+}
 #
 $OUTPUT_backup_file="outputs_and_reports_ALL-$ROBOT_string";
 undef $DBS_backup_file;
