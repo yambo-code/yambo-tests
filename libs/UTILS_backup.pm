@@ -138,8 +138,8 @@ if ($mode eq "bench") {$DBS_backup_file="DATABASES-$ROBOT_string"};
 &command("rm -f list");
 if ($mode eq "bench") 
 {
- &command("find . -name 'ROBOT_Nr_${ROBOT_id}' > list");
- if (-s "list") {&command("tar rf $DBS_backup_file.tar -T list")};
+ #&command("find . -name 'ROBOT_Nr_${ROBOT_id}' > list");
+ #if (-s "list") {&command("tar rf $DBS_backup_file.tar -T list")};
  &command("find . -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep 'ROBOT_Nr_${ROBOT_id}' > list");
 }else{
  if (not $RUNNING_suite) {$failed_log=(glob("FAILED*R${ROBOT_id}*"))[0]};

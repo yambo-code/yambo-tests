@@ -160,7 +160,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      #print "$testname INIT\n";
      &RUN_load_PAR_fields;
      $string=$MPI_CPU_conf[1];
-     &command("rm -fr yambo.in LOG");
+     &command("rm -fr yambo.in LOG r-${testname}* o-${testname}*");
      #print "$testname B\n";
      &RUN_setup("before_run");
      $N_random_tries++;
