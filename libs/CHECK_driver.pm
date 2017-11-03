@@ -30,7 +30,8 @@ if ($SETUP=="1"){
 }
 if ( $is_OLD_IO eq "yes"  ) { &CHECK_database("Sx_Vxc","ndb.HF_and_locXC")};
 if ( $is_OLD_IO eq "no"   ) { &CHECK_database("Sx,Vxc","ndb.HF_and_locXC")};
-&CHECK_database("BLOCK_TABLE","ndb.Double_Grid");
+if ( $is_NEW_DBGD eq "no"  ) { &CHECK_database("BLOCK_TABLE","ndb.Double_Grid")};
+if ( $is_NEW_DBGD eq "yes" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ","ndb.Double_Grid")};
 &CHECK_database("BLOCK_TABLE","ndb.E_SOC_map");
 &CHECK_database("X_Q_1","ndb.em1s_fragment_1");
 &CHECK_database("COLLISIONS_v","ndb.COLLISIONS_HXC_fragment_2");
