@@ -1,18 +1,18 @@
-     __      __   ______   __       __  _______    ______       
-    |  \    /  \ /      \ |  \     /  \|       \  /      \      
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\     
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$     
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$     
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$     
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$     
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$     
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$      
                                                                 
-           Version 4.2.0 Revision 14791 Hash a8d1f41            
-                           MPI Build                            
-                   http://www.yambo-code.org                    
+                                                                
+    Y88b    /   e           e    e      888~~\    ,88~-_        
+     Y88b  /   d8b         d8b  d8b     888   |  d888   \       
+      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |      
+       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |      
+        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /       
+       /   /      Y88b /          Y888b 888__/    `88_-~        
+                                                                
+                                                                
+          Version 4.0.2 Revision 13571 Hash c640171             
+                          MPI Build                             
+                  http://www.yambo-code.org                     
  
- 10/19/2017 at 14:17 YAMBO @ 1oO-367
+ 05/11/2016 at 13:46 YAMBO @ narro
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -25,12 +25,10 @@
 
  CORE databases in   .
  Additional I/O in   .
- Communications in   .
- Input file     is   yambo.in
- Report file    is   ./r-04_BSE_SLEPC_TARGET_optics_bse_bsk_bss_em1s
- Job string(main): 04_BSE_SLEPC_TARGET
-             (#1): R4
- Log files      in ./LOG
+ Communications in   04_BSE_EH_range
+ Input file     is   INPUTS/04_BSE_EH_range
+ Report file    is   04_BSE_EH_range/r-04_BSE_EH_range_optics_bse_bsk_bss_em1s
+ Job string(main): 04_BSE_EH_range
   
  [RD./SAVE//ns.db1]------------------------------------------
   Bands                           :  60
@@ -46,7 +44,7 @@
   Max atoms/species               : 2
   No. of atom species             : 2
   Magnetic symmetries             : no
- - S/N 006125 -------------------------- v.03.02.05 r.01735 -
+ - S/N 006125 --------------------------- v.03.02.05 r.1735 -
 
  [02] CORE Variables Setup
  =========================
@@ -125,16 +123,15 @@
   [02.05] Energies [ev] & Occupations
   ===================================
 
-  [X]Fermi Level        [ev]:  4.401241
-  [X]VBM / CBm          [ev]:  0.000000  4.094734
-  [X]Electronic Temp. [ev K]:  0.00      0.00    
-  [X]Bosonic    Temp. [ev K]:  0.00      0.00    
-  [X]Finite Temperature mode: no
-  [X]El. density      [cm-3]: 0.460E+24
-  [X]States summary         : Full        Metallic    Empty
-                                 0001-0008               0009-0060
-  [X]Indirect Gaps      [ev]: 4.094734  5.003422
-  [X]Direct Gaps        [ev]: 4.094734  8.870295
+  Fermi Level        [ev]:  4.401241
+  VBM / CBm          [ev]:  0.000000  4.094734
+  Electronic Temp. [ev K]:  0.00      0.00    
+  Bosonic    Temp. [ev K]:  0.00      0.00    
+  El. density      [cm-3]: 0.460E+24
+  States summary         : Full        Metallic    Empty
+                           0001-0008               0009-0060
+  Indirect Gaps      [ev]: 4.094734  5.003422
+  Direct Gaps        [ev]: 4.094734  8.870295
   X BZ K-points :  8
 
   Energy unit is electronVolt [eV]
@@ -193,7 +190,7 @@
   X grid is uniform     :yes
   BS scattering         :yes
   COLL scattering       :no
- - S/N 006125 -------------------------- v.04.02.00 r.14791 -
+ - S/N 006125 --------------------------- v.04.00.02 r.**** -
 
  IBZ Q-points :  4
  BZ  Q-points :  8
@@ -208,32 +205,34 @@
  Q [00003] : 0.000000  0.000000  0.258019 (cc ) * weight  0.125000
  Q [00004] : 0.666103  0.384575  0.258019 (cc ) * weight  0.375000
 
-  [03.01] External/Internal QP corrections
-  ========================================
+ [04] External corrections
+ =========================
 
-  [K]Fermi Level        [ev]:  0.000000
-  [K]VBM / CBm          [ev]:  0.000000  6.494735
-  [K]Electronic Temp. [ev K]:  0.00      0.00    
-  [K]Bosonic    Temp. [ev K]:  0.00      0.00    
-  [K]Finite Temperature mode: no
-  [K]El. density      [cm-3]: 0.460E+24
-  [K]States summary         : Full        Metallic    Empty
-                                 0001-0008               0009-0060
-  [K]Indirect Gaps      [ev]: 6.494735  7.403423
-  [K]Direct Gaps        [ev]:  6.49473  11.27029
-  [QP apply] Ind. Gap Correction   [ev]: 2.400000
 
- [04] Static Dielectric Matrix
+  [04.01] External QP corrections (K)
+  ===================================
+
+  -- [QP@K] DOS/Linear/Quadratic extrapolation -------------------
+  === QP/DB derived ===
+  === Additional ===
+   Energies 0th order c/v [ev]: 2.400000  0.000000
+   Energies 1st order         : 1.000000  1.000000
+  ------------------------------------------------------------
+  [QP] Fermi level variation [ev]: 0.000000
+  [QP] Last Filled/Metallic band :  8   8
+  [QP] Ind. Gap Correction  [ev]: 2.400000
+
+ [05] Static Dielectric Matrix
  =============================
 
  [RD./SAVE//ns.kb_pp]----------------------------------------
   Fragmentation                    :yes
- - S/N 006125 -------------------------- v.04.02.00 r.14791 -
+ - S/N 006125 --------------------------- v.03.02.05 r.1735 -
  [WF] Performing Wave-Functions I/O from ./SAVE
 
- [WF loader] Normalization (few states)  min/max  :0.142E-13  1.00    
+ [WF loader] Normalization (few states)  min/max  :0.527E-11  1.00    
 
- [WR./04_BSE_SLEPC_TARGET//ndb.dip_iR_and_P]-----------------
+ [WR./04_BSE_EH_range//ndb.dip_iR_and_P]---------------------
   Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
   RL vectors                   (WF):  3473
   Fragmentation                    :yes
@@ -251,13 +250,13 @@
   Direct v evaluation    :no
   Field momentum norm    :0.1000E-4
   Wavefunctions          :Teter 93(XC)
- - S/N 006125 -------------------------- v.04.02.00 r.14791 -
+ - S/N 006125 --------------------------- v.04.00.02 r.**** -
  [WF] Performing Wave-Functions I/O from ./SAVE
 
  [FFT-X] Mesh size:  15   15   35
 
  [X-CG] R(p) Tot o/o(of R)  :   796   3328    100
- [WR./04_BSE_SLEPC_TARGET//ndb.em1s]-------------------------
+ [WR./04_BSE_EH_range//ndb.em1s]-----------------------------
   Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
   RL vectors                   (WF):  3473
   Coulomb cutoff potential         :none
@@ -270,7 +269,7 @@
   X matrix size          :  51
   X band range           :   1   60
   X e/h energy range [ev]:-1.000000 -1.000000
-  X Time ordering        :T
+  X Time ordering        :t
   X xc-Kernel            :none
   X Drude frequency      : 0.00      0.00    
   X poles           [o/o]: 100.0000
@@ -279,43 +278,43 @@
   Field direction        :0.1000E-4  0.000     0.000   
   BZ energy Double Grid  :no
   BZ energy DbGd points  :0
- [WR./04_BSE_SLEPC_TARGET//ndb.em1s_fragment_1]--------------
   :: Current Q-pt index     : 1
   :: X energy range     [ev]: 0.00      0.00    
   :: X damping range    [ev]:0.1000E-2 0.1000E-2
   :: Number of frequencies  : 1
- - S/N 006125 -------------------------- v.04.02.00 r.14791 -
+ - S/N 006125 --------------------------- v.04.00.02 r.**** -
  [X-CG] R(p) Tot o/o(of R)  :  1284   3328    100
- [WR./04_BSE_SLEPC_TARGET//ndb.em1s_fragment_2]--------------
-  :: Current Q-pt index     : 2
-  :: X energy range     [ev]: 0.00      0.00    
-  :: X damping range    [ev]:0.1000E-2 0.1000E-2
-  :: Number of frequencies  : 1
- - S/N 006125 -------------------------- v.04.02.00 r.14791 -
  [X-CG] R(p) Tot o/o(of R)  :   648   3328    100
  [X-CG] R(p) Tot o/o(of R)  :  1040   3328    100
 
- Timing [Min/Max/Average]: 10s/10s/10s
+ CpuTiming [Min/Max/Average]: 03s/03s/03s
 
- [05] Response Functions in Transition space
+ [06] Response Functions in Transition space
  ===========================================
 
 
-  [05.01] Transition Groups build-up
+ [WARNING] Null BSE kernel block dimension(s) found. Increase e/h range
+
+ [WARNING] Empty workload for CPU 1
+
+ [WARNING] Empty workload for CPU 1
+
+  [06.01] Transition Groups build-up
   ==================================
 
-  [BSK] Transition groups (total)  4
 
-  [05.02] CPU-dependent Block structure
+  [WARNING] Null BSE kernel block dimension(s) found.
+  [BSK] Transition groups (total) 2
+
+  [06.02] CPU-dependent Block structure
   =====================================
 
-  [BSK] Size (resonant)  32
-  [BSK]         (total)  32
+  [BSK] Size   (total) 18
 
-  [05.03] Independent Particles absorption
+  [06.03] Independent Particles absorption
   ========================================
 
-  [RD./04_BSE_SLEPC_TARGET//ndb.dip_iR_and_P]-----------------
+  [RD./04_BSE_EH_range//ndb.dip_iR_and_P]---------------------
    Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
    RL vectors                   (WF):  3473
    Fragmentation                    :yes
@@ -333,17 +332,17 @@
    Direct v evaluation    :no
    Field momentum norm    :0.1000E-4
    Wavefunctions          :Teter 93(XC)
-  - S/N 006125 -------------------------- v.04.02.00 r.14791 -
+  - S/N 006125 --------------------------- v.04.00.02 r.**** -
 
-  [05.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
+  [06.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
   =======================================================
 
   [BSE] Exchange components :  51
 
-   [05.04.01] Screened interaction header I/O
+   [06.04.01] Screened interaction header I/O
    ==========================================
 
-   [RD./04_BSE_SLEPC_TARGET//ndb.em1s]-------------------------
+   [RD./04_BSE_EH_range//ndb.em1s]-----------------------------
     Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
     RL vectors                   (WF):  3473
     Coulomb cutoff potential         :none
@@ -356,7 +355,7 @@
     X matrix size          :  51
     X band range           :   1   60
     X e/h energy range [ev]:-1.000000 -1.000000
-    X Time ordering        :T
+    X Time ordering        :t
     X xc-Kernel            :none
     X Drude frequency      : 0.00      0.00    
     X poles           [o/o]: 100.0000
@@ -365,22 +364,21 @@
     Field direction        :0.1000E-4  0.000     0.000   
     BZ energy Double Grid  :no
     BZ energy DbGd points  :0
-   [RD./04_BSE_SLEPC_TARGET//ndb.em1s_fragment_1]--------------
     :: Current Q-pt index     : 1
     :: X energy range     [ev]: 0.00      0.00    
     :: X damping range    [ev]:0.1000E-2 0.1000E-2
     :: Number of frequencies  : 1
-   - S/N 006125 -------------------------- v.04.02.00 r.14791 -
+   - S/N 006125 --------------------------- v.04.00.02 r.**** -
    [WF] Performing Wave-Functions I/O from ./SAVE
 
    [FFT-BSK] Mesh size:  15   15   35
 
 
-   [05.04.02] Wave-Function Phases
+   [06.04.02] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found  [o/o]: 39.06250
-   [WR./04_BSE_SLEPC_TARGET//ndb.BS_Q1_CPU_0]------------------
+   [WR./04_BSE_EH_range//ndb.BS_Q1_CPU_0]----------------------
     Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
     RL vectors                   (WF):  3473
     Coulomb cutoff potential         :none
@@ -390,8 +388,8 @@
     BS kernel          wavefunctions :Teter 93(XC)
     Static diel. fun.  energies      :Teter 93(XC)
                        wavefunctions :Teter 93(XC)
-    BSK|Identifier              : 2096
-       |Dimension               :  32
+    BSK|Identifier              :  8150
+       |Dimension               : 18
        |Bands                   :  7  10
        |Exchange           [res]:yes
        |Correlation        [res]:yes
@@ -402,7 +400,7 @@
        |ALDA kernel in R-space  :no
        |RL vectors    [exchange]:  51
        |RL vectors [correlation]:  51
-       |E/h energy range    [ev]:-1.000000 -1.000000
+       |E/h energy range    [ev]: 0.000000  8.000000
        |Coupling range     [o/o]: 100.0000  100.0000
      W |Interaction is diagonal :no
        |Matrix size             :  51
@@ -416,80 +414,33 @@
        |xc-Kernel               :none
     RIM|RL components      [col]:0
        |Random points      [col]:0
-   - S/N 006125 -------------------------- v.04.02.00 r.14791 -
+   - S/N 006125 --------------------------- v.04.00.02 r.**** -
 
-   [05.04.03] Kernel loop
+   [06.04.03] Kernel loop
    ======================
 
 
- [06] BSE solver(s)
+ [07] BSE solver(s)
  ==================
 
 
-  [06.01] Slepc solver
-  ====================
+  [07.01] Diagonalization solver
+  ==============================
 
-  criterion: target energy  0.275620
-  extraction method: ritz
-  number of iterations of the method:  10
-  number of eigenvalues:   5
-  ncv:  20
-  mpd:  20
-  solution method: krylovschur
-  number of requested eigenvalues:   5
-  stopping condition tolerance: 0.1000E-5
-  stopping contition max iterations:  100
-  number of converged eigenpairs:   5
-   
-  [WR./04_BSE_SLEPC_TARGET//ndb.BS_diago_Q01]-----------------
-   BS kernel          energies      : Analyt. E
-   BSK Identifier                  : 2096
+  [WR./04_BSE_EH_range//ndb.BS_diago_Q01]---------------------
+   BS kernel          energies      :Teter 93(XC)+Scissor
+   BSK Identifier                  :  8150
    Excitonic eigenstates included  :no
    Field direction                 :0.5774E-5 0.5774E-5 0.5774E-5
-   Number of eigenstates included  :  5
-  - S/N 006125 -------------------------- v.04.02.00 r.14791 -
-
- [07] Timing Overview
- ====================
-
- Routines: global (Only MASTER cpu here)
-                               io_WF :     0.00s CPU (      19 calls,   0.001 s avg)
-                             io_GROT :     0.00s CPU (       2 calls,   0.000 s avg)
-                            io_QINDX :     0.00s CPU (       2 calls,   0.002 s avg)
-                          io_COL_CUT :     0.00s CPU
-                      io_Double_Grid :     0.00s CPU
-                               io_HF :     0.00s CPU
-                          io_DIPOLES :     0.00s CPU (      12 calls,   0.000 s avg)
-                         io_KB_pwscf :     0.00s CPU (       2 calls,   0.000 s avg)
-                        io_KB_abinit :     0.00s CPU (       6 calls,   0.000 s avg)
-                                io_X :     0.00s CPU (      15 calls,   0.001 s avg)
-                               io_BS :     0.00s CPU (      13 calls,   0.001 s avg)
-             IO_and_Messaging_switch :     0.00s CPU (       7 calls,   0.000 s avg)
-                             Dipoles :     0.00s CPU (       2 calls,   0.174 s avg)
-                   DIPOLE_transverse :     0.00s CPU
-                         io_fragment :     0.00s CPU (      33 calls,   0.000 s avg)
-                      Xo (procedure) :     9.00s CPU (       4 calls,   2.472 s avg)
-                          Xo (REDUX) :     0.00s CPU (       4 calls,   0.000 s avg)
-                       X (procedure) :     0.00s CPU (       4 calls,   0.001 s avg)
-                      LINEAR ALGEBRA :     0.00s CPU (       4 calls,   0.000 s avg)
-                   SERIAL_lin_system :     0.00s CPU (       4 calls,   0.000 s avg)
-                           X (REDUX) :     0.00s CPU (       4 calls,   0.000 s avg)
-                      eval_G_minus_G :     0.00s CPU
-                          T_space IP :     0.00s CPU
-                    X T_space Kernel :     0.00s CPU
-                    T_space EXX Osc. :     0.00s CPU (       4 calls,   0.002 s avg)
-                   T_space CORR Osc. :     0.00s CPU (      10 calls,   0.006 s avg)
-                        Slepc Solver :     0.00s CPU
-                        io_BSS_diago :     0.00s CPU (       2 calls,   0.000 s avg)
+  - S/N 006125 --------------------------- v.04.00.02 r.**** -
 
  [08] Game Over & Game summary
  =============================
 
- 10/19/2017 at 14:17 YAMBO @ 1oO-367 [start]
- 10/19/2017 at 14:17                 [end]
+ 05/11/2016 at 13:46 YAMBO @ narro [start]
+ 05/11/2016 at 13:46               [end]
 
- Timing   [Min/Max/Average]: 11s/11s/11s
-             [Time-Profile]:  11.37200s
+ Timing   [Min/Max/Average]: 03s/03s/03s
 
  .-ACKNOWLEDGMENT
  |
@@ -506,45 +457,50 @@
  | Computer Physics Communications  180, 1392 (2009).
  |
   
- .-Input file : yambo.in
- | optics                         # [R OPT] Optics
- | bse                            # [R BSE] Bethe Salpeter Equation.
- | bsk                            # [R BSK] Bethe Salpeter Equation kernel
- | bss                            # [R BSS] Bethe Salpeter Equation solver
- | em1s                           # [R Xs] Static Inverse Dielectric Matrix
- | BoseTemp= 0.000000     eV      # Bosonic Temperature
- | FFTGvecs=  3473        RL      # [FFT] Plane-waves
- | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
- | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
- | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
- | BSSmod= "s"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
- | BSENGexx=  51          RL      # [BSK] Exchange components
- | BSENGBlk=  51          RL      # [BSK] Screened interaction block size
- | #WehCpl                        # [BSK] eh interaction included also in coupling
+ .-Input file : INPUTS/04_BSE_EH_range
+ | optics                       # [R OPT] Optics
+ | bse                          # [R BSE] Bethe Salpeter Equation.
+ | bsk                          # [R BSK] Bethe Salpeter Equation kernel
+ | bss                          # [R BSS] Bethe Salpeter Equation solver
+ | em1s                         # [R Xs] Static Inverse Dielectric Matrix
+ | BoseTemp= 0.000000     eV    # Bosonic Temperature
+ | FFTGvecs=  3473        RL    # [FFT] Plane-waves
+ | X_all_q_nCPU_invert= 1       # [PARALLEL] CPUs for matrix inversion
+ | BS_nCPU_invert= 1            # [PARALLEL] CPUs for matrix inversion
+ | BS_nCPU_diago= 1             # [PARALLEL] CPUs for matrix diagonalization
+ | Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+ | BSEmod= "causal"             # [BSE] resonant/causal/coupling
+ | BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSSmod= "d"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+ | BSENGexx=  51          RL    # [BSK] Exchange components
+ | BSENGBlk=  51          RL    # [BSK] Screened interaction block size
+ | #WehCpl                      # [BSK] eh interaction included also in coupling
  | % KfnQP_E
  |  2.400000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
  | %
+ | Gauge= "length"              # [BSE] Gauge (length|velocity)
  | % BEnRange
- |  4.000000 | 8.000000 | eV      # [BSS] Energy range
+ |  4.000000 | 8.000000 | eV    # [BSS] Energy range
  | %
  | % BDmRange
- |   0.02500 |  0.02500 | eV      # [BSS] Damping range
+ |   0.02500 |  0.02500 | eV    # [BSS] Damping range
  | %
- | BEnSteps=  400                 # [BSS] Energy steps
+ | BEnSteps=  400               # [BSS] Energy steps
  | % BLongDir
  | 0.5774E-5 |0.5774E-5 |0.5774E-5 |        # [BSS] [cc] Electric Field
  | %
  | % BSEBands
- |   7 | 10 |                     # [BSK] Bands range
+ |   7 | 10 |                   # [BSK] Bands range
  | %
- | BSSNEig=  5                    # [SLEPC] Number of eigenvalues to compute
- | BSSEnTarget= 7.500000  eV      # [SLEPC] Target energy to find eigenvalues
+ | % BSEEhEny
+ |  0.000000 | 8.000000 | eV    # [BSK] Electron-hole energy range
+ | %
  | % BndsRnXs
- |    1 |  60 |                   # [Xs] Polarization function bands
+ |    1 |  60 |                 # [Xs] Polarization function bands
  | %
- | NGsBlkXs=  51          RL      # [Xs] Response block size
+ | NGsBlkXs=  51          RL    # [Xs] Response block size
  | % DmRngeXs
- | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
+ | 0.1000E-2 |0.1000E-2 | eV    # [Xs] Damping range
  | %
  | % LongDrXs
  | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
