@@ -125,7 +125,7 @@ if ($COLL=="1" and $yambo_exec=~"yambo_rt"  ) {
  return;
 }
 #
-# COLLISIONS (_RT)
+# COLLISIONS (_SC)
 #
 if ($COLL=="1" and $yambo_exec=~"yambo_sc"  ) { 
  foreach $f1 (@QSB){

@@ -30,6 +30,7 @@ call add_RULE(".energy","no_statistics",USER_prec=5/100.,MATERIAL="hBN AlAs")
 call add_RULE(".carriers","skip",TITLES=(/"T(hol) [K]","T(el)  [K]"/),MATERIAL="MoS2 WSe2 Si_bulk")
 call add_RULE(".carriers","no_statistics",VAL_treshold=1.E-7,MATERIAL="hBN AlAs MoS2 WSe2 Si_bulk")
 call add_RULE("o-04_elel+elph_0K.carriers","no_statistics",USER_prec=7/100.,MATERIAL="Si_bulk")
+call add_RULE(".YPP-eps","skip",COLS=(/3,4,6,7/),Material="Si_bulk")
 !
 ! KERR
 !======
