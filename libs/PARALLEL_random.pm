@@ -35,7 +35,7 @@ while (&PAR_conf_check( {k=>$ncpu[0], c=>$ncpu[2], v=>$ncpu[2] } ) eq 1){&RUN_ra
 @QSB[0]=[@ncpu];
 #
 &RUN_random_PAR(3);
-while (&PAR_conf_check( {k=>$ncpu[0]}) eq 1 ){&RUN_random_PAR(3)};
+while (&PAR_conf_check( {k=>$ncpu[0], eh=>$ncpu[1]}) eq 1 ){&RUN_random_PAR(3)};
 @KEHT[0]=[@ncpu];
 #
 &RUN_random_PAR(4);

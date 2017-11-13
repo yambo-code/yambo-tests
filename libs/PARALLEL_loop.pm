@@ -22,9 +22,12 @@
 #
 sub PARALLEL_loop{
 #
-my $SINGLE;
-@SINGLE = (1,2);
-if (-f "KPT_1") {@SINGLE = (1,2,4)};
+my $KPT;
+@KPT = (1,2);
+if (-f "KPT_1") {@KPT = (1)};
+my $QPT;
+@QPT = (1,2);
+if (-f "KPT_1") {@QPT = (1)};
 my $GQK;
 @GQK[0] = [(1,1,1)];
 @GQK[1] = [(1,1,2)];
@@ -42,6 +45,9 @@ if (-f "KPT_1") {@GQK[6] = [(4,1,1)]};
 if (-f "KPT_1") {@GK[4] = [(4,1)]};
 my @CV;
 @CV=@QK;
+my @EH;
+@EH= (1,2);
+if (-f "VALENCE_1" && -f "CONDUCTION_1") {@EH = (1); @KPT = (1,2,4,8)};
 my @SB;
 @SB=@QK;
 #
@@ -72,9 +78,9 @@ foreach $cv (@CV){
 #
 $N_qksb=0;
 $N_qsb=0;
-foreach $q (@SINGLE){ 
+foreach $q (@QPT){ 
  foreach $sb (@SB){
-  foreach $k (@SINGLE){ 
+  foreach $k (@KPT){ 
    if (&PAR_conf_check({k=>$q}) eq 1){next};
    if (&PAR_conf_check({k=>$k}) eq 1){next};
    $trace=&trace( @conf );
@@ -93,8 +99,8 @@ foreach $q (@SINGLE){
  }
 };
 $N_keht=0;
-foreach $k (@SINGLE){
- foreach $eh (@SINGLE){ 
+foreach $k (@KPT){
+ foreach $eh (@EH){ 
   if (&PAR_conf_check({k=>$k}) eq 1){next};
   $t_max=$k*$eh;
   for( $t = 1; $t < $t_max; $t = $t + 2 ){
