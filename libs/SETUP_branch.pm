@@ -88,6 +88,7 @@ if ($BRANCH=~m/devel-rt/ix)     {$is_NEW_WF="yes"};
 if ($BRANCH=~m/devel-dipoles/ix){$is_NEW_WF="yes"};
 if ($BRANCH=~m/devel-double-grid/ix){$is_NEW_WF="yes"};
 if ($BRANCH=~m/max-release/ix)  {$is_NEW_WF="yes"};
+if ($BRANCH=~m/devel-hpc/ix)    {$is_NEW_WF="yes"};
 #
 $is_NEW_DBGD="no";
 if ($BRANCH=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
