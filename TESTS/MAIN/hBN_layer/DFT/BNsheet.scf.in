@@ -1,0 +1,29 @@
+ &control
+    calculation = 'scf'
+    restart_mode='from_scratch',
+    prefix='bn',
+    pseudo_dir = './',
+    outdir='./'
+    wf_collect=.true.
+ /
+ &system    
+    ibrav=  4 
+    celldm(1) = 4.7177372151 
+    celldm(3) = 4.2393204810 
+    nat=  2 
+    ntyp= 2
+    ecutwfc = 50.0 
+ /
+ &electrons
+    mixing_mode = 'plain'
+    mixing_beta = 0.7 
+    conv_thr =  1.0d-7
+ /
+ATOMIC_SPECIES 
+ B 1.0  B.pz-vbc.UPF     
+ N 1.0  N.pz-vbc.UPF 
+ATOMIC_POSITIONS crystal 
+ B     6.6666666666E-01  3.3333333333E-01  0.0000000000E+00
+ N     -6.6666666666E-01 -3.3333333333E-01  0.0000000000E+00
+K_POINTS automatic
+12 12 1 0 0 0
