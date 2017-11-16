@@ -1,18 +1,18 @@
                                                                 
-    //$$        /$$       /$$       $$ /$$$$$$$   $$    $$      
-    | $$       //$$    $$| $$$    /$$$| $$       /$$$$  $$      
-    | $$       | $$    $$| $$$$  /$$$$| $$      | $$$$$ $$      
-    | $$       | $$    $$| $$ $$/$$ $$| $$$$$$$ | $$ $$$$$      
-    | $$       | $$    $$| $$  $$$| $$| $$      | $$   $$$      
-    | $$       | $$    $$| $$\  $ | $$| $$      | $$    $$      
-    | $$$$$$$  | $$$$$$$$| $$     | $$| $$$$$$$/| $$    $$      
-    |______/   |________/|__/     |__/|_______/  \__/  \_/      
+    :::   :::   :::     ::::    ::::  :::::::::   ::::::::      
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:     
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+     
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+     
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+     
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#     
+       ###  ###     ### ###       ### #########   ########      
                                                                 
-                GPL Version 1.0.0 Revision 120                  
-                          MPI Build                             
-                    (based on Yambo 4.1.2)                      
+                                                                
+           Version 4.3.0 Revision 15207 Hash 1b80b32            
+                         MPI+SLK Build                          
+                   http://www.yambo-code.org                    
  
- 11/16/2017 at 11:05 YAMBO @ narro
+ 11/16/2017 at 17:13 YAMBO_NL @ narro
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -25,10 +25,12 @@
 
  CORE databases in   .
  Additional I/O in   .
- Communications in   05_ip_gspace
- Input file     is   ../INPUTS/05_ip_gspace
- Report file    is   05_ip_gspace/r-05_ip_gspace_optics_chi
+ Communications in   .
+ Input file     is   yambo.in
+ Report file    is   ./r-05_ip_gspace_optics_chi
  Job string(main): 05_ip_gspace
+             (#1): R1
+ Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
   Bands                           : 20
@@ -44,7 +46,7 @@
   Max atoms/species               : 1
   No. of atom species             : 2
   Magnetic symmetries             : no
- - S/N 000533 -------------------------- v.01.00.00 r.00120 -
+ - S/N 000533 -------------------------- v.04.03.00 r.15207 -
 
  [02] CORE Variables Setup
  =========================
@@ -82,8 +84,6 @@
   [S4]-1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000  1.000000
 
   [SYMs] K-space Time-reversal not included
-
-  [WARNING]Spatial Inversion not found among the given symmetry list
   [SYMs] Group table built correctly
 
   [02.03] RL shells
@@ -115,15 +115,16 @@
   [02.05] Energies [ev] & Occupations
   ===================================
 
-  Fermi Level        [ev]:  0.000000
-  VBM / CBm          [ev]:  0.000000  4.822449
-  Electronic Temp. [ev K]:  0.00      0.00    
-  Bosonic    Temp. [ev K]:  0.00      0.00    
-  El. density      [cm-3]: 0.140E+24
-  States summary         : Full        Metallic    Empty
-                           0001-0004               0005-0020
-  Indirect Gaps      [ev]: 4.822449  8.149834
-  Direct Gaps        [ev]:  4.88211  10.60029
+  [X]VBM / CBm          [ev]:  0.000000  4.822449
+  [X]Fermi Level        [ev]:  0.000000
+  [X]Electronic Temp. [ev K]:  0.00      0.00    
+  [X]Bosonic    Temp. [ev K]:  0.00      0.00    
+  [X]Finite Temperature mode: no
+  [X]El. density      [cm-3]: 0.140E+24
+  [X]States summary         : Full        Metallic    Empty
+                                 0001-0004               0005-0020
+  [X]Indirect Gaps      [ev]: 4.822449  8.149834
+  [X]Direct Gaps        [ev]:  4.88211  10.60029
   X BZ K-points : 100
 
   Energy unit is electronVolt [eV]
@@ -468,7 +469,7 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 000533 -------------------------- v.01.00.00 r.00120 -
+ - S/N 000533 -------------------------- v.04.03.00 r.15207 -
 
  IBZ Q-points :  55
  BZ  Q-points : 100
@@ -585,16 +586,13 @@
  Q [00054] :-.7991    0.1268E-7  0.000    (cc ) * weight   0.02000
  Q [00055] : 0.399546 -0.692035  0.000000 (cc ) * weight   0.02000
 
- [04] External corrections
- =========================
-
-
- [05] Optics
+ [04] Optics
  ===========
 
+  Lenght of G vectors in each direction:     1.53785534    1.53785528    0.31415927
  [RD./SAVE//ns.kb_pp_pwscf]----------------------------------
   Fragmentation                    :yes
- - S/N 000533 -------------------------- v.04.01.04 r.00120 -
+ - S/N 000533 -------------------------- v.04.01.04 r.14045 -
  [WF] Performing Wave-Functions I/O from ./SAVE
 
  [WF loader] Normalization (few states)  min/max  :0.56071E-8 0.99993   
@@ -617,26 +615,39 @@
   Direct v evaluation    :no
   Field momentum norm    :0.10000E-4
   Wavefunctions          :Slater exchange(X)+Perdew & Zunger(C)
- - S/N 000533 -------------------------- v.01.00.00 r.00120 -
+ - S/N 000533 -------------------------- v.04.03.00 r.15207 -
  [X-CG] R(p) Tot o/o(of R)  :   54   400   100
 
- [06] Timing Overview
+ [05] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                io_WF :     0.00s CPU (      58 calls,   0.001 s avg)
-                io_HF :     0.00s CPU
-           io_DIPOLES :     0.00s CPU (      58 calls,   0.000 s avg)
-                 io_X :     0.00s CPU (       4 calls,   0.000 s avg)
-              Dipoles :     0.00s CPU
-       Xo (procedure) :     0.00s CPU
-           Xo (REDUX) :     0.00s CPU
+                               io_WF :     0.00s CPU (      58 calls,   0.000 s avg)
+                             io_GROT :     0.00s CPU (       3 calls,   0.001 s avg)
+                            io_QINDX :     0.00s CPU (       2 calls,   0.002 s avg)
+                          io_COL_CUT :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU
+                               io_HF :     0.00s CPU
+                          io_DIPOLES :     0.00s CPU (      58 calls,   0.000 s avg)
+                         io_KB_pwscf :     0.00s CPU (      57 calls,   0.000 s avg)
+                        io_KB_abinit :     0.00s CPU
+                                io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+                               io_BS :     0.00s CPU
+                             io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
+                    io_RT_components :     0.00s CPU (       2 calls,   0.000 s avg)
+                       io_COLLISIONS :     0.00s CPU (       3 calls,   0.000 s avg)
+             IO_and_Messaging_switch :     0.00s CPU (       4 calls,   0.000 s avg)
+                             Dipoles :     0.00s CPU
+                   DIPOLE_transverse :     0.00s CPU
+                         io_fragment :     0.00s CPU (     165 calls,   0.000 s avg)
+                      Xo (procedure) :     0.00s CPU
+                          Xo (REDUX) :     0.00s CPU
 
- [07] Game Over & Game summary
+ [06] Game Over & Game summary
  =============================
 
- 11/16/2017 at 11:05 YAMBO @ narro [start]
- 11/16/2017 at 11:05               [end]
+ 11/16/2017 at 17:13 YAMBO_NL @ narro [start]
+ 11/16/2017 at 17:13                  [end]
 
   
  .-ACKNOWLEDGMENT
@@ -654,26 +665,26 @@
  | Computer Physics Communications  180, 1392 (2009).
  |
   
- .-Input file : ../INPUTS/05_ip_gspace
- | optics                       # [R OPT] Optics
- | chi                          # [R CHI] Dyson equation for Chi.
- | BoseTemp= 0.000000     eV    # Bosonic Temperature
- | FFTGvecs=  989         RL    # [FFT] Plane-waves
- | Chimod= "IP"                 # [X] IP/Hartree/ALDA/LRC/BSfxc
- | NGsBlkXd= 1            RL    # [Xd] Response block size
+ .-Input file : yambo.in
+ | optics                         # [R OPT] Optics
+ | chi                            # [R CHI] Dyson equation for Chi.
+ | BoseTemp= 0.000000     eV      # Bosonic Temperature
+ | FFTGvecs=  989         RL      # [FFT] Plane-waves
+ | Chimod= "IP"                   # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+ | NGsBlkXd= 1            RL      # [Xd] Response block size
  | % QpntsRXd
- |  1 | 1 |                     # [Xd] Transferred momenta
+ |  1 | 1 |                       # [Xd] Transferred momenta
  | %
  | % BndsRnXd
- |   3 |  6 |                   # [Xd] Polarization function bands
+ |   3 |  6 |                     # [Xd] Polarization function bands
  | %
  | % EnRngeXd
- |   0.00000 | 10.00000 | eV    # [Xd] Energy range
+ |   0.00000 | 10.00000 | eV      # [Xd] Energy range
  | %
  | % DmRngeXd
- |   0.10000 |  0.10000 | eV    # [Xd] Damping range
+ |   0.10000 |  0.10000 | eV      # [Xd] Damping range
  | %
- | ETStpsXd= 100                # [Xd] Total Energy steps
+ | ETStpsXd= 100                  # [Xd] Total Energy steps
  | % LongDrXd
  |  0.000    |0.1000E-4 | 0.000    |        # [Xd] [cc] Electric Field
  | %
