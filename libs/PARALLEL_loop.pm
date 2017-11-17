@@ -110,9 +110,9 @@ foreach $w (@FREQ){
    if (&PAR_conf_check({w=>$w}) eq 1){next};
    #if (&PAR_conf_check({k=>$q}) eq 1){next};
    if (&PAR_conf_check({k=>$k}) eq 1){next};
+   @conf = ( $w, $k );
    $trace=&trace( @conf );
    if (not $trace eq $np) {next};
-   @conf = ( $w, $k );
    @WQKB[$N_wqkb]= [ @conf ];
    $N_wqkb++; 
   }

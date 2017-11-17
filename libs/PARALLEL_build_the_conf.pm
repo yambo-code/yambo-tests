@@ -160,7 +160,7 @@ if ($COLL=="1" and $yambo_exec=~"yambo_sc"  ) {
 if ($COLL=="1" and $yambo_exec=~"yambo_nl"  ) { 
  foreach $f1 (@WQKB){
   $Nr++;
-  $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
+  $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1]\"";
  }
  return;
 }

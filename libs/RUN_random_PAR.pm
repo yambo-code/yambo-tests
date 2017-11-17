@@ -29,6 +29,10 @@ $I=$RANDOM_seed+time ^ ($$ + ($$ << 11));
 srand ($I);
 #
 $n_fields=$_[0];
+if ($n_fields == 2) {
+@icpu = qw(1 2);
+@ncpu = qw(1 1)
+}
 if ($n_fields == 3) {
 @icpu = qw(1 2 3);
 @ncpu = qw(1 1 1)

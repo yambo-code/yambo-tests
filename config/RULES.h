@@ -36,7 +36,7 @@ call add_RULE(".total_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 !
 ! NL
 !====
-call add_RULE(".YPP-X_probe_order_1","skip",COLS=(/3,4,5,6/),Material="hBN")
+call add_RULE(".YPP-X_probe_order_1","skip",COLS=(/4,5,6,7/),Material="hBN")
 !
 ! KERR
 !======
