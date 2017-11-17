@@ -38,6 +38,10 @@ while (&PAR_conf_check( {k=>$ncpu[0], c=>$ncpu[2], v=>$ncpu[2] } ) eq 1){&RUN_ra
 while (&PAR_conf_check( {k=>$ncpu[0], eh=>$ncpu[1]}) eq 1 ){&RUN_random_PAR(3)};
 @KEHT[0]=[@ncpu];
 #
+&RUN_random_PAR(2);
+while (&PAR_conf_check( {w=>$ncpu[0], k=>$ncpu[2]}) eq 1 ){&RUN_random_PAR(2)};
+@WQKB[0]=[@ncpu];
+#
 &RUN_random_PAR(4);
 while (&PAR_conf_check( {k=>$ncpu[0], c=>$ncpu[3], v=>$ncpu[3] } ) eq 1 or &PAR_conf_check( {k=>$ncpu[1], c=>$ncpu[3], v=>$ncpu[3] } ) eq 1){&RUN_random_PAR(4)};
 @QKSB[0]=[@ncpu];

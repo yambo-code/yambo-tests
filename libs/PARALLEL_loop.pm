@@ -28,6 +28,10 @@ if (-f "KPT_1") {@KPT = (1)};
 my $QPT;
 @QPT = (1,2);
 if (-f "KPT_1") {@QPT = (1)};
+my $FREQ;
+@FREQ = (1,2);
+if (-f "FREQ_1") {@FREQ = (1)};
+if (-f "KPT_1") {@FREQ = (1,2,4)};
 my $GQK;
 @GQK[0] = [(1,1,1)];
 @GQK[1] = [(1,1,2)];
@@ -98,6 +102,30 @@ foreach $q (@QPT){
   $N_qsb++; 
  }
 };
+#
+$N_wqkb=0;
+foreach $w (@FREQ){ 
+ #foreach $q (@QPT){ 
+  foreach $k (@KPT){ 
+   if (&PAR_conf_check({w=>$w}) eq 1){next};
+   #if (&PAR_conf_check({k=>$q}) eq 1){next};
+   if (&PAR_conf_check({k=>$k}) eq 1){next};
+   $trace=&trace( @conf );
+   if (not $trace eq $np) {next};
+   @conf = ( $w, $k );
+   @WQKB[$N_wqkb]= [ @conf ];
+   $N_wqkb++; 
+  }
+  #if (&PAR_conf_check({k=>$q}) eq 1){next};
+  #if (&PAR_conf_check({c=>@$sb[1],v=>@$sb[1]}) eq 1){next};
+  #@conf = ( $q, @$sb[0], @$sb[1] );
+  #$trace=&trace( @conf );
+  #if (not $trace eq $np) {next};
+  #@QSB[$N_qsb]= [ @conf ];
+  #$N_qsb++; 
+ #}
+};
+#
 $N_keht=0;
 foreach $k (@KPT){
  foreach $eh (@EH){ 
@@ -119,6 +147,7 @@ if ($verb) {
  foreach $var (@QSB){print "\n QSB @$var"};
  foreach $var (@KEHT){ print "\n KEHT @$var"};
  foreach $var (@QKSB){print "\n QKSB @$var"};
+ foreach $var (@WQKB){print "\n WQKB @$var"};
 }
 }
 1;

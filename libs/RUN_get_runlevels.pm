@@ -37,12 +37,16 @@ $RT_X=&RUN_feature("RT_X");
 if ($RT_X eq "1") { $description .= " Polarization FT" };
 $NEGF=&RUN_feature("negf");
 if ($NEGF eq "1") { $description .= " NEGF" };
+$NLOPTICS=&RUN_feature("nloptics");
+if ($NLOPTICS eq "1") { $description .= " Non Linear optics" };
 $SETUP=&RUN_feature("setup");
 if ($SETUP eq "1") { $description .= " setup" };
 $HF=&RUN_feature("HF_and_locXC");
 if ($HF eq "1") { $description .= " HF" };
-$OPTICS=&RUN_feature("optics");
-if ($OPTICS eq "1") { $description .= " optics" };
+if ($NLOPTICS ne "1"){
+  $OPTICS=&RUN_feature("optics");
+  if ($OPTICS eq "1") { $description .= " optics" };
+};
 $SC=&RUN_feature("scpot");
 if (&RUN_feature("magnetic") eq "1"){$SC="0"; $MAGNETIC="1"};
 if ($SC eq "1") { $description .= " SC cycle" };

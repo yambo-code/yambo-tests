@@ -47,6 +47,7 @@ $PAR_field[3]="X_all_q_ROLEs= \"g.q.k.c.v\""; # => GQKCV
 $PAR_field[4]="SE_ROLEs= \"q.qp.b\""; # => QSB
 $PAR_field[5]="BS_ROLEs= \"k.eh.t\""; # => KEHT
 $PAR_field[6]="RT_ROLEs= \"q.k.qp.b\""; # => QKSB
+$PAR_field[7]="NL_ROLEs= \"w.k\""; # => WQKB
 #
 # Resets
 #
@@ -55,6 +56,7 @@ undef @GQKCV;
 undef @QSB;
 undef @KEHT;
 undef @QKSB;
+undef @WQKB;
 #
 # Constrains
 &RUN_PAR_constrains();
@@ -78,6 +80,7 @@ sub PAR_conf_check{
  if ($args->{v} and $args->{v} > $MAX_v) {return 1};
  if ($args->{G} and $args->{G} > $MAX_G) {return 1};
  if ($args->{eh}and $args->{eh}> $MAX_eh){return 1};
+ if ($args->{w} and $args->{w} > $MAX_k) {return 1};
 }
 1
 ;

@@ -77,10 +77,20 @@ if ($BSE=="1" and $EM1S=="1" ) {
 #
 # HF, SC or e-p
 #
-if ( (($HF=="1" and $GW=="0") or $SC=="1" or ($GW=="1" and $EP=="1") or ($GW=="1" and $EPHOT=="1")) and $COLL=="0" and $NEGF=="0" ) { 
+if ( (($HF=="1" and $GW=="0") or $SC=="1" or ($GW=="1" and $EP=="1") or ($GW=="1" and $EPHOT=="1")) and $COLL=="0" and $NEGF=="0" and $NLOPTICS=="0" ) { 
  foreach $f1 (@QSB){
   $Nr++;
   $MPI_CPU_conf[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
+ }
+ return;
+}
+#
+# NL
+#
+if ($SC=="0" and $NLOPTICS=="1" and $COLL=="0") {
+ foreach $f1 (@WQKB){
+  $Nr++;
+  $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1]\"";
  }
  return;
 }
@@ -115,6 +125,16 @@ if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_sc") {
  return;
 }
 #
+# EM1S+Collisions (_NL)
+#
+if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_nl") { 
+ foreach $f1 (@GQKCV){ foreach $f2 (@QSB){
+  $Nr++;
+  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
+ }}
+ return;
+}
+#
 # COLLISIONS (_RT)
 #
 if ($COLL=="1" and $yambo_exec=~"yambo_rt"  ) { 
@@ -131,6 +151,16 @@ if ($COLL=="1" and $yambo_exec=~"yambo_sc"  ) {
  foreach $f1 (@QSB){
   $Nr++;
   $MPI_CPU_conf[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
+ }
+ return;
+}
+#
+# COLLISIONS (_NL)
+#
+if ($COLL=="1" and $yambo_exec=~"yambo_nl"  ) { 
+ foreach $f1 (@WQKB){
+  $Nr++;
+  $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
  }
  return;
 }
