@@ -80,7 +80,7 @@ sub PAR_conf_check{
  if ($args->{v} and $args->{v} > $MAX_v) {return 1};
  if ($args->{G} and $args->{G} > $MAX_G) {return 1};
  if ($args->{eh}and $args->{eh}> $MAX_eh){return 1};
- if ($args->{w} and $args->{w} > $MAX_k) {return 1};
+ if ($args->{w} and $args->{w} > $MAX_w) {return 1};
 }
 1
 ;

@@ -29,6 +29,7 @@ sub RUN_PAR_constrains{
  foreach $file ( <KPT_*> ){ $file =~ s/KPT_//g; $MAX_k=$file};
  foreach $file ( <VALENCE_*> ){ $file =~ s/VALENCE_//g; $MAX_v=$file};
  foreach $file ( <CONDUCTION_*> ){ $file =~ s/CONDUCTION_//g; $MAX_c=$file};
+ foreach $file ( <FREQ_*> ){ $file =~ s/FREQ_//g; $MAX_w=$file};
  $MAX_eh=$MAX_c*$MAX_v;
 }
 1;
