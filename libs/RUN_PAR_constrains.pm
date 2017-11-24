@@ -25,6 +25,7 @@ sub RUN_PAR_constrains{
  $MAX_v=$np;
  $MAX_c=$np;
  $MAX_G=$np;
+ $MAX_w=$np;
  foreach $file ( <G_*> ){ $file =~ s/G_//g; $MAX_G=$file};
  foreach $file ( <KPT_*> ){ $file =~ s/KPT_//g; $MAX_k=$file};
  foreach $file ( <VALENCE_*> ){ $file =~ s/VALENCE_//g; $MAX_v=$file};
