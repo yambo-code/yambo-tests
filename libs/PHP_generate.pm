@@ -168,7 +168,7 @@ return
 #
 sub PHP_upload
 {
-&command("$ncftpput -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org www.yambo-code.org/robots $host/www/*.php")
+&command("$ncftpput -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org www.yambo-code.org/robots/$branch_key/ $host/www/*.php")
 }
 #
 sub get_line{
