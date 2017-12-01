@@ -24,7 +24,7 @@
 #
 sub PHP_generate{
 #
-&command("rm -f $host/www/*");
+&command("rm -fr $host/www/*");
 #
 &UTILS_list_backups;
 #
@@ -68,9 +68,9 @@ chdir("$host/www");
 for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
  $k=$j+1;
- $main_php = $hostname."_".$branch_key."_".$j."_main.php";
- $error_php=$hostname."_".$branch_key."_".$j."_error.php";
- $report_php=$hostname."_".$branch_key."_".$j."_report.php";
+ $main_php  = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.php";
+ $error_php = $branch_key."/".$hostname."_".$branch_key."_".$j."_error.php";
+ $report_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_report.php";
  if (-f $main_php){
   ($file = $error_php) =~ s/$j/$k/g;
   &command("mv $error_php $file");
@@ -162,13 +162,15 @@ foreach $file (<$dir/REPORT*.log>) {
 #
 # Final copying
 #
-&command("mv *.php $host/www");
+&command("mkdir -p $host/www/$branch_key");
+&command("mv *.php $host/www/$branch_key");
 return
 }
 #
 sub PHP_upload
 {
-&command("$ncftpput -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org www.yambo-code.org/robots/$branch_key/ $host/www/*.php")
+chdir("$suite_dir/$host/www");
+&command("$ncftpput -R -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org www.yambo-code.org/robots/ .")
 }
 #
 sub get_line{

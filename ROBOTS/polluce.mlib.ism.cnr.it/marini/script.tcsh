@@ -26,12 +26,12 @@ module load local/intel/parallel_2017
 endif
 
 if ( "$1" == "tests") then
- if ( "$3" == "5" || "$3" == "6" ) then
-  ./driver.pl -flow validate_slepc -report -newer 3 -robot $3 -c -c
+ if ( "$3" == "5" || "$3" == "6" || "$3" == "15" ) then
+  ./driver.pl -flow validate_slepc -report -newer 5 -robot $3 -c -c
  else
-  ./driver.pl -flow validate -report -newer 3 -robot $3 -c -c
+  ./driver.pl -flow validate -report -robot $3 -c -c -newer 5
  endif
 endif
 if ( "$1" == "bench") then
- ./driver.pl -flow benchmark -robot $3 -m bench -profile -b -c -c
+ ./driver.pl -flow benchmark -robot $3 -m bench -b -c 
 endif

@@ -15,18 +15,18 @@
  PAR_MODE    => "random",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => 4,
  PAR_MODE    => "loop",
 },
 {
  ACTIVE      => "yes",
- THREADS     => 4,
+ THREADS     => 8,
 },
 {
  MPI_CPU     => 8,
  SLK_CPU     => 4,
- PAR_MODE    => "default",
+ PAR_MODE    => "random",
 },
 {
  MPI_CPU     => 8,
