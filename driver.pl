@@ -270,8 +270,8 @@ if ($RUNNING_suite) {
  #
  if ($update_test){
   &UTILS_update;
-  $upload_test=$update_test;
-  &UTILS_upload;
+  #$upload_test=$update_test;
+  #&UTILS_upload;
   die;
  }
  #
