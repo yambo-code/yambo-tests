@@ -10,10 +10,10 @@ if [ -e "$IF_COMPILE" ]
 then
  CONF_LINE="FC=pgf90 FPP=gfortran -E -P -cpp"
 fi
-#--with-extlibs-path=$YAMBO_EXT_LIBS \
 ./configure \
 $CONF_LINE \
 --enable-keep-extlibs \
+--with-extlibs-path=$YAMBO_EXT_LIBS \
 --enable-iotk \
 --enable-time-profile \
 --enable-memory-profile \

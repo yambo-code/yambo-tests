@@ -298,7 +298,7 @@ if ($RUNNING_suite) {
 #
 &COMPILE_find_the_diff("clean");
 #
-if (not $FLOWS_done or not $AT_LEAST_ONE) {
+if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
  print "\nDone.\n";
  die "\n";
 }

@@ -89,7 +89,7 @@ foreach $conf_file (<*$ROBOT_string*.log>){
  &command("mv $conf_file $BACKUP_dir");
  if ($conf_file =~ /REPORT-/) {$global_report=$conf_file};
 };
-&command("mv $OUTPUT_backup_file.tar.gz $BACKUP_dir");
+if (-f "$OUTPUT_backup_file.tar.gz"){ &command("mv $OUTPUT_backup_file.tar.gz $BACKUP_dir") };
 if ($DBS_backup_file) {&command("mv $DBS_backup_file.tar $BACKUP_dir")};
 }
 sub UTILS_backup
@@ -170,7 +170,7 @@ foreach $conf_file (<*$ROBOT_string*log>) {
 # Archive
 my $DIR=$PAR_string;
 if ($openmp_is_off) {$DIR="$PAR_string-OpenMPoff"};
-foreach $conf_file (<*config.log>,<*compile.log>) {
+foreach $conf_file (<*R${ROBOT_id}*config.log>,<*R${ROBOT_id}*compile.log>) {
  &command("mkdir -p $BACKUP_dir/compilation");
  &command("mv $conf_file $BACKUP_dir/compilation/");
 };

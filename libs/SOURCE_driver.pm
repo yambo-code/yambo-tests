@@ -45,6 +45,12 @@ else {
  }
 }
 #
+# Already compiled and failed?
+#
+if ($FAILED_conf_comp_branches) {
+ if ($FAILED_conf_comp_branches =~ /$branch_id/) {return "FAIL"};
+}
+#
 # Precompiled (bin) exe's test
 #
 if ("$precompiled_is_run" eq "yes") {
@@ -77,6 +83,7 @@ if ($compile) {
  $ERROR=&SOURCE_config;
  if ("$ERROR" eq "FAIL") {
   &LOGs_move;
+  $FAILED_conf_comp_branches.="$branch_id ";
   return "FAIL";
  }
  #
@@ -119,6 +126,7 @@ if ($compile)
   $ERROR=&SOURCE_compile;
   if ("$ERROR" eq "FAIL") {
    &LOGs_move;
+   $FAILED_conf_comp_branches.="$branch_id ";
    return "FAIL";
   }
   chdir $BRANCH;
