@@ -94,7 +94,7 @@ if ($compile) {
 # FC kind
 #
 if ($compile) { 
- &SETUP_FC_kind 
+ &SETUP_FC_kind;
 }elsif (not $FC_kind){
  &SETUP_FC_kind 
 };
@@ -127,6 +127,7 @@ if ($compile)
   if ("$ERROR" eq "FAIL") {
    &LOGs_move;
    $FAILED_conf_comp_branches.="$branch_id ";
+   if ($backup_logs eq "yes"){ &UTILS_backup };
    return "FAIL";
   }
   chdir $BRANCH;

@@ -35,6 +35,7 @@ foreach $dir (@sorted_dirs) {
   @lines = <REPORT>;
   &PHP_key_words;
   if ($branch_key =~ "bug-fixes_copy" or $branch_key =~ "max-release" ) {next};
+  print "Processing $dir...\n";
   &PHP_extract;
   close(REPORT);
  }
@@ -64,7 +65,7 @@ $time=$pattern[0][5];
 sub PHP_extract{
 #
 # Name choosing
-$MAX_phps=20;
+$MAX_phps=10;
 chdir("$host/www");
 for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
@@ -72,17 +73,17 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
  $main_php  = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.php";
  $error_php = $branch_key."/".$hostname."_".$branch_key."_".$j."_error.php";
  $report_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_report.php";
- $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php";
- $comp_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.php";
+ $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php.bz2";
+ $comp_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.php.bz2";
  if (-f $main_php){
   ($file = $error_php) =~ s/$j/$k/g;
-  &command("mv $error_php $file");
+  if (-f $error_php) {&command("mv $error_php $file")};
   ($file = $report_php) =~ s/$j/$k/g;
-  &command("mv $report_php $file");
+  if (-f $report_php) {&command("mv $report_php $file")};
   ($file = $conf_php) =~ s/$j/$k/g;
-  &command("mv $conf_php $file");
+  if (-f $conf_php) {&command("mv $conf_php $file")};
   ($file = $comp_php) =~ s/$j/$k/g;
-  &command("mv $comp_php $file");
+  if (-f $comp_php) {&command("mv $comp_php $file")};
   ($file = $main_php) =~ s/$j/$k/g;
   &command("mv $main_php $file");
   open(my $fh1, '<', $file) ;
@@ -135,8 +136,8 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP"," <td>");
 &MESSAGE("PHP"," <br><a href='$report_php'> report</a>");
 &MESSAGE("PHP"," <br><a href='$error_php'> error</a>");
-&MESSAGE("PHP"," <br><a href='$conf_php'> conf</a>");
-&MESSAGE("PHP"," <br><a href='$comp_php'> comp</a>");
+&MESSAGE("PHP"," <br><a href='$conf_php.bz2'> conf</a>");
+&MESSAGE("PHP"," <br><a href='$comp_php.bz2'> comp</a>");
 &MESSAGE("PHP"," </td>");
 #&MESSAGE("PHP"," <td>$branch_key</td>\n");
 &MESSAGE("PHP"," <td>$FC_kind<br>$MPI_kind</td>\n");
@@ -146,7 +147,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  if ($pattern[$i][1] == 0) { &MESSAGE("PHP"," <td bgcolor=\"#6FFF00\">$pattern[$i][1]</td>\n") };
  if ($pattern[$i][1] > 0 and $pattern[$i][1] < 10) { &MESSAGE("PHP"," <td bgcolor=\"#FC9F00\">$pattern[$i][1]</td>\n")} ;
- if ($pattern[$i][1] > 10) { &MESSAGE("PHP"," <td bgcolor=\"#CC0000\">$pattern[$i][1]</td>\n")};
+ if ($pattern[$i][1] >= 10) { &MESSAGE("PHP"," <td bgcolor=\"#CC0000\">$pattern[$i][1]</td>\n")};
 }
 if ($n_patterns eq 0){
  &get_line("FAIL:");
@@ -176,15 +177,19 @@ foreach $file (<$dir/REPORT*.log>) {
 # CONF/COMPILE > .php
 &command("echo '<pre>' > $conf_php");
 &command("echo '<pre>' > $comp_php");
-foreach $file (<*conf*.log>,<$dir/compilation/*conf*.log>) {&command("cat $file >> $conf_php")};
-foreach $file (<*comp*.log>,<$dir/compilation/*comp*.log>) {&command("cat $file >> $comp_php")};
+foreach $file (<$dir/compilation/*conf*.log>) {&command("cat $file >> $conf_php")};
+foreach $file (<$dir/compilation/*comp*.log>) {&command("cat $file >> $comp_php")};
 &command("echo '</pre>' >> $conf_php");
 &command("echo '</pre>' >> $comp_php");
 #
 # Final copying
 #
-&command("mkdir -p $host/www/$branch_key");
-&command("mv *.php $host/www/$branch_key");
+foreach $file (<*_comp.php>,<*_conf.php>) {
+ &command("bzip2 $file");
+}
+&command("mkdir -p    $host/www/$branch_key");
+&command("mv *.php    $host/www/$branch_key");
+&command("mv *.php.bz2 $host/www/$branch_key");   
 return
 }
 #
