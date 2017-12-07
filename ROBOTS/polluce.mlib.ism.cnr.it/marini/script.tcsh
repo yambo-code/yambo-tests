@@ -12,17 +12,17 @@ endif
 
 if ( "$2" == "gf_mpich") then
 module purge
-module load local/gcc6/yambo/mpich-3.2
+module load gcc6/yambo/mpich-3.2
 endif
 
 if ( "$2" == "gf_openmpi") then
 module purge
-module load local/gcc6/yambo/openmpi-2.1.0 
+module load gcc6/yambo/openmpi-2.1.0
 endif
 
 if ( "$2" == "intel") then
 module purge
-module load local/intel/parallel_2017
+module load intel/yambo/parallel_2017/pre_compiled
 endif
 
 if ( "$1" == "tests") then

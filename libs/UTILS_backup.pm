@@ -29,8 +29,9 @@ sub UTILS_list_backups{
  find( sub { push @dirs, $File::Find::name if -d }, @dir );
  my @dirs_to_process;
  foreach $dir (@dirs) {
-  @files = glob("$dir/REPORT*");
-  next if (scalar(@files) eq 0);
+  @reps  = glob("$dir/REPORT*");
+  @comps = glob("$dir/compilation/*");
+  next if (scalar(@reps) eq 0 and scalar(@comps) eq 0);
   push @dirs_to_process, $dir;
  }
  @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process;
@@ -43,6 +44,8 @@ sub UTILS_list_backups{
    @REPS = glob("$dir/REPORT*");
    open(REPORT,"<","$suite_dir/$REPS[0]");
    @lines = <REPORT>;
+   undef $date;
+   undef $time;
    &PHP_key_words;
    $data_id++;
    close(REPORT);
@@ -50,10 +53,12 @@ sub UTILS_list_backups{
    if ($backup_logs eq "yes" or $backup_logs eq $data_id) 
    {
     print "ID    : $data_id\n";
-    print "DATE  : $date\n";
-    print "TIME  : $time\n";
-    print "BRANCH: $branch_key\n";
-    print "FC    : $FC_kind $MPI_kind\n";
+    if ($date) {
+     print "DATE  : $date\n";
+     print "TIME  : $time\n";
+     print "BRANCH: $branch_key\n";
+     print "FC    : $FC_kind $MPI_kind\n";
+    }
     print "DIR   : $dir\n";
    }
    #
