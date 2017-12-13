@@ -52,7 +52,7 @@ my $ret = &GetOptions("h"    => \$help,
             "update=s"       => \$update_test,
             "upload=s"       => \$upload_test,
             "colors"         => \$use_colors,
-            "kill"           => \$kill_me,
+            "kill:s"         => \$kill_me,
             "edit:s"         => \$edit,
             "flow=s"         => \$flow,
             "autotest"       => \$autotest,
@@ -89,6 +89,7 @@ sub UTILS_usage {
            
    where <ARGS> must include at least one of:
              -h                     This help & status.
+             -kill    <USER>        Kill the test-suite runs for user <USER>. If not given use the current one.
              -i                     Robot info
              -l       [<SET>]       List available SETs (-l) or input files for a SET (-l <SET>).
              -c                     Clean.
