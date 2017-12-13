@@ -24,9 +24,15 @@
 #
 sub KILL_me
 {
+$numParameters = @_ ;
 $process=@_[0];
-$list =`ps uax | grep $kill_me | grep $process | grep -v grep | grep -v vim | awk '{print \$2}'`;
-$name =`ps uax | grep $kill_me | grep $process | grep -v grep | grep -v vim`;
+if ($numParameters eq 1){
+ $cmd="ps uax | grep $kill_me | grep $process | grep -v grep | grep -v vim | grep -v kill";
+}else{
+ $cmd="ps uax | grep $kill_me | grep $process | grep @_[1] | grep -v grep | grep -v vim | grep -v kill";
+}
+$list =`$cmd | awk '{print \$2}'`;
+$name =`$cmd`;
 $list  =~ tr/\n/ /d;
 my @pids  = split(/ /,$list);
 my @names = split(/\n/,$name);
@@ -34,8 +40,8 @@ $i=0;
 print "Killing $process related jobs...\n";
 foreach my $pid (@pids)
 {
- &command("kill -9 $pid");
  print "$names[$i]\n";
+ &command("kill -9 $pid");
  $i++;
 }
 }
