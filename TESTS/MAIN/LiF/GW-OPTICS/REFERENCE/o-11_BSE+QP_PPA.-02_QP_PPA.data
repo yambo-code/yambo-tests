@@ -1,0 +1,122 @@
+#                                                           
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
+#                                                           
+#                                                           
+#        Version 4.3.0 Revision 15179 Hash d1b8d27fb        
+#                       MPI+SLK Build                       
+#                 http://www.yambo-code.org                 
+#
+#
+# GW solver              : Newton
+# PPA imaginary pt   [ev]: 27.21138
+# GW SC iterations       :0
+# dS/dw steps            : 2
+# dS/dw step         [ev]:  0.10000
+# X G`s            [used]:  9
+# X G`s            [disk]:  9
+# X bands                :  1  15
+# X poles           [o/o]: 100.0000
+# X e/h E range      [ev]:-1.000000 -1.000000
+# X xc-Kernel            : none
+# X BZ energy Double Grid: no
+# X BZ Double Grid points:0
+# Sc/G bands             :  1  30
+# Sc/G damping       [ev]:  0.10000
+# Sc bands terminator    : no
+# Sx RL components       :  561
+# QP @ K 001 - 010 : b 003 - 006
+#
+#    Eo [eV]      DeltaE [eV]
+#
+   -1.558511    -3.414999
+   -1.436023    -3.403029
+   -1.070866    -3.415568
+   -1.054716    -3.383433
+   -0.837543    -3.404674
+   -0.714769    -3.377434
+   -0.678114    -3.396904
+   -0.596575    -3.381100
+   -0.543690    -3.346914
+   -0.542150    -3.355841
+   -0.414836    -3.362779
+   -0.365852    -3.356579
+   -0.301364    -3.351998
+   -0.249521    -3.347121
+   -0.202197    -3.332119
+   -0.152555    -3.338906
+   -0.152555    -3.337169
+    -0.05684     -3.32741
+    0.000000    -3.315459
+    0.000000    -3.320519
+    9.007993     2.074191
+    10.02187      2.19918
+    10.22820      2.25488
+    10.45793      2.26398
+    10.90017      2.31574
+    11.73960      2.40457
+    11.85073      2.43565
+    12.28786      2.43674
+    13.54436      2.58765
+    13.78118      2.70106
+    14.72974      2.69207
+    14.83118      2.71970
+    15.37213      2.67785
+    15.46494      2.54441
+    15.68900      2.76856
+    16.20592      2.74702
+    16.35704      2.65040
+    16.37827      2.57944
+    17.86943      2.60296
+    19.90535      2.58960
+# 
+# 12/14/2017 at 00:53 YAMBO @ narro [start]
+# 12/14/2017 at 00:54               [end]
+#  
+# Timing   [Min/Max/Average]: 29s/29s/29s
+#
+# .-Input file : yambo.in
+# | optics                         # [R OPT] Optics
+# | bse                            # [R BSE] Bethe Salpeter Equation.
+# | bsk                            # [R BSK] Bethe Salpeter Equation kernel
+# | bss                            # [R BSS] Bethe Salpeter Equation solver
+# | em1s                           # [R Xs] Static Inverse Dielectric Matrix
+# | BoseTemp= 0.000000     eV      # Bosonic Temperature
+# | FFTGvecs=  749         RL      # [FFT] Plane-waves
+# | Chimod= "Hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
+# | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
+# | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "h"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+# | BSENGexx=  749         RL      # [BSK] Exchange components
+# | BSENGBlk=  51          RL      # [BSK] Screened interaction block size
+# | #WehCpl                        # [BSK] eh interaction included also in coupling
+# | KfnQPdb= "E < ./02_QP_PPA/ndb.QP" # [EXTQP BSK BSS] Database
+# | % BEnRange
+# |   7.50000 | 25.00000 | eV      # [BSS] Energy range
+# | %
+# | % BDmRange
+# |   0.10000 |  0.30000 | eV      # [BSS] Damping range
+# | %
+# | BEnSteps= 300                  # [BSS] Energy steps
+# | % BLongDir
+# | 0.1000E-4 | 0.000    | 0.000    |        # [BSS] [cc] Electric Field
+# | %
+# | % BSEBands
+# |   2 |  7 |                     # [BSK] Bands range
+# | %
+# | BSHayTrs=   0.0050             # [BSS] Relative [o/o] Haydock treshold. Strict(>0)/Average(<0)
+# | % BndsRnXs
+# |   1 | 10 |                     # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs=  51          RL      # [Xs] Response block size
+# | % DmRngeXs
+# | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
+# | %
+# | % LongDrXs
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# | %
