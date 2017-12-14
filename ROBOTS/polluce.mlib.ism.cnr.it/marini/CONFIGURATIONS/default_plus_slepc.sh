@@ -3,7 +3,7 @@ CONF_LINE="FC=gfortran"
 IF_COMPILE=`which ifort`
 if [ -e "$IF_COMPILE" ]
 then
-CONF_LINE="FC=ifort"
+CONF_LINE="FC=ifort MPICC=mpiicc"
 fi
 IF_COMPILE=`which pgf90`
 if [ -e "$IF_COMPILE" ]

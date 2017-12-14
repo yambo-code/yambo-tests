@@ -45,10 +45,15 @@ if ($USER_host and -d "ROBOTS/$USER_host") {$host=$USER_host};
 #
 &SETUP_files;
 #
+my $len= length($kill_me);
+if ($len eq 0) {
+ $kill_me=`whoami`;
+ chomp($kill_me);
+}
 if ($kill_me){
- &command("pkill yambo");
- &command("pkill ypp");
- &command("pkill driver.pl");
+ &KILL_me("driver.pl","perl");
+ &KILL_me("yambo");
+ &KILL_me("ypp");
  die;
 }
 #

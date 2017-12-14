@@ -28,7 +28,7 @@
  CPU_CONF    => "32.3.cpu"
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  CPU_CONF    => "64.3.cpu"
 },
 );
