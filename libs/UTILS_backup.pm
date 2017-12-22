@@ -68,6 +68,7 @@ sub UTILS_list_backups{
      print "FC    : $FC_kind $MPI_kind\n";
     }
     print "DIR   : $dir\n";
+    print "\n";
    }
    #
    if ($clean) {
@@ -97,9 +98,9 @@ sub UTILS_list_backups{
      &command("vim $dir/REPORT*");
     };
    }
-   print "\n";
   }
  }
+ print "\n";
 }
 #
 sub UTILS_backup_save{
