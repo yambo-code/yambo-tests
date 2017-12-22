@@ -41,8 +41,12 @@ if ($verb){
  my $cwd=abs_path();
  &MY_PRINT($stdout, "$cmd @ $cwd\n");
 }
-$system_error=system($cmd);
-return "$system_error";
+if ($dry_run) {
+ print "\n CMD: $cmd";
+}else{
+ $system_error=system($cmd);
+ return "$system_error";
+}
 }
 sub CWD_save{
  $cwd_save=abs_path();

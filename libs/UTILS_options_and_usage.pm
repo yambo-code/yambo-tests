@@ -100,7 +100,7 @@ sub UTILS_usage {
    (General options)
              -dry                   Run the script in dry mode. Not actual job is launched.
              -mode                  Can be "tests/perturbo/cheers/bench". It selects which suite to use. Default is "tests".
-             -host  <string>        Robot ID.
+             -host  <string>        Robot name.
              -robot <ID>            Robot ID.
              -status                List SVN/GIT new/untracked files.
              -v [-v]                Verbose output (use -v -v for extra verbosity)

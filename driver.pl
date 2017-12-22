@@ -33,6 +33,7 @@ $suite_dir=abs_path();
 # Defaults
 #
 &SETUP_defaults;
+#&UTILS_cpu_usage;
 #
 # Options list
 &UTILS_options;

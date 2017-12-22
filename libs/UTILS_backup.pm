@@ -23,6 +23,8 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub UTILS_list_backups{
+ my $n_backups_to_save=0;
+ my $n_backups=0;
  my @dir = ( "$host/$user" );
  if ($mode eq "bench") {@dir="benchmark-results/"};
  my @dirs;
@@ -33,7 +35,13 @@ sub UTILS_list_backups{
   @comps = glob("$dir/compilation/*");
   next if (scalar(@reps) eq 0 and scalar(@comps) eq 0);
   push @dirs_to_process, $dir;
+  $n_backups++;
  }
+ #
+ if ($clean) {
+  $first_to_keep=$n_backups-$n_backups_to_save+1;
+  print "\nCleaning backups with ID < $first_to_keep\n";
+ };
  @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process;
  #
  $data_id=0;
@@ -50,7 +58,7 @@ sub UTILS_list_backups{
    $data_id++;
    close(REPORT);
    #
-   if ($backup_logs eq "yes" or $backup_logs eq $data_id) 
+   if ( ($backup_logs eq "yes" or $backup_logs eq $data_id) and not $clean) 
    {
     print "ID    : $data_id\n";
     if ($date) {
@@ -62,6 +70,12 @@ sub UTILS_list_backups{
     print "DIR   : $dir\n";
    }
    #
+   if ($clean) {
+    if ($data_id<$first_to_keep) {
+      print "\n...cleaning ID $data_id";
+      &command("rm -fr $dir");
+    };
+   };
    #@DATAS = glob("$dir/*_ALL*");
    #my $size = -s $DATAS[0];
    #$size=int($size/1024/1000);
