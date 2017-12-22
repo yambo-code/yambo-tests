@@ -27,9 +27,9 @@ endif
 
 if ( "$1" == "tests") then
  if ( "$3" == "5" || "$3" == "6" || "$3" == "15" ) then
-  ./driver.pl -c -c -flow validate_slepc -report -newer 50 -robot $3 
+  ./driver.pl -c -c -flow validate_slepc -report -newer 10 -robot $3 
  else
-  ./driver.pl -flow validate -report -robot $3 -c -c -newer 5
+  ./driver.pl -flow validate -report -robot $3 -c -c -newer 10
  endif
 endif
 if ( "$1" == "bench") then
