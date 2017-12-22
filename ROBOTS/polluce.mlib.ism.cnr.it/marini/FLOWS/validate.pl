@@ -2,7 +2,7 @@
 #
 @flow = (
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  CONFIG      => "default_plus_slepc.sh",
  KEYS        => "all hard",
 },

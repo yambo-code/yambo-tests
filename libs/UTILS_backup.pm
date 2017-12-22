@@ -23,7 +23,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub UTILS_list_backups{
- my $n_backups_to_save=0;
+ my $n_backups_to_save=50;
  my $n_backups=0;
  my @dir = ( "$host/$user" );
  if ($mode eq "bench") {@dir="benchmark-results/"};
@@ -68,6 +68,7 @@ sub UTILS_list_backups{
      print "FC    : $FC_kind $MPI_kind\n";
     }
     print "DIR   : $dir\n";
+    print "\n";
    }
    #
    if ($clean) {
@@ -97,9 +98,9 @@ sub UTILS_list_backups{
      &command("vim $dir/REPORT*");
     };
    }
-   print "\n";
   }
  }
+ print "\n";
 }
 #
 sub UTILS_backup_save{
