@@ -75,6 +75,7 @@ if ($random_parallel){
 }
 sub PAR_conf_check{
  my ($args) = @_;
+ if ($args->{b} and $args->{b} > $MAX_b) {return 1};
  if ($args->{k} and $args->{k} > $MAX_k) {return 1};
  if ($args->{c} and $args->{c} > $MAX_c) {return 1};
  if ($args->{v} and $args->{v} > $MAX_v) {return 1};

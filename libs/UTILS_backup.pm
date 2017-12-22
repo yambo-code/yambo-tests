@@ -23,7 +23,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub UTILS_list_backups{
- my $n_backups_to_save=0;
+ my $n_backups_to_save=50;
  my $n_backups=0;
  my @dir = ( "$host/$user" );
  if ($mode eq "bench") {@dir="benchmark-results/"};
