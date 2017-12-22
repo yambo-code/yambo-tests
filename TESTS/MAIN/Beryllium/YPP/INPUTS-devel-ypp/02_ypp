@@ -1,0 +1,36 @@
+#                                                           
+#  ____  ____     _       ____    ____  ______      ___     
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.   
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \  
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |  
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /  
+#   |______||____| |____||_____||_____||_______/  `.___."   
+#                                                           
+#                                                           
+#                                                           
+#        Version 4.3.0 Revision 15202 Hash 3e4027f          
+#                   MPI+SLK+OpenMP Build                    
+#                http://www.yambo-code.org                  
+#
+electrons                      # [R] Electrons (and holes)
+bnds                           # [R] Bands
+cooIn= "rlu"                   # Points coordinates (in) cc/rlu/iku/alat
+% DOSERange
+ 1.000000 |-1.000000 | eV      # Energy range
+%
+DOSESteps=  500                # Energy steps
+DOS_broad=  0.10000    eV      # Broadening of the DOS
+% INTERP_Grid
+ 24 | 24 | 12 |                          # Interpolation BZ Grid
+%
+INTERP_Shell_Fac= 20.00000     # The bigger it is a higher number of shells is used
+CIRCUIT_E_DB_path= "none"      # SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)
+BANDS_path= "K M G K H A L G"  # BANDS path points labels (G,M,K,L...)
+BANDS_steps=  50               # Number of divisions
+% BANDS_bands
+  1 |  5 |                     # Number of bands
+%
+BANDS_built_in                # Print the bands of the generating points of the circuit using the nearest internal point
+%BANDS_kpts                    # K points of the bands circuit
+0.00000 |0.00000 |0.00000 |
+%
