@@ -34,10 +34,10 @@ subroutine read_the_data(fl)
     do while(ierr==0)
       read(fl%unit,'(a)',iostat=ierr) str(1:256)
       if (ierr/=0) cycle
-      if (index(str,"[")>0) then
+      call string_split(trim(str),data_str,N)
+      if (index(str,"[")>0.and.trim(data_str(1))/="#") then
          str(index(str,"["):256)=" "
       endif
-      call string_split(trim(str),data_str,N)
       ch_save(1)=ch_save(2)
       ch_save(2)=ch_save(3)
       ch_save(3)=str
