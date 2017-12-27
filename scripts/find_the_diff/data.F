@@ -37,6 +37,7 @@ subroutine read_the_data(fl)
       call string_split(trim(str),data_str,N)
       if (index(str,"[")>0.and.trim(data_str(1))/="#") then
          str(index(str,"["):256)=" "
+         call string_split(trim(str),data_str,N)
       endif
       ch_save(1)=ch_save(2)
       ch_save(2)=ch_save(3)
