@@ -25,23 +25,23 @@
 sub CHECK_driver{
 #
 if ($SETUP=="1"){
- &CHECK_database("Qindx,Sindx","ndb.kindx");
- &CHECK_database("ng_in_shell,E_of_shell","ndb.gops");
+ &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
+ &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
 }
-if ( $is_OLD_IO eq "yes"  ) { &CHECK_database("Sx_Vxc","ndb.HF_and_locXC")};
-if ( $is_OLD_IO eq "no"   ) { &CHECK_database("Sx,Vxc","ndb.HF_and_locXC")};
-if ( $is_NEW_DBGD eq "no"  ) { &CHECK_database("BLOCK_TABLE","ndb.Double_Grid")};
-if ( $is_NEW_DBGD eq "yes" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ","ndb.Double_Grid")};
-&CHECK_database("X_Q_1","ndb.em1s_fragment_1");
-&CHECK_database("X_Q_1","ndb.em1d_fragment_1");
-&CHECK_database("X_Q_1","ndb.pp_fragment_1");
-&CHECK_database("BLOCK_TABLE","ndb.E_SOC_map");
-&CHECK_database("CUT_BARE_QPG","ndb.cutoff");
-&CHECK_database("RIM_qpg","ndb.RIM");
-&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_HXC_fragment_2");
-&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_COH_fragment_2");
-&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_GW_NEQ_fragment_2");
-&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_P_fragment_2");
+if ( $is_OLD_IO eq "yes"  ) { &CHECK_database("Sx_Vxc","ndb.HF_and_locXC","")};
+if ( $is_OLD_IO eq "no"   ) { &CHECK_database("Sx,Vxc","ndb.HF_and_locXC","")};
+if ( $is_NEW_DBGD eq "no"  ) { &CHECK_database("BLOCK_TABLE","ndb.Double_Grid","")};
+if ( $is_NEW_DBGD eq "yes" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ","ndb.Double_Grid","")};
+&CHECK_database("X_Q_1","ndb.em1s_fragment_1","");
+&CHECK_database("X_Q_1","ndb.em1d_fragment_1","");
+&CHECK_database("X_Q_1","ndb.pp_fragment_1","");
+&CHECK_database("BLOCK_TABLE","ndb.E_SOC_map","");
+&CHECK_database("CUT_BARE_QPG","ndb.cutoff","");
+&CHECK_database("RIM_qpg","ndb.RIM","");
+&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_HXC_fragment_2","");
+&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_COH_fragment_2","");
+&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_GW_NEQ_fragment_2","");
+&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_P_fragment_2","");
 #
 # OUT files
 O_file_loop: foreach $run_filename (<o-$testname.*>){

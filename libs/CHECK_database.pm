@@ -26,12 +26,12 @@ sub CHECK_database{
 #
 $DB  = "@_[1]";
 $VAR = "@_[0]";
+$CORE= "@_[2]";
 $run_filename = "o-$testname.$DB";
 &gimme_reference($run_filename);
 #
-$check_folder="NONE";
-if( -e "$testname/$DB" ){ $check_folder="$testname"; };
-if( -e "SAVE/$DB" )     { $check_folder="SAVE"; };
+$check_folder="$testname"; 
+if( -e "SAVE/$DB" and $CORE eq "CORE")     { $check_folder="SAVE"; };
 #
 #print "CHECK_folder=$check_folder/$DB\n";
 if( -e "$check_folder/$DB" ){
