@@ -41,6 +41,11 @@ if ($keys eq "all"  ) {
  @features[0]="all";
 }
 if ($project eq ''  ) {$project="nopj"};
+if ( no_space_compare($project,'hard') ) {$project="nopj hard"};
 if ($#features eq -1) {@features[0]="all"};
+}
+sub no_space_compare {
+  my ($s1, $s2) = @_;
+  $s1 =~ tr/ //dr eq $s2 =~ tr/ //dr;
 }
 1;

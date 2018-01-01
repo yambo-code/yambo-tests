@@ -34,6 +34,7 @@ if ( $is_NEW_DBGD eq "no"  ) { &CHECK_database("BLOCK_TABLE","ndb.Double_Grid")}
 if ( $is_NEW_DBGD eq "yes" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ","ndb.Double_Grid")};
 &CHECK_database("BLOCK_TABLE","ndb.E_SOC_map");
 &CHECK_database("X_Q_1","ndb.em1s_fragment_1");
+&CHECK_database("CUT_BARE_QPG","ndb.cutoff");
 &CHECK_database("COLLISIONS_v","ndb.COLLISIONS_HXC_fragment_2");
 &CHECK_database("COLLISIONS_v","ndb.COLLISIONS_COH_fragment_2");
 &CHECK_database("COLLISIONS_v","ndb.COLLISIONS_GW_NEQ_fragment_2");

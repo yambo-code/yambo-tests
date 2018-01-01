@@ -43,11 +43,11 @@ if ( "@_" eq "DIR" ){
   if (-e "MAGNETIC" && $project !~ /magnetic/) {$message=" skipped (wrong PJ)"};
   if (-e "KERR" && $project !~ /kerr/) {$message=" skipped (wrong PJ)"};
   if (-e "QP-DBS" && $project !~ /qp-dbs/) {$message=" skipped (wrong PJ)"};
-  if ( $ANY eq "NO" and $project !~ /nopj/) {$message=" skipped (PJ-restricted)"};
+  if ( $ANY eq "NO" and $project !~ /nopj/) {$message=" skipped (running only $project tests)"};
   #
  }
  if ($is_GPL) {
-  if (( -e "SC" or -e "MAGNETIC" or -e "QED" or -e "PL" or -e "NL" or -e "NO_GPL") ) {$message=" skipped (PJ-restricted)"};
+  if (( -e "SC" or -e "MAGNETIC" or -e "QED" or -e "PL" or -e "NL" or -e "NO_GPL") ) {$message=" skipped (GPL-PJ-restricted)"};
  }
  if (!-e "SAVE/ns.db1" and !-e "SAVE_backup/ns.db1") { $message=" skipped (missing CORE databases)"};
  if (-e "BROKEN" and ! $force) {$message=" (broken)"};
