@@ -162,6 +162,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      $string=$MPI_CPU_conf[1];
      &command("rm -fr yambo.in LOG r-${testname}* o-${testname}*");
      #print "$testname B\n";
+     # Re-Create the input (if any)
+     &RUN_load_actions(".input");
      &RUN_setup("before_run");
      $N_random_tries++;
      $RUN_result=&RUN_it;
