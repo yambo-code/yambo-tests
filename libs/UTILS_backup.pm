@@ -34,7 +34,12 @@ sub UTILS_list_backups{
   @reps  = glob("$dir/REPORT*");
   @comps = glob("$dir/compilation/*");
   next if (scalar(@reps) eq 0 and scalar(@comps) eq 0);
-  push @dirs_to_process, $dir;
+  if ($dir =~ /\/2017\//) {
+   push @dirs_to_process_2017, $dir;
+  }
+  if ($dir =~ /\/2018\//) {
+   push @dirs_to_process_2018, $dir;
+  }
   $n_backups++;
  }
  #
@@ -42,7 +47,9 @@ sub UTILS_list_backups{
   $first_to_keep=$n_backups-$n_backups_to_save+1;
   print "\nCleaning backups with ID < $first_to_keep\n";
  };
- @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process;
+ @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2017;
+ @dirs_2018   = sort { $a1 = (split ( '2018', $a )) [1]; $b1 = (split ( '2018', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2018;
+ push(@sorted_dirs, @dirs_2018);
  #
  $data_id=0;
  if ("@_" eq "list")
