@@ -70,9 +70,9 @@ sub UTILS_list_backups{
     print "ID    : $data_id\n";
     if ($date) {
      print "DATE  : $date\n";
-#     print "TIME  : $time\n";
-#     print "BRANCH: $branch_key\n";
-#     print "FC    : $FC_kind $MPI_kind\n";
+     print "TIME  : $time\n";
+     print "BRANCH: $branch_key\n";
+     print "FC    : $FC_kind $MPI_kind\n";
     }
     print "DIR   : $dir\n";
     print "\n";
