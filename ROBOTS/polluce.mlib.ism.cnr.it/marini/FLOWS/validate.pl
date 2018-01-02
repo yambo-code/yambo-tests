@@ -2,12 +2,12 @@
 #
 @flow = (
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  CONFIG      => "default_plus_slepc.sh",
  KEYS        => "all hard",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => 8,
  PAR_MODE    => "default",
 },
@@ -22,7 +22,7 @@
  PAR_MODE    => "loop",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  THREADS     => 8,
 },
 {
