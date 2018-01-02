@@ -70,6 +70,7 @@ chdir("$host/www");
 for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
  $k=$j+1;
+ $main_dat = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.dat";
  $main_php  = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.php";
  $error_php = $branch_key."/".$hostname."_".$branch_key."_".$j."_error.php";
  $report_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_report.php";
@@ -84,6 +85,8 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
   if (-f $conf_php) {&command("mv $conf_php $file")};
   ($file = $comp_php) =~ s/$j/$k/g;
   if (-f $comp_php) {&command("mv $comp_php $file")};
+  ($file = $main_dat) =~ s/$j/$k/g;
+  &command("mv $main_dat $file");
   ($file = $main_php) =~ s/$j/$k/g;
   &command("mv $main_php $file");
   open(my $fh1, '<', $file) ;
@@ -99,6 +102,7 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 }
 #
 chdir("$suite_dir");
+$main_dat = $hostname."_".$branch_key."_1_main.dat";
 $main_php = $hostname."_".$branch_key."_1_main.php";
 $error_php=$hostname."_".$branch_key."_1_error.php";
 $report_php=$hostname."_".$branch_key."_1_report.php";
