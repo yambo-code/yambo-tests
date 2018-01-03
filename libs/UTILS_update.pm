@@ -54,7 +54,7 @@ if (-d "$TESTS_folder/$TEST_todo/INPUTS"){
 }
 chdir("$TESTS_folder/$DIR_here");
 #
-if (not -f "$ROBOT_wd/SAVE/ndb.gops") 
+if (not -f "$ROBOT_wd/SAVE/ndb.gops" and not "../SAVE/ndb.gops") 
 {
  die "\n\n It seems the test-suite could not run";
 }

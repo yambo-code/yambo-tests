@@ -3,8 +3,8 @@
 @flow = (
 {
  ACTIVE      => "yes",
- TESTS       => "hBN/GW-OPTICS 01_init 02_HF",
- CONFIG      => "default.sh",
+ TESTS       => "hBN_bench 01_init 02_HF",
+# CONFIG      => "default.sh",
 # KEYS        => "all hard",
 },
 {
@@ -19,14 +19,14 @@
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "no",
- MPI_CPU     => "2",
- PAR_MODE    => "random",
- THREADS     => "2",
+# ACTIVE      => "yes",
+ MPI_CPU     => "4",
+# PAR_MODE    => "random",
+# THREADS     => "2",
 },
 {
- ACTIVE      => "no",
- MPI_CPU     => "2",
- PAR_MODE    => "loop",
+ ACTIVE      => "yes",
+ MPI_CPU     => "8",
+# PAR_MODE    => "loop",
 },
 );

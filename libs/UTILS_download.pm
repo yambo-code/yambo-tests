@@ -77,6 +77,11 @@ foreach $dir (<*>) {
      $filename[$i1] = "$BASE".".$char$charp";
     }
    }
+   if ($dir =~ /hBN_bench/) {
+    $i1=0;
+    $BASE = "hBN_bench.tar";
+    $filename[0] = "hBN_bench.tar";
+   }
   }else{
    $i1=0;
    $filename[$i1] = $dir;

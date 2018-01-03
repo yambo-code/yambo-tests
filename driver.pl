@@ -174,7 +174,6 @@ if ($upload_test){ &UTILS_upload };
 #
 # FTP-related actions
 if($ftp){ &FTP_it };
-if($upload){ &FTP_upload_it("$upload","testing-robots/databases") };
 #
 if (!$RUNNING_suite) {
  if ($ROBOT_id and $backup_logs eq "yes") {
@@ -187,6 +186,7 @@ if (!$RUNNING_suite) {
   die;
  };
  if ($profile) {
+  if (-d $profile) {&PROFILE($profile)};
   if (not $backup_logs eq "no" and not $backup_logs eq "yes") {&UTILS_list_backups("list")};
  }else{
   if ($backup_logs) {&UTILS_list_backups("list")};

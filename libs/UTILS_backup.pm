@@ -84,12 +84,6 @@ sub UTILS_list_backups{
       &command("rm -fr $dir");
     };
    };
-   #@DATAS = glob("$dir/*_ALL*");
-   #my $size = -s $DATAS[0];
-   #$size=int($size/1024/1000);
-   #if ($size>100 and $clean) {
-    #&command("rm -f $DATAS[0]");
-    #print "...cleaning DATA's\n";
    if ($backup_logs eq $data_id) 
    {
     #
@@ -100,10 +94,7 @@ sub UTILS_list_backups{
      &command("rm -fr $dir");
      print "\n...cleaning BACKUP #$data_id\n";
     }
-    if ($edit) {
-     &PROFILE($dir);
-     &command("vim $dir/REPORT*");
-    };
+    if ($edit) {&command("vim $dir/REPORT*")};
    }
   }
  }

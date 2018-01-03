@@ -139,11 +139,10 @@ sub UTILS_usage {
    (Reporting)
              -failed <ERROR>        Create a failed.pl theme reading the ERROR file.
              -php                   Translate the latest 20 REPORT files in the ROBOT history in a php format and upload.
-             -report                Commit the final report to the ML.
-             -u                     UPLOAD the LOGs at the end
+             -report                UPLOAD the result to the web-page
 
    (Profiling)
-             -profile <string(s)>   Create a Profile analysis
+             -profile [DIR]         Create a Profile analysis [of DIR]
 
    (Backup)
              -b [ID's]              If running BACKUP the LOGs (automatically used when -report is given)
