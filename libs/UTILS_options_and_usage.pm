@@ -142,7 +142,7 @@ sub UTILS_usage {
              -report                UPLOAD the result to the web-page
 
    (Profiling)
-             -profile <string(s)>   Create a Profile analysis
+             -profile [DIR]         Create a Profile analysis [of DIR]
 
    (Backup)
              -b [ID's]              If running BACKUP the LOGs (automatically used when -report is given)

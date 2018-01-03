@@ -28,9 +28,15 @@ sub PROFILE{
 chdir("@_[0]");
 if (not -d "TESTS") {
  @TARGZ = glob("*_ALL*");
- &command("tar xzf $TARGZ[0]");
+ if (not scalar(@TARGZ) eq 0 ) {
+  &command("tar xzf $TARGZ[0]");
+  @dirs = ( "TESTS" );
+ }else{
+  @dirs = ( "." );
+ }
+}else{
+ @dirs = ( "TESTS" );
 }
-my @dirs = ( "TESTS" );
 my @files;
 find( sub { push @files, $File::Find::name if /l-/ }, @dirs );
 #
@@ -105,6 +111,8 @@ if ( $paths[$NP-3] =~ /ROBOT/ ) {
 }else{
  $testfolder = "$paths[$NP-4]"."/$paths[$NP-3]"
 }
+$first=substr($testfolder, 0, 1);
+if ($first eq ".") { $testfolder = substr $testfolder, 2 };
 $CPU=1;
 my $OFFSET=0;
 if ($log =~ /_CPU_/) { 
