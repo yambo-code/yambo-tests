@@ -26,8 +26,10 @@ sub PROFILE{
 ############
 &CWD_save;
 chdir("@_[0]");
-@TARGZ = glob("*_ALL*");
-&command("tar xzf $TARGZ[0]");
+if (not -d "TESTS") {
+ @TARGZ = glob("*_ALL*");
+ &command("tar xzf $TARGZ[0]");
+}
 my @dirs = ( "TESTS" );
 my @files;
 find( sub { push @files, $File::Find::name if /l-/ }, @dirs );

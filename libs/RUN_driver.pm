@@ -171,7 +171,13 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
     }
     #
     # Check
-    if ($RUN_result =~ "OK" and not $mode eq "bench" ){&CHECK_driver};
+    if ($RUN_result =~ "OK") {
+     if ($update_test) {
+      &CHECK_driver;
+     }elsif(not $mode eq "bench"){
+      &CHECK_driver;
+     }
+    }
     #
     &RUN_setup("after_run");
     #
