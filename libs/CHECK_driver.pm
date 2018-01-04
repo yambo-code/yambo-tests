@@ -24,7 +24,9 @@
 #
 sub CHECK_driver{
 #
-if ($SETUP=="1"){
+# Specific Rules
+#
+if ($SETUP=="1" and $MPI_CPU_conf[1] eq "serial"){
  &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
  &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
 }
@@ -33,7 +35,7 @@ if ( $is_OLD_IO eq "no"   ) { &CHECK_database("Sx,Vxc","ndb.HF_and_locXC","")};
 if ( $is_NEW_DBGD eq "no"  ) { &CHECK_database("BLOCK_TABLE","ndb.Double_Grid","")};
 if ( $is_NEW_DBGD eq "yes" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ","ndb.Double_Grid","")};
 &CHECK_database("X_Q_1","ndb.em1s_fragment_1","");
-&CHECK_database("X_Q_1","ndb.em1d_fragment_1","");
+if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 &CHECK_database("X_Q_1","ndb.pp_fragment_1","");
 &CHECK_database("BLOCK_TABLE","ndb.E_SOC_map","");
 &CHECK_database("CUT_BARE_QPG","ndb.cutoff","");
@@ -70,6 +72,12 @@ if ( -d $REF_prefix."REFERENCE_$branch_key" and -f $REF_prefix."REFERENCE_$branc
 @OFILES = (<$ref_dir/o-$testname.*>);
 R_file_loop: foreach $ref_filename (@OFILES){
  my $CHECK=&CHECK_GPL_skip("$ref_filename");
+ #
+ if ($ref_filename =~ ".gops" or $ref_filename =~ ".kindx") {
+  if (not $MPI_CPU_conf[1] eq "serial") {$CHECK="SKIP"}
+ }
+ if ($ref_filename =~ ".em1d" and $MPI_CPU_conf[1] eq "serial" and $LIFE eq "1") {$CHECK="SKIP"}; 
+ #
  if ($CHECK eq "SKIP") {next R_file_loop};
  $run_filename = $ref_filename;
  $run_filename =~ s{.*/}{};

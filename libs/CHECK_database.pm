@@ -31,7 +31,7 @@ $run_filename = "o-$testname.$DB";
 &gimme_reference($run_filename);
 #
 $check_folder="$testname"; 
-if( -e "SAVE/$DB" and $CORE eq "CORE")     { $check_folder="SAVE"; };
+if( -e "SAVE/$DB" and $CORE eq "CORE") { $check_folder="SAVE"; };
 #
 #print "CHECK_folder=$check_folder/$DB\n";
 if( -e "$check_folder/$DB" ){

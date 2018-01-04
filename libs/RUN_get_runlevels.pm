@@ -74,8 +74,8 @@ $EPHOT=&RUN_feature("el_photon_corr");
 if ($EPHOT eq "1") { $description .= " e-gamma" };
 $EE_scatt=&RUN_feature("el_el_scatt");
 if ($EE_scatt eq "1") { $description .= " e-e scatt" };
-if (&RUN_feature("life") eq "1" and &RUN_feature("RTlifetimes") eq "1"){$LIFE="1"}else{$LIFE="0"};
-if ($LIFE eq "1") { $description .= " lifetimes" };
+if (&RUN_feature("life") eq "1"){$LIFE="1"}else{$LIFE="0"};
+if ($LIFE eq "1" or &RUN_feature("RTlifetimes") eq "1") { $description .= " lifetimes" };
 #
 if (&RUN_feature("Shifted_Grid") eq "1" or &RUN_feature("WFs_map") eq "1" or &RUN_feature("density") eq "1"){$YPP=1}
 if (&RUN_feature("bzgrids") eq "1" or &RUN_feature("kpts_map") eq "1" or &RUN_feature("wavefunction") eq "1"){$YPP=1}
