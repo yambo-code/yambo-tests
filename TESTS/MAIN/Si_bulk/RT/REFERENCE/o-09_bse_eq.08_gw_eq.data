@@ -1,31 +1,18 @@
+#  __      __   ______   __       __  _______    ______     
+# |  \    /  \ /      \ |  \     /  \|       \  /      \    
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\   
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$   
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$   
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$   
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$   
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
 #                                                           
-#                                                           
-# Y88b    /   e           e    e      888~~\    ,88~-_      
-#  Y88b  /   d8b         d8b  d8b     888   |  d888   \     
-#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |    
-#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |    
-#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /     
-#    /   /      Y88b /          Y888b 888__/    `88_-~      
-#                                                           
-#                                                           
-#       Version 4.2.0 Revision 14590 Hash 701964b           
-#                  MPI+SLK+OpenMP Build                     
-#               http://www.yambo-code.org                   
+#        Version 4.3.0 Revision 15201 Hash 76636f9          
+#                      MPI+SLK Build                        
+#                http://www.yambo-code.org                  
 #
 #
-# GW solver              : Newton
-# == COHSEX GW ==
-# GW SC iterations       :0
-# X G`s            [used]:  59
-# X G`s            [disk]:  59
-# X bands                :  1   8
-# X poles           [o/o]: 100.0000
-# X e/h E range      [ev]:-1.000000 -1.000000
-# X xc-Kernel            : none
-# X BZ energy Double Grid: no
-# X BZ Double Grid points:0
-# Sc bands terminator    : no
-# Sx RL components       :  609
 # GW solver              : Newton
 # PPA imaginary pt   [ev]: 27.21138
 # GW SC iterations       :0
@@ -47,29 +34,29 @@
 #
 #    Eo [eV]      DeltaE [eV]
 #
-   -7.895731     0.776437
-   -7.200430     0.986104
-   -3.010587     0.513548
-   -3.010587     0.603051
-   -1.262054     0.534298
-   -1.262054     0.536053
-    0.000000     0.492706
-    0.000000     0.757231
-    0.000000     0.647646
-    0.437631    -0.569389
-    0.437640    -0.567627
-    1.519058    -0.653295
-    2.440868    -0.707182
-    2.440868    -0.711811
-    2.440868    -0.706604
-    3.185880    -0.900698
-    3.185880    -0.893031
-    10.15807     -1.12796
+   -7.895731    -0.429310
+    -7.20043     -0.09238
+   -3.010587     0.433205
+   -3.010587     0.433195
+   -1.262054     0.608417
+   -1.262054     0.608413
+    0.000000     0.715373
+    0.000000     0.715368
+    0.000000     0.715366
+    0.437631     1.787825
+    0.437640     1.787761
+    1.519058     2.023735
+    2.440868     2.101970
+    2.440868     2.101972
+    2.440868     2.101985
+    3.185880     2.213820
+    3.185880     2.213806
+    10.15807      2.41593
 # 
-# 06/12/2017 at 16:35 YAMBO_RT @ anomaly [start]
-# 06/12/2017 at 16:35                    [end]
+# 01/04/2018 at 10:54 YAMBO_RT @ narro [start]
+# 01/04/2018 at 10:54                  [end]
 #  
-# Timing   [Min/Max/Average]: 16s/16s/16s
+# Timing   [Min/Max/Average]: 01s/01s/01s
 #
 # .-Input file : yambo.in
 # | optics                         # [R OPT] Optics
@@ -79,9 +66,6 @@
 # | em1s                           # [R Xs] Static Inverse Dielectric Matrix
 # | BoseTemp= 0.000000     eV      # Bosonic Temperature
 # | FFTGvecs=  387         RL      # [FFT] Plane-waves
-# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
-# | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
 # | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
 # | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
 # | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
@@ -89,9 +73,7 @@
 # | BSENGexx=  531         RL      # [BSK] Exchange components
 # | BSENGBlk=  59          RL      # [BSK] Screened interaction block size
 # | #WehCpl                        # [BSK] eh interaction included also in coupling
-# | KfnQPdb= "E < 08_ypp_gw_10fs/ndb.QP_merged_1_gw_ppa" # [EXTQP BSK BSS] Database
-# | KfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT BSK BSS] Database
-# | RfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT R] Database
+# | KfnQPdb= "E < 08_gw_eq/ndb.QP" # [EXTQP BSK BSS] Database
 # | % BEnRange
 # |   0.00000 | 10.00000 | eV      # [BSS] Energy range
 # | %
@@ -106,7 +88,6 @@
 # |   2 |  7 |                     # [BSK] Bands range
 # | %
 # | BSHayTrs=  0.02000             # [BSS] Relative [o/o] Haydock treshold. Strict(>0)/Average(<0)
-# | XfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT Xd] Database
 # | % BndsRnXs
 # |   1 |  8 |                     # [Xs] Polarization function bands
 # | %

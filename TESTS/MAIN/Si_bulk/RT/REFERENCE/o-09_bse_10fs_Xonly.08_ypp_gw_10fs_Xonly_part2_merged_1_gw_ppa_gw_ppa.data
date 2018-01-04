@@ -1,16 +1,16 @@
 #                                                           
-#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$     
-# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$    
-#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$    
-#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$    
-#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$    
-#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$    
-#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/    
-#     |__/   |__/  |__/|__/     |__/|_______/  \______/     
+#  ____  ____     _       ____    ____  ______      ___     
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.   
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \  
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |  
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /  
+#   |______||____| |____||_____||_____||_______/  `.___."   
 #                                                           
-#       Version 4.2.0 Revision 14590 Hash 701964b           
-#                  MPI+SLK+OpenMP Build                     
-#               http://www.yambo-code.org                   
+#                                                           
+#                                                           
+#        Version 4.3.0 Revision 15201 Hash 76636f9          
+#                      MPI+SLK Build                        
+#                http://www.yambo-code.org                  
 #
 #
 # GW solver              : Newton
@@ -24,6 +24,24 @@
 # X xc-Kernel            : none
 # X BZ energy Double Grid: no
 # X BZ Double Grid points:0
+# Sc/G bands             :  1   8
+# Sc bands terminator    : no
+# Sx RL components       :  609
+# GW solver              : Newton
+# PPA imaginary pt   [ev]: 27.21138
+# GW SC iterations       :0
+# dS/dw steps            : 2
+# dS/dw step         [ev]:  0.10000
+# X G`s            [used]: 1
+# X G`s            [disk]: 1
+# X bands                :  1   8
+# X poles           [o/o]: 100.0000
+# X e/h E range      [ev]:-1.000000 -1.000000
+# X xc-Kernel            : none
+# X BZ energy Double Grid: no
+# X BZ Double Grid points:0
+# Sc/G bands             :  1   8
+# Sc/G damping       [ev]:  0.10000
 # Sc bands terminator    : no
 # Sx RL components       :  609
 # GW solver              : Newton
@@ -47,29 +65,29 @@
 #
 #    Eo [eV]      DeltaE [eV]
 #
-   -7.895731     0.686665
-   -7.200430     0.908661
-   -3.010587     0.401578
-   -3.010587     0.491052
-   -1.262054     0.400388
-   -1.262054     0.402117
-    0.000000     0.329422
-    0.000000     0.593994
-    0.000000     0.484405
-    0.437631    -0.593649
-    0.437640    -0.591411
-    1.519058    -0.653647
-    2.440868    -0.716042
-    2.440868    -0.720694
-    2.440868    -0.715612
-    3.185880    -0.919926
-    3.185880    -0.912245
-    10.15807     -1.14168
+   -7.895731     0.213761
+   -7.200430     0.409059
+   -3.010587     0.886134
+   -3.010587     0.886133
+   -1.262054     1.095293
+   -1.262054     1.095349
+    0.000000     1.281559
+    0.000000     1.281644
+    0.000000     1.281643
+    0.437631     1.260691
+    0.437640     1.263193
+    1.519058     1.535426
+    2.440868     1.465696
+    2.440868     1.465699
+    2.440868     1.465772
+    3.185880     1.597213
+    3.185880     1.597161
+    10.15807      1.59432
 # 
-# 06/12/2017 at 16:36 YAMBO_RT @ anomaly [start]
-# 06/12/2017 at 16:36                    [end]
+# 01/04/2018 at 13:46 YAMBO_RT @ narro [start]
+# 01/04/2018 at 13:46                  [end]
 #  
-# Timing   [Min/Max/Average]: 07s/07s/07s
+# Timing   [Min/Max/Average]: 01s/01s/01s
 #
 # .-Input file : yambo.in
 # | optics                         # [R OPT] Optics
@@ -79,9 +97,6 @@
 # | em1s                           # [R Xs] Static Inverse Dielectric Matrix
 # | BoseTemp= 0.000000     eV      # Bosonic Temperature
 # | FFTGvecs=  387         RL      # [FFT] Plane-waves
-# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
-# | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
 # | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
 # | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
 # | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
@@ -89,7 +104,7 @@
 # | BSENGexx=  531         RL      # [BSK] Exchange components
 # | BSENGBlk=  59          RL      # [BSK] Screened interaction block size
 # | #WehCpl                        # [BSK] eh interaction included also in coupling
-# | KfnQPdb= "E < 08_ypp_gw_10fs_Xonly/ndb.QP_merged_1_gw_ppa" # [EXTQP BSK BSS] Database
+# | KfnQPdb= "E < 08_ypp_gw_10fs_Xonly_part2/ndb.QP_merged_1_gw_ppa_gw_ppa" # [EXTQP BSK BSS] Database
 # | % BEnRange
 # |   0.00000 | 10.00000 | eV      # [BSS] Energy range
 # | %

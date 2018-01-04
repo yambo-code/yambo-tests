@@ -1,12 +1,12 @@
 
 
- __    __ ______           ____     _____
-/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
-\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
- `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
-   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
-     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
-      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
+ __   __  _______  __   __  _______  _______
+|  | |  ||   _   ||  |_|  ||  _    ||       |
+|  |_|  ||  |_|  ||       || |_|   ||   _   |
+|       ||       ||       ||       ||  | |  |
+|_     _||       ||       ||  _   | |  |_|  |
+  |   |  |   _   || ||_|| || |_|   ||       |
+  |___|  |__| |__||_|   |_||_______||_______|
 
 
  <---> [01] CPU structure, Files & I/O Directories
@@ -17,12 +17,11 @@
  <---> [02.04] K-grid lattice
  <---> [02.05] Energies [ev] & Occupations
  <---> [03] Transferred momenta grid
- <---> [04] External corrections
- <---> [04.01] External RT corrections (X)
+ <---> [03.01] External RT corrections (X)
  <---> [RT] Loaded Carrier components @ 100.0000 fs
  <---> [ X] Kpts covered exactly  [o/o]: 100.0000
- <---> [WARNING]Metallic system
- <---> [05] Static Dielectric Matrix
+ <---> [WARNING][f@ X] Metallic system
+ <---> [04] Static Dielectric Matrix
  <---> [LA] SERIAL linear algebra
  <---> [DIP] Checking dipoles header
  <---> [x,Vnl] computed using 8 projectors
@@ -47,20 +46,52 @@
  <---> Xo@q[3] |########################################| [100%] --(E) --(X)
  <---> X@q[3] |                                        | [000%] --(E) --(X)
  <---> X@q[3] |########################################| [100%] --(E) --(X)
- <---> [06] Bare local and non-local Exchange-Correlation
+ <---> [05] Bare local and non-local Exchange-Correlation
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
  <---> [FFT-HF/Rho] Mesh size: 14  14  14
  <---> EXS |                                        | [000%] --(E) --(X)
  <---> EXS |########################################| [100%] --(E) --(X)
  <---> [xc] Functional Slater exchange(X)+Perdew & Zunger(C)
  <---> [xc] LIBXC used to calculate xc functional
- <---> [06.01] HF occupations report
- <---> [07] Dyson equation: Newton solver
- <---> [07.01] G0W0 (COHSEX)
+ <---> [05.01] HF occupations report
+ <---> [06] Dyson equation: Newton solver
+ <---> [06.01] G0W0 (COHSEX)
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
  <---> [FFT-GW] Mesh size: 12  12  12
  <---> G0W0 (COHSEX) |                                        | [000%] --(E) --(X)
  <---> G0W0 (COHSEX) |########################################| [100%] --(E) --(X)
- <---> [07.02] QP properties and I/O
- <---> [08] Timing Overview
- <---> [09] Game Over & Game summary
+ <---> [06.02] QP properties and I/O
+ <---> [07] Timing Overview
+ <---> [TIMING]                              io_WF :     0.00s CPU (      21 calls,   0.000 s avg)
+ <---> [TIMING]                            io_GROT :     0.00s CPU (       3 calls,   0.001 s avg)
+ <---> [TIMING]                           io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
+ <---> [TIMING]                         io_COL_CUT :     0.00s CPU
+ <---> [TIMING]                     io_Double_Grid :     0.00s CPU
+ <---> [TIMING]                              io_HF :     0.00s CPU (       3 calls,   0.001 s avg)
+ <---> [TIMING]                         io_DIPOLES :     0.00s CPU (       6 calls,   0.000 s avg)
+ <---> [TIMING]                        io_KB_pwscf :     0.00s CPU (       5 calls,   0.001 s avg)
+ <---> [TIMING]                       io_KB_abinit :     0.00s CPU
+ <---> [TIMING]                               io_X :     0.00s CPU (      12 calls,   0.000 s avg)
+ <---> [TIMING]                              io_BS :     0.00s CPU
+ <---> [TIMING]                            io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
+ <---> [TIMING]                   io_RT_components :     0.00s CPU (       4 calls,   0.001 s avg)
+ <---> [TIMING]                      io_COLLISIONS :     0.00s CPU (       3 calls,   0.000 s avg)
+ <---> [TIMING]                     eval_G_minus_G :     0.00s CPU
+ <---> [TIMING]            IO_and_Messaging_switch :     0.00s CPU (       8 calls,   0.000 s avg)
+ <---> [TIMING]                            Dipoles :     0.00s CPU
+ <---> [TIMING]                  DIPOLE_transverse :     0.00s CPU
+ <---> [TIMING]                        io_fragment :     0.00s CPU (      10 calls,   0.000 s avg)
+ <---> [TIMING]                     Xo (procedure) :     0.00s CPU (       3 calls,   0.012 s avg)
+ <---> [TIMING]                         Xo (REDUX) :     0.00s CPU (       3 calls,   0.000 s avg)
+ <---> [TIMING]                      X (procedure) :     0.00s CPU (       3 calls,   0.001 s avg)
+ <---> [TIMING]                     LINEAR ALGEBRA :     0.00s CPU (       3 calls,   0.001 s avg)
+ <---> [TIMING]                  SERIAL_lin_system :     0.00s CPU (       3 calls,   0.001 s avg)
+ <---> [TIMING]                          X (REDUX) :     0.00s CPU (       3 calls,   0.000 s avg)
+ <---> [TIMING]                                 HF :     0.00s CPU
+ <---> [TIMING]                          HF(REDUX) :     0.00s CPU
+ <---> [TIMING]                XC_potential_driver :     0.00s CPU
+ <---> [TIMING]                         el_density :     0.00s CPU
+ <---> [TIMING]                            GW(ppa) :     0.00s CPU
+ <---> [TIMING]                          GW(REDUX) :     0.00s CPU
+ <---> [TIMING]                       io_QP_and_GF :     0.00s CPU
+ <---> [08] Game Over & Game summary
