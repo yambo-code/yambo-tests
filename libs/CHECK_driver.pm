@@ -76,7 +76,7 @@ R_file_loop: foreach $ref_filename (@OFILES){
  if ($ref_filename =~ ".gops" or $ref_filename =~ ".kindx") {
   if (not $MPI_CPU_conf[1] eq "serial") {$CHECK="SKIP"}
  }
- if ($ref_filename =~ ".em1d" and $MPI_CPU_conf[1] eq "serial" and $LIFE eq "1") {$CHECK="SKIP"}; 
+ if ($ref_filename =~ ".em1d" and $LIFE eq "1") {$CHECK="SKIP"}; 
  #
  if ($CHECK eq "SKIP") {next R_file_loop};
  $run_filename = $ref_filename;
