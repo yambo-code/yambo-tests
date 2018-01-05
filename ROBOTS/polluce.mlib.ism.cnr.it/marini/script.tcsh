@@ -26,12 +26,14 @@ module load intel/yambo/parallel_2017/pre_compiled
 endif
 
 if ( "$1" == "tests") then
- if ( "$3" == "5" || "$3" == "6" || "$3" == "15" ) then
-  ./driver.pl -c -c -flow validate_slepc -report -newer 30 -robot $3 
- else
-  ./driver.pl -flow validate -report -robot $3 -c -c -newer 30
- endif
+ ./driver.pl -c -c -flow validate_slepc -report -newer 30 -robot $3 
+# if ( "$3" == "5" || "$3" == "6" || "$3" == "15" ) then
+#  ./driver.pl -c -c -flow validate_slepc -report -newer 30 -robot $3 
+# else
+#  ./driver.pl -flow validate_slepc -report -robot $3 -c -c -newer 30
+# endif
 endif
+#
 if ( "$1" == "bench") then
  ./driver.pl -flow benchmark -robot $3 -m bench -b -c 
 endif
