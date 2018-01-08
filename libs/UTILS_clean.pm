@@ -42,7 +42,7 @@ if ("@_" eq "RESTORE") {
 if("@_" eq "ALL") {
  if ($ROBOT_id) 
  {
-  $cmd="find . -name 'ROBOT_Nr_$ROBOT_id' -o -name 'R$ROBOT_id' -type d | grep -v $hostname | xargs rm -fr";
+  $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ROBOT_id' -o -name 'R$ROBOT_id' -type d | grep -v $hostname | xargs rm -fr";
   &command("$cmd");
   $cmd="$git ls-files --others --exclude-standard | grep -e R$ROBOT_id -e ROBOT_Nr_$ROBOT_id | grep -v $hostname |  xargs rm -f";
   &command("$cmd");
@@ -50,7 +50,7 @@ if("@_" eq "ALL") {
   &command("rm -f DATABASES-R$ROBOT_id*");
   &command("rm -f *R${ROBOT_id}*.log");
  }else{
-  &command("find . -name 'ROBOT_*' -o -name '*-R*' -type d | grep -v $hostname | xargs rm -fr");
+  &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R*' -type d | grep -v $hostname | xargs rm -fr");
   &command("$git ls-files --others --exclude-standard | grep -v $hostname | xargs rm -fr");
   &command("rm -f outputs_and_reports_ALL-* *compile*log *config*log");
  }
