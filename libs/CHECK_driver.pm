@@ -26,9 +26,12 @@ sub CHECK_driver{
 #
 # Specific Rules
 #
-if ($SETUP=="1" and $MPI_CPU_conf[1] eq "serial"){
- &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
- &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
+$CHECK_CORE="no";
+if ($SETUP=="1"){
+ if ($np==1 or $MPI_CPU_conf[1] eq "serial"){
+  &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
+  &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
+ }
 }
 if ( $is_OLD_IO eq "yes"  ) { &CHECK_database("Sx_Vxc","ndb.HF_and_locXC","")};
 if ( $is_OLD_IO eq "no"   ) { &CHECK_database("Sx,Vxc","ndb.HF_and_locXC","")};

@@ -3,9 +3,9 @@
 @flow = (
 {
  ACTIVE      => "yes",
- TESTS       => "hBN_bench 01_init 02_HF",
+ TESTS       => "hBN/SC 00_init",
 # CONFIG      => "default.sh",
-# KEYS        => "all hard",
+ KEYS        => "sc hard",
 },
 {
  ACTIVE      => "no",
@@ -19,10 +19,10 @@
  PAR_MODE    => "default",
 },
 {
-# ACTIVE      => "yes",
- MPI_CPU     => "4",
+ ACTIVE      => "yes",
+# MPI_CPU     => "4",
 # PAR_MODE    => "random",
-# THREADS     => "2",
+ THREADS     => "2",
 },
 {
  ACTIVE      => "yes",

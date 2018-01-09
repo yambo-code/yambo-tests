@@ -78,6 +78,7 @@ if ($BRANCH=~m/4.1/ix) {$is_OLD_IO="yes"};
 #
 $is_NEW_WF="no";
 if ($BRANCH=~m/devel-wf-io/ix)  {$is_NEW_WF="yes"};
+if ($BRANCH=~m/devel-dbgd-X/ix) {$is_NEW_WF="yes"};
 if ($BRANCH=~m/master/ix)       {$is_NEW_WF="yes"};
 if ($BRANCH=~m/bug-fixes/ix)    {$is_NEW_WF="yes"};
 if ($BRANCH=~m/SLK/ix)          {$is_NEW_WF="yes"};
