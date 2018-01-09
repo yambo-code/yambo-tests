@@ -178,7 +178,7 @@ if (-e "$BRANCH/$conf_bin/nccopy") {
  $nccopy = "$sys_nccopy"; 
  &MY_PRINT($stdout, "\n               nccopy : $nccopy");
 }else{ 
- die "\n nccopy not found\n";
+ &MY_PRINT($stdout, "\n               nccopy : not found");
 }
 #
 # Rename the conf/comp logs
