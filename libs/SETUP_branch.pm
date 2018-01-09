@@ -76,26 +76,15 @@ if ($project =~ /pl/ or $project eq "all")       { $target_list .= $exec_pl; $ex
 $is_OLD_IO="no";
 if ($BRANCH=~m/4.1/ix) {$is_OLD_IO="yes"};
 #
-$is_NEW_WF="no";
-if ($BRANCH=~m/devel-wf-io/ix)  {$is_NEW_WF="yes"};
-if ($BRANCH=~m/devel-dbgd-X/ix) {$is_NEW_WF="yes"};
-if ($BRANCH=~m/master/ix)       {$is_NEW_WF="yes"};
-if ($BRANCH=~m/bug-fixes/ix)    {$is_NEW_WF="yes"};
-if ($BRANCH=~m/SLK/ix)          {$is_NEW_WF="yes"};
-if ($BRANCH=~m/devel-io/ix)     {$is_NEW_WF="yes"};
-if ($BRANCH=~m/devel-nl/ix)     {$is_NEW_WF="yes"};
-if ($BRANCH=~m/devel-slepc/ix)  {$is_NEW_WF="yes"};
-if ($BRANCH=~m/devel-rt/ix)     {$is_NEW_WF="yes"};
-if ($BRANCH=~m/devel-ypp/ix)    {$is_NEW_WF="yes"};
-if ($BRANCH=~m/devel-dipoles/ix){$is_NEW_WF="yes"};
-if ($BRANCH=~m/devel-double-grid/ix){$is_NEW_WF="yes"};
-if ($BRANCH=~m/max-release/ix)  {$is_NEW_WF="yes"};
+$is_NEW_WF="yes";
+if ($BRANCH=~m/3.4/ix) {$is_NEW_WF="no"};
+if ($BRANCH=~m/4.0/ix) {$is_NEW_WF="no"};
+if ($BRANCH=~m/4.1/ix) {$is_NEW_WF="no"};
 #
 $is_NEW_DBGD="no";
 if ($BRANCH=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
 if ($BRANCH=~m/max-release-GPL/ix) {$is_GPL="yes"};
-if ($is_GPL)  {$is_NEW_WF="yes"};
 #
 if ($branch_id eq "") 
 {
