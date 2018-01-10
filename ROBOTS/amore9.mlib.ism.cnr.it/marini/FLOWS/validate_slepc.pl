@@ -4,6 +4,7 @@
 {
  ACTIVE      => "yes",
  CONFIG      => "default_plus_slepc.sh",
+ TESTS       => "all",
  KEYS        => "all hard",
 },
 {
@@ -21,12 +22,12 @@
 },
 {
  ACTIVE      => "yes",
- THREADS     => 4,
+ THREADS     => 8,
 },
 {
  MPI_CPU     => 8,
  SLK_CPU     => 4,
- PAR_MODE    => "default",
+ PAR_MODE    => "random",
 },
 {
  MPI_CPU     => 8,
