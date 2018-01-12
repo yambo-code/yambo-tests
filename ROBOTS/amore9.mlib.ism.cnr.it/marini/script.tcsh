@@ -4,6 +4,7 @@ cd /data/marini/yambo-tests/
 
 if ( "$1" == "down") then
 ./driver.pl -d all
+./driver.pl -kill
 endif
 
 if ( "$1" == "clean") then
