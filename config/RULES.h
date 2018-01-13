@@ -15,6 +15,12 @@
 !
 ! The same pattern can be used more than one time to add rules
 !
+! GENERAL
+!=========
+call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
+call add_RULE(".ndb.kindx","skip",MATERIAL="Si_bulk hBN LiF")
+call add_RULE("Lifetimes.ndb.em1d_fragment","skip",MATERIAL="Al_bulk")
+!
 ! RT
 !====
 call add_RULE(".YPP-RT_occupations_DATA","skip",MATERIAL="Si_bulk")

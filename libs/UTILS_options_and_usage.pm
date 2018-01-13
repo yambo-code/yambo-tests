@@ -105,6 +105,8 @@ sub UTILS_usage {
              -status                List SVN/GIT new/untracked files.
              -v [-v]                Verbose output (use -v -v for extra verbosity)
              -colors                Use colors in messages.
+             -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS and CPU_CONFIGURATION, for example).
+                                    Use -e backup with -b ## to edit the REPORT of the backupd REPORT number ##
 
    (SOURCEs)
              -conf   <NAME>         Use configuration NAME              (default: no options, all: cycle among all confs)
@@ -149,8 +151,6 @@ sub UTILS_usage {
                                     Otherwise list the BACKUPs available
 
    (FTP actions)           
-             -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS and CPU_CONFIGURATION, for example).
-                                    Use -e backup with -b ## to edit the REPORT of the backupd REPORT number ##
              -ftp                   Log in FTP server
 
  * <TESTS> has form: "<SET1> {<input1> [<input2>]|all}; <SET2> {<input1> [<input2>]|all}"
