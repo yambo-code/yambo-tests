@@ -29,8 +29,8 @@ sub CHECK_driver{
 $CHECK_CORE="no";
 if ($SETUP=="1"){
  if ($np==1 or $MPI_CPU_conf[1] eq "serial"){
-#  &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
-#  &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
+  &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
+  &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
  }
 }
 if ( $is_OLD_IO eq "yes"  ) { &CHECK_database("Sx_Vxc","ndb.HF_and_locXC","")};
@@ -77,7 +77,7 @@ R_file_loop: foreach $ref_filename (@OFILES){
  my $CHECK=&CHECK_GPL_skip("$ref_filename");
  #
  if ($ref_filename =~ ".gops" or $ref_filename =~ ".kindx") {
-  if (not $MPI_CPU_conf[1] eq "serial") {$CHECK="SKIP"}
+  if (not $MPI_CPU_conf[1] eq "serial" or $np>1) {$CHECK="SKIP"}
  }
  if ($ref_filename =~ ".em1d" and $LIFE eq "1") {$CHECK="SKIP"}; 
  #
