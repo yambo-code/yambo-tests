@@ -75,12 +75,11 @@ if ( -d $REF_prefix."REFERENCE_$branch_key" and -f $REF_prefix."REFERENCE_$branc
 }
 @OFILES = (<$ref_dir/o-$testname.*>);
 R_file_loop: foreach $ref_filename (@OFILES){
+ #
  my $CHECK=&CHECK_GPL_skip("$ref_filename");
  #
- if ($ref_filename =~ /gops/ or $ref_filename =~ /kindx/) {
-  if (not $CHECK_CORE=="yes"){$CHECK="SKIP"}
- }
- if ($ref_filename =~ "/em1d/" and $LIFE eq "1") {$CHECK="SKIP"}; 
+ if ($ref_filename =~ /gops/ or $ref_filename =~ /kindx/) {next R_file_loop};
+ if ($ref_filename =~ "/em1d/" and $LIFE eq "1") {next R_file_loop};
  #
  if ($CHECK eq "SKIP") {next R_file_loop};
  #
