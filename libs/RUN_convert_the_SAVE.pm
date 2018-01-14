@@ -45,7 +45,7 @@ sub RUN_convert_the_SAVE{
  if(-e "SAVE_backup") { &command("cp -r SAVE_backup SAVE"); }
  &command("$YAMBO_local");
  &command("$YPP_local");
- &command("rm -f SAVE/ndb*");
+ &command("rm -f l_stderr l_setup r_setup");
  if(-e "SAVE_backup") {
   &command("rm -r SAVE");
   &command("mv SAVE_backup SAVE_backup_old");
@@ -62,7 +62,7 @@ sub RUN_convert_the_SAVE{
  #
  # SAVE for shifted grids
  #
- if(-e "SHIFTED_grids" || -e "SHIFTED_GRID") {
+ if(-e "SHIFTED_gridsa" || -e "SHIFTED_GRIDa") {
   &MY_PRINT($stdout, "\nConverting SAVE folder with shifted grids to new format") if ($verb ge 2);;
   if(-e "SHIFTED_grids") { chdir("SHIFTED_grids"); }
   if(-e "SHIFTED_GRID")  { chdir("SHIFTED_GRID"); }
@@ -71,7 +71,7 @@ sub RUN_convert_the_SAVE{
    chdir("shift_1");
    &command("$YAMBO_local");
    &command("$YPP_local");
-   &command("rm -f SAVE/ndb*");
+   &command("rm -f l_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
    &command("mv FixSAVE/SAVE SAVE");
    chdir("..");
@@ -81,7 +81,7 @@ sub RUN_convert_the_SAVE{
    chdir("shift_2");
    &command("$YAMBO_local");
    &command("$YPP_local");
-   &command("rm -f SAVE/ndb*");
+   &command("rm -f l_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
    &command("mv FixSAVE/SAVE SAVE");
    chdir("..");
@@ -91,7 +91,7 @@ sub RUN_convert_the_SAVE{
    chdir("shift_3");
    &command("$YAMBO_local");
    &command("$YPP_local");
-   &command("rm -f SAVE/ndb*");
+   &command("rm -f l_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
    &command("mv FixSAVE/SAVE SAVE");
    chdir("..");
@@ -109,7 +109,7 @@ sub RUN_convert_the_SAVE{
   chdir("SOC_tmp_dir");
   &command("$YAMBO_local");
   &command("$YPP_local");
-  &command("rm -f SAVE/ndb*");
+  &command("rm -f l_stderr l_setup r_setup");
   &command("mv FixSAVE/SAVE ../SAVE_SOC");
   chdir("..");
  }

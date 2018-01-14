@@ -26,12 +26,13 @@ sub CHECK_driver{
 #
 # Specific Rules
 #
-$CHECK_CORE="no";
-if ($SETUP=="1"){
- if ($np==1 or $MPI_CPU_conf[1] eq "serial"){
-  &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
-  &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
- }
+$CHECK_CORE="yes";
+if ($nt and $nt>1  ) {$CHECK_CORE="no"};
+if ($np>1          ) {$CHECK_CORE="no"};
+if (not $SETUP=="1") {$CHECK_CORE="no"};
+if ($CHECK_CORE=="yes"){
+ &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
+ &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
 }
 if ( $is_OLD_IO eq "yes"  ) { &CHECK_database("Sx_Vxc","ndb.HF_and_locXC","")};
 if ( $is_OLD_IO eq "no"   ) { &CHECK_database("Sx,Vxc","ndb.HF_and_locXC","")};
@@ -76,12 +77,13 @@ if ( -d $REF_prefix."REFERENCE_$branch_key" and -f $REF_prefix."REFERENCE_$branc
 R_file_loop: foreach $ref_filename (@OFILES){
  my $CHECK=&CHECK_GPL_skip("$ref_filename");
  #
- if ($ref_filename =~ ".gops" or $ref_filename =~ ".kindx") {
-  if (not $MPI_CPU_conf[1] eq "serial" or $np>1) {$CHECK="SKIP"}
+ if ($ref_filename =~ /gops/ or $ref_filename =~ /kindx/) {
+  if (not $CHECK_CORE=="yes"){$CHECK="SKIP"}
  }
- if ($ref_filename =~ ".em1d" and $LIFE eq "1") {$CHECK="SKIP"}; 
+ if ($ref_filename =~ "/em1d/" and $LIFE eq "1") {$CHECK="SKIP"}; 
  #
  if ($CHECK eq "SKIP") {next R_file_loop};
+ #
  $run_filename = $ref_filename;
  $run_filename =~ s{.*/}{};
  ($base, $dir, $ext) = fileparse($run_filename, qr/\.[^.]*/);
