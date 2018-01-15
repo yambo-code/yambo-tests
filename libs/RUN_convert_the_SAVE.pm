@@ -62,7 +62,7 @@ sub RUN_convert_the_SAVE{
  #
  # SAVE for shifted grids
  #
- if(-e "SHIFTED_gridsa" || -e "SHIFTED_GRIDa") {
+ if(-e "SHIFTED_grids" || -e "SHIFTED_GRID") {
   &MY_PRINT($stdout, "\nConverting SAVE folder with shifted grids to new format") if ($verb ge 2);;
   if(-e "SHIFTED_grids") { chdir("SHIFTED_grids"); }
   if(-e "SHIFTED_GRID")  { chdir("SHIFTED_GRID"); }
