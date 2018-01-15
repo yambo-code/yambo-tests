@@ -26,11 +26,11 @@ sub CHECK_driver{
 #
 # Specific Rules
 #
-$CHECK_CORE="yes";
-if ($nt and $nt>1  ) {$CHECK_CORE="no"};
-if ($np>1          ) {$CHECK_CORE="no"};
-if (not $SETUP=="1") {$CHECK_CORE="no"};
-if ($CHECK_CORE=="yes"){
+$CHECK_CORE="1";
+if ($nt and $nt>1  ) {undef $CHECK_CORE};
+if ($np>1          ) {undef $CHECK_CORE};
+if (not $SETUP=="1") {undef $CHECK_CORE};
+if ($CHECK_CORE){
  &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
  &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
 }
@@ -79,7 +79,7 @@ R_file_loop: foreach $ref_filename (@OFILES){
  my $CHECK=&CHECK_GPL_skip("$ref_filename");
  #
  if ($ref_filename =~ /gops/ or $ref_filename =~ /kindx/) {next R_file_loop};
- if ($ref_filename =~ "/em1d/" and $LIFE eq "1") {next R_file_loop};
+ if ($ref_filename =~ /em1d/ and $LIFE eq "1") {next R_file_loop};
  #
  if ($CHECK eq "SKIP") {next R_file_loop};
  #
