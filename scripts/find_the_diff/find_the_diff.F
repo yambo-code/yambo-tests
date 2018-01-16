@@ -184,6 +184,11 @@ program find_the_diff
    endif
  enddo
  !
+ if (all(skip_column(:ref%N_col))) then
+   write (*,'(a)') trim(CHECK_result)
+   stop
+ endif
+ !
  if (last_row) then
    ref%D(1,:)=ref%D(ref%N,:)
    ref%N=1

@@ -86,9 +86,9 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
   ($file = $comp_php) =~ s/$j/$k/g;
   if (-f $comp_php) {&command("mv $comp_php $file")};
   ($file = $main_dat) =~ s/$j/$k/g;
-  &command("mv $main_dat $file");
+  if (-f $main_dat) {&command("mv $main_dat $file")};
   ($file = $main_php) =~ s/$j/$k/g;
-  &command("mv $main_php $file");
+  if (-f $main_php) {&command("mv $main_php $file")};
   open(my $fh1, '<', $file) ;
   open(my $fh2, '>', 'dummy') ;
   while( $line = <$fh1>) {

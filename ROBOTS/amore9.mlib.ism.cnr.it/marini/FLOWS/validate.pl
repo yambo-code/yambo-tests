@@ -3,8 +3,7 @@
 @flow = (
 {
  ACTIVE      => "yes",
- CONFIG      => "default.sh",
-# CONFIG      => "default_precompiled.sh",
+ CONFIG      => "default_plus_slepc.sh",
  TESTS       => "all",
  KEYS        => "all hard",
 },
@@ -17,7 +16,7 @@
  PAR_MODE    => "random",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => 4,
  PAR_MODE    => "loop",
 },
@@ -28,7 +27,7 @@
 {
  MPI_CPU     => 8,
  SLK_CPU     => 4,
- PAR_MODE    => "default",
+ PAR_MODE    => "random",
 },
 {
  MPI_CPU     => 8,

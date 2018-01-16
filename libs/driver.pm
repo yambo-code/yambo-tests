@@ -24,12 +24,6 @@
 #
 sub driver{
 #
-##$np=8;
-#while (1>0){
-#&RUN_random_PAR(4);
-#print "@ncpu\n";
-#}
-#
 # LOG dir and ncdpump...
 &SETUP_keys;
 #

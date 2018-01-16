@@ -43,7 +43,7 @@ sub UTILS_list_backups{
   $n_backups++;
  }
  #
- if ($clean) {
+ if ($clean and $backup_logs eq "yes") {
   $first_to_keep=$n_backups-$n_backups_to_save+1;
   print "\nCleaning backups with ID < $first_to_keep\n";
  };
@@ -76,9 +76,7 @@ sub UTILS_list_backups{
     }
     print "DIR   : $dir\n";
     print "\n";
-   }
-   #
-   if ($clean) {
+   }elsif ($clean and $backup_logs eq "yes") {
     if ($data_id<$first_to_keep) {
       print "\n...cleaning ID $data_id";
       &command("rm -fr $dir");

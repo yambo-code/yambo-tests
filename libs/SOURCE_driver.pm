@@ -33,8 +33,7 @@ if ($select_conf_file){
   if ($conf_file =~ /$conf/ or $conf eq "all"){ $conf_match=1};
  }
  if (not $conf_match) {return "FAIL"};
-} 
-else {
+} else {
  if ($compile) {
   if (not $conf_file =~ "default.sh"){ return "FAIL"};
   $conf_file = "default.sh";
@@ -44,6 +43,8 @@ else {
   $precompiled_is_run = "yes";
  }
 }
+#
+if ($BRANCH_is_correctly_compiled[$ib])  {return "OK"};
 #
 # Already compiled and failed?
 #
@@ -153,8 +154,6 @@ if (not "$ERROR" eq "OK") {
  &LOGs_move;
  return "FAIL";
 }
-#
-if ($BRANCH_is_correctly_compiled[$ib])  {return "OK"};
 #
 # NCDUMP/NCCOPY
 #
