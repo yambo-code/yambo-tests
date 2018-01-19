@@ -44,7 +44,10 @@ if ($select_conf_file){
  }
 }
 #
-if ($BRANCH_is_correctly_compiled[$ib])  {return "OK"};
+if ($BRANCH_is_correctly_compiled[$ib]) {
+ if($BUILD =~ /OpenMP/ and !$nt) {$openmp_is_off="yes"};
+ return "OK";
+};
 #
 # Already compiled and failed?
 #
