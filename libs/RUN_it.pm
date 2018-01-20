@@ -56,8 +56,8 @@ $elapsed = tv_interval($test_start, $test_end);
 # Check if a wrong CPU conf has been used...
 #
 $CHECK_error="";
-undef  $wrong_cpu_conf;
-undef  $empty_worload;
+undef $wrong_cpu_conf;
+undef $empty_worload;
 LOG_LOOP: {
  foreach $file (<LOG/l-*>) {
   open $fh, $file or die;
@@ -65,11 +65,9 @@ LOG_LOOP: {
    if ($line =~ /Empty workload/ || $line =~ /n_t_CPU > n_blocks/) { 
     if ($verb) {&MESSAGE("LOG"," Empty workload for some CPU")};
     $empty_worload = 1;
-    last LOG_LOOP;
    }
    if ($line =~ /USER parallel structure does not fit the current run parameters/) { 
     $wrong_cpu_conf = 1;
-    last LOG_LOOP;
    }
   }
  }
@@ -77,14 +75,13 @@ LOG_LOOP: {
 #
 # Final Report
 #
-if($empty_workload){
- &MESSAGE("LOG","[WARN: EMPTY workload]");
- return "OK";
-}
 if($wrong_cpu_conf){
  $CHECK_error="WRONG CPU configuration";
  &RUN_stats("WRONG_CPU_CONF");
  return "FAIL";
+}elsif($empty_workload){
+ &MESSAGE("LOG","[WARN: EMPTY workload]");
+ return "OK";
 }
 #
 if ($system_error == 0) {

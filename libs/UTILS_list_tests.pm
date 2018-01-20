@@ -28,11 +28,14 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   &CWD_save;
   chdir("$suite_dir/$TESTS_folder");
   &MY_PRINT($stdout, "\nAvailable test materials/systems: \n");
-  DIR_LOOP: foreach $dir (<*>,<*/*>,<*/*/*>,<*/*/*/*>,<*/*/*/*/*>) {      # Glob all files
-   # Loop through all files and directories, and save those 'active' dirs containing
-   # SAVE and INPUTS folders into @testdirs
+  my @dirs;
+  my @dir = ( "." );
+  find( sub { push @dirs, $File::Find::name if -d }, @dir );
+  DIR_LOOP: foreach $dir (@dirs){
    if ( (-d $dir."/SAVE" || -d $dir."/SAVE_backup") && -d $dir."/$input_folder" && not $dir  =~ /ROBOT/  ) {
     push(@testdirs,$dir);
+    my $n = 2;
+    $dir =~ s/^.{$n}//s;
     $P_str="";
     $HARD_str="";
     if ( $is_GPL ){

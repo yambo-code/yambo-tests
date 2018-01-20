@@ -3,28 +3,26 @@
 {
 KEYS        => 'all hard',
 ACTIVE      => 'yes',
-CONFIG      => 'default.sh',
-TESTS     => ' ',
+CONFIG      => 'default_plus_slepc.sh',
+KEYS        => 'elph hard',
 },
 {
 KEYS        => 'all hard',
 MPI_CPU     => '8',
 PAR_MODE     => 'default',
-ACTIVE      => 'yes',
+ACTIVE      => 'no',
 TESTS     => 'Si_bulk/RT/ all ; ',
 },
 {
 KEYS        => 'all hard',
 MPI_CPU     => '8',
 PAR_MODE     => 'random',
-ACTIVE      => 'yes',
 TESTS     => 'Si_bulk/SC/ all ;Si_bulk/RT/ all ;Si_bulk/GW-OPTICS/ all ;MoS2/pwscf/RT/ all ;hBN/GW-OPTICS/ all ;Al_bulk/GW-OPTICS/ all ; ',
 },
 {
 KEYS        => 'all hard',
 MPI_CPU     => '4',
 PAR_MODE     => 'loop',
-ACTIVE      => 'yes',
 TESTS     => 'Si_bulk/GW-OPTICS/ all ;Al_bulk/GW-OPTICS/ all ; ',
 },
 {
