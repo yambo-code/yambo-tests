@@ -5,14 +5,15 @@
  ACTIVE      => "yes",
 # CONFIG      => "default.sh",
  TESTS       => "all",
- KEYS        => "all hard",
+ KEYS        => "all",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => $SYSTEM_NP,
  PAR_MODE    => "default",
 },
 {
+ ACTIVE      => "no",
  MPI_CPU     => $SYSTEM_NP,
  PAR_MODE    => "random",
 },
