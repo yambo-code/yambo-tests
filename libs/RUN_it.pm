@@ -63,7 +63,7 @@ LOG_LOOP: {
   open $fh, $file or die;
   while (my $line = <$fh>) {
    if ($line =~ /Empty workload/ || $line =~ /n_t_CPU > n_blocks/) { 
-    if ($verb) {&MESSAGE("LOG"," Empty workload for some CPU")};
+    if ($verb and not $empty_worload) {&MESSAGE("LOG"," Empty workload for some CPU")};
     $empty_worload = 1;
    }
    if ($line =~ /USER parallel structure does not fit the current run parameters/) { 

@@ -23,7 +23,6 @@
 sub PARALLEL_build_the_conf{
 #
 # GW & Lifetimes
-$Nr=0;
 #
 if ( $LIFE=="1" or ( $GW=="1" and $EM1D=="1" ) or ($COHSEX=="1" and $COLL=="0") or ($COHSEX=="1" and $COLL=="1" and $EM1S=="0") ) { 
  foreach $f1 (@QSB){ foreach $f2 (@GQKCV){ 
