@@ -29,9 +29,9 @@ if($verb ge 2) { &PRINT_input };
 #
 # CMD line
 if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
- $command_line = "$yambo_exec -F yambo.in -J $flags $in_dir_cmd_line $force_serial $log";
+ $command_line = "$nice $yambo_exec -F yambo.in -J $flags $in_dir_cmd_line $force_serial $log";
 }else{
- $command_line = "$mpiexec -np $np $yambo_exec -F yambo.in -J $flags $in_dir_cmd_line $force_serial $CPU_flag $log";
+ $command_line = "$nice $mpiexec -np $np $yambo_exec -F yambo.in -J $flags $in_dir_cmd_line $force_serial $CPU_flag $log";
 }
 #
 # *** RUN ***
