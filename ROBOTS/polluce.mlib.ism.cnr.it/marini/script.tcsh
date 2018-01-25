@@ -28,11 +28,11 @@ endif
 
 if ( "$1" == "tests") then
 # if ( "$3" == "34" || "$3" == "6" || "$3" == "15" ) then
- if ( "$3" == "34" ) then
-  ./driver.pl -c -flow validate -newer 30 -robot $3 
- else
+# if ( "$3" == "34" ) then
+#  ./driver.pl -c -flow validate -newer 30 -robot $3 
+# else
  ./driver.pl -c -c -flow validate_slepc -report -newer 30 -robot $3 
- endif
+# endif
 endif
 #
 if ( "$1" == "bench") then
