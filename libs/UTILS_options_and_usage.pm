@@ -62,6 +62,7 @@ my $ret = &GetOptions("h"    => \$help,
             "dry"            => \$dry_run,
             "newer=i"        => \$max_delay_commits,
             "robot=i"        => \$ROBOT_id,
+            "nice:i"         => \$nice_level,
             "host=s"         => \$USER_host,
             "failed=s"       => \$failed,
             "php"            => \$php,
@@ -97,8 +98,11 @@ sub UTILS_usage {
              -compile               Compile the sources.
              -tests  <TESTS>|all    List* of tests to perform, or all "-tests all".
 
+   (Running options)
+             -dry                   Run in dry mode. Not actual job is launched.
+             -nice   [VALUE]        Run with priority VALUE. With no VALUE max nice level is used (lower priority).
+
    (General options)
-             -dry                   Run the script in dry mode. Not actual job is launched.
              -mode                  Can be "tests/perturbo/cheers/bench". It selects which suite to use. Default is "tests".
              -host  <string>        Robot name.
              -robot <ID>            Robot ID.

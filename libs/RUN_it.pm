@@ -29,9 +29,9 @@ if($verb ge 2) { &PRINT_input };
 #
 # CMD line
 if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
- $command_line = "$yambo_exec -F yambo.in -J $flags $in_dir_cmd_line $force_serial $log";
+ $command_line = "$nice $yambo_exec -F yambo.in -J $flags $in_dir_cmd_line $force_serial $log";
 }else{
- $command_line = "$mpiexec -np $np $yambo_exec -F yambo.in -J $flags $in_dir_cmd_line $force_serial $CPU_flag $log";
+ $command_line = "$nice $mpiexec -np $np $yambo_exec -F yambo.in -J $flags $in_dir_cmd_line $force_serial $CPU_flag $log";
 }
 #
 # *** RUN ***
@@ -63,7 +63,7 @@ LOG_LOOP: {
   open $fh, $file or die;
   while (my $line = <$fh>) {
    if ($line =~ /Empty workload/ || $line =~ /n_t_CPU > n_blocks/) { 
-    if ($verb) {&MESSAGE("LOG"," Empty workload for some CPU")};
+    if ($verb and not $empty_worload) {&MESSAGE("LOG"," Empty workload for some CPU")};
     $empty_worload = 1;
    }
    if ($line =~ /USER parallel structure does not fit the current run parameters/) { 

@@ -1,12 +1,12 @@
 
 
-____    ____    ___      .___  ___.  .______     ______
-\   \  /   /   /   \     |   \/   |  |   _  \   /  __  \
- \   \/   /   /  ^  \    |  \  /  |  |  |_)  | |  |  |  |
-  \_    _/   /  /_\  \   |  |\/|  |  |   _  <  |  |  |  |
-    |  |    /  _____  \  |  |  |  |  |  |_)  | |  `--"  |
-    |__|   /__/     \__\ |__|  |__|  |______/   \______/
-
+ ___ __  _____  __ __  _____   _____
+|   Y  ||  _  ||  Y  ||  _  \ |  _  |
+|   |  ||. |  ||.    ||. |  / |. |  |
+ \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
+  |: |  |: |  ||: |  ||: |   \|: |  |
+  |::|  |:.|:.||:.|:.||::.   /|::.  |
+  `--"  `-- --"`-- --"`-----" `-----"
 
 
  <---> [01] CPU structure, Files & I/O Directories
@@ -17,27 +17,52 @@ ____    ____    ___      .___  ___.  .______     ______
  <---> [02.04] K-grid lattice
  <---> [02.05] Double K-grid
  <---> [02.06] Energies [ev] & Occupations
+ <---> [WARNING] Double grid produces   8.008654 e-.
  <---> [03] Transferred momenta grid
- <---> [04] External corrections
- <---> [05] Optics
+ <---> [04] Optics
  <---> [LA] SERIAL linear algebra
+ <---> DbGd@q[1] k->k-q transitions included [%]: 1.5384616
  <---> [DIP] Checking dipoles header
  <---> [x,Vnl] computed using 8 projectors
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
  <---> Dipoles: P and iR (T): |                                        | [000%] --(E) --(X)
  <---> Dipoles: P and iR (T): |########################################| [100%] --(E) --(X)
  <---> [DIP] Writing dipoles header
+ <---> [X] NESTED openmp parallelism off
  <---> Xo@q[1] |                                        | [000%] --(E) --(X)
- <05s> Xo@q[1] |#############                           | [033%] 05s(E) 15s(X)
- <10s> Xo@q[1] |##########################              | [066%] 10s(E) 15s(X)
- <15s> Xo@q[1] |####################################### | [099%] 15s(E) 15s(X)
- <15s> Xo@q[1] |########################################| [100%] 15s(E) 15s(X)
- <15s> [LA] SERIAL linear algebra
- <15s> [WF] Performing Wave-Functions I/O from ./SAVE
- <15s> [FFT-X] Mesh size: 12  12  12
- <15s> Xo@q[2] |                                        | [000%] --(E) --(X)
- <20s> Xo@q[2] |##############                          | [035%] 05s(E) 13s(X)
- <25s> Xo@q[2] |#################################       | [083%] 10s(E) 11s(X)
- <27s> Xo@q[2] |########################################| [100%] 11s(E) 11s(X)
- <27s> [06] Timing Overview
- <27s> [07] Game Over & Game summary
+ <05s> Xo@q[1] |#############                           | [034%] 05s(E) 14s(X)
+ <10s> Xo@q[1] |############################            | [070%] 10s(E) 14s(X)
+ <14s> Xo@q[1] |########################################| [100%] 14s(E) 14s(X)
+ <14s> [LA] SERIAL linear algebra
+ <14s> DbGd@q[2] k->k-q transitions included [%]: 1.4201183
+ <14s> [MEMORY] Alloc WF%c( 1.3500000Mb) TOTAL:  3.6570001Mb (traced)  8.2080002Mb (memstat)
+ <14s> [WF] Performing Wave-Functions I/O from ./SAVE
+ <14s> [FFT-X] Mesh size: 12  12  12
+ <14s> [X] NESTED openmp parallelism off
+ <14s> Xo@q[2] |                                        | [000%] --(E) --(X)
+ <19s> Xo@q[2] |##############                          | [035%] 05s(E) 13s(X)
+ <24s> Xo@q[2] |#############################           | [074%] 10s(E) 13s(X)
+ <28s> Xo@q[2] |########################################| [100%] 13s(E) 13s(X)
+ <28s> [MEMORY]  Free WF%c( 1.3500000Mb) TOTAL:  2.1059999Mb (traced)  8.6400003Mb (memstat)
+ <28s> [MEMORY]TOTAL not deallocated :  1.660000Mb
+ <28s> [05] Timing Overview
+ <28s> [TIMING]                              io_WF :     0.00s CPU (      25 calls,   0.000 s avg)
+ <28s> [TIMING]                            io_GROT :     0.00s CPU (       2 calls,   0.001 s avg)
+ <28s> [TIMING]                           io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
+ <28s> [TIMING]                         io_COL_CUT :     0.00s CPU
+ <28s> [TIMING]                     io_Double_Grid :     0.00s CPU
+ <28s> [TIMING]                              io_HF :     0.00s CPU
+ <28s> [TIMING]                         io_DIPOLES :     0.00s CPU (      13 calls,   0.000 s avg)
+ <28s> [TIMING]                        io_KB_pwscf :     0.00s CPU (      12 calls,   0.000 s avg)
+ <28s> [TIMING]                       io_KB_abinit :     0.00s CPU
+ <28s> [TIMING]                               io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+ <28s> [TIMING]                              io_BS :     0.00s CPU
+ <28s> [TIMING]            IO_and_Messaging_switch :     0.00s CPU (       5 calls,   0.000 s avg)
+ <28s> [TIMING]                            Dipoles :     0.00s CPU
+ <28s> [TIMING]                  DIPOLE_transverse :     0.00s CPU
+ <28s> [TIMING]                        io_fragment :     0.00s CPU (      40 calls,   0.000 s avg)
+ <28s> [TIMING]                     Xo (procedure) :    27.00s CPU (       2 calls,  13.805 s avg)
+ <28s> [TIMING]                         Xo (REDUX) :     0.00s CPU (       2 calls,   0.000 s avg)
+ <28s> [06] Memory Overview
+ <28s> [07] Game Over & Game summary
+ <28s> [TIMING]            [Time-Profile]:  28.15175s

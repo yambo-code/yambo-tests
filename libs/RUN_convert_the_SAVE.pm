@@ -26,12 +26,12 @@ sub RUN_convert_the_SAVE{
  #
  if (not $is_NEW_WF eq "yes" or not $mode eq "tests") {return};
  #
- $YAMBO_local="$BRANCH/$conf_bin/yambo $log";
- $YPP_local="$BRANCH/$conf_bin/ypp -z $log";
- if(-e "$BRANCH/$conf_bin/yambo_rt") { $YAMBO_local="$BRANCH/$conf_bin/yambo_rt $log"; }
- if(-e "$BRANCH/$conf_bin/ypp_rt")   { $YPP_local="$BRANCH/$conf_bin/ypp_rt -z $log"; }
- if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$BRANCH/$conf_bin/yambo_ph $log"; }
- if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$BRANCH/$conf_bin/ypp_ph -z $log"; }
+ $YAMBO_local="$nice $BRANCH/$conf_bin/yambo $log";
+ $YPP_local="$nice $BRANCH/$conf_bin/ypp -z $log";
+ if(-e "$BRANCH/$conf_bin/yambo_rt") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_rt $log"; }
+ if(-e "$BRANCH/$conf_bin/ypp_rt")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_rt -z $log"; }
+ if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_ph $log"; }
+ if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_ph -z $log"; }
  #
  # Main SAVE folder and eventually GKKP
  #
