@@ -24,7 +24,7 @@
 #
 sub RUN_convert_the_SAVE{
  #
- if (not $is_NEW_WF eq "yes" or not $mode eq "tests") {return};
+ if (not $is_NEW_WF eq "yes" or ( not $mode eq "tests" and not $mode eq "cheers") ) {return};
  #
  $YAMBO_local="$nice $BRANCH/$conf_bin/yambo $log";
  $YPP_local="$nice $BRANCH/$conf_bin/ypp -z $log";

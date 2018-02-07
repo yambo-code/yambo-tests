@@ -83,6 +83,7 @@ if($user_tests){
    if($fullpath =~ m|INPUTS$| and not $fullpath =~ /ROBOT/){    # The only folder ending ../$input_folder
     if ( -d "SAVE" || -d "SAVE_backup"){		      # Check ./SAVE also present
      $testdir = substr($fullpath,13,-7); 
+     if ($mode eq "cheers") {$testdir = substr($fullpath,15,-7)}; 
      if ($mode eq "bench") {$testdir = substr($fullpath,19,-7)}; 
      $alltests .= "$testdir ";
     }
