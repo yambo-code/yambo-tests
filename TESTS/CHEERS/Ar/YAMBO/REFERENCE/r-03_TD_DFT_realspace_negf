@@ -12,7 +12,7 @@
                          MPI+SLK Build                          
                    http://www.yambo-code.org                    
  
- 02/15/2018 at 09:59 YAMBO_RT @ narro
+ 02/15/2018 at 17:37 YAMBO_RT @ narro
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -27,14 +27,14 @@
  Additional I/O in   .
  Communications in   .
  Input file     is   yambo.in
- Report file    is   ./r-02_TD_DFT_realspace_negf
- Job string(main): 02_TD_DFT_realspace
-             (#1): 01_coll-serial-compile_DP
-             (#2): R12
+ Report file    is   ./r-03_TD_DFT_realspace_negf
+ Job string(main): 03_TD_DFT_realspace
+             (#1): 02_coll-serial-compile_DP
+             (#2): R1
  Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
-  Bands                           :  6
+  Bands                           :  9
   K-points                        : 1
   G-vectors             [RL space]:  724295
   Components       [wavefunctions]:  90447
@@ -47,7 +47,7 @@
   Max atoms/species               : 1
   No. of atom species             : 1
   Magnetic symmetries             : no
- - S/N 007018 -------------------------- v.04.03.00 r.15039 -
+ - S/N 005596 -------------------------- v.04.03.00 r.15039 -
 
  [02] CORE Variables Setup
  =========================
@@ -110,23 +110,24 @@
   [02.05] Energies [ev] & Occupations
   ===================================
 
-  [X]VBM / CBm          [ev]:   0.00000  10.09775
-  [X]Fermi Level        [ev]:  0.000000
+  [X]VBM / CBm          [ev]:   0.00000  10.09786
+  [X]Fermi Level        [ev]: -10.36859
   [X]Electronic Temp. [ev K]:  0.00      0.00    
   [X]Bosonic    Temp. [ev K]:  0.00      0.00    
   [X]Finite Temperature mode: no
   [X]El. density      [cm-3]: 0.126E+22
   [X]States summary         : Full        Metallic    Empty
-                                 0001-0004               0005-0006
-  [X]Indirect Gaps      [ev]: 10.09775  10.09775
-  [X]Direct Gaps        [ev]: 10.09775  10.09775
+                                 0001-0004               0005-0009
+  [X]Indirect Gaps      [ev]: 10.09786  10.09786
+  [X]Direct Gaps        [ev]: 10.09786  10.09786
   X BZ K-points : 1
 
   Energy unit is electronVolt [eV]
 
   *X* K [1] : 0.000000  0.000000  0.000000 ( cc) * Comp.s 90447 * weight  1.000000
               0.000000  0.000000  0.000000 (rlu)
-  E -13.53    -.1332E-5 -.6893E-6  0.000     10.10     10.48   
+  E -23.89497 -10.36860 -10.36860 -10.36859  -0.27074   0.11257   0.37536   0.37539
+  E  0.375389
 
  [03] Transferred momenta grid
  =============================
@@ -138,7 +139,7 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 007018 -------------------------- v.04.03.00 r.15039 -
+ - S/N 005596 -------------------------- v.04.03.00 r.15039 -
 
  IBZ Q-points : 1
  BZ  Q-points : 1
@@ -158,9 +159,9 @@
 
   [FFT-Oscillators/R space] Mesh size:  55   55   55
 
-  [WF loader] Normalization (few states)  min/max  :0.1639E-16  1.000    
+  [WF loader] Normalization (few states)  min/max  :0.2216E-17  1.000    
 
-  [WR./02_TD_DFT_realspace//ndb.dip_iR_P_spin_and_P2]---------
+  [WR./03_TD_DFT_realspace//ndb.dip_iR_P_spin_and_P2]---------
    Brillouin Zone Q/K grids (IBZ/BZ): 1  1  1  1
    RL vectors                   (WF):  90447
    Fragmentation                    :yes
@@ -178,7 +179,7 @@
    Direct v evaluation    :no
    Field momentum norm    :0.10000E-4
    Wavefunctions          :Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 007018 -------------------------- v.04.03.00 r.15039 -
+  - S/N 005596 -------------------------- v.04.03.00 r.15039 -
   [WF] Performing Wave-Functions I/O from ./SAVE
 
   [FFT-RT] Mesh size:  55   55   55
@@ -193,19 +194,19 @@
   [04.03] Electronic Collisions loading and setup
   ===============================================
 
-  [RD./01_coll-serial-compile_DP//ndb.COLLISIONS_HXC]---------
+  [RD./02_coll-serial-compile_DP//ndb.COLLISIONS_HXC]---------
    Brillouin Zone Q/K grids (IBZ/BZ): 1  1  1  1
-  *WRN* RL vectors                   (WF): 27
+  *WRN* RL vectors                   (WF):  90687
    COLLISIONS name                 :HARTREE
    Total number of COLLISIONS      : 21
    COLLISIONS kind                 : 1000
    Bands                           :  1   6
    Bands mixing                    : 100.00000
    Exchange Cutoff                 :0.50000E-3
-   Hartree  RL vectors             : 27
+   Hartree  RL vectors             :  90687
    RIM RL components      :0
    RIM random points      :0
-  - S/N 007018 -------------------------- v.04.03.00 r.15039 -
+  - S/N 005596 -------------------------- v.04.03.00 r.15039 -
 
   [04.04] Messaging
   =================
@@ -277,12 +278,12 @@
 
  Routines: global (Only MASTER cpu here)
                                io_WF :     0.00s CPU (      10 calls,   0.003 s avg)
-                             io_GROT :     0.00s CPU (       3 calls,   0.012 s avg)
+                             io_GROT :     0.00s CPU (       3 calls,   0.013 s avg)
                             io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
                           io_COL_CUT :     0.00s CPU
                       io_Double_Grid :     0.00s CPU
                                io_HF :     0.00s CPU
-                          io_DIPOLES :     0.00s CPU (       4 calls,   0.001 s avg)
+                          io_DIPOLES :     0.00s CPU (       4 calls,   0.000 s avg)
                          io_KB_pwscf :     0.00s CPU
                         io_KB_abinit :     0.00s CPU
                                 io_X :     0.00s CPU (       4 calls,   0.000 s avg)
@@ -293,10 +294,10 @@
              IO_and_Messaging_switch :     0.00s CPU (     207 calls,   0.000 s avg)
                              Dipoles :     0.00s CPU
                          io_fragment :     0.00s CPU (     189 calls,   0.000 s avg)
-                     COLLISIONS_load :     0.00s CPU (       2 calls,   0.004 s avg)
+                     COLLISIONS_load :     0.00s CPU (       2 calls,   0.008 s avg)
                     Bare_Hamiltonian :     0.00s CPU
                            V_Hartree :     0.00s CPU
-                   V_real_space_to_H :     0.00s CPU (       3 calls,   0.057 s avg)
+                   V_real_space_to_H :     0.00s CPU (       3 calls,   0.056 s avg)
                      V_qp_basis_to_H :     0.00s CPU
                            RT output :     0.00s CPU (     509 calls,   0.001 s avg)
                        RT average Op :     0.00s CPU (    1717 calls,   0.000 s avg)
@@ -308,11 +309,11 @@
  [06] Game Over & Game summary
  =============================
 
- 02/15/2018 at 09:59 YAMBO_RT @ narro [start]
- 02/15/2018 at 09:59                  [end]
+ 02/15/2018 at 17:37 YAMBO_RT @ narro [start]
+ 02/15/2018 at 17:37                  [end]
 
  Timing   [Min/Max/Average]: 03s/03s/03s
-             [Time-Profile]:  3.380000s
+             [Time-Profile]:  3.376000s
 
  .-ACKNOWLEDGMENT
  |
@@ -333,13 +334,13 @@
  | negf                           # [R] Real-Time dynamics
  | BoseTemp= 0.000000     eV      # Bosonic Temperature
  | HXC_Potential= "HARTREE"       # [SC] SC HXC Potential
- | HARRLvcs= 27           RL      # [HA] Hartree  RL components
+ | HARRLvcs=  90687       RL      # [HA] Hartree  RL components
  | % RTBands
  |   1 |  6 |                     # [RT] Bands
  | %
  | Integrator= "RK2"              # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA")
  | % RTehEny
- | -13.52635 | 10.48130 | eV      # [RT] Electron-hole energy range
+ | -13.52638 | 10.48116 | eV      # [RT] Electron-hole energy range
  | %
  | RTstep=10.000000       as      # [RT] Real Time step length
  | NETime= 1.000000       fs      # [RT] Simulation Time
