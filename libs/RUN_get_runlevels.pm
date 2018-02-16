@@ -27,6 +27,7 @@ sub RUN_get_runlevels{
 $description="";
 $YPP="0";
 $YPP_RT="0";
+$YPP_SC="0";
 $YPP_PH="0";
 # Runlevels
 $CHEERS=&RUN_feature("Nbasis");
@@ -86,12 +87,17 @@ if (&RUN_feature("sort") eq "1") {$YPP=2}
 if ($YPP eq "1") { $description .= " post-processing" };
 if ($YPP eq "2") { $description .= " sorting" };
 #
-if (&RUN_feature("gkkp") eq "1" or &RUN_feature("eliashberg") eq "1") {$YPP_PH=1}
 if (&RUN_feature("RealTime") eq "1" or &RUN_feature("RT_X") eq "1" or &RUN_feature("RTDBs") eq "1") {$YPP_RT=1}
-if ($YPP_PH eq "1") { $description .= " e-p post-processing" };
+if ($YPP_RT eq "1") { $description .= " post-processing rt" };
+#
+if (&RUN_feature("ypp_sc") eq "1" ) {$YPP_SC=1}
+if ($YPP_SC eq "1") { $description .= " sc" };
+#
+if (&RUN_feature("gkkp") eq "1" or &RUN_feature("eliashberg") eq "1") {$YPP_PH=1}
+if ($YPP_PH eq "1") { $description .= " post-processing ph" };
 #
 $YPP_NL=&RUN_feature("nonlinear");
-if ($YPP_NL eq "1") { $description .= " non-lin post-processing" };
+if ($YPP_NL eq "1") { $description .= " post-processing nl" };
 #
 }
 1;

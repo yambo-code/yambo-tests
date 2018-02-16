@@ -32,6 +32,7 @@ if ($YPP=="2") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s"};
 if (-e "RT") {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_rt";
  if ($YPP_RT=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_rt"};
+ if ($YPP_SC=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_sc"};
 }
 if (-e "QED" && !$YPP=="1" && !$is_GPL) {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_qed";

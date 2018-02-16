@@ -1,0 +1,40 @@
+#                                                           
+#  **    **    **     ****     ****  ******     *******     
+# //**  **    ****   /**/**   **/** /*////**   **/////**    
+#  //****    **//**  /**//** ** /** /*   /**  **     //**   
+#   //**    **  //** /** //***  /** /******  /**      /**   
+#    /**   **********/**  //*   /** /*//// **/**      /**   
+#    /**  /**//////**/**   /    /** /*    /**//**     **    
+#    /**  /**     /**/**        /** /*******  //*******     
+#    //   //      // //         //  ///////    ///////      
+#                                                           
+#        Version 4.2.0 Revision 14270 Hash 13f7436          
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+negf                         # [R] Real-Time dynamics
+HXC_Potential= "HARTREE" # [SC] SC HXC Potential
+% RTBands
+   1 | 6 |                 # [RT] Bands
+%
+Integrator= "RK2"            # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA")
+RTstep= 10.00000       as    # [RT] Real Time step length
+NETime= 20.000000      as    # [RT] Simulation Time
+% IOtime
+ 0.00     | 0.00     | 0.00     |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+%
+% Field1_Freq
+ 0.00     | 0.00     | eV    # [RT Field1] Frequency
+%
+Field1_Int= 1000.      kWLm2 # [RT Field1] Intensity
+Field1_Width= 0.000000 fs    # [RT Field1] Width
+Field1_kind= "DELTA"         # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"         # [RT Field1] Pol(linear|circular)
+% Field1_Dir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT Field1] Versor
+%
+% Field1_Dir_circ
+ 0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
+%
+Field1_Tstart= 0.000000fs    # [RT Field1] Initial Time
+DipApproach='R-space x'
