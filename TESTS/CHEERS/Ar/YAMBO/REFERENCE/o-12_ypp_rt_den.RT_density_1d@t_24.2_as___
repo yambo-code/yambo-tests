@@ -1,0 +1,94 @@
+#                                                           
+# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
+#    ###  ###     ### ###       ### #########   ########    
+#                                                           
+#                                                           
+#        Version 4.3.0 Revision 15039 Hash a5fa16f          
+#                      MPI+SLK Build                        
+#                http://www.yambo-code.org                  
+#
+# Computing the density from the G lesser
+#
+# Nel from G is equal to (0.101E-14,0.381E-16)
+#
+#    ||a1 [A]     
+#
+    0.000       0.2285E-7
+   0.3367       -.9321E-6
+   0.6735       0.2615E-6
+    1.010       0.1036E-5
+    1.347       0.8765E-6
+    1.684       0.5521E-6
+    2.020       0.3068E-6
+    2.357       0.1593E-6
+    2.694       0.7992E-7
+    3.031       0.3885E-7
+    3.367       0.1868E-7
+    3.704       0.8688E-8
+    4.041       0.4027E-8
+    4.378       0.1735E-8
+    4.71        0.740E-09
+    5.05        0.240E-09
+    5.39        0.576E-10
+    5.72        -.462E-10
+    6.06        -.664E-10
+    6.40        -.902E-10
+    6.73        -.877E-10
+    7.07        -.983E-10
+    7.41        -.973E-10
+    7.75        -.106E-09
+    8.08        -.107E-09
+    8.42        -.114E-09
+    8.76        -.114E-09
+    9.09        -.118E-09
+    9.43        -.116E-09
+    9.77        -.116E-09
+    10.1        -.111E-09
+    10.4        -.110E-09
+    10.8        -.104E-09
+    11.1        -.105E-09
+    11.4        -.101E-09
+    11.8        -.115E-09
+    12.1        -.125E-09
+    12.5        -.177E-09
+    12.8        -.245E-09
+    13.1        -.426E-09
+    13.5        -.718E-09
+    13.81       -.1381E-8
+    14.14       -.2593E-8
+    14.48       -.5193E-8
+    14.82       -.1025E-7
+    15.15       -.2080E-7
+    15.49       -.4169E-7
+    15.83       -.8385E-7
+    16.16       -.1648E-6
+    16.50       -.3150E-6
+    16.84       -.5647E-6
+    17.17       -.8957E-6
+    17.51       -.1058E-5
+    17.85       -.2547E-6
+    18.18       0.9864E-6
+# 
+# 02/16/2018 at 14:33 YPP_PH @ narro [start]
+# 02/16/2018 at 14:33                [end]
+#  
+# Timing   [Min/Max/Average]: 01s/01s/01s
+#
+# .-Input file : yambo.in
+# | RealTime                       # [R] Real-Time Post-Processing
+# | RTdeltaRho                     # [R] Analize the density
+# | RTtime                         # [R] Post-Processing kind: function of time
+# | TimeStep= 1.000000     au      # Time step
+# | % TimeRange
+# |  0.000000 | 5.000000 | au      # Time-window where processing is done
+# | %
+# | LoadGhistory                   # [NEGF] Build the NEQ density from the G_lesser
+# | #IntegrateRho                  # [NEGF] Integrate the NEQ density around a given region in real space
+# | Format= "g"                    # Output format [(c)ube/(g)nuplot/(x)crysden]
+# | Direction= "1"                 # [rlu] [1/2/3] for 1d or [12/13/23] for 2d [123] for 3D
+# | FFTGvecs=  90447       RL      # [FFT] Plane-waves

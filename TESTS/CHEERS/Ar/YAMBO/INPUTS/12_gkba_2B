@@ -1,0 +1,48 @@
+#                                                           
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
+#                                                           
+#                                                           
+#         Version 4.2.0 Revision 14646 Hash ba6ae37         
+#                         MPI Build                         
+#                 http://www.yambo-code.org                 
+#
+RealTime                       # [R] RealTime
+Nbasis= 6                     # Number of basis functions
+Nbasis_IO1= 6                 # Number of basis functions in Eks, Vxc, dipoles
+Nbasis_IO2= 6                 # Number of basis functions in collisions
+Nsteps= 51                  # Number of time steps
+Nel= 4                        # Number of active electrons per spin channel
+Tstep=   0.1        au         # Time step
+#OLD
+TstepRhoIO=  1.0    au         # Time step for rho I/O (No I/O if negative)
+#NEW
+% IOtime
+ 0.0 | 1.0 | 0.0 |  au    # [RT] Time between to consecutive I/O (J,P,OCCs - GF - OUTPUT)
+%
+Tswitch= 0.2        au         # Switching time for 2B correlations
+Vcut_HF=1.000E-5               # Cutoff on HF Coulomb integrals
+Vcut_2B=1.000E-2               # Cutoff on 2B Coulomb integrals
+HXC_kind= "2B"                 # Approx for self-energy. Available HF / 2B
+ION_kind= "NONE"                # How to describe the ionization process. Available NONE / EMB / WBL / CAP
+Path_eq= "Ar_LDA_6"         # Folder containing dat files
+E_amp1= 0.1             # Pump amplitude
+E_time_delay1=  0.2  au        # Pump delay
+E_duration1=  12.39 au         # Pump duration
+E_freq1= 14.28      eV      # Pump dominant frequency
+% E_pol1
+ 2 | 1 | 1 |                   # Pump polarization [xyz]
+%
+E_amp2=0.                      # Probe amplitude
+E_time_delay2=  0.2 au         # Probe delay
+E_duration2=  12.39 au         # Probe duration
+E_freq2= 27.21138      eV      # Probe dominant frequency
+% E_pol2
+ 2 | 1 | 1 |                   # Probe polarization [xyz]
+%
+
