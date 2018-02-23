@@ -1,5 +1,12 @@
 mkdir Ar_LDA_6
-mv dipoles_CPU0.dat     Ar_LDA_6/dipoles.dat 
-mv vxc_CPU0.dat         Ar_LDA_6/vxc.dat 
-mv coul_int_CPU0.dat    Ar_LDA_6/coul_int.dat 
-head -n 6 ks-energies_CPU0.dat > Ar_LDA_6/ks_energies.dat 
+mv  dipoles_CPU0.dat     Ar_LDA_6/dipoles.dat 
+cat dipoles_CPU1.dat >>  Ar_LDA_6/dipoles.dat 
+rm  dipoles_CPU*.dat
+mv  vxc_CPU0.dat         Ar_LDA_6/vxc.dat 
+cat vxc_CPU1.dat      >> Ar_LDA_6/vxc.dat 
+rm  vxc_CPU*.dat
+mv  coul_int_CPU0.dat    Ar_LDA_6/coul_int.dat 
+cat coul_int_CPU1.dat >> Ar_LDA_6/coul_int.dat 
+rm  coul_int_CPU*.dat
+head -n 6 ks-energies_CPU0.dat > Ar_LDA_6/ks_energies.dat
+rm ks-energies_CPU*.dat

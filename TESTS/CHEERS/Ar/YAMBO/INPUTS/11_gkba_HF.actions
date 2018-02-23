@@ -1,5 +1,8 @@
-mv dipoles_CPU0.dat     Ar_LDA_6/dipoles_ext.dat 
-mv ks-energies_CPU0.dat Ar_LDA_6/ks_energies_ext.dat 
+mv  dipoles_CPU0.dat     Ar_LDA_6/dipoles_ext.dat 
+cat dipoles_CPU1.dat >>  Ar_LDA_6/dipoles_ext.dat 
+rm  dipoles_CPU*.dat
+mv  ks-energies_CPU0.dat     Ar_LDA_6/ks_energies_ext.dat 
+rm  ks-energies_CPU*.dat
 mkdir data
 mkdir PAST
 touch PAST/rho.dat
