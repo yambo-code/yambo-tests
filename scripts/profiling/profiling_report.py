@@ -34,28 +34,34 @@ class YamboTestSuiteRun():
         self.root = root
         walker = os.walk(root) 
 
-        regex = 'CPU Nr\.([0-9]+) of ([0-9a-zA-Z\-\_]+)'
+        regex = 'CPU Nr\.([0-9]+) of ([0-9a-zA-Z\-\_\.]+)'
         #read the total time
         total_time_dict = {}
+        print "\nINPUT: TOTAL_TIME_vs_PAR_CONF...\n"
         with open('%s/TOTAL_TIME_vs_PAR_CONF.dat'%root) as f:
             for line in f:
                 #read values
-                cpu_time, cpu_number_paralel_conf = line.strip().split('#')
-                cpu_number, paralel_conf = re.findall(regex, cpu_number_paralel_conf)[0]
+                cpu_time, cpu_number_parallel_conf = line.strip().split('#')
+                cpu_number, parallel_conf = re.findall(regex, cpu_number_parallel_conf)[0]
+                #print 'CPU_time',format(cpu_time)
+                #print 'CPU_number',format(cpu_number)
+                #print 'cpu_number_parallel_conf',format(cpu_number_parallel_conf)
+                #print 'parallel_conf',format(parallel_conf)
                 cpu, time = cpu_time.strip().split()
 
                 #create dictionary entrey
-                if paralel_conf not in total_time_dict:
-                    total_time_dict[paralel_conf] = {}
+                if parallel_conf not in total_time_dict:
+                    total_time_dict[parallel_conf] = {}
                
-                total_time_dict[paralel_conf][int(cpu_number)] = float(time)
+                total_time_dict[parallel_conf][int(cpu_number)] = float(time)
         self.total_time_dict = total_time_dict
 
         legend_dict = {}        
+        print "INPUT: LEGEND...\n"
         with open('%s/LEGEND.dat'%root) as f:
             for line in f:
                 if 'PARALLEL CONFIGURATION' in line:
-                    paralel_config = line.split(':')[-1].strip()
+                    parallel_config = line.split(':')[-1].strip()
                 if 'PAR STR.' in line:
                     par_str = line.split(':')[-1].strip()
                     while True:
@@ -63,7 +69,7 @@ class YamboTestSuiteRun():
                         if 'PARALLEL' in line or line == '\n':
                             break
                         par_str += '\n'+line.strip()
-                    legend_dict[paralel_config] = par_str
+                    legend_dict[parallel_config] = par_str
         self.legend_dict = legend_dict
 
         #read the folders inside PROFILING folder
@@ -80,8 +86,10 @@ class YamboTestSuiteRun():
             time_section_par = {}
             
             #get files
+            print 'DATA: DIR...',a
             for filename in c:
                 data_filename = os.path.join(a,filename)
+                print filename ,
 
                 if 'MEMORY_vs_TIME' in data_filename:
                     memory_time_par[filename] = np.loadtxt(data_filename)
@@ -96,6 +104,7 @@ class YamboTestSuiteRun():
 
             time_section[par_config] = time_section_par
             memory_time[par_config] = memory_time_par
+            print "\n"
 
         #save
         self.time_section = time_section
@@ -111,10 +120,10 @@ class YamboTestSuiteRun():
         legend_dict = self.legend_dict
         total_time = []
         legend = []
-        for paralel_conf, times in self.total_time_dict.items():
+        for parallel_conf, times in self.total_time_dict.items():
             max_time = max([ time       for cpu_number, time in times.items()])
             ncpu     = max([ cpu_number for cpu_number, time in times.items()])
-            label = paralel_conf+'\n'+legend_dict[paralel_conf]
+            label = parallel_conf+'\n'+legend_dict[parallel_conf]
 
             total_time.append((ncpu, max_time))
             legend.append(label)
@@ -172,7 +181,7 @@ class YamboTestSuiteRun():
                 for section in list(i.keys()):
                     sections.add(section)
         sections_colors = dict(list(zip(sections,color_getter())))
-        nparalel_configs = len(self.time_section)
+        nparallel_configs = len(self.time_section)
 
         sorted_cpus = sorted( self.time_section.items(), key=lambda x: len(x[1]) )
         #create subplots
@@ -184,7 +193,7 @@ class YamboTestSuiteRun():
             if verbose: print(key)
         
             #create subplots
-            ax = plt.subplot(1, nparalel_configs, n+1)
+            ax = plt.subplot(1, nparallel_configs, n+1)
 
             #for each number of cpus
             for cpu,data in cpus.items():
@@ -226,7 +235,7 @@ class Profiling():
         #read the folders inside PROFILING folder
         for a in list_subdirs(root):
             test = os.path.basename(a)
-            print(test)
+            print 'TEST ',test
             for test in list_subdirs(a):
                 subtest = os.path.basename(test)
                 print(" "*5,subtest)
@@ -246,14 +255,22 @@ if __name__ == "__main__":
     print(r)
   
     #plot1 
+    print "\nPLOT: TIME ticks...",
     ax = r.plot_time_cpu(labels='ticks')
+    print "done"
+    print "PLOT: TIME text...",
     ax = r.plot_time_cpu(labels='text')
+    print "done"
+    print "PLOT: TIME legend...",
     ax = r.plot_time_cpu(labels='legend')
+    print "done"
 
     #plot2
+    print "PLOT: MEMORY...",
     ax = r.plot_memory_time(time='s',size='mb')
+    print "done"
 
     #plot3
+    print("PLOT: TIME..."),
     ax = r.plot_time_section(time='m')
-
-
+    print "done"

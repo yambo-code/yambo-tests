@@ -29,6 +29,7 @@ chdir("@_[0]");
 if (not -d "TESTS") {
  @TARGZ = glob("*_ALL*");
  if (not scalar(@TARGZ) eq 0 ) {
+  print "\n Opening ... $TARGZ[0]\n";
   &command("tar xzf $TARGZ[0]");
   @dirs = ( "TESTS" );
  }else{
@@ -37,23 +38,48 @@ if (not -d "TESTS") {
 }else{
  @dirs = ( "TESTS" );
 }
-my @files;
-find( sub { push @files, $File::Find::name if /l-/ }, @dirs );
+my @REPS;
+find( sub { push @REPS, $File::Find::name if /r-/ }, @dirs );
+print "\nREPORT file analysis ...\n\n ";
+for $file (@REPS) 
+{
+undef $SHORT_PAR_STRUCTURE;
+&PROFILE_scan_the_rep($file);
+chomp($SHORT_PAR_STRUCTURE);
+if (($SHORT_PAR_STRUCTURE or $par_conf =~ /serial/) and $profile eq 1)
+{
+print "CPUs          : $N_CPU\n"; ###
+print "TEST          : $testname\n"; ###
+print "PAR conf      : $par_conf\n"; ###
+print "PAR structure : $SHORT_PAR_STRUCTURE\n\n"; ###
+}
+}
+if ($profile eq "1") {return};
+#
+my @LOGS;
+find( sub { push @LOGS, $File::Find::name if /l-/ }, @dirs );
 #
 $ntests_by_ncpu=0;
 #
-for $file (@files) 
+print "\nSearching for LOG files... ";
+for $file (@LOGS) 
 {
  if ("$file" =~ /.sw/ ) {next};
  if (-d $file) {next};
  &PROFILE_scan_the_log($file);
 }
+print "$ntests_by_ncpu found\n";
 #
 &CWD_go;
 #
-# Reports
+@PROFILE_keys=split(' ',$profile);
 #
-&command("rm -fr PROFILING");
+$TO_match=0;
+if ($profile =~ /(?<!\S)(t\S*)/g) {$TO_match++};
+if ($profile =~ /(?<!\S)(c\S*)/g) {$TO_match++};
+if ($profile =~ "all")            {$TO_match=2};
+#
+# Reports
 #
 for $itest (1...$ntests_by_ncpu) {
  #
@@ -62,6 +88,22 @@ for $itest (1...$ntests_by_ncpu) {
  $testname=$PROF_test[$itest]->{TEST_NAME};
  $par_conf=$PROF_test[$itest]->{PAR_CONF};
  $prof_folder=$PROF_test[$itest]->{TEST_FOLDER};
+ #
+ undef $data_is_ok;
+ #
+ for $p_key (@PROFILE_keys) {
+   $letter = substr($p_key, 0, 1);
+   $tmp = substr $p_key, 1;
+   if ($letter eq "t") {
+    if ($testname =~ /\Q$tmp\E/){$data_is_ok++}
+   }
+   if ($letter eq "c") {
+    if ($par_conf =~ /\Q$tmp\E/){$data_is_ok++}
+   }
+ }
+ if ($profile eq "all") {$data_is_ok=$TO_match};
+ #print "$testname $par_conf $data_is_ok $TO_match\n";
+ if (not $data_is_ok or not $data_is_ok eq $TO_match) {next};
  #
  print "\n Found ... $prof_folder $testname $par_conf\n";
  #
@@ -99,11 +141,11 @@ for $itest (1...$ntests_by_ncpu) {
  close($tot_time_log);
 }
 }
-sub PROFILE_scan_the_log{
-#########################
-my @paths=split('\/',$file);
-my $NP=scalar(@paths);
-my $log=$paths[$NP-1];
+sub GET_testname{
+#################
+my $local = shift;
+@paths=split('\/',$local);
+$NP=scalar(@paths);
 $testname=(split('-',$paths[$NP-2]))[0];
 $par_conf=(split($testname.'-',$paths[$NP-2]))[1];
 if ( $paths[$NP-3] =~ /ROBOT/ ) {
@@ -113,18 +155,13 @@ if ( $paths[$NP-3] =~ /ROBOT/ ) {
 }
 $first=substr($testfolder, 0, 1);
 if ($first eq ".") { $testfolder = substr $testfolder, 2 };
-$CPU=1;
-my $OFFSET=0;
-if ($log =~ /_CPU_/) { 
- $CPU=(split('_CPU_',$log))[1];
- $OFFSET=1;
- $REP = substr($file, 0, index($file, '_CPU_') );
-}else{
- $REP = $file;
 }
-$REP =~ s/l-$testname/r-$testname/;
-if (-f $REP) {
- open(REP,"<","$REP");
+sub PROFILE_scan_the_rep{
+#########################
+$rep_file = shift;
+&GET_testname($rep_file);
+if (-f $rep_file) {
+ open(REP,"<","$rep_file");
  my @REPLINES = <REP>;
  close(REP);
  $SHORT_PAR_STRUCTURE="";
@@ -138,14 +175,29 @@ if (-f $REP) {
     chomp($TXT);
     $SHORT_PAR_STRUCTURE.="$TXT\n";
    };
-
  }
+ close(REP);
 }
-#
-#print "FOLDER: $testfolder\n"; ###
-#print "TEST: $testname\n"; ###
-#print "PAR_CONF: $par_conf\n"; ###
-#print "CPU: $CPU\n"; ###
+}
+sub PROFILE_scan_the_log{
+#########################
+$file = shift;
+$REP=$file;
+$REP =~ s/\/l-/\/r-/g;
+$REP =~ s/(_CPU\S*)//g;
+&PROFILE_scan_the_rep($REP);
+&PROFILE_scan_the_rep($file);
+
+$log=$paths[$NP-1];
+$CPU=1;
+my $OFFSET=0;
+if ($log =~ /_CPU_/) { 
+ $CPU=(split('_CPU_',$log))[1];
+ $OFFSET=1;
+ $REP = substr($file, 0, index($file, '_CPU_') );
+}else{
+ $REP = $file;
+}
 $PAR_STRUCTURE="";
 open(LOG,"<","$file");
 my @LOGLINES = <LOG>;
@@ -260,7 +312,7 @@ for $it_and_cpu (1...$ntests_by_ncpu) {
   }
   if ( $DATA[$it_and_cpu][$idata]->{MEMORY} ) {$memory=$DATA[$it_and_cpu][$idata]->{MEMORY}};
   #
-  if ($memory) {print $mem_log "$time_to_print $memory\n";} #$section\n";}
+  if ($memory and $time) {print $mem_log "$time_to_print $memory\n";} #$section\n";}
   #
   if ($delta_time) {print $time_log "$section $delta_time\n";}
  }

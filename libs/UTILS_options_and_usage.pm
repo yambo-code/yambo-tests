@@ -148,7 +148,11 @@ sub UTILS_usage {
              -report                UPLOAD the result to the web-page
 
    (Profiling)
-             -profile [DIR]         Create a Profile analysis [of DIR]
+             -profile <string>      Can work in two modes:
+                                      *  Add to the profile queue the backup ID (passed by using the -b ID).
+                                         <string> can be a pattern to identify the INPUT/PARALLEL_conf to add to the PROFILING directory.
+                                         A t must be pre-appended to testnames and a c to parallel confs. E.g. t03_gw cNmpi64-64.3-bug-fixes.
+                                      *  With no options the contents of the profile queue are processed.
 
    (Backup)
              -b [ID's]              If running BACKUP the LOGs (automatically used when -report is given)

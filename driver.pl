@@ -188,11 +188,11 @@ if (!$RUNNING_suite) {
   }
   die;
  };
- if ($profile) {
-  if (-d $profile) {&PROFILE($profile)};
-  if (not $backup_logs eq "no" and not $backup_logs eq "yes") {&UTILS_list_backups("list")};
- }else{
-  if ($backup_logs) {&UTILS_list_backups("list")};
+ if (not $backup_logs eq "no") {
+  &UTILS_list_backups("list")
+ }
+ if ($profile and $backup_logs eq "no") {
+  &PROFILE_python();
  }
  die;
 }
