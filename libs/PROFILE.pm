@@ -287,6 +287,8 @@ for $it_and_cpu (1...$ntests_by_ncpu) {
  $CPU        ="$PROF_test[$it_and_cpu]->{CPU}";
  $total_time[$CPU] ="$PROF_test[$it_and_cpu]->{TOTAL_TIME}";
  #
+ if (not $PROF_test[$it_and_cpu]->{TOTAL_TIME}) {next};
+ #
  if ($args->{FOLDER} ne $testfolder) {next};
  if ($args->{TESTNAME} ne $testname) {next};
  if ($args->{PAR_CONF} ne $par_conf) {next};
@@ -296,7 +298,6 @@ for $it_and_cpu (1...$ntests_by_ncpu) {
  open($mem_log, '>>', $mem_file);
  open($time_log, '>>',$time_file);
  #
- #print "$PROF_test[$it_and_cpu]->{N_CPU} $total_time[$CPU]\ #CPU Nr.$CPU of $par_conf\n";
  print $tot_time_log "$PROF_test[$it_and_cpu]->{N_CPU} $total_time[$CPU]\ #CPU Nr.$CPU of $par_conf\n";
  #
  for $idata (1...$ndata[$it_and_cpu]) {

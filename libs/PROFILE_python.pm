@@ -38,7 +38,7 @@ for $file (@DATS)
  &command("python scripts/profiling/profiling_report.py $directory");
  #
  &command("mv TIME_vs_SECTION.pdf TIME_vs_SECTION-$test.pdf");
- &command("mv MEMORY_vs_SECTION.pdf MEMORY_vs_SECTION-$test.pdf");
+ &command("mv MEMORY_vs_TIME.pdf MEMORY_vs_TIME-$test.pdf");
  &command("mv TOTAL_TIME_vs_PAR_CONF_legend.pdf TOTAL_TIME_vs_PAR_CONF_legend-$test.pdf");
  &command("mv TOTAL_TIME_vs_PAR_CONF_text.pdf TOTAL_TIME_vs_PAR_CONF_text-$test.pdf");
  &command("mv TOTAL_TIME_vs_PAR_CONF_ticks.pdf TOTAL_TIME_vs_PAR_CONF_ticks-$test.pdf");

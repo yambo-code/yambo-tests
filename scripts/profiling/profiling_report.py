@@ -5,9 +5,12 @@ import numpy as np
 from matplotlib import colors as mcolors
 import matplotlib.pyplot as plt
 
-new_colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
-              '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
-              '#bcbd22', '#17becf']
+#new_colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
+#              '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
+#              '#bcbd22', '#17becf']
+
+new_colors = ['#ff0000', '#ffff00','#80ff00','#00ffff','#0040ff','#8000ff','#ff00ff','#ff0000','#993333','#408000','#e67300','#00ffff','#00b3b3','#ff00ff','#cc0066','#800000','#001433']
+
 
 size_conv = {'gb':1024**2,
              'kb':1,
@@ -22,7 +25,7 @@ def list_subdirs(path):
     #return filter(os.path.isdir, [os.path.join(d,f) for f in os.listdir(d)])
 
 def color_getter():
-    for i in range(9):
+    for i in range(17):
         yield new_colors[i]
        
  
@@ -157,7 +160,7 @@ class YamboTestSuiteRun():
             color = next(get_color)
             for cpu,data in list(cpus.items()):
                 sec_time, memory = data.T
-                line, = ax.plot(sec_time/time_conv[time],memory/size_conv[size],c=color)
+                line, = ax.plot(sec_time/time_conv[time],memory/size_conv[size],".",c=color)
             line.set_label(key) 
 
         ax = plt.gca()
@@ -175,7 +178,7 @@ class YamboTestSuiteRun():
         Plot section timing vs CPU
         """
         #get all sections
-        sections = set()
+        sections  = set()
         for cpu in list(self.time_section.values()):
             for i in list(cpu.values()):
                 for section in list(i.keys()):
@@ -203,11 +206,11 @@ class YamboTestSuiteRun():
 
                 #for each section
                 for section, sec_time in ordered_section_times:
+                    #print "SEC",section," T",sec_time,time_conv[time],sections_colors[section]
                     bar, = ax.bar(ncpu,sec_time/time_conv[time],
                                   color=sections_colors[section],align='center')
                     one_artist_per_section[section] = bar
                     if verbose: print(" "*10, section,time)
-            
 
             ax.set_title(key)
             ax.set_xticks(range(1,len(cpus)+1))
