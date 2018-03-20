@@ -84,7 +84,7 @@ if ($BRANCH=~m/4.1/ix) {$is_NEW_WF="no"};
 $is_NEW_DBGD="no";
 if ($BRANCH=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
-$is_GPL="no";
+undef $is_GPL;
 if ($BRANCH=~m/max-release-GPL/ix) {$is_GPL="yes"};
 #
 $is_NEW_YPP="no";
