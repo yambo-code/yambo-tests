@@ -27,11 +27,13 @@ sub RUN_convert_the_SAVE{
  if (not $is_NEW_WF eq "yes" or ( not $mode eq "tests" and not $mode eq "cheers") ) {return};
  #
  $YAMBO_local="$nice $BRANCH/$conf_bin/yambo";
- $YPP_local="$nice $BRANCH/$conf_bin/ypp -z";
+ my $ypp_extension="-z";
+ if ($is_NEW_YPP=="yes") { $ypp_extension=" -w c"};
+ $YPP_local="$nice $BRANCH/$conf_bin/ypp $ypp_extension";
  if(-e "$BRANCH/$conf_bin/yambo_rt") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_rt"; }
- if(-e "$BRANCH/$conf_bin/ypp_rt")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_rt -z"; }
+ if(-e "$BRANCH/$conf_bin/ypp_rt")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_rt $ypp_extension"; }
  if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_ph"; }
- if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_ph -z"; }
+ if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_ph $ypp_extension"; }
  #
  # Main SAVE folder and eventually GKKP
  #

@@ -84,7 +84,12 @@ if ($BRANCH=~m/4.1/ix) {$is_NEW_WF="no"};
 $is_NEW_DBGD="no";
 if ($BRANCH=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
+$is_GPL="no";
 if ($BRANCH=~m/max-release-GPL/ix) {$is_GPL="yes"};
+#
+$is_NEW_YPP="no";
+if ($BRANCH=~m/devel-ypp/ix) {$is_NEW_YPP="yes"};
+if ($BRANCH=~m/devel-rt-observables/ix) {$is_NEW_YPP="yes"};
 #
 if ($branch_id eq "") 
 {

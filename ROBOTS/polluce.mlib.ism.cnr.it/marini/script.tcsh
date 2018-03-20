@@ -31,7 +31,7 @@ if ( "$1" == "tests") then
 # if ( "$3" == "34" ) then
 #  ./driver.pl -c -flow validate -newer 30 -robot $3 
 # else
- ./driver.pl -c -c -flow validate_slepc -report -robot $3 -nice -newer 5
+ ./driver.pl -c -c -flow validate_slepc -report -robot $3 -nice -newer 3
 # endif
 endif
 #
