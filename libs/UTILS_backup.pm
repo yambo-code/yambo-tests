@@ -65,7 +65,7 @@ sub UTILS_list_backups{
    $data_id++;
    close(REPORT);
    #
-   if ( ($backup_logs eq "yes" or $backup_logs =~ /\Q$data_id\E/) and not $clean) 
+   if ( ($backup_logs eq "yes" or $backup_logs == $data_id ) and not $clean) 
    {
     print "ID    : $data_id\n";
     if ($date) {
@@ -82,7 +82,7 @@ sub UTILS_list_backups{
       &command("rm -fr $dir");
     };
    };
-   if ( $backup_logs =~ /\Q$data_id\E/)
+   if ( $backup_logs == $data_id )
    {
     #
     if ($profile) {&PROFILE($dir)};
