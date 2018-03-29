@@ -59,19 +59,6 @@ if($branchdir =~ /^#/ || $branchdir eq "") {
 }
 if( ! -f "$BRANCH/driver/driver.c")  { &MY_PRINT($stdout, "ERROR: cannot find $branchdir, skipping!\n"); return "FAIL"; };
 #
-# Define list of required executables
-$target_list = $target_list_basic; 
-$exec_list   = $exec_list_basic;
-#
-# If project = all or user-selected 
-if ($project =~ /sc/ or $project eq "all")   { $target_list .= $exec_sc; $exec_list  .= $exec_sc};
-if ($project =~ /rt/ or $project eq "all")   { $target_list .= $exec_rt; $exec_list  .= $exec_rt};
-if ($project =~ /elph/ or $project eq "all") { $target_list .= $exec_elph; $exec_list  .= $exec_elph};
-if ($project =~ /kerr/ or $project eq "all") { $target_list .= $exec_kerr; $exec_list  .= $exec_kerr};
-if ($project =~ /nl/ or $project eq "all")   { $target_list .= $exec_nl; $exec_list  .= $exec_nl};
-if ($project =~ /magnetic/ or $project eq "all") { $target_list .= $exec_magn; $exec_list   .= $exec_magn};
-if ($project =~ /pl/ or $project eq "all")       { $target_list .= $exec_pl; $exec_list   .= $exec_pl};
-#
 my $pattern;
 if ($branch_id eq "") 
 {
@@ -97,6 +84,9 @@ if ($pattern=~m/4.1/ix) {$is_NEW_WF="no"};
 $is_NEW_DBGD="no";
 if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
+undef $do_NL_tests;
+if ($pattern=~m/devel-nl/ix) {$do_NL_tests="yes"};
+#
 undef $is_GPL;
 if ($pattern=~m/max-release-GPL/ix) {$is_GPL="yes"};
 if ($is_GPL) {$branch_key.="_gpl"};
@@ -104,6 +94,20 @@ if ($is_GPL) {$branch_key.="_gpl"};
 undef $is_NEW_YPP;
 if ($pattern=~m/devel-ypp/ix) {$is_NEW_YPP="yes"};
 if ($pattern=~m/devel-rt-observables/ix) {$is_NEW_YPP="yes"};
+#
+# Define list of required executables
+$target_list = $target_list_basic; 
+$exec_list   = $exec_list_basic;
+#
+# If project = all or user-selected 
+if ($project =~ /sc/ or $project eq "all")   { $target_list .= $exec_sc; $exec_list  .= $exec_sc};
+if ($project =~ /rt/ or $project eq "all")   { $target_list .= $exec_rt; $exec_list  .= $exec_rt};
+if ($project =~ /elph/ or $project eq "all") { $target_list .= $exec_elph; $exec_list  .= $exec_elph};
+if ($project =~ /kerr/ or $project eq "all") { $target_list .= $exec_kerr; $exec_list  .= $exec_kerr};
+if (($project =~ /nl/ or $project eq "all" ) and $do_NL_tests)   { $target_list .= $exec_nl; $exec_list  .= $exec_nl};
+if ($project =~ /magnetic/ or $project eq "all") { $target_list .= $exec_magn; $exec_list   .= $exec_magn};
+if ($project =~ /pl/ or $project eq "all")       { $target_list .= $exec_pl; $exec_list   .= $exec_pl};
+#
 return "OK";
 }
 sub LOAD_branches{

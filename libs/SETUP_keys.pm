@@ -28,7 +28,6 @@ my @FTs = ("gw", "bse", "rpa","all");
 $project= '';
 foreach my $index (0..$#PJs) {
     next if ($keys !~ /$PJs[$index]/ and $keys !~ /all/);
-    next if ($keys =~ /all/ and $PJs[$index] =~ /nl/ );
     $project .= " ".$PJs[$index];
 }
 $if=-1;
