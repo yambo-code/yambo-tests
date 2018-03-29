@@ -87,7 +87,7 @@ if ($BRANCH=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 undef $is_GPL;
 if ($BRANCH=~m/max-release-GPL/ix) {$is_GPL="yes"};
 #
-$is_NEW_YPP="no";
+undef $is_NEW_YPP;
 if ($BRANCH=~m/devel-ypp/ix) {$is_NEW_YPP="yes"};
 if ($BRANCH=~m/devel-rt-observables/ix) {$is_NEW_YPP="yes"};
 #

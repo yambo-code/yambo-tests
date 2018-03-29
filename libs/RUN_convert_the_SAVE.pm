@@ -24,11 +24,11 @@
 #
 sub RUN_convert_the_SAVE{
  #
- if (not $is_NEW_WF eq "yes" or ( not $mode eq "tests" and not $mode eq "cheers") ) {return};
+ if (not $is_NEW_WF or ( not $mode eq "tests" and not $mode eq "cheers") ) {return};
  #
  $YAMBO_local="$nice $BRANCH/$conf_bin/yambo";
  my $ypp_extension="-z";
- if ($is_NEW_YPP eq "yes") { $ypp_extension="-w c"};
+ if ($is_NEW_YPP) { $ypp_extension="-w c"};
  $YPP_local="$nice $BRANCH/$conf_bin/ypp $ypp_extension";
  if(-e "$BRANCH/$conf_bin/yambo_rt") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_rt"; }
  if(-e "$BRANCH/$conf_bin/ypp_rt")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_rt $ypp_extension"; }
