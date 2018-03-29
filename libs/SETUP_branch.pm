@@ -72,35 +72,38 @@ if ($project =~ /nl/ or $project eq "all")   { $target_list .= $exec_nl; $exec_l
 if ($project =~ /magnetic/ or $project eq "all") { $target_list .= $exec_magn; $exec_list   .= $exec_magn};
 if ($project =~ /pl/ or $project eq "all")       { $target_list .= $exec_pl; $exec_list   .= $exec_pl};
 #
-# branch and branch_key (to be used in reports/actions)
-$is_OLD_IO="no";
-if ($BRANCH=~m/4.1/ix) {$is_OLD_IO="yes"};
-#
-$is_NEW_WF="yes";
-if ($BRANCH=~m/3.4/ix) {$is_NEW_WF="no"};
-if ($BRANCH=~m/4.0/ix) {$is_NEW_WF="no"};
-if ($BRANCH=~m/4.1/ix) {$is_NEW_WF="no"};
-#
-$is_NEW_DBGD="no";
-if ($BRANCH=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
-#
-undef $is_GPL;
-if ($BRANCH=~m/max-release-GPL/ix) {$is_GPL="yes"};
-#
-undef $is_NEW_YPP;
-if ($BRANCH=~m/devel-ypp/ix) {$is_NEW_YPP="yes"};
-if ($BRANCH=~m/devel-rt-observables/ix) {$is_NEW_YPP="yes"};
-#
+my $pattern;
 if ($branch_id eq "") 
 {
  $branch_key=$dir;
  $branch_key =~ s/_/ /;
  my @locals = split(' ', $branch_key);
  $branch_key=@locals[1];
+ $pattern=$BRANCH;
 }else{
- $branch_key=$branch_id
+ $branch_key=$branch_id;
+ $pattern=$branch_id;
 };
+#
+# branch and branch_key (to be used in reports/actions)
+$is_OLD_IO="no";
+if ($pattern=~m/4.1/ix) {$is_OLD_IO="yes"};
+#
+$is_NEW_WF="yes";
+if ($pattern=~m/3.4/ix) {$is_NEW_WF="no"};
+if ($pattern=~m/4.0/ix) {$is_NEW_WF="no"};
+if ($pattern=~m/4.1/ix) {$is_NEW_WF="no"};
+#
+$is_NEW_DBGD="no";
+if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
+#
+undef $is_GPL;
+if ($pattern=~m/max-release-GPL/ix) {$is_GPL="yes"};
 if ($is_GPL) {$branch_key.="_gpl"};
+#
+undef $is_NEW_YPP;
+if ($pattern=~m/devel-ypp/ix) {$is_NEW_YPP="yes"};
+if ($pattern=~m/devel-rt-observables/ix) {$is_NEW_YPP="yes"};
 return "OK";
 }
 sub LOAD_branches{

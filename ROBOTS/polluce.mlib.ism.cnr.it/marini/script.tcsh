@@ -3,8 +3,8 @@
 cd /scratch/marini/yambo-tests/
 
 if ( "$1" == "down") then
-./driver.pl -d all 
 ./driver.pl -kill
+./driver.pl -d all 
 endif
 
 if ( "$1" == "clean") then
@@ -13,17 +13,17 @@ endif
 
 if ( "$2" == "gf_mpich") then
 module purge
-module load gcc6/yambo/mpich-3.2
+module load local/gcc6/yambo/mpich-3.2
 endif
 
 if ( "$2" == "gf_openmpi") then
 module purge
-module load gcc6/yambo/openmpi-2.1.0
+module load local/gcc6/yambo/openmpi-2.1.0
 endif
 
 if ( "$2" == "intel") then
 module purge
-module load intel/yambo/parallel_2017/pre_compiled
+module load local/intel/parallel_2017/pre_compiled
 endif
 
 if ( "$1" == "tests") then
@@ -31,7 +31,7 @@ if ( "$1" == "tests") then
 # if ( "$3" == "34" ) then
 #  ./driver.pl -c -flow validate -newer 30 -robot $3 
 # else
- ./driver.pl -c -c -flow validate_slepc -report -robot $3 -nice -newer 3
+ ./driver.pl -c -c -flow validate_slepc -report -robot $3 -nice -newer 10
 # endif
 endif
 #

@@ -12,9 +12,8 @@ then
 fi
 ./configure \
 $CONF_LINE \
---enable-keep-extlibs \
 --with-extlibs-path=$YAMBO_EXT_LIBS \
---enable-iotk \
+--enable-keep-extlibs \
 --enable-time-profile \
 --enable-memory-profile \
 --enable-open-mp \
