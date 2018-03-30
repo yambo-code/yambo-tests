@@ -95,6 +95,7 @@ undef $is_NEW_YPP;
 if ($pattern=~m/bug-fixes/ix) {$is_NEW_YPP="yes"};
 if ($pattern=~m/devel-ypp/ix) {$is_NEW_YPP="yes"};
 if ($pattern=~m/devel-rt-observables/ix) {$is_NEW_YPP="yes"};
+if ($pattern=~m/devel-nl/ix) {$is_NEW_YPP="yes"};
 #
 # Define list of required executables
 $target_list = $target_list_basic; 
