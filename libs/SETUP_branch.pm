@@ -92,6 +92,7 @@ if ($pattern=~m/max-release-GPL/ix) {$is_GPL="yes"};
 if ($is_GPL) {$branch_key.="_gpl"};
 #
 undef $is_NEW_YPP;
+if ($pattern=~m/bug-fixes/ix) {$is_NEW_YPP="yes"};
 if ($pattern=~m/devel-ypp/ix) {$is_NEW_YPP="yes"};
 if ($pattern=~m/devel-rt-observables/ix) {$is_NEW_YPP="yes"};
 #
