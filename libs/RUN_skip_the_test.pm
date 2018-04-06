@@ -42,7 +42,6 @@ if ( "@_" eq "DIR" ){
   if (-e "SC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
   if (-e "MAGNETIC" && $project !~ /magnetic/) {$message=" skipped (wrong PJ)"};
   if (-e "KERR" && $project !~ /kerr/) {$message=" skipped (wrong PJ)"};
-  if (-e "QP-DBS" && $project !~ /qp-dbs/) {$message=" skipped (wrong PJ)"};
   if ( $ANY eq "NO" and $project !~ /nopj/) {$message=" skipped (running only $project tests)"};
   #
  }
