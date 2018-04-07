@@ -36,6 +36,7 @@ if ( "@_" eq "DIR" ){
  } elsif ($project ne "all") {
   if (-e "PL" && $project !~ /pl/) { $message=" skipped (wrong PJ)"};
   if (-e "NL" && $project !~ /nl/) {$message=" skipped (wrong PJ)"};
+  if (-e "NL" && not $do_NL_tests ) {$message=" skipped (wrong BRANCH)"};
   if (-e "QED" && $project !~ /qed/) {$message=" skipped (wrong PJ)"};
   if (-e "RT" && $project !~ /rt/) {$message=" skipped (wrong PJ)"};
   if (-e "ELPH" && $project !~ /elph/) {$message=" skipped (wrong PJ)"};
