@@ -26,6 +26,7 @@
 use lib ".";
 do "config/MODULES.pl";
 do "config/TOOLS.pl";
+do "config/RULES.pl";
 #
 # The location of the test-suite directory
 $suite_dir=abs_path();
