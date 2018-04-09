@@ -56,15 +56,24 @@ sub CWD_go{
 }
 sub gimme_reference
 {
-$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$_[0]; 
+my $RUN_local=$_[0];
+#
+for $ipatt (1...$N_PATTERNS) 
+{
+ if ($RUN_local =~ $PATTERN[$ipatt][2]){
+   $RUN_local =~ s/$PATTERN[$ipatt][2]/$PATTERN[$ipatt][1]/;
+ }
+}
+#
+$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$RUN_local;
 if(! -e "$ref_filename" ) { 
- $ref_filename = $REF_prefix."REFERENCE_$branch_key/".$testname."/".$_[0]
+ $ref_filename = $REF_prefix."REFERENCE_$branch_key/".$testname."/".$RUN_local;
 };
 if(! -e "$ref_filename" ) { 
- $ref_filename = $REF_prefix."REFERENCE/".$_[0]; 
+ $ref_filename = $REF_prefix."REFERENCE/".$RUN_local;
 }
 if(! -e "$ref_filename" ) { 
- $ref_filename = $REF_prefix."REFERENCE/".$testname."/".$_[0];
+ $ref_filename = $REF_prefix."REFERENCE/".$testname."/".$RUN_local;
 }
 if(! -e "$ref_filename" ) { 
  $ref_filename = "FAIL";

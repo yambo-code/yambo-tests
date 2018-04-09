@@ -51,7 +51,9 @@ if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 #
 # OUT files
 O_file_loop: foreach $run_filename (<o-$testname.*>){
+ #
  &gimme_reference($run_filename);
+ #
  if (!-e "$ref_filename") { 
   &RUN_stats("NO_REF");
   if ($update_test and not $CHECK_error =~ /WHITELISTED/) {&UPDATE_action("ADD")};
@@ -80,6 +82,10 @@ R_file_loop: foreach $ref_filename (@OFILES){
  #
  if ($ref_filename =~ /gops/ or $ref_filename =~ /kindx/) {next R_file_loop};
  if ($ref_filename =~ /em1d/ and $LIFE eq "1") {next R_file_loop};
+ for $ipatt (1...$N_PATTERNS) 
+ {
+  if ($ref_filename =~ $PATTERN[$ipatt][1]){ next R_file_loop};
+ } 
  #
  if ($CHECK eq "SKIP") {next R_file_loop};
  #
