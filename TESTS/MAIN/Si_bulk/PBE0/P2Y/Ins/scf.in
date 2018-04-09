@@ -1,0 +1,28 @@
+ &control
+ calculation  = 'scf'
+ restart_mode = 'from_scratch'
+ pseudo_dir   = './'
+ outdir       = './'
+ prefix       = 'si-pbe0'
+ wf_collect   = .TRUE.
+/
+&system
+ ibrav           = 2
+ celldm(1)       = 10.262536
+ nat             = 2
+ ntyp            = 1
+ nbnd            = 8
+ ecutwfc         = 20.0
+ input_dft       = 'PBE0'
+ force_symmorphic=.true.  
+ nosym = .false.
+/
+&electrons
+/
+ATOMIC_SPECIES
+ Si  1.   Si.pbe-mt_fhi.UPF
+ATOMIC_POSITIONS crystal
+Si 0.0 0.0 0.0
+Si 0.25 0.25 0.25
+K_POINTS automatic
+   2 2 2 0 0 0
