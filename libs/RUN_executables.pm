@@ -62,7 +62,7 @@ if (-e "KERR"  && !$YPP=="1") {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_kerr";
 }
 if ($CHEERS =="1") {
- $yambo_exec = "$BRANCH/$conf_bin/cheers";
+ $yambo_exec = "$BRANCH/$conf_bin/ycheers";
 }
 #
 if ($openmp_is_off) {$yambo_exec="$yambo_exec -N";}
