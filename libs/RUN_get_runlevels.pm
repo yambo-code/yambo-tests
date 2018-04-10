@@ -29,7 +29,9 @@ $YPP="0";
 $YPP_RT="0";
 $YPP_SC="0";
 $YPP_PH="0";
+undef $P2Y;
 # Runlevels
+$P2Y=&RUN_feature("p2y");
 $CHEERS=&RUN_feature("Nbasis");
 if ($CHEERS eq "1") { $CHEERS=1; $description .= " CHEERS" };
 $fixsyms=&RUN_feature("fixsyms");

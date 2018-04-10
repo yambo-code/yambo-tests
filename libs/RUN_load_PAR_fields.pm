@@ -30,7 +30,7 @@ if ($np==1) {
  $MPI_CPU_conf[1]="serial";
  return;
 }
-if ($SETUP=="1" or $yambo_exec =~ /\/ypp/) { 
+if ($SETUP=="1" or $yambo_exec =~ /\/ypp/ or $yambo_exec =~ /\/p2y/) { 
  $MPI_CPU_conf[1]="serial";
  return;
 }

@@ -23,6 +23,9 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub RUN_load_conf{
+#
+# CONF
+#
 $prec = $default_prec;
 undef $skip_this_test;
 if( -e "$input_folder/$testname.conf") {
@@ -32,15 +35,30 @@ if( -e "$input_folder/$testname.conf") {
   ($desc, $value) = split(/\s+/,$confline);
   # Test precision
   if($desc =~ m/precision/) { 
-   &MY_PRINT($stdout, "** Changing precision for $testname to: $value \n");
+   &MY_PRINT($stdout, "** Changing precision for $testname to: $value \n") if ($verb);
    $prec = $value;
   };
+  # P2Y
+  if($desc =~ m/format/) { 
+   &MY_PRINT($stdout, "** Setting P2Y format for $testname to: $value \n") if ($verb);
+   $P2Y_format = $value;
+  }
+  if($desc =~ m/datadir/) { 
+   &MY_PRINT($stdout, "** Setting P2Y datadir for $testname to: $value \n") if ($verb);
+   $P2Y_datadir = $value;
+   chdir($P2Y_datadir);
+  }
+  if($desc =~ m/datafile/) { 
+   &MY_PRINT($stdout, "** Setting P2Y datafile for $testname to: $value \n") if ($verb);
+   $P2Y_datafile = $value;
+  }
   # GPL 
-  if($confline=="no GPL") { 
+  if($confline =~ /"no GPL"/) { 
    $skip_this_test = "1";
   }
  };
  close(CONF);
 }
+#
 }
 1;

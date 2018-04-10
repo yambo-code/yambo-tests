@@ -27,6 +27,7 @@ sub RUN_executables{
 # EXE section
 #
 $yambo_exec = "$BRANCH/$conf_bin/yambo";
+if ($P2Y) {$yambo_exec = "$BRANCH/$conf_bin/p2y"};
 if ($YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp"};
 if ($YPP=="2") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s"};
 if (-e "RT") {

@@ -31,21 +31,9 @@ $run_filename = "o-$testname.$DB";
 &gimme_reference($run_filename);
 #
 $check_folder="$testname"; 
-if( -e "SAVE/$DB" and $CORE eq "CORE") { $check_folder="SAVE"; };
+if ($CORE eq "CORE") { $check_folder="SAVE"; };
 #
-#print "CHECK_folder=$check_folder/$DB\n";
 if( -e "$check_folder/$DB" ){
- #print "$check_folder/$DB found!\n";
- #if( $is_OLD_IO eq "yes" ) { 
- # $DB_tmp="${DB}_tmp";
- # &command("mv $check_folder/$DB $testname/$DB_tmp"); 
- # &command("$nccopy -d0 $testname/$DB_tmp $testname/$DB"); 
- #};
- #if( $is_OLD_IO eq "yes" ) { 
- # $DB_d0="${DB}_d0";
- # &command("mv $testname/$DB $testname/$DB_d0"); 
- # &command("mv $testname/$DB_tmp $check_folder/$DB"); 
- #};
  &command("$ncdump -v $VAR $check_folder/$DB | $awk -f $suite_dir/scripts/find_the_diff/ndb2o.awk | head -n 10000 > $run_filename") ;
  if(! -e "$ref_filename" ) {
   &RUN_stats("ERR_DB");

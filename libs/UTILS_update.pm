@@ -32,7 +32,7 @@ my $TEST_todo= $update_test;
 #
 &FLOW_reset("ALL");
 undef $compile;
-$keys="all hard";
+$keys="all hard p2y";
 #
 if (-d "$TESTS_folder/$TEST_todo/INPUTS"){
  #
@@ -66,8 +66,8 @@ if ($branch_key eq "master")
  $REF="REFERENCE_".$branch_key;
  if (not -d $REF) 
  { 
-  &command("mkdir -p ../$REF");
-  &command("$git add ../$REF");
+  &command("mkdir -p $REF");
+  &command("$git add $REF");
  }
 }
 #

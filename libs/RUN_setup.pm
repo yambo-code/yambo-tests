@@ -49,6 +49,7 @@ if ("@_" =~ "before_run"){
  }
  if($nt){ $cpu_conf=$cpu_conf."(Threads=$nt)" };
  if($nl){ $cpu_conf=$cpu_conf."(SLK=$nl)" };
+ if($P2Y){$cpu_conf=$cpu_conf."($P2Y_format"."@"."$P2Y_datadir)" };
  #
  # message
  $message=$cpu_conf."] $testname: $description";
@@ -60,8 +61,10 @@ if ("@_" =~ "before_run"){
  &command("rm -fr $dir_name $testname");
  #
  # input file
- &command("cat $cpu $input_folder/$testname >> yambo.in");
- if( -e "$suite_dir/$host/$user/FLAGS") {&command("cat $suite_dir/$host/$user/FLAGS >> yambo.in")};
+ if (not $P2Y) {
+  &command("cat $cpu $input_folder/$testname >> yambo.in");
+  if( -e "$suite_dir/$host/$user/FLAGS") {&command("cat $suite_dir/$host/$user/FLAGS >> yambo.in")};
+ }
  #
  # append specs
  @specs = split(/\s+/,$string);
@@ -71,6 +74,10 @@ if ("@_" =~ "before_run"){
  foreach $field (@OMP_field) {print IN "$field \n"};
  foreach $spec  (@specs)     {print IN "$spec \n"};
  close IN;
+ #
+ # Input file
+ $INPUT_file="yambo.in";
+ if ($yambo_exec =~ /\/p2y/) { $INPUT_file=$P2Y_datafile };
 }
 if ("@_" =~ "after_run"){
  #

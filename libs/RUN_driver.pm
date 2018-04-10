@@ -69,6 +69,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  $error=&RUN_skip_the_test("DIR");
  if ($error !~ "OK") { 
   &RUN_setup("after_tests_loop");
+  $CHECK_error=" skipped (missing CORE databases)";
+  &RUN_stats("DIR_SKIPPED");
   next LOOP_DIRS;
  };
  #
@@ -177,6 +179,13 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
       &CHECK_driver;
      }
     }
+    #
+    # In case we are running in a different directory (see p2y, RUN_load_conf)
+    #
+    if ($P2Y) {
+     chdir $suite_dir;
+     chdir "$TESTS_folder/$testdir/$ROBOT_wd";
+    };
     #
     &RUN_setup("after_run");
     #

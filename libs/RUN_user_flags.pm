@@ -61,7 +61,8 @@ if( -e "$input_folder/$testname.flags") {
  close(FLAGS);
  if (not $found) { return "FAIL" };
 }
-$flags = '"' . "$testname$flags,$ROBOT_string" . '"';
+$flags = '-J "' . "$testname$flags,$ROBOT_string" . '"';
+if ($P2Y) {$flags=" "};
 &MY_PRINT($stdout, "FLAGS: $flags\n") if ($verb);
 return "OK";
 }
