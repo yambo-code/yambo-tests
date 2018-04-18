@@ -27,12 +27,11 @@ module load local/intel/parallel_2017/pre_compiled
 endif
 
 if ( "$1" == "tests") then
-# if ( "$3" == "34" || "$3" == "6" || "$3" == "15" ) then
-# if ( "$3" == "34" ) then
-#  ./driver.pl -c -flow validate -newer 30 -robot $3 
-# else
- ./driver.pl -c -c -flow validate_slepc -report -robot $3 -nice -newer 10
-# endif
+ if ( "$3" == "28" || "$3" == "29" || "$3" == "30" ) then
+ ./driver.pl -c -c -flow validate_dp -report -robot $3 -nice -newer 100
+ else
+ ./driver.pl -c -c -flow validate    -report -robot $3 -nice -newer 100
+ endif
 endif
 #
 if ( "$1" == "bench") then

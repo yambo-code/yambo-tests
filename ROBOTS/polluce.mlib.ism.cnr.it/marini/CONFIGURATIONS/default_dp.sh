@@ -13,6 +13,7 @@ fi
 ./configure \
 $CONF_LINE \
 --with-extlibs-path=$YAMBO_EXT_LIBS \
+--enable-dp \
 --enable-keep-extlibs \
 --enable-time-profile \
 --enable-memory-profile \

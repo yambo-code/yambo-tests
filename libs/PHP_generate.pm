@@ -65,7 +65,7 @@ $time=$pattern[0][5];
 sub PHP_extract{
 #
 # Name choosing
-$MAX_phps=10;
+$MAX_phps=20;
 chdir("$host/www");
 for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
@@ -77,17 +77,17 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
  $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php.bz2";
  $comp_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.php.bz2";
  if (-f $main_php){
-  ($file = $error_php) =~ s/$j/$k/g;
+  ($file = $error_php) =~ s/_$j/_$k/g;
   if (-f $error_php) {&command("mv $error_php $file")};
-  ($file = $report_php) =~ s/$j/$k/g;
+  ($file = $report_php) =~ s/_$j/_$k/g;
   if (-f $report_php) {&command("mv $report_php $file")};
-  ($file = $conf_php) =~ s/$j/$k/g;
+  ($file = $conf_php) =~ s/_$j/_$k/g;
   if (-f $conf_php) {&command("mv $conf_php $file")};
-  ($file = $comp_php) =~ s/$j/$k/g;
+  ($file = $comp_php) =~ s/_$j/_$k/g;
   if (-f $comp_php) {&command("mv $comp_php $file")};
-  ($file = $main_dat) =~ s/$j/$k/g;
+  ($file = $main_dat) =~ s/_$j/_$k/g;
   if (-f $main_dat) {&command("mv $main_dat $file")};
-  ($file = $main_php) =~ s/$j/$k/g;
+  ($file = $main_php) =~ s/_$j/_$k/g;
   if (-f $main_php) {&command("mv $main_php $file")};
   open(my $fh1, '<', $file) ;
   open(my $fh2, '>', 'dummy') ;
