@@ -69,7 +69,6 @@ if ( "@_" eq "INPUT") {
   if(! -x "@exe[0]"){ 
    $CHECK_error = " skipped (missing @exe[0])";
    &RUN_stats("SKIPPED");
-   $CHECK_error = " skipped (missing executables)";
    return "FAIL";
   }
  }
