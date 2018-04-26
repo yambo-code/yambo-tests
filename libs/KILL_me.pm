@@ -28,8 +28,10 @@ $numParameters = @_ ;
 $process=@_[0];
 if ($numParameters eq 1){
  $cmd="ps uax | grep $kill_me | grep $process | grep -v grep | grep -v vim | grep -v kill";
-}else{
+}elsif ($numParameters eq 2){
  $cmd="ps uax | grep $kill_me | grep $process | grep @_[1] | grep -v grep | grep -v vim | grep -v kill";
+}elsif ($numParameters eq 3){
+ $cmd="ps uax | grep $kill_me | grep $process | grep @_[1] | grep @_[2] | grep -v grep | grep -v vim | grep -v kill";
 }
 $list =`$cmd | awk '{print \$2}'`;
 $name =`$cmd`;

@@ -53,9 +53,15 @@ if ($len eq 0) {
  chomp($kill_me);
 }
 if ($kill_me){
- &KILL_me("driver.pl","perl");
- &KILL_me("yambo");
- &KILL_me("ypp");
+ if ($ROBOT_id) {
+  &KILL_me("driver.pl","perl",$ROBOT_id);
+  &KILL_me("yambo",$ROBOT_id);
+  &KILL_me("ypp",$ROBOT_id);
+ }else{
+  &KILL_me("driver.pl","perl");
+  &KILL_me("yambo");
+  &KILL_me("ypp");
+ }
  die;
 }
 #

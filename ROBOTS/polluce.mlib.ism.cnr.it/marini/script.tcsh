@@ -3,7 +3,7 @@
 cd /scratch/marini/yambo-tests/
 
 if ( "$1" == "down") then
-./driver.pl -kill
+#./driver.pl -kill
 ./driver.pl -d all 
 endif
 
