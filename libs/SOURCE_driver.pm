@@ -108,7 +108,7 @@ if ("$precompiled_is_run" eq "yes") {
  $conf_bin  = "bin-precompiled-$ROBOT_string";
  chdir $BRANCH;
  &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
- &command("if [ -d libs/bin ]; then cp libs/bin/* $conf_bin/; fi");
+ &command("if [ -d lib/bin ]; then cp lib/bin/* $conf_bin/; fi");
  chdir $suite_dir;
 }else{
  $conf_bin  = "bin-$conf_file-$FC_kind-$ROBOT_string";
@@ -137,7 +137,7 @@ if ($compile)
   }
   chdir $BRANCH;
   &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
-  &command("if [ -d libs/bin ]; then cp libs/bin/* $conf_bin/; fi");
+  &command("if [ -d lib/bin ]; then cp lib/bin/* $conf_bin/; fi");
   &MY_PRINT($stdout,  "\n -       Source Check : compiled ($conf_bin) ... ");
   $bin_check=&exe_check;
   if ( "$bin_check" eq "FAIL") {
