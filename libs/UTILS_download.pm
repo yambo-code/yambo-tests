@@ -101,6 +101,7 @@ foreach $dir (<*>) {
     if ( "$file_exist" eq "exists\n") {
      &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
      &MY_PRINT($stdout, " downloading ...\n");
+     if ($force) {&command("rm -f $filename[$i1]$EXTENSION ")};
      &command( "wget --show-progress -qc $LINK/$filename[$i1]$EXTENSION");
      &MY_PRINT($stdout, "   opening ...");
      &command( "tar zxf $filename[$i1]$EXTENSION");

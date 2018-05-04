@@ -4,7 +4,7 @@ cd /scratch/marini/yambo-tests/
 
 if ( "$1" == "down") then
 #./driver.pl -kill
-./driver.pl -d all 
+./driver.pl -d all -force
 endif
 
 if ( "$1" == "clean") then
@@ -27,7 +27,7 @@ module load local/intel/parallel_2017/pre_compiled
 endif
 
 if ( "$1" == "tests") then
- if ( "$3" == "28" || "$3" == "29" || "$3" == "30" ) then
+ if ( "$3" == "44" || "$3" == "45" || "$3" == "46" ) then
  ./driver.pl -c -c -flow validate_dp -report -robot $3 -nice -newer 100
  else
  ./driver.pl -c -c -flow validate    -report -robot $3 -nice -newer 100
