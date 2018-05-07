@@ -74,8 +74,8 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
  $main_php  = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.php";
  $error_php = $branch_key."/".$hostname."_".$branch_key."_".$j."_error.php";
  $report_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_report.php";
- $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php.bz2";
- $comp_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.php.bz2";
+ $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php";
+ $comp_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.php";
  if (-f $main_php){
   ($file = $error_php) =~ s/_$j/_$k/g;
   if (-f $error_php) {&command("mv $error_php $file")};
