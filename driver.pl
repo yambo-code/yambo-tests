@@ -94,11 +94,20 @@ if ($edit and $backup_logs eq "no" and $edit ne 1){
  if (-e "ROBOTS/$host/$user/FLOWS/$edit.pl"){
   system("vim ROBOTS/$host/$user/FLOWS/$edit.pl");
  };
+ if (-e "ROBOTS/$host/$user/FLOWS/$edit"){
+  system("vim ROBOTS/$host/$user/FLOWS/$edit");
+ };
  if (-e "ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit.cpu"){
   system("vim ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit.cpu");
  };
+ if (-e "ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit"){
+  system("vim ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit");
+ };
  if (-e "ROBOTS/$host/$user/CONFIGURATIONS/$edit.sh"){
-  system("vim ROBOTS/$host/$user/CONFIGURATIONS/$edit.sh");
+  system("vim ROBOTS/$host/$user/CONFIGURATIONS/$edit");
+ };
+ if (-e "ROBOTS/$host/$user/CONFIGURATIONS/$edit"){
+  system("vim ROBOTS/$host/$user/CONFIGURATIONS/$edit");
  };
  die;
 }

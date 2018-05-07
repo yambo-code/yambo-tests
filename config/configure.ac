@@ -125,11 +125,14 @@ case $with_yambo in
       if test -f $with_yambo/driver/yambo.h ; then
          AC_MSG_RESULT($with_yambo)
          echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
-         svn --force add ROBOTS/$robot/$user/BRANCHES
       fi
     fi
     ;;
 esac
+# ============================================================================
+# Credentials setup
+git config credential.helper store
+#
 # ============================================================================
 # PERL_LIB
 #
