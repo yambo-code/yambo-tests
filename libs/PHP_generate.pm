@@ -140,8 +140,8 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP"," <td>");
 &MESSAGE("PHP"," <br><a href='$report_php'> report</a>");
 &MESSAGE("PHP"," <br><a href='$error_php'> error</a>");
-&MESSAGE("PHP"," <br><a href='$conf_php.bz2'> conf</a>");
-&MESSAGE("PHP"," <br><a href='$comp_php.bz2'> comp</a>");
+&MESSAGE("PHP"," <br><a href='$conf_php'> conf</a>");
+&MESSAGE("PHP"," <br><a href='$comp_php'> comp</a>");
 &MESSAGE("PHP"," </td>");
 #&MESSAGE("PHP"," <td>$branch_key</td>\n");
 &MESSAGE("PHP"," <td>$FC_kind<br>$MPI_kind</td>\n");
@@ -191,9 +191,9 @@ foreach $file (<$dir/compilation/*comp*.log>) {&command("cat $file >> $comp_php"
 foreach $file (<*_comp.php>,<*_conf.php>) {
  &command("bzip2 $file");
 }
-&command("mkdir -p    $host/www/$branch_key");
-&command("mv *.php    $host/www/$branch_key");
-&command("mv *.php.bz2 $host/www/$branch_key");   
+&command("mkdir -p $host/www/$branch_key");
+&command("mv *.php $host/www/$branch_key");
+&command("mv *.php $host/www/$branch_key");   
 return
 }
 #
