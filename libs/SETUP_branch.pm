@@ -91,7 +91,7 @@ if ($is_GPL) {$branch_key.="_gpl"};
 #
 $is_NEW_YPP="yes";
 if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP};
-if ($pattern=~m/4-0/ix) {undef $is_NEW_YPP};
+if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP};
 if ($is_GPL) {undef $is_NEW_YPP};
