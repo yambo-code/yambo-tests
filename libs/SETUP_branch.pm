@@ -50,23 +50,17 @@ if ($last eq "/") {
 if($branchdir =~ /^#/ || $branchdir eq "") {
  &MY_PRINT($stdout, "Skipping branch: $branchdir\n") if ($verb);
  return "FAIL";
-}elsif($branchdir =~ /^\//) {
- my @subdirs = File::Spec->splitdir( $branchdir );  
- # Make shortname from last two subdirs in full path
- $dir= @subdirs[-2]."_".@subdirs[-1];
- # Make shortname from last two subdirs in full path
- $dir_id= @subdirs[-1];
 }
 if( ! -f "$BRANCH/driver/driver.c")  { &MY_PRINT($stdout, "ERROR: cannot find $branchdir, skipping!\n"); return "FAIL"; };
 #
 my $pattern;
 if ($branch_id eq "") 
 {
- $branch_key=$dir;
- $branch_key =~ s/_/ /;
- my @locals = split(' ', $branch_key);
- $branch_key=@locals[1];
- $pattern=$BRANCH;
+ chdir $BRANCH;
+ $branch_key= qx(git rev-parse --abbrev-ref HEAD);
+ $branch_key=~ s/^\s+|\s+$//g;
+ $pattern=$branch_key;
+ chdir $suite_dir;
 }else{
  $branch_key=$branch_id;
  $pattern=$branch_id;
