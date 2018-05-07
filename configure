@@ -587,6 +587,8 @@ PACKAGE_URL=''
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
 PERL_LIB
+grep_cmd
+NP_cmd
 rsync
 txt2html
 awk
@@ -2281,7 +2283,24 @@ $as_echo "$with_yambo" >&6; }
     ;;
 esac
 # ============================================================================
+# Platform specific setups
+case "${host}" in
+ *86*apple* )
+   grep_cmd="grep -P"
+   NP_cmd="sysctl hw.physicalcpu"
+   ;;
+  *)
+   grep_cmd="grep"
+   NP_cmd="\$grep -c -P '^processor\\s+:' /proc/cpuinfo"
+   ;;
+ *)
+esac
+
+
+#
+# ============================================================================
 # Credentials setup
+#
 git config credential.helper store
 #
 # ============================================================================

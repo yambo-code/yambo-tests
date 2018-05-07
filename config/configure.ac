@@ -130,7 +130,24 @@ case $with_yambo in
     ;;
 esac
 # ============================================================================
+# System specific setups
+case "${host}" in
+ *86*apple* )
+   grep_cmd="grep -P"
+   NP_cmd="sysctl hw.physicalcpu"
+   ;;
+  *)
+   grep_cmd="grep"
+   NP_cmd="\$grep -c -P '^processor\\s+:' /proc/cpuinfo"
+   ;;
+ *)
+esac
+AC_SUBST(NP_cmd)
+AC_SUBST(grep_cmd)
+#
+# ============================================================================
 # Credentials setup
+#
 git config credential.helper store
 #
 # ============================================================================

@@ -135,7 +135,7 @@ if($help){
 #
 # Show extra files
 if($repo_check){ 
- &command("$git status --ignored | grep -v SAVE | grep -v GKKP | grep -v .gz");
+ &command("$git status --ignored | $grep -v SAVE | $grep -v GKKP | $grep -v .gz");
  die "\n";
 };
 #
