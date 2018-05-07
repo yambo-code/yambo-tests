@@ -138,7 +138,7 @@ case "${host}" in
    ;;
   *)
    grep_cmd="grep"
-   NP_cmd="\$grep -c -P '^processor\\s+:' /proc/cpuinfo"
+   NP_cmd="\$grep -c -P '^processor\\\\s+:' /proc/cpuinfo"
    ;;
  *)
 esac

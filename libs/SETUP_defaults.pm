@@ -60,7 +60,7 @@ $ROBOT_folder="R1";
 $TESTS_folder="TESTS/MAIN";
 #
 $SYSTEM_NP=1;
-chomp($SYSTEM_NP = `$grep -c -P '^processor\\s+:' /proc/cpuinfo`);
+chomp($SYSTEM_NP = `$NP_cmd`);
 $SYSTEM_NP_half=$SYSTEM_NP/2;
 if ($SYSTEM_NP_half<1) { $SYSTEM_NP_half=1 };
 $SYSTEM_SLK=1;
