@@ -188,11 +188,7 @@ foreach $file (<$dir/compilation/*comp*.log>) {&command("cat $file >> $comp_php"
 #
 # Final copying
 #
-foreach $file (<*_comp.php>,<*_conf.php>) {
- &command("bzip2 $file");
-}
 &command("mkdir -p $host/www/$branch_key");
-&command("mv *.php $host/www/$branch_key");
 &command("mv *.php $host/www/$branch_key");   
 return
 }
