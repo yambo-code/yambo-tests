@@ -27,11 +27,14 @@ sub RUN_it{
 # Report the input file
 if($verb ge 2) { &PRINT_input };
 #
+my $CPU_cmd= " ";
+if ($yambo_running) {$CPU_cmd=$CPU_flag};
+#
 # CMD line
 if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
  $command_line = "$nice $yambo_exec -F $INPUT_file $flags $in_dir_cmd_line $force_serial $log";
 }else{
- $command_line = "$nice $mpiexec -np $np $yambo_exec -F $INPUT_file $flags $in_dir_cmd_line $force_serial $CPU_flag $log";
+ $command_line = "$nice $mpiexec -np $np $yambo_exec -F $INPUT_file $flags $in_dir_cmd_line $force_serial $CPU_cmd $log";
 }
 #
 # *** RUN ***
