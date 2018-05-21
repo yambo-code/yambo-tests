@@ -24,19 +24,31 @@
 #
 sub CHECK_database{
 #
-$DB  = "@_[1]";
 $VAR = "@_[0]";
+$DB  = "@_[1]";
 $CORE= "@_[2]";
 $run_filename = "o-$testname.$DB";
 &gimme_reference($run_filename);
+&CWD_save;
 #
 $check_folder="$testname"; 
-if ($CORE eq "CORE") { $check_folder="SAVE"; };
+#if ($CORE eq "CORE") { $check_folder="SAVE"; };
+if ($CORE eq "CORE") { $check_folder=$dir_name; };
+#
+if ($CORE eq "CORE") {
+  $target_dir = "$suite_dir/$TESTS_folder/$testdir/$ROBOT_wd/$check_folder";
+  if(! -d $target_dir ) { &command("mkdir -p $target_dir"); };
+  #
+  &command("cp SAVE/$DB $target_dir") ;
+  chdir("$suite_dir/$TESTS_folder/$testdir/$ROBOT_wd") ;
+  &gimme_reference($run_filename);
+};
 #
 if( -e "$check_folder/$DB" ){
  &command("$ncdump -v $VAR $check_folder/$DB | $awk -f $suite_dir/scripts/find_the_diff/ndb2o.awk | head -n 10000 > $run_filename") ;
  if(! -e "$ref_filename" ) {
   &RUN_stats("ERR_DB");
+  &CWD_go;
   return;
  }
 } else{
@@ -44,5 +56,6 @@ if( -e "$check_folder/$DB" ){
   &RUN_stats("ERR_DB");
  }
 }
+$CWD_go;
 }
 1;

@@ -81,6 +81,7 @@ R_file_loop: foreach $ref_filename (@OFILES){
  #
  my $CHECK=&CHECK_GPL_skip("$ref_filename");
  #
+ if ($ref_filename =~ /db1/) {next R_file_loop};
  if ($ref_filename =~ /gops/ or $ref_filename =~ /kindx/) {next R_file_loop};
  if ($ref_filename =~ /em1d/ and $LIFE eq "1") {next R_file_loop};
  for $ipatt (1...$N_PATTERNS) 

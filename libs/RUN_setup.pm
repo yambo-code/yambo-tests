@@ -87,7 +87,7 @@ if ("@_" =~ "after_run"){
   if (!-d $dir_name) {&command("mv $testname $dir_name")}; 
   if ($ir == $Nr and $LAST_COMPLETED_RUN) {&command("ln -s $LAST_COMPLETED_RUN $testname")};
  }else{
-   &command("mkdir $dir_name");
+  if (!-d $dir_name) {&command("mkdir $dir_name"); };
  }
  #
  copy("yambo.in", $dir_name) or &MESSAGE("ERROR WHITE","Error copying file $!");
