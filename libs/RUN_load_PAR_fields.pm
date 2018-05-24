@@ -23,18 +23,21 @@
 sub RUN_load_PAR_fields{
 #
 #
-$Nr="1";
+$Nr="0";
 @MPI_CPU_conf=();
 #
 if ($np==1) { 
+ $Nr="1";
  $MPI_CPU_conf[1]="serial";
  return;
 }
 if ($SETUP=="1" or $yambo_exec =~ /\/ypp/ or $yambo_exec =~ /\/p2y/) { 
+ $Nr="1";
  $MPI_CPU_conf[1]="serial";
  return;
 }
 if ( $default_parallel ){ 
+ $Nr="1";
  $MPI_CPU_conf[1]="default";
  return;
 };
