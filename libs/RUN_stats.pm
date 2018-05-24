@@ -47,7 +47,7 @@ if ("@_" eq "INIT_DIR"){
 if ("@_" eq "REPORT"){
  &MESSAGE("LOG","\n$line");
  my $MSG="\n$r_s"."Tests: FAIL[$run_with_failures"."] ";
- $MSG=$MSG." Checks: FAIL[$test_failed"."] OK[$test_ok"."] NOT RUN [$test_not_run"."] SKIPPED [$test_skipped"."] WHITELISTED [$whitelist_err] $r_e";
+ $MSG=$MSG." Checks: FAIL[$test_failed"."] SUCCESSFUL[$test_ok"."] NO RUN[$test_not_run"."] SKIPS[$test_skipped"."] WHITELIST[$whitelist_err] $r_e";
  &MESSAGE("LOG","$MSG");
  &MESSAGE("LOG","\n$line");
  $MSG="\nOutputs: FAIL[$wrong_out"."] no REFs[$ref_not_found"."] no OUTs[$out_not_found"."]";
@@ -56,7 +56,7 @@ if ("@_" eq "REPORT"){
  #
  # REPORT
  #
- &MESSAGE("REPORT","\nRUNS_FAIL: $run_with_failures => CHECKS_FAIL: $test_failed & NO RUN: $test_not_run & SKIPS: $test_skipped % WHITELIST: $whitelist_err % OKs: $test_ok");
+ &MESSAGE("REPORT","\nRUNS_FAIL: $run_with_failures => CHECKS_FAIL: $test_failed & NO RUN: $test_not_run & SKIPS: $test_skipped % WHITELIST: $whitelist_err % SUCCESSFUL: $test_ok");
  if ($test_failed>0) {
   &MESSAGE("REPORT","\nCHECK details:");
   if ($wrong_out>0) {&MESSAGE("REPORT"," $wrong_out wrong output %")};

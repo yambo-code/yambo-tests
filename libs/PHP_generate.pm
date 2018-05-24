@@ -138,7 +138,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP","<tr>\n")
 #&MESSAGE("PHP"," <td>$hostname\n");
 &MESSAGE("PHP"," <td>");
-&MESSAGE("PHP"," <br><a href='$report_php'> report</a>");
+&MESSAGE("PHP","     <a href='$report_php'> report</a>");
 &MESSAGE("PHP"," <br><a href='$error_php'> error</a>");
 &MESSAGE("PHP"," <br><a href='$conf_php'> conf</a>");
 &MESSAGE("PHP"," <br><a href='$comp_php'> comp</a>");
@@ -147,11 +147,20 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP"," <td>$FC_kind<br>$MPI_kind</td>\n");
 &MESSAGE("PHP"," <td>$date<br>$time</td>\n");
 &MESSAGE("PHP"," <td>$REVISION<br>$BUILD</td>\n");
+#
 &get_line("RUNS_FAIL");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
- if ($pattern[$i][1] == 0) { &MESSAGE("PHP"," <td bgcolor=\"#6FFF00\">$pattern[$i][1]</td>\n") };
- if ($pattern[$i][1] > 0 and $pattern[$i][1] < 10) { &MESSAGE("PHP"," <td bgcolor=\"#FC9F00\">$pattern[$i][1]</td>\n")} ;
- if ($pattern[$i][1] >= 10) { &MESSAGE("PHP"," <td bgcolor=\"#CC0000\">$pattern[$i][1]</td>\n")};
+ $fail=$pattern[$i][1];
+ $checks=$pattern[$i][4];
+ $notrun=$pattern[$i][8];
+ $skipped=$pattern[$i][11];
+ $whitel=$pattern[$i][14];
+ $succes=$pattern[$i][17];
+ $total=$fail+$checks+$whitel+$skipped+$succes;
+ $string_php="FAIL: $fail / OKs: $succes <br> CH: $checks / WL: $whitel / SK: $skipped <br> TOTAL: $total";
+ if ($fail == 0) { &MESSAGE("PHP"," <td bgcolor=\"#6FFF00\" align=\"center\">$string_php</td>\n") };
+ if ($fail > 0 and $string < 10) { &MESSAGE("PHP"," <td bgcolor=\"#FC9F00\" align=\"center\">$string_php</td>\n")} ;
+ if ($fail >= 10) { &MESSAGE("PHP"," <td bgcolor=\"#CC0000\" align=\"center\">$string_php</td>\n")};
 }
 if ($n_patterns eq 0){
  &get_line("FAIL:");

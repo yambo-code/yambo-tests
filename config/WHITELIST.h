@@ -74,9 +74,9 @@ call add_RULE("o-06_h_using_colls.SC_E_History","whitelist",MATERIAL="Si_bulk")
 ! DP NOISE
 !===========
 ! skip
-call add_RULE(".ndb.gops","skip",MATERIAL="Si_surface")
-call add_RULE("elph_0K_adaptative","skip",MATERIAL="Si_bulk")
-call add_RULE("0K_field_ad","skip",MATERIAL="Si_bulk")
+!call add_RULE(".ndb.gops","skip",MATERIAL="Si_surface")
+!call add_RULE("elph_0K_adaptative","skip",MATERIAL="Si_bulk")
+!call add_RULE("0K_field_ad","skip",MATERIAL="Si_bulk")
 ! whitelist
-call add_RULE("o-04_elel+elph_0K.carriers","whitelist",MATERIAL="Si_bulk")
-call add_RULE(".YPP-RT_","whitelist",MATERIAL="MoS2")
+!call add_RULE("o-04_elel+elph_0K.carriers","whitelist",MATERIAL="Si_bulk")
+!call add_RULE(".YPP-RT_","whitelist",MATERIAL="MoS2")
