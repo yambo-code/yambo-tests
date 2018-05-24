@@ -159,7 +159,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $total=$fail+$checks+$whitel+$skipped+$succes;
  $string_php="FAIL: $fail / OKs: $succes <br> CH: $checks / WL: $whitel / SK: $skipped <br> TOTAL: $total";
  if ($fail == 0) { &MESSAGE("PHP"," <td bgcolor=\"#6FFF00\" align=\"center\">$string_php</td>\n") };
- if ($fail > 0 and $string < 10) { &MESSAGE("PHP"," <td bgcolor=\"#FC9F00\" align=\"center\">$string_php</td>\n")} ;
+ if ($fail > 0 and $fail < 10) { &MESSAGE("PHP"," <td bgcolor=\"#FC9F00\" align=\"center\">$string_php</td>\n")} ;
  if ($fail >= 10) { &MESSAGE("PHP"," <td bgcolor=\"#CC0000\" align=\"center\">$string_php</td>\n")};
 }
 if ($n_patterns eq 0){
