@@ -47,6 +47,7 @@ sub PHP_key_words{
  if ($n_patterns eq 0) {return};
  $branch_key=$pattern[0][1];
  $BUILD=$pattern[0][3];
+ $BUILD =~ s/\+/ /g;
  $MPI_kind=$pattern[0][5];
  $FC_kind=$pattern[0][7];
  $REVISION=$pattern[0][9];
@@ -60,6 +61,17 @@ sub PHP_key_words{
 &get_line("Date");
 $date=$pattern[0][3];
 $time=$pattern[0][5];
+$time=~ s/\-/h/g;
+$time.="m";
+#
+&get_line("Running tests");
+$running_tests=$pattern[0][1];
+&get_line("Projects");
+$size=@{ $pattern[0] };
+$projects="";
+for( $i = 1; $i < $size; $i = $i + 1 ){
+ $projects.=" $pattern[0][$i]";
+ }
 }
 #
 sub PHP_extract{
@@ -115,9 +127,9 @@ open($php, '>', $main_php) or die "Could not open file '$main_php' $!";
 &MESSAGE("PHP","<tr>\n")
 &MESSAGE("PHP"," <th>Logs</th>\n")
 #&MESSAGE("PHP"," <th>Branch</th>\n")
-&MESSAGE("PHP"," <th>Compiler</th>\n");
+&MESSAGE("PHP"," <th>Compilation</th>\n");
 &MESSAGE("PHP"," <th>Date</th>\n");
-&MESSAGE("PHP"," <th>Revision</th>\n");
+&MESSAGE("PHP"," <th>Tests</th>\n");
 &get_line("Parallel");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $field_1=$pattern[$i][4];
@@ -142,11 +154,11 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP"," <br><a href='$error_php'> error</a>");
 &MESSAGE("PHP"," <br><a href='$conf_php'> conf</a>");
 &MESSAGE("PHP"," <br><a href='$comp_php'> comp</a>");
-&MESSAGE("PHP"," </td>");
+&MESSAGE("PHP"," </td>\n");
 #&MESSAGE("PHP"," <td>$branch_key</td>\n");
-&MESSAGE("PHP"," <td>$FC_kind<br>$MPI_kind</td>\n");
+&MESSAGE("PHP"," <td>$REVISION<br>$FC_kind $MPI_kind<br>$BUILD</td>\n");
 &MESSAGE("PHP"," <td>$date<br>$time</td>\n");
-&MESSAGE("PHP"," <td>$REVISION<br>$BUILD</td>\n");
+&MESSAGE("PHP"," <td>TESTS: $running_tests<br>PROJ: $projects</td>\n");
 #
 &get_line("RUNS_FAIL");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
@@ -157,7 +169,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $whitel=$pattern[$i][14];
  $succes=$pattern[$i][17];
  $total=$fail+$checks+$whitel+$skipped+$succes;
- $string_php="FAIL: $fail / OKs: $succes <br> CH: $checks / WL: $whitel / SK: $skipped <br> TOTAL: $total";
+ $string_php="FAIL: $fail,  OKs: $succes <br> CHECK FAIL: $checks <br> WHITE: $whitel, SKIP: $skipped <br> TOTAL: $total";
  if ($fail == 0) { &MESSAGE("PHP"," <td bgcolor=\"#6FFF00\" align=\"center\">$string_php</td>\n") };
  if ($fail > 0 and $fail < 10) { &MESSAGE("PHP"," <td bgcolor=\"#FC9F00\" align=\"center\">$string_php</td>\n")} ;
  if ($fail >= 10) { &MESSAGE("PHP"," <td bgcolor=\"#CC0000\" align=\"center\">$string_php</td>\n")};

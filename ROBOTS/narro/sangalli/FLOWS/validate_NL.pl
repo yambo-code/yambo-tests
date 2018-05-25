@@ -18,9 +18,9 @@
 {
  ACTIVE      => "yes",
  TESTS       => "all",
- CONFIG      => "gfortran.sh",
- KEYS        => "nopj elph sc rt kerr magnetic",
- #KEYS        => "nopj",
+ CONFIG      => "gfortran_DP.sh",
+ KEYS        => "nl",
+ MPI_CPU     => 1,
 },
 {
  MPI_CPU     => 4,
