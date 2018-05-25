@@ -25,5 +25,9 @@
 {
  MPI_CPU     => 4,
  PAR_MODE    => "random",
+},
+{
+ MPI_CPU     => 4,
+ PAR_MODE    => "default",
 }
 );

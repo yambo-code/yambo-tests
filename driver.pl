@@ -24,6 +24,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 use lib ".";
+use autodie;
 do "config/MODULES.pl";
 do "config/TOOLS.pl";
 do "config/RULES.pl";
@@ -331,7 +332,7 @@ if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
 &RUN_global_report("FINAL");
 #
 close $rlog;
-close $tlog;
+#close $tlog; # This is closed in driver.pm inside the branhes loop
 close $elog;
 close $wlog;
 close $flog;
