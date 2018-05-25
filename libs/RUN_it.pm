@@ -39,18 +39,44 @@ if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
 #
 # *** RUN ***
 $test_start = [gettimeofday];
-eval { 
- local $SIG{ALRM} = sub { die "alarm\n" };
- alarm $run_duration;         # schedule alarm 
- if (not $dry_run) {&command("$command_line")};   # launch the yambo job
- alarm 0;                     # cancel the alarm
-};
+#
+# DS: New implementation of alarm using form
+#     This avoids leving defunct processes and need to call KILL
+#
+$pid = fork;
+#
+if ($pid > 0){
+  eval{
+    local $SIG{ALRM} = sub {kill 9, -$pid;};
+    alarm $run_duration;
+    waitpid($pid, 0);
+    alarm 0;
+  };
+}
+elsif ($pid == 0){
+    setpgrp(0,0);
+    if (not $dry_run) {&command("$command_line")};   # launch the yambo job
+    exit(0);
+}
 if ($@) {
  die unless $@ eq "alarm\n"; # propagate unexpected errors
 }
 #
-# Clean the RUN
-&KILL("$yambo_exec","$ROBOT_string");
+# DS: OLD implementation of alarm commented
+#     To be removed after testing
+#
+#eval { 
+# local $SIG{ALRM} = sub { die "alarm\n" };
+# alarm $run_duration;         # schedule alarm 
+# if (not $dry_run) {&command("$command_line")};   # launch the yambo job
+# alarm 0;                     # cancel the alarm
+#};
+#if ($@) {
+# die unless $@ eq "alarm\n"; # propagate unexpected errors
+#}
+#
+## Clean the RUN
+#&KILL("$yambo_exec","$ROBOT_string");
 #
 # Clock update
 $test_end   = [gettimeofday]; 

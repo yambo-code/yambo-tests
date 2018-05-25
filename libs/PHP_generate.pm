@@ -64,8 +64,16 @@ $time=$pattern[0][5];
 $time=~ s/\-/h/g;
 $time.="m";
 #
+&get_line("TOTAL");
+$duration="$pattern[0][3]h$pattern[0][4]m$pattern[0][5]s";
+#
 &get_line("Running tests");
-$running_tests=$pattern[0][1];
+$size=@{ $pattern[0] };
+$running_tests="";
+for( $i = 2; $i < $size; $i = $i + 1 ){
+ $running_tests.=" $pattern[0][$i]";
+ }
+#
 &get_line("Projects");
 $size=@{ $pattern[0] };
 $projects="";
@@ -157,7 +165,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP"," </td>\n");
 #&MESSAGE("PHP"," <td>$branch_key</td>\n");
 &MESSAGE("PHP"," <td>$REVISION<br>$FC_kind $MPI_kind<br>$BUILD</td>\n");
-&MESSAGE("PHP"," <td>$date<br>$time</td>\n");
+&MESSAGE("PHP"," <td>DATE: $date, $time<br>TIME SPAN: $duration</td>\n");
 &MESSAGE("PHP"," <td>TESTS: $running_tests<br>PROJ: $projects</td>\n");
 #
 &get_line("RUNS_FAIL");
