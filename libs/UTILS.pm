@@ -28,7 +28,7 @@ sub trace{
  return $trace;
 }
 sub KILL{
-$cmd="mpirun";
+$cmd="$mpiexec";
 if($np==1){ $cmd="@_[0]";}
 $ID="@_[1]";
 my $pid = `ps -awu $user | $grep '$cmd' | $grep '$ID' | $grep -v $grep | $grep -v kill |$grep -v null | awk '{P=P" "\$2}END{print P}'`;
