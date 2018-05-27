@@ -18,12 +18,16 @@
 {
  ACTIVE      => "yes",
  TESTS       => "all",
- CONFIG      => "gfortran.sh",
- KEYS        => "nopj elph sc rt kerr magnetic",
+ CONFIG      => "gfortran_internal_SP.sh",
+ KEYS        => "nopj elph sc rt kerr magnetic hard",
  #KEYS        => "nopj",
 },
 {
  MPI_CPU     => 4,
  PAR_MODE    => "random",
+},
+{
+ MPI_CPU     => 4,
+ PAR_MODE    => "default",
 }
 );

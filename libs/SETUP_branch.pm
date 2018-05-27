@@ -88,6 +88,7 @@ if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP};
+if ($pattern=~m/master/ix) {undef $is_NEW_YPP};
 if ($is_GPL) {undef $is_NEW_YPP};
 if ($pattern=~m/devel-ypp-rt/ix) {undef $is_NEW_YPP};
 #

@@ -58,6 +58,11 @@ sub PHP_key_words{
   $MPI_kind=" ";
  }
 #
+$Yambo_precision="unknown";
+&get_line("Compilation Precision");
+if ($n_patterns > 0) { $Yambo_precision=$pattern[0][2];  };
+
+#
 &get_line("Date");
 $date=$pattern[0][3];
 $time=$pattern[0][5];
@@ -164,7 +169,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP"," <br><a href='$comp_php'> comp</a>");
 &MESSAGE("PHP"," </td>\n");
 #&MESSAGE("PHP"," <td>$branch_key</td>\n");
-&MESSAGE("PHP"," <td>$REVISION<br>$FC_kind $MPI_kind<br>$BUILD</td>\n");
+&MESSAGE("PHP"," <td>$REVISION<br>$FC_kind $MPI_kind<br>$BUILD<br>Precision: $Yambo_precision</td>\n");
 &MESSAGE("PHP"," <td>DATE: $date, $time<br>TIME SPAN: $duration</td>\n");
 &MESSAGE("PHP"," <td>TESTS: $running_tests<br>PROJ: $projects</td>\n");
 #

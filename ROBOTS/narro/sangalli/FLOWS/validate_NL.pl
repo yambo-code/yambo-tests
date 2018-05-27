@@ -18,7 +18,7 @@
 {
  ACTIVE      => "yes",
  TESTS       => "all",
- CONFIG      => "gfortran_DP.sh",
+ CONFIG      => "gfortran_internal_DP.sh",
  KEYS        => "nl",
  MPI_CPU     => 1,
 },
