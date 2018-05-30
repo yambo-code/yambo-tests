@@ -101,6 +101,7 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
  $report_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_report.php";
  $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php";
  $comp_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.php";
+ $comp_tgz= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.tgz";
  if (-f $main_php){
   ($file = $error_php) =~ s/_$j/_$k/g;
   if (-f $error_php) {&command("mv $error_php $file")};
@@ -110,6 +111,8 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
   if (-f $conf_php) {&command("mv $conf_php $file")};
   ($file = $comp_php) =~ s/_$j/_$k/g;
   if (-f $comp_php) {&command("mv $comp_php $file")};
+  ($file = $comp_tgz) =~ s/_$j/_$k/g;
+  if (-f $comp_tgz) {&command("mv $comp_tgz $file")};
   ($file = $main_dat) =~ s/_$j/_$k/g;
   if (-f $main_dat) {&command("mv $main_dat $file")};
   ($file = $main_php) =~ s/_$j/_$k/g;
@@ -132,7 +135,7 @@ $main_php = $hostname."_".$branch_key."_1_main.php";
 $error_php=$hostname."_".$branch_key."_1_error.php";
 $report_php=$hostname."_".$branch_key."_1_report.php";
 $conf_php=$hostname."_".$branch_key."_1_conf.php";
-$comp_php=$hostname."_".$branch_key."_1_comp.php";
+$comp_tgz=$hostname."_".$branch_key."_1_comp.tgz";
 open($php, '>', $main_php) or die "Could not open file '$main_php' $!";
 #
 # Line #1
@@ -166,7 +169,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP","     <a href='$report_php'> report</a>");
 &MESSAGE("PHP"," <br><a href='$error_php'> error</a>");
 &MESSAGE("PHP"," <br><a href='$conf_php'> conf</a>");
-&MESSAGE("PHP"," <br><a href='$comp_php'> comp</a>");
+&MESSAGE("PHP"," <br><a href='$comp_tgz'> comp</a>");
 &MESSAGE("PHP"," </td>\n");
 #&MESSAGE("PHP"," <td>$branch_key</td>\n");
 &MESSAGE("PHP"," <td>$REVISION<br>$FC_kind $MPI_kind<br>$BUILD<br>Precision: $Yambo_precision</td>\n");
@@ -214,16 +217,18 @@ foreach $file (<$dir/REPORT*.log>) {
 #
 # CONF/COMPILE > .php
 &command("echo '<pre>' > $conf_php");
-&command("echo '<pre>' > $comp_php");
+#&command("echo '<pre>' > $comp_php");
 foreach $file (<$dir/compilation/*conf*.log>) {&command("cat $file >> $conf_php")};
-foreach $file (<$dir/compilation/*comp*.log>) {&command("cat $file >> $comp_php")};
+#foreach $file (<$dir/compilation/*comp*.log>) {&command("cat $file >> $comp_php")};
 &command("echo '</pre>' >> $conf_php");
-&command("echo '</pre>' >> $comp_php");
+#&command("echo '</pre>' >> $comp_php");
+&command("echo '</pre>' >> $conf_php");
+&command("tar -czf $comp_tgz $dir/compilation/*comp*.log");
 #
 # Final copying
 #
 &command("mkdir -p $host/www/$branch_key");
-&command("mv *.php $host/www/$branch_key");   
+&command("mv *.php $comp_tgz $host/www/$branch_key");   
 return
 }
 #
