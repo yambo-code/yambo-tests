@@ -139,10 +139,14 @@ $comp_tgz=$hostname."_".$branch_key."_1_comp.tgz";
 open($php, '>', $main_php) or die "Could not open file '$main_php' $!";
 #
 # Line #1
-&MESSAGE("PHP","<table>\n")
-&MESSAGE("PHP","<tr>\n")
-&MESSAGE("PHP"," <th>Logs</th>\n")
-#&MESSAGE("PHP"," <th>Branch</th>\n")
+&MESSAGE("PHP","<table>\n");
+&MESSAGE("PHP","<col width='70px' />\n");
+&MESSAGE("PHP","<col width='200px' />\n");
+&MESSAGE("PHP","<col width='160px' />\n");
+&MESSAGE("PHP","<col width='200px' />\n");
+&MESSAGE("PHP","<tr>\n");
+&MESSAGE("PHP"," <th>Logs</th>\n");
+#&MESSAGE("PHP"," <th>Branch</th>\n");
 &MESSAGE("PHP"," <th>Compilation</th>\n");
 &MESSAGE("PHP"," <th>Date</th>\n");
 &MESSAGE("PHP"," <th>Tests</th>\n");
@@ -173,18 +177,22 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP"," </td>\n");
 #&MESSAGE("PHP"," <td>$branch_key</td>\n");
 &MESSAGE("PHP"," <td>$REVISION<br>$FC_kind $MPI_kind<br>$BUILD<br>Precision: $Yambo_precision</td>\n");
-&MESSAGE("PHP"," <td>DATE: $date, $time<br>TIME SPAN: $duration</td>\n");
+&MESSAGE("PHP"," <td>DATE: $date<br>TIME: $time<br><br>RUN: $duration</td>\n");
 &MESSAGE("PHP"," <td>TESTS: $running_tests<br>PROJ: $projects</td>\n");
 #
 &get_line("RUNS_FAIL");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ # TESTS
  $fail=$pattern[$i][1];
- $checks=$pattern[$i][4];
  $notrun=$pattern[$i][8];
  $skipped=$pattern[$i][11];
+ # CHECKS
+ $checks=$pattern[$i][4];
  $whitel=$pattern[$i][14];
  $succes=$pattern[$i][17];
+ #
  $total=$fail+$checks+$whitel+$skipped+$succes;
+ #
  $string_php="FAIL: $fail,  OKs: $succes <br> CHECK FAIL: $checks <br> WHITE: $whitel, SKIP: $skipped <br> TOTAL: $total";
  if ($fail == 0) { &MESSAGE("PHP"," <td bgcolor=\"#6FFF00\" align=\"center\">$string_php</td>\n") };
  if ($fail > 0 and $fail < 10) { &MESSAGE("PHP"," <td bgcolor=\"#FC9F00\" align=\"center\">$string_php</td>\n")} ;
@@ -200,6 +208,41 @@ if ($n_patterns eq 0){
 #
 &MESSAGE("PHP","</table>\n");
 close($php);
+
+
+# DAT version
+open($dat, '>', $main_dat) or die "Could not open file '$main_dat' $!";
+&MESSAGE("DAT","$REVISION\nFC_kind $FC_kind\nMPI_kind $MPI_kind\nBUILD $BUILD\nPrecision $Yambo_precision\n");
+&MESSAGE("DAT","DATE $date\nTIME $time\nRUN $duration\n");
+&MESSAGE("DAT","TESTS $running_tests\nPROJ $projects\n");
+&MESSAGE("DAT","\n");
+
+&get_line("Parallel");
+@run_kind = @pattern;
+&get_line("RUNS_FAIL");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $field_1=$run_kind[$i][4];
+ $field_2=$run_kind[$i][5];
+ if ($field_2 =~ /default/){
+  &MESSAGE("DAT","$run_kind[$i][2] DEFAULT\n");
+ }elsif ($field_2 =~ /random/){
+  &MESSAGE("DAT","$run_kind[$i][2] RANDOM\n");
+ }elsif ($field_1 =~ /loop/){
+  &MESSAGE("DAT","$run_kind[$i][2] LOOP\n");
+ }else{
+  &MESSAGE("DAT","$run_kind[$i][2]\n");
+ }
+ $fail=$pattern[$i][1];
+ $checks=$pattern[$i][4];
+ $notrun=$pattern[$i][8];
+ $skipped=$pattern[$i][11];
+ $whitel=$pattern[$i][14];
+ $succes=$pattern[$i][17];
+ $total=$fail+$checks+$whitel+$skipped+$succes;
+ &MESSAGE("DAT","FAIL $fail\nOKs $succes\nCHECK FAIL $checks\nWHITE $whitel\nSKIP $skipped\nTOTAL $total\n\n");
+}
+
+close($dat);
 #
 # ERROR > .php
 &command("echo '<pre>' > $error_php");
@@ -217,18 +260,16 @@ foreach $file (<$dir/REPORT*.log>) {
 #
 # CONF/COMPILE > .php
 &command("echo '<pre>' > $conf_php");
-#&command("echo '<pre>' > $comp_php");
 foreach $file (<$dir/compilation/*conf*.log>) {&command("cat $file >> $conf_php")};
-#foreach $file (<$dir/compilation/*comp*.log>) {&command("cat $file >> $comp_php")};
 &command("echo '</pre>' >> $conf_php");
-#&command("echo '</pre>' >> $comp_php");
 &command("echo '</pre>' >> $conf_php");
 &command("tar -czf $comp_tgz $dir/compilation/*comp*.log");
 #
 # Final copying
 #
 &command("mkdir -p $host/www/$branch_key");
-&command("mv *.php $comp_tgz $host/www/$branch_key");   
+&command("mv *.php *.dat $comp_tgz $host/www/$branch_key");   
+#
 return
 }
 #
