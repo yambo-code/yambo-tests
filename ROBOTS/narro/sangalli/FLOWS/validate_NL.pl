@@ -19,7 +19,7 @@
  ACTIVE      => "yes",
  TESTS       => "all",
  CONFIG      => "gfortran_internal_DP.sh",
- KEYS        => "nl",
+ KEYS        => "nl hard",
  MPI_CPU     => 1,
 },
 {
