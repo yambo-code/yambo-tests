@@ -138,7 +138,7 @@ $conf_php=$hostname."_".$branch_key."_1_conf.php";
 $comp_tgz=$hostname."_".$branch_key."_1_comp.tgz";
 open($php, '>', $main_php) or die "Could not open file '$main_php' $!";
 #
-# Line #1
+## Line #1
 &MESSAGE("PHP","<table>\n");
 &MESSAGE("PHP","<col width='70px' />\n");
 &MESSAGE("PHP","<col width='200px' />\n");
@@ -150,17 +150,22 @@ open($php, '>', $main_php) or die "Could not open file '$main_php' $!";
 &MESSAGE("PHP"," <th>Compilation</th>\n");
 &MESSAGE("PHP"," <th>Date</th>\n");
 &MESSAGE("PHP"," <th>Tests</th>\n");
+#
 &get_line("Parallel");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $field_1=$pattern[$i][4];
  $field_2=$pattern[$i][5];
  if ($field_2 =~ /default/){
+  $run_kind[$i]="$pattern[$i][2] DEFAULT";
   &MESSAGE("PHP"," <td>$pattern[$i][2]<br>DEFAULT</td>\n");
  }elsif ($field_2 =~ /random/){
+  $run_kind[$i]="$pattern[$i][2] RANDOM";
   &MESSAGE("PHP"," <td>$pattern[$i][2]<br>RANDOM</td>\n");
  }elsif ($field_1 =~ /loop/){
+  $run_kind[$i]="$pattern[$i][2] LOOP";
   &MESSAGE("PHP"," <td>$pattern[$i][2]<br>LOOP</td>\n");
  }else{
+  $run_kind[$i]="$pattern[$i][2]";
   &MESSAGE("PHP"," <td>$pattern[$i][2]</td>\n");
  }
 }
@@ -180,24 +185,62 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP"," <td>DATE: $date<br>TIME: $time<br><br>RUN: $duration</td>\n");
 &MESSAGE("PHP"," <td>TESTS: $running_tests<br>PROJ: $projects</td>\n");
 #
-&get_line("RUNS_FAIL");
-for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+# NEW VERSION
+#
  # TESTS
- $fail=$pattern[$i][1];
- $notrun=$pattern[$i][8];
- $skipped=$pattern[$i][11];
- # CHECKS
- $checks=$pattern[$i][4];
- $whitel=$pattern[$i][14];
- $succes=$pattern[$i][17];
- #
- $total=$fail+$checks+$whitel+$skipped+$succes;
- #
- $string_php="FAIL: $fail,  OKs: $succes <br> CHECK FAIL: $checks <br> WHITE: $whitel, SKIP: $skipped <br> TOTAL: $total";
- if ($fail == 0) { &MESSAGE("PHP"," <td bgcolor=\"#6FFF00\" align=\"center\">$string_php</td>\n") };
- if ($fail > 0 and $fail < 10) { &MESSAGE("PHP"," <td bgcolor=\"#FC9F00\" align=\"center\">$string_php</td>\n")} ;
- if ($fail >= 10) { &MESSAGE("PHP"," <td bgcolor=\"#CC0000\" align=\"center\">$string_php</td>\n")};
+&get_line("Tests");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $test_fail[$i]=$pattern[$i][1];
+ $test_success[$i]=$pattern[$i][3];
+ $test_notrun[$i]=$pattern[$i][5];
+ $test_skipped[$i]=$pattern[$i][7];
 }
+# CHECKS
+&get_line("Checks");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $checks[$i]=$pattern[$i][1];
+ $whitel[$i]=$pattern[$i][3];
+ $succes[$i]=$pattern[$i][5];
+}
+
+#
+# OLD VERSION
+#
+if ($n_patterns eq 0){
+ &get_line("RUNS_FAIL");
+ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+  # TESTS
+  $test_fail[$i]=$pattern[$i][1];
+  $test_notrun[$i]=$pattern[$i][8];
+  $test_skipped[$i]=$pattern[$i][11];
+  # CHECKS
+  $checks_fail[$i]=$pattern[$i][4];
+  $whitel[$i]=$pattern[$i][14];
+  $success[$i]=$pattern[$i][17];
+  $test_success[$i]=$success[$i];
+  #
+ }
+}
+#
+# PHP REPORT
+#
+if ($n_patterns > 0){
+ #
+ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+   $test_total=$test_fail[$i]+$test_notrun[$i]+$test_skipped[$i]+$test_success[$i];
+   $checks_total=$checks[$i]+$whitel[$i]+$success[$i];
+   #
+   $string_php="TESTS: $test_total <br><br> $test_fail[$i] fail, $test_success[$i] ok <br>  $test_notrun[$i] norun, $test_skipped[$i] skip";
+   $string_over="CHECKS: $checks_total, $checks_fail[$i] fail, $whitel[$i] white, $success[$i] ok";
+   if ($test_fail[$i] == 0) { $bgcolor="6FFF00"; };
+   if ($test_fail[$i] > 0 and $test_fail[$i] < 10) { $bgcolor="FC9F00"; };
+   if ($test_fail[$i] >= 10) { $bgcolor="CC0000"; }; 
+   &MESSAGE("PHP"," <td bgcolor=\"$bgcolor\" text-align=\"center\" ><span title=\"$string_over\">$string_php</span></td>\n");
+ }
+}
+#
+# EVEN OLDER VERSION
+#
 if ($n_patterns eq 0){
  &get_line("FAIL:");
  for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
