@@ -217,6 +217,7 @@ if ($n_patterns eq 0){
   $checks_fail[$i]=$pattern[$i][4];
   $whitel[$i]=$pattern[$i][14];
   $success[$i]=$pattern[$i][17];
+  #
   $test_success[$i]=$success[$i];
   #
  }
@@ -262,7 +263,46 @@ open($dat, '>', $main_dat) or die "Could not open file '$main_dat' $!";
 
 &get_line("Parallel");
 @run_kind = @pattern;
-&get_line("RUNS_FAIL");
+
+#
+# NEW VERSION
+#
+# TESTS
+&get_line("Tests");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $test_fail[$i]=$pattern[$i][1];
+ $test_success[$i]=$pattern[$i][3];
+ $test_notrun[$i]=$pattern[$i][5];
+ $test_skipped[$i]=$pattern[$i][7];
+}
+# CHECKS
+&get_line("Checks");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $checks[$i]=$pattern[$i][1];
+ $whitel[$i]=$pattern[$i][3];
+ $succes[$i]=$pattern[$i][5];
+}
+
+
+#
+# OLD VERSION
+#
+if ( $n_patterns eq 0 ){
+ &get_line("RUNS_FAIL");
+ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+  # TESTS
+  $test_fail[$i]=$pattern[$i][1];
+  $test_notrun[$i]=$pattern[$i][8];
+  $test_skipped[$i]=$pattern[$i][11];
+  # CHECKS
+  $checks_fail[$i]=$pattern[$i][4];
+  $whitel[$i]=$pattern[$i][14];
+  $success[$i]=$pattern[$i][17];
+  #
+  $test_success[$i]=$success[$i];
+ }
+}
+
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $field_1=$run_kind[$i][4];
  $field_2=$run_kind[$i][5];
@@ -275,14 +315,12 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  }else{
   &MESSAGE("DAT","$run_kind[$i][2]\n");
  }
- $fail=$pattern[$i][1];
- $checks=$pattern[$i][4];
- $notrun=$pattern[$i][8];
- $skipped=$pattern[$i][11];
- $whitel=$pattern[$i][14];
- $succes=$pattern[$i][17];
- $total=$fail+$checks+$whitel+$skipped+$succes;
- &MESSAGE("DAT","FAIL $fail\nOKs $succes\nCHECK FAIL $checks\nWHITE $whitel\nSKIP $skipped\nTOTAL $total\n\n");
+ #
+ $test_total=$test_fail[$i]+$test_notrun[$i]+$test_skipped[$i]+$test_success[$i];
+ $checks_total=$checks[$i]+$whitel[$i]+$success[$i];
+ #
+ &MESSAGE("DAT","TESTS $test_total\nFAIL $test_fail[$i]\nOKs $test_success[$i]\nSKIP $test_skipped[$i]\nNOT_RUN $test_notrun[$i]\n");
+ &MESSAGE("DAT","CHECKS $checks_total\nFAIL $checks_fail[$i]\nOKs $success[$i]\nWHITE $whitel[$i]\n\n");
 }
 
 close($dat);
