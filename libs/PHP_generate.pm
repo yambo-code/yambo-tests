@@ -200,9 +200,9 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 # CHECKS
 &get_line("Checks");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
- $checks[$i]=$pattern[$i][1];
+ $checks_fail[$i]=$pattern[$i][1];
  $whitel[$i]=$pattern[$i][3];
- $succes[$i]=$pattern[$i][5];
+ $success[$i]=$pattern[$i][5];
 }
 
 #
