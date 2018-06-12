@@ -113,7 +113,7 @@ foreach $w (@FREQ){
    @conf = ( $w, $k );
    $trace=&trace( @conf );
    if (not $trace eq $np) {next};
-   @WQKB[$N_wqkb]= [ @conf ];
+   @WK[$N_wqkb]= [ @conf ];
    $N_wqkb++; 
   }
   #if (&PAR_conf_check({k=>$q}) eq 1){next};
@@ -147,7 +147,7 @@ if ($verb) {
  foreach $var (@QSB){print "\n QSB @$var"};
  foreach $var (@KEHT){ print "\n KEHT @$var"};
  foreach $var (@QKSB){print "\n QKSB @$var"};
- foreach $var (@WQKB){print "\n WQKB @$var"};
+ foreach $var (@WK){print "\n WK @$var"};
 }
 }
 1;

@@ -17,7 +17,7 @@ mpikind=openmpi
 
 ./configure cc=gcc F77=gfortran FC=gfortran MPIFC=mpifort.$mpikind MPIF77=mpif77.$mpikind MPICC=mpicc.$mpikind FCFLAGS="$FC_FLAGS_LIBS" \
 --enable-dp --enable-keep-src --enable-iotk  --enable-etsf-io --enable-msgs-comps  --enable-time-profile \
---enable-par-linalg --enable-int-linalg --enable-slepc-linalg \
+--enable-par-linalg --enable-int-linalg --enable-slepc-linalg --enable-open-mp \
 --with-extlibs-path="$YAMBO_LIBS" 
 #--with-fft-libs="-lfftw3" \
 #--with-blas-libs="/usr/lib/atlas-base/atlas/libblas.a" \

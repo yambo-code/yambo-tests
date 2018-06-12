@@ -90,7 +90,7 @@ for( $i = 1; $i < $size; $i = $i + 1 ){
 sub PHP_extract{
 #
 # Name choosing
-$MAX_phps=20;
+$MAX_phps=2;
 chdir("$host/www");
 for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
@@ -100,8 +100,8 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
  $error_php = $branch_key."/".$hostname."_".$branch_key."_".$j."_error.php";
  $report_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_report.php";
  $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php";
- $comp_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.php";
  $comp_tgz= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.tgz";
+ $logs_tgz= $branch_key."/".$hostname."_".$branch_key."_".$j."_logs.tgz";
  if (-f $main_php){
   ($file = $error_php) =~ s/_$j/_$k/g;
   if (-f $error_php) {&command("mv $error_php $file")};
@@ -109,10 +109,10 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
   if (-f $report_php) {&command("mv $report_php $file")};
   ($file = $conf_php) =~ s/_$j/_$k/g;
   if (-f $conf_php) {&command("mv $conf_php $file")};
-  ($file = $comp_php) =~ s/_$j/_$k/g;
-  if (-f $comp_php) {&command("mv $comp_php $file")};
   ($file = $comp_tgz) =~ s/_$j/_$k/g;
   if (-f $comp_tgz) {&command("mv $comp_tgz $file")};
+  ($file = $logs_tgz) =~ s/_$j/_$k/g;
+  if (-f $logs_tgz) {&command("mv $logs_tgz $file")};
   ($file = $main_dat) =~ s/_$j/_$k/g;
   if (-f $main_dat) {&command("mv $main_dat $file")};
   ($file = $main_php) =~ s/_$j/_$k/g;
@@ -136,6 +136,7 @@ $error_php=$hostname."_".$branch_key."_1_error.php";
 $report_php=$hostname."_".$branch_key."_1_report.php";
 $conf_php=$hostname."_".$branch_key."_1_conf.php";
 $comp_tgz=$hostname."_".$branch_key."_1_comp.tgz";
+$logs_tgz=$hostname."_".$branch_key."_1_logs.tgz";
 open($php, '>', $main_php) or die "Could not open file '$main_php' $!";
 #
 ## Line #1
@@ -178,7 +179,8 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 &MESSAGE("PHP","     <a href='$report_php'> report</a>");
 &MESSAGE("PHP"," <br><a href='$error_php'> error</a>");
 &MESSAGE("PHP"," <br><a href='$conf_php'> conf</a>");
-&MESSAGE("PHP"," <br><a href='$comp_tgz'> comp</a>");
+&MESSAGE("PHP"," <br><a href='$comp_tgz'> comp (tgz)</a>");
+&MESSAGE("PHP"," <br><a href='$logs_tgz'> logs (tgz)</a>");
 &MESSAGE("PHP"," </td>\n");
 #&MESSAGE("PHP"," <td>$branch_key</td>\n");
 &MESSAGE("PHP"," <td>$REVISION<br>$FC_kind $MPI_kind<br>$BUILD<br>Precision: $Yambo_precision</td>\n");
@@ -193,7 +195,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $test_fail[$i]=$pattern[$i][1];
  $test_success[$i]=$pattern[$i][3];
  $test_notrun[$i]=$pattern[$i][5];
- $test_skipped[$i]=$pattern[$i][7];
+ $test_skipped[$i]=$pattern[$i][8];
 }
 # CHECKS
 &get_line("Checks");
@@ -264,45 +266,6 @@ open($dat, '>', $main_dat) or die "Could not open file '$main_dat' $!";
 &get_line("Parallel");
 @run_kind = @pattern;
 
-#
-# NEW VERSION
-#
-# TESTS
-&get_line("Tests");
-for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
- $test_fail[$i]=$pattern[$i][1];
- $test_success[$i]=$pattern[$i][3];
- $test_notrun[$i]=$pattern[$i][5];
- $test_skipped[$i]=$pattern[$i][7];
-}
-# CHECKS
-&get_line("Checks");
-for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
- $checks[$i]=$pattern[$i][1];
- $whitel[$i]=$pattern[$i][3];
- $succes[$i]=$pattern[$i][5];
-}
-
-
-#
-# OLD VERSION
-#
-if ( $n_patterns eq 0 ){
- &get_line("RUNS_FAIL");
- for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
-  # TESTS
-  $test_fail[$i]=$pattern[$i][1];
-  $test_notrun[$i]=$pattern[$i][8];
-  $test_skipped[$i]=$pattern[$i][11];
-  # CHECKS
-  $checks_fail[$i]=$pattern[$i][4];
-  $whitel[$i]=$pattern[$i][14];
-  $success[$i]=$pattern[$i][17];
-  #
-  $test_success[$i]=$success[$i];
- }
-}
-
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $field_1=$run_kind[$i][4];
  $field_2=$run_kind[$i][5];
@@ -339,17 +302,20 @@ foreach $file (<$dir/REPORT*.log>) {
 };
 &command("echo '</pre>' >> $report_php");
 #
-# CONF/COMPILE > .php
+# CONF > .php
 &command("echo '<pre>' > $conf_php");
 foreach $file (<$dir/compilation/*conf*.log>) {&command("cat $file >> $conf_php")};
 &command("echo '</pre>' >> $conf_php");
 &command("echo '</pre>' >> $conf_php");
+#
+# LOGs and compilation as tgz file
 &command("tar -czf $comp_tgz $dir/compilation/*comp*.log");
+&command("tar -czf $logs_tgz $dir/LOG*.log");
 #
 # Final copying
 #
 &command("mkdir -p $host/www/$branch_key");
-&command("mv *.php *.dat $comp_tgz $host/www/$branch_key");   
+&command("mv *.php *.dat $comp_tgz $logs_tgz $host/www/$branch_key");   
 #
 return
 }

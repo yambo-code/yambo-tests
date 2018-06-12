@@ -51,7 +51,7 @@ $PAR_field[3]="X_all_q_ROLEs= \"g.q.k.c.v\""; # => GQKCV
 $PAR_field[4]="SE_ROLEs= \"q.qp.b\""; # => QSB
 $PAR_field[5]="BS_ROLEs= \"k.eh.t\""; # => KEHT
 $PAR_field[6]="RT_ROLEs= \"q.k.qp.b\""; # => QKSB
-$PAR_field[7]="NL_ROLEs= \"w.k\""; # => WQKB
+$PAR_field[7]="NL_ROLEs= \"w.k\""; # => WK
 $PAR_field[8]="X_ROLEs= \"g.q.k.c.v\""; # => GQKCV
 #
 # Resets
@@ -61,7 +61,7 @@ undef @GQKCV;
 undef @QSB;
 undef @KEHT;
 undef @QKSB;
-undef @WQKB;
+undef @WK;
 #
 # Constrains
 &RUN_PAR_constrains();

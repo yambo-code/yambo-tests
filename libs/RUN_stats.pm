@@ -57,25 +57,24 @@ if ("@_" eq "INIT_DIR"){
 }
 if ("@_" eq "REPORT"){
  &MESSAGE("LOG","\n$line");
- my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"." ] NO RUN[$test_not_run"."] SKIPS[$test_skipped"."] $r_e";
- $MSG=$MSG."\n$r_s"."Checks: FAIL[$check_failed"."] SUCCESSFUL[$check_ok"."] WHITELIST[$check_whitelisted] $r_e";
+ my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"."] NO RUN[$test_not_run"."] SKIPS[$test_skipped"."] $r_e";
  &MESSAGE("LOG","$MSG");
  &MESSAGE("LOG","\n$line");
- $MSG="\nOutputs: FAIL[$wrong_out"."] no REFs[$ref_not_found"."] no OUTs[$out_not_found"."]";
- $MSG=$MSG." DBs: MISSING[$missing_db"."]\n\n";
+ $MSG="\n$r_s"."Checks: FAIL[$check_failed"."] SUCCESSFUL[$check_ok"."] WHITELIST[$check_whitelisted] $r_e";
+ $MSG=$MSG."\n$r_s"."Check FAIL detail: WRONG[$wrong_out"."] no REFs[$ref_not_found"."] no OUTs[$out_not_found"."] no DB[$missing_db"."] $r_e\n";
  &MESSAGE("LOG","$MSG");
  #
  # REPORT
  #
  # OLD
- &MESSAGE("REPORT","\nRUNS_FAIL: $test_with_fails => CHECKS_FAIL: $check_failed & NO RUN: $test_not_run & SKIPS: $test_skipped % WHITELIST: $check_whitelisted % SUCCESSFUL: $check_ok");
+ #&MESSAGE("REPORT","\nRUNS_FAIL: $test_with_fails => CHECKS_FAIL: $check_failed & NO RUN: $test_not_run & SKIPS: $test_skipped % WHITELIST: $check_whitelisted % SUCCESSFUL: $check_ok");
  #
  # NEW
- #$MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_not_run NO RUN, $test_skipped SKIPS $r_e";
- #&MESSAGE("REPORT","$MSG");
+ $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_not_run NO RUN, $test_skipped SKIPS $r_e";
+ &MESSAGE("REPORT","$MSG");
  #
- #$MSG="\n$r_s"."Checks: $check_failed FAIL, $check_ok OK, $check_whitelisted WHITELIST $r_e";
- #&MESSAGE("REPORT","$MSG");
+ $MSG="\n$r_s"."Checks: $check_failed FAIL, $check_ok OK, $check_whitelisted WHITELIST $r_e";
+ &MESSAGE("REPORT","$MSG");
  if ($check_failed>0) {
   &MESSAGE("REPORT","\nCHECK details:");
   if ($wrong_out>0) {&MESSAGE("REPORT"," $wrong_out wrong output %")};
@@ -150,16 +149,16 @@ if ("@_" eq "OK"){
  $check_ok++;
  $dir_ok++;
 }
-if ( ! "$run_result" eq "FAIL") { $test_ok++; };
+if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run eq 0 ) { $test_ok++;  $test_ok_action="NONE"; };
+if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run eq 1 ) {              $test_ok_action="NONE"; };
+if ( "$test_ok_action" eq "NONE"     && $fails_in_the_run eq 1 ) { $test_ok--;                          };
 }
 sub its_a_fail{
  $RUN_result="FAIL";
  if ("@_" eq "CHECK"){ $check_failed++; };
  $dir_failed++;
+ $fails_in_the_run++;
  &MESSAGE("FAILED","$TESTS_folder/$testdir/$ROBOT_wd/$dir_name\n");
- if ($first_in_the_run) {
-  $test_with_fails++; 
-  undef $first_in_the_run;
- };
+ if ( $fails_in_the_run eq 0) { $test_with_fails++; };
 }
 1;
