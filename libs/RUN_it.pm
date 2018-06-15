@@ -89,8 +89,8 @@ LOG_LOOP: {
 # Final Report
 #
 if($wrong_cpu_conf){
- if( $N_random_tries < 10){ &RUN_stats("WRONG_CPU_CONF"); $CHECK_error="WRONG CPU configuration"; }
- if( $N_random_tries== 10){ &RUN_stats("ERROR_CPU_CONF"); $CHECK_error="FAILED CPU configuration";  }
+ if( $N_random_tries < 10){ $CHECK_error="WRONG CPU configuration"; &RUN_stats("WRONG_CPU_CONF"); }
+ if( $N_random_tries== 10){ $CHECK_error="FAILED CPU configuration"; &RUN_stats("ERROR_CPU_CONF"); }
  return "FAIL";
 }elsif($empty_workload){
  &MESSAGE("LOG","[WARN: EMPTY workload]");
