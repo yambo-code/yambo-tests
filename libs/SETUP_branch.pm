@@ -80,6 +80,7 @@ if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
 undef $do_NL_tests;
 if ($pattern=~m/devel-nl/ix) {$do_NL_tests="yes"};
+if ($pattern=~m/develop/ix)  {$do_NL_tests="yes"};
 #
 if ($is_GPL) {$branch_key.="_gpl"};
 #
