@@ -28,10 +28,14 @@ if ("@_" eq "INIT"){
  #
  # Whole test
  #
- $test_skipped=0;
- $test_not_run=0;
  $test_with_fails=0;
  $test_ok=0;
+ #
+ # Reason of the test fail
+ #
+ $test_skipped=0;
+ $test_not_run=0;
+ $test_wrong=0;
  #
  # Single check for eack test
  #
@@ -39,7 +43,7 @@ if ("@_" eq "INIT"){
  $check_ok=0;
  $check_whitelisted=0;
  #
- # Reason of the fail
+ # Reason of the check fail
  #
  $missing_db=0;
  $wrong_out=0;
@@ -57,7 +61,9 @@ if ("@_" eq "INIT_DIR"){
 }
 if ("@_" eq "REPORT"){
  &MESSAGE("LOG","\n$line");
- my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"."] NO RUN[$test_not_run"."] SKIPS[$test_skipped"."] $r_e";
+ my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"."] SKIPS[$test_skipped"."] $r_e";
+ &MESSAGE("LOG","$MSG");
+ $MSG="\n$r_s"."Test FAIL detail: WRONG[$test_wrong"."] NO RUN[$test_not_run"."] $r_e";
  &MESSAGE("LOG","$MSG");
  &MESSAGE("LOG","\n$line");
  $MSG="\n$r_s"."Checks: FAIL[$check_failed"."] SUCCESSFUL[$check_ok"."] WHITELIST[$check_whitelisted] $r_e";
@@ -70,18 +76,15 @@ if ("@_" eq "REPORT"){
  #&MESSAGE("REPORT","\nRUNS_FAIL: $test_with_fails => CHECKS_FAIL: $check_failed & NO RUN: $test_not_run & SKIPS: $test_skipped % WHITELIST: $check_whitelisted % SUCCESSFUL: $check_ok");
  #
  # NEW
- $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_not_run NO RUN, $test_skipped SKIPS $r_e";
+ $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_skipped SKIPS $r_e";
  &MESSAGE("REPORT","$MSG");
+ $MSG="\n$r_s"."Test FAIL detail: $test_wrong WRONG, $test_not_run NO RUN $r_e";
+ &MESSAGE("REPORT","$MSG");
+ &MESSAGE("REPORT","\n$line");
  #
  $MSG="\n$r_s"."Checks: $check_failed FAIL, $check_ok OK, $check_whitelisted WHITELIST $r_e";
+ $MSG=$MSG."\n$r_s"."Check FAIL detail: $wrong_out WRONG, $ref_not_found no REF, $out_not_found no OUT, $missing_db no DB $r_e\n";
  &MESSAGE("REPORT","$MSG");
- if ($check_failed>0) {
-  &MESSAGE("REPORT","\nCHECK details:");
-  if ($wrong_out>0) {&MESSAGE("REPORT"," $wrong_out wrong output %")};
-  if ($ref_not_found>0) {&MESSAGE("REPORT"," $ref_not_found no reference %")};
-  if ($out_not_found>0) {&MESSAGE("REPORT"," $out_not_found no output %")};
-  if ($missing_db>0) {&MESSAGE("REPORT"," $missing_db no DB")};
- }
  &MESSAGE("REPORT","\n$line");
  return;
 }
@@ -135,13 +138,16 @@ if ("@_" eq "NOT_RUN"){
 };
 if ("@_" eq "SKIPPED"){
  $test_skipped++;
+ $test_ok_action="SKIP";
  &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "WRONG_CPU_CONF"){
+ $test_ok_action="SKIP";
  &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "WRONG_DEP"){
  $test_skipped++;
+ $test_ok_action="SKIP";
  &MESSAGE("LOG","[$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "OK"){
@@ -149,14 +155,18 @@ if ("@_" eq "OK"){
  $check_ok++;
  $dir_ok++;
 }
-if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run eq 0 ) { $test_ok++;  $test_ok_action="CHECK"; };
-if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run >  0 ) {              $test_ok_action="NONE"; };
-if ( "$test_ok_action" eq "CHECK"    && $fails_in_the_run >  0 ) { $test_ok--;  $test_ok_action="NONE"; };
+if (! ("$test_ok_action" eq "SKIP") )
+{ 
+ if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run eq 0 ) { $test_ok++;  $test_ok_action="CHECK"; };
+ if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run >  0 ) {              $test_ok_action="NONE"; };
+ if ( "$test_ok_action" eq "CHECK"    && $fails_in_the_run >  0 ) { $test_ok--;  $test_ok_action="NONE"; };
+}
 }
 sub its_a_fail{
  $RUN_result="FAIL";
  if ("@_" eq "CHECK"){ $check_failed++; };
  if ( $fails_in_the_run eq 0) { $test_with_fails++; };
+ if ( $fails_in_the_run eq 0 && "@_" eq "CHECK") { $test_wrong++; };
  $dir_failed++;
  $fails_in_the_run++;
  &MESSAGE("FAILED","$TESTS_folder/$testdir/$ROBOT_wd/$dir_name\n");

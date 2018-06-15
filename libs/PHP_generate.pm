@@ -90,7 +90,7 @@ for( $i = 1; $i < $size; $i = $i + 1 ){
 sub PHP_extract{
 #
 # Name choosing
-$MAX_phps=2;
+$MAX_phps=20;
 chdir("$host/www");
 for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
@@ -194,15 +194,26 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $test_fail[$i]=$pattern[$i][1];
  $test_success[$i]=$pattern[$i][3];
+ $test_skipped[$i]=$pattern[$i][5];
+}
+&get_line("Test FAIL");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $test_wrong[$i]=$pattern[$i][3];
  $test_notrun[$i]=$pattern[$i][5];
- $test_skipped[$i]=$pattern[$i][8];
 }
 # CHECKS
 &get_line("Checks");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $checks_fail[$i]=$pattern[$i][1];
- $whitel[$i]=$pattern[$i][3];
- $success[$i]=$pattern[$i][5];
+ $success[$i]=$pattern[$i][3];
+ $whitel[$i]=$pattern[$i][5];
+}
+&get_line("Check FAIL");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $check_out[$i]=$pattern[$i][3];
+ $check_noref[$i]=$pattern[$i][5];
+ $check_noout[$i]=$pattern[$i][8];
+ $check_nodb[$i]=$pattern[$i][11];
 }
 
 #
@@ -221,6 +232,7 @@ if ($n_patterns eq 0){
   $success[$i]=$pattern[$i][17];
   #
   $test_success[$i]=$success[$i];
+  $test_wrong[$i]=$checks_fail[$i];
   #
  }
 }
@@ -230,8 +242,8 @@ if ($n_patterns eq 0){
 if ($n_patterns > 0){
  #
  for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
-   $test_total=$test_fail[$i]+$test_notrun[$i]+$test_skipped[$i]+$test_success[$i];
-   $checks_total=$checks[$i]+$whitel[$i]+$success[$i];
+   $test_total=$test_fail[$i]+$test_skipped[$i]+$test_success[$i];
+   $checks_total=$checks_fail[$i]+$whitel[$i]+$success[$i];
    #
    $string_php="TESTS: $test_total <br><br> $test_fail[$i] fail, $test_success[$i] ok <br>  $test_notrun[$i] norun, $test_skipped[$i] skip";
    $string_over="CHECKS: $checks_total, $checks_fail[$i] fail, $whitel[$i] white, $success[$i] ok";
@@ -279,11 +291,13 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
   &MESSAGE("DAT","$run_kind[$i][2]\n");
  }
  #
- $test_total=$test_fail[$i]+$test_notrun[$i]+$test_skipped[$i]+$test_success[$i];
- $checks_total=$checks[$i]+$whitel[$i]+$success[$i];
+ $test_total=$test_fail[$i]+$test_skipped[$i]+$test_success[$i];
+ $checks_total=$checks_fail[$i]+$whitel[$i]+$success[$i];
  #
- &MESSAGE("DAT","TESTS $test_total\nFAIL $test_fail[$i]\nOKs $test_success[$i]\nSKIP $test_skipped[$i]\nNOT_RUN $test_notrun[$i]\n");
- &MESSAGE("DAT","CHECKS $checks_total\nFAIL $checks_fail[$i]\nOKs $success[$i]\nWHITE $whitel[$i]\n\n");
+ &MESSAGE("DAT","TESTS $test_total\n-OKs $test_success[$i]\n-SKIP $test_skipped[$i]\n-FAIL $test_fail[$i]\n");
+ &MESSAGE("DAT","--NOT_RUN $test_notrun[$i]\n--WRONG_TEST $test_wrong[$i]\n");
+ &MESSAGE("DAT","CHECKS $checks_total\n-OKs $success[$i]\n-WHITE $whitel[$i]\n-FAIL $checks_fail[$i]\n");
+ &MESSAGE("DAT","--WRONG_OUT $check_out[$i]\n--NO_REF $check_noref[$i]\n--NO_OUT $check_noout[$i]\n--NO_DB $check_nodb[$i]\n\n");
 }
 
 close($dat);
