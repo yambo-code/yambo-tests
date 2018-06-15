@@ -195,6 +195,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $test_fail[$i]=$pattern[$i][1];
  $test_success[$i]=$pattern[$i][3];
  $test_skipped[$i]=$pattern[$i][5];
+ $setup_skipped[$i]=$pattern[$i][7];
 }
 &get_line("Test FAIL");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
@@ -233,6 +234,7 @@ if ($n_patterns eq 0){
   #
   $test_success[$i]=$success[$i];
   $test_wrong[$i]=$checks_fail[$i];
+  $setup_skipped[$i]="";
   #
  }
 }
@@ -245,7 +247,7 @@ if ($n_patterns > 0){
    $test_total=$test_fail[$i]+$test_skipped[$i]+$test_success[$i];
    $checks_total=$checks_fail[$i]+$whitel[$i]+$success[$i];
    #
-   $string_php="TESTS: $test_total <br><br> $test_fail[$i] fail, $test_success[$i] ok <br>  $test_notrun[$i] norun, $test_skipped[$i] skip";
+   $string_php="TESTS: $test_total <br><br> $test_fail[$i] fail, $test_success[$i] ok <br>  $test_notrun[$i] norun, $test_skipped[$i] skip ($setup_skipped[$i] setup)";
    $string_over="CHECKS: $checks_total, $checks_fail[$i] fail, $whitel[$i] white, $success[$i] ok";
    if ($test_fail[$i] == 0) { $bgcolor="6FFF00"; };
    if ($test_fail[$i] > 0 and $test_fail[$i] < 10) { $bgcolor="FC9F00"; };
@@ -294,7 +296,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $test_total=$test_fail[$i]+$test_skipped[$i]+$test_success[$i];
  $checks_total=$checks_fail[$i]+$whitel[$i]+$success[$i];
  #
- &MESSAGE("DAT","TESTS $test_total\n-OKs $test_success[$i]\n-SKIP $test_skipped[$i]\n-FAIL $test_fail[$i]\n");
+ &MESSAGE("DAT","TESTS $test_total\n-OKs $test_success[$i]\n-SKIP $test_skipped[$i]\n--SETUP $setup_skipped\n-FAIL $test_fail[$i]\n");
  &MESSAGE("DAT","--NOT_RUN $test_notrun[$i]\n--WRONG_TEST $test_wrong[$i]\n");
  &MESSAGE("DAT","CHECKS $checks_total\n-OKs $success[$i]\n-WHITE $whitel[$i]\n-FAIL $checks_fail[$i]\n");
  &MESSAGE("DAT","--WRONG_OUT $check_out[$i]\n--NO_REF $check_noref[$i]\n--NO_OUT $check_noout[$i]\n--NO_DB $check_nodb[$i]\n\n");

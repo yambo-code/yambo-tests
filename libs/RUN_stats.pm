@@ -30,10 +30,11 @@ if ("@_" eq "INIT"){
  #
  $test_with_fails=0;
  $test_ok=0;
- #
- # Reason of the test fail
- #
  $test_skipped=0;
+ #
+ # Reason of the test fail/skip
+ #
+ $test_skipped_setup=0;
  $test_not_run=0;
  $test_wrong=0;
  #
@@ -61,7 +62,7 @@ if ("@_" eq "INIT_DIR"){
 }
 if ("@_" eq "REPORT"){
  &MESSAGE("LOG","\n$line");
- my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"."] SKIPS[$test_skipped"."] $r_e";
+ my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"."] SKIPS[$test_skipped"."] (SETUP_SKIPS[$test_skipped_setup]) $r_e";
  &MESSAGE("LOG","$MSG");
  $MSG="\n$r_s"."Test FAIL detail: WRONG[$test_wrong"."] NO RUN[$test_not_run"."] $r_e";
  &MESSAGE("LOG","$MSG");
@@ -72,11 +73,7 @@ if ("@_" eq "REPORT"){
  #
  # REPORT
  #
- # OLD
- #&MESSAGE("REPORT","\nRUNS_FAIL: $test_with_fails => CHECKS_FAIL: $check_failed & NO RUN: $test_not_run & SKIPS: $test_skipped % WHITELIST: $check_whitelisted % SUCCESSFUL: $check_ok");
- #
- # NEW
- $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_skipped SKIPS $r_e";
+ $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_skipped SKIPS ($test_skipped_setup SETUP SKIPS) $r_e";
  &MESSAGE("REPORT","$MSG");
  $MSG="\n$r_s"."Test FAIL detail: $test_wrong WRONG, $test_not_run NO RUN $r_e";
  &MESSAGE("REPORT","$MSG");
@@ -138,6 +135,12 @@ if ("@_" eq "NOT_RUN"){
 };
 if ("@_" eq "SKIPPED"){
  $test_skipped++;
+ $test_ok_action="SKIP";
+ &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
+};
+if ("@_" eq "SKIPPED"){
+ $test_skipped++;
+ $test_skipped_setup++;
  $test_ok_action="SKIP";
  &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
 };
