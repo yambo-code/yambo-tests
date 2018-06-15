@@ -96,13 +96,12 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
  $k=$j+1;
  $main_dat = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.dat";
- $main_php  = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.php";
  $error_php = $branch_key."/".$hostname."_".$branch_key."_".$j."_error.php";
  $report_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_report.php";
  $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php";
  $comp_tgz= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.tgz";
  $logs_tgz= $branch_key."/".$hostname."_".$branch_key."_".$j."_logs.tgz";
- if (-f $main_php){
+ if (-f $main_dat){
   ($file = $error_php) =~ s/_$j/_$k/g;
   if (-f $error_php) {&command("mv $error_php $file")};
   ($file = $report_php) =~ s/_$j/_$k/g;
@@ -115,8 +114,6 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
   if (-f $logs_tgz) {&command("mv $logs_tgz $file")};
   ($file = $main_dat) =~ s/_$j/_$k/g;
   if (-f $main_dat) {&command("mv $main_dat $file")};
-  ($file = $main_php) =~ s/_$j/_$k/g;
-  if (-f $main_php) {&command("mv $main_php $file")};
   open(my $fh1, '<', $file) ;
   open(my $fh2, '>', 'dummy') ;
   while( $line = <$fh1>) {
@@ -131,26 +128,13 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 #
 chdir("$suite_dir");
 $main_dat = $hostname."_".$branch_key."_1_main.dat";
-$main_php = $hostname."_".$branch_key."_1_main.php";
 $error_php=$hostname."_".$branch_key."_1_error.php";
 $report_php=$hostname."_".$branch_key."_1_report.php";
 $conf_php=$hostname."_".$branch_key."_1_conf.php";
 $comp_tgz=$hostname."_".$branch_key."_1_comp.tgz";
 $logs_tgz=$hostname."_".$branch_key."_1_logs.tgz";
-open($php, '>', $main_php) or die "Could not open file '$main_php' $!";
 #
-## Line #1
-&MESSAGE("PHP","<table>\n");
-&MESSAGE("PHP","<col width='70px' />\n");
-&MESSAGE("PHP","<col width='200px' />\n");
-&MESSAGE("PHP","<col width='160px' />\n");
-&MESSAGE("PHP","<col width='200px' />\n");
-&MESSAGE("PHP","<tr>\n");
-&MESSAGE("PHP"," <th>Logs</th>\n");
-#&MESSAGE("PHP"," <th>Branch</th>\n");
-&MESSAGE("PHP"," <th>Compilation</th>\n");
-&MESSAGE("PHP"," <th>Date</th>\n");
-&MESSAGE("PHP"," <th>Tests</th>\n");
+# RETRIVE DATA
 #
 &get_line("Parallel");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
@@ -158,49 +142,29 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $field_2=$pattern[$i][5];
  if ($field_2 =~ /default/){
   $run_kind[$i]="$pattern[$i][2] DEFAULT";
-  &MESSAGE("PHP"," <td>$pattern[$i][2]<br>DEFAULT</td>\n");
  }elsif ($field_2 =~ /random/){
   $run_kind[$i]="$pattern[$i][2] RANDOM";
-  &MESSAGE("PHP"," <td>$pattern[$i][2]<br>RANDOM</td>\n");
  }elsif ($field_1 =~ /loop/){
   $run_kind[$i]="$pattern[$i][2] LOOP";
-  &MESSAGE("PHP"," <td>$pattern[$i][2]<br>LOOP</td>\n");
  }else{
   $run_kind[$i]="$pattern[$i][2]";
-  &MESSAGE("PHP"," <td>$pattern[$i][2]</td>\n");
  }
 }
-&MESSAGE("PHP","</tr>\n")
 #
-# Line #2
-&MESSAGE("PHP","<tr>\n")
-#&MESSAGE("PHP"," <td>$hostname\n");
-&MESSAGE("PHP"," <td>");
-&MESSAGE("PHP","     <a href='$report_php'> report</a>");
-&MESSAGE("PHP"," <br><a href='$error_php'> error</a>");
-&MESSAGE("PHP"," <br><a href='$conf_php'> conf</a>");
-&MESSAGE("PHP"," <br><a href='$comp_tgz'> comp (tgz)</a>");
-&MESSAGE("PHP"," <br><a href='$logs_tgz'> logs (tgz)</a>");
-&MESSAGE("PHP"," </td>\n");
-#&MESSAGE("PHP"," <td>$branch_key</td>\n");
-&MESSAGE("PHP"," <td>$REVISION<br>$FC_kind $MPI_kind<br>$BUILD<br>Precision: $Yambo_precision</td>\n");
-&MESSAGE("PHP"," <td>DATE: $date<br>TIME: $time<br><br>RUN: $duration</td>\n");
-&MESSAGE("PHP"," <td>TESTS: $running_tests<br>PROJ: $projects</td>\n");
-#
-# NEW VERSION
-#
- # TESTS
+# TESTS
 &get_line("Tests");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $test_fail[$i]=$pattern[$i][1];
  $test_success[$i]=$pattern[$i][3];
  $test_skipped[$i]=$pattern[$i][5];
  $setup_skipped[$i]=$pattern[$i][7];
+ $randcpu_skipped[$i]=$pattern[$i][9];
 }
 &get_line("Test FAIL");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $test_wrong[$i]=$pattern[$i][3];
  $test_notrun[$i]=$pattern[$i][5];
+ $test_runtime[$i]=$pattern[$i][8];
 }
 # CHECKS
 &get_line("Checks");
@@ -234,43 +198,17 @@ if ($n_patterns eq 0){
   #
   $test_success[$i]=$success[$i];
   $test_wrong[$i]=$checks_fail[$i];
+  $test_runtime[$i]="";
   $setup_skipped[$i]="";
+  $randcpu_skipped[$i]="";
   #
  }
 }
 #
-# PHP REPORT
-#
-if ($n_patterns > 0){
- #
- for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
-   $test_total=$test_fail[$i]+$test_skipped[$i]+$test_success[$i];
-   $checks_total=$checks_fail[$i]+$whitel[$i]+$success[$i];
-   #
-   $string_php="TESTS: $test_total <br><br> $test_fail[$i] fail, $test_success[$i] ok <br>  $test_notrun[$i] norun, $test_skipped[$i] skip ($setup_skipped[$i] setup)";
-   $string_over="CHECKS: $checks_total, $checks_fail[$i] fail, $whitel[$i] white, $success[$i] ok";
-   if ($test_fail[$i] == 0) { $bgcolor="6FFF00"; };
-   if ($test_fail[$i] > 0 and $test_fail[$i] < 10) { $bgcolor="FC9F00"; };
-   if ($test_fail[$i] >= 10) { $bgcolor="CC0000"; }; 
-   &MESSAGE("PHP"," <td bgcolor=\"$bgcolor\" text-align=\"center\" ><span title=\"$string_over\">$string_php</span></td>\n");
- }
-}
-#
-# EVEN OLDER VERSION
-#
-if ($n_patterns eq 0){
- &get_line("FAIL:");
- for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
-  &MESSAGE("PHP"," <td>$pattern[$i][1]</td>\n");
- }
-}
-&MESSAGE("PHP","</tr>\n")
-#
-&MESSAGE("PHP","</table>\n");
-close($php);
 
-
-# DAT version
+#
+# Generte DAT file
+#
 open($dat, '>', $main_dat) or die "Could not open file '$main_dat' $!";
 &MESSAGE("DAT","$REVISION\nFC_kind $FC_kind\nMPI_kind $MPI_kind\nBUILD $BUILD\nPrecision $Yambo_precision\n");
 &MESSAGE("DAT","DATE $date\nTIME $time\nRUN $duration\n");
@@ -296,8 +234,8 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $test_total=$test_fail[$i]+$test_skipped[$i]+$test_success[$i];
  $checks_total=$checks_fail[$i]+$whitel[$i]+$success[$i];
  #
- &MESSAGE("DAT","TESTS $test_total\n-OKs $test_success[$i]\n-SKIP $test_skipped[$i]\n--SETUP $setup_skipped\n-FAIL $test_fail[$i]\n");
- &MESSAGE("DAT","--NOT_RUN $test_notrun[$i]\n--WRONG_TEST $test_wrong[$i]\n");
+ &MESSAGE("DAT","TESTS $test_total\n-OKs $test_success[$i]\n-SKIP $test_skipped[$i]\n--SETUP $setup_skipped[$i]\n--RAND-CPU $randcpu_skipped[$i]\n");
+ &MESSAGE("DAT","-FAIL $test_fail[$i]\n--NOT_RUN $test_notrun[$i]\n--RUNTIME $test_runtime[$i]\n--WRONG_TEST $test_wrong[$i]\n");
  &MESSAGE("DAT","CHECKS $checks_total\n-OKs $success[$i]\n-WHITE $whitel[$i]\n-FAIL $checks_fail[$i]\n");
  &MESSAGE("DAT","--WRONG_OUT $check_out[$i]\n--NO_REF $check_noref[$i]\n--NO_OUT $check_noout[$i]\n--NO_DB $check_nodb[$i]\n\n");
 }

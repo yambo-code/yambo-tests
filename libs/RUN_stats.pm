@@ -35,7 +35,9 @@ if ("@_" eq "INIT"){
  # Reason of the test fail/skip
  #
  $test_skipped_setup=0;
+ $test_skipped_randcpu=0;
  $test_not_run=0;
+ $test_runtime=0;
  $test_wrong=0;
  #
  # Single check for eack test
@@ -62,9 +64,9 @@ if ("@_" eq "INIT_DIR"){
 }
 if ("@_" eq "REPORT"){
  &MESSAGE("LOG","\n$line");
- my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"."] SKIPS[$test_skipped"."] (SETUP_SKIPS[$test_skipped_setup]) $r_e";
+ my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"."] SKIPS[$test_skipped"."] (SETUP[$test_skipped_setup] RANDCPU[$test_skipped_randcpu]) $r_e";
  &MESSAGE("LOG","$MSG");
- $MSG="\n$r_s"."Test FAIL detail: WRONG[$test_wrong"."] NO RUN[$test_not_run"."] $r_e";
+ $MSG="\n$r_s"."Test FAIL detail: WRONG[$test_wrong"."] NO RUN[$test_not_run"."] RUNTIME[$test_runtime] $r_e";
  &MESSAGE("LOG","$MSG");
  &MESSAGE("LOG","\n$line");
  $MSG="\n$r_s"."Checks: FAIL[$check_failed"."] SUCCESSFUL[$check_ok"."] WHITELIST[$check_whitelisted] $r_e";
@@ -73,9 +75,9 @@ if ("@_" eq "REPORT"){
  #
  # REPORT
  #
- $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_skipped SKIPS ($test_skipped_setup SETUP SKIPS) $r_e";
+ $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_skipped SKIPS( $test_skipped_setup SETUP, $test_skipped_randcpu RAND-CPU) $r_e";
  &MESSAGE("REPORT","$MSG");
- $MSG="\n$r_s"."Test FAIL detail: $test_wrong WRONG, $test_not_run NO RUN $r_e";
+ $MSG="\n$r_s"."Test FAIL detail: $test_wrong WRONG, $test_not_run NO RUN $test_runtime RUNTIME $r_e";
  &MESSAGE("REPORT","$MSG");
  &MESSAGE("REPORT","\n$line");
  #
@@ -133,18 +135,30 @@ if ("@_" eq "NOT_RUN"){
  &MESSAGE("LOG","\n"."$msg"." $CHECK_error");
  &its_a_fail("TEST");
 };
+if ("@_" eq "RUNTIME"){
+ $test_runtime++;
+ &MESSAGE("ERROR","\n"."$err_msg"." $CHECK_error");
+ my $msg = sprintf("%-10s", $cpu_conf."] ".$testname);
+ &MESSAGE("LOG","\n"."$msg"." $CHECK_error");
+ &its_a_fail("TEST");
+};
 if ("@_" eq "SKIPPED"){
  $test_skipped++;
  $test_ok_action="SKIP";
  &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
 };
-if ("@_" eq "SKIPPED"){
+if ("@_" eq "SKIPPED_CORE"){
  $test_skipped++;
  $test_skipped_setup++;
  $test_ok_action="SKIP";
- &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "WRONG_CPU_CONF"){
+ $test_ok_action="SKIP";
+ &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
+};
+if ("@_" eq "ERROR_CPU_CONF"){
+ $test_skipped++;
+ $test_skipped_randcpu++;
  $test_ok_action="SKIP";
  &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
 };

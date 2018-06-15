@@ -62,22 +62,6 @@ if ($@) {
  die unless $@ eq "alarm\n"; # propagate unexpected errors
 }
 #
-# DS: OLD implementation of alarm commented
-#     To be removed after testing
-#
-#eval { 
-# local $SIG{ALRM} = sub { die "alarm\n" };
-# alarm $run_duration;         # schedule alarm 
-# if (not $dry_run) {&command("$command_line")};   # launch the yambo job
-# alarm 0;                     # cancel the alarm
-#};
-#if ($@) {
-# die unless $@ eq "alarm\n"; # propagate unexpected errors
-#}
-#
-## Clean the RUN
-#&KILL("$yambo_exec","$ROBOT_string");
-#
 # Clock update
 $test_end   = [gettimeofday]; 
 $elapsed = tv_interval($test_start, $test_end);
@@ -105,8 +89,8 @@ LOG_LOOP: {
 # Final Report
 #
 if($wrong_cpu_conf){
- $CHECK_error="WRONG CPU configuration";
- &RUN_stats("WRONG_CPU_CONF");
+ if( $N_random_tries < 10){ &RUN_stats("WRONG_CPU_CONF"); $CHECK_error="WRONG CPU configuration"; }
+ if( $N_random_tries== 10){ &RUN_stats("ERROR_CPU_CONF"); $CHECK_error="FAILED CPU configuration";  }
  return "FAIL";
 }elsif($empty_workload){
  &MESSAGE("LOG","[WARN: EMPTY workload]");
@@ -116,7 +100,7 @@ if($wrong_cpu_conf){
 if ($system_error == 0) {
  if ($elapsed > $run_duration) {
   $CHECK_error="FAILED (Runtime above $run_duration secs.)";
-  &RUN_stats("NOT_RUN");
+  &RUN_stats("RUNTIME");
   return "FAIL";
  }else{
   my $msg = sprintf("%8.1f", $elapsed);
