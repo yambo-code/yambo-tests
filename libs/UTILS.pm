@@ -28,12 +28,21 @@ sub trace{
  return $trace;
 }
 sub KILL{
-$cmd="@_[0]";
+$cmd="$mpiexec";
+if($np==1){ $cmd="@_[0]";}
 $ID="@_[1]";
-my $pid = `ps -awu $user | grep '$cmd' | grep '$ID' | grep -v grep | grep -v kill |grep -v null | awk '{P=P" "\$2}END{print P}'`;
-chomp($pid);
-print "\n Killing @_ with PID |$pid|\n" if ($verb);
-if (not "$pid" eq "") {&command("kill -9 $pid")};
+my $pid1 = `ps -awu | $grep $user | $grep '$cmd' | $grep '$ID' | $grep -v $grep | $grep -v kill |$grep null | awk '{P=P" "\$2}END{print P}'`;
+chomp($pid1);
+my $pid2 = `ps -awu | $grep $user | $grep '$cmd' | $grep '$ID' | $grep -v $grep | $grep -v kill |$grep -v null | awk '{P=P" "\$2}END{print P}'`;
+chomp($pid2);
+if (not "$pid1" eq "") {
+ print "\n Killing @_ with PID |$pid1|\n"; # if ($verb);
+ &command("kill $pid1");
+};
+if (not "$pid2" eq "") {
+ print "\n Killing @_ with PID |$pid2|\n"; # if ($verb);
+ &command("kill $pid2");
+};
 }
 sub command{
 $cmd="@_";

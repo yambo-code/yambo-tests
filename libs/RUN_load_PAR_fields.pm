@@ -23,18 +23,21 @@
 sub RUN_load_PAR_fields{
 #
 #
-$Nr="1";
+$Nr="0";
 @MPI_CPU_conf=();
 #
 if ($np==1) { 
+ $Nr="1";
  $MPI_CPU_conf[1]="serial";
  return;
 }
 if ($SETUP=="1" or $yambo_exec =~ /\/ypp/ or $yambo_exec =~ /\/p2y/) { 
+ $Nr="1";
  $MPI_CPU_conf[1]="serial";
  return;
 }
 if ( $default_parallel ){ 
+ $Nr="1";
  $MPI_CPU_conf[1]="default";
  return;
 };
@@ -48,7 +51,7 @@ $PAR_field[3]="X_all_q_ROLEs= \"g.q.k.c.v\""; # => GQKCV
 $PAR_field[4]="SE_ROLEs= \"q.qp.b\""; # => QSB
 $PAR_field[5]="BS_ROLEs= \"k.eh.t\""; # => KEHT
 $PAR_field[6]="RT_ROLEs= \"q.k.qp.b\""; # => QKSB
-$PAR_field[7]="NL_ROLEs= \"w.k\""; # => WQKB
+$PAR_field[7]="NL_ROLEs= \"w.k\""; # => WK
 $PAR_field[8]="X_ROLEs= \"g.q.k.c.v\""; # => GQKCV
 #
 # Resets
@@ -58,7 +61,7 @@ undef @GQKCV;
 undef @QSB;
 undef @KEHT;
 undef @QKSB;
-undef @WQKB;
+undef @WK;
 #
 # Constrains
 &RUN_PAR_constrains();

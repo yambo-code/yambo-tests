@@ -3,8 +3,8 @@
 cd /scratch/marini/yambo-tests/
 
 if ( "$1" == "down") then
-./driver.pl -kill
-./driver.pl -d all 
+#./driver.pl -kill
+./driver.pl -d all -force
 endif
 
 if ( "$1" == "clean") then
@@ -27,12 +27,11 @@ module load local/intel/parallel_2017/pre_compiled
 endif
 
 if ( "$1" == "tests") then
-# if ( "$3" == "34" || "$3" == "6" || "$3" == "15" ) then
-# if ( "$3" == "34" ) then
-#  ./driver.pl -c -flow validate -newer 30 -robot $3 
-# else
- ./driver.pl -c -c -flow validate_slepc -report -robot $3 -nice -newer 10
-# endif
+ if ( "$3" == "44" || "$3" == "45" || "$3" == "46" ) then
+ ./driver.pl -c -c -flow validate_dp -report -robot $3 -nice -newer 100
+ else
+ ./driver.pl -c -c -flow validate    -report -robot $3 -nice -newer 100
+ endif
 endif
 #
 if ( "$1" == "bench") then

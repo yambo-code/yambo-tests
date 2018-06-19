@@ -1,35 +1,33 @@
 #!/usr/bin/perl
 #
+#General RUN descriptor & Automatic flows of calculations
+#--------------------------------------------------------
+#{
+# BRANCH      => "PATH", #Full path to the yambo source to test (SAVED)
+# CONFIG      => "gfortran_slk.sh", # (SAVED)
+# ACTIVE      => "yes", # can be yes or no
+# MPI_CPU     => "NP",
+# SLK_CPU     => "NM",
+# THREADS     => "NT",
+# TESTS       => "hBN/GW-OPTICS", #  (SAVED)
+# KEYS        => "nopj elph hard bse rpa", # (SAVED)
+# PAR_MODE    => "TEXT", # (TEXT can be default, random, loop)
+#},
+#
 @flow = (
 {
  ACTIVE      => "yes",
- CONFIG      => "default.sh",
- KEYS        => "nopj elph sc hard",
+ TESTS       => "all",
+ CONFIG      => "gfortran_internal_SP.sh",
+ KEYS        => "all hard",
+ #KEYS        => "nopj",
 },
 {
- MPI_CPU     => $SYSTEM_NP,
- PAR_MODE    => "default",
-},
-{
- MPI_CPU     => $SYSTEM_NP,
+ MPI_CPU     => 4,
  PAR_MODE    => "random",
 },
 {
- MPI_CPU     => $SYSTEM_NP_half,
- PAR_MODE    => "loop",
-},
-{
- THREADS     => $SYSTEM_NP_half,
-},
-{
- MPI_CPU     => $SYSTEM_NP,
- SLK_CPU     => $SYSTEM_NP_half,
+ MPI_CPU     => 4,
  PAR_MODE    => "default",
-},
-{
- MPI_CPU     => $SYSTEM_NP_half,
- THREADS     => $SYSTEM_NP_half,
- SLK_CPU     => $SYSTEM_SLK,
- PAR_MODE    => "default",
-},
+}
 );

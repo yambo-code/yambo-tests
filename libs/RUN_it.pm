@@ -27,27 +27,40 @@ sub RUN_it{
 # Report the input file
 if($verb ge 2) { &PRINT_input };
 #
+my $CPU_cmd= " ";
+if ($yambo_running) {$CPU_cmd=$CPU_flag};
+#
 # CMD line
 if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
  $command_line = "$nice $yambo_exec -F $INPUT_file $flags $in_dir_cmd_line $force_serial $log";
 }else{
- $command_line = "$nice $mpiexec -np $np $yambo_exec -F $INPUT_file $flags $in_dir_cmd_line $force_serial $CPU_flag $log";
+ $command_line = "$nice $mpiexec -np $np $yambo_exec -F $INPUT_file $flags $in_dir_cmd_line $force_serial $CPU_cmd $log";
 }
 #
 # *** RUN ***
 $test_start = [gettimeofday];
-eval { 
- local $SIG{ALRM} = sub { die "alarm\n" };
- alarm $run_duration;         # schedule alarm 
- if (not $dry_run) {&command("$command_line")};   # launch the yambo job
- alarm 0;                     # cancel the alarm
-};
+#
+# DS: New implementation of alarm using form
+#     This avoids leving defunct processes and need to call KILL
+#
+$pid = fork;
+#
+if ($pid > 0){
+  eval{
+    local $SIG{ALRM} = sub {kill 9, -$pid;};
+    alarm $run_duration;
+    waitpid($pid, 0);
+    alarm 0;
+  };
+}
+elsif ($pid == 0){
+    setpgrp(0,0);
+    if (not $dry_run) {&command("$command_line")};   # launch the yambo job
+    exit(0);
+}
 if ($@) {
  die unless $@ eq "alarm\n"; # propagate unexpected errors
 }
-#
-# Clean the RUN
-&KILL("$yambo_exec","$ROBOT_string");
 #
 # Clock update
 $test_end   = [gettimeofday]; 
@@ -76,8 +89,8 @@ LOG_LOOP: {
 # Final Report
 #
 if($wrong_cpu_conf){
- $CHECK_error="WRONG CPU configuration";
- &RUN_stats("WRONG_CPU_CONF");
+ if( $N_random_tries < 10){ &RUN_stats("WRONG_CPU_CONF"); $CHECK_error="WRONG CPU configuration"; }
+ if( $N_random_tries== 10){ &RUN_stats("ERROR_CPU_CONF"); $CHECK_error="FAILED CPU configuration";  }
  return "FAIL";
 }elsif($empty_workload){
  &MESSAGE("LOG","[WARN: EMPTY workload]");
@@ -87,7 +100,7 @@ if($wrong_cpu_conf){
 if ($system_error == 0) {
  if ($elapsed > $run_duration) {
   $CHECK_error="FAILED (Runtime above $run_duration secs.)";
-  &RUN_stats("NOT_RUN");
+  &RUN_stats("RUNTIME");
   return "FAIL";
  }else{
   my $msg = sprintf("%8.1f", $elapsed);

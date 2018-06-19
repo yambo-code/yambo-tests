@@ -124,7 +124,7 @@ sub UTILS_usage {
              -force                 Run even BROKEN tests.
 
    (TEST control)
-             -update <TEST>         Update all REFERENCE files of the <TEST_folder>. Format is <TEST_folder/testdir> or <TEST_folder/testdir/test>.
+             -update <TEST>         Update all REFERENCE files of <TEST>. The test path is <TEST_folder>/<TEST>.
              -upload <TEST>         Upload the <TEST_folder>/<TEST> directory.
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
 

@@ -54,6 +54,7 @@ call add_RULE("o-02_sc_magnetic+qp.SC_E_History","whitelist",MATERIAL="Si_bulk")
 !======
 ! Noise...
 call add_RULE("o-05_KERR_IP-RPA_len.moke_q1_IP","whitelist",MATERIAL="Iron")
+call add_RULE("o-05_KERR_IP-RPA_len.off_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.moke_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.off_q1_IP","whitelist",MATERIAL="Iron")
 !
@@ -69,3 +70,13 @@ call add_RULE("o-06_ypp_sort.exc_I_sorted","whitelist",MATERIAL="hBN")
 ! SC
 !=====
 call add_RULE("o-06_h_using_colls.SC_E_History","whitelist",MATERIAL="Si_bulk")
+!
+! DP NOISE
+!===========
+! skip
+!call add_RULE(".ndb.gops","skip",MATERIAL="Si_surface")
+!call add_RULE("elph_0K_adaptative","skip",MATERIAL="Si_bulk")
+!call add_RULE("0K_field_ad","skip",MATERIAL="Si_bulk")
+! whitelist
+!call add_RULE("o-04_elel+elph_0K.carriers","whitelist",MATERIAL="Si_bulk")
+!call add_RULE(".YPP-RT_","whitelist",MATERIAL="MoS2")

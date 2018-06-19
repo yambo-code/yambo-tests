@@ -24,6 +24,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 use lib ".";
+use autodie;
 do "config/MODULES.pl";
 do "config/TOOLS.pl";
 do "config/RULES.pl";
@@ -53,9 +54,15 @@ if ($len eq 0) {
  chomp($kill_me);
 }
 if ($kill_me){
- &KILL_me("driver.pl","perl");
- &KILL_me("yambo");
- &KILL_me("ypp");
+ if ($ROBOT_id) {
+  &KILL_me("driver.pl","perl",$ROBOT_id);
+  &KILL_me("yambo",$ROBOT_id);
+  &KILL_me("ypp",$ROBOT_id);
+ }else{
+  &KILL_me("driver.pl","perl");
+  &KILL_me("yambo");
+  &KILL_me("ypp");
+ }
  die;
 }
 #
@@ -88,11 +95,20 @@ if ($edit and $backup_logs eq "no" and $edit ne 1){
  if (-e "ROBOTS/$host/$user/FLOWS/$edit.pl"){
   system("vim ROBOTS/$host/$user/FLOWS/$edit.pl");
  };
+ if (-e "ROBOTS/$host/$user/FLOWS/$edit"){
+  system("vim ROBOTS/$host/$user/FLOWS/$edit");
+ };
  if (-e "ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit.cpu"){
   system("vim ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit.cpu");
  };
+ if (-e "ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit"){
+  system("vim ROBOTS/$host/$user/CPU_CONFIGURATIONS/$edit");
+ };
  if (-e "ROBOTS/$host/$user/CONFIGURATIONS/$edit.sh"){
-  system("vim ROBOTS/$host/$user/CONFIGURATIONS/$edit.sh");
+  system("vim ROBOTS/$host/$user/CONFIGURATIONS/$edit");
+ };
+ if (-e "ROBOTS/$host/$user/CONFIGURATIONS/$edit"){
+  system("vim ROBOTS/$host/$user/CONFIGURATIONS/$edit");
  };
  die;
 }
@@ -120,7 +136,7 @@ if($help){
 #
 # Show extra files
 if($repo_check){ 
- &command("$git status --ignored | grep -v SAVE | grep -v GKKP | grep -v .gz");
+ &command("$git status --ignored | $grep -v SAVE | $grep -v GKKP | $grep -v .gz");
  die "\n";
 };
 #
@@ -316,7 +332,7 @@ if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
 &RUN_global_report("FINAL");
 #
 close $rlog;
-close $tlog;
+#close $tlog; # This is closed in driver.pm inside the branhes loop
 close $elog;
 close $wlog;
 close $flog;

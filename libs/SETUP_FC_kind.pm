@@ -33,10 +33,16 @@ while(<SETUP_file>) {
  if($_ =~ /mpi_kind/) { 
   ($desc, $MPI_kind) = split(/=/,$_);
  }
+ if($_ =~ /yprecision/) { 
+  ($desc, $Yambo_precision) = split(/=/,$_);
+ }
 };
 close(SETUP_file);
 if($MPI_kind =~ /Open/ ) { $MPI_kind_short="OpenMPI" }; 
 if($MPI_kind =~ /MPICH/) { $MPI_kind_short="MPICH" }; 
 if($MPI_kind =~ /Intel/) { $MPI_kind_short="IntelMPI"}; 
+#
+if($Yambo_precision =~ /single/ ) { $Yambo_precision="single" }; 
+if($Yambo_precision =~ /double/ ) { $Yambo_precision="double" }; 
 }
 1;

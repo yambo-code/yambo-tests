@@ -155,7 +155,7 @@ if ($mode eq "bench")
 {
  #&command("find . -name 'ROBOT_Nr_${ROBOT_id}' > list");
  #if (-s "list") {&command("tar rf $DBS_backup_file.tar -T list")};
- &command("find . -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep 'ROBOT_Nr_${ROBOT_id}' > list");
+ &command("find . -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | $grep 'ROBOT_Nr_${ROBOT_id}' > list");
 }else{
  if (not $RUNNING_suite) {$failed_log=(glob("FAILED*R${ROBOT_id}*"))[0]};
  open(FAILED,"<","$suite_dir/$failed_log");
@@ -167,7 +167,7 @@ if ($mode eq "bench")
  my $line;
  while($line = shift(@out)) {
   chomp($line);
-  &command("find $line -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | grep -v 'REFERENCE' >> list");
+  &command("find $line -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | $grep -v 'REFERENCE' >> list");
  }
 }
 #

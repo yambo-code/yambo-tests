@@ -36,6 +36,7 @@ if ( "@_" eq "DIR" ){
  } elsif ($project ne "all") {
   if (-e "PL" && $project !~ /pl/) { $message=" skipped (wrong PJ)"};
   if (-e "NL" && $project !~ /nl/) {$message=" skipped (wrong PJ)"};
+  if (-e "NL" && $Yambo_precision !~ /double/) {$message=" skipped (yambo SP compile)"};
   if (-e "NL" && not $do_NL_tests ) {$message=" skipped (wrong BRANCH)"};
   if (-e "QED" && $project !~ /qed/) {$message=" skipped (wrong PJ)"};
   if (-e "RT" && $project !~ /rt/) {$message=" skipped (wrong PJ)"};
@@ -69,7 +70,6 @@ if ( "@_" eq "INPUT") {
   if(! -x "@exe[0]"){ 
    $CHECK_error = " skipped (missing @exe[0])";
    &RUN_stats("SKIPPED");
-   $CHECK_error = " skipped (missing executables)";
    return "FAIL";
   }
  }

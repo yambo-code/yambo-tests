@@ -26,47 +26,81 @@ sub RUN_executables{
 #
 # EXE section
 #
-$yambo_exec = "$BRANCH/$conf_bin/yambo";
-if ($P2Y) {$yambo_exec = "$BRANCH/$conf_bin/p2y"};
-if ($YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp"};
-if ($YPP=="2") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s"};
+undef $yambo_running;
+if ($P2Y) 
+ {$yambo_exec = "$BRANCH/$conf_bin/p2y"}
+elsif ($YPP=="1") 
+ {$yambo_exec = "$BRANCH/$conf_bin/ypp"}
+elsif ($YPP=="2") 
+ {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s"}
+else
+ {$yambo_exec = "$BRANCH/$conf_bin/yambo";
+  $yambo_running=1}
 if (-e "RT") {
- $yambo_exec = "$BRANCH/$conf_bin/yambo_rt";
- if ($YPP_RT=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_rt"};
- if ($YPP_SC=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_sc"};
+ undef $yambo_running;
+ if ($YPP_RT=="1" or $YPP=="1") 
+  {$yambo_exec = "$BRANCH/$conf_bin/ypp_rt"}
+ elsif ($YPP_SC=="1" or $YPP=="1") 
+  {$yambo_exec = "$BRANCH/$conf_bin/ypp_sc"}
+ else
+  {$yambo_exec = "$BRANCH/$conf_bin/yambo_rt";
+   $yambo_running=1}
 }
 if (-e "QED" && !$YPP=="1" && !$is_GPL) {
- $yambo_exec = "$BRANCH/$conf_bin/yambo_qed";
+ $yambo_running=1;
+ $yambo_exec = "$BRANCH/$conf_bin/yambo_qed"
 }
 if (-e "PL" && !$is_GPL) {
- $yambo_exec = "$BRANCH/$conf_bin/yambo_pl";
- if ($YPP_RT=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_rt"};
+ undef $yambo_running;
+ if ($YPP_RT=="1" or $YPP=="1") 
+  {$yambo_exec = "$BRANCH/$conf_bin/ypp_rt"}  
+ else
+  {$yambo_exec = "$BRANCH/$conf_bin/yambo_pl";
+   $yambo_running=1}
 }
 if (-e "NL" && !$is_GPL) {
- $yambo_exec = "$BRANCH/$conf_bin/yambo_nl";
- if ($YPP_NL=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_nl"};
+ undef $yambo_running;
+ if ($YPP_NL=="1" or $YPP=="1") 
+  {$yambo_exec = "$BRANCH/$conf_bin/ypp_nl"}
+ else
+  {$yambo_exec = "$BRANCH/$conf_bin/yambo_nl";
+   $yambo_running=1}
 }
 if (-e "ELPH") {
- $yambo_exec = "$BRANCH/$conf_bin/yambo_ph";
- if ($YPP_PH=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_ph"};
+ undef $yambo_running;
+ if ($YPP_PH=="1" or $YPP=="1") 
+  {$yambo_exec = "$BRANCH/$conf_bin/ypp_ph"}
+ else
+  {$yambo_exec = "$BRANCH/$conf_bin/yambo_ph";
+   $yambo_running=1}
 }
 if (-e "SC" && !$is_GPL) {
- $yambo_exec = "$BRANCH/$conf_bin/yambo_sc";
- if ($YPP_SC=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_sc"};
+ undef $yambo_running;
+ if ($YPP_SC=="1" or $YPP=="1") 
+  {$yambo_exec = "$BRANCH/$conf_bin/ypp_sc"}
+ else
+  {$yambo_exec = "$BRANCH/$conf_bin/yambo_sc";
+   $yambo_running=1}
 }
 if (-e "MAGNETIC" && !$is_GPL) {
- $yambo_exec = "$BRANCH/$conf_bin/yambo_magnetic";
- if ($YPP_MAGNETIC=="1" or $YPP=="1") {$yambo_exec = "$BRANCH/$conf_bin/ypp_magnetic"};
+ undef $yambo_running;
+ if ($YPP_MAGNETIC=="1" or $YPP=="1") 
+  {$yambo_exec = "$BRANCH/$conf_bin/ypp_magnetic"}
+ else
+  {$yambo_exec = "$BRANCH/$conf_bin/yambo_magnetic";
+   $yambo_running=1}
 }
 if (-e "KERR"  && !$YPP=="1") {
  $yambo_exec = "$BRANCH/$conf_bin/yambo_kerr";
+ $yambo_running=1
 }
 if ($CHEERS =="1") {
+ undef $yambo_running;
  $yambo_exec = "$BRANCH/$conf_bin/ycheers";
 }
 #
-if ($openmp_is_off) {$yambo_exec="$yambo_exec -N";}
-if ($mpi_is_off)    {$yambo_exec="$yambo_exec -M";}
+if ($openmp_is_off) {$yambo_exec="$yambo_exec -N"}
+if ($mpi_is_off)    {$yambo_exec="$yambo_exec -M"}
 #
 }
 1;

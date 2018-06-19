@@ -47,6 +47,7 @@ sub PHP_key_words{
  if ($n_patterns eq 0) {return};
  $branch_key=$pattern[0][1];
  $BUILD=$pattern[0][3];
+ $BUILD =~ s/\+/ /g;
  $MPI_kind=$pattern[0][5];
  $FC_kind=$pattern[0][7];
  $REVISION=$pattern[0][9];
@@ -57,38 +58,62 @@ sub PHP_key_words{
   $MPI_kind=" ";
  }
 #
+$Yambo_precision="unknown";
+&get_line("Compilation Precision");
+if ($n_patterns > 0) { $Yambo_precision=$pattern[0][2];  };
+
+#
 &get_line("Date");
 $date=$pattern[0][3];
 $time=$pattern[0][5];
+$time=~ s/\-/h/g;
+$time.="m";
+#
+&get_line("TOTAL");
+$duration="$pattern[0][3]h$pattern[0][4]m$pattern[0][5]s";
+#
+&get_line("Running tests");
+$size=@{ $pattern[0] };
+$running_tests="";
+for( $i = 2; $i < $size; $i = $i + 1 ){
+ $running_tests.=" $pattern[0][$i]";
+ }
+#
+&get_line("Projects");
+$size=@{ $pattern[0] };
+$projects="";
+for( $i = 1; $i < $size; $i = $i + 1 ){
+ $projects.=" $pattern[0][$i]";
+ }
 }
 #
 sub PHP_extract{
 #
 # Name choosing
-$MAX_phps=10;
+$MAX_phps=20;
 chdir("$host/www");
 for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 {
  $k=$j+1;
  $main_dat = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.dat";
- $main_php  = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.php";
  $error_php = $branch_key."/".$hostname."_".$branch_key."_".$j."_error.php";
  $report_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_report.php";
- $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php.bz2";
- $comp_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.php.bz2";
- if (-f $main_php){
-  ($file = $error_php) =~ s/$j/$k/g;
+ $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php";
+ $comp_tgz= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.tgz";
+ $logs_tgz= $branch_key."/".$hostname."_".$branch_key."_".$j."_logs.tgz";
+ if (-f $main_dat){
+  ($file = $error_php) =~ s/_$j/_$k/g;
   if (-f $error_php) {&command("mv $error_php $file")};
-  ($file = $report_php) =~ s/$j/$k/g;
+  ($file = $report_php) =~ s/_$j/_$k/g;
   if (-f $report_php) {&command("mv $report_php $file")};
-  ($file = $conf_php) =~ s/$j/$k/g;
+  ($file = $conf_php) =~ s/_$j/_$k/g;
   if (-f $conf_php) {&command("mv $conf_php $file")};
-  ($file = $comp_php) =~ s/$j/$k/g;
-  if (-f $comp_php) {&command("mv $comp_php $file")};
-  ($file = $main_dat) =~ s/$j/$k/g;
+  ($file = $comp_tgz) =~ s/_$j/_$k/g;
+  if (-f $comp_tgz) {&command("mv $comp_tgz $file")};
+  ($file = $logs_tgz) =~ s/_$j/_$k/g;
+  if (-f $logs_tgz) {&command("mv $logs_tgz $file")};
+  ($file = $main_dat) =~ s/_$j/_$k/g;
   if (-f $main_dat) {&command("mv $main_dat $file")};
-  ($file = $main_php) =~ s/$j/$k/g;
-  if (-f $main_php) {&command("mv $main_php $file")};
   open(my $fh1, '<', $file) ;
   open(my $fh2, '>', 'dummy') ;
   while( $line = <$fh1>) {
@@ -103,66 +128,119 @@ for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
 #
 chdir("$suite_dir");
 $main_dat = $hostname."_".$branch_key."_1_main.dat";
-$main_php = $hostname."_".$branch_key."_1_main.php";
 $error_php=$hostname."_".$branch_key."_1_error.php";
 $report_php=$hostname."_".$branch_key."_1_report.php";
 $conf_php=$hostname."_".$branch_key."_1_conf.php";
-$comp_php=$hostname."_".$branch_key."_1_comp.php";
-open($php, '>', $main_php) or die "Could not open file '$main_php' $!";
+$comp_tgz=$hostname."_".$branch_key."_1_comp.tgz";
+$logs_tgz=$hostname."_".$branch_key."_1_logs.tgz";
 #
-# Line #1
-&MESSAGE("PHP","<table>\n")
-&MESSAGE("PHP","<tr>\n")
-&MESSAGE("PHP"," <th>Logs</th>\n")
-#&MESSAGE("PHP"," <th>Branch</th>\n")
-&MESSAGE("PHP"," <th>Compiler</th>\n");
-&MESSAGE("PHP"," <th>Date</th>\n");
-&MESSAGE("PHP"," <th>Revision</th>\n");
+# RETRIVE DATA
+#
 &get_line("Parallel");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $field_1=$pattern[$i][4];
  $field_2=$pattern[$i][5];
  if ($field_2 =~ /default/){
-  &MESSAGE("PHP"," <td>$pattern[$i][2]<br>DEFAULT</td>\n");
+  $run_kind[$i]="$pattern[$i][2] DEFAULT";
  }elsif ($field_2 =~ /random/){
-  &MESSAGE("PHP"," <td>$pattern[$i][2]<br>RANDOM</td>\n");
+  $run_kind[$i]="$pattern[$i][2] RANDOM";
  }elsif ($field_1 =~ /loop/){
-  &MESSAGE("PHP"," <td>$pattern[$i][2]<br>LOOP</td>\n");
+  $run_kind[$i]="$pattern[$i][2] LOOP";
  }else{
-  &MESSAGE("PHP"," <td>$pattern[$i][2]</td>\n");
+  $run_kind[$i]="$pattern[$i][2]";
  }
 }
-&MESSAGE("PHP","</tr>\n")
 #
-# Line #2
-&MESSAGE("PHP","<tr>\n")
-#&MESSAGE("PHP"," <td>$hostname\n");
-&MESSAGE("PHP"," <td>");
-&MESSAGE("PHP"," <br><a href='$report_php'> report</a>");
-&MESSAGE("PHP"," <br><a href='$error_php'> error</a>");
-&MESSAGE("PHP"," <br><a href='$conf_php.bz2'> conf</a>");
-&MESSAGE("PHP"," <br><a href='$comp_php.bz2'> comp</a>");
-&MESSAGE("PHP"," </td>");
-#&MESSAGE("PHP"," <td>$branch_key</td>\n");
-&MESSAGE("PHP"," <td>$FC_kind<br>$MPI_kind</td>\n");
-&MESSAGE("PHP"," <td>$date<br>$time</td>\n");
-&MESSAGE("PHP"," <td>$REVISION<br>$BUILD</td>\n");
-&get_line("RUNS_FAIL");
+# TESTS
+&get_line("Tests");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
- if ($pattern[$i][1] == 0) { &MESSAGE("PHP"," <td bgcolor=\"#6FFF00\">$pattern[$i][1]</td>\n") };
- if ($pattern[$i][1] > 0 and $pattern[$i][1] < 10) { &MESSAGE("PHP"," <td bgcolor=\"#FC9F00\">$pattern[$i][1]</td>\n")} ;
- if ($pattern[$i][1] >= 10) { &MESSAGE("PHP"," <td bgcolor=\"#CC0000\">$pattern[$i][1]</td>\n")};
+ $test_fail[$i]=$pattern[$i][1];
+ $test_success[$i]=$pattern[$i][3];
+ $test_skipped[$i]=$pattern[$i][5];
+ $setup_skipped[$i]=$pattern[$i][7];
+ $randcpu_skipped[$i]=$pattern[$i][9];
 }
+&get_line("Test FAIL");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $test_wrong[$i]=$pattern[$i][3];
+ $test_notrun[$i]=$pattern[$i][5];
+ $test_runtime[$i]=$pattern[$i][8];
+}
+# CHECKS
+&get_line("Checks");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $checks_fail[$i]=$pattern[$i][1];
+ $success[$i]=$pattern[$i][3];
+ $whitel[$i]=$pattern[$i][5];
+}
+&get_line("Check FAIL");
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $check_out[$i]=$pattern[$i][3];
+ $check_noref[$i]=$pattern[$i][5];
+ $check_noout[$i]=$pattern[$i][8];
+ $check_nodb[$i]=$pattern[$i][11];
+}
+
+#
+# OLD VERSION
+#
 if ($n_patterns eq 0){
- &get_line("FAIL:");
+ &get_line("RUNS_FAIL");
  for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
-  &MESSAGE("PHP"," <td>$pattern[$i][1]</td>\n");
+  # TESTS
+  $test_fail[$i]=$pattern[$i][1];
+  $test_notrun[$i]=$pattern[$i][8];
+  $test_skipped[$i]=$pattern[$i][11];
+  # CHECKS
+  $checks_fail[$i]=$pattern[$i][4];
+  $whitel[$i]=$pattern[$i][14];
+  $success[$i]=$pattern[$i][17];
+  #
+  $test_success[$i]=$success[$i];
+  $test_wrong[$i]=$checks_fail[$i];
+  $test_runtime[$i]="";
+  $setup_skipped[$i]="";
+  $randcpu_skipped[$i]="";
+  #
  }
 }
-&MESSAGE("PHP","</tr>\n")
 #
-&MESSAGE("PHP","</table>\n");
-close($php);
+
+#
+# Generte DAT file
+#
+open($dat, '>', $main_dat) or die "Could not open file '$main_dat' $!";
+&MESSAGE("DAT","$REVISION\nFC_kind $FC_kind\nMPI_kind $MPI_kind\nBUILD $BUILD\nPrecision $Yambo_precision\n");
+&MESSAGE("DAT","DATE $date\nTIME $time\nRUN $duration\n");
+&MESSAGE("DAT","TESTS $running_tests\nPROJ $projects\n");
+&MESSAGE("DAT","\n");
+
+&get_line("Parallel");
+@run_kind = @pattern;
+
+for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
+ $field_1=$run_kind[$i][4];
+ $field_2=$run_kind[$i][5];
+ if ($field_2 =~ /default/){
+  &MESSAGE("DAT","$run_kind[$i][2] DEFAULT\n");
+ }elsif ($field_2 =~ /random/){
+  &MESSAGE("DAT","$run_kind[$i][2] RANDOM\n");
+ }elsif ($field_1 =~ /loop/){
+  &MESSAGE("DAT","$run_kind[$i][2] LOOP\n");
+ }else{
+  &MESSAGE("DAT","$run_kind[$i][2]\n");
+ }
+ #
+ $test_total=$test_fail[$i]+$test_skipped[$i]+$test_success[$i];
+ $checks_total=$checks_fail[$i]+$whitel[$i]+$success[$i];
+ #
+ &MESSAGE("DAT","TESTS $test_total\n-OKs $test_success[$i]\n-SKIP $test_skipped[$i]\n--SETUP $setup_skipped[$i]\n--RAND-CPU $randcpu_skipped[$i]\n");
+ &MESSAGE("DAT","-FAIL $test_fail[$i]\n--NOT_RUN $test_notrun[$i]\n--RUNTIME $test_runtime[$i]\n--WRONG_TEST $test_wrong[$i]\n");
+ &MESSAGE("DAT","CHECKS $checks_total\n-OKs $success[$i]\n-WHITE $whitel[$i]\n-FAIL $checks_fail[$i]\n");
+ &MESSAGE("DAT","--WRONG_OUT $check_out[$i]\n--NO_REF $check_noref[$i]\n--NO_OUT $check_noout[$i]\n--NO_DB $check_nodb[$i]\n\n");
+}
+
+close($dat);
 #
 # ERROR > .php
 &command("echo '<pre>' > $error_php");
@@ -178,22 +256,21 @@ foreach $file (<$dir/REPORT*.log>) {
 };
 &command("echo '</pre>' >> $report_php");
 #
-# CONF/COMPILE > .php
+# CONF > .php
 &command("echo '<pre>' > $conf_php");
-&command("echo '<pre>' > $comp_php");
 foreach $file (<$dir/compilation/*conf*.log>) {&command("cat $file >> $conf_php")};
-foreach $file (<$dir/compilation/*comp*.log>) {&command("cat $file >> $comp_php")};
 &command("echo '</pre>' >> $conf_php");
-&command("echo '</pre>' >> $comp_php");
+&command("echo '</pre>' >> $conf_php");
+#
+# LOGs and compilation as tgz file
+&command("tar -czf $comp_tgz $dir/compilation/*comp*.log");
+&command("tar -czf $logs_tgz $dir/LOG*.log");
 #
 # Final copying
 #
-foreach $file (<*_comp.php>,<*_conf.php>) {
- &command("bzip2 $file");
-}
-&command("mkdir -p    $host/www/$branch_key");
-&command("mv *.php    $host/www/$branch_key");
-&command("mv *.php.bz2 $host/www/$branch_key");   
+&command("mkdir -p $host/www/$branch_key");
+&command("mv *.php *.dat $comp_tgz $logs_tgz $host/www/$branch_key");   
+#
 return
 }
 #

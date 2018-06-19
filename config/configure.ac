@@ -78,6 +78,10 @@ AC_SUBST(ncftpls)
 AC_ARG_WITH(ncftpput, AC_HELP_STRING([--with-ncftpput=<exe>],[User-defined ncftpput],[32]),[],[with_ncftpput="ncftpput"]) 
 AC_CHECK_PROGS(ncftpput,[$with_ncftpput],[none])
 AC_SUBST(ncftpput)
+# wget
+AC_ARG_WITH(wget, AC_HELP_STRING([--with-wget=<exe>],[User-defined wget],[32]),[],[with_wget="wget --show-progress"]) 
+AC_CHECK_PROGS(wget,[$with_wget],[wget])
+AC_SUBST(wget)
 # git
 AC_ARG_WITH(git, AC_HELP_STRING([--with-git=<exe>],[User-defined git],[32]),[],[with_git="git"]) 
 AC_CHECK_PROGS(git,[$with_git],[none])
@@ -125,11 +129,31 @@ case $with_yambo in
       if test -f $with_yambo/driver/yambo.h ; then
          AC_MSG_RESULT($with_yambo)
          echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
-         svn --force add ROBOTS/$robot/$user/BRANCHES
       fi
     fi
     ;;
 esac
+# ============================================================================
+# System specific setups
+case "${host}" in
+ *86*apple* )
+   grep_cmd="grep -P"
+   NP_cmd="sysctl hw.physicalcpu"
+   ;;
+  *)
+   grep_cmd="grep"
+   NP_cmd="\$grep -c -P '^processor\\\\s+:' /proc/cpuinfo"
+   ;;
+ *)
+esac
+AC_SUBST(NP_cmd)
+AC_SUBST(grep_cmd)
+#
+# ============================================================================
+# Credentials setup
+#
+git config credential.helper store
+#
 # ============================================================================
 # PERL_LIB
 #

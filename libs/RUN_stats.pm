@@ -25,18 +25,36 @@
 sub RUN_stats{
 #
 if ("@_" eq "INIT"){
- $test_skipped=0;
- $run_with_failures=0;
- $test_failed=0;
+ #
+ # Whole test
+ #
+ $test_with_fails=0;
  $test_ok=0;
+ $test_skipped=0;
+ #
+ # Reason of the test fail/skip
+ #
+ $test_skipped_setup=0;
+ $test_skipped_randcpu=0;
  $test_not_run=0;
+ $test_runtime=0;
+ $test_wrong=0;
+ #
+ # Single check for eack test
+ #
+ $check_failed=0;
+ $check_ok=0;
+ $check_whitelisted=0;
+ #
+ # Reason of the check fail
+ #
  $missing_db=0;
  $wrong_out=0;
  $ref_not_found=0;
  $out_not_found=0;
+ #
  $dir_failed=0;
  $dir_ok=0;
- $whitelist_err=0;
  return;
 }
 if ("@_" eq "INIT_DIR"){
@@ -46,24 +64,26 @@ if ("@_" eq "INIT_DIR"){
 }
 if ("@_" eq "REPORT"){
  &MESSAGE("LOG","\n$line");
- my $MSG="\n$r_s"."Tests: FAIL[$run_with_failures"."] ";
- $MSG=$MSG." Checks: FAIL[$test_failed"."] OK[$test_ok"."] NOT RUN [$test_not_run"."] SKIPPED [$test_skipped"."] WHITELISTED [$whitelist_err] $r_e";
+ my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"."] SKIPS[$test_skipped"."] (SETUP[$test_skipped_setup] RANDCPU[$test_skipped_randcpu]) $r_e";
+ &MESSAGE("LOG","$MSG");
+ $MSG="\n$r_s"."Test FAIL detail: WRONG[$test_wrong"."] NO RUN[$test_not_run"."] RUNTIME[$test_runtime] $r_e";
  &MESSAGE("LOG","$MSG");
  &MESSAGE("LOG","\n$line");
- $MSG="\nOutputs: FAIL[$wrong_out"."] no REFs[$ref_not_found"."] no OUTs[$out_not_found"."]";
- $MSG=$MSG." DBs: MISSING[$missing_db"."]\n\n";
+ $MSG="\n$r_s"."Checks: FAIL[$check_failed"."] SUCCESSFUL[$check_ok"."] WHITELIST[$check_whitelisted] $r_e";
+ $MSG=$MSG."\n$r_s"."Check FAIL detail: WRONG[$wrong_out"."] no REFs[$ref_not_found"."] no OUTs[$out_not_found"."] no DB[$missing_db"."] $r_e\n";
  &MESSAGE("LOG","$MSG");
  #
  # REPORT
  #
- &MESSAGE("REPORT","\nRUNS_FAIL: $run_with_failures => CHECKS_FAIL: $test_failed & NO RUN: $test_not_run & SKIPS: $test_skipped % WHITELIST: $whitelist_err % OKs: $test_ok");
- if ($test_failed>0) {
-  &MESSAGE("REPORT","\nCHECK details:");
-  if ($wrong_out>0) {&MESSAGE("REPORT"," $wrong_out wrong output %")};
-  if ($ref_not_found>0) {&MESSAGE("REPORT"," $ref_not_found no reference %")};
-  if ($out_not_found>0) {&MESSAGE("REPORT"," $out_not_found no output %")};
-  if ($missing_db>0) {&MESSAGE("REPORT"," $missing_db no DB")};
- }
+ $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_skipped SKIPS( $test_skipped_setup SETUP, $test_skipped_randcpu RAND-CPU) $r_e";
+ &MESSAGE("REPORT","$MSG");
+ $MSG="\n$r_s"."Test FAIL detail: $test_wrong WRONG, $test_not_run NO RUN $test_runtime RUNTIME $r_e";
+ &MESSAGE("REPORT","$MSG");
+ &MESSAGE("REPORT","\n$line");
+ #
+ $MSG="\n$r_s"."Checks: $check_failed FAIL, $check_ok OK, $check_whitelisted WHITELIST $r_e";
+ $MSG=$MSG."\n$r_s"."Check FAIL detail: $wrong_out WRONG, $ref_not_found no REF, $out_not_found no OUT, $missing_db no DB $r_e\n";
+ &MESSAGE("REPORT","$MSG");
  &MESSAGE("REPORT","\n$line");
  return;
 }
@@ -79,31 +99,31 @@ if ("@_" eq "ERR_OUT"){
   &MESSAGE("LOG","\n"."$msg"."[$r_s WHITELISTED $r_e]");
   if (not $update_test) {$CHECK_error =~ s/\[\>WHITELISTED\<\]/ /};
   &MESSAGE("WHITE","\n"."$err_msg"."$r_s $CHECK_error   $r_e");
-  $whitelist_err++;
+  $check_whitelisted++;
  }else{
   &MESSAGE("LOG","\n"."$msg"."[$r_s $CHECK_error   $r_e]");
   &MESSAGE("ERROR","\n"."$err_msg"."$r_s $CHECK_error   $r_e");
   $wrong_out++;
-  &its_a_fail();
+  &its_a_fail("CHECK");
  }
 };
 if ("@_" eq "ERR_DB"){
  $missing_db++;
- &its_a_fail();
+ &its_a_fail("CHECK");
 };
 if ("@_" eq "NO_REF"){
  my $msg = sprintf("%-"."$left_length"."s", "  $run_filename");
  &MESSAGE("LOG","\n"."$msg"."[$r_s  NO in REFERENCE(s)  $r_e]");
  &MESSAGE("ERROR","\n"."$err_msg"."$r_s  NO $run_filename in REFERENCE(s)  $r_e");
  $ref_not_found++;
- &its_a_fail();
+ &its_a_fail("CHECK");
 };
 if ("@_" eq "NO_OUT"){
  my $msg = sprintf("%-"."$left_length"."s", "  $ref_filename");
  &MESSAGE("LOG","\n"."$msg"."[$r_s  NO in OUTPUT $r_e]");
  &MESSAGE("ERROR","\n"."$err_msg"."$r_s  NO $ref_filename in OUTPUT $r_e");
  $out_not_found++;
- &its_a_fail();
+ &its_a_fail("CHECK");
 };
 if ("@_" eq "DIR_SKIPPED"){
  &MESSAGE("LOG","\n$CHECK_error") if ($verb);
@@ -113,33 +133,59 @@ if ("@_" eq "NOT_RUN"){
  &MESSAGE("ERROR","\n"."$err_msg"." $CHECK_error");
  my $msg = sprintf("%-10s", $cpu_conf."] ".$testname);
  &MESSAGE("LOG","\n"."$msg"." $CHECK_error");
- &its_a_fail();
+ &its_a_fail("TEST");
+};
+if ("@_" eq "RUNTIME"){
+ $test_runtime++;
+ &MESSAGE("ERROR","\n"."$err_msg"." $CHECK_error");
+ my $msg = sprintf("%-10s", $cpu_conf."] ".$testname);
+ &MESSAGE("LOG","\n"."$msg"." $CHECK_error");
+ &its_a_fail("TEST");
 };
 if ("@_" eq "SKIPPED"){
  $test_skipped++;
+ $test_ok_action="SKIP";
  &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
 };
+if ("@_" eq "SKIPPED_CORE"){
+ $test_skipped++;
+ $test_skipped_setup++;
+ $test_ok_action="SKIP";
+};
 if ("@_" eq "WRONG_CPU_CONF"){
+ $test_ok_action="SKIP";
+ &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
+};
+if ("@_" eq "ERROR_CPU_CONF"){
+ $test_skipped++;
+ $test_skipped_randcpu++;
+ $test_ok_action="SKIP";
  &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "WRONG_DEP"){
  $test_skipped++;
+ $test_ok_action="SKIP";
  &MESSAGE("LOG","[$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "OK"){
  $RUN_result="OK";
- $test_ok++;
+ $check_ok++;
  $dir_ok++;
+}
+if (! ("$test_ok_action" eq "SKIP") )
+{ 
+ if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run eq 0 ) { $test_ok++;  $test_ok_action="CHECK"; };
+ if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run >  0 ) {              $test_ok_action="NONE"; };
+ if ( "$test_ok_action" eq "CHECK"    && $fails_in_the_run >  0 ) { $test_ok--;  $test_ok_action="NONE"; };
 }
 }
 sub its_a_fail{
  $RUN_result="FAIL";
- $test_failed++;
+ if ("@_" eq "CHECK"){ $check_failed++; };
+ if ( $fails_in_the_run eq 0) { $test_with_fails++; };
+ if ( $fails_in_the_run eq 0 && "@_" eq "CHECK") { $test_wrong++; };
  $dir_failed++;
+ $fails_in_the_run++;
  &MESSAGE("FAILED","$TESTS_folder/$testdir/$ROBOT_wd/$dir_name\n");
- if ($first_in_the_run) {
-  $run_with_failures++; 
-  undef $first_in_the_run;
- };
 }
 1;

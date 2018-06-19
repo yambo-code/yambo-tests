@@ -28,7 +28,7 @@ sub RUN_convert_the_SAVE{
  #
  $YAMBO_local="$nice $BRANCH/$conf_bin/yambo";
  my $ypp_extension="-z";
- if ($is_NEW_YPP) { $ypp_extension="-w c"};
+ if ($is_NEW_YPP and ( not $mode eq "cheers") ) { $ypp_extension="-w c"};
  $YPP_local="$nice $BRANCH/$conf_bin/ypp $ypp_extension";
  if(-e "$BRANCH/$conf_bin/yambo_rt") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_rt"; }
  if(-e "$BRANCH/$conf_bin/ypp_rt")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_rt $ypp_extension"; }

@@ -60,6 +60,7 @@ if ("$what" eq "INIT") {
  if ($select_conf_file) {&MESSAGE("REPORT ERROR WHITE","\nCompilation Scheme      :$select_conf_file")};
  &MESSAGE("REPORT ERROR WHITE","\nBuild                   :$branch_key - $BUILD - $MPI_kind_short - $FC_kind - rev.$REVISION");
  &MESSAGE("REPORT ERROR WHITE","\nMPI                     :$MPI_kind");
+ &MESSAGE("REPORT ERROR WHITE","\nCompilation Precision   :$Yambo_precision");
  &MESSAGE("REPORT ERROR WHITE","\nParallel Conf           :$cpu_global_conf - $PAR_mode");
  &MESSAGE("REPORT ERROR WHITE","\n$line");
 }elsif ("$what" eq "RUNTIME"){

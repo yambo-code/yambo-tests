@@ -87,7 +87,7 @@ if ( (($HF=="1" and $GW=="0") or $SC=="1" or ($GW=="1" and $EP=="1") or ($GW=="1
 # NL
 #
 if ($SC=="0" and $NLOPTICS=="1" and $COLL=="0") {
- foreach $f1 (@WQKB){
+ foreach $f1 (@WK){
   $Nr++;
   $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1]\"";
  }
@@ -157,7 +157,7 @@ if ($COLL=="1" and $yambo_exec=~"yambo_sc"  ) {
 # COLLISIONS (_NL)
 #
 if ($COLL=="1" and $yambo_exec=~"yambo_nl"  ) { 
- foreach $f1 (@WQKB){
+ foreach $f1 (@WK){
   $Nr++;
   $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1]\"";
  }
