@@ -30,6 +30,7 @@ $OMP_field[2]="X_Threads= $nt_here";
 $OMP_field[3]="DIP_Threads= $nt_here";
 $OMP_field[4]="SE_Threads= $nt_here";
 $OMP_field[5]="RT_Threads= $nt_here";
+$OMP_field[6]="NL_Threads= $nt_here";
 #
 }
 1;
