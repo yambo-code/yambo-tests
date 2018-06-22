@@ -126,6 +126,7 @@ if ("@_" eq "NO_OUT"){
  &its_a_fail("CHECK");
 };
 if ("@_" eq "DIR_SKIPPED"){
+ $test_ok_action="SKIP";
  &MESSAGE("LOG","\n$CHECK_error") if ($verb);
 };
 if ("@_" eq "NOT_RUN"){
