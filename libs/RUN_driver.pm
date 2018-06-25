@@ -196,9 +196,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
     &RUN_stats("WRONG_DEP");
    }
    #
-   &command("rm -f yambo.in");
-   #
-   sleep(1);
+   &command("rm -f yambo.in BASE_input");
    #
   }
   #
