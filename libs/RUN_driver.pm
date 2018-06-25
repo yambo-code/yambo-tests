@@ -198,6 +198,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    #
    &command("rm -f yambo.in");
    #
+   sleep(1);
+   #
   }
   #
  } # End loop on input files

@@ -79,8 +79,9 @@ $is_NEW_DBGD="no";
 if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
 undef $do_NL_tests;
-if ($pattern=~m/devel-nl/ix) {$do_NL_tests="yes"};
-if ($pattern=~m/develop/ix)  {$do_NL_tests="yes"};
+if ($pattern=~m/devel-nl/ix)     {$do_NL_tests="yes"};
+if ($pattern=~m/develop/ix)      {$do_NL_tests="yes"};
+if ($pattern=~m/devel-ypp-rt/ix) {$do_NL_tests="yes"};
 #
 if ($is_GPL) {$branch_key.="_gpl"};
 #
@@ -91,7 +92,6 @@ if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/master/ix) {undef $is_NEW_YPP};
 if ($is_GPL) {undef $is_NEW_YPP};
-if ($pattern=~m/devel-ypp-rt/ix) {undef $is_NEW_YPP};
 #
 # Define list of required executables
 $target_list = $target_list_basic; 
