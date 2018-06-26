@@ -31,6 +31,7 @@ if ("@_" eq "INIT"){
  $test_with_fails=0;
  $test_ok=0;
  $test_skipped=0;
+ $test_silent=0;
  #
  # Reason of the test fail/skip
  #
@@ -64,7 +65,7 @@ if ("@_" eq "INIT_DIR"){
 }
 if ("@_" eq "REPORT"){
  &MESSAGE("LOG","\n$line");
- my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok"."] SKIPS[$test_skipped"."] (SETUP[$test_skipped_setup] RANDCPU[$test_skipped_randcpu]) $r_e";
+ my $MSG="\n$r_s"."Tests: FAIL[$test_with_fails"."] SUCCESSFUL[$test_ok+$test_silent"."] SKIPS[$test_skipped"."] (SETUP[$test_skipped_setup] RANDCPU[$test_skipped_randcpu]) $r_e";
  &MESSAGE("LOG","$MSG");
  $MSG="\n$r_s"."Test FAIL detail: WRONG[$test_wrong"."] NO RUN[$test_not_run"."] RUNTIME[$test_runtime] $r_e";
  &MESSAGE("LOG","$MSG");
@@ -75,7 +76,7 @@ if ("@_" eq "REPORT"){
  #
  # REPORT
  #
- $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok OK, $test_skipped SKIPS( $test_skipped_setup SETUP, $test_skipped_randcpu RAND-CPU) $r_e";
+ $MSG="\n$r_s"."Tests: $test_with_fails FAIL, $test_ok+$test_silent OK, $test_skipped SKIPS( $test_skipped_setup SETUP, $test_skipped_randcpu RAND-CPU) $r_e";
  &MESSAGE("REPORT","$MSG");
  $MSG="\n$r_s"."Test FAIL detail: $test_wrong WRONG, $test_not_run NO RUN $test_runtime RUNTIME $r_e";
  &MESSAGE("REPORT","$MSG");
@@ -124,6 +125,10 @@ if ("@_" eq "NO_OUT"){
  &MESSAGE("ERROR","\n"."$err_msg"."$r_s  NO $ref_filename in OUTPUT $r_e");
  $out_not_found++;
  &its_a_fail("CHECK");
+};
+if ("@_" eq "SILENT"){
+ $test_ok_action="SKIP";
+ $test_silent++;
 };
 if ("@_" eq "DIR_SKIPPED"){
  $test_ok_action="SKIP";

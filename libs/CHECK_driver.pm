@@ -24,11 +24,13 @@
 #
 sub CHECK_driver{
 #
+$n_stats=0;
+#
 # Specific Rules
 #
 $CHECK_CORE="1";
-if ($nt and $nt>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE"); };
-if (        $np>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE"); };
+if ($nt and $nt>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE"); $n_stats=1; };
+if (        $np>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE"); $n_stats=1; };
 if (              not $SETUP=="1") {undef $CHECK_CORE};
 if ($P2Y){&CHECK_database("EIGENVALUES","ns.db1","CORE")};
 if ($CHECK_CORE){
@@ -52,6 +54,8 @@ if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 #
 # OUT files
 O_file_loop: foreach $run_filename (<o-$testname.*>){
+ #
+ $n_stats++;
  #
  &gimme_reference($run_filename);
  #
@@ -79,6 +83,8 @@ if ( -d $REF_prefix."REFERENCE_$branch_key" and -f $REF_prefix."REFERENCE_$branc
 @OFILES = (<$ref_dir/o-$testname.*>);
 R_file_loop: foreach $ref_filename (@OFILES){
  #
+ $n_stats++;
+ #
  my $CHECK=&CHECK_GPL_skip("$ref_filename");
  #
  if ($ref_filename =~ /db1/) {next R_file_loop};
@@ -104,6 +110,12 @@ R_file_loop: foreach $ref_filename (@OFILES){
    &UPDATE_action("RM");
   }
  }
+}
+#
+# Count tests without any output
+#
+if (  $nstats eq "0" ){
+ &RUN_stats("SILENT");
 }
 #
 }

@@ -82,6 +82,7 @@ undef $do_NL_tests;
 if ($pattern=~m/devel-nl/ix)     {$do_NL_tests="yes"};
 if ($pattern=~m/develop/ix)      {$do_NL_tests="yes"};
 if ($pattern=~m/devel-ypp-rt/ix) {$do_NL_tests="yes"};
+if ($pattern=~m/devel-current-approach/ix) {$do_NL_tests="yes"};
 #
 if ($is_GPL) {$branch_key.="_gpl"};
 #
