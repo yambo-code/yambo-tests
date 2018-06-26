@@ -114,7 +114,7 @@ R_file_loop: foreach $ref_filename (@OFILES){
 #
 # Count tests without any output
 #
-if (  $nstats eq "0" ){
+if ( $n_stats eq "0" ){
  &RUN_stats("SILENT");
 }
 #

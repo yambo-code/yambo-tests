@@ -129,6 +129,15 @@ if ( "@_" eq "INPUT") {
  #
 }
 #
+if ( "@_" eq "PAR_CONF") {
+ if ($Nr eq 0) { 
+  my $msg = sprintf("%-"."$left_length"."s", "$testname");
+  $CHECK_error= $msg." skipped (unable to define parallel configuration)";
+  &RUN_stats("ERROR_CPU_CONF");
+  return "NO_PAR_CONF";
+ };
+}
+#
 if ("$message" !~ "OK"){
  $CHECK_error="$message";
  &RUN_stats("DIR_SKIPPED");

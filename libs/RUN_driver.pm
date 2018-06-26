@@ -129,6 +129,12 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    &RUN_load_PAR_fields;
   }
   #
+  $error=&RUN_skip_the_test("PAR_CONF");
+  if ($error !~ "OK") { 
+   &MY_PRINT($stdout, "ERROR: $CHECK_error\n") if ($verb);
+   next LOOP_INPUTS;
+  };
+  #
   # Do the actual run!
   LOOP: for ($ir=1; $ir<=$Nr ; $ir++){
    #
