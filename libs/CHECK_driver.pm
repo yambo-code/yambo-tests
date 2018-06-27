@@ -61,10 +61,10 @@ O_file_loop: foreach $run_filename (<o-$testname.*>){
  #
  if (!-e "$ref_filename") { 
   &RUN_stats("NO_REF");
-  if ($update_test and not $CHECK_error =~ /WHITELISTED/) {&UPDATE_action("ADD")};
+  if ($update_test and  (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) ) {&UPDATE_action("ADD")};
  }else{
   my $ERR=&CHECK_file;
-  if ($ERR eq "FAIL" and $update_test and not $CHECK_error =~ /WHITELISTED/)
+  if ($ERR eq "FAIL" and $update_test and (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) )
   {
    &UPDATE_action("RM");
    &UPDATE_action("ADD");
@@ -105,7 +105,7 @@ R_file_loop: foreach $ref_filename (@OFILES){
  #
  if (!-e "$run_filename") { 
   &RUN_stats("NO_OUT");
-  if ($update_test and not $CHECK_error =~ /WHITELISTED/) 
+  if ($update_test and (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) ) 
   {
    &UPDATE_action("RM");
   }

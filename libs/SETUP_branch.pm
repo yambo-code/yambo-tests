@@ -79,10 +79,12 @@ $is_NEW_DBGD="no";
 if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
 undef $do_NL_tests;
-if ($pattern=~m/devel-nl/ix)     {$do_NL_tests="yes"};
-if ($pattern=~m/develop/ix)      {$do_NL_tests="yes"};
-if ($pattern=~m/devel-ypp-rt/ix) {$do_NL_tests="yes"};
-if ($pattern=~m/devel-current-approach/ix) {$do_NL_tests="yes"};
+if ( $Yambo_precision =~ "double" ){
+ if ($pattern=~m/devel-nl/ix)     {$do_NL_tests="yes"};
+ if ($pattern=~m/develop/ix)      {$do_NL_tests="yes"};
+ if ($pattern=~m/devel-ypp-rt/ix) {$do_NL_tests="yes"};
+ if ($pattern=~m/devel-current-approach/ix) {$do_NL_tests="yes"};
+}
 #
 if ($is_GPL) {$branch_key.="_gpl"};
 #
@@ -99,13 +101,13 @@ $target_list = $target_list_basic;
 $exec_list   = $exec_list_basic;
 #
 # If project = all or user-selected 
-if ($project =~ /sc/ or $project eq "all")   { $target_list .= $exec_sc; $exec_list  .= $exec_sc};
-if ($project =~ /rt/ or $project eq "all")   { $target_list .= $exec_rt; $exec_list  .= $exec_rt};
-if ($project =~ /elph/ or $project eq "all") { $target_list .= $exec_elph; $exec_list  .= $exec_elph};
-if ($project =~ /kerr/ or $project eq "all") { $target_list .= $exec_kerr; $exec_list  .= $exec_kerr};
-if (($project =~ /nl/ or $project eq "all" ) and $do_NL_tests)   { $target_list .= $exec_nl; $exec_list  .= $exec_nl};
-if ($project =~ /magnetic/ or $project eq "all") { $target_list .= $exec_magn; $exec_list   .= $exec_magn};
+if ($project =~ /sc/ or $project eq "all")       { $target_list .= $exec_sc; $exec_list  .= $exec_sc};
+if ($project =~ /rt/ or $project eq "all")       { $target_list .= $exec_rt; $exec_list  .= $exec_rt};
+if ($project =~ /elph/ or $project eq "all")     { $target_list .= $exec_elph; $exec_list  .= $exec_elph};
+if ($project =~ /kerr/ or $project eq "all")     { $target_list .= $exec_kerr; $exec_list  .= $exec_kerr};
 if ($project =~ /pl/ or $project eq "all")       { $target_list .= $exec_pl; $exec_list   .= $exec_pl};
+if ($project =~ /magnetic/ or $project eq "all") { $target_list .= $exec_magn; $exec_list   .= $exec_magn};
+if (($project =~ /nl/ or $project eq "all" ) and $do_NL_tests ) { $target_list .= $exec_nl; $exec_list  .= $exec_nl};
 #
 return "OK";
 }

@@ -85,6 +85,8 @@ subroutine check(R,O,REPORT,FIELD)
   if (REPORT.and.i_c_ref/=0) then
     !
     if (l_whitelisted) str=trim(str)//"[>WHITELISTED<]"
+    if (l_rules_skip)  str=trim(str)//"[>RULES-SUCC<]"
+    if (no_statistics) str=trim(str)//"[>RULES-SUCC<]"
     !
     if (i_c_ref>0) then
       write (CHECK_result,'(a,i3,a,3(g12.5,a))') trim(str)//"@COL#",i_c_ref," is ",R_ref," [REF] vs ",&

@@ -144,6 +144,7 @@ program find_the_diff
  no_statistics=.FALSE.
  average_column=.FALSE.
  l_whitelisted=.FALSE.
+ l_rules_skip=.FALSE.
  TRESHOLD=1.E-12
  PREC=0.05
  ERROR=1.
@@ -163,23 +164,24 @@ program find_the_diff
      if (.not.last_row)  last_row  =index(RULES(i_r)%action,"last_row")>0
      if (.not.align)     align     =index(RULES(i_r)%action,"align")>0
      if (.not.no_statistics)    no_statistics  =index(RULES(i_r)%action,"no_statistics")>0
-     if (index(RULES(i_r)%action,"skip")>0   ) then
-       do i_c=1,ref%N_col
-         if (.not.skip_column(i_c)) skip_column(i_c)=RULES(i_r)%column(i_c)==1
-         do i_t=1,ref%N_col
-           if (len_trim(titles(i_c))==0) cycle
-           if (len_trim(RULES(i_r)%title(i_t))==0) cycle
-           if (.not.skip_column(i_c).and.len_trim(RULES(i_r)%title(i_t))>0) then
-             skip_column(i_c)=index(titles(i_c),trim(RULES(i_r)%title(i_t)))>0
-           endif
-         enddo
-       enddo
-     endif
-     !
+     !if (index(RULES(i_r)%action,"skip")>0   ) then
+     !  do i_c=1,ref%N_col
+     !    if (.not.skip_column(i_c)) skip_column(i_c)=RULES(i_r)%column(i_c)==1
+     !    do i_t=1,ref%N_col
+     !      if (len_trim(titles(i_c))==0) cycle
+     !      if (len_trim(RULES(i_r)%title(i_t))==0) cycle
+     !      if (.not.skip_column(i_c).and.len_trim(RULES(i_r)%title(i_t))>0) then
+     !        skip_column(i_c)=index(titles(i_c),trim(RULES(i_r)%title(i_t)))>0
+     !      endif
+     !    enddo
+     !  enddo
+     !endif
+     !!
      if (index(RULES(i_r)%action,"average")>0) average_column=(RULES(i_r)%column==1)
      if (index(RULES(i_r)%action,"double_precision")>0) ERROR=2.
      !
      if (.not.l_whitelisted) l_whitelisted=RULES(i_r)%whitelisted
+     if (.not.l_rules_skip ) l_rules_skip =index(RULES(i_r)%action,"skip")>0
      !
    endif
  enddo
@@ -265,7 +267,8 @@ program find_the_diff
  i_c_ref=0
  str= " "
  i_d=0
- if (.not.no_statistics) call check(ref%Max,out%Max,.TRUE.,"AVERAGE")
+ !if (.not.no_statistics) call check(ref%Max,out%Max,.TRUE.,"AVERAGE")
+ call check(ref%Max,out%Max,.TRUE.,"AVERAGE")
  !
  if (ref%N_col>1.and..not.no_statistics) then
    MAX_ERR=0.

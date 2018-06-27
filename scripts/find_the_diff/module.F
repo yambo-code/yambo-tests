@@ -33,7 +33,8 @@ module DIFF
  real(SP)       :: PREC=0.01,MAX_ERR,O_ref,R_ref,delta_ref,TRESHOLD,USER_error
  real(SP)       :: ERROR(N_max_col)
  logical        :: VERB=.FALSE.,skip_column(N_max_col)=.FALSE.,average_column(N_max_col)=.FALSE.,&
-&                  l_out_exists,l_ref_exists,broad_data,last_row,align,no_statistics,l_whitelisted
+&                  l_out_exists,l_ref_exists,broad_data,last_row,align,no_statistics,l_whitelisted,&
+&                  l_rules_skip
  !
  type rule 
    character(256)         :: pattern  = "fake-pattern"

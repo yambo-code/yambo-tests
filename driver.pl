@@ -332,9 +332,10 @@ if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
 &RUN_global_report("FINAL");
 #
 close $rlog;
-#close $tlog; # This is closed in driver.pm inside the branhes loop
+#close $tlog; # This is closed in driver.pm inside the branches loop
 close $elog;
 close $wlog;
+close $ulog;
 close $flog;
 #
 if ($backup_logs eq "yes") {

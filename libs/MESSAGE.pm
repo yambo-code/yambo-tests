@@ -24,6 +24,7 @@
 #
 sub MESSAGE{
 if ("@_[0]" =~ m/WHITE/)  {&MY_PRINT($wlog, "@_[1]")};
+if ("@_[0]" =~ m/RULES/)  {&MY_PRINT($ulog, "@_[1]")};
 if ("@_[0]" =~ m/ERROR/)  {
  &MY_PRINT($elog, "@_[1]");
  @ERROR_entries[$N_errors]="@_[1]";

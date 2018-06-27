@@ -172,6 +172,7 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $checks_fail[$i]=$pattern[$i][1];
  $success[$i]=$pattern[$i][3];
  $whitel[$i]=$pattern[$i][5];
+ $rulesok[$i]=$pattern[$i][7];
 }
 &get_line("Check FAIL");
 for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
@@ -201,6 +202,7 @@ if ($n_patterns eq 0){
   $test_runtime[$i]="";
   $setup_skipped[$i]="";
   $randcpu_skipped[$i]="";
+  $rulesok[$i]="";
   #
  }
 }
@@ -232,11 +234,11 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  }
  #
  $test_total=$test_fail[$i]+$test_skipped[$i]+$test_success[$i];
- $checks_total=$checks_fail[$i]+$whitel[$i]+$success[$i];
+ $checks_total=$checks_fail[$i]+$whitel[$i]+$success[$i]+$rulesok[$i];
  #
  &MESSAGE("DAT","TESTS $test_total\n-OKs $test_success[$i]\n-SKIP $test_skipped[$i]\n--SETUP $setup_skipped[$i]\n--RAND-CPU $randcpu_skipped[$i]\n");
  &MESSAGE("DAT","-FAIL $test_fail[$i]\n--NOT_RUN $test_notrun[$i]\n--RUNTIME $test_runtime[$i]\n--WRONG_TEST $test_wrong[$i]\n");
- &MESSAGE("DAT","CHECKS $checks_total\n-OKs $success[$i]\n-WHITE $whitel[$i]\n-FAIL $checks_fail[$i]\n");
+ &MESSAGE("DAT","CHECKS $checks_total\n-OKs $success[$i]\n-WHITE $whitel[$i]\n-RULESOK $rulesok[$i]\n-FAIL $checks_fail[$i]\n");
  &MESSAGE("DAT","--WRONG_OUT $check_out[$i]\n--NO_REF $check_noref[$i]\n--NO_OUT $check_noout[$i]\n--NO_DB $check_nodb[$i]\n\n");
 }
 
@@ -247,7 +249,15 @@ close($dat);
 foreach $file (<$dir/ERROR*.log>) {
  &command("cat $file >> $error_php");
 };
-&command("echo '</pre>' >> $error_php");
+&command("echo '\n\n' >> $error_php");
+foreach $file (<$dir/WHITE*.log>) {
+ &command("cat $file >> $error_php");
+};
+&command("echo '\n\n' >> $error_php");
+foreach $file (<$dir/RULES*.log>) {
+ &command("cat $file >> $error_php");
+};
+&command("echo '\n\n</pre>' >> $error_php");
 #
 # REPORT > .php
 &command("echo '<pre>' > $report_php");

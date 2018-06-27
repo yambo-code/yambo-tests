@@ -46,6 +46,7 @@ if ("@_" eq "INIT"){
  $check_failed=0;
  $check_ok=0;
  $check_whitelisted=0;
+ $check_rules_ok=0;
  #
  # Reason of the check fail
  #
@@ -73,7 +74,7 @@ if ("@_" eq "REPORT"){
  $MSG="\n$r_s"."Test FAIL detail: WRONG[$test_wrong"."] NO RUN[$test_not_run"."] RUNTIME[$test_runtime] $r_e";
  &MESSAGE("LOG","$MSG");
  &MESSAGE("LOG","\n$line");
- $MSG="\n$r_s"."Checks: FAIL[$check_failed"."] SUCCESSFUL[$check_ok"."] WHITELIST[$check_whitelisted] $r_e";
+ $MSG="\n$r_s"."Checks: FAIL[$check_failed"."] SUCCESSFUL[$check_ok"."] WHITELIST[$check_whitelisted] RULES-SUCC [$check_rules_ok] $r_e";
  $MSG=$MSG."\n$r_s"."Check FAIL detail: WRONG[$wrong_out"."] no REFs[$ref_not_found"."] no OUTs[$out_not_found"."] no DB[$missing_db"."] $r_e\n";
  &MESSAGE("LOG","$MSG");
  #
@@ -85,7 +86,7 @@ if ("@_" eq "REPORT"){
  &MESSAGE("REPORT","$MSG");
  &MESSAGE("REPORT","\n$line");
  #
- $MSG="\n$r_s"."Checks: $check_failed FAIL, $check_ok OK, $check_whitelisted WHITELIST $r_e";
+ $MSG="\n$r_s"."Checks: $check_failed FAIL, $check_ok OK, $check_whitelisted WHITELIST $check_rules_ok RULES-SUCC $r_e";
  $MSG=$MSG."\n$r_s"."Check FAIL detail: $wrong_out WRONG, $ref_not_found no REF, $out_not_found no OUT, $missing_db no DB $r_e\n";
  &MESSAGE("REPORT","$MSG");
  &MESSAGE("REPORT","\n$line");
@@ -104,6 +105,11 @@ if ("@_" eq "ERR_OUT"){
   if (not $update_test) {$CHECK_error =~ s/\[\>WHITELISTED\<\]/ /};
   &MESSAGE("WHITE","\n"."$err_msg"."$r_s $CHECK_error   $r_e");
   $check_whitelisted++;
+ }elsif ($CHECK_error =~ /RULES-SUCC/) {
+  &MESSAGE("LOG","\n"."$msg"."[$r_s RULES-SUCC $r_e]");
+  if (not $update_test) {$CHECK_error =~ s/\[\>RULES-SUCC\<\]/ /};
+  &MESSAGE("RULES","\n"."$err_msg"."$r_s $CHECK_error   $r_e");
+  $check_rules_ok++;
  }else{
   &MESSAGE("LOG","\n"."$msg"."[$r_s $CHECK_error   $r_e]");
   &MESSAGE("ERROR","\n"."$err_msg"."$r_s $CHECK_error   $r_e");
