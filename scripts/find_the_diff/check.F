@@ -45,12 +45,12 @@ subroutine check(R,O,REPORT,FIELD)
       cycle
     endif
     !
-    if (skip_column(i_c)) cycle
     !
     DATA_diff=abs(R(i_c)-O(i_c))
     if (DATA_diff>ERROR(i_c)) then 
-      if (DATA_diff>MAX_ERR) then
-        MAX_ERR=DATA_diff
+      if (DATA_diff>MAX_ERR.or.(DATA_diff>MAX_ERR_RULES.and.MAX_ERR==0.)) then
+        if (     skip_column(i_c).and.DATA_diff>MAX_ERR_RULES) MAX_ERR_RULES=DATA_diff
+        if (.not.skip_column(i_c).and.DATA_diff>MAX_ERR      ) MAX_ERR      =DATA_diff
         O_ref=O(i_c)
         R_ref=R(i_c)
         if (abs(ERROR(i_c))>0.) delta_ref=DATA_diff/ERROR(i_c)*PREC
@@ -62,6 +62,7 @@ subroutine check(R,O,REPORT,FIELD)
     !
   enddo
   !
+  !
   if (any(average_column).and.abs(R_average)>TRESHOLD.and.abs(O_average)>TRESHOLD) then
     !
     R_average=R_average/N_average
@@ -70,8 +71,9 @@ subroutine check(R,O,REPORT,FIELD)
     !
     DATA_diff=abs(R_average-O_average)
     if (DATA_diff>E_average) then 
-      if (DATA_diff>MAX_ERR) then
-        MAX_ERR=DATA_diff
+      if (DATA_diff>MAX_ERR.or.(DATA_diff>MAX_ERR_RULES.and.MAX_ERR==0.)) then
+        if (     no_statistics.and.DATA_diff>MAX_ERR_RULES) MAX_ERR_RULES=DATA_diff
+        if (.not.no_statistics.and.DATA_diff>MAX_ERR      ) MAX_ERR      =DATA_diff
         O_ref=O_average
         R_ref=R_average
         if (abs(E_average)>0.) delta_ref=DATA_diff/E_average*PREC
@@ -85,8 +87,7 @@ subroutine check(R,O,REPORT,FIELD)
   if (REPORT.and.i_c_ref/=0) then
     !
     if (l_whitelisted) str=trim(str)//"[>WHITELISTED<]"
-    if (l_rules_skip)  str=trim(str)//"[>RULES-SUCC<]"
-    if (no_statistics) str=trim(str)//"[>RULES-SUCC<]"
+    if (MAX_ERR==0..and.MAX_ERR_RULES>0.) str=trim(str)//"[>RULES-SUCC<]" 
     !
     if (i_c_ref>0) then
       write (CHECK_result,'(a,i3,a,3(g12.5,a))') trim(str)//"@COL#",i_c_ref," is ",R_ref," [REF] vs ",&
