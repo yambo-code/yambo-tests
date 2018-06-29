@@ -84,6 +84,8 @@ if ($pattern=~m/develop/ix)      {$do_NL_tests="yes"};
 if ($pattern=~m/devel-cutoff/ix) {$do_NL_tests="yes"};
 if ($pattern=~m/devel-current-approach/ix) {$do_NL_tests="yes"};
 #
+if ($pattern=~m/master/ix && $is_GPL)      {$do_NL_tests="yes"};
+#
 if ($is_GPL) {$branch_key.="_gpl"};
 #
 $is_NEW_YPP="yes";
@@ -91,8 +93,7 @@ if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP};
-if ($pattern=~m/master/ix) {undef $is_NEW_YPP};
-if ($is_GPL) {undef $is_NEW_YPP};
+if ($pattern=~m/master/ix && !$is_GPL) {undef $is_NEW_YPP};
 #
 # Define list of required executables
 $target_list = $target_list_basic; 

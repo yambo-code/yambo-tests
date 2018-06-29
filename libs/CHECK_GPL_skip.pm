@@ -27,7 +27,7 @@ sub CHECK_GPL_skip{
 if ($is_GPL) 
 {
  undef $skip_the_file;
- if ("@_" =~ /.external_field/ ) { $skip_the_file="yes" };
+ #if ("@_" =~ /.external_field/ ) { $skip_the_file="yes" };
  if ("@_" =~ /.energy/         ) { $skip_the_file="yes" };
  if ("@_" =~ /.carriers/       ) { $skip_the_file="yes" };
  if ("@_" =~ /.thermodynamics/ ) { $skip_the_file="yes" };

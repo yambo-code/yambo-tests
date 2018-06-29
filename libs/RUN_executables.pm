@@ -58,7 +58,7 @@ if (-e "PL" && !$is_GPL) {
   {$yambo_exec = "$BRANCH/$conf_bin/yambo_pl";
    $yambo_running=1}
 }
-if (-e "NL" && !$is_GPL) {
+if (-e "NL") {
  undef $yambo_running;
  if ($YPP_NL=="1" or $YPP=="1") 
   {$yambo_exec = "$BRANCH/$conf_bin/ypp_nl"}
