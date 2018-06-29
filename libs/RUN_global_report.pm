@@ -79,6 +79,7 @@ if ("$what" eq "INIT") {
  my $date_now;
  my $time_now;
  $REFERENCE_time=$NEW_time;
+ &MESSAGE("REPORT ERROR WHITE RULES","\n$wiggly_line");
  &MESSAGE("ERROR WHITE REPORT RULES","\n% Section Duration : $h:$m:$s ".("%") x ($left_length+4));
 }elsif ("$what" eq "FINAL"){
  $NEW_time  = [gettimeofday]; 
