@@ -87,7 +87,7 @@ if ("@_" eq "REPORT"){
  &MESSAGE("REPORT","\n$line");
  #
  $MSG="\n$r_s"."Checks: $check_failed FAIL, $check_ok OK, $check_whitelisted WHITELIST $check_rules_ok RULES-SUCC $r_e";
- $MSG=$MSG."\n$r_s"."Check FAIL detail: $wrong_out WRONG, $ref_not_found no REF, $out_not_found no OUT, $missing_db no DB $r_e\n";
+ $MSG=$MSG."\n$r_s"."Check FAIL detail: $wrong_out WRONG, $ref_not_found no REF, $out_not_found no OUT, $missing_db no DB $r_e";
  &MESSAGE("REPORT","$MSG");
  &MESSAGE("REPORT","\n$line");
  return;
