@@ -15,7 +15,7 @@ FFTWLIB="/usr/lib/x86_64-linux-gnu/"
 #mpikind=mpich
 mpikind=openmpi
 
-./configure cc=gcc F77=gfortran FC=gfortran MPIFC=mpifort.$mpikind MPIF77=mpif77.$mpikind MPICC=mpicc.$mpikind FCFLAGS="$FC_FLAGS_LIBS" \
+./configure cc=gcc F77=gfortran FC=gfortran MPIFC=mpifort.$mpikind MPIF77=mpif77.$mpikind MPICC=mpicc.$mpikind FCFLAGS="$FC_FLAGS_OPTIMIZED" \
 --enable-keep-src --enable-iotk  --enable-etsf-io --enable-msgs-comps  --enable-time-profile \
 --enable-par-linalg --enable-int-linalg --enable-slepc-linalg --enable-open-mp \
 --with-extlibs-path="$YAMBO_LIBS" 

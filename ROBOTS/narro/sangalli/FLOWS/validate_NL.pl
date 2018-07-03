@@ -23,11 +23,15 @@
  MPI_CPU     => 1,
 },
 {
- MPI_CPU     => 4,
+ MPI_CPU     => 2,
  PAR_MODE    => "random",
 },
 {
- MPI_CPU     => 4,
+ MPI_CPU     => 2,
  PAR_MODE    => "default",
+},
+{
+ MPI_CPU     => 1,
+ THREADS     => 2,
 }
 );
