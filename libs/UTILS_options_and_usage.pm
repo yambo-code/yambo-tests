@@ -131,7 +131,7 @@ sub UTILS_usage {
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
 
    (parallel options)
-             -cpu_conf <FILE>       Use the CPU configuration defined in <FILE> (refer to ROBOTS/$host/$user/CPU_CONFIGURATION/<FILE>.cpu).
+             -cpu_conf <FILE>       Use the CPU configuration defined in <FILE> (refer to ROBOTS/$host/$user/CPU_CONFIGURATION/<FILE>).
              -np     <N>            Fixed number of CPU used.
              -np_min <N>            Minimum number of CPU used.
              -np_max <N>            Maximum number of CPU used.
