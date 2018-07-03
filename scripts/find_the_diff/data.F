@@ -25,7 +25,7 @@ subroutine read_the_data(fl)
   use DIFF
   type(obj)      :: fl
   integer        :: i_cyc,tit_length,i1_pos
-  character(256) :: ch_save(3)=" ",fmt_,head
+  character(256) :: ch_save(3)=" ",fmt_,head,str_hash
   do i_cyc=1,2
     open(unit=fl%unit,file=trim(fl%name),form='formatted')
     N=0
@@ -43,7 +43,8 @@ subroutine read_the_data(fl)
       ch_save(2)=ch_save(3)
       ch_save(3)=str
       if ( (index(trim(fl%name),".xsf")>0.or.index(trim(fl%name),".cube")>0).and.N>1 ) cycle
-      if (trim(data_str(1))=="#".or.N==0.or.&
+      str_hash=data_str(1)
+      if (str_hash(1:1)=="#".or.N==0.or.&
 &         trim(data_str(1))=="CUBE".or.&
 &         trim(data_str(1))=="Generated".or.&
 &         trim(data_str(1))=="CRYSTAL".or.&

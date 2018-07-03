@@ -251,7 +251,7 @@ if ($RUNNING_suite) {
  #
  &RUN_global_report("INIT");
  #
- &command("cd $suite_dir; $git pull");
+ if (not $no_net) {&command("cd $suite_dir; $git pull")};
  #
  &SETUP_branch("load_the_branches");
  #
