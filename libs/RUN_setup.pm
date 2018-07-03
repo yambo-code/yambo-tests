@@ -84,7 +84,8 @@ if ("@_" =~ "after_run"){
  # Collect all the outputs into $dir_name (e.g. ./01_init_N1-M1)
  #
  if (-d $testname or $update_test){
-  if (!-d $dir_name) {&command("mv $testname $dir_name")}; 
+  if (!-d $dir_name and -d $testname) {&command("mv $testname $dir_name")};
+  if (!-d $dir_name and !-d $testname) {&command("mkdir $dir_name")};
   if ($ir == $Nr and $LAST_COMPLETED_RUN) {&command("ln -s $LAST_COMPLETED_RUN $testname")};
  }else{
   if (!-d $dir_name) {&command("mkdir $dir_name"); };

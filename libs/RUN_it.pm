@@ -54,7 +54,7 @@ if ($pid > 0){
   };
 }
 elsif ($pid == 0){
-    setpgrp(0,0);
+    #setpgrp(0,0);
     if (not $dry_run) {&command("$command_line")};   # launch the yambo job
     exit(0);
 }

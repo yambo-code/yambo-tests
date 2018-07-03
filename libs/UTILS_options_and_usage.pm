@@ -63,6 +63,7 @@ my $ret = &GetOptions("h"    => \$help,
             "newer=i"        => \$max_delay_commits,
             "robot=i"        => \$ROBOT_id,
             "nice:i"         => \$nice_level,
+            "no_net"         => \$not_network,
             "host=s"         => \$USER_host,
             "failed=s"       => \$failed,
             "php"            => \$php,
@@ -101,6 +102,7 @@ sub UTILS_usage {
    (Running options)
              -dry                   Run in dry mode. Not actual job is launched.
              -nice   [VALUE]        Run with priority VALUE. With no VALUE max nice level is used (lower priority).
+             -no_net                Skip network assisted operations
 
    (General options)
              -mode                  Can be "tests/perturbo/cheers/bench". It selects which suite to use. Default is "tests".
@@ -129,7 +131,7 @@ sub UTILS_usage {
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
 
    (parallel options)
-             -cpu_conf <FILE>       Use the CPU configuration defined in <FILE> (refer to ROBOTS/$host/$user/CPU_CONFIGURATION/<FILE>.cpu).
+             -cpu_conf <FILE>       Use the CPU configuration defined in <FILE> (refer to ROBOTS/$host/$user/CPU_CONFIGURATION/<FILE>).
              -np     <N>            Fixed number of CPU used.
              -np_min <N>            Minimum number of CPU used.
              -np_max <N>            Maximum number of CPU used.
