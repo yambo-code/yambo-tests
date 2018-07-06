@@ -89,8 +89,6 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
    #
    &RUN_driver;
    #
-   $AT_LEAST_ONE="yes";
-   #
    $reduced_log="yes";
    #
   }
