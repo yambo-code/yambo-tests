@@ -80,10 +80,11 @@ if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
 undef $do_NL_tests;
 if ($pattern=~m/devel-nl/ix)     {$do_NL_tests="yes"};
+if ($pattern=~m/bug-fixes/ix)      {$do_NL_tests="yes"};
+if ($pattern=~m/devel-rt-rotate/ix)      {$do_NL_tests="yes"};
 if ($pattern=~m/develop/ix)      {$do_NL_tests="yes"};
 if ($pattern=~m/devel-cutoff/ix) {$do_NL_tests="yes"};
 if ($pattern=~m/devel-current-approach/ix) {$do_NL_tests="yes"};
-#
 if ($pattern=~m/master/ix && $is_GPL)      {$do_NL_tests="yes"};
 #
 if ($is_GPL) {$branch_key.="_gpl"};

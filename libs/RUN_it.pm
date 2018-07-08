@@ -66,6 +66,10 @@ if ($@) {
 $test_end   = [gettimeofday]; 
 $elapsed = tv_interval($test_start, $test_end);
 #
+# Keep track that at least one job was run
+#
+$AT_LEAST_ONE="yes";
+#
 # Check if a wrong CPU conf has been used...
 #
 $CHECK_error="";
