@@ -30,6 +30,7 @@ if ($is_GPL)
  #if ("@_" =~ /.external_field/ ) { $skip_the_file="yes" };
  if ("@_" =~ /.energy/         ) { $skip_the_file="yes" };
  if ("@_" =~ /.carriers/       ) { $skip_the_file="yes" };
+ if ("@_" =~ /.magnetization/  ) { $skip_the_file="yes" };
  if ("@_" =~ /.thermodynamics/ ) { $skip_the_file="yes" };
  if ("@_" =~ /.ean_RADlifetimes/ ) { $skip_the_file="yes" };
  #
