@@ -40,8 +40,8 @@ if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
 # *** RUN ***
 $test_start = [gettimeofday];
 #
-# DS: New implementation of alarm using form
-#     This avoids leving defunct processes and need to call KILL
+# DS: New implementation of alarm using fork
+#     This avoids leaving defunct processes and need to call KILL
 #
 $pid = fork;
 #
@@ -54,7 +54,7 @@ if ($pid > 0){
   };
 }
 elsif ($pid == 0){
-    #setpgrp(0,0); ! Causes hangs on my machine (Andrea)
+    setpgrp(0,0); # Causes hangs on my machine (Andrea)
     if (not $dry_run) {&command("$command_line")};   # launch the yambo job
     exit(0);
 }
