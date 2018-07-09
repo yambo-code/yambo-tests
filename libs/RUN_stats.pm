@@ -175,7 +175,7 @@ if ("@_" eq "ERROR_CPU_CONF"){
  $test_skipped++;
  $test_skipped_cpuconf++;
  $test_ok_action="SKIP";
- &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
+ &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "WRONG_DEP"){
  $test_skipped++;
