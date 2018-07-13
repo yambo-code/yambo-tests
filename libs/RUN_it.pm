@@ -42,24 +42,31 @@ $test_start = [gettimeofday];
 #
 # DS: New implementation of alarm using fork
 #     This avoids leaving defunct processes and need to call KILL
-#
-$pid = fork;
-#
-if ($pid > 0){
-  eval{
-    local $SIG{ALRM} = sub {kill 9, -$pid;};
-    alarm $run_duration;
+my $pid = fork();
+if ($pid) {
+  if (eval{
+    local $SIG{ALRM} = sub {
+      kill KILL => -$pid;
+      die "TIMEOUT!\n";
+    };
+    alarm($run_duration);
     waitpid($pid, 0);
-    alarm 0;
-  };
-}
-elsif ($pid == 0){
-    setpgrp(0,0); # Causes hangs on my machine (Andrea)
-    if (not $dry_run) {&command("$command_line")};   # launch the yambo job
-    exit(0);
-}
-if ($@) {
- die unless $@ eq "alarm\n"; # propagate unexpected errors
+    alarm(0);
+    return 1;
+  }) {
+    #print "Run completed.\n";
+  } else {
+    die($@) if $@ ne "TIMEOUT!\n";
+    #print "Run timed out.\n";
+    waitpid($pid, 0);
+    #print "Child reaped.\n";
+  }
+} else {
+  #print "Run started $command_line.\n";
+  if (not $safe_mode) {setpgrp(0,0)};
+  if (not $dry_run) {&command("$command_line")};   # launch the yambo job
+  #print "After run \n";
+  exit;
 }
 #
 # Clock update

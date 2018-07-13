@@ -67,6 +67,7 @@ my $ret = &GetOptions("h"    => \$help,
             "host=s"         => \$USER_host,
             "failed=s"       => \$failed,
             "php"            => \$php,
+            "safe"           => \$safe_mode,
             "profile:s"      => \$profile,
             "mode=s"         => \$mode
                       );
@@ -102,6 +103,7 @@ sub UTILS_usage {
    (Running options)
              -dry                   Run in dry mode. Not actual job is launched.
              -nice   [VALUE]        Run with priority VALUE. With no VALUE max nice level is used (lower priority).
+             -safe                  Safe run
              -no_net                Skip network assisted operations
 
    (General options)
