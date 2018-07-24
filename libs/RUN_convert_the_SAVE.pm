@@ -24,7 +24,7 @@
 #
 sub RUN_convert_the_SAVE{
  #
- if (not $is_NEW_WF or ( not $mode eq "tests" and not $mode eq "cheers") ) {return};
+ if (not $is_NEW_WF or ( not $mode eq "tests" and not $mode eq "cheers" and not $mode eq "validate") ) {return};
  #
  $YAMBO_local="$nice $BRANCH/$conf_bin/yambo";
  my $ypp_extension="-z";
