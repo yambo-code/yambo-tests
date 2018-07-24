@@ -24,7 +24,7 @@ sub UTILS_download
 {
 &CWD_save;
 #
-my $LINK="http://www.yambo-code.org/testing-robots/databases/";
+my $LINK="http://www.yambo-code.org/testing-robots/databases/$mode";
 my $EXTENSION=".tar.gz";
 if ($mode eq "bench") {
  $LINK="http://potzie.fisica.unimo.it/ferretti/yambo-benchmarks-databases";
