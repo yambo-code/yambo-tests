@@ -1,0 +1,36 @@
+# Crystalline LiF
+# Generation of the KSS file
+
+# accesswff 3
+# iomode 3
+
+# Definition of the unit cell: fcc
+#acell 3*7.6079786             # Lattice constants (in atomic units)
+acell 3*7.7034756             # Lattice constants (in atomic units)
+
+rprim 0.0 0.5 0.5             # FCC primitive vectors
+      0.5 0.0 0.5             # (to be scaled by acell)
+      0.5 0.5 0.0
+
+# Definition of the system
+ntypat 2                      # Number of species
+znucl  3 9                    # Z number of each species
+natom  2                      # Number of atoms
+typat  1 2                    # Type of each atom (index in znucl)
+xred   0.00    0.00    0.00   # Reduced coordinates of atom 1
+       0.50   -0.50   -0.50   # Reduced coordinates of atom 2
+
+# Definition of the plane-wave basis set
+ecut 40.0                     # Kinetic energy cut-off, in Hartree
+
+# Definition of the SCF procedure
+nstep        3000                    # Maximum number of SCF cycles
+chksymbreak  0
+
+# Determine the ground state
+iscf    3                    # Algorithm: Anderson mixing of the potential
+nband  10                    # Number of bands
+tolwfr  1.0d-16              # Tolerance on wavefunctions to stop SCF cycles
+kptopt  1                    # Automatic generation of k-points
+ngkpt   4 4 4                # Number of grid points for k-point generation
+prtden  1                    # Store electronic density in a file
