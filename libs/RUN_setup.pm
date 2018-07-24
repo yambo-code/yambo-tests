@@ -102,7 +102,7 @@ if ("@_" =~ "after_run"){
 if ("@_" =~ "after_tests_loop"){
  if ($error eq "DIR_SKIPPED") { 
   &MY_PRINT($stdout, "$CHECK_error\n") if ($verb);
- }elsif ($mode eq "tests") {
+ }elsif ($mode eq "tests" || $mode eq "validate" || $mode eq "cheers") {
   &MY_PRINT($stdout, "$g_s $dir_ok passes $g_e");
   if ($dir_failed gt 0) {&MY_PRINT($stdout, "$r_s $dir_failed fails $r_e")};
   &MY_PRINT($stdout, "\n");

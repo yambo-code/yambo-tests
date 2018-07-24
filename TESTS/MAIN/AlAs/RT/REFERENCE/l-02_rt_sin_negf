@@ -1,12 +1,12 @@
 
 
- __    __ ______           ____     _____
-/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
-\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
- `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
-   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
-     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
-      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
+ ___ __  _____  __ __  _____   _____
+|   Y  ||  _  ||  Y  ||  _  \ |  _  |
+|   |  ||. |  ||.    ||. |  / |. |  |
+ \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
+  |: |  |: |  ||: |  ||: |   \|: |  |
+  |::|  |:.|:.||:.|:.||::.   /|::.  |
+  `--"  `-- --"`-- --"`-----" `-----"
 
 
  <---> [01] CPU structure, Files & I/O Directories
@@ -17,32 +17,62 @@
  <---> [02.04] K-grid lattice
  <---> [02.05] Energies [ev] & Occupations
  <---> [03] Transferred momenta grid
- <---> [04] External corrections
- <---> [05] IP Real-Time Dynamics
+ <---> [04] IP Real-Time Dynamics
  <---> Scattering(s):none
- <---> [05.01] Initialization
+ <---> [04.01] Initialization
  <---> [DIP] Checking dipoles header
  <---> [x,Vnl] computed using 32 projectors
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
  <---> Dipoles: iR, P and P2 (T): |                                        | [000%] --(E) --(X)
  <---> Dipoles: iR, P and P2 (T): |########################################| [100%] --(E) --(X)
  <---> [DIP] Writing dipoles header
- <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> [FFT-RT] Mesh size: 18  18  18
- <---> [05.02] Dephasing matrix setup
+ <---> Integrator: EULER + RK2 + RWA
+ <---> [04.02] Dephasing matrix setup
  <---> [RT] External scalar Dephasing applied
  <---> [WARNING]Field starting time corrected to respect the I/O times.
- <---> [05.03] Messaging
- <---> [05.04] Start and Restart
- <---> [xc] Functional Slater exchange(X)+Perdew & Wang(C)
- <---> [xc] LIBXC used to calculate xc functional
+ <---> [04.03] Messaging
+ <---> [WF] Performing Wave-Functions I/O from ./SAVE
+ <---> [FFT-RT] Mesh size: 14  14  14
+ <---> [04.04] Start and Restart
  <---> Reference Lifetimes, GF, Self-Energy ...
- <---> [05.05] Real-Time dynamics
+ <---> [04.05] Real-Time dynamics
  <---> [RT] Dynamics : |                                        | [000%] --(E) --(X)
- <05s> [RT] Dynamics : |########                                | [020%] 05s(E) 24s(X)
- <10s> [RT] Dynamics : |################                        | [040%] 10s(E) 24s(X)
- <15s> [RT] Dynamics : |########################                | [061%] 15s(E) 24s(X)
- <20s> [RT] Dynamics : |################################        | [081%] 20s(E) 24s(X)
- <24s> [RT] Dynamics : |########################################| [100%] 24s(E) 24s(X)
- <24s> [06] Timing Overview
- <24s> [07] Game Over & Game summary
+ <04s> [RT] Dynamics : |########################################| [100%] 04s(E) 04s(X)
+ <04s> [05] Timing Overview
+ <04s> [TIMING]                                   io_WF :     0.00s CPU (      45 calls,   0.000 s avg)
+ <04s> [TIMING]                                 io_GROT :     0.00s CPU (       3 calls,   0.001 s avg)
+ <04s> [TIMING]                                io_QINDX :     0.00s CPU (       2 calls,   0.002 s avg)
+ <04s> [TIMING]                              io_COL_CUT :     0.00s CPU
+ <04s> [TIMING]                          io_Double_Grid :     0.00s CPU
+ <04s> [TIMING]                                   io_HF :     0.00s CPU
+ <04s> [TIMING]                              io_DIPOLES :     0.00s CPU (      11 calls,   0.000 s avg)
+ <04s> [TIMING]                             io_KB_pwscf :     0.00s CPU (       2 calls,   0.000 s avg)
+ <04s> [TIMING]                            io_KB_abinit :     0.00s CPU (      10 calls,   0.000 s avg)
+ <04s> [TIMING]                                    io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+ <04s> [TIMING]                                   io_BS :     0.00s CPU
+ <04s> [TIMING]                                 io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
+ <04s> [TIMING]                        io_RT_components :     3.00s CPU (    1980 calls,   0.002 s avg)
+ <04s> [TIMING]                           io_COLLISIONS :     0.00s CPU (       3 calls,   0.000 s avg)
+ <04s> [TIMING]                 IO_and_Messaging_switch :     0.00s CPU (     823 calls,   0.000 s avg)
+ <04s> [TIMING]                                 Dipoles :     0.00s CPU
+ <04s> [TIMING]                       DIPOLE_transverse :     0.00s CPU
+ <04s> [TIMING]                            PP_uspp_init :     0.00s CPU (      10 calls,   0.000 s avg)
+ <04s> [TIMING]                             WF_load_FFT :     0.00s CPU (      10 calls,   0.000 s avg)
+ <04s> [TIMING]                             io_fragment :     0.00s CPU (     368 calls,   0.000 s avg)
+ <04s> [TIMING]                               FFT_setup :     0.00s CPU (      10 calls,   0.000 s avg)
+ <04s> [TIMING]                       el_density_matrix :     0.00s CPU
+ <04s> [TIMING]                        Bare_Hamiltonian :     0.00s CPU
+ <04s> [TIMING]                               V_Hartree :     0.00s CPU
+ <04s> [TIMING]                               XCo_local :     0.00s CPU
+ <04s> [TIMING]                     XC_potential_driver :     0.00s CPU
+ <04s> [TIMING]                       V_real_space_to_H :     0.00s CPU (      24 calls,   0.000 s avg)
+ <04s> [TIMING]                         V_qp_basis_to_H :     0.00s CPU (       8 calls,   0.000 s avg)
+ <04s> [TIMING]                               RT output :     0.00s CPU (    1212 calls,   0.001 s avg)
+ <04s> [TIMING]                          RT observables :     0.00s CPU (     401 calls,   0.000 s avg)
+ <04s> [TIMING]                           RT average Op :     0.00s CPU (    3214 calls,   0.000 s avg)
+ <04s> [TIMING]                            RT avg redux :     0.00s CPU (    3214 calls,   0.000 s avg)
+ <04s> [TIMING]                          RT Hamiltonian :     0.00s CPU (     801 calls,   0.000 s avg)
+ <04s> [TIMING]                          RT Apply Field :     0.00s CPU (    6408 calls,   0.000 s avg)
+ <04s> [TIMING]                           RT integrator :     0.00s CPU (     800 calls,   0.000 s avg)
+ <04s> [06] Game Over & Game summary
+ <04s> [TIMING]            [Time-Profile]: 04s

@@ -35,16 +35,18 @@ if ( scalar @paths > 1) {
 }
 chdir("$TESTS_folder/$test_dir");
 #
+my $UPLOAD_PATH="testing-robots/databases/$mode";
+#
 if (-d $test_subdir){
  &command("find $test_subdir -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | $grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
  &command("find . -type f $test_subdir | $grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
  &command("gzip $archive.tar");
- &FTP_upload_it("$archive.tar.gz","testing-robots/databases");
+ &FTP_upload_it("$archive.tar.gz","$UPLOAD_PATH");
  &command("rm -f $test_subdir/SAVE/*");
  &command("git add $test_subdir/SAVE");
 }else
 {
- &FTP_upload_it("$upload_test","testing-robots/databases");
+ &FTP_upload_it("$upload_test","$UPLOAD_PATH");
 }
 }
 1;

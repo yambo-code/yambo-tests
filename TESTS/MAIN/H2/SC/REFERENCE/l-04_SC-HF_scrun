@@ -1,12 +1,12 @@
 
 
-
-_|      _|   _|_|   _|      _|  _|_|_|     _|_|
-  _|  _|   _|    _| _|_|  _|_| _|    _| _|    _|
-    _|     _|_|_|_| _|  _|  _| _|_|_|   _|    _|
-    _|     _|    _| _|      _| _|    _| _|    _|
-    _|     _|    _| _|      _| _|_|_|     _|_|
-
+ __    __ ______           ____     _____
+/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
+\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
+ `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
+   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
+     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
+      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
 
 
  <---> [01] CPU structure, Files & I/O Directories
@@ -18,26 +18,55 @@ _|      _|   _|_|   _|      _|  _|_|_|     _|_|
  <---> [02.04] K-grid lattice
  <---> [02.05] Energies [ev] & Occupations
  <---> [03] Transferred momenta grid
- <---> [04] External corrections
- <---> [05] Self-Consistent HARTREE+FOCK
+ <---> [LA] SERIAL linear algebra
+ <---> [04] Self-Consistent HARTREE+FOCK
  <---> [WARNING] HXC collisions not found. Potential is computed on the fly.
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> [FFT-SC] Mesh size:  44   44   44
- <---> [M  0.082 Gb] Alloc wf_disk ( 0.073)
- <---> [M  0.009 Gb] Free wf_disk ( 0.073)
- <---> [xc] Functional Teter 93(XC)
- <---> [xc] LIBXC used to calculate xc functional
+ <---> [FFT-SC] Mesh size: 21  21  21
  <---> HF@it1 |                                        | [000%] --(E) --(X)
  <---> HF@it1 |########################################| [100%] --(E) --(X)
  <---> [SC] Iteration: Acc.  E(ev)  -  rho(%)
- <--->             1 :     6.516344 -    0.0012%
+ <--->             1 :     7.648355 -    0.0035%
  <---> HF@it2 |                                        | [000%] --(E) --(X)
  <---> HF@it2 |########################################| [100%] --(E) --(X)
- <--->             2 :       0.0062 - 0.2236E-3%
+ <--->             2 :      0.02442 - 0.7374E-3%
  <---> HF@it3 |                                        | [000%] --(E) --(X)
  <---> HF@it3 |########################################| [100%] --(E) --(X)
- <--->             3 :    0.9845E-3 - 0.4295E-4%
+ <--->             3 :       0.0052 - 0.1609E-3%
  <---> HF@it4 |                                        | [000%] --(E) --(X)
- <01s> HF@it4 |########################################| [100%] --(E) --(X)
- <01s>             4 :    0.2790E-3 - 0.8575E-5%
- <01s> [06] Game Over & Game summary
+ <---> HF@it4 |########################################| [100%] --(E) --(X)
+ <--->             4 :       0.0011 - 0.3517E-4%
+ <---> HF@it5 |                                        | [000%] --(E) --(X)
+ <---> HF@it5 |########################################| [100%] --(E) --(X)
+ <--->             5 :    0.2709E-3 - 0.7568E-5%
+ <---> [05] Timing Overview
+ <---> [TIMING]                                   io_WF :     0.00s CPU (       4 calls,   0.000 s avg)
+ <---> [TIMING]                                 io_GROT :     0.00s CPU (       3 calls,   0.000 s avg)
+ <---> [TIMING]                                io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
+ <---> [TIMING]                              io_COL_CUT :     0.00s CPU
+ <---> [TIMING]                          io_Double_Grid :     0.00s CPU
+ <---> [TIMING]                                   io_HF :     0.00s CPU (       6 calls,   0.000 s avg)
+ <---> [TIMING]                              io_DIPOLES :     0.00s CPU
+ <---> [TIMING]                             io_KB_pwscf :     0.00s CPU
+ <---> [TIMING]                            io_KB_abinit :     0.00s CPU
+ <---> [TIMING]                                    io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+ <---> [TIMING]                                   io_BS :     0.00s CPU
+ <---> [TIMING]                        io_SC_components :     0.00s CPU (      31 calls,   0.001 s avg)
+ <---> [TIMING]                           io_COLLISIONS :     0.00s CPU (       6 calls,   0.000 s avg)
+ <---> [TIMING]                 IO_and_Messaging_switch :     0.00s CPU (      45 calls,   0.000 s avg)
+ <---> [TIMING]                               FFT_setup :     0.00s CPU (       2 calls,   0.006 s avg)
+ <---> [TIMING]                         COLLISIONS_load :     0.00s CPU (       2 calls,   0.000 s avg)
+ <---> [TIMING]                        Bare_Hamiltonian :     0.00s CPU
+ <---> [TIMING]                            PP_uspp_init :     0.00s CPU
+ <---> [TIMING]                             WF_load_FFT :     0.00s CPU
+ <---> [TIMING]                             io_fragment :     0.00s CPU (      11 calls,   0.000 s avg)
+ <---> [TIMING]                               V_Hartree :     0.00s CPU (      11 calls,   0.001 s avg)
+ <---> [TIMING]                               XCo_local :     0.00s CPU
+ <---> [TIMING]                     XC_potential_driver :     0.00s CPU (      14 calls,   0.001 s avg)
+ <---> [TIMING]                       V_real_space_to_H :     0.00s CPU (      11 calls,   0.000 s avg)
+ <---> [TIMING]                         V_qp_basis_to_H :     0.00s CPU (       6 calls,   0.000 s avg)
+ <---> [TIMING]                                      HF :     0.00s CPU (       5 calls,   0.008 s avg)
+ <---> [TIMING]                               HF(REDUX) :     0.00s CPU (       5 calls,   0.000 s avg)
+ <---> [TIMING]                          LINEAR ALGEBRA :     0.00s CPU (       5 calls,   0.000 s avg)
+ <---> [TIMING]        SERIAL_HERMITIAN_diagonalization :     0.00s CPU (       5 calls,   0.000 s avg)
+ <---> [06] Game Over & Game summary

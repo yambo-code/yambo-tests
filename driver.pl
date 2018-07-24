@@ -82,6 +82,8 @@ if ($len eq 0) {$edit=1};
 my $len= length($profile);
 if ($len eq 0) {$profile=1};
 #
+if ($mode eq "tests")    {$TESTS_folder="TESTS/MAIN"};
+if ($mode eq "validate") {$TESTS_folder="TESTS/VALIDATE"};
 if ($mode eq "cheers")   {$TESTS_folder="TESTS/CHEERS"};
 if ($mode eq "bench")    {$TESTS_folder="TESTS/BENCHMARKS"};
 if ($mode eq "perturbo") {$TESTS_folder="TESTS/PERTURBO"};

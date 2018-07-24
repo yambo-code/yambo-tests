@@ -24,7 +24,7 @@ sub UTILS_download
 {
 &CWD_save;
 #
-my $LINK="http://www.yambo-code.org/testing-robots/databases/";
+my $LINK="http://www.yambo-code.org/testing-robots/databases/$mode";
 my $EXTENSION=".tar.gz";
 if ($mode eq "bench") {
  $LINK="http://potzie.fisica.unimo.it/ferretti/yambo-benchmarks-databases";
@@ -97,7 +97,7 @@ foreach $dir (<*>) {
   WWW: while($i1 < $imax+1) {
    $cmd = "wget --spider -q $LINK/$filename[$i1]$EXTENSION && echo exists || echo not exist";
    my $file_exist = `$cmd`;
-   if ($mode eq "tests" or $mode eq "cheers"){
+   if ($mode eq "tests" or $mode eq "cheers" or $mode eq "validate"){
     if ( "$file_exist" eq "exists\n") {
      &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
      &MY_PRINT($stdout, " downloading ...\n");

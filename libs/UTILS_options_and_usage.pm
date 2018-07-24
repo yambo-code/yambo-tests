@@ -107,7 +107,7 @@ sub UTILS_usage {
              -no_net                Skip network assisted operations
 
    (General options)
-             -mode                  Can be "tests/perturbo/cheers/bench". It selects which suite to use. Default is "tests".
+             -mode                  Can be "tests/validate/cheers/bench". It selects which suite to use. Default is "tests".
              -host  <string>        Robot name.
              -robot <ID>            Robot ID.
              -status                List SVN/GIT new/untracked files.

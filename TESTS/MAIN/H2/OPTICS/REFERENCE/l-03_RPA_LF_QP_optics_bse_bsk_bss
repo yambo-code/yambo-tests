@@ -1,16 +1,15 @@
 
 
- ___ __  _____  __ __  _____   _____
-|   Y  ||  _  ||  Y  ||  _  \ |  _  |
-|   |  ||. |  ||.    ||. |  / |. |  |
- \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
-  |: |  |: |  ||: |  ||: |   \|: |  |
-  |::|  |:.|:.||:.|:.||::.   /|::.  |
-  `--"  `-- --"`-- --"`-----" `-----"
+
+_|      _|   _|_|   _|      _|  _|_|_|     _|_|
+  _|  _|   _|    _| _|_|  _|_| _|    _| _|    _|
+    _|     _|_|_|_| _|  _|  _| _|_|_|   _|    _|
+    _|     _|    _| _|      _| _|    _| _|    _|
+    _|     _|    _| _|      _| _|_|_|     _|_|
+
 
 
  <---> [01] CPU structure, Files & I/O Directories
- <---> CPU-Threads:1(CPU)-8(threads)-1(threads@X)-1(threads@DIP)-1(threads@SE)-1(threads@RT)-1(threads@K)
  <---> [02] CORE Variables Setup
  <---> [02.01] Unit cells
  <---> [02.02] Symmetries
@@ -24,45 +23,60 @@
  <---> X indexes |########################################| [100%] --(E) --(X)
  <---> SE indexes |                                        | [000%] --(E) --(X)
  <---> SE indexes |########################################| [100%] --(E) --(X)
- <---> [04] External corrections
- <---> [04.01] External QP corrections (K)
- <---> [05] Response Functions in Transition space
- <---> [05.01] Transition Groups build-up
- <---> [05.02] CPU-dependent Block structure
- <---> [BSK] Size (resonant) 199
- <---> [BSK]         (total) 199
- <---> [05.03] Independent Particles absorption
+ <---> [03.01] External/Internal QP corrections
+ <---> [04] Response Functions in Transition space
+ <---> [04.01] Transition Groups build-up
+ <---> [04.02] CPU-dependent Block structure
+ <---> [BSK] Size (resonant)  49
+ <---> [BSK]         (total)  49
+ <---> [04.03] Independent Particles absorption
  <---> [DIP] Checking dipoles header
- <---> [x,Vnl] computed using 2 projectors
- <---> [M  0.017 Gb] Alloc WF ( 0.015)
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> [M  0.090 Gb] Alloc wf_disk ( 0.073)
- <---> [M  0.017 Gb] Free wf_disk ( 0.073)
  <---> [X] Using energies without QP corrections for the dipoles
  <---> Dipoles: P and iR (T): |                                        | [000%] --(E) --(X)
  <---> Dipoles: P and iR (T): |########################################| [100%] --(E) --(X)
- <---> [M  0.002 Gb] Free WF ( 0.015)
  <---> [DIP] Writing dipoles header
- <---> [05.04] Bethe-Salpeter (Resonant EXCHANGE)
- <---> [M  0.032 Gb] Alloc WF ( 0.029)
+ <---> [04.04] Bethe-Salpeter (Resonant EXCHANGE)
  <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> [FFT-BSK] Mesh size: 27  27  27
- <---> [M  0.105 Gb] Alloc wf_disk ( 0.073)
- <---> [M  0.032 Gb] Free wf_disk ( 0.073)
- <---> [05.05] Kernel loop
+ <---> [FFT-BSK] Mesh size: 21  21  21
+ <---> [04.05] Kernel loop
  <---> Kernel |                                        | [000%] --(E) --(X)
- <---> [M  0.046 Gb] Alloc BS_T_group_X_oscillators ( 0.013)
- <01s> Kernel |########################################| [100%] --(E) --(X)
- <01s> [M  0.033 Gb] Free BS_T_group_X_oscillators ( 0.013)
- <01s> [M  0.004 Gb] Free WF ( 0.029)
- <01s> [06] BSE solver(s)
- <01s> [LA] SERIAL linear algebra
- <01s> [06.01] Diagonalization solver
- <01s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <01s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <01s> EPS   residuals |                                        | [000%] --(E) --(X)
- <01s> EPS   residuals |########################################| [100%] --(E) --(X)
- <01s> BSK     epsilon |                                        | [000%] --(E) --(X)
- <01s> BSK     epsilon |########################################| [100%] --(E) --(X)
- <01s> [07] Timing Overview
- <01s> [08] Game Over & Game summary
+ <---> Kernel |########################################| [100%] --(E) --(X)
+ <---> [05] BSE solver(s)
+ <---> [LA] SERIAL linear algebra
+ <---> [05.01] Diago solver
+ <---> BSK diagonalize |                                        | [000%] --(E) --(X)
+ <---> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <---> EPS   residuals |                                        | [000%] --(E) --(X)
+ <---> EPS   residuals |########################################| [100%] --(E) --(X)
+ <---> BSK     epsilon |                                        | [000%] --(E) --(X)
+ <---> BSK     epsilon |########################################| [100%] --(E) --(X)
+ <---> [06] Timing Overview
+ <---> [TIMING]                                   io_WF :     0.00s CPU (       7 calls,   0.001 s avg)
+ <---> [TIMING]                                 io_GROT :     0.00s CPU (       2 calls,   0.002 s avg)
+ <---> [TIMING]                                io_QINDX :     0.00s CPU (       3 calls,   0.001 s avg)
+ <---> [TIMING]                              io_COL_CUT :     0.00s CPU
+ <---> [TIMING]                          io_Double_Grid :     0.00s CPU
+ <---> [TIMING]                                   io_HF :     0.00s CPU
+ <---> [TIMING]                              io_DIPOLES :     0.00s CPU (       4 calls,   0.000 s avg)
+ <---> [TIMING]                             io_KB_pwscf :     0.00s CPU (       2 calls,   0.000 s avg)
+ <---> [TIMING]                            io_KB_abinit :     0.00s CPU (       3 calls,   0.000 s avg)
+ <---> [TIMING]                                    io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+ <---> [TIMING]                                   io_BS :     0.00s CPU (       4 calls,   0.001 s avg)
+ <---> [TIMING]                         bz_samp_indexes :     0.00s CPU
+ <---> [TIMING]                          eval_G_minus_G :     0.00s CPU
+ <---> [TIMING]                 IO_and_Messaging_switch :     0.00s CPU (       6 calls,   0.000 s avg)
+ <---> [TIMING]                              T_space IP :     0.00s CPU
+ <---> [TIMING]                                 Dipoles :     0.00s CPU
+ <---> [TIMING]                       DIPOLE_transverse :     0.00s CPU
+ <---> [TIMING]                            PP_uspp_init :     0.00s CPU (       2 calls,   0.000 s avg)
+ <---> [TIMING]                             WF_load_FFT :     0.00s CPU (       2 calls,   0.014 s avg)
+ <---> [TIMING]                             io_fragment :     0.00s CPU (       4 calls,   0.000 s avg)
+ <---> [TIMING]                        X T_space Kernel :     0.00s CPU
+ <---> [TIMING]                               FFT_setup :     0.00s CPU
+ <---> [TIMING]                        T_space EXX Osc. :     0.00s CPU
+ <---> [TIMING]                            Diago Solver :     0.00s CPU
+ <---> [TIMING]                            io_BSS_diago :     0.00s CPU (       2 calls,   0.000 s avg)
+ <---> [TIMING]                          LINEAR ALGEBRA :     0.00s CPU
+ <---> [TIMING]        SERIAL_HERMITIAN_diagonalization :     0.00s CPU
+ <---> [07] Game Over & Game summary
