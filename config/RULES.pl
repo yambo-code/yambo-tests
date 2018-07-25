@@ -23,19 +23,31 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
+$N_PATTERNS=0;
+#
+# [1] = OLD
+# [2] = NEW
+#
 # spin_factors_1->spin_factors_DN
 #
-$PATTERN[1][1]="spin_factors_1";
-$PATTERN[1][2]="spin_factors_UP";
+$N_PATTERNS++;
+$PATTERN[$N_PATTERNS][1]="spin_factors_1";
+$PATTERN[$N_PATTERNS][2]="spin_factors_UP";
 #
 # spin_factors_2->spin_factors_UP
 #
-$PATTERN[2][1]="spin_factors_2";
-$PATTERN[2][2]="spin_factors_DN";
+$N_PATTERNS++;
+$PATTERN[$N_PATTERNS][1]="spin_factors_2";
+$PATTERN[$N_PATTERNS][2]="spin_factors_DN";
 #
 # Slepc
 #
-$PATTERN[3][1]="diago";
-$PATTERN[3][2]="slepc";
+$N_PATTERNS++;
+$PATTERN[$N_PATTERNS][1]="diago";
+$PATTERN[$N_PATTERNS][2]="slepc";
 #
-$N_PATTERNS=3;
+# TD dos
+#
+$N_PATTERNS++;
+$PATTERN[$N_PATTERNS][1]="YPP-2D_occ_dos";
+$PATTERN[$N_PATTERNS][2]="YPP-TD_dos";

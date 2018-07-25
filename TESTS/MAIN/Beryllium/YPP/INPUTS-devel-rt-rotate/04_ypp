@@ -8,22 +8,31 @@
 #     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
 #      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
 #                                                           
-#       Version 4.3.0 Revision 15780 Hash 7ec365719         
-#                      MPI+SLK Build                        
+#        Version 4.3.0 Revision 15184 Hash b50257f          
+#                  MPI+SLK+OpenMP Build                     
 #                http://www.yambo-code.org                  
 #
 electrons                      # [R] Electrons (and holes)
-dos                            # [R] DOS
+bnds                           # [R] Bands
+cooIn= "rlu"                   # Points coordinates (in) cc/rlu/iku/alat
 % DOSERange
  1.000000 |-1.000000 | eV      # Energy range
 %
 DOSESteps=  500                # Energy steps
 DOS_broad=  0.10000    eV      # Broadening of the DOS
-% DOS_bands
-  1 | 10 |                     # DOS bands
-%
-#DOSUsesOcc                    # Use occupation factors only
 % INTERP_Grid
-8 |8 |8 |                             # Interpolation BZ Grid
+ 24 | 24 | 12 |                          # Interpolation BZ Grid
 %
 INTERP_Shell_Fac= 20.00000     # The bigger it is a higher number of shells is used
+GfnQPdb=  "E < QP/ndb.QP_merged_1_gw_real_axis"
+CIRCUIT_E_DB_path= "PW_SAVE"    # SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)
+BANDS_steps=  50               # Number of divisions
+% BANDS_bands
+  1 |  5 |                     # Number of bands
+%
+#BANDS_built_in                # Print the bands of the generating points of the circuit using the nearest internal point
+
+dos
+% DOS_bands
+  1 |  5 |                     # Number of bands
+%
