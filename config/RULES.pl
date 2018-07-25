@@ -35,7 +35,7 @@ $PATTERN[2][2]="spin_factors_DN";
 #
 # Slepc
 #
-$PATTERN[3][1]="diago";
-$PATTERN[3][2]="slepc";
+#$PATTERN[3][1]="diago";
+#$PATTERN[3][2]="slepc";
 #
-$N_PATTERNS=3;
+$N_PATTERNS=2;
