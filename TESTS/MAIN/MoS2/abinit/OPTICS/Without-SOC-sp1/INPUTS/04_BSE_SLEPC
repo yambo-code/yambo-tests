@@ -18,7 +18,9 @@ em1s                         # [R Xs] Static Inverse Dielectric Matrix
 Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
 BSEmod= "resonant"           # [BSE] resonant/causal/coupling
 BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-BSSmod= "d"                 # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSSmod= "s"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSSSlepcShell
+BSSNEig=5
 BSENGexx=  4           Ry    # [BSK] Exchange components
 BSENGBlk= 1            Ry    # [BSK] Screened interaction block size
 % KfnQP_E
@@ -30,24 +32,21 @@ BSENGBlk= 1            Ry    # [BSK] Screened interaction block size
 % BDmRange
   0.02000 |  0.02000 | eV    # [BSS] Damping range
 %
-BEnSteps=  400               # [BSS] Energy steps
+BEnSteps= 400               # [BSS] Energy steps
 % BLongDir
  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %
 % BSEBands
- 21 | 30 |                   # [BSK] Bands range
+ 11 | 15 |                   # [BSK] Bands range
 %
-BSHayTrs=  0.0050           # [BSS] [o/o] Haydock treshold. Strict(>0)/Average(<0)
+BSHayTrs=  -0.0100           # [BSS] [o/o] Haydock treshold. Strict(>0)/Average(<0)
 % QpntsRXs
   1 |  7 |                   # [Xs] Transferred momenta
 %
 % BndsRnXs
- 11 | 30 |                   # [Xs] Polarization function bands
+ 11 | 16 |                   # [Xs] Polarization function bands
 %
 NGsBlkXs= 1            Ry    # [Xs] Response block size
 % LongDrXs
  1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
-%
-% DmRngeXs
-  0.001000 |  0.00100 | eV    # [Xs] Damping range
 %

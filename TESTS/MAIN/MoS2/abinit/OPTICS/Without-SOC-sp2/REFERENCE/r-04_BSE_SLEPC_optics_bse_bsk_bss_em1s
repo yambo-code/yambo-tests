@@ -1,12 +1,12 @@
                                                                 
-     **    **    **     ****     ****  ******     *******       
-    //**  **    ****   /**/**   **/** /*////**   **/////**      
-     //****    **//**  /**//** ** /** /*   /**  **     //**     
-      //**    **  //** /** //***  /** /******  /**      /**     
-       /**   **********/**  //*   /** /*//// **/**      /**     
-       /**  /**//////**/**   /    /** /*    /**//**     **      
-       /**  /**     /**/**        /** /*******  //*******       
-       //   //      // //         //  ///////    ///////        
+      __   __     _        __  __       ____      U  ___  u     
+      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/      
+       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |      
+      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |      
+        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/       
+    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\         
+     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)        
+                                                                
                                                                 
            Version 4.3.0 Revision 15632 Hash 1defe02            
                      MPI+SLK+OpenMP Build                       
@@ -27,9 +27,10 @@
  Additional I/O in   .
  Communications in   .
  Input file     is   yambo.in
- Report file    is   ./r-04_BSE_optics_bse_bsk_bss_em1s
- Job string(main): 04_BSE
-             (#1): R10
+ Report file    is   ./r-04_BSE_SLEPC_optics_bse_bsk_bss_em1s
+ Job string(main): 04_BSE_SLEPC
+             (#1): 04_BSE-serial-bug-fixes
+             (#2): R10
  Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
@@ -201,10 +202,9 @@
   Polarization last K   :  7
   QP states             :  1   7
   X grid is uniform     :yes
- *ERR* BS scattering         :no
+  BS scattering         :yes
   COLL scattering       :no
  - S/N 002249 -------------------------- v.04.03.00 r.15632 -
- [RL indx] Q-grid:User defined / from ndb.kindx.
 
  IBZ Q-points :  7
  BZ  Q-points :  36
@@ -224,18 +224,6 @@
  Q [00005] : 0.176880  0.306365  0.000000 (cc ) * weight  0.166667
  Q [00006] : 0.353760  0.408487  0.000000 (cc ) * weight  0.333333
  Q [00007] : 0.353760  0.612731  0.000000 (cc ) * weight   0.05556
-
- :: Indices: polarization function + BSE
- :: Indices: Self-Energy
-
- [WR./SAVE//ndb.kindx]---------------------------------------
-  Fragmentation                    :no
-  Polarization last K   :  7
-  QP states             :  1   7
-  X grid is uniform     :yes
-  BS scattering         :yes
-  COLL scattering       :no
- - S/N 002249 -------------------------- v.04.03.00 r.15632 -
 
   [03.01] External/Internal QP corrections
   ========================================
@@ -259,43 +247,10 @@
   [QP apply] Ind. Gap Correction  (up) [ev]: 0.700000
                                 (down) [ev]: 0.700000
 
- Timing [Min/Max/Average]: 01s/01s/01s
-
  [04] Static Dielectric Matrix
  =============================
 
- [RD./SAVE//ns.kb_pp]----------------------------------------
-  Fragmentation                    :yes
- - S/N 002249 -------------------------- v.04.03.00 r.15632 -
- [WF] Performing Wave-Functions I/O from ./SAVE
-
- [WF loader] Normalization (few states)  min/max  :0.496E-09  1.00    
-
- [WR./04_BSE//ndb.dip_iR_and_P]------------------------------
-  Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
-  RL vectors                   (WF):  3281
-  Fragmentation                    :yes
-  Electronic Temperature        [K]: 0.000000
-  Bosonic    Temperature        [K]: 0.000000
-  X band range           : 11  16
-  X band range limits    : 13  14
-  X e/h energy range [ev]:-1.000000 -1.000000
-  RL vectors in the sum  :  3281
-  [r,Vnl] included       :yes
-  Using shifted grids    :no
-  Using covariant dipoles:no
-  Using G-space approach :yes
-  Using R-space approach :no
-  Direct v evaluation    :no
-  Field momentum norm    :0.1000E-4
-  Wavefunctions          :Teter 93(XC)
- - S/N 002249 -------------------------- v.04.03.00 r.15632 -
- [WF] Performing Wave-Functions I/O from ./SAVE
-
- [FFT-X] Mesh size:  12   12   54
-
- [X-CG] R(p) Tot o/o(of R)  :   60   648   100
- [WR./04_BSE//ndb.em1s]--------------------------------------
+ [RD./04_BSE-serial-bug-fixes//ndb.em1s]---------------------
   Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
   RL vectors                   (WF):  3281
   Coulomb cutoff potential         :none
@@ -318,26 +273,19 @@
   BZ energy Double Grid  :no
   BZ energy DbGd points  :0
   BZ Q point size factor : 1.000000
- [WR./04_BSE//ndb.em1s_fragment_1]---------------------------
+ - S/N 002249 -------------------------- v.04.03.00 r.15632 -
+ [RD./04_BSE-serial-bug-fixes//ndb.em1s_fragment_1]----------
   :: Current Q-pt index     : 1
   :: X energy range     [ev]: 0.00      0.00    
   :: X damping range    [ev]:  0.10000   0.10000
   :: Number of frequencies  : 1
  - S/N 002249 -------------------------- v.04.03.00 r.15632 -
- [X-CG] R(p) Tot o/o(of R)  :  173   648   100
- [WR./04_BSE//ndb.em1s_fragment_2]---------------------------
+ [RD./04_BSE-serial-bug-fixes//ndb.em1s_fragment_2]----------
   :: Current Q-pt index     : 2
   :: X energy range     [ev]: 0.00      0.00    
   :: X damping range    [ev]:  0.10000   0.10000
   :: Number of frequencies  : 1
  - S/N 002249 -------------------------- v.04.03.00 r.15632 -
- [X-CG] R(p) Tot o/o(of R)  :  148   648   100
- [X-CG] R(p) Tot o/o(of R)  :  113   648   100
- [X-CG] R(p) Tot o/o(of R)  :  149   648   100
- [X-CG] R(p) Tot o/o(of R)  :  218   648   100
- [X-CG] R(p) Tot o/o(of R)  :   87   648   100
-
- Timing [Min/Max/Average]: 03s/03s/03s
 
  [05] Response Functions in Transition space
  ===========================================
@@ -357,7 +305,7 @@
   [05.03] Independent Particles absorption
   ========================================
 
-  [RD./04_BSE//ndb.dip_iR_and_P]------------------------------
+  [RD./04_BSE-serial-bug-fixes//ndb.dip_iR_and_P]-------------
    Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
    RL vectors                   (WF):  3281
    Fragmentation                    :yes
@@ -381,146 +329,100 @@
   =======================================================
 
   [BSE] Exchange components : 121
-
-   [05.04.01] Screened interaction header I/O
-   ==========================================
-
-   [RD./04_BSE//ndb.em1s]--------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
-    RL vectors                   (WF):  3281
-    Coulomb cutoff potential         :none
-    Fragmentation                    :yes
-    Electronic Temperature        [K]: 0.000000
-    Bosonic    Temperature        [K]: 0.000000
-    Static diel. fun.  energies      :Teter 93(XC)
-                       wavefunctions :Teter 93(XC)
-    Global Gauge                     :length
-    X matrix size          : 11
-    X band range           : 11  16
-    X e/h energy range [ev]:-1.000000 -1.000000
-    X Time ordering        :T
-    X xc-Kernel            :none
-    X Drude frequency      : 0.00      0.00    
-    X poles           [o/o]: 100.0000
-    RL vectors in the sum  :  3281
-    [r,Vnl] included       :yes
-    Field direction        :0.1000E-4  0.000     0.000   
-    BZ energy Double Grid  :no
-    BZ energy DbGd points  :0
-    BZ Q point size factor : 1.000000
-   [RD./04_BSE//ndb.em1s_fragment_1]---------------------------
-    :: Current Q-pt index     : 1
-    :: X energy range     [ev]: 0.00      0.00    
-    :: X damping range    [ev]:  0.10000   0.10000
-    :: Number of frequencies  : 1
-   - S/N 002249 -------------------------- v.04.03.00 r.15632 -
-   [WF] Performing Wave-Functions I/O from ./SAVE
-
-   [FFT-BSK] Mesh size:  12   12   54
-
-
-   [05.04.02] Wave-Function Phases
-   ===============================
-
-   [BSE] WF phases found  [o/o]: 73.45238
-   [WR./04_BSE//ndb.BS_Q1_CPU_0]-------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
-    RL vectors                   (WF):  3281
-    Coulomb cutoff potential         :none
-    Parallel CPUs                    :
-    Parallel Roles                   :
-    Fragmentation                    :no
-    BS kernel          wavefunctions :Teter 93(XC)
-    Static diel. fun.  energies      :Teter 93(XC)
-                       wavefunctions :Teter 93(XC)
-    BSK|Identifier              : 1530
-       |Dimension               :  432
-       |Bands                   : 11  15
-       |Exchange           [res]:yes
-       |Correlation        [res]:yes
-       |Kernel`s coupling       :no
-       |Exchange           [cpl]:no
-       |Correlation        [cpl]:no
-       |W interaction is bare   :no
-       |ALDA kernel in R-space  :no
-       |RL vectors    [exchange]: 121
-       |RL vectors [correlation]: 11
-       |E/h energy range    [ev]:-1.000000 -1.000000
-       |Coupling range     [o/o]: 100.0000  100.0000
-     W |Interaction is diagonal :no
-       |Matrix size             : 11
-       |Bands                   : 11  16
-       |e/h energy range    [ev]:-1.000000 -1.000000
-       |Poles              [o/o]: 100.0000
-       |RL vectors in the sum   :  3281
-       |[r,Vnl] included        :yes
-       |Field direction         :0.1000E-4  0.000     0.000   
-       |Coulomb Cutoff          :none
-       |xc-Kernel               :none
-    RIM|RL components      [col]:0
-       |Random points      [col]:0
-   - S/N 002249 -------------------------- v.04.03.00 r.15632 -
-
-   [05.04.03] Kernel loop
-   ======================
-
-
- Timing [Min/Max/Average]: 01s/01s/01s
+  [RD./04_BSE-serial-bug-fixes//ndb.BS_Q1_CPU_0]--------------
+   Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
+   RL vectors                   (WF):  3281
+   Coulomb cutoff potential         :none
+   Parallel CPUs                    :
+   Parallel Roles                   :
+   Fragmentation                    :no
+   BS kernel          wavefunctions :Teter 93(XC)
+   Static diel. fun.  energies      :Teter 93(XC)
+                      wavefunctions :Teter 93(XC)
+   BSK|Identifier              : 1530
+      |Dimension               :  432
+      |Bands                   : 11  15
+      |Exchange           [res]:yes
+      |Correlation        [res]:yes
+      |Kernel`s coupling       :no
+      |Exchange           [cpl]:no
+      |Correlation        [cpl]:no
+      |W interaction is bare   :no
+      |ALDA kernel in R-space  :no
+      |RL vectors    [exchange]: 121
+      |RL vectors [correlation]: 11
+      |E/h energy range    [ev]:-1.000000 -1.000000
+      |Coupling range     [o/o]: 100.0000  100.0000
+    W |Interaction is diagonal :no
+      |Matrix size             : 11
+      |Bands                   : 11  16
+      |e/h energy range    [ev]:-1.000000 -1.000000
+      |Poles              [o/o]: 100.0000
+      |RL vectors in the sum   :  3281
+      |[r,Vnl] included        :yes
+      |Field direction         :0.1000E-4  0.000     0.000   
+      |Coulomb Cutoff          :none
+      |xc-Kernel               :none
+   RIM|RL components      [col]:0
+      |Random points      [col]:0
+  - S/N 002249 -------------------------- v.04.03.00 r.15632 -
 
  [06] BSE solver(s)
  ==================
 
 
-  [06.01] Diago solver
+  [06.01] Slepc solver
   ====================
 
-  [WR./04_BSE//ndb.BS_diago_Q01]------------------------------
+  [RD./04_BSE-serial-bug-fixes//ndb.BS_diago_Q01]-------------
    BS kernel          energies      : Analyt. E
    BSK Identifier                  : 1530
    Excitonic eigenstates included  :no
    Field direction                 :0.1000E-4  0.000     0.000   
-   Number of eigenstates included  :  432
+  *ERR* Number of eigenstates included  :  432
+  - S/N 002249 -------------------------- v.04.03.00 r.15632 -
+  criterion: smaller eigenvalues
+  extraction method: ritz
+  number of requested eigenvalues:  10
+  stopping condition tolerance: 0.1000E-5
+  stopping condition max iterations: 0
+  number of iterations of the method:  19
+  number of eigenvalues:  10
+  ncv:  25
+  mpd:  25
+  number of converged eigenpairs:  10
+   
+  [WR./04_BSE_SLEPC//ndb.BS_diago_Q01]------------------------
+   BS kernel          energies      : Analyt. E
+   BSK Identifier                  : 1530
+   Excitonic eigenstates included  :no
+   Field direction                 :0.1000E-4  0.000     0.000   
+   Number of eigenstates included  : 10
   - S/N 002249 -------------------------- v.04.03.00 r.15632 -
 
  [07] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                                    io_WF :     0.00s CPU (      49 calls,   0.000 s avg)
-                                  io_GROT :     0.00s CPU (       2 calls,   0.000 s avg)
-                                 io_QINDX :     1.00s CPU (       3 calls,   0.416 s avg)
+                                    io_WF :     0.00s CPU
+                                  io_GROT :     0.00s CPU (       2 calls,   0.001 s avg)
+                                 io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
                                io_COL_CUT :     0.00s CPU
                            io_Double_Grid :     0.00s CPU
                                     io_HF :     0.00s CPU
-                               io_DIPOLES :     0.00s CPU (      32 calls,   0.000 s avg)
-                              io_KB_pwscf :     0.00s CPU (       2 calls,   0.000 s avg)
-                             io_KB_abinit :     0.00s CPU (      16 calls,   0.001 s avg)
-                                     io_X :     0.00s CPU (      21 calls,   0.000 s avg)
+                               io_DIPOLES :     0.00s CPU (      16 calls,   0.000 s avg)
+                              io_KB_pwscf :     0.00s CPU
+                             io_KB_abinit :     0.00s CPU
+                                     io_X :     0.00s CPU (      12 calls,   0.000 s avg)
+                              io_fragment :     0.00s CPU (      22 calls,   0.000 s avg)
                                     io_BS :     0.00s CPU (      31 calls,   0.000 s avg)
-                          bz_samp_indexes :     1.00s CPU
-                  IO_and_Messaging_switch :     0.00s CPU (       7 calls,   0.000 s avg)
-                                  Dipoles :     0.00s CPU (       2 calls,   0.181 s avg)
-                        DIPOLE_transverse :     0.00s CPU
-                             PP_uspp_init :     0.00s CPU (       3 calls,   0.000 s avg)
-                              WF_load_FFT :     0.00s CPU (       3 calls,   0.012 s avg)
-                              io_fragment :     0.00s CPU (      99 calls,   0.000 s avg)
-                                FFT_setup :     2.00s CPU (       8 calls,   0.298 s avg)
-                           Xo (procedure) :     0.00s CPU (       7 calls,   0.143 s avg)
-                               Xo (REDUX) :     0.00s CPU (       7 calls,   0.000 s avg)
-                            X (procedure) :     0.00s CPU (       7 calls,   0.000 s avg)
-  MATRIX transfer (X_G_all_q_X_redux_1_1) :     0.00s CPU (       7 calls,   0.000 s avg)
-                           LINEAR ALGEBRA :     0.00s CPU (       8 calls,   0.029 s avg)
-                        SERIAL_lin_system :     0.00s CPU (       7 calls,   0.000 s avg)
-                                X (REDUX) :     0.00s CPU (       7 calls,   0.000 s avg)
-  MATRIX transfer (X_G_all_q_X_redux_2_1) :     0.00s CPU (       7 calls,   0.000 s avg)
                            eval_G_minus_G :     0.00s CPU
+                  IO_and_Messaging_switch :     0.00s CPU (       3 calls,   0.000 s avg)
                                T_space IP :     0.00s CPU
-                         X T_space Kernel :     1.00s CPU
-                         T_space EXX Osc. :     0.00s CPU (       7 calls,   0.003 s avg)
-                        T_space CORR Osc. :     1.00s CPU (      28 calls,   0.037 s avg)
-                             Diago Solver :     0.00s CPU
-                             io_BSS_diago :     0.00s CPU (       2 calls,   0.000 s avg)
-         SERIAL_HERMITIAN_diagonalization :     0.00s CPU
+                                  Dipoles :     0.00s CPU
+                         X T_space Kernel :     0.00s CPU
+                             Slepc Solver :     0.00s CPU
+                             io_BSS_diago :     0.00s CPU (       2 calls,   0.001 s avg)
 
  [08] Game Over & Game summary
  =============================
@@ -528,9 +430,7 @@
  07/25/2018 at 11:28 YAMBO @ narro [start]
  07/25/2018 at 11:28               [end]
 
- Timing   [Min/Max/Average]: 06s/06s/06s
-             [Time-Profile]: 06s
-
+  
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -552,7 +452,6 @@
  | bsk                            # [R BSK] Bethe Salpeter Equation kernel
  | bss                            # [R BSS] Bethe Salpeter Equation solver
  | em1s                           # [R Xs] Static Inverse Dielectric Matrix
- | BoseTemp= 0.000000     eV      # Bosonic Temperature
  | FFTGvecs=  3281        RL      # [FFT] Plane-waves
  | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
  | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
@@ -560,7 +459,7 @@
  | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
  | BSEmod= "resonant"             # [BSE] resonant/retarded/coupling
  | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
- | BSSmod= "d"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+ | BSSmod= "s"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
  | BSENGexx=  4           Ry      # [BSK] Exchange components
  | BSENGBlk= 1            Ry      # [BSK] Screened interaction block size
  | #WehCpl                        # [BSK] eh interaction included also in coupling
@@ -583,6 +482,7 @@
  | % BSEBands
  |  11 | 15 |                     # [BSK] Bands range
  | %
+ | BSSNEig= 10                    # [SLEPC] Number of eigenvalues to compute
  | % BndsRnXs
  |  11 | 16 |                     # [Xs] Polarization function bands
  | %
