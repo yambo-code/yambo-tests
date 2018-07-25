@@ -42,9 +42,9 @@ $PATTERN[$N_PATTERNS][2]="spin_factors_DN";
 #
 # Slepc
 #
-$N_PATTERNS++;
-$PATTERN[$N_PATTERNS][1]="diago";
-$PATTERN[$N_PATTERNS][2]="slepc";
+#$N_PATTERNS++;
+#$PATTERN[$N_PATTERNS][1]="diago";
+#$PATTERN[$N_PATTERNS][2]="slepc";
 #
 # TD dos
 #
