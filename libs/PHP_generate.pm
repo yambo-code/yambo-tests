@@ -250,6 +250,10 @@ foreach $file (<$dir/ERROR*.log>) {
  &command("cat $file >> $error_php");
 };
 &command("echo '\n\n' >> $error_php");
+foreach $file (<$dir/SKIP*.log>) {
+ &command("cat $file >> $error_php");
+};
+&command("echo '\n\n' >> $error_php");
 foreach $file (<$dir/WHITE*.log>) {
  &command("cat $file >> $error_php");
 };

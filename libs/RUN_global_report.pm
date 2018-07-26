@@ -34,11 +34,13 @@ if ("$what" eq "INIT") {
  $global_report = "REPORT-$string$ROBOT_string-$date"."_"."$time.log";
  $failed_log  = "FAILED-$string$ROBOT_string-$date"."_"."$time.log";
  $tests_error = "ERROR-$string$ROBOT_string-$date"."_"."$time.log";
+ $tests_skip = "SKIP-$string$ROBOT_string-$date"."_"."$time.log";
  $whitelist = "WHITELIST-$string$ROBOT_string-$date"."_"."$time.log";
  $rules_ok  = "RULES-SUCC-$string$ROBOT_string-$date"."_"."$time.log";
  open($flog, '>', $failed_log) or die "Could not open file '$failed_log' $!";
  open($rlog, '>', $global_report) or die "Could not open file '$global_report' $!";
  open($elog, '>', $tests_error) or die "Could not open file '$tests_error' $!";
+ open($slog, '>', $tests_skip) or die "Could not open file '$tests_skip' $!";
  open($wlog, '>', $whitelist) or die "Could not open file '$whitelist' $!";
  open($ulog, '>', $rules_ok) or die "Could not open file '$rules_ok' $!";
  &MESSAGE("REPORT","$wiggly_line");

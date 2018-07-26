@@ -90,9 +90,8 @@ LOG_LOOP: {
     if ($verb and not $empty_worload) {&MESSAGE("LOG"," Empty workload for some CPU")};
     $empty_worload = 1;
    }
-   if ($line =~ /USER parallel structure does not fit the current run parameters/) { 
-    $wrong_cpu_conf = 1;
-   }
+   if ($line =~ /USER parallel structure does not fit the current run parameters/) { $wrong_cpu_conf = 1; }
+   if ($line =~ /Impossible to define an appropriate parallel structure/)          { $wrong_cpu_conf = 1; }
   }
  }
 }

@@ -50,6 +50,7 @@ $RANDOM_seed=1;
 # ERROR log
 @ERROR_entries;
 $N_errors=0;
+$N_skips=0;
 # Default precision
 $prec=0.01;
 # Log
