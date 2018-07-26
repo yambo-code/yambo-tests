@@ -39,6 +39,7 @@ if( -e "$input_folder/$testname.flags") {
    $flags = $flags.",$extra_flag_check" ;
    $found=1;
    if (&CHECK_the_error_list("$extra_flag_check") !~ "OK") { return "FAIL"};
+   if (&CHECK_the_skips_list("$extra_flag_check") !~ "OK") { return "SKIP"};
    next ;
   };
   #
@@ -47,6 +48,7 @@ if( -e "$input_folder/$testname.flags") {
    $flags = $flags.",$extra_flag_check" ;
    $found=1;
    if (&CHECK_the_error_list("$extra_flag_check") !~ "OK") { return "FAIL"};
+   if (&CHECK_the_skips_list("$extra_flag_check") !~ "OK") { return "SKIP"};
    next ;
   };
   #
@@ -55,11 +57,12 @@ if( -e "$input_folder/$testname.flags") {
    $flags = $flags.",$extra_flag_check" ;
    $found=1;
    if (&CHECK_the_error_list("$extra_flag_check") !~ "OK") { return "FAIL"};
+   if (&CHECK_the_skips_list("$extra_flag_check") !~ "OK") { return "SKIP"};
    next ;
   };
  }
  close(FLAGS);
- if (not $found) { return "FAIL" };
+ if (not $found) { return "SKIP" };
 }
 $flags = '-J "' . "$testname$flags,$ROBOT_string" . '"';
 if ($P2Y) {$flags=" "};
@@ -75,6 +78,17 @@ sub CHECK_the_error_list{
    return "FAIL";
   }
   if ($line =~ /@_[0]/ and $line =~ /NO/ and $line =~ /in OUTPUT/) {
+   return "FAIL";
+  }
+ }
+ return "OK";
+}
+sub CHECK_the_skips_list{
+ #
+ # Check if the run that is called via the flags has been or not labelled as FAILED
+ #
+ foreach my $line (@SKIP_entries) {
+  if ($line =~ /@_[0]/ and $line =~ /CPU/) {
    return "FAIL";
   }
  }

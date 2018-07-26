@@ -94,6 +94,7 @@ if ("@_" eq "REPORT"){
 }
 #
 my $err_msg=$testdir."/".$dir_name."  :";
+my $skip_msg=$testdir."/".$dir_name."  :";
 #
 if ($profile) {&MESSAGE("FAILED","$TESTS_folder/$testdir/$ROBOT_wd/$dir_name\n")};
 #
@@ -160,6 +161,7 @@ if ("@_" eq "RUNTIME"){
 if ("@_" eq "SKIPPED"){
  $test_skipped++;
  $test_ok_action="SKIP";
+ &MESSAGE("SKIP","\n"."$skip_msg"." $CHECK_error");
  &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "SKIPPED_CORE"){
@@ -169,17 +171,25 @@ if ("@_" eq "SKIPPED_CORE"){
 };
 if ("@_" eq "WRONG_CPU_CONF"){
  $test_ok_action="SKIP";
+ if( $default_parallel) 
+ {
+   $test_skipped++;
+   $test_skipped_cpuconf++;
+   &MESSAGE("SKIP","\n"."$skip_msg"." $CHECK_error");
+ }
  &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "ERROR_CPU_CONF"){
  $test_skipped++;
  $test_skipped_cpuconf++;
  $test_ok_action="SKIP";
+ &MESSAGE("SKIP","\n"."$skip_msg"." $CHECK_error");
  &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "WRONG_DEP"){
  $test_skipped++;
  $test_ok_action="SKIP";
+ &MESSAGE("SKIP","\n"."$skip_msg"." $CHECK_error");
  &MESSAGE("LOG","[$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "OK"){

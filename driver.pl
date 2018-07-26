@@ -335,6 +335,7 @@ if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
 #
 close $rlog;
 #close $tlog; # This is closed in driver.pm inside the branches loop
+close $slog;
 close $elog;
 close $wlog;
 close $ulog;

@@ -198,7 +198,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
     &RUN_setup("after_run");
     #
    }else{
-    $CHECK_error="Source-Run FAILED";
+    if( $error =~ "FAIL" ) {$CHECK_error="Source-Run FAILED";};
+    if( $error =~ "SKIP" ) {$CHECK_error="Source-Run SKIPPED";};
     &RUN_stats("WRONG_DEP");
    }
    #
