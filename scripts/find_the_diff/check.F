@@ -29,6 +29,8 @@ subroutine check(R,O,REPORT,FIELD)
   integer  :: N_average
   character(*) :: FIELD
   !
+  character(8), external :: intc
+  !
   R_average=0.
   O_average=0.
   E_average=0.
@@ -56,7 +58,7 @@ subroutine check(R,O,REPORT,FIELD)
         if (abs(ERROR(i_c))>0.) delta_ref=DATA_diff/ERROR(i_c)*PREC
         i_c_ref=i_c
         str=FIELD
-        if (i_d>0) write (str,'(a,i4,a)') FIELD//'(#',i_d,')'
+        if (i_d>0) str= FIELD//'(#'//trim(intc(i_d))//')'
       endif
     endif
     !

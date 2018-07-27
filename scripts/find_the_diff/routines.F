@@ -160,3 +160,31 @@ subroutine arg_check()
  use DIFF
   if (  len_trim(str1) ==0 ) stop 'STOP! Reading argument error'
 end subroutine
+!
+character(8) function intc(i)
+ !
+ character(8) temp
+ integer, intent(in) :: i
+ !
+ if(i.lt.10.and.i.ge.0) then
+   write(temp,'(i1)') i
+ else if(i.lt.100.and.i.gt.-10) then
+   write(temp,'(i2)') i
+ else if(i.lt.1000.and.i.gt.-100) then
+   write(temp,'(i3)') i
+ else if(i.lt.10000.and.i.gt.-1000) then
+   write(temp,'(i4)') i
+ else if(i.lt.100000.and.i.gt.-10000) then
+   write(temp,'(i5)') i
+ else if(i.lt.1000000.and.i.gt.-100000) then
+   write(temp,'(i6)') i
+ else if(i.lt.10000000.and.i.gt.-1000000) then
+   write(temp,'(i7)') i
+ else if(i.lt.100000000.and.i.gt.-10000000) then
+   write(temp,'(i8)') i
+ else
+   write(temp,'(a6)') "******"
+ endif
+ intc = temp
+ !
+end function intc
