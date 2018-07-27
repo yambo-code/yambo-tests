@@ -1,0 +1,564 @@
+
+     Program PWSCF v.5.1 starts on 26Jul2018 at 17:25:34 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     1 processors
+     Waiting for input...
+     Reading input from standard input
+     Message from routine read_cards :
+     DEPRECATED: no units specified in ATOMIC_POSITIONS card
+     Message from routine read_cards :
+     ATOMIC_POSITIONS: units set to alat
+
+     Current dimensions of program PWSCF are:
+     Max number of different atomic species (ntypx) = 10
+     Max number of k-points (npk) =  40000
+     Max angular momentum in pseudopotentials (lmaxx) =  3
+
+     Atomic positions and unit cell read from directory:
+     ./Fe_nscf_e45_k4s2_nb20_so.save/
+
+
+     Fixed quantization axis for GGA:     0.000000    0.000000    1.000000
+
+     Subspace diagonalization in iterative solution of the eigenvalue problem:
+     a serial algorithm will be used
+
+
+     G-vector sticks info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Sum         291     291     91                 3151     3151     531
+
+     Generating pointlists ...
+     new r_m :   0.3572 (alat units)  1.9362 (a.u.) for type    1
+
+
+     bravais-lattice index     =            3
+     lattice parameter (alat)  =       5.4200  a.u.
+     unit-cell volume          =      79.6100 (a.u.)^3
+     number of atoms/cell      =            1
+     number of atomic types    =            1
+     number of electrons       =         8.00
+     number of Kohn-Sham states=           20
+     kinetic-energy cutoff     =      45.0000  Ry
+     charge density cutoff     =     180.0000  Ry
+     Exchange-correlation      = PBE ( 1  4  3  4 0)
+     Noncollinear calculation with spin-orbit
+
+
+     celldm(1)=   5.420000  celldm(2)=   0.000000  celldm(3)=   0.000000
+     celldm(4)=   0.000000  celldm(5)=   0.000000  celldm(6)=   0.000000
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (   0.500000   0.500000   0.500000 )  
+               a(2) = (  -0.500000   0.500000   0.500000 )  
+               a(3) = (  -0.500000  -0.500000   0.500000 )  
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.000000  0.000000  1.000000 )  
+               b(2) = ( -1.000000  1.000000  0.000000 )  
+               b(3) = (  0.000000 -1.000000  1.000000 )  
+
+
+     PseudoPot. # 1 for Fe read from file:
+     ./Fe.rel-pbe-n-nc.UPF
+     MD5 check sum: 94258d60e67ccf79570366bad73e55f4
+     Pseudo is Norm-conserving + core correction, Zval =  8.0
+     Generated using "atomic" code by A. Dal Corso  v.5.0.2 svn rev. 10042M
+     Using radial grid of 1191 points,  4 beta functions with: 
+                l(1) =   1
+                l(2) =   1
+                l(3) =   2
+                l(4) =   2
+
+     atomic species   valence    mass     pseudopotential
+        Fe             8.00    55.84500     Fe( 1.00)
+
+     16 Sym. Ops., with inversion, found
+
+
+                                    s                        frac. trans.
+
+      isym =  1     identity                                     
+
+ Time Reversal            0
+ cryst.   s( 1) = (     1          0          0      )
+                  (     0          1          0      )
+                  (     0          0          1      )
+
+ cart.    s( 1) = (  1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  1.0000000  0.0000000 )
+                  (  0.0000000  0.0000000  1.0000000 )
+
+
+      isym =  2     180 deg rotation - cart. axis [0,0,1]        
+
+ Time Reversal            0
+ cryst.   s( 2) = (     0          0          1      )
+                  (     1         -1          1      )
+                  (     1          0          0      )
+
+ cart.    s( 2) = ( -1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000 -1.0000000  0.0000000 )
+                  (  0.0000000  0.0000000  1.0000000 )
+
+
+      isym =  3     180 deg rotation - cart. axis [0,1,0]        
+
+ Time Reversal            1
+ cryst.   s( 3) = (    -1          1         -1      )
+                  (     0          0         -1      )
+                  (     0         -1          0      )
+
+ cart.    s( 3) = ( -1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  1.0000000  0.0000000 )
+                  (  0.0000000  0.0000000 -1.0000000 )
+
+
+      isym =  4     180 deg rotation - cart. axis [1,0,0]        
+
+ Time Reversal            1
+ cryst.   s( 4) = (     0         -1          0      )
+                  (    -1          0          0      )
+                  (    -1          1         -1      )
+
+ cart.    s( 4) = (  1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000 -1.0000000  0.0000000 )
+                  (  0.0000000  0.0000000 -1.0000000 )
+
+
+      isym =  5     180 deg rotation - cart. axis [1,1,0]        
+
+ Time Reversal            1
+ cryst.   s( 5) = (     0          0         -1      )
+                  (     0         -1          0      )
+                  (    -1          0          0      )
+
+ cart.    s( 5) = (  0.0000000  1.0000000  0.0000000 )
+                  (  1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  0.0000000 -1.0000000 )
+
+
+      isym =  6     180 deg rotation - cart. axis [1,-1,0]       
+
+ Time Reversal            1
+ cryst.   s( 6) = (    -1          0          0      )
+                  (    -1          1         -1      )
+                  (     0          0         -1      )
+
+ cart.    s( 6) = (  0.0000000 -1.0000000  0.0000000 )
+                  ( -1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  0.0000000 -1.0000000 )
+
+
+      isym =  7      90 deg rotation - cart. axis [0,0,-1]       
+
+ Time Reversal            0
+ cryst.   s( 7) = (     1         -1          1      )
+                  (     1          0          0      )
+                  (     0          1          0      )
+
+ cart.    s( 7) = (  0.0000000  1.0000000  0.0000000 )
+                  ( -1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  0.0000000  1.0000000 )
+
+
+      isym =  8      90 deg rotation - cart. axis [0,0,1]        
+
+ Time Reversal            0
+ cryst.   s( 8) = (     0          1          0      )
+                  (     0          0          1      )
+                  (     1         -1          1      )
+
+ cart.    s( 8) = (  0.0000000 -1.0000000  0.0000000 )
+                  (  1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  0.0000000  1.0000000 )
+
+
+      isym =  9     inversion                                    
+
+ Time Reversal            0
+ cryst.   s( 9) = (    -1          0          0      )
+                  (     0         -1          0      )
+                  (     0          0         -1      )
+
+ cart.    s( 9) = ( -1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000 -1.0000000  0.0000000 )
+                  (  0.0000000  0.0000000 -1.0000000 )
+
+
+      isym = 10     inv. 180 deg rotation - cart. axis [0,0,1]   
+
+ Time Reversal            0
+ cryst.   s(10) = (     0          0         -1      )
+                  (    -1          1         -1      )
+                  (    -1          0          0      )
+
+ cart.    s(10) = (  1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  1.0000000  0.0000000 )
+                  (  0.0000000  0.0000000 -1.0000000 )
+
+
+      isym = 11     inv. 180 deg rotation - cart. axis [0,1,0]   
+
+ Time Reversal            1
+ cryst.   s(11) = (     1         -1          1      )
+                  (     0          0          1      )
+                  (     0          1          0      )
+
+ cart.    s(11) = (  1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000 -1.0000000  0.0000000 )
+                  (  0.0000000  0.0000000  1.0000000 )
+
+
+      isym = 12     inv. 180 deg rotation - cart. axis [1,0,0]   
+
+ Time Reversal            1
+ cryst.   s(12) = (     0          1          0      )
+                  (     1          0          0      )
+                  (     1         -1          1      )
+
+ cart.    s(12) = ( -1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  1.0000000  0.0000000 )
+                  (  0.0000000  0.0000000  1.0000000 )
+
+
+      isym = 13     inv. 180 deg rotation - cart. axis [1,1,0]   
+
+ Time Reversal            1
+ cryst.   s(13) = (     0          0          1      )
+                  (     0          1          0      )
+                  (     1          0          0      )
+
+ cart.    s(13) = (  0.0000000 -1.0000000  0.0000000 )
+                  ( -1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  0.0000000  1.0000000 )
+
+
+      isym = 14     inv. 180 deg rotation - cart. axis [1,-1,0]  
+
+ Time Reversal            1
+ cryst.   s(14) = (     1          0          0      )
+                  (     1         -1          1      )
+                  (     0          0          1      )
+
+ cart.    s(14) = (  0.0000000  1.0000000  0.0000000 )
+                  (  1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  0.0000000  1.0000000 )
+
+
+      isym = 15     inv.  90 deg rotation - cart. axis [0,0,-1]  
+
+ Time Reversal            0
+ cryst.   s(15) = (    -1          1         -1      )
+                  (    -1          0          0      )
+                  (     0         -1          0      )
+
+ cart.    s(15) = (  0.0000000 -1.0000000  0.0000000 )
+                  (  1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  0.0000000 -1.0000000 )
+
+
+      isym = 16     inv.  90 deg rotation - cart. axis [0,0,1]   
+
+ Time Reversal            0
+ cryst.   s(16) = (     0         -1          0      )
+                  (     0          0         -1      )
+                  (    -1          1         -1      )
+
+ cart.    s(16) = (  0.0000000  1.0000000  0.0000000 )
+                  ( -1.0000000  0.0000000  0.0000000 )
+                  (  0.0000000  0.0000000 -1.0000000 )
+
+
+     the magnetic double point group is D_4h(4/mmm) [C_4h (4/m) ]
+     using the double point group C_4h (4/m) 
+     there are 16 classes and  8 irreducible representations
+     the character table:
+
+       E     -E    C4    -C4   C4^2  -C4^2 C4^3  -C4^3 i     -i    S4^3  -S4^3
+                                                                              
+G_5+   1.00 -1.00  0.71 -0.71  0.00  0.00  0.71 -0.71  1.00 -1.00  0.71 -0.71
+G_6+   1.00 -1.00  0.71 -0.71  0.00  0.00  0.71 -0.71  1.00 -1.00  0.71 -0.71
+G_7+   1.00 -1.00 -0.71  0.71  0.00  0.00 -0.71  0.71  1.00 -1.00 -0.71  0.71
+G_8+   1.00 -1.00 -0.71  0.71  0.00  0.00 -0.71  0.71  1.00 -1.00 -0.71  0.71
+G_5-   1.00 -1.00  0.71 -0.71  0.00  0.00  0.71 -0.71 -1.00  1.00 -0.71  0.71
+G_6-   1.00 -1.00  0.71 -0.71  0.00  0.00  0.71 -0.71 -1.00  1.00 -0.71  0.71
+G_7-   1.00 -1.00 -0.71  0.71  0.00  0.00 -0.71  0.71 -1.00  1.00  0.71 -0.71
+G_8-   1.00 -1.00 -0.71  0.71  0.00  0.00 -0.71  0.71 -1.00  1.00  0.71 -0.71
+
+       s_h   -s_h  S4    -S4  
+                              
+G_5+   0.00  0.00  0.71 -0.71
+G_6+   0.00  0.00  0.71 -0.71
+G_7+   0.00  0.00 -0.71  0.71
+G_8+   0.00  0.00 -0.71  0.71
+G_5-   0.00  0.00 -0.71  0.71
+G_6-   0.00  0.00 -0.71  0.71
+G_7-   0.00  0.00  0.71 -0.71
+G_8-   0.00  0.00  0.71 -0.71
+
+     imaginary part
+
+       E     -E    C4    -C4   C4^2  -C4^2 C4^3  -C4^3 i     -i    S4^3  -S4^3
+                                                                              
+G_5+   0.00  0.00  0.71 -0.71  1.00 -1.00 -0.71  0.71  0.00  0.00  0.71 -0.71
+G_6+   0.00  0.00 -0.71  0.71 -1.00  1.00  0.71 -0.71  0.00  0.00 -0.71  0.71
+G_7+   0.00  0.00 -0.71  0.71  1.00 -1.00  0.71 -0.71  0.00  0.00 -0.71  0.71
+G_8+   0.00  0.00  0.71 -0.71 -1.00  1.00 -0.71  0.71  0.00  0.00  0.71 -0.71
+G_5-   0.00  0.00  0.71 -0.71  1.00 -1.00 -0.71  0.71  0.00  0.00 -0.71  0.71
+G_6-   0.00  0.00 -0.71  0.71 -1.00  1.00  0.71 -0.71  0.00  0.00  0.71 -0.71
+G_7-   0.00  0.00 -0.71  0.71  1.00 -1.00  0.71 -0.71  0.00  0.00  0.71 -0.71
+G_8-   0.00  0.00  0.71 -0.71 -1.00  1.00 -0.71  0.71  0.00  0.00 -0.71  0.71
+
+       s_h   -s_h  S4    -S4  
+                              
+G_5+   1.00 -1.00 -0.71  0.71
+G_6+  -1.00  1.00  0.71 -0.71
+G_7+   1.00 -1.00  0.71 -0.71
+G_8+  -1.00  1.00 -0.71  0.71
+G_5-  -1.00  1.00  0.71 -0.71
+G_6-   1.00 -1.00 -0.71  0.71
+G_7-  -1.00  1.00 -0.71  0.71
+G_8-   1.00 -1.00  0.71 -0.71
+
+     the symmetry operations in each class:
+     E             1
+     C4^2          2
+     C4^3          3
+     C4            4
+     i             5
+     s_h           6
+     S4            7
+     S4^3          8
+     -E           -1
+     -C4^2        -2
+     -C4^3        -3
+     -C4          -4
+     -i           -5
+     -s_h         -6
+     -S4          -7
+     -S4^3        -8
+
+   Cartesian axes
+
+     site n.     atom                  positions (alat units)
+         1           Fe  tau(   1) = (   0.0000000   0.0000000   0.0000000  )
+
+   Crystallographic axes
+
+     site n.     atom                  positions (cryst. coord.)
+         1           Fe  tau(   1) = (  0.0000000  0.0000000  0.0000000  )
+
+     number of k points=    11  gaussian smearing, width (Ry)=  0.0250
+                       cart. coord. in units 2pi/alat
+        k(    1) = (   0.0000000   0.0000216   0.1250000), wk =   0.0909091
+        k(    2) = (   0.0000000  -0.1249784   0.2500000), wk =   0.0909091
+        k(    3) = (  -0.1250000   0.1250216   0.1250000), wk =   0.0909091
+        k(    4) = (  -0.1250000   0.3750216  -0.1250000), wk =   0.0909091
+        k(    5) = (   0.2500000  -0.2499784   0.1250000), wk =   0.0909091
+        k(    6) = (   0.0000000   0.0000216   0.3750000), wk =   0.0909091
+        k(    7) = (   0.0000000   0.1250216   0.0000000), wk =   0.0909091
+        k(    8) = (  -0.1250000   0.2500216   0.0000000), wk =   0.0909091
+        k(    9) = (   0.2500000   0.0000216  -0.1250000), wk =   0.0909091
+        k(   10) = (  -0.2500000   0.1250216   0.2500000), wk =   0.0909091
+        k(   11) = (   0.0000000   0.3750216   0.0000000), wk =   0.0909091
+
+                       cryst. coord.
+        k(    1) = (   0.0625108   0.0625108   0.0624892), wk =   0.0909091
+        k(    2) = (   0.0625108   0.0625108   0.1874892), wk =   0.0909091
+        k(    3) = (   0.0625108   0.1875108   0.0624892), wk =   0.0909091
+        k(    4) = (   0.0625108   0.1875108  -0.1875108), wk =   0.0909091
+        k(    5) = (   0.0625108  -0.1874892   0.0624892), wk =   0.0909091
+        k(    6) = (   0.1875108   0.1875108   0.1874892), wk =   0.0909091
+        k(    7) = (   0.0625108   0.0625108  -0.0625108), wk =   0.0909091
+        k(    8) = (   0.0625108   0.1875108  -0.0625108), wk =   0.0909091
+        k(    9) = (   0.0625108  -0.1874892  -0.1875108), wk =   0.0909091
+        k(   10) = (   0.0625108   0.3125108   0.1874892), wk =   0.0909091
+        k(   11) = (   0.1875108   0.1875108  -0.1875108), wk =   0.0909091
+
+     Dense  grid:     3151 G-vectors     FFT dimensions: (  20,  20,  20)
+
+     Largest allocated arrays     est. size (Mb)     dimensions
+        Kohn-Sham Wavefunctions         0.25 Mb     (     804,   20)
+        NL pseudopotentials             0.10 Mb     (     402,   16)
+        Each V/rho on FFT grid          0.12 Mb     (    8000)
+        Each G-vector array             0.02 Mb     (    3151)
+        G-vector shells                 0.00 Mb     (      62)
+     Largest temporary arrays     est. size (Mb)     dimensions
+        Auxiliary wavefunctions         0.98 Mb     (     804,   80)
+        Each subspace H/S matrix        0.10 Mb     (      80,   80)
+        Each <psi_i|beta_j> matrix      0.01 Mb     (      16,   2,   20)
+
+     Check: negative/imaginary core charge=   -0.000019    0.000000
+
+     The potential is recalculated from file :
+     ./Fe_nscf_e45_k4s2_nb20_so.save/charge-density.dat
+
+     Starting wfc are   18 randomized atomic wfcs +    2 random wfc
+
+     Band Structure Calculation
+     Davidson diagonalization with overlap
+
+     Computing kpt #:     1
+     total cpu time spent up to now is        1.9 secs
+
+     Computing kpt #:     2
+     total cpu time spent up to now is        2.5 secs
+
+     Computing kpt #:     3
+     total cpu time spent up to now is        3.5 secs
+
+     Computing kpt #:     4
+     total cpu time spent up to now is        4.5 secs
+
+     Computing kpt #:     5
+     total cpu time spent up to now is        5.2 secs
+
+     Computing kpt #:     6
+     total cpu time spent up to now is        5.8 secs
+
+     Computing kpt #:     7
+     total cpu time spent up to now is        6.9 secs
+
+     Computing kpt #:     8
+     total cpu time spent up to now is        7.8 secs
+
+     Computing kpt #:     9
+     total cpu time spent up to now is        9.0 secs
+
+     Computing kpt #:    10
+     total cpu time spent up to now is        9.7 secs
+
+     Computing kpt #:    11
+     total cpu time spent up to now is       10.4 secs
+
+     ethr =  1.25E-10,  avg # of iterations = 14.2
+
+     total cpu time spent up to now is       10.4 secs
+
+     End of band structure calculation
+
+          k = 0.0000 0.0000 0.1250 (   401 PWs)   bands (ev):
+
+     5.4201   5.5377  11.3678  11.4226  11.5411  12.3834  12.5897  13.6319
+    13.6814  13.8244  15.4356  15.7081  37.9701  38.2509  39.2542  39.2629
+    39.5598  39.5731  41.3430  41.8812
+
+          k = 0.0000-0.1250 0.2500 (   402 PWs)   bands (ev):
+
+     6.5995   6.7408  11.1886  11.3088  12.0754  12.2021  12.6647  13.3918
+    13.5269  14.4195  15.1066  15.7954  33.4621  33.8732  36.5189  36.6073
+    37.9866  38.4006  41.2580  41.6314
+
+          k =-0.1250 0.1250 0.1250 (   393 PWs)   bands (ev):
+
+     6.0277   6.1512  11.2637  11.2755  12.0476  12.5016  12.5238  13.4892
+    13.5044  14.3649  15.5680  15.5831  36.2360  36.2637  36.3328  36.3572
+    38.7813  39.7899  40.0857  40.5144
+
+          k =-0.1250 0.3750-0.1250 (   399 PWs)   bands (ev):
+
+     8.0788   8.3555  10.9096  11.1836  12.1110  12.7903  13.0877  13.1607
+    13.2810  14.8500  15.2356  16.1310  30.6246  30.8168  31.2002  31.4625
+    37.1869  37.7313  38.7238  38.8061
+
+          k = 0.2500-0.2500 0.1250 (   400 PWs)   bands (ev):
+
+     7.6356   7.8442  10.8730  10.9966  12.4295  12.6302  12.9742  13.0114
+    13.1030  15.3331  15.4073  15.7354  30.2557  30.8704  33.5332  33.7580
+    34.8577  35.6682  41.1597  41.4559
+
+          k = 0.0000 0.0000 0.3750 (   398 PWs)   bands (ev):
+
+     7.6518   7.8572  11.3900  11.5149  11.5720  12.1297  13.2053  13.7159
+    13.7632  14.1322  14.4841  16.3025  34.3492  34.3560  34.4831  34.5201
+    34.9169  35.0515  35.1076  35.4821
+
+          k = 0.0000 0.1250 0.0000 (   401 PWs)   bands (ev):
+
+     5.4202   5.5378  11.3904  11.3934  11.5487  12.3781  12.5947  13.6526
+    13.6530  13.8317  15.4345  15.7089  37.9697  38.2504  39.2585  39.2585
+    39.5664  39.5665  41.3422  41.8816
+
+          k =-0.1250 0.2500 0.0000 (   402 PWs)   bands (ev):
+
+     6.5997   6.7411  11.1890  11.3086  12.0841  12.1880  12.6711  13.3932
+    13.5233  14.4222  15.1041  15.7964  33.4610  33.8721  36.5186  36.6067
+    37.9859  38.4002  41.2582  41.6285
+
+          k = 0.2500 0.0000-0.1250 (   402 PWs)   bands (ev):
+
+     6.5995   6.7409  11.1887  11.3089  12.0825  12.1905  12.6700  13.3907
+    13.5266  14.4209  15.1050  15.7961  33.4614  33.8726  36.5186  36.6074
+    37.9867  38.4007  41.2584  41.6298
+
+          k =-0.2500 0.1250 0.2500 (   400 PWs)   bands (ev):
+
+     7.6359   7.8445  10.8728  10.9965  12.4358  12.6222  12.9666  13.0250
+    13.0989  15.3284  15.4137  15.7340  30.2551  30.8699  33.5321  33.7577
+    34.8569  35.6673  41.1601  41.4563
+
+          k = 0.0000 0.3750 0.0000 (   398 PWs)   bands (ev):
+
+     7.6520   7.8575  11.3884  11.5420  11.5478  12.1249  13.2124  13.7328
+    13.7383  14.1423  14.4781  16.3032  34.3544  34.4104  34.4105  34.5129
+    34.9735  35.0453  35.0719  35.4840
+
+     Writing output data file Fe_nscf_e45_k4s2_nb20_so.save
+
+     init_run     :      0.27s CPU      0.63s WALL (       1 calls)
+     electrons    :      3.35s CPU      9.31s WALL (       1 calls)
+
+     Called by init_run:
+     wfcinit      :      0.00s CPU      0.00s WALL (       1 calls)
+     potinit      :      0.03s CPU      0.06s WALL (       1 calls)
+
+     Called by electrons:
+     c_bands      :      3.35s CPU      9.31s WALL (       1 calls)
+     v_of_rho     :      0.02s CPU      0.05s WALL (       1 calls)
+     v_h          :      0.00s CPU      0.00s WALL (       1 calls)
+     v_xc         :      0.02s CPU      0.05s WALL (       1 calls)
+
+     Called by c_bands:
+     init_us_2    :      0.00s CPU      0.00s WALL (      11 calls)
+     cegterg      :      3.10s CPU      8.72s WALL (      11 calls)
+
+     Called by sum_band:
+
+     Called by *egterg:
+     h_psi        :      2.04s CPU      4.94s WALL (     178 calls)
+     g_psi        :      0.01s CPU      0.01s WALL (     156 calls)
+     cdiaghg      :      0.88s CPU      3.26s WALL (     167 calls)
+     cegterg:over :      0.19s CPU      0.40s WALL (     156 calls)
+     cegterg:upda :      0.12s CPU      0.33s WALL (     156 calls)
+     cegterg:last :      0.05s CPU      0.21s WALL (      35 calls)
+
+     Called by h_psi:
+     h_psi:vloc   :      1.84s CPU      3.60s WALL (     178 calls)
+     h_psi:vnl    :      0.21s CPU      1.33s WALL (     178 calls)
+     add_vuspsi   :      0.04s CPU      0.10s WALL (     178 calls)
+
+     General routines
+     calbec       :      0.17s CPU      1.22s WALL (     178 calls)
+     fft          :      0.00s CPU      0.00s WALL (      23 calls)
+     fftw         :      1.58s CPU      3.02s WALL (    8996 calls)
+
+     Parallel routines
+     fft_scatter  :      0.20s CPU      0.28s WALL (    9019 calls)
+
+     PWSCF        :     4.00s CPU        10.58s WALL
+
+
+   This run was terminated on:  17:25:45  26Jul2018            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

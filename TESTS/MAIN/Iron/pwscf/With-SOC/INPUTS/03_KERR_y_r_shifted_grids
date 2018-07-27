@@ -1,0 +1,38 @@
+#                                                           
+# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
+#    ###  ###     ### ###       ### #########   ########    
+#                                                           
+#                                                           
+#               Version 4.0.1 Revision 4580                 
+#                      OpenMPI Build                        
+#                http://www.yambo-code.org                  
+#
+optics                       # [R OPT] Optics
+bse                          # [R BSE] Bethe Salpeter Equation.
+BSEmod= "causal"             # [BSE] resonant/causal/x_coupling/xc_coupling
+BSKmod= "IP"                 # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+Gauge= "velocity"            # [BSE/Xd] Gauge (length|velocity)
+DipApproach= "Shifted grids" # [Xd] [G-space v/R-space x/Covariant/Shifted grids]
+ShiftedPaths= "SHIFTED_grids/shift_1 SHIFTED_grids/shift_2 SHIFTED_grids/shift_3" # [Xd] Shifted grids path
+EvalKerr                     # [BSE] Compute the Kerr effect
+AnHall                       # [BSE] Compute the anomalous Hall effect and if length add it to eps
+MetDamp                      #
+DrudeWBS= ( 4.800000 , 5.650000 )  eV  # [BSE] Drude plasmon
+% BEnRange
+  0.20000 | 10.00000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.30000 |  0.60000 | eV    # [BSS] Damping range
+%
+BEnSteps= 500                # [BSS] Energy steps
+% BLongDir
+ 0.000000 | 1.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+  1 | 20 |                   # [BSK] Bands range
+%
