@@ -19,6 +19,7 @@
  ACTIVE      => "yes",
  TESTS       => "all",
  CONFIG      => "gfortran_internal_SP.sh",
+ #CONFIG      => "gfortran_internal_SP_PAR-IO.sh",
  KEYS        => "all hard",
  #KEYS        => "nopj",
 },
