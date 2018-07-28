@@ -1,0 +1,33 @@
+&control
+    calculation='bands'
+    pseudo_dir = './',
+    outdir='./'
+    prefix='Fe_nscf_e45_k4s2_nb10',
+    tprnfor = .true.,
+    tstress = .true.,
+    wf_collect= .true.,
+    verbosity='high',
+ /
+ &system
+    ibrav=3, celldm(1) = 5.42, nat=1, ntyp=1,
+    starting_magnetization=2.0, nbnd=10,
+    ecutwfc = 45.0, nspin=2,
+ /
+ &electrons
+    diagonalization='david',
+    conv_thr = 1.0e-8,
+    mixing_beta = 0.7,
+    diago_full_acc=.true.,
+ /
+ATOMIC_SPECIES
+ Fe  55.845 Fe.rel-pbe-n-nc.UPF
+ATOMIC_POSITIONS
+ Fe 0.0 0.0 0.0
+K_POINTS {alat}
+  6
+      0.0000000000 0.0000215655 0.1250000000 1.0000000000
+      0.0000000000 -.1249784455 0.2500000000 1.0000000000
+      -.1250000000 0.1250215620 0.1250000000 1.0000000000
+      -.1250000000 0.3750215769 -.1250000000 1.0000000000
+      0.2500000000 -.2499784231 0.1250000000 1.0000000000
+      0.0000000000 0.0000215655 0.3750000000 1.0000000000
