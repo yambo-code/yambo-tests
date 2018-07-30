@@ -77,7 +77,7 @@ if ($branch_key eq "master" or $branch_key eq "bug-fixes")
 }
 sub UPDATE_action{
 #
-if ($branch_key eq "master") 
+if ($branch_key eq "master" or $branch_key eq "bug-fixes") 
 {
  $REF_folder="REFERENCE";
 }else{
