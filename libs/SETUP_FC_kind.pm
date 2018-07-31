@@ -33,7 +33,7 @@ while(<SETUP_file>) {
  }
  if($_ =~ /mpi_kind/) { 
   ($desc, $MPI_kind) = split(/=/,$_);
-  if($MPI_kind == "" ) { $MPI_kind="unknown"}; 
+  if($MPI_kind eq "" ) { $MPI_kind="unknown"}; 
  }
  if($_ =~ /yprecision/) { 
   ($desc, $Yambo_precision) = split(/=/,$_);

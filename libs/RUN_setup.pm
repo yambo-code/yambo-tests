@@ -103,9 +103,17 @@ if ("@_" =~ "after_tests_loop"){
  if ($error eq "DIR_SKIPPED") { 
   &MY_PRINT($stdout, "$CHECK_error\n") if ($verb);
  }elsif ($mode eq "tests" || $mode eq "validate" || $mode eq "cheers") {
+  #
+  $dir_end_time = [gettimeofday];
+  $TT  = tv_interval($dir_start_time, $dir_end_time);
+  $sec = &ceil(10.*$TT)/10.;
+  $sec_run = &ceil(100.* $sec / ($dir_ok+$dir_failed))/100.;
+  #
   &MY_PRINT($stdout, "$g_s $dir_ok passes $g_e");
   if ($dir_failed gt 0) {&MY_PRINT($stdout, "$r_s $dir_failed fails $r_e")};
+  &MY_PRINT($stdout, "; ${sec}s [${sec_run}s/test]");
   &MY_PRINT($stdout, "\n");
+  $dir_start_time = $dir_end_time;
  }else{
   &MY_PRINT($stdout, "\n");
  }
