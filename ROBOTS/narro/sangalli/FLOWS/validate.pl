@@ -30,9 +30,9 @@
 {
  MPI_CPU     => 4,
  PAR_MODE    => "default",
-},
-{
- MPI_CPU     => 1,
- THREADS     => 4,
+#},
+#{
+# MPI_CPU     => 1,
+# THREADS     => 4,
 }
 );
