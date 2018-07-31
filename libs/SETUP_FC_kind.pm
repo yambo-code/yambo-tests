@@ -25,6 +25,7 @@
 sub SETUP_FC_kind{
 open(SETUP_file,"<","$BRANCH/config/setup");
 $MPI_kind="unknown";
+$MPI_kind_short="unknown";
 while(<SETUP_file>) {
  chomp($_);
  if($_ =~ /fc_kind/) { 
@@ -32,6 +33,7 @@ while(<SETUP_file>) {
  }
  if($_ =~ /mpi_kind/) { 
   ($desc, $MPI_kind) = split(/=/,$_);
+  if($MPI_kind == "" ) { $MPI_kind="unknown"}; 
  }
  if($_ =~ /yprecision/) { 
   ($desc, $Yambo_precision) = split(/=/,$_);
