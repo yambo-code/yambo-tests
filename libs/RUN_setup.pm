@@ -106,16 +106,21 @@ if ("@_" =~ "after_tests_loop"){
   #
   $dir_end_time = [gettimeofday];
   $TT  = tv_interval($dir_start_time, $dir_end_time);
+  $dir_start_time = $dir_end_time;
+  #
   $sec = &ceil(10.*$TT)/10.;
   $sec_run = &ceil(100.* $sec / ($dir_ok+$dir_failed))/100.;
   #
-  &MY_PRINT($stdout, "$g_s $dir_ok passes $g_e");
-  if ($dir_failed gt 0) {&MY_PRINT($stdout, "$r_s $dir_failed fails $r_e")};
-  &MY_PRINT($stdout, "; ${sec}s [${sec_run}s/test]");
-  &MY_PRINT($stdout, "\n");
-  $dir_start_time = $dir_end_time;
+  $message_setup="$g_s $dir_ok passes $g_e";
+  if ($dir_failed gt 0) {$message_setup="$message_setup $r_s $dir_failed fails $r_e"};
+  $msg=sprintf(" %-20s %-5s [%-4s/%-3s]",$message_setup,"${sec}s","${sec_run}s","test");
+  #
+  &MY_PRINT($stdout, "$msg\n");
+  &MY_PRINT($rlog,   "$msg\n");
+  #
  }else{
   &MY_PRINT($stdout, "\n");
+  &MY_PRINT($rlog,   "\n");
  }
 }
 }

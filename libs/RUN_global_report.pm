@@ -68,7 +68,8 @@ if ("$what" eq "INIT") {
  &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nMPI                     :$MPI_kind");
  &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nCompilation Precision   :$Yambo_precision");
  &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nParallel Conf           :$cpu_global_conf - $PAR_mode");
- &MESSAGE("REPORT ERROR SKIP WHITE RULES","\n$line");
+ &MESSAGE("ERROR SKIP WHITE RULES","\n$line");
+ &MESSAGE("REPORT","\n$line\n");
 }elsif ("$what" eq "RUNTIME"){
  $NEW_time  = [gettimeofday]; 
  my $TT = tv_interval($REFERENCE_time, $NEW_time);
@@ -97,6 +98,7 @@ if ("$what" eq "INIT") {
  my $date_now;
  my $time_now;
  &MESSAGE("ERROR SKIP WHITE REPORT RULES","\n% TOTAL   Duration : $h:$m:$s ".("%") x ($left_length+4));
+ &MESSAGE("ERROR SKIP WHITE REPORT RULES","\n\n");
 }
 }
 sub ceil {
