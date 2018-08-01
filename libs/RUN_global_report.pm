@@ -85,6 +85,7 @@ if ("$what" eq "INIT") {
  $REFERENCE_time=$NEW_time;
  &MESSAGE("ERROR SKIP WHITE RULES","\n$wiggly_line");
  &MESSAGE("ERROR SKIP WHITE REPORT RULES","\n% Section Duration : $h:$m:$s ".("%") x ($left_length+4));
+ &MESSAGE("ERROR SKIP WHITE REPORT RULES","\n");
 }elsif ("$what" eq "FINAL"){
  $NEW_time  = [gettimeofday]; 
  my $TT = tv_interval($INITIAL_time, $NEW_time);
@@ -98,7 +99,7 @@ if ("$what" eq "INIT") {
  my $date_now;
  my $time_now;
  &MESSAGE("ERROR SKIP WHITE REPORT RULES","\n% TOTAL   Duration : $h:$m:$s ".("%") x ($left_length+4));
- &MESSAGE("ERROR SKIP WHITE REPORT RULES","\n\n");
+ &MESSAGE("ERROR SKIP WHITE REPORT RULES","\n");
 }
 }
 sub ceil {

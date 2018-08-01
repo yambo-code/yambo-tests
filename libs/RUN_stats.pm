@@ -58,13 +58,14 @@ if ("@_" eq "INIT"){
  $dir_failed=0;
  $dir_ok=0;
  #
- $dir_start_time = [gettimeofday];
+ $init_start_time = [gettimeofday];
  #
  return;
 }
 if ("@_" eq "INIT_DIR"){
  $dir_failed=0;
  $dir_ok=0;
+ $dir_start_time = [gettimeofday];
  return;
 }
 if ("@_" eq "REPORT"){
@@ -198,21 +199,19 @@ if ("@_" eq "WRONG_DEP"){
 if ("@_" eq "OK"){
  $RUN_result="OK";
  $check_ok++;
- $dir_ok++;
 }
 if (! ("$test_ok_action" eq "SKIP") )
 { 
- if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run eq 0 ) { $test_ok++;  $test_ok_action="CHECK"; };
+ if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run eq 0 ) { $test_ok++; $dir_ok++; $test_ok_action="CHECK"; };
  if ( "$test_ok_action" eq "INCREASE" && $fails_in_the_run >  0 ) {              $test_ok_action="NONE"; };
- if ( "$test_ok_action" eq "CHECK"    && $fails_in_the_run >  0 ) { $test_ok--;  $test_ok_action="NONE"; };
+ if ( "$test_ok_action" eq "CHECK"    && $fails_in_the_run >  0 ) { $test_ok--; $dir_ok--; $test_ok_action="NONE"; };
 }
 }
 sub its_a_fail{
  $RUN_result="FAIL";
  if ("@_" eq "CHECK"){ $check_failed++; };
- if ( $fails_in_the_run eq 0) { $test_with_fails++; };
+ if ( $fails_in_the_run eq 0) { $test_with_fails++; $dir_failed++; };
  if ( $fails_in_the_run eq 0 && "@_" eq "CHECK") { $test_wrong++; };
- $dir_failed++;
  $fails_in_the_run++;
  &MESSAGE("FAILED","$TESTS_folder/$testdir/$ROBOT_wd/$dir_name\n");
 }
