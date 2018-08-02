@@ -249,12 +249,12 @@ program find_the_diff
  endif
  !
  if (ref%N/=out%N) then
-   write (CHECK_result,'(a,i4,a,3(g12.5,a))') "Different number of elements:",ref%N," [REF]",out%N," [OUT]"
+   write (CHECK_result,'(a,2(i6,a))') "Different number of elements:",ref%N," [REF]",out%N," [OUT]"
    write (*,'(a)') trim(CHECK_result)
    stop
  endif
  if (ref%N_col/=out%N_col) then
-   write (CHECK_result,'(a,i4,a,3(g12.5,a))') "Different number of columns:",ref%N_col," [REF]",out%N_col," [OUT]"
+   write (CHECK_result,'(a,2(i6,a))') "Different number of columns:",ref%N_col," [REF]",out%N_col," [OUT]"
    write (*,'(a)') trim(CHECK_result)
    stop
  endif
