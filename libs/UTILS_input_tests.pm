@@ -36,9 +36,10 @@ if ($mode eq "bench") {
 }
 #
 sub UTILS_tests_in_the_dir{
-&UTILS_INPUT_folder("@_");
-$tests_list=" ";
-my $path="@_/$input_folder";
+my ($dir, $in) = @_;
+&UTILS_INPUT_folder("$dir");
+if ( $in ) {$input_folder="$in"};
+my $path="$dir/$input_folder";
 LOOP: foreach $test ( <$path/*> ) { 
  if (index($test, ".conf")>0) {next LOOP};
  if (index($test, ".actions")>0) {next LOOP};
@@ -109,14 +110,23 @@ foreach my $lline (@dummy) {
  $ic++;
  @inputs = split(/\s+/,$lline);  # Split 1 or more spaces
  $dir = shift(@inputs);             # Directory Al111
- &UTILS_tests_in_the_dir("$dir");
- my @files = split(/\s+/,$tests_list);
  $input_tests_list[$ic]=$dir;
  if($#inputs lt 0) { @inputs = qw("all")};   # If explicit tests omitted, set all of them
  foreach $testname (@inputs) {
   if ($testname =~ "all") {
+   $tests_list=" ";
+   if ($branch_key) {
+    &UTILS_tests_in_the_dir("$dir","INPUTS");
+    $input_tests_list[$ic]="$input_tests_list[$ic] $tests_list";
+   }
+   my $tests_def=$tests_list;
+   $tests_list=" ";
    &UTILS_tests_in_the_dir("$dir");
-   $input_tests_list[$ic]="$input_tests_list[$ic] $tests_list";
+   my @tests = split(/\s+/,$tests_list);
+   for my $el (@tests) 
+   {
+    if (not $tests_def =~ /\Q$el\E/) {$input_tests_list[$ic]="$input_tests_list[$ic] $el"};
+   }
   }  
   else{  
    if ($testname =~ /\*/) { 

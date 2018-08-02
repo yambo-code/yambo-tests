@@ -94,10 +94,22 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
 }
 else
 {
- &UTILS_tests_in_the_dir("./$TESTS_folder/$listtests");
- my @dummy = split(/ /,$tests_list);
+ my @dirs;
+ my @dir = ( "./$TESTS_folder/$listtests" );
+ find( sub { push @dirs, $File::Find::name if -d }, @dir );
  &MY_PRINT($stdout, "\nAvailable input files for $listtests are:");
- foreach my $i (1 .. $#dummy) { &MY_PRINT($stdout, " $dummy[$i]")};
+ foreach $el (@dirs)
+ {
+   if ($el =~ /INPUTS/) 
+   {
+    $tests_list=" ";
+    $input_folder=(split '/',$el)[-1];
+    &UTILS_tests_in_the_dir("./$TESTS_folder/$listtests",$input_folder);
+    my @dummy = split(/ /,$tests_list);
+    &MY_PRINT($stdout, "\n $input_folder:");
+    foreach my $i (1 .. $#dummy) { &MY_PRINT($stdout, " $dummy[$i]")};
+   }
+ }
  die "\n\n";
 }
 }

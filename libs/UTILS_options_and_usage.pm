@@ -173,7 +173,7 @@ sub UTILS_usage {
 
  * keys is string of projects/features:
    
-   projects = sc rt elph pl magnetic nl kerr hard
+   projects = nopj sc rt elph pl magnetic nl kerr hard
    features = bse gw hf rpa (more to come)
 
    Using -keys all all projects/features are used

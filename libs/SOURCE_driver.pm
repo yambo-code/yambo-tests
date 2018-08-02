@@ -109,6 +109,7 @@ if ("$precompiled_is_run" eq "yes") {
  chdir $BRANCH;
  &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
  &command("if [ -d lib/bin ]; then cp lib/bin/* $conf_bin/; fi");
+ &command("if [ -d bin-libs]; then cp bin-libs/* $conf_bin/; fi");
  chdir $suite_dir;
 }else{
  $conf_bin  = "bin-$conf_file-$FC_kind-$ROBOT_string";
@@ -196,10 +197,10 @@ $init_end_time = [gettimeofday];
 $TT  = tv_interval($init_start_time, $init_end_time);
 #
 $sec = &ceil(10.*$TT)/10.;
-$msg = "Initialization time $sec s"
+$msg = "Initialization time $sec s";
 #
-&MY_PRINT($stdout, "$msg\n");
-&MY_PRINT($rlog,   "$msg\n");
+#&MY_PRINT($stdout, "\n$msg\n");
+#&MY_PRINT($rlog,   "\n$msg\n");
 #
 return "OK";
 }

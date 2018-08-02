@@ -43,10 +43,11 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  &RUN_stats("INIT_DIR");
  #
  $count_tests++;
- @inputs = split(/\s+/,$testline);
- $testdir = shift(@inputs); 
- my @material_pieces = split(/\//,$testdir);
- $material=$material_pieces[0];
+ my @dummy = split(/\s+/,$testline);
+ $testdir = $dummy[0];
+ shift(@dummy);
+ @inputs=sort @dummy;
+ $material=(split(/\//,$testdir))[0];
  $yambo_exec="";
  #
  my $msg=sprintf(" > $b_s [%-3s/%-3s] %-45s $b_e ",$count_tests,$numtests,$testdir."$cpu_global_conf");
@@ -81,7 +82,15 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
   # Folder mirrored preparation (only for tests)
   #
-  if (not $mode eq "bench") {&command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd")};
+  if (not $mode eq "bench") {
+   &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
+   foreach $testname (@inputs) { 
+     if (not -f "$ROBOT_wd/$input_folder/$testname") 
+     { 
+      &command("cp $ROBOT_wd/INPUTS/$testname* $ROBOT_wd/$input_folder");
+     }
+   }
+  };
   #
  }
  chdir($ROBOT_wd);
