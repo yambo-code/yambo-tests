@@ -134,9 +134,9 @@ if ("@_" eq "NO_REF"){
  &its_a_fail("CHECK");
 };
 if ("@_" eq "NO_OUT"){
- my $msg = sprintf("%-"."$left_length"."s", "  $ref_filename");
+ my $msg = sprintf("%-"."$left_length"."s", "  $run_filename");
  &MESSAGE("LOG","\n"."$msg"."[$r_s  NO in OUTPUT $r_e]");
- &MESSAGE("ERROR","\n"."$err_msg"."$r_s  NO $ref_filename in OUTPUT $r_e");
+ &MESSAGE("ERROR","\n"."$err_msg"."$r_s  NO $run_filename in OUTPUT $r_e");
  $out_not_found++;
  &its_a_fail("CHECK");
 };
