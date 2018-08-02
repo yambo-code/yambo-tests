@@ -58,7 +58,7 @@ if ("@_" eq "INIT"){
  $dir_failed=0;
  $dir_ok=0;
  #
- $init_start_time = [gettimeofday];
+ #$init_start_time = [gettimeofday];
  #
  return;
 }

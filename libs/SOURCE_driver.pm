@@ -193,11 +193,11 @@ if ($compile) {&LOGs_move};
 # LOCK
 $BRANCH_is_correctly_compiled[$ib]=1;
 #
-$init_end_time = [gettimeofday];
-$TT  = tv_interval($init_start_time, $init_end_time);
+#$init_end_time = [gettimeofday];
+#$TT  = tv_interval($init_start_time, $init_end_time);
 #
-$sec = &ceil(10.*$TT)/10.;
-$msg = "Initialization time $sec s";
+#$sec = &ceil(10.*$TT)/10.;
+#$msg = "Initialization time $sec s";
 #
 #&MY_PRINT($stdout, "\n$msg\n");
 #&MY_PRINT($rlog,   "\n$msg\n");
