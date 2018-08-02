@@ -18,3 +18,4 @@ a2y_bug-fixes -a $FACTOR -F Fe_e50_k4_noSO.o_DS5_KSS
 mv SAVE/* ../Without-SOC/SHIFTED_grids/shift_3/FixSAVE/SAVE/
 #
 a2y_4.1 -a $FACTOR -w -F Fe_e50_k4_noSO.o_DS6_KSS
+mv SAVE/* ../Without-SOC/FINE_grid/SAVE/
