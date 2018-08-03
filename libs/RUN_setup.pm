@@ -112,9 +112,10 @@ if ("@_" =~ "after_tests_loop"){
   $sec_run = 0;
   if($dir_ok+$dir_failed > 0){ $sec_run = &ceil(100.* $sec / ($dir_ok+$dir_failed))/100.;}
   #
-  $message_setup="$g_s $dir_ok passes $g_e";
-  if ($dir_failed gt 0) {$message_setup="$message_setup $r_s $dir_failed fails $r_e"};
-  $msg=sprintf(" %-25s %-7s [%-6s/%-4s]",$message_setup,"${sec}s","${sec_run}s","test");
+  $message_passes="$g_s $dir_ok passes $g_e";
+  $message_fails="";
+  if ($dir_failed gt 0) {$message_fails="$r_s $dir_failed fails $r_e"};
+  $msg=sprintf(" %12s %11s %7.2f [%6.2f/%4s]",$message_passes,$message_fails,"${sec}s","${sec_run}s","test");
   #
   &MY_PRINT($stdout, "$msg\n");
   &MY_PRINT($rlog,   "$msg\n");
