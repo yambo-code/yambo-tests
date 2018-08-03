@@ -114,7 +114,7 @@ if ("@_" =~ "after_tests_loop"){
   #
   $message_setup="$g_s $dir_ok passes $g_e";
   if ($dir_failed gt 0) {$message_setup="$message_setup $r_s $dir_failed fails $r_e"};
-  $msg=sprintf(" %-20s %-5s [%-4s/%-3s]",$message_setup,"${sec}s","${sec_run}s","test");
+  $msg=sprintf(" %-25s %-7s [%-6s/%-4s]",$message_setup,"${sec}s","${sec_run}s","test");
   #
   &MY_PRINT($stdout, "$msg\n");
   &MY_PRINT($rlog,   "$msg\n");
