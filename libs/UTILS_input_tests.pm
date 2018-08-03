@@ -109,38 +109,45 @@ my $ic=-1;
 foreach my $lline (@dummy) {
  $ic++;
  @inputs = split(/\s+/,$lline);  # Split 1 or more spaces
- $dir = shift(@inputs);             # Directory Al111
+ my $dir = shift(@inputs);             # Directory Al111
+ #
  $input_tests_list[$ic]=$dir;
+ #
+ $tests_list=" ";
+ if ($branch_key) {
+  &UTILS_tests_in_the_dir("$dir","INPUTS");
+ }
+ my $list1="$tests_list";
+ $tests_list=" ";
+ &UTILS_tests_in_the_dir("$dir");
+ my $list2="$tests_list";
+ my @tests = split(/\s+/,$list1);
+ for my $el (@tests) 
+ {
+  if (not $list2 =~ /\Q$el\E/) {$list2="$list2 $el"};
+ }
+ #
  if($#inputs lt 0) { @inputs = qw("all")};   # If explicit tests omitted, set all of them
  foreach $testname (@inputs) {
   if ($testname =~ "all") {
-   $tests_list=" ";
-   if ($branch_key) {
-    &UTILS_tests_in_the_dir("$dir","INPUTS");
-    $input_tests_list[$ic]="$input_tests_list[$ic] $tests_list";
-   }
-   my $tests_def=$tests_list;
-   $tests_list=" ";
-   &UTILS_tests_in_the_dir("$dir");
-   my @tests = split(/\s+/,$tests_list);
-   for my $el (@tests) 
-   {
-    if (not $tests_def =~ /\Q$el\E/) {$input_tests_list[$ic]="$input_tests_list[$ic] $el"};
-   }
+   $input_tests_list[$ic]="$input_tests_list[$ic] $list2";
   }  
   else{  
    if ($testname =~ /\*/) { 
     $testname=~ s/\*//;
-    foreach $file (@files ) { 
+    my @tests = split(/\s+/,$list2);
+    foreach $file (@tests ) { 
      if  ($file =~ /$testname/ ){
       $input_tests_list[$ic]="$input_tests_list[$ic] $file";
      }
     }
    }else{
-    $input_tests_list[$ic]="$input_tests_list[$ic] $testname";
+    my $childs=&UTILS_gimme_childs("$dir","$testname");
+    $input_tests_list[$ic]="$input_tests_list[$ic] $testname $childs";
    }  
   }  
  }
+ #print "\n\nHERE $input_tests_list[$ic]\n\n";
 }
 &CWD_go;
 }
