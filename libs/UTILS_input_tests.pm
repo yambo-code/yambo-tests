@@ -147,7 +147,6 @@ foreach my $lline (@dummy) {
    }  
   }  
  }
- #print "\n\nHERE $input_tests_list[$ic]\n\n";
 }
 &CWD_go;
 }
