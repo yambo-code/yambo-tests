@@ -143,10 +143,16 @@ foreach my $lline (@dummy) {
     }
    }else{
     my $childs=&UTILS_gimme_childs("$dir","$testname");
-    $input_tests_list[$ic]="$input_tests_list[$ic] $testname $childs";
+    $input_tests_list[$ic]="$input_tests_list[$ic] $testname";
+    my @tests = split(/\s+/,$childs);
+    foreach my $file (@tests){
+     if (not $input_tests_list[$ic] =~ /\Q$file\E/) {$input_tests_list[$ic]="$input_tests_list[$ic] $file"};
+    }
    }  
   }  
  }
+ #print "\n$input_tests_list[$ic]\n";
+ #die;
 }
 &CWD_go;
 }
