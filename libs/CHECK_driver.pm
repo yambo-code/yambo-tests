@@ -58,6 +58,7 @@ O_file_loop: foreach $run_filename (<o-$testname.*>){
  $n_stats++;
  #
  &gimme_reference($run_filename);
+ #print "\n$run_filename $ref_filename\n";
  #
  if (!-e "$ref_filename") { 
   &RUN_stats("NO_REF");
@@ -74,13 +75,19 @@ O_file_loop: foreach $run_filename (<o-$testname.*>){
 #
 # REF files
 my $ref_dir;
-if ( -d $REF_prefix."REFERENCE_$branch_key" and -f $REF_prefix."REFERENCE_$branch_key/$testname" ) 
+$ref_dir="${REF_prefix}REFERENCE";
+my @OFILES = (<$ref_dir/o-$testname.*>);
+if ( -d $REF_prefix."REFERENCE_$branch_key/$testname")
+{
+ $ref_dir="${REF_prefix}REFERENCE_${branch_key}/$testname";
+ my @MFILES = (<$ref_dir/o-$testname.*>);
+ push @OFILES, @MFILES;
+}elsif ( -d $REF_prefix."REFERENCE_$branch_key")
 {
  $ref_dir="${REF_prefix}REFERENCE_${branch_key}";
-}else{
- $ref_dir="${REF_prefix}REFERENCE";
+ my @MFILES = (<$ref_dir/o-$testname.*>);
+ push @OFILES, @MFILES;
 }
-@OFILES = (<$ref_dir/o-$testname.*>);
 R_file_loop: foreach $ref_filename (@OFILES){
  #
  $n_stats++;
@@ -92,7 +99,9 @@ R_file_loop: foreach $ref_filename (@OFILES){
  if ($ref_filename =~ /em1d/ and $LIFE eq "1") {next R_file_loop};
  for $ipatt (1...$N_PATTERNS) 
  {
-  if ($ref_filename =~ $PATTERN[$ipatt][1]){ next R_file_loop};
+  if ($ref_filename =~ $PATTERN[$ipatt][1] and ($PATTERN_branch[$ipatt] =~ /$branch_key/ or $PATTERN_branch[$ipatt] =~ "any")){ 
+   $ref_filename =~ s/$PATTERN[$ipatt][1]/$PATTERN[$ipatt][2]/;
+  }
  } 
  #
  if ($CHECK eq "SKIP") {next R_file_loop};

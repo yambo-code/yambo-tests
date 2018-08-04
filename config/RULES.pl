@@ -31,23 +31,20 @@ $N_PATTERNS=0;
 # spin_factors_1->spin_factors_DN
 #
 $N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-";
 $PATTERN[$N_PATTERNS][1]="spin_factors_1";
 $PATTERN[$N_PATTERNS][2]="spin_factors_UP";
 #
 # spin_factors_2->spin_factors_UP
 #
 $N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-";
 $PATTERN[$N_PATTERNS][1]="spin_factors_2";
 $PATTERN[$N_PATTERNS][2]="spin_factors_DN";
-#
-# Slepc
-#
-#$N_PATTERNS++;
-#$PATTERN[$N_PATTERNS][1]="diago";
-#$PATTERN[$N_PATTERNS][2]="slepc";
 #
 # TD dos
 #
 $N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-rt-rotate";
 $PATTERN[$N_PATTERNS][1]="YPP-2D_occ_dos";
 $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";

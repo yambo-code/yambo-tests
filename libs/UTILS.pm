@@ -66,29 +66,26 @@ sub CWD_go{
 sub gimme_reference
 {
 my $RUN_local=$_[0];
-#
-for $ipatt (1...$N_PATTERNS) 
-{
- if ($RUN_local =~ $PATTERN[$ipatt][1]){
-   $RUN_local =~ s/$PATTERN[$ipatt][2]/$PATTERN[$ipatt][1]/;
- }
-}
-#
 $ref_filename = $REF_prefix."REFERENCE_$branch_key/".$RUN_local;
-print "\n\n PROP $ref_filename\n";
-if(! -e "$ref_filename" ) { 
- $ref_filename = $REF_prefix."REFERENCE_$branch_key/".$testname."/".$RUN_local;
-};
-if(! -e "$ref_filename" ) { 
- $ref_filename = $REF_prefix."REFERENCE/".$RUN_local;
-}
-if(! -e "$ref_filename" ) { 
- $ref_filename = $REF_prefix."REFERENCE/".$testname."/".$RUN_local;
-}
+if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$testname."/".$RUN_local};
+if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE/".$RUN_local};
+#
+if(-e "$ref_filename" ) {return};
+#
+$RUN_local=$_[0];
+for $ipatt (1...$N_PATTERNS) 
+ {
+  if ($RUN_local =~ $PATTERN[$ipatt][2] and ($PATTERN_branch[$ipatt] =~ /$branch_key/ or $PATTERN_branch[$ipatt] =~ "any")){ 
+   $RUN_local =~ s/$PATTERN[$ipatt][2]/$PATTERN[$ipatt][1]/;
+  }
+ } 
+$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$RUN_local;
+if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$testname."/".$RUN_local};
+if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE/".$RUN_local};
+if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE/".$testname."/".$RUN_local};
 if(! -e "$ref_filename" ) { 
  $ref_filename = "FAIL";
 }
-if ( not $ref_filename =~ /FINAL/ ){print " FINAL $ref_filename\n\n"};
 }
 sub test_dir_name
 {
