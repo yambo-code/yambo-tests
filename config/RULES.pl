@@ -31,14 +31,14 @@ $N_PATTERNS=0;
 # spin_factors_1->spin_factors_DN
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-";
+$PATTERN_branch[$N_PATTERNS]="devel-rt-rotate devel-ypp devel-rt-obs-and-ypp";
 $PATTERN[$N_PATTERNS][1]="spin_factors_1";
 $PATTERN[$N_PATTERNS][2]="spin_factors_UP";
 #
 # spin_factors_2->spin_factors_UP
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-";
+$PATTERN_branch[$N_PATTERNS]="devel-rt-rotate devel-ypp devel-rt-obs-and-ypp";
 $PATTERN[$N_PATTERNS][1]="spin_factors_2";
 $PATTERN[$N_PATTERNS][2]="spin_factors_DN";
 #
