@@ -58,8 +58,9 @@ if ($FAILED_conf_comp_branches) {
 # Precompiled (bin) exe's test
 #
 if ("$precompiled_is_run" eq "yes") {
- &MY_PRINT($stdout, "\n -       Source Check : precompiled (bin) ... ");
  $conf_bin  = "bin";
+ if ($keep_bin) {$conf_bin  = "bin-precompiled-$ROBOT_string"};
+ &MY_PRINT($stdout, "\n -       Source Check : precompiled ($conf_bin) ... ");
  $bin_check=&exe_check;
  if ( "$bin_check" eq "FAIL") {
   &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH/$conf_bin, skipping...\n");
@@ -104,7 +105,7 @@ if ($compile) {
 };
 #
 # BIN's
-if ("$precompiled_is_run" eq "yes") {
+if ("$precompiled_is_run" eq "yes" or $keep_bin) {
  $conf_bin  = "bin-precompiled-$ROBOT_string";
  if (not $keep_bin) {
   chdir $BRANCH;
