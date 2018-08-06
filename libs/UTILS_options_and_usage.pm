@@ -68,6 +68,7 @@ my $ret = &GetOptions("h"    => \$help,
             "failed=s"       => \$failed,
             "php"            => \$php,
             "safe"           => \$safe_mode,
+            "keep_bin"       => \$keep_bin,
             "profile:s"      => \$profile,
             "mode=s"         => \$mode
                       );
@@ -105,6 +106,7 @@ sub UTILS_usage {
              -nice   [VALUE]        Run with priority VALUE. With no VALUE max nice level is used (lower priority).
              -safe                  Safe run
              -no_net                Skip network assisted operations
+             -keep_bin              Do not overwrite the robot specific bin-precompiled folder
 
    (General options)
              -mode                  Can be "tests/validate/cheers/bench". It selects which suite to use. Default is "tests".
