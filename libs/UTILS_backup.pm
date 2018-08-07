@@ -167,7 +167,7 @@ if ($mode eq "bench")
  my $line;
  while($line = shift(@out)) {
   chomp($line);
-  &command("find $line -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | $grep -v 'REFERENCE' >> list");
+  &command("find $line -name 'o-*' -o -name 'r-*' -o -name 'l-*' -o -name 'yambo.in' | $grep -v 'REFERENCE' | grep -v log >> list");
  }
 }
 #

@@ -277,8 +277,10 @@ foreach $file (<$dir/compilation/*conf*.log>) {&command("cat $file >> $conf_php"
 &command("echo '</pre>' >> $conf_php");
 #
 # LOGs and compilation as tgz file
-&command("tar -czf $comp_tgz $dir/compilation/*comp*.log");
-&command("tar -czf $logs_tgz $dir/LOG*.log");
+chdir($dir);
+&command("tar -czf $comp_tgz compilation/*comp*.log");
+&command("tar -czf $logs_tgz LOG*.log");
+&CWD_go;
 #
 # Final copying
 #
