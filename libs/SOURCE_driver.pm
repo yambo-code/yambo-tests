@@ -105,15 +105,13 @@ if ($compile) {
 };
 #
 # BIN's
-if ("$precompiled_is_run" eq "yes" or $keep_bin) {
+if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
  $conf_bin  = "bin-precompiled-$ROBOT_string";
- if (not $keep_bin) {
-  chdir $BRANCH;
-  &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
-  if (-d "lib/bin" ) {&command("cp lib/bin/* $conf_bin/")};
-  if (-d "bin-libs") {&command("cp bin-libs/* $conf_bin/")};
-  chdir $suite_dir;
- }
+ chdir $BRANCH;
+ &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
+ if (-d "lib/bin" ) {&command("cp lib/bin/* $conf_bin/")};
+ if (-d "bin-libs") {&command("cp bin-libs/* $conf_bin/")};
+ chdir $suite_dir;
 }else{
  $conf_bin  = "bin-$conf_file-$FC_kind-$ROBOT_string";
 }
