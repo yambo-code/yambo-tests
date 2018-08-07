@@ -151,9 +151,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    $fails_in_the_run="0";
    $test_ok_action="INCREASE";
    #
-   # Re-Create the input (if any)
-   &RUN_load_actions(".input");
-   #
    if ($cpu_conf_file) {
     $string=$cpu_conf_key;
    }else{
@@ -161,6 +158,10 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    }
    #
    &RUN_setup("before_run");
+   #
+   # Re-Create the input and redo the actions (if needed)
+   &RUN_load_actions(".actions");
+   &RUN_load_actions(".input");
    #
    # Check if extra flags are needed (JOB specific)
    $error=&RUN_user_flags($ir);
@@ -181,9 +182,10 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      $string=$MPI_CPU_conf[1];
      &command("rm -fr yambo.in LOG r-${testname}* o-${testname}*");
      #print "$testname B\n";
-     # Re-Create the input (if any)
-     &RUN_load_actions(".input");
      &RUN_setup("before_run");
+     # Re-Create the input and redo the actions (if needed)
+     &RUN_load_actions(".actions");
+     &RUN_load_actions(".input");
      $N_random_tries++;
      $RUN_result=&RUN_it;
      #print "$testname CHECK_error $CHECK_error\n";
