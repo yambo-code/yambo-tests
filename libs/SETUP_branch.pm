@@ -78,6 +78,9 @@ if ($pattern=~m/4.1/ix) {$is_NEW_WF="no"};
 $is_NEW_DBGD="no";
 if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
+$is_NEW_EXC_SORT="no";
+if ($pattern=~m/devel-BSE-finite-q/ix){$is_NEW_EXC_SORT="yes"};
+#
 undef $do_NL_tests;
 if ($pattern=~m/devel-nl/ix)     {$do_NL_tests="yes"};
 if ($pattern=~m/bug-fixes/ix)      {$do_NL_tests="yes"};

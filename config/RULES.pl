@@ -48,3 +48,25 @@ $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-rt-rotate";
 $PATTERN[$N_PATTERNS][1]="YPP-2D_occ_dos";
 $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
+#
+# EXC PP
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-BSE-finite-q";
+$PATTERN[$N_PATTERNS][1]="exc_amplitude_at_";
+$PATTERN[$N_PATTERNS][2]="exc_qpt1_amplitude_at_";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-BSE-finite-q";
+$PATTERN[$N_PATTERNS][1]="exc_weights_at_";
+$PATTERN[$N_PATTERNS][2]="exc_qpt1_weights_at_";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-BSE-finite-q";
+$PATTERN[$N_PATTERNS][1]="exc_E_sorted";
+$PATTERN[$N_PATTERNS][2]="exc_E_sorted_q01";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-BSE-finite-q";
+$PATTERN[$N_PATTERNS][1]="exc_I_sorted";
+$PATTERN[$N_PATTERNS][2]="exc_I_sorted_q01";
