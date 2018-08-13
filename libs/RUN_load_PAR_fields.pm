@@ -36,6 +36,11 @@ if ($SETUP=="1" or $yambo_exec =~ /\/ypp/ or $yambo_exec =~ /\/p2y/) {
  $MPI_CPU_conf[1]="serial";
  return;
 }
+if ($RIMCUT=="1"){
+ $Nr="1";
+ $MPI_CPU_conf[1]="default";
+ return;
+}
 if ( $default_parallel ){ 
  $Nr="1";
  $MPI_CPU_conf[1]="default";
