@@ -58,8 +58,9 @@ if ($FAILED_conf_comp_branches) {
 # Precompiled (bin) exe's test
 #
 if ("$precompiled_is_run" eq "yes") {
- &MY_PRINT($stdout, "\n -       Source Check : precompiled (bin) ... ");
  $conf_bin  = "bin";
+ if ($keep_bin) {$conf_bin  = "bin-precompiled-$ROBOT_string"};
+ &MY_PRINT($stdout, "\n -       Source Check : precompiled ($conf_bin) ... ");
  $bin_check=&exe_check;
  if ( "$bin_check" eq "FAIL") {
   &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH/$conf_bin, skipping...\n");
@@ -104,12 +105,14 @@ if ($compile) {
 };
 #
 # BIN's
-if ("$precompiled_is_run" eq "yes") {
+if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
  $conf_bin  = "bin-precompiled-$ROBOT_string";
  chdir $BRANCH;
  &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
- if (-d "lib/bin" ) {&command("cp lib/bin/* $conf_bin/")};
- if (-d "bin-libs") {&command("cp bin-libs/* $conf_bin/")};
+# if (-d "lib/bin" ) {&command("cp lib/bin/* $conf_bin/")};
+# if (-d "bin-libs") {&command("cp bin-libs/* $conf_bin/")};
+ if (-d "lib/bin")  {&command("find ./lib/bin/  | xargs cp -t $conf_bin/ 2> /dev/null")};
+ if (-d "bin-libs") {&command("find ./bin-libs/ | xargs cp -t $conf_bin/ 2> /dev/null")};
  chdir $suite_dir;
 }else{
  $conf_bin  = "bin-$conf_file-$FC_kind-$ROBOT_string";
@@ -138,7 +141,8 @@ if ($compile)
   }
   chdir $BRANCH;
   &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
-  &command("if [ -d lib/bin ]; then cp lib/bin/* $conf_bin/; fi");
+  &command("if [ -d lib/bin  ]; then cp lib/bin/*  $conf_bin/; fi");
+  &command("if [ -d bin-libs ]; then cp bin-libs/* $conf_bin/; fi");
   &MY_PRINT($stdout,  "\n -       Source Check : compiled ($conf_bin) ... ");
   $bin_check=&exe_check;
   if ( "$bin_check" eq "FAIL") {

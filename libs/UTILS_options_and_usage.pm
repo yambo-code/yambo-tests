@@ -68,6 +68,7 @@ my $ret = &GetOptions("h"    => \$help,
             "failed=s"       => \$failed,
             "php"            => \$php,
             "safe"           => \$safe_mode,
+            "keep_bin"       => \$keep_bin,
             "profile:s"      => \$profile,
             "mode=s"         => \$mode
                       );
@@ -105,6 +106,7 @@ sub UTILS_usage {
              -nice   [VALUE]        Run with priority VALUE. With no VALUE max nice level is used (lower priority).
              -safe                  Safe run
              -no_net                Skip network assisted operations
+             -keep_bin              Do not overwrite the robot specific bin-precompiled folder
 
    (General options)
              -mode                  Can be "tests/validate/cheers/bench". It selects which suite to use. Default is "tests".
@@ -113,7 +115,7 @@ sub UTILS_usage {
              -status                List SVN/GIT new/untracked files.
              -v [-v]                Verbose output (use -v -v for extra verbosity)
              -colors                Use colors in messages.
-             -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(in FLOWS and CPU_CONFIGURATION, for example).
+             -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(e.g. in FLOWS and CPU_CONFIGURATION).
                                     Use -e backup with -b ## to edit the REPORT of the backupd REPORT number ##
 
    (SOURCEs)
@@ -121,7 +123,8 @@ sub UTILS_usage {
              -gpl                   Only GPL-compliant test.
 
    (TEST selection)
-             -flow   <FILE>         Use the flow of calculations defined in <FILE> (refer to ROBOTS/$host/$user/FLOWS/<FILE>.pl).
+             -flow   <FILE>         Use the flow of calculations defined in <FILE> 
+                                       (refer to ROBOTS/$host/$user/FLOWS/<FILE>.pl).
              -keys   <string>       Test keys (see below*).
              -off    <string>       Switch off specific objects (mpi,openmp,io).
              -prec   <PREC>         Precision of data comparisons       (default: 0.01 = 1% of MAX value)
@@ -133,7 +136,8 @@ sub UTILS_usage {
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
 
    (parallel options)
-             -cpu_conf <FILE>       Use the CPU configuration defined in <FILE> (refer to ROBOTS/$host/$user/CPU_CONFIGURATION/<FILE>).
+             -cpu_conf <FILE>       Use the CPU configuration defined in <FILE> 
+                                       (refer to ROBOTS/$host/$user/CPU_CONFIGURATION/<FILE>).
              -np     <N>            Fixed number of CPU used.
              -np_min <N>            Minimum number of CPU used.
              -np_max <N>            Maximum number of CPU used.
@@ -154,8 +158,10 @@ sub UTILS_usage {
    (Profiling)
              -profile <string>      Can work in two modes:
                                       *  Add to the profile queue the backup ID (passed by using the -b ID).
-                                         <string> can be a pattern to identify the INPUT/PARALLEL_conf to add to the PROFILING directory.
-                                         A t must be pre-appended to testnames and a c to parallel confs. E.g. t03_gw cNmpi64-64.3-bug-fixes.
+                                         <string> can be a pattern to identify the INPUT/PARALLEL_conf 
+                                         to add to the PROFILING directory.
+                                         A t must be pre-appended to testnames and a c to parallel confs. 
+                                         E.g. t03_gw cNmpi64-64.3-bug-fixes.
                                       *  With no options the contents of the profile queue are processed.
 
    (Backup)

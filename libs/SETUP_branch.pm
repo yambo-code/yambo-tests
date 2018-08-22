@@ -78,6 +78,9 @@ if ($pattern=~m/4.1/ix) {$is_NEW_WF="no"};
 $is_NEW_DBGD="no";
 if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
+$is_NEW_EXC_SORT="no";
+if ($pattern=~m/devel-BSE-finite-q/ix){$is_NEW_EXC_SORT="yes"};
+#
 undef $do_NL_tests;
 if ($pattern=~m/devel-nl/ix)     {$do_NL_tests="yes"};
 if ($pattern=~m/bug-fixes/ix)      {$do_NL_tests="yes"};
@@ -95,7 +98,6 @@ if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP};
-if ($pattern=~m/master/ix && !$is_GPL) {undef $is_NEW_YPP};
 #
 # Define list of required executables
 $target_list = $target_list_basic; 
@@ -106,7 +108,7 @@ if ($project =~ /sc/ or $project eq "all")       { $target_list .= $exec_sc; $ex
 if ($project =~ /rt/ or $project eq "all")       { $target_list .= $exec_rt; $exec_list  .= $exec_rt};
 if ($project =~ /elph/ or $project eq "all")     { $target_list .= $exec_elph; $exec_list  .= $exec_elph};
 if ($project =~ /kerr/ or $project eq "all")     { $target_list .= $exec_kerr; $exec_list  .= $exec_kerr};
-if ($project =~ /pl/ or $project eq "all")       { $target_list .= $exec_pl; $exec_list   .= $exec_pl};
+#if ($project =~ /pl/ or $project eq "all")       { $target_list .= $exec_pl; $exec_list   .= $exec_pl};
 if ($project =~ /magnetic/ or $project eq "all") { $target_list .= $exec_magn; $exec_list   .= $exec_magn};
 if (($project =~ /nl/ or $project eq "all" ) and $do_NL_tests ) { $target_list .= $exec_nl; $exec_list  .= $exec_nl};
 #

@@ -53,6 +53,8 @@ if ($NLOPTICS ne "1"){
 $SC=&RUN_feature("scpot");
 if (&RUN_feature("magnetic") eq "1"){$SC="0"; $MAGNETIC="1"};
 if ($SC eq "1") { $description .= " SC cycle" };
+$RIMCUT=&RUN_feature("rim_cut");
+if ($RIMCUT eq "1") { $description .= " RIM-Coulomb Cutoff" };
 $CHI=&RUN_feature("chi");
 if ($CHI eq "1") { $description .= " G-space" };
 $GW=&RUN_feature("gw");

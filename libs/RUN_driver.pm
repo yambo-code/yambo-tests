@@ -50,7 +50,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  $material=(split(/\//,$testdir))[0];
  $yambo_exec="";
  #
- my $msg=sprintf(" > $b_s [%-3s/%-3s] %-45s $b_e ",$count_tests,$numtests,$testdir."$cpu_global_conf");
+ my $msg=sprintf(" > $b_s [%3s/%3s] %-55s $b_e ",$count_tests,$numtests,$testdir."$cpu_global_conf");
  #
  &MESSAGE("LOG","\n$line");
  &MESSAGE("LOG","\n$b_s $testdir-$branch-$cpu_global_conf $b_e");

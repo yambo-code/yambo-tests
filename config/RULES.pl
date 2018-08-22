@@ -31,14 +31,14 @@ $N_PATTERNS=0;
 # spin_factors_1->spin_factors_DN
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-";
+$PATTERN_branch[$N_PATTERNS]="devel-rt-rotate devel-ypp devel-rt-obs-and-ypp";
 $PATTERN[$N_PATTERNS][1]="spin_factors_1";
 $PATTERN[$N_PATTERNS][2]="spin_factors_UP";
 #
 # spin_factors_2->spin_factors_UP
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-";
+$PATTERN_branch[$N_PATTERNS]="devel-rt-rotate devel-ypp devel-rt-obs-and-ypp";
 $PATTERN[$N_PATTERNS][1]="spin_factors_2";
 $PATTERN[$N_PATTERNS][2]="spin_factors_DN";
 #
@@ -48,3 +48,25 @@ $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-rt-rotate";
 $PATTERN[$N_PATTERNS][1]="YPP-2D_occ_dos";
 $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
+#
+# EXC PP
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-BSE-finite-q";
+$PATTERN[$N_PATTERNS][1]="exc_amplitude_at_";
+$PATTERN[$N_PATTERNS][2]="exc_qpt1_amplitude_at_";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-BSE-finite-q";
+$PATTERN[$N_PATTERNS][1]="exc_weights_at_";
+$PATTERN[$N_PATTERNS][2]="exc_qpt1_weights_at_";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-BSE-finite-q";
+$PATTERN[$N_PATTERNS][1]="exc_E_sorted";
+$PATTERN[$N_PATTERNS][2]="exc_E_sorted_q01";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-BSE-finite-q";
+$PATTERN[$N_PATTERNS][1]="exc_I_sorted";
+$PATTERN[$N_PATTERNS][2]="exc_I_sorted_q01";
