@@ -1,18 +1,18 @@
-     __      __   ______   __       __  _______    ______       
-    |  \    /  \ /      \ |  \     /  \|       \  /      \      
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\     
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$     
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$     
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$     
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$     
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$     
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$      
                                                                 
-           Version 4.3.0 Revision 15632 Hash 1defe02            
-                     MPI+SLK+OpenMP Build                       
-                   http://www.yambo-code.org                    
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$       
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$      
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$      
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$      
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$      
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$      
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/      
+        |__/   |__/  |__/|__/     |__/|_______/  \______/       
+                                                                
+          Version 4.3.0 Revision 15746 Hash 61e4334             
+                        MPI+SLK Build                           
+                  http://www.yambo-code.org                     
  
- 07/25/2018 at 10:21 YAMBO_RT @ narro
+ 08/25/2018 at 16:08 YAMBO_RT @ NewLaptop
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -29,7 +29,7 @@
  Input file     is   yambo.in
  Report file    is   ./r-03_coll_tdlda_collisions
  Job string(main): 03_coll_tdlda
-             (#1): R4
+             (#1): R7
  Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
@@ -48,7 +48,7 @@
   Exact exchange fraction in XC   : 0.000000
   Exact exchange screening in XC  : 0.000000
   Magnetic symmetries             : no
- - S/N 002684 -------------------------- v.04.03.00 r.15632 -
+ - S/N 002684 -------------------------- v.04.03.00 r.15746 -
 
  [02] CORE Variables Setup
  =========================
@@ -147,7 +147,7 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 002684 -------------------------- v.04.03.00 r.15632 -
+ - S/N 002684 -------------------------- v.04.03.00 r.15746 -
 
  IBZ Q-points : 1
  BZ  Q-points : 1
@@ -167,7 +167,7 @@
 
   [FFT-HARTREE+GS_xc Collisions] Mesh size: 21  21  21
 
-  [WF loader] Normalization (few states)  min/max  :0.4516E-4  1.000   
+  [WF loader] Normalization (few states)  min/max  :0.1110E-8  1.000   
 
   [xc] Functional Teter 93(XC)
   [xc] LIBXC used to calculate xc functional
@@ -175,22 +175,24 @@
    Brillouin Zone Q/K grids (IBZ/BZ): 1  1  1  1
    RL vectors                   (WF):  4945
    COLLISIONS name                 :HARTREE+GS_xc
-   Total number of COLLISIONS      : 3
+   Total number of COLLISIONS      :  45
    COLLISIONS kind                 : 1003
-   Bands                           : 1  2
+   Bands                           :  1   9
    Bands mixing                    : 100.0000
    Exchange Cutoff                 :0.5000E-3
    Hartree  RL vectors             :  4945
    RIM RL components      :0
    RIM random points      :0
-  - S/N 002684 -------------------------- v.04.03.00 r.15632 -
+  - S/N 002684 -------------------------- v.04.03.00 r.15746 -
+
+ Timing [Min/Max/Average]: 01s/01s/01s
 
  [05] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                                    io_WF :     0.00s CPU (       4 calls,   0.002 s avg)
-                                  io_GROT :     0.00s CPU (       3 calls,   0.002 s avg)
+                                    io_WF :     0.00s CPU (       4 calls,   0.000 s avg)
+                                  io_GROT :     0.00s CPU (       3 calls,   0.001 s avg)
                                  io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
                                io_COL_CUT :     0.00s CPU
                            io_Double_Grid :     0.00s CPU
@@ -202,26 +204,28 @@
                                     io_BS :     0.00s CPU
                                   io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
                          io_RT_components :     0.00s CPU (       2 calls,   0.000 s avg)
-                            io_COLLISIONS :     0.00s CPU (       8 calls,   0.000 s avg)
-                          COLLISIONS_eval :     0.00s CPU
+                            io_COLLISIONS :     0.00s CPU (      50 calls,   0.001 s avg)
+                          COLLISIONS_eval :     1.00s CPU
                   IO_and_Messaging_switch :     0.00s CPU
-                 HARTREE+GS_xc Collisions :     0.00s CPU
+                 HARTREE+GS_xc Collisions :     1.00s CPU
                                 FFT_setup :     0.00s CPU
                              PP_uspp_init :     0.00s CPU
                               WF_load_FFT :     0.00s CPU
-                              io_fragment :     0.00s CPU (       4 calls,   0.000 s avg)
+                              io_fragment :     0.00s CPU (      46 calls,   0.000 s avg)
                       XC_potential_driver :     0.00s CPU
                                el_density :     0.00s CPU
-                      T_space ALDA scatt. :     0.00s CPU (      12 calls,   0.000 s avg)
-              COLLISIONS_linearize_and_IO :     0.00s CPU (       3 calls,   0.000 s avg)
+                      T_space ALDA scatt. :     0.00s CPU (    3645 calls,   0.000 s avg)
+              COLLISIONS_linearize_and_IO :     0.00s CPU (      45 calls,   0.001 s avg)
 
  [06] Game Over & Game summary
  =============================
 
- 07/25/2018 at 10:21 YAMBO_RT @ narro [start]
- 07/25/2018 at 10:21                  [end]
+ 08/25/2018 at 16:08 YAMBO_RT @ NewLaptop [start]
+ 08/25/2018 at 16:08                      [end]
 
-  
+ Timing   [Min/Max/Average]: 01s/01s/01s
+             [Time-Profile]: 01s
+
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -240,9 +244,8 @@
  .-Input file : yambo.in
  | collisions                     # [R] Eval the extended Collisions
  | BoseTemp= 0.000000     eV      # Bosonic Temperature
- | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
  | % COLLBands
- |  1 | 2 |                       # [COLL] Bands for the collisions
+ |   1 |  9 |                     # [COLL] Bands for the collisions
  | %
  | HXC_Potential= "HARTREE+GS_xc" # [SC] SC HXC Potential
  | FFTGvecs=  4945        RL      # [FFT] Plane-waves

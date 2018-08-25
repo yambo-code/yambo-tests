@@ -1,18 +1,18 @@
                                                                 
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$       
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$      
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$      
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$      
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$      
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$      
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/      
+        |__/   |__/  |__/|__/     |__/|_______/  \______/       
                                                                 
-    Y88b    /   e           e    e      888~~\    ,88~-_        
-     Y88b  /   d8b         d8b  d8b     888   |  d888   \       
-      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |      
-       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |      
-        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /       
-       /   /      Y88b /          Y888b 888__/    `88_-~        
-                                                                
-                                                                
-          Version 4.3.0 Revision 15624 Hash 7ed12fb             
+          Version 4.3.0 Revision 15746 Hash 61e4334             
                         MPI+SLK Build                           
                   http://www.yambo-code.org                     
  
- 07/24/2018 at 09:40 YAMBO_RT @ NewLaptop
+ 08/25/2018 at 16:08 YAMBO_RT @ NewLaptop
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -29,8 +29,8 @@
  Input file     is   yambo.in
  Report file    is   ./r-02_tdh_coll_negf
  Job string(main): 02_tdh_coll
-             (#1): 02_coll_HARTREE-serial-develop
-             (#2): R12
+             (#1): 02_coll_HARTREE-serial-bug-fixes
+             (#2): R7
  Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
@@ -49,7 +49,7 @@
   Exact exchange fraction in XC   : 0.000000
   Exact exchange screening in XC  : 0.000000
   Magnetic symmetries             : no
- - S/N 002684 -------------------------- v.04.03.00 r.15624 -
+ - S/N 002684 -------------------------- v.04.03.00 r.15746 -
 
  [02] CORE Variables Setup
  =========================
@@ -148,7 +148,7 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 002684 -------------------------- v.04.03.00 r.15624 -
+ - S/N 002684 -------------------------- v.04.03.00 r.15746 -
 
  IBZ Q-points : 1
  BZ  Q-points : 1
@@ -166,10 +166,10 @@
 
   [RD./SAVE//ns.kb_pp]----------------------------------------
    Fragmentation                    :yes
-  - S/N 002684 -------------------------- v.04.03.00 r.15624 -
+  - S/N 002684 -------------------------- v.04.03.00 r.15746 -
   [WF] Performing Wave-Functions I/O from ./SAVE
 
-  [WF loader] Normalization (few states)  min/max  :0.45203E-4 0.99998   
+  [WF loader] Normalization (few states)  min/max  :0.1297E-09  1.000    
 
   [WR./02_tdh_coll//ndb.dip_iR_and_P]-------------------------
    Brillouin Zone Q/K grids (IBZ/BZ): 1  1  1  1
@@ -177,8 +177,8 @@
    Fragmentation                    :yes
    Electronic Temperature        [K]: 0.0000000
    Bosonic    Temperature        [K]: 0.0000000
-   X band range           : 1  2
-   X band range limits    : 2  1
+   X band range           :  1   9
+   X band range limits    :  9   1
    X e/h energy range [ev]:-1.0000000 -1.0000000
    RL vectors in the sum  :  4945
    [r,Vnl] included       :yes
@@ -189,7 +189,7 @@
    Direct v evaluation    :no
    Field momentum norm    :0.10000E-4
    Wavefunctions          :Teter 93(XC)
-  - S/N 002684 -------------------------- v.04.03.00 r.15624 -
+  - S/N 002684 -------------------------- v.04.03.00 r.15746 -
 
   [04.02] Dephasing matrix setup
   ==============================
@@ -200,19 +200,19 @@
   [04.03] Electronic Collisions loading and setup
   ===============================================
 
-  [RD./02_coll_HARTREE-serial-develop//ndb.COLLISIONS_HXC]----
+  [RD./02_coll_HARTREE-serial-bug-fixes//ndb.COLLISIONS_HXC]--
    Brillouin Zone Q/K grids (IBZ/BZ): 1  1  1  1
    RL vectors                   (WF):  4945
    COLLISIONS name                 :HARTREE
-   Total number of COLLISIONS      : 3
+   Total number of COLLISIONS      :  45
    COLLISIONS kind                 : 1000
-   Bands                           : 1  2
+   Bands                           :  1   9
    Bands mixing                    : 100.00000
    Exchange Cutoff                 :0.50000E-3
    Hartree  RL vectors             :  4945
    RIM RL components      :0
    RIM random points      :0
-  - S/N 002684 -------------------------- v.04.03.00 r.15624 -
+  - S/N 002684 -------------------------- v.04.03.00 r.15746 -
 
   [04.04] Messaging
   =================
@@ -279,15 +279,15 @@
   ==========================
 
 
- Timing [Min/Max/Average]: 02s/02s/02s
+ Timing [Min/Max/Average]: 04s/04s/04s
 
  [05] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
                                     io_WF :     0.00s CPU (      10 calls,   0.000 s avg)
-                                  io_GROT :     0.00s CPU (       3 calls,   0.000 s avg)
-                                 io_QINDX :     0.00s CPU (       2 calls,   0.002 s avg)
+                                  io_GROT :     0.00s CPU (       3 calls,   0.001 s avg)
+                                 io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
                                io_COL_CUT :     0.00s CPU
                            io_Double_Grid :     0.00s CPU
                                     io_HF :     0.00s CPU
@@ -297,22 +297,22 @@
                                      io_X :     0.00s CPU (       4 calls,   0.000 s avg)
                                     io_BS :     0.00s CPU
                                   io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
-                         io_RT_components :     1.00s CPU (     807 calls,   0.002 s avg)
-                            io_COLLISIONS :     0.00s CPU (      11 calls,   0.000 s avg)
+                         io_RT_components :     2.00s CPU (     807 calls,   0.003 s avg)
+                            io_COLLISIONS :     0.00s CPU (      95 calls,   0.000 s avg)
                   IO_and_Messaging_switch :     0.00s CPU (    2007 calls,   0.000 s avg)
                                   Dipoles :     0.00s CPU
                         DIPOLE_transverse :     0.00s CPU
                              PP_uspp_init :     0.00s CPU (       3 calls,   0.000 s avg)
-                              WF_load_FFT :     0.00s CPU (       3 calls,   0.001 s avg)
-                              io_fragment :     0.00s CPU (      17 calls,   0.000 s avg)
-                          COLLISIONS_load :     0.00s CPU (       2 calls,   0.000 s avg)
-                                FFT_setup :     0.00s CPU (       2 calls,   0.012 s avg)
+                              WF_load_FFT :     0.00s CPU (       3 calls,   0.005 s avg)
+                              io_fragment :     0.00s CPU (     185 calls,   0.000 s avg)
+                          COLLISIONS_load :     0.00s CPU (       2 calls,   0.018 s avg)
+                                FFT_setup :     0.00s CPU (       2 calls,   0.034 s avg)
                         el_density_matrix :     0.00s CPU
                          Bare_Hamiltonian :     0.00s CPU
                                 V_Hartree :     0.00s CPU
                                 XCo_local :     0.00s CPU
                       XC_potential_driver :     0.00s CPU
-                        V_real_space_to_H :     0.00s CPU (       3 calls,   0.000 s avg)
+                        V_real_space_to_H :     0.00s CPU (       3 calls,   0.003 s avg)
                           V_qp_basis_to_H :     0.00s CPU
                                 RT output :     0.00s CPU (    1206 calls,   0.001 s avg)
                            RT observables :     0.00s CPU (    1000 calls,   0.000 s avg)
@@ -326,11 +326,11 @@
  [06] Game Over & Game summary
  =============================
 
- 07/24/2018 at 09:40 YAMBO_RT @ NewLaptop [start]
- 07/24/2018 at 09:40                      [end]
+ 08/25/2018 at 16:08 YAMBO_RT @ NewLaptop [start]
+ 08/25/2018 at 16:08                      [end]
 
- Timing   [Min/Max/Average]: 02s/02s/02s
-             [Time-Profile]: 02s
+ Timing   [Min/Max/Average]: 04s/04s/04s
+             [Time-Profile]: 04s
 
  .-ACKNOWLEDGMENT
  |
@@ -355,11 +355,11 @@
  | FFTGvecs=  4945        RL      # [FFT] Plane-waves
  | RTEvalEntropy                  # [RT] Entropy variation computed on the fly
  | % RTBands
- |  1 | 2 |                       # [RT] Bands
+ |   1 |  9 |                     # [RT] Bands
  | %
  | Integrator= "EULER + RK2 + RWA" # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
  | % RTehEny
- |   0.00000 | 11.31762 | eV      # [RT] Electron-hole energy range
+ |   0.00000 | 14.96685 | eV      # [RT] Electron-hole energy range
  | %
  | RTstep=  0.02000       fs      # [RT] Real Time step length
  | NETime= 19.98000       fs      # [RT] Simulation Time
