@@ -50,12 +50,14 @@ sub UTILS_list_backups{
  @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2017;
  @dirs_2018   = sort { $a1 = (split ( '2018', $a )) [1]; $b1 = (split ( '2018', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2018;
  push(@sorted_dirs, @dirs_2018);
+ @reversed_dirs = reverse @sorted_dirs ;
  #
  $data_id=0;
  if ("@_" eq "list")
  {
-  foreach $dir (@sorted_dirs) {
+  foreach $dir (@reversed_dirs) {
    #
+   print "Dir sorted $dir pippo\n";
    @REPS = glob("$dir/REPORT*");
    open(REPORT,"<","$suite_dir/$REPS[0]");
    @lines = <REPORT>;

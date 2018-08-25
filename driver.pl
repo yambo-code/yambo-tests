@@ -63,7 +63,8 @@ if ($kill_me){
   &KILL_me("yambo");
   &KILL_me("ypp");
  }
- die;
+ print "Killing action finalized.\n";
+ exit;
 }
 #
 # Post options setups
@@ -91,9 +92,9 @@ if ($mode eq "perturbo") {$TESTS_folder="TESTS/PERTURBO"};
 # Edit
 #
 if ($edit and $backup_logs eq "no" and $edit ne 1){
- if ($edit eq "filters" ) {system("vim config/RULES.h");die;};
- if ($edit eq "branches") {system("vim ROBOTS/$host/$user/BRANCHES");die;};
- if ($edit eq "flags") {system("vim ROBOTS/$host/$user/FLAGS");die;};
+ if ($edit eq "filters" ) {system("vim config/RULES.h"); print "RULES file editing done.\n"; exit;};
+ if ($edit eq "branches") {system("vim ROBOTS/$host/$user/BRANCHES"); print "BRANCHES file editing done.\n";exit;};
+ if ($edit eq "flags") {system("vim ROBOTS/$host/$user/FLAGS"); print "FLAGS file editing done.\n";exit;};
  if (-e "ROBOTS/$host/$user/FLOWS/$edit.pl"){
   system("vim ROBOTS/$host/$user/FLOWS/$edit.pl");
  };
@@ -112,7 +113,8 @@ if ($edit and $backup_logs eq "no" and $edit ne 1){
  if (-e "ROBOTS/$host/$user/CONFIGURATIONS/$edit"){
   system("vim ROBOTS/$host/$user/CONFIGURATIONS/$edit");
  };
- die;
+ print "All editings done.\n";
+ exit;
 }
 #
 # Check, if STDOUT is a terminal. If not, not ANSI sequences are emitted.
@@ -128,18 +130,20 @@ if(-t STDOUT) {
 # help
 if($info){ 
  &UTILS_robot_info ;
- die "\n";
+ print "Info finalized.\n";
+ exit "\n";
 }
 if($help){ 
  &UTILS_robot_info ;
  &UTILS_usage ;
- die "\n";
+ exit "\n";
 };
 #
 # Show extra files
 if($repo_check){ 
  &command("$git status --ignored | $grep -v SAVE | $grep -v GKKP | $grep -v .gz");
- die "\n";
+ print "Repo check done.\n";
+ exit "\n";
 };
 #
 # Download and exit
@@ -148,7 +152,8 @@ if($download){
   &FTP_list("testing-robots/databases")
  }else{
   &UTILS_download;
-  die "Download complete.\n";
+  print "Download complete.\n";
+  exit;
  }
 }
 #
@@ -162,17 +167,18 @@ if ($clean and $backup_logs eq "no" and not $RUNNING_suite){
   &UTILS_clean("DEEP");
   print "... core databases";
  }
- die "\n";
+ print "\nCleaning done.\n";
+ exit;
 };
 # List tests and exit
 # The -l:s means optional argument to -l: "default"|""|$listtests
 #
-if (!$listtests                             ) {&UTILS_list_tests("list_all"); die;};
-if ( $listtests and  $listtests !~ "default") {&UTILS_list_tests("$listtests"); die;};
+if (!$listtests                             ) {&UTILS_list_tests("list_all"); exit;};
+if ( $listtests and  $listtests !~ "default") {&UTILS_list_tests("$listtests"); exit;};
 #
 # Failed theme
 #
-if ($failed) {&UTILS_failed_theme_creator(); die;};
+if ($failed) {&UTILS_failed_theme_creator(); exit;};
 #
 # PHP generation 
 #
@@ -180,7 +186,8 @@ if ($php) {
  #&PHP_folders_rename(); 
  &PHP_generate(); 
  &PHP_upload();
- die;
+ print "PHP generation finalized.\n";
+ exit;
 }
 #
 # SVN section
@@ -190,7 +197,8 @@ if ($tag_test_as_broken)
 {
  &command("touch    $TESTS_folder/$tag_test_as_broken/BROKEN");
  &command("$git add $TESTS_folder/$tag_test_as_broken/BROKEN");
- die;
+ print "TEST tagged as broken.\n";
+ exit;
 }
 if ($upload_test){ &UTILS_upload };
 #
@@ -205,7 +213,8 @@ if (!$RUNNING_suite) {
    &PHP_generate(); 
    &PHP_upload();
   }
-  die;
+  print "Backup done.\n";
+  exit;
  };
  if (not $backup_logs eq "no") {
   &UTILS_list_backups("list")
@@ -213,7 +222,8 @@ if (!$RUNNING_suite) {
  if ($profile and $backup_logs eq "no") {
   &PROFILE_python();
  }
- die;
+ print "Not running suite. Done.\n";
+ exit;
 }
 #
 # RUNNING SECTION
@@ -300,7 +310,8 @@ if ($RUNNING_suite) {
   &UTILS_update;
   #$upload_test=$update_test;
   #&UTILS_upload;
-  die;
+  print "Test updated\n";
+  exit;
  }
  #
  if ($autotest) {
@@ -321,14 +332,14 @@ if ($RUNNING_suite) {
  }
 }else{ 
  print "Tests string missing"; 
- die "\n";
+ exit "\n";
 }
 #
 &COMPILE_find_the_diff("clean");
 #
 if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
  print "\nDone.\n";
- die "\n";
+ exit "\n";
 }
 #
 &RUN_global_report("FINAL");
@@ -350,4 +361,3 @@ if ($backup_logs eq "yes") {
 }
 #
 print "\nDone.\n";
-die "\n";

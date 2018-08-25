@@ -28,13 +28,17 @@ sub PHP_generate{
 #
 &UTILS_list_backups;
 #
-foreach $dir (@sorted_dirs) {
+$i_file = 0;
+foreach $dir (@reversed_dirs) {
  @files = glob("$dir/REPORT*");
  foreach $file (@files) {
+  $i_file = $i_file+1;
   open(REPORT,"<","$suite_dir/$file");
   @lines = <REPORT>;
   &PHP_key_words;
+  if ($i_file eq 1) {$branch_ref=$branch_key;};
   if ($branch_key =~ "bug-fixes_copy" or $branch_key =~ "max-release" ) {next};
+  if (! ("$branch_key" eq "$branch_ref") ) {next};
   print "Processing $dir...\n";
   &PHP_extract;
   close(REPORT);
@@ -92,47 +96,19 @@ sub PHP_extract{
 # Name choosing
 $MAX_phps=20;
 chdir("$host/www");
-for( $j = $MAX_phps-1; $j > 0 ; $j = $j - 1 )
+for( $j = 1; $j < $MAX_phps ; $j = $j + 1 )
 {
- $k=$j+1;
  $main_dat = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.dat";
- $error_php = $branch_key."/".$hostname."_".$branch_key."_".$j."_error.php";
- $report_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_report.php";
- $conf_php= $branch_key."/".$hostname."_".$branch_key."_".$j."_conf.php";
- $comp_tgz= $branch_key."/".$hostname."_".$branch_key."_".$j."_comp.tgz";
- $logs_tgz= $branch_key."/".$hostname."_".$branch_key."_".$j."_logs.tgz";
- if (-f $main_dat){
-  ($file = $error_php) =~ s/_$j/_$k/g;
-  if (-f $error_php) {&command("mv $error_php $file")};
-  ($file = $report_php) =~ s/_$j/_$k/g;
-  if (-f $report_php) {&command("mv $report_php $file")};
-  ($file = $conf_php) =~ s/_$j/_$k/g;
-  if (-f $conf_php) {&command("mv $conf_php $file")};
-  ($file = $comp_tgz) =~ s/_$j/_$k/g;
-  if (-f $comp_tgz) {&command("mv $comp_tgz $file")};
-  ($file = $logs_tgz) =~ s/_$j/_$k/g;
-  if (-f $logs_tgz) {&command("mv $logs_tgz $file")};
-  ($file = $main_dat) =~ s/_$j/_$k/g;
-  if (-f $main_dat) {&command("mv $main_dat $file")};
-  open(my $fh1, '<', $file) ;
-  open(my $fh2, '>', 'dummy') ;
-  while( $line = <$fh1>) {
-   $line =~ s/${branch_key}_$j/${branch_key}_$k/ig;
-   print $fh2 "$line";
-  }
-  close($fh1);
-  close($fh2);
-  &command("mv dummy $file");
- }
+ if (! -f $main_dat) { last} ;
 }
 #
 chdir("$suite_dir");
-$main_dat = $hostname."_".$branch_key."_1_main.dat";
-$error_php=$hostname."_".$branch_key."_1_error.php";
-$report_php=$hostname."_".$branch_key."_1_report.php";
-$conf_php=$hostname."_".$branch_key."_1_conf.php";
-$comp_tgz=$hostname."_".$branch_key."_1_comp.tgz";
-$logs_tgz=$hostname."_".$branch_key."_1_logs.tgz";
+$main_dat = $hostname."_".$branch_key."_".$j."_main.dat";
+$error_php=$hostname."_".$branch_key."_".$j."_error.php";
+$report_php=$hostname."_".$branch_key."_".$j."_report.php";
+$conf_php=$hostname."_".$branch_key."_".$j."_conf.php";
+$comp_tgz=$hostname."_".$branch_key."_".$j."_comp.tgz";
+$logs_tgz=$hostname."_".$branch_key."_".$j."_logs.tgz";
 #
 # RETRIVE DATA
 #
@@ -277,15 +253,17 @@ foreach $file (<$dir/compilation/*conf*.log>) {&command("cat $file >> $conf_php"
 &command("echo '</pre>' >> $conf_php");
 #
 # LOGs and compilation as tgz file
+&CWD_save;
 chdir($dir);
-&command("tar -czf $comp_tgz compilation/*comp*.log");
+if ( -f "compilation/*comp*.log"){ &command("tar -czf $comp_tgz compilation/*comp*.log"); };
 &command("tar -czf $logs_tgz LOG*.log");
 &CWD_go;
+&command("mv $dir/*.tgz ./");
 #
 # Final copying
 #
 &command("mkdir -p $host/www/$branch_key");
-&command("mv *.php *.dat $comp_tgz $logs_tgz $host/www/$branch_key");   
+&command("mv *.php *.dat *.tgz $host/www/$branch_key");   
 #
 return
 }
