@@ -121,7 +121,7 @@ my $line;
 my $ib=-1;
 while($line = shift(@BLINES)) {
  chomp($line);
- next if ($line =~ /#/);
+ next if ( ($line =~ /#/) or ($line eq "") );
  $ib++;
  ($branches[$ib],$branch_identity[$ib],$branch_robot[$ib]) = split(/ /, $line);
 }
