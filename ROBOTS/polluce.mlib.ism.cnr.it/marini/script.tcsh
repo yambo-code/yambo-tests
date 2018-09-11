@@ -23,7 +23,8 @@ if ( "$2" == "gf_mpich") then
  module load gcc8/yambo/mpich-3.2.1
 endif
 if ( "$2" == "gf_openmpi") then
- module load gcc8/yambo/openmpi-3.1.0
+ module load gcc7/yambo/openmpi-2.1.1
+# module load gcc8/yambo/openmpi-3.1.0
 endif
 if ( "$2" == "intel") then
  module load intel/yambo/parallel_2018
