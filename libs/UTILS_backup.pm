@@ -57,7 +57,7 @@ sub UTILS_list_backups{
  {
   foreach $dir (@reversed_dirs) {
    #
-   print "Dir sorted $dir pippo\n";
+   #print "Dir sorted $dir pippo\n";
    @REPS = glob("$dir/REPORT*");
    open(REPORT,"<","$suite_dir/$REPS[0]");
    @lines = <REPORT>;

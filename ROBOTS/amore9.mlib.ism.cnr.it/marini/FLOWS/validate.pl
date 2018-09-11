@@ -25,6 +25,7 @@
  THREADS     => 8,
 },
 {
+ ACTIVE      => "no",
  MPI_CPU     => 8,
  SLK_CPU     => 4,
  PAR_MODE    => "random",
