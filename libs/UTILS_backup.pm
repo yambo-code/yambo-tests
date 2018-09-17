@@ -68,7 +68,7 @@ sub UTILS_list_backups{
    @lines = <REPORT>;
    undef $date;
    undef $time;
-   &PHP_key_words;
+   &PHP_key_words($REPS[0]);
    $data_id++;
    close(REPORT);
    #
@@ -78,6 +78,7 @@ sub UTILS_list_backups{
     if ($date) {
      print "DATE  : $date\n";
      print "TIME  : $time\n";
+     print "ROBOTO: $robot_id\n";
      print "BRANCH: $branch_key\n";
      print "FC    : $FC_kind $MPI_kind\n";
     }
@@ -126,7 +127,7 @@ if (not $RUNNING_suite)
  if ($file =~ /BENCH/) {$mode="bench"};
  open(REPORT,"<","$suite_dir/$file");
  @lines = <REPORT>;
- &PHP_key_words;
+ &PHP_key_words($file);
  close(REPORT);
  $day=(split("-",$date))[1];
  $str1=(split("-",$date))[0];

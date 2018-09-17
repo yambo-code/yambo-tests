@@ -35,7 +35,7 @@ foreach $dir (@reversed_dirs) {
   $i_file = $i_file+1;
   open(REPORT,"<","$suite_dir/$file");
   @lines = <REPORT>;
-  &PHP_key_words;
+  &PHP_key_words($file);
   if ($i_file eq 1) {$branch_ref=$branch_key;};
   if ($branch_key =~ "bug-fixes_copy" or $branch_key =~ "max-release" ) {next};
   if (! ("$branch_key" eq "$branch_ref") ) {next};
@@ -47,6 +47,8 @@ foreach $dir (@reversed_dirs) {
 }
 #
 sub PHP_key_words{
+ $robot_id = (split(/REPORT-R/,@_[0]))[1];
+ $robot_id = (split(/-/,$robot_id))[0];
  &get_line("Build");
  if ($n_patterns eq 0) {return};
  $branch_key=$pattern[0][1];
@@ -65,7 +67,6 @@ sub PHP_key_words{
 $Yambo_precision="unknown";
 &get_line("Compilation Precision");
 if ($n_patterns > 0) { $Yambo_precision=$pattern[0][2];  };
-
 #
 &get_line("Date");
 $date=$pattern[0][3];
@@ -189,7 +190,7 @@ if ($n_patterns eq 0){
 #
 open($dat, '>', $main_dat) or die "Could not open file '$main_dat' $!";
 &MESSAGE("DAT","$REVISION\nFC_kind $FC_kind\nMPI_kind $MPI_kind\nBUILD $BUILD\nPrecision $Yambo_precision\n");
-&MESSAGE("DAT","DATE $date\nTIME $time\nRUN $duration\n");
+&MESSAGE("DAT","DATE $date\nTIME $time\nRUN $duration\nROBOT $robot_id\n");
 &MESSAGE("DAT","TESTS $running_tests\nPROJ $projects\n");
 &MESSAGE("DAT","\n");
 
