@@ -256,7 +256,9 @@ foreach $file (<$dir/compilation/*conf*.log>) {&command("cat $file >> $conf_php"
 # LOGs and compilation as tgz file
 &CWD_save;
 chdir($dir);
-if ( -f "compilation/*comp*.log"){ &command("tar -czf $comp_tgz compilation/*comp*.log"); };
+$compress="no";
+foreach $file (<compilation/*comp*.log>) {  $compress="yes"; };
+if ( "$compress" == "yes" ){ &command("tar -czf $comp_tgz compilation/*comp*.log"); };
 &command("tar -czf $logs_tgz LOG*.log");
 &CWD_go;
 &command("mv $dir/*.tgz ./");
