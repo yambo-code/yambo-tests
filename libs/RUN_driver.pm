@@ -174,7 +174,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
     #
     # ...Random PAR and FAILED conf?
     #
-    while ($random_parallel and $CHECK_error eq "WRONG CPU configuration" and $N_random_tries<10) { 
+    while ($random_parallel and $CHECK_error eq "WRONG CPU configuration" and $N_random_tries<30) { 
      $test_ok_action="INCREASE";
      #print "$testname INIT\n";
      &RUN_load_PAR_fields;
