@@ -78,7 +78,7 @@ sub UTILS_list_backups{
     if ($date) {
      print "DATE  : $date\n";
      print "TIME  : $time\n";
-     print "ROBOTO: $robot_id\n";
+     print "ROBOT : $robot_id\n";
      print "BRANCH: $branch_key\n";
      print "FC    : $FC_kind $MPI_kind\n";
     }
