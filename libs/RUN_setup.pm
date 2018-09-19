@@ -97,6 +97,7 @@ if ("@_" =~ "after_run"){
  foreach $file (<l-*$testname*>) 			{ move($file,$dir_name) };
  foreach $file (<LOG/l*$testname*>)		{ move($file,$dir_name) };
  if( -e "l_stderr")   { move("l_stderr","$dir_name/l-${testname}_stderr") };
+ if( -e "r_stderr")   { move("r_stderr","$dir_name/r-${testname}_stderr") };
  #
 }
 if ("@_" =~ "after_tests_loop"){
