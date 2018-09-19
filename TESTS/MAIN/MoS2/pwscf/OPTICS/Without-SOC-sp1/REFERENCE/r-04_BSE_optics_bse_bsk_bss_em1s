@@ -12,7 +12,7 @@
                          MPI+SLK Build                          
                    http://www.yambo-code.org                    
  
- 09/19/2018 at 10:21 YAMBO @ narro
+ 09/19/2018 at 11:13 YAMBO @ narro
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -170,10 +170,9 @@
   Polarization last K   : 3
   QP states             : 1  3
   X grid is uniform     :yes
- *ERR* BS scattering         :no
+  BS scattering         :yes
   COLL scattering       :no
  - S/N 000547 -------------------------- v.04.03.00 r.15734 -
- [RL indx] Q-grid:User defined / from ndb.kindx.
 
  IBZ Q-points : 3
  BZ  Q-points :  9
@@ -185,18 +184,6 @@
  Q [00001] : 0.00      0.00      0.00     (cc ) * weight  0.111111
  Q [00002] : 0.000000  0.411488  0.000000 (cc ) * weight  0.666667
  Q [00003] : 0.356359  0.617232  0.000000 (cc ) * weight  0.222222
-
- :: Indices: polarization function + BSE
- :: Indices: Self-Energy
-
- [WR./SAVE//ndb.kindx]---------------------------------------
-  Fragmentation                    :no
-  Polarization last K   : 3
-  QP states             : 1  3
-  X grid is uniform     :yes
-  BS scattering         :yes
-  COLL scattering       :no
- - S/N 000547 -------------------------- v.04.03.00 r.15734 -
 
   [03.01] External/Internal QP corrections
   ========================================
@@ -381,7 +368,7 @@
     BS kernel          wavefunctions :Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies      :Slater exchange(X)+Perdew & Zunger(C)
                        wavefunctions :Slater exchange(X)+Perdew & Zunger(C)
-    BSK|Identifier              :  748
+    BSK|Identifier              : 259
        |Dimension               :  54
        |Bands                   : 11  15
        |Exchange           [res]:yes
@@ -422,7 +409,7 @@
 
   [WR./04_BSE//ndb.BS_diago_Q01]------------------------------
    BS kernel          energies      : Analyt. E
-   BSK|Identifier              :  748
+   BSK|Identifier              : 259
       |Dimension               :  54
       |Bands                   : 11  15
       |Exchange           [res]:yes
@@ -449,7 +436,7 @@
    RIM|RL components      [col]:0
       |Random points      [col]:0
   - S/N 000547 -------------------------- v.04.03.00 r.15734 -
-   BSK Identifier                  :  748
+   BSK Identifier                  : 259
    Excitonic eigenstates included  :no
    Field direction                 :0.1000E-4  0.000     0.000   
    Number of eigenstates included  :  54
@@ -458,22 +445,22 @@
   [06.02] Inversion solver
   ========================
 
-  [PERTURBATIVE INV@EPS] Converged frequencies : 208
-  [FULL INV@EPS] Frequencies TODO :  92
-  [FULL INV@EPS] Frequencies DONE      : 300
+  [PERTURBATIVE INV@EPS] Converged frequencies : 168
+  [FULL INV@EPS] Frequencies TODO :  83
+  [FULL INV@EPS] Frequencies DONE      : 251
   [FULL INV@EPS]                  [o/o]: 100.0000
   [WR./04_BSE//ndb.BS_invert_Q1]------------------------------
    BS kernel          energies      : Analyt. E
-   BSK Identifier                  :  748
+   BSK Identifier                  : 259
    Field direction                 :0.1000E-4  0.000     0.000   
    Using energy Double Grid        :no
-   Energy range                [ev]:  0.10000   4.00000
+   Energy range                [ev]:-1.000000  5.000000
    Damping range               [ev]:  0.05000   0.05000
    Damping reference energy    [ev]: 0.000000
-   [EPS] Number of frequencies     : 300
+   [EPS] Number of frequencies     : 251
    [EPS] Perturbative to full ratio: 1.000000
    [EPS] Treshold             [o/o]:   0.0100
-   [PL]  Number of frequencies     : 300
+   [PL]  Number of frequencies     : 251
    [PL]  Perturbative to full ratio: 1.000000
    [PL]  Treshold             [o/o]: 0.500000
   - S/N 000547 -------------------------- v.04.03.00 r.15734 -
@@ -482,10 +469,10 @@
   ======================
 
   Accuracy (requested) [o/o]:0.1000E-2
-  Accuracy (reached)   [o/o]:0.9933E-3
+  Accuracy (reached)   [o/o]:0.9306E-3
   Iterations                :  33
 
- Timing [Min/Max/Average]: 12s/12s/12s
+ Timing [Min/Max/Average]: 10s/10s/10s
 
  [07] Timing Overview
  ====================
@@ -493,7 +480,7 @@
  Routines: global (Only MASTER cpu here)
                                     io_WF :     0.00s CPU (      16 calls,   0.001 s avg)
                                   io_GROT :     0.00s CPU (       2 calls,   0.007 s avg)
-                                 io_QINDX :     0.00s CPU (       3 calls,   0.001 s avg)
+                                 io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
                                io_COL_CUT :     0.00s CPU
                            io_Double_Grid :     0.00s CPU
                                     io_HF :     0.00s CPU
@@ -502,19 +489,18 @@
                              io_KB_abinit :     0.00s CPU
                                      io_X :     0.00s CPU (      13 calls,   0.002 s avg)
                                     io_BS :     0.00s CPU (       9 calls,   0.000 s avg)
-                          bz_samp_indexes :     0.00s CPU
                   IO_and_Messaging_switch :     0.00s CPU (       7 calls,   0.000 s avg)
                                   Dipoles :     0.00s CPU (       2 calls,   0.447 s avg)
                         DIPOLE_transverse :     0.00s CPU
                              PP_uspp_init :     0.00s CPU (       3 calls,   0.000 s avg)
                               WF_load_FFT :     0.00s CPU (       3 calls,   0.019 s avg)
                               io_fragment :     0.00s CPU (      25 calls,   0.000 s avg)
-                                FFT_setup :     0.00s CPU (       4 calls,   0.232 s avg)
-                           Xo (procedure) :     7.00s CPU (       3 calls,   2.623 s avg)
+                                FFT_setup :     0.00s CPU (       4 calls,   0.233 s avg)
+                           Xo (procedure) :     7.00s CPU (       3 calls,   2.602 s avg)
                                Xo (REDUX) :     0.00s CPU (       3 calls,   0.000 s avg)
                             X (procedure) :     0.00s CPU (       3 calls,   0.003 s avg)
   MATRIX transfer (X_G_all_q_X_redux_1_1) :     0.00s CPU (       3 calls,   0.000 s avg)
-                           LINEAR ALGEBRA :     0.00s CPU (      96 calls,   0.002 s avg)
+                           LINEAR ALGEBRA :     0.00s CPU (     170 calls,   0.002 s avg)
                         SERIAL_lin_system :     0.00s CPU (       3 calls,   0.001 s avg)
                                 X (REDUX) :     0.00s CPU (       3 calls,   0.000 s avg)
   MATRIX transfer (X_G_all_q_X_redux_2_1) :     0.00s CPU (       3 calls,   0.000 s avg)
@@ -522,24 +508,24 @@
                                T_space IP :     0.00s CPU
                          X T_space Kernel :     0.00s CPU
                          T_space EXX Osc. :     0.00s CPU (       3 calls,   0.003 s avg)
-                        T_space CORR Osc. :     0.00s CPU (       6 calls,   0.028 s avg)
+                        T_space CORR Osc. :     0.00s CPU (       6 calls,   0.026 s avg)
                              Diago Solver :     0.00s CPU
                              io_BSS_diago :     0.00s CPU (       2 calls,   0.001 s avg)
          SERIAL_HERMITIAN_diagonalization :     0.00s CPU
                          Inversion Solver :     0.00s CPU
                             io_BSS_invert :     0.00s CPU (       3 calls,   0.002 s avg)
-                         SERIAL_inversion :     0.00s CPU (      92 calls,   0.002 s avg)
-                           Haydock Solver :    11.00s CPU
+                         SERIAL_inversion :     0.00s CPU (     166 calls,   0.002 s avg)
+                           Haydock Solver :     8.00s CPU
                            io_BSS_Haydock :     0.00s CPU (       2 calls,   0.000 s avg)
 
  [08] Game Over & Game summary
  =============================
 
- 09/19/2018 at 10:21 YAMBO @ narro [start]
- 09/19/2018 at 10:22               [end]
+ 09/19/2018 at 11:13 YAMBO @ narro [start]
+ 09/19/2018 at 11:13               [end]
 
- Timing   [Min/Max/Average]: 22s/22s/22s
-             [Time-Profile]: 22s
+ Timing   [Min/Max/Average]: 20s/20s/20s
+             [Time-Profile]: 20s
 
  .-ACKNOWLEDGMENT
  |
@@ -565,7 +551,7 @@
  | BoseTemp= 0.000000     eV      # Bosonic Temperature
  | FFTGvecs=  8845        RL      # [FFT] Plane-waves
  | Chimod= "Hartree"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
- | BSEmod= "resonant"             # [BSE] resonant/retarded/coupling
+ | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
  | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
  | BSSmod= "hdi"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
  | BSENGexx= 109          RL      # [BSK] Exchange components
@@ -575,12 +561,12 @@
  |  1.000000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
  | %
  | % BEnRange
- |   0.10000 |  4.00000 | eV      # [BSS] Energy range
+ | -1.000000 | 5.000000 | eV      # [BSS] Energy range
  | %
  | % BDmRange
  |   0.05000 |  0.05000 | eV      # [BSS] Damping range
  | %
- | BEnSteps= 300                  # [BSS] Energy steps
+ | BEnSteps= 251                  # [BSS] Energy steps
  | % BLongDir
  | 0.1000E-4 | 0.000    | 0.000    |        # [BSS] [cc] Electric Field
  | %
