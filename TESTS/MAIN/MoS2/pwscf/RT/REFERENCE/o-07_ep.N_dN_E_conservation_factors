@@ -1,19 +1,20 @@
 #                                                           
-#   __   __     _        __  __       ____      U  ___  u   
-#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
-#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
-#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
-#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
-# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
-#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
+#                                                           
+# Y88b    /   e           e    e      888~~\    ,88~-_      
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \     
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |    
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |    
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /     
+#    /   /      Y88b /          Y888b 888__/    `88_-~      
 #                                                           
 #                                                           
-#        Version 4.3.0 Revision 15232 Hash 70fc818          
-#                      MPI+SLK Build                        
-#                http://www.yambo-code.org                  
+#      Version 4.3.0 Revision 15745 Hash 3e4510275          
+#                  MPI+SLK+OpenMP Build                     
+#               http://www.yambo-code.org                   
 #
 # [RT] Bands                      :23 - 30
 # [RT] K-points                   :9
+# [RT] Potential                  :HARTREE+SEX
 # [E-P] Electron-phonon           : yes
 # [E-P] Completed Collision(CCA)  : yes
 # [E-P] Branches                  :1 - 9
@@ -30,11 +31,7 @@
 # [RT] I/O time               [fs]: 1.000000
 # [RT] NE steps         (done)[fs]:1251
 # [RT] Lifetimes extrapolation    : no
-# [dT] Update                     : no
-# [dT] Starting Time          [fs]: 0.000000
-# [dT] Update interval        [fs]: 0.000000
-# [dT] Update interval tresh [o/o]: 2.000000
-# [dT] Max step in dynamics   [fs]: 0.000000
+# [dT] Time-Dependent Time step   : no
 # [RT] Integrator                 :EULER + RK2 + RWA
 # [RT] Radiative life time    [fs]: 0.000000
 # [RT] Dephasing life time    [fs]: 0.000000
@@ -169,17 +166,18 @@
      48.00000381       0.1704570372E-2    -.2618781291E-3
      48.48000336       0.1657637651E-2    -.2649801900E-3
      48.95999908       0.1669808291E-1    -.4851483181E-1
-     49.44000244       0.1842082851E-1    -.4937914759E-1
-     49.92000198       0.2010702528E-1    -.5024740845E-1
+     49.44000244       0.1563743106E-2    -.2860533714E-3
+     49.92000198       0.1515192329E-2    -.2875840582E-3
 # 
-# 02/05/2018 at 16:49 YAMBO_RT @ narro [start]
-# 02/05/2018 at 16:49                  [end]
+# 09/18/2018 at 15:41 YAMBO_RT @ anomaly [start]
+# 09/18/2018 at 15:41                    [end]
 #  
-# Timing   [Min/Max/Average]: 13s/13s/13s
+# Timing   [Min/Max/Average]: 12s/12s/12s
 #
 # .-Input file : yambo.in
 # | negf                           # [R] Real-Time dynamics
 # | el_ph_scatt                    # [R] Electron-Phonon   Scattering
+# | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
 # | HXC_Potential= "HARTREE+SEX"   # [SC] SC HXC Potential
 # | FFTGvecs= 2005         RL      # [FFT] Plane-waves
 # | % GfnQP_E
@@ -191,6 +189,7 @@
 # | % GfnQP_Wc
 # |   0.10000 |  0.00000 |  0.00000 |        # [EXTQP G] W parameters  (conduction) eV| 1 |eV^-1
 # | %
+# | RTEvalEnergy                   # [RT] Energy variation computed on the fly
 # | RTEvalEntropy                  # [RT] Entropy variation computed on the fly
 # | #LifeExtrapolation             # [RT] Skipped Lifetimes are extrapolated
 # | % LifeExtrapSteps
@@ -210,7 +209,7 @@
 # | RTstep= 40.00000       as      # [RT] Real Time step length
 # | NETime= 50.00000       fs      # [RT] Simulation Time
 # | % IOtime
-# |  0.240000 | 1.000000 | 0.480000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+# |  0.240000 | 1.000000 | 0.480000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
 # | %
 # | % Field1_Freq
 # |  2.685000 | 2.685000 | eV      # [RT Field1] Frequency
@@ -227,3 +226,6 @@
 # |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
 # | %
 # | Field1_Tstart= 0.240000fs      # [RT Field1] Initial Time
+# | %DephMatrix                    # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
+# | 1|1|1|-1.000000|
+# | %
