@@ -1,26 +1,36 @@
-     __  __   ________   ___ __ __    _______   ______          
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\         
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \        
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \       
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \      
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \     
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/     
                                                                 
-                  Version 3.4.0 Revision 2294                   
-                   http://www.yambo-code.org                    
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.     
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb    
+      `88. .8" .8"88.    888b     d"88  88     888 88      88   
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88   
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88   
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"   
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"    
+                                                                
+                                                                
+            Version 4.3.0 Revision 15734 Hash 50fd1d2           
+                          MPI+SLK Build                         
+                    http://www.yambo-code.org                   
  
- YAMBO@petz x 001 CPUs * 05/10/2013  10:59
+ 09/19/2018 at 10:25 YAMBO @ narro
 
- [01] Files & I/O Directories
- ============================
+ [01] CPU structure, Files & I/O Directories
+ ===========================================
 
- CORE databases in .
- Additional I/O in .
- Communications in .
- Input file     is INPUTS/03_RPA_LF
- Report file    is ./r-03_RPA_LF_optics_chi
- Job string     is 03_RPA_LF
- Log file       is ./l-03_RPA_LF_optics_chi
+ * CPU             : 1
+ * THREADS    (max): 1
+ * THREADS TOT(max): 1
+ * I/O NODES       : 1
+ * Fragmented WFs  :yes
+
+ CORE databases in   .
+ Additional I/O in   .
+ Communications in   .
+ Input file     is   yambo.in
+ Report file    is   ./r-03_RPA_LF_optics_chi
+ Job string(main): 03_RPA_LF
+             (#1): R21
+ Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
   Bands                           :  32
@@ -36,7 +46,7 @@
   Max atoms/species               : 2
   No. of atom species             : 2
   Magnetic symmetries             : no
- - S/N 005813 --------------------------- v.03.02.05 r.1762 -
+ - S/N 003980 -------------------------- v.04.01.00 r.13843 -
 
  [02] CORE Variables Setup
  =========================
@@ -51,17 +61,17 @@
 
   ... with scaling factors [a.u.]:  5.92038   5.12720  30.00000
 
-  Direct Lattice(DL) unit cell [iru]
-  A1 = 1.000000  0.000000  0.000000
-  A2 =-0.500000  1.000000  0.000000
-  A3 = 0.000000  0.000000  1.000000
+  Direct Lattice(DL) unit cell [iru  /  cc(a.u.)]
+  A1 = 1.000000  0.000000  0.000000      5.920381  0.000000  0.000000
+  A2 =-0.500000  1.000000  0.000000     -2.960191  5.127200  0.000000
+  A3 = 0.000000  0.000000  1.000000      0.000000  0.000000  30.00000
 
   DL volume [au]: 910.6494
 
-  Reciprocal Lattice(RL) unit cell [iku]
-  B1 = 1.000000  0.500000  0.000000
-  B2 = 0.000000  1.000000  0.000000
-  B3 = 0.000000  0.000000  1.000000
+  Reciprocal Lattice(RL) unit cell [iku  /  cc]
+  B1 = 1.000000  0.500000  0.000000      1.061281  0.612731 -0.000000
+  B2 = 0.000000  1.000000  0.000000      0.000000  1.225461  0.000000
+  B3 = 0.000000  0.000000  1.000000      0.000000 -0.000000  0.209440
 
 
   [02.02] Symmetries
@@ -100,83 +110,94 @@
    ...
    [S12]:57( 1075.) [S11]:55( 948.2697) [S10]:43( 838.6074) [S9]:31( 789.5684)
    [S8]:29( 772.8101) [S7]:17( 750.8776) [S6]:11( 548.3114) [S5]:9( 350.9193)
-   [S4]:7( 197.3921) [S3]:5( 87.72982) [S2]:3( 21.93246) [S1]:1( 0.000000)
+   [S4]:7( 197.3921) [S3]:5( 87.72982) [S2]:3( 21.93245) [S1]:1( 0.000000)
 
   [02.04] K-grid lattice
   ======================
 
   Compatible Grid is 2D
-  B1 [rlu]=0.1667    -.7451E-8  0.000   
-  B2      =0.7451E-8 -.1667     0.000   
+  B1 [rlu]=0.4406E-8 -.1667     0.000   
+  B2      =-.1667    0.1242E-7  0.000   
   Grid dimensions               :  6   6
   K lattice UC volume       [au]:   0.0076
 
   [02.05] Energies [ev] & Occupations
   ===================================
 
-  Fermi Level        [ev]:-0.884595
-  Electronic Temp. [ev K]:  0.00      0.00    
-  Bosonic    Temp. [ev K]:  0.00      0.00    
-  El. density      [cm-3]: 0.193E+24
-  States summary         : Full        Metallic    Empty
-                           0001-0026               0027-0032
-  Indirect Gaps      [ev]: 1.776788  2.816610
-  Direct Gaps        [ev]: 1.776788  3.310870
+  [X]Fermi Level        [ev]: -0.884595
+  [X]VBM / CBm          [ev]:  0.000000  1.776788
+  [X]Electronic Temp. [ev K]:  0.00      0.00    
+  [X]Bosonic    Temp. [ev K]:  0.00      0.00    
+  [X]Finite Temperature mode: no
+  [X]El. density      [cm-3]: 0.193E+24
+  [X]States summary         : Full        Metallic    Empty
+                                 0001-0026               0027-0032
+  [X]Indirect Gaps      [ev]: 1.776788  2.816609
+  [X]Direct Gaps        [ev]: 1.776788  3.310870
   X BZ K-points :  36
 
   Energy unit is electronVolt [eV]
 
-  *X* K [1] : 0.000000  0.000000  0.000000 (iku) * Comp.s 2525 * weight   0.02778
-  E -57.97374 -57.97374 -35.77087 -35.77087 -33.19184 -33.19184 -32.96627 -32.96627
+  *X* K [1] : 0.000000  0.000000  0.000000 ( cc) * Comp.s 2525 * weight   0.02778
+              0.000000  0.000000  0.000000 (rlu)
+  E -57.97375 -57.97375 -35.77087 -35.77087 -33.19184 -33.19184 -32.96627 -32.96627
   E -14.18496 -14.18496 -12.84430 -12.84430  -5.72940  -5.72940  -2.73071  -2.73071
-  E -2.638955 -2.638955 -1.845330 -1.845330 -1.546235 -1.546235 -1.492518 -1.492518
+  E -2.638955 -2.638955 -1.845329 -1.845329 -1.546235 -1.546235 -1.492518 -1.492518
   E -0.125084 -0.125084  2.875019  2.875019  2.910397  2.910397  3.167351  3.168062
    
-  *X* K [2] : 0.166667   0.08333  0.000000 (iku) * Comp.s 2501 * weight  0.166667
-  E -57.90926 -57.90926 -35.79852 -35.79852 -33.20272 -33.20272 -33.03715 -33.03715
+  *X* K [2] : 0.176880  0.102122  0.000000 ( cc) * Comp.s 2501 * weight  0.166667
+              0.166667 -.7451E-8  0.000000 (rlu)
+  E -57.90927 -57.90927 -35.79852 -35.79852 -33.20272 -33.20272 -33.03715 -33.03715
   E -13.75593 -13.75593 -12.67588 -12.67588  -5.31626  -5.31626  -3.40786  -3.40786
-  E -3.046044 -3.046044 -2.233218 -2.233218 -2.093833 -2.093833 -1.034904 -1.034904
+  E -3.046044 -3.046044 -2.233218 -2.233218 -2.093833 -2.093833 -1.034905 -1.034905
   E -0.368967 -0.368967  2.332706  2.332706  2.646877  2.646877  2.775106  2.775106
    
-  *X* K [3] : 0.333333  0.166667  0.000000 (iku) * Comp.s 2541 * weight  0.166667
-  E -57.98479 -57.98479 -35.87119 -35.87119 -33.30361 -33.30361 -33.12824 -33.12824
+  *X* K [3] : 0.353760  0.204244  0.000000 ( cc) * Comp.s 2541 * weight  0.166667
+              0.333333 -.1490E-7  0.000000 (rlu)
+  E -57.98479 -57.98479 -35.87118 -35.87118 -33.30360 -33.30360 -33.12824 -33.12824
   E -12.78474 -12.78474 -12.29628 -12.29628  -5.41196  -5.41196  -4.34690  -4.34690
   E -3.877173 -3.877173 -2.935284 -2.935284 -1.629639 -1.629639 -1.304087 -1.304087
   E -1.039822 -1.039822  2.271049  2.271049  2.371936  2.371936  3.473655  3.473655
    
-  *X* K [4] : 0.500000  0.250000  0.000000 (iku) * Comp.s 2530 * weight   0.08333
-  E -57.94670 -57.94670 -35.90624 -35.90624 -33.36790 -33.36790 -33.13780 -33.13780
-  E -12.17578 -12.17578 -12.06993 -12.06993  -5.91014  -5.91014  -4.96025  -4.96025
+  *X* K [4] : 0.530640  0.306365  0.000000 ( cc) * Comp.s 2530 * weight   0.08333
+              0.500000 -.1490E-7  0.000000 (rlu)
+  E -57.94671 -57.94671 -35.90624 -35.90624 -33.36790 -33.36790 -33.13780 -33.13780
+  E -12.17578 -12.17578 -12.06993 -12.06993  -5.91015  -5.91015  -4.96025  -4.96025
   E -4.187744 -4.187744 -3.265442 -3.265442 -1.913129 -1.913129 -0.867555 -0.867555
   E -0.618913 -0.618913  2.316593  2.316593  2.864456  2.864456  3.933514  3.933514
    
-  *X* K [5] : 0.166667  0.250000  0.000000 (iku) * Comp.s 2521 * weight  0.166667
+  *X* K [5] : 0.176880  0.306365  0.000000 ( cc) * Comp.s 2521 * weight  0.166667
+              0.166667  0.166667  0.000000 (rlu)
   E -57.94645 -57.94645 -35.85519 -35.84535 -33.25983 -33.25758 -33.12984 -33.11737
   E -13.06152 -13.04076 -12.39370 -12.39211  -5.12188  -5.09260  -3.82494  -3.81047
   E -3.750378 -3.742990 -3.326439 -3.303656 -2.006397 -1.930630 -0.971537 -0.968407
   E -0.887516 -0.822134  1.886939  1.962179  2.549066  2.565115  2.693968  2.734875
    
-  *X* K [6] : 0.333333  0.333333  0.000000 (iku) * Comp.s 2532 * weight  0.333333
-  E -57.95786 -57.95786 -35.91315 -35.89287 -33.35223 -33.32608 -33.17580 -33.17227
+  *X* K [6] : 0.353760  0.408487  0.000000 ( cc) * Comp.s 2532 * weight  0.333333
+              0.333333  0.166667  0.000000 (rlu)
+  E -57.95786 -57.95786 -35.91315 -35.89287 -33.35223 -33.32608 -33.17579 -33.17227
   E -12.22412 -12.17210 -12.05061 -12.04674  -5.45693  -5.44669  -5.10181  -5.08553
   E -3.878696 -3.867159 -3.316741 -3.306380 -2.381842 -2.304685 -1.709323 -1.704441
-  E -0.580578 -0.480220  2.263049  2.291283  2.863151  2.975488  3.375093  3.390118
+  E -0.580578 -0.480220  2.263050  2.291283  2.863151  2.975488  3.375093  3.390118
    
-  *X* K [7] : 0.333333  0.500000  0.000000 (iku) * Comp.s 2529 * weight   0.05556
+  *X* K [7] : 0.353760  0.612731  0.000000 ( cc) * Comp.s 2529 * weight   0.05556
+              0.333333  0.333333  0.000000 (rlu)
   E -57.94764 -57.94764 -35.93189 -35.90110 -33.35873 -33.29307 -33.24185 -33.22097
   E -11.92239 -11.89534 -11.89121 -11.83947  -5.67579  -5.65313  -4.66860  -4.66818
   E -4.250036 -4.138606 -3.572016 -3.542171 -2.919041 -2.918102 -2.205426 -2.181173
-  E -0.133371  0.000000  1.776788  1.781001  2.979913  3.026572  3.639318  3.773362
+  E -0.133371  0.000000  1.776788  1.781001  2.979913  3.026572  3.639317  3.773361
 
  [03] Transferred momenta grid
  =============================
 
  [RD./SAVE//ndb.kindx]---------------------------------------
+  Fragmentation                    :no
   Polarization last K   :  7
   QP states             :  1   7
   X grid is uniform     :yes
   BS scattering         :no
- - S/N 005813 --------------------------- v.03.04.00 r.2294 -
+  COLL scattering       :no
+ - S/N 003980 -------------------------- v.04.03.00 r.15734 -
 
  IBZ Q-points :  7
  BZ  Q-points :  36
@@ -188,56 +209,108 @@
  Q [00005] : 0.166667  0.250000  0.000000 (iku) * weight  0.166667
  Q [00006] : 0.333333  0.333333  0.000000 (iku) * weight  0.333333
  Q [00007] : 0.333333  0.500000  0.000000 (iku) * weight   0.05556
+  
+ Q [00001] : 0.00      0.00      0.00     (cc ) * weight   0.02778
+ Q [00002] :  0.17688   0.10212   0.00000 (cc ) * weight  0.166667
+ Q [00003] : 0.353760  0.204244  0.000000 (cc ) * weight  0.166667
+ Q [00004] : 0.530640  0.306365  0.000000 (cc ) * weight   0.08333
+ Q [00005] : 0.176880  0.306365  0.000000 (cc ) * weight  0.166667
+ Q [00006] : 0.353760  0.408487  0.000000 (cc ) * weight  0.333333
+ Q [00007] : 0.353760  0.612731  0.000000 (cc ) * weight   0.05556
 
- [04] External QP corrections (X)
- ================================
+  [03.01] External/Internal QP corrections
+  ========================================
 
- -- [QP@X] Linear/Quadratic extrapolation -------------------
- === QP/DB derived ===
- === Additional ===
-  Energies 0th order c/v [ev]: 0.700000  0.000000
-  Energies 1st order         : 1.000000  1.000000
- ------------------------------------------------------------
- [QP] Fermi level variation [ev]: 0.000000
- [QP] Last Filled/Metallic band : 26  26
- [QP] Ind. Gap Correction  [ev]: 0.700000
+  [X]Fermi Level        [ev]:  0.000000
+  [X]VBM / CBm          [ev]:  0.000000  2.476788
+  [X]Electronic Temp. [ev K]:  0.00      0.00    
+  [X]Bosonic    Temp. [ev K]:  0.00      0.00    
+  [X]Finite Temperature mode: no
+  [X]El. density      [cm-3]: 0.193E+24
+  [X]States summary         : Full        Metallic    Empty
+                                 0001-0026               0027-0032
+  [X]Indirect Gaps      [ev]: 2.476788  3.516609
+  [X]Direct Gaps        [ev]: 2.476788  4.010870
+  [QP apply] Ind. Gap Correction   [ev]: 0.700000
 
- [05] Optics
+ [04] Optics
  ===========
 
- [WF loader] Normalization (few states)  min/max  : 0.0000000  1.0000041
+ [RD./SAVE//ns.kb_pp]----------------------------------------
+  Fragmentation                    :yes
+ - S/N 003980 -------------------------- v.04.03.00 r.15734 -
+ [WF] Performing Wave-Functions I/O from ./SAVE
 
- [X] Using Kohn-Sham energies for the dipoles
+ [WF loader] Normalization (few states)  min/max  :0.6002E-10  1.000    
 
- [WR./03_RPA_LF//ndb.dipoles]--------------------------------
+ [X] Using energies without QP corrections for the dipoles
+
+ [WR./03_RPA_LF//ndb.dip_iR_and_P]---------------------------
   Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
   RL vectors                   (WF):  3281
+  Fragmentation                    :yes
   Electronic Temperature        [K]: 0.0000000
   Bosonic    Temperature        [K]: 0.0000000
   X band range           : 11  30
+  X band range limits    : 26  27
   X e/h energy range [ev]:-1.0000000 -1.0000000
-  Metallic bands         : 26
-  Filled bands           : 26
   RL vectors in the sum  :  3281
   [r,Vnl] included       :yes
-  Transitions ordered    :yes
   Using shifted grids    :no
+  Using covariant dipoles:no
+  Using G-space approach :yes
+  Using R-space approach :no
+  Direct v evaluation    :no
   Field momentum norm    :0.10000E-4
   Wavefunctions          :Teter 93(XC)
- - S/N 005813 --------------------------- v.03.04.00 r.2294 -
- [X-CG] R(p) Tot o/o(of R)  :  256  2304   100
+ - S/N 003980 -------------------------- v.04.03.00 r.15734 -
+ [WF] Performing Wave-Functions I/O from ./SAVE
+
  [FFT-X] Mesh size:  12   12   54
 
+ [X-CG] R(p) Tot o/o(of R)  :  253  2304   100
 
- CpuTiming [Min/Max/Average]: 35s/35s/35s
+ Timing [Min/Max/Average]: 18s/18s/18s
+
+ [05] Timing Overview
+ ====================
+
+ Routines: global (Only MASTER cpu here)
+                                    io_WF :     0.00s CPU (      19 calls,   0.001 s avg)
+                                  io_GROT :     0.00s CPU (       2 calls,   0.001 s avg)
+                                 io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
+                               io_COL_CUT :     0.00s CPU
+                           io_Double_Grid :     0.00s CPU
+                                    io_HF :     0.00s CPU
+                               io_DIPOLES :     0.00s CPU (      10 calls,   0.000 s avg)
+                              io_KB_pwscf :     0.00s CPU (       2 calls,   0.000 s avg)
+                             io_KB_abinit :     0.00s CPU (       9 calls,   0.001 s avg)
+                                     io_X :     0.00s CPU (       4 calls,   0.000 s avg)
+                                    io_BS :     0.00s CPU
+                  IO_and_Messaging_switch :     0.00s CPU (       4 calls,   0.000 s avg)
+                                  Dipoles :     1.00s CPU
+                        DIPOLE_transverse :     1.00s CPU
+                             PP_uspp_init :     0.00s CPU (       2 calls,   0.000 s avg)
+                              WF_load_FFT :     0.00s CPU (       2 calls,   0.037 s avg)
+                              io_fragment :     0.00s CPU (      28 calls,   0.000 s avg)
+                                FFT_setup :     0.00s CPU
+                           Xo (procedure) :    17.00s CPU
+                               Xo (REDUX) :     0.00s CPU
+                            X (procedure) :     0.00s CPU
+     MATRIX transfer (X_G_q0_X_redux_1_1) :     0.00s CPU (     201 calls,   0.000 s avg)
+                           LINEAR ALGEBRA :     0.00s CPU (     201 calls,   0.000 s avg)
+                        SERIAL_lin_system :     0.00s CPU (     201 calls,   0.000 s avg)
+                                X (REDUX) :     0.00s CPU
+     MATRIX transfer (X_G_q0_X_redux_2_1) :     0.00s CPU (     201 calls,   0.000 s avg)
 
  [06] Game Over & Game summary
  =============================
 
- YAMBO@petz x 001 CPUs * 05/10/2013  10:59 [start]
-                         05/10/2013  10:59 [end]
+ 09/19/2018 at 10:25 YAMBO @ narro [start]
+ 09/19/2018 at 10:25               [end]
 
- Cpu Timing [Min/Max/Average]: 36s/36s/36s
+ Timing   [Min/Max/Average]: 18s/18s/18s
+             [Time-Profile]: 18s
 
  .-ACKNOWLEDGMENT
  |
@@ -254,26 +327,26 @@
  | Computer Physics Communications  180, 1392 (2009).
  |
   
- .-Input file : INPUTS/03_RPA_LF
- | optics                       # [R OPT] Optics
- | chi                          # [R CHI] Dyson equation for Chi.
- | BoseTemp= 0.000000     eV    # Bosonic Temperature
- | FFTGvecs=  3281        RL    # [FFT] Plane-waves
- | Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
- | NGsBlkXd=  4           Ry    # [Xd] Response block size
+ .-Input file : yambo.in
+ | optics                         # [R OPT] Optics
+ | chi                            # [R CHI] Dyson equation for Chi.
+ | BoseTemp= 0.000000     eV      # Bosonic Temperature
+ | FFTGvecs=  3281        RL      # [FFT] Plane-waves
+ | Chimod= "Hartree"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+ | NGsBlkXd= 1            Ry      # [Xd] Response block size
  | % QpntsRXd
- |  1 | 1 |                     # [Xd] Transferred momenta
+ |  1 | 1 |                       # [Xd] Transferred momenta
  | %
  | % BndsRnXd
- |  11 | 30 |                   # [Xd] Polarization function bands
+ |  11 | 30 |                     # [Xd] Polarization function bands
  | %
  | % EnRngeXd
- |  2.000000 | 3.000000 | eV    # [Xd] Energy range
+ |  2.000000 | 3.000000 | eV      # [Xd] Energy range
  | %
  | % DmRngeXd
- |   0.02000 |  0.02000 | eV    # [Xd] Damping range
+ |   0.02000 |  0.02000 | eV      # [Xd] Damping range
  | %
- | ETStpsXd=  400               # [Xd] Total Energy steps
+ | ETStpsXd= 201                  # [Xd] Total Energy steps
  | % LongDrXd
  | 0.1000E-4 | 0.000    | 0.000    |        # [Xd] [cc] Electric Field
  | %

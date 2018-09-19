@@ -49,7 +49,7 @@ sub RUN_convert_the_SAVE{
  if(-e "INPUTS/00_init") {$CONV_INPUT="-F INPUTS/00_init";}
  &command("$YAMBO_local $CONV_INPUT $log");
  &command("$YPP_local $log");
- &command("rm -f l_stderr l_setup r_setup");
+ &command("rm -f l_stderr r_stderr l_setup r_setup");
  if(-e "SAVE_backup") {
   &command("rm -r SAVE");
   &command("mv SAVE_backup SAVE_backup_old");
@@ -75,7 +75,7 @@ sub RUN_convert_the_SAVE{
    chdir("shift_1");
    &command("$YAMBO_local $log");
    &command("$YPP_local $log");
-   &command("rm -f l_stderr l_setup r_setup");
+   &command("rm -f l_stderr r_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
    &command("mv FixSAVE/SAVE SAVE");
    chdir("..");
@@ -85,7 +85,7 @@ sub RUN_convert_the_SAVE{
    chdir("shift_2");
    &command("$YAMBO_local $log");
    &command("$YPP_local $log");
-   &command("rm -f l_stderr l_setup r_setup");
+   &command("rm -f l_stderr r_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
    &command("mv FixSAVE/SAVE SAVE");
    chdir("..");
@@ -95,7 +95,7 @@ sub RUN_convert_the_SAVE{
    chdir("shift_3");
    &command("$YAMBO_local $log");
    &command("$YPP_local $log");
-   &command("rm -f l_stderr l_setup r_setup");
+   &command("rm -f l_stderr r_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
    &command("mv FixSAVE/SAVE SAVE");
    chdir("..");
@@ -113,7 +113,7 @@ sub RUN_convert_the_SAVE{
   chdir("SOC_tmp_dir");
   &command("$YAMBO_local $log");
   &command("$YPP_local $log");
-  &command("rm -f l_stderr l_setup r_setup");
+  &command("rm -f l_stderr r_stderr l_setup r_setup");
   &command("mv FixSAVE/SAVE ../SAVE_SOC");
   chdir("..");
  }
