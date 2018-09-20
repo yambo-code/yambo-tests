@@ -100,7 +100,7 @@ else
  &MY_PRINT($stdout, "\nAvailable input files for $listtests are:");
  foreach $el (@dirs)
  {
-   if ($el =~ /INPUTS/) 
+   if ($el =~ /INPUTS/ and not $el =~ /ROBOT/) 
    {
     $tests_list=" ";
     $input_folder=(split '/',$el)[-1];
