@@ -81,23 +81,14 @@ if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 $is_NEW_EXC_SORT="no";
 if ($pattern=~m/devel-BSE-finite-q/ix){$is_NEW_EXC_SORT="yes"};
 #
-undef $do_NL_tests;
-if ($pattern=~m/devel-nl/ix)     {$do_NL_tests="yes"};
-if ($pattern=~m/bug-fixes/ix)      {$do_NL_tests="yes"};
-if ($pattern=~m/devel-rt-rotate/ix)      {$do_NL_tests="yes"};
-if ($pattern=~m/develop/ix)      {$do_NL_tests="yes"};
-if ($pattern=~m/devel-cutoff/ix) {$do_NL_tests="yes"};
-if ($pattern=~m/devel-current-approach/ix) {$do_NL_tests="yes"};
-if ($pattern=~m/devel-slepc/ix) {$do_NL_tests="yes"};
-if ($pattern=~m/master/ix)      {$do_NL_tests="yes"};
-#
 if ($is_GPL) {$branch_key.="_gpl"};
 #
+$do_NL_tests="yes";
 $is_NEW_YPP="yes";
-if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP};
-if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP};
-if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP};
-if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP};
+if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
+if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
+if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
+if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 #
 # Define list of required executables
 $target_list = $target_list_basic; 
