@@ -29,7 +29,8 @@ $MPI_kind_short="unknown";
 while(<SETUP_file>) {
  chomp($_);
  if($_ =~ /fc_kind/) { 
-  ($desc, $equal, $FC_kind) = split(/\s+/,$_);
+  ($desc, $FC_kind) = split(/=/,$_);
+  $FC_kind =~ s/^\s+//;
  }
  if($_ =~ /mpi_kind/) { 
   ($desc, $MPI_kind) = split(/=/,$_);
@@ -40,6 +41,7 @@ while(<SETUP_file>) {
  }
 };
 close(SETUP_file);
+($FC_kind_short)=split(/\s+/,$FC_kind); 
 if($MPI_kind =~ /Open/ ) { $MPI_kind_short="OpenMPI" }; 
 if($MPI_kind =~ /MPICH/) { $MPI_kind_short="MPICH" }; 
 if($MPI_kind =~ /Intel/) { $MPI_kind_short="IntelMPI"}; 
