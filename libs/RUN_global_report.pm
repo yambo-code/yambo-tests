@@ -64,8 +64,8 @@ if ("$what" eq "INIT") {
  &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nProjects                :$project");
  &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nDate - Time             :$date_now - $time_now");
  if ($select_conf_file) {&MESSAGE("REPORT ERROR SKIP WHITE RULES","\nCompilation Scheme      :$select_conf_file")};
- &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nBuild                   :$branch_key - $BUILD - $MPI_kind_short - $FC_kind_short - rev.$REVISION");
- &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nFortran                 :$FC_kind");
+ &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nBuild                   :$branch_key - $BUILD - $MPI_kind_short - $FC_kind - rev.$REVISION");
+ &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nFortran                 :$FC_kind_ext");
  &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nMPI                     :$MPI_kind");
  &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nCompilation Precision   :$Yambo_precision");
  &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nParallel Conf           :$cpu_global_conf - $PAR_mode");
