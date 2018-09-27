@@ -77,7 +77,15 @@ if ( "@_" eq "INPUT") {
  # SLEPC tests only if SLEPC is linked
  if ($testname =~ m/SLEPC/ && not $BUILD =~ /SLEPC/) { 
   my $msg = sprintf("%-"."$left_length"."s", "$testname");
-  $CHECK_error= $msg." skipped (SLPEC test but SLEPC is not linked)";
+  $CHECK_error= $msg." skipped (SLEPC test but SLEPC is not linked)";
+  &RUN_stats("SKIPPED");
+  return "FAIL";
+ };
+ #
+ # p2y HDF5 tests only if p2y compiled with HDF5 support
+ if ($testname =~ m/HDF5/ && not $BUILD =~ /HDF5/) { 
+  my $msg = sprintf("%-"."$left_length"."s", "$testname");
+  $CHECK_error= $msg." skipped (p2y HDF5 test but HDF5 is not linked)";
   &RUN_stats("SKIPPED");
   return "FAIL";
  };
