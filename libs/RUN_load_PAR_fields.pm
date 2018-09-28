@@ -31,9 +31,14 @@ if ($np==1) {
  $MPI_CPU_conf[1]="serial";
  return;
 }
-if ($SETUP=="1" or $yambo_exec =~ /\/ypp/ or $yambo_exec =~ /\/p2y/) { 
+if ($SETUP=="1" or $yambo_exec =~ /\/ypp/) { 
  $Nr="1";
  $MPI_CPU_conf[1]="serial";
+ return;
+}
+if ($yambo_exec =~ /\/p2y/) { 
+ $Nr="1";
+ $MPI_CPU_conf[1]="p2y_par";
  return;
 }
 if ($RIMCUT=="1"){
