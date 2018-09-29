@@ -115,7 +115,7 @@ while($line = shift(@BLINES)) {
  chomp($line);
  next if ( ($line =~ /#/) or ($line eq "") );
  $ib++;
- ($branches[$ib],$branch_identity[$ib],$branch_robot[$ib]) = split(/ /, $line);
+ ($branches[$ib],$branch_identity[$ib],$branch_robot[$ib]) = split ' ', $line;
 }
 close(BRANCHES_file);
 }
