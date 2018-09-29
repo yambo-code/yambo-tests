@@ -26,6 +26,8 @@ sub SETUP_FC_kind{
 open(SETUP_file,"<","$BRANCH/config/setup");
 $MPI_kind="unknown";
 $MPI_kind_short="unknown";
+$FC_kind="unknown";
+$FC_version="";
 while(<SETUP_file>) {
  chomp($_);
  if($_ =~ /fc_kind/) {
