@@ -30,7 +30,7 @@ sub SOURCE_compile{
  @executables = split(/ /, $target_list);
  foreach $make_exec (@executables) {
    &MY_PRINT($stdout, "$make_exec ...");
-   &command("make -j $make_exec >> $comp_logfile 2>&1");
+   &command("make $PAR_COMP $make_exec >> $comp_logfile 2>&1");
    if (not $make_exec =~ /ext-libs/ and not $make_exec =~ /interfaces/)
    {
      if (not -x "$BRANCH/bin/$make_exec") {

@@ -85,8 +85,9 @@ if ($is_GPL) {$branch_key.="_gpl"};
 #
 $do_NL_tests="yes";
 $is_NEW_YPP="yes";
-if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
-if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
+$PAR_COM="-j";
+if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $PAR_COMP;};
+if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $PAR_COMP;};
 if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 #
