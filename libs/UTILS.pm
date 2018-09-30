@@ -63,6 +63,12 @@ sub CWD_save{
 sub CWD_go{
  chdir($cwd_save);
 }
+sub CWD_save_p2y{
+ $cwd_save_p2y=abs_path();
+}
+sub CWD_go_p2y{
+ chdir($cwd_save_p2y);
+}
 sub gimme_reference
 {
 my $RUN_local=$_[0];

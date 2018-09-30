@@ -164,7 +164,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    #
    # Check if extra flags are needed (JOB specific)
    $error=&RUN_user_flags($ir);
-   # 
+   #
    $N_random_tries=0;
    #
    if ($error =~ "OK") { 
@@ -197,13 +197,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
       &CHECK_driver;
      }
     }
-    #
-    # In case we are running in a different directory (see p2y, RUN_load_conf)
-    #
-    if ($P2Y) {
-     chdir $suite_dir;
-     chdir "$TESTS_folder/$testdir/$ROBOT_wd";
-    };
     #
     &RUN_setup("after_run");
     #

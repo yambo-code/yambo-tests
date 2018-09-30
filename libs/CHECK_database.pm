@@ -40,7 +40,7 @@ if ($CORE eq "CORE" and $P2Y) {
   #
   &command("cp SAVE/$DB $target_dir") ;
   #
-  &CWD_save;
+  &CWD_save_p2y;
   chdir("$suite_dir/$TESTS_folder/$testdir/$ROBOT_wd") ;
   &gimme_reference($run_filename);
 };
@@ -49,7 +49,7 @@ if( -e "$check_folder/$DB" ){
  &command("$ncdump -v $VAR $check_folder/$DB | $awk -f $suite_dir/scripts/find_the_diff/ndb2o.awk | head -n 10000 > $run_filename") ;
  if(! -e "$ref_filename" ) {
   &RUN_stats("ERR_DB");
-  if ($CORE eq "CORE" and $P2Y) {$CWD_go};
+  if ($CORE eq "CORE" and $P2Y) {$CWD_go_p2y};
   return;
  }
 } else{
@@ -57,6 +57,6 @@ if( -e "$check_folder/$DB" ){
   &RUN_stats("ERR_DB");
  }
 }
-if ($CORE eq "CORE" and $P2Y) {$CWD_go};
+if ($CORE eq "CORE" and $P2Y) {$CWD_go_p2y};
 }
 1;
