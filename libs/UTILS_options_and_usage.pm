@@ -66,7 +66,7 @@ my $ret = &GetOptions("h"    => \$help,
             "no_net"         => \$not_network,
             "host=s"         => \$USER_host,
             "failed=s"       => \$failed,
-            "php"            => \$php,
+            "php=s"          => \$branch_php,
             "safe"           => \$safe_mode,
             "keep_bin"       => \$keep_bin,
             "profile:s"      => \$profile,
@@ -152,7 +152,8 @@ sub UTILS_usage {
 
    (Reporting)
              -failed <ERROR>        Create a failed.pl theme reading the ERROR file.
-             -php                   Translate the latest 20 REPORT files in the ROBOT history in a php format and upload.
+             -php    <BRANCH>       Translate the latest 20 REPORT files for BRANCH in the ROBOT history in a php format and upload.
+	                            If BRANCH is not provided, most recent BRANCH is used. Set BRANCH=all for uplaoding all branches
              -report                UPLOAD the result to the web-page
 
    (Profiling)

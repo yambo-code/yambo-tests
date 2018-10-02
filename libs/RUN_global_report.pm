@@ -56,6 +56,8 @@ if ("$what" eq "INIT") {
  $INITIAL_month  = $current_month;
  $INITIAL_time   = [gettimeofday];
  $REFERENCE_time = [gettimeofday];
+}elsif ("$what" eq "BRANCH_KEY"){
+ &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nBranch                  :$branch_key");
 }elsif ("$what" eq "TITLE"){
  &RUN_setup("INIT");
  &UTILS_time($date_now,$time_now);

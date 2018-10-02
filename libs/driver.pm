@@ -56,6 +56,8 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   }
  }
  #
+ &RUN_global_report("BRANCH_KEY");
+ #
  # Test List
  &UTILS_get_inputs_tests_list;
  #

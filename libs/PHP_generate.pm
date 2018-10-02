@@ -36,7 +36,11 @@ foreach $dir (@reversed_dirs) {
   open(REPORT,"<","$suite_dir/$file");
   @lines = <REPORT>;
   &PHP_key_words($file);
-  if ($i_file eq 1) {$branch_ref=$branch_key;};
+  if (not "$branch_php" eq "" ) {
+    if (not "$branch_php" eq "$branch_key") { next; }
+    $branch_ref=$branch_key;
+  }
+  if ($i_file eq 1 and "$branch_php" eq "") {$branch_ref=$branch_key;};
   if ($branch_key =~ "bug-fixes_copy" or $branch_key =~ "max-release" ) {next};
   if (! ("$branch_key" eq "$branch_ref") ) {next};
   print "Processing $dir...\n";
@@ -47,10 +51,22 @@ foreach $dir (@reversed_dirs) {
 }
 #
 sub PHP_key_words{
+ # Notice that here date and time are already defined
  $robot_id = (split(/REPORT-R/,@_[0]))[1];
  $robot_id = (split(/-/,$robot_id))[0];
+ &get_line("Branch");
+ $branch_key=$pattern[0][$n_patterns];
  &get_line("Build");
- if ($n_patterns eq 0) {return};
+ if ($n_patterns eq 0)
+ {
+   undef $BUILD;
+   undef $MPI_kind;
+   undef $FC_kind;
+   undef $REVISION;
+   undef $Yambo_precision;
+   undef $duration;
+   return;
+ }
  $branch_key=$pattern[0][1];
  $BUILD=$pattern[0][3];
  $BUILD =~ s/\+/ /g;
