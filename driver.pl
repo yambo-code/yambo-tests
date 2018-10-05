@@ -69,6 +69,7 @@ if ($kill_me){
 #
 # Post options setups
 #
+undef $nice;
 my $len= length($nice_level);
 if ($len eq 1) {$nice_level="19"};
 if ($mode eq "bench" or $nice_level) { $run_duration = 24*60*60*7 };
@@ -182,7 +183,7 @@ if ($failed) {&UTILS_failed_theme_creator(); exit;};
 #
 # PHP generation 
 #
-if ($php) {
+if ($branch_php) {
  #&PHP_folders_rename(); 
  &PHP_generate(); 
  &PHP_upload();
