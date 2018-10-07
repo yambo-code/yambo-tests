@@ -55,7 +55,7 @@ sub PHP_key_words{
  $robot_id = (split(/REPORT-R/,@_[0]))[1];
  $robot_id = (split(/-/,$robot_id))[0];
  &get_line("Branch");
- $branch_key=$pattern[0][$n_patterns];
+ $branch_key=$pattern[0][1];
  &get_line("Build");
  if ($n_patterns eq 0)
  {
