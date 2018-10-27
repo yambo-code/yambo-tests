@@ -75,7 +75,7 @@ if ($compile) {
  &MY_PRINT($stdout, " Checking out as $branch_id ...");
  &command("$git checkout $branch_id -q");
  &MY_PRINT($stdout, "Updating ...");
- &command("$git pull -q");
+ &command("$git pull -q --no-rebase");
  #
  # CHECK AGE
  #

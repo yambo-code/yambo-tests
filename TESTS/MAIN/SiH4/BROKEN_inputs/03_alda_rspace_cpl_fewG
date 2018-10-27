@@ -1,0 +1,38 @@
+#                                                           
+#  ____  ____     _       ____    ____  ______      ___     
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.   
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \  
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |  
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /  
+#   |______||____| |____||_____||_____||_______/  `.___."   
+#                                                           
+#                                                           
+#                                                           
+#               Version 4.0.2 Revision 5093                 
+#                     MPI+OpenMP Build                      
+#                http://www.yambo-code.org                  
+#
+optics                       # [R OPT] Optics
+bss                          # [R BSS] Bethe Salpeter Equation solver
+bse                          # [R BSE] Bethe Salpeter Equation.
+tddft                        # [R   K] Use TDDFT kernel
+bsk                          # [R BSK] Bethe Salpeter Equation kernel
+BSEmod= "coupling"             # [BSE] resonant/causal/x_coupling/xc_coupling
+BSKmod= "ALDA"               # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "h"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx=  50301       RL    # [BSK] Exchange components
+Gauge= "length"              # [BSE] Gauge (length|velocity)
+% BEnRange
+  6.00000 | 12.00000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
+%
+BEnSteps=  400               # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+   1 |  40 |                 # [BSK] Bands range
+%
+BSHayTrs=0.1000E-2           # [BSS] [o/o] Haydock treshold. Strict(>0)/Average(<0)
