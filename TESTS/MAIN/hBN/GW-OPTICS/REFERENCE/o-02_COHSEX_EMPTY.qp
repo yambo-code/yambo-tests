@@ -1,0 +1,77 @@
+#                                                           
+#                                                           
+# Y88b    /   e           e    e      888~~\    ,88~-_      
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \     
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |    
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |    
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /     
+#    /   /      Y88b /          Y888b 888__/    `88_-~      
+#                                                           
+#                                                           
+#       Version 4.4.0 Revision 16067 Hash dca178d           
+#                  MPI+SLK+OpenMP Build                     
+#               http://www.yambo-code.org                   
+#
+# GW [Newton Solver]
+#
+#  == COHSEX GW ==
+#  GW SC iterations       :0
+#  X G`s            [used]: 151
+#  X G`s            [disk]: 151
+#  X bands                :   1   40
+#  X poles           [o/o]: 100.0000
+#  X e/h E range      [ev]:-1.000000 -1.000000
+#  X xc-Kernel            : none
+#  X BZ energy Double Grid: no
+#  X BZ Double Grid points:0
+#  Sc/G bands             :   1   60
+#  Sc Empty Bands         : yes
+#  Sc bands terminator    : no
+#  Sx RL components       : 3149
+# QP @ K 1 - 4 : b 8 - 9
+#
+#    K-point      Band         Eo           E-Eo         Sc|Eo
+#
+    1.000000     8.000000    -0.882467    -3.631117     4.134128
+    1.000000     9.000000     5.277161    -1.006290    -5.471944
+    2.000000     8.000000     0.000000    -3.165391     3.029502
+    2.000000     9.000000     4.094734    -0.593041    -6.327803
+    3.000000     8.000000    -0.908688    -3.640686     4.136153
+    3.000000     9.000000     7.961606    -0.359022    -5.713903
+    4.000000     8.000000    -0.625208    -3.376698     3.009237
+    4.000000     9.000000     4.656361    -0.437735    -6.144623
+# 
+# 11/09/2018 at 11:59 YAMBO @ narro [start]
+# 11/09/2018 at 12:00               [end]
+#  
+# Timing   [Min/Max/Average]: 03s/03s/03s
+#
+# .-Input file : yambo.in
+# | em1s                           # [R Xs] Static Inverse Dielectric Matrix
+# | HF_and_locXC                   # [R XX] Hartree-Fock Self-energy and Vxc
+# | gw0                            # [R GW] GoWo Quasiparticle energy levels
+# | cohsex                         # [R Xp] COlumb Hole Screened EXchange
+# | BoseTemp= 0.000000     eV      # Bosonic Temperature
+# | FFTGvecs=  3473        RL      # [FFT] Plane-waves
+# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
+# | EXXRLvcs= 3149         RL      # [XX] Exchange    RL components
+# | Chimod= "HARTREE"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | % BndsRnXs
+# |    1 |  40 |                   # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs= 151          RL      # [Xs] Response block size
+# | % DmRngeXs
+# | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
+# | %
+# | % LongDrXs
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# | %
+# | UseEbands                      # [GW] Force COHSEX to use empty bands
+# | %QPkrange                      # # [GW] QP generalized Kpoint/Band indices
+# | 1|4|8|9|
+# | %
+# | %QPerange                      # # [GW] QP generalized Kpoint/Energy indices
+# | 1|4| 0.000000|-1.000000|
+# | %
