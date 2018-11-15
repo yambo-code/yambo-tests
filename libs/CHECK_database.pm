@@ -38,7 +38,7 @@ if ($CORE eq "CORE" and $P2Y) {
   $target_dir = "$suite_dir/$TESTS_folder/$testdir/$ROBOT_wd/$check_folder";
   if(! -d $target_dir ) { &command("mkdir -p $target_dir"); };
   #
-  &command("cp SAVE/$DB $target_dir") ;
+  if( -d $target_dir && -e "SAVE/$DB" ) {  &command("cp SAVE/$DB $target_dir") ; };
   #
   &CWD_save_p2y;
   chdir("$suite_dir/$TESTS_folder/$testdir/$ROBOT_wd") ;
