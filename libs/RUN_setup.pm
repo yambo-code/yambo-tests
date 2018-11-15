@@ -91,7 +91,7 @@ if ("@_" =~ "after_run"){
   if (!-d $dir_name) {&command("mkdir $dir_name"); };
  }
  #
- copy("yambo.in", $dir_name) or &MESSAGE("ERROR WHITE","Error copying file $!");
+ if (test -e "yambo.in" ) { copy("yambo.in", $dir_name) or &MESSAGE("ERROR WHITE","\nError copying file yambo.in to $dir_name $!\n"); };
  foreach $file (<o-*$testname*>) 			{ move($file,$dir_name) };
  foreach $file (<r-*$testname*>,<ref_*>,<run_*>) 	{ move($file,$dir_name) };
  foreach $file (<l-*$testname*>) 			{ move($file,$dir_name) };
