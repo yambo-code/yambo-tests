@@ -8,7 +8,7 @@
 #    /**  /**     /**/**        /** /*******  //*******     
 #    //   //      // //         //  ///////    ///////      
 #                                                           
-#        Version 4.3.0 Revision 15649 Hash 3065d5e          
+#       Version 4.4.0 Revision 16079 Hash c4c811c0b         
 #                  MPI+SLK+OpenMP Build                     
 #                http://www.yambo-code.org                  
 #
@@ -32,23 +32,23 @@
 #  Sc terminator kind     : BG
 #  Sc Terminator pole     : 40.81708
 #  Sx RL components       :  4999
-#  QP @ K 001 - 004 : b 005 - 006
+# QP @ K 1 - 4 : b 5 - 6
 #
 #    K-point      Band         Eo           E-Eo         Sc|Eo
 #
-    1.000000     5.000000     0.000000    -0.335450    -1.152318
-    1.000000     6.000000     0.737129     1.293499    -0.457130
-    2.000000     5.000000    -1.120167    -0.431141     0.193909
-    2.000000     6.000000     1.402023     1.227119    -0.951448
-    3.000000     5.000000    -4.346346    -1.213229     1.977503
-    3.000000     6.000000     2.992495     2.251268    -2.084668
-    4.000000     5.000000    -6.887571    -1.956404     2.708147
-    4.000000     6.000000     5.327169     2.524478    -2.269831
+    1.000000     5.000000     0.000000    -0.916552    -0.692682
+    1.000000     6.000000     0.737129     1.743345    -0.407007
+    2.000000     5.000000    -1.120167    -0.951700     0.173225
+    2.000000     6.000000     1.402023     1.665776    -0.704591
+    3.000000     5.000000    -4.346346    -1.810683     1.422050
+    3.000000     6.000000     2.992495     2.713388    -1.635677
+    4.000000     5.000000    -6.887571    -2.550095     2.052977
+    4.000000     6.000000     5.327169     2.975580    -1.790475
 # 
-# 07/25/2018 at 23:39 YAMBO @ narro [start]
-# 07/25/2018 at 23:39               [end]
+# 11/16/2018 at 12:30 YAMBO @ narro [start]
+# 11/16/2018 at 12:30               [end]
 #  
-# Timing   [Min/Max/Average]: 04s/04s/04s
+# Timing   [Min/Max/Average]: 01s/01s/01s
 #
 # .-Input file : yambo.in
 # | em1d                           # [R Xd] Dynamical Inverse Dielectric Matrix
@@ -63,7 +63,7 @@
 # | RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
 # | CUTGeo= "box xy"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
 # | % CUTBox
-# |  10.00000 | 10.00000 |  0.00000 |        # [CUT] [au] Box sides
+# |  19.00000 | 19.00000 |  0.00000 |        # [CUT] [au] Box sides
 # | %
 # | CUTRadius= 0.000000            # [CUT] [au] Sphere/Cylinder radius
 # | CUTCylLen= 0.000000            # [CUT] [au] Cylinder length
@@ -84,6 +84,9 @@
 # | dScStep=  0.10000      eV      # [GW] Energy step to evaluate Z factors
 # | GTermKind= "BG"                # [GW] GW terminator ("none","BG" Bruneval-Gonze)
 # | DysSolver= "n"                 # [GW] Dyson Equation solver ("n","s","g")
-# | %QPkrange                      # [GW] QP generalized Kpoint/Band indices
-# |   1|  4|  5|  6|
+# | %QPkrange                      # # [GW] QP generalized Kpoint/Band indices
+# | 1|4|5|6|
+# | %
+# | %QPerange                      # # [GW] QP generalized Kpoint/Energy indices
+# | 1|4| 0.000000|-1.000000|
 # | %

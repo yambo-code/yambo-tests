@@ -1,16 +1,16 @@
 #                                                           
-#  **    **    **     ****     ****  ******     *******     
-# //**  **    ****   /**/**   **/** /*////**   **/////**    
-#  //****    **//**  /**//** ** /** /*   /**  **     //**   
-#   //**    **  //** /** //***  /** /******  /**      /**   
-#    /**   **********/**  //*   /** /*//// **/**      /**   
-#    /**  /**//////**/**   /    /** /*    /**//**     **    
-#    /**  /**     /**/**        /** /*******  //*******     
-#    //   //      // //         //  ///////    ///////      
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
 #                                                           
-#        Version 4.3.0 Revision 15649 Hash 3065d5e          
-#                  MPI+SLK+OpenMP Build                     
-#                http://www.yambo-code.org                  
+#                                                           
+#        Version 4.4.0 Revision 16079 Hash c4c811c0b        
+#                   MPI+SLK+OpenMP Build                    
+#                 http://www.yambo-code.org                 
 #
 # GW [Newton Solver]
 #
@@ -30,23 +30,23 @@
 #  Sc/G damping       [ev]:  0.10000
 #  Sc bands terminator    : no
 #  Sx RL components       :  4999
-#  QP @ K 001 - 004 : b 005 - 006
+# QP @ K 1 - 4 : b 5 - 6
 #
 #    K-point      Band         Eo           E-Eo         Sc|Eo
 #
-    1.000000     5.000000     0.000000    -0.240699    -1.042319
-    1.000000     6.000000     0.737129     1.363999    -0.379102
-    2.000000     5.000000    -1.120167    -0.310467     0.333462
-    2.000000     6.000000     1.402023     1.296013    -0.875375
-    3.000000     5.000000    -4.346346    -1.117507     2.097919
-    3.000000     6.000000     2.992495     2.397298    -1.920882
-    4.000000     5.000000    -6.887571    -1.891207     2.792595
-    4.000000     6.000000     5.327169     2.701591    -2.067372
+    1.000000     5.000000     0.000000    -0.866341    -0.635135
+    1.000000     6.000000     0.737129     1.788191    -0.358735
+    2.000000     5.000000    -1.120167    -0.866770     0.269991
+    2.000000     6.000000     1.402023     1.706012    -0.661198
+    3.000000     5.000000    -4.346346    -1.738730     1.510700
+    3.000000     6.000000     2.992495     2.797297    -1.543198
+    4.000000     5.000000    -6.887571    -2.503065     2.113609
+    4.000000     6.000000     5.327169     3.088044    -1.663636
 # 
-# 07/25/2018 at 23:38 YAMBO @ narro [start]
-# 07/25/2018 at 23:39               [end]
+# 11/16/2018 at 12:30 YAMBO @ narro [start]
+# 11/16/2018 at 12:30               [end]
 #  
-# Timing   [Min/Max/Average]: 09s/09s/09s
+# Timing   [Min/Max/Average]: 04s/04s/04s
 #
 # .-Input file : yambo.in
 # | em1d                           # [R Xd] Dynamical Inverse Dielectric Matrix
@@ -62,7 +62,7 @@
 # | RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
 # | CUTGeo= "box xy"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
 # | % CUTBox
-# |  10.00000 | 10.00000 |  0.00000 |        # [CUT] [au] Box sides
+# |  19.00000 | 19.00000 |  0.00000 |        # [CUT] [au] Box sides
 # | %
 # | CUTRadius= 0.000000            # [CUT] [au] Sphere/Cylinder radius
 # | CUTCylLen= 0.000000            # [CUT] [au] Cylinder length
@@ -82,6 +82,9 @@
 # | GDamping=  0.10000     eV      # [GW] G[W] damping
 # | dScStep=  0.10000      eV      # [GW] Energy step to evaluate Z factors
 # | DysSolver= "n"                 # [GW] Dyson Equation solver ("n","s","g")
-# | %QPkrange                      # [GW] QP generalized Kpoint/Band indices
-# |   1|  4|  5|  6|
+# | %QPkrange                      # # [GW] QP generalized Kpoint/Band indices
+# | 1|4|5|6|
+# | %
+# | %QPerange                      # # [GW] QP generalized Kpoint/Energy indices
+# | 1|4| 0.000000|-1.000000|
 # | %
