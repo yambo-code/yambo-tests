@@ -43,12 +43,11 @@ sub CRON_driver{
  #
  &LOAD_branches;
  for $ib ( 0 .. $#branches ) {
-  #print "$branches[$ib] $branch_identity[$ib]\n";
-  if ( $branches[$ib] =~ /$user_branch/) {$B=$branch_identity[$ib]};
+  if ( $branch_identity[$ib] =~ /$user_branch/) {$B=$branch_identity[$ib]};
  }
  #
  $script="script_".$B."_".$user_module.".tcsh";
- $script=~s/\:/_/g;
+ $log="LOG_".$B."_".$user_module;
  #
  open($slog, '>', "$cwd/ROBOTS/$host/$user/SCRIPTS/$script") or die "Could not open file '$cwd/ROBOTS/$host/$user/SCRIPTS/$script' $!";
  &MY_PRINT($slog, "#!/usr/bin/tcsh\n");
@@ -85,11 +84,11 @@ sub CRON_driver{
  #
  if ($empty) 
  {
-  &MY_PRINT($slog, "#30 23 * * * $cwd/driver.pl -kill\n");
-  &MY_PRINT($slog, "#40 23 * * * $cwd/driver.pl -c\n");
-  &MY_PRINT($slog, "#50 23 * * * $cwd/driver.pl -d all -force\n");
+  &MY_PRINT($slog, "#30 23 * * * $cwd/driver.pl -kill 2>&1\n");
+  &MY_PRINT($slog, "#40 23 * * * $cwd/driver.pl -c 2>&1\n");
+  &MY_PRINT($slog, "#50 23 * * * $cwd/driver.pl -d all -force 2>&1\n");
  }
- &MY_PRINT($slog, "$m $h * * * $cwd/ROBOTS/$host/$user/SCRIPTS/$script\n");
+ &MY_PRINT($slog, "$m $h * * * $cwd/ROBOTS/$host/$user/SCRIPTS/$script > $log 2>&1 \n");
  close($slog);
  system("vim $cwd/ROBOTS/$host/$user/CRONTAB")
  #
