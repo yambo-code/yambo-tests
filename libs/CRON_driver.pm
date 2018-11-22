@@ -67,6 +67,7 @@ sub CRON_driver{
  #
  &MY_PRINT($slog, "./driver.pl -flow validate -report -branch $B -nice -newer 100 -safe\n");
  close($slog);
+ &command("chmod a+x $cwd/ROBOTS/$host/$user/SCRIPTS/$script");
  #
  my $h=(split(":",$cron))[0];
  my $m=(split(":",$cron))[1];
@@ -88,7 +89,7 @@ sub CRON_driver{
   &MY_PRINT($slog, "#40 23 * * * $cwd/driver.pl -c 2>&1\n");
   &MY_PRINT($slog, "#50 23 * * * $cwd/driver.pl -d all -force 2>&1\n");
  }
- &MY_PRINT($slog, "$m $h * * * $cwd/ROBOTS/$host/$user/SCRIPTS/$script > $log 2>&1 \n");
+ &MY_PRINT($slog, "$m $h * * * $cwd/ROBOTS/$host/$user/SCRIPTS/$script >  $cwd/$log 2>&1 \n");
  close($slog);
  system("vim $cwd/ROBOTS/$host/$user/CRONTAB")
  #
