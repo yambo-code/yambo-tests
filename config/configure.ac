@@ -47,6 +47,12 @@ else
  git add ROBOTS/$robot/$user/
  echo "$robot" >> .gitignore
 fi
+if ! test -d ROBOTS/$robot/$user/SCRIPTS; then
+  mkdir -p ROBOTS/$robot/$user/SCRIPTS
+fi
+if ! test -f ROBOTS/$robot/$user/CRONTAB; then
+  cp config/SAMPLE_crontab  ROBOTS/$robot/$user/CRONTAB
+fi
 if ! test -d ROBOTS/$robot/$user/CPU_CONFIGURATIONS; then
  AC_MSG_NOTICE(Filling $robot/$user/CPU_CONFIGURATIONS)
  mkdir -p ROBOTS/$robot/$user/CPU_CONFIGURATIONS/
@@ -100,6 +106,16 @@ AC_SUBST(txt2html)
 AC_ARG_WITH(rsync, AC_HELP_STRING([--with-rsync=<exe>],[User-defined rsync],[32]),[],[with_rsync="rsync"]) 
 AC_CHECK_PROGS(rsync,[$with_rsync],[none])
 if test $rsync = "none"; then AC_MSG_ERROR([Please provide the path to a working rsync]); fi
+# ============================================================================
+# COMPILATION MODULES
+#
+if ! test -f ROBOTS/$robot/$user/MODULES; then
+ AC_MSG_NOTICE(Filling $robot/$user/MODULES)
+ cp config/SAMPLE_modules    ROBOTS/$robot/$user/MODULES
+else
+ AC_MSG_RESULT(found an existing MODULES file)
+fi
+#
 # ============================================================================
 # YAMBO
 #

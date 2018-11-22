@@ -42,6 +42,10 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
  $branchdir =@branches[$ib];
  $branch_id =@branch_identity[$ib];
  #
+ if ($user_branch) {
+  if ( not $branchdir =~ /$user_branch/) {next LOOP_BRANCH};
+ }
+ #
  # Stats
  &RUN_stats("INIT");
  #
