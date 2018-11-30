@@ -45,13 +45,15 @@ if ( "@_" eq "DIR" ){
   if (-e "MAGNETIC" && $project !~ /magnetic/) {$message=" skipped (wrong PJ)"};
   if (-e "KERR" && $project !~ /kerr/) {$message=" skipped (wrong PJ)"};
   if (-e "P2Y" && $project !~ /p2y/) {$message=" skipped (wrong PJ)"};
+  if (-e "A2Y" && $project !~ /a2y/) {$message=" skipped (wrong PJ)"};
+  if (-e "A2Y" && not $do_A2Y_tests) {$message=" skipped (wrong BRANCH)"};
   if ( $ANY eq "NO" and $project !~ /nopj/) {$message=" skipped (running only $project tests)"};
   #
  }
  if ($is_GPL) {
   if (( -e "SC" or -e "MAGNETIC" or -e "QED" or -e "PL" or -e "NO_GPL") ) {$message=" skipped (GPL-PJ-restricted)"};
  }
- if (!-e "SAVE/ns.db1" and !-e "SAVE_backup/ns.db1" and not -e "P2Y") { $message=" skipped (missing CORE databases)"};
+ if (!-e "SAVE/ns.db1" and !-e "SAVE_backup/ns.db1" and not (-e "P2Y" or -e "A2Y")) { $message=" skipped (missing CORE databases)"};
  if (-e "BROKEN" and ! $force) {$message=" (broken)"};
  if (-e "PARALLEL_2" && $np>2   ) {$message=" skipped (Too many CPUs)"};
  if (-e "PARALLEL_4" && $np>4   ) {$message=" skipped (Too many CPUs)"};
@@ -155,7 +157,7 @@ return "OK";
 #
 }
 sub ANY_project{
- if (-e "KERR" or -e "RT" or -e "ELPH" or -e "SC" or -e "MAGNETIC" or -e "QED" or -e "PL" or -e "NL" or -e "P2Y" )  {
+ if (-e "KERR" or -e "RT" or -e "ELPH" or -e "SC" or -e "MAGNETIC" or -e "QED" or -e "PL" or -e "NL" or -e "P2Y" or -e "A2Y" )  {
   return "YES";
  }else{
   return "NO";

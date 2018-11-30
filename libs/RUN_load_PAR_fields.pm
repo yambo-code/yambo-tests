@@ -41,6 +41,11 @@ if ($yambo_exec =~ /\/p2y/) {
  $MPI_CPU_conf[1]="p2y_par";
  return;
 }
+if ($yambo_exec =~ /\/e2y/) { 
+ $Nr="1";
+ $MPI_CPU_conf[1]="a2y_par";
+ return;
+}
 if ($RIMCUT=="1"){
  $Nr="1";
  $MPI_CPU_conf[1]="default";
