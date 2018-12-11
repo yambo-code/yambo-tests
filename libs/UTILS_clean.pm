@@ -42,12 +42,8 @@ if ("@_" eq "RESTORE") {
 if("@_" eq "ALL") {
  if ($ROBOT_id) 
  {
-  $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ROBOT_id' -o -name 'R$ROBOT_id' -type d | $grep -v $hostname | xargs rm -fr";
-  &command("$cmd");
-  $cmd="$git ls-files --others --exclude-standard | $grep -e 'ROBOT_Nr_$ROBOT_id/' | $grep -v $hostname |  xargs rm -f";
-  &command("$cmd");
-  &command("rm -f outputs_and_reports_ALL-R$ROBOT_id.* ROBOT_Nr_$ROBOT_id scripts/find_the_diff/find_the_diff_R$ROBOT_id");
-  &command("rm -f *R${ROBOT_id}-*.log");
+  &ROBOT_clean($ROBOT_id);
+ }elsif ($user_branch){
  }else{
   &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R*' -type d | $grep -v $hostname | xargs rm -fr");
   &command("$git ls-files --others --exclude-standard | $grep -v $hostname | xargs rm -fr");
@@ -74,5 +70,15 @@ if("@_" eq "BINs" ) {
   }
  }
 }
+}
+sub ROBOT_clean
+{
+ $ID = shift;
+ $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | xargs rm -fr";
+ &command("$cmd");
+ $cmd="$git ls-files --others --exclude-standard | $grep -e 'ROBOT_Nr_$ID/' | $grep -v $hostname |  xargs rm -f";
+ &command("$cmd");
+ &command("rm -f outputs_and_reports_ALL-R$ID.* ROBOT_Nr_$ID scripts/find_the_diff/find_the_diff_R$ID");
+ &command("rm -f *R${ID}-*.log");
 }
 1;

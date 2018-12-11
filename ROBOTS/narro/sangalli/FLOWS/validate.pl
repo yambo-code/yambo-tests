@@ -19,7 +19,6 @@
  ACTIVE      => "yes",
  TESTS       => "all",
  CONFIG      => "gfortran_internal_SP.sh",
- #CONFIG      => "gfortran_internal_SP_PAR-IO.sh",
  KEYS        => "all hard",
  #KEYS        => "nopj",
 },
@@ -30,9 +29,9 @@
 {
  MPI_CPU     => 4,
  PAR_MODE    => "default",
-#},
-#{
-# MPI_CPU     => 1,
-# THREADS     => 4,
+},
+{
+ MPI_CPU     => 1,
+ THREADS     => 2,
 }
 );

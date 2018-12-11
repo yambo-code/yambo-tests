@@ -29,6 +29,8 @@ sub RUN_executables{
 undef $yambo_running;
 if ($P2Y) 
  {$yambo_exec = "$BRANCH/$conf_bin/p2y"}
+elsif ($A2Y)
+ {$yambo_exec = "$BRANCH/$conf_bin/e2y"} 
 elsif ($YPP=="1") 
  {$yambo_exec = "$BRANCH/$conf_bin/ypp"}
 elsif ($YPP=="2") 

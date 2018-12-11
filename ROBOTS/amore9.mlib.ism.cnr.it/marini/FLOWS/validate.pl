@@ -3,7 +3,7 @@
 @flow = (
 {
  ACTIVE      => "yes",
- CONFIG      => "default_plus_slepc.sh",
+ CONFIG      => "default.sh",
  TESTS       => "all",
  KEYS        => "all hard",
 },

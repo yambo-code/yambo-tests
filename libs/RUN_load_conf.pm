@@ -39,18 +39,28 @@ if( -e "$input_folder/$testname.conf") {
    $prec = $value;
   };
   # P2Y
-  if($desc =~ m/format/) { 
+  if($desc =~ m/format/ && $yambo_exec =~ /\/p2y/) { 
    &MY_PRINT($stdout, "** Setting P2Y format for $testname to: $value \n") if ($verb);
    $P2Y_format = $value;
   }
-  if($desc =~ m/datadir/) { 
+  if($desc =~ m/datadir/ && $yambo_exec =~ /\/p2y/) { 
    &MY_PRINT($stdout, "** Setting P2Y datadir for $testname to: $value \n") if ($verb);
    $P2Y_datadir = $value;
    chdir($P2Y_datadir);
   }
-  if($desc =~ m/datafile/) { 
+  if($desc =~ m/datafile/ && $yambo_exec =~ /\/p2y/) { 
    &MY_PRINT($stdout, "** Setting P2Y datafile for $testname to: $value \n") if ($verb);
    $P2Y_datafile = $value;
+  }
+  # A2Y
+  if($desc =~ m/datadir/ && $yambo_exec =~ /\/e2y/) { 
+   &MY_PRINT($stdout, "** Setting A2Y datadir for $testname to: $value \n") if ($verb);
+   $A2Y_datadir = $value;
+   chdir($A2Y_datadir);
+  }
+  if($desc =~ m/datafile/ && $yambo_exec =~ /\/e2y/) { 
+   &MY_PRINT($stdout, "** Setting A2Y datafile for $testname to: $value \n") if ($verb);
+   $A2Y_datafile = $value;
   }
   # GPL 
   if($confline =~ /"no GPL"/) { 

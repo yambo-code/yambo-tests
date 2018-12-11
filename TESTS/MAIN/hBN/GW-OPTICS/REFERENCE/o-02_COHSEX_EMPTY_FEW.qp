@@ -1,0 +1,77 @@
+#                                                           
+# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
+#    ###  ###     ### ###       ### #########   ########    
+#                                                           
+#                                                           
+#        Version 4.4.0 Revision 16067 Hash dca178d          
+#                  MPI+SLK+OpenMP Build                     
+#                http://www.yambo-code.org                  
+#
+# GW [Newton Solver]
+#
+#  == COHSEX GW ==
+#  GW SC iterations       :0
+#  X G`s            [used]: 151
+#  X G`s            [disk]: 151
+#  X bands                :   1   40
+#  X poles           [o/o]: 100.0000
+#  X e/h E range      [ev]:-1.000000 -1.000000
+#  X xc-Kernel            : none
+#  X BZ energy Double Grid: no
+#  X BZ Double Grid points:0
+#  Sc/G bands             :   1   40
+#  Sc Empty Bands         : yes
+#  Sc bands terminator    : no
+#  Sx RL components       : 3149
+# QP @ K 1 - 4 : b 8 - 9
+#
+#    K-point      Band         Eo           E-Eo         Sc|Eo
+#
+    1.000000     8.000000    -0.882467    -3.017168     4.748076
+    1.000000     9.000000     5.277161    -0.773069    -5.238724
+    2.000000     8.000000     0.000000    -2.627921     3.566973
+    2.000000     9.000000     4.094734    -0.185623    -5.920384
+    3.000000     8.000000    -0.908688    -3.020955     4.755883
+     3.00000      9.00000      7.96161      0.01477     -5.34012
+    4.000000     8.000000    -0.625208    -2.887842     3.498093
+    4.000        9.000        4.656       0.1973E-2    -5.705   
+# 
+# 11/09/2018 at 12:00 YAMBO @ narro [start]
+# 11/09/2018 at 12:00               [end]
+#  
+# Timing   [Min/Max/Average]: 03s/03s/03s
+#
+# .-Input file : yambo.in
+# | em1s                           # [R Xs] Static Inverse Dielectric Matrix
+# | HF_and_locXC                   # [R XX] Hartree-Fock Self-energy and Vxc
+# | gw0                            # [R GW] GoWo Quasiparticle energy levels
+# | cohsex                         # [R Xp] COlumb Hole Screened EXchange
+# | BoseTemp= 0.000000     eV      # Bosonic Temperature
+# | FFTGvecs=  3473        RL      # [FFT] Plane-waves
+# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
+# | EXXRLvcs= 3149         RL      # [XX] Exchange    RL components
+# | Chimod= "HARTREE"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | % BndsRnXs
+# |    1 |  40 |                   # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs= 151          RL      # [Xs] Response block size
+# | % DmRngeXs
+# | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
+# | %
+# | % LongDrXs
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# | %
+# | UseEbands                      # [GW] Force COHSEX to use empty bands
+# | %QPkrange                      # # [GW] QP generalized Kpoint/Band indices
+# | 1|4|8|9|
+# | %
+# | %QPerange                      # # [GW] QP generalized Kpoint/Energy indices
+# | 1|4| 0.000000|-1.000000|
+# | %

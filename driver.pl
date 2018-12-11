@@ -83,6 +83,8 @@ my $len= length($edit);
 if ($len eq 0) {$edit=1};
 my $len= length($profile);
 if ($len eq 0) {$profile=1};
+my $len= length($cron);
+if ($len eq 0) {$cron=1};
 #
 if ($mode eq "tests")    {$TESTS_folder="TESTS/MAIN"};
 if ($mode eq "validate") {$TESTS_folder="TESTS/VALIDATE"};
@@ -94,8 +96,10 @@ if ($mode eq "perturbo") {$TESTS_folder="TESTS/PERTURBO"};
 #
 if ($edit and $backup_logs eq "no" and $edit ne 1){
  if ($edit eq "filters" ) {system("vim config/RULES.h"); print "RULES file editing done.\n"; exit;};
+ if ($edit eq "modules") {system("vim ROBOTS/$host/$user/MODULES"); print "MODULES file editing done.\n";exit;};
  if ($edit eq "branches") {system("vim ROBOTS/$host/$user/BRANCHES"); print "BRANCHES file editing done.\n";exit;};
  if ($edit eq "flags") {system("vim ROBOTS/$host/$user/FLAGS"); print "FLAGS file editing done.\n";exit;};
+ if ($edit =~ /cron/) {system("vim ROBOTS/$host/$user/CRONTAB"); print "CRONTAB file editing done.\n";exit;};
  if (-e "ROBOTS/$host/$user/FLOWS/$edit.pl"){
   system("vim ROBOTS/$host/$user/FLOWS/$edit.pl");
  };
@@ -131,7 +135,6 @@ if(-t STDOUT) {
 # help
 if($info){ 
  &UTILS_robot_info ;
- print "Info finalized.\n";
  exit "\n";
 }
 if($help){ 
@@ -139,6 +142,12 @@ if($help){
  &UTILS_usage ;
  exit "\n";
 };
+#
+# cron
+if ($cron){
+ &CRON_driver;
+ exit "\n";
+}
 #
 # Show extra files
 if($repo_check){ 

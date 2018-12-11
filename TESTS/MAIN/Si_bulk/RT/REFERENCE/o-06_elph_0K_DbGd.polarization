@@ -8,12 +8,13 @@
 #    /   /      Y88b /          Y888b 888__/    `88_-~      
 #                                                           
 #                                                           
-#       Version 4.2.0 Revision 14428 Hash 698a636           
+#      Version 4.4.0 Revision 16077 Hash f4bc4d403          
 #                  MPI+SLK+OpenMP Build                     
 #               http://www.yambo-code.org                   
 #
 # [RT] Bands                      :2 - 7
 # [RT] K-points                   :201
+# [RT] Potential                  :IP
 # [E-P] Electron-phonon           : yes
 # [E-P] Completed Collision(CCA)  : yes
 # [E-P] Branches                  :1 - 6
@@ -30,12 +31,8 @@
 # [RT] I/O time               [fs]: 0.500000
 # [RT] NE steps         (done)[fs]:5001
 # [RT] Lifetimes extrapolation    : no
-# [dT] Update                     : no
-# [dT] Starting Time          [fs]: 0.000000
-# [dT] Update interval        [fs]: 0.000000
-# [dT] Update interval tresh [o/o]: 2.000000
-# [dT] Max step in dynamics   [fs]: 0.000000
-# [RT] Integrator                 :RK2 + RWA
+# [dT] Time-Dependent Time step   : no
+# [RT] Integrator                 :EULER + RK2 + RWA
 # [RT] Radiative life time    [fs]: 0.000000
 # [RT] Dephasing life time    [fs]: 0.000000
 # [RT] External Field(s)          : no
@@ -257,47 +254,52 @@
      99.50000000000      0.00000000000      0.00000000000      0.00000000000
      100.0000076294       0.0000000000       0.0000000000       0.0000000000
 # 
-# 04/10/2017 at 17:05 YAMBO_RT @ anomaly [start]
-# 04/10/2017 at 17:09                    [end]
+# 11/09/2018 at 19:08 YAMBO_RT @ narro [start]
+# 11/09/2018 at 19:11                  [end]
 #  
-# Timing   [Min/Max/Average]: 04m-00s/04m-00s/04m-00s
+# Timing   [Min/Max/Average]: 02m-50s/02m-50s/02m-50s
 #
 # .-Input file : yambo.in
-# | negf                         # [R] Real-Time dynamics
-# | el_ph_scatt                  # [R] Electron-Phonon   Scattering
-# | ElecTemp=0.1000E-3     eV    # Electronic Temperature
-# | BoseTemp= 0.000000     eV    # Bosonic Temperature
-# | DBsIOoff= "DIP"              # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,W,SC,BS,ALL)
-# | RT_Threads= 1                # [OPENMP/RT] Number of threads for real-time
-# | HXC_Potential= "IP"          # [SC] SC HXC Potential
-# | FFTGvecs=  387         RL    # [FFT] Plane-waves
-# | GfnQP_Wv_E=-1.200000   eV    # [EXTQP G] W Energy reference  (valence)
+# | negf                           # [R] Real-Time dynamics
+# | el_ph_scatt                    # [R] Electron-Phonon   Scattering
+# | ElecTemp=0.1723E-4     eV      # Electronic Temperature
+# | BoseTemp= 0.000000     eV      # Bosonic Temperature
+# | DBsIOoff= "DIP"                # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,OBS,W,SC,BS,ALL)
+# | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
+# | HXC_Potential= "IP"            # [SC] SC HXC Potential
+# | FFTGvecs=  387         RL      # [FFT] Plane-waves
+# | GfnQP_Wv_E=-1.200000   eV      # [EXTQP G] W Energy reference  (valence)
 # | % GfnQP_Wv
-# |    0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (valence) eV| eV|eV^-1
+# |    0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (valence) eV| 1|eV^-1
 # | %
-# | GfnQP_Wc_E= 1.200000   eV    # [EXTQP G] W Energy reference  (conduction)
+# | GfnQP_Wc_E= 1.200000   eV      # [EXTQP G] W Energy reference  (conduction)
 # | % GfnQP_Wc
-# |    0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (conduction) eV| eV|eV^-1
+# |    0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (conduction) eV| 1 |eV^-1
 # | %
 # | GfnRTdb= "f @ 0 fs < 06_carriers_DB_ypp_DbGd/ndb.RT_carriers" # [EXTRT G] Database
-# | % RTBands
-# |   2 |  7 |                   # [RT] Bands
-# | %
-# | Integrator= "RK2 + RWA"      # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA")
-# | GrKind= "QP"                 # [RT] G-ret kind: Lorentzian (QP)/ Hyperbolic QP_secant (HS)
-# | % RTehEny
-# | -8.114547 | 9.939258 | eV    # [RT] Electron-hole energy range
-# | %
-# | RTstep= 20.00000       as    # [RT] Real Time step length
-# | NETime= 100.0000       fs    # [RT] Simulation Time
-# | #LifeExtrapolation           # [RT] Skipped Lifetimes are extrapolated
+# | RTEvalEnergy                   # [RT] Energy variation computed on the fly
+# | RTEvalEntropy                  # [RT] Entropy variation computed on the fly
+# | #LifeExtrapolation             # [RT] Skipped Lifetimes are extrapolated
 # | % LifeExtrapSteps
-# |  1.500000 | 0.500000 | fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+# |  1.500000 | 0.500000 | fs      # [RT] Step length between and inside two consecutive groups of lifetimes
 # | %
-# | RandQpts=0                   # [RIM] Number of random q-points in the BZ
+# | RandQpts=0                     # [RIM] Number of random q-points in the BZ
 # | % ElPhModes
-# |   1 |  6 |                   # [ELPH] Phonon modes included
+# |   1 |  6 |                     # [ELPH] Phonon modes included
 # | %
+# | % RTBands
+# |   2 |  7 |                     # [RT] Bands
+# | %
+# | Integrator= "EULER + RK2 + RWA" # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
+# | GrKind= "QP"                   # [RT] G-ret kind: Lorentzian (QP)/ Hyperbolic QP_secant (HS)
+# | % RTehEny
+# |  -8.02423 | 10.02957 | eV      # [RT] Electron-hole energy range
+# | %
+# | RTstep= 20.00000       as      # [RT] Real Time step length
+# | NETime= 100.0000       fs      # [RT] Simulation Time
 # | % IOtime
-# |  0.500000 | 0.500000 | 0.500000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+# |  0.500000 | 0.500000 | 0.500000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
+# | %
+# | %DephMatrix                    # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
+# | 1|1|1|-1.000000|
 # | %

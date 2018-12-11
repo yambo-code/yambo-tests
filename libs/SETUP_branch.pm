@@ -85,11 +85,14 @@ if ($is_GPL) {$branch_key.="_gpl"};
 #
 $do_NL_tests="yes";
 $is_NEW_YPP="yes";
-$PAR_COM="-j";
+$PAR_COMP="-j";
 if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $PAR_COMP;};
 if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $PAR_COMP;};
 if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
+#
+undef $do_A2Y_tests;
+if ($pattern=~m/devel-abinit-interfaces/ix){$do_A2Y_tests="yes"};
 #
 # Define list of required executables
 $target_list = $target_list_basic; 

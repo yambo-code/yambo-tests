@@ -33,6 +33,7 @@ if ($nt and $nt>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE
 if (        $np>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE"); $n_stats=1; };
 if (              not $SETUP=="1") {undef $CHECK_CORE};
 if ($P2Y){&CHECK_database("EIGENVALUES","ns.db1","CORE")};
+if ($A2Y){&CHECK_database("EIGENVALUES","ns.db1","CORE")};
 if ($CHECK_CORE){
  &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
  &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
