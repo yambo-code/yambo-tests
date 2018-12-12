@@ -1,0 +1,41 @@
+#                                                           
+#  ____  ____     _       ____    ____  ______      ___     
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.   
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \  
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |  
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /  
+#   |______||____| |____||_____||_____||_______/  `.___."   
+#                                                           
+#                                                           
+#                                                           
+#        Version 4.0.3 Revision 13710 Hash c3a87be          
+#                     MPI+OpenMP Build                      
+#                http://www.yambo-code.org                  
+#
+nloptics                     # [R NL] Non-linear optics
+NL_Threads=0                 # [OPENMP/NL] Number of threads for nl-optics
+% RTBands
+  1 | 10 |                   # [RT] Bands
+%
+NLstep=   0.0100       fs    # [NL] Real Time step length
+NLverbosity= "high"           # [NL] Verbosity level (low | high)
+NLtime=-1.000000       fs    # [NL] Simulation Time
+NLintegrator= "INVINT"       # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
+NLCorrelation= "IPA"         # [NL] Correlation ("IPA/RPA/TDDFT/LRC/LRW/JGM/SEX")
+NLLrcAlpha= 0.000000         # [NL] Long Range Correction
+% NLEnRange
+ 2.00000 | 8.000000 | eV    # [NL] Energy range
+%
+NLEnSteps=  1               # [NL] Energy steps
+NLDamping= 0.200000    eV    # [NL] Damping
+UseDipoles                  # [NL] Use Covariant Dipoles (just for test purpose)
+#FrSndOrd                    # [NL] Force second order in Covariant Dipoles
+EvalCurrent                   # [NL] Evaluate the current
+% ExtF_Dir
+ 0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Versor
+%
+ExtF_FrStep= 0.000000  eV    # [NL ExtF] Frequency step
+ExtF_Int=1000.0        kWLm2 # [NL ExtF] Intensity
+ExtF_Damp= 2.000000    fs    # [NL ExtF] Damping
+ExtF_kind= "DELTA"         # [NL ExtF] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+ExtF_Tstart=   0.0100  fs    # [NL ExtF] Initial Time
