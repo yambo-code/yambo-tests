@@ -94,6 +94,9 @@ if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 undef $do_A2Y_tests;
 if ($pattern=~m/devel-abinit-interfaces/ix){$do_A2Y_tests="yes"};
 #
+$PAR_covariant="no";
+if ($pattern=~m/devel-dipoles/ix){$PAR_covariant="yes"};
+#
 # Define list of required executables
 $target_list = $target_list_basic; 
 $exec_list   = $exec_list_basic;
