@@ -130,8 +130,8 @@ foreach my $lline (@dummy) {
  #
  if($#inputs lt 0) { @inputs = qw("all")};   # If explicit tests omitted, set all of them
  foreach $testname (@inputs) {
-  if ($testname =~ "all") {
-   $input_tests_list[$ic]="$input_tests_list[$ic] $list2";
+  if ($testname eq "all") {
+   $input_tests_list[$ic]="$input_tests_list[$ic] $list1";
   }  
   else{  
    if ($testname =~ /\*/) { 
