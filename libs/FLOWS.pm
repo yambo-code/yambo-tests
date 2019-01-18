@@ -25,7 +25,7 @@
 sub FLOW_load
 {
  for $field ( keys %{ $flow[$i] } ) {
-  if ( "$field" eq "BRANCH"  ) {$user_branch = $flow[$i]{$field}};
+  if ( "$field" eq "BRANCH"  ) {$flow_branch = $flow[$i]{$field}};
   if ( "$field" eq "CONFIG"  ) {$select_conf_file = $flow[$i]{$field}};
   if ( "$field" eq "ACTIVE"  ) {$active = $flow[$i]{$field}};
   if ( "$field" eq "MPI_CPU" ) {$np_single = $flow[$i]{$field}};
@@ -36,9 +36,9 @@ sub FLOW_load
   if ( "$field" eq "PAR_MODE") {$par_mode = $flow[$i]{$field}};
   if ( "$field" eq "CPU_CONF") {$cpu_conf_file = $flow[$i]{$field}};
  }
- if ($user_branch) {
+ if ($flow_branch) {
   undef @branches;
-  ($branches[0],$branch_identity[0]) = split(/ /, $user_branch);
+  ($branches[0],$branch_identity[0]) = split(/ /, $flow_branch);
  };
  if (not "$select_conf_file" eq "") {$compile="yes"};
  if ($np_single>1) { 
@@ -67,7 +67,7 @@ sub FLOW_reset
 {
 if ("@_" eq "ALL") {
  $user_tests="all";
- undef $user_branch;
+ undef $flow_branch;
  undef $keys;
  undef $compile;
  undef $select_conf_file;

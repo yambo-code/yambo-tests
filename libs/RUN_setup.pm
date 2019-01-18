@@ -50,6 +50,7 @@ if ("@_" =~ "before_run"){
  if($nt){ $cpu_conf=$cpu_conf."(Threads=$nt)" };
  if($nl){ $cpu_conf=$cpu_conf."(SLK=$nl)" };
  if($P2Y){$cpu_conf=$cpu_conf."($P2Y_format"."@"."$P2Y_datadir)" };
+ if($A2Y){$cpu_conf=$cpu_conf."(NETCDF@"."$A2Y_datadir)" };
  #
  # message
  $message=$cpu_conf."] $testname: $description";
@@ -61,7 +62,7 @@ if ("@_" =~ "before_run"){
  &command("rm -fr $dir_name $testname");
  #
  # input file
- if (not $P2Y) {
+ if (not ($P2Y or $A2Y)) {
   &command("cat $cpu $input_folder/$testname >> yambo.in");
   if( -e "$suite_dir/$host/$user/FLAGS") {&command("cat $suite_dir/$host/$user/FLAGS >> yambo.in")};
  }
@@ -78,6 +79,7 @@ if ("@_" =~ "before_run"){
  # Input file
  $INPUT_file="yambo.in";
  if ($yambo_exec =~ /\/p2y/) { $INPUT_file=$P2Y_datafile };
+ if ($yambo_exec =~ /\/e2y/) { $INPUT_file=$A2Y_datafile };
 }
 if ("@_" =~ "after_run"){
  #

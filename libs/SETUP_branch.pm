@@ -80,6 +80,7 @@ if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
 $is_NEW_EXC_SORT="no";
 if ($pattern=~m/devel-BSE-finite-q/ix){$is_NEW_EXC_SORT="yes"};
+if ($pattern=~m/devel-cumulant/ix)    {$is_NEW_EXC_SORT="yes"};
 #
 if ($is_GPL) {$branch_key.="_gpl"};
 #
@@ -90,6 +91,12 @@ if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $PAR_COMP;
 if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $PAR_COMP;};
 if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
+#
+undef $do_A2Y_tests;
+if ($pattern=~m/devel-abinit-interfaces/ix){$do_A2Y_tests="yes"};
+#
+$PAR_covariant="no";
+if ($pattern=~m/devel-dipoles/ix){$PAR_covariant="yes"};
 #
 # Define list of required executables
 $target_list = $target_list_basic; 

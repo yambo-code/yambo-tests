@@ -14,11 +14,13 @@ fi
 $CONF_LINE \
 --with-extlibs-path=$YAMBO_EXT_LIBS \
 --enable-keep-extlibs \
---enable-iotk \
 --enable-time-profile \
 --enable-memory-profile \
 --enable-open-mp \
 --enable-msgs-comps \
 --enable-int-linalg \
 --enable-par-linalg \
---enable-keep-src   
+--enable-keep-src \
+--enable-slepc-linalg \
+--enable-hdf5-compression \
+--enable-hdf5-p2y-support

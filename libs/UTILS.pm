@@ -66,8 +66,14 @@ sub CWD_go{
 sub CWD_save_p2y{
  $cwd_save_p2y=abs_path();
 }
+sub CWD_save_a2y{
+ $cwd_save_a2y=abs_path();
+}
 sub CWD_go_p2y{
  chdir($cwd_save_p2y);
+}
+sub CWD_go_a2y{
+ chdir($cwd_save_a2y);
 }
 sub gimme_reference
 {

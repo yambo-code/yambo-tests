@@ -41,6 +41,11 @@ if ($yambo_exec =~ /\/p2y/) {
  $MPI_CPU_conf[1]="p2y_par";
  return;
 }
+if ($yambo_exec =~ /\/e2y/) { 
+ $Nr="1";
+ $MPI_CPU_conf[1]="a2y_par";
+ return;
+}
 if ($RIMCUT=="1"){
  $Nr="1";
  $MPI_CPU_conf[1]="default";
@@ -54,7 +59,7 @@ if ( $default_parallel ){
 #
 # PARALLEL section
 #
-$PAR_field[0]="DIP_ROLEs= \"c.v\""; #  => GKCV
+$PAR_field[0]="DIP_ROLEs= \"k.c.v\""; #  => GKCV
 $PAR_field[1]="X_q_0_ROLEs= \"g.k.c.v\""; #  => GKCV
 $PAR_field[2]="X_finite_q_ROLEs= \"g.q.k.c.v\""; # => GQKCV
 $PAR_field[3]="X_all_q_ROLEs= \"g.q.k.c.v\""; # => GQKCV

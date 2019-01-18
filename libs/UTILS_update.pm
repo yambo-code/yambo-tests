@@ -32,7 +32,7 @@ my $TEST_todo= $update_test;
 #
 &FLOW_reset("ALL");
 undef $compile;
-$keys="all hard p2y";
+$keys="all hard p2y a2y";
 #
 if (-d "$TESTS_folder/$TEST_todo/INPUTS"){
  #

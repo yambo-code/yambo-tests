@@ -29,12 +29,14 @@ sub RUN_executables{
 undef $yambo_running;
 if ($P2Y) 
  {$yambo_exec = "$BRANCH/$conf_bin/p2y"}
+elsif ($A2Y)
+ {$yambo_exec = "$BRANCH/$conf_bin/e2y"} 
 elsif ($YPP=="1") 
  {$yambo_exec = "$BRANCH/$conf_bin/ypp"}
 elsif ($YPP=="2") 
  {
  if ($is_NEW_EXC_SORT eq "no" ) {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s"}
- if ($is_NEW_EXC_SORT eq "yes") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s 1"}
+ if ($is_NEW_EXC_SORT eq "yes") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s $IQ"}
  }
 else
  {$yambo_exec = "$BRANCH/$conf_bin/yambo";

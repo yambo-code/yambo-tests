@@ -33,17 +33,49 @@ if (-e "./ROBOTS/$host/$user/CONFIGURATIONS"){
  closedir DIR;
 }
 $conf_avail = join(" ", @files);
+#
 if (-e "./ROBOTS/$host/$user/FLOWS"){
  opendir(DIR,"./ROBOTS/$host/$user/FLOWS");
  @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/FLOWS/$_" } readdir(DIR);
  closedir DIR;
 }
 $flows_avail = join(" ", @files);
+#
 if (-e "./ROBOTS/$host/$user/CPU_CONFIGURATIONS"){
  opendir(DIR,"./ROBOTS/$host/$user/CPU_CONFIGURATIONS");
  @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/CPU_CONFIGURATIONS/$_" } readdir(DIR);
  closedir DIR;
 }
 $cpu_avail = join(" ", @files);
+#
+$n_modules=0;
+undef $mod_add;
+if (-e "./ROBOTS/$host/$user/MODULES"){
+ open(MODULES,"<","./ROBOTS/$host/$user/MODULES");
+ @MODULES_lines = <MODULES>;
+ foreach my $line (@MODULES_lines)
+ {
+  chomp($line);
+  if ($line =~ /END/ and not $line =~ /#/){
+   undef $mod_add;
+   next;
+  };
+  if ($line =~ /START/ and not $line =~ /#/) {
+   $n_modules++;
+   $line =~ s/START//s;
+   $line =~ s/<//s;
+   $line =~ s/>//s;
+   $line =~ s/\s//s;
+   $MODULES[$n_modules]->{NAME}=$line;
+   $mod_add=1;
+   next;
+  }
+  if ($mod_add)
+  {
+   push @{$MODULES[$n_modules]{CMDS}},$line;
+  }
+ }
+ close(MODULES);
+}
 }
 1;

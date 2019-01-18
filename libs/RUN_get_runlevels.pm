@@ -30,8 +30,10 @@ $YPP_RT="0";
 $YPP_SC="0";
 $YPP_PH="0";
 undef $P2Y;
+undef $A2Y;
 # Runlevels
 $P2Y=&RUN_feature("p2y");
+$A2Y=&RUN_feature("a2y");
 $CHEERS=&RUN_feature("Nbasis");
 if ($CHEERS eq "1") { $CHEERS=1; $description .= " CHEERS" };
 $fixsyms=&RUN_feature("fixsyms");
@@ -87,7 +89,14 @@ if (&RUN_feature("bzgrids") eq "1" or &RUN_feature("kpts_map") eq "1" or &RUN_fe
 if (&RUN_feature("QPDBs") eq "1") {$YPP=1}
 if (&RUN_feature("exciton") eq "1") {$YPP=1}
 if (&RUN_feature("electrons") eq "1") {$YPP=1}
-if (&RUN_feature("sort") eq "1") {$YPP=2}
+if (&RUN_feature("sort") eq "1") 
+{
+ $YPP=2;
+ $IQ=1;
+ for (my $i=0; $i<=100 ; $i++){
+  if (&RUN_feature("sort_$i") eq "1") {$IQ=$i};
+ }
+}
 if ($YPP eq "1") { $description .= " post-processing" };
 if ($YPP eq "2") { $description .= " sorting" };
 #

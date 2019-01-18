@@ -24,7 +24,7 @@
 #
 sub UTILS_options
 {
-my $ret = &GetOptions("h"    => \$help,
+my $ret = &GetOptions("h+"   => \$help,
             "np=i"           => \$np_single,
             "np_min=i"       => \$np_min,
             "np_max=i"       => \$np_max,
@@ -70,6 +70,9 @@ my $ret = &GetOptions("h"    => \$help,
             "safe"           => \$safe_mode,
             "keep_bin"       => \$keep_bin,
             "profile:s"      => \$profile,
+            "cron:s"         => \$cron,
+            "branch:s"       => \$user_branch,
+            "module:s"       => \$user_module,
             "mode=s"         => \$mode
                       );
 #
@@ -84,15 +87,28 @@ sub UTILS_robot_info {
    Available  CPU conf: $cpu_avail
    Available Compilers: $conf_avail
    Available     flows: $flows_avail
+
+   Available   modules:
+
 ROBOT_info
+;
+for( $i = 1; $i <= $n_modules; $i = $i + 1 )
+{
+ print "\t #".$i." ".$MODULES[$i]->{NAME}.": ";
+ print "@{$MODULES[$i]->{CMDS}}\n";
+}
+print "\n";
+
 }
 sub UTILS_usage {
+
+if ($help>=1) {
  print <<EndOfUsage
    Syntax: driver.pl <ARGS>
            < > are variable parameters, [ ] are optional, | indicates choice
            
    where <ARGS> must include at least one of:
-             -h                     This help & status.
+             -h                     This help & status (use -h -h to see more options).
              -kill    <USER>        Kill the test-suite runs for user <USER>. If not given use the current one.
              -i                     Robot info
              -l       [<SET>]       List available SETs (-l) or input files for a SET (-l <SET>).
@@ -107,20 +123,9 @@ sub UTILS_usage {
              -safe                  Safe run
              -no_net                Skip network assisted operations
              -keep_bin              Do not overwrite the robot specific bin-precompiled folder
-
-   (General options)
-             -mode                  Can be "tests/validate/cheers/bench". It selects which suite to use. Default is "tests".
-             -host  <string>        Robot name.
-             -robot <ID>            Robot ID.
-             -status                List SVN/GIT new/untracked files.
-             -v [-v]                Verbose output (use -v -v for extra verbosity)
-             -colors                Use colors in messages.
-             -edit   <WHAT>         View and edit. WHAT=filters,branches,flags,<FILE>(e.g. in FLOWS and CPU_CONFIGURATION).
-                                    Use -e backup with -b ## to edit the REPORT of the backupd REPORT number ##
-
-   (SOURCEs)
-             -conf   <NAME>         Use configuration NAME              (default: no options, all: cycle among all confs)
-             -gpl                   Only GPL-compliant test.
+             -robot  <ID>           Robot ID.
+             -branch [WHAT]         Branch selection.
+             -module [WHAT]         Environment module selection.
 
    (TEST selection)
              -flow   <FILE>         Use the flow of calculations defined in <FILE> 
@@ -129,6 +134,19 @@ sub UTILS_usage {
              -off    <string>       Switch off specific objects (mpi,openmp,io).
              -prec   <PREC>         Precision of data comparisons       (default: 0.01 = 1% of MAX value)
              -force                 Run even BROKEN tests.
+
+EndOfUsage
+}
+
+if ($help==2) {
+ print <<EndOfUsage
+           
+   (Crontab options)
+             -cron   <HH:MM>        Add a cron entry @HH:MM (example -cron 01:20)
+
+   (SOURCEs)
+             -conf   <NAME>         Use configuration NAME              (default: no options, all: cycle among all confs)
+             -gpl                   Only GPL-compliant test.
 
    (TEST control)
              -update <TEST>         Update all REFERENCE files of <TEST>. The test path is <TEST_folder>/<TEST>.
@@ -171,6 +189,11 @@ sub UTILS_usage {
 
    (FTP actions)           
              -ftp                   Log in FTP server
+
+EndOfUsage
+}
+
+ print <<EndOfUsage
 
  * <TESTS> has form: "<SET1> {<input1> [<input2>]|all}; <SET2> {<input1> [<input2>]|all}"
                       where <SET1> is a path within the <TEST_folder> folder 
