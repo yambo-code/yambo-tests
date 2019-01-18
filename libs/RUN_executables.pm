@@ -36,7 +36,7 @@ elsif ($YPP=="1")
 elsif ($YPP=="2") 
  {
  if ($is_NEW_EXC_SORT eq "no" ) {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s"}
- if ($is_NEW_EXC_SORT eq "yes") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s 1"}
+ if ($is_NEW_EXC_SORT eq "yes") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s $IQ"}
  }
 else
  {$yambo_exec = "$BRANCH/$conf_bin/yambo";

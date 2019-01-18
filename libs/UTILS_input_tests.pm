@@ -114,23 +114,24 @@ foreach my $lline (@dummy) {
  $input_tests_list[$ic]=$dir;
  #
  $tests_list=" ";
+ my $list1=" ";
  if ($branch_key) {
   &UTILS_tests_in_the_dir("$dir","INPUTS");
+  $list1="$tests_list";
  }
- my $list1="$tests_list";
  $tests_list=" ";
  &UTILS_tests_in_the_dir("$dir");
- my $list2="$tests_list";
- my @tests = split(/\s+/,$list1);
+ $list2="$tests_list";
+ my @tests = split(/\s+/,$list2);
  for my $el (@tests) 
  {
-  if (not $list2 =~ /\Q$el\E/) {$list2="$list2 $el"};
+  if (not $list1 =~ /\Q$el\E/) {$list1="$list1 $el"};
  }
  #
  if($#inputs lt 0) { @inputs = qw("all")};   # If explicit tests omitted, set all of them
  foreach $testname (@inputs) {
-  if ($testname =~ "all") {
-   $input_tests_list[$ic]="$input_tests_list[$ic] $list2";
+  if ($testname eq "all") {
+   $input_tests_list[$ic]="$input_tests_list[$ic] $list1";
   }  
   else{  
    if ($testname =~ /\*/) { 

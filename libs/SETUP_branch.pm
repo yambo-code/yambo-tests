@@ -80,6 +80,7 @@ if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
 $is_NEW_EXC_SORT="no";
 if ($pattern=~m/devel-BSE-finite-q/ix){$is_NEW_EXC_SORT="yes"};
+if ($pattern=~m/devel-cumulant/ix)    {$is_NEW_EXC_SORT="yes"};
 #
 if ($is_GPL) {$branch_key.="_gpl"};
 #

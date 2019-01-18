@@ -85,7 +85,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   if (not $mode eq "bench") {
    &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
    foreach $testname (@inputs) { 
-     if ( (not -f "$ROBOT_wd/$input_folder/$testname") && glob("$ROBOT_wd/INPUTS/$testname*") ) 
+     if (not -f "$ROBOT_wd/$input_folder/$testname" and -f "$ROBOT_wd/INPUTS/$testname" ) 
      {
        &command("cp $ROBOT_wd/INPUTS/$testname* $ROBOT_wd/$input_folder");
      }
