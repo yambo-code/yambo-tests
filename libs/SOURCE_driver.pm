@@ -114,7 +114,7 @@ if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
  if (-d "lib/bin")  {&command("find ./lib/bin/  | xargs cp -t $conf_bin/ 2> /dev/null")};
  if (-d "bin-libs") {&command("find ./bin-libs/ | xargs cp -t $conf_bin/ 2> /dev/null")};
  chdir $suite_dir;
-}else{
+}elsif (not $keep_bin){
  $conf_bin  = "bin-$conf_file-$FC_kind-$ROBOT_string";
 }
 #

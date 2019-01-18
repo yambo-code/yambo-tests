@@ -33,7 +33,8 @@ if ("@_" =~ "clean" and -f "Makefile"){
  &command("make clean");
 }
 if ("@_" =~ "compile" and !-f "$find_the_diff" ){
- &command("cp $BRANCH/config/setup Makefile");
+ if ($keep_bin    ) {&command("cp $BRANCH/$conf_bin/setup Makefile")};
+ if (not $keep_bin) {&command("cp $BRANCH/config/setup Makefile")};
  &command("./make_the_makefile.sh");
  &command("mv find_the_diff $find_the_diff");
  if(! -e "$find_the_diff") { die "Missing $find_the_diff executable. Make it manually.\n"};

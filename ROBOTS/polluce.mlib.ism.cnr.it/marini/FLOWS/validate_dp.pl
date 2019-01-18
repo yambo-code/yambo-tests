@@ -3,8 +3,8 @@
 @flow = (
 {
  ACTIVE      => "yes",
-# CONFIG      => "default.sh",
- KEYS        => "all hard",
+ CONFIG      => "default_dp.sh",
+ KEYS        => "nl hard",
 },
 {
  ACTIVE      => "yes",
