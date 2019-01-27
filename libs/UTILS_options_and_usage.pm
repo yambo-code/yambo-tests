@@ -142,7 +142,9 @@ if ($help==2) {
  print <<EndOfUsage
            
    (Crontab options)
-             -cron   <HH:MM>        Add a cron entry @HH:MM (example -cron 01:20)
+             -cron   <HH:MM>        Add a cron entry @HH:MM (example -cron 01:20). 
+                                    Use -cron clean   to crean the CRONTAB
+                                    Use -cron install to install the CRONTAB
 
    (SOURCEs)
              -conf   <NAME>         Use configuration NAME              (default: no options, all: cycle among all confs)
