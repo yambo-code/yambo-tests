@@ -93,7 +93,7 @@ if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 #
 undef $do_A2Y_tests;
-if ($pattern=~m/devel-abinit-interfaces/ix){$do_A2Y_tests="yes"};
+if ($pattern=~m/devel-abinit-interface/ix){$do_A2Y_tests="yes"};
 #
 $PAR_covariant="no";
 if ($pattern=~m/devel-dipoles/ix){$PAR_covariant="yes"};

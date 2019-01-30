@@ -79,7 +79,7 @@ if ("@_" =~ "before_run"){
  # Input file
  $INPUT_file="yambo.in";
  if ($yambo_exec =~ /\/p2y/) { $INPUT_file=$P2Y_datafile };
- if ($yambo_exec =~ /\/e2y/) { $INPUT_file=$A2Y_datafile };
+ if ($yambo_exec =~ /\/a2y/) { $INPUT_file=$A2Y_datafile };
 }
 if ("@_" =~ "after_run"){
  #
