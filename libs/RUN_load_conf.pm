@@ -53,12 +53,12 @@ if( -e "$input_folder/$testname.conf") {
    $P2Y_datafile = $value;
   }
   # A2Y
-  if($desc =~ m/datadir/ && $yambo_exec =~ /\/e2y/) { 
+  if($desc =~ m/datadir/ && $yambo_exec =~ /\/a2y/) { 
    &MY_PRINT($stdout, "** Setting A2Y datadir for $testname to: $value \n") if ($verb);
    $A2Y_datadir = $value;
    chdir($A2Y_datadir);
   }
-  if($desc =~ m/datafile/ && $yambo_exec =~ /\/e2y/) { 
+  if($desc =~ m/datafile/ && $yambo_exec =~ /\/a2y/) { 
    &MY_PRINT($stdout, "** Setting A2Y datafile for $testname to: $value \n") if ($verb);
    $A2Y_datafile = $value;
   }
