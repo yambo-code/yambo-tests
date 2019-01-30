@@ -8,29 +8,35 @@
 },
 {
  ACTIVE      => "yes",
- MPI_CPU     => $SYSTEM_NP,
+ MPI_CPU     => 8,
  PAR_MODE    => "default",
 },
 {
- MPI_CPU     => $SYSTEM_NP,
+ ACTIVE      => "yes",
+ MPI_CPU     => 8,
  PAR_MODE    => "random",
 },
 {
- MPI_CPU     => $SYSTEM_NP_half,
+ ACTIVE      => "no",
+ MPI_CPU     => 4,
  PAR_MODE    => "loop",
 },
 {
- THREADS     => $SYSTEM_NP_half,
+ ACTIVE      => "no",
+ THREADS     => 8,
 },
 {
- MPI_CPU     => $SYSTEM_NP,
- SLK_CPU     => $SYSTEM_NP_half,
- PAR_MODE    => "default",
+ ACTIVE      => "yes",
+ MPI_CPU     => 8,
+ SLK_CPU     => 4,
+ PAR_MODE    => "random",
 },
 {
- MPI_CPU     => $SYSTEM_NP_half,
- THREADS     => $SYSTEM_NP_half,
- SLK_CPU     => $SYSTEM_SLK,
+ ACTIVE      => "yes",
+ MPI_CPU     => 8,
+ THREADS     => 2,
+ SLK_CPU     => 4,
  PAR_MODE    => "default",
 },
 );
+
