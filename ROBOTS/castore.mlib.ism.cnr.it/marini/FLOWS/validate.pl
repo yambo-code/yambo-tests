@@ -7,12 +7,12 @@
  KEYS        => "all hard",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => 8,
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => 8,
  PAR_MODE    => "random",
 },
@@ -26,13 +26,13 @@
  THREADS     => 8,
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => 8,
  SLK_CPU     => 4,
  PAR_MODE    => "random",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => 8,
  THREADS     => 2,
  SLK_CPU     => 4,
