@@ -55,6 +55,7 @@ if (-f "VALENCE_1" && -f "CONDUCTION_1") {@EH = (1); @KPT = (1,2,4,8)};
 my @SB;
 @SB=@QK;
 #
+$N_kcv=0;
 $N_gkcv=0;
 $N_gqkcv=0;
 my $trace;
@@ -77,6 +78,15 @@ foreach $cv (@CV){
   if (not $trace eq $np) {next};
   @GKCV[$N_gkcv]= [ @conf ];
   $N_gkcv++; 
+ }
+ foreach $k (@KPT){
+  if (&PAR_conf_check({c=>@$cv[0],v=>@$cv[1]}) eq 1){next};
+  if (&PAR_conf_check({k=>$k}) eq 1){next};
+  @conf = ( $k, @$cv[0], @$cv[1] );
+  $trace=&trace( @conf );
+  if (not $trace eq $np) {next};
+  @KCV[$N_kcv]= [ @conf ];
+  $N_kcv++;
  }
 };
 #
@@ -142,6 +152,7 @@ foreach $k (@KPT){
 }
 #
 if ($verb) { 
+ foreach $var (@KCV){ print "\n KCV @$var"};
  foreach $var (@GKCV){ print "\n GKCV @$var"};
  foreach $var (@GQKCV){ print "\n GQKCV @$var"};
  foreach $var (@QSB){print "\n QSB @$var"};

@@ -59,7 +59,7 @@ if ( $default_parallel ){
 #
 # PARALLEL section
 #
-$PAR_field[0]="DIP_ROLEs= \"k.c.v\""; #  => GKCV
+$PAR_field[0]="DIP_ROLEs= \"k.c.v\""; #  => KCV
 $PAR_field[1]="X_q_0_ROLEs= \"g.k.c.v\""; #  => GKCV
 $PAR_field[2]="X_finite_q_ROLEs= \"g.q.k.c.v\""; # => GQKCV
 $PAR_field[3]="X_all_q_ROLEs= \"g.q.k.c.v\""; # => GQKCV
@@ -71,6 +71,7 @@ $PAR_field[8]="X_ROLEs= \"g.q.k.c.v\""; # => GQKCV
 #
 # Resets
 #
+undef @KCV;
 undef @GKCV;
 undef @GQKCV;
 undef @QSB;
