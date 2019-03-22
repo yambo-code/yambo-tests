@@ -44,6 +44,14 @@ if("@_" eq "ALL") {
  {
   &ROBOT_clean($ROBOT_id);
  }elsif ($user_branch){
+  foreach $log (<LOG*>){
+   if ($log =~ /$user_branch/)
+   {
+    $ROBOT_id=(split('-',$log))[1];
+    $ROBOT_id=~ s/R//g;
+    &ROBOT_clean($ROBOT_id);
+   };
+  }
  }else{
   &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R*' -type d | $grep -v $hostname | xargs rm -fr");
   &command("$git ls-files --others --exclude-standard | $grep -v $hostname | xargs rm -fr");
@@ -74,6 +82,7 @@ if("@_" eq "BINs" ) {
 sub ROBOT_clean
 {
  $ID = shift;
+ print "Cleaning ROBOT #".$ID."\n";
  $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | xargs rm -fr";
  &command("$cmd");
  $cmd="$git ls-files --others --exclude-standard | $grep -e 'ROBOT_Nr_$ID/' | $grep -v $hostname |  xargs rm -f";
