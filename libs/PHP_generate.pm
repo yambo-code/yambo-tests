@@ -24,7 +24,7 @@
 #
 sub PHP_generate{
 #
-&command("rm -fr $host/www/*");
+&command("rm -fr $host/www/$branch_key");
 #
 &UTILS_list_backups;
 #
