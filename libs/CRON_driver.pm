@@ -65,7 +65,7 @@ sub CRON_driver{
  }
  # CMD
  #
- &MY_PRINT($slog, "./driver.pl -flow validate -report -branch $B -nice -newer 100 -safe\n");
+ &MY_PRINT($slog, "./driver.pl -flow validate -report -branch $B -nice -newer 7 -safe\n");
  close($slog);
  &command("chmod a+x $cwd/ROBOTS/$host/$user/SCRIPTS/$script");
  #
