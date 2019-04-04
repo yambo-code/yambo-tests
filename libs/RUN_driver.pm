@@ -104,6 +104,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  # Loop over each test file
  LOOP_INPUTS: foreach $testname (@inputs) {
   #
+  if( $test_with_fails > 40) {next LOOP_INPUTS;}
+  #
   &MY_PRINT($stdout, "\nRunning input: $testname\n") if ($verb);
   #
   # Do actions and create the input (if any)
