@@ -184,6 +184,8 @@ if ($help==2) {
                                          A t must be pre-appended to testnames and a c to parallel confs. 
                                          E.g. t03_gw cNmpi64-64.3-bug-fixes.
                                       *  With no options the contents of the profile queue are processed.
+   (Internal Setup)
+             -edit    <string>      Edit internal files. <string> can be: filters, modules, flags, <flow.pl>, <cpu_conf>
 
    (Backup)
              -b [ID's]              If running BACKUP the LOGs (automatically used when -report is given)
