@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2018 the YAMBO team
+#        Copyright (C) 2000-2019 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -74,6 +74,9 @@ $is_NEW_WF="yes";
 if ($pattern=~m/3.4/ix) {$is_NEW_WF="no"};
 if ($pattern=~m/4.0/ix) {$is_NEW_WF="no"};
 if ($pattern=~m/4.1/ix) {$is_NEW_WF="no"};
+#
+$is_NEW_driver="no";
+if ($pattern=~m/devel-long-options/ix) {$is_NEW_driver="yes"};
 #
 $is_NEW_DBGD="no";
 if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};

@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2018 the YAMBO team
+#        Copyright (C) 2000-2019 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -32,7 +32,7 @@ if( -e "$input_folder/$testname"."$_[0]") {
  while($actions_cmd = shift(@actions_file)) {
   chomp($actions_cmd);
   $actions_cmd =~ s/<ROBOT>/$ROBOT_wd/g;
-  &command("$actions_cmd");
+  &command("$actions_cmd $log");
  }
  close(ACTIONS);
  if ( -e "BASE_input" and "$_[0]" eq ".input") {  &command("cat BASE_input >> yambo.in") };
