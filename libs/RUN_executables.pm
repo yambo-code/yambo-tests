@@ -104,8 +104,14 @@ if ($CHEERS =="1") {
  $yambo_exec = "$BRANCH/$conf_bin/ycheers";
 }
 #
-if ($openmp_is_off) {$yambo_exec="$yambo_exec -N"}
-if ($mpi_is_off)    {$yambo_exec="$yambo_exec -M"}
+if ($openmp_is_off) {
+ if ( not $is_NEW_driver) {$yambo_exec="$yambo_exec -N"}
+ if (     $is_NEW_driver) {$yambo_exec="$yambo_exec -noopenmp"}
+}
+if ($mpi_is_off){
+ if ( not $is_NEW_driver) {$yambo_exec="$yambo_exec -M"}
+ if (     $is_NEW_driver) {$yambo_exec="$yambo_exec -nompi"}
+}
 #
 }
 1;
