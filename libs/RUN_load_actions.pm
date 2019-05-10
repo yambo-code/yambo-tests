@@ -32,7 +32,8 @@ if( -e "$input_folder/$testname"."$_[0]") {
  while($actions_cmd = shift(@actions_file)) {
   chomp($actions_cmd);
   $actions_cmd =~ s/<ROBOT>/$ROBOT_wd/g;
-  &command("$actions_cmd $log");
+  if ("$_[0]" eq ".actions") {&command("$actions_cmd $log")};
+  if ("$_[0]" eq ".input")   {&command("$actions_cmd")};
  }
  close(ACTIONS);
  if ( -e "BASE_input" and "$_[0]" eq ".input") {  &command("cat BASE_input >> yambo.in") };
