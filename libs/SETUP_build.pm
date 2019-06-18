@@ -23,18 +23,19 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SETUP_build{
-if ($is_NEW_driver eq "no")
+if ($is_NEW_driver)
 {
+ print "using new driver";
+ my $result=`$BRANCH/$conf_bin/yambo -version 2>&1`;
+ @build_patters= split(/\s+/,$result);
+ $REVISION=$build_patters[10];
+ $BUILD=$build_patters[5];
+}else{
  my $result=`$BRANCH/$conf_bin/yambo -h 2>&1`;
  @build_patters= split(/\s+/,$result);
  $REVISION=$build_patters[5];
  $REVISION =~ s/rev.//;
  $BUILD=$build_patters[7];
-}else{
- my $result=`$BRANCH/$conf_bin/yambo -version 2>&1`;
- @build_patters= split(/\s+/,$result);
- $REVISION=$build_patters[10];
- $BUILD=$build_patters[5];
 }
 if(not $BUILD =~ /MPI/ and ($NP_set[0] >1 or $#NP_set >1)) {return "Requested MPI support but MPI is off"};
 if(not $BUILD =~ /OpenMP/) {
