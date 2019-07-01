@@ -55,6 +55,7 @@ call add_RULE(".carriers","skip",TITLES=(/"T_hole [K]","T_elec [K]"/),MATERIAL="
 ! NL
 !====
 call add_RULE(".YPP-X_probe_order_1","skip",COLS=(/4,5,6,7/),Material="hBN")
+call add_RULE(".polarization_F","skip",COLS=(/5,6,7/),MATERIAL="hBN")
 !
 ! KERR
 !======

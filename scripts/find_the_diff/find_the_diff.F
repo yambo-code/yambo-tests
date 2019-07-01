@@ -165,7 +165,7 @@ program find_the_diff
      if (.not.align)     align     =index(RULES(i_r)%action,"align")>0
      if (.not.no_statistics)    no_statistics  =index(RULES(i_r)%action,"no_statistics")>0
      if (index(RULES(i_r)%action,"skip")>0   ) then
-       do i_c=1,ref%N_col
+       do i_c=1,max(ref%N_col,out%N_col)
          if (.not.skip_column(i_c)) skip_column(i_c)=RULES(i_r)%column(i_c)==1
          do i_t=1,ref%N_col
            if (len_trim(titles(i_c))==0) cycle
@@ -254,9 +254,14 @@ program find_the_diff
    stop
  endif
  if (ref%N_col/=out%N_col) then
-   write (CHECK_result,'(a,2(i6,a))') "Different number of columns:",ref%N_col," [REF]",out%N_col," [OUT]"
-   write (*,'(a)') trim(CHECK_result)
-   stop
+   if( .not.(abs(ref%N_col-out%N_col)==count(skip_column)) ) then
+     write (CHECK_result,'(a,2(i6,a))') "Different number of columns:",ref%N_col," [REF]",out%N_col," [OUT]"
+     write (*,'(a)') trim(CHECK_result)
+     stop
+   !else
+   !  write (CHECK_result,'(a,2(i6,a))') " OK ] Different number of columns:",&
+   !          &    ref%N_col," [REF]",out%N_col," [OUT] ignored due to rules"
+   endif
  endif
  !
  MAX_ERR=0.
