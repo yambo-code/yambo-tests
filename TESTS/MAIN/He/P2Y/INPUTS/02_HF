@@ -13,8 +13,19 @@
 #                http://www.yambo-code.org                  
 #
 HF_and_locXC                   # [R XX] Hartree-Fock Self-energy and Vxc
-EXXRLvcs=   257       RL      # [XX] Exchange    RL components
+rim_cut                        # [R RIM CUT] Coulomb potential
+SE_Threads=0                   # [OPENMP/GW] Number of threads for self-energy
+RandQpts=0                     # [RIM] Number of random q-points in the BZ
+RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
+CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+% CUTBox
+ 0.00     | 0.00     | 0.00     |        # [CUT] [au] Box sides
+%
+CUTRadius= 0.000000            # [CUT] [au] Sphere/Cylinder radius
+CUTCylLen= 0.000000            # [CUT] [au] Cylinder length
+CUTwsGvec= 1.700000            # [CUT] WS cutoff: number of G to be modified
+EXXRLvcs= 257          RL      # [XX] Exchange    RL components
 VXCRLvcs= 257          RL      # [XC] XCpotential RL components
-%QPkrange                      # [GW] QP generalized Kpoint/Band indices
-  1|  1|  1| 2|
+%QPkrange                      # # [GW] QP generalized Kpoint/Band indices
+1|1|1|1|
 %
