@@ -40,6 +40,10 @@ while(<SETUP_file>) {
   ($desc, $MPI_kind) = split(/=/,$_);
   if($MPI_kind eq "" ) { $MPI_kind="unknown"}; 
  }
+ if($_ =~ /lmpi/) { 
+  ($desc, $MPI_lib) = split(/=/,$_);
+  if($MPI_lib eq "" ) { $MPI_kind=""}; 
+ }
  if($_ =~ /yprecision/) { 
   ($desc, $Yambo_precision) = split(/=/,$_);
  }
@@ -47,6 +51,7 @@ while(<SETUP_file>) {
 close(SETUP_file);
 #($FC_kind)=split(/\s+/,$FC_kind_ext); 
 $FC_kind_ext="$FC_kind $FC_version";
+if($MPI_kind == ""     ) { $MPI_kind_short="" }; 
 if($MPI_kind =~ /Open/ ) { $MPI_kind_short="OpenMPI" }; 
 if($MPI_kind =~ /MPICH/) { $MPI_kind_short="MPICH" }; 
 if($MPI_kind =~ /Intel/) { $MPI_kind_short="IntelMPI"}; 
