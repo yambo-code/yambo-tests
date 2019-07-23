@@ -97,7 +97,7 @@ foreach $dir (<*>) {
   $i1=0;
   WWW: while($i1 < $imax+1) {
    $cmd = "$wget --spider -q $LINK/$filename[$i1]$EXTENSION && echo exists || echo not exist";
-   $show_progress= `$wget --help | grep show-progress | head -c 25`;
+   $show_progress= `$wget --help | grep show-progress | head -c 30`;
    $show_progress=~ s/^\s+|\s+$//g;
    my $file_exist = `$cmd`;
    if ($mode eq "tests" or $mode eq "cheers" or $mode eq "validate"){
