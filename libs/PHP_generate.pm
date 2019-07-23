@@ -24,25 +24,28 @@
 #
 sub PHP_generate{
 #
-&command("rm -fr $host/www/$branch_key");
+if( not ( -d "$host/www/" ) ){ &command("mkdir -p $host/www/");}
+if( not ($branch_key eq "") ){ &command("rm -fr $host/www/$branch_key");}
+if(     ($branch_key eq "") ){ &command("rm -fr $host/www/*");}
 #
 &UTILS_list_backups;
 #
 $i_file = 0;
 foreach $dir (@reversed_dirs) {
  @files = glob("$dir/REPORT*");
+ $branch_ref="none";
  foreach $file (@files) {
   $i_file = $i_file+1;
   open(REPORT,"<","$suite_dir/$file");
   @lines = <REPORT>;
   &PHP_key_words($file);
   if (not "$branch_php" eq "" ) {
-    if (not "$branch_php" eq "$branch_key") { next; }
+    if (not ("$branch_php" eq "$branch_key")) { next; }
     $branch_ref=$branch_key;
   }
-  if ($i_file eq 1 and "$branch_php" eq "") {$branch_ref=$branch_key;};
+  if (($i_file == 1) and ("$branch_php" eq "")) {$branch_ref=$branch_key;};
   if ($branch_key =~ "bug-fixes_copy" or $branch_key =~ "max-release" ) {next};
-  if (! ("$branch_key" eq "$branch_ref") ) {next};
+  if (not ("$branch_key" eq "$branch_ref") ) {next};
   print "Processing $dir...\n";
   &PHP_extract;
   close(REPORT);
@@ -56,6 +59,7 @@ sub PHP_key_words{
  $robot_id = (split(/-/,$robot_id))[0];
  &get_line("Branch");
  $branch_key=$pattern[0][1];
+ if( $branch_key eq ""){$branch_key="none";}
  &get_line("Build");
  if ($n_patterns eq 0)
  {
@@ -68,6 +72,7 @@ sub PHP_key_words{
    return;
  }
  $branch_key=$pattern[0][1];
+ if( $branch_key eq ""){$branch_key="none";}
  $BUILD=$pattern[0][3];
  $BUILD =~ s/\+/ /g;
  $MPI_kind=$pattern[0][5];

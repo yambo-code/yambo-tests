@@ -35,15 +35,20 @@ sub UTILS_list_backups{
   @comps = glob("$dir/compilation/*");
   next if (scalar(@reps) eq 0 and scalar(@comps) eq 0);
   if ($dir =~ /\/2017\//) {
+   #print "check 2017: $dir\n";
    push @dirs_to_process_2017, $dir;
+   $n_backups++;
   }
   if ($dir =~ /\/2018\//) {
+   #print "check 2018: $dir\n";
    push @dirs_to_process_2018, $dir;
+   $n_backups++;
   }
   if ($dir =~ /\/2019\//) {
+   #print "check 2019: $dir\n";
    push @dirs_to_process_2019, $dir;
+   $n_backups++;
   }
-  $n_backups++;
  }
  #
  if ($clean and $backup_logs eq "yes") {
