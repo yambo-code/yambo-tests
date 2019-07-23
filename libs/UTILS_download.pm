@@ -22,6 +22,7 @@
 #
 sub UTILS_download
 {
+if (!$wget) {return};
 &CWD_save;
 #
 my $LINK="http://www.yambo-code.org/testing-robots/databases/$mode";
@@ -95,14 +96,16 @@ foreach $dir (<*>) {
   $imax=$i1;
   $i1=0;
   WWW: while($i1 < $imax+1) {
-   $cmd = "wget --spider -q $LINK/$filename[$i1]$EXTENSION && echo exists || echo not exist";
+   $cmd = "$wget --spider -q $LINK/$filename[$i1]$EXTENSION && echo exists || echo not exist";
+   $show_progress= `$wget --help | grep show-progress | head -c 30`;
+   $show_progress=~ s/^\s+|\s+$//g;
    my $file_exist = `$cmd`;
    if ($mode eq "tests" or $mode eq "cheers" or $mode eq "validate"){
     if ( "$file_exist" eq "exists\n") {
      &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
      &MY_PRINT($stdout, " downloading ...\n");
      if ($force) {&command("rm -f $filename[$i1]$EXTENSION ")};
-     &command( "wget -qc $LINK/$filename[$i1]$EXTENSION --show-progress --progress=bar:force:noscroll");
+     &command( "$wget -qc $LINK/$filename[$i1]$EXTENSION $show_progress --progress=bar:force:noscroll");
      &MY_PRINT($stdout, "   opening ...");
      &command( "tar zxf $filename[$i1]$EXTENSION");
      &MY_PRINT($stdout, "done\n");
@@ -114,7 +117,7 @@ foreach $dir (<*>) {
     if ( "$file_exist" eq "exists\n" and  not -f $BASE) {
      &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
      &MY_PRINT($stdout, " downloading ...\n");
-     &command( "wget -qc $LINK/$filename[$i1] --show-progress --progress=bar:force:noscroll");
+     &command( "$wget -qc $LINK/$filename[$i1] $show_progress --progress=bar:force:noscroll");
      $CAT_cmd.=" $filename[$i1]";
     }else{
      &MY_PRINT($stdout, "...$BASE [FOUND]\n");

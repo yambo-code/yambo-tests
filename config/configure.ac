@@ -85,8 +85,8 @@ AC_ARG_WITH(ncftpput, AC_HELP_STRING([--with-ncftpput=<exe>],[User-defined ncftp
 AC_CHECK_PROGS(ncftpput,[$with_ncftpput],[none])
 AC_SUBST(ncftpput)
 # wget
-AC_ARG_WITH(wget, AC_HELP_STRING([--with-wget=<exe>],[User-defined wget],[32]),[],[with_wget="wget --show-progress"]) 
-AC_CHECK_PROGS(wget,[$with_wget],[wget])
+AC_ARG_WITH(wget, AC_HELP_STRING([--with-wget=<exe>],[User-defined wget],[32]),[],[with_wget="wget"]) 
+AC_CHECK_PROGS(wget,[$with_wget],[none])
 AC_SUBST(wget)
 # git
 AC_ARG_WITH(git, AC_HELP_STRING([--with-git=<exe>],[User-defined git],[32]),[],[with_git="git"]) 
