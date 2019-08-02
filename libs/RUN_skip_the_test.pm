@@ -93,7 +93,7 @@ if ( "@_" eq "INPUT") {
  };
  #
  # Tests with Covariant dipoles are broken in parallel
- if ($testname =~ m/Covariant/ && $np>1 && $PAR_covariant eq "no") { 
+ if ($testname =~ m/Covariant/ && $np>1 && not ($PAR_covariant eq "yes")) { 
   my $msg = sprintf("%-"."$left_length"."s", "$testname");
   $CHECK_error= $msg." skipped (Covariant test not working in parallel)";
   &RUN_stats("SKIPPED");
