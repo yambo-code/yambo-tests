@@ -1,18 +1,18 @@
                                                                 
-      __   __     _        __  __       ____      U  ___  u     
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/      
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |      
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |      
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/       
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\         
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)        
+    :::   :::   :::     ::::    ::::  :::::::::   ::::::::      
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:     
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+     
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+     
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+     
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#     
+       ###  ###     ### ###       ### #########   ########      
                                                                 
                                                                 
           Version 4.5.0 Revision 16901 Hash cfab4d6b2           
                      MPI+SLK+OpenMP Build                       
                    http://www.yambo-code.org                    
  
- 08/06/2019 at 10:00 YAMBO_RT @ VivoBook
+ 08/06/2019 at 09:46 YAMBO_RT @ VivoBook
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -28,13 +28,12 @@
  Additional I/O in   .
  Communications in   .
  Input file     is   yambo.in
- Report file    is   ./r-06_td_sex_vel_negf
+ Report file    is   ./r-03_td_ip+qp_negf
  Precision      is   SINGLE
  Log files      in   ./LOG
 
- Job string(s)-dir(s) (main): 06_td_sex_vel
-                     (alt#1): 02_collisions_sex-serial-bug-fixes
-                     (alt#2): R6
+ Job string(s)-dir(s) (main): 03_td_ip+qp
+                     (alt#1): R5
   
  [RD./SAVE//ns.db1]------------------------------------------
   Bands                           :  60
@@ -203,24 +202,6 @@
  [04] Dipoles
  ============
 
- [RD./02_collisions_sex-serial-bug-fixes//ndb.dipoles]-------
-  Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
-  RL vectors                   (WF):  3317
-  Fragmentation                    :yes
-  Electronic Temperature        [K]: 0.000000
-  Bosonic    Temperature        [K]: 0.000000
-  X band range           :   1   50
- *ERR* X band range limits    :  8   9
-  X e/h energy range [ev]:-1.000000 -1.000000
-  RL vectors in the sum  :  3317
-  [r,Vnl] included       :yes
- *ERR* Bands ordered          :yes
-  Direct v evaluation    :no
-  Field momentum norm    :0.1000E-4
-  Approach used          :G-space v
- *ERR* Dipoles computed       :R V P
-  Wavefunctions          :Teter 93(XC)
- - S/N 004393 -------------------------- v.04.05.00 r.16901 -
 
  [WARNING] DIPOLES database not correct or not present
  [RD./SAVE//ns.kb_pp]----------------------------------------
@@ -228,7 +209,7 @@
  - S/N 004393 -------------------------- v.04.05.00 r.16902 -
  [WF-Oscillators/G space loader] Normalization (few states)  min/max  :0.434E-18  1.00    
 
- [WR./06_td_sex_vel//ndb.dipoles]----------------------------
+ [WR./03_td_ip+qp//ndb.dipoles]------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
   RL vectors                   (WF):  3317
   Fragmentation                    :yes
@@ -247,8 +228,8 @@
   Wavefunctions          :Teter 93(XC)
  - S/N 004393 -------------------------- v.04.05.00 r.16901 -
 
- [05] HARTREE+SEX Real-Time Dynamics
- ===================================
+ [05] IP Real-Time Dynamics
+ ==========================
 
 
   [05.01] Initialization
@@ -258,8 +239,8 @@
   [05.02] External/Internal QP corrections
   ========================================
 
-  [QP apply] Ind. Gap Correction   [ev]: 1.4999999
-  [RD./06_td_sex_vel//ndb.dipoles]----------------------------
+  [QP apply] Ind. Gap Correction   [ev]: 1.0000002
+  [RD./03_td_ip+qp//ndb.dipoles]------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
    RL vectors                   (WF):  3317
    Fragmentation                    :yes
@@ -284,38 +265,7 @@
 
   [WARNING]Field starting time corrected to respect the I/O times.
 
-  [05.04] Electronic Collisions loading and setup
-  ===============================================
-
-  [RD./02_collisions_sex-serial-bug-fixes//ndb.COLLISIONS_HXC]-
-   Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
-   RL vectors                   (WF):  3317
-   COLLISIONS name                 :HARTREE+SEX
-   Total number of COLLISIONS      :  40
-   COLLISIONS kind                 : 1327
-   Bands                           :  7  10
-   Bands mixing                    : 100.00000
-   Exchange Cutoff                 :0.50000E-3
-   Hartree  RL vectors             : 2227
-   Exchange RL vectors             : 107
-   X matrix size          :107
-   X band range           :1 - 50
-   X e/h energy range [ev]:-1.000000 - -1.000000
-   X Time ordering        :T
-   X xc-Kernel            :none
-   X Drude frequency      : 0.000000 0.000000
-   X poles           [o/o]: 100.0000
-   RL vectors in the sum  :3317
-   [r,Vnl] included       : yes
-   Field direction        :0.1000E-4  0.000000  0.000000
-   BZ energy Double Grid  : no
-   BZ energy DbGd points  :0
-   BZ Q point size factor : 1.000000
-   RIM RL components      :0
-   RIM random points      :0
-  - S/N 004393 -------------------------- v.04.05.00 r.16901 -
-
-  [05.05] Messaging
+  [05.04] Messaging
   =================
 
   ---General---
@@ -335,13 +285,12 @@
   Equilibrium scattering included:no
 
   ---Flags (if any)---
-  Hxc approximation          :HARTREE+SEX
+  Hxc approximation          :IP
 
   ---I/O---
-  T between I/O of   OBS [fs]:   0.01000
+  T between I/O of   OBS [fs]:  0.050000
             I/O of   GFs [fs]: 1.0000001
                  outputs [fs]:  0.100000
-  Extended collisions   [I/O]:yes
 
   ---Damping---
   Damping (Phase)    [fs/meV]: 0.000       Infinity
@@ -359,7 +308,7 @@
   K-points            (TOTAL):  4
 
   ---Fields---
-  Gauge                       :velocity
+  Gauge                       :length
   Field1 field                       :DELTA
   Field1 polarization                :linear
   Field1 energy window/period [eV/fs]: 0.000      0.000       Infinity   Infinity
@@ -369,70 +318,66 @@
   Field1 electric field         [V/m]:0.19410E+7
   Field1 max intensity      [kW/cm^2]: 1000.0   
   Field1 max fluence        [nJ/cm^2]: 0.0000000
-  Field1 final time              [fs]:  0.030000
+  Field1 final time              [fs]:  0.070000
   Field1 half maximum full width [fs]: 0.0000000
   [WF-RT] Performing Wave-Functions I/O from ./SAVE
 
-  [FFT-RT] Mesh size:  18   18   39
+  [FFT-RT] Mesh size:  15   15   35
 
 
-  [05.06] Start and Restart
+  [05.05] Start and Restart
   =========================
 
    
 
-  [05.07] Real-Time dynamics
+  [05.06] Real-Time dynamics
   ==========================
 
 
- Timing [Min/Max/Average]: 42s/42s/42s
+ Timing [Min/Max/Average]: 09s/09s/09s
 
  [06] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                                    io_WF :     0.00s CPU (        31 calls,   0.152 millisec avg)
-                                  io_GROT :     0.00s CPU (         3 calls,   0.571 millisec avg)
-                                 io_QINDX :     0.00s CPU (         2 calls,   0.372 millisec avg)
+                                    io_WF :     0.00s CPU (        31 calls,   0.192 millisec avg)
+                                  io_GROT :     0.00s CPU (         3 calls,   0.713 millisec avg)
+                                 io_QINDX :     0.00s CPU (         2 calls,   0.510 millisec avg)
                                io_COL_CUT :     0.00s CPU
                            io_Double_Grid :     0.00s CPU
                                     io_HF :     0.00s CPU
-                               io_DIPOLES :     0.00s CPU (        12 calls,   0.625 millisec avg)
+                               io_DIPOLES :     0.00s CPU (        12 calls,   0.719 millisec avg)
                               io_KB_pwscf :     0.00s CPU (         2 calls,   0.016 millisec avg)
-                             io_KB_abinit :     0.00s CPU (         6 calls,   0.248 millisec avg)
+                             io_KB_abinit :     0.00s CPU (         6 calls,   0.353 millisec avg)
                          io_ATMPROJ_pwscf :     0.00s CPU
-                                     io_X :     0.00s CPU (         4 calls,   0.258 millisec avg)
-                              io_fragment :     0.00s CPU (       249 calls,   0.136 millisec avg)
+                                     io_X :     0.00s CPU (         4 calls,   0.050 millisec avg)
                                     io_BS :     0.00s CPU
-                                  io_ELPH :     0.00s CPU (         2 calls,   0.056 millisec avg)
-                         io_RT_components :    40.00s CPU (      8071 calls,   0.005 sec avg)
-                            io_COLLISIONS :     0.00s CPU (        85 calls,   0.540 millisec avg)
+                                  io_ELPH :     0.00s CPU (         2 calls,   0.052 millisec avg)
+                         io_RT_components :     8.00s CPU (      1703 calls,   0.005 sec avg)
+                            io_COLLISIONS :     0.00s CPU (         3 calls,   0.051 millisec avg)
                                   Dipoles :     0.00s CPU
-                  IO_and_Messaging_switch :     0.00s CPU (      4062 calls,   0.006 millisec avg)
+                  IO_and_Messaging_switch :     0.00s CPU (      4062 calls,   0.004 millisec avg)
                         DIPOLE_transverse :     0.00s CPU
-                             PP_uspp_init :     0.00s CPU (         9 calls,   0.031 millisec avg)
-                              WF_load_FFT :     0.00s CPU (         9 calls,   3.177 millisec avg)
-                           eval_G_minus_G :     0.00s CPU
-                          COLLISIONS_load :     0.00s CPU (         2 calls,  22.999 millisec avg)
-                                FFT_setup :     0.00s CPU (         6 calls,  35.889 millisec avg)
+                             PP_uspp_init :     0.00s CPU (         9 calls,   0.033 millisec avg)
+                              WF_load_FFT :     0.00s CPU (         9 calls,   1.923 millisec avg)
+                              io_fragment :     0.00s CPU (        88 calls,   0.168 millisec avg)
+                                FFT_setup :     0.00s CPU (         6 calls,   9.111 millisec avg)
                         el_density_matrix :     0.00s CPU
                          Bare_Hamiltonian :     0.00s CPU
                                 V_Hartree :     0.00s CPU
                                 XCo_local :     0.00s CPU
                       XC_potential_driver :     0.00s CPU
-                        V_real_space_to_H :     0.00s CPU (        12 calls,   0.730 millisec avg)
+                        V_real_space_to_H :     0.00s CPU (        12 calls,   0.447 millisec avg)
                           V_qp_basis_to_H :     0.00s CPU (         4 calls,   0.002 millisec avg)
                          RT output (INIT) :     0.00s CPU
-                           RT Hamiltonian :     0.00s CPU (      3981 calls,   0.108 millisec avg)
-                     COLLISIONS (compose) :     0.00s CPU (      7962 calls,   0.044 millisec avg)
-                       COLLISIONS (redux) :     0.00s CPU (      3981 calls,   0.001 millisec avg)
-                           RT Apply Field :     0.00s CPU (     15924 calls,   0.002 millisec avg)
-                           RT observables :     0.00s CPU (      1991 calls,   0.092 millisec avg)
-                            RT average Op :     0.00s CPU (      6582 calls,   0.024 millisec avg)
-                             RT avg redux :     0.00s CPU (      6582 calls,   0.001 millisec avg)
-                          RT databases IO :    40.00s CPU (      1991 calls,   0.020 sec avg)
-                                RT output :     0.00s CPU (      1200 calls,   0.178 millisec avg)
-                            RT integrator :     0.00s CPU (      3980 calls,   0.013 millisec avg)
+                           RT Hamiltonian :     0.00s CPU (      3981 calls,   0.013 millisec avg)
+                           RT Apply Field :     0.00s CPU (     15924 calls,   0.001 millisec avg)
+                           RT observables :     0.00s CPU (       399 calls,   0.128 millisec avg)
+                            RT average Op :     0.00s CPU (      3198 calls,   0.013 millisec avg)
+                             RT avg redux :     0.00s CPU (      3198 calls,   0.001 millisec avg)
+                          RT databases IO :     8.00s CPU (      1991 calls,   0.004 sec avg)
+                                RT output :     0.00s CPU (      1200 calls,   0.180 millisec avg)
+                            RT integrator :     0.00s CPU (      3980 calls,   0.009 millisec avg)
 
  [07] Memory Overview
  ====================
@@ -440,18 +385,18 @@
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
  Memory treshold are: 10.00000Mb (basic treshold)  100.0000Mb (SAVEs treshold)
 
-         TOTAL not deallocated :  367.0000Kb
+         TOTAL not deallocated :  289.0000Kb
 
-         Max memory used   :  3.649000Mb
+         Max memory used   :  2.377000Mb
 
  [08] Game Over & Game summary
  =============================
 
- 08/06/2019 at 10:00 YAMBO_RT @ VivoBook [start]
- 08/06/2019 at 10:01                     [end]
+ 08/06/2019 at 09:46 YAMBO_RT @ VivoBook [start]
+ 08/06/2019 at 09:46                     [end]
 
- Timing   [Min/Max/Average]: 42s/42s/42s
-             [Time-Profile]: 42s
+ Timing   [Min/Max/Average]: 09s/09s/09s
+             [Time-Profile]: 09s
 
  .-ACKNOWLEDGMENT
  |
@@ -470,12 +415,12 @@
   
  .-Input file : yambo.in
  | negf                           # [R] Real-Time dynamics
+ | BoseTemp= 0.000000     eV      # Bosonic Temperature
  | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
- | HXC_Potential= "HARTREE+SEX"   # [SC] SC HXC Potential
+ | HXC_Potential= "IP"            # [SC] SC HXC Potential
  | FFTGvecs=  3317        RL      # [FFT] Plane-waves
- | HARRLvcs= 2227         RL      # [HA] Hartree     RL components
  | % GfnQP_E
- |  1.500000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
+ |  1.000000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
  | %
  | RTEvalEnergy                   # [RT] Energy variation computed on the fly
  | RTEvalEntropy                  # [RT] Entropy variation computed on the fly
@@ -484,12 +429,12 @@
  | %
  | Integrator= "EULER + RK2"      # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
  | % RTehEny
- |  -1.21991 | 12.32108 | eV      # [RT] Electron-hole energy range
+ |  -1.21991 | 11.82108 | eV      # [RT] Electron-hole energy range
  | %
  | RTstep= 10.00000       as      # [RT] Real Time step length
  | NETime= 19.90000       fs      # [RT] Simulation Time
  | % IOtime
- |    0.0100 |   1.0000 |   0.1000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
+ |   0.05000 |  1.00000 |  0.10000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
  | %
  | % Field1_Freq
  |  0.00     | 0.00     | eV      # [RT Field1] Frequency
@@ -504,7 +449,7 @@
  | % Field1_Dir_circ
  |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
  | %
- | Field1_Tstart=   0.0100fs      # [RT Field1] Initial Time
+ | Field1_Tstart=  0.05000fs      # [RT Field1] Initial Time
  | %DephMatrix                    # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
  | 1|1|1|-1.000000|
  | %

@@ -1,11 +1,11 @@
 #                                                           
-#   __   __     _        __  __       ____      U  ___  u   
-#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
-#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
-#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
-#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
-# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
-#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
+# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
+#    ###  ###     ### ###       ### #########   ########    
 #                                                           
 #                                                           
 #       Version 4.5.0 Revision 16901 Hash cfab4d6b2         
@@ -14,7 +14,7 @@
 #
 # [RT] Bands                      :7 - 10
 # [RT] K-points                   :4
-# [RT] Potential                  :HARTREE+SEX
+# [RT] Potential                  :IP
 # [E-P] Electron-phonon           : no
 # [E-P] Completed Collision(CCA)  : no
 # [E-P] Branches                  :0 - 0
@@ -45,7 +45,7 @@
 # [DbGd] Used for e-e        [o/o]: 0.000000
 # [CONSTRAINS] N (ee+ep) & dN (ep): yes
 # [CONSTRAINS] IP Energy      (ee): yes
-# [FIELDs] Gauge Type             :velocity
+# [FIELDs] Gauge Type             :length
 # [FIELDs] Type                   :DELTA
 # [FIELDs] Polarization           :linear
 # [FIELDs] Versor                 : 1.000000  0.000000  0.000000
@@ -55,7 +55,7 @@
 # [FIELDs] Frequency range    [eV]: 0.000000 -  0.000000
 # [FIELDs] Frequency steps        :1
 # [FIELDs] Frequency step     [eV]: 0.000000
-# [FIELDs] Initial time       [fs]:   0.0100
+# [FIELDs] Initial time       [fs]:  0.05000
 #
 #    Time[fs]           E_x/Re[V/m]        E_y/Re[V/m]        E_z/Re[V/m]        E_x/Im[V/m]        E_y/Im[V/m]        E_z/Im[V/m]        Int. [kW/cm^2]     Fluence[nJ/cm^2]
 #
@@ -260,19 +260,19 @@
      19.80000114441     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000      0.00000000000      0.05851000547
      19.89999961853     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000      0.00000000000      0.05851000547
 # 
-# 08/06/2019 at 10:00 YAMBO_RT @ VivoBook [start]
-# 08/06/2019 at 10:01                     [end]
+# 08/06/2019 at 09:46 YAMBO_RT @ VivoBook [start]
+# 08/06/2019 at 09:46                     [end]
 #  
-# Timing   [Min/Max/Average]: 42s/42s/42s
+# Timing   [Min/Max/Average]: 09s/09s/09s
 #
 # .-Input file : yambo.in
 # | negf                           # [R] Real-Time dynamics
+# | BoseTemp= 0.000000     eV      # Bosonic Temperature
 # | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
-# | HXC_Potential= "HARTREE+SEX"   # [SC] SC HXC Potential
+# | HXC_Potential= "IP"            # [SC] SC HXC Potential
 # | FFTGvecs=  3317        RL      # [FFT] Plane-waves
-# | HARRLvcs= 2227         RL      # [HA] Hartree     RL components
 # | % GfnQP_E
-# |  1.500000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
+# |  1.000000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
 # | %
 # | RTEvalEnergy                   # [RT] Energy variation computed on the fly
 # | RTEvalEntropy                  # [RT] Entropy variation computed on the fly
@@ -281,12 +281,12 @@
 # | %
 # | Integrator= "EULER + RK2"      # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
 # | % RTehEny
-# |  -1.21991 | 12.32108 | eV      # [RT] Electron-hole energy range
+# |  -1.21991 | 11.82108 | eV      # [RT] Electron-hole energy range
 # | %
 # | RTstep= 10.00000       as      # [RT] Real Time step length
 # | NETime= 19.90000       fs      # [RT] Simulation Time
 # | % IOtime
-# |    0.0100 |   1.0000 |   0.1000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
+# |   0.05000 |  1.00000 |  0.10000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
 # | %
 # | % Field1_Freq
 # |  0.00     | 0.00     | eV      # [RT Field1] Frequency
@@ -301,7 +301,7 @@
 # | % Field1_Dir_circ
 # |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
 # | %
-# | Field1_Tstart=   0.0100fs      # [RT Field1] Initial Time
+# | Field1_Tstart=  0.05000fs      # [RT Field1] Initial Time
 # | %DephMatrix                    # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
 # | 1|1|1|-1.000000|
 # | %
