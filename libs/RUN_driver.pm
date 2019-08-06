@@ -85,7 +85,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   if (not $mode eq "bench") {
    &command("rsync --exclude 'ROBOT*' -L -k -r . $ROBOT_wd");
    foreach $testname (@inputs) { 
-     if (not -f "$ROBOT_wd/$input_folder/$testname" and -f "$ROBOT_wd/INPUTS/$testname" ) 
+     if (not -f "$ROBOT_wd/$input_folder/$testname" and -f "$ROBOT_wd/INPUTS/$testname" and not $is_GPL ) 
      {
        &command("cp $ROBOT_wd/INPUTS/$testname* $ROBOT_wd/$input_folder");
      }
@@ -105,6 +105,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  LOOP_INPUTS: foreach $testname (@inputs) {
   #
   if( $test_with_fails > 40) {next LOOP_INPUTS;}
+  if (not -f "$input_folder/$testname" and $is_GPL ) {next LOOP_INPUTS;}
   #
   &MY_PRINT($stdout, "\nRunning input: $testname\n") if ($verb);
   #

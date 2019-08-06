@@ -1,19 +1,20 @@
 #                                                           
-#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$     
-# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$    
-#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$    
-#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$    
-#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$    
-#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$    
-#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/    
-#     |__/   |__/  |__/|__/     |__/|_______/  \______/     
+#   __   __     _        __  __       ____      U  ___  u   
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
 #                                                           
-#       Version 4.3.0 Revision 15152 Hash ce58fe9           
-#                     MPI+SLK Build                         
-#               http://www.yambo-code.org                   
+#                                                           
+#       Version 4.5.0 Revision 16901 Hash cfab4d6b2         
+#                  MPI+SLK+OpenMP Build                     
+#                http://www.yambo-code.org                  
 #
 # [RT] Bands                      :7 - 10
 # [RT] K-points                   :4
+# [RT] Potential                  :HARTREE+SEX
 # [E-P] Electron-phonon           : no
 # [E-P] Completed Collision(CCA)  : no
 # [E-P] Branches                  :0 - 0
@@ -26,15 +27,11 @@
 # [RT] NE time       (planned)[fs]: 19.90000
 # [RT]                  (done)[fs]: 0.000000
 # [RT] Lifetimes Inter/Intra  [fs]: 0.000000 -  0.000000
-# [RT]                   (now)[fs]:-1.000000 - -1.000000
+# [RT]                   (now)[fs]: 0.000000 -  0.000000
 # [RT] I/O time               [fs]: 1.000000
 # [RT] NE steps         (done)[fs]:1991
 # [RT] Lifetimes extrapolation    : no
-# [dT] Update                     : no
-# [dT] Starting Time          [fs]: 0.000000
-# [dT] Update interval        [fs]: 0.000000
-# [dT] Update interval tresh [o/o]: 2.000000
-# [dT] Max step in dynamics   [fs]: 0.000000
+# [dT] Time-Dependent Time step   : no
 # [RT] Integrator                 :EULER + RK2
 # [RT] Radiative life time    [fs]: 0.000000
 # [RT] Dephasing life time    [fs]: 0.000000
@@ -263,21 +260,21 @@
      19.80000114441     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000      0.00000000000      0.05851000547
      19.89999961853     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000     -0.00000000000      0.00000000000      0.05851000547
 # 
-# 11/08/2017 at 09:59 YAMBO_RT @ narro [start]
-# 11/08/2017 at 10:00                  [end]
+# 08/06/2019 at 10:00 YAMBO_RT @ VivoBook [start]
+# 08/06/2019 at 10:01                     [end]
 #  
-# Timing   [Min/Max/Average]: 15s/15s/15s
+# Timing   [Min/Max/Average]: 42s/42s/42s
 #
 # .-Input file : yambo.in
 # | negf                           # [R] Real-Time dynamics
+# | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
 # | HXC_Potential= "HARTREE+SEX"   # [SC] SC HXC Potential
 # | FFTGvecs=  3317        RL      # [FFT] Plane-waves
-# | HARRLvcs= 2227         RL      # [HA] Hartree  RL components
-# | EXXRLvcs= 107          RL      # [XX] Exchange RL components
-# | CORRLvcs=  3413        RL      # [GW] Correlat RL components
+# | HARRLvcs= 2227         RL      # [HA] Hartree     RL components
 # | % GfnQP_E
 # |  1.500000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
 # | %
+# | RTEvalEnergy                   # [RT] Energy variation computed on the fly
 # | RTEvalEntropy                  # [RT] Entropy variation computed on the fly
 # | % RTBands
 # |   7 | 10 |                     # [RT] Bands
@@ -289,7 +286,7 @@
 # | RTstep= 10.00000       as      # [RT] Real Time step length
 # | NETime= 19.90000       fs      # [RT] Simulation Time
 # | % IOtime
-# |    0.0100 |   1.0000 |   0.1000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+# |    0.0100 |   1.0000 |   0.1000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
 # | %
 # | % Field1_Freq
 # |  0.00     | 0.00     | eV      # [RT Field1] Frequency
@@ -305,3 +302,6 @@
 # |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
 # | %
 # | Field1_Tstart=   0.0100fs      # [RT Field1] Initial Time
+# | %DephMatrix                    # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
+# | 1|1|1|-1.000000|
+# | %

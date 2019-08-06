@@ -78,6 +78,11 @@ if ($pattern=~m/4.1/ix) {$is_NEW_WF="no"};
 undef $is_NEW_driver;
 if ($pattern=~m/devel-long-options/ix) {$is_NEW_driver="yes"};
 #
+undef $is_OLD_makeinterfcs;
+if ($pattern=~m/3.4/ix)  {$is_OLD_makeinterfcs="yes"};
+if ($pattern=~m/4.0/ix)  {$is_OLD_makeinterfcs="yes"};
+if ($is_OLD_makeinterfcs){$target_list_basic = "yambo ypp interfaces ";}
+#
 $is_NEW_DBGD="no";
 if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
