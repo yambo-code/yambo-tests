@@ -105,6 +105,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  LOOP_INPUTS: foreach $testname (@inputs) {
   #
   if( $test_with_fails > 40) {next LOOP_INPUTS;}
+  if (not -f "$input_folder/$testname" and $is_GPL ) {next LOOP_INPUTS;}
   #
   &MY_PRINT($stdout, "\nRunning input: $testname\n") if ($verb);
   #
