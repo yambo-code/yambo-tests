@@ -55,7 +55,8 @@ if ("$what" eq "BASIC") {
  };
  #
  # Initialization of sources
- $target_list_basic = "yambo ypp interfaces ";
+ #
+ $target_list_basic = "yambo ypp a2y p2y ";
  $exec_list_basic =   "yambo ypp a2y p2y ";
  if("$mode" eq "cheers"){ $target_list_basic .= "ycheers ypp_sc"; $exec_list_basic .= "ycheers ypp_sc"}
  if(!$is_GPL){

@@ -18,8 +18,8 @@
 {
  ACTIVE      => "yes",
  TESTS       => "all",
- CONFIG      => "cuda_internal_SP.sh",
- # KEYS        => "all hard",
- KEYS        => "nopj p2y hard",
+ CONFIG      => "gfortran_internal_SP.sh",
+ KEYS        => "all hard",
+ #KEYS        => "nopj",
 }
 );
