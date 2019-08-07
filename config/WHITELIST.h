@@ -29,6 +29,7 @@ call add_RULE("o-08_ypp_dos_occ_DbGd.YPP-2D_occ_dos","whitelist",MATERIAL="MoS2"
 call add_RULE("o-03_elel.carriers","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-02_plot_elph_0K_adaptative.YPP-RT_occupations_k1_kRT1_b","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-08_ypp_plot_occ_DbGd.YPP-RT_occupations_k3_kRT16_b24","whitelist",MATERIAL="MoS2")
+call add_RULE("o-04_td_dft.magnetization","whitelist",MATERIAL="MoS2")
 call add_RULE("_FIT_holes","whitelist")
 call add_RULE("_FIT_electrons","whitelist")
 call add_RULE("_FIT_electrons","whitelist")
