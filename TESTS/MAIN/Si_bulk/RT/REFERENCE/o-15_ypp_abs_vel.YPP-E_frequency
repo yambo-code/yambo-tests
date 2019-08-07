@@ -1,19 +1,20 @@
-#  __      __   ______   __       __  _______    ______     
-# |  \    /  \ /      \ |  \     /  \|       \  /      \    
-#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\   
-#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$   
-#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$   
-#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$   
-#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$   
-#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
-#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
 #                                                           
-#        Version 4.3.0 Revision 15152 Hash ce58fe9          
-#                      MPI+SLK Build                        
+#  ____  ____     _       ____    ____  ______      ___     
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.   
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \  
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |  
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /  
+#   |______||____| |____||_____||_____||_______/  `.___."   
+#                                                           
+#                                                           
+#                                                           
+#       Version 4.4.0 Revision 16263 Hash 7b32df796         
+#                   MPI+SLK+OpenMP Build                    
 #                http://www.yambo-code.org                  
 #
 # [RT] Bands                      :2 - 7
 # [RT] K-points                   :4
+# [RT] Potential                  :HARTREE+SEX
 # [E-P] Electron-phonon           : no
 # [E-P] Completed Collision(CCA)  : no
 # [E-P] Branches                  :0 - 0
@@ -30,11 +31,7 @@
 # [RT] I/O time               [fs]: 0.500000
 # [RT] NE steps         (done)[fs]:7501
 # [RT] Lifetimes extrapolation    : no
-# [dT] Update                     : no
-# [dT] Starting Time          [fs]: 0.000000
-# [dT] Update interval        [fs]: 0.000000
-# [dT] Update interval tresh [o/o]: 2.000000
-# [dT] Max step in dynamics   [fs]: 0.000000
+# [dT] Time-Dependent Time step   : no
 # [RT] Integrator                 :EULER + RK2 + RWA
 # [RT] Radiative life time    [fs]: 0.000000
 # [RT] Dephasing life time    [fs]: 0.000000
@@ -563,15 +560,14 @@
      4.980000019       0.1882209631E-5    0.1882209631E-5    0.1882209631E-5    0.1191333240E-5    0.1191333240E-5    0.1191333240E-5
      4.989999771       0.1889864052E-5    0.1889864052E-5    0.1889864052E-5    0.1211201720E-5    0.1211201720E-5    0.1211201720E-5
      5.000000000       0.1898004371E-5    0.1898004371E-5    0.1898004371E-5    0.1231346346E-5    0.1231346346E-5    0.1231346346E-5
-   
 # 
-# 11/08/2017 at 11:07 YPP_PH @ narro [start]
-# 11/08/2017 at 11:07                [end]
+# 08/06/2019 at 23:04 YPP_RT @ bacalhau [start]
+# 08/06/2019 at 23:04                   [end]
 #
 # .-Input file : yambo.in
 # | RealTime                       # [R] Real-Time Post-Processing
 # | RT_X                           # [R] Response functions Post-Processing
-# | Xorder= 1                      # Max order of the response functions
+# | Xorder= 1                      # Max order of the response/exc functions
 # | % EnRngeRt
 # |  0.000000 | 5.000000 | eV      # Energy range
 # | %
@@ -581,4 +577,4 @@
 # | %
 # | DampMode= "LORENTZIAN"         # Damping type ( NONE | LORENTZIAN | GAUSSIAN )
 # | DampFactor=  0.10000   eV      # Damping parameter
-# | SkipJP_IO                      # Do not write P(t) and J(t)
+# | #SkipOBS_IO                    # Do not dump on file the RT observables (P(t),J(t),D(t)...)

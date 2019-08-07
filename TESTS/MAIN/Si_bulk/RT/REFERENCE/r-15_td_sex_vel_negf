@@ -8,11 +8,11 @@
          \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/     
                                                                 
                                                                 
-           Version 4.3.0 Revision 15152 Hash ce58fe9            
-                         MPI+SLK Build                          
+          Version 4.4.0 Revision 16263 Hash 7b32df796           
+                     MPI+SLK+OpenMP Build                       
                    http://www.yambo-code.org                    
  
- 11/08/2017 at 09:44 YAMBO_RT @ narro
+ 08/06/2019 at 23:04 YAMBO_RT @ bacalhau
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -28,10 +28,12 @@
  Communications in   .
  Input file     is   yambo.in
  Report file    is   ./r-15_td_sex_vel_negf
- Job string(main): 15_td_sex_vel
-             (#1): 15_coll_sex-serial-wole_project_master
-             (#2): R30
- Log files      in ./LOG
+ Precision      is   SINGLE
+ Log files      in   ./LOG
+
+ Job string(s)-dir(s) (main): 15_td_sex_vel
+                     (alt#1): 15_coll_sex-serial-4.4
+                     (alt#2): R4
   
  [RD./SAVE//ns.db1]------------------------------------------
   Bands                           :  8
@@ -46,8 +48,10 @@
   WF G-vectors                    :  369
   Max atoms/species               : 2
   No. of atom species             : 1
+  Exact exchange fraction in XC   : 0.000000
+  Exact exchange screening in XC  : 0.000000
   Magnetic symmetries             : no
- - S/N 003129 -------------------------- v.04.03.00 r.15152 -
+ - S/N 003129 -------------------------- v.04.04.00 r.16263 -
 
  [02] CORE Variables Setup
  =========================
@@ -119,8 +123,8 @@
   [02.05] Energies [ev] & Occupations
   ===================================
 
+  [X]Fermi Level        [ev]:  6.609707
   [X]VBM / CBm          [ev]:  0.000000  0.437631
-  [X]Fermi Level        [ev]:  0.000000
   [X]Electronic Temp. [ev K]:  0.00      0.00    
   [X]Bosonic    Temp. [ev K]:  0.00      0.00    
   [X]Finite Temperature mode: no
@@ -138,15 +142,15 @@
   E -12.15619   0.00000   0.00000   0.00000   2.44087   2.44087   2.44087   3.52522
    
   *X* K [2] : 0.308513 -0.308513  0.308513 ( cc) * Comp.s 266 * weight  0.375000
-              0.500000 -0.500000  0.500000 (rlu)
+              0.000000  0.000000 -0.500000 (rlu)
   E -9.730945 -7.200430 -1.262054 -1.262054  1.519058  3.185880  3.185880  7.329928
    
   *X* K [3] : 0.000000 -0.617027  0.000000 ( cc) * Comp.s 254 * weight  0.375000
-              0.000000 -1.000000  0.000000 (rlu)
+              0.000000 -0.500000 -0.500000 (rlu)
   E  -7.89574  -7.89573  -3.01059  -3.01059   0.43763   0.43764  10.15807  10.15807
    
   *X* K [4] :-0.308513 -0.308513 -0.308513 ( cc) * Comp.s 266 * weight  0.125000
-             -0.500000 -0.500000 -0.500000 (rlu)
+              0.000000 -0.500000  0.000000 (rlu)
   E -9.730945 -7.200430 -1.262054 -1.262054  1.519058  3.185880  3.185880  7.329928
 
  [03] Transferred momenta grid
@@ -157,9 +161,9 @@
   Polarization last K   :  4
   QP states             :  1   4
   X grid is uniform     :yes
-  BS scattering         :no
+  BS scattering         :yes
   COLL scattering       :no
- - S/N 003129 -------------------------- v.04.03.00 r.15152 -
+ - S/N 003129 -------------------------- v.04.04.00 r.16263 -
 
  IBZ Q-points :  4
  BZ  Q-points :  8
@@ -181,16 +185,18 @@
   [04.01] Initialization
   ======================
 
-  [RD./SAVE//ns.kb_pp_pwscf]----------------------------------
-   Fragmentation                    :no
-  - S/N 003129 -------------------------- v.03.04.00 r.02830 -
-  [WF] Performing Wave-Functions I/O from ./SAVE
-
-  [WF loader] Normalization (few states)  min/max  :0.43427E-8  1.0000   
-
 
   [04.02] External/Internal QP corrections
   ========================================
+
+  [RD./SAVE//ns.kb_pp_pwscf]----------------------------------
+   Fragmentation                    :no
+  - S/N 003129 -------------------------- v.03.04.00 r.02830 -
+  [WF-Oscillators/G space] Performing Wave-Functions I/O from ./SAVE
+
+  [WF-Oscillators/G space loader] Normalization (few states)  min/max  :0.43427E-8  1.0000   
+
+  [X] Using energies without QP corrections for the dipoles
 
 
   [04.03] Dephasing matrix setup
@@ -203,7 +209,7 @@
   [04.04] Electronic Collisions loading and setup
   ===============================================
 
-  [RD./15_coll_sex-serial-wole_project_master//ndb.COLLISIONS_HXC]-
+  [RD./15_coll_sex-serial-4.4//ndb.COLLISIONS_HXC]------------
    Brillouin Zone Q/K grids (IBZ/BZ):  4   8   4   8
    RL vectors                   (WF):  387
    COLLISIONS name                 :HARTREE+SEX
@@ -226,9 +232,10 @@
    Field direction        :0.5774E-5 0.5774E-5 0.5774E-5
    BZ energy Double Grid  : no
    BZ energy DbGd points  :0
+   BZ Q point size factor : 1.000000
    RIM RL components      :0
    RIM random points      :0
-  - S/N 003129 -------------------------- v.04.03.00 r.15152 -
+  - S/N 003129 -------------------------- v.04.04.00 r.16263 -
 
   [04.05] Messaging
   =================
@@ -237,16 +244,13 @@
   Integrator                 :EULER + RK2 + RWA
   Simulation time        [fs]: 150.00000
   Basic time step        [fs]:  0.020000
-        time step   (now)[fs]:  0.020000
              steps           :  7501
+        time step   (now)[fs]:  0.020000
   ---Memory---
   Memory depth(G)        [fs]: 0.0000000
   Memory steps(G)            : 2
 
   ---Lifetimes---
-  Point groups (inter/intra) [fs]: 0.000      0.000    
-  Extrapolation                  :no
-  Memory steps                   :0
   Evaluated Time points          :0
   Relaxation time approximation  :no
   Equilibrium is zero temperature:no
@@ -256,22 +260,25 @@
   Hxc approximation          :HARTREE+SEX
 
   ---I/O---
-  T between I/O of J,P,f [fs]: 0.5000001
+  T between I/O of   OBS [fs]: 0.5000001
             I/O of   GFs [fs]: 0.5000001
                  outputs [fs]: 0.5000001
   Extended collisions   [I/O]:yes
 
-  ---Damping and retarded GF---
-  Retarded Green`s function   :HS
+  ---Damping---
   Damping (Phase)    [fs/meV]: 0.000       Infinity
           (Radiative)[fs/meV]: 0.000       Infinity
+
+  ---Retarded GF---
+  Retarded Green`s function  :HS
           Energy ref  (c)[eV]: 1.2000000
                       (v)[eV]:-1.2000000
           Analytic term (c)[eV,adim,eV^-1]:   0.30000    0.00000    0.01000
                         (v)[eV,adim,eV^-1]:   0.30000    0.00000    0.01000
 
-  ---Double Grid---
-  Double Grid support          :no
+  ---K Grid---
+  Double Grid support        :no
+  K-points            (TOTAL):  4
 
   ---Fields---
   Gauge                       :velocity
@@ -287,12 +294,6 @@
   Field1 final time              [fs]: 60.500004
   Field1 half maximum full width [fs]: 23.548199
 
-  [WARNING]Allocation attempt of E_xc of zero size.
-
-  [WARNING]Allocation attempt of REF_V_xc_sc of zero size.
-
-  [WARNING]Allocation attempt of REF_V_hartree_sc of zero size.
-
   [04.06] Start and Restart
   =========================
 
@@ -302,59 +303,54 @@
   ==========================
 
 
- Timing [Min/Max/Average]: 08s/08s/08s
+ Timing [Min/Max/Average]: 17s/17s/17s
 
  [05] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                               io_WF :     0.00s CPU (       7 calls,   0.000 s avg)
-                             io_GROT :     0.00s CPU (       3 calls,   0.000 s avg)
-                            io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
-                          io_COL_CUT :     0.00s CPU
-                      io_Double_Grid :     0.00s CPU
-                               io_HF :     0.00s CPU
-                          io_DIPOLES :     0.00s CPU
-                         io_KB_pwscf :     0.00s CPU (       6 calls,   0.001 s avg)
-                        io_KB_abinit :     0.00s CPU
-                                io_X :     0.00s CPU (       4 calls,   0.000 s avg)
-                         io_fragment :     0.00s CPU (     337 calls,   0.000 s avg)
-                               io_BS :     0.00s CPU
-                             io_ELPH :     0.00s CPU (       2 calls,   0.002 s avg)
-                    io_RT_components :     3.00s CPU (    2716 calls,   0.001 s avg)
-                       io_COLLISIONS :     0.00s CPU (     173 calls,   0.000 s avg)
-                      eval_G_minus_G :     0.00s CPU
-             IO_and_Messaging_switch :     0.00s CPU (   15007 calls,   0.000 s avg)
-                             Dipoles :     0.00s CPU
-                   DIPOLE_transverse :     0.00s CPU
-                     COLLISIONS_load :     0.00s CPU (       2 calls,   0.030 s avg)
-                           RT output :     0.00s CPU (    1208 calls,   0.001 s avg)
-                      RT observables :     0.00s CPU (    7501 calls,   0.000 s avg)
-                       RT average Op :     0.00s CPU (   15002 calls,   0.000 s avg)
-                        RT avg redux :     0.00s CPU (   15002 calls,   0.000 s avg)
-                      RT Hamiltonian :     2.00s CPU (   15001 calls,   0.000 s avg)
-               COLLISIONS_compose_rt :     2.00s CPU (   15001 calls,   0.000 s avg)
-                      RT Apply Field :     0.00s CPU (   60004 calls,   0.000 s avg)
-                       RT integrator :     0.00s CPU (   15000 calls,   0.000 s avg)
+                                    io_WF :     0.00s CPU (         7 calls,   0.680 millisec avg)
+                                  io_GROT :     0.00s CPU (         3 calls,   2.013 millisec avg)
+                                 io_QINDX :     0.00s CPU (         2 calls,   2.274 millisec avg)
+                               io_COL_CUT :     0.00s CPU
+                           io_Double_Grid :     0.00s CPU
+                                    io_HF :     0.00s CPU
+                               io_DIPOLES :     0.00s CPU
+                              io_KB_pwscf :     0.00s CPU (         6 calls,   0.120 millisec avg)
+                             io_KB_abinit :     0.00s CPU
+                                     io_X :     0.00s CPU (         4 calls,   1.177 millisec avg)
+                              io_fragment :     0.00s CPU (      1541 calls,   0.508 millisec avg)
+                                    io_BS :     0.00s CPU
+                                  io_ELPH :     0.00s CPU (         2 calls,   0.028 millisec avg)
+                         io_RT_components :    10.00s CPU (      2716 calls,   0.004 sec avg)
+                            io_COLLISIONS :     0.00s CPU (       173 calls,   4.177 millisec avg)
+                           eval_G_minus_G :     0.00s CPU
+                  IO_and_Messaging_switch :     0.00s CPU (     15910 calls,   0.003 millisec avg)
+                                  Dipoles :     0.00s CPU
+                        DIPOLE_transverse :     0.00s CPU
+                             PP_uspp_init :     0.00s CPU
+                              WF_load_FFT :     0.00s CPU
+                          COLLISIONS_load :     0.00s CPU (         2 calls, 359.682 millisec avg)
+                         RT output (INIT) :     0.00s CPU
+                           RT Hamiltonian :     4.00s CPU (     15001 calls,   0.000 sec avg)
+                     COLLISIONS (compose) :     4.00s CPU (     30002 calls,   0.000 sec avg)
+                       COLLISIONS (redux) :     0.00s CPU (     15001 calls,   0.001 millisec avg)
+                           RT Apply Field :     0.00s CPU (     60004 calls,   0.002 millisec avg)
+                           RT observables :     0.00s CPU (       301 calls,   0.087 millisec avg)
+                            RT average Op :     0.00s CPU (       602 calls,   0.039 millisec avg)
+                             RT avg redux :     0.00s CPU (       602 calls,   0.001 millisec avg)
+                          RT databases IO :    10.00s CPU (      7501 calls,   0.001 sec avg)
+                                RT output :     0.00s CPU (      1204 calls,   0.142 millisec avg)
+                            RT integrator :     0.00s CPU (     15000 calls,   0.015 millisec avg)
 
- [06] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 1.024000Gb (basic treshold)  10.24000Gb (SAVEs treshold)
-
-         TOTAL not deallocated :  278.5280Mb
-
-         Max memory used   :  470.0000Kb
-
- [07] Game Over & Game summary
+ [06] Game Over & Game summary
  =============================
 
- 11/08/2017 at 09:44 YAMBO_RT @ narro [start]
- 11/08/2017 at 09:44                  [end]
+ 08/06/2019 at 23:04 YAMBO_RT @ bacalhau [start]
+ 08/06/2019 at 23:04                     [end]
 
- Timing   [Min/Max/Average]: 08s/08s/08s
-             [Time-Profile]:  8.604000s
+ Timing   [Min/Max/Average]: 17s/17s/17s
+             [Time-Profile]: 17s
 
  .-ACKNOWLEDGMENT
  |
@@ -373,12 +369,10 @@
   
  .-Input file : yambo.in
  | negf                           # [R] Real-Time dynamics
- | DBsIOoff= "DIP"                # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,W,SC,BS,ALL)
+ | DBsIOoff= "DIP"                # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,OBS,W,SC,BS,ALL)
+ | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
  | HXC_Potential= "HARTREE+SEX"   # [SC] SC HXC Potential
  | FFTGvecs=  387         RL      # [FFT] Plane-waves
- | HARRLvcs=  339         RL      # [HA] Hartree  RL components
- | EXXRLvcs=  59          RL      # [XX] Exchange RL components
- | CORRLvcs= 2085         RL      # [GW] Correlat RL components
  | GfnQP_Wv_E=-1.200000   eV      # [EXTQP G] W Energy reference  (valence)
  | % GfnQP_Wv
  |    0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (valence) eV| 1|eV^-1
@@ -398,7 +392,7 @@
  | RTstep= 20.00000       as      # [RT] Real Time step length
  | NETime= 150.0000       fs      # [RT] Simulation Time
  | % IOtime
- |  0.500000 | 0.500000 | 0.500000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+ |  0.500000 | 0.500000 | 0.500000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
  | %
  | % Field1_Freq
  |  2.600000 | 2.600000 | eV      # [RT Field1] Frequency
@@ -415,3 +409,6 @@
  |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
  | %
  | Field1_Tstart= 0.500000fs      # [RT Field1] Initial Time
+ | %DephMatrix                    # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
+ | 1|1|1|-1.000000|
+ | %

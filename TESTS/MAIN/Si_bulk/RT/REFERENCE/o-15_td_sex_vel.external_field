@@ -8,12 +8,13 @@
 #      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
 #                                                           
 #                                                           
-#        Version 4.3.0 Revision 15152 Hash ce58fe9          
-#                      MPI+SLK Build                        
+#       Version 4.4.0 Revision 16263 Hash 7b32df796         
+#                  MPI+SLK+OpenMP Build                     
 #                http://www.yambo-code.org                  
 #
 # [RT] Bands                      :2 - 7
 # [RT] K-points                   :4
+# [RT] Potential                  :HARTREE+SEX
 # [E-P] Electron-phonon           : no
 # [E-P] Completed Collision(CCA)  : no
 # [E-P] Branches                  :0 - 0
@@ -30,11 +31,7 @@
 # [RT] I/O time               [fs]: 0.500000
 # [RT] NE steps         (done)[fs]:7501
 # [RT] Lifetimes extrapolation    : no
-# [dT] Update                     : no
-# [dT] Starting Time          [fs]: 0.000000
-# [dT] Update interval        [fs]: 0.000000
-# [dT] Update interval tresh [o/o]: 2.000000
-# [dT] Max step in dynamics   [fs]: 0.000000
+# [dT] Time-Dependent Time step   : no
 # [RT] Integrator                 :EULER + RK2 + RWA
 # [RT] Radiative life time    [fs]: 0.000000
 # [RT] Dephasing life time    [fs]: 0.000000
@@ -364,19 +361,17 @@
      149.500000        -.725895901E-24    -.725895901E-24    -.725895901E-24    -0.00000000        -0.00000000        -0.00000000         0.00000000         88.6250458    
      150.000015        -.362164624E-25    -.362164624E-25    -.362164624E-25    -0.00000000        -0.00000000        -0.00000000         0.00000000         88.6250458    
 # 
-# 11/08/2017 at 09:44 YAMBO_RT @ narro [start]
-# 11/08/2017 at 09:44                  [end]
+# 08/06/2019 at 23:04 YAMBO_RT @ bacalhau [start]
+# 08/06/2019 at 23:04                     [end]
 #  
-# Timing   [Min/Max/Average]: 08s/08s/08s
+# Timing   [Min/Max/Average]: 17s/17s/17s
 #
 # .-Input file : yambo.in
 # | negf                           # [R] Real-Time dynamics
-# | DBsIOoff= "DIP"                # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,W,SC,BS,ALL)
+# | DBsIOoff= "DIP"                # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,OBS,W,SC,BS,ALL)
+# | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
 # | HXC_Potential= "HARTREE+SEX"   # [SC] SC HXC Potential
 # | FFTGvecs=  387         RL      # [FFT] Plane-waves
-# | HARRLvcs=  339         RL      # [HA] Hartree  RL components
-# | EXXRLvcs=  59          RL      # [XX] Exchange RL components
-# | CORRLvcs= 2085         RL      # [GW] Correlat RL components
 # | GfnQP_Wv_E=-1.200000   eV      # [EXTQP G] W Energy reference  (valence)
 # | % GfnQP_Wv
 # |    0.3000 |   0.0000 |   0.0100 |        # [EXTQP G] W parameters  (valence) eV| 1|eV^-1
@@ -396,7 +391,7 @@
 # | RTstep= 20.00000       as      # [RT] Real Time step length
 # | NETime= 150.0000       fs      # [RT] Simulation Time
 # | % IOtime
-# |  0.500000 | 0.500000 | 0.500000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+# |  0.500000 | 0.500000 | 0.500000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
 # | %
 # | % Field1_Freq
 # |  2.600000 | 2.600000 | eV      # [RT Field1] Frequency
@@ -413,3 +408,6 @@
 # |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
 # | %
 # | Field1_Tstart= 0.500000fs      # [RT Field1] Initial Time
+# | %DephMatrix                    # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
+# | 1|1|1|-1.000000|
+# | %

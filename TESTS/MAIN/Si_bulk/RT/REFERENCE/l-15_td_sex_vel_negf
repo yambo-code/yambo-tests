@@ -20,58 +20,63 @@ ____    ____    ___      .___  ___.  .______     ______
  <---> [04] HARTREE+SEX Real-Time Dynamics
  <---> Scattering(s):none
  <---> [04.01] Initialization
+ <---> [04.02] External/Internal QP corrections
  <---> [x,Vnl] computed using 8 projectors
- <---> [WF] Performing Wave-Functions I/O from ./SAVE
+ <---> [WF-Oscillators/G space] Performing Wave-Functions I/O from ./SAVE
+ <---> [X] Using energies without QP corrections for the dipoles
  <---> Dipoles: iR, P and P2 (T): |                                        | [000%] --(E) --(X)
  <---> Dipoles: iR, P and P2 (T): |########################################| [100%] --(E) --(X)
- <---> [04.02] External/Internal QP corrections
  <---> Integrator: EULER + RK2 + RWA
  <---> [04.03] Dephasing matrix setup
  <---> [RT] Quasiparticle Dephasing applied
  <---> [WARNING]Field starting time corrected to respect the I/O times.
  <---> [04.04] Electronic Collisions loading and setup
  <---> [04.05] Messaging
- <---> [WARNING]Allocation attempt of E_xc of zero size.
- <---> [WARNING]Allocation attempt of REF_V_xc_sc of zero size.
- <---> [WARNING]Allocation attempt of REF_V_hartree_sc of zero size.
  <---> [04.06] Start and Restart
  <---> HARTREE+SEX collisions I/O: |                                        | [000%] --(E) --(X)
  <---> HARTREE+SEX collisions I/O: |########################################| [100%] --(E) --(X)
  <---> Reference Lifetimes, GF, Self-Energy ...
+ <---> Output files definition ...
  <---> [04.07] Real-Time dynamics
- <---> [RT] Dynamics : |                                        | [000%] --(E) --(X)
- <05s> [RT] Dynamics : |########################                | [060%] 05s(E) 08s(X)
- <08s> [RT] Dynamics : |########################################| [100%] 08s(E) 08s(X)
- <08s> [MEMORY]TOTAL not deallocated :  278.5280Mb
- <08s> [05] Timing Overview
- <08s> [TIMING]                              io_WF :     0.00s CPU (       7 calls,   0.000 s avg)
- <08s> [TIMING]                            io_GROT :     0.00s CPU (       3 calls,   0.000 s avg)
- <08s> [TIMING]                           io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
- <08s> [TIMING]                         io_COL_CUT :     0.00s CPU
- <08s> [TIMING]                     io_Double_Grid :     0.00s CPU
- <08s> [TIMING]                              io_HF :     0.00s CPU
- <08s> [TIMING]                         io_DIPOLES :     0.00s CPU
- <08s> [TIMING]                        io_KB_pwscf :     0.00s CPU (       6 calls,   0.001 s avg)
- <08s> [TIMING]                       io_KB_abinit :     0.00s CPU
- <08s> [TIMING]                               io_X :     0.00s CPU (       4 calls,   0.000 s avg)
- <08s> [TIMING]                        io_fragment :     0.00s CPU (     337 calls,   0.000 s avg)
- <08s> [TIMING]                              io_BS :     0.00s CPU
- <08s> [TIMING]                            io_ELPH :     0.00s CPU (       2 calls,   0.002 s avg)
- <08s> [TIMING]                   io_RT_components :     3.00s CPU (    2716 calls,   0.001 s avg)
- <08s> [TIMING]                      io_COLLISIONS :     0.00s CPU (     173 calls,   0.000 s avg)
- <08s> [TIMING]                     eval_G_minus_G :     0.00s CPU
- <08s> [TIMING]            IO_and_Messaging_switch :     0.00s CPU (   15007 calls,   0.000 s avg)
- <08s> [TIMING]                            Dipoles :     0.00s CPU
- <08s> [TIMING]                  DIPOLE_transverse :     0.00s CPU
- <08s> [TIMING]                    COLLISIONS_load :     0.00s CPU (       2 calls,   0.030 s avg)
- <08s> [TIMING]                          RT output :     0.00s CPU (    1208 calls,   0.001 s avg)
- <08s> [TIMING]                     RT observables :     0.00s CPU (    7501 calls,   0.000 s avg)
- <08s> [TIMING]                      RT average Op :     0.00s CPU (   15002 calls,   0.000 s avg)
- <08s> [TIMING]                       RT avg redux :     0.00s CPU (   15002 calls,   0.000 s avg)
- <08s> [TIMING]                     RT Hamiltonian :     2.00s CPU (   15001 calls,   0.000 s avg)
- <08s> [TIMING]              COLLISIONS_compose_rt :     2.00s CPU (   15001 calls,   0.000 s avg)
- <08s> [TIMING]                     RT Apply Field :     0.00s CPU (   60004 calls,   0.000 s avg)
- <08s> [TIMING]                      RT integrator :     0.00s CPU (   15000 calls,   0.000 s avg)
- <08s> [06] Memory Overview
- <08s> [07] Game Over & Game summary
- <08s> [TIMING]            [Time-Profile]:  8.604000s
+ <---> [RT] Dynamics (T< 80.000000 fs) : |                                        | [000%] --(E) --(X)
+ <05s> [RT] Dynamics (T< 80.000000 fs) : |######################                  | [056%] 05s(E) 08s(X)
+ <09s> [RT] Dynamics (T< 80.000000 fs) : |########################################| [100%] 08s(E) 08s(X)
+ <09s> [RT] Dynamics (pump-free region) : |                                        | [000%] --(E) --(X)
+ <14s> [RT] Dynamics (pump-free region) : |#########################               | [064%] 05s(E) 07s(X)
+ <17s> [RT] Dynamics (pump-free region) : |########################################| [100%] 07s(E) 07s(X)
+ <17s> [05] Timing Overview
+ <17s> [TIMING]                                   io_WF :     0.00s CPU (         7 calls,   0.680 millisec avg)
+ <17s> [TIMING]                                 io_GROT :     0.00s CPU (         3 calls,   2.013 millisec avg)
+ <17s> [TIMING]                                io_QINDX :     0.00s CPU (         2 calls,   2.274 millisec avg)
+ <17s> [TIMING]                              io_COL_CUT :     0.00s CPU
+ <17s> [TIMING]                          io_Double_Grid :     0.00s CPU
+ <17s> [TIMING]                                   io_HF :     0.00s CPU
+ <17s> [TIMING]                              io_DIPOLES :     0.00s CPU
+ <17s> [TIMING]                             io_KB_pwscf :     0.00s CPU (         6 calls,   0.120 millisec avg)
+ <17s> [TIMING]                            io_KB_abinit :     0.00s CPU
+ <17s> [TIMING]                                    io_X :     0.00s CPU (         4 calls,   1.177 millisec avg)
+ <17s> [TIMING]                             io_fragment :     0.00s CPU (      1541 calls,   0.508 millisec avg)
+ <17s> [TIMING]                                   io_BS :     0.00s CPU
+ <17s> [TIMING]                                 io_ELPH :     0.00s CPU (         2 calls,   0.028 millisec avg)
+ <17s> [TIMING]                        io_RT_components :    10.00s CPU (      2716 calls,   0.004 sec avg)
+ <17s> [TIMING]                           io_COLLISIONS :     0.00s CPU (       173 calls,   4.177 millisec avg)
+ <17s> [TIMING]                          eval_G_minus_G :     0.00s CPU
+ <17s> [TIMING]                 IO_and_Messaging_switch :     0.00s CPU (     15910 calls,   0.003 millisec avg)
+ <17s> [TIMING]                                 Dipoles :     0.00s CPU
+ <17s> [TIMING]                       DIPOLE_transverse :     0.00s CPU
+ <17s> [TIMING]                            PP_uspp_init :     0.00s CPU
+ <17s> [TIMING]                             WF_load_FFT :     0.00s CPU
+ <17s> [TIMING]                         COLLISIONS_load :     0.00s CPU (         2 calls, 359.682 millisec avg)
+ <17s> [TIMING]                        RT output (INIT) :     0.00s CPU
+ <17s> [TIMING]                          RT Hamiltonian :     4.00s CPU (     15001 calls,   0.000 sec avg)
+ <17s> [TIMING]                    COLLISIONS (compose) :     4.00s CPU (     30002 calls,   0.000 sec avg)
+ <17s> [TIMING]                      COLLISIONS (redux) :     0.00s CPU (     15001 calls,   0.001 millisec avg)
+ <17s> [TIMING]                          RT Apply Field :     0.00s CPU (     60004 calls,   0.002 millisec avg)
+ <17s> [TIMING]                          RT observables :     0.00s CPU (       301 calls,   0.087 millisec avg)
+ <17s> [TIMING]                           RT average Op :     0.00s CPU (       602 calls,   0.039 millisec avg)
+ <17s> [TIMING]                            RT avg redux :     0.00s CPU (       602 calls,   0.001 millisec avg)
+ <17s> [TIMING]                         RT databases IO :    10.00s CPU (      7501 calls,   0.001 sec avg)
+ <17s> [TIMING]                               RT output :     0.00s CPU (      1204 calls,   0.142 millisec avg)
+ <17s> [TIMING]                           RT integrator :     0.00s CPU (     15000 calls,   0.015 millisec avg)
+ <17s> [06] Game Over & Game summary
+ <17s> [TIMING]            [Time-Profile]: 17s
