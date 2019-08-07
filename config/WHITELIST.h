@@ -69,6 +69,7 @@ call add_RULE("o-06_ypp_sort.exc_I_sorted","whitelist",MATERIAL="hBN")
 call add_RULE("o-06_ypp_sort.exc_qpt1_E_sorted","whitelist",MATERIAL="hBN")
 call add_RULE("o-06_ypp_sort.exc_qpt1_I_sorted","whitelist",MATERIAL="hBN")
 call add_RULE(".exc_I+spin_sorted","whitelist")
+call add_RULE(".exc_qpt1_I+spin_sorted","whitelist")
 !
 ! SC
 !=====
