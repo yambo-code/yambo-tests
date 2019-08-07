@@ -66,6 +66,8 @@ call add_RULE("o-03_QP_COHSEX_drude.ndb.em1s_fragment_1","whitelist",MATERIAL="A
 !=====
 call add_RULE("o-06_ypp_sort.exc_E_sorted","whitelist",MATERIAL="hBN")
 call add_RULE("o-06_ypp_sort.exc_I_sorted","whitelist",MATERIAL="hBN")
+call add_RULE("o-06_ypp_sort.exc_qpt1_E_sorted","whitelist",MATERIAL="hBN")
+call add_RULE("o-06_ypp_sort.exc_qpt1_I_sorted","whitelist",MATERIAL="hBN")
 call add_RULE(".exc_I+spin_sorted","whitelist")
 !
 ! SC
