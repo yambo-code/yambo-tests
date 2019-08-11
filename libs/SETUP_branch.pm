@@ -86,9 +86,13 @@ if ($is_OLD_makeinterfcs){$target_list_basic = "yambo ypp interfaces ";}
 $is_NEW_DBGD="no";
 if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
-$is_NEW_EXC_SORT="no";
-if ($pattern=~m/devel-BSE-finite-q/ix){$is_NEW_EXC_SORT="yes"};
-if ($pattern=~m/devel-cumulant/ix)    {$is_NEW_EXC_SORT="yes"};
+$is_NEW_EXC_SORT="yes";
+if ($pattern=~m/4.4/ix){$is_NEW_EXC_SORT="no"};
+if ($pattern=~m/4.3/ix){$is_NEW_EXC_SORT="no"};
+if ($pattern=~m/4.2/ix){$is_NEW_EXC_SORT="no"};
+if ($pattern=~m/4.1/ix){$is_NEW_EXC_SORT="no"};
+if ($pattern=~m/4.0/ix){$is_NEW_EXC_SORT="no"};
+if ($pattern=~m/3.4/ix){$is_NEW_EXC_SORT="no"};
 #
 if ($is_GPL) {$branch_key.="_gpl"};
 #

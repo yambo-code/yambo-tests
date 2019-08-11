@@ -31,6 +31,7 @@ if(     ($branch_key eq "") ){ &command("rm -fr $host/www/*");}
 &UTILS_list_backups;
 #
 $i_file = 0;
+$i_dir = 0;
 foreach $dir (@reversed_dirs) {
  @files = glob("$dir/REPORT*");
  $branch_ref="none";
@@ -46,6 +47,8 @@ foreach $dir (@reversed_dirs) {
   if (($i_file == 1) and ("$branch_php" eq "")) {$branch_ref=$branch_key;};
   if ($branch_key =~ "bug-fixes_copy" or $branch_key =~ "max-release" ) {next};
   if (not ("$branch_key" eq "$branch_ref") ) {next};
+  $i_dir = $i_dir+1;
+  if ($i_dir > 21 ) {next};
   print "Processing $dir...\n";
   &PHP_extract;
   close(REPORT);
