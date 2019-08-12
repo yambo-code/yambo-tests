@@ -68,6 +68,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "failed=s"       => \$failed,
             "php=s"          => \$branch_php,
             "safe"           => \$safe_mode,
+            "input"          => \$check_input_generation,
             "keep_bin"       => \$keep_bin,
             "profile:s"      => \$profile,
             "cron:s"         => \$cron,
@@ -133,6 +134,7 @@ if ($help>=1) {
              -keys   <string>       Test keys (see below*).
              -off    <string>       Switch off specific objects (mpi,openmp,io).
              -prec   <PREC>         Precision of data comparisons       (default: 0.01 = 1% of MAX value)
+             -input                 Test input file creation
              -force                 Run even BROKEN tests.
 
 EndOfUsage

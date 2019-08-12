@@ -87,9 +87,6 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   &COMPILE_find_the_diff("compile");
   &COMPILE_find_the_diff("clean");
   #
-  # Run the input file generation tests in Inputs testdir
-  if ($check_input_generation) { &RUN_input_file_test };
-  #
   &RUN_logs;
   #
   foreach $np (@NP_set) {

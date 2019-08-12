@@ -23,30 +23,34 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub RUN_input_file_test{
- chdir("$suite_dir/$TESTS_folder/Inputs");
- print "AAAAB\n";
- @yambo_flags = ('-i','-r',
-#'-x','-p p','
-#'-g n','-g s','-g g',
-#'-o g','-o c',
-#'-k hartree','-k alda',
-#'-y h'	,'',
- );
-#while(($flag,$label) = splice(@yambo_flags,0,2)) {
-#Run setup first
- while($flag = shift(@yambo_flags)) {
- $flag_ = ($flag =~ s/\w/_/);
- $ref_file1 = "yambo.in_".$flag_;
- $cmd = "$BRANCH/$conf_bin/yambo $flag -F yambo.in_run_".$flag_;
-#if(!-x "$BRANCH/$conf_bin/$check_exec") { next; }
-#$result = `$BRANCH/$conf_bin/yambo $flag -F yambo.in_$label`;
- print "AAAA $cmd\n";
- system("$cmd 2>/dev/null  ; ls");
- fldiff yambo.in_run_$flag_ $ref_file1;
- $ref_file2 = "yambo.in_".$flag."_-V_all";
- $cmd = "$BRANCH/$conf_bin/yambo $flag -F yambo.in_run_$flag_";
- system("$cmd 2>/dev/null  ; ls");
+
+ my $NEW_file=$INPUT_file."_generated";
+ my $CMD;
+ $INFILE_CHECK="OK";
+ &command("echo \"ORIGINAL\" >> $INPUT_file");
+ &command("cp $INPUT_file $NEW_file");
+
+ if ($SETUP=="1")   { $CMD=$CMD." -i" };
+ if ($HF=="1")      { $CMD=$CMD." -x"};
+ if ($COHSEX=="1")  { $CMD=$CMD." -g n -p c"};
+ if ($PPA=="1")     { $CMD=$CMD." -g n -p p"};
+ if ($BSE=="1")     { $CMD=$CMD." -o b"};
+ if ($EM1S=="1")    { $CMD=$CMD." -b"};
+ if ($BSSdiago=="1")  { $CMD=$CMD." -y d"};
+ if ($BSSslepc=="1")  { $CMD=$CMD." -y s"};
+ if ($BSKalda=="1")   { $CMD=$CMD." -k alda"};
+ if ($BSKh=="1")   { $CMD=$CMD." -k hartree"};
+
+ if ($CMD) {
+  &command("$yambo_exec -Q $CMD -F $NEW_file $log");
+  if (compare("$INPUT_file","$NEW_file") == 0) {
+   return "Input not Generated";
+  }else{
+   $INPUT_file=$NEW_file;
+   return "OK";
+  }
+ }else{
+  return "No CMD found";
  }
- chdir("$suite_dir");
 }
 1;

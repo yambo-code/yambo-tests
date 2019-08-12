@@ -24,13 +24,14 @@
 #
 sub RUN_feature{
 my @string = split(/ /, "@_");
-my $result="0";
+my $result=0;
 LOOP: for (my $il=0; $il<=$#INPUT ; $il++){
  LOOPF: for (my $if=0; $if<=$#string ; $if++){
-  if ($INPUT[$il] =~ /$string[$if]/){ $result="1"};
+  if ($INPUT[$il] =~ /$string[$if]/){ $result++};
  }
 }
-return "$result";
+if ($result == $#string+1) {  return 1 };
+return 0;
 }
 sub RUN_input_load{
 if (-f "BASE_input") 

@@ -172,6 +172,11 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    #
    if ($error =~ "OK") { 
     #
+    # Use the tool itself to generate the input file
+    if ($check_input_generation) { 
+      $INFILE_CHECK=&RUN_input_file_test;
+    }
+    #
     # Actual run
     $RUN_result=&RUN_it;
     #
@@ -188,6 +193,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      &RUN_load_actions(".input");
      &RUN_setup("before_run");
      $N_random_tries++;
+     #
      $RUN_result=&RUN_it;
      #print "$testname CHECK_error $CHECK_error\n";
     }
@@ -199,6 +205,11 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      }elsif(not $mode eq "bench"){
       &CHECK_driver;
      }
+    }
+    #
+    if ($check_input_generation) { 
+     my $msg = sprintf("%-"."$left_length"."s", "  $INPUT_file");
+     &MESSAGE("LOG","\n"."$msg"."[$g_s  $INFILE_CHECK  $g_e]");
     }
     #
     &RUN_setup("after_run");
