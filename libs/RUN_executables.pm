@@ -37,6 +37,7 @@ elsif ($YPP=="2")
  {
  if ($is_NEW_EXC_SORT eq "no" ) {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s"}
  if ($is_NEW_EXC_SORT eq "yes") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s $IQ"}
+ if ($is_NEW_driver eq "yes") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s -b $IQ"}
  }
 else
  {$yambo_exec = "$BRANCH/$conf_bin/yambo";
