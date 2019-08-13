@@ -23,12 +23,19 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub RUN_feature{
-my @string = split(/ /, "@_");
+my @string = split(/\s+/, "@_");
 my $result=0;
 LOOP: for (my $il=0; $il<=$#INPUT ; $il++){
+ my $ir=0;
+ my $in_line=$INPUT[$il];
+ $in_line =~ s/\+/ /g;
  LOOPF: for (my $if=0; $if<=$#string ; $if++){
-  if ($INPUT[$il] =~ /$string[$if]/){ $result++};
+  if ($in_line =~ /$string[$if]/){ 
+   $ir++;
+   #print "$in_line $string[$if] $ir $#string\n";
+  };
  }
+ $result=max($ir,$result);
 }
 if ($result == $#string+1) {  return 1 };
 return 0;

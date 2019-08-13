@@ -26,26 +26,65 @@ sub RUN_input_file_test{
 
  my $NEW_file=$INPUT_file."_generated";
  my $CMD;
- $INFILE_CHECK="OK";
  &command("echo \"ORIGINAL\" >> $INPUT_file");
  &command("cp $INPUT_file $NEW_file");
 
- if ($SETUP=="1")   { $CMD=$CMD." -i" };
- if ($HF=="1")      { $CMD=$CMD." -x"};
- if ($COHSEX=="1")  { $CMD=$CMD." -g n -p c"};
- if ($PPA=="1")     { $CMD=$CMD." -g n -p p"};
- if ($BSE=="1")     { $CMD=$CMD." -o b"};
- if ($EM1S=="1")    { $CMD=$CMD." -b"};
- if ($BSSdiago=="1")  { $CMD=$CMD." -y d"};
- if ($BSSslepc=="1")  { $CMD=$CMD." -y s"};
- if ($BSKalda=="1")   { $CMD=$CMD." -k alda"};
- if ($BSKh=="1")   { $CMD=$CMD." -k hartree"};
+ if ($SETUP=="1")   { $CMD=$CMD." -setup" };
+ if ($HF=="1")      { $CMD=$CMD." -hf"};
+ if ($GW=="1")      { $CMD=$CMD." -dyson n"};
+ if ($PPA=="1")     { $CMD=$CMD." -gw p"};
+ if ($COHSEX=="1")  { $CMD=$CMD." -gw c"};
+ if ($BSE=="1")     { $CMD=$CMD." -optics b"};
+ if ($CHI=="1")     { $CMD=$CMD." -optics c"};
+ if ($EM1S=="1")    { $CMD=$CMD." -Xs"};
+ if ($SC=="1")      { $CMD=$CMD." -sc"};
+
+ if (&RUN_feature("BSSmod= \"di\"")=="1") {$CMD=$CMD." -Ksolver di"};
+ if (&RUN_feature("BSSmod= \"d\"")=="1")  {$CMD=$CMD." -Ksolver d"};
+ if (&RUN_feature("BSSmod= \"s\"")=="1")  {$CMD=$CMD." -Ksolver s"};
+ if (&RUN_feature("BSSmod= \"h\"")=="1")  {$CMD=$CMD." -Ksolver h"};
+ if (&RUN_feature("BSSmod= \"i\"")=="1")  {$CMD=$CMD." -Ksolver i"};
+
+ if (&RUN_feature("negf")=="1") {$CMD=$CMD." -rt p"};
+ if (&RUN_feature("collisions")=="1") {$CMD=$CMD." -collisions"};
+ if (&RUN_feature("el_photon_scatt")=="1") {$CMD=$CMD." -scattering h"};
+ if (&RUN_feature("el_ph_scatt")=="1") {$CMD=$CMD." -scattering p"};
+ if (&RUN_feature("el_el_scatt")=="1") {$CMD=$CMD." -scattering e"};
+
+ my $POT;
+ if (&RUN_feature("HXC_Potential= IP")=="1") {$POT="ip"};
+ if (&RUN_feature("HXC_Potential= DEFAULT")=="1") {$POT=$POT."d"};
+ if (&RUN_feature("HXC_Potential= HARTREE")=="1") {$POT=$POT."h"}
+ if (&RUN_feature("HXC_Potential= COH")=="1") {$POT=$POT."coh"}
+ if (&RUN_feature("HXC_Potential= SEX")=="1") {$POT=$POT."sex"}
+ if (&RUN_feature("HXC_Potential= FOCK")=="1") {$POT=$POT."f"}
+ if (&RUN_feature("HXC_Potential= LDA_X")=="1") {$POT=$POT."ldax"};
+ if (&RUN_feature("HXC_Potential= PZ")=="1") {$POT=$POT."pz"};
+ if ($POT) {$CMD=$CMD." -potential ".$POT};
+
+ if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
+ if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
+ if (&RUN_feature("BSKmod= \"Hartree\"")=="1")   { $CMD=$CMD." -kernel hartree"};
+ if (&RUN_feature("BSKmod= \"HF\"")=="1")   { $CMD=$CMD." -kernel hf"};
+
+ if (&RUN_feature("RT_X")=="1") { $CMD=$CMD." -rtplot X"};
+ if (&RUN_feature("kpts_map")=="1") { $CMD=$CMD." -map"};
+ if (&RUN_feature("RTDBs")=="1" && &RUN_feature("Select_Fermi")=="1") { $CMD=$CMD." -rtdb f"};
+ if (&RUN_feature("freehole")=="1") { $CMD=$CMD." -freehole"};
+ if (&RUN_feature("excitons")=="1" && &RUN_feature("amplitude")=="1")   { $CMD=$CMD." -exciton a"};
+ if (&RUN_feature("excitons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -exciton w"};
+ if (&RUN_feature("electrons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -electron w"};
+ if (&RUN_feature("electrons")=="1" && &RUN_feature("dos")=="1")   { $CMD=$CMD." -electron s"};
+ if (&RUN_feature("electrons")=="1" && &RUN_feature("density")=="1")   { $CMD=$CMD." -electron d"};
+
+ if (&RUN_feature("sort")=="1")   { return "OK" };
 
  if ($CMD) {
   &command("$yambo_exec -Q $CMD -F $NEW_file $log");
   if (compare("$INPUT_file","$NEW_file") == 0) {
    return "Input not Generated";
   }else{
+   print "\nCMD $CMD\n";
    $INPUT_file=$NEW_file;
    return "OK";
   }
