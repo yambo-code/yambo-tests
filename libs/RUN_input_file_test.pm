@@ -65,6 +65,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
  if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
  if (&RUN_feature("BSKmod= \"Hartree\"")=="1")   { $CMD=$CMD." -kernel hartree"};
+ if (&RUN_feature("Chimod= \"Hartree\"")=="1" && $BSE=="0")   { $CMD=$CMD." -kernel hartree"};
  if (&RUN_feature("BSKmod= \"HF\"")=="1")   { $CMD=$CMD." -kernel hf"};
 
  if (&RUN_feature("RT_X")=="1") { $CMD=$CMD." -rtplot X"};
