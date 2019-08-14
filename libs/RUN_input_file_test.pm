@@ -84,7 +84,7 @@ sub RUN_input_file_test{
   if (compare("$INPUT_file","$NEW_file") == 0) {
    return "Input not Generated";
   }else{
-   print "\nCMD $CMD\n";
+   #print "\nCMD $CMD\n";
    $INPUT_file=$NEW_file;
    return "OK";
   }
