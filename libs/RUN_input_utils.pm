@@ -35,7 +35,7 @@ LOOP: for (my $il=0; $il<=$#INPUT ; $il++){
    #print "$in_line $string[$if] $ir $#string\n";
   };
  }
- $result=max($ir,$result);
+ $result=($ir + $result + abs($ir - $result)) / 2  #max($ir,$result);
 }
 if ($result == $#string+1) {  return 1 };
 return 0;
