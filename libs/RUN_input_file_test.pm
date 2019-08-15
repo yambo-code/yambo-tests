@@ -31,7 +31,7 @@ sub RUN_input_file_test{
 
  if ($SETUP=="1")   { $CMD=$CMD." -setup" };
  if ($HF=="1")      { $CMD=$CMD." -hf"};
- if ($GW=="1")      { $CMD=$CMD." -dyson n"};
+ if ($GW=="1" && &RUN_feature("_gw_")==0) { $CMD=$CMD." -dyson n"};
  if ($PPA=="1")     { $CMD=$CMD." -gw p"};
  if ($COHSEX=="1")  { $CMD=$CMD." -gw c"};
  if ($BSE=="1")     { $CMD=$CMD." -optics b"};
@@ -39,10 +39,13 @@ sub RUN_input_file_test{
  if ($EM1S=="1")    { $CMD=$CMD." -Xs"};
  if ($SC=="1")      { $CMD=$CMD." -sc"};
 
+ if (&RUN_feature("rim_cut")=="1") {$CMD=$CMD." -coulomb"};
+
  if (&RUN_feature("BSSmod= \"di\"")=="1") {$CMD=$CMD." -Ksolver di"};
  if (&RUN_feature("BSSmod= \"d\"")=="1")  {$CMD=$CMD." -Ksolver d"};
  if (&RUN_feature("BSSmod= \"s\"")=="1")  {$CMD=$CMD." -Ksolver s"};
  if (&RUN_feature("BSSmod= \"h\"")=="1")  {$CMD=$CMD." -Ksolver h"};
+ if (&RUN_feature("BSSmod= \"hd\"")=="1")  {$CMD=$CMD." -Ksolver hd"};
  if (&RUN_feature("BSSmod= \"i\"")=="1")  {$CMD=$CMD." -Ksolver i"};
 
  if (&RUN_feature("negf")=="1") {$CMD=$CMD." -rt p"};
@@ -62,12 +65,19 @@ sub RUN_input_file_test{
  if (&RUN_feature("HXC_Potential= PZ")=="1") {$POT=$POT."pz"};
  if ($POT) {$CMD=$CMD." -potential ".$POT};
 
+ if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p"};
+
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
  if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
  if (&RUN_feature("BSKmod= \"Hartree\"")=="1")   { $CMD=$CMD." -kernel hartree"};
+ if (&RUN_feature("Chimod= \"Hartree\"")=="1" && $BSE=="0")   { $CMD=$CMD." -kernel hartree"};
  if (&RUN_feature("BSKmod= \"HF\"")=="1")   { $CMD=$CMD." -kernel hf"};
 
  if (&RUN_feature("RT_X")=="1") { $CMD=$CMD." -rtplot X"};
+ if (&RUN_feature("K_grid")=="1") { $CMD=$CMD." -grid k"};
+ if (&RUN_feature("QPDB_edit")=="1") { $CMD=$CMD." -qpdb g"};
+ if (&RUN_feature("Shifted_Grid")=="1") { $CMD=$CMD." -grid s"};
+ if (&RUN_feature("High_Symm")=="1") { $CMD=$CMD." -grid h"};
  if (&RUN_feature("kpts_map")=="1") { $CMD=$CMD." -map"};
  if (&RUN_feature("RTDBs")=="1" && &RUN_feature("Select_Fermi")=="1") { $CMD=$CMD." -rtdb f"};
  if (&RUN_feature("freehole")=="1") { $CMD=$CMD." -freehole"};
@@ -75,16 +85,18 @@ sub RUN_input_file_test{
  if (&RUN_feature("excitons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -exciton w"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -electron w"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("dos")=="1")   { $CMD=$CMD." -electron s"};
+ if (&RUN_feature("eliashberg")=="1" && &RUN_feature("electron")=="1") { $CMD=$CMD." -electron e"};
+ if (&RUN_feature("bnds")=="1" && &RUN_feature("electron")=="1") { $CMD=$CMD." -electron b"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("density")=="1")   { $CMD=$CMD." -electron d"};
 
  if (&RUN_feature("sort")=="1")   { return "OK" };
 
  if ($CMD) {
+  #print "\nCMD $CMD @ $testname\n";
   &command("$yambo_exec -Q $CMD -F $NEW_file $log");
   if (compare("$INPUT_file","$NEW_file") == 0) {
    return "Input not Generated";
   }else{
-   print "\nCMD $CMD\n";
    $INPUT_file=$NEW_file;
    return "OK";
   }
