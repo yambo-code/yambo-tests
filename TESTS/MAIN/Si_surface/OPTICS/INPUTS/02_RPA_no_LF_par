@@ -1,42 +1,37 @@
 #                                                           
-#  **    **    **     ****     ****  ******     *******     
-# //**  **    ****   /**/**   **/** /*////**   **/////**    
-#  //****    **//**  /**//** ** /** /*   /**  **     //**   
-#   //**    **  //** /** //***  /** /******  /**      /**   
-#    /**   **********/**  //*   /** /*//// **/**      /**   
-#    /**  /**//////**/**   /    /** /*    /**//**     **    
-#    /**  /**     /**/**        /** /*******  //*******     
-#    //   //      // //         //  ///////    ///////      
+#  ____  ____     _       ____    ____  ______      ___     
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.   
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \  
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |  
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /  
+#   |______||____| |____||_____||_____||_______/  `.___."   
 #                                                           
-#             GPL Version 3.2.4 Revision 941                
+#                                                           
+#                                                           
+#       Version 4.5.0 Revision 17188 Hash 7612bb213         
+#          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build           
 #                http://www.yambo-code.org                  
 #
-optics                       # [R OPT] Optics
-chi                          # [R CHI] Dyson equation for Chi.
-NonPDirs= "X"             # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
-% Qdirection
- 0.00     | 0.00     | 0.00     |        # [Xd] Transferred momentum direction (iku)
-%
-QShiftOrder= 1               # [Xd] Pick-up the (QShiftOrder)th q+G vector
+optics                         # [R] Linear Response optical properties
+chi                            # [R][CHI] Dyson equation for Chi.
+dipoles                        # [R] Oscillator strenghts (or dipoles)
+DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+NonPDirs= "X"                  # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
+Chimod= "IP"                   # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 % QpntsRXd
- 1 | 1 |                     # [Xd] Transferred momenta
+ 1 | 1 |                       # [Xd] Transferred momenta
 %
 % BndsRnXd
-   1 |  50 |                 # [Xd] Polarization function bands
+   1 |  50 |                   # [Xd] Polarization function bands
 %
-NGsBlkXd= 1            RL    # [Xd] Response block size
 % EnRngeXd
- 0.000000 | 1.500000 | eV    # [Xd] Energy range
+ 0.000000 | 1.500000 | eV      # [Xd] Energy range
 %
 % DmRngeXd
-  0.03000 |  0.10000 | eV    # [Xd] Damping range
+  0.03000 |  0.10000 | eV      # [Xd] Damping range
 %
-DmERefXd= 0.000000     eV    # [Xd] Damping reference energy
-CGrdSpXd= 100.0000           # [Xd] [o/o] Coarse grid controller
-ETStpsXd= 100                # [Xd] Total Energy steps
-% EhEngyXd
--1.000000 |-1.000000 | eV    # [Xd] Electron-hole energy range
-%
+ETStpsXd= 100                  # [Xd] Total Energy steps
 % LongDrXd
  0.000000 | 1.000000 | 0.000000 |        # [Xd] [cc] Electric Field
 %

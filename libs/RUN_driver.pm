@@ -142,6 +142,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    &RUN_load_PAR_fields;
   }
   #
+  #
   $error=&RUN_skip_the_test("PAR_CONF");
   if ($error !~ "OK") { 
    &MY_PRINT($stdout, "ERROR: $CHECK_error\n") if ($verb);
@@ -173,7 +174,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    if ($error =~ "OK") { 
     #
     # Use the tool itself to generate the input file
-    if ($check_input_generation) { 
+    if ($check_input_generation) {
       $INFILE_CHECK=&RUN_input_file_test;
     }
     #
@@ -207,7 +208,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      }
     }
     #
-    if ($check_input_generation) { 
+    if ($check_input_generation) {
      my $msg = sprintf("%-"."$left_length"."s", "  $INPUT_file");
      &MESSAGE("LOG","\n"."$msg"."[$g_s  $INFILE_CHECK  $g_e]");
     }
@@ -226,7 +227,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   #
  } # End loop on input files
  #
- &RUN_setup("after_tests_loop");
+ if (not $update_test) {&RUN_setup("after_tests_loop")};
  #
 }
 &CWD_go;

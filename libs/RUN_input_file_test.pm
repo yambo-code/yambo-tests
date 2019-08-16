@@ -32,20 +32,30 @@ sub RUN_input_file_test{
  if ($SETUP=="1")   { $CMD=$CMD." -setup" };
  if ($HF=="1")      { $CMD=$CMD." -hf"};
  if ($GW=="1" && &RUN_feature("_gw_")==0) { $CMD=$CMD." -dyson n"};
- if ($PPA=="1")     { $CMD=$CMD." -gw p"};
- if ($COHSEX=="1")  { $CMD=$CMD." -gw c"};
+ if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )    { $CMD=$CMD." -gw0 p"};
+ if ($PPA=="1" &&  &RUN_feature("gw")==0  &&  &RUN_feature("_gw_")==0)    { $CMD=$CMD." -X p"};
+ if ($COHSEX=="1")  { $CMD=$CMD." -gw0 c"};
  if ($BSE=="1")     { $CMD=$CMD." -optics b"};
  if ($CHI=="1")     { $CMD=$CMD." -optics c"};
- if ($EM1S=="1")    { $CMD=$CMD." -Xs"};
+ if ($EM1S=="1")    { $CMD=$CMD." -X s"};
+ if ($EM1D=="1")    { $CMD=$CMD." -X d"};
  if ($SC=="1")      { $CMD=$CMD." -sc"};
+ if ($LIFE=="1")    { $CMD=$CMD." -lifetimes"};
 
  if (&RUN_feature("rim_cut")=="1") {$CMD=$CMD." -coulomb"};
+ if ($GW=="1" && $EM1D=="1") {$CMD=$CMD." -gw0 r"}
+
+ if (&RUN_feature("DysSolver= \"n\"")=="1") {$CMD=$CMD." -dyson n"};
+ if (&RUN_feature("DysSolver= \"s\"")=="1") {$CMD=$CMD." -dyson s"}
+ if (&RUN_feature("DysSolver= \"g\"")=="1") {$CMD=$CMD." -dyson g"};
 
  if (&RUN_feature("BSSmod= \"di\"")=="1") {$CMD=$CMD." -Ksolver di"};
  if (&RUN_feature("BSSmod= \"d\"")=="1")  {$CMD=$CMD." -Ksolver d"};
  if (&RUN_feature("BSSmod= \"s\"")=="1")  {$CMD=$CMD." -Ksolver s"};
  if (&RUN_feature("BSSmod= \"h\"")=="1")  {$CMD=$CMD." -Ksolver h"};
  if (&RUN_feature("BSSmod= \"hd\"")=="1")  {$CMD=$CMD." -Ksolver hd"};
+ if (&RUN_feature("BSSmod= \"dh\"")=="1")  {$CMD=$CMD." -Ksolver hd"};
+ if (&RUN_feature("BSSmod= \"hdi\"")=="1")  {$CMD=$CMD." -Ksolver hdi"};
  if (&RUN_feature("BSSmod= \"i\"")=="1")  {$CMD=$CMD." -Ksolver i"};
 
  if (&RUN_feature("negf")=="1") {$CMD=$CMD." -rt p"};
@@ -65,17 +75,21 @@ sub RUN_input_file_test{
  if (&RUN_feature("HXC_Potential= PZ")=="1") {$POT=$POT."pz"};
  if ($POT) {$CMD=$CMD." -potential ".$POT};
 
- if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p"};
+ if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p -gw0 fan"};
 
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
  if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
+ if (&RUN_feature("Chimod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
  if (&RUN_feature("BSKmod= \"Hartree\"")=="1")   { $CMD=$CMD." -kernel hartree"};
  if (&RUN_feature("Chimod= \"Hartree\"")=="1" && $BSE=="0")   { $CMD=$CMD." -kernel hartree"};
+ if (&RUN_feature("Chimod= \"LRC\"")=="1")   { $CMD=$CMD." -kernel lrc"};
  if (&RUN_feature("BSKmod= \"HF\"")=="1")   { $CMD=$CMD." -kernel hf"};
 
+ if (&RUN_feature("fixsyms")=="1") { $CMD=$CMD." -fixsym"};
  if (&RUN_feature("RT_X")=="1") { $CMD=$CMD." -rtplot X"};
  if (&RUN_feature("K_grid")=="1") { $CMD=$CMD." -grid k"};
  if (&RUN_feature("QPDB_edit")=="1") { $CMD=$CMD." -qpdb g"};
+ if (&RUN_feature("QPDB_merge")=="1") { $CMD=$CMD." -qpdb m"};
  if (&RUN_feature("Shifted_Grid")=="1") { $CMD=$CMD." -grid s"};
  if (&RUN_feature("High_Symm")=="1") { $CMD=$CMD." -grid h"};
  if (&RUN_feature("kpts_map")=="1") { $CMD=$CMD." -map"};

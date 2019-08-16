@@ -169,9 +169,9 @@ if($download){
 #
 # Clean and exit
 if ($clean and $backup_logs eq "no" and not $RUNNING_suite){ 
- print "Cleaning";
+ if (not $ROBOT_id) {print "Cleaning"};
  &UTILS_clean("ALL");
- &UTILS_clean("BINs");
+ if (not $ROBOT_id) {&UTILS_clean("BINs")};
  print "... test databases outputs logfiles bin(s)";
  if ($clean > 1) {
   &UTILS_clean("DEEP");
@@ -318,9 +318,7 @@ if ($RUNNING_suite) {
  #
  if ($update_test){
   &UTILS_update;
-  #$upload_test=$update_test;
-  #&UTILS_upload;
-  print "Test updated\n";
+  print "UPDATE: Test(s) updated\n";
   exit;
  }
  #
