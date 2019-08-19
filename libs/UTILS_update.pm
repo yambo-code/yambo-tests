@@ -59,7 +59,7 @@ if (not -f "$ROBOT_wd/SAVE/ndb.gops" and not "../SAVE/ndb.gops")
  die "\n\n It seems the test-suite could not run";
 }
 #
-if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "devel-long-options-merge-ready") 
+if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "develop") 
 {
  $REF="REFERENCE";
 }else{
@@ -78,7 +78,7 @@ if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "dev
 }
 sub UPDATE_action{
 #
-if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "devel-long-options-merge-ready") 
+if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "develop") 
 {
  $REF_folder="REFERENCE";
 }else{

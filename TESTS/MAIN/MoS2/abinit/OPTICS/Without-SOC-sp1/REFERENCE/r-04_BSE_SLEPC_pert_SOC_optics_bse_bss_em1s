@@ -1,0 +1,615 @@
+                                                                
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$       
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$      
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$      
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$      
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$      
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$      
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/      
+        |__/   |__/  |__/|__/     |__/|_______/  \______/       
+                                                                
+         Version 4.5.0 Revision 17057 Hash 704203655            
+                      Branch is develop                         
+                     MPI+SLK+OpenMP Build                       
+                  http://www.yambo-code.org                     
+ 
+ 08/19/2019 at 14:57 YAMBO @ castore
+
+ [01] CPU structure, Files & I/O Directories
+ ===========================================
+
+ * CPU             : 1
+ * THREADS    (max): 1
+ * THREADS TOT(max): 1
+ * NODES(computing): 1
+ *            (I/O): 1
+ * Fragmented WFs  :yes
+
+ CORE databases in   .
+ Additional I/O in   .
+ Communications in   .
+ Input file     is   yambo.in
+ Report file    is   ./r-04_BSE_SLEPC_pert_SOC_optics_bse_bss_em1s
+ Precision      is   SINGLE
+ Log files      in   ./LOG
+
+ Job string(s)-dir(s) (main): 04_BSE_SLEPC_pert_SOC
+                     (alt#1): 01_MAP_SOC_WFs-serial-develop
+                     (alt#2): R1
+  
+ [RD./SAVE//ns.db1]------------------------------------------
+  Bands                           : 16
+  K-points                        :  7
+  G-vectors             [RL space]:  3281
+  Components       [wavefunctions]: 2541
+  Symmetries       [spatial+T-rev]: 24
+  Spinor components               : 1
+  Spin polarizations              : 1
+  Temperature                 [ev]: 0.000000
+  Electrons                       : 26.00000
+  WF G-vectors                    :  3276
+  Max atoms/species               : 2
+  No. of atom species             : 2
+  Magnetic symmetries             : no
+ - S/N 003010 -------------------------- v.04.01.00 r.13843 -
+
+ [02] CORE Variables Setup
+ =========================
+
+
+  [02.01] Unit cells
+  ==================
+
+  Unit cell is HCP
+
+  ... containing 1Mo2S atoms
+
+  ... with scaling factors [a.u.]:  5.92038   5.12720  30.00000
+
+  Direct Lattice(DL) unit cell [iru  /  cc(a.u.)]
+  A1 = 1.000000  0.000000  0.000000      5.920381  0.000000  0.000000
+  A2 =-0.500000  1.000000  0.000000     -2.960191  5.127200  0.000000
+  A3 = 0.000000  0.000000  1.000000      0.000000  0.000000  30.00000
+
+  DL volume [au]: 910.6494
+
+  Reciprocal Lattice(RL) unit cell [iku  /  cc]
+  B1 = 1.000000  0.500000  0.000000      1.061281  0.612731 -0.000000
+  B2 = 0.000000  1.000000  0.000000      0.000000  1.225461  0.000000
+  B3 = 0.000000  0.000000  1.000000      0.000000 -0.000000  0.209440
+
+
+  [02.02] Symmetries
+  ==================
+
+  DL (S)ymmetries [cc]
+  [S1] 1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000  1.000000
+  [S2] 0.500000 -0.866025  0.000000 -0.866025 -0.500000  0.000000  0.000000  0.000000 -1.000000
+  [S3]-0.500000 -0.866025  0.000000  0.866025 -0.500000  0.000000  0.000000  0.000000 -1.000000
+  [S4]-1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000  1.000000
+  [S5]-0.500000  0.866025  0.000000 -0.866025 -0.500000  0.000000  0.000000  0.000000  1.000000
+  [S6] 0.500000  0.866025  0.000000  0.866025 -0.500000  0.000000  0.000000  0.000000 -1.000000
+  [S7] 1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000 -1.000000
+  [S8] 0.500000 -0.866025  0.000000 -0.866025 -0.500000  0.000000  0.000000  0.000000  1.000000
+  [S9]-0.500000 -0.866025  0.000000  0.866025 -0.500000  0.000000  0.000000  0.000000  1.000000
+  [S10]-1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000 -1.000000
+  [S11]-0.500000  0.866025  0.000000 -0.866025 -0.500000  0.000000  0.000000  0.000000 -1.000000
+  [S12] 0.500000  0.866025  0.000000  0.866025 -0.500000  0.000000  0.000000  0.000000  1.000000
+
+  [SYMs] Time-reversal derived K-space symmetries: 13  24
+  [SYMs] Spatial inversion 13 is NOT a symmetry
+  [SYMs] Group table built correctly
+
+  [02.03] RL shells
+  =================
+
+  Shells, format: [S#] G_RL(mHa)
+
+   [S233]:3281(0.1842E+5) [S232]:3257(0.1797E+5) [S231]:3233(0.1796E+5) [S230]:3209(0.1768E+5)
+   [S229]:3185(0.1763E+5) [S228]:3173(0.1754E+5) [S227]:3149(0.1742E+5) [S226]:3125(0.1717E+5)
+   [S225]:3101(0.1695E+5) [S224]:3089(0.1693E+5) [S223]:3077(0.1692E+5) [S222]:3053(0.1687E+5)
+   [S221]:3029(0.1686E+5) [S220]:3005(0.1684E+5) [S219]:2981(0.1656E+5) [S218]:2957(0.1646E+5)
+   [S217]:2933(0.1643E+5) [S216]:2921(0.1632E+5) [S215]:2897(0.1631E+5) [S214]:2885(0.1612E+5)
+   [S213]:2861(0.1612E+5) [S212]:2849(0.1610E+5) [S211]:2825(0.1604E+5) [S210]:2801(0.1597E+5)
+   [S209]:2777(0.1596E+5) [S208]:2765(0.1587E+5) [S207]:2741(0.1586E+5) [S206]:2717(0.1579E+5)
+   ...
+   [S12]:57( 1075.) [S11]:55( 948.2697) [S10]:43( 838.6074) [S9]:31( 789.5684)
+   [S8]:29( 772.8101) [S7]:17( 750.8776) [S6]:11( 548.3114) [S5]:9( 350.9193)
+   [S4]:7( 197.3921) [S3]:5( 87.72982) [S2]:3( 21.93246) [S1]:1( 0.000000)
+
+  [02.04] K-grid lattice
+  ======================
+
+  Compatible Grid is 2D
+  B1 [rlu]=0.1667    -.7451E-8  0.000   
+  B2      =0.7451E-8 -.1667     0.000   
+  Grid dimensions               :  6   6
+  K lattice UC volume       [au]:   0.0076
+
+  [02.05] Energies [ev] & Occupations
+  ===================================
+
+  [X]Fermi Level        [ev]: -0.951621
+  [X]VBM / CBm          [ev]:  0.000000  1.849302
+  [X]Electronic Temp. [ev K]:  0.00      0.00    
+  [X]Bosonic    Temp. [ev K]:  0.00      0.00    
+  [X]Finite Temperature mode: no
+  [X]El. density      [cm-3]: 0.193E+24
+  [X]States summary         : Full        Metallic    Empty
+                                 0001-0013               0014-0016
+  [X]Indirect Gaps      [ev]: 1.849302  2.830107
+  [X]Direct Gaps        [ev]: 1.849302  3.347074
+  X BZ K-points :  36
+
+  Energy unit is electronVolt [eV]
+
+  *X* K [1] : 0.000000  0.000000  0.000000 ( cc) * Comp.s 2525 * weight   0.02778
+              0.000000  0.000000  0.000000 (rlu)
+  E -57.91314 -34.08533 -33.76871 -33.76871 -14.11813 -12.77879  -5.66232  -2.61672
+  E  -2.61672  -1.77814  -1.45217  -1.45217  -0.06050   2.96141   2.96212   3.25488
+   
+  *X* K [2] : 0.176880  0.102122  0.000000 ( cc) * Comp.s 2501 * weight  0.166667
+              0.166667 0.7451E-8  0.000000 (rlu)
+  E -57.84866 -34.05296 -33.88525 -33.79358 -13.68906 -12.61030  -5.24900  -3.33827
+  E -2.978967 -2.163841 -2.029960 -0.967845 -0.303286  2.407362  2.710525  2.836698
+   
+  *X* K [3] : 0.353760  0.204244  0.000000 ( cc) * Comp.s 2541 * weight  0.166667
+              0.333333 0.1490E-7  0.000000 (rlu)
+  E -57.92422 -34.13286 -34.00546 -33.85686 -12.71757 -12.23058  -5.34434  -4.27850
+  E -3.810655 -2.867932 -1.560796 -1.231716 -0.980805  2.366269  2.413563  3.536556
+   
+  *X* K [4] : 0.530640  0.306365  0.000000 ( cc) * Comp.s 2530 * weight   0.08333
+              0.500000  0.000000  0.000000 (rlu)
+  E -57.88614 -34.24448 -33.97308 -33.88621 -12.10851 -12.00398  -5.84296  -4.89241
+  E -4.120080 -3.198833 -1.845217 -0.790235 -0.563023  2.390283  2.928970  3.995984
+   
+  *X* K [5] : 0.176880  0.306365  0.000000 ( cc) * Comp.s 2521 * weight  0.166667
+              0.166667  0.166667  0.000000 (rlu)
+  E -57.88586 -34.05205 -34.01697 -33.85604 -12.98406 -12.32726  -5.03943  -3.74626
+  E -3.683215 -3.247843 -1.901430 -0.902060 -0.789605  1.994342  2.630918  2.770487
+   
+  *X* K [6] : 0.353760  0.408487  0.000000 ( cc) * Comp.s 2532 * weight  0.333333
+              0.333333  0.166667  0.000000 (rlu)
+  E -57.89729 -34.18816 -33.97758 -33.94219 -12.13066 -11.98298  -5.38400  -5.02658
+  E -3.804226 -3.244782 -2.276812 -1.640271 -0.463493  2.348439  2.986147  3.445742
+   
+  *X* K [7] : 0.353760  0.612731  0.000000 ( cc) * Comp.s 2529 * weight   0.05556
+              0.333333  0.333333  0.000000 (rlu)
+  E -57.88708 -34.12671 -34.06879 -33.96983 -11.82626 -11.81470  -5.59721  -4.60172
+  E -4.124555 -3.487201 -2.856569 -2.125699  0.000000  1.849302  3.070360  3.767873
+
+ [03] Transferred momenta grid
+ =============================
+
+ [RD./SAVE//ndb.kindx]---------------------------------------
+  Fragmentation                    :no
+  Polarization last K   :  7
+  QP states             :  1   7
+  X grid is uniform     :yes
+  BS scattering         :yes
+  COLL scattering       :no
+ - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+
+ IBZ Q-points :  7
+ BZ  Q-points :  36
+
+ Q [00001] : 0.00      0.00      0.00     (iku) * weight   0.02778
+ Q [00002] :  0.16667   0.08333   0.00000 (iku) * weight  0.166667
+ Q [00003] : 0.333333  0.166667  0.000000 (iku) * weight  0.166667
+ Q [00004] : 0.500000  0.250000  0.000000 (iku) * weight   0.08333
+ Q [00005] : 0.166667  0.250000  0.000000 (iku) * weight  0.166667
+ Q [00006] : 0.333333  0.333333  0.000000 (iku) * weight  0.333333
+ Q [00007] : 0.333333  0.500000  0.000000 (iku) * weight   0.05556
+  
+ Q [00001] : 0.00      0.00      0.00     (cc ) * weight   0.02778
+ Q [00002] :  0.17688   0.10212   0.00000 (cc ) * weight  0.166667
+ Q [00003] : 0.353760  0.204244  0.000000 (cc ) * weight  0.166667
+ Q [00004] : 0.530640  0.306365  0.000000 (cc ) * weight   0.08333
+ Q [00005] : 0.176880  0.306365  0.000000 (cc ) * weight  0.166667
+ Q [00006] : 0.353760  0.408487  0.000000 (cc ) * weight  0.333333
+ Q [00007] : 0.353760  0.612731  0.000000 (cc ) * weight   0.05556
+
+  [03.01] External/Internal QP corrections
+  ========================================
+
+  [K]Fermi Level        [ev]:  0.000000
+  [K]VBM / CBm          [ev]:  0.000000  2.549302
+  [K]Electronic Temp. [ev K]:  0.00      0.00    
+  [K]Bosonic    Temp. [ev K]:  0.00      0.00    
+  [K]Finite Temperature mode: no
+  [K]El. density      [cm-3]: 0.193E+24
+  [K]States summary         : Full        Metallic    Empty
+                                 0001-0013               0014-0016
+  [K]Indirect Gaps      [ev]: 2.549302  3.530107
+  [K]Direct Gaps        [ev]: 2.549302  4.047074
+  [QP apply] Ind. Gap Correction   [ev]: 0.700000
+
+ [04] Dipoles
+ ============
+
+
+ [WARNING] DIPOLES database not correct or not present
+ [RD./SAVE//ns.kb_pp]----------------------------------------
+  Fragmentation                    :yes
+ - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+ [WF-Oscillators/G space loader] Normalization (few states)  min/max  :0.828E-10  1.00    
+
+ [WR./04_BSE_SLEPC_pert_SOC//ndb.dipoles]--------------------
+  Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
+  RL vectors                   (WF):  3281
+  Fragmentation                    :yes
+  Electronic Temperature        [K]: 0.000000
+  Bosonic    Temperature        [K]: 0.000000
+  X band range           :  6  15
+  X band range limits    : 13  14
+  X e/h energy range [ev]:-1.000000 -1.000000
+  RL vectors in the sum  :  3281
+  [r,Vnl] included       :yes
+  Bands ordered          :yes
+  Direct v evaluation    :no
+  Field momentum norm    :0.1000E-4
+  Approach used          :G-space v
+  Dipoles computed       :R V P
+  Wavefunctions          :Teter 93(XC)
+ - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+
+ [05] Static Dielectric Matrix
+ =============================
+
+ [WR./04_BSE_SLEPC_pert_SOC//ndb.em1s]-----------------------
+  Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
+  RL vectors                   (WF):  3281
+  Coulomb cutoff potential         :none
+  Fragmentation                    :yes
+  Electronic Temperature        [K]: 0.000000
+  Bosonic    Temperature        [K]: 0.000000
+  Static diel. fun.  energies      :Teter 93(XC)
+                     wavefunctions :Teter 93(XC)
+  Global Gauge                     :length
+  X matrix size          : 11
+  X band range           :  6  15
+  X e/h energy range [ev]:-1.000000 -1.000000
+  X Time ordering        :T
+  X xc-Kernel            :none
+  X Drude frequency      : 0.00      0.00    
+  X poles           [o/o]: 100.0000
+  RL vectors in the sum  :  3281
+  [r,Vnl] included       :yes
+  Field direction        :0.1000E-4  0.000     0.000   
+  BZ energy Double Grid  :no
+  BZ energy DbGd points  :0
+  BZ Q point size factor : 1.000000
+ - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+ [RD./04_BSE_SLEPC_pert_SOC//ndb.dipoles]--------------------
+  Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
+  RL vectors                   (WF):  3281
+  Fragmentation                    :yes
+  Electronic Temperature        [K]: 0.000000
+  Bosonic    Temperature        [K]: 0.000000
+  X band range           :  6  15
+  X band range limits    : 13  14
+  X e/h energy range [ev]:-1.000000 -1.000000
+  RL vectors in the sum  :  3281
+  [r,Vnl] included       :yes
+  Bands ordered          :yes
+  Direct v evaluation    :no
+  Field momentum norm    :0.1000E-4
+  Approach used          :G-space v
+  Dipoles computed       :R V P
+  Wavefunctions          :Teter 93(XC)
+ - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+ [WF-X] Performing Wave-Functions I/O from ./SAVE
+
+ [FFT-X] Mesh size:  12   12   54
+
+ [X-CG] R(p) Tot o/o(of R)  :  107   576   100
+ [WR./04_BSE_SLEPC_pert_SOC//ndb.em1s_fragment_1]------------
+  :: Current Q-pt index     : 1
+  :: X energy range     [ev]: 0.00      0.00    
+  :: X damping range    [ev]:0.1000E-2 0.1000E-2
+  :: Number of frequencies  : 1
+ - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+ [X-CG] R(p) Tot o/o(of R)  :  313   576   100
+ [WR./04_BSE_SLEPC_pert_SOC//ndb.em1s_fragment_2]------------
+  :: Current Q-pt index     : 2
+  :: X energy range     [ev]: 0.00      0.00    
+  :: X damping range    [ev]:0.1000E-2 0.1000E-2
+  :: Number of frequencies  : 1
+ - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+ [X-CG] R(p) Tot o/o(of R)  :  265   576   100
+ [X-CG] R(p) Tot o/o(of R)  :  203   576   100
+ [X-CG] R(p) Tot o/o(of R)  :  266   576   100
+ [X-CG] R(p) Tot o/o(of R)  :  390   576   100
+ [X-CG] R(p) Tot o/o(of R)  :  155   576   100
+
+ Timing [Min/Max/Average]: 01s/01s/01s
+
+ [06] Bethe Salpeter Equation @q1
+ ================================
+
+
+  [06.01] Transition Groups build-up @q1
+  ======================================
+
+  [BSK] Transition groups (total)  7
+  [BSK] Size (resonant) 216
+  [BSK]         (total) 216
+
+  [06.02] BSE - Independent Particles absorption @q1
+  ==================================================
+
+  [RD./04_BSE_SLEPC_pert_SOC//ndb.dipoles]--------------------
+   Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
+   RL vectors                   (WF):  3281
+   Fragmentation                    :yes
+   Electronic Temperature        [K]: 0.000000
+   Bosonic    Temperature        [K]: 0.000000
+   X band range           :  6  15
+   X band range limits    : 13  14
+   X e/h energy range [ev]:-1.000000 -1.000000
+   RL vectors in the sum  :  3281
+   [r,Vnl] included       :yes
+   Bands ordered          :yes
+   Direct v evaluation    :no
+   Field momentum norm    :0.1000E-4
+   Approach used          :G-space v
+   Dipoles computed       :R V P
+   Wavefunctions          :Teter 93(XC)
+  - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+
+  [06.03] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
+  =======================================================
+
+  [BSE] Exchange components : 121
+
+   [06.03.01] Screened interaction header I/O
+   ==========================================
+
+   [RD./04_BSE_SLEPC_pert_SOC//ndb.em1s]-----------------------
+    Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
+    RL vectors                   (WF):  3281
+    Coulomb cutoff potential         :none
+    Fragmentation                    :yes
+    Electronic Temperature        [K]: 0.000000
+    Bosonic    Temperature        [K]: 0.000000
+    Static diel. fun.  energies      :Teter 93(XC)
+                       wavefunctions :Teter 93(XC)
+    Global Gauge                     :length
+    X matrix size          : 11
+    X band range           :  6  15
+    X e/h energy range [ev]:-1.000000 -1.000000
+    X Time ordering        :T
+    X xc-Kernel            :none
+    X Drude frequency      : 0.00      0.00    
+    X poles           [o/o]: 100.0000
+    RL vectors in the sum  :  3281
+    [r,Vnl] included       :yes
+    Field direction        :0.1000E-4  0.000     0.000   
+    BZ energy Double Grid  :no
+    BZ energy DbGd points  :0
+    BZ Q point size factor : 1.000000
+   [RD./04_BSE_SLEPC_pert_SOC//ndb.em1s_fragment_1]------------
+    :: Current Q-pt index     : 1
+    :: X energy range     [ev]: 0.00      0.00    
+    :: X damping range    [ev]:0.1000E-2 0.1000E-2
+    :: Number of frequencies  : 1
+   - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+   [WF-BSK] Performing Wave-Functions I/O from ./SAVE
+
+   [FFT-BSK] Mesh size:  12   12   54
+
+
+   [06.03.02] Wave-Function Phases
+   ===============================
+
+   [BSE] WF phases found  [o/o]: 73.45238
+   [WR./04_BSE_SLEPC_pert_SOC//ndb.BS_Q1_CPU_0]----------------
+    Brillouin Zone Q/K grids (IBZ/BZ):   7   36    7   36
+    RL vectors                   (WF):  3281
+    Coulomb cutoff potential         :none
+    Parallel CPUs                    :
+    Parallel Roles                   :
+    Fragmentation                    :no
+    BS kernel          wavefunctions :Teter 93(XC)
+    Static diel. fun.  energies      :Teter 93(XC)
+                       wavefunctions :Teter 93(XC)
+    BSK|Identifier              :  9476
+       |Dimension               : 216
+       |Bands                   : 11  15
+       |Exchange           [res]:yes
+       |Correlation        [res]:yes
+       |Kernel`s coupling       :no
+       |Exchange           [cpl]:no
+       |Correlation        [cpl]:no
+       |W interaction is bare   :no
+       |ALDA kernel in R-space  :no
+       |RL vectors    [exchange]: 121
+       |RL vectors [correlation]: 11
+       |E/h energy range    [ev]:-1.000000 -1.000000
+       |Coupling range     [o/o]: 100.0000  100.0000
+     W |Interaction is diagonal :no
+       |Matrix size             : 11
+       |Bands                   :  6  15
+       |e/h energy range    [ev]:-1.000000 -1.000000
+       |Poles              [o/o]: 100.0000
+       |RL vectors in the sum   :  3281
+       |[r,Vnl] included        :yes
+       |Field direction         :0.1000E-4  0.000     0.000   
+       |Coulomb Cutoff          :none
+       |xc-Kernel               :none
+    RIM|RL components      [col]:0
+       |Random points      [col]:0
+   - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+
+  [06.04] BSE solver(s) @q1
+  =========================
+
+
+   [06.04.01] Slepc Solver @q1
+   ===========================
+
+   criterion: smaller eigenvalues
+   extraction method: ritz
+   number of requested eigenvalues:   5
+   stopping condition tolerance: 0.1000E-5
+   stopping condition max iterations: 0
+   number of iterations of the method:  10
+   number of eigenvalues:   5
+   ncv:  20
+   mpd:  20
+   number of converged eigenpairs:   6
+    
+   [WR./04_BSE_SLEPC_pert_SOC//ndb.BS_diago_Q1]----------------
+    BS kernel          energies      : Analyt. E
+    BSK|Identifier              :  9476
+       |Dimension               : 216
+       |Bands                   : 11  15
+       |Exchange           [res]:yes
+       |Correlation        [res]:yes
+       |Kernel`s coupling       :no
+       |Exchange           [cpl]:no
+       |Correlation        [cpl]:no
+       |W interaction is bare   :no
+       |ALDA kernel in R-space  :no
+       |RL vectors    [exchange]: 121
+       |RL vectors [correlation]: 11
+       |E/h energy range    [ev]:-1.000000 -1.000000
+       |Coupling range     [o/o]: 100.0000  100.0000
+     W |Interaction is diagonal :no
+       |Matrix size             : 11
+       |Bands                   :  6  15
+       |e/h energy range    [ev]:-1.000000 -1.000000
+       |Poles              [o/o]: 100.0000
+       |RL vectors in the sum   :  3281
+       |[r,Vnl] included        :yes
+       |Field direction         :0.1000E-4  0.000     0.000   
+       |Coulomb Cutoff          :none
+       |xc-Kernel               :none
+    RIM|RL components      [col]:0
+       |Random points      [col]:0
+    BSS|Eigenstates included    :no
+       |Field direction         :0.1000E-4  0.000     0.000   
+       |Eigenstates computed    :  5
+   - S/N 003010 -------------------------- v.04.05.00 r.17057 -
+
+ [07] Timing Overview
+ ====================
+
+ Routines: global (Only MASTER cpu here)
+                                    io_WF :     0.00s CPU (        40 calls,   0.176 millisec avg)
+                                  io_GROT :     0.00s CPU (         2 calls,   0.813 millisec avg)
+                                 io_QINDX :     0.00s CPU (         2 calls,   0.360 millisec avg)
+                               io_COL_CUT :     0.00s CPU
+                           io_Double_Grid :     0.00s CPU
+                                    io_HF :     0.00s CPU
+                               io_DIPOLES :     0.00s CPU (        26 calls,   0.294 millisec avg)
+                              io_KB_pwscf :     0.00s CPU (         2 calls,   0.011 millisec avg)
+                             io_KB_abinit :     0.00s CPU (         9 calls,   0.505 millisec avg)
+                         io_ATMPROJ_pwscf :     0.00s CPU
+                                     io_X :     0.00s CPU (        22 calls,   0.314 millisec avg)
+                                    io_BS :     0.00s CPU (        31 calls,   0.164 millisec avg)
+                                  Dipoles :     0.00s CPU
+                  IO_and_Messaging_switch :     0.00s CPU (        20 calls,   0.004 millisec avg)
+                        DIPOLE_transverse :     0.00s CPU
+                              io_fragment :     0.00s CPU (        64 calls,   0.086 millisec avg)
+                             PP_uspp_init :     0.00s CPU (         9 calls,   0.015 millisec avg)
+                              WF_load_FFT :     0.00s CPU (         9 calls,   2.427 millisec avg)
+                                FFT_setup :     1.00s CPU (         8 calls,   0.160 sec avg)
+                           Xo (procedure) :     0.00s CPU (         7 calls,  71.607 millisec avg)
+                               Xo (REDUX) :     0.00s CPU (         7 calls,   0.000 millisec avg)
+                            X (procedure) :     0.00s CPU (         7 calls,   0.276 millisec avg)
+        MATRIX transfer (X_G_X_redux_1_1) :     0.00s CPU (         7 calls,   0.003 millisec avg)
+                           LINEAR ALGEBRA :     0.00s CPU (         7 calls,   0.098 millisec avg)
+                        SERIAL_lin_system :     0.00s CPU (         7 calls,   0.096 millisec avg)
+                                X (REDUX) :     0.00s CPU (         7 calls,   0.005 millisec avg)
+        MATRIX transfer (X_G_X_redux_2_1) :     0.00s CPU (         7 calls,   0.002 millisec avg)
+                           eval_G_minus_G :     0.00s CPU
+                               T_space IP :     0.00s CPU
+                         X T_space Kernel :     0.00s CPU
+                         T_space EXX Osc. :     0.00s CPU (         7 calls,   1.002 millisec avg)
+                        T_space CORR Osc. :     0.00s CPU (        28 calls,  12.522 millisec avg)
+                             Slepc Solver :     0.00s CPU
+                             io_BSS_diago :     0.00s CPU (         2 calls,   0.719 millisec avg)
+                   BSE components folding :     0.00s CPU
+
+ [08] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 10.00000Mb (basic treshold)  100.0000Mb (SAVEs treshold)
+
+         TOTAL not deallocated :  723.0000Kb
+
+         Max memory used   :  7.728000Mb
+
+ [09] Game Over & Game summary
+ =============================
+
+ 08/19/2019 at 14:57 YAMBO @ castore [start]
+ 08/19/2019 at 14:57                 [end]
+
+ Timing   [Min/Max/Average]: 02s/02s/02s
+             [Time-Profile]: 02s
+
+ .-ACKNOWLEDGMENT
+ |
+ | The users of YAMBO have little formal obligations with respect to
+ | the YAMBO group (those specified in the GNU General Public
+ | License, http://www.gnu.org/copyleft/gpl.txt). However, it is
+ | common practice in the scientific literature, to acknowledge the
+ | efforts of people that have made the research possible. In this
+ | spirit, please find below the reference we kindly ask you to use
+ | in order to acknowledge YAMBO:
+ |
+ | Yambo: An ab initio tool for excited state calculations
+ | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
+ | Computer Physics Communications  180, 1392 (2009).
+ |
+  
+ .-Input file : yambo.in
+ | optics                         # [R OPT] Optics
+ | bse                            # [R BSE] Bethe Salpeter Equation.
+ | bss                            # [R BSS] Bethe Salpeter Equation solver
+ | em1s                           # [R Xs] Static Inverse Dielectric Matrix
+ | BoseTemp= 0.000000     eV      # Bosonic Temperature
+ | FFTGvecs=  3281        RL      # [FFT] Plane-waves
+ | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+ | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+ | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
+ | Chimod= "HARTREE"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+ | BSEmod= "resonant"             # [BSE] resonant/retarded/coupling
+ | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSSmod= "s"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+ | BSENGexx=  4           Ry      # [BSK] Exchange components
+ | BSENGBlk= 1            Ry      # [BSK] Screened interaction block size
+ | #WehCpl                        # [BSK] eh interaction included also in coupling
+ | % KfnQP_E
+ |  0.700000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+ | %
+ | % BSEQptR
+ |  1 | 1 |                       # [BSK] Transferred momenta range
+ | %
+ | % BSEBands
+ |  11 | 15 |                     # [BSK] Bands range
+ | %
+ | % BEnRange
+ |  1.250000 | 3.250000 | eV      # [BSS] Energy range
+ | %
+ | % BDmRange
+ |   0.02000 |  0.02000 | eV      # [BSS] Damping range
+ | %
+ | BEnSteps=  400                 # [BSS] Energy steps
+ | % BLongDir
+ | 0.1000E-4 | 0.000    | 0.000    |        # [BSS] [cc] Electric Field
+ | %
+ | BSSNEig=  5                    # [SLEPC] Number of eigenvalues to compute
+ | % BndsRnXs
+ |   6 | 15 |                     # [Xs] Polarization function bands
+ | %
+ | NGsBlkXs= 1            Ry      # [Xs] Response block size
+ | % DmRngeXs
+ | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
+ | %
+ | % LongDrXs
+ | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+ | %
