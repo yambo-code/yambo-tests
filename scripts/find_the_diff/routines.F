@@ -188,3 +188,78 @@ character(8) function intc(i)
  intc = temp
  !
 end function intc
+!
+subroutine sort(n,arrin,indx)                             
+  !
+  integer, parameter  :: SP  = selected_real_kind(6,30)
+  !
+  ! Sort real(dt) values from arrin into array 
+  ! Content of indx is destroyed.
+  ! indx   : i came from position indx(i) 
+  !
+  integer ::  n,indx(n)
+  real(SP)::  arrin(n)
+  !
+  ! local variables
+  !
+  integer  :: j, i, ir, l, indxt
+  real(SP) :: q
+  integer, allocatable:: l_indx(:)
+  real(SP),allocatable:: l_arrout(:)
+  !
+  !n=size(arrin)
+  allocate(l_indx(n),l_arrout(n))
+  !
+  if(n.eq.1) then
+    l_arrout(1) = arrin(1)
+    l_indx(1) = 1
+    arrin=l_arrout
+    indx=l_indx
+    deallocate(l_indx,l_arrout)
+    return
+  endif
+  do j=1,n
+    l_indx(j)=j
+  enddo
+  l=n/2+1
+  ir=n
+1 continue
+  if (l.gt.1)then
+    l=l-1
+    indxt=l_indx(l)
+    q=arrin(indxt)
+  else
+    indxt=l_indx(ir)
+    q=arrin(indxt)
+    l_indx(ir)=l_indx(1)
+    ir=ir-1
+    if (ir.eq.1)then
+      l_indx(1)=indxt
+      go to 3
+    endif
+  endif
+  i=l
+  j=l+l
+2 if (j.le.ir)then
+   if (j.lt.ir) then
+     if (arrin(l_indx(j)).lt.arrin(l_indx(j+1)))j=j+1
+   endif
+   if (q.lt.arrin(l_indx(j))) then
+     l_indx(i)=l_indx(j)
+     i=j
+     j=j+j
+   else
+     j=ir+1
+   endif
+   go to 2
+  endif
+  l_indx(i)=indxt
+  go to 1
+3 continue
+  do i=1,n
+    l_arrout(i) = arrin(l_indx(i))
+  enddo
+  arrin=l_arrout
+  indx=l_indx
+  deallocate(l_indx,l_arrout)
+end subroutine sort

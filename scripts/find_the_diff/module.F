@@ -34,7 +34,7 @@ module DIFF
  real(SP)       :: ERROR(N_max_col)
  logical        :: VERB=.FALSE.,skip_column(N_max_col)=.FALSE.,average_column(N_max_col)=.FALSE.,&
 &                  l_out_exists,l_ref_exists,broad_data,last_row,align,no_statistics,l_whitelisted,&
-&                  l_rules_skip
+&                  l_rules_skip,sort_data
  !
  type rule 
    character(256)         :: pattern  = "fake-pattern"
@@ -59,8 +59,8 @@ module DIFF
    real(SP), allocatable  :: D(:,:)
  end type obj
  !
- type(obj) :: ref,out
- type(rule):: RULES(N_max_rules)
- character(256) :: FILTER_action(N_max_col)= " ",FILTER_pattern=" ",ch_tmp
+ type(obj)            :: ref,out
+ type(rule)           :: RULES(N_max_rules)
+ character(256)       :: FILTER_action(N_max_col)= " ",FILTER_pattern=" ",ch_tmp
  !
 end module

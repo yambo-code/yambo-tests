@@ -46,7 +46,9 @@ program find_the_diff
    !
  end interface
  !
- integer        :: iargc,nargs
+ integer               :: iargc,nargs
+ integer,  allocatable :: INDX(:)
+ real(SP), allocatable :: tmp(:)
  !
  INCLUDE '../../config/RULES.h'
  INCLUDE '../../config/WHITELIST.h'
@@ -137,6 +139,7 @@ program find_the_diff
  call read_the_data(ref)
  call read_the_data(out)
  !
+ sort_data=.FALSE.
  broad_data=.FALSE.
  last_row=.FALSE.
  align=.FALSE.
@@ -160,6 +163,7 @@ program find_the_diff
      !
      if (RULES(i_r)%REF_col>0) i_REF_col=RULES(i_r)%REF_col
      !
+     if (.not.sort_data) sort_data=index(RULES(i_r)%action,"sort")>0
      if (.not.broad_data)broad_data=index(RULES(i_r)%action,"broad")>0
      if (.not.last_row)  last_row  =index(RULES(i_r)%action,"last_row")>0
      if (.not.align)     align     =index(RULES(i_r)%action,"align")>0
@@ -200,7 +204,7 @@ program find_the_diff
      endif
      out%D(i_r,:)=out%D(i_r,:)+delta_ref
    enddo
- else if (i_REF_col>0) then
+ else if (i_REF_col>0.and..not.sort_data) then
    do i_r=1,ref%N
      do i_c=1,ref%N_col
        if (i_c==i_REF_col) cycle
@@ -217,6 +221,25 @@ program find_the_diff
      call broad_the_data(ref%N,ref%D(:,1),ref%D(:,i_c))
      call broad_the_data(out%N,ref%D(:,1),out%D(:,i_c))
    enddo
+ endif
+ !
+ if (sort_data) then
+   allocate(INDX(ref%N),tmp(ref%N))
+   call sort(ref%N,ref%D(1:ref%N,i_REF_col),INDX)
+   call sort(out%N,out%D(1:out%N,i_REF_col),INDX)
+   do i_c=2,ref%N_col
+     do i_r=1,ref%N
+       tmp(i_r)=ref%D(INDX(i_r),i_c)
+     enddo
+     ref%D(:ref%N,i_c)=tmp
+   enddo
+   do i_c=2,out%N_col
+     do i_r=1,out%N
+       tmp(i_r)=out%D(INDX(i_r),i_c)
+     enddo
+     out%D(:out%N,i_c)=tmp
+   enddo
+   deallocate(tmp)
  endif
  !
  call eval_the_moments(ref) 

@@ -38,6 +38,8 @@ subroutine check(R,O,REPORT,FIELD)
   !
   do i_c=1,ref%N_col
     !
+    if (     skip_column(i_c)) cycle
+    !
     if (abs(R(i_c))<TRESHOLD.and.abs(O(i_c))<TRESHOLD) cycle
     !
     if (average_column(i_c)) then

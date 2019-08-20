@@ -75,6 +75,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("HXC_Potential= PZ")=="1") {$POT=$POT."pz"};
  if ($POT) {$CMD=$CMD." -potential ".$POT};
 
+ if (&RUN_feature("magnetic")=="1")      { $CMD=$CMD." -magnetic"};
  if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p -gw0 fan"};
 
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
@@ -85,7 +86,10 @@ sub RUN_input_file_test{
  if (&RUN_feature("Chimod= \"LRC\"")=="1")   { $CMD=$CMD." -kernel lrc"};
  if (&RUN_feature("BSKmod= \"HF\"")=="1")   { $CMD=$CMD." -kernel hf"};
 
+ if (&RUN_feature("WFs_map")=="1") { $CMD=$CMD." -wf p"};
  if (&RUN_feature("fixsyms")=="1") { $CMD=$CMD." -fixsym"};
+ if (&RUN_feature("RToccupations")=="1") { $CMD=$CMD." -rtplot o"};
+ if (&RUN_feature("RTenergy")=="1") { $CMD=$CMD." -rtmode e"};
  if (&RUN_feature("RT_X")=="1") { $CMD=$CMD." -rtplot X"};
  if (&RUN_feature("K_grid")=="1") { $CMD=$CMD." -grid k"};
  if (&RUN_feature("QPDB_edit")=="1") { $CMD=$CMD." -qpdb g"};
@@ -104,6 +108,8 @@ sub RUN_input_file_test{
  if (&RUN_feature("electrons")=="1" && &RUN_feature("density")=="1")   { $CMD=$CMD." -electron d"};
 
  if (&RUN_feature("sort")=="1")   { return "OK" };
+ if (&RUN_feature("p2y")=="1")   { return "OK" };
+ if (&RUN_feature("a2y")=="1")   { return "OK" };
 
  if ($CMD) {
   #print "\nCMD $CMD @ $testname\n";

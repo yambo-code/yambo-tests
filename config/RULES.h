@@ -72,9 +72,14 @@ call add_RULE("o-03_OMS_RIM.qp","double_precision",MATERIAL="Si_bulk")
 !=====
 call add_RULE(".eps_q1_haydock_bse","skip",TITLES=(/"EPS`/Im[6]","EPS`/Re[7]"/))
 call add_RULE(".eel_q1_haydock_bse","skip",TITLES=(/"EEL`/Im[6]","EEL`/Re[7]"/))
-call add_RULE("sort_SLEPC.exc_","skip",COL=3)
-call add_RULE(".exc_weights_at","skip",COL=4)
+!
+!..ypp
+call add_RULE(".exc_weights_at","skip",COLS=(/4/))
 call add_RULE(".exc_qpt1_weights_at","skip",COLS=(/4,6/))
+call add_RULE("I_sorted","skip",COLS=(/3/))
+call add_RULE("E_sorted","skip",COLS=(/3/))
+call add_RULE("I_sorted","sort",REF_col=1)
+call add_RULE("E_sorted","sort",REF_col=1)
 !
 ! SC
 !=====
