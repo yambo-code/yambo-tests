@@ -83,6 +83,9 @@ if($nt and $nt>1) {
 if($nl and $nl>1) {
  &MY_PRINT($fh,  "\n        Lin. Algebra  : $nl ");
 }
+if($check_input_generation) {
+ &MY_PRINT($fh,  "\n Input file generation: yes ");
+}
 #
 }
 1;

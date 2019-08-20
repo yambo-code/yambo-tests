@@ -67,7 +67,9 @@ sub RUN_input_file_test{
  my $POT;
  if (&RUN_feature("HXC_Potential= IP")=="1") {$POT="ip"};
  if (&RUN_feature("HXC_Potential= DEFAULT")=="1") {$POT=$POT."d"};
- if (&RUN_feature("HXC_Potential= HARTREE")=="1") {$POT=$POT."h"}
+ if (&RUN_feature("HXC_Potential= default")=="1") {$POT=$POT."d"};
+ if (&RUN_feature("HXC_Potential= HARTREE")=="1") {$POT=$POT."h"};
+ if (&RUN_feature("HXC_Potential GS_xc")=="1") {$POT=$POT."gs"};
  if (&RUN_feature("HXC_Potential= COH")=="1") {$POT=$POT."coh"}
  if (&RUN_feature("HXC_Potential= SEX")=="1") {$POT=$POT."sex"}
  if (&RUN_feature("HXC_Potential= FOCK")=="1") {$POT=$POT."f"}
@@ -90,6 +92,9 @@ sub RUN_input_file_test{
  if (&RUN_feature("fixsyms")=="1") { $CMD=$CMD." -fixsym"};
  if (&RUN_feature("RToccupations")=="1") { $CMD=$CMD." -rtplot o"};
  if (&RUN_feature("RTenergy")=="1") { $CMD=$CMD." -rtmode e"};
+ if (&RUN_feature("RTfitbands")=="1") { $CMD=$CMD." -rtmode b"};
+ if (&RUN_feature("RTdos")=="1") { $CMD=$CMD." -rtmode d"};
+ if (&RUN_feature("RTtime")=="1") { $CMD=$CMD." -rtmode t"};
  if (&RUN_feature("RT_X")=="1") { $CMD=$CMD." -rtplot X"};
  if (&RUN_feature("K_grid")=="1") { $CMD=$CMD." -grid k"};
  if (&RUN_feature("QPDB_edit")=="1") { $CMD=$CMD." -qpdb g"};
