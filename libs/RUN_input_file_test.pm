@@ -34,7 +34,7 @@ sub RUN_input_file_test{
  if ($GW=="1" && &RUN_feature("_gw_")==0) { $CMD=$CMD." -dyson n"};
  if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )    { $CMD=$CMD." -gw0 p"};
  if ($PPA=="1" &&  &RUN_feature("gw")==0  &&  &RUN_feature("_gw_")==0)    { $CMD=$CMD." -X p"};
- if ($COHSEX=="1")  { $CMD=$CMD." -gw0 c"};
+ if ($COHSEX=="1" &&  &RUN_feature("_gw_")==0)  { $CMD=$CMD." -gw0 c"};
  if ($BSE=="1")     { $CMD=$CMD." -optics b"};
  if ($CHI=="1")     { $CMD=$CMD." -optics c"};
  if ($EM1S=="1")    { $CMD=$CMD." -X s"};
@@ -77,7 +77,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("HXC_Potential= PZ")=="1") {$POT=$POT."pz"};
  if ($POT) {$CMD=$CMD." -potential ".$POT};
 
- if (&RUN_feature("magnetic")=="1")      { $CMD=$CMD." -magnetic"};
+ if (&RUN_feature("magnetic")=="1" && &RUN_feature("landau")=="1")      { $CMD=$CMD." -magnetic l"};
  if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p -gw0 fan"};
 
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
@@ -91,6 +91,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("WFs_map")=="1") { $CMD=$CMD." -wf p"};
  if (&RUN_feature("fixsyms")=="1") { $CMD=$CMD." -fixsym"};
  if (&RUN_feature("RToccupations")=="1") { $CMD=$CMD." -rtplot o"};
+ if (&RUN_feature("RTdeltaRho")=="1") { $CMD=$CMD." -rtplot d"};
  if (&RUN_feature("RTenergy")=="1") { $CMD=$CMD." -rtmode e"};
  if (&RUN_feature("RTfitbands")=="1") { $CMD=$CMD." -rtmode b"};
  if (&RUN_feature("RTdos")=="1") { $CMD=$CMD." -rtmode d"};
@@ -103,6 +104,8 @@ sub RUN_input_file_test{
  if (&RUN_feature("High_Symm")=="1") { $CMD=$CMD." -grid h"};
  if (&RUN_feature("kpts_map")=="1") { $CMD=$CMD." -map"};
  if (&RUN_feature("RTDBs")=="1" && &RUN_feature("Select_Fermi")=="1") { $CMD=$CMD." -rtdb f"};
+ if (&RUN_feature("RTDBs")=="1" && &RUN_feature("Select_energy")=="1") { $CMD=$CMD." -rtdb e"};
+ if (&RUN_feature("RTDBs")=="1" && &RUN_feature("Select_kspace")=="1") { $CMD=$CMD." -rtdb k"};
  if (&RUN_feature("freehole")=="1") { $CMD=$CMD." -freehole"};
  if (&RUN_feature("excitons")=="1" && &RUN_feature("amplitude")=="1")   { $CMD=$CMD." -exciton a"};
  if (&RUN_feature("excitons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -exciton w"};
@@ -111,6 +114,8 @@ sub RUN_input_file_test{
  if (&RUN_feature("eliashberg")=="1" && &RUN_feature("electron")=="1") { $CMD=$CMD." -electron e"};
  if (&RUN_feature("bnds")=="1" && &RUN_feature("electron")=="1") { $CMD=$CMD." -electron b"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("density")=="1")   { $CMD=$CMD." -electron d"};
+ if (&RUN_feature("electrons")=="1" && &RUN_feature("dos")=="1")   { $CMD=$CMD." -electron s"};
+ if (&RUN_feature("electrons")=="1" && &RUN_feature("dos")=="1" && &RUN_feature("bnds")=="1" )   { $CMD=$CMD." -electron sb"};
 
  if (&RUN_feature("sort")=="1")   { return "OK" };
  if (&RUN_feature("p2y")=="1")   { return "OK" };

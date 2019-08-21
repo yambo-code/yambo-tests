@@ -291,8 +291,11 @@ if ($RUNNING_suite) {
   #
   my $ERROR=&FLOW_init($flow);
   #
-  if ( "$ERROR" eq "FAIL" ) {
-   print "FLOW $flow not found/corrupted";
+  if ( "$ERROR" eq "NOT_FOUND" ) {
+   print "FLOW $flow not found";
+   die "\n";
+  }elsif ( "$ERROR" eq "FAIL" ) {
+   print "FLOW $flow corrupted";
    die "\n";
   }
   #

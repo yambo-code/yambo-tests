@@ -54,8 +54,8 @@ if ($NLOPTICS ne "1"){
   $OPTICS=&RUN_feature("optics");
   if ($OPTICS eq "1") { $description .= " optics" };
 };
-$SC=&RUN_feature("scpot");
-if (&RUN_feature("magnetic") eq "1"){$SC="0"; $MAGNETIC="1"};
+$SC=&RUN_feature("scrun");
+$MAGNETIC=&RUN_feature("magnetic");
 if ($SC eq "1") { $description .= " SC cycle" };
 $RIMCUT=&RUN_feature("rim_cut");
 if ($RIMCUT eq "1") { $description .= " RIM-Coulomb Cutoff" };

@@ -55,13 +55,17 @@ sub FLOW_load
 }
 sub FLOW_init
 {
+ my $FLOW_file;
  if (-e "ROBOTS/$host/$user/FLOWS/@_.pl") {
-  do "ROBOTS/$host/$user/FLOWS/@_.pl";
-  if ($#flow<0) {return "FAIL"};
-   return "OK";
+  $FLOW_file="ROBOTS/$host/$user/FLOWS/@_.pl";
+ }elsif (-e "ROBOTS/$host/$user/FLOWS/@_") {
+  $FLOW_file="ROBOTS/$host/$user/FLOWS/@_";
  }else{
-  return "FAIL";
+  return "NOT_FOUND";
  }
+ do "$FLOW_file";
+ if ($#flow<0) {return "FAIL"};
+ return "OK";
 }
 sub FLOW_reset
 {
