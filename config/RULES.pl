@@ -51,38 +51,40 @@ $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
 #
 # EXC PP
 #
+$BRANCH_LIST="4.4 master_gpl"
+#
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="4.4";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][2]="exc_amplitude_at_";
 $PATTERN[$N_PATTERNS][1]="exc_qpt1_amplitude_at_";
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="4.4";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][2]="exc_weights_at_";
 $PATTERN[$N_PATTERNS][1]="exc_qpt1_weights_at_";
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="4.4";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][2]="exc_E_sorted";
 $PATTERN[$N_PATTERNS][1]="exc_qpt1_E_sorted";
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="4.4";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][2]="exc_I_sorted";
 $PATTERN[$N_PATTERNS][1]="exc_qpt1_I_sorted";
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="4.4";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][2]="exc_1d";
 $PATTERN[$N_PATTERNS][1]="exc_qpt1_1d";
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="4.4";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][2]="exc_2d";
 $PATTERN[$N_PATTERNS][1]="exc_qpt1_2d";
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="4.4";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][2]="exc_3d";
 $PATTERN[$N_PATTERNS][1]="exc_qpt1_3d";
 

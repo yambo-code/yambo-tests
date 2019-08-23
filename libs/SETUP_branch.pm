@@ -66,6 +66,8 @@ if ($branch_id eq "")
  $pattern=$branch_id;
 };
 #
+if ($is_GPL) {$branch_key.="_gpl"; $pattern.="_gpl";};
+#
 # branch and branch_key (to be used in reports/actions)
 $is_OLD_IO="no";
 if ($pattern=~m/4.1/ix) {$is_OLD_IO="yes"};
@@ -87,14 +89,13 @@ $is_NEW_DBGD="no";
 if ($pattern=~m/devel-double-grid/ix){$is_NEW_DBGD="yes"};
 #
 $is_NEW_EXC_SORT="yes";
+if ($pattern=~m/gpl/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/4.4/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/4.3/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/4.2/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/4.1/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/4.0/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/3.4/ix){$is_NEW_EXC_SORT="no"};
-#
-if ($is_GPL) {$branch_key.="_gpl"};
 #
 $do_NL_tests="yes";
 $is_NEW_YPP="yes";
@@ -103,6 +104,7 @@ if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $PAR_COMP;
 if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $PAR_COMP;};
 if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
+if ($pattern=~m/4.3/ix) {undef $is_NEW_YPP; undef $do_NL_tests;};
 #
 $do_A2Y_tests="yes";
 $PAR_covariant="yes";
