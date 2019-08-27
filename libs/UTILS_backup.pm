@@ -88,7 +88,7 @@ sub UTILS_list_backups{
      print "DATE  : $date\n";
      print "TIME  : $time\n";
      print "ROBOT : $robot_id\n";
-     print "BRANCH: $branch_key\n";
+     print "BRANCH: $branch_in_the_log\n";
      print "FC    : $FC_kind $MPI_kind\n";
     }
     print "DIR   : $dir\n";
@@ -117,7 +117,12 @@ sub UTILS_list_backups{
 }
 #
 sub UTILS_backup_save{
-if ($compile) {&command("mkdir -p $BACKUP_dir/compilation")};
+if ($compile) {
+ &command("mkdir -p $BACKUP_dir/compilation");
+ foreach $conf_file (<*R${ROBOT_id}*config.log>,<*R${ROBOT_id}*compile.log>) {
+  &command("mv $conf_file $BACKUP_dir/compilation/");
+ };
+};
 foreach $conf_file (<*$ROBOT_string*.log>){
  &command("mv $conf_file $BACKUP_dir");
  if ($conf_file =~ /REPORT-/) {$global_report=$conf_file};
@@ -203,10 +208,6 @@ foreach $conf_file (<*$ROBOT_string*log>) {
 # Archive
 my $DIR=$PAR_string;
 if ($openmp_is_off) {$DIR="$PAR_string-OpenMPoff"};
-foreach $conf_file (<*R${ROBOT_id}*config.log>,<*R${ROBOT_id}*compile.log>) {
- &command("mkdir -p $BACKUP_dir/compilation");
- &command("mv $conf_file $BACKUP_dir/compilation/");
-};
 if (-f "LOG_$ROBOT_id") {&command("cp LOG_$ROBOT_id $BACKUP_dir")};
 }
 1;

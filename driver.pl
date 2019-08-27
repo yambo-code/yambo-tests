@@ -200,8 +200,6 @@ if ($branch_php) {
  exit;
 }
 #
-# SVN section
-#
 #Tag broken
 if ($tag_test_as_broken)
 {
@@ -364,6 +362,7 @@ close $ulog;
 close $flog;
 #
 if ($backup_logs eq "yes") {
+ &UTILS_backup();
  &UTILS_backup_save();
  if ($report){ 
   &PHP_generate(); 

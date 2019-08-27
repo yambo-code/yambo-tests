@@ -34,19 +34,15 @@ $i_file = 0;
 $i_dir = 0;
 foreach $dir (@reversed_dirs) {
  @files = glob("$dir/REPORT*");
- $branch_ref="none";
+ $branch_in_the_log="none";
  foreach $file (@files) {
   $i_file = $i_file+1;
   open(REPORT,"<","$suite_dir/$file");
   @lines = <REPORT>;
   &PHP_key_words($file);
-  if (not "$branch_php" eq "" ) {
-    if (not ("$branch_php" eq "$branch_key")) { next; }
-    $branch_ref=$branch_key;
-  }
-  if (($i_file == 1) and ("$branch_php" eq "")) {$branch_ref=$branch_key;};
-  if ($branch_key =~ "bug-fixes_copy" or $branch_key =~ "max-release" ) {next};
-  if (not ("$branch_key" eq "$branch_ref") ) {next};
+  if ($branch_php and not "$branch_php" eq "$branch_in_the_log" ) {next};
+  if (not $branch_php and not "$branch_key" eq "$branch_in_the_log") {next} ;
+  #print "$dir"."  KEY $branch_key"." LOG $branch_in_the_log"." PHP $branch_php\n";
   $i_dir = $i_dir+1;
   if ($i_dir > 21 ) {next};
   print "Processing $dir...\n";
@@ -61,8 +57,8 @@ sub PHP_key_words{
  $robot_id = (split(/REPORT-R/,@_[0]))[1];
  $robot_id = (split(/-/,$robot_id))[0];
  &get_line("Branch");
- $branch_key=$pattern[0][1];
- if( $branch_key eq ""){$branch_key="none";}
+ $branch_in_the_log=$pattern[0][1];
+ if( $branch_in_the_log eq ""){$branch_in_the_log="none";}
  &get_line("Build");
  if ($n_patterns eq 0)
  {
@@ -74,8 +70,8 @@ sub PHP_key_words{
    undef $duration;
    return;
  }
- $branch_key=$pattern[0][1];
- if( $branch_key eq ""){$branch_key="none";}
+ $branch_in_the_log=$pattern[0][1];
+ if( $branch_in_the_log eq ""){$branch_in_the_log="none";}
  $BUILD=$pattern[0][3];
  $BUILD =~ s/\+/ /g;
  $MPI_kind=$pattern[0][5];
