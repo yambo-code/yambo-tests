@@ -119,17 +119,17 @@ $MAX_phps=20;
 chdir("$host/www");
 for( $j = 1; $j < $MAX_phps ; $j = $j + 1 )
 {
- $main_dat = $branch_key."/".$hostname."_".$branch_key."_".$j."_main.dat";
+ $main_dat = $branch_in_the_log."/".$hostname."_".$branch_in_the_log."_".$j."_main.dat";
  if (! -f $main_dat) { last} ;
 }
 #
 chdir("$suite_dir");
-$main_dat = $hostname."_".$branch_key."_".$j."_main.dat";
-$error_php=$hostname."_".$branch_key."_".$j."_error.php";
-$report_php=$hostname."_".$branch_key."_".$j."_report.php";
-$conf_php=$hostname."_".$branch_key."_".$j."_conf.php";
-$comp_tgz=$hostname."_".$branch_key."_".$j."_comp.tgz";
-$logs_tgz=$hostname."_".$branch_key."_".$j."_logs.tgz";
+$main_dat = $hostname."_".$branch_in_the_log."_".$j."_main.dat";
+$error_php=$hostname."_".$branch_in_the_log."_".$j."_error.php";
+$report_php=$hostname."_".$branch_in_the_log."_".$j."_report.php";
+$conf_php=$hostname."_".$branch_in_the_log."_".$j."_conf.php";
+$comp_tgz=$hostname."_".$branch_in_the_log."_".$j."_comp.tgz";
+$logs_tgz=$hostname."_".$branch_in_the_log."_".$j."_logs.tgz";
 #
 # RETRIVE DATA
 #
@@ -204,9 +204,7 @@ if ($n_patterns eq 0){
  }
 }
 #
-
-#
-# Generte DAT file
+# Generate DAT file
 #
 open($dat, '>', $main_dat) or die "Could not open file '$main_dat' $!";
 &MESSAGE("DAT","$REVISION\nFC_kind $FC_kind\nMPI_kind $MPI_kind\nBUILD $BUILD\nPrecision $Yambo_precision\n");
@@ -285,8 +283,8 @@ if ( "$compress" eq "yes" ){ &command("tar -czf $comp_tgz compilation/*comp*.log
 #
 # Final copying
 #
-&command("mkdir -p $host/www/$branch_key");
-&command("mv *.php *.dat *.tgz $host/www/$branch_key");   
+&command("mkdir -p $host/www/$branch_in_the_log");
+&command("mv *.php *.dat *.tgz $host/www/$branch_in_the_log");   
 #
 return
 }
