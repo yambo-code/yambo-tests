@@ -25,7 +25,7 @@
 sub SETUP_build{
 if ($is_NEW_driver)
 {
- print "using new driver";
+ print "using new driver" if ($verb);
  my $result=`$BRANCH/$conf_bin/yambo -version 2>&1`;
  @build_patters= split(/\s+/,$result);
  $REVISION=$build_patters[10];
