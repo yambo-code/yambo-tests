@@ -45,6 +45,10 @@ if ( $is_NEW_DBGD eq "yes" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ",
 &CHECK_database("X_Q_1","ndb.em1s_fragment_1","");
 if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 &CHECK_database("X_Q_1","ndb.pp_fragment_1","");
+&CHECK_database("QP_table","ndb.QP","");
+&CHECK_database("QP_kpts","ndb.QP","");
+&CHECK_database("QP_E","ndb.QP","");
+&CHECK_database("QP_Z","ndb.QP","");
 &CHECK_database("BLOCK_TABLE","ndb.E_SOC_map","");
 &CHECK_database("CUT_BARE_QPG","ndb.cutoff","");
 &CHECK_database("RIM_qpg","ndb.RIM","");
