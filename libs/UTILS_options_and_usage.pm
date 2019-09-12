@@ -79,17 +79,17 @@ my $ret = &GetOptions("h+"   => \$help,
 #
 }
 sub UTILS_robot_info {
- print <<ROBOT_info
+print <<ROBOT_info
 
-   Running on host    : $host
-   By user            : $user
-   Version            : $version
-   Available     CPU's: $SYSTEM_NP
-   Available  CPU conf: $cpu_avail
-   Available Compilers: $conf_avail
-   Available     flows: $flows_avail
+  Running on host    : $host
+  By user            : $user
+  Version            : $version
+  Available     CPU's: $SYSTEM_NP
+  Available  CPU conf: $cpu_avail
+  Available Compilers: $conf_avail
+  Available     flows: $flows_avail
 
-   Available   modules:
+  Available   modules:
 
 ROBOT_info
 ;
@@ -100,6 +100,15 @@ for( $i = 1; $i <= $n_modules; $i = $i + 1 )
 }
 print "\n";
 
+print <<SCRIPTS_info
+  Available   scripts: 
+SCRIPTS_info
+;
+for( $i = 1; $i <= $#scripts_avail; $i = $i + 1 )
+{
+ print "\t ".$scripts_avail[$i]."\n";
+}
+print "\n";
 }
 sub UTILS_usage {
 

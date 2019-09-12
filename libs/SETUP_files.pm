@@ -34,6 +34,13 @@ if (-e "./ROBOTS/$host/$user/CONFIGURATIONS"){
 }
 $conf_avail = join(" ", @files);
 #
+if (-e "./ROBOTS/$host/$user/SCRIPTS"){
+ opendir(DIR,"./ROBOTS/$host/$user/SCRIPTS");
+ @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/SCRIPTS/$_" } readdir(DIR);
+ closedir DIR;
+}
+@scripts_avail = sort {$a cmp $b} @files;
+#
 if (-e "./ROBOTS/$host/$user/FLOWS"){
  opendir(DIR,"./ROBOTS/$host/$user/FLOWS");
  @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/FLOWS/$_" } readdir(DIR);
