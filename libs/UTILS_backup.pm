@@ -66,6 +66,9 @@ sub UTILS_list_backups{
   @reversed_dirs = @sorted_dirs 
  }
  #
+ @id_to_clean=split(/-/, $backup_logs);
+ if ( scalar @id_to_clean == 1 ) {push @id_to_clean,$id_to_clean[0]};
+ #
  $data_id=0;
  if ("@_" eq "list")
  {
@@ -81,7 +84,7 @@ sub UTILS_list_backups{
    $data_id++;
    close(REPORT);
    #
-   if ( ($backup_logs eq "yes" or $backup_logs == $data_id ) and not $clean) 
+   if ( ($backup_logs eq "yes" or ($data_id <= $id_to_clean[1] and $data_id >= $id_to_clean[0]) ) and not $clean) 
    {
     print "ID    : $data_id\n";
     if ($date) {
@@ -99,7 +102,7 @@ sub UTILS_list_backups{
       &command("rm -fr $dir");
     };
    };
-   if ( $backup_logs == $data_id )
+   if ( $data_id <= $id_to_clean[1] and $data_id >= $id_to_clean[0]) 
    {
     #
     if ($profile) {&PROFILE($dir)};
