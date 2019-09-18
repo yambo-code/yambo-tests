@@ -42,7 +42,6 @@ if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -
 else
  AC_MSG_RESULT(created)
  mkdir -p ROBOTS/$robot/$user
- touch ROBOTS/$robot/$user/TIME_ID
  git add ROBOTS/$robot/
  git add ROBOTS/$robot/$user/
  echo "$robot" >> .gitignore
