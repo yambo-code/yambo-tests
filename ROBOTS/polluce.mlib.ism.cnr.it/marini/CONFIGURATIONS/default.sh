@@ -10,11 +10,6 @@ if [ -e "$IF_COMPILE" ]
 then
  CONF_LINE="FC=pgf90 FPP=gfortran -E -P -cpp"
 fi
-MORE_LINES=" "
-if [ $# -gt 0 ]
-then
- MORE_LINES="$1"
-fi
 ./configure \
 $CONF_LINE \
 --with-extlibs-path=$YAMBO_EXT_LIBS \
@@ -28,4 +23,4 @@ $CONF_LINE \
 --enable-keep-src \
 --enable-slepc-linalg \
 --enable-hdf5-compression \
---enable-hdf5-p2y-support $MORE_LINES
+--enable-hdf5-p2y-support
