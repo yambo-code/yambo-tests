@@ -5,8 +5,6 @@
 #
 # Authors (see AUTHORS file for details): AM
 #
-# Based on the original driver written by CH
-#
 # This file is distributed under the terms of the GNU
 # General Public License. You can redistribute it and/or
 # modify it under the terms of the GNU General Public
@@ -23,19 +21,12 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-$user="@user@";
-$ncftp="@ncftp@";
-$ncftpls="@ncftpls@";
-$ncftpput="@ncftpput@";
-$awk="@awk@";
-$git="@git@";
-$txt2html="@txt2html@";
-$grep="@grep_cmd@";
-$wget="@wget@";
-$NP_cmd="@NP_cmd@";
-#
-if ( $ncftp eq "none" ) { undef $ncftp };
-if ( $ncftpls eq "none" ) { undef $ncftpls };
-if ( $ncftpput eq "none" ) { undef $ncftpput };
-if ( $txt2html eq "none" ) { undef $txt2html };
-if ( $wget eq "none" ) { undef $wget };
+%ROBOTS;
+$ROBOTS{'dufour'} = 'dufour.mlib.ism.cnr.it';
+$ROBOTS{'polluce'} = 'polluce.mlib.ism.cnr.it';
+$ROBOTS{'castore'} = 'castore.mlib.ism.cnr.it';
+$ROBOTS{'anomaly'} = 'castore.mlib.ism.cnr.it';
+$ROBOTS{'amore9'} = 'amore9.mlib.ism.cnr.it';
+$ROBOTS{'narro'} = 'narro';
+$ROBOTS{'bacalhau'} = 'bacalhau';
+$ROBOTS{'doncamillo'} = 'doncamillo';

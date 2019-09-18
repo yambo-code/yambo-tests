@@ -28,6 +28,7 @@ use autodie;
 do "config/MODULES.pl";
 do "config/TOOLS.pl";
 do "config/RULES.pl";
+do "config/ROBOTS_list.pl";
 #
 # The location of the test-suite directory
 $suite_dir=abs_path();
@@ -42,6 +43,8 @@ $suite_dir=abs_path();
 #
 if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$RUNNING_suite="yes"};
 #
+$hostname=hostname();
+$host=$ROBOTS{$hostname};
 if ($USER_host and -d "ROBOTS/$USER_host") {$host=$USER_host};
 #
 # Glob available configurations/flows

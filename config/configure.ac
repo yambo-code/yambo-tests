@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2017 the YAMBO team
+#        Copyright (C) 2000-2019 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -45,6 +45,7 @@ else
  git add ROBOTS/$robot/
  git add ROBOTS/$robot/$user/
  echo "$robot" >> .gitignore
+ echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> config/ROBOTS_list.pl
 fi
 if ! test -d ROBOTS/$robot/$user/SCRIPTS; then
   mkdir -p ROBOTS/$robot/$user/SCRIPTS
