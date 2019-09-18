@@ -159,7 +159,7 @@ if($repo_check){
 # Download and exit
 if($download){ 
  if ($download eq "list") {
-  &FTP_list("testing-robots/databases")
+  &FTP_list("testing-robots/databases/tests")
  }else{
   &UTILS_download;
   print "Download complete.\n";
@@ -193,11 +193,15 @@ if ($failed) {&UTILS_failed_theme_creator(); exit;};
 # PHP generation 
 #
 if ($branch_php) {
- #&PHP_folders_rename(); 
- &PHP_generate(); 
- &PHP_upload();
- print "PHP generation finalized.\n";
- exit;
+ if ($branch_php =~ "list") {
+  &FTP_list("robots")
+ }else{
+  #&PHP_folders_rename(); 
+  &PHP_generate(); 
+  &PHP_upload();
+  print "PHP generation finalized.\n";
+  die; 
+ }
 }
 #
 #Tag broken
