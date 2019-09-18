@@ -25,7 +25,7 @@
 $ROBOTS{'dufour'} = 'dufour.mlib.ism.cnr.it';
 $ROBOTS{'polluce'} = 'polluce.mlib.ism.cnr.it';
 $ROBOTS{'castore'} = 'castore.mlib.ism.cnr.it';
-$ROBOTS{'anomaly'} = 'castore.mlib.ism.cnr.it';
+$ROBOTS{'anomaly'} = 'anomaly.mlib.ism.cnr.it';
 $ROBOTS{'amore9'} = 'amore9.mlib.ism.cnr.it';
 $ROBOTS{'narro'} = 'narro';
 $ROBOTS{'bacalhau'} = 'bacalhau';
