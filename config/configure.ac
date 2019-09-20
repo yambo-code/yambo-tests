@@ -44,7 +44,6 @@ else
  mkdir -p ROBOTS/$robot/$user
  git add ROBOTS/$robot/
  git add ROBOTS/$robot/$user/
- echo "$robot" >> .gitignore
  echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> config/ROBOTS_list.pl
 fi
 if ! test -d ROBOTS/$robot/$user/SCRIPTS; then

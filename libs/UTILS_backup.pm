@@ -25,8 +25,9 @@
 sub UTILS_list_backups{
  my $n_backups_to_save=50;
  my $n_backups=0;
- my @dir = ( "$host/$user/" );
+ my @dir = ( "backup_and_www/$host/$user/" );
  if ($mode eq "bench") {@dir="benchmark-results/"};
+ print @dir;
  my @dirs;
  find( sub { push @dirs, $File::Find::name if -d }, @dir );
  my @dirs_to_process;
@@ -158,16 +159,16 @@ $str2="$day";
 if ($day<10) {$str2="0$day"};
 $BACKUP_dir   ="";
 if ($mode eq "bench") {$BACKUP_dir="benchmark-results/"};
-$BACKUP_dir   .="$host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time";
+$BACKUP_dir   .="backup_and_www/$host/$user/$FC_kind/$INITIAL_year/$str1/$str2/$time";
 #
 # Directories
-&command("mkdir -p $host/www");
 my @subdirs=split /\//,$BACKUP_dir;
 my $tmp_dir="./";
 foreach $subd (@subdirs){
  $tmp_dir .="$subd/";
  &command("mkdir -p $tmp_dir");
 }
+&command("mkdir -p backup_and_www/$host/www");
 #
 $OUTPUT_backup_file="outputs_and_reports_ALL-$ROBOT_string";
 undef $DBS_backup_file;
