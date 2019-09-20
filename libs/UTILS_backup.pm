@@ -27,7 +27,6 @@ sub UTILS_list_backups{
  my $n_backups=0;
  my @dir = ( "backup_and_www/$host/$user/" );
  if ($mode eq "bench") {@dir="benchmark-results/"};
- print @dir;
  my @dirs;
  find( sub { push @dirs, $File::Find::name if -d }, @dir );
  my @dirs_to_process;
