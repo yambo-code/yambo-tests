@@ -30,4 +30,3 @@ $ROBOTS{'amore9'} = 'amore9.mlib.ism.cnr.it';
 $ROBOTS{'narro'} = 'narro';
 $ROBOTS{'bacalhau'} = 'bacalhau';
 $ROBOTS{'doncamillo'} = 'doncamillo';
-$ROBOTS{'polluce'} = 'polluce';
