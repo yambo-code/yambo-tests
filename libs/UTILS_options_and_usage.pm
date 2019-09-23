@@ -104,7 +104,7 @@ print <<SCRIPTS_info
   Available   scripts: 
 SCRIPTS_info
 ;
-for( $i = 1; $i <= $#scripts_avail; $i = $i + 1 )
+for( $i = 0; $i <= $#scripts_avail; $i = $i + 1 )
 {
  print "\t ".$scripts_avail[$i]."\n";
 }

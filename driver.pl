@@ -121,6 +121,9 @@ if ($edit and $backup_logs eq "no" and $edit ne 1){
  if (-e "ROBOTS/$host/$user/CONFIGURATIONS/$edit"){
   system("vim ROBOTS/$host/$user/CONFIGURATIONS/$edit");
  };
+ if (-e "ROBOTS/$host/$user/SCRIPTS/$edit"){
+  system("vim ROBOTS/$host/$user/SCRIPTS/$edit");
+ };
  print "All editings done.\n";
  exit;
 }
