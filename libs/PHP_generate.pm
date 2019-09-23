@@ -24,9 +24,9 @@
 #
 sub PHP_generate{
 #
-if( not ( -d "$host/www/" ) ){ &command("mkdir -p $host/www/");}
-if( not ($branch_key eq "") ){ &command("rm -fr $host/www/$branch_key");}
-if(     ($branch_key eq "") ){ &command("rm -fr $host/www/*");}
+if( not ( -d "backup_and_www/$host/www/" ) ){ &command("mkdir -p backup_and_www/$host/www/");}
+if( not ($branch_key eq "") ){ &command("rm -fr backup_and_www/$host/www/$branch_key");}
+if(     ($branch_key eq "") ){ &command("rm -fr backup_and_www/$host/www/*");}
 #
 &UTILS_list_backups;
 #
@@ -116,7 +116,7 @@ sub PHP_extract{
 #
 # Name choosing
 $MAX_phps=20;
-chdir("$host/www");
+chdir("backup_and_www/$host/www");
 for( $j = 1; $j < $MAX_phps ; $j = $j + 1 )
 {
  $main_dat = $branch_in_the_log."/".$hostname."_".$branch_in_the_log."_".$j."_main.dat";
@@ -283,15 +283,15 @@ if ( "$compress" eq "yes" ){ &command("tar -czf $comp_tgz compilation/*comp*.log
 #
 # Final copying
 #
-&command("mkdir -p $host/www/$branch_in_the_log");
-&command("mv *.php *.dat *.tgz $host/www/$branch_in_the_log");   
+&command("mkdir -p backup_and_www/$host/www/$branch_in_the_log");
+&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$branch_in_the_log");   
 #
 return
 }
 #
 sub PHP_upload
 {
-chdir("$suite_dir/$host/www");
+chdir("$suite_dir/$host/backup_and_www/www");
 &command("$ncftpput -R -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org www.yambo-code.org/robots/ .")
 }
 #
