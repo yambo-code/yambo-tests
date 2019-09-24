@@ -1,16 +1,16 @@
 #                                                           
-#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$     
-# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$    
-#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$    
-#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$    
-#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$    
-#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$    
-#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/    
-#     |__/   |__/  |__/|__/     |__/|_______/  \______/     
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
 #                                                           
-#       Version 4.4.0 Revision 16364 Hash 25f67fa           
-#                  MPI+SLK+OpenMP Build                     
-#               http://www.yambo-code.org                   
+#                                                           
+#        Version 4.4.0 Revision 16806 Hash e44bb65          
+#                    MPI+OpenMP Build                       
+#                http://www.yambo-code.org                  
 #
 #
 # Frequency number 3
@@ -3419,12 +3419,12 @@
      33.98000000000       -0.000000000000       0.2926482024732E-5    -0.000000000000   
      33.99000000000       -0.000000000000       0.3079185225853E-5    -0.000000000000   
 # 
-# 12/11/2018 at 17:40 YAMBO_NL @ attacc-pc [start]
-# 12/11/2018 at 17:41                      [end]
+# 09/24/2019 at 09:25 YAMBO_NL @ attacc-portatile [start]
+# 09/24/2019 at 09:25                             [end]
 #  
-# Timing   [Min/Max/Average]: 27s/27s/27s
+# Timing   [Min/Max/Average]: 20s/20s/20s
 #
-# .-Input file : yambo.in
+# .-Input file : INPUTS/09_non_linear_sex_coll
 # | nloptics                       # [R NL] Non-linear optics
 # | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
 # | NL_Threads= 1                  # [OPENMP/NL] Number of threads for nl-optics
@@ -3435,6 +3435,7 @@
 # | NLverbosity= "high"            # [NL] Verbosity level (low | high)
 # | NLstep=   0.0100       fs      # [NL] Real Time step length
 # | NLtime= 33.99451       fs      # [NL] Simulation Time
+# | NLintegrator= "CRANKNIC"       # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
 # | NLCorrelation= "SEX"           # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
 # | NLLrcAlpha= 0.000000           # [NL] Long Range Correction
 # | % NLEnRange
@@ -3442,8 +3443,11 @@
 # | %
 # | NLEnSteps=  5                  # [NL] Energy steps
 # | NLDamping= 0.200000    eV      # [NL] Damping
-# | NLGvecs=  797          RL      # [NL] Number of G vectors in NL dynamics for Hartree/TDDFT
+# | #EvalCurrent                   # [NL] Evaluate the current
+# | HARRLvcs=  547         RL      # [HA] Hartree     RL components
+# | EXXRLvcs= 11           RL      # [XX] Exchange    RL components
 # | % ExtF_Dir
 # |  0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Versor
 # | %
+# | ExtF_kind= "SOFTSIN"           # [NL ExtF] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
 # | ExtF_Tstart=   0.0100  fs      # [NL ExtF] Initial Time

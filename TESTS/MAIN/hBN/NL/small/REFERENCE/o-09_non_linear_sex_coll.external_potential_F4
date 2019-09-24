@@ -8,8 +8,8 @@
 #      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
 #                                                           
 #                                                           
-#        Version 4.3.0 Revision 15207 Hash 1b80b32          
-#                      MPI+SLK Build                        
+#        Version 4.4.0 Revision 16806 Hash e44bb65          
+#                    MPI+OpenMP Build                       
 #                http://www.yambo-code.org                  
 #
 #
@@ -3419,19 +3419,23 @@
      33.98000000000        0.000000000000       -.2411336517904E-2     0.000000000000        0.000000000000       0.5055003017745E-3     0.000000000000        0.000000000000       -.1853104769843E-4     0.000000000000   
      33.99000000000        0.000000000000       -.2204108757825E-2     0.000000000000        0.000000000000       0.4966115930797E-3     0.000000000000        0.000000000000       -.2445296520393E-4     0.000000000000   
 # 
-# 11/17/2017 at 10:26 YAMBO_NL @ narro [start]
-# 11/17/2017 at 10:26                  [end]
+# 09/24/2019 at 09:25 YAMBO_NL @ attacc-portatile [start]
+# 09/24/2019 at 09:25                             [end]
 #  
-# Timing   [Min/Max/Average]: 14s/14s/14s
+# Timing   [Min/Max/Average]: 20s/20s/20s
 #
-# .-Input file : yambo.in
+# .-Input file : INPUTS/09_non_linear_sex_coll
 # | nloptics                       # [R NL] Non-linear optics
+# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+# | NL_Threads= 1                  # [OPENMP/NL] Number of threads for nl-optics
 # | FFTGvecs=  797         RL      # [FFT] Plane-waves
 # | % NLBands
 # |   5 | 10 |                     # [NL] Bands
 # | %
+# | NLverbosity= "high"            # [NL] Verbosity level (low | high)
 # | NLstep=   0.0100       fs      # [NL] Real Time step length
 # | NLtime= 33.99451       fs      # [NL] Simulation Time
+# | NLintegrator= "CRANKNIC"       # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
 # | NLCorrelation= "SEX"           # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
 # | NLLrcAlpha= 0.000000           # [NL] Long Range Correction
 # | % NLEnRange
@@ -3439,7 +3443,11 @@
 # | %
 # | NLEnSteps=  5                  # [NL] Energy steps
 # | NLDamping= 0.200000    eV      # [NL] Damping
+# | #EvalCurrent                   # [NL] Evaluate the current
+# | HARRLvcs=  547         RL      # [HA] Hartree     RL components
+# | EXXRLvcs= 11           RL      # [XX] Exchange    RL components
 # | % ExtF_Dir
 # |  0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Versor
 # | %
+# | ExtF_kind= "SOFTSIN"           # [NL ExtF] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
 # | ExtF_Tstart=   0.0100  fs      # [NL ExtF] Initial Time
