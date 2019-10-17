@@ -165,7 +165,9 @@ if($repo_check){
 # Download and exit
 if($download){ 
  if ($download eq "list") {
-  &FTP_list("testing-robots/databases/tests")
+  if ($mode eq "bench" ) {&FTP_list("robots/databases/validate")}
+  elsif ($mode eq "cheers" ) {&FTP_list("robots/databases/cheers")}
+  else {&FTP_list("robots/databases/tests")};
  }else{
   &UTILS_download;
   print "Download complete.\n";

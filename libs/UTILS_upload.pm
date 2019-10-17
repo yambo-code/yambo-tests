@@ -35,7 +35,7 @@ if ( scalar @paths > 1) {
 }
 chdir("$TESTS_folder/$test_dir");
 #
-my $UPLOAD_PATH="testing-robots/databases/$mode";
+my $UPLOAD_PATH="robots/databases/$mode";
 #
 if (-d $test_subdir){
  &command("find $test_subdir -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | $grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
