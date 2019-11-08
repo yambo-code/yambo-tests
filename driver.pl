@@ -47,6 +47,11 @@ $hostname=hostname();
 $host=$ROBOTS{$hostname};
 if ($USER_host and -d "ROBOTS/$USER_host") {$host=$USER_host};
 #
+if ("$host" eq "") {
+  print "\n** WARNING ** Hostname empty.\n";
+  print " Check that the host is specified in config/ROBOTS_list.pl or run with driver.pl -host {YOUR_HOSTNAME}\n\n";
+}
+#
 # Glob available configurations/flows
 #
 &SETUP_files;
