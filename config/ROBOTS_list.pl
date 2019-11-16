@@ -28,5 +28,6 @@ $ROBOTS{'castore'} = 'castore.mlib.ism.cnr.it';
 $ROBOTS{'anomaly'} = 'anomaly.mlib.ism.cnr.it';
 $ROBOTS{'amore9'} = 'amore9.mlib.ism.cnr.it';
 $ROBOTS{'narro'} = 'narro';
+$ROBOTS{'VivoBook'} = 'VivoBook';
 $ROBOTS{'bacalhau'} = 'bacalhau';
 $ROBOTS{'doncamillo'} = 'doncamillo';
