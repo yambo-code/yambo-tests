@@ -51,7 +51,7 @@ $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
 #
 # EXC PP
 #
-$BRANCH_LIST="4.4 master_gpl";
+$BRANCH_LIST="4.4";
 #
 $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
