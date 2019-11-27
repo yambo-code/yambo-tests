@@ -1,16 +1,17 @@
-#                                                           
-# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
-#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
-#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
-#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
-#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
-#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
-#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
-#                                                           
-#                                                           
-#         Version 4.4.0 Revision 16364 Hash 25f67fa         
-#                   MPI+SLK+OpenMP Build                    
-#                 http://www.yambo-code.org                 
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
+#                                                                     
+#      Version 4.5.0 Revision 17283 Hash b14aad533                    
+#                  Branch is bug-fixes                                
+#                    MPI+OpenMP Build                                 
+#               http://www.yambo-code.org                             
 #
 #
 # Frequency number 4
@@ -3419,13 +3420,13 @@
      33.98000000000       -0.000000000000       -.3688813925228E-5    -0.000000000000   
      33.99000000000       -0.000000000000       -.3623949884009E-5    -0.000000000000   
 # 
-# 12/11/2018 at 17:12 YAMBO_NL @ attacc-pc [start]
-# 12/11/2018 at 17:12                      [end]
+# 11/27/2019 at 16:19 yambo_nl @ attacc-portatile [start]
+# 11/27/2019 at 16:19                             [end]
 #  
-# Timing   [Min/Max/Average]: 27s/27s/27s
+# Timing   [Min/Max/Average]: 12s/12s/12s
 #
-# .-Input file : yambo.in
-# | nloptics                       # [R NL] Non-linear optics
+# .-Input file : INPUTS/04_non_linear_rpa_coll
+# | nloptics                       # [R] Non-linear spectroscopy
 # | BoseTemp= 0.000000     eV      # Bosonic Temperature
 # | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
 # | NL_Threads= 1                  # [OPENMP/NL] Number of threads for nl-optics
@@ -3436,6 +3437,7 @@
 # | NLverbosity= "high"            # [NL] Verbosity level (low | high)
 # | NLstep=   0.0100       fs      # [NL] Real Time step length
 # | NLtime= 33.99451       fs      # [NL] Simulation Time
+# | NLintegrator= "INVINT"         # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
 # | NLCorrelation= "HARTREE"       # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
 # | NLLrcAlpha= 0.000000           # [NL] Long Range Correction
 # | % NLEnRange
@@ -3443,8 +3445,11 @@
 # | %
 # | NLEnSteps=  5                  # [NL] Energy steps
 # | NLDamping= 0.200000    eV      # [NL] Damping
-# | NLGvecs=  797          RL      # [NL] Number of G vectors in NL dynamics for Hartree/TDDFT
+# | #EvalCurrent                   # [NL] Evaluate the current
+# | HARRLvcs=  797         RL      # [HA] Hartree     RL components
+# | EXXRLvcs=  797         RL      # [XX] Exchange    RL components
 # | % ExtF_Dir
 # |  0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Versor
 # | %
+# | ExtF_kind= "SOFTSIN"           # [NL ExtF] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
 # | ExtF_Tstart=   0.0100  fs      # [NL ExtF] Initial Time
