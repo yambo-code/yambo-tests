@@ -1,16 +1,17 @@
-#                                                           
-#   __   __     _        __  __       ____      U  ___  u   
-#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
-#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
-#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
-#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
-# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
-#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
-#                                                           
-#                                                           
-#        Version 4.3.0 Revision 15207 Hash 1b80b32          
-#                      MPI+SLK Build                        
-#                http://www.yambo-code.org                  
+#                                                                     
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
+#                                                                     
+#                                                                     
+#        Version 4.5.0 Revision 17283 Hash b14aad533                  
+#                    Branch is bug-fixes                              
+#                     MPI+OpenMP Build                                
+#                 http://www.yambo-code.org                           
 #
 #
 # Frequency number 3
@@ -3419,20 +3420,24 @@
      33.98000000000        0.000000000000       -.1178563526310E-2     0.000000000000        0.000000000000       -.4010333881366E-3     0.000000000000        0.000000000000       -.5282310377952E-4     0.000000000000   
      33.99000000000        0.000000000000       -.1348745128308E-2     0.000000000000        0.000000000000       -.4219592238695E-3     0.000000000000        0.000000000000       -.4837354736284E-4     0.000000000000   
 # 
-# 11/17/2017 at 10:24 YAMBO_NL @ narro [start]
-# 11/17/2017 at 10:24                  [end]
+# 11/27/2019 at 16:20 yambo_nl @ attacc-portatile [start]
+# 11/27/2019 at 16:21                             [end]
 #  
-# Timing   [Min/Max/Average]: 14s/14s/14s
+# Timing   [Min/Max/Average]: 12s/12s/12s
 #
-# .-Input file : yambo.in
-# | nloptics                       # [R NL] Non-linear optics
+# .-Input file : INPUTS/05_non_linear_tddft_coll
+# | nloptics                       # [R] Non-linear spectroscopy
 # | BoseTemp= 0.000000     eV      # Bosonic Temperature
+# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+# | NL_Threads= 1                  # [OPENMP/NL] Number of threads for nl-optics
 # | FFTGvecs=  797         RL      # [FFT] Plane-waves
 # | % NLBands
 # |   5 | 10 |                     # [NL] Bands
 # | %
+# | NLverbosity= "high"            # [NL] Verbosity level (low | high)
 # | NLstep=   0.0100       fs      # [NL] Real Time step length
 # | NLtime= 33.99451       fs      # [NL] Simulation Time
+# | NLintegrator= "INVINT"         # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
 # | NLCorrelation= "TDDFT"         # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
 # | NLLrcAlpha= 0.000000           # [NL] Long Range Correction
 # | % NLEnRange
@@ -3440,7 +3445,11 @@
 # | %
 # | NLEnSteps=  5                  # [NL] Energy steps
 # | NLDamping= 0.200000    eV      # [NL] Damping
+# | #EvalCurrent                   # [NL] Evaluate the current
+# | HARRLvcs=  797         RL      # [HA] Hartree     RL components
+# | EXXRLvcs=  797         RL      # [XX] Exchange    RL components
 # | % ExtF_Dir
 # |  0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Versor
 # | %
+# | ExtF_kind= "SOFTSIN"           # [NL ExtF] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
 # | ExtF_Tstart=   0.0100  fs      # [NL ExtF] Initial Time
