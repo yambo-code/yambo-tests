@@ -1,16 +1,17 @@
-#                                                           
-#  __  __   ________   ___ __ __    _______   ______        
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
-#                                                           
-#                                                           
-#        Version 4.4.0 Revision 16364 Hash 25f67fa          
-#                  MPI+SLK+OpenMP Build                     
-#                http://www.yambo-code.org                  
+#                                                                     
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+#       Version 4.5.0 Revision 17283 Hash b14aad533                   
+#                   Branch is bug-fixes                               
+#                     MPI+OpenMP Build                                
+#                http://www.yambo-code.org                            
 #
 #
 # Frequency number 1
@@ -3419,13 +3420,13 @@
      33.98000000000       -0.000000000000       -.2973136954963E-5    -0.000000000000   
      33.99000000000       -0.000000000000       -.2826416453559E-5    -0.000000000000   
 # 
-# 12/11/2018 at 17:12 YAMBO_NL @ attacc-pc [start]
-# 12/11/2018 at 17:15                      [end]
+# 11/27/2019 at 16:19 yambo_nl @ attacc-portatile [start]
+# 11/27/2019 at 16:20                             [end]
 #  
-# Timing   [Min/Max/Average]: 02m-19s/02m-19s/02m-19s
+# Timing   [Min/Max/Average]: 01m-03s/01m-03s/01m-03s
 #
-# .-Input file : yambo.in
-# | nloptics                       # [R NL] Non-linear optics
+# .-Input file : INPUTS/05_non_linear_tddft
+# | nloptics                       # [R] Non-linear spectroscopy
 # | BoseTemp= 0.000000     eV      # Bosonic Temperature
 # | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
 # | NL_Threads= 1                  # [OPENMP/NL] Number of threads for nl-optics
@@ -3436,6 +3437,7 @@
 # | NLverbosity= "high"            # [NL] Verbosity level (low | high)
 # | NLstep=   0.0100       fs      # [NL] Real Time step length
 # | NLtime= 33.99451       fs      # [NL] Simulation Time
+# | NLintegrator= "INVINT"         # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
 # | NLCorrelation= "TDDFT"         # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
 # | NLLrcAlpha= 0.000000           # [NL] Long Range Correction
 # | % NLEnRange
@@ -3443,8 +3445,11 @@
 # | %
 # | NLEnSteps=  5                  # [NL] Energy steps
 # | NLDamping= 0.200000    eV      # [NL] Damping
-# | NLGvecs=  797          RL      # [NL] Number of G vectors in NL dynamics for Hartree/TDDFT
+# | #EvalCurrent                   # [NL] Evaluate the current
+# | HARRLvcs=  797         RL      # [HA] Hartree     RL components
+# | EXXRLvcs=  797         RL      # [XX] Exchange    RL components
 # | % ExtF_Dir
 # |  0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Versor
 # | %
+# | ExtF_kind= "SOFTSIN"           # [NL ExtF] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
 # | ExtF_Tstart=   0.0100  fs      # [NL ExtF] Initial Time
