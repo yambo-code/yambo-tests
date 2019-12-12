@@ -32,3 +32,4 @@ $ROBOTS{'narro'} = 'narro';
 $ROBOTS{'VivoBook'} = 'VivoBook';
 $ROBOTS{'bacalhau'} = 'bacalhau';
 $ROBOTS{'doncamillo'} = 'doncamillo';
+$ROBOTS{'lyskamm'} = 'lyskamm.mlib.ism.cnr.it';
