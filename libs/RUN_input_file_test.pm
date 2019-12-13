@@ -85,7 +85,9 @@ sub RUN_input_file_test{
  if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
  if (&RUN_feature("Chimod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
  if (&RUN_feature("BSKmod= \"HARTREE\"")=="1")   { $CMD=$CMD." -kernel hartree"};
+ if (&RUN_feature("BSKmod= \"Hartree\"")=="1")   { $CMD=$CMD." -kernel hartree"};
  if (&RUN_feature("Chimod= \"HARTREE\"")=="1" && $BSE=="0")   { $CMD=$CMD." -kernel hartree"};
+ if (&RUN_feature("Chimod= \"Hartree\"")=="1" && $BSE=="0")   { $CMD=$CMD." -kernel hartree"};
  if (&RUN_feature("Chimod= \"LRC\"")=="1")   { $CMD=$CMD." -kernel lrc"};
  if (&RUN_feature("BSKmod= \"HF\"")=="1")   { $CMD=$CMD." -kernel hf"};
 
