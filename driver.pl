@@ -36,6 +36,7 @@ $suite_dir=abs_path();
 # Defaults
 #
 &SETUP_defaults;
+$user =  $ENV{'LOGNAME'}; 
 #&UTILS_cpu_usage;
 #
 # Options list
