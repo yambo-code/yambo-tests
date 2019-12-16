@@ -98,6 +98,8 @@ if (-e "$failed"){
   open(THEME,">>","$theme_file"); 
   print THEME ");\n";
   close(THEME);
+  system("mv $theme_file ROBOTS/$host/$user/FLOWS");
+  print "\nFlow $theme_file installed in ROBOTS/$host/$user/FLOWS\n\n";
  };
 }
 }

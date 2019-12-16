@@ -42,7 +42,11 @@ if ("@_" eq "RESTORE") {
 if("@_" eq "ALL") {
  if ($ROBOT_id) 
  {
-  &ROBOT_clean($ROBOT_id);
+  @rob_to_clean=split(/-/, $ROBOT_id);
+  if ( scalar @rob_to_clean == 1 ) {&ROBOT_clean($rob_to_clean[0]);}
+  foreach $rob ($rob_to_clean[0]..$rob_to_clean[1]){
+    &ROBOT_clean($rob);
+  }
  }elsif ($user_branch){
   foreach $log (<LOG*>){
    if ($log =~ /$user_branch/)

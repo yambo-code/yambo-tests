@@ -66,15 +66,16 @@ sub RUN_input_file_test{
 
  my $POT;
  if (&RUN_feature("HXC_Potential= IP")=="1") {$POT="ip"};
- if (&RUN_feature("HXC_Potential= DEFAULT")=="1") {$POT=$POT."d"};
- if (&RUN_feature("HXC_Potential= default")=="1") {$POT=$POT."d"};
  if (&RUN_feature("HXC_Potential= HARTREE")=="1") {$POT=$POT."h"};
- if (&RUN_feature("HXC_Potential GS_xc")=="1") {$POT=$POT."gs"};
+ if (&RUN_feature("HXC_Potential= HARTREE+SEX")=="1") {$POT=$POT."hsex"};
+ if (&RUN_feature("HXC_Potential= GS_xc")=="1") {$POT=$POT."gs"};
  if (&RUN_feature("HXC_Potential= COH")=="1") {$POT=$POT."coh"}
  if (&RUN_feature("HXC_Potential= SEX")=="1") {$POT=$POT."sex"}
  if (&RUN_feature("HXC_Potential= FOCK")=="1") {$POT=$POT."f"}
  if (&RUN_feature("HXC_Potential= LDA_X")=="1") {$POT=$POT."ldax"};
  if (&RUN_feature("HXC_Potential= PZ")=="1") {$POT=$POT."pz"};
+ if (&RUN_feature("HXC_Potential= DEFAULT")=="1") {$POT="d"};
+ if (&RUN_feature("HXC_Potential= default")=="1") {$POT="d"};
  if ($POT) {$CMD=$CMD." -potential ".$POT};
 
  if (&RUN_feature("magnetic")=="1" && &RUN_feature("landau")=="1")      { $CMD=$CMD." -magnetic l"};
@@ -83,7 +84,9 @@ sub RUN_input_file_test{
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
  if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
  if (&RUN_feature("Chimod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
+ if (&RUN_feature("BSKmod= \"HARTREE\"")=="1")   { $CMD=$CMD." -kernel hartree"};
  if (&RUN_feature("BSKmod= \"Hartree\"")=="1")   { $CMD=$CMD." -kernel hartree"};
+ if (&RUN_feature("Chimod= \"HARTREE\"")=="1" && $BSE=="0")   { $CMD=$CMD." -kernel hartree"};
  if (&RUN_feature("Chimod= \"Hartree\"")=="1" && $BSE=="0")   { $CMD=$CMD." -kernel hartree"};
  if (&RUN_feature("Chimod= \"LRC\"")=="1")   { $CMD=$CMD." -kernel lrc"};
  if (&RUN_feature("BSKmod= \"HF\"")=="1")   { $CMD=$CMD." -kernel hf"};
