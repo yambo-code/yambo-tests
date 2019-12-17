@@ -47,6 +47,8 @@ $line="=".$line."=";
 $stdout = *STDOUT;
 $input_folder= "INPUTS";
 $RANDOM_seed=1;
+# Max number of Random PAR configurations tries 
+$MAX_RANDOM_PAR_TRIES=30;
 # ERROR log
 @ERROR_entries;
 $N_errors=0;
