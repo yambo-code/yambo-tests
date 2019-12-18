@@ -3,8 +3,7 @@ FC_FLAGS_DEBUG="-g -pg -Wall -fcheck=all -pedantic -fbacktrace -fdump-core -fdum
 FC_FLAGS_OPTIMIZED="-O3  -mtune=native -Wall -fcheck=bounds" # -std=f95"
 FC_FLAGS_LIBS="-O3  -mtune=native" # -std=f95"
 
-YAMBO_LIBS="/home/sangalli/data/Lavoro/libraries/yambo_libs_all/"
-LOCAL_LIBS="/home/sangalli/data/Lavoro/libraries/local/"
+YAMBO_LIBS="/home/sangalli/data/Lavoro/Codici/yambo/yambo-libs/"
 ABINIT_LIB="/data/sangalli/Lavoro/Codici/abinit/git_repository/compile_master_etsfio/fallbacks/exports/"
 PW_LIB="/data/sangalli/Lavoro/Codici/pwscf/git_repository/iotk_hide/"
 PW_VER=5.0
