@@ -61,7 +61,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "ftp"            => \$ftp,
             "dry"            => \$dry_run,
             "newer=i"        => \$max_delay_commits,
-            "robot=i"        => \$ROBOT_id,
+            "robot:s"        => \$ROBOT_id,
             "nice:i"         => \$nice_level,
             "no_net"         => \$not_network,
             "host=s"         => \$USER_host,
@@ -133,7 +133,7 @@ if ($help>=1) {
              -safe                  Safe run
              -no_net                Skip network assisted operations
              -keep_bin              Do not overwrite the robot specific bin-precompiled folder
-             -robot  <ID>           Robot ID.
+             -robot  <ID's>         Robot ID. [ID's can be of the form N or N-M]
              -branch [WHAT]         Branch selection.
              -module [WHAT]         Environment module selection.
 
@@ -200,7 +200,7 @@ if ($help==2) {
 
    (Backup)
              -b [ID's]              If running BACKUP the LOGs (automatically used when -report is given)
-                                    Otherwise list the BACKUPs available
+                                    Otherwise list the BACKUPs available. [ID's can be of the form N or N-M]
 
    (FTP actions)           
              -ftp                   Log in FTP server

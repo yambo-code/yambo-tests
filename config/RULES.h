@@ -44,6 +44,10 @@ call add_RULE(".YPP-eps","skip",COLS=(/3,4,6,7/),Material="Si_bulk")
 call add_RULE(".induced_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 call add_RULE(".total_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 !
+! As the collisions are calculated with a numerical treshold the actual number of elements
+! in the DB can change with the number of processors. Still the results can be ok.
+call add_RULE("ndb.COLLISIONS_HXC_fragment_2","skip",MATERIAL="hBN Si_bulk")
+!
 ! El/Ho Temperatures
 !
 call add_RULE(".mean_EPlifetimes","skip",TITLES=(/"T Hole  [K]","T Elec  [K]"/),MATERIAL="Si_bulk")

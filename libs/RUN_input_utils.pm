@@ -35,9 +35,9 @@ LOOP: for (my $il=0; $il<=$#INPUT ; $il++){
    #print "$in_line $string[$if] $ir $#string\n";
   };
  }
- $result=($ir + $result + abs($ir - $result)) / 2  #max($ir,$result);
+ if ($ir == $#string+1) {  return 1 };
+ #$result=($ir + $result + abs($ir - $result)) / 2  #max($ir,$result);
 }
-if ($result == $#string+1) {  return 1 };
 return 0;
 }
 sub RUN_input_load{

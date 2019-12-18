@@ -65,7 +65,12 @@ if($user_tests){
  #
  if(index($user_tests,"0") ne -1 || index($user_tests,";") ne -1){
   &MY_PRINT($stdout, " -     Test selection : from input files/folders");
-  $input_tests = $user_tests;
+  my @list = split(";",$user_tests);
+  foreach my $element (@list) {
+   my @list2=split(" ",$element);
+   if (not $list2[0] =~ /all/ and $#list==1) {$element .= " all"};
+   $input_tests .= "$element;";
+  };
  } 
  else{
   if($user_tests ne "all"){
@@ -93,7 +98,7 @@ if($user_tests){
   }
   #
   # Order alphabetically
-  my @list = split(/ /,$alltests);
+  @list = split(/ /,$alltests);
   my @sorted_list = sort { lc($a) cmp lc($b) } @list;
   undef $input_tests;
   foreach my $element (@sorted_list) {$input_tests .= "$element all; "};
