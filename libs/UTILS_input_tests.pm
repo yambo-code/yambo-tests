@@ -68,7 +68,7 @@ if($user_tests){
   my @list = split(";",$user_tests);
   foreach my $element (@list) {
    my @list2=split(" ",$element);
-   if (not $list2[0] =~ /all/ and $#list==1) {$element .= " all"};
+   if (not $list2[0] =~ /all/ and $#list2==0) {$element .= " all"};
    $input_tests .= "$element;";
   };
  } 
