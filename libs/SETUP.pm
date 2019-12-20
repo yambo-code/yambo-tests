@@ -51,6 +51,7 @@ if ("$what" eq "BASIC") {
  }
  else
  {
+  $mpiexec = "mpirun"; 
   $NP_set[0]=1;
  };
  #

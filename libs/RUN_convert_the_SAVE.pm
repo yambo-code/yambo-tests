@@ -47,7 +47,7 @@ sub RUN_convert_the_SAVE{
  if(-e "SAVE_backup") { &command("cp -r SAVE_backup SAVE"); }
  $CONV_INPUT="";
  if(-e "INPUTS/00_init") {$CONV_INPUT="-F INPUTS/00_init";}
- &command("$YAMBO_local $CONV_INPUT $log");
+ &command("$mpiexec -np 1 $YAMBO_local $CONV_INPUT $log");
  &command("$YPP_local $log");
  &command("rm -f l_stderr r_stderr l_setup r_setup");
  if(-e "SAVE_backup") {
@@ -73,7 +73,7 @@ sub RUN_convert_the_SAVE{
   if(-e "shift_1") {
    &MY_PRINT($stdout, "\nConverting shift 1") if ($verb ge 2);;
    chdir("shift_1");
-   &command("$YAMBO_local $log");
+   &command("$mpiexec -np 1 $YAMBO_local $log");
    &command("$YPP_local $log");
    &command("rm -f l_stderr r_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
@@ -83,7 +83,7 @@ sub RUN_convert_the_SAVE{
   if(-e "shift_2") {
    &MY_PRINT($stdout, "\nConverting shift 2") if ($verb ge 2);;
    chdir("shift_2");
-   &command("$YAMBO_local $log");
+   &command("$mpiexec -np 1 $YAMBO_local $log");
    &command("$YPP_local $log");
    &command("rm -f l_stderr r_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
@@ -93,7 +93,7 @@ sub RUN_convert_the_SAVE{
   if(-e "shift_3") {
    &MY_PRINT($stdout, "\nConverting shift 3") if ($verb ge 2);;
    chdir("shift_3");
-   &command("$YAMBO_local $log");
+   &command("$mpiexec -np 1 $YAMBO_local $log");
    &command("$YPP_local $log");
    &command("rm -f l_stderr r_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
@@ -111,7 +111,7 @@ sub RUN_convert_the_SAVE{
   &command("mkdir -p SOC_tmp_dir/SAVE");
   &command("cp SAVE_SOC_old/* SOC_tmp_dir/SAVE");
   chdir("SOC_tmp_dir");
-  &command("$YAMBO_local $log");
+  &command("$mpiexec -np 1 $YAMBO_local $log");
   &command("$YPP_local $log");
   &command("rm -f l_stderr r_stderr l_setup r_setup");
   &command("mv FixSAVE/SAVE ../SAVE_SOC");
