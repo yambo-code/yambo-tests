@@ -21,6 +21,6 @@ $CONF_LINE \
 --enable-int-linalg \
 --enable-par-linalg \
 --enable-keep-src \
---enable-slepc-linalg \
---enable-hdf5-compression \
---enable-hdf5-p2y-support
+--enable-slepc-linalg 
+#--enable-hdf5-compression \
+#--enable-hdf5-p2y-support
