@@ -59,7 +59,7 @@ if ($pid) {
     die($@) if $@ ne "TIMEOUT!\n";
     #print "Run timed out.\n";
     waitpid($pid, 0);
-    #print "Child reaped.\n";
+    #print "Child $pid after waiting .\n";
   }
 } else {
   #print "Run started $command_line.\n";
