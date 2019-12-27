@@ -59,7 +59,7 @@ if ($pid) {
     die($@) if $@ ne "TIMEOUT!\n";
     #print "Run timed out.\n";
     waitpid($pid, 0);
-    #print "Child reaped.\n";
+    #print "Child $pid after waiting .\n";
   }
 } else {
   #print "Run started $command_line.\n";
@@ -99,8 +99,8 @@ LOG_LOOP: {
 # Final Report
 #
 if($wrong_cpu_conf){
- if( $N_random_tries < 10){ $CHECK_error="WRONG CPU configuration"; &RUN_stats("WRONG_CPU_CONF"); }
- if( $N_random_tries== 10){ $CHECK_error="FAILED CPU configuration"; &RUN_stats("ERROR_CPU_CONF"); }
+ if( $N_random_tries < $MAX_RANDOM_PAR_TRIES){ $CHECK_error="WRONG CPU configuration"; &RUN_stats("WRONG_CPU_CONF"); }
+ if( $N_random_tries== $MAX_RANDOM_PAR_TRIES){ $CHECK_error="FAILED CPU configuration"; &RUN_stats("ERROR_CPU_CONF"); }
  return "FAIL";
 }elsif($empty_workload){
  &MESSAGE("LOG","[WARN: EMPTY workload]");

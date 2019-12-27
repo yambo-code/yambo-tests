@@ -33,3 +33,4 @@ $ROBOTS{'VivoBook'} = 'VivoBook';
 $ROBOTS{'bacalhau'} = 'bacalhau';
 $ROBOTS{'doncamillo'} = 'doncamillo';
 $ROBOTS{'corvina'} = 'corvina.fisica.unimo.it';
+$ROBOTS{'lyskamm'} = 'lyskamm.mlib.ism.cnr.it';

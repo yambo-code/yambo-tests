@@ -110,7 +110,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   &MY_PRINT($stdout, "\nRunning input: $testname\n") if ($verb);
   #
   # Do actions and create the input (if any)
-  &RUN_load_actions(".actions");
+  #&RUN_load_actions(".actions");
   &RUN_load_actions(".input");
   #
   # Input file dump
@@ -164,6 +164,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    }
    #
    &RUN_setup("before_run");
+   &RUN_load_actions(".actions");
    #
    # Check if extra flags are needed (JOB specific)
    $error=&RUN_user_flags($ir);
@@ -182,7 +183,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
     #
     # ...Random PAR and FAILED conf?
     #
-    while ($random_parallel and $CHECK_error eq "WRONG CPU configuration" and $N_random_tries<30) { 
+    while ($random_parallel and $CHECK_error eq "WRONG CPU configuration" and $N_random_tries<$MAX_RANDOM_PAR_TRIES) { 
      $test_ok_action="INCREASE";
      #print "$testname INIT\n";
      &RUN_load_PAR_fields;
@@ -192,6 +193,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      # Re-Create the input (if any)
      &RUN_load_actions(".input");
      &RUN_setup("before_run");
+     &RUN_load_actions(".actions");
      $N_random_tries++;
      #
      $RUN_result=&RUN_it;

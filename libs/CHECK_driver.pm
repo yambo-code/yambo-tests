@@ -60,6 +60,9 @@ if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 # OUT files
 O_file_loop: foreach $run_filename (<o-$testname.*>){
  #
+ ($tmpname,$tmppath,$tmpsuffix) = fileparse($run_filename,".yaml");
+ if( $tmpsuffix eq ".yaml" ) {next;}
+ #
  $n_stats++;
  #
  &gimme_reference($run_filename);
