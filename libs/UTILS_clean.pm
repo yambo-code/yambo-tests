@@ -87,7 +87,9 @@ sub ROBOT_clean
 {
  $ID = shift;
  print "Cleaning ROBOT #".$ID."\n";
- $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | xargs rm -fr";
+ $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | grep    MAIN | xargs rm -fr";
+ &command("$cmd");
+ $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | grep -v MAIN | xargs rm -fr";
  &command("$cmd");
  $cmd="$git ls-files --others --exclude-standard | $grep -e 'ROBOT_Nr_$ID/' | $grep -v $hostname |  xargs rm -f";
  &command("$cmd");
