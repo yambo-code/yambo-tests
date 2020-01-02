@@ -49,6 +49,11 @@ sub UTILS_list_backups{
    push @dirs_to_process_2019, $dir;
    $n_backups++;
   }
+  if ($dir =~ /\/2020\//) {
+   #print "check 2020: $dir\n";
+   push @dirs_to_process_2020, $dir;
+   $n_backups++;
+  }
  }
  #
  if ($clean and $backup_logs eq "yes") {
@@ -58,7 +63,8 @@ sub UTILS_list_backups{
  @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2017;
  @dirs_2018   = sort { $a1 = (split ( '2018', $a )) [1]; $b1 = (split ( '2018', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2018;
  @dirs_2019   = sort { $a1 = (split ( '2019', $a )) [1]; $b1 = (split ( '2019', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2019;
- push(@sorted_dirs, @dirs_2018, @dirs_2019);
+ @dirs_2020   = sort { $a1 = (split ( '2020', $a )) [1]; $b1 = (split ( '2020', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2020;
+ push(@sorted_dirs, @dirs_2018, @dirs_2019, @dirs_2020);
  if ($branch_php or $report) 
  {
   @reversed_dirs = reverse @sorted_dirs
