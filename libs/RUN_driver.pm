@@ -29,6 +29,7 @@ sub RUN_driver{
 # Loop over test directories
 $numtests = @input_tests_list; # Number of elements
 $count_tests=0;
+$max_admitted_fails=40;
 #
 &RUN_setup("INIT");
 #
@@ -104,7 +105,11 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  # Loop over each test file
  LOOP_INPUTS: foreach $testname (@inputs) {
   #
-  if( $test_with_fails > 40) {next LOOP_INPUTS;}
+  if( $test_with_fails > $max_admitted_fails ) {
+    $CHECK_error=" skipped (too many fails)";
+    &RUN_stats("TOO_MANY_FAILS");
+    next LOOP_INPUTS;
+  }
   if (not -f "$input_folder/$testname" and $is_GPL ) {next LOOP_INPUTS;}
   #
   &MY_PRINT($stdout, "\nRunning input: $testname\n") if ($verb);

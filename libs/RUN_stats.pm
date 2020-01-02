@@ -141,10 +141,16 @@ if ("@_" eq "NO_OUT"){
  &its_a_fail("CHECK");
 };
 if ("@_" eq "SILENT"){
- $test_ok_action="SKIP";
  $test_silent++;
+ $test_ok_action="SKIP";
 };
 if ("@_" eq "DIR_SKIPPED"){
+ $test_skipped++;
+ $test_ok_action="SKIP";
+ &MESSAGE("LOG","\n$CHECK_error") if ($verb);
+};
+if ("@_" eq "TOO_MANY_FAILS"){
+ $test_skipped++;
  $test_ok_action="SKIP";
  &MESSAGE("LOG","\n$CHECK_error") if ($verb);
 };
