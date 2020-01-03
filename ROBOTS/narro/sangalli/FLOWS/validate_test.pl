@@ -17,9 +17,9 @@
 @flow = (
 {
  ACTIVE      => "yes",
- TESTS       => "hBN/SC",
+ TESTS       => "hBN",
  # CONFIG      => "gfortran_internal_SP.sh",
- KEYS        => "sc",
+ KEYS        => "nopj rt sc",
  #KEYS        => "nopj",
 },
 {

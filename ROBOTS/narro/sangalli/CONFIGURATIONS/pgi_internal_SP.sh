@@ -34,3 +34,30 @@ FCFLAGS="-O2 -fast" \
 #CPP="gcc -E -P" FPP="gfortran -E -P -cpp" \
 #CPP="cpp -E" FPP="gfortran -E -P -cpp" \
 
+#!/bin/bash
+
+. /etc/profile.d/modules.sh
+export MODULEPATH=/nfs/data/modulefiles:/usr/share/modules/modulefiles:/opt/modules
+
+module purge
+module load pgi/pgi/2019
+module load pgi/openmpi/3.1.3
+module list
+
+
+YAMBO_LIBS="/home/sangalli/data/Lavoro/Codici/yambo/yambo-libs/"
+
+# Local card is Kepler (cc35)
+
+#mpicc="/opt/pgi/linux86-64/19.10/mpi/openmpi-3.1.3/bin/mpicc"
+#mpifort="/opt/pgi/linux86-64/19.10/mpi/openmpi-3.1.3/bin/mpifort"
+
+./configure \
+--disable-cuda \
+CPP="gcc -E -P" FPP="gfortran -E -P -cpp" \
+CC=pgcc F77=pgfortran FC=pgfortran MPICC=$mpicc MPIFC=$mpifort \
+FCFLAGS="-O2 -fast" \
+--enable-keep-src --enable-iotk --enable-msgs-comps  --enable-time-profile \
+--enable-open-mp --enable-memory-profile \
+--enable-int-linalg --enable-par-linalg --enable-slepc-linalg \
+--with-extlibs-path="$YAMBO_LIBS" 
