@@ -266,7 +266,7 @@ program find_the_diff
    do i_c=1,ref%N_col
      write(*,"(a,i2,2g20.10)")  " MAX@COLUMN #",i_c,ref%Max(i_c),out%Max(i_c)
      do i_m=1,N_m
-       write(*,"(a,i2,a,i2,2g20.10)")  " M(",i_m,")X@COLUMN #",i_c,ref%M(i_m,i_c),out%M(i_m,i_c)
+       write(*,"(a,i2,a,i2,2g20.10)")  " M(",i_m,")@COLUMN #",i_c,ref%M(i_m,i_c),out%M(i_m,i_c)
      enddo
    enddo
  endif

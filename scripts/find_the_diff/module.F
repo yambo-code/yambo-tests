@@ -24,7 +24,7 @@
 module DIFF
  !
  integer, parameter  :: SP  = selected_real_kind(6,30)
- integer, parameter  :: N_m = 2,N_max_col=50,N_max_rules=500
+ integer, parameter  :: N_m = 4,N_max_col=50,N_max_rules=500
  !
  character(256) :: str,str1,CHECK_result="OK",MATERIAL="any"
  character(256) :: data_str(N_max_col),titles(N_max_col)

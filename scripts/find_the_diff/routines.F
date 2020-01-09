@@ -25,7 +25,7 @@ subroutine eval_the_moments(fl)
  !
  use DIFF
  type(obj) :: fl
- real(SP)  :: RIntegrate,W(fl%N),dW,W2(fl%N)
+ real(SP)  :: RIntegrate,W(fl%N),dW,F(fl%N)
  fl%Max=-1.
  dW=1./(fl%N-1)
  do i_d=1,fl%N
@@ -38,10 +38,10 @@ subroutine eval_the_moments(fl)
    enddo
    do i_m=1,N_m
      do i_d=1,fl%N
-       W2(i_d)=W(i_d)
-       if (i_m>1) W2(i_d)=W(i_d)**(i_m-1)
+       F(i_d)=fl%D(i_d,i_c)
+       if (i_m>1) F(i_d)=F(i_d)*W(i_d)**(i_m-1)
      enddo
-     fl%M(i_m,i_c)=RIntegrate(fl%D(:,i_c),W2,fl%N)
+     fl%M(i_m,i_c)=RIntegrate(F,W,fl%N)
    enddo
  enddo
  !
