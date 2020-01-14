@@ -34,6 +34,8 @@ sub RUN_convert_the_SAVE{
  if(-e "$BRANCH/$conf_bin/ypp_rt")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_rt $ypp_extension"; }
  if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_ph"; }
  if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_ph $ypp_extension"; }
+ if(-e "$BRANCH/$conf_bin/yambo_nl") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_nl"; }
+ if(-e "$BRANCH/$conf_bin/ypp_nl")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_nl $ypp_extension"; }
  #
  # Main SAVE folder and eventually GKKP
  #

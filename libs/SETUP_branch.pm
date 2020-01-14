@@ -78,7 +78,6 @@ if ($pattern=~m/4.0/ix) {$is_NEW_WF="no"};
 if ($pattern=~m/4.1/ix) {$is_NEW_WF="no"};
 #
 $is_NEW_driver="yes";
-#if ($pattern=~m/devel-long-options/ix) {$is_NEW_driver="yes"};
 #
 undef $is_OLD_makeinterfcs;
 if ($pattern=~m/3.4/ix)  {$is_OLD_makeinterfcs="yes"};
