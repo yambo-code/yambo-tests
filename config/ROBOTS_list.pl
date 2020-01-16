@@ -34,3 +34,5 @@ $ROBOTS{'bacalhau'} = 'bacalhau';
 $ROBOTS{'doncamillo'} = 'doncamillo';
 $ROBOTS{'corvina'} = 'corvina.fisica.unimo.it';
 $ROBOTS{'lyskamm'} = 'lyskamm.mlib.ism.cnr.it';
+$ROBOTS{'baym'} = 'baym.mlib.ism.cnr.it';
+
