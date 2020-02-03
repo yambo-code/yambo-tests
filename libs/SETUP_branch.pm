@@ -98,6 +98,7 @@ if ($pattern=~m/3.4/ix){$is_NEW_EXC_SORT="no"};
 $do_NL_tests="yes";
 $is_NEW_YPP="yes";
 $PAR_COMP="-j";
+if ($pattern=~m/devel-andreaM/ix) {undef $do_NL_tests;};
 if ($pattern=~m/gpl/ix) {undef $is_NEW_driver;};
 if ($pattern=~m/4.5/ix) {undef $is_NEW_driver;};
 if ($pattern=~m/4.4/ix) {undef $is_NEW_driver;};
