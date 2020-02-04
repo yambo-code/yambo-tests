@@ -26,7 +26,7 @@ sub SOURCE_compile{
  chdir $BRANCH;
  open( COMPLOGFILE,'>>',$comp_logfile);
  &MY_PRINT($stdout, "ext-libs ...");
- &command("make ext-libs >> $comp_logfile 2>&1");
+ &command("make $PAR_COMP_LIBS ext-libs >> $comp_logfile 2>&1");
  @executables = split(/ /, $target_list);
  foreach $make_exec (@executables) {
    &MY_PRINT($stdout, "$make_exec ...");

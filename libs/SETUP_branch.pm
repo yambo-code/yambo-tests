@@ -98,6 +98,8 @@ if ($pattern=~m/3.4/ix){$is_NEW_EXC_SORT="no"};
 $do_NL_tests="yes";
 $is_NEW_YPP="yes";
 $PAR_COMP="-j";
+$PAR_COMP_LIB="";
+if ($pattern=~m/bug-fixes/ix) {$PAR_COMP_LIBS="-j";};
 if ($pattern=~m/gpl/ix) {undef $is_NEW_driver;};
 if ($pattern=~m/4.5/ix) {undef $is_NEW_driver;};
 if ($pattern=~m/4.4/ix) {undef $is_NEW_driver;};
