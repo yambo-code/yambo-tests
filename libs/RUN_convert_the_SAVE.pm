@@ -60,6 +60,9 @@ sub RUN_convert_the_SAVE{
  else {
   &command("mv SAVE SAVE_old");
   &command("mv FixSAVE/SAVE SAVE");
+  if(-e "SAVE_old/ns.BS_PAR_Q1_interrupted") {
+    &command("mv SAVE_old/ns.BS_PAR_Q1_interrupted SAVE/");
+  }
  }
  if(-e "GKKP") {
   &command("mv GKKP GKKP_old");
