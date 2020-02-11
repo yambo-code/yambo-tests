@@ -1,47 +1,80 @@
 
 
- ___ __  _____  __ __  _____   _____
-|   Y  ||  _  ||  Y  ||  _  \ |  _  |
-|   |  ||. |  ||.    ||. |  / |. |  |
- \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
-  |: |  |: |  ||: |  ||: |   \|: |  |
-  |::|  |:.|:.||:.|:.||::.   /|::.  |
-  `--"  `-- --"`-- --"`-----" `-----"
+ __    __ ______           ____     _____
+/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
+\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
+ `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
+   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
+     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
+      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
 
 
  <---> [01] CPU structure, Files & I/O Directories
+ <---> CPU-Threads:1(CPU)-4(threads)-2(threads@X)-2(threads@DIP)-2(threads@SE)-2(threads@RT)-2(threads@K)-2(threads@NL)
  <---> [02] CORE Variables Setup
  <---> [02.01] Unit cells
  <---> [02.02] Symmetries
  <---> [WARNING]Spatial Inversion not found among the given symmetry list
  <---> [02.03] RL shells
  <---> [02.04] K-grid lattice
+ <---> Grid dimensions               :  6   6
  <---> [02.05] Energies [ev] & Occupations
  <---> [03] Transferred momenta grid
- <---> [04] External corrections
- <---> [05] Optics
+ <---> [04] Dipoles
  <---> [DIP] Checking dipoles header
- <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <--->  System with reduced dimensionality
- <--->  Smallest q vectors :
- <--->       0.166667      0.166667      0.000000
+ <---> [DIP] Checking overlaps header
+ <---> [WARNING] DIPOLES database not correct or missing
  <--->  Index g0 smallest positive vectors in each direction:  12 16  2
  <--->  Index g0 smallest negative vectors in each direction:  15 13  3
  <---> Number of k-point in each direction:    6   6   1
+ <---> [WF-Oscillators/G space] Performing Wave-Functions I/O from ./SAVE
+ <--->  Index g0 smallest positive vectors in each direction:  12 16  2
+ <--->  Index g0 smallest negative vectors in each direction:  15 13  3
  <---> Overlaps: |                                        | [000%] --(E) --(X)
  <---> Overlaps: |########################################| [100%] --(E) --(X)
  <---> [WARNING] Covariant Dipoles not in 3d. Assuming non periodic system.
- <---> Using second order approximation for covariant dipoles
+ <---> Using forth order approximation for covariant dipoles
  <---> Covariant Dipoles: |                                        | [000%] --(E) --(X)
  <---> Covariant Dipoles: |########################################| [100%] --(E) --(X)
- <---> [M  0.027 Gb] Alloc WF ( 0.025)
- <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> [FFT-Oscillators/R space] Mesh size:   7    7   32
  <---> Dipoles in real space |                                        | [000%] --(E) --(X)
  <---> Dipoles in real space |########################################| [100%] --(E) --(X)
- <---> [M  0.001 Gb] Free WF ( 0.025)
- <---> [DIP] Writing dipoles header
- <---> [X-CG] R(p) Tot o/o(of R)  :  253  2304   100
- <---> Xo@q[1] |                                        | [000%] --(E) --(X)
- <---> Xo@q[1] |########################################| [100%] --(E) --(X)
- <01s> [06] Game Over & Game summary
+ <---> Dipoles: P (T): |                                        | [000%] --(E) --(X)
+ <01s> Dipoles: P (T): |########################################| [100%] --(E) --(X)
+ <01s> [DIP] Writing dipoles header
+ <01s> [DIP] Writing overlaps header
+ <01s> [WARNING] Missing non-local pseudopotential contribution
+ <01s> [05] Optics
+ <01s> [LA] SERIAL linear algebra
+ <01s> [DIP] Checking dipoles header
+ <01s> [DIP] Checking overlaps header
+ <01s> [X-CG] R(p) Tot o/o(of R)  :  253  2304   100
+ <01s> Xo@q[1] |                                        | [000%] --(E) --(X)
+ <01s> Xo@q[1] |########################################| [100%] --(E) --(X)
+ <01s> [06] Timing Overview
+ <01s> [TIMING]                                   io_WF :    0.1536 s CPU (         255 calls,    0.0006 s avg)
+ <01s> [TIMING]                                 io_GROT :    0.0009 s CPU (           3 calls,    0.0003 s avg)
+ <01s> [TIMING]                                io_QINDX :    0.0006 s CPU (           2 calls,    0.0003 s avg)
+ <01s> [TIMING]                              io_COL_CUT :    0.0000 s CPU
+ <01s> [TIMING]                                   io_HF :    0.0000 s CPU
+ <01s> [TIMING]                              io_DIPOLES :    0.0227 s CPU (          76 calls,    0.0003 s avg)
+ <01s> [TIMING]                             io_KB_pwscf :    0.0000 s CPU
+ <01s> [TIMING]                            io_KB_abinit :    0.0001 s CPU
+ <01s> [TIMING]                        io_ATMPROJ_pwscf :    0.0000 s CPU
+ <01s> [TIMING]                                    io_X :    0.0001 s CPU (           4 calls,    0.0000 s avg)
+ <01s> [TIMING]                                   io_BS :    0.0000 s CPU
+ <01s> [TIMING]                          io_Double_Grid :    0.0001 s CPU
+ <01s> [TIMING]                                 Dipoles :    1.1224 s CPU
+ <01s> [TIMING]                             io_Overlaps :    0.0238 s CPU (          75 calls,    0.0003 s avg)
+ <01s> [TIMING]                 IO_and_Messaging_switch :    0.0008 s CPU (         145 calls,    0.0000 s avg)
+ <01s> [TIMING]                            PP_uspp_init :    0.0029 s CPU (          73 calls,    0.0000 s avg)
+ <01s> [TIMING]                             WF_load_FFT :    0.2237 s CPU (          73 calls,    0.0031 s avg)
+ <01s> [TIMING]                             io_fragment :    0.0324 s CPU (         252 calls,    0.0001 s avg)
+ <01s> [TIMING]                          eval_G_minus_G :    0.0028 s CPU
+ <01s> [TIMING]                          LINEAR ALGEBRA :    0.0166 s CPU (         288 calls,    0.0001 s avg)
+ <01s> [TIMING]                        SERIAL_inversion :    0.0163 s CPU (         288 calls,    0.0001 s avg)
+ <01s> [TIMING]                               FFT_setup :    0.0059 s CPU (          37 calls,    0.0002 s avg)
+ <01s> [TIMING]                       DIPOLE_transverse :    0.1414 s CPU
+ <01s> [TIMING]                          Xo (procedure) :    0.1384 s CPU
+ <01s> [TIMING]                              Xo (REDUX) :    0.0000 s CPU
+ <01s> [07] Game Over & Game summary
+ <01s> [TIMING]            [Time-Profile]: 01s
