@@ -6,4 +6,5 @@
 --enable-hdf5-par-io \
 --with-hdf5-path=/home/attacc/SOFTWARE/HDF5 \
 --with-netcdf-path=/home/attacc/SOFTWARE/HDF5 \
---with-iotk-path=/home/attacc/SOFTWARE/IOTK
+--with-iotk-path=/home/attacc/SOFTWARE/IOTK \
+--with-libxc-path=/home/attacc/SOFTWARE/LIBXC
