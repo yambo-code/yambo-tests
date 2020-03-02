@@ -100,6 +100,11 @@ $PATTERN[$N_PATTERNS][1]="exc_qpt1_3d";
 #
 $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-yaml-output";
-$PATTERN[$N_PATTERNS][1]=".-02_QP_PPA";
-$PATTERN[$N_PATTERNS][2]=".02_QP_PPA";
+$PATTERN[$N_PATTERNS][1]="PPA.-02_QP_PPA";
+$PATTERN[$N_PATTERNS][2]="PPA.02_QP_PPA";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-yaml-output";
+$PATTERN[$N_PATTERNS][1]="merged.-02_QP_PPA";
+$PATTERN[$N_PATTERNS][2]="merged.02_QP_PPA";
 
