@@ -23,6 +23,7 @@
 !
 subroutine check(R,O,REPORT,FIELD)
   use DIFF
+  implicit none
   real(SP) :: R(N_max_col),O(N_max_col),DATA_diff
   real(SP) :: R_average,O_average,E_average
   logical  :: REPORT

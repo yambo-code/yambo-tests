@@ -24,6 +24,7 @@
 subroutine eval_the_moments(fl)
  !
  use DIFF
+ implicit none
  type(obj) :: fl
  real(SP)  :: RIntegrate,W(fl%N),dW,F(fl%N)
  fl%Max=-1.
@@ -89,10 +90,15 @@ function RIntegrate(F,W,N)
  !
 end function
 !
-character(256) function string_remove(string_in,what)
+function string_remove(string_in,what)
+ !
+ use DIFF,   ONLY:str_length
+ !
+ implicit none
  !
  character(*)     :: string_in
- character(*)     :: what
+ character(*)     ::  what
+ character(str_length) :: string_remove
  !
  ! Work Space
  !
@@ -112,7 +118,7 @@ subroutine string_split(string_in,string_out,n_non_empty_strings)
   implicit none
   !
   character(*)          :: string_in
-  character(256)        :: string_out(N_max_col)
+  character(str_length) :: string_out(N_max_col)
   integer               :: n_non_empty_strings
   !
   ! Work Space
@@ -163,6 +169,8 @@ end subroutine
 !
 character(8) function intc(i)
  !
+ implicit none
+ !
  character(8) temp
  integer, intent(in) :: i
  !
@@ -190,6 +198,8 @@ character(8) function intc(i)
 end function intc
 !
 subroutine sort(n,arrin,indx)                             
+  !
+  implicit none
   !
   integer, parameter  :: SP  = selected_real_kind(6,30)
   !
