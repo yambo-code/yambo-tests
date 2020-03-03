@@ -1,0 +1,63 @@
+#  __      __   ______   __       __  _______    ______     
+# |  \    /  \ /      \ |  \     /  \|       \  /      \    
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\   
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$   
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$   
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$   
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$   
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
+#                                                           
+#        Version 4.2.0 Revision 14544 Hash 1911cc9          
+#                      MPI+SLK Build                        
+#                http://www.yambo-code.org                  
+#
+# GW [Newton Solver]
+#
+#  == El-Ph Self-Energy ==
+#  [ph] dS/dw steps        : 2
+#  [ph] dS/dw step     [ev]:  0.10000
+#  [ph] Sc/G damping   [ev]:  0.10000
+#  El-Ph correlation      : yes
+#  El-Ph Sc. G bands      :  1 20
+#  El-Ph phonon branches  :  1  6
+#  El-Ph momenta used     :  8
+#  Energy treshold   [FAN]:0.1000E-5
+#  Energy treshold    [DW]:0.1000E-5
+#  QP @ K 001 - 001 : b 002 - 006
+#  QP @ K 007 - 007 : b 002 - 006
+#
+#    K-point      Band         Eo           E            E-Eo         Z            Width[meV]
+#
+     1.00000      2.00000      0.00000      0.03942      0.03942      1.00000     12.16324
+     1.00000      3.00000      0.00000      0.03942      0.03942      1.00000     12.16324
+     1.00000      4.00000      0.00000      0.03942      0.03942      1.00000     12.16324
+    1.000        5.000        2.557        2.566       0.9260E-2     1.000       -33.01   
+    1.000        6.000        2.557        2.566       0.9260E-2     1.000       -33.01   
+    7.000        2.000       -7.855       -7.872       -.1714E-1     1.000        39.36   
+      7.0000       3.0000      -2.9444      -2.9369       0.0075       1.0000       3.0166
+      7.0000       4.0000      -2.9444      -2.9369       0.0075       1.0000       3.0166
+     7.00000      5.00000      0.60780      0.57831     -0.02949      1.00000     -9.01723
+     7.00000      6.00000      0.60781      0.57832     -0.02949      1.00000     -9.01723
+# 
+# 05/18/2017 at 18:06 YAMBO_PH @ anomaly [start]
+# 05/18/2017 at 18:06                    [end]
+#
+# .-Input file : yambo.in
+# | gw0                            # [R GW] GoWo Quasiparticle energy levels
+# | el_ph_corr                     # [R] Electron-Phonon Correlation
+# | BoseTemp= 0.000000     eV      # Bosonic Temperature
+# | DysSolver= "n"                 # [GW] Dyson Equation solver ("n","s","g")
+# | GphBRnge= 20                   # [ELPH] G[W] bands range
+# | % ElPhModes
+# |   1 |  6 |                     # [ELPH] Phonon modes included
+# | %
+# | GDamping=  0.10000     eV      # [GW] G[W] damping
+# | dScStep=  0.10000      eV      # [GW] Energy step to evaluate Z factors
+# | RandQpts=0                     # [RIM] Number of random q-points in the BZ
+# | WRgFsq                         # [ELPH] Dump on file gFsq coefficients
+# | OnMassShell                    # [F GW] On mass shell approximation
+# | %QPkrange                    # [GW] QP generalized Kpoint/Band indices
+# |   1|  1|  2|  6|
+# |   7|  7|  2|  6|
+# | %
