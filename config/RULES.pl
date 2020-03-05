@@ -25,8 +25,8 @@
 #
 $N_PATTERNS=0;
 #
-# [1] = OLD
-# [2] = NEW
+# [1] = REFERENCE
+# [2] = MODIFIED REFERENCE
 #
 # spin_factors_1->spin_factors_DN
 #
@@ -51,7 +51,7 @@ $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
 #
 # EXC PP
 #
-$BRANCH_LIST="4.4";
+$BRANCH_LIST="4.0 4.1 4.2 4.3 4.4";
 #
 $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
@@ -98,13 +98,15 @@ $PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][2]="exc_3d";
 $PATTERN[$N_PATTERNS][1]="exc_qpt1_3d";
 #
-$N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-yaml-output";
-$PATTERN[$N_PATTERNS][1]="PPA.-02_QP_PPA";
-$PATTERN[$N_PATTERNS][2]="PPA.02_QP_PPA";
+$BRANCH_LIST="4.0 4.1 4.2 4.3 4.4 4.5";
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-yaml-output";
-$PATTERN[$N_PATTERNS][1]="merged.-02_QP_PPA";
-$PATTERN[$N_PATTERNS][2]="merged.02_QP_PPA";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
+$PATTERN[$N_PATTERNS][2]="PPA.-02_QP_PPA";
+$PATTERN[$N_PATTERNS][1]="PPA.02_QP_PPA";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
+$PATTERN[$N_PATTERNS][2]="merged.-02_QP_PPA";
+$PATTERN[$N_PATTERNS][1]="merged.02_QP_PPA";
 
