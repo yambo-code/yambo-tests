@@ -23,20 +23,21 @@
 !
 subroutine read_the_data(fl)
   use DIFF
+  implicit none
   type(obj)      :: fl
   integer        :: i_cyc,tit_length,i1_pos
-  character(256) :: ch_save(3)=" ",fmt_,head,str_hash
+  character(str_length) :: ch_save(3)=" ",fmt_,head,str_hash
   do i_cyc=1,2
     open(unit=fl%unit,file=trim(fl%name),form='formatted')
     N=0
     ierr=0
     i_d=0
     do while(ierr==0)
-      read(fl%unit,'(a)',iostat=ierr) str(1:256)
+      read(fl%unit,'(a)',iostat=ierr) str(1:str_length)
       if (ierr/=0) cycle
       call string_split(trim(str),data_str,N)
       if (index(str,"[")>0.and.trim(data_str(1))/="#") then
-         str(index(str,"["):256)=" "
+         str(index(str,"["):str_length)=" "
          call string_split(trim(str),data_str,N)
       endif
       ch_save(1)=ch_save(2)

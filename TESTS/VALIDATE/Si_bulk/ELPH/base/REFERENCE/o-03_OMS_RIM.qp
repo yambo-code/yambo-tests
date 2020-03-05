@@ -1,0 +1,59 @@
+#                                                           
+# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
+#    ###  ###     ### ###       ### #########   ########    
+#                                                           
+#               Version 4.0.0 Revision 3726                 
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+# GW [Newton Solver]
+#
+#  == El-Ph Self-Energy ==
+#  [ph] dS/dw steps        : 2
+#  [ph] dS/dw step     [ev]:  0.10000
+#  [ph] Sc/G damping   [ev]:  0.10000
+#  El-Ph correlation      : yes
+#  El-Ph Sc. G bands      :  1 20
+#  El-Ph phonon branches  :  1  6
+#  QP @ K 001 - 001 : b 002 - 004
+#  QP @ K 007 - 007 : b 005 - 006
+#
+#  K-point    Band       Eo         Eqp        E-Eo       Z          Width[meV]
+#
+   1.00000    2.00000    0.00000    0.03274    0.03274    1.00000   -0.05098
+   1.00000    3.00000    0.00000    0.03274    0.03274    1.00000   -0.05098
+   1.00000    4.00000    0.00000    0.03274    0.03274    1.00000   -0.05098
+   7.00000    5.00000    0.60780    0.57842   -0.02939    1.00000   -7.78398
+   7.00000    6.00000    0.60781    0.57842   -0.02939    1.00000   -7.78398
+# 
+# 09/18/2014 at 17:21 YAMBO_PH @ anomaly [start]
+# 09/18/2014 at 17:21                    [end]
+#
+# .-Input file : yambo.in
+# | gw0                          # [R GW] GoWo Quasiparticle energy levels
+# | el_ph_corr                   # [R] Electron-Phonon Correlation
+# | BoseTemp= 0.000000     eV    # Bosonic Temperature
+# | SE_CPU= ""                   # [PARALLEL] CPUs for each role
+# | SE_ROLEs= ""                 # [PARALLEL] CPUs roles (q,qp,b)
+# | DysSolver= "n"               # [GW] Dyson Equation solver (`n`,`s`,`g`)
+# | GphBRnge= 20                 # [ELPH] G[W] bands range
+# | % ElPhModes
+# |   1 |  6 |                   # [ELPH] Phonon modes included
+# | %
+# | GDamping=  0.10000     eV    # [GW] G[W] damping
+# | dScStep=  0.10000      eV    # [GW] Energy step to evalute Z factors
+# | RandQpts= 100000             # [RIM] Number of random q-points in the BZ
+# | WRgFsq                       # [ELPH] Dump on file gFsq coefficients
+# | OnMassShell                  # [F GW] On mass shell approximation
+# | %QPkrange                    # [GW] QP generalized Kpoint/Band indices
+# |   1|  1|  2|  4|
+# |   7|  7|  5|  6|
+# | %
+# | %QPerange                    # [GW] QP generalized Kpoint/Energy indices
+# |   1|  7| 0.0|-1.0|
+# | %

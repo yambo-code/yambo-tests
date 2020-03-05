@@ -1,0 +1,111 @@
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+#       Version 4.5.0 Revision 17793 Hash ab92108a4                   
+#               Branch is devel-yaml-output                           
+#               MPI+OpenMP+SLK+SLEPC Build                            
+#                http://www.yambo-code.org                            
+#
+#  
+#--- DB#1 descriptions ---  
+# GW solver              : Newton  
+# == PPA-GN GW ==  
+# PPA imaginary pt   [ev] 27.21138  
+# GW SC iterations       0  
+# dS/dw steps             2  
+# dS/dw step         [ev]  0.10000  
+# X G`s            [used]  9  
+# X G`s            [disk]  9  
+# X bands                  1  10  
+# X poles           [o/o] 100.0000  
+# X e/h E range      [ev] -1.00000  -1.00000  
+# X xc-Kernel             none  
+# X BZ energy Double Grid: no  
+# X BZ Double Grid points0  
+# Sc/G bands               1  10  
+# Sc/G damping       [ev]  0.10000  
+# Sc bands terminator    : no  
+# Sx RL components         561  
+# GF energies kind       :Teter 93(XC)  
+# GF WF`s     kind       :Teter 93(XC)  
+# Xs energies kind       :Teter 93(XC)  
+# Xs WF`s     kind       :Teter 93(XC)  
+# QP @ K 1 - 2 : b 3 - 4  
+# QP @ K 1 - 2 : b 5 - 6  
+#  
+# GF energies kind       :Teter 93(XC)  
+# GF WF`s     kind       :Teter 93(XC)  
+# Xs energies kind       :Teter 93(XC)  
+# Xs WF`s     kind       :Teter 93(XC)  
+#  
+#    Eo [eV]      DeltaE [eV]
+#  
+    -0.54215     -3.31437
+     -0.0568      -3.2877
+     0.00000     -3.27842
+     0.00000     -3.27815
+    9.007993     2.411424
+    10.45793      2.63089
+    16.35704      3.14000
+    19.90535      3.28975
+# 
+# 03/01/2020 at 23:14 yambo @ narro [start]
+# 03/01/2020 at 23:14               [end]
+#  
+# Timing   [Min/Max/Average] 50s/50s/50s
+#
+# .-Input file  yambo.in
+# | optics                         # [R] Linear Response optical properties
+# | bss                            # [R] BSE solver
+# | bse                            # [R][BSE] Bethe Salpeter Equation.
+# | em1s                           # [R][Xs] Statically Screened Interaction
+# | BoseTemp= 0.000000     eV      # Bosonic Temperature
+# | FFTGvecs=  749         RL      # [FFT] Plane-waves
+# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+# | BS_nCPU_LinAlg_INV= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1        # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
+# | Chimod= "HARTREE"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
+# | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "h"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+# | BSENGexx=  749         RL      # [BSK] Exchange components
+# | BSENGBlk=  51          RL      # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
+# | #WehCpl                        # [BSK] eh interaction included also in coupling
+# | KfnQPdb= "E < ./02_QP_PPA_ypp_merged/ndb.QP_merged_1_gw_ppa" # [EXTQP BSK BSS] Database
+# | % BSEQptR
+# |  1 | 1 |                       # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |   2 |  7 |                     # [BSK] Bands range
+# | %
+# | % BEnRange
+# |   7.50000 | 25.00000 | eV      # [BSS] Energy range
+# | %
+# | % BDmRange
+# |   0.10000 |  0.30000 | eV      # [BSS] Damping range
+# | %
+# | BEnSteps= 300                  # [BSS] Energy steps
+# | % BLongDir
+# | 0.1000E-4 | 0.000    | 0.000    |        # [BSS] [cc] Electric Field
+# | %
+# | BSHayTrs=   0.0050             # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | % BndsRnXs
+# |   1 | 10 |                     # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs=  51          RL      # [Xs] Response block size
+# | % DmRngeXs
+# | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
+# | %
+# | % LongDrXs
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# | %
+# | XTermKind= "none"              # [X] X terminator ("none","BG" Bruneval-Gonze)

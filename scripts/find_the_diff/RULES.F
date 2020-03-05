@@ -24,7 +24,7 @@
 subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
 &                   VAL_treshold,REF_col,USER_error)
   !
-  use DIFF, ONLY:SP,RULES,i_c,i_t,i_rule,N_max_col
+  use DIFF, ONLY:SP,RULES,i_c,i_t,i_rule,N_max_col,str_length
   !
   implicit none
   character(*) :: PATTERN,RULE
@@ -39,7 +39,7 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
   real(SP),     optional ::VAL_treshold
   !
   integer        :: N,i_r
-  character(256) :: str(N_max_col)
+  character(str_length) :: str(N_max_col)
   !
   if (present(MATERIAL)) then
     call string_split(MATERIAL,str,N)
