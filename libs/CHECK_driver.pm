@@ -108,7 +108,11 @@ R_file_loop: foreach $ref_filename (@OFILES){
  for $ipatt (1...$N_PATTERNS) 
  {
   if ($ref_filename =~ $PATTERN[$ipatt][1] and ($PATTERN_branch[$ipatt] =~ /$branch_key/ or $PATTERN_branch[$ipatt] =~ "any")){ 
-   $ref_filename =~ s/$PATTERN[$ipatt][1]/$PATTERN[$ipatt][2]/;
+   if ($PATTERN[$ipatt][3] and "$PATTERN[$ipatt][3]" eq "end") {
+     $ref_filename =~ s/$PATTERN[$ipatt][1]$/$PATTERN[$ipatt][2]/;
+   }else{
+     $ref_filename =~ s/$PATTERN[$ipatt][1]/$PATTERN[$ipatt][2]/;
+   }
   }
  } 
  #

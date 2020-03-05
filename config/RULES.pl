@@ -28,26 +28,56 @@ $N_PATTERNS=0;
 # [1] = OLD
 # [2] = NEW
 #
-# spin_factors_1->spin_factors_DN
+# YPP post-processing
 #
 $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-rt-rotate devel-ypp devel-rt-obs-and-ypp";
 $PATTERN[$N_PATTERNS][1]="spin_factors_1";
 $PATTERN[$N_PATTERNS][2]="spin_factors_UP";
 #
-# spin_factors_2->spin_factors_UP
-#
 $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-rt-rotate devel-ypp devel-rt-obs-and-ypp";
 $PATTERN[$N_PATTERNS][1]="spin_factors_2";
 $PATTERN[$N_PATTERNS][2]="spin_factors_DN";
 #
-# TD dos
-#
 $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-rt-rotate";
 $PATTERN[$N_PATTERNS][1]="YPP-2D_occ_dos";
 $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN[$N_PATTERNS][1]=".magnetization_x";
+$PATTERN[$N_PATTERNS][2]=".magnetization_x_interpolated";
+$PATTERN[$N_PATTERNS][3]="end";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN[$N_PATTERNS][1]=".magnetization_y";
+$PATTERN[$N_PATTERNS][2]=".magnetization_y_interpolated";
+$PATTERN[$N_PATTERNS][3]="end";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN[$N_PATTERNS][1]=".magnetization_z";
+$PATTERN[$N_PATTERNS][2]=".magnetization_z_interpolated";
+$PATTERN[$N_PATTERNS][3]="end";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN[$N_PATTERNS][1]=".spin_factors_UP";
+$PATTERN[$N_PATTERNS][2]=".spin_factors_UP_interpolated";
+$PATTERN[$N_PATTERNS][3]="end";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN[$N_PATTERNS][1]=".spin_factors_DN";
+$PATTERN[$N_PATTERNS][2]=".spin_factors_DN_interpolated";
+$PATTERN[$N_PATTERNS][3]="end";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN[$N_PATTERNS][1]="YPP-RT_occ_bands_iT1";
+$PATTERN[$N_PATTERNS][2]="YPP-RT_occ_bands_T_0.00000000000000";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN[$N_PATTERNS][1]="YPP-RT_occ_bands_iT2";
+$PATTERN[$N_PATTERNS][2]="YPP-RT_occ_bands_T_10.0799999237061";
 #
 # EXC PP
 #

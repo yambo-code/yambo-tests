@@ -29,7 +29,7 @@ sub RUN_driver{
 # Loop over test directories
 $numtests = @input_tests_list; # Number of elements
 $count_tests=0;
-$max_admitted_fails=40;
+$max_admitted_fails=1000;
 #
 &RUN_setup("INIT");
 #
