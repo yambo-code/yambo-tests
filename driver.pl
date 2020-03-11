@@ -27,7 +27,8 @@ use lib ".";
 use autodie;
 do "config/MODULES.pl";
 do "config/TOOLS.pl";
-do "config/RULES.pl";
+do "config/RULES_renaming.pl";
+do "config/RULES_ignore.pl";
 do "config/ROBOTS_list.pl";
 #
 # The location of the test-suite directory

@@ -105,6 +105,12 @@ R_file_loop: foreach $ref_filename (@OFILES){
  if ($ref_filename =~ /db1/) {next R_file_loop};
  if ($ref_filename =~ /gops/ or $ref_filename =~ /kindx/) {next R_file_loop};
  if ($ref_filename =~ /em1d/ and $LIFE eq "1") {next R_file_loop};
+ for $ipatt (1...$N_IGNORE) 
+ {
+  if ($ref_filename =~ /$IGNORE_file[$ipatt]/ and ($IGNORE_branch[$ipatt] =~ /$branch_key/ or $IGNORE_branch[$ipatt] =~ "any")){ 
+   if ($testdir =~ /$IGNORE_test[$ipatt]/) {next R_file_loop}
+  }
+ }
  for $ipatt (1...$N_PATTERNS) 
  {
   if ($ref_filename =~ $PATTERN[$ipatt][1] and ($PATTERN_branch[$ipatt] =~ /$branch_key/ or $PATTERN_branch[$ipatt] =~ "any")){ 
