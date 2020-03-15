@@ -33,11 +33,8 @@ if ($nt and $nt>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE
 if (        $np>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE"); $n_stats=1; };
 if (              not $SETUP=="1") {undef $CHECK_CORE};
 if ($P2Y){
-	print "check eigen";
   &CHECK_database("EIGENVALUES","ns.db1","CORE","FIRST");
-	print "check pp";
   &CHECK_database("PP_KB_K1","ns.kb_pp_pwscf_fragment_1","CORE");
-	print "check wfs";
   &CHECK_database('WF_COMPONENTS_@_SP_POL1_K1_BAND_GRP_1',"ns.wf_fragments_1_1","CORE");
 }
 if ($A2Y){
