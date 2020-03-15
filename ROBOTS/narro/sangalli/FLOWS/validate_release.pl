@@ -19,7 +19,7 @@
  ACTIVE      => "yes",
  TESTS       => "all",
  CONFIG      => "gfortran_internal_SP.sh",
- KEYS        => "nopj kerr elph hard",
+ KEYS        => "nopj kerr elph rt nl hard",
  #KEYS        => "nopj",
 },
 {

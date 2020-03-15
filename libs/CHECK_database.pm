@@ -27,6 +27,7 @@ sub CHECK_database{
 $VAR = "@_[0]";
 $DB  = "@_[1]";
 $CORE= "@_[2]";
+$FIRST= "@_[3]";
 $run_filename = "o-$testname.$DB";
 &gimme_reference($run_filename);
 #
@@ -38,7 +39,7 @@ if ($CORE eq "CORE" and ($P2Y or $A2Y)) {
   $target_dir = "$suite_dir/$TESTS_folder/$testdir/$ROBOT_wd/$check_folder";
   if(! -d $target_dir ) { &command("mkdir -p $target_dir"); };
   #
-  if( -d $target_dir && -e "SAVE/$DB" ) {  &command("cp SAVE/$DB $target_dir") ; };
+  if( -d $target_dir && -e "SAVE/$DB" && $FIRST eq "FIRST") {  &command("cp SAVE/* $target_dir") ; };
   #
   if($P2Y) {&CWD_save_p2y;};
   if($A2Y) {&CWD_save_a2y;};
