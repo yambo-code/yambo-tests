@@ -18,7 +18,8 @@
 ! GENERAL
 !=========
 call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
-call add_RULE(".ndb.kindx","skip",MATERIAL="Si_bulk hBN LiF")
+call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
+call add_RULE(".ns.wf_fragments_1_1","skip",MATERIAL="MoS2")
 call add_RULE("Lifetimes.ndb.em1d_fragment","skip",MATERIAL="Al_bulk")
 !
 ! RT

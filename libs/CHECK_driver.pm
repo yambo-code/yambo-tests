@@ -39,7 +39,7 @@ if ($P2Y){
 }
 if ($A2Y){
   &CHECK_database("EIGENVALUES","ns.db1","CORE","FIRST");
-  &CHECK_database("PP_KB_K1","ns.kb_pp_fragment_1","CORE");
+  &CHECK_database("PP_KB_IK1_SP_POL1","ns.kb_pp_fragment_1","CORE");
   &CHECK_database('WF_COMPONENTS_@_SP_POL1_K1_BAND_GRP_1',"ns.wf_fragments_1_1","CORE");
 }
 if ($CHECK_CORE){
