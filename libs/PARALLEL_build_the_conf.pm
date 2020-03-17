@@ -27,7 +27,7 @@ sub PARALLEL_build_the_conf{
 if ( $LIFE=="1" or ( $GW=="1" and $EM1D=="1" ) or ($COHSEX=="1" and $COLL=="0") or ($COHSEX=="1" and $COLL=="1" and $EM1S=="0") ) { 
  foreach $f1 (@QSB){ foreach $f2 (@GQKCV){ foreach $f3 (@KCV){
   $Nr++;
-  $MPI_CPU_conf[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\" X_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3].@$f2[4]\" X_all_q_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3].@$f2[4]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\" X_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3].@$f2[4]\" X_and_IO_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3].@$f2[4]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
  }}}
  return;
 }
@@ -47,7 +47,7 @@ if ( $DIPOLES=="1" ) {
 if ($GW=="0" and $EM1S=="1" and $BSE=="0" and $COLL=="0") { 
  foreach $f1 (@GQKCV){ foreach $f2 (@KCV){
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
  }}
  return;
 }
@@ -68,7 +68,7 @@ if ($BSE=="1" and $EM1S=="0") {  foreach $f2 (@KCV){
 if ($BSE=="1" and $EM1S=="1" ) { 
  foreach $f1 (@GQKCV){ foreach $f2 (@KEHT){ foreach $f3 (@KCV){
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" BS_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" BS_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
   #print "KEHT(2) $testname $MPI_CPU_conf[$Nr]\n";
  }}}
  return;
@@ -109,7 +109,7 @@ if ($SC=="0" and $NEGF=="1" and $COLL=="0") {
 if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_rt") { 
  foreach $f1 (@GQKCV){ foreach $f2 (@QKSB){ foreach $f3 (@KCV){
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" RT_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" RT_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
  }}}
  return;
 }
@@ -119,7 +119,7 @@ if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_rt") {
 if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_sc") { 
  foreach $f1 (@GQKCV){ foreach $f2 (@QSB){ foreach $f3 (@KCV){
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
  }}}
  return;
 }
@@ -129,7 +129,7 @@ if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_sc") {
 if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_nl") { 
  foreach $f1 (@GQKCV){ foreach $f2 (@QSB){ foreach $f3 (@KCV){
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
   }}}
  return;
 }
