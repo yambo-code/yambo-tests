@@ -1,0 +1,48 @@
+#                                                                     
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
+#                                                                     
+#                                                                     
+#       Version 4.5.0 Revision 18037 Hash 0b1b50156                   
+#                  Branch is devel-rt-io                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+# Computing the density from the G lesser  
+#  
+#    ||a1 [A]           
+#  
+     0.00000000        0.861455555E-5
+    0.317526937        0.591593880E-5
+    0.635053873       -0.249238383E-6
+    0.952580869       -0.316173487E-5
+     1.27010775       -0.154458678E-5
+     1.58763492        0.165913025E-5
+     1.90516174        0.326577174E-5
+     2.22268867        0.313662838E-6
+     2.54021549       -0.592272727E-5
+     2.85774255       -0.871275915E-5
+     3.17526984       -0.416028115E-5
+     3.49279642        0.398227940E-5
+# 
+# 03/26/2020 at 01:48 ypp_rt @ narro [start]
+# 03/26/2020 at 01:48                [end]
+#
+# .-Input file  yambo.in
+# | RealTime                       # [R] TD Post-Processing
+# | RTdeltaRho                     # [R] Analize the density
+# | RTtime                         # [R] Post-Processing kind: function of time
+# | TimeStep= 0.500005     fs      # Time step
+# | % TimeRange
+# |   0.00000 | 15.00000 | fs      # Time-window where processing is done
+# | %
+# | LoadGhistory                   # [NEGF] Build the NEQ density from the G_lesser
+# | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
+# | Format= "g"                    # Output format [(c)ube/(g)nuplot/(x)crysden]
+# | Direction= "1"                 # [rlu] [1/2/3] for 1d or [12/13/23] for 2d [123] for 3D
+# | FFTGvecs=  387         RL      # [FFT] Plane-waves
