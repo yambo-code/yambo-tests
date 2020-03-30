@@ -57,6 +57,8 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
       if (-e $dir."/SC")   {$BROKEN_tests="$BROKEN_tests"."[SC]"}
       if (-e $dir."/MAGNETIC")   {$BROKEN_tests="$BROKEN_tests"."[MAGNETIC]"}
       if (-e $dir."/KERR")   {$BROKEN_tests="$BROKEN_tests"."[KERR]"}
+      if (-e $dir."/SPIN")   {$BROKEN_tests="$BROKEN_tests"."[SPIN]"}
+      if (-e $dir."/SPINORS")   {$BROKEN_tests="$BROKEN_tests"."[SPINORS]"}
       if (-e $dir."/ELPH")   {$BROKEN_tests="$BROKEN_tests"."[ELPH]"}
     }else{
      if (-e $dir."/HARD")     {$HARD_str="[H]"};
@@ -68,6 +70,8 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
      if (-e $dir."/SC" )  {$SC_tests="$SC_tests"." "."$dir"."$HARD_str"."$P_str"};
      if (-e $dir."/MAGNETIC" )  {$MAGNETIC_tests="$MAGNETIC_tests"." "."$dir"."$HARD_str"."$P_str"};
      if (-e $dir."/KERR")  {$KERR_tests="$KERR_tests"." "."$dir"."$HARD_str"."$P_str"};
+     if (-e $dir."/SPIN")  {$SPIN_tests="$SPIN_tests"." "."$dir"."$HARD_str"."$P_str"};
+     if (-e $dir."/SPINORS")  {$SPINORS_tests="$SPINORS_tests"." "."$dir"."$HARD_str"."$P_str"};
      if (-e $dir."/ELPH")  {$ELPH_tests="$ELPH_tests"." "."$dir"."$HARD_str"."$P_str"};
      if (-e $dir."/P2Y")  {$P2Y_tests="$P2Y_tests"." "."$dir"."$HARD_str"."$P_str"};
      if (-e $dir."/A2Y")  {$A2Y_tests="$A2Y_tests"." "."$dir"."$HARD_str"."$P_str"};
@@ -90,6 +94,8 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   &LIST_ELEMENT("[ELPH]    ",$ELPH_tests);
   &LIST_ELEMENT("[P2Y]     ",$P2Y_tests);
   &LIST_ELEMENT("[A2Y]     ",$A2Y_tests);
+  &LIST_ELEMENT("[SPIN]    ",$SPIN_tests);
+  &LIST_ELEMENT("[SPINORS] ",$SPINORS_tests);
   if ($KERR_tests)  {&LIST_ELEMENT("[KERR]    ",$KERR_tests)};
   if ($BROKEN_tests){&LIST_ELEMENT("[BROKEN]  ",$BROKEN_tests)};
   &MY_PRINT($stdout, "\n");

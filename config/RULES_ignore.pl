@@ -25,34 +25,8 @@
 #
 $N_IGNORE=0;
 #
-@PATTS = qw(_QP.data _QP.fit);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="C6H3Cl3"}
-@PATTS = qw(_QP_PPA.data _QP_PPA.fit);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="LiF/GW-OPTICS"}
-@PATTS = qw(_PPA_corrections.data _PPA_corrections.fit);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="Si_bulk/GW-OPTICS"}
-@PATTS = qw(QP_dbs.data QP_dbs.fit);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="Si_bulk/ELPH/OPTICS"}
-@PATTS = qw(.data .fit);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="Si_bulk/MAGNETIC"}
-@PATTS = qw(gw_ppa_gw_ppa.data gw_ppa_gw_ppa.fit 08_gw_eq.data 08_gw_eq.fit);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="Si_bulk/RT"}
-
+#@PATTS = qw(_QP.data _QP.fit);
+#for $patt (@PATTS) {$N_IGNORE++;
+#$IGNORE_branch[$N_IGNORE]="devel-andreaM";
+#$IGNORE_file[$N_IGNORE]="$patt";
+#$IGNORE_test[$N_IGNORE]="C6H3Cl3"}

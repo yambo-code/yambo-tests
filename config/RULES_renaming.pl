@@ -41,56 +41,6 @@ $PATTERN_branch[$N_PATTERNS]="devel-rt-rotate";
 $PATTERN[$N_PATTERNS][1]="YPP-2D_occ_dos";
 $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
 #
-@patts1 = qw(x              y              z);
-@patts2 = qw(x_interpolated y_interpolated z_interpolated);
-for $patt1 (@patts1) {$N_PATTERNS++;
- $patt2=shift @patts2;
- $N_PATTERNS++;
- $PATTERN_branch[$N_PATTERNS]="devel-andreaM";
- $PATTERN[$N_PATTERNS][1]=".magnetization_$patt1";
- $PATTERN[$N_PATTERNS][2]=".magnetization_$patt2";
- $PATTERN[$N_PATTERNS][3]="end"}
-#
-@patts1 = qw(UP              DN              );
-@patts2 = qw(UP_interpolated DN_interpolated );
-for $patt1 (@patts1) {$N_PATTERNS++;
- $patt2=shift @patts2;
- $N_PATTERNS++;
- $PATTERN_branch[$N_PATTERNS]="devel-andreaM";
- $PATTERN[$N_PATTERNS][1]=".spin_factors_$patt1";
- $PATTERN[$N_PATTERNS][2]=".spin_factors_$patt2";
- $PATTERN[$N_PATTERNS][3]="end"}
-#
-@patts1 = qw(iT1 iT2 );
-@patts2 = qw(T_0.000000 T_10.08000);
-for $patt1 (@patts1) {$N_PATTERNS++;
- $patt2=shift @patts2;
- $N_PATTERNS++;
- $PATTERN_branch[$N_PATTERNS]="devel-andreaM";
- $PATTERN[$N_PATTERNS][1]="07_ypp_bands.YPP-RT_occ_bands_$patt1";
- $PATTERN[$N_PATTERNS][2]="07_ypp_bands.YPP-RT_occ_bands_$patt2";
- $PATTERN[$N_PATTERNS][3]="end";
- $N_PATTERNS++;
- $PATTERN_branch[$N_PATTERNS]="devel-andreaM";
- $PATTERN[$N_PATTERNS][1]="08_ypp_bands_DbGd.YPP-RT_occ_bands_$patt1";
- $PATTERN[$N_PATTERNS][2]="08_ypp_bands_DbGd.YPP-RT_occ_bands_$patt2";
- $PATTERN[$N_PATTERNS][3]="end"}
-#
-@patts1 = qw(iT1 iT2 iT3 iT4 iT5 iT6 iT7 iT8 iT9 iT10 iT11);
-@patts2 = qw(T_0.000000 T_5.000000 T_10.00000 T_15.00000 T_20.00000 T_25.00000 T_30.00000 T_35.00000 T_40.00000 T_45.00000 T_50.00000);
-for $patt1 (@patts1) {$N_PATTERNS++;
- $patt2=shift @patts2;
- $N_PATTERNS++;
- $PATTERN_branch[$N_PATTERNS]="devel-andreaM";
- $PATTERN[$N_PATTERNS][1]="02_occ_bands_elph_0K.YPP-RT_occ_bands_$patt1";
- $PATTERN[$N_PATTERNS][2]="02_occ_bands_elph_0K.YPP-RT_occ_bands_$patt2";
- $PATTERN[$N_PATTERNS][3]="end";
- $N_PATTERNS++;
- $PATTERN_branch[$N_PATTERNS]="devel-andreaM";
- $PATTERN[$N_PATTERNS][1]="06_occ_bands_elph_0K_DbGd.YPP-RT_occ_bands_$patt1";
- $PATTERN[$N_PATTERNS][2]="06_occ_bands_elph_0K_DbGd.YPP-RT_occ_bands_$patt2";
- $PATTERN[$N_PATTERNS][3]="end"}
-#
 $BRANCH_LIST="4.0 4.1 4.2 4.3 4.4";
 #
 $N_PATTERNS++;
