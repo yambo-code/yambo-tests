@@ -103,6 +103,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("K_grid")=="1") { $CMD=$CMD." -grid k"};
  if (&RUN_feature("QPDB_edit")=="1") { $CMD=$CMD." -qpdb g"};
  if (&RUN_feature("QPDB_merge")=="1") { $CMD=$CMD." -qpdb m"};
+ if (&RUN_feature("QPDB_expand")=="1") { $CMD=$CMD." -qpdb e"};
  if (&RUN_feature("Shifted_Grid")=="1") { $CMD=$CMD." -grid s"};
  if (&RUN_feature("High_Symm")=="1") { $CMD=$CMD." -grid h"};
  if (&RUN_feature("kpts_map")=="1") { $CMD=$CMD." -map"};
