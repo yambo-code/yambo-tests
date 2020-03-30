@@ -23,8 +23,8 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SETUP_keys{
-my @PJs = ("sc","rt","pl","elph","kerr","magnetic","nl","hard","nopj","qp-dbs","p2y","a2y"); 
-my @FTs = ("gw", "bse", "rpa","all"); 
+my @PJs = ("sc","rt","pl","elph","kerr","magnetic","nl","hard","nopj","qp-dbs","p2y","a2y");
+my @FTs = ("gw", "bse", "rpa","all","spin","spinors"); 
 $project= '';
 foreach my $index (0..$#PJs) {
     next if ($keys !~ /$PJs[$index]/ and $keys !~ /all/);

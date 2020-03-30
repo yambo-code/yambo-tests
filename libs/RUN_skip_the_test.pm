@@ -110,21 +110,25 @@ if ( "@_" eq "INPUT") {
  # Features
  #
  if (not $features[0] eq "all"){
-  $found=&RUN_feature("setup");
-  if ($found eq "1" ) {return "OK"};
   LOOP: for (my $if=0; $if<=$#features ; $if++){
    if ($features[$if] eq "hf"){
-    $found=&RUN_feature("HF_and_locXC");
+    $found=&RUN_feature("HF_and_locXC")+&RUN_feature("setup");
    }
+   if ($features[$if] eq "spin"){
+     if (-e "SPIN"){$found="1"}else{$found="0"};
+   }
+   if ($features[$if] eq "spinors"){
+     if (-e "SPINORS"){$found="1"}else{$found="0"};
+   } 
    if ($features[$if] eq "rpa"){
     $found=&RUN_feature("optics");
-    if ($found eq "YES") {$found=&RUN_feature("chi")};
+    if ($found eq "YES") {$found=&RUN_feature("chi")+&RUN_feature("setup")};
    }
    if ($features[$if] eq "gw"){
-    $found=&RUN_feature("gw");
+    $found=&RUN_feature("gw")+&RUN_feature("setup");
    }
    if ($features[$if] eq "bse"){
-    $found=&RUN_feature("bse em1s");
+    $found=&RUN_feature("bse em1s")+&RUN_feature("setup");
    }
    if ($found eq "0") { 
     my $msg = sprintf("%-"."$left_length"."s", "$testname");
