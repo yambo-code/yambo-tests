@@ -73,7 +73,7 @@ if (&RUN_feature("DBsIOoff=\"COLLs\"") eq "1"){$io_COLL="0"}else{$io_COLL="1"};
 $COLL=&RUN_feature("collisions");
 if ($COLL eq "1") { $description .= " collisions" };
 if (&RUN_feature("tdBSE") eq "1") { $description .= " TD-BSE" };
-$PPA=&RUN_feature("ppa ");
+$PPA=&RUN_feature("ppa");
 if ($PPA eq "1") { $description .= " PPA" };
 $COHSEX=&RUN_feature("cohsex");
 if ($COHSEX eq "1") { $description .= " COHSEX" };
