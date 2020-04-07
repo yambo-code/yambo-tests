@@ -23,10 +23,13 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
+# Keywords listed here are matched against REFERENCE files and ignored
+#
 $N_IGNORE=0;
 #
-#@PATTS = qw(_QP.data _QP.fit);
+#@PATTS = qw(02_fit_elph_0K 02_fit_elph_300K 03_fit_elel 04_fit_elel+elph_0K);
 #for $patt (@PATTS) {$N_IGNORE++;
 #$IGNORE_branch[$N_IGNORE]="devel-andreaM";
 #$IGNORE_file[$N_IGNORE]="$patt";
-#$IGNORE_test[$N_IGNORE]="C6H3Cl3"}
+#$IGNORE_test[$N_IGNORE]="Si_bulk"}
+#
