@@ -78,14 +78,13 @@ O_file_loop: foreach $run_filename (<o-$testname.*>){
  $n_stats++;
  #
  &gimme_reference($run_filename);
- #print "\n$run_filename $ref_filename\n";
  #
  if (!-e "$ref_filename") { 
   &RUN_stats("NO_REF");
-  if ($update_test and  (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) ) {&UPDATE_action("ADD")};
+  if ($update_test) {&UPDATE_action("ADD")};
  }else{
   my $ERR=&CHECK_file;
-  if ($ERR eq "FAIL" and $update_test and (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) )
+  if ($ERR eq "FAIL" and $update_test)
   {
    &UPDATE_action("RM");
    &UPDATE_action("ADD");
