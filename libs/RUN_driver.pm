@@ -233,6 +233,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    #
   }
   #
+  if ($check_input_generation and $update_test) { &UPDATE_action("INPUT")};
   if (not $update_test) {&RUN_setup("after_par_loop")};
   #
  } # End loop on input files

@@ -1,26 +1,31 @@
-#  __  __   ________   ___ __ __    _______   ______        
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
-#                                                           
-#               Version 3.3.1 Revision 2093                 
-#                http://www.yambo-code.org                  
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+#       Version 4.5.0 Revision 18086 Hash 7ddec4937                   
+#                 Branch is devel-andreaM                             
+#                        MPI Build                                    
+#                http://www.yambo-code.org                            
 #
-em1s                         # [R Xs] Static Inverse Dielectric Matrix
-Chimod= "Hartree"                   # [X] IP/Hartree/ALDA/LRC/BSfxc
-% QpntsRXs
- 1 | 1 |                     # [Xs] Transferred momenta
-%
+screen                         # [R] Inverse Dielectric Matrix
+em1s                           # [R][Xs] Statically Screened Interaction
+kernel                         # [R] Kernel
+dipoles                        # [R] Oscillator strenghts (or dipoles)
+Chimod= "HARTREE"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 % BndsRnXs
-   1 | 50 |                 # [Xs] Polarization function bands
+   1 |  50 |                   # [Xs] Polarization function bands
 %
-NGsBlkXs= 515         RL    # [Xs] Response block size
+NGsBlkXs=  515         RL      # [Xs] Response block size
 % DmRngeXs
-  0.00100 |  0.00100 | eV    # [Xs] Damping range
+ 0.100000E-2 | 0.100000eV2 |   # [Xs] Damping range
 %
 % LongDrXs
  1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
 %
+XTermKind= "none"              # [X] X terminator ("none","BG" Bruneval-Gonze)
