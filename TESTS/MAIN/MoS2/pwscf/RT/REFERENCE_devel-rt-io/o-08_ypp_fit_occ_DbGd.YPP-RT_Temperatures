@@ -1,56 +1,67 @@
 #                                                                     
-# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
-#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
-#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
-#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
-#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
-#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
-#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
 #                                                                     
 #                                                                     
-#        Version 4.5.0 Revision 17670 Hash 0a7415178                  
-#                   Branch is devel-rt-io                             
-#          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                     
-#                 http://www.yambo-code.org                           
+#       Version 4.5.0 Revision 18170 Hash 8eca45f70                   
+#                  Branch is devel-rt-io                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
 #
-# [RT] Bands                      :23 - 30
-# [RT] K-points                   :36
-# [RT] Potential                  :HARTREE+SEX
-# [E-P] Electron-phonon           : yes
-# [E-P] Completed Collision(CCA)  : yes
-# [E-P] Branches                  :1 - 9
-# [E-P] GF`s Memory steps         :2
-# [E-E] Coulomb scattering        : no
-# [E-E] Coulomb correlation       : no
-# [E-PHOTON] Scattering           : no
-# [RT] Time step         (now)[fs]:  0.04000
-# [RT] NE time          (done)[fs]: 49.92000
-# [RT] NE steps         (done)[fs]:1249
-# [RT] Lif Extr Inte/Intr(now)[fs]: 1.440000 -  0.480000
-# [RT] I/O time            (now) [fs]: 0.240000
+#
+# [RT] Bands                                      :  23  30
+# [RT] K-points                                   :   36
+# [RT] Potential                                  : HARTREE+SEX
+# [E-P] Electron-phonon                           : yes
+# [E-P] Completed Collision(CCA)                  : yes
+# [E-P] Branches                                  :   1   9
+# [E-P] GF`s Memory steps                         :  2
+# [E-E] Coulomb scattering                        : no
+# [E-E] Coulomb correlation                       : no
+# [E-PHOTON] Scattering                           : no
+# [RT] Time step         (now)[fs]                :  0.400000028E-1
+# [RT] NE time          (done)[fs]                :   49.9200020   
+# [RT] NE steps         (done)[fs]                :  1249
+# [RT] Lif Extr Inte/Intr(now)[fs]                :   1.44000006     0.480000019   
+# [dT] Time-Dependent Time step                   : no
+# [RT] I/O time          (input) [fs]             :  0.240000010   
+# [RT] I/O time            (now) [fs]             :  0.240000010   
+#
+#
+# [Gr] Retarded Green`s function                  : HS
+# [Gr] Damping (c) Energy ref                     :   0.00000000    [ev]
+# [Gr] Damping (c)                                :  0.100000001      0.00000000      0.00000000    [ev,adim,ev^-1]
+# [Gr] Damping (v) Energy ref                     :   0.00000000    [ev]
+# [Gr] Damping (v)                                :  0.100000001      0.00000000      0.00000000    [ev,adim,ev^-1]
+#
 #
 # Fitted temperatures [K]
 #
-#    Time [fs]    T(e)         T(h)         T(e-up)      T(h-up)      T(e-dn)      T(h-dn)      T(e-EP)      T(h-EP)
+#    Time [fs]          T(e)               T(h)               T(e-up)            T(h-up)            T(e-dn)            T(h-dn)            T(e-EP)            T(h-EP)
 #
-    0.00         0.00         0.00         0.00         0.00         0.00         0.00         0.00         0.00    
-    5.040        148.4        3756.        145.3       0.1246E+5     150.7       0.7197E+5     184.5        231.2   
-    10.08        155.2        7219.        8389.       0.1290E+5     158.8       0.1029E+5     540.5        221.4   
-    15.12        160.9        4331.        5110.        5359.        5214.        4611.        514.6        219.5   
-    20.16        163.8        3146.        4006.        3494.        3743.        3440.        499.4        218.6   
-    25.20        2970.        2586.        3128.        3022.        3338.        2966.        498.1        216.8   
-    30.24        2674.        2228.        2450.        2616.        2577.        2351.        500.0        213.2   
-    35.28        2419.        1989.        2354.        2537.        2472.        804.7        501.2        208.5   
-    40.32        2238.        1828.        2307.        2479.        2377.        682.4        503.7        203.6   
-    45.36        2115.        1816.        2101.        2451.        2298.        590.9        501.2        198.7   
-    49.92        2078.        876.2        1962.        2451.        2209.        517.5        497.3        193.5   
+     0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000   
+     5.0400000         0.70379868E+10      3756.1433         0.70379868E+10      12456.640          150.70961          71963.555          184.47868          231.23134    
+     10.0799999         0.00000000         7219.44678         8423.36621         12898.6807         158.823654         10285.2100         540.334900         221.433914   
+     15.1200008         171.328506         4330.79004         5103.19287         5359.35889         5202.29590         4611.26904         514.573792         219.390564   
+     20.1599998         174.926483         3145.82104         3952.59619         3493.74487         3681.37622         3439.82153         499.753693         218.572784   
+     25.2000027         2969.34570         2586.46411         3096.44507         3021.73706         3340.98804         2966.07080         498.178436         216.763931   
+     30.2400017         2691.06934         2227.95654         2446.61694         2616.09717         2584.87231         2350.80127         500.291870         213.177200   
+     35.2800026         2402.87646         1988.74670         2375.96460         2536.94116         2471.88428         804.686218         501.893158         208.538071   
+     40.3199997         2236.71484         1828.01917         2370.77832         2478.85010         2376.74634         682.408142         501.697601         203.588440   
+     45.3600044         2115.01318         1816.38135         2120.76953         1018471.75         2298.43433         590.900818         502.556549         198.669861   
+     49.9200020         2078.26855         876.164124         1958.74463         578218.188         2209.21924         517.463684         497.337219         193.527176   
 # 
-# 01/11/2020 at 17:32 ypp_rt @ VivoBook [start]
-# 01/11/2020 at 17:32                   [end]
+# 04/16/2020 at 09:25 ypp_rt @ narro [start]
+# 04/16/2020 at 09:25                [end]
 #  
-# Timing   [Min/Max/Average]: 02s/02s/02s
+# Timing   [Min/Max/Average] 02s/02s/02s
 #
-# .-Input file : yambo.in
+# .-Input file  yambo.in
 # | RealTime                       # [R] TD Post-Processing
 # | RToccupations                  # [R] Analize time-dependent occupations
 # | RTenergy                       # [R] Post-Processing kind: function of energy
@@ -60,9 +71,9 @@
 # | %
 # | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
 # | #SkipFermiFIT                  # [NEGF] Do a Fermi Fit of occupations (and lifetimes ratio)
-# | %QPkrange                      # #  generalized Kpoint/Band indices
+# | %QPkrange                      #  generalized Kpoint/Band indices
 # | 1|9|23|30|
 # | %
-# | %QPerange                      # #  generalized Kpoint/Energy indices
+# | %QPerange                      #  generalized Kpoint/Energy indices
 # | 1|9| 0.000000|-1.000000|
 # | %
