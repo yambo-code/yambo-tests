@@ -153,6 +153,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    next LOOP_INPUTS;
   };
   #
+  undef $LAST_COMPLETED_RUN;
+  #
   # Do the actual run!
   LOOP: for ($ir=1; $ir<=$Nr ; $ir++){
    #
@@ -194,7 +196,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      &RUN_load_PAR_fields;
      $string=$MPI_CPU_conf[1];
      &command("rm -fr yambo.in LOG r-${testname}* o-${testname}*");
-     #print "$testname B\n";
+     #print "$testname $ir B\n";
      # Re-Create the input (if any)
      &RUN_load_actions(".input");
      &RUN_setup("before_run");
@@ -230,6 +232,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    &command("rm -f yambo.in BASE_input");
    #
   }
+  #
+  if (not $update_test) {&RUN_setup("after_par_loop")};
   #
  } # End loop on input files
  #

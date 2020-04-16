@@ -24,6 +24,12 @@
 #
 sub RUN_setup{
 #
+if ("@_" =~ "after_par_loop"){
+ if ( $LAST_COMPLETED_RUN ){
+  &command("ln -s $LAST_COMPLETED_RUN $testname");
+ }
+ return;
+}
 if ("@_" =~ "INIT"){
  #
  # Global cpu_conf
@@ -38,8 +44,6 @@ if ("@_" =~ "INIT"){
  }
 };
 if ("@_" =~ "before_run"){
- #
- undef $LAST_COMPLETED_RUN;
  #
  # cpu_conf
  $cpu_conf="[".$string;
@@ -91,7 +95,9 @@ if ("@_" =~ "after_run"){
  if (-d $testname or $update_test){
   if (!-d $dir_name and -d $testname) {&command("mv $testname $dir_name")};
   if (!-d $dir_name and !-d $testname) {&command("mkdir $dir_name")};
-  if ($ir == $Nr and $LAST_COMPLETED_RUN) {&command("ln -s $LAST_COMPLETED_RUN $testname")};
+  if ($LAST_COMPLETED_RUN) {
+   &command("ln -s $LAST_COMPLETED_RUN $testname");
+  };
  }else{
   if (!-d $dir_name) {&command("mkdir $dir_name"); };
  }
