@@ -36,8 +36,10 @@ if ( $LIFE=="1" or ( $GW=="1" and $EM1D=="1" ) or ($COHSEX=="1" and $COLL=="0") 
 #
 if ( $DIPOLES=="1" ) {
  foreach $f1 (@KCV){
-  $Nr++;
-  $MPI_CPU_conf[$Nr]="DIP_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
+   foreach $f2 (@GKCV){
+    $Nr++;
+    $MPI_CPU_conf[$Nr]="DIP_CPU=\"@$f1[0].@$f1[1].@$f1[2]\" X_CPU=\"@$f2[0].1.@$f2[1].@$f2[2].@$f2[3]\"";
+   }
  }
  return;
 }

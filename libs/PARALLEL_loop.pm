@@ -115,10 +115,8 @@ foreach $q (@QPT){
 #
 $N_wqkb=0;
 foreach $w (@FREQ){ 
- #foreach $q (@QPT){ 
   foreach $k (@KPT){ 
    if (&PAR_conf_check({w=>$w}) eq 1){next};
-   #if (&PAR_conf_check({k=>$q}) eq 1){next};
    if (&PAR_conf_check({k=>$k}) eq 1){next};
    @conf = ( $w, $k );
    $trace=&trace( @conf );
@@ -126,14 +124,6 @@ foreach $w (@FREQ){
    @WK[$N_wqkb]= [ @conf ];
    $N_wqkb++; 
   }
-  #if (&PAR_conf_check({k=>$q}) eq 1){next};
-  #if (&PAR_conf_check({c=>@$sb[1],v=>@$sb[1]}) eq 1){next};
-  #@conf = ( $q, @$sb[0], @$sb[1] );
-  #$trace=&trace( @conf );
-  #if (not $trace eq $np) {next};
-  #@QSB[$N_qsb]= [ @conf ];
-  #$N_qsb++; 
- #}
 };
 #
 $N_keht=0;
