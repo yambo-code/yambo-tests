@@ -1,149 +1,444 @@
 
 
- __   __  _______  __   __  _______  _______
-|  | |  ||   _   ||  |_|  ||  _    ||       |
-|  |_|  ||  |_|  ||       || |_|   ||   _   |
-|       ||       ||       ||       ||  | |  |
-|_     _||       ||       ||  _   | |  |_|  |
-  |   |  |   _   || ||_|| || |_|   ||       |
-  |___|  |__| |__||_|   |_||_______||_______|
+  __ __  ____ ___ ___ ____   ___
+ |  |  |/    |   |   |    \ /   \
+ |  |  |  o  | _   _ |  o  )     |
+ |  ~  |     |  \_/  |     |  O  |
+ |___, |  _  |   |   |  O  |     |
+ |     |  |  |   |   |     |     |
+ |____/|__|__|___|___|_____|\___/
 
 
- <---> [01] MPI/OPENMP structure, Files & I/O Directories
+ <---> [01] CPU structure, Files & I/O Directories
  <---> [02] Y(ambo) P(ost)/(re) P(rocessor)
  <---> [03] Core DB
- <---> :: Electrons             ::  8.000000
- <---> :: Temperature       [ev]::  0.000000
- <---> :: Lattice factors [a.u.]::  10.18300  10.18300  10.18300
- <---> :: K points              ::   4
- <---> :: Bands                 ::   8
- <---> :: Symmetries            ::   6
- <---> :: RL vectors            ::  2085
+ <---> :: Electrons             : 8.000000
+ <---> :: Temperature       [ev]: 0.000000
+ <---> :: Lattice factors [a.u.]: 10.18300  10.18300  10.18300
+ <---> :: K points              :  4
+ <---> :: Bands                 :  8
+ <---> :: Symmetries            :  6
+ <---> :: RL vectors            : 2085
  <---> [04] K-point grid
- <---> :: Q-points   (IBZ)::   4
- <---> :: X K-points (IBZ)::   4
+ <---> :: Q-points   (IBZ):  4
+ <---> :: X K-points (IBZ):  4
  <---> [05] CORE Variables Setup
  <---> [05.01] Unit cells
  <---> [05.02] Symmetries
- <---> [05.03] Reciprocal space
+ <---> [05.03] RL shells
  <---> [05.04] K-grid lattice
- <---> Grid dimensions      :  2  2  2
- <---> [05.05] Energies & Occupations
+ <---> Grid dimensions               : 2  2  2
+ <---> [05.05] Energies [ev] & Occupations
  <---> [06] == Real-Time Post-Processing ==
  <---> Output files definition ...
  <---> [06.01] Real-Time components (Occupations, Lifetimes,...)
  <---> Searching the carriers database in SAVE/ndb.RT_carriers...
- <---> [RD./13_elph_0K_field_ad-serial-develop/ndb.RT_carriers]------------------------
- <--->  Coulomb cutoff potential                         : none
- <--->  Fragmentation                                    : yes
- <--->  Electronic Temperature                           :  0.000000 [K]
- <--->  Bosonic    Temperature                           :  0.000000 [K]
- <--->  [RT] Bands                                       :   2   7
- <--->  [RT] K-points                                    :   4
- <--->  [RT] Potential                                   : IP
- <--->  [E-P] Electron-phonon                            : yes
- <--->  [E-P] Completed Collision(CCA)                   : yes
- <--->  [E-P] Branches                                   :   1   6
- <--->  [E-P] GF`s Memory steps                          :  3
- <--->  [E-E] Coulomb scattering                         : no
- <--->  [E-E] Coulomb correlation                        : no
- <--->  [E-PHOTON] Scattering                            : no
- <--->  [RT] Time step (initial)                         :  0.020000 [fs]
- <--->  [RT]           (now)                             :  1.280000 [fs]
- <--->  [RT] NE time (planned)                           :  500.0000 [fs]
- <--->  [RT]         (done)                              :  498.9600 [fs]
- <--->  [RT] Lifetimes Inter/Intra (user)                :  0.000000  0.000000 [fs]
- <--->  [RT]                       (running)             :  52.91696  52.91696 [fs]
- <--->  [RT] I/O time                                    :  20.67069 [fs]
- <--->  [RT] NE steps (done)                             :  25001
- <--->  [RT] Lifetimes extrapolation                     : no
- <--->  [dT] Time-Dependent Time step                    : yes
- <--->  [dT] Starting Time                               :   2480.48    [fs]
- <--->  [dT] Update interval                             :  206.7069 [fs]
- <--->  [dT] Update interval tresh                       :  5.000000 [o/o]
- <--->  [dT] Max step in dynamics                        :  82.68275 [fs]
- <--->  [RT] Integrator                                  : EULER + RK2 + RWA
- <--->  [RT] Radiative life time                         :  0.000000 [fs]
- <--->  [RT] Dephasing life time                         :  0.000000 [fs]
- <--->  [RT] External Field(s)                           : yes
- <--->  [RT] Number of Fields                            :  1
- <--->  [RT] Diamagnetic term                            : no
- <--->  [RT] Induced field                               : no
- <--->  [T= 60.000] Time step                            :  0.040000 fs
- <--->  [T= 60.000] Update time                          :  5.200000 fs
- <--->  [T= 60.000] I/O steps(J-P-C)                     :  0.520000 fs
- <--->  [T= 60.000] I/O steps(OUT)                       :  0.520000 fs
- <--->  [T= 60.000] I/O steps(GF)                        :  0.520000 fs
- <--->  [T= 60.000] Life Inter-Intra                     :  0.040000  0.040000 fs
- <--->  [T= 65.200] Time step                            :  0.080000 fs
- <--->  [T= 65.200] Update time                          :  5.040000 fs
- <--->  [T= 65.200] I/O steps(J-P-C)                     :  0.560000 fs
- <--->  [T= 65.200] I/O steps(OUT)                       :  0.560000 fs
- <--->  [T= 65.200] I/O steps(GF)                        :  0.560000 fs
- <--->  [T= 65.200] Life Inter-Intra                     :  0.080000  0.080000 fs
- <--->  [T= 75.280] Time step                            :  0.160000 fs
- <--->  [T= 75.280] Update time                          :  5.120000 fs
- <--->  [T= 75.280] I/O steps(J-P-C)                     :  0.640000 fs
- <--->  [T= 75.280] I/O steps(OUT)                       :  0.640000 fs
- <--->  [T= 75.280] I/O steps(GF)                        :  0.640000 fs
- <--->  [T= 75.280] Life Inter-Intra                     :  0.160000  0.160000 fs
- <--->  [T= 80.400] Time step                            :  0.320000 fs
- <--->  [T= 80.400] Update time                          :  5.120000 fs
- <--->  [T= 80.400] I/O steps(J-P-C)                     :  0.640000 fs
- <--->  [T= 80.400] I/O steps(OUT)                       :  0.640000 fs
- <--->  [T= 80.400] I/O steps(GF)                        :  0.640000 fs
- <--->  [T= 80.400] Life Inter-Intra                     :  0.320000  0.320000 fs
- <--->  [T= 85.520] Time step                            :  0.640000 fs
- <--->  [T= 85.520] Update time                          :  5.120000 fs
- <--->  [T= 85.520] I/O steps(J-P-C)                     :  0.640000 fs
- <--->  [T= 85.520] I/O steps(OUT)                       :  0.640000 fs
- <--->  [T= 85.520] I/O steps(GF)                        :  0.640000 fs
- <--->  [T= 85.520] Life Inter-Intra                     :  0.640000  0.640000 fs
- <--->  [T= 90.640] Time step                            :  1.280000 fs
- <--->  [T= 90.640] Update time                          :  5.120000 fs
- <--->  [T= 90.640] I/O steps(J-P-C)                     :  1.280000 fs
- <--->  [T= 90.640] I/O steps(OUT)                       :  1.280000 fs
- <--->  [T= 90.640] I/O steps(GF)                        :  1.280000 fs
- <--->  [T= 90.640] Life Inter-Intra                     :  1.280000  1.280000 fs
- <--->  [Gr] Retarded Green`s function                   : QP
- <--->  [Gr] Damping (c) Energy ref                      :  1.200000 ev
- <--->  [Gr] Damping (c)                                 :  0.300000  0.000000  0.010000 ev,adim,ev^-1
- <--->  [Gr] Damping (v) Energy ref                      : -1.200000 ev
- <--->  [Gr] Damping (v)                                 :  0.300000  0.000000  0.010000 ev,adim,ev^-1
- <--->  [DbGd] Double Grid support                       : no
- <--->  [DbGd] Number of k-points                        : 0
- <--->  [DbGd] Used for e-e                              :  0.000000 [o/o]
- <--->  [CONSTRAINS] N (ee+ep) & dN (ep)                 : yes
- <--->  [CONSTRAINS] IP Energy      (ee)                 : yes
- <--->  [FIELDs] Gauge Type                              : length
- <--->  [FIELDs] Type                                    : QSSIN
- <--->  [FIELDs] Polarization                            : linear
- <--->  [FIELDs] Versor                                  :  0.577350  0.577350  0.577350
- <--->  [FIELDs] Versor_circ                             :  0.000000  1.000000  0.000000
- <--->  [FIELDs] Intensity                               :  0.155366E-8 [kWCMm2]
- <--->  [FIELDs] Damping                                 :  413.4137 [fs]
- <--->  [FIELDs] Frequency range                         :  0.095548  0.095548 [eV]
- <--->  [FIELDs] Frequency steps                         :  1
- <--->  [FIELDs] Frequency step                          :  0.000000 [eV]
- <--->  [FIELDs] Initial time                            :  20.67069 [fs]
- <---> - S/N 003129 ---------------------------------------------- v.04.05.00 r.18068 -
- <---> [CARRIERS] Uniform grid       :: no
- <---> [CARRIERS] Time range     [fs]::    0.5000  498.9600
- <---> [CARRIERS] Time step      [fs]::  1.280024
- <---> [CARRIERS] Time steps         ::   404
- <---> [06.01.01] Special Points for the FCC lattice
- <---> Time Plot(s) |                                        | [000%] --(E) --(X)
- <---> Time Plot(s) |########################################| [100%] --(E) --(X)
- <---> [07] Timing Overview
- <---> [TIMING]                io_WF :    0.0001 s CPU
- <---> [TIMING]              io_GROT :    0.0012 s CPU (           3 calls,    0.0004 s avg)
- <---> [TIMING]     io_RT_components :    0.2959 s CPU (         812 calls,    0.0004 s avg)
- <---> [TIMING]          io_KB_pwscf :    0.0003 s CPU
- <---> [TIMING]         io_KB_abinit :    0.0000 s CPU
- <---> [TIMING]     io_ATMPROJ_pwscf :    0.0000 s CPU
- <---> [TIMING]           io_COL_CUT :    0.0000 s CPU
- <---> [TIMING]             io_QINDX :    0.0003 s CPU
- <---> [TIMING]       io_Double_Grid :    0.0002 s CPU (           2 calls,    0.0001 s avg)
- <---> [TIMING]     RT output (INIT) :    0.0001 s CPU
- <---> [08] Memory Overview
- <---> [09] Game Over & Game summary
+ <---> [RD./13_elph_0K_field_ad-serial-devel-rt-io/ndb.RT_carriers]-
+ <--->  Coulomb cutoff potential         :none
+ <--->  Fragmentation                    :yes
+ <--->  Electronic Temperature        [K]: 0.000000
+ <--->  Bosonic    Temperature        [K]: 0.000000
+ <--->  [RT] Bands                      :  2   7
+ <--->  [RT] K-points                   :  4
+ <--->  [RT] Potential                  :IP
+ <--->  [E-P] Electron-phonon           :yes
+ <--->  [E-P] Completed Collision(CCA)  :yes
+ <--->  [E-P] Branches                  :  1   6
+ <--->  [E-P] GF`s Memory steps         : 3
+ <--->  [E-E] Coulomb scattering        :no
+ <--->  [E-E] Coulomb correlation       :no
+ <--->  [E-PHOTON] Scattering           :no
+ <---> - S/N 003129 -------------------------- v.04.05.00 r.17670 -
+ <---> [CARRIERS] Uniform grid       :no
+ <---> [CARRIERS] Time range     [fs]:   0.0000  498.9600
+ <---> [CARRIERS] Time step      [fs]: 1.280024
+ <---> [CARRIERS] Time steps         :  386
+ <---> [RT] Loaded Carrier components @ 0.0000000 fs
+ <---> [RT] Loaded Carrier components @ 1.5000001 fs
+ <---> [RT] Loaded Carrier components @ 3.0000002 fs
+ <---> [RT] Loaded Carrier components @ 4.5000000 fs
+ <---> [RT] Loaded Carrier components @ 6.0000005 fs
+ <---> [RT] Loaded Carrier components @ 7.5000005 fs
+ <---> [RT] Loaded Carrier components @ 9.0000000 fs
+ <---> [RT] Loaded Carrier components @ 10.500000 fs
+ <---> [RT] Loaded Carrier components @ 12.000001 fs
+ <---> [RT] Loaded Carrier components @ 13.500001 fs
+ <---> [RT] Loaded Carrier components @ 15.000001 fs
+ <---> [RT] Loaded Carrier components @ 16.500000 fs
+ <---> [RT] Loaded Carrier components @ 18.000000 fs
+ <---> [RT] Loaded Carrier components @ 19.500002 fs
+ <---> [RT] Loaded Carrier components @ 21.000000 fs
+ <---> [RT] Loaded Carrier components @ 22.500002 fs
+ <---> [RT] Loaded Carrier components @ 24.000002 fs
+ <---> [RT] Loaded Carrier components @ 25.500000 fs
+ <---> [RT] Loaded Carrier components @ 27.000002 fs
+ <---> [RT] Loaded Carrier components @ 28.500002 fs
+ <---> [RT] Loaded Carrier components @ 30.000002 fs
+ <---> [RT] Loaded Carrier components @ 31.500000 fs
+ <---> [RT] Loaded Carrier components @ 33.000000 fs
+ <---> [RT] Loaded Carrier components @ 34.500000 fs
+ <---> [RT] Loaded Carrier components @ 36.000000 fs
+ <---> [RT] Loaded Carrier components @ 37.500004 fs
+ <---> [RT] Loaded Carrier components @ 39.000004 fs
+ <---> [RT] Loaded Carrier components @ 40.500000 fs
+ <---> [RT] Loaded Carrier components @ 42.000000 fs
+ <01s> [RT] Loaded Carrier components @ 43.500000 fs
+ <01s> [RT] Loaded Carrier components @ 45.000004 fs
+ <01s> [RT] Loaded Carrier components @ 46.500004 fs
+ <01s> [RT] Loaded Carrier components @ 48.000004 fs
+ <01s> [RT] Loaded Carrier components @ 49.500000 fs
+ <01s> [RT] Loaded Carrier components @ 51.000000 fs
+ <01s> [RT] Loaded Carrier components @ 52.500004 fs
+ <01s> [RT] Loaded Carrier components @ 54.000004 fs
+ <01s> [RT] Loaded Carrier components @ 55.500000 fs
+ <01s> [RT] Loaded Carrier components @ 57.000004 fs
+ <01s> [RT] Loaded Carrier components @ 58.500000 fs
+ <01s> [RT] Loaded Carrier components @ 60.000004 fs
+ <01s> [RT] Loaded Carrier components @ 61.040001 fs
+ <01s> [RT] Loaded Carrier components @ 62.080002 fs
+ <01s> [RT] Loaded Carrier components @ 63.120007 fs
+ <01s> [RT] Loaded Carrier components @ 64.160004 fs
+ <01s> [RT] Loaded Carrier components @ 65.200005 fs
+ <01s> [RT] Loaded Carrier components @ 66.320000 fs
+ <01s> [RT] Loaded Carrier components @ 67.440002 fs
+ <01s> [RT] Loaded Carrier components @ 68.560005 fs
+ <01s> [RT] Loaded Carrier components @ 69.680000 fs
+ <01s> [RT] Loaded Carrier components @ 70.800003 fs
+ <01s> [RT] Loaded Carrier components @ 71.919998 fs
+ <01s> [RT] Loaded Carrier components @ 73.040009 fs
+ <01s> [RT] Loaded Carrier components @ 74.160004 fs
+ <01s> [RT] Loaded Carrier components @ 75.279999 fs
+ <01s> [RT] Loaded Carrier components @ 76.560005 fs
+ <01s> [RT] Loaded Carrier components @ 77.840004 fs
+ <01s> [RT] Loaded Carrier components @ 79.120003 fs
+ <01s> [RT] Loaded Carrier components @ 80.400002 fs
+ <01s> [RT] Loaded Carrier components @ 81.680008 fs
+ <01s> [RT] Loaded Carrier components @ 82.960007 fs
+ <01s> [RT] Loaded Carrier components @ 84.240005 fs
+ <01s> [RT] Loaded Carrier components @ 85.520004 fs
+ <01s> [RT] Loaded Carrier components @ 86.800003 fs
+ <02s> [RT] Loaded Carrier components @ 88.080002 fs
+ <02s> [RT] Loaded Carrier components @ 89.360001 fs
+ <02s> [RT] Loaded Carrier components @ 90.640007 fs
+ <02s> [RT] Loaded Carrier components @ 91.920006 fs
+ <02s> [RT] Loaded Carrier components @ 93.200005 fs
+ <02s> [RT] Loaded Carrier components @ 94.480003 fs
+ <02s> [RT] Loaded Carrier components @ 95.760002 fs
+ <02s> [RT] Loaded Carrier components @ 97.040001 fs
+ <02s> [RT] Loaded Carrier components @ 98.320007 fs
+ <02s> [RT] Loaded Carrier components @ 99.600006 fs
+ <02s> [RT] Loaded Carrier components @ 100.88000 fs
+ <02s> [RT] Loaded Carrier components @ 102.16000 fs
+ <02s> [RT] Loaded Carrier components @ 103.44001 fs
+ <02s> [RT] Loaded Carrier components @ 104.72001 fs
+ <02s> [RT] Loaded Carrier components @ 106.00001 fs
+ <02s> [RT] Loaded Carrier components @ 107.28001 fs
+ <02s> [RT] Loaded Carrier components @ 108.56001 fs
+ <02s> [RT] Loaded Carrier components @ 109.84001 fs
+ <02s> [RT] Loaded Carrier components @ 111.12000 fs
+ <02s> [RT] Loaded Carrier components @ 112.40000 fs
+ <02s> [RT] Loaded Carrier components @ 113.68000 fs
+ <02s> [RT] Loaded Carrier components @ 114.96000 fs
+ <02s> [RT] Loaded Carrier components @ 116.24001 fs
+ <02s> [RT] Loaded Carrier components @ 117.52000 fs
+ <02s> [RT] Loaded Carrier components @ 118.80000 fs
+ <02s> [RT] Loaded Carrier components @ 120.08000 fs
+ <02s> [RT] Loaded Carrier components @ 121.36001 fs
+ <02s> [RT] Loaded Carrier components @ 122.64001 fs
+ <02s> [RT] Loaded Carrier components @ 123.92001 fs
+ <02s> [RT] Loaded Carrier components @ 125.20001 fs
+ <02s> [RT] Loaded Carrier components @ 126.48001 fs
+ <02s> [RT] Loaded Carrier components @ 127.76001 fs
+ <02s> [RT] Loaded Carrier components @ 129.04001 fs
+ <03s> [RT] Loaded Carrier components @ 130.32001 fs
+ <03s> [RT] Loaded Carrier components @ 131.60001 fs
+ <03s> [RT] Loaded Carrier components @ 132.88000 fs
+ <03s> [RT] Loaded Carrier components @ 134.16000 fs
+ <03s> [RT] Loaded Carrier components @ 135.44000 fs
+ <03s> [RT] Loaded Carrier components @ 136.72000 fs
+ <03s> [RT] Loaded Carrier components @ 138.00000 fs
+ <03s> [RT] Loaded Carrier components @ 139.28000 fs
+ <03s> [RT] Loaded Carrier components @ 140.56001 fs
+ <03s> [RT] Loaded Carrier components @ 141.84001 fs
+ <03s> [RT] Loaded Carrier components @ 143.12001 fs
+ <03s> [RT] Loaded Carrier components @ 144.40001 fs
+ <03s> [RT] Loaded Carrier components @ 145.68001 fs
+ <03s> [RT] Loaded Carrier components @ 146.96001 fs
+ <03s> [RT] Loaded Carrier components @ 148.24001 fs
+ <03s> [RT] Loaded Carrier components @ 149.52000 fs
+ <03s> [RT] Loaded Carrier components @ 150.80002 fs
+ <03s> [RT] Loaded Carrier components @ 152.08000 fs
+ <03s> [RT] Loaded Carrier components @ 153.36000 fs
+ <03s> [RT] Loaded Carrier components @ 154.64000 fs
+ <03s> [RT] Loaded Carrier components @ 155.92000 fs
+ <03s> [RT] Loaded Carrier components @ 157.20001 fs
+ <03s> [RT] Loaded Carrier components @ 158.48001 fs
+ <03s> [RT] Loaded Carrier components @ 159.76001 fs
+ <03s> [RT] Loaded Carrier components @ 161.04001 fs
+ <03s> [RT] Loaded Carrier components @ 162.32001 fs
+ <03s> [RT] Loaded Carrier components @ 163.60001 fs
+ <03s> [RT] Loaded Carrier components @ 164.88000 fs
+ <03s> [RT] Loaded Carrier components @ 166.16000 fs
+ <03s> [RT] Loaded Carrier components @ 167.44002 fs
+ <03s> [RT] Loaded Carrier components @ 168.72002 fs
+ <04s> [RT] Loaded Carrier components @ 170.00002 fs
+ <04s> [RT] Loaded Carrier components @ 171.28001 fs
+ <04s> [RT] Loaded Carrier components @ 172.56000 fs
+ <04s> [RT] Loaded Carrier components @ 173.84000 fs
+ <04s> [RT] Loaded Carrier components @ 175.12001 fs
+ <04s> [RT] Loaded Carrier components @ 176.40001 fs
+ <04s> [RT] Loaded Carrier components @ 177.68001 fs
+ <04s> [RT] Loaded Carrier components @ 178.96001 fs
+ <04s> [RT] Loaded Carrier components @ 180.24001 fs
+ <04s> [RT] Loaded Carrier components @ 181.52000 fs
+ <04s> [RT] Loaded Carrier components @ 182.80000 fs
+ <04s> [RT] Loaded Carrier components @ 184.08002 fs
+ <04s> [RT] Loaded Carrier components @ 185.36002 fs
+ <04s> [RT] Loaded Carrier components @ 186.64001 fs
+ <04s> [RT] Loaded Carrier components @ 187.92001 fs
+ <04s> [RT] Loaded Carrier components @ 189.20001 fs
+ <04s> [RT] Loaded Carrier components @ 190.48001 fs
+ <04s> [RT] Loaded Carrier components @ 191.76001 fs
+ <04s> [RT] Loaded Carrier components @ 193.04001 fs
+ <04s> [RT] Loaded Carrier components @ 194.32001 fs
+ <04s> [RT] Loaded Carrier components @ 195.60001 fs
+ <04s> [RT] Loaded Carrier components @ 196.88000 fs
+ <04s> [RT] Loaded Carrier components @ 198.16000 fs
+ <04s> [RT] Loaded Carrier components @ 199.44000 fs
+ <04s> [RT] Loaded Carrier components @ 200.72000 fs
+ <04s> [RT] Loaded Carrier components @ 202.00002 fs
+ <04s> [RT] Loaded Carrier components @ 203.28001 fs
+ <04s> [RT] Loaded Carrier components @ 204.56001 fs
+ <04s> [RT] Loaded Carrier components @ 205.84001 fs
+ <04s> [RT] Loaded Carrier components @ 207.12001 fs
+ <04s> [RT] Loaded Carrier components @ 208.40001 fs
+ <04s> [RT] Loaded Carrier components @ 209.68001 fs
+ <04s> [RT] Loaded Carrier components @ 210.96002 fs
+ <04s> [RT] Loaded Carrier components @ 212.24002 fs
+ <04s> [RT] Loaded Carrier components @ 213.52002 fs
+ <04s> [RT] Loaded Carrier components @ 214.80002 fs
+ <05s> [RT] Loaded Carrier components @ 216.08002 fs
+ <05s> [RT] Loaded Carrier components @ 217.36002 fs
+ <05s> [RT] Loaded Carrier components @ 218.64001 fs
+ <05s> [RT] Loaded Carrier components @ 219.92001 fs
+ <05s> [RT] Loaded Carrier components @ 221.20003 fs
+ <05s> [RT] Loaded Carrier components @ 222.48003 fs
+ <05s> [RT] Loaded Carrier components @ 223.75999 fs
+ <05s> [RT] Loaded Carrier components @ 225.03999 fs
+ <05s> [RT] Loaded Carrier components @ 226.32001 fs
+ <05s> [RT] Loaded Carrier components @ 227.60001 fs
+ <05s> [RT] Loaded Carrier components @ 228.88000 fs
+ <05s> [RT] Loaded Carrier components @ 230.16000 fs
+ <05s> [RT] Loaded Carrier components @ 231.44000 fs
+ <05s> [RT] Loaded Carrier components @ 232.72000 fs
+ <05s> [RT] Loaded Carrier components @ 234.00000 fs
+ <05s> [RT] Loaded Carrier components @ 235.28000 fs
+ <05s> [RT] Loaded Carrier components @ 236.56001 fs
+ <05s> [RT] Loaded Carrier components @ 237.84001 fs
+ <05s> [RT] Loaded Carrier components @ 239.12001 fs
+ <05s> [RT] Loaded Carrier components @ 240.40001 fs
+ <05s> [RT] Loaded Carrier components @ 241.68001 fs
+ <05s> [RT] Loaded Carrier components @ 242.96001 fs
+ <05s> [RT] Loaded Carrier components @ 244.24001 fs
+ <05s> [RT] Loaded Carrier components @ 245.52002 fs
+ <05s> [RT] Loaded Carrier components @ 246.80002 fs
+ <05s> [RT] Loaded Carrier components @ 248.08002 fs
+ <05s> [RT] Loaded Carrier components @ 249.36002 fs
+ <05s> [RT] Loaded Carrier components @ 250.64001 fs
+ <05s> [RT] Loaded Carrier components @ 251.92001 fs
+ <05s> [RT] Loaded Carrier components @ 253.20001 fs
+ <05s> [RT] Loaded Carrier components @ 254.48001 fs
+ <06s> [RT] Loaded Carrier components @ 255.76003 fs
+ <06s> [RT] Loaded Carrier components @ 257.04001 fs
+ <06s> [RT] Loaded Carrier components @ 258.32001 fs
+ <06s> [RT] Loaded Carrier components @ 259.60001 fs
+ <06s> [RT] Loaded Carrier components @ 260.88004 fs
+ <06s> [RT] Loaded Carrier components @ 262.16003 fs
+ <06s> [RT] Loaded Carrier components @ 263.44003 fs
+ <06s> [RT] Loaded Carrier components @ 264.72000 fs
+ <06s> [RT] Loaded Carrier components @ 266.00000 fs
+ <06s> [RT] Loaded Carrier components @ 267.28000 fs
+ <06s> [RT] Loaded Carrier components @ 268.56000 fs
+ <06s> [RT] Loaded Carrier components @ 269.84000 fs
+ <06s> [RT] Loaded Carrier components @ 271.12000 fs
+ <06s> [RT] Loaded Carrier components @ 272.39999 fs
+ <06s> [RT] Loaded Carrier components @ 273.67999 fs
+ <06s> [RT] Loaded Carrier components @ 274.96002 fs
+ <06s> [RT] Loaded Carrier components @ 276.24002 fs
+ <06s> [RT] Loaded Carrier components @ 277.52002 fs
+ <06s> [RT] Loaded Carrier components @ 278.80002 fs
+ <06s> [RT] Loaded Carrier components @ 280.08002 fs
+ <06s> [RT] Loaded Carrier components @ 281.36002 fs
+ <06s> [RT] Loaded Carrier components @ 282.64001 fs
+ <06s> [RT] Loaded Carrier components @ 283.92001 fs
+ <06s> [RT] Loaded Carrier components @ 285.20001 fs
+ <06s> [RT] Loaded Carrier components @ 286.48001 fs
+ <06s> [RT] Loaded Carrier components @ 287.76001 fs
+ <06s> [RT] Loaded Carrier components @ 289.04001 fs
+ <06s> [RT] Loaded Carrier components @ 290.32001 fs
+ <06s> [RT] Loaded Carrier components @ 291.60001 fs
+ <06s> [RT] Loaded Carrier components @ 292.88000 fs
+ <06s> [RT] Loaded Carrier components @ 294.16003 fs
+ <06s> [RT] Loaded Carrier components @ 295.44003 fs
+ <06s> [RT] Loaded Carrier components @ 296.72003 fs
+ <06s> [RT] Loaded Carrier components @ 298.00003 fs
+ <06s> [RT] Loaded Carrier components @ 299.28003 fs
+ <07s> [RT] Loaded Carrier components @ 300.56003 fs
+ <07s> [RT] Loaded Carrier components @ 301.84003 fs
+ <07s> [RT] Loaded Carrier components @ 303.12003 fs
+ <07s> [RT] Loaded Carrier components @ 304.40002 fs
+ <07s> [RT] Loaded Carrier components @ 305.67999 fs
+ <07s> [RT] Loaded Carrier components @ 306.95999 fs
+ <07s> [RT] Loaded Carrier components @ 308.23999 fs
+ <07s> [RT] Loaded Carrier components @ 309.52002 fs
+ <07s> [RT] Loaded Carrier components @ 310.80002 fs
+ <07s> [RT] Loaded Carrier components @ 312.08002 fs
+ <07s> [RT] Loaded Carrier components @ 313.36002 fs
+ <07s> [RT] Loaded Carrier components @ 314.64001 fs
+ <07s> [RT] Loaded Carrier components @ 315.92001 fs
+ <07s> [RT] Loaded Carrier components @ 317.20001 fs
+ <07s> [RT] Loaded Carrier components @ 318.48001 fs
+ <07s> [RT] Loaded Carrier components @ 319.76001 fs
+ <07s> [RT] Loaded Carrier components @ 321.04001 fs
+ <07s> [RT] Loaded Carrier components @ 322.32001 fs
+ <07s> [RT] Loaded Carrier components @ 323.60001 fs
+ <07s> [RT] Loaded Carrier components @ 324.88000 fs
+ <07s> [RT] Loaded Carrier components @ 326.16000 fs
+ <07s> [RT] Loaded Carrier components @ 327.44000 fs
+ <07s> [RT] Loaded Carrier components @ 328.72003 fs
+ <07s> [RT] Loaded Carrier components @ 330.00003 fs
+ <07s> [RT] Loaded Carrier components @ 331.28003 fs
+ <07s> [RT] Loaded Carrier components @ 332.56003 fs
+ <07s> [RT] Loaded Carrier components @ 333.84003 fs
+ <07s> [RT] Loaded Carrier components @ 335.12003 fs
+ <07s> [RT] Loaded Carrier components @ 336.40002 fs
+ <07s> [RT] Loaded Carrier components @ 337.68002 fs
+ <07s> [RT] Loaded Carrier components @ 338.96002 fs
+ <07s> [RT] Loaded Carrier components @ 340.24002 fs
+ <07s> [RT] Loaded Carrier components @ 341.52002 fs
+ <07s> [RT] Loaded Carrier components @ 342.80002 fs
+ <07s> [RT] Loaded Carrier components @ 344.08002 fs
+ <08s> [RT] Loaded Carrier components @ 345.36002 fs
+ <08s> [RT] Loaded Carrier components @ 346.64001 fs
+ <08s> [RT] Loaded Carrier components @ 347.92001 fs
+ <08s> [RT] Loaded Carrier components @ 349.20001 fs
+ <08s> [RT] Loaded Carrier components @ 350.48001 fs
+ <08s> [RT] Loaded Carrier components @ 351.76001 fs
+ <08s> [RT] Loaded Carrier components @ 353.04001 fs
+ <08s> [RT] Loaded Carrier components @ 354.32001 fs
+ <08s> [RT] Loaded Carrier components @ 355.60001 fs
+ <08s> [RT] Loaded Carrier components @ 356.88000 fs
+ <08s> [RT] Loaded Carrier components @ 358.16000 fs
+ <08s> [RT] Loaded Carrier components @ 359.44000 fs
+ <08s> [RT] Loaded Carrier components @ 360.72000 fs
+ <08s> [RT] Loaded Carrier components @ 362.00000 fs
+ <08s> [RT] Loaded Carrier components @ 363.28003 fs
+ <08s> [RT] Loaded Carrier components @ 364.56003 fs
+ <08s> [RT] Loaded Carrier components @ 365.84003 fs
+ <08s> [RT] Loaded Carrier components @ 367.12003 fs
+ <08s> [RT] Loaded Carrier components @ 368.40002 fs
+ <08s> [RT] Loaded Carrier components @ 369.68002 fs
+ <08s> [RT] Loaded Carrier components @ 370.96002 fs
+ <08s> [RT] Loaded Carrier components @ 372.24002 fs
+ <08s> [RT] Loaded Carrier components @ 373.52002 fs
+ <08s> [RT] Loaded Carrier components @ 374.80002 fs
+ <08s> [RT] Loaded Carrier components @ 376.08002 fs
+ <08s> [RT] Loaded Carrier components @ 377.36002 fs
+ <08s> [RT] Loaded Carrier components @ 378.64001 fs
+ <08s> [RT] Loaded Carrier components @ 379.92001 fs
+ <08s> [RT] Loaded Carrier components @ 381.20001 fs
+ <08s> [RT] Loaded Carrier components @ 382.48004 fs
+ <09s> [RT] Loaded Carrier components @ 383.76004 fs
+ <09s> [RT] Loaded Carrier components @ 385.04004 fs
+ <09s> [RT] Loaded Carrier components @ 386.32004 fs
+ <09s> [RT] Loaded Carrier components @ 387.60001 fs
+ <09s> [RT] Loaded Carrier components @ 388.88000 fs
+ <09s> [RT] Loaded Carrier components @ 390.16000 fs
+ <09s> [RT] Loaded Carrier components @ 391.44000 fs
+ <09s> [RT] Loaded Carrier components @ 392.72000 fs
+ <09s> [RT] Loaded Carrier components @ 394.00000 fs
+ <09s> [RT] Loaded Carrier components @ 395.28000 fs
+ <09s> [RT] Loaded Carrier components @ 396.56000 fs
+ <09s> [RT] Loaded Carrier components @ 397.84003 fs
+ <09s> [RT] Loaded Carrier components @ 399.12003 fs
+ <09s> [RT] Loaded Carrier components @ 400.40002 fs
+ <09s> [RT] Loaded Carrier components @ 401.68002 fs
+ <09s> [RT] Loaded Carrier components @ 402.96005 fs
+ <09s> [RT] Loaded Carrier components @ 404.24002 fs
+ <09s> [RT] Loaded Carrier components @ 405.52005 fs
+ <09s> [RT] Loaded Carrier components @ 406.80002 fs
+ <09s> [RT] Loaded Carrier components @ 408.07999 fs
+ <09s> [RT] Loaded Carrier components @ 409.36002 fs
+ <09s> [RT] Loaded Carrier components @ 410.63998 fs
+ <09s> [RT] Loaded Carrier components @ 411.92001 fs
+ <09s> [RT] Loaded Carrier components @ 413.20001 fs
+ <09s> [RT] Loaded Carrier components @ 414.48001 fs
+ <09s> [RT] Loaded Carrier components @ 415.76001 fs
+ <09s> [RT] Loaded Carrier components @ 417.04004 fs
+ <09s> [RT] Loaded Carrier components @ 418.32001 fs
+ <09s> [RT] Loaded Carrier components @ 419.60004 fs
+ <09s> [RT] Loaded Carrier components @ 420.88000 fs
+ <09s> [RT] Loaded Carrier components @ 422.16003 fs
+ <09s> [RT] Loaded Carrier components @ 423.44000 fs
+ <09s> [RT] Loaded Carrier components @ 424.72003 fs
+ <09s> [RT] Loaded Carrier components @ 426.00000 fs
+ <09s> [RT] Loaded Carrier components @ 427.28003 fs
+ <10s> [RT] Loaded Carrier components @ 428.56000 fs
+ <10s> [RT] Loaded Carrier components @ 429.84003 fs
+ <10s> [RT] Loaded Carrier components @ 431.12000 fs
+ <10s> [RT] Loaded Carrier components @ 432.40002 fs
+ <10s> [RT] Loaded Carrier components @ 433.68002 fs
+ <10s> [RT] Loaded Carrier components @ 434.96002 fs
+ <10s> [RT] Loaded Carrier components @ 436.24002 fs
+ <10s> [RT] Loaded Carrier components @ 437.52005 fs
+ <10s> [RT] Loaded Carrier components @ 438.80002 fs
+ <10s> [RT] Loaded Carrier components @ 440.08005 fs
+ <10s> [RT] Loaded Carrier components @ 441.36002 fs
+ <10s> [RT] Loaded Carrier components @ 442.64005 fs
+ <10s> [RT] Loaded Carrier components @ 443.92001 fs
+ <10s> [RT] Loaded Carrier components @ 445.20004 fs
+ <10s> [RT] Loaded Carrier components @ 446.48001 fs
+ <10s> [RT] Loaded Carrier components @ 447.76004 fs
+ <10s> [RT] Loaded Carrier components @ 449.04001 fs
+ <10s> [RT] Loaded Carrier components @ 450.32001 fs
+ <10s> [RT] Loaded Carrier components @ 451.60004 fs
+ <10s> [RT] Loaded Carrier components @ 452.88000 fs
+ <10s> [RT] Loaded Carrier components @ 454.16003 fs
+ <10s> [RT] Loaded Carrier components @ 455.44000 fs
+ <10s> [RT] Loaded Carrier components @ 456.72003 fs
+ <10s> [RT] Loaded Carrier components @ 458.00000 fs
+ <10s> [RT] Loaded Carrier components @ 459.28003 fs
+ <10s> [RT] Loaded Carrier components @ 460.56000 fs
+ <10s> [RT] Loaded Carrier components @ 461.84003 fs
+ <10s> [RT] Loaded Carrier components @ 463.12000 fs
+ <10s> [RT] Loaded Carrier components @ 464.40002 fs
+ <10s> [RT] Loaded Carrier components @ 465.67999 fs
+ <10s> [RT] Loaded Carrier components @ 466.96002 fs
+ <10s> [RT] Loaded Carrier components @ 468.24002 fs
+ <10s> [RT] Loaded Carrier components @ 469.52002 fs
+ <10s> [RT] Loaded Carrier components @ 470.80002 fs
+ <10s> [RT] Loaded Carrier components @ 472.08005 fs
+ <11s> [RT] Loaded Carrier components @ 473.36002 fs
+ <11s> [RT] Loaded Carrier components @ 474.64005 fs
+ <11s> [RT] Loaded Carrier components @ 475.92001 fs
+ <11s> [RT] Loaded Carrier components @ 477.20004 fs
+ <11s> [RT] Loaded Carrier components @ 478.48001 fs
+ <11s> [RT] Loaded Carrier components @ 479.76004 fs
+ <11s> [RT] Loaded Carrier components @ 481.04001 fs
+ <11s> [RT] Loaded Carrier components @ 482.32004 fs
+ <11s> [RT] Loaded Carrier components @ 483.60001 fs
+ <11s> [RT] Loaded Carrier components @ 484.88004 fs
+ <11s> [RT] Loaded Carrier components @ 486.16003 fs
+ <11s> [RT] Loaded Carrier components @ 487.44003 fs
+ <11s> [RT] Loaded Carrier components @ 488.72003 fs
+ <11s> [RT] Loaded Carrier components @ 490.00000 fs
+ <11s> [RT] Loaded Carrier components @ 491.28003 fs
+ <11s> [RT] Loaded Carrier components @ 492.56000 fs
+ <11s> [RT] Loaded Carrier components @ 493.84003 fs
+ <11s> [RT] Loaded Carrier components @ 495.12000 fs
+ <11s> [RT] Loaded Carrier components @ 496.40002 fs
+ <11s> [RT] Loaded Carrier components @ 497.67999 fs
+ <11s> [RT] Loaded Carrier components @ 498.96002 fs
+ <11s> [07] Memory Overview
+ <11s> [08] Game Over & Game summary
+ <11s> [TIMING]            [Time-Profile]: 11s

@@ -8,34 +8,35 @@
        /   /      Y88b /          Y888b 888__/    `88_-~                  
                                                                           
                                                                           
-         Version 4.5.0 Revision 18068 Hash 2b0c3aab2                      
-                      Branch is develop                                   
-                          MPI Build                                       
+         Version 4.5.0 Revision 17670 Hash 0a7415178                      
+                    Branch is devel-rt-io                                 
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                   http://www.yambo-code.org                               
  
- 03/30/2020 at 12:40 ypp_rt @ marini-Galago-UltraPro
- ==================================================
+ 01/10/2020 at 17:41 ypp_rt @ VivoBook
 
- Cores               :  1
- Threads per core    :  1
- Threads total       :  1
- Nodes Computing     :  1
- Nodes IO            :  1
+ [01] CPU structure, Files & I/O Directories
+ ===========================================
 
- Fragmented WFs      : no
- CORE databases      : .
- Additional I/O      : .
- Communications      : .
- Input file          : yambo.in
- Report file         : ./r-02_plot_elph_0K_adaptative_RealTime_RToccupations_RTtime
- Fat (verbose) log   : no
- Log files           : ./LOG
+ * CPU             : 1
+ * THREADS    (max): 1
+ * THREADS TOT(max): 1
+ * I/O NODES       : 1
+ * NODES(computing): 1
+ *            (I/O): 1
+ * Fragmented WFs  : no
 
- Job   string        : 02_plot_elph_0K_adaptative
- Alt#1 string        : 02_elph_0K_adaptative-serial-develop
- Alt#2 string        : R1
+ CORE databases in   .
+ Additional I/O in   .
+ Communications in   .
+ Input file     is   yambo.in
+ Report file    is   ./r-02_plot_elph_0K_adaptative_RealTime_RToccupations_RTtime
+ Precision      is   SINGLE
+ Log files      in   ./LOG
 
- Precision           : SINGLE
+ Job string(s)-dir(s) (main): 02_plot_elph_0K_adaptative
+                     (alt#1): 02_elph_0K_adaptative-serial-devel-rt-io
+                     (alt#2): R12
   
 
  [02] Y(ambo) P(ost)/(re) P(rocessor)
@@ -57,143 +58,112 @@
   [05.01] Unit cells
   ==================
 
-  Cell kind             :  FCC
-  Atoms in the cell     :  Si
-  number of Si atoms    :  2
-  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
+  Unit cell is FCC
 
-  Direct lattice volume :  263.9777 [a.u.]
-  Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
-   A[ 1 ]: -0.500000  0.000000  0.500000  [iru]
-  -5.091500  0.000000  5.091500  [cc]
-   A[ 2 ]:  0.000000  0.500000  0.500000  [iru]
-   0.000000  5.091500  5.091500  [cc]
-   A[ 3 ]: -0.500000  0.500000  0.000000  [iru]
-  -5.091500  5.091500  0.000000  [cc]
+  ... containing 2Si atoms
 
-  Recip. lattice volume :  0.939664 [a.u.]
-  Recip. lattice vectors:  B[ 1 ]  B[ 2 ]  B[ 3 ]
-   B[ 1 ]: -1.000000 -1.000000  1.000000  [iku]
-  -0.617027 -0.617027  0.617027  [cc]
-   B[ 2 ]:  1.000000  1.000000  1.000000  [iku]
-   0.617027  0.617027  0.617027  [cc]
-   B[ 3 ]: -1.000000  1.000000 -1.000000  [iku]
-  -0.617027  0.617027 -0.617027  [cc]
+  ... with scaling factors [a.u.]: 10.18300  10.18300  10.18300
+
+  Direct Lattice(DL) unit cell [iru  /  cc(a.u.)]
+  A1 =-0.500000  0.000000  0.500000     -5.091500  0.000000  5.091500
+  A2 = 0.000000  0.500000  0.500000      0.000000  5.091500  5.091500
+  A3 =-0.500000  0.500000  0.000000     -5.091500  5.091500  0.000000
+
+  DL volume [au]: 263.9777
+
+  Reciprocal Lattice(RL) unit cell [iku  /  cc]
+  B1 =-1.000000 -1.000000  1.000000     -0.617027 -0.617027  0.617027
+  B2 = 1.000000  1.000000  1.000000      0.617027  0.617027  0.617027
+  B3 =-1.000000  1.000000 -1.000000     -0.617027  0.617027 -0.617027
+
 
   [05.02] Symmetries
   ==================
 
-  Inversion symmetry    : no
-  Spatial inversion     : no
-  K-space Time-reversal : no
-  Magnetic symmetries   : no
-  Group table correct   : yes
-  Symmetries units      :  [cc]
+  DL (S)ymmetries [cc]
+  [S1] 1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000  1.000000
+  [S2]-1.000000  0.000000  0.000000  0.000000 -1.000000  0.000000  0.000000  0.000000  1.000000
+  [S3]-1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000 -1.000000
+  [S4] 1.000000  0.000000  0.000000  0.000000 -1.000000  0.000000  0.000000  0.000000 -1.000000
+  [S5] 0.000000  0.000000  1.000000  1.000000  0.000000  0.000000  0.000000  1.000000  0.000000
+  [S6] 0.000000  0.000000 -1.000000 -1.000000  0.000000  0.000000  0.000000  1.000000  0.000000
+  [S7] 0.000000  0.000000 -1.000000  1.000000  0.000000  0.000000  0.000000 -1.000000  0.000000
+  [S8] 0.000000  0.000000  1.000000 -1.000000  0.000000  0.000000  0.000000 -1.000000  0.000000
+  [S9] 0.000000  1.000000  0.000000  0.000000  0.000000  1.000000  1.000000  0.000000  0.000000
+  [S10] 0.000000 -1.000000  0.000000  0.000000  0.000000 -1.000000  1.000000  0.000000  0.000000
+  [S11] 0.000000 -1.000000  0.000000  0.000000  0.000000  1.000000 -1.000000  0.000000  0.000000
+  [S12] 0.000000  1.000000  0.000000  0.000000  0.000000 -1.000000 -1.000000  0.000000  0.000000
+  [S13] 0.000000 -1.000000  0.000000 -1.000000  0.000000  0.000000  0.000000  0.000000  1.000000
+  [S14] 0.000000  1.000000  0.000000  1.000000  0.000000  0.000000  0.000000  0.000000  1.000000
+  [S15] 0.000000  1.000000  0.000000 -1.000000  0.000000  0.000000  0.000000  0.000000 -1.000000
+  [S16] 0.000000 -1.000000  0.000000  1.000000  0.000000  0.000000  0.000000  0.000000 -1.000000
+  [S17] 0.000000  0.000000 -1.000000  0.000000  1.000000  0.000000 -1.000000  0.000000  0.000000
+  [S18] 0.000000  0.000000  1.000000  0.000000  1.000000  0.000000  1.000000  0.000000  0.000000
+  [S19] 0.000000  0.000000  1.000000  0.000000 -1.000000  0.000000 -1.000000  0.000000  0.000000
+  [S20] 0.000000  0.000000 -1.000000  0.000000 -1.000000  0.000000  1.000000  0.000000  0.000000
+  [S21] 1.000000  0.000000  0.000000  0.000000  0.000000 -1.000000  0.000000 -1.000000  0.000000
+  [S22] 1.000000  0.000000  0.000000  0.000000  0.000000  1.000000  0.000000  1.000000  0.000000
+  [S23]-1.000000  0.000000  0.000000  0.000000  0.000000  1.000000  0.000000 -1.000000  0.000000
+  [S24]-1.000000  0.000000  0.000000  0.000000  0.000000 -1.000000  0.000000  1.000000  0.000000
 
-   [S  1]:  1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000  1.000000
-   [S  2]: -1.000000  0.000000  0.000000  0.000000 -1.000000  0.000000  0.000000  0.000000  1.000000
-   [S  3]: -1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000 -1.000000
-   [S  4]:  1.000000  0.000000  0.000000  0.000000 -1.000000  0.000000  0.000000  0.000000 -1.000000
-   [S  5]:  0.000000  0.000000  1.000000  1.000000  0.000000  0.000000  0.000000  1.000000  0.000000
-   [S  6]:  0.000000  0.000000 -1.000000 -1.000000  0.000000  0.000000  0.000000  1.000000  0.000000
-   [S  7]:  0.000000  0.000000 -1.000000  1.000000  0.000000  0.000000  0.000000 -1.000000  0.000000
-   [S  8]:  0.000000  0.000000  1.000000 -1.000000  0.000000  0.000000  0.000000 -1.000000  0.000000
-   [S  9]:  0.000000  1.000000  0.000000  0.000000  0.000000  1.000000  1.000000  0.000000  0.000000
-   [S 10]:  0.000000 -1.000000  0.000000  0.000000  0.000000 -1.000000  1.000000  0.000000  0.000000
-   [S 11]:  0.000000 -1.000000  0.000000  0.000000  0.000000  1.000000 -1.000000  0.000000  0.000000
-   [S 12]:  0.000000  1.000000  0.000000  0.000000  0.000000 -1.000000 -1.000000  0.000000  0.000000
-   [S 13]:  0.000000 -1.000000  0.000000 -1.000000  0.000000  0.000000  0.000000  0.000000  1.000000
-   [S 14]:  0.000000  1.000000  0.000000  1.000000  0.000000  0.000000  0.000000  0.000000  1.000000
-   [S 15]:  0.000000  1.000000  0.000000 -1.000000  0.000000  0.000000  0.000000  0.000000 -1.000000
-   [S 16]:  0.000000 -1.000000  0.000000  1.000000  0.000000  0.000000  0.000000  0.000000 -1.000000
-   [S 17]:  0.000000  0.000000 -1.000000  0.000000  1.000000  0.000000 -1.000000  0.000000  0.000000
-   [S 18]:  0.000000  0.000000  1.000000  0.000000  1.000000  0.000000  1.000000  0.000000  0.000000
-   [S 19]:  0.000000  0.000000  1.000000  0.000000 -1.000000  0.000000 -1.000000  0.000000  0.000000
-   [S 20]:  0.000000  0.000000 -1.000000  0.000000 -1.000000  0.000000  1.000000  0.000000  0.000000
-   [S 21]:  1.000000  0.000000  0.000000  0.000000  0.000000 -1.000000  0.000000 -1.000000  0.000000
-   [S 22]:  1.000000  0.000000  0.000000  0.000000  0.000000  1.000000  0.000000  1.000000  0.000000
-   [S 23]: -1.000000  0.000000  0.000000  0.000000  0.000000  1.000000  0.000000 -1.000000  0.000000
-   [S 24]: -1.000000  0.000000  0.000000  0.000000  0.000000 -1.000000  0.000000  1.000000  0.000000
+  [SYMs] K-space Time-reversal not included
+  [SYMs] Group table built correctly
 
-  [05.03] Reciprocal space
-  ========================
+  [05.03] RL shells
+  =================
 
-  nG charge         :  2085
-  nG WFs            :   369
-  nC WFs            :  266
-  G-vecs. in shell  :  [ Number ]
-     1    9   15   27   51   59   65   89  113
-    137   169   181   229   259   283   307   331   339
-    387   411   459   531   537   561   609   645   701
-    725   749   821   869   893   941   965  1037  1067
-   1139  1211  1243  1291  1363  1411  1459  1471  1591
-   1639  1687  1759  1807  1837  1893  1917  1989  2085
+  Shells, format: [S#] G_RL(mHa)
 
-  Shells energy     :  [ mHa ]
-    0.00000      571.083      761.445      1522.89      2093.97      2284.33      3045.78      3616.86      3807.22   
-    4568.67      5139.75      6091.56      6662.64      6853.00      7614.45      8185.53      8375.89      9137.34   
-    9708.42      9898.78      10660.2      11231.3      12183.1      12754.2      12944.6      13706.0      14277.1   
-    14467.4      15228.9      15800.0      15990.3      16751.8      17322.9      18274.7      18845.8      19036.1   
-    19797.6      20368.6      20559.0      21891.5      22081.9      22843.3      23414.4      24366.2      24937.3   
-    25127.7      25889.1      26460.2      26650.6      27412.0      27983.1      28173.4      28934.9      29506.0   
+   [S54]:2085(0.2951E+5) [S53]:1989(0.2893E+5) [S52]:1917(0.2817E+5) [S51]:1893(0.2798E+5)
+   [S50]:1837(0.2741E+5) [S49]:1807(0.2665E+5) [S48]:1759(0.2646E+5) [S47]:1687(0.2589E+5)
+   [S46]:1639(0.2513E+5) [S45]:1591(0.2494E+5) [S44]:1471(0.2437E+5) [S43]:1459(0.2341E+5)
+   [S42]:1411(0.2284E+5) [S41]:1363(0.2208E+5) [S40]:1291(0.2189E+5) [S39]:1243(0.2056E+5)
+   [S38]:1211(0.2037E+5) [S37]:1139(0.1980E+5) [S36]:1067(0.1904E+5) [S35]:1037(0.1885E+5)
+   [S34]:965(0.1827E+5) [S33]:941(0.1732E+5) [S32]:893(0.1675E+5) [S31]:869(0.1599E+5)
+   [S30]:821(0.1580E+5) [S29]:749(0.1523E+5) [S28]:725(0.1447E+5) [S27]:701(0.1428E+5)
+   ...
+   [S12]:181( 6092.) [S11]:169( 5140.) [S10]:137( 4569.) [S9]:113( 3807.)
+   [S8]:89( 3617.) [S7]:65( 3046.) [S6]:59( 2284.) [S5]:51( 2094.)
+   [S4]:27( 1523.) [S3]:15( 761.4446) [S2]:9( 571.0835) [S1]:1( 0.000000)
 
   [05.04] K-grid lattice
   ======================
 
-  Compatible Grid is   : 3D
-  Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.238269E-8 -0.500000     0.238269E-8 [rlu]
-  K_min[ 2 ] : -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
-  K_min[ 3 ] : -0.500000     0.238269E-8 -0.238269E-8 [rlu]
-  Grid dimensions      :  2  2  2
-  K lattice UC volume  :  0.117458 [a.u.]
+  Compatible Grid is 3D
+  B1 [rlu]= 0.000000 -0.500000  0.000000
+  B2      = 0.000000  0.000000 -0.500000
+  B3      =-0.500000  0.000000  0.000000
+  Grid dimensions               : 2  2  2
+  K lattice UC volume       [au]: 0.117458
 
-  IBZ K-points :  3
-  BZ  K-points :   8
+  [05.05] Energies [ev] & Occupations
+  ===================================
 
-  K [1] : weight       :  0.125000
-        : wf components:  259
-        : point-cc     :  0.000000  0.000000  0.000000  [cc]
-        : point-alat   :  0.000000  0.000000  0.000000  [alat]
-        : point-iku    :  0.000000  0.000000  0.000000  [iku]
-  K [2] : weight       :  0.500000
-        : wf components:  266
-        : point-cc     :  0.308513 -0.308513  0.308513  [cc]
-        : point-alat   : -0.238269E-8 -0.238269E-8 -0.500000     [alat]
-        : point-iku    :  0.500000 -0.500000  0.500000  [iku]
-  K [3] : weight       :  0.375000
-        : wf components:  254
-        : point-cc     :  0.000000 -0.617027  0.000000  [cc]
-        : point-alat   :  0.000000 -0.500000 -0.500000  [alat]
-        : point-iku    :  0.000000 -1.000000  0.000000  [iku]
+  [X]Fermi Level        [ev]:  6.609707
+  [X]VBM / CBm          [ev]:  0.000000  0.437631
+  [X]Electronic Temp. [ev K]:  0.00      0.00    
+  [X]Bosonic    Temp. [ev K]:  0.00      0.00    
+  [X]Finite Temperature mode: no
+  [X]El. density      [cm-3]: 0.205E+24
+  [X]States summary         : Full        Metallic    Empty
+                                 0001-0004               0005-0008
+  [X]Indirect Gaps      [ev]: 0.437631  3.448218
+  [X]Direct Gaps        [ev]: 2.440868  3.448218
+  X BZ K-points :  8
 
-  [05.05] Energies & Occupations
-  ==============================
+  Energy unit is electronVolt [eV]
 
-  [X] === General ===
-  [X] Electronic Temperature                        :  0.000000  0.000000 [eV K]
-  [X] Bosonic    Temperature                        :  0.000000  0.000000 [eV K]
-  [X] Finite Temperature mode                       : no
-  [X] El. density                                   :  0.20451E+24 [cm-3]
-  [X] Fermi Level                                   :  6.609707 [eV]
-
-  [X] === Gaps and Widths ===
-  [X] Conduction Band Min                           :  0.437631 [eV]
-  [X] Valence Band Max                              :  0.000000 [eV]
-  [X] Filled Bands                                  :   4
-  [X] Empty Bands                                   :   5   8
-  [X] Direct Gap                                    :  0.437631 [eV]
-  [X] Indirect Gap                                  :  0.437631 [eV]
-  [X] Last valence band width                       :  3.010587 [eV]
-  [X] 1st conduction band width                     :  2.003237 [eV]
+  *X* K [1] : 0.000000  0.000000  0.000000 ( cc) * Comp.s 259 * weight  0.125000
+              0.000000  0.000000  0.000000 (rlu)
+  E -12.15619   0.00000   0.00000   0.00000   2.44087   2.44087   2.44087   3.52522
    
+  *X* K [2] : 0.308513 -0.308513  0.308513 ( cc) * Comp.s 266 * weight  0.500000
+              0.000000  0.000000 -0.500000 (rlu)
+  E -9.730945 -7.200430 -1.262054 -1.262054  1.519058  3.185880  3.185880  7.329928
    
-  E @ K [1]:  [eV]
-  -12.15619   0.00000   0.00000   0.00000   2.44087   2.44087   2.44087   3.52522
-  E @ K [2]:  [eV]
-  -9.730945 -7.200430 -1.262054 -1.262054  1.519058  3.185880  3.185880  7.329928
-  E @ K [3]:  [eV]
-   -7.89574  -7.89573  -3.01059  -3.01059   0.43763   0.43764  10.15807  10.15807
+  *X* K [3] : 0.000000 -0.617027  0.000000 ( cc) * Comp.s 254 * weight  0.375000
+              0.000000 -0.500000 -0.500000 (rlu)
+  E  -7.89574  -7.89573  -3.01059  -3.01059   0.43763   0.43764  10.15807  10.15807
 
  [06] == Real-Time Post-Processing ==
  ====================================
@@ -203,43 +173,28 @@
   =========================================================
 
 
-   [06.01.01] Special Points for the FCC lattice
-   =============================================
+ Timing [Min/Max/Average]: 01s/01s/01s
 
-
- [07] Timing Overview
- ====================
-
- Routines: global (Only MASTER cpu here)
-                 io_WF :    0.0001 s CPU
-               io_GROT :    0.0013 s CPU (           3 calls,    0.0004 s avg)
-      io_RT_components :    0.0313 s CPU (          84 calls,    0.0004 s avg)
-           io_KB_pwscf :    0.0002 s CPU
-          io_KB_abinit :    0.0000 s CPU
-      io_ATMPROJ_pwscf :    0.0000 s CPU
-            io_COL_CUT :    0.0000 s CPU
-              io_QINDX :    0.0004 s CPU
-        io_Double_Grid :    0.0002 s CPU (           2 calls,    0.0001 s avg)
-      RT output (INIT) :    0.0001 s CPU
-
- [08] Memory Overview
+ [07] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
  Memory treshold are: 10.00000Mb (basic treshold)  100.0000Mb (SAVEs treshold)
 
   
-         TOTAL not deallocated :  356.0000Kb
+         TOTAL not deallocated :  282.0000Kb
 
-         Max memory used   :  371.0000Kb
+         Max memory used   :  294.0000Kb
 
- [09] Game Over & Game summary
+ [08] Game Over & Game summary
  =============================
 
- 03/30/2020 at 12:40 ypp_rt @ marini-Galago-UltraPro [start]
- 03/30/2020 at 12:40                                 [end]
+ 01/10/2020 at 17:41 ypp_rt @ VivoBook [start]
+ 01/10/2020 at 17:41                   [end]
 
-  
+ Timing   [Min/Max/Average]: 01s/01s/01s
+             [Time-Profile]: 01s
+
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -248,11 +203,11 @@
  | common practice in the scientific literature, to acknowledge the
  | efforts of people that have made the research possible. In this
  | spirit, please find below the reference we kindly ask you to use
- | in order to acknowledge YAMBO
+ | in order to acknowledge YAMBO:
  |
  | Many-body perturbation theory calculations using the yambo code
  | D. Sangalli, A. Ferretti, H. Miranda, C. Attaccalite, I. Marri, E. Cannuccia, P. Melo,
- | M Marsili, F Paleari, A Marrazzo, G Prandini, P Bonfà, M O Atambo, F Affinito,
+ | M Marsili, F Palear9, A Marrazzo, G Prandini, P Bonfà, M O Atambo, F Affinito,
  | M Palummo, A Molina-Sánchez, C Hogan, M Grüning, D Varsano and A Marini.
  | J. Phys.: Condens. Matter 31, 325902 (2019).
  |
@@ -261,21 +216,20 @@
  | Computer Physics Communications 180, 1392 (2009).
  |
   
- .-Input file  yambo.in
+ .-Input file : yambo.in
  | RealTime                       # [R] TD Post-Processing
  | RToccupations                  # [R] Analize time-dependent occupations
  | RTtime                         # [R] Post-Processing kind: function of time
  | TimeStep= 1.280001     fs      # Time step
  | % TimeRange
- |   0.50000 | 49.80000 | fs      # Time-window where processing is done
+ |   0.00000 | 49.80000 | fs      # Time-window where processing is done
  | %
  | #OCCgroup                      # [NEGF] Double grid states occupations are grouped
  | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
  | #SkipFermiFIT                  # [NEGF] Do a Fermi Fit of occupations (and lifetimes ratio)
- | BANDS_path= ""                 # Path points labels (G,M,K,L...). BANDS path and DOS-project plane/projection.
- | %QPkrange                      #  generalized Kpoint/Band indices
+ | %QPkrange                      # #  generalized Kpoint/Band indices
  | 1|3|2|7|
  | %
- | %QPerange                      #  generalized Kpoint/Energy indices
+ | %QPerange                      # #  generalized Kpoint/Energy indices
  | 1|3| 0.000000|-1.000000|
  | %
