@@ -2,7 +2,7 @@
 @flow = (
 {
 KEYS        => 'nopj sc rt',
-ACTIVE      => 'yes',
+ACTIVE      => 'no',
 TESTS     => 'hBN/YPP;hBN/SC;Beryllium/YPP;Black-Phosphorus/RT',
 MPI_CPU     => 8,
 PAR_MODE    => "default",
