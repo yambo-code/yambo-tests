@@ -1,19 +1,19 @@
+     __      __   ______   __       __  _______    ______                 
+    |  \    /  \ /      \ |  \     /  \|       \  /      \                
+     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
+      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
+       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
+        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
+        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
+        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
+         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-     ____  ____     _       ____    ____  ______      ___                 
-    |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.               
-      \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \              
-       \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |              
-       _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /              
-      |______||____| |____||_____||_____||_______/  `.___."               
-                                                                          
-                                                                          
-                                                                          
-          Version 4.5.0 Revision 18079 Hash da2b3fa02                     
-                      Branch is bug-fixes                                 
-                   MPI+OpenMP+SLK+SLEPC Build                             
+          Version 4.5.0 Revision 18170 Hash 8eca45f70                     
+                     Branch is devel-rt-io                                
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 04/16/2020 at 09:22 ypp_rt @ narro
+ 04/15/2020 at 17:39 ypp_rt @ narro
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 06_ypp_abs_on_the_fly
- Alt#1 string        : 06_td_sex_on_the_fly-serial-bug-fixes
- Alt#2 string        : R3
+ Alt#1 string        : 06_td_sex_on_the_fly-serial-devel-rt-io
+ Alt#2 string        : R2
 
  Precision           : SINGLE
   
@@ -166,29 +166,33 @@
   ==============
 
 
+ Timing [Min/Max/Average] 01s/01s/01s
+
  [07] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                 io_WF :    0.0002 s CPU
-               io_GROT :    0.0029 s CPU (           3 calls,    0.0010 s avg)
-      io_RT_components :    0.0214 s CPU (         173 calls,    0.0001 s avg)
-           io_KB_pwscf :    0.0001 s CPU
+                 io_WF :    0.0016 s CPU
+               io_GROT :    0.0087 s CPU (           3 calls,    0.0029 s avg)
+      io_RT_components :    0.1674 s CPU (           8 calls,    0.0209 s avg)
+           io_KB_pwscf :    0.0003 s CPU
           io_KB_abinit :    0.0000 s CPU
       io_ATMPROJ_pwscf :    0.0000 s CPU
             io_COL_CUT :    0.0000 s CPU
-              io_QINDX :    0.0003 s CPU
+              io_QINDX :    0.0024 s CPU
         io_Double_Grid :    0.0002 s CPU (           2 calls,    0.0001 s avg)
       RT output (INIT) :    0.0001 s CPU
-             RT output :    0.0962 s CPU (        3000 calls,    0.0000 s avg)
+             RT output :    0.0907 s CPU (        3000 calls,    0.0000 s avg)
 
  [08] Game Over & Game summary
  =============================
 
- 04/16/2020 at 09:22 ypp_rt @ narro [start]
- 04/16/2020 at 09:22                [end]
+ 04/15/2020 at 17:39 ypp_rt @ narro [start]
+ 04/15/2020 at 17:39                [end]
 
-  
+ Timing   [Min/Max/Average] 01s/01s/01s
+             [Time-Profile]: 01s
+
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -219,7 +223,7 @@
  | %
  | ETStpsRt= 1000                 # Total Energy steps
  | % TimeRange
- |   0.00000 | 39.84000 | fs      # Time-window where processing is done
+ |   0.00000 | 40.00000 | fs      # Time-window where processing is done
  | %
  | DampMode= "LORENTZIAN"         # Damping type ( NONE | LORENTZIAN | GAUSSIAN )
  | DampFactor= 0.050000   eV      # Damping parameter

@@ -1,16 +1,16 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
 #                                                                     
-#  ____  ____     _       ____    ____  ______      ___               
-# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
-#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
-#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
-#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
-#   |______||____| |____||_____||_____||_______/  `.___."             
-#                                                                     
-#                                                                     
-#                                                                     
-#       Version 4.5.0 Revision 18079 Hash da2b3fa02                   
-#                   Branch is bug-fixes                               
-#                MPI+OpenMP+SLK+SLEPC Build                           
+#       Version 4.5.0 Revision 18170 Hash 8eca45f70                   
+#                  Branch is devel-rt-io                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
 #
@@ -24,26 +24,21 @@
 # [E-E] Coulomb scattering                        : no
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
-# [RT] Time step (initial)                        :  0.100000007E-1 [fs]
-# [RT]           (now)                            :  0.100000007E-1 [fs]
-# [RT] NE time (planned)                          :   40.0000000    [fs]
-# [RT]         (done)                             :   39.8400002    [fs]
-# [RT] Lifetimes Inter/Intra (user)               :   0.00000000      0.00000000    [fs]
-# [RT]                       (running)            :   0.00000000      0.00000000    [fs]
-# [RT] I/O time                                   :   9.92193031    [fs]
-# [RT] NE steps (done)                            :   4001
+# [RT] Time step     (initial)[fs]                :  0.100000007E-1
+# [RT] NE time       (planned)[fs]                :   40.0000000   
+# [RT] NE steps      (planned)[fs]                :   4001
+# [RT] Lif Extr Inte/Intr(sav)[fs]                :   0.00000000      0.00000000   
 # [RT] Lifetimes extrapolation                    : no
-# [dT] Time-Dependent Time step                   : no
 # [RT] Integrator                                 : EULER + RK2 + RWA
-# [RT] Radiative life time                        :   0.00000000    [fs]
-# [RT] Dephasing life time                        :   0.00000000    [fs]
+# [RT] Radiative life time    [fs]                :   0.00000000   
+# [RT] Dephasing life time    [fs]                :   0.00000000   
 # [RT] External Field(s)                          : yes
 # [RT] Number of Fields                           :  1
 # [RT] Diamagnetic term                           : no
 # [RT] Induced field                              : no
 # [DbGd] Double Grid support                      : no
 # [DbGd] Number of k-points                       : 0
-# [DbGd] Used for e-e                             :   0.00000000    [o/o]
+# [DbGd] Used for e-e        [o/o]                :   0.00000000   
 # [CONSTRAINS] N (ee+ep) & dN (ep)                : yes
 # [CONSTRAINS] IP Energy      (ee)                : yes
 # [FIELDs] Gauge Type                             : length
@@ -51,12 +46,12 @@
 # [FIELDs] Polarization                           : linear
 # [FIELDs] Versor                                 :   1.00000000      0.00000000      0.00000000   
 # [FIELDs] Versor_circ                            :   0.00000000      1.00000000      0.00000000   
-# [FIELDs] Intensity                              :  0.15536601E-09 [kWCMm2]
-# [FIELDs] Damping                                :   0.00000000    [fs]
-# [FIELDs] Frequency range                        :   0.00000000      0.00000000    [eV]
+# [FIELDs] Intensity      [kWCMm2]                :   1000.00000   
+# [FIELDs] Damping            [fs]                :   0.00000000   
+# [FIELDs] Frequency range    [eV]                :   0.00000000      0.00000000   
 # [FIELDs] Frequency steps                        :  1
-# [FIELDs] Frequency step                         :   0.00000000    [eV]
-# [FIELDs] Initial time                           :   9.92193031    [fs]
+# [FIELDs] Frequency step     [eV]                :   0.00000000   
+# [FIELDs] Initial time       [fs]                :  0.240000010   
 #
 #
 # [Gr] Retarded Green`s function                  : none
@@ -1065,8 +1060,10 @@
       5.99409389       -0.217713091E-5     -0.00000000        -0.00000000        0.308340032E-5      0.00000000         0.00000000   
       6.00000000       -0.218376613E-5     -0.00000000        -0.00000000        0.307870437E-5      0.00000000         0.00000000   
 # 
-# 04/16/2020 at 09:22 ypp_rt @ narro [start]
-# 04/16/2020 at 09:22                [end]
+# 04/15/2020 at 17:39 ypp_rt @ narro [start]
+# 04/15/2020 at 17:39                [end]
+#  
+# Timing   [Min/Max/Average] 01s/01s/01s
 #
 # .-Input file  yambo.in
 # | RealTime                       # [R] TD Post-Processing
@@ -1077,7 +1074,7 @@
 # | %
 # | ETStpsRt= 1000                 # Total Energy steps
 # | % TimeRange
-# |   0.00000 | 39.84000 | fs      # Time-window where processing is done
+# |   0.00000 | 40.00000 | fs      # Time-window where processing is done
 # | %
 # | DampMode= "LORENTZIAN"         # Damping type ( NONE | LORENTZIAN | GAUSSIAN )
 # | DampFactor= 0.050000   eV      # Damping parameter
