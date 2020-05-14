@@ -45,6 +45,14 @@ call add_RULE(".YPP-eps","skip",COLS=(/3,4,6,7/),Material="Si_bulk")
 call add_RULE(".induced_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 call add_RULE(".total_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 !
+! Temporary
+call add_RULE("08_ypp_bands","align",REF_row=2,Material="MoS2")
+call add_RULE("08_ypp_dos","align",REF_row=2,Material="MoS2")
+call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_EP_Elec_linewidth","align",REF_row=1,Material="MoS2")
+call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_EP_widths_ratio","align",REF_row=1,Material="MoS2")
+call add_RULE("08_ypp_fit_occ_DbGd.YPP-NEQ_linewidths","align",REF_row=1,Material="MoS2")
+call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_occupations","align",REF_row=1,Material="MoS2")
+!
 ! El/Ho Temperatures
 !
 call add_RULE(".mean_EPlifetimes","skip",TITLES=(/"T Hole  [K]","T Elec  [K]"/),MATERIAL="Si_bulk")

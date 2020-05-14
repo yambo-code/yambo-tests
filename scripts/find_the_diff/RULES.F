@@ -22,7 +22,7 @@
 ! MA 02111-1307, USA or visit http://www.gnu.org/copyleft/gpl.txt.
 !
 subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
-&                   VAL_treshold,REF_col,USER_error)
+&                   VAL_treshold,REF_col,REF_row,USER_error)
   !
   use DIFF, ONLY:SP,RULES,i_c,i_t,i_rule,N_max_col,str_length
   !
@@ -32,6 +32,7 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
   character(*), optional ::TITLES(:)
   character(*), optional ::MATERIAL
   integer,      optional ::REF_col
+  integer,      optional ::REF_row
   integer,      optional ::COL
   integer,      optional ::COLS(:)
   real(SP),     optional ::USER_prec
@@ -99,6 +100,10 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
     !
     if (present(REF_col)) then
       RULES(i_rule)%REF_col=REF_col
+    endif
+    !
+    if (present(REF_row)) then
+      RULES(i_rule)%REF_row=REF_row
     endif
     !
     if (RULE=="skip".and..not.present(COL).and..not.present(COLS).and..not.present(TITLE).and..not.present(TITLEs)) then
