@@ -65,14 +65,18 @@ call add_RULE("o-03_QP_COHSEX_drude.ndb.em1s_fragment_1","whitelist",MATERIAL="A
 !
 ! BSE
 !=====
-call add_RULE("o-06_ypp_sort.exc_E_sorted","whitelist",MATERIAL="hBN")
-call add_RULE("o-06_ypp_sort.exc_I_sorted","whitelist",MATERIAL="hBN")
-call add_RULE("o-06_ypp_sort.exc_qpt1_E_sorted","whitelist",MATERIAL="hBN")
-call add_RULE("o-06_ypp_sort.exc_qpt1_I_sorted","whitelist",MATERIAL="hBN")
-call add_RULE("o-06_ypp_sort.exc_qpt2_E_sorted","whitelist",MATERIAL="hBN")
-call add_RULE("o-06_ypp_sort.exc_qpt2_I_sorted","whitelist",MATERIAL="hBN")
-call add_RULE(".exc_I+spin_sorted","whitelist")
-call add_RULE(".exc_qpt1_I+spin_sorted","whitelist")
+call add_RULE(".exc_I+spin_sorted","whitelist",MATERIAL="MoS2")
+call add_RULE(".exc_qpt1_I+spin_sorted","whitelist",MATERIAL="MoS2")
+!
+! AM May 2020. The hBN/GW-OPTICS keep being affected by tiny errors in random parallel mode.
+!
+call add_RULE("o-13_BSE_allq_SLEPC.eel_q4","whitelist",MATERIAL="hBN")
+call add_RULE("o-13_BSE_allq_SLEPC.eps_q4","whitelist",MATERIAL="hBN")
+call add_RULE("o-13_BSE_allq_fullL.eel_q4","whitelist",MATERIAL="hBN")
+call add_RULE("o-13_BSE_allq_fullL.eps_q4","whitelist",MATERIAL="hBN")
+call add_RULE("o-13_BSE_allq_fullL.jdos_q4_diago_bse","whitelist",MATERIAL="hBN")
+call add_RULE("o-14_ypp_sort_BSE_allq_fullL.exc_qpt2","whitelist",MATERIAL="hBN")
+call add_RULE("o-16_ypp_weight_BSE_allq.exc_qpt2_weights","whitelist",MATERIAL="hBN")
 !
 ! SC
 !=====
