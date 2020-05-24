@@ -3,7 +3,7 @@ FC_FLAGS_DEBUG="-g -pg -Wall -fcheck=all -pedantic -fbacktrace -fdump-core -fdum
 FC_FLAGS_OPTIMIZED="-O3  -mtune=native -Wall -fcheck=bounds" # -std=f95"
 FC_FLAGS_LIBS="-O3  -mtune=native" # -std=f95"
 
-YAMBO_LIBS="/home/sangalli/data/Lavoro/Codici/yambo/yambo-libs-test/"
+YAMBO_LIBS="/home/sangalli/data/Lavoro/Codici/yambo/yambo-libs/new-netcdf-debug/"
 
 . /etc/profile.d/modules.sh
 export MODULEPATH=/nfs/data/modulefiles:/usr/share/modules/modulefiles:/opt/modules
