@@ -60,6 +60,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
       if (-e $dir."/SPIN")   {$BROKEN_tests="$BROKEN_tests"."[SPIN]"}
       if (-e $dir."/SPINORS")   {$BROKEN_tests="$BROKEN_tests"."[SPINORS]"}
       if (-e $dir."/ELPH")   {$BROKEN_tests="$BROKEN_tests"."[ELPH]"}
+      if (-e $dir."/PHEL")   {$BROKEN_tests="$BROKEN_tests"."[PHEL]"}
     }else{
      if (-e $dir."/HARD")     {$HARD_str="[H]"};
      if (-e $dir."/PARALLEL") {$P_str="[P]"};
@@ -73,9 +74,10 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
      if (-e $dir."/SPIN")  {$SPIN_tests="$SPIN_tests"." "."$dir"."$HARD_str"."$P_str"};
      if (-e $dir."/SPINORS")  {$SPINORS_tests="$SPINORS_tests"." "."$dir"."$HARD_str"."$P_str"};
      if (-e $dir."/ELPH")  {$ELPH_tests="$ELPH_tests"." "."$dir"."$HARD_str"."$P_str"};
+     if (-e $dir."/PHEL")  {$PHEL_tests="$PHEL_tests"." "."$dir"."$HARD_str"."$P_str"};
      if (-e $dir."/P2Y")  {$P2Y_tests="$P2Y_tests"." "."$dir"."$HARD_str"."$P_str"};
      if (-e $dir."/A2Y")  {$A2Y_tests="$A2Y_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (!-e $dir."/SC" && !-e $dir."/MAGNETIC" && !-e $dir."/ELPH" && !-e $dir."/RT" && !-e $dir."/KERR" && !-e $dir."/QED" && !-e $dir."/PL" && !-e $dir."/NL") {
+     if (!-e $dir."/SC" && !-e $dir."/MAGNETIC" && !-e $dir."/ELPH" && !-e $dir."/RT" && !-e $dir."/KERR" && !-e $dir."/QED" && !-e $dir."/PL" && !-e $dir."/NL" && !-e $dir."PHEL") {
       $NORMAL_tests="$NORMAL_tests"." "."$dir"."$HARD_str"."$P_str";
      }
     };
@@ -92,6 +94,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   &LIST_ELEMENT("[SC]      ",$SC_tests);
   &LIST_ELEMENT("[MAGNETIC]",$MAGNETIC_tests);
   &LIST_ELEMENT("[ELPH]    ",$ELPH_tests);
+  &LIST_ELEMENT("[PHEL]    ",$PHEL_tests);
   &LIST_ELEMENT("[P2Y]     ",$P2Y_tests);
   &LIST_ELEMENT("[A2Y]     ",$A2Y_tests);
   &LIST_ELEMENT("[SPIN]    ",$SPIN_tests);

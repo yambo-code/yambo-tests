@@ -25,13 +25,13 @@ sub UTILS_upload
 chdir("$suite_dir");
 @paths = split(/\//,$upload_test);
 $archive = $upload_test;
-$archive =~ s/\//_/;
+$archive =~ s/\//_/g;
 $test_dir   =$upload_test;
 $test_subdir=".";
 if ( scalar @paths > 1) {
  $test_dir=@paths[0];
  $test_subdir=$upload_test;
- $test_subdir =~ s/$test_dir\///;
+ $test_subdir =~ s/$test_dir\///g;
 }
 chdir("$TESTS_folder/$test_dir");
 #
@@ -44,9 +44,6 @@ if (-d $test_subdir){
  &FTP_upload_it("$archive.tar.gz","$UPLOAD_PATH");
  &command("rm -f $test_subdir/SAVE/*");
  &command("git add $test_subdir/SAVE");
-}else
-{
- &FTP_upload_it("$upload_test","$UPLOAD_PATH");
 }
 }
 1;
