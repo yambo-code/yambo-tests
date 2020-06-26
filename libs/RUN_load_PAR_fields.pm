@@ -83,7 +83,6 @@ if ($random_parallel){
  &PARALLEL_loop() ;
 }
 # Combination
-#
 &PARALLEL_build_the_conf();
 #
 }

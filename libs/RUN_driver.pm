@@ -119,7 +119,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   &RUN_load_actions(".input");
   #
   # Input file dump
-  #
   &RUN_input_load;
   #
   # Runlevels

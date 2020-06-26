@@ -51,8 +51,8 @@ if ($DIPOLES eq "1") { $description .= " dipoles" };
 $HF=&RUN_feature("HF_and_locXC");
 if ($HF eq "1") { $description .= " HF" };
 if ($NLOPTICS ne "1"){
-  $OPTICS=&RUN_feature("optics");
-  if ($OPTICS eq "1") { $description .= " optics" };
+ $OPTICS=&RUN_feature("optics");
+ if ($OPTICS eq "1") { $description .= " optics" };
 };
 $SC=&RUN_feature("scrun");
 $MAGNETIC=&RUN_feature("magnetic");
