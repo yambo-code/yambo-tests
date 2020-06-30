@@ -28,81 +28,81 @@ sub RUN_executables{
 #
 undef $yambo_running;
 if ($P2Y) 
- {$yambo_exec = "$BRANCH/$conf_bin/p2y"}
+ {$yambo_exec = "$conf_bin/p2y"}
 elsif ($A2Y)
- {$yambo_exec = "$BRANCH/$conf_bin/a2y"} 
+ {$yambo_exec = "$conf_bin/a2y"} 
 elsif ($YPP=="1") 
- {$yambo_exec = "$BRANCH/$conf_bin/ypp"}
+ {$yambo_exec = "$conf_bin/ypp"}
 elsif ($YPP=="2") 
  {
- if ($is_NEW_EXC_SORT eq "no" ) {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s"}
- if ($is_NEW_EXC_SORT eq "yes") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s $IQ"}
- if ($is_NEW_driver eq "yes") {$yambo_exec = "$BRANCH/$conf_bin/ypp -e s -b $IQ"}
+ if ($is_NEW_EXC_SORT eq "no" ) {$yambo_exec = "$conf_bin/ypp -e s"}
+ if ($is_NEW_EXC_SORT eq "yes") {$yambo_exec = "$conf_bin/ypp -e s $IQ"}
+ if ($is_NEW_driver eq "yes") {$yambo_exec = "$conf_bin/ypp -e s -b $IQ"}
  }
 else
- {$yambo_exec = "$BRANCH/$conf_bin/yambo";
+ {$yambo_exec = "$conf_bin/yambo";
   $yambo_running=1}
 if (-e "RT") {
  undef $yambo_running;
  if ($YPP_RT=="1" or $YPP=="1") 
-  {$yambo_exec = "$BRANCH/$conf_bin/ypp_rt"}
+  {$yambo_exec = "$conf_bin/ypp_rt"}
  elsif ($YPP_SC=="1" or $YPP=="1") 
-  {$yambo_exec = "$BRANCH/$conf_bin/ypp_sc"}
+  {$yambo_exec = "$conf_bin/ypp_sc"}
  else
-  {$yambo_exec = "$BRANCH/$conf_bin/yambo_rt";
+  {$yambo_exec = "$conf_bin/yambo_rt";
    $yambo_running=1}
 }
 if (-e "QED" && !$YPP=="1" && !$is_GPL) {
  $yambo_running=1;
- $yambo_exec = "$BRANCH/$conf_bin/yambo_qed"
+ $yambo_exec = "$conf_bin/yambo_qed"
 }
 if (-e "PL" && !$is_GPL) {
  undef $yambo_running;
  if ($YPP_RT=="1" or $YPP=="1") 
-  {$yambo_exec = "$BRANCH/$conf_bin/ypp_rt"}  
+  {$yambo_exec = "$conf_bin/ypp_rt"}  
  else
-  {$yambo_exec = "$BRANCH/$conf_bin/yambo_pl";
+  {$yambo_exec = "$conf_bin/yambo_pl";
    $yambo_running=1}
 }
 if (-e "NL") {
  undef $yambo_running;
  if ($YPP_NL=="1" or $YPP=="1") 
-  {$yambo_exec = "$BRANCH/$conf_bin/ypp_nl"}
+  {$yambo_exec = "$conf_bin/ypp_nl"}
  else
-  {$yambo_exec = "$BRANCH/$conf_bin/yambo_nl";
+  {$yambo_exec = "$conf_bin/yambo_nl";
    $yambo_running=1}
 }
 if (-e "ELPH") {
  undef $yambo_running;
  if ($YPP_PH=="1" or $YPP=="1") 
-  {$yambo_exec = "$BRANCH/$conf_bin/ypp_ph"}
+  {$yambo_exec = "$conf_bin/ypp_ph"}
  else
-  {$yambo_exec = "$BRANCH/$conf_bin/yambo_ph";
+  {$yambo_exec = "$conf_bin/yambo_ph";
    $yambo_running=1}
 }
 if (-e "SC" && !$is_GPL) {
  undef $yambo_running;
  if ($YPP_SC=="1" or $YPP=="1") 
-  {$yambo_exec = "$BRANCH/$conf_bin/ypp_sc"}
+  {$yambo_exec = "$conf_bin/ypp_sc"}
  else
-  {$yambo_exec = "$BRANCH/$conf_bin/yambo_sc";
+  {$yambo_exec = "$conf_bin/yambo_sc";
    $yambo_running=1}
 }
 if (-e "MAGNETIC" && !$is_GPL) {
  undef $yambo_running;
  if ($YPP_MAGNETIC=="1" or $YPP=="1") 
-  {$yambo_exec = "$BRANCH/$conf_bin/ypp_magnetic"}
+  {$yambo_exec = "$conf_bin/ypp_magnetic"}
  else
-  {$yambo_exec = "$BRANCH/$conf_bin/yambo_magnetic";
+  {$yambo_exec = "$conf_bin/yambo_magnetic";
    $yambo_running=1}
 }
 if (-e "KERR"  && !$YPP=="1") {
- $yambo_exec = "$BRANCH/$conf_bin/yambo_kerr";
+ $yambo_exec = "$conf_bin/yambo_kerr";
  $yambo_running=1
 }
 if ($CHEERS =="1") {
  undef $yambo_running;
- $yambo_exec = "$BRANCH/$conf_bin/ycheers";
+ $yambo_exec = "$conf_bin/ycheers";
 }
 #
 if ($openmp_is_off) {

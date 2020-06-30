@@ -26,16 +26,16 @@ sub RUN_convert_the_SAVE{
  #
  if (not $is_NEW_WF eq "yes" or ( not $mode eq "tests" and not $mode eq "cheers" and not $mode eq "validate") ) {return};
  #
- $YAMBO_local="$nice $BRANCH/$conf_bin/yambo";
+ $YAMBO_local="$nice $conf_bin/yambo";
  my $ypp_extension="-z";
  if ($is_NEW_YPP or ( $mode eq "cheers") ) { $ypp_extension="-w c"};
- $YPP_local="$nice $BRANCH/$conf_bin/ypp $ypp_extension";
- if(-e "$BRANCH/$conf_bin/yambo_rt") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_rt"; }
- if(-e "$BRANCH/$conf_bin/ypp_rt")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_rt $ypp_extension"; }
- if(-e "$BRANCH/$conf_bin/yambo_ph") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_ph"; }
- if(-e "$BRANCH/$conf_bin/ypp_ph")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_ph $ypp_extension"; }
- if(-e "$BRANCH/$conf_bin/yambo_nl") { $YAMBO_local="$nice $BRANCH/$conf_bin/yambo_nl"; }
- if(-e "$BRANCH/$conf_bin/ypp_nl")   { $YPP_local="$nice $BRANCH/$conf_bin/ypp_nl $ypp_extension"; }
+ $YPP_local="$nice $conf_bin/ypp $ypp_extension";
+ if(-e "$conf_bin/yambo_rt") { $YAMBO_local="$nice $conf_bin/yambo_rt"; }
+ if(-e "$conf_bin/ypp_rt")   { $YPP_local="$nice $conf_bin/ypp_rt $ypp_extension"; }
+ if(-e "$conf_bin/yambo_ph") { $YAMBO_local="$nice $conf_bin/yambo_ph"; }
+ if(-e "$conf_bin/ypp_ph")   { $YPP_local="$nice $conf_bin/ypp_ph $ypp_extension"; }
+ if(-e "$conf_bin/yambo_nl") { $YAMBO_local="$nice $conf_bin/yambo_nl"; }
+ if(-e "$conf_bin/ypp_nl")   { $YPP_local="$nice $conf_bin/ypp_nl $ypp_extension"; }
  #
  # Main SAVE folder and eventually GKKP
  #
