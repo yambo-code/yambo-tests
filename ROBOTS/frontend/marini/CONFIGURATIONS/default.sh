@@ -1,4 +1,5 @@
 #!/bin/sh
+YAMBO_EXT_LIBS="/home/marini/Yambo/libs"
 CONF_LINE="FC=gfortran"
 IF_COMPILE=`which ifort`
 if [ -e "$IF_COMPILE" ]

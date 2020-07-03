@@ -10,7 +10,7 @@ cat <<EOF > script_GF_OPENMPI_${1}_${2}_parallel.slurm
 #
 module load gcc-8.3.1/ompi-4.0.2 slurm
 cd /work/marini/yambo-tests/
-./driver.pl -flow ${1}_8cpu -report -branch $2 -nice -newer 7 -input
+./driver.pl -flow ${1}_8cpu -report -branch $2 -nice -newer 7 -input -host frontend
 EOF
 
 cat <<EOF > script_GF_OPENMPI_${1}_${2}_serial.slurm
@@ -24,7 +24,7 @@ cat <<EOF > script_GF_OPENMPI_${1}_${2}_serial.slurm
 #
 module load gcc-8.3.1/ompi-4.0.2 slurm
 cd /work/marini/yambo-tests/
-./driver.pl -flow ${1}_1cpu -report -branch $2 -nice -newer 7 -input
+./driver.pl -flow ${1}_1cpu -report -branch $2 -nice -newer 7 -input -host frontend
 EOF
 sbatch script_GF_OPENMPI_${1}_${2}_serial.slurm
 sleep 15m 

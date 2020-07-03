@@ -128,6 +128,7 @@ if ($help>=1) {
              -tests  <TESTS>|all    List* of tests to perform, or all "-tests all".
 
    (Running options)
+             -host   [HOST]         Use HOST instead of current hostname.
              -dry                   Run in dry mode. Not actual job is launched.
              -nice   [VALUE]        Run with priority VALUE. With no VALUE max nice level is used (lower priority).
              -safe                  Safe run
@@ -162,6 +163,7 @@ if ($help==2) {
              -gpl                   Only GPL-compliant test.
 
    (TEST control)
+             -mode   <MODE>         Running mode. Can be: bench,validate. Optional.
              -update <TEST>         Update all REFERENCE files of <TEST>. The test path is <TEST_folder>/<TEST>.
              -upload <TEST>         Upload the <TEST_folder>/<TEST> directory.
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
