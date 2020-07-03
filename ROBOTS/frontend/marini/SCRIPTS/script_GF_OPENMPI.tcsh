@@ -27,5 +27,5 @@ cd /work/marini/yambo-tests/
 ./driver.pl -flow ${1}_1cpu -report -branch $2 -nice -newer 7 -input -host frontend
 EOF
 sbatch script_GF_OPENMPI_${1}_${2}_serial.slurm
-sleep 15m 
+sleep 45m 
 sbatch script_GF_OPENMPI_${1}_${2}_parallel.slurm

@@ -119,17 +119,17 @@ $MAX_phps=20;
 chdir("backup_and_www/$host/www");
 for( $j = 1; $j < $MAX_phps ; $j = $j + 1 )
 {
- $main_dat = $branch_in_the_log."/".$hostname."_".$branch_in_the_log."_".$j."_main.dat";
+ $main_dat = $branch_in_the_log."/".$host."_".$branch_in_the_log."_".$j."_main.dat";
  if (! -f $main_dat) { last} ;
 }
 #
 chdir("$suite_dir");
-$main_dat = $hostname."_".$branch_in_the_log."_".$j."_main.dat";
-$error_php=$hostname."_".$branch_in_the_log."_".$j."_error.php";
-$report_php=$hostname."_".$branch_in_the_log."_".$j."_report.php";
-$conf_php=$hostname."_".$branch_in_the_log."_".$j."_conf.php";
-$comp_tgz=$hostname."_".$branch_in_the_log."_".$j."_comp.tgz";
-$logs_tgz=$hostname."_".$branch_in_the_log."_".$j."_logs.tgz";
+$main_dat = $host."_".$branch_in_the_log."_".$j."_main.dat";
+$error_php=$host."_".$branch_in_the_log."_".$j."_error.php";
+$report_php=$host."_".$branch_in_the_log."_".$j."_report.php";
+$conf_php=$host."_".$branch_in_the_log."_".$j."_conf.php";
+$comp_tgz=$host."_".$branch_in_the_log."_".$j."_comp.tgz";
+$logs_tgz=$host."_".$branch_in_the_log."_".$j."_logs.tgz";
 #
 # RETRIVE DATA
 #
