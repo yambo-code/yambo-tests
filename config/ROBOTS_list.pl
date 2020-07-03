@@ -37,3 +37,4 @@ $ROBOTS{'lyskamm'} = 'lyskamm.mlib.ism.cnr.it';
 $ROBOTS{'baym'} = 'baym.mlib.ism.cnr.it';
 $ROBOTS{'claudio-notebook'} = 'claudio-notebook';
 $ROBOTS{'endangered.dodo'} = 'endangered.dodo';
+$ROBOTS{'frontend'} = 'frontend';
