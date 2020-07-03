@@ -1,1 +1,0 @@
-intel-ompi.sh
