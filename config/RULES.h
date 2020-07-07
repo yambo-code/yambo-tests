@@ -69,6 +69,10 @@ call add_RULE(".polarization_F","skip",COLS=(/5,6,7/),MATERIAL="hBN")
 ! KERR
 !======
 call add_RULE("any","no_statistics",MATERIAL="Cobalt Nickel Iron")
+! The next two rules should be applied only to Iron/pwscf/Without-SOC
+! However this possibility is not implemented at present
+call add_RULE(".moke","no_statistics",VAL_treshold=1.E-3,COLS=(/2,3/),MATERIAL="Iron")
+call add_RULE(".off","no_statistics",VAL_treshold=1.E-3,COLS=(/2,3/),MATERIAL="Iron")
 !
 ! QP
 !====
