@@ -38,3 +38,5 @@ $ROBOTS{'baym'} = 'baym.mlib.ism.cnr.it';
 $ROBOTS{'claudio-notebook'} = 'claudio-notebook';
 $ROBOTS{'endangered.dodo'} = 'endangered.dodo';
 $ROBOTS{'frontend'} = 'frontend';
+$ROBOTS{'attacc-lavoro'} = 'attacc-lavoro';
+
