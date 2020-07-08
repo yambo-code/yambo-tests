@@ -86,21 +86,23 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   #
   # Remove any files that don't belong in the repository
   #
-  &LIST_ELEMENT("[YAMBO]   ",$NORMAL_tests);
-  &LIST_ELEMENT("[QED]     ",$QED_tests);
-  &LIST_ELEMENT("[PL]      ",$PL_tests);
-  &LIST_ELEMENT("[NL]      ",$NL_tests);
-  &LIST_ELEMENT("[RT]      ",$RT_tests);
-  &LIST_ELEMENT("[SC]      ",$SC_tests);
-  &LIST_ELEMENT("[MAGNETIC]",$MAGNETIC_tests);
-  &LIST_ELEMENT("[ELPH]    ",$ELPH_tests);
-  &LIST_ELEMENT("[PHEL]    ",$PHEL_tests);
-  &LIST_ELEMENT("[P2Y]     ",$P2Y_tests);
-  &LIST_ELEMENT("[A2Y]     ",$A2Y_tests);
-  &LIST_ELEMENT("[SPIN]    ",$SPIN_tests);
-  &LIST_ELEMENT("[SPINORS] ",$SPINORS_tests);
-  if ($KERR_tests)  {&LIST_ELEMENT("[KERR]    ",$KERR_tests)};
-  if ($BROKEN_tests){&LIST_ELEMENT("[BROKEN]  ",$BROKEN_tests)};
+  if (not $keys) {$keys="all"};
+  #
+  if ($keys =~ /nopj/ or $keys =~ /all/) {&LIST_ELEMENT("[YAMBO]   ",$NORMAL_tests)};
+  if ($keys =~ /qed/ or $kyes =~/all/) {&LIST_ELEMENT("[QED]     ",$QED_tests)};
+  if ($keys =~ /pl/ or $keys =~ /all/)  {&LIST_ELEMENT("[PL]      ",$PL_tests)};
+  if ($keys =~ /nl/ or $keys =~ /all/)  {&LIST_ELEMENT("[NL]      ",$NL_tests)};
+  if ($keys =~ /rt/ or $keys =~ /all/)  {&LIST_ELEMENT("[RT]      ",$RT_tests)};
+  if ($keys =~ /sc/ or $keys =~ /all/)  {&LIST_ELEMENT("[SC]      ",$SC_tests)};
+  if ($keys =~ /magnetic/ or $keys =~ /all/)  {&LIST_ELEMENT("[MAGNETIC]",$MAGNETIC_tests)};
+  if ($keys =~ /elph/ or $keys =~ /all/)  {&LIST_ELEMENT("[ELPH]    ",$ELPH_tests)};
+  if ($keys =~ /phel/ or $keys =~ /all/)  {&LIST_ELEMENT("[PHEL]    ",$PHEL_tests)};
+  if ($keys =~ /nopj/ or $keys =~ /all/)  {&LIST_ELEMENT("[P2Y]     ",$P2Y_tests)};
+  if ($keys =~ /nopj/ or $keys =~ /all/)  {&LIST_ELEMENT("[A2Y]     ",$A2Y_tests)};
+  if ($keys =~ /spin/ or $keys =~ /all/)  {&LIST_ELEMENT("[SPIN]    ",$SPIN_tests)};
+  if ($keys =~ /spinors/ or $keys =~ /all/)  {&LIST_ELEMENT("[SPINORS] ",$SPINORS_tests)};
+  if ($keys =~ /kerr/ or $kyes =~/all/)  {if ($KERR_tests)  {&LIST_ELEMENT("[KERR]    ",$KERR_tests)}};
+  if ($keys =~ /all/ or $kyes =~/all/)   {if ($BROKEN_tests){&LIST_ELEMENT("[BROKEN]  ",$BROKEN_tests)}};
   &MY_PRINT($stdout, "\n");
  &CWD_go;
 }
