@@ -88,7 +88,9 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    foreach $testname (@inputs) { 
      if (not -f "$ROBOT_wd/$input_folder/$testname" and -f "$ROBOT_wd/INPUTS/$testname" and not $is_GPL ) 
      {
-       &command("cp $ROBOT_wd/INPUTS/$testname* $ROBOT_wd/$input_folder");
+       &MY_PRINT($stdout, "loading INPUTS for : $testname not found in $input_folder \n") if ($verb);
+       &command("cp $ROBOT_wd/INPUTS/$testname   $ROBOT_wd/$input_folder/");
+       &command("cp $ROBOT_wd/INPUTS/$testname.* $ROBOT_wd/$input_folder/");
      }
    }
   };
