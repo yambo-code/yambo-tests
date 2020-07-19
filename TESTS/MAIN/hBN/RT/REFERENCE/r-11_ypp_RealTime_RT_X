@@ -1,17 +1,17 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-          Version 5.0.0 Revision 18576 Hash 35d9a199c                     
-                      Branch is bug-fixes                                 
+                                                                          
+    Y88b    /   e           e    e      888~~\    ,88~-_                  
+     Y88b  /   d8b         d8b  d8b     888   |  d888   \                 
+      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |                
+       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |                
+        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /                 
+       /   /      Y88b /          Y888b 888__/    `88_-~                  
+                                                                          
+                                                                          
+         Version 5.0.0 Revision 18576 Hash 35d9a199c                      
+                     Branch is bug-fixes                                  
                  MPI+OpenMP+HDF5_MPI_IO Build                             
-                   http://www.yambo-code.org                              
+                  http://www.yambo-code.org                               
  
  07/19/2020 at 16:59 ypp_rt @ VivoBook
  ==================================================
@@ -27,12 +27,13 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-10_ypp_Map_FineGridx9_kpts_map
+ Report file         : ./r-11_ypp_RealTime_RT_X
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 10_ypp_Map_FineGridx9
- Alt#1 string        : R2
+ Job   string        : 11_ypp
+ Alt#1 string        : 11_td_sex_dbgd-serial-bug-fixes
+ Alt#2 string        : R2
 
  Precision           : SINGLE
   
@@ -119,15 +120,15 @@
   ==============================
 
   [X] === General ===
-  [X] Electronic Temperature                        :  0.000000  0.000000 [eV K]
+  [X] Electronic Temperature                        :  0.258520E-4  0.300000    [eV K]
   [X] Bosonic    Temperature                        :  0.000000  0.000000 [eV K]
-  [X] Finite Temperature mode                       : no
+  [X] Finite Temperature mode                       : yes
   [X] El. density                                   :  0.46033E+24 [cm-3]
-  [X] Fermi Level                                   :  0.000000 [eV]
+  [X] Fermi Level                                   :  2.585263 [eV]
 
   [X] === Gaps and Widths ===
-  [X] Conduction Band Min                           :  4.439179 [eV]
-  [X] Valence Band Max                              :  0.000000 [eV]
+  [X] Conduction Band Min                           :  1.853916 [eV]
+  [X] Valence Band Max                              : -2.585263 [eV]
   [X] Filled Bands                                  :   8
   [X] Empty Bands                                   :    9   60
   [X] Direct Gap                                    :  4.439179 [eV]
@@ -137,39 +138,33 @@
    
    
 
- [06] Double Grid DB(s)
- ======================
+ [06] == Real-Time Post-Processing ==
+ ====================================
 
 
-  [06.01] Double Grid initialization
-  ==================================
+  [06.01] Current and Polarization Database
+  =========================================
 
 
-  [06.02] Double Grid IBZ mapping
-  ===============================
-
-
-  [06.03] Double Grid K-points expansion ...
-  ==========================================
-
-
-  [06.04] Double Grid BZ mapping
-  ==============================
+  [06.02] Optics
+  ==============
 
 
  [07] Timing Overview
  ====================
 
  Clock: global
-           io_KB_pwscf :      0.0000s CPU
-            io_COL_CUT :      0.0001s CPU
       io_ATMPROJ_pwscf :      0.0001s CPU
-      io_RT_components :      0.0002s CPU (2 calls,   0.086 msec avg)
-                 io_WF :      0.0078s CPU
-        io_Double_Grid :      0.0080s CPU (3 calls,   2.658 msec avg)
-              io_QINDX :      0.0084s CPU
-          io_KB_abinit :      0.0096s CPU
-               io_GROT :      0.0174s CPU (3 calls,   5.798 msec avg)
+            io_COL_CUT :      0.0001s CPU
+      RT output (INIT) :      0.0001s CPU
+           io_KB_pwscf :      0.0001s CPU
+        io_Double_Grid :      0.0001s CPU (   2 calls,   0.062 msec avg)
+              io_QINDX :      0.0053s CPU
+                 io_WF :      0.0066s CPU
+          io_KB_abinit :      0.0071s CPU
+               io_GROT :      0.0128s CPU (   3 calls,   4.281 msec avg)
+             RT output :      0.0951s CPU (1503 calls,   0.063 msec avg)
+      io_RT_components :      0.1155s CPU (   8 calls,  14.438 msec avg)
 
  [08] Memory Overview
  ====================
@@ -178,7 +173,7 @@
  Memory treshold are: 10.00000 [Mb] (basic treshold)  100.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  1.070000 [Mb]
+         Max memory used   :  611.0000 [Kb]
 
  [09] Game Over & Game summary
  =============================
@@ -209,10 +204,16 @@
  |
   
  .-Input file  yambo.in
- | kpts_map                         # [R] Fine to coarse grid Map
- | BoseTemp= 0.000000         eV    # Bosonic Temperature
- | #SkipCheck                     # Skip internal consistency check on k-point grids
- | #NoWeights                     #  Do not print points weight
- | %FineGd_DB1_paths                # Paths to the SAVE folders with the Fine Grid DB1
- | "DbGdx9" |
+ | RealTime                         # [R] TD Post-Processing
+ | RT_X                             # [R] Response functions Post-Processing
+ | Xorder= 1                        # Max order of the response/exc functions
+ | % EnRngeRt
+ |  3.000000 | 8.000000 |         eV    # Energy range
  | %
+ | ETStpsRt=  501                   # Total Energy steps
+ | % TimeRange
+ |   0.00000 | 19.90000 |         fs    # Time-window where processing is done
+ | %
+ | DampMode= "LORENTZIAN"           # Damping type ( NONE | LORENTZIAN | GAUSSIAN )
+ | DampFactor= 0.100000       eV    # Damping parameter
+ | SkipOBS_IO                     # Do not dump on file the RT observables (P(t),J(t),D(t)...)
