@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-          Version 4.5.0 Revision 18278 Hash 374f0217e                     
-                Branch is devel-andreaM-merged                            
-                       MPI+HDF5_IO Build                                  
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
+                                                                          
+          Version 5.0.0 Revision 18576 Hash 35d9a199c                     
+                      Branch is bug-fixes                                 
+                 MPI+OpenMP+HDF5_MPI_IO Build                             
                    http://www.yambo-code.org                              
  
- 05/14/2020 at 14:00 ypp_rt @ baym
+ 07/19/2020 at 17:19 ypp_rt @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 08_ypp_fit_occ_DbGd
- Alt#1 string        : 08_ep_DbGd-serial-devel-andreaM-merged
- Alt#2 string        : R1
+ Alt#1 string        : 08_ep_DbGd-serial-bug-fixes
+ Alt#2 string        : R3
 
  Precision           : SINGLE
   
@@ -123,7 +123,7 @@
 
   Compatible Grid is   : 2D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.333333     0.246176E-7   0.00000    [rlu]
+  K_min[ 1 ] :  0.333333     0.298023E-7   0.00000    [rlu]
   K_min[ 2 ] :  0.000000 -0.333333  0.000000 [rlu]
   Grid dimensions      :  3  3
   K lattice UC volume  :  0.030712 [a.u.]
@@ -169,33 +169,33 @@
              io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0000s CPU (16 calls,   0.003 msec avg)
              RT output (INIT) :      0.0001s CPU
-               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.058 msec avg)
-      IO_and_Messaging_switch :      0.0001s CPU (16 calls,   0.009 msec avg)
+               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.048 msec avg)
                  PP_uspp_init :      0.0002s CPU ( 9 calls,   0.021 msec avg)
-                  io_KB_pwscf :      0.0003s CPU
-                     io_QINDX :      0.0012s CPU
-                  io_fragment :      0.0034s CPU ( 9 calls,   0.379 msec avg)
-                      io_GROT :      0.0048s CPU ( 3 calls,   1.595 msec avg)
-                        io_WF :      0.0130s CPU (28 calls,   0.465 msec avg)
-                  WF_load_FFT :      0.0488s CPU ( 9 calls,   5.420 msec avg)
-                    FFT_setup :      0.0898s CPU ( 9 calls,   9.976 msec avg)
-             io_RT_components :      0.1353s CPU (37 calls,   3.656 msec avg)
+                  io_KB_pwscf :      0.0004s CPU
+                     io_QINDX :      0.0042s CPU
+                  io_fragment :      0.0075s CPU ( 9 calls,   0.831 msec avg)
+                      io_GROT :      0.0136s CPU ( 3 calls,   4.528 msec avg)
+                    FFT_setup :      0.0201s CPU ( 9 calls,   2.236 msec avg)
+                        io_WF :      0.0324s CPU (28 calls,   1.158 msec avg)
+                  WF_load_FFT :      0.0597s CPU ( 9 calls,   6.628 msec avg)
+             io_RT_components :      0.3321s CPU (37 calls,   8.975 msec avg)
 
  [08] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 10.00000Mb (basic treshold)  100.0000Mb (SAVEs treshold)
+ Memory treshold are: 10.00000 [Mb] (basic treshold)  100.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  5.669000Mb
+         Max memory used   :  5.670000 [Mb]
 
  [09] Game Over & Game summary
  =============================
 
- 05/14/2020 at 14:00 ypp_rt @ baym [start]
- 05/14/2020 at 14:01               [end]
+ 07/19/2020 at 17:19 ypp_rt @ VivoBook [start]
+ 07/19/2020 at 17:19                   [end]
 
  Timing   [Min/Max/Average]: 02s/02s/02s
              [Time-Profile]: 02s
@@ -222,18 +222,18 @@
  |
   
  .-Input file  yambo.in
- | RealTime                       # [R] TD Post-Processing
- | RToccupations                  # [R] Analize time-dependent occupations
- | RTenergy                       # [R] Post-Processing kind: function of energy
- | TimeStep= 5.039972     fs      # Time step
+ | RealTime                         # [R] TD Post-Processing
+ | RToccupations                    # [R] Analize time-dependent occupations
+ | RTenergy                         # [R] Post-Processing kind: function of energy
+ | TimeStep= 5.039972         fs    # Time step
  | % TimeRange
- |   0.00000 | 49.92000 | fs      # Time-window where processing is done
+ |   0.00000 | 49.92000 |         fs    # Time-window where processing is done
  | %
  | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
  | #SkipFermiFIT                  # [NEGF] Do a Fermi Fit of occupations (and lifetimes ratio)
- | %QPkrange                      #  generalized Kpoint/Band indices
+ | %QPkrange                        #  generalized Kpoint/Band indices
  | 1|9|23|30|
  | %
- | %QPerange                      #  generalized Kpoint/Energy indices
+ | %QPerange                        #  generalized Kpoint/Energy indices
  | 1|9| 0.000000|-1.000000|
  | %

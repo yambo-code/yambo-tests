@@ -1,88 +1,70 @@
 
 
-  __ __  ____ ___ ___ ____   ___
- |  |  |/    |   |   |    \ /   \
- |  |  |  o  | _   _ |  o  )     |
- |  ~  |     |  \_/  |     |  O  |
- |___, |  _  |   |   |  O  |     |
- |     |  |  |   |   |     |     |
- |____/|__|__|___|___|_____|\___/
+ ___ __  _____  __ __  _____   _____
+|   Y  ||  _  ||  Y  ||  _  \ |  _  |
+|   |  ||. |  ||.    ||. |  / |. |  |
+ \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
+  |: |  |: |  ||: |  ||: |   \|: |  |
+  |::|  |:.|:.||:.|:.||::.   /|::.  |
+  `--"  `-- --"`-- --"`-----" `-----"
 
 
- <---> [01] CPU structure, Files & I/O Directories
+ <---> [01] MPI/OPENMP structure, Files & I/O Directories
  <---> [02] Y(ambo) P(ost)/(re) P(rocessor)
  <---> [03] Core DB
- <---> :: Electrons             : 8.000000
- <---> :: Temperature       [ev]: 0.000000
- <---> :: Lattice factors [a.u.]: 10.18300  10.18300  10.18300
- <---> :: K points              : 3
- <---> :: Bands                 :  8
- <---> :: Symmetries            : 24
- <---> :: RL vectors            : 2085
+ <---> :: Electrons             ::  8.000000
+ <---> :: Temperature       [ev]::  0.000000
+ <---> :: Lattice factors [a.u.]::  10.18300  10.18300  10.18300
+ <---> :: K points              ::  3
+ <---> :: Bands                 ::   8
+ <---> :: Symmetries            ::  24
+ <---> :: RL vectors            ::  2085
  <---> [04] K-point grid
- <---> :: Q-points   (IBZ): 3
- <---> :: X K-points (IBZ): 3
+ <---> :: Q-points   (IBZ)::  3
+ <---> :: X K-points (IBZ)::  3
  <---> [05] CORE Variables Setup
  <---> [05.01] Unit cells
  <---> [05.02] Symmetries
- <---> [05.03] RL shells
+ <---> [05.03] Reciprocal space
  <---> [05.04] K-grid lattice
+ <---> Grid dimensions      :  2  2  2
  <---> [05.05] Double K-grid
- <---> [05.06] Energies [ev] & Occupations
+ <---> [05.06] Energies & Occupations
  <---> [06] == Real-Time Post-Processing ==
  <---> Output files definition ...
  <---> [06.01] Real-Time components (Occupations, Lifetimes,...)
  <---> Searching the carriers database in SAVE/ndb.RT_carriers...
- <---> [RD./06_elph_0K_DbGd-serial-bug-fixes/ndb.RT_carriers]------
- <--->  Coulomb cutoff potential         :none
- <--->  Fragmentation                    :yes
- <--->  Electronic Temperature        [K]: 0.200000
- <--->  Bosonic    Temperature        [K]: 0.000000
- <--->  [RT] Bands                      :  2   7
- <--->  [RT] K-points                   : 201
- <--->  [RT] Potential                  :IP
- <--->  [E-P] Electron-phonon           :yes
- <--->  [E-P] Completed Collision(CCA)  :yes
- <--->  [E-P] Branches                  :  1   6
- <--->  [E-P] GF`s Memory steps         : 2
- <--->  [E-E] Coulomb scattering        :no
- <--->  [E-E] Coulomb correlation       :no
- <--->  [E-PHOTON] Scattering           :no
- <--->  [RT] Time step     (initial)[fs]:  0.02000
- <--->  [RT]                   (now)[fs]:  0.02000
- <--->  [RT] NE time       (planned)[fs]: 100.0000
- <--->  [RT]                  (done)[fs]: 100.0000
- <--->  [RT] Lifetimes Inter/Intra  [fs]: 1.500000  0.500000
- <--->  [RT]                   (now)[fs]: 1.500000  0.500000
- <--->  [RT] I/O time               [fs]: 0.500000
- <--->  [RT] NE steps         (done)[fs]:  5001
- <--->  [RT] Lifetimes extrapolation    :no
- <--->  [dT] Time-Dependent Time step   :no
- <--->  [RT] Integrator                 :EULER + RK2 + RWA
- <--->  [RT] Radiative life time    [fs]: 0.000000
- <--->  [RT] Dephasing life time    [fs]: 0.000000
- <--->  [RT] External Field(s)          :no
- <--->  [RT] Number of Fields           :0
- <--->  [RT] Diamagnetic term           :no
- <--->  [RT] Induced field              :no
- <--->  [Gr] Retarded Green`s function  : QP
- <--->  [Gr] Damping (c) Energy ref [eV]:  1.2000000
- <--->  [Gr] Damping (c) [eV,adim,eV^-1]:  0.3000000  0.0000000    0.01000
- <--->  [Gr] Damping (v) Energy ref [eV]: -1.2000000
- <--->  [Gr] Damping (v) [eV,adim,eV^-1]:  0.3000000  0.0000000    0.01000
- <--->  [DbGd] Double Grid support      :yes
- <--->  [DbGd] Number of k-points       : 206
- <--->  [DbGd] Used for e-e        [o/o]: 0.000000
- <--->  [CONSTRAINS] N (ee+ep) & dN (ep):yes
- <--->  [CONSTRAINS] IP Energy      (ee):yes
- <---> - S/N 003129 -------------------------- v.04.04.00 r.16077 -
- <---> [CARRIERS] Uniform grid       :yes
- <---> [CARRIERS] Time range     [fs]:  0.00000  50.00000
- <---> [CARRIERS] Time step      [fs]: 5.000051
- <---> [CARRIERS] Time steps         : 11
- <---> [CARRIERS] Damping       [meV]: 0.000000
- <---> [CARRIERS] Field damping [meV]: 82.71250
+ <---> [RD./06_elph_0K_DbGd-serial-bug-fixes/ndb.RT_carriers]--------------------------
+ <--->  Coulomb cutoff potential                         : none
+ <--->  Fragmentation                                    : yes
+ <--->  Electronic Temperature                           :  0.200000 [K]
+ <--->  Bosonic    Temperature                           :  0.000000 [K]
+ <--->  [RT] Bands                                       :   2   7
+ <--->  [RT] K-points                                    :  201
+ <--->  [RT] Potential                                   : IP
+ <--->  [E-P] Electron-phonon                            : yes
+ <--->  [E-P] Completed Collision(CCA)                   : yes
+ <--->  [E-P] Branches                                   :   1   6
+ <--->  [E-P] GF`s Memory steps                          :  2
+ <--->  [E-E] Coulomb scattering                         : no
+ <--->  [E-E] Coulomb correlation                        : no
+ <--->  [E-PHOTON] Scattering                            : no
+ <---> [CARRIERS] Uniform grid       :: yes
+ <---> [CARRIERS] Time range     [fs]::   0.00000  50.00000
+ <---> [CARRIERS] Time step      [fs]::  5.000051
+ <---> [CARRIERS] Time steps         ::  11
  <---> Data loading |                                        | [000%] --(E) --(X)
+ <---> [RT] Loaded Carrier components @ 0.000000 fs
+ <---> [RT] Loaded Carrier components @ 5.000000 fs
+ <---> [RT] Loaded Carrier components @ 10.00000 fs
+ <---> [RT] Loaded Carrier components @ 15.00000 fs
+ <---> [RT] Loaded Carrier components @ 20.00000 fs
+ <---> [RT] Loaded Carrier components @ 25.00000 fs
+ <---> [RT] Loaded Carrier components @ 30.00000 fs
+ <---> [RT] Loaded Carrier components @ 35.00000 fs
+ <---> [RT] Loaded Carrier components @ 40.00000 fs
+ <---> [RT] Loaded Carrier components @ 45.00000 fs
+ <---> [RT] Loaded Carrier components @ 50.00000 fs
  <---> Data loading |########################################| [100%] --(E) --(X)
  <---> Data fitting (Temperature and Fermi Level) |                                        | [000%] --(E) --(X)
  <---> Data fitting (Temperature and Fermi Level) |########################################| [100%] --(E) --(X)
@@ -90,5 +72,8 @@
  <---> :: Fit success (e-p-ratio):11(h) -- 11(e)
  <---> Data ordering |                                        | [000%] --(E) --(X)
  <---> Data ordering |########################################| [100%] --(E) --(X)
- <01s> [07] Game Over & Game summary
- <01s> [TIMING]            [Time-Profile]: 01s
+ <---> Data plotting |                                        | [000%] --(E) --(X)
+ <---> Data plotting |########################################| [100%] --(E) --(X)
+ <---> [07] Timing Overview
+ <---> [08] Memory Overview
+ <---> [09] Game Over & Game summary
