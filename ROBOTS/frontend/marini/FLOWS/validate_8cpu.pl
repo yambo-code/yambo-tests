@@ -3,6 +3,11 @@
 @flow = (
 {
  ACTIVE      => "yes",
+ CONFIG      => "default.sh",
+ KEYS        => "all hard",
+},
+{
+ ACTIVE      => "yes",
  MPI_CPU     => 8,
  PAR_MODE    => "default",
  KEYS        => "all hard",
