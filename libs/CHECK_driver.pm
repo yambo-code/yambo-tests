@@ -48,8 +48,9 @@ if ($CHECK_CORE){
 }
 if ( $is_OLD_IO eq "yes"  ) { &CHECK_database("Sx_Vxc","ndb.HF_and_locXC","")};
 if ( $is_OLD_IO eq "no"   ) { &CHECK_database("Sx,Vxc","ndb.HF_and_locXC","")};
-if ( $is_NEW_DBGD eq "no"  ) { &CHECK_database("BLOCK_TABLE","ndb.Double_Grid","")};
-if ( $is_NEW_DBGD eq "yes" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ","ndb.Double_Grid","")};
+if ( $is_NEW_DBGD eq "v1"  ) { &CHECK_database("BLOCK_TABLE","ndb.Double_Grid","")};
+if ( $is_NEW_DBGD eq "v2" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ","ndb.Double_Grid","")};
+if ( $is_NEW_DBGD eq "v3" ) { &CHECK_database("IBZ_E_MAP,BZ_E_MAP","ndb.Double_Grid","")};
 &CHECK_database("X_Q_1","ndb.em1s_fragment_1","");
 if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 &CHECK_database("X_Q_1","ndb.pp_fragment_1","");
