@@ -66,6 +66,7 @@ if("@_" eq "ALL") {
 #
 # DEEP
 if("@_" eq "DEEP") {
+ &command("find . -type d -empty | xargs rm -fr");
  &command("$git status --ignored | $grep -e '/ns.' -e '/ndb.' | xargs rm -fr");
 };
 #

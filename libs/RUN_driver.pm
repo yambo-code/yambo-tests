@@ -89,8 +89,13 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      if (not -f "$ROBOT_wd/$input_folder/$testname" and -f "$ROBOT_wd/INPUTS/$testname" and not $is_GPL ) 
      {
        &MY_PRINT($stdout, "loading INPUTS for : $testname not found in $input_folder \n") if ($verb);
-       &command("cp $ROBOT_wd/INPUTS/$testname   $ROBOT_wd/$input_folder/");
-       &command("cp $ROBOT_wd/INPUTS/$testname.* $ROBOT_wd/$input_folder/");
+       &CWD_save;
+       chdir("INPUTS");
+       foreach $in_file (<$testname*>)
+       {
+         if (not -f "../$ROBOT_wd/$input_folder/$in_file"){ &command("cp $in_file ../$ROBOT_wd/$input_folder/")};
+       }
+       &CWD_go;
      }
    }
   };
