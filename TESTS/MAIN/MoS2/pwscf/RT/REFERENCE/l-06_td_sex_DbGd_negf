@@ -9,90 +9,66 @@
       \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
 
 
- <---> [01] CPU structure, Files & I/O Directories
+ <---> [01] MPI/OPENMP structure, Files & I/O Directories
  <---> [02] CORE Variables Setup
  <---> [02.01] Unit cells
  <---> [02.02] Symmetries
- <---> [02.03] RL shells
+ <---> [02.03] Reciprocal space
  <---> [02.04] K-grid lattice
+ <---> Grid dimensions      :  3  3
  <---> [02.05] Double K-grid
- <---> [02.06] Energies [ev] & Occupations
+ <---> [02.06] Energies & Occupations
  <---> [03] Transferred momenta grid
- <---> [04] HARTREE+SEX Real-Time Dynamics
- <---> Scattering(s):none
- <---> [04.01] Initialization
+ <---> [04] Dipoles
  <---> [DIP] Checking dipoles header
+ <---> [WARNING] DIPOLES database not correct or missing
  <---> [x,Vnl] computed using 38 projectors
- <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> Dipoles: iR, P and P2 (T): |                                        | [000%] --(E) --(X)
- <---> Dipoles: iR, P and P2 (T): |########################################| [100%] --(E) --(X)
+ <---> Dipoles: iR, P, V and P2 (T) |                                        | [000%] --(E) --(X)
+ <---> Dipoles: iR, P, V and P2 (T) |########################################| [100%] --(E) --(X)
  <---> Dipoles: orbital magnetization |                                        | [000%] --(E) --(X)
  <---> Dipoles: orbital magnetization |########################################| [100%] --(E) --(X)
- <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> [FFT-Spin oscillators/R space] Mesh size:   9    9   49
- <---> Dipoles: spin magnetization |                                        | [000%] --(E) --(X)
- <---> Dipoles: spin magnetization |########################################| [100%] --(E) --(X)
- <---> [DIP] Writing dipoles header
- <---> [04.02] External/Internal QP corrections
- <---> Integrator: EULER + RK2 + RWA
- <---> [04.03] Dephasing matrix setup
- <---> [WARNING]Field starting time corrected to respect the I/O times.
- <---> [04.04] Electronic Collisions loading and setup
- <---> [04.05] Messaging
- <---> [MEMORY] Alloc WF%c( 9.7200003Mb) TOTAL:  11.965000Mb (traced)  27.004000Mb (memstat)
- <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> [FFT-RT] Mesh size:  12   12   60
- <---> [04.06] Start and Restart
- <01s> [MEMORY]  Free WF%c( 9.7200003Mb) TOTAL:  3.2390001Mb (traced)  27.572001Mb (memstat)
- <01s> HARTREE+SEX collisions I/O: |                                        | [000%] --(E) --(X)
- <01s> HARTREE+SEX collisions I/O: |########################################| [100%] --(E) --(X)
- <01s> Reference Lifetimes, GF, Self-Energy ...
- <01s> [04.07] Real-Time dynamics
- <01s> [RT] Dynamics : |                                        | [000%] --(E) --(X)
- <06s> [RT] Dynamics : |#################                       | [043%] 05s(E) 11s(X)
- <11s> [RT] Dynamics : |##################################      | [086%] 10s(E) 11s(X)
- <13s> [RT] Dynamics : |########################################| [100%] 11s(E) 11s(X)
- <13s> [MEMORY]TOTAL not deallocated :  2.330000Mb
- <13s> [05] Timing Overview
- <13s> [TIMING]                                   io_WF :     0.00s CPU (      88 calls,   0.001 s avg)
- <13s> [TIMING]                                 io_GROT :     0.00s CPU (       3 calls,   0.001 s avg)
- <13s> [TIMING]                                io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
- <13s> [TIMING]                              io_COL_CUT :     0.00s CPU
- <13s> [TIMING]                          io_Double_Grid :     0.00s CPU
- <13s> [TIMING]                                   io_HF :     0.00s CPU
- <13s> [TIMING]                              io_DIPOLES :     0.00s CPU (      12 calls,   0.000 s avg)
- <13s> [TIMING]                             io_KB_pwscf :     0.00s CPU (      11 calls,   0.000 s avg)
- <13s> [TIMING]                            io_KB_abinit :     0.00s CPU
- <13s> [TIMING]                                    io_X :     0.00s CPU (       4 calls,   0.000 s avg)
- <13s> [TIMING]                             io_fragment :     0.00s CPU (    2836 calls,   0.000 s avg)
- <13s> [TIMING]                                   io_BS :     0.00s CPU
- <13s> [TIMING]                                 io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
- <13s> [TIMING]                        io_RT_components :     1.00s CPU (    2192 calls,   0.001 s avg)
- <13s> [TIMING]                           io_COLLISIONS :     0.00s CPU (     653 calls,   0.000 s avg)
- <13s> [TIMING]                          eval_G_minus_G :     0.00s CPU
- <13s> [TIMING]                 IO_and_Messaging_switch :     0.00s CPU (    8041 calls,   0.000 s avg)
- <13s> [TIMING]                                 Dipoles :     0.00s CPU
- <13s> [TIMING]                       DIPOLE_transverse :     0.00s CPU
- <13s> [TIMING]                            PP_uspp_init :     0.00s CPU (      21 calls,   0.000 s avg)
- <13s> [TIMING]                             WF_load_FFT :     0.00s CPU (      21 calls,   0.010 s avg)
- <13s> [TIMING]                               FFT_setup :     0.00s CPU (      21 calls,   0.022 s avg)
- <13s> [TIMING]                         COLLISIONS_load :     0.00s CPU (       2 calls,   0.120 s avg)
- <13s> [TIMING]                       el_density_matrix :     0.00s CPU
- <13s> [TIMING]                          el_magn_matrix :     0.00s CPU
- <13s> [TIMING]                        Bare_Hamiltonian :     0.00s CPU
- <13s> [TIMING]                               V_Hartree :     0.00s CPU
- <13s> [TIMING]                               XCo_local :     0.00s CPU
- <13s> [TIMING]                     XC_potential_driver :     0.00s CPU
- <13s> [TIMING]                       V_real_space_to_H :     0.00s CPU (      27 calls,   0.002 s avg)
- <13s> [TIMING]                         V_qp_basis_to_H :     0.00s CPU (       9 calls,   0.000 s avg)
- <13s> [TIMING]                               RT output :     0.00s CPU (     492 calls,   0.001 s avg)
- <13s> [TIMING]                          RT observables :     2.00s CPU (    4001 calls,   0.001 s avg)
- <13s> [TIMING]                           RT average Op :     2.00s CPU (   21061 calls,   0.000 s avg)
- <13s> [TIMING]                            RT avg redux :     0.00s CPU (   21061 calls,   0.000 s avg)
- <13s> [TIMING]                          RT Hamiltonian :     5.00s CPU (    8001 calls,   0.001 s avg)
- <13s> [TIMING]                   COLLISIONS_compose_rt :     5.00s CPU (    8001 calls,   0.001 s avg)
- <13s> [TIMING]                          RT Apply Field :     0.00s CPU (   72009 calls,   0.000 s avg)
- <13s> [TIMING]                           RT integrator :     1.00s CPU (    8000 calls,   0.000 s avg)
- <13s> [06] Memory Overview
- <13s> [07] Game Over & Game summary
- <13s> [TIMING]            [Time-Profile]: 13s
+ <---> Dipoles: spin |                                        | [000%] --(E) --(X)
+ <02s> Dipoles: spin |########################################| [100%] --(E) --(X)
+ <02s> [DIP] Writing dipoles header
+ <02s> [05] HARTREE+SEX Real-Time Dynamics
+ <02s> [05.01] Initialization
+ <02s> [05.01.01] External/Internal QP corrections
+ <02s> [QP_apply] Action to be applied: USER defined scissor
+ <02s> [05.01.01.01]  QP corrections report
+ <02s> [DIP] Checking dipoles header
+ <02s> Integrator EULER + RK2 + RWA
+ <02s> [05.02] Dephasing matrix setup
+ <02s> [05.03] Electronic Collisions loading and setup
+ <02s> [05.04] Messaging
+ <02s> [MEMORY] Alloc WF%c( 182.0160 [Mb]) TOTAL:  189.8170 [Mb] (traced)  196.8720 [Mb] (memstat)
+ <02s> [FFT-RT] Mesh size:   32   32  158
+ <04s> [05.05] Start and Restart
+ <04s> [MEMORY] Alloc WF%c( 55.61600 [Mb]) TOTAL:  259.5850 [Mb] (traced)  267.7240 [Mb] (memstat)
+ <05s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.9720 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <06s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.9750 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <07s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.9780 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <07s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.9810 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <08s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.9840 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <09s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.9870 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <10s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.9900 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <11s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.9930 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <12s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.9960 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <12s> [MEMORY] Alloc WF%c( 55.61600 [Mb]) TOTAL:  259.6120 [Mb] (traced)  272.3960 [Mb] (memstat)
+ <18s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  204.0230 [Mb] (traced)  273.8880 [Mb] (memstat)
+ <25s> HARTREE+SEX collisions I/O |                                        | [000%] --(E) --(X)
+ <28s> HARTREE+SEX collisions I/O |########################################| [100%] 03s(E) 03s(X)
+ <28s> Reference Lifetimes, GF, Self-Energy ...
+ <28s> Output files definition ...
+ <28s> [05.06] Real-Time dynamics
+ <28s> [RT] Dynamics |                                        | [000%] --(E) --(X)
+ <33s> [RT] Dynamics |#######                                 | [019%] 05s(E) 25s(X)
+ <38s> [RT] Dynamics |###############                         | [039%] 10s(E) 25s(X)
+ <43s> [RT] Dynamics |#######################                 | [059%] 15s(E) 25s(X)
+ <48s> [RT] Dynamics |###############################         | [079%] 20s(E) 25s(X)
+ <53s> [RT] Dynamics |####################################### | [099%] 25s(E) 25s(X)
+ <53s> [RT] Dynamics |########################################| [100%] 25s(E) 25s(X)
+ <53s> [MEMORY]  Free WF%c( 182.0160 [Mb]) TOTAL:  8.590000 [Mb] (traced)  246.5440 [Mb] (memstat)
+ <53s> [06] Timing Overview
+ <53s> [07] Memory Overview
+ <53s> [08] Game Over & Game summary
+ <53s> [TIMING]            [Time-Profile]: 53s
