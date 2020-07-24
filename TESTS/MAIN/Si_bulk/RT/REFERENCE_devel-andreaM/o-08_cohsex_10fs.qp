@@ -1,0 +1,96 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+#       Version 5.0.0 Revision 18628 Hash b8d3dcce6                   
+#                 Branch is devel-andreaM                             
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.org                            
+#
+#
+# GW solver                                       : Newton
+# GW approximation                                : COHSEX
+# GW SC iterations                                : 0
+# X G`s                                           :   59 [used]
+# X G`s                                           :   59 [disk]
+# X bands                                         :   1   8
+# X poles                                         :   100.000000    [o/o]
+# X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
+# X xc-Kernel                                     : none
+# X BZ energy Double Grid                         : no
+# Sc/G bands                                      :   1   8
+# Sc Empty Bands                                  : yes
+# Sc bands terminator                             : no
+# Sx RL components                                :   609
+#                                                 
+# QP @ state[ 1 ] K range                         :  1  3
+# QP @ state[ 1 ] b range                         :   2   7
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+#
+#
+#    K-point            Band               Eo                 E-Eo               Sc|Eo
+#
+     1.00000000         2.00000000         0.00000000         1.69674993         3.47102308   
+     1.00000000         3.00000000         0.00000000         1.69674349         3.47102141   
+     1.00000000         4.00000000         0.00000000         1.69675076         3.47102904   
+     1.00000000         5.00000000         2.44086790         2.75889492        -2.24745679   
+     1.00000000         6.00000000         2.44086790         2.75886655        -2.24753404   
+     1.00000000         7.00000000         2.44086790         2.75884056        -2.24752188   
+     2.00000000         2.00000000        -7.20042992        0.255639683E-1      3.48662424   
+     2.00000000         3.00000000        -1.26205385         1.38285077         2.72254229   
+     2.00000000         4.00000000        -1.26205385         1.38290346         2.72261953   
+     2.00000000         5.00000000         1.51905835         2.49591780        -1.86109936   
+     2.00000000         6.00000000         3.18587971         2.91661215        -2.01721835   
+     2.00000000         7.00000000         3.18587971         2.91657805        -2.01727057   
+     3.00000000         2.00000000        -7.89573145       -0.129430413         3.90645742   
+     3.00000000         3.00000000        -3.01058745         1.02528155         3.06517148   
+     3.00000000         4.00000000        -3.01058745         1.02525890         3.06518054   
+     3.00000000         5.00000000        0.437631011         2.11829019        -1.33877993   
+     3.00000000         6.00000000        0.437639922         2.12068701        -1.40639031   
+     3.00000000         7.00000000         10.1580734         4.07393932        -2.64417171   
+# 
+# 07/24/2020 at 16:46 yambo_rt @ baym [start]
+# 07/24/2020 at 16:46                 [end]
+#
+# .-Input file  yambo.in
+# | HF_and_locXC                     # [R] Hartree-Fock
+# | gw0                              # [R] GW approximation
+# | cohsex                           # [R][Xp] COlumb Hole Screened EXchange
+# | em1s                             # [R][Xs] Statically Screened Interaction
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | FFTGvecs=  387             RL    # [FFT] Plane-waves
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | EXXRLvcs=  609             RL    # [XX] Exchange    RL components
+# | VXCRLvcs= 2085             RL    # [XC] XCpotential RL components
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | XfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT Xd] Database
+# | % BndsRnXs
+# |   1 |  8 |                           # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs=  59              RL    # [Xs] Response block size
+# | GrFnTpXs= "R"                    # [Xs] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
+# | % DmRngeXs
+# |  0.100000 | 0.100000 |         eV    # [Xs] Damping range
+# | %
+# | % LongDrXs
+# |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
+# | %
+# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
+# | GfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT G] Database
+# | UseEbands                      # [GW] Force COHSEX to use empty bands
+# | GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
+# | GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
+# | 1|3|2|7|
+# | %
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
+# | 1|3| 0.000000|-1.000000|
+# | %
