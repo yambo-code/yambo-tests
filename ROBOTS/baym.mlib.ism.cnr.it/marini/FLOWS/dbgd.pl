@@ -14,17 +14,17 @@ TESTS     => 'Si_bulk/RT',
 },
 {
 KEYS        => 'rt',
-ACTIVE      => 'no',
+ACTIVE      => 'yes',
 TESTS     => 'MoS2/pwscf/RT',
 },
 {
 KEYS        => 'elph',
-ACTIVE      => 'yes',
+ACTIVE      => 'no',
 TESTS     => 'Si_bulk/ELPH/base_for_BSE;Si_bulk/ELPH/OPTICS',
 },
 {
 KEYS        => 'none',
-ACTIVE      => 'yes',
+ACTIVE      => 'no',
 TESTS     => 'Si_bulk/GW-OPTICS',
 },
 );
