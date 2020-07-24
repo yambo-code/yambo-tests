@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-          Version 5.0.0 Revision 18613 Hash adc9b3128                     
+      __   __     _        __  __       ____      U  ___  u               
+      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
+       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
+      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
+        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
+    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
+     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+                                                                          
+                                                                          
+          Version 5.0.0 Revision 18623 Hash 5e3c39c8c                     
                     Branch is devel-andreaM                               
                        MPI+HDF5_IO Build                                  
                    http://www.yambo-code.org                              
  
- 07/22/2020 at 17:06 ypp @ baym
+ 07/23/2020 at 17:04 ypp @ baym
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_MAP_fine_grid
- Alt#1 string        : R1
+ Alt#1 string        : R3
 
  Precision           : SINGLE
   
@@ -282,28 +282,38 @@
   [06.03] Double Grid K-points expansion ...
   ==========================================
 
+  found 16384 (408) points in the BZ (IBZ)
 
   [06.04] Double Grid IBZ-IBZ mapping
   ===================================
 
+  :: IBZ-IBZ Fine Grid pts per Coarse grid BZ pt ::   0  16
+  :: IBZ-IBZ Fine Grid points used - read        ::   106   408
+  :: IBZ-IBZ Duplicated points                   :: 0
+  :: IBZ-IBZ Blocks filling (excl. coarse grid)  ::   8  16
 
   [06.05] Double Grid BZ-BZ mapping
   =================================
 
+  :: BZ-BZ Fine Grid pts per Coarse grid BZ pt ::   64   64
+  :: BZ-BZ Duplicated points                   :: 0
+  :: BZ-BZ Blocks filling (excl. coarse grid)  ::   64   64
+
+  [06.06] Double Grid Database I/O
+  ================================
+
   [WR./04_MAP_fine_grid//ndb.Double_Grid]-----------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :   19  256   10  256
-   Brillouin Symmetry  mode                         : mixed
-   Fine Grid  BZ mapped mode                        : BZ
-   Fine Grid IBZ mapped mode                        : IBZ
-   Bands                                            :   32
-   Number of points (fine)         in the IBZ (E)   :   408
-   Number of points (fine+coarse)  in the IBZ (k)   :  116
-   Number                          in the  BZ (k)   :  16640
-   Number of duplic. pts (fine)        in the IBZ   : 0
-   Number                              in the  BZ   : 0
-  - S/N 007994 ---------------------------------------------- v.05.00.00 r.18613 -
+   [FineGd] Brillouin Symmetry  mode                : mixed
+   [FineGd] Fine Grid  BZ mapped mode               : BZ
+   [FineGd] Fine Grid IBZ mapped mode               : IBZ
+   [FineGd] Bands                                   :   32
+   [FineGd] Number of pts (Energy grid)             :   408
+   [FineGd] Number of pts (fine+coarse, IBZ-map)    :  116
+   [FineGd] Number of pts (fine+coarse, BZ-map)     :  16640
+  - S/N 007994 ---------------------------------------------- v.05.00.00 r.18623 -
 
- Timing [Min/Max/Average]: 02m-03s/02m-03s/02m-03s
+ Timing [Min/Max/Average]: 01m-57s/01m-57s/01m-57s
 
  [07] Timing Overview
  ====================
@@ -311,10 +321,10 @@
  Clock: global
       io_ATMPROJ_pwscf :      0.0000s CPU
             io_COL_CUT :      0.0000s CPU
-                 io_WF :      0.0010s CPU
-              io_QINDX :      0.0012s CPU
-               io_GROT :      0.0026s CPU (2 calls,   1.281 msec avg)
-        io_Double_Grid :      0.0047s CPU (3 calls,   1.560 msec avg)
+                 io_WF :      0.0009s CPU
+              io_QINDX :      0.0013s CPU
+               io_GROT :      0.0027s CPU (2 calls,   1.344 msec avg)
+        io_Double_Grid :      0.0050s CPU (3 calls,   1.683 msec avg)
 
  [08] Memory Overview
  ====================
@@ -328,11 +338,11 @@
  [09] Game Over & Game summary
  =============================
 
- 07/22/2020 at 17:06 ypp @ baym [start]
- 07/22/2020 at 17:08            [end]
+ 07/23/2020 at 17:04 ypp @ baym [start]
+ 07/23/2020 at 17:06            [end]
 
- Timing   [Min/Max/Average]: 02m-03s/02m-03s/02m-03s
-             [Time-Profile]: 02m-03s
+ Timing   [Min/Max/Average]: 01m-57s/01m-57s/01m-57s
+             [Time-Profile]: 01m-57s
 
  .-ACKNOWLEDGMENT
  |

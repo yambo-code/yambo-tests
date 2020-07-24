@@ -8,12 +8,12 @@
          \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
                                                                           
                                                                           
-          Version 5.0.0 Revision 18621 Hash d09932d5f                     
+          Version 5.0.0 Revision 18623 Hash 5e3c39c8c                     
                     Branch is devel-andreaM                               
                        MPI+HDF5_IO Build                                  
                    http://www.yambo-code.org                              
  
- 07/23/2020 at 15:26 yambo_rt @ baym
+ 07/23/2020 at 16:42 yambo_rt @ baym
  ==================================================
 
  Cores               :  1
@@ -33,7 +33,7 @@
 
  Job   string        : 05_td_hf_fonly_coll
  Alt#1 string        : 02_collisions_Fonly-serial-devel-andreaM
- Alt#2 string        : R3
+ Alt#2 string        : R2
 
  Precision           : SINGLE
   
@@ -151,7 +151,7 @@
   X grid is uniform                                : yes
   BS scattering                                    : no
   COLL scattering                                  : no
- - S/N 004393 ---------------------------------------------- v.05.00.00 r.18621 -
+ - S/N 004393 ---------------------------------------------- v.05.00.00 r.18623 -
 
  IBZ Q-points :   4
  BZ  Q-points :   4
@@ -172,7 +172,7 @@
  [WARNING] DIPOLES database not correct or missing
  [RD./SAVE//ns.kb_pp]------------------------------------------------------------
   Fragmentation                                    : no
- - S/N 004393 ---------------------------------------------- v.05.00.00 r.18621 -
+ - S/N 004393 ---------------------------------------------- v.05.00.00 r.18623 -
  [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.43368E-18   1.0000    
 
  [WR./05_td_hf_fonly_coll//ndb.dipoles]------------------------------------------
@@ -191,7 +191,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P P2
   Wavefunctions                                    : Teter 93(XC)
- - S/N 004393 ---------------------------------------------- v.05.00.00 r.18621 -
+ - S/N 004393 ---------------------------------------------- v.05.00.00 r.18623 -
 
  [05] HARTREE+FOCK Real-Time Dynamics
  ====================================
@@ -258,7 +258,7 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P P2
    Wavefunctions                                    : Teter 93(XC)
-  - S/N 004393 ---------------------------------------------- v.05.00.00 r.18621 -
+  - S/N 004393 ---------------------------------------------- v.05.00.00 r.18623 -
 
   [05.02] Dephasing matrix setup
   ==============================
@@ -277,7 +277,7 @@
    Bands mixing                                     :  100.0000
    Exchange Cutoff                                  :  0.500000E-3
    Exchange RL vectors                              :  107
-  - S/N 004393 ---------------------------------------------- v.05.00.00 r.18621 -
+  - S/N 004393 ---------------------------------------------- v.05.00.00 r.18623 -
 
   [WARNING][COLLISIONS] Found (and using) an Hartree-free collisions database
 
@@ -383,55 +383,55 @@
    [FIELDs] Frequency steps                         :  1
    [FIELDs] Frequency step     [eV]                 :  0.000000
    [FIELDs] Initial time       [fs]                 :  0.010000
-  - S/N 004393 ---------------------------------------------- v.05.00.00 r.18621 -
+  - S/N 004393 ---------------------------------------------- v.05.00.00 r.18623 -
 
- Timing [Min/Max/Average]: 16s/16s/16s
+ Timing [Min/Max/Average]: 17s/17s/17s
 
  [06] Timing Overview
  ====================
 
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
+              V_qp_basis_to_H :      0.0000s CPU (    4 calls,   0.003 msec avg)
                   io_KB_pwscf :      0.0000s CPU (    2 calls,   0.007 msec avg)
-              V_qp_basis_to_H :      0.0000s CPU (    4 calls,   0.004 msec avg)
-                   io_COL_CUT :      0.0000s CPU
                         io_BS :      0.0000s CPU
+                   io_COL_CUT :      0.0000s CPU
                io_Double_Grid :      0.0000s CPU
-                      io_ELPH :      0.0001s CPU (    2 calls,   0.025 msec avg)
+                      io_ELPH :      0.0000s CPU (    2 calls,   0.023 msec avg)
                         io_HF :      0.0001s CPU
              RT output (INIT) :      0.0001s CPU
-                         io_X :      0.0001s CPU (    4 calls,   0.028 msec avg)
-                 PP_uspp_init :      0.0001s CPU (    9 calls,   0.014 msec avg)
-          XC_potential_driver :      0.0009s CPU
-                     io_QINDX :      0.0020s CPU (    2 calls,   0.985 msec avg)
-                      io_GROT :      0.0031s CPU (    3 calls,   1.031 msec avg)
-                 io_KB_abinit :      0.0056s CPU (    6 calls,   0.939 msec avg)
-                    XCo_local :      0.0059s CPU
-             Bare_Hamiltonian :      0.0118s CPU
-                   io_DIPOLES :      0.0124s CPU (   12 calls,   1.034 msec avg)
-           COLLISIONS (redux) :      0.0134s CPU ( 3999 calls,   0.003 msec avg)
-                        io_WF :      0.0139s CPU (   31 calls,   0.449 msec avg)
-                  WF_load_FFT :      0.0141s CPU (    9 calls,   1.565 msec avg)
-                 RT avg redux :      0.0239s CPU ( 6613 calls,   0.004 msec avg)
-               RT Apply Field :      0.0249s CPU ( 3999 calls,   0.006 msec avg)
-      IO_and_Messaging_switch :      0.0359s CPU ( 4083 calls,   0.009 msec avg)
-            DIPOLE_transverse :      0.0440s CPU
-                    RT output :      0.0477s CPU ( 1206 calls,   0.040 msec avg)
-                    FFT_setup :      0.0517s CPU (    6 calls,   8.611 msec avg)
-                      Dipoles :      0.0578s CPU
-                RT integrator :      0.0596s CPU ( 3998 calls,   0.015 msec avg)
-                  io_fragment :      0.1046s CPU (  252 calls,   0.415 msec avg)
-              COLLISIONS_load :      0.1258s CPU (    2 calls,  62.897 msec avg)
-                io_COLLISIONS :      0.1260s CPU (   87 calls,   1.448 msec avg)
-                RT average Op :      0.1564s CPU ( 6613 calls,   0.024 msec avg)
-         COLLISIONS (compose) :      0.2731s CPU ( 7998 calls,   0.034 msec avg)
-               RT observables :      0.2829s CPU ( 2000 calls,   0.141 msec avg)
-             io_RT_components :      0.8443s CPU ( 2127 calls,   0.397 msec avg)
-              RT databases IO :      1.2231s CPU ( 2000 calls,   0.001 sec avg)
-                    V_Hartree :      2.2775s CPU ( 4000 calls,   0.001 sec avg)
-            el_density_matrix :      4.3672s CPU ( 4000 calls,   0.001 sec avg)
-            V_real_space_to_H :      7.4620s CPU (16008 calls,   0.000 sec avg)
-               RT Hamiltonian :     14.5537s CPU ( 3999 calls,   0.004 sec avg)
+                         io_X :      0.0001s CPU (    4 calls,   0.025 msec avg)
+                 PP_uspp_init :      0.0001s CPU (    9 calls,   0.016 msec avg)
+          XC_potential_driver :      0.0010s CPU
+                     io_QINDX :      0.0022s CPU (    2 calls,   1.090 msec avg)
+                      io_GROT :      0.0032s CPU (    3 calls,   1.068 msec avg)
+                    XCo_local :      0.0052s CPU
+                 io_KB_abinit :      0.0058s CPU (    6 calls,   0.974 msec avg)
+             Bare_Hamiltonian :      0.0110s CPU
+                   io_DIPOLES :      0.0133s CPU (   12 calls,   1.108 msec avg)
+                  WF_load_FFT :      0.0137s CPU (    9 calls,   1.524 msec avg)
+           COLLISIONS (redux) :      0.0139s CPU ( 3999 calls,   0.003 msec avg)
+                        io_WF :      0.0150s CPU (   31 calls,   0.483 msec avg)
+                 RT avg redux :      0.0243s CPU ( 6613 calls,   0.004 msec avg)
+               RT Apply Field :      0.0260s CPU ( 3999 calls,   0.007 msec avg)
+      IO_and_Messaging_switch :      0.0363s CPU ( 4083 calls,   0.009 msec avg)
+            DIPOLE_transverse :      0.0455s CPU
+                    RT output :      0.0501s CPU ( 1206 calls,   0.042 msec avg)
+                    FFT_setup :      0.0519s CPU (    6 calls,   8.646 msec avg)
+                      Dipoles :      0.0598s CPU
+                RT integrator :      0.0622s CPU ( 3998 calls,   0.016 msec avg)
+                  io_fragment :      0.1131s CPU (  252 calls,   0.449 msec avg)
+              COLLISIONS_load :      0.1363s CPU (    2 calls,  68.172 msec avg)
+                io_COLLISIONS :      0.1365s CPU (   87 calls,   1.569 msec avg)
+                RT average Op :      0.1619s CPU ( 6613 calls,   0.024 msec avg)
+         COLLISIONS (compose) :      0.2781s CPU ( 7998 calls,   0.035 msec avg)
+               RT observables :      0.2902s CPU ( 2000 calls,   0.145 msec avg)
+             io_RT_components :      0.8918s CPU ( 2127 calls,   0.419 msec avg)
+              RT databases IO :      1.2746s CPU ( 2000 calls,   0.001 sec avg)
+                    V_Hartree :      2.1934s CPU ( 4000 calls,   0.001 sec avg)
+            el_density_matrix :      4.4379s CPU ( 4000 calls,   0.001 sec avg)
+            V_real_space_to_H :      7.8032s CPU (16008 calls,   0.000 sec avg)
+               RT Hamiltonian :     14.8941s CPU ( 3999 calls,   0.004 sec avg)
 
  [07] Memory Overview
  ====================
@@ -445,8 +445,8 @@
  [08] Game Over & Game summary
  =============================
 
- 07/23/2020 at 15:26 yambo_rt @ baym [start]
- 07/23/2020 at 15:26                 [end]
+ 07/23/2020 at 16:42 yambo_rt @ baym [start]
+ 07/23/2020 at 16:43                 [end]
 
  Timing   [Min/Max/Average]: 17s/17s/17s
              [Time-Profile]: 17s
