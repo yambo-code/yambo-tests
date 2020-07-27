@@ -40,6 +40,7 @@ if ("@_" eq "RESTORE") {
 #
 # ALL
 if("@_" eq "ALL") {
+ &command("find . -type d -empty | xargs rm -fr");
  if ($ROBOT_id) 
  {
   @rob_to_clean=split(/-/, $ROBOT_id);
