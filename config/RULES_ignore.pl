@@ -27,9 +27,9 @@
 #
 $N_IGNORE=0;
 #
-#@PATTS = qw(02_fit_elph_0K 02_fit_elph_300K 03_fit_elel 04_fit_elel+elph_0K);
-#for $patt (@PATTS) {$N_IGNORE++;
-#$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-#$IGNORE_file[$N_IGNORE]="$patt";
-#$IGNORE_test[$N_IGNORE]="Si_bulk"}
+@PATTS = qw(k2_kRT9 k2_kRT10 k2_kRT11 k2_kRT12 k3_kRT13 k3_kRT14);
+for $patt (@PATTS) {$N_IGNORE++;
+$IGNORE_branch[$N_IGNORE]="devel-andreaM";
+$IGNORE_file[$N_IGNORE]="$patt";
+$IGNORE_test[$N_IGNORE]="MoS2/pwscf/RT"}
 #
