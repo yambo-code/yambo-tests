@@ -33,3 +33,9 @@ $IGNORE_branch[$N_IGNORE]="devel-andreaM";
 $IGNORE_file[$N_IGNORE]="$patt";
 $IGNORE_test[$N_IGNORE]="MoS2/pwscf/RT"}
 #
+@PATTS = qw(k2_kRT12 k2_kRT13 k2_kRT14 k2_kRT15 k2_kRT16 k2_kRT17 k2_kRT18 k2_kRT19 k2_kRT20 k3_kRT18 k3_kRT19 k3_kRT20);
+for $patt (@PATTS) {$N_IGNORE++;
+$IGNORE_branch[$N_IGNORE]="devel-andreaM";
+$IGNORE_file[$N_IGNORE]="$patt";
+$IGNORE_test[$N_IGNORE]="Si_bulk/RT"}
+#
