@@ -84,12 +84,11 @@ if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "dev
 }else{
  $REF_folder="REFERENCE_".$branch_key;
 };
-if ("@_" eq "RM" and "$REF_folder" eq "REFERENCE"){
+if ("@_" eq "RM" && $ref_filename =~ /$REF_folder/){
  &command("$git rm ../$ref_filename");
 }
 if ("@_" eq "ADD")
 {
- print "\nUPDATE: Adding";
  if (not -d $REF_folder) 
  { 
   print "...$REF_folder FOLDER";
