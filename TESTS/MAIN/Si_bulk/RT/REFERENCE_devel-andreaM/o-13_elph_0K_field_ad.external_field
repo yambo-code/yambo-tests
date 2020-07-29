@@ -1,16 +1,16 @@
 #                                                                     
-# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
-# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
-#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
-#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
-#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
-#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
-#    ###  ###     ### ###       ### #########   ########              
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
 #                                                                     
 #                                                                     
-#       Version 5.0.0 Revision 18628 Hash b8d3dcce6                   
+#        Version 5.0.1 Revision 18703 Hash e137d59                    
 #                 Branch is devel-andreaM                             
-#                    MPI+HDF5_IO Build                                
+#               MPI+SLK+SLEPC+HDF5_IO Build                           
 #                http://www.yambo-code.org                            
 #
 #
@@ -654,3 +654,75 @@
       496.600006        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         88.6217117   
       497.880035        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         88.6217117   
       499.160004        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         88.6217117   
+      500.440033        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         88.6217117   
+# 
+# 07/29/2020 at 14:25 yambo_rt @ baym [start]
+# 07/29/2020 at 14:25                 [end]
+#  
+# Timing   [Min/Max/Average]: 15s/15s/15s
+#
+# .-Input file  yambo.in
+# | negf                             # [R] NEQ Real-time dynamics
+# | el_ph_scatt                      # [R] Electron-Phonon   Scattering
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | DBsIOoff= "DIP"                  # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,OBS,W,SC,BS,ALL)
+# | HXC_Potential= "IP"              # [SC] SC HXC Potential
+# | FFTGvecs=  387             RL    # [FFT] Plane-waves
+# | HARRLvcs= 2085             RL    # [HA] Hartree     RL components
+# | GfnQP_Wv_E=-1.200000       eV    # [EXTQP G] W Energy reference  (valence)
+# | % GfnQP_Wv
+# |  0.300000 | 0.000000 | 0.010000 |        # [EXTQP G] W parameters  (valence) eV| 1|eV^-1
+# | %
+# | GfnQP_Wc_E= 1.200000       eV    # [EXTQP G] W Energy reference  (conduction)
+# | % GfnQP_Wc
+# |  0.300000 | 0.000000 | 0.010000 |        # [EXTQP G] W parameters  (conduction) eV| 1 |eV^-1
+# | %
+# | RTEvalEnergy                   # [RT] Energy variation computed on the fly
+# | RTEvalEntropy                  # [RT] Entropy variation computed on the fly
+# | dTupdateTime= 60.00000     fs    # [RT] Initial Time for deltaT update (active only if non-zero)
+# | dTupdateJump= 5.000000     fs    # [RT] Time betweem two deltaT updates
+# | dTupdateTresh= 5.000000          # [RT][o/o] Treshold of deltaT updates
+# | dT_MAX= 2.000000           fs    # [RT] Maximum value for the time-dependent dT
+# | #LifeExtrapolation             # [RT] Skipped Lifetimes are extrapolated
+# | % LifeExtrapSteps
+# |  0.000000 | 0.000000 |         fs    # [RT] Step length between and inside two consecutive groups of lifetimes
+# | %
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | % ElPhModes
+# |   1 |  6 |                           # [ELPH] Phonon modes included
+# | %
+# | % RTBands
+# |   2 |  7 |                           # [RT] Bands
+# | %
+# | Integrator= "EULER + RK2 + RWA"  # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
+# | GrKind= "QP"                     # [RT] G-ret kind: Lorentzian (QP)/ Hyperbolic QP_secant (HS)
+# | PhLifeTime= 0.000000       fs    # [RT] Constant Dephasing Time
+# | % RTehEny
+# |  -7.89573 | 10.15807 |         eV    # [RT] Electron-hole energy range
+# | %
+# | RTstep= 20.00000           as    # [RT] Real Time step length
+# | NETime= 500.0000           fs    # [RT] Simulation Time
+# | % IOtime
+# |  0.500000 | 0.500000 | 0.500000 |  fs    # [RT] Time between two consecutive I/O (CARRIERs - GF - OUTPUT)
+# | %
+# | % IOCachetime
+# |  0.020000 | 2.000000 |         fs    # [RT] Time between two consecutive (caching - I/O) of OBSERVABLES
+# | %
+# | % Field1_Freq
+# |  2.600000 | 2.600000 |         eV    # [RT Field1] Frequency
+# | %
+# | Field1_Int=  10000.0       kWLm2 # [RT Field1] Intensity
+# | Field1_Width= 10.00000     fs    # [RT Field1] Width
+# | Field1_FWHM= 23.54820      fs    # [RT Field1] Full Width at Half Maximum (overwrite width if set)
+# | Field1_kind= "QSSIN"             # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+# | Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
+# | % Field1_Dir
+# |  0.577350 | 0.577350 | 0.577350 |        # [RT Field1] Versor
+# | %
+# | % Field1_Dir_circ
+# |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
+# | %
+# | Field1_Tstart= 0.500000    fs    # [RT Field1] Initial Time
+# | %DephMatrix                      # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
+# | 1|1|1|-1.000000|
+# | %
