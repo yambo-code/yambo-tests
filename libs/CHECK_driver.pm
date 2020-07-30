@@ -85,8 +85,9 @@ O_file_loop: foreach $run_filename (<o-$testname.*>){
   if ($update_test) {&UPDATE_action("ADD")};
  }else{
   my $ERR=&CHECK_file;
-  if ($ERR eq "FAIL" and $update_test)
+  if ($update_test and $ERR eq "FAIL" and (not $CHECK_error =~ /WHITELISTED/ and not $CHECK_error =~ /RULES-SUCC/) ) 
   {
+   print "\nADD #1 $ERR\n";
    &UPDATE_action("RM");
    &UPDATE_action("ADD");
   }
