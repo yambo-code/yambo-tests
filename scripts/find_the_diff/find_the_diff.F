@@ -249,8 +249,11 @@ program find_the_diff
    deallocate(tmp)
  endif
  !
- call eval_the_moments(ref) 
- call eval_the_moments(out)
+ N_data_to_check=min(ref%N,out%N)
+ !
+ call eval_the_moments(ref,N_data_to_check) 
+ call eval_the_moments(out,N_data_to_check)
+ !
  do i_c=1,ref%N_col
    ERROR(i_c)=ERROR(i_c)*PREC*ref%Max(i_c)
    if (ERROR(i_c)<TRESHOLD) ERROR(i_c)=1.E-5
@@ -278,19 +281,11 @@ program find_the_diff
    enddo
  endif
  !
- if (ref%N/=out%N) then
-   write (CHECK_result,'(a,2(i6,a))') "Different number of elements:",ref%N," [REF]",out%N," [OUT]"
-   write (*,'(a)') trim(CHECK_result)
-   stop
- endif
  if (ref%N_col/=out%N_col) then
    if( .not.(abs(ref%N_col-out%N_col)==count(skip_column)) ) then
      write (CHECK_result,'(a,2(i6,a))') "Different number of columns:",ref%N_col," [REF]",out%N_col," [OUT]"
      write (*,'(a)') trim(CHECK_result)
      stop
-   !else
-   !  write (CHECK_result,'(a,2(i6,a))') " OK ] Different number of columns:",&
-   !          &    ref%N_col," [REF]",out%N_col," [OUT] ignored due to rules"
    endif
  endif
  !
@@ -308,7 +303,7 @@ program find_the_diff
    i_c_ref=0
    str= " "
    do i_d=1,N_m
-     call check(ref%M(i_d,:),out%M(i_d,:),i_d==N_m,"Momentum")
+     call check(ref%M(i_d,:N_data_to_check),out%M(i_d,:N_data_to_check),i_d==N_m,"Momentum")
    enddo
  endif
  !
@@ -316,8 +311,8 @@ program find_the_diff
  MAX_ERR_RULES=0.
  i_c_ref=0
  str= " "
- do i_d=1,ref%N
-   call check(ref%D(i_d,:),out%D(i_d,:),i_d==ref%N,"VALUE")
+ do i_d=1,N_data_to_check
+   call check(ref%D(i_d,:),out%D(i_d,:),i_d==N_data_to_check,"VALUE")
  enddo
  !
  write (*,'(a)') trim(CHECK_result)

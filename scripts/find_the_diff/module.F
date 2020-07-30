@@ -31,7 +31,7 @@ module DIFF
  !
  character(str_length) :: str,str1,CHECK_result="OK",MATERIAL="any"
  character(str_length) :: data_str(N_max_col),titles(N_max_col)
- integer        :: ind,ierr,ivar,N,i_c,i_m,i_d,i_r,i_c_ref,i_t,i_rule=0,i_REF_col,i_REF_row
+ integer        :: ind,ierr,ivar,N,i_c,i_m,i_d,i_r,i_c_ref,i_t,i_rule=0,i_REF_col,i_REF_row,N_data_to_check
  character(13)  :: subname="find_the_diff"
  real(SP)       :: PREC=0.01,MAX_ERR_RULES,MAX_ERR,O_ref,R_ref,delta_ref,TRESHOLD,USER_error
  real(SP)       :: ERROR(N_max_col)

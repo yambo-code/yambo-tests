@@ -21,28 +21,29 @@
 ! Software Foundation, Inc., 59 Temple Place - Suite 330,Boston, 
 ! MA 02111-1307, USA or visit http://www.gnu.org/copyleft/gpl.txt.
 !
-subroutine eval_the_moments(fl)
+subroutine eval_the_moments(fl,Ndata)
  !
  use DIFF
  implicit none
  type(obj) :: fl
- real(SP)  :: RIntegrate,W(fl%N),dW,F(fl%N)
+ integer   :: Ndata
+ real(SP)  :: RIntegrate,W(Ndata),dW,F(Ndata)
  fl%Max=-1.
- dW=1./(fl%N-1)
- do i_d=1,fl%N
+ dW=1./(Ndata-1)
+ do i_d=1,Ndata
    W(i_d)=(i_d-1)*dW
  enddo
  do i_c=1,fl%N_col
    if (skip_column(i_c)) cycle
-   do i_d=1,fl%N
+   do i_d=1,Ndata
      fl%Max(i_c)=max(fl%Max(i_c),abs(fl%D(i_d,i_c)))
    enddo
    do i_m=1,N_m
-     do i_d=1,fl%N
+     do i_d=1,Ndata
        F(i_d)=fl%D(i_d,i_c)
        if (i_m>1) F(i_d)=F(i_d)*W(i_d)**(i_m-1)
      enddo
-     fl%M(i_m,i_c)=RIntegrate(F,W,fl%N)
+     fl%M(i_m,i_c)=RIntegrate(F,W,Ndata)
    enddo
  enddo
  !
