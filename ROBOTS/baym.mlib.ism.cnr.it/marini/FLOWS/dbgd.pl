@@ -8,7 +8,7 @@ TESTS     => 'hBN/RT',
 },
 {
 KEYS        => 'rt',
-ACTIVE      => 'yes',
+ACTIVE      => 'no',
 #TESTS     => 'Si_bulk/RT',
 TESTS     => 'Si_bulk/RT 00_init 01_fix_symm 01_init 05_E_DbGd 06_carriers_DB_ypp_DbGd 06_elph_0K_DbGd 06_fit_elph_0K_DbGd 06_occ_bands_elph_0K_DbGd',
 },
@@ -19,12 +19,12 @@ TESTS     => 'MoS2/pwscf/RT',
 },
 {
 KEYS        => 'elph',
-ACTIVE      => 'no',
+ACTIVE      => 'yes',
 TESTS     => 'Si_bulk/ELPH/base_for_BSE;Si_bulk/ELPH/OPTICS',
 },
 {
 KEYS        => 'none',
-ACTIVE      => 'no',
+ACTIVE      => 'yes',
 TESTS     => 'Si_bulk/GW-OPTICS',
 },
 );
