@@ -45,6 +45,7 @@ LOOP: foreach $test ( <$path/*> ) {
  if (index($test, ".actions")>0) {next LOOP};
  if (index($test, ".input")>0) {next LOOP};
  if (index($test, ".flags")>0) {next LOOP};
+ if (index($test, ".Double_Grid_MAP")>0) {next LOOP};
  my $name = substr($test,length($path)+1,length($test)) ;
  $tests_list="$tests_list $name";
 }
