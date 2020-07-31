@@ -303,7 +303,7 @@ program find_the_diff
    i_c_ref=0
    str= " "
    do i_d=1,N_m
-     call check(ref%M(i_d,:N_data_to_check),out%M(i_d,:N_data_to_check),i_d==N_m,"Momentum")
+     call check(ref%M(i_d,:),out%M(i_d,:),i_d==N_m,"Momentum")
    enddo
  endif
  !
