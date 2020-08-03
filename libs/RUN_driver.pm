@@ -24,7 +24,7 @@
 #
 sub RUN_driver{
 #
-&CWD_save;
+$RUN_driver_base_path=abs_path();
 #
 # Loop over test directories
 $numtests = @input_tests_list; # Number of elements
@@ -37,7 +37,7 @@ $max_admitted_fails=1000;
 #
 LOOP_DIRS: foreach my $testline (@input_tests_list) {
  #
- &CWD_go;
+ chdir($RUN_driver_base_path);
  #
  chdir("$TESTS_folder");
  #
@@ -247,7 +247,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  if (not $update_test) {&RUN_setup("after_tests_loop")};
  #
 }
-&CWD_go;
+chdir($RUN_driver_base_path);
 #
 }
 1;

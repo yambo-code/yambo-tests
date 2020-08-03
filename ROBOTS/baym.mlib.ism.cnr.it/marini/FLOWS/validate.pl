@@ -5,10 +5,10 @@
  ACTIVE      => "yes",
 # CONFIG      => "default.sh",
  TESTS       => "all",
- KEYS        => "none rt",
+ KEYS        => "all hard",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => 8,
  PAR_MODE    => "default",
 },
