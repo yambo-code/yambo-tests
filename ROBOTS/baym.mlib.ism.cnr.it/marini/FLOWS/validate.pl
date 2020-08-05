@@ -3,17 +3,16 @@
 @flow = (
 {
  ACTIVE      => "yes",
-# CONFIG      => "default.sh",
  TESTS       => "all",
  KEYS        => "all hard",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => 8,
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => 8,
  PAR_MODE    => "random",
 },
@@ -27,16 +26,16 @@
  THREADS     => "4",
 },
 {
- ACTIVE      => "no",
- MPI_CPU     => $SYSTEM_NP,
- SLK_CPU     => $SYSTEM_NP_half,
+ ACTIVE      => "yes",
+ MPI_CPU     => 8,
+ SLK_CPU     => 4,
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "no",
- MPI_CPU     => $SYSTEM_NP_half,
+ ACTIVE      => "yes",
+ MPI_CPU     => 2,
  THREADS     => "2",
- SLK_CPU     => $SYSTEM_SLK,
+ SLK_CPU     => 4,
  PAR_MODE    => "default",
 },
 );

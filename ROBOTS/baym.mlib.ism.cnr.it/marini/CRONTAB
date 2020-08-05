@@ -30,7 +30,9 @@
 # 
 # m  h   dom mon dow   command
 #
-#30 23 * * * /home/marini/Yambo/sources/git/yambo-tests/driver.pl -kill
-#40 23 * * * /home/marini/Yambo/sources/git/yambo-tests/driver.pl -c
-#50 23 * * * /home/marini/Yambo/sources/git/yambo-tests/driver.pl -d all -force
-00 13 * * * /home/marini/Yambo/sources/git/yambo-tests/ROBOTS/anomaly.mlib.ism.cnr.it/marini/SCRIPTS/script_devel-rt-rotate_INTERNAL.tcsh
+50 20 * * * cd yambo-tests/; ./configure 2>&1
+00 21 * * * cd yambo-tests/; ./driver.pl -kill 2>&1
+10 21 * * * cd yambo-tests/; ./driver.pl -c 2>&1
+30 21 * * * cd yambo-tests/; ./driver.pl -d all -force 2>&1
+#00 22 * * * cd yambo-tests; ./ROBOTS/frontend/marini/SCRIPTS/script.tcsh validate devel-andreaM
+20 16 * * * cd yambo-tests; ./ROBOTS/frontend/marini/SCRIPTS/script.tcsh validate devel-andreaM
