@@ -24,7 +24,7 @@ TESTS     => 'Si_bulk/ELPH/base_for_BSE;Si_bulk/ELPH/OPTICS',
 },
 {
 KEYS        => 'none',
-ACTIVE      => 'yes',
+ACTIVE      => 'no',
 TESTS     => 'Si_bulk/GW-OPTICS',
 },
 );
