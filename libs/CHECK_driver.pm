@@ -140,6 +140,13 @@ R_file_loop: foreach $ref_filename (@OFILES){
  $run_filename =~ s{.*/}{};
  ($base, $dir, $ext) = fileparse($run_filename, qr/\.[^.]*/);
  #
+ for $ipatt (1...$N_IGNORE) 
+ {
+  if ($run_filename =~ /$IGNORE_file[$ipatt]/ and ($IGNORE_branch[$ipatt] =~ /$branch_key/ or $IGNORE_branch[$ipatt] =~ "any")){ 
+   if ($testdir =~ /$IGNORE_test[$ipatt]/) {next R_file_loop}
+  }
+ }
+ #
  if (!-e "$run_filename") { 
   &RUN_stats("NO_OUT");
   if ($update_test and (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) ) 
