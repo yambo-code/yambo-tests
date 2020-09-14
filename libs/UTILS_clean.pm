@@ -58,7 +58,7 @@ if("@_" eq "ALL") {
    };
   }
  }else{
-  &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R*' -type d | $grep -v $hostname | xargs rm -fr");
+  &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R[0-9]*' -type d | $grep -v $hostname | xargs rm -fr");
   &command("$git ls-files --others --exclude-standard | $grep -v $hostname | grep -v MODULES.pl | grep -v TOOLS.pl | xargs rm -fr");
   &command("rm -f outputs_and_reports_ALL-* *compile*log *config*log");
  }
