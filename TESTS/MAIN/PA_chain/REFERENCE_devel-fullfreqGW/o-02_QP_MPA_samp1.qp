@@ -1,0 +1,109 @@
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
+#                                                                     
+#       Version 4.5.0 Revision 17650 Hash 9f0c2e7                     
+#               Branch is devel-fullfreqGW                            
+#             MPI+OpenMP+SLK+HDF5_LIB Build                           
+#               http://www.yambo-code.org                             
+#
+# GW [Secant method Solver]
+#
+# == MPA GW ==
+#
+# MPA number of poles :1
+# GW SC iterations       :0
+# dS/dw steps            : 2
+# dS/dw step         [ev]:  0.10000
+# X G`s            [used]: 21
+# X G`s            [disk]: 21
+# X bands                :  1  10
+# X poles           [o/o]: 100.0000
+# X e/h E range      [ev]:-1.000000 -1.000000
+# X xc-Kernel            : none
+# X damping range    [ev]:  0.00000  27.21138
+# X Steps                : 2
+# X BZ energy Double Grid: no
+# X BZ Double Grid points:0
+# Sc/G bands             :  1  20
+# Sc/G damping       [ev]:  0.10000
+# Sc bands terminator    : no
+# Sx RL components       :  4999
+#
+# QP @ K 1 - 4 : b 5 - 6
+#
+#    K-point      Band         Eo           E-Eo         Sc|Eo
+#
+    1.00         5.00         0.00        -.343        0.504E-09
+    1.00         6.00        0.737         2.34        -.585E-09
+    2.00         5.00        -1.12        -1.24        -.757E-09
+    2.00         6.00         1.40         2.55        0.179E-09
+    3.000        5.000       -4.346       -3.595       0.1731E-8
+    3.000        6.000        2.992        4.768       -.2226E-8
+    4.000        5.000       -6.888       -5.224       0.1941E-8
+    4.000        6.000        5.327        5.329       -.1507E-8
+# 
+# 09/14/2020 at 10:50 yambo @ corvina [start]
+# 09/14/2020 at 10:50                 [end]
+#
+# .-Input file : yambo.in
+# | HF_and_locXC                   # [R] Hartree-Fock
+# | gw0                            # [R] GW approximation
+# | rim_cut                        # [R] Coulomb potential
+# | em1d                           # [R][X] Dynamically Screened Interaction
+# | mpa                            # [R][Xp] Multi Pole Approximation for the Screened Interaction
+# | BoseTemp= 0.000000     eV      # Bosonic Temperature
+# | X_CPU= "2.2.1.1"               # [PARALLEL] CPUs for each role
+# | X_ROLEs= "g.v.k.q"             # [PARALLEL] CPUs roles (q,g,k,c,v)
+# | X_nCPU_LinAlg_INV= 1           # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | DIP_CPU= "2.2.1"               # [PARALLEL] CPUs for each role
+# | DIP_ROLEs= "v.c.k"             # [PARALLEL] CPUs roles (k,c,v)
+# | X_Threads=  4                  # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads=  4                # [OPENMP/X] Number of threads for dipoles
+# | SE_CPU= "2.2.1"                # [PARALLEL] CPUs for each role
+# | SE_ROLEs= "b.qp.q"             # [PARALLEL] CPUs roles (q,qp,b)
+# | SE_Threads=  4                 # [OPENMP/GW] Number of threads for self-energy
+# | RandQpts=0                     # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
+# | CUTGeo= "box xy"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# | % CUTBox
+# |  19.00000 | 19.00000 |  0.00000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000            # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000            # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000            # [CUT] WS cutoff: number of G to be modified
+# | EXXRLvcs=  4999        RL      # [XX] Exchange    RL components
+# | VXCRLvcs=  4999        RL      # [XC] XCpotential RL components
+# | Chimod= "HARTREE"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | % BndsRnXm
+# |   1 | 10 |                     # [Xm] Polarization function bands
+# | %
+# | NGsBlkXm= 21           RL      # [Xm] Response block size
+# | % LongDrXm
+# | 0.1000E-4 | 0.000    | 0.000    |        # [Xm] [cc] Electric Field
+# | %
+# | % EnRngeXm
+# |  0.000    |0.1000E-4 | eV      # [Xm] Energy range
+# | %
+# | % DmRngeXm
+# |  0.000000 | 2.000000 | Ry      # [Xm] Damping range
+# | %
+# | ETStpsXm= 2                    # [Xm] Total Energy steps
+# | % GbndRnge
+# |   1 | 20 |                     # [GW] G[W] bands range
+# | %
+# | GDamping=  0.10000     eV      # [GW] G[W] damping
+# | dScStep=  0.10000      eV      # [GW] Energy step to evaluate Z factors
+# | DysSolver= "s"                 # [GW] Dyson Equation solver ("n","s","g")
+# | %QPkrange                      # # [GW] QP generalized Kpoint/Band indices
+# | 1|4|5|6|
+# | %
+# | %QPerange                      # # [GW] QP generalized Kpoint/Energy indices
+# | 1|6| 0.000000|-1.000000|
+# | %
