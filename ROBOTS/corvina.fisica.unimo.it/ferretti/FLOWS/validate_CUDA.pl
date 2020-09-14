@@ -3,7 +3,7 @@
 @flow = (
 {
  ACTIVE      => "yes",
- CONFIG      => "validate_CUDA_SP.sh",
+ CONFIG      => "pgi_cuda_SP.sh",
  KEYS        => "all hard",
 },
 {
