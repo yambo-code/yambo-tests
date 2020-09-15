@@ -4,6 +4,7 @@
 {
  ACTIVE      => "yes",
  TESTS       => "all",
+ CONFIG      => "default.sh",
  KEYS        => "all hard",
 },
 {

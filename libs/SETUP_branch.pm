@@ -102,6 +102,9 @@ if ($pattern=~m/4.1/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/4.0/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/3.4/ix){$is_NEW_EXC_SORT="no"};
 #
+undef $is_NEW_P2Y;
+if ($pattern=~m/devel-andreaM/ix){$is_NEW_P2Y="yes"};
+#
 $do_NL_tests="yes";
 $is_NEW_YPP="yes";
 $PAR_COMP="-j";

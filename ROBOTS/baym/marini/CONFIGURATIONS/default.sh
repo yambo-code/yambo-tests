@@ -18,4 +18,5 @@ $CONF_LINE \
 --enable-time-profile=yes \
 --enable-msgs-comps=yes \
 --enable-open-mp=yes \
---enable-keep-src 
+--enable-keep-src \
+--enable-hdf5-par-io
