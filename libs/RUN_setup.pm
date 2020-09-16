@@ -84,12 +84,16 @@ if ("@_" =~ "before_run"){
  close IN;
  #
  # Input file
- $INPUT_file="-F yambo.in";
+ $INPUT_option="-F";
+ $INPUT_file="yambo.in";
  if ($yambo_exec =~ /\/p2y/) { 
-  if (    $is_NEW_P2Y) {$INPUT_file="-I ."};
-  if (not $is_NEW_P2Y) {$INPUT_file="-F $P2Y_datafile"};
+  $INPUT_file=$P2Y_datafile;
+  if (    $is_NEW_P2Y) {
+   $INPUT_option="-I";
+   $INPUT_file=".";
+  };
  };
- if ($yambo_exec =~ /\/a2y/) { $INPUT_file="-F $A2Y_datafile" };
+ if ($yambo_exec =~ /\/a2y/) { $INPUT_file=$A2Y_datafile };
 }
 if ("@_" =~ "after_run"){
  #
