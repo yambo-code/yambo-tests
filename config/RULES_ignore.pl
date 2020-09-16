@@ -33,3 +33,9 @@ $IGNORE_branch[$N_IGNORE]="devel-andreaM";
 $IGNORE_file[$N_IGNORE]="$patt";
 $IGNORE_test[$N_IGNORE]="Si_bulk/RT"}
 #
+@PATTS = qw(10_ypp_Map_FineGridx9.ndb.Double_Grid);
+for $patt (@PATTS) {$N_IGNORE++;
+$IGNORE_branch[$N_IGNORE]="devel-andreaM";
+$IGNORE_file[$N_IGNORE]="$patt";
+$IGNORE_test[$N_IGNORE]="Si_bulk/RT"}
+#
