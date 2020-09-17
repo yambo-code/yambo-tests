@@ -37,5 +37,5 @@ $IGNORE_test[$N_IGNORE]="Si_bulk/RT"}
 for $patt (@PATTS) {$N_IGNORE++;
 $IGNORE_branch[$N_IGNORE]="devel-andreaM";
 $IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="Si_bulk/RT"}
+$IGNORE_test[$N_IGNORE]="hBN/RT"}
 #
