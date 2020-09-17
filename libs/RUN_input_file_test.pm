@@ -25,10 +25,10 @@
 sub RUN_input_file_test{
 
  undef $NEW_file;
+ my $CMD;
  if (-f $INPUT_file) 
  {
-  my $NEW_file=$INPUT_file."_generated";
-  my $CMD;
+  $NEW_file=$INPUT_file."_generated";
   &command("echo \"ORIGINAL\" >> $INPUT_file");
   &command("cp $INPUT_file $NEW_file");
  }

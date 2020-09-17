@@ -222,7 +222,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      }
     }
     #
-    if ($check_input_generation) {
+    if ($check_input_generation and -f $INPUT_file) {
      my $msg = sprintf("%-"."$left_length"."s", "  $INPUT_file");
      &MESSAGE("LOG","\n"."$msg"."[$g_s  $INFILE_CHECK  $g_e]");
     }
