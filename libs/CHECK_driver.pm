@@ -80,6 +80,8 @@ O_file_loop: foreach $run_filename (<o-$testname.*>){
  #
  &gimme_reference($run_filename);
  #
+ if (&CHECK_ignore($run_filename)) {next O_file_loop};
+ #
  if (!-e "$ref_filename") { 
   &RUN_stats("NO_REF");
   if ($update_test) {&UPDATE_action("ADD")};
@@ -117,12 +119,9 @@ R_file_loop: foreach $ref_filename (@OFILES){
  if ($ref_filename =~ /db1/) {next R_file_loop};
  if ($ref_filename =~ /gops/ or $ref_filename =~ /kindx/) {next R_file_loop};
  if ($ref_filename =~ /em1d/ and $LIFE eq "1") {next R_file_loop};
- for $ipatt (1...$N_IGNORE) 
- {
-  if ($ref_filename =~ /$IGNORE_file[$ipatt]/ and ($IGNORE_branch[$ipatt] =~ /$branch_key/ or $IGNORE_branch[$ipatt] =~ "any")){ 
-   if ($testdir =~ /$IGNORE_test[$ipatt]/) {next R_file_loop}
-  }
- }
+ #
+ if (&CHECK_ignore($ref_filename)) {next R_file_loop};
+ #
  for $ipatt (1...$N_PATTERNS) 
  {
   if ($ref_filename =~ $PATTERN[$ipatt][1] and ($PATTERN_branch[$ipatt] =~ /$branch_key/ or $PATTERN_branch[$ipatt] =~ "any")){ 
@@ -140,12 +139,7 @@ R_file_loop: foreach $ref_filename (@OFILES){
  $run_filename =~ s{.*/}{};
  ($base, $dir, $ext) = fileparse($run_filename, qr/\.[^.]*/);
  #
- for $ipatt (1...$N_IGNORE) 
- {
-  if ($run_filename =~ /$IGNORE_file[$ipatt]/ and ($IGNORE_branch[$ipatt] =~ /$branch_key/ or $IGNORE_branch[$ipatt] =~ "any")){ 
-   if ($testdir =~ /$IGNORE_test[$ipatt]/) {next R_file_loop}
-  }
- }
+ if (&CHECK_ignore($run_filename)) {next R_file_loop};
  #
  if (!-e "$run_filename") { 
   &RUN_stats("NO_OUT");

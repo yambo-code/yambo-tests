@@ -22,18 +22,13 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-# Keywords listed here are matched against REFERENCE files and ignored
-#
-$N_IGNORE=0;
-#
-@PATTS = qw(k2_kRT10 k2_kRT11 k2_kRT12 k2_kRT13 k2_kRT14 k2_kRT15 k2_kRT16 k2_kRT17 k2_kRT18 k2_kRT19 k2_kRT20 k3_kRT18 k3_kRT19 k3_kRT20 k2_kRT99);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="Si_bulk/RT"}
-#
-$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-$IGNORE_file[$N_IGNORE]="10_ypp_Map_FineGridx9";
-$IGNORE_test[$N_IGNORE]="hBN/RT";
-#
+sub CHECK_ignore{
+ for $ipatt (1...$N_IGNORE) 
+ {
+  if ($_[0] =~ /$IGNORE_file[$ipatt]/ and ($IGNORE_branch[$ipatt] =~ /$branch_key/ or $IGNORE_branch[$ipatt] =~ "any")){ 
+   if ($testdir =~ /$IGNORE_test[$ipatt]/) {return 1};
+  }
+ }
+ return 0;
+}
+1;
