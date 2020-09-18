@@ -1,82 +1,93 @@
-#                                                           
-# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
-# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
-#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
-#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
-#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
-#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
-#    ###  ###     ### ###       ### #########   ########    
-#                                                           
-#                                                           
-#        Version 4.3.0 Revision 15442 Hash 2cfd55d          
-#                        MPI Build                          
-#                http://www.yambo-code.org                  
+#                                                                     
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
+#                                                                     
+#                                                                     
+#         Version 5.0.1 Revision 18706 Hash e137d59                   
+#                  Branch is devel-andreaM                            
+#                     MPI+HDF5_IO Build                               
+#                 http://www.yambo-code.org                           
 #
 #
-# --- DB#1 descriptions ---
-#  GW solver              : Newton
-#  == COHSEX GW ==
-#  GW SC iterations       :0
-#  X G`s            [used]:  59
-#  X G`s            [disk]:  59
-#  X bands                :  1   8
-#  X poles           [o/o]: 100.0000
-#  X e/h E range      [ev]:-1.000000 -1.000000
-#  X xc-Kernel            : none
-#  X BZ energy Double Grid: no
-#  X BZ Double Grid points:0
-#  Sc/G bands             :  1   8
-#  Sc bands terminator    : no
-#  Sx RL components       :  609
-# --- DB#3 descriptions ---
-#  GW solver              : Newton
-#  PPA imaginary pt   [ev]: 27.21138
-#  GW SC iterations       :0
-#  dS/dw steps            : 2
-#  dS/dw step         [ev]:  0.10000
-#  X G`s            [used]: 1
-#  X G`s            [disk]: 1
-#  X bands                :  1   8
-#  X poles           [o/o]: 100.0000
-#  X e/h E range      [ev]:-1.000000 -1.000000
-#  X xc-Kernel            : none
-#  X BZ energy Double Grid: no
-#  X BZ Double Grid points:0
-#  Sc/G bands             :  1   8
-#  Sc/G damping       [ev]:  0.10000
-#  Sc bands terminator    : no
-#  Sx RL components       :  609
-#  QP @ K 001 - 003 : b 002 - 007
+# Database                                        :  3
+# GW SC iterations                                : 0
+# X G`s                                           :   59 [used]
+# X G`s                                           :   59 [disk]
+# X bands                                         :   1   8
+# X poles                                         :   100.000000    [o/o]
+# X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
+# X xc-Kernel                                     : none
+# X BZ energy Double Grid                         : no
+# Sc/G bands                                      :   1   8
+# Sc Empty Bands                                  : yes
+# Sc bands terminator                             : no
+# Sx RL components                                :   609
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# GW solver                                       : Newton
+# GW approximation                                : PPA
+# PPA imaginary Energy                            :   27.2113800    [ev]
+# GW SC iterations                                : 0
+# dS/dw steps                                     :  2
+# dS/dw step                                      :  0.100000001    [ev]
+# X G`s                                           :  1 [used]
+# X G`s                                           :  1 [disk]
+# X bands                                         :   1   8
+# X poles                                         :   100.000000    [o/o]
+# X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
+# X xc-Kernel                                     : none
+# X BZ energy Double Grid                         : no
+# Sc/G bands                                      :   1   8
+# Sc/G damping                                    :  0.100000001    [ev]
+# Sc bands terminator                             : no
+# Sx RL components                                :   609
+# GF energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# QP @ state[ 1 ] K range                         :  1  3
+# QP @ state[ 1 ] b range                         :   2   7
+# GF energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
 #
-#    K-point      Band         Eo           E            E-Eo         Z
 #
-    1.000000     2.000000     0.000000     0.729504     0.729504     0.876211
-    1.000000     3.000000     0.000000     0.729529     0.729529     0.876219
-    1.000000     4.000000     0.000000     0.729463     0.729463     0.876216
-    1.000000     5.000000     2.440868     1.813666    -0.627202     0.872326
-    1.000000     6.000000     2.440868     1.813476    -0.627392     0.872318
-    1.000000     7.000000     2.440868     1.813430    -0.627438     0.872317
-    2.000000     2.000000    -7.200430    -6.621530     0.578900     0.798323
-    2.000000     3.000000    -1.262054    -0.641255     0.620799     0.869982
-    2.000000     4.000000    -1.262054    -0.641164     0.620890     0.869978
-    2.000000     5.000000     1.519058     1.031091    -0.487967     0.875705
-    2.000000     6.000000     3.185880     2.588448    -0.597432     0.874479
-    2.000000     7.000000     3.185880     2.588508    -0.597372     0.874486
-    3.000000     2.000000    -7.895731    -7.162880     0.732851     0.777508
-    3.000000     3.000000    -3.010587    -2.445642     0.564945     0.857496
-    3.000000     4.000000    -3.010587    -2.445709     0.564878     0.857499
-     3.00000      5.00000      0.43763     -0.06527     -0.50290      0.87761
-     3.00000      6.00000      0.43764     -0.06313     -0.50076      0.87760
-     3.00000      7.00000     10.15807      9.35018     -0.80789      0.68801
+#    K-point            Band               Eo                 E                  E-Eo               Z
+#
+     1.00000000         2.00000000         0.00000000        0.291828692        0.291828692        0.876215816   
+     1.00000000         3.00000000         0.00000000        0.291849375        0.291849375        0.876215816   
+     1.00000000         4.00000000         0.00000000        0.291814804        0.291814804        0.876215816   
+     1.00000000         5.00000000         2.44086790         1.99839365       -0.442474276        0.872322738   
+     1.00000000         6.00000000         2.44086790         1.99831748       -0.442550510        0.872322738   
+     1.00000000         7.00000000         2.44086790         1.99830306       -0.442564905        0.872322738   
+     2.00000000         2.00000000        -7.20042992        -6.89928579        0.301144421        0.798323214   
+     2.00000000         3.00000000        -1.26205385        -1.04585958        0.216194168        0.869979441   
+     2.00000000         4.00000000        -1.26205385        -1.04576612        0.216287732        0.869979441   
+     2.00000000         5.00000000         1.51905835         1.05699968       -0.462058634        0.875705421   
+     2.00000000         6.00000000         3.18587971         2.75303388       -0.432845920        0.874481678   
+     2.00000000         7.00000000         3.18587971         2.75304818       -0.432831526        0.874481678   
+     3.00000000         2.00000000        -7.89573145        -7.52850103        0.367230564        0.777508318   
+     3.00000000         3.00000000        -3.01058745        -2.74258280        0.268004417        0.857499301   
+     3.00000000         4.00000000        -3.01058745        -2.74266171        0.267925560        0.857499301   
+     3.00000000         5.00000000        0.437631011        0.505318791E-1    -0.387099117        0.877601802   
+     3.00000000         6.00000000        0.437639922        0.531155057E-1    -0.384524435        0.877601802   
+     3.00000000         7.00000000         10.1580734         9.44901371       -0.709059298        0.688007593   
 # 
-# 07/03/2018 at 14:37 YPP_PH @ anomaly [start]
-# 07/03/2018 at 14:37                  [end]
+# 07/31/2020 at 13:04 ypp_rt @ baym [start]
+# 07/31/2020 at 13:04               [end]
 #
-# .-Input file : yambo.in
-# | QPDBs                          # [R] Quasi-particle databases
-# | QPDB_merge                     # [R] Mergering
-# | BoseTemp= 0.000000     eV      # Bosonic Temperature
-# | %Actions_and_names             # [QPDB] Format is "what"|"OP"|"prefactor"|"DB"|. OP can be +/-/x(only for Z)
+# .-Input file  yambo.in
+# | QPDBs                            # [R] Quasiparticle Databases
+# | QPDB_merge                       # [R] Mergering
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | %Actions_and_names               # [QPDB] Format is "what"|"OP"|"prefactor"|"DB"|. OP can be +/-/x(only for Z)
 # | "E" |"+" |"1" |"08_cohsex_10fs/ndb.QP" |
 # | "E" |"-" |"1" |"08_cohsex_eq_emp/ndb.QP" |
 # | "Z" |"x" |"1" |"08_gw_eq/ndb.QP" |

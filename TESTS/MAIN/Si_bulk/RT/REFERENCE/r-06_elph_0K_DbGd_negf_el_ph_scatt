@@ -8,12 +8,12 @@
         | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
          \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-          Version 5.0.0 Revision 18576 Hash 35d9a199c                     
-                      Branch is bug-fixes                                 
-                 MPI+OpenMP+HDF5_MPI_IO Build                             
+           Version 5.0.1 Revision 18706 Hash e137d59                      
+                    Branch is devel-andreaM                               
+                       MPI+HDF5_IO Build                                  
                    http://www.yambo-code.org                              
  
- 07/19/2020 at 17:15 yambo_rt @ VivoBook
+ 07/31/2020 at 13:03 yambo_rt @ baym
  ==================================================
 
  Cores               :  1
@@ -33,8 +33,8 @@
 
  Job   string        : 06_elph_0K_DbGd
  Alt#1 string        : GKKP
- Alt#2 string        : 05_E_DbGd-serial-bug-fixes
- Alt#3 string        : R4
+ Alt#2 string        : 05_E_DbGd-serial-devel-andreaM
+ Alt#3 string        : R1
 
  Precision           : SINGLE
   
@@ -54,7 +54,7 @@
   Exact exchange fraction in XC                    :  0.000000
   Exact exchange screening in XC                   :  0.000000
   Magnetic symmetries                              : no
- - S/N 003129 ---------------------------------------------- v.05.00.00 r.18576 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
 
  [02] CORE Variables Setup
  =========================
@@ -134,27 +134,22 @@
 
   Compatible Grid is   : 3D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.000000 -0.500000  0.000000 [rlu]
-  K_min[ 2 ] :  0.000000  0.000000 -0.500000 [rlu]
-  K_min[ 3 ] : -0.500000  0.000000  0.000000 [rlu]
+  K_min[ 1 ] :  0.238269E-8 -0.500000     0.238269E-8 [rlu]
+  K_min[ 2 ] : -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
+  K_min[ 3 ] : -0.500000     0.238269E-8 -0.238269E-8 [rlu]
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
-  [RD./05_E_DbGd-serial-bug-fixes//ndb.Double_Grid]-------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   8   3   8
-   Bands                                            :   8
-   Number of points  in the IBZ (E)                 :  199
-   Number of points  in the IBZ (k)                 :  199
-   Number of points  in the  BZ (k)                 :   4753
-   Number of duplic. pts in the IBZ                 :  1
-   Number of duplic. pts in the  BZ                 :  1
-  - S/N 000642 ---------------------------------------------- v.05.00.00 r.18576 -
 
   [02.05] Double K-grid
   =====================
 
-  Kpts (IBZ): CG,FG,DUPL.    :    3  199    1
-  Kpts ( BZ): CG,FG,DUPL.    :      8   4753      1
-  Bands                      :   8
+  [FineGd] Brillouin Symmetry  mode               : mixed
+  [FineGd] Fine Grid  BZ mapped mode              : BZ
+  [FineGd] Fine Grid IBZ mapped mode              : IBZ
+  [FineGd] Bands                                  :   8
+  [FineGd] Number of pts (Energy grid)            :  199
+  [FineGd] Number of pts (fine+coarse, IBZ-map)   :  101
+  [FineGd] Number of pts (fine+coarse, BZ-map)    :   4760
 
   [02.06] Energies & Occupations
   ==============================
@@ -188,7 +183,7 @@
   X grid is uniform                                : yes
   BS scattering                                    : yes
   COLL scattering                                  : yes
- - S/N 003129 ---------------------------------------------- v.05.00.00 r.18576 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
 
  IBZ Q-points :  3
  BZ  Q-points :   8
@@ -228,7 +223,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P P2
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 003129 ---------------------------------------------- v.05.00.00 r.18576 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
 
  [05] IP Real-Time Dynamics +el-ph
  =================================
@@ -258,7 +253,7 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P P2
    Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 003129 ---------------------------------------------- v.05.00.00 r.18576 -
+  - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
 
   [05.02] External RT corrections (G)
   ===================================
@@ -266,14 +261,19 @@
 
   [df_from_DB-Nearest K] Exact matches  [o/o]:  100.0000
 
+  [df_from_DB-Nearest K-BARE FineGd] Exact matches  [o/o]:  0.502513
+  [df_from_DB-Nearest K-BARE FineGd] Neighbours    [user]:  1
+  [df_from_DB-Nearest K-BARE FineGd]               [real]:  1
+  [df_from_DB-Nearest K-BARE FineGd] Interpolations [o/o]:  99.49748
+
   Updated Carrier components
   ==========================
 
   [f@ G] Reference Time           [fs] :  0.000000
   [f@ G] Bands range                   :   2   7
-  [f@ G] Maximum occupations change    :  2.000000
-  [f@ G] N of carriers                 :  0.750000
-  [f@ G]                 (Double Grid) :  2.667361
+  [f@ G] Maximum occupations change    :  1.360000
+  [f@ G] N of carriers                 :  0.510000
+  [f@ G]                 (Double Grid) :  0.510000
   [f@ G] Full and metallic bands        :   1   7
 
 
@@ -293,7 +293,7 @@
    K points (BZ)                                    :   8
    El-PH bands                                      :  10
    Using the Q-grid                                 : yes
-  - S/N 003129 ---------------------------------------------- v.05.00.00 r.18576 -
+  - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
 
   [05.05] Messaging
   =================
@@ -322,6 +322,7 @@
   El-Ph         scattering   : yes
 
   ---I/O---
+  T cache step  of J,P,M [fs]:  0.020000
   T between I/O of   OBS [fs]:  2.000000
   T between I/O of   CAR [fs]:  0.500000
             I/O of   GFs [fs]:  0.500000
@@ -340,9 +341,8 @@
   ---K Grid---
   Double Grid support          : yes
   K-pts  (Coarse grid IBZ/BZ):   3   8
-  K-pts    (Fine grid IBZ/BZ):    199   4753
-  K-pts       (Common IBZ/BZ):  1  1
-  K-pts  (Real-time IBZ only):  201
+  K-pts    (Fine grid IBZ/BZ):    101   4760
+  K-pts  (Real-time IBZ only):  101
   [FFT-RT] Mesh size:  18  18  18
 
 
@@ -354,74 +354,118 @@
   [05.07] Real-Time dynamics
   ==========================
 
+  [WR./06_elph_0K_DbGd//ndb.RT_G]-------------------------------------------------
+   Coulomb cutoff potential                         : none
+   Fragmentation                                    : yes
+   Electronic Temperature                           :  0.200000 [K]
+   Bosonic    Temperature                           :  0.000000 [K]
+   [RT] Bands                                       :   2   7
+   [RT] K-points                                    :  101
+   [RT] Potential                                   : IP
+   [E-P] Electron-phonon                            : yes
+   [E-P] Completed Collision(CCA)                   : yes
+   [E-P] Branches                                   :   1   6
+   [E-P] GF`s Memory steps                          :  2
+   [E-E] Coulomb scattering                         : no
+   [E-E] Coulomb correlation                        : no
+   [E-PHOTON] Scattering                            : no
+   [FineGd] Brillouin Symmetry  mode                : mixed
+   [FineGd] Fine Grid  BZ mapped mode               : BZ
+   [FineGd] Fine Grid IBZ mapped mode               : IBZ
+   [FineGd] Bands                                   :   8
+   [FineGd] Number of pts (Energy grid)             :  199
+   [FineGd] Number of pts (fine+coarse, IBZ-map)    :  101
+   [FineGd] Number of pts (fine+coarse, BZ-map)     :   4760
+   [RT] Time step     (initial)[fs]                 :  0.020000
+   [RT] NE time       (planned)[fs]                 :  100.0000
+   [RT] NE steps      (planned)[fs]                 :   5001
+   [RT] Lif Extr Inte/Intr(sav)[fs]                 :  1.500000  0.500000
+   [RT] Lifetimes extrapolation                     : no
+   [RT] Integrator                                  : EULER + RK2 + RWA
+   [RT] Radiative life time    [fs]                 :  0.000000
+   [RT] Dephasing life time    [fs]                 :  0.000000
+   [RT] External Field(s)                           : no
+   [RT] Number of Fields                            : 0
+   [RT] Diamagnetic term                            : no
+   [RT] Induced field                               : no
+   [Gr] Retarded Green`s function                   : QP
+   [Gr] Damping (c) Energy ref                      :  1.200000 ev
+   [Gr] Damping (c)                                 :  0.300000  0.000000  0.010000 ev,adim,ev^-1
+   [Gr] Damping (v) Energy ref                      : -1.200000 ev
+   [Gr] Damping (v)                                 :  0.300000  0.000000  0.010000 ev,adim,ev^-1
+   [DbGd] Double Grid support                       : yes
+   [DbGd] Used for e-e        [o/o]                 :  0.000000
+   [CONSTRAINS] N (ee+ep) & dN (ep)                 : yes
+   [CONSTRAINS] IP Energy      (ee)                 : yes
+  - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
 
- Timing [Min/Max/Average]: 01m-27s/01m-27s/01m-27s
+ Timing [Min/Max/Average]: 38s/38s/38s
 
  [06] Timing Overview
  ====================
 
  Clock: global
                   RT life merge (REF) :      0.0000s CPU
-                      V_qp_basis_to_H :      0.0000s CPU (    3 calls,   0.001 msec avg)
                      io_ATMPROJ_pwscf :      0.0000s CPU
                          io_KB_abinit :      0.0000s CPU
+                      V_qp_basis_to_H :      0.0000s CPU (    3 calls,   0.004 msec avg)
                            io_COL_CUT :      0.0000s CPU
                                 io_BS :      0.0000s CPU
-                     RT output (INIT) :      0.0001s CPU
                                 io_HF :      0.0001s CPU
-                        io_COLLISIONS :      0.0001s CPU (    3 calls,   0.033 msec avg)
-                         PP_uspp_init :      0.0001s CPU (    7 calls,   0.018 msec avg)
-                                 io_X :      0.0001s CPU (    4 calls,   0.033 msec avg)
-              RT life merge (INTRA_k) :      0.0002s CPU (  203 calls,   0.001 msec avg)
-                  XC_potential_driver :      0.0005s CPU
-                          io_KB_pwscf :      0.0007s CPU (    5 calls,   0.137 msec avg)
-                            V_Hartree :      0.0010s CPU
-                            XCo_local :      0.0022s CPU
-                    V_real_space_to_H :      0.0025s CPU (    9 calls,   0.276 msec avg)
-                     Bare_Hamiltonian :      0.0043s CPU
-                       io_Double_Grid :      0.0045s CPU
-              RT life merge (INTER_k) :      0.0048s CPU ( 5001 calls,   0.001 msec avg)
-                          WF_load_FFT :      0.0058s CPU (    7 calls,   0.834 msec avg)
-                             io_QINDX :      0.0059s CPU (    2 calls,   2.956 msec avg)
-                         RT avg redux :      0.0079s CPU (12414 calls,   0.001 msec avg)
-                              io_GROT :      0.0082s CPU (    3 calls,   2.737 msec avg)
-                          io_fragment :      0.0112s CPU (    8 calls,   1.396 msec avg)
-                    DIPOLE_transverse :      0.0133s CPU
-                            FFT_setup :      0.0166s CPU (    5 calls,   3.312 msec avg)
-                           io_DIPOLES :      0.0194s CPU (   14 calls,   1.386 msec avg)
-                                io_WF :      0.0208s CPU (   24 calls,   0.867 msec avg)
-                    el_density_matrix :      0.0221s CPU
-              IO_and_Messaging_switch :      0.0237s CPU (10621 calls,   0.002 msec avg)
-                              Dipoles :      0.0264s CPU
-                              io_ELPH :      0.0421s CPU (   11 calls,   3.825 msec avg)
-                       RT Hamiltonian :      0.0474s CPU (10001 calls,   0.005 msec avg)
-                            RT output :      0.2127s CPU ( 1407 calls,   0.151 msec avg)
-                     io_RT_components :      0.4941s CPU (  668 calls,   0.740 msec avg)
-      RT relaxation (impose and idle) :      0.5117s CPU (10002 calls,   0.051 msec avg)
-                   RT occupations fit :      0.5649s CPU (  201 calls,   2.811 msec avg)
-                      RT databases IO :      1.0638s CPU ( 5001 calls,   0.000 sec avg)
-                        RT average Op :      1.1334s CPU (12414 calls,   0.000 sec avg)
-                       RT observables :      1.7354s CPU ( 5001 calls,   0.000 sec avg)
-                        RT integrator :      4.2286s CPU (10000 calls,   0.000 sec avg)
-                  RT relaxation (e-p) :     74.1534s CPU (  203 calls,   0.365 sec avg)
+                        io_COLLISIONS :      0.0001s CPU (    3 calls,   0.027 msec avg)
+                     RT output (INIT) :      0.0001s CPU
+                         PP_uspp_init :      0.0001s CPU (    7 calls,   0.014 msec avg)
+                                 io_X :      0.0001s CPU (    4 calls,   0.027 msec avg)
+              RT life merge (INTRA_k) :      0.0007s CPU (  203 calls,   0.003 msec avg)
+                          io_KB_pwscf :      0.0007s CPU (    5 calls,   0.148 msec avg)
+                  XC_potential_driver :      0.0008s CPU
+                            V_Hartree :      0.0008s CPU
+                             io_QINDX :      0.0025s CPU (    2 calls,   1.252 msec avg)
+                       io_Double_Grid :      0.0026s CPU
+                              io_GROT :      0.0035s CPU (    3 calls,   1.154 msec avg)
+                          WF_load_FFT :      0.0035s CPU (    7 calls,   0.502 msec avg)
+                    V_real_space_to_H :      0.0037s CPU (    9 calls,   0.407 msec avg)
+                            XCo_local :      0.0041s CPU
+                     Bare_Hamiltonian :      0.0065s CPU
+                                io_WF :      0.0091s CPU (   24 calls,   0.380 msec avg)
+                    DIPOLE_transverse :      0.0103s CPU
+                           io_DIPOLES :      0.0109s CPU (   10 calls,   1.086 msec avg)
+                              io_ELPH :      0.0186s CPU (   11 calls,   1.691 msec avg)
+              RT life merge (INTER_k) :      0.0203s CPU ( 5001 calls,   0.004 msec avg)
+                              Dipoles :      0.0231s CPU
+                         RT avg redux :      0.0458s CPU (12414 calls,   0.004 msec avg)
+                            RT output :      0.0547s CPU ( 1407 calls,   0.039 msec avg)
+                       RT Hamiltonian :      0.0694s CPU (10001 calls,   0.007 msec avg)
+                    el_density_matrix :      0.0748s CPU
+              IO_and_Messaging_switch :      0.0873s CPU (10621 calls,   0.008 msec avg)
+                            FFT_setup :      0.0918s CPU (    5 calls,  18.365 msec avg)
+                   RT occupations fit :      0.2961s CPU (  201 calls,   1.473 msec avg)
+      RT relaxation (impose and idle) :      0.6028s CPU (10002 calls,   0.060 msec avg)
+                        RT average Op :      1.6503s CPU (12414 calls,   0.000 sec avg)
+                       RT observables :      2.3007s CPU ( 5001 calls,   0.000 sec avg)
+                        RT integrator :      3.9967s CPU (10000 calls,   0.000 sec avg)
+                          io_fragment :      6.0881s CPU (20315 calls,   0.000 sec avg)
+                     io_RT_components :     11.0705s CPU (20769 calls,   0.001 sec avg)
+                      RT databases IO :     12.1315s CPU ( 5001 calls,   0.002 sec avg)
+                  RT relaxation (e-p) :     17.3419s CPU (  203 calls,   0.085 sec avg)
 
  [07] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 10.00000 [Mb] (basic treshold)  100.0000 [Mb] (SAVEs treshold)
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  3.297000 [Mb]
+         Max memory used   :  3.097000 [Mb]
 
  [08] Game Over & Game summary
  =============================
 
- 07/19/2020 at 17:15 yambo_rt @ VivoBook [start]
- 07/19/2020 at 17:16                     [end]
+ 07/31/2020 at 13:03 yambo_rt @ baym [start]
+ 07/31/2020 at 13:04                 [end]
 
- Timing   [Min/Max/Average]: 01m-27s/01m-27s/01m-27s
-             [Time-Profile]: 01m-27s
+ Timing   [Min/Max/Average]: 38s/38s/38s
+             [Time-Profile]: 38s
 
  .-ACKNOWLEDGMENT
  |
@@ -450,7 +494,6 @@
  | ElecTemp= 0.172347E-4      eV    # Electronic Temperature
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
  | DBsIOoff= "DIP"                  # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,OBS,W,SC,BS,ALL)
- | RT_Threads= 1                    # [OPENMP/RT] Number of threads for real-time
  | HXC_Potential= "IP"              # [SC] SC HXC Potential
  | FFTGvecs=  387             RL    # [FFT] Plane-waves
  | HARRLvcs= 2085             RL    # [HA] Hartree     RL components

@@ -1,80 +1,95 @@
-#  __      __   ______   __       __  _______    ______     
-# |  \    /  \ /      \ |  \     /  \|       \  /      \    
-#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\   
-#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$   
-#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$   
-#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$   
-#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$   
-#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$   
-#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$    
-#                                                           
-#        Version 4.3.0 Revision 15201 Hash 76636f9          
-#                      MPI+SLK Build                        
-#                http://www.yambo-code.org                  
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 18706 Hash e137d59                     
+#                Branch is devel-andreaM                              
+#                   MPI+HDF5_IO Build                                 
+#               http://www.yambo-code.org                             
 #
-# GW [Newton Solver]
 #
-#  == COHSEX GW ==
-#  GW SC iterations       :0
-#  X G`s            [used]:  59
-#  X G`s            [disk]:  59
-#  X bands                :  1   8
-#  X poles           [o/o]: 100.0000
-#  X e/h E range      [ev]:-1.000000 -1.000000
-#  X xc-Kernel            : none
-#  X BZ energy Double Grid: no
-#  X BZ Double Grid points:0
-#  Sc/G bands             :  1   8
-#  Sc bands terminator    : no
-#  Sx RL components       :  609
-#  QP @ K 001 - 003 : b 002 - 007
+# GW solver                                       : Newton
+# GW approximation                                : COHSEX
+# GW SC iterations                                : 0
+# X G`s                                           :   59 [used]
+# X G`s                                           :   59 [disk]
+# X bands                                         :   1   8
+# X poles                                         :   100.000000    [o/o]
+# X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
+# X xc-Kernel                                     : none
+# X BZ energy Double Grid                         : no
+# Sc/G bands                                      :   1   8
+# Sc Empty Bands                                  : yes
+# Sc bands terminator                             : no
+# Sx RL components                                :   609
+#                                                 
+# QP @ state[ 1 ] K range                         :  1  3
+# QP @ state[ 1 ] b range                         :   2   7
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
 #
-#    K-point      Band         Eo           E-Eo         Sc|Eo
 #
-    1.000000     2.000000     0.000000     1.991589     4.066124
-    1.000000     3.000000     0.000000     1.991579     4.066123
-    1.000000     4.000000     0.000000     1.991589     4.066123
-    1.000000     5.000000     2.440868     2.570828    -2.494928
-    1.000000     6.000000     2.440868     2.570751    -2.495010
-    1.000000     7.000000     2.440868     2.570757    -2.495007
-    2.000000     2.000000    -7.200430     0.220806     3.656596
-    2.000000     3.000000    -1.262054     1.651081     3.853580
-    2.000000     4.000000    -1.262054     1.651107     3.853606
-    2.000000     5.000000     1.519058     2.455664    -2.581467
-    2.000000     6.000000     3.185880     2.742623    -2.449672
-    2.000000     7.000000     3.185880     2.742578    -2.449711
-    3.000000     2.000000    -7.895731     0.136851     4.266364
-    3.000000     3.000000    -3.010587     1.217424     3.657904
-    3.000000     4.000000    -3.010587     1.217427     3.657896
-    3.000000     5.000000     0.437631     1.979090    -2.772595
-    3.000000     6.000000     0.437640     1.981627    -2.770014
-     3.00000      7.00000     10.15807      3.97935     -2.76505
+#    K-point            Band               Eo                 E-Eo               Sc|Eo
+#
+     1.00000000         2.00000000         0.00000000         1.47112560         3.54565382   
+     1.00000000         3.00000000         0.00000000         1.47110450         3.54565191   
+     1.00000000         4.00000000         0.00000000         1.47109151         3.54561853   
+     1.00000000         5.00000000         2.44086790         2.76631284        -2.29944587   
+     1.00000000         6.00000000         2.44086790         2.76622415        -2.29954362   
+     1.00000000         7.00000000         2.44086790         2.76620746        -2.29953766   
+     2.00000000         2.00000000        -7.20042992       -0.702301562E-1      3.36551571   
+     2.00000000         3.00000000        -1.26205385         1.23163784         3.43415022   
+     2.00000000         4.00000000        -1.26205385         1.23172379         3.43422437   
+     2.00000000         5.00000000         1.51905835         2.51431370        -2.52278185   
+     2.00000000         6.00000000         3.18587971         2.92320299        -2.26909041   
+     2.00000000         7.00000000         3.18587971         2.92315221        -2.26913524   
+     3.00000000         2.00000000        -7.89573145       -0.223268494         3.90625525   
+     3.00000000         3.00000000        -3.01058745        0.867765903         3.30824447   
+     3.00000000         4.00000000        -3.01058745        0.867783725         3.30824161   
+     3.00000000         5.00000000        0.437631011         2.09232736        -2.65932393   
+     3.00000000         6.00000000        0.437639922         2.09576535        -2.65588260   
+     3.00000000         7.00000000         10.1580734         4.06243992        -2.68195200   
 # 
-# 01/04/2018 at 13:46 YAMBO_RT @ narro [start]
-# 01/04/2018 at 13:46                  [end]
+# 07/31/2020 at 13:04 yambo_rt @ baym [start]
+# 07/31/2020 at 13:04                 [end]
 #
-# .-Input file : yambo.in
-# | em1s                           # [R Xs] Static Inverse Dielectric Matrix
-# | HF_and_locXC                   # [R XX] Hartree-Fock Self-energy and Vxc
-# | gw0                            # [R GW] GoWo Quasiparticle energy levels
-# | cohsex                         # [R Xp] COlumb Hole Screened EXchange
-# | BoseTemp= 0.000000     eV      # Bosonic Temperature
-# | FFTGvecs=  387         RL      # [FFT] Plane-waves
-# | EXXRLvcs=  609         RL      # [XX] Exchange RL components
-# | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
+# .-Input file  yambo.in
+# | HF_and_locXC                     # [R] Hartree-Fock
+# | gw0                              # [R] GW approximation
+# | cohsex                           # [R][Xp] COlumb Hole Screened EXchange
+# | em1s                             # [R][Xs] Statically Screened Interaction
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | FFTGvecs=  387             RL    # [FFT] Plane-waves
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | EXXRLvcs=  609             RL    # [XX] Exchange    RL components
+# | VXCRLvcs= 2085             RL    # [XC] XCpotential RL components
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | XfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT Xd] Database
 # | % BndsRnXs
-# |   1 |  8 |                     # [Xs] Polarization function bands
+# |   1 |  8 |                           # [Xs] Polarization function bands
 # | %
-# | NGsBlkXs=  59          RL      # [Xs] Response block size
-# | GrFnTpXs= "R"                  # [Xs] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
+# | NGsBlkXs=  59              RL    # [Xs] Response block size
+# | GrFnTpXs= "R"                    # [Xs] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
 # | % DmRngeXs
-# |   0.10000 |  0.10000 | eV      # [Xs] Damping range
+# |  0.100000 | 0.100000 |         eV    # [Xs] Damping range
 # | %
 # | % LongDrXs
-# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
 # | %
+# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
 # | UseEbands                      # [GW] Force COHSEX to use empty bands
-# | %QPkrange                    # [GW] QP generalized Kpoint/Band indices
-# |   1|  3|  2|  7|
+# | GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
+# | GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
+# | 1|3|2|7|
+# | %
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
+# | 1|3| 0.000000|-1.000000|
 # | %

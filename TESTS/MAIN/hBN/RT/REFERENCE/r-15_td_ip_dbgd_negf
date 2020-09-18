@@ -1,19 +1,19 @@
+     __      __   ______   __       __  _______    ______                 
+    |  \    /  \ /      \ |  \     /  \|       \  /      \                
+     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
+      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
+       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
+        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
+        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
+        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
+         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
-                                                                          
-                                                                          
-          Version 5.0.0 Revision 18576 Hash 35d9a199c                     
-                      Branch is bug-fixes                                 
-                 MPI+OpenMP+HDF5_MPI_IO Build                             
+           Version 5.0.1 Revision 18706 Hash e137d59                      
+                    Branch is devel-andreaM                               
+                       MPI+HDF5_IO Build                                  
                    http://www.yambo-code.org                              
  
- 07/27/2020 at 09:57 yambo_rt @ VivoBook
+ 07/31/2020 at 10:47 yambo_rt @ baym
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 15_td_ip_dbgd
- Alt#1 string        : 10_ypp_Map_FineGridx9-serial-bug-fixes
- Alt#2 string        : R2
+ Alt#1 string        : 10_ypp_Map_FineGridx9-serial-devel-andreaM
+ Alt#2 string        : R1
 
  Precision           : SINGLE
   
@@ -114,26 +114,21 @@
 
   Compatible Grid is   : 2D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.500000    -0.149012E-7   0.00000    [rlu]
+  K_min[ 1 ] :  0.500000    -0.149023E-7   0.00000    [rlu]
   K_min[ 2 ] :  0.447035E-7 -0.500000      0.00000    [rlu]
   Grid dimensions      :  2  2
   K lattice UC volume  :  0.264383 [a.u.]
-  [RD./10_ypp_Map_FineGridx9-serial-bug-fixes//ndb.Double_Grid]-------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
-   Bands                                            :   60
-   Number of points  in the IBZ (E)                 :   81
-   Number of points  in the IBZ (k)                 :   81
-   Number of points  in the  BZ (k)                 :   81
-   Number of duplic. pts in the IBZ                 :  1
-   Number of duplic. pts in the  BZ                 :  1
-  - S/N 004454 ---------------------------------------------- v.05.00.00 r.18576 -
 
   [02.05] Double K-grid
   =====================
 
-  Kpts (IBZ): CG,FG,DUPL.    :    4   81    1
-  Kpts ( BZ): CG,FG,DUPL.    :    4   81    1
-  Bands                      :   60
+  [FineGd] Brillouin Symmetry  mode               : mixed
+  [FineGd] Fine Grid  BZ mapped mode              : BZ
+  [FineGd] Fine Grid IBZ mapped mode              : IBZ
+  [FineGd] Bands                                  :   60
+  [FineGd] Number of pts (Energy grid)            :   81
+  [FineGd] Number of pts (fine+coarse, IBZ-map)   :   84
+  [FineGd] Number of pts (fine+coarse, BZ-map)    :   84
 
   [02.06] Energies & Occupations
   ==============================
@@ -167,7 +162,7 @@
   X grid is uniform                                : yes
   BS scattering                                    : yes
   COLL scattering                                  : no
- - S/N 004393 ---------------------------------------------- v.05.00.00 r.18576 -
+ - S/N 004393 ---------------------------------------------- v.05.00.01 r.18706 -
 
  IBZ Q-points :   4
  BZ  Q-points :   4
@@ -188,7 +183,7 @@
  [WARNING] DIPOLES database not correct or missing
  [RD./SAVE//ns.kb_pp]------------------------------------------------------------
   Fragmentation                                    : no
- - S/N 004393 ---------------------------------------------- v.05.00.00 r.18576 -
+ - S/N 004393 ---------------------------------------------- v.05.00.01 r.18706 -
  [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.43368E-18   1.0000    
 
  [WR./15_td_ip_dbgd//ndb.dipoles]------------------------------------------------
@@ -207,7 +202,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P P2
   Wavefunctions                                    : Teter 93(XC)
- - S/N 004393 ---------------------------------------------- v.05.00.00 r.18576 -
+ - S/N 004393 ---------------------------------------------- v.05.00.01 r.18706 -
 
  [05] IP Real-Time Dynamics
  ==========================
@@ -216,6 +211,8 @@
   [05.01] Initialization
   ======================
 
+
+  [WARNING]Using DEVELOP_MAP
   [RD./15_td_ip_dbgd//ndb.dipoles]------------------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
    RL vectors                                       :   3317 [WF]
@@ -232,7 +229,7 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P P2
    Wavefunctions                                    : Teter 93(XC)
-  - S/N 004393 ---------------------------------------------- v.05.00.00 r.18576 -
+  - S/N 004393 ---------------------------------------------- v.05.00.01 r.18706 -
 
   [05.02] Dephasing matrix setup
   ==============================
@@ -255,6 +252,7 @@
   Hxc approximation          : IP
 
   ---I/O---
+  T cache step  of J,P,M [fs]:  0.010000
   T between I/O of   OBS [fs]:  2.000000
   T between I/O of   CAR [fs]:  0.050000
             I/O of   GFs [fs]:  1.000000
@@ -270,9 +268,8 @@
   ---K Grid---
   Double Grid support          : yes
   K-pts  (Coarse grid IBZ/BZ):   4   4
-  K-pts    (Fine grid IBZ/BZ):   81   81
-  K-pts       (Common IBZ/BZ):  1  1
-  K-pts  (Real-time IBZ only):   84
+  K-pts    (Fine grid IBZ/BZ):   84   84
+  K-pts  (Real-time IBZ only):   81
 
   ---Fields---
   Gauge                       : length
@@ -298,65 +295,121 @@
   [05.05] Real-Time dynamics
   ==========================
 
+  [WR./15_td_ip_dbgd//ndb.RT_G]---------------------------------------------------
+   Coulomb cutoff potential                         : none
+   Fragmentation                                    : yes
+   Electronic Temperature                           :  0.200000 [K]
+   Bosonic    Temperature                           :  0.200000 [K]
+   [RT] Bands                                       :   7  10
+   [RT] K-points                                    :   81
+   [RT] Potential                                   : IP
+   [E-P] Electron-phonon                            : no
+   [E-P] Completed Collision(CCA)                   : no
+   [E-P] Branches                                   : 0 0
+   [E-P] GF`s Memory steps                          :  2
+   [E-E] Coulomb scattering                         : no
+   [E-E] Coulomb correlation                        : no
+   [E-PHOTON] Scattering                            : no
+   [FineGd] Brillouin Symmetry  mode                : mixed
+   [FineGd] Fine Grid  BZ mapped mode               : BZ
+   [FineGd] Fine Grid IBZ mapped mode               : IBZ
+   [FineGd] Bands                                   :   60
+   [FineGd] Number of pts (Energy grid)             :   81
+   [FineGd] Number of pts (fine+coarse, IBZ-map)    :   84
+   [FineGd] Number of pts (fine+coarse, BZ-map)     :   84
+   [RT] Time step     (initial)[fs]                 :  0.010000
+   [RT] NE time       (planned)[fs]                 :  19.90000
+   [RT] NE steps      (planned)[fs]                 :  1991
+   [RT] Lif Extr Inte/Intr(sav)[fs]                 :  0.000000  0.000000
+   [RT] Lifetimes extrapolation                     : no
+   [RT] Integrator                                  : EULER + RK2
+   [RT] Radiative life time    [fs]                 :  0.000000
+   [RT] Dephasing life time    [fs]                 :  0.000000
+   [RT] External Field(s)                           : yes
+   [RT] Number of Fields                            :  1
+   [RT] Diamagnetic term                            : no
+   [RT] Induced field                               : no
+   [Gr] Retarded Green`s function                   : none
+   [DbGd] Double Grid support                       : yes
+   [DbGd] Used for e-e        [o/o]                 :  0.000000
+   [CONSTRAINS] N (ee+ep) & dN (ep)                 : yes
+   [CONSTRAINS] IP Energy      (ee)                 : yes
+   [FIELDs] Gauge Type                              : length
+   [FIELDs] Type                                    : DELTA
+   [FIELDs] Polarization                            : linear
+   [FIELDs] Versor                                  :  1.000000  0.000000  0.000000
+   [FIELDs] Versor_circ                             :  0.000000  1.000000  0.000000
+   [FIELDs] Intensity      [kWCMm2]                 :   1000.00   
+   [FIELDs] Damping            [fs]                 :  0.000000
+   [FIELDs] Frequency range    [eV]                 :  0.000000  0.000000
+   [FIELDs] Frequency steps                         :  1
+   [FIELDs] Frequency step     [eV]                 :  0.000000
+   [FIELDs] Initial time       [fs]                 :  0.050000
+  - S/N 004393 ---------------------------------------------- v.05.00.01 r.18706 -
+
+ Timing [Min/Max/Average]: 03s/03s/03s
 
  [06] Timing Overview
  ====================
 
  Clock: global
-              V_qp_basis_to_H :      0.0000s CPU (   4 calls,   0.001 msec avg)
              io_ATMPROJ_pwscf :      0.0000s CPU
                   io_KB_pwscf :      0.0000s CPU (   2 calls,   0.006 msec avg)
+              V_qp_basis_to_H :      0.0000s CPU (   4 calls,   0.003 msec avg)
                    io_COL_CUT :      0.0000s CPU
                         io_BS :      0.0000s CPU
-                        io_HF :      0.0001s CPU
-                      io_ELPH :      0.0001s CPU (   2 calls,   0.027 msec avg)
+                        io_HF :      0.0000s CPU
+                      io_ELPH :      0.0000s CPU (   2 calls,   0.022 msec avg)
+                io_COLLISIONS :      0.0001s CPU (   3 calls,   0.022 msec avg)
              RT output (INIT) :      0.0001s CPU
-                io_COLLISIONS :      0.0001s CPU (   3 calls,   0.027 msec avg)
-                         io_X :      0.0001s CPU (   4 calls,   0.034 msec avg)
-                 PP_uspp_init :      0.0002s CPU (   9 calls,   0.021 msec avg)
-          XC_potential_driver :      0.0004s CPU
-                    V_Hartree :      0.0005s CPU
-                    XCo_local :      0.0020s CPU
-            V_real_space_to_H :      0.0023s CPU (  12 calls,   0.196 msec avg)
-             Bare_Hamiltonian :      0.0036s CPU
-                 RT avg redux :      0.0037s CPU (6382 calls,   0.001 msec avg)
-               io_Double_Grid :      0.0048s CPU
-                    FFT_setup :      0.0051s CPU (   6 calls,   0.850 msec avg)
-                     io_QINDX :      0.0056s CPU (   2 calls,   2.817 msec avg)
-                      io_GROT :      0.0086s CPU (   3 calls,   2.882 msec avg)
-      IO_and_Messaging_switch :      0.0093s CPU (4062 calls,   0.002 msec avg)
-                  WF_load_FFT :      0.0100s CPU (   9 calls,   1.111 msec avg)
-                 io_KB_abinit :      0.0131s CPU (   6 calls,   2.189 msec avg)
-               RT Apply Field :      0.0178s CPU (3981 calls,   0.004 msec avg)
-                   io_DIPOLES :      0.0201s CPU (  16 calls,   1.253 msec avg)
-            el_density_matrix :      0.0244s CPU
-                        io_WF :      0.0294s CPU (  31 calls,   0.948 msec avg)
-               RT Hamiltonian :      0.0318s CPU (3981 calls,   0.008 msec avg)
-            DIPOLE_transverse :      0.0450s CPU
-                      Dipoles :      0.0589s CPU
-                    RT output :      0.1161s CPU (1200 calls,   0.097 msec avg)
-                RT average Op :      0.1822s CPU (6382 calls,   0.029 msec avg)
-                RT integrator :      0.1925s CPU (3980 calls,   0.048 msec avg)
-               RT observables :      0.1949s CPU (1991 calls,   0.098 msec avg)
-             io_RT_components :      0.3394s CPU ( 460 calls,   0.738 msec avg)
-              RT databases IO :      0.5177s CPU (1991 calls,   0.260 msec avg)
+                         io_X :      0.0001s CPU (   4 calls,   0.024 msec avg)
+                 PP_uspp_init :      0.0001s CPU (   9 calls,   0.015 msec avg)
+                    V_Hartree :      0.0004s CPU
+          XC_potential_driver :      0.0006s CPU
+                     io_QINDX :      0.0022s CPU (   2 calls,   1.121 msec avg)
+               io_Double_Grid :      0.0025s CPU
+                      io_GROT :      0.0032s CPU (   3 calls,   1.070 msec avg)
+            V_real_space_to_H :      0.0032s CPU (  12 calls,   0.270 msec avg)
+                    XCo_local :      0.0035s CPU
+             Bare_Hamiltonian :      0.0055s CPU
+                 io_KB_abinit :      0.0061s CPU (   6 calls,   1.022 msec avg)
+                  WF_load_FFT :      0.0084s CPU (   9 calls,   0.935 msec avg)
+                   io_DIPOLES :      0.0140s CPU (  12 calls,   1.171 msec avg)
+                        io_WF :      0.0145s CPU (  31 calls,   0.467 msec avg)
+                    FFT_setup :      0.0214s CPU (   6 calls,   3.561 msec avg)
+                 RT avg redux :      0.0227s CPU (6382 calls,   0.004 msec avg)
+               RT Apply Field :      0.0312s CPU (3981 calls,   0.008 msec avg)
+            el_density_matrix :      0.0320s CPU
+      IO_and_Messaging_switch :      0.0352s CPU (4065 calls,   0.009 msec avg)
+            DIPOLE_transverse :      0.0452s CPU
+                    RT output :      0.0465s CPU (1200 calls,   0.039 msec avg)
+                      Dipoles :      0.0597s CPU
+               RT Hamiltonian :      0.0756s CPU (3981 calls,   0.019 msec avg)
+                RT average Op :      0.3499s CPU (6382 calls,   0.055 msec avg)
+                RT integrator :      0.4350s CPU (3980 calls,   0.109 msec avg)
+               RT observables :      0.4796s CPU (1991 calls,   0.241 msec avg)
+                  io_fragment :      0.5338s CPU (1709 calls,   0.312 msec avg)
+             io_RT_components :      1.1835s CPU (2143 calls,   0.001 sec avg)
+              RT databases IO :      1.5320s CPU (1991 calls,   0.001 sec avg)
 
  [07] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 10.00000 [Mb] (basic treshold)  100.0000 [Mb] (SAVEs treshold)
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  2.778000 [Mb]
+         Max memory used   :  2.888000 [Mb]
 
  [08] Game Over & Game summary
  =============================
 
- 07/27/2020 at 09:57 yambo_rt @ VivoBook [start]
- 07/27/2020 at 09:57                     [end]
+ 07/31/2020 at 10:47 yambo_rt @ baym [start]
+ 07/31/2020 at 10:47                 [end]
 
-  
+ Timing   [Min/Max/Average]: 03s/03s/03s
+             [Time-Profile]: 03s
+
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -382,7 +435,6 @@
  | negf                             # [R] NEQ Real-time dynamics
  | ElecTemp= 0.172347E-4      eV    # Electronic Temperature
  | BoseTemp= 0.172347E-4      eV    # Bosonic Temperature
- | RT_Threads= 1                    # [OPENMP/RT] Number of threads for real-time
  | HXC_Potential= "IP"              # [SC] SC HXC Potential
  | FFTGvecs=  3317            RL    # [FFT] Plane-waves
  | HARRLvcs=  3413            RL    # [HA] Hartree     RL components
