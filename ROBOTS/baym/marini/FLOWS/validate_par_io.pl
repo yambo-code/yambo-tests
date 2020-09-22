@@ -13,7 +13,7 @@
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "no",
+ ACTIVE      => "yes",
  MPI_CPU     => 8,
  PAR_MODE    => "random",
 },
