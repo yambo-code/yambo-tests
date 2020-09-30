@@ -1,23 +1,24 @@
 #                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
 #                                                                     
-# Y88b    /   e           e    e      888~~\    ,88~-_                
-#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
-#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
-#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
-#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
-#    /   /      Y88b /          Y888b 888__/    `88_-~                
 #                                                                     
-#                                                                     
-#      Version 5.0.0 Revision 18642 Hash b390a67a1                    
-#                Branch is devel-magnons                              
+#       Version 5.0.1 Revision 18778 Hash 29c838efc                   
+#                 Branch is devel-magnons                             
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#               http://www.yambo-code.org                             
+#                http://www.yambo-code.org                            
 #
 optics                           # [R] Linear Response optical properties
 bss                              # [R] BSE solver
 bse                              # [R][BSE] Bethe Salpeter Equation.
+tddft                            # [R][K] Use TDDFT kernel
 BSEmod= "causal"                 # [BSE] resonant/retarded/coupling
-BSKmod= "Hartree"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
 BSENGexx= 3151             RL    # [BSK] Exchange components
 BSEprop= "magn"                  # [BSE] abs/kerr/magn trace
@@ -33,9 +34,9 @@ BSEprop= "magn"                  # [BSE] abs/kerr/magn trace
 % BDmRange
  0.100000 | 0.100000 |         eV    # [BSS] Damping range
 %
-BEnSteps= 1001                   # [BSS] Energy steps
+BEnSteps=  1001                   # [BSS] Energy steps
 % BLongDir
  0.000000 | 1.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %
-BSSNEig=5                        # [SLEPC] Number of eigenvalues to compute
+BSSNEig=  5                      # [SLEPC] Number of eigenvalues to compute
 #WRbsWF                        # [BSS] Write to disk excitonic the WFs
