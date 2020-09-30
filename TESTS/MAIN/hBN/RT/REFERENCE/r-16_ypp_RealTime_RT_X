@@ -8,12 +8,12 @@
                                                                           
                                                                           
                                                                           
-          Version 5.0.0 Revision 18576 Hash 35d9a199c                     
-                      Branch is bug-fixes                                 
-                  MPI+OpenMP+HDF5_MPI_IO Build                            
+           Version 5.0.1 Revision 18706 Hash e137d59                      
+                    Branch is devel-andreaM                               
+                       MPI+HDF5_IO Build                                  
                    http://www.yambo-code.org                              
  
- 07/27/2020 at 09:57 ypp_rt @ VivoBook
+ 07/31/2020 at 10:47 ypp_rt @ baym
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 16_ypp
- Alt#1 string        : 15_td_ip_dbgd-serial-bug-fixes
- Alt#2 string        : R2
+ Alt#1 string        : 15_td_ip_dbgd-serial-devel-andreaM
+ Alt#2 string        : R1
 
  Precision           : SINGLE
   
@@ -111,10 +111,26 @@
 
   Compatible Grid is   : 2D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.500000    -0.149012E-7   0.00000    [rlu]
+  K_min[ 1 ] :  0.500000    -0.149023E-7   0.00000    [rlu]
   K_min[ 2 ] :  0.447035E-7 -0.500000      0.00000    [rlu]
   Grid dimensions      :  2  2
   K lattice UC volume  :  0.264383 [a.u.]
+
+  IBZ K-points :   4
+  BZ  K-points :   4
+
+  K [1] : weight       :  0.250000
+        : wf components:  2831
+        : point-iku    :  0.000000  0.000000  0.000000  [iku]
+  K [2] : weight       :  0.250000
+        : wf components:  2834
+        : point-iku    :  0.500000  0.250000  0.000000  [iku]
+  K [3] : weight       :  0.250000
+        : wf components:  2834
+        : point-iku    :  0.447035E-7 -0.500000      0.00000     [iku]
+  K [4] : weight       :  0.250000
+        : wf components:  2834
+        : point-iku    : -0.500000  0.250000  0.000000  [iku]
 
   [05.05] Energies & Occupations
   ==============================
@@ -137,6 +153,18 @@
   [X] 1st conduction band width                     :  1.130507 [eV]
    
    
+  E @ K [1]:  [eV]
+  -19.85965 -19.46316  -8.72155  -6.18813  -3.53840  -3.53840  -3.48877  -3.48877
+    2.98442   8.23581   9.41373   9.41373   9.57645   9.57645  10.50242  10.79555
+  E @ K [2]:  [eV]
+  -16.52617 -16.43396 -11.09406 -11.01607  -6.38571  -6.29961  -3.80518  -2.58526
+    1.85392   3.48877   7.46091   7.90560  10.28864  11.56705  12.84650  16.98134
+  E @ K [3]:  [eV]
+  -16.52617 -16.43396 -11.09406 -11.01607  -6.38571  -6.29961  -3.80518  -2.58526
+    1.85392   3.48877   7.46091   7.90560  10.28864  11.56705  12.84650  16.98134
+  E @ K [4]:  [eV]
+  -16.52617 -16.43396 -11.09406 -11.01607  -6.38571  -6.29961  -3.80518  -2.58526
+    1.85392   3.48877   7.46091   7.90560  10.28864  11.56705  12.84650  16.98134
 
  [06] == Real-Time Post-Processing ==
  ====================================
@@ -154,23 +182,23 @@
  ====================
 
  Clock: global
-            io_COL_CUT :      0.0000s CPU
       io_ATMPROJ_pwscf :      0.0000s CPU
            io_KB_pwscf :      0.0000s CPU
+            io_COL_CUT :      0.0000s CPU
+        io_Double_Grid :      0.0001s CPU (   2 calls,   0.037 msec avg)
       RT output (INIT) :      0.0001s CPU
-        io_Double_Grid :      0.0001s CPU (   2 calls,   0.057 msec avg)
-                 io_WF :      0.0031s CPU
-              io_QINDX :      0.0036s CPU
-          io_KB_abinit :      0.0040s CPU
-               io_GROT :      0.0085s CPU (   3 calls,   2.845 msec avg)
-             RT output :      0.1170s CPU (1503 calls,   0.078 msec avg)
-      io_RT_components :      0.1173s CPU (   8 calls,  14.656 msec avg)
+              io_QINDX :      0.0013s CPU
+                 io_WF :      0.0015s CPU
+          io_KB_abinit :      0.0019s CPU
+               io_GROT :      0.0031s CPU (   3 calls,   1.034 msec avg)
+             RT output :      0.0475s CPU (1503 calls,   0.032 msec avg)
+      io_RT_components :      0.0570s CPU (   8 calls,   7.122 msec avg)
 
  [08] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 10.00000 [Mb] (basic treshold)  100.0000 [Mb] (SAVEs treshold)
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
          Max memory used   :  611.0000 [Kb]
@@ -178,8 +206,8 @@
  [09] Game Over & Game summary
  =============================
 
- 07/27/2020 at 09:57 ypp_rt @ VivoBook [start]
- 07/27/2020 at 09:57                   [end]
+ 07/31/2020 at 10:47 ypp_rt @ baym [start]
+ 07/31/2020 at 10:47               [end]
 
   
  .-ACKNOWLEDGMENT

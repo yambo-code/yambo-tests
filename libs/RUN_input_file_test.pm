@@ -24,10 +24,14 @@
 #
 sub RUN_input_file_test{
 
- my $NEW_file=$INPUT_file."_generated";
+ undef $NEW_file;
  my $CMD;
- &command("echo \"ORIGINAL\" >> $INPUT_file");
- &command("cp $INPUT_file $NEW_file");
+ if (-f $INPUT_file) 
+ {
+  $NEW_file=$INPUT_file."_generated";
+  &command("echo \"ORIGINAL\" >> $INPUT_file");
+  &command("cp $INPUT_file $NEW_file");
+ }
 
  if ($SETUP=="1")   { $CMD=$CMD." -setup" };
  if ($HF=="1")      { $CMD=$CMD." -hf"};
@@ -125,8 +129,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("p2y")=="1")   { return "OK" };
  if (&RUN_feature("a2y")=="1")   { return "OK" };
 
- if ($CMD) {
-  #print "\nCMD $CMD @ $testname\n";
+ if ($CMD and $NEW_file) {
   &command("$yambo_exec -Q $CMD -F $NEW_file $log");
   if (compare("$INPUT_file","$NEW_file") == 0) {
    return "Input not Generated";

@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-          Version 5.0.0 Revision 18576 Hash 35d9a199c                     
-                      Branch is bug-fixes                                 
-                 MPI+OpenMP+HDF5_MPI_IO Build                             
+     __  __   ________   ___ __ __    _______   ______                    
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+                                                                          
+                                                                          
+           Version 5.0.1 Revision 18706 Hash e137d59                      
+                    Branch is devel-andreaM                               
+                       MPI+HDF5_IO Build                                  
                    http://www.yambo-code.org                              
  
- 07/19/2020 at 16:59 ypp_rt @ VivoBook
+ 07/31/2020 at 10:46 ypp_rt @ baym
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 10_ypp_Map_FineGridx9
- Alt#1 string        : R2
+ Alt#1 string        : R1
 
  Precision           : SINGLE
   
@@ -110,10 +110,26 @@
 
   Compatible Grid is   : 2D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.500000    -0.149012E-7   0.00000    [rlu]
+  K_min[ 1 ] :  0.500000    -0.149023E-7   0.00000    [rlu]
   K_min[ 2 ] :  0.447035E-7 -0.500000      0.00000    [rlu]
   Grid dimensions      :  2  2
   K lattice UC volume  :  0.264383 [a.u.]
+
+  IBZ K-points :   4
+  BZ  K-points :   4
+
+  K [1] : weight       :  0.250000
+        : wf components:  2831
+        : point-iku    :  0.000000  0.000000  0.000000  [iku]
+  K [2] : weight       :  0.250000
+        : wf components:  2834
+        : point-iku    :  0.500000  0.250000  0.000000  [iku]
+  K [3] : weight       :  0.250000
+        : wf components:  2834
+        : point-iku    :  0.447035E-7 -0.500000      0.00000     [iku]
+  K [4] : weight       :  0.250000
+        : wf components:  2834
+        : point-iku    : -0.500000  0.250000  0.000000  [iku]
 
   [05.05] Energies & Occupations
   ==============================
@@ -136,6 +152,18 @@
   [X] 1st conduction band width                     :  1.130507 [eV]
    
    
+  E @ K [1]:  [eV]
+  -17.27438 -16.87790  -6.13629  -3.60287  -0.95313  -0.95313  -0.90350  -0.90350
+    5.56969  10.82108  11.99899  11.99899  12.16172  12.16172  13.08768  13.38081
+  E @ K [2]:  [eV]
+  -13.94090 -13.84870  -8.50880  -8.43081  -3.80045  -3.71434  -1.21991   0.00000
+    4.43918   6.07403  10.04617  10.49086  12.87391  14.15232  15.43177  19.56660
+  E @ K [3]:  [eV]
+  -13.94090 -13.84870  -8.50880  -8.43081  -3.80045  -3.71434  -1.21991   0.00000
+    4.43918   6.07403  10.04617  10.49086  12.87391  14.15232  15.43177  19.56660
+  E @ K [4]:  [eV]
+  -13.94090 -13.84870  -8.50880  -8.43081  -3.80045  -3.71434  -1.21991   0.00000
+    4.43918   6.07403  10.04617  10.49086  12.87391  14.15232  15.43177  19.56660
 
  [06] Double Grid DB(s)
  ======================
@@ -144,47 +172,91 @@
   [06.01] Double Grid initialization
   ==================================
 
+  [RDDbGdx9/SAVE//ns.db1]---------------------------------------------------------
+   Bands                                            :   60
+   K-points                                         :   81
+   G-vectors                                        :   3533 [RL space]
+   Components                                       :  2851 [wavefunctions]
+   Symmetries                                       :  2 [spatial]
+   Spinor components                                :  1
+   Spin polarizations                               :  1
+   Temperature                                      :  0.000000 [ev]
+   Electrons                                        :  16.00000
+   WF G-vectors                                     :   3529
+   Max atoms/species                                :  2
+   No. of atom species                              :  2
+   Magnetic symmetries                              : no
+  - S/N 004454 ---------------------------------------------- v.04.00.02 r.05112 -
 
-  [06.02] Double Grid IBZ mapping
-  ===============================
+  [06.02] Double Grid Energies-IBZ mapping and Fine Grid re-ordering
+  ==================================================================
 
+
+  [WARNING]Reading DEVELOP_MAP
 
   [06.03] Double Grid K-points expansion ...
   ==========================================
 
+  found 81 (81) points in the BZ (IBZ)
 
-  [06.04] Double Grid BZ mapping
-  ==============================
+  [06.04] Double Grid IBZ-IBZ mapping
+  ===================================
 
+  :: IBZ-IBZ Fine Grid pts per Coarse grid BZ pt ::  19  21
+  :: IBZ-IBZ Fine Grid points used - read        ::   80   81
+  :: IBZ-IBZ Duplicated points                   ::  1
+  :: IBZ-IBZ Blocks filling (excl. coarse grid)  ::  18  21
+
+  [06.05] Double Grid BZ-BZ mapping
+  =================================
+
+  :: BZ-BZ Fine Grid pts per Coarse grid BZ pt ::  19  21
+  :: BZ-BZ Fine Grid points used - read        ::   80   81
+  :: BZ-BZ Duplicated points                   ::  1
+  :: BZ-BZ Blocks filling (excl. coarse grid)  ::  18  21
+
+  [06.06] Double Grid Database I/O
+  ================================
+
+  [WR./10_ypp_Map_FineGridx9//ndb.Double_Grid]------------------------------------
+   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
+   [FineGd] Brillouin Symmetry  mode                : mixed
+   [FineGd] Fine Grid  BZ mapped mode               : BZ
+   [FineGd] Fine Grid IBZ mapped mode               : IBZ
+   [FineGd] Bands                                   :   60
+   [FineGd] Number of pts (Energy grid)             :   81
+   [FineGd] Number of pts (fine+coarse, IBZ-map)    :   84
+   [FineGd] Number of pts (fine+coarse, BZ-map)     :   84
+  - S/N 004454 ---------------------------------------------- v.05.00.01 r.18706 -
 
  [07] Timing Overview
  ====================
 
  Clock: global
            io_KB_pwscf :      0.0000s CPU
-            io_COL_CUT :      0.0001s CPU
-      io_ATMPROJ_pwscf :      0.0001s CPU
-      io_RT_components :      0.0002s CPU (2 calls,   0.086 msec avg)
-                 io_WF :      0.0078s CPU
-        io_Double_Grid :      0.0080s CPU (3 calls,   2.658 msec avg)
-              io_QINDX :      0.0084s CPU
-          io_KB_abinit :      0.0096s CPU
-               io_GROT :      0.0174s CPU (3 calls,   5.798 msec avg)
+      io_ATMPROJ_pwscf :      0.0000s CPU
+            io_COL_CUT :      0.0000s CPU
+      io_RT_components :      0.0001s CPU (2 calls,   0.026 msec avg)
+              io_QINDX :      0.0013s CPU
+                 io_WF :      0.0014s CPU
+          io_KB_abinit :      0.0018s CPU
+               io_GROT :      0.0030s CPU (3 calls,   0.986 msec avg)
+        io_Double_Grid :      0.0047s CPU (3 calls,   1.579 msec avg)
 
  [08] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 10.00000 [Mb] (basic treshold)  100.0000 [Mb] (SAVEs treshold)
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  1.070000 [Mb]
+         Max memory used   :  1.145000 [Mb]
 
  [09] Game Over & Game summary
  =============================
 
- 07/19/2020 at 16:59 ypp_rt @ VivoBook [start]
- 07/19/2020 at 16:59                   [end]
+ 07/31/2020 at 10:46 ypp_rt @ baym [start]
+ 07/31/2020 at 10:46               [end]
 
   
  .-ACKNOWLEDGMENT
@@ -211,8 +283,9 @@
  .-Input file  yambo.in
  | kpts_map                         # [R] Fine to coarse grid Map
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
+ | FineGd_mode= "mixed"             # Fine Grid mode. Symmetry expanded, unexpanded or mixed.
+ | BZ_DbGd_Nk=0                     # BZ Number of points in the fine grid
  | #SkipCheck                     # Skip internal consistency check on k-point grids
- | #NoWeights                     #  Do not print points weight
  | %FineGd_DB1_paths                # Paths to the SAVE folders with the Fine Grid DB1
  | "DbGdx9" |
  | %

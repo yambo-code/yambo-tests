@@ -1,19 +1,19 @@
                                                                           
-    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
-    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
-     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
-      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
-       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
-       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
-       ###  ###     ### ###       ### #########   ########                
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
                                                                           
-                                                                          
-          Version 5.0.0 Revision 18576 Hash 35d9a199c                     
-                      Branch is bug-fixes                                 
-                 MPI+OpenMP+HDF5_MPI_IO Build                             
+           Version 5.0.1 Revision 18706 Hash e137d59                      
+                    Branch is devel-andreaM                               
+                       MPI+HDF5_IO Build                                  
                    http://www.yambo-code.org                              
  
- 07/19/2020 at 17:16 ypp_rt @ VivoBook
+ 07/31/2020 at 13:04 ypp_rt @ baym
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 06_occ_bands_elph_0K_DbGd
- Alt#1 string        : 06_elph_0K_DbGd-serial-bug-fixes
- Alt#2 string        : R4
+ Alt#1 string        : 06_elph_0K_DbGd-serial-devel-andreaM
+ Alt#2 string        : R1
 
  Precision           : SINGLE
   
@@ -128,11 +128,24 @@
 
   Compatible Grid is   : 3D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.000000 -0.500000  0.000000 [rlu]
-  K_min[ 2 ] :  0.000000  0.000000 -0.500000 [rlu]
-  K_min[ 3 ] : -0.500000  0.000000  0.000000 [rlu]
+  K_min[ 1 ] :  0.238269E-8 -0.500000     0.238269E-8 [rlu]
+  K_min[ 2 ] : -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
+  K_min[ 3 ] : -0.500000     0.238269E-8 -0.238269E-8 [rlu]
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
+
+  IBZ K-points :  3
+  BZ  K-points :   8
+
+  K [1] : weight       :  0.125000
+        : wf components:  259
+        : point-iku    :  0.000000  0.000000  0.000000  [iku]
+  K [2] : weight       :  0.500000
+        : wf components:  266
+        : point-iku    :  0.500000 -0.500000  0.500000  [iku]
+  K [3] : weight       :  0.375000
+        : wf components:  254
+        : point-iku    :  0.000000 -1.000000  0.000000  [iku]
 
   [05.05] Energies & Occupations
   ==============================
@@ -155,6 +168,12 @@
   [X] 1st conduction band width                     :  2.003237 [eV]
    
    
+  E @ K [1]:  [eV]
+  -12.28470  -0.12850  -0.12850  -0.12850   2.31237   2.31237   2.31237   3.39672
+  E @ K [2]:  [eV]
+  -9.859447 -7.328932 -1.390556 -1.390556  1.390556  3.057377  3.057377  7.201426
+  E @ K [3]:  [eV]
+   -8.02424  -8.02423  -3.13909  -3.13909   0.30913   0.30914  10.02957  10.02957
 
  [06] == Real-Time Post-Processing ==
  ====================================
@@ -181,9 +200,9 @@
   [07.03] Interpolation
   =====================
 
-  [INTERPOLATION] Number of shells:   4334
+  [INTERPOLATION] Number of shells:  2197
 
- Timing [Min/Max/Average]: 19s/19s/19s
+ Timing [Min/Max/Average]: 35s/35s/35s
 
  [08] Timing Overview
  ====================
@@ -194,32 +213,32 @@
                  io_KB_abinit :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
              RT output (INIT) :      0.0001s CPU
-      IO_and_Messaging_switch :      0.0001s CPU (22 calls,   0.004 msec avg)
-               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.042 msec avg)
+               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.044 msec avg)
+      IO_and_Messaging_switch :      0.0002s CPU (22 calls,   0.009 msec avg)
                   io_KB_pwscf :      0.0003s CPU
-                        io_WF :      0.0025s CPU
-                     io_QINDX :      0.0035s CPU
-                      io_GROT :      0.0091s CPU ( 3 calls,   3.040 msec avg)
-             io_RT_components :      0.2997s CPU (37 calls,   8.100 msec avg)
-          INTERPOLATE Fourier :      2.1314s CPU ( 2 calls,   1.066 sec avg)
+                        io_WF :      0.0011s CPU
+                     io_QINDX :      0.0015s CPU
+                      io_GROT :      0.0034s CPU ( 3 calls,   1.129 msec avg)
+             io_RT_components :      0.1705s CPU (37 calls,   4.609 msec avg)
+          INTERPOLATE Fourier :      3.0673s CPU ( 2 calls,   1.534 sec avg)
 
  [09] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 10.00000 [Mb] (basic treshold)  100.0000 [Mb] (SAVEs treshold)
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  15.40000 [Mb]
+         Max memory used   :  4.547000 [Mb]
 
  [10] Game Over & Game summary
  =============================
 
- 07/19/2020 at 17:16 ypp_rt @ VivoBook [start]
- 07/19/2020 at 17:16                   [end]
+ 07/31/2020 at 13:04 ypp_rt @ baym [start]
+ 07/31/2020 at 13:04               [end]
 
- Timing   [Min/Max/Average]: 19s/19s/19s
-             [Time-Profile]: 19s
+ Timing   [Min/Max/Average]: 35s/35s/35s
+             [Time-Profile]: 35s
 
  .-ACKNOWLEDGMENT
  |
@@ -247,7 +266,7 @@
  | RToccupations                    # [R] Analize time-dependent occupations
  | RTfitbands                       # [R] Post-Processing kind: fit on bands
  | INTERP_mode= "NN"                # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
- | OutputAlat= 10.18300             # [a.u.] Lattice constant used for "alat" ouput format
+ | OutputAlat= 0.000000             # [a.u.] Lattice constant used for "alat" ouput format
  | cooIn= "rlu"                     # Points coordinates (in) cc/rlu/iku/alat
  | cooOut= "rlu"                    # Points coordinates (out) cc/rlu/iku/alat
  | #NormN                         # Nel on the bands is renormalized to Nel in the IBZ

@@ -84,8 +84,15 @@ if ("@_" =~ "before_run"){
  close IN;
  #
  # Input file
+ $INPUT_option="-F";
  $INPUT_file="yambo.in";
- if ($yambo_exec =~ /\/p2y/) { $INPUT_file=$P2Y_datafile };
+ if ($yambo_exec =~ /\/p2y/) { 
+  $INPUT_file=$P2Y_datafile;
+  if (    $is_NEW_P2Y) {
+   $INPUT_option="-I";
+   $INPUT_file=".";
+  };
+ };
  if ($yambo_exec =~ /\/a2y/) { $INPUT_file=$A2Y_datafile };
 }
 if ("@_" =~ "after_run"){
@@ -102,7 +109,7 @@ if ("@_" =~ "after_run"){
   if (!-d $dir_name) {&command("mkdir $dir_name"); };
  }
  #
- if (-e $INPUT_file ) { copy($INPUT_file, $dir_name) or &MESSAGE("ERROR WHITE","\nError copying file $INPUT_file to $dir_name $!\n"); };
+ if (-e $INPUT_file and -f $INPUT_file ) { copy($INPUT_file, $dir_name) or &MESSAGE("ERROR WHITE","\nError copying file $INPUT_file to $dir_name $!\n"); };
  foreach $file (<o-*$testname*>) 			{ move($file,$dir_name) };
  foreach $file (<r-*$testname*>,<ref_*>,<run_*>) 	{ move($file,$dir_name) };
  foreach $file (<l-*$testname*>) 			{ move($file,$dir_name) };
