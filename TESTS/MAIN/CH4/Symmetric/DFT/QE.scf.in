@@ -1,0 +1,35 @@
+&CONTROL
+ calculation = 'scf'
+ prefix='CH4'
+ title='CH4'
+ pseudo_dir = './'
+ outdir='./'
+ tprnfor = .true.
+/
+&SYSTEM
+ ibrav=8
+ a=5.0000000000
+ b=5.0000000000
+ c=5.0000000000
+ nat=5
+ ntyp=2   !! H,C
+ ecutwfc=40 !! 20Ha
+ degauss=0.000735 !! 0.01eV
+ occupations ='smearing'
+ smearing  = 'm-p'
+ nbnd=10
+/
+&ELECTRONS
+electron_maxstep = 100
+conv_thr = 1.d-6  !! Ry
+/
+ATOMIC_SPECIES
+H 0 H.pbe-mt_fhi.UPF  
+C 0 C.pbe-mt_fhi.UPF
+ATOMIC_POSITIONS angstrom
+        C    0.0000000000E+00    0.0000000000E+00    0.0000000000E+00
+        H    6.7500000000E-01    6.7500000000E-01    6.7500000000E-01
+        H   -6.7500000000E-01   -6.7500000000E-01    6.7500000000E-01
+        H    6.7500000000E-01   -6.7500000000E-01   -6.7500000000E-01
+        H   -6.7500000000E-01    6.7500000000E-01   -6.7500000000E-01
+K_POINTS  gamma 
