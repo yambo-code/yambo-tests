@@ -15,24 +15,22 @@
 optics                       # [R OPT] Optics
 bse                          # [R BSE] Bethe Salpeter Equation.
 BSEmod= "causal"             # [BSE] resonant/causal/x_coupling/xc_coupling
+BSEprop="magnons"
 BSKmod= "IP"                 # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-Gauge= "velocity"            # [BSE/Xd] Gauge (length|velocity)
 DipApproach= "G-space v"     # [Xd] [G-space v/R-space x/Covariant/Shifted grids]
-EvalMagnons
-#EvalKerr                     # [BSE] Compute the Kerr effect
-#AnHall                       # [BSE] Compute the anomalous Hall effect and if length add it to eps
-#MetDamp                      #
-DrudeWBS= ( 4.800000 , 5.650000 )  eV  # [BSE] Drude plasmon
 % BEnRange
-  0.20000 | 10.00000 | eV    # [BSS] Energy range
+  0.00000 | 10.00000 | eV    # [BSS] Energy range
 %
 % BDmRange
-  0.30000 |  0.60000 | eV    # [BSS] Damping range
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
 %
-BEnSteps= 500                # [BSS] Energy steps
+BEnSteps= 1001                # [BSS] Energy steps
 % BLongDir
  0.000000 | 1.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %
 % BSEBands
   1 |  9 |                   # [BSK] Bands range
+%
+% BSEQptR
+ 1 | 1 |                             # [BSK] Transferred momenta range
 %
