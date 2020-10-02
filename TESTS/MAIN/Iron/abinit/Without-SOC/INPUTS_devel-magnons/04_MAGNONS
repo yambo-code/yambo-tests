@@ -7,29 +7,30 @@
 #    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
 #    ###  ###     ### ###       ### #########   ########    
 #                                                           
-#               Version 3.3.1 Revision 2085                 
+#                                                           
+#               Version 4.0.1 Revision 4580                 
+#                      OpenMPI Build                        
 #                http://www.yambo-code.org                  
 #
 optics                       # [R OPT] Optics
 bse                          # [R BSE] Bethe Salpeter Equation.
-BSEmod= "causal"             # [BSE] resonant/causal/coupling
+BSEmod= "causal"             # [BSE] resonant/causal/x_coupling/xc_coupling
+BSEprop="magnons"
 BSKmod= "IP"                 # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-Gauge= "length"            # [BSE] Gauge (length|velocity). In metals length misses An-Hall
-BSEprop="abs kerr"
-EvalKerr                     # [BSE] Compute the Kerr effect
-AnHall
-MetDamp
-DrudeWBS= ( 4.800000 , 5.650000 )  eV  # [BSE] Drude plasmon
+DipApproach= "G-space v"     # [Xd] [G-space v/R-space x/Covariant/Shifted grids]
 % BEnRange
- 0.200000 | 8.000000 | eV    # [BSS] Energy range
+  0.00000 | 10.00000 | eV    # [BSS] Energy range
 %
 % BDmRange
- 0.300000 | 0.500000 | eV    # [BSS] Damping range
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
 %
-BEnSteps=  400               # [BSS] Energy steps
+BEnSteps= 1001                # [BSS] Energy steps
 % BLongDir
- 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+ 0.000000 | 1.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %
 % BSEBands
-  1 | 13 |                   # [BSK] Bands range
+  5 |  13 |                   # [BSK] Bands range
+%
+% BSEQptR
+ 1 | 1 |                             # [BSK] Transferred momenta range
 %
