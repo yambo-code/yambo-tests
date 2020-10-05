@@ -1,0 +1,31 @@
+&control
+         calculation = 'relax'
+              prefix = 'pw'
+          pseudo_dir = '/storage/projects/vlc82/pseudos/dojo/nc-fr-04_lda_standard'
+           verbosity = 'high'
+          wf_collect = .true.
+/&end
+&system
+           celldm(1) = 5.96
+           celldm(3) = 5.033557046979865
+             ecutwfc = 80
+               ibrav = 4
+                 nat = 3
+                ntyp = 2
+/&end
+&electrons
+            conv_thr = 1e-08
+/&end
+&ions
+        ion_dynamics = 'bfgs'
+/&end
+
+ATOMIC_SPECIES
+   W   183.84                W.upf
+   S   32.065                S.upf
+ATOMIC_POSITIONS { crystal }
+  S   0.3333333330   0.6666666670  -0.1475042747
+  W   0.6666666670   0.3333333330   0.0000000000
+  S   0.3333333330   0.6666666670   0.1475042747
+K_POINTS { automatic }
+ 12 12  1  0  0  0
