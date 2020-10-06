@@ -1,19 +1,19 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
+       ###  ###     ### ###       ### #########   ########                
                                                                           
                                                                           
           Version 5.0.0 Revision 18659 Hash 2b957b32a                     
                    Branch is devel-dichroism                              
-              MPI+OpenMP+SLK+SLEPC+HDF5_IO Build                          
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 09/30/2020 at 09:45 yambo_kerr @ unimi-XPS-8930
+ 10/06/2020 at 16:49 yambo_kerr @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 01_IP_dichroism
- Alt#1 string        : R6
+ Alt#1 string        : R20
 
  Precision           : SINGLE
   
@@ -52,7 +52,7 @@
   Exact exchange fraction in XC                    :  0.000000
   Exact exchange screening in XC                   :  0.000000
   Magnetic symmetries                              : no
- - S/N 005189 ---------------------------------------------- v.04.05.02 r.17118 -
+ - S/N 004043 ---------------------------------------------- v.05.00.01 r.18788 -
 
  [02] CORE Variables Setup
  =========================
@@ -128,14 +128,14 @@
   [X] Bosonic    Temperature                        :  0.258606E-1   300.100    [eV K]
   [X] Finite Temperature mode                       : yes
   [X] El. density                                   :  0.64000E+23 [cm-3]
-  [X] Fermi Level                                   : -2.122504 [eV]
+  [X] Fermi Level                                   : -2.120725 [eV]
 
   [X] === Gaps and Widths ===
-  [X] Conduction Band Min                           :  1.351774 [eV]
-  [X] Valence Band Max                              : -4.720166 [eV]
+  [X] Conduction Band Min                           :  1.350639 [eV]
+  [X] Valence Band Max                              : -4.719985 [eV]
   [X] Filled Bands                                  :   4
   [X] Empty Bands                                   :   5  20
-  [X] Direct Gap                                    :  6.071941 [eV]
+  [X] Direct Gap                                    :  6.070624 [eV]
    
    
 
@@ -149,7 +149,7 @@
   X grid is uniform                                : yes
   BS scattering                                    : no
   COLL scattering                                  : no
- - S/N 005189 ---------------------------------------------- v.05.00.00 r.18659 -
+ - S/N 004043 ---------------------------------------------- v.05.00.00 r.18659 -
 
  IBZ Q-points :  1
  BZ  Q-points :  1
@@ -164,10 +164,10 @@
  [WARNING] DIPOLES database not correct or missing
  [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
   Fragmentation                                    : yes
- - S/N 005189 ---------------------------------------------- v.04.05.02 r.17118 -
+ - S/N 004043 ---------------------------------------------- v.05.00.01 r.18788 -
 
  [WARNING] [x,Vnl] slows the Dipoles computation. To neglect it rename the ns.kb_pp file
- [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.49958E-10   1.0000    
+ [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.16987E-10   1.0000    
 
  [WR./01_IP_dichroism//ndb.dipoles]----------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
@@ -185,9 +185,11 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P L
   Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
- - S/N 005189 ---------------------------------------------- v.05.00.00 r.18659 -
+ - S/N 004043 ---------------------------------------------- v.05.00.00 r.18659 -
 
  [WARNING] BSE calculation with minimal memory utilization
+
+ Timing [Min/Max/Average]: 02s/02s/02s
 
  [05] Bethe Salpeter Equation @q1
  ================================
@@ -217,42 +219,53 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P L
    Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-  - S/N 005189 ---------------------------------------------- v.05.00.00 r.18659 -
+  - S/N 004043 ---------------------------------------------- v.05.00.00 r.18659 -
 
  [06] Timing Overview
  ====================
 
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
-                 io_KB_abinit :      0.0000s CPU
                  PP_uspp_init :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU (6 calls,   0.002 msec avg)
-                   io_COL_CUT :      0.0000s CPU
-                        io_BS :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0000s CPU ( 6 calls,   0.004 msec avg)
                io_Double_Grid :      0.0000s CPU
-             io_RT_components :      0.0000s CPU (2 calls,   0.013 msec avg)
-                        io_HF :      0.0000s CPU
-                      io_ELPH :      0.0000s CPU (2 calls,   0.013 msec avg)
-                io_COLLISIONS :      0.0000s CPU (3 calls,   0.012 msec avg)
-                         io_X :      0.0001s CPU (4 calls,   0.015 msec avg)
-                  io_KB_pwscf :      0.0005s CPU (3 calls,   0.173 msec avg)
-                        io_WF :      0.0012s CPU (4 calls,   0.303 msec avg)
-                  WF_load_FFT :      0.0014s CPU
-                  io_fragment :      0.0015s CPU (4 calls,   0.376 msec avg)
-                     io_QINDX :      0.0040s CPU (2 calls,   1.997 msec avg)
-                      io_GROT :      0.0047s CPU (2 calls,   2.373 msec avg)
-                   io_DIPOLES :      0.0147s CPU (6 calls,   2.451 msec avg)
-                   T_space IP :      0.0197s CPU
-            DIPOLE_transverse :      0.4584s CPU
-                      Dipoles :      0.4675s CPU
+                        io_BS :      0.0001s CPU
+                 io_KB_abinit :      0.0001s CPU
+                      io_ELPH :      0.0001s CPU ( 2 calls,   0.061 msec avg)
+             io_RT_components :      0.0001s CPU ( 2 calls,   0.066 msec avg)
+                io_COLLISIONS :      0.0001s CPU ( 3 calls,   0.045 msec avg)
+                   io_COL_CUT :      0.0001s CPU
+                         io_X :      0.0002s CPU ( 4 calls,   0.055 msec avg)
+                        io_HF :      0.0003s CPU
+                  io_fragment :      0.0027s CPU ( 2 calls,   1.346 msec avg)
+                  WF_load_FFT :      0.0029s CPU
+                        io_WF :      0.0120s CPU ( 4 calls,   3.007 msec avg)
+                      io_GROT :      0.0135s CPU ( 2 calls,   6.746 msec avg)
+                     io_QINDX :      0.0160s CPU ( 2 calls,   7.987 msec avg)
+                  io_KB_pwscf :      0.0194s CPU ( 3 calls,   6.471 msec avg)
+                   io_DIPOLES :      0.0344s CPU (10 calls,   3.436 msec avg)
+                   T_space IP :      0.0436s CPU
+            DIPOLE_transverse :      2.3494s CPU
+                      Dipoles :      2.3711s CPU
 
- [07] Game Over & Game summary
+ [07] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 10.00000 [Mb] (basic treshold)  100.0000 [Mb] (SAVEs treshold)
+
+
+         Max memory used   :  8.750000 [Mb]
+
+ [08] Game Over & Game summary
  =============================
 
- 09/30/2020 at 09:45 yambo_kerr @ unimi-XPS-8930 [start]
- 09/30/2020 at 09:45                             [end]
+ 10/06/2020 at 16:49 yambo_kerr @ VivoBook [start]
+ 10/06/2020 at 16:49                       [end]
 
-  
+ Timing   [Min/Max/Average]: 02s/02s/02s
+             [Time-Profile]: 02s
+
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
