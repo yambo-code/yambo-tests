@@ -1,0 +1,35 @@
+&CONTROL
+ calculation = 'scf'
+ prefix='CH4_3dist'
+ title='CH4_3dist'
+ pseudo_dir = './'
+ outdir='./'
+ tprnfor = .true.
+/
+&SYSTEM
+ ibrav=8
+ a=5.0000000000
+ b=5.0000000000
+ c=5.0000000000
+ nat=5
+ ntyp=2
+ ecutwfc=40
+ degauss=0.000735
+ occupations ='smearing'
+ smearing  = 'm-p'
+ nbnd=10
+/
+&ELECTRONS
+electron_maxstep = 100
+conv_thr = 1.d-6
+/
+ATOMIC_SPECIES
+H 0 H.pbe-mt_fhi.UPF  
+C 0 C.pbe-mt_fhi.UPF
+ATOMIC_POSITIONS angstrom
+        C    0.0000000000E+00    0.0000000000E+00    0.0000000000E+00
+        H    6.0750000000E-01    6.0750000000E-01    6.0750000000E-01
+        H   -7.4250000000E-01   -7.4250000000E-01    7.4250000000E-01
+        H    8.1000000000E-01   -8.1000000000E-01   -8.1000000000E-01
+        H   -6.7500000000E-01    6.7500000000E-01   -6.7500000000E-01
+K_POINTS  gamma 
