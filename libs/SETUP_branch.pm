@@ -102,8 +102,6 @@ if ($pattern=~m/4.1/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/4.0/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/3.4/ix){$is_NEW_EXC_SORT="no"};
 #
-$is_NEW_P2Y="yes";
-#
 $do_NL_tests="yes";
 $is_NEW_YPP="yes";
 $PAR_COMP="-j";
@@ -117,6 +115,9 @@ if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $is_NEW_dr
 if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $is_NEW_driver;};
 if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $is_NEW_driver; undef $PAR_COMP;};
 if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $is_NEW_driver; undef $PAR_COMP;};
+#
+undef $is_NEW_scatt;
+if ($pattern=~m/devel-phonon-dynamics/ix) {$is_NEW_scatt=1;};
 #
 $do_A2Y_tests="yes";
 $PAR_covariant="yes";

@@ -88,10 +88,8 @@ if ("@_" =~ "before_run"){
  $INPUT_file="yambo.in";
  if ($yambo_exec =~ /\/p2y/) { 
   $INPUT_file=$P2Y_datafile;
-  if (    $is_NEW_P2Y) {
-   $INPUT_option="-I";
-   $INPUT_file=".";
-  };
+  $INPUT_option="-I";
+  $INPUT_file=".";
  };
  if ($yambo_exec =~ /\/a2y/) { $INPUT_file=$A2Y_datafile };
 }

@@ -64,9 +64,21 @@ sub RUN_input_file_test{
 
  if (&RUN_feature("negf")=="1") {$CMD=$CMD." -rt p"};
  if (&RUN_feature("collisions")=="1") {$CMD=$CMD." -collisions"};
- if (&RUN_feature("el_photon_scatt")=="1") {$CMD=$CMD." -scattering h"};
- if (&RUN_feature("el_ph_scatt")=="1") {$CMD=$CMD." -scattering p"};
- if (&RUN_feature("el_el_scatt")=="1") {$CMD=$CMD." -scattering e"};
+ if (&RUN_feature("el_photon_scatt")=="1") {
+   if (not $is_NEW_scatt) {$CMD=$CMD." -scattering h"}
+   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering eh"}
+ }
+ if (&RUN_feature("el_ph_scatt")=="1") {
+   if (not $is_NEW_scatt) {$CMD=$CMD." -scattering p"}
+   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering ep"}
+ }
+ if (&RUN_feature("el_el_scatt")=="1") {
+   if (not $is_NEW_scatt) {$CMD=$CMD." -scattering e"}
+   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering ee"}
+ }
+ if (&RUN_feature("ph_el_scatt")=="1") {
+   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering pe"}
+ }
 
  my $POT;
  if (&RUN_feature("HXC_Potential= IP")=="1") {$POT="ip"};
