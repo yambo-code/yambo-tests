@@ -38,6 +38,12 @@ $IGNORE_branch[$N_IGNORE]="devel-phonon-dynamics";
 $IGNORE_file[$N_IGNORE]="$patt";
 $IGNORE_test[$N_IGNORE]="hBN/RT"}
 #
+@PATTS = qw( o-07_Fermi-occ-fit.YPP-RT_EP_Elec_abs_linewidths o-07_Fermi-occ-fit.YPP-RT_EP_Hole_abs_linewidths);
+for $patt (@PATTS) {$N_IGNORE++;
+$IGNORE_branch[$N_IGNORE]="devel-phonon-dynamics";
+$IGNORE_file[$N_IGNORE]="$patt";
+$IGNORE_test[$N_IGNORE]="MoS2/pwscf/RT"}
+#
 #$N_IGNORE++;
 #$IGNORE_branch[$N_IGNORE]="devel-andreaM";
 #$IGNORE_file[$N_IGNORE]="10_ypp_Map_FineGridx9";
