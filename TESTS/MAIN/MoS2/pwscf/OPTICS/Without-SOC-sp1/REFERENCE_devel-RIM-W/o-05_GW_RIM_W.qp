@@ -1,17 +1,17 @@
 #                                                           
+#   __   __     _        __  __       ____      U  ___  u   
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
 #                                                           
-# Y88b    /   e           e    e      888~~\    ,88~-_      
-#  Y88b  /   d8b         d8b  d8b     888   |  d888   \     
-#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |    
-#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |    
-#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /     
-#    /   /      Y88b /          Y888b 888__/    `88_-~      
 #                                                           
-#                                                           
-#       Version 4.5.0 Revision 17262 Hash 23d2d11           
-#                 Branch is devel-RIM-W                     
-#             MPI+OpenMP+SLK+HDF5_LIB Build                 
-#               http://www.yambo-code.org                   
+#        Version 4.5.0 Revision 17262 Hash 23d2d11          
+#                  Branch is devel-RIM-W                    
+#              MPI+OpenMP+SLK+HDF5_LIB Build                
+#                http://www.yambo-code.org                  
 #
 # GW [Newton Solver]
 #
@@ -40,19 +40,19 @@
 #
 #    K-point      Band         Eo           E-Eo         Sc|Eo
 #
-     1.00000      1.00000    -60.58598     -2.02224     -4.65824
-     1.00000      2.00000    -34.83264      0.46734      5.70572
-     1.00000      3.00000    -34.43531     -0.89360      6.74644
-     1.00000      4.00000    -34.43531     -0.88976      6.74527
-     2.00000      1.00000    -60.54663     -4.50574     -4.24012
-     2.00000      2.00000    -34.80722      3.96339      6.40641
-     2.00000      3.00000    -34.75614      0.63529      6.39342
-     2.00000      4.00000    -34.52017     -0.77617      6.66545
+     1.00000      1.00000    -60.58598     -2.03622     -4.61016
+     1.00000      2.00000    -34.83264      0.46348      5.75318
+     1.00000      3.00000    -34.43531     -0.90088      6.79488
+     1.00000      4.00000    -34.43531     -0.89697      6.79366
+     2.00000      1.00000    -60.54663     -4.55320     -4.19231
+     2.00000      2.00000    -34.80722      3.77739      6.45541
+     2.00000      3.00000    -34.75614      0.95284      6.44107
+     2.00000      4.00000    -34.52017     -0.77629      6.71396
 # 
-# 09/11/2020 at 18:06 yambo @ corvina [start]
-# 09/11/2020 at 18:07                 [end]
+# 10/09/2020 at 10:21 yambo @ corvina [start]
+# 10/09/2020 at 10:21                 [end]
 #  
-# Timing   [Min/Max/Average]: 01m-10s/01m-10s/01m-10s
+# Timing   [Min/Max/Average]: 30s/30s/30s
 #
 # .-Input file : yambo.in
 # | HF_and_locXC                   # [R] Hartree-Fock
@@ -63,9 +63,15 @@
 # | ppa                            # [R][Xp] Plasmon Pole Approximation for the Screened Interaction
 # | BoseTemp= 0.000000     eV      # Bosonic Temperature
 # | FFTGvecs=  8845        RL      # [FFT] Plane-waves
-# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
-# | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
+# | X_CPU= "2.1.1"                 # [PARALLEL] CPUs for each role
+# | X_ROLEs= "g.k.q"               # [PARALLEL] CPUs roles (q,g,k,c,v)
+# | DIP_CPU= "2.1"                 # [PARALLEL] CPUs for each role
+# | DIP_ROLEs= "v.k"               # [PARALLEL] CPUs roles (k,c,v)
+# | X_Threads=  4                  # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads=  4                # [OPENMP/X] Number of threads for dipoles
+# | SE_CPU= "2.1"                  # [PARALLEL] CPUs for each role
+# | SE_ROLEs= "b.q"                # [PARALLEL] CPUs roles (q,qp,b)
+# | SE_Threads=  4                 # [OPENMP/GW] Number of threads for self-energy
 # | RandQpts= 3000000              # [RIM] Number of random q-points in the BZ
 # | RandGvec= 3            RL      # [RIM] Coulomb interaction RS components
 # | CUTGeo= "slab z"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
