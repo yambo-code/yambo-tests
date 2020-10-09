@@ -26,11 +26,17 @@
 #
 $N_IGNORE=0;
 #
-#@PATTS = qw(k2_kRT10 k2_kRT11 k2_kRT12 k2_kRT13 k2_kRT14 k2_kRT15 k2_kRT16 k2_kRT17 k2_kRT18 k2_kRT19 k2_kRT20 k3_kRT18 k3_kRT19 k3_kRT20 k2_kRT99);
-#for $patt (@PATTS) {$N_IGNORE++;
-#$IGNORE_branch[$N_IGNORE]="devel-andreaM";
-#$IGNORE_file[$N_IGNORE]="$patt";
-#$IGNORE_test[$N_IGNORE]="Si_bulk/RT"}
+@PATTS = qw(02_carriers_Fermi_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_Fermi_fit_DB.YPP-RT_EP_Hole_abs 02_carriers_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_fit_DB.YPP-RT_EP_Hole_abs);
+for $patt (@PATTS) {$N_IGNORE++;
+$IGNORE_branch[$N_IGNORE]="devel-phonon-dynamics";
+$IGNORE_file[$N_IGNORE]="$patt";
+$IGNORE_test[$N_IGNORE]="Si_bulk/RT"}
+#
+@PATTS = qw(o-13_occ-data.YPP-RT_EP_Elec_abs_linewidths o-13_occ-data.YPP-RT_EP_Hole_abs_linewidths);
+for $patt (@PATTS) {$N_IGNORE++;
+$IGNORE_branch[$N_IGNORE]="devel-phonon-dynamics";
+$IGNORE_file[$N_IGNORE]="$patt";
+$IGNORE_test[$N_IGNORE]="hBN/RT"}
 #
 #$N_IGNORE++;
 #$IGNORE_branch[$N_IGNORE]="devel-andreaM";
