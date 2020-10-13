@@ -1,0 +1,1204 @@
+  ABINIT 8.10.3
+  
+  Give name for formatted input file: 
+input/02_nscf_WFK.in
+  Give name for formatted output file:
+output/hbn_nscf_WFK.out
+  Give root name for generic input files:
+io_dir/hbn_scf_out
+  Give root name for generic output files:
+io_dir/hbn_nscf_WFK_out
+  Give root name for generic temporary files:
+io_dir/hbn_nscf_WFK_tmp
+
+.Version 8.10.3 of ABINIT 
+.(sequential version, prepared for a x86_64_linux_gnu8.3 computer) 
+
+.Copyright (C) 1998-2018 ABINIT group . 
+ ABINIT comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read https://docs.abinit.org/theory/acknowledgments for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see https://www.abinit.org .
+
+.Starting date : Tue 13 Oct 2020.
+- ( at 10h29 )
+  
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ === Build Information === 
+  Version       : 8.10.3
+  Build target  : x86_64_linux_gnu8.3
+  Build date    : 20201005
+
+ === Compiler Suite === 
+  C compiler       : gnu8.3
+  C++ compiler     : gnu8.3
+  Fortran compiler : gnu8.3
+  CFLAGS           :  -g -O2 -mtune=native -march=native
+  CXXFLAGS         :  -g -O2 -mtune=native -march=native
+  FCFLAGS          :  -g -ffree-line-length-none
+  FC_LDFLAGS       : 
+
+ === Optimizations === 
+  Debug level        : basic
+  Optimization level : standard
+  Architecture       : unknown_unknown
+
+ === Multicore === 
+  Parallel build : no
+  Parallel I/O   : no
+  openMP support : no
+  GPU support    : no
+
+ === Connectors / Fallbacks === 
+  Connectors on : yes
+  Fallbacks on  : yes
+  DFT flavor    : none
+  FFT flavor    : none
+  LINALG flavor : netlib-fallback
+  MATH flavor   : none
+  TIMER flavor  : abinit
+  TRIO flavor   : netcdf-fallback
+
+ === Experimental features === 
+  Bindings            : @enable_bindings@
+  Exports             : no
+  GW double-precision : no
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Default optimizations:
+   -O2 -mtune=native -march=native
+
+
+ Optimizations for 43_ptgroups:
+   -O0
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ CPP options activated during the build:
+
+                    CC_GNU                   CXX_GNU                    FC_GNU
+ 
+ HAVE_FC_ALLOCATABLE_DT...             HAVE_FC_ASYNC         HAVE_FC_BACKTRACE
+ 
+  HAVE_FC_COMMAND_ARGUMENT      HAVE_FC_COMMAND_LINE        HAVE_FC_CONTIGUOUS
+ 
+           HAVE_FC_CPUTIME              HAVE_FC_EXIT             HAVE_FC_FLUSH
+ 
+             HAVE_FC_GAMMA            HAVE_FC_GETENV   HAVE_FC_IEEE_EXCEPTIONS
+ 
+          HAVE_FC_INT_QUAD             HAVE_FC_IOMSG     HAVE_FC_ISO_C_BINDING
+ 
+  HAVE_FC_ISO_FORTRAN_2008        HAVE_FC_LONG_LINES        HAVE_FC_MOVE_ALLOC
+ 
+           HAVE_FC_PRIVATE         HAVE_FC_PROTECTED         HAVE_FC_STREAM_IO
+ 
+            HAVE_FC_SYSTEM          HAVE_FORTRAN2003        HAVE_LIBPAW_ABINIT
+ 
+      HAVE_LIBTETRA_ABINIT               HAVE_NETCDF             HAVE_OS_LINUX
+ 
+         HAVE_TIMER_ABINIT              USE_MACROAVE                            
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- input  file    -> input/02_nscf_WFK.in
+- output file    -> output/hbn_nscf_WFK.out
+- root for input  files -> io_dir/hbn_scf_out
+- root for output files -> io_dir/hbn_nscf_WFK_out
+
+-instrng: 47 lines of input have been read from file input/02_nscf_WFK.in
+
+
+ Please give name of formatted atomic psp file
+ iofn2 : for atom type 1, psp file is ../psp/5b.pspnc
+
+ Please give name of formatted atomic psp file
+ iofn2 : for atom type 2, psp file is ../psp/7n.pspnc
+  read the values zionpsp=  3.0 , pspcod=   1 , lmax=   1
+  read the values zionpsp=  5.0 , pspcod=   1 , lmax=   1
+
+ inpspheads: deduce mpsang = 2, n1xccc = 2501.
+ invars1 : treat image number: 1
+
+ symlatt : the Bravais lattice is hP (primitive hexagonal)
+  xcart  is defined in input file
+ ingeo: takes atomic coordinates from input array xcart
+
+ symlatt : the Bravais lattice is hP (primitive hexagonal)
+
+ symlatt : the Bravais lattice is hP (primitive hexagonal)
+ symspgr : spgroup= 194  P6_3/m m c   (=D6h^4)
+ symspgr : optical characteristics = uniaxial
+ Optical axis (in reduced coordinates, real space ) :   0   0   1
+ ingeo: angdeg(1:3)=   90.00000000   90.00000000  120.00000000
+ chkneu : initialized the occupation numbers for occopt=    1, spin-unpolarized or antiferromagnetic case :
+  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  0.00  0.00  0.00  0.00
+  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00
+  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00
+  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00
+  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00
+mpi_setup: mkmem  undefined in the input file.Use default mkmem  = nkpt
+ mpi_setup: With nkpt_me=2 and mkmem  = 2, ground state wf handled in core.
+mpi_setup: mkqmem undefined in the input file.Use default mkqmem = nkpt
+ mpi_setup: With nkpt_me=2 and mkqmem = 2, ground state wf handled in core.
+mpi_setup: mk1mem undefined in the input file.Use default mk1mem = nkpt
+ mpi_setup: With nkpt_me=2 and mk1mem = 2, ground state wf handled in core.
+ For input ecut=  4.000000E+01 best grid ngfft=      30      30      72
+       max ecut=  4.313970E+01
+
+ ==== FFT mesh ====
+  FFT mesh divisions ........................    30   30   72
+  Augmented FFT divisions ...................    31   31   72
+  FFT algorithm .............................   112
+  FFT cache size ............................    16
+ getmpw: optimal value of mpw= 2834
+
+ Symmetries : space group P6_3/m m c (#194); Bravais hP (primitive hexag.)
+
+ getdim_nloc : deduce lmnmax  =   1, lnmax  =   1,
+                      lmnmaxso=   1, lnmaxso=   1.
+memory : analysis of memory needs
+================================================================================
+ Values of the parameters that define the memory need of the present run
+     intxc =       0    ionmov =       0      iscf =      -2    lmnmax =       1
+     lnmax =       1     mgfft =      72  mpssoang =       2    mqgrid =    3467
+     natom =       4  nloc_mem =       1    nspden =       1   nspinor =       1
+    nsppol =       1      nsym =      12    n1xccc =    2501    ntypat =       2
+    occopt =       1   xclevel =       1
+-    mband =          60        mffmem =           1         mkmem =           2
+       mpw =        2834          nfft =       64800          nkpt =           2
+================================================================================
+P This job should need less than                      16.694 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      5.191 Mbytes ; DEN or POT disk file :      0.496 Mbytes.
+================================================================================
+
+ Biggest array : cg(disk), with      5.1912 MBytes.
+ memana : allocated an array of      5.191 Mbytes, for testing purposes.
+ memana: allocated      16.694Mbytes, for testing purposes. 
+ The job will continue.
+--------------------------------------------------------------------------------
+------------- Echo of variables that govern the present computation ------------
+--------------------------------------------------------------------------------
+-
+- outvars: echo of selected default values                                      
+-   iomode0 =  0 , fftalg0 =112 , wfoptalg0 =  0
+-
+- outvars: echo of global parameters not present in the input file              
+-  max_nthreads =    0
+-
+ -outvars: echo values of preprocessed input variables --------
+ 
+ These variables are accessible in NetCDF format (io_dir/hbn_nscf_WFK_out_OUT.nc)
+
+-          iomode           3
+            acell      4.7163728000E+00  4.7163728000E+00  1.2175836200E+01 Bohr
+              amu      1.08110000E+01  1.40067400E+01
+           diemac      4.50000000E+00
+             ecut      4.00000000E+01 Hartree
+-          fftalg         112
+           getden           1
+             iscf          -2
+           istwfk        1    1
+              kpt      0.00000000E+00  0.00000000E+00  0.00000000E+00
+                       5.00000000E-01  0.00000000E+00  0.00000000E+00
+         kptrlatt        2    0    0      0    2    0      0    0    1
+          kptrlen      9.43274560E+00
+P           mkmem           2
+            natom           4
+            nband          60
+           nbdbuf           2
+            ngfft          30      30      72
+             nkpt           2
+            nstep         100
+             nsym          12
+           ntypat           2
+          prtkbff           1
+            rprim      1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                      -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
+          spgroup         194
+        symmorphi           0
+           symrel      1  0  0   0  1  0   0  0  1       0 -1  0  -1  0  0   0  0 -1
+                      -1 -1  0   1  0  0   0  0 -1      -1  0  0   1  1  0   0  0  1
+                       0  1  0  -1 -1  0   0  0  1       1  1  0   0 -1  0   0  0 -1
+                       1  0  0   0  1  0   0  0 -1       0 -1  0  -1  0  0   0  0  1
+                      -1 -1  0   1  0  0   0  0  1      -1  0  0   1  1  0   0  0 -1
+                       0  1  0  -1 -1  0   0  0 -1       1  1  0   0 -1  0   0  0  1
+            tnons      0.0000000  0.0000000  0.0000000    -0.0000000 -0.0000000  0.0000000
+                       0.0000000 -0.0000000  0.0000000     0.0000000  0.0000000  0.0000000
+                      -0.0000000 -0.0000000  0.0000000     0.0000000 -0.0000000  0.0000000
+                       0.0000000  0.0000000  0.0000000    -0.0000000 -0.0000000  0.0000000
+                       0.0000000 -0.0000000  0.0000000     0.0000000  0.0000000  0.0000000
+                      -0.0000000 -0.0000000  0.0000000     0.0000000 -0.0000000  0.0000000
+           tolwfr      1.00000000E-08
+            typat      1  2  1  2
+              wtk        0.25000    0.75000
+           xangst      1.2478984965E+00  7.2047453285E-01  0.0000000000E+00
+                      -1.2478984965E+00 -7.2047453285E-01  0.0000000000E+00
+                      -1.2478984965E+00 -7.2047453285E-01  3.2215875063E+00
+                       1.2478984965E+00  7.2047453285E-01  3.2215875063E+00
+            xcart      2.3581864000E+00  1.3614995528E+00  0.0000000000E+00
+                      -2.3581864000E+00 -1.3614995528E+00  0.0000000000E+00
+                      -2.3581864000E+00 -1.3614995528E+00  6.0879181000E+00
+                       2.3581864000E+00  1.3614995528E+00  6.0879181000E+00
+             xred      6.6666666666E-01  3.3333333333E-01  0.0000000000E+00
+                      -6.6666666666E-01 -3.3333333333E-01  0.0000000000E+00
+                      -6.6666666666E-01 -3.3333333333E-01  5.0000000000E-01
+                       6.6666666666E-01  3.3333333333E-01  5.0000000000E-01
+            znucl        5.00000    7.00000
+
+================================================================================
+
+ chkinp: Checking input parameters for consistency.
+ DATA TYPE INFORMATION: 
+ REAL:      Data type name: REAL(DP) 
+            Kind value:      8
+            Precision:      15
+            Smallest nonnegligible quantity relative to 1:  0.22204460E-15
+            Smallest positive number:                       0.22250739-307
+            Largest representable number:                   0.17976931+309
+ INTEGER:   Data type name: INTEGER(default) 
+            Kind value: 4
+            Bit size:   32
+            Largest representable number: 2147483647
+ LOGICAL:   Data type name: LOGICAL 
+            Kind value: 4
+ CHARACTER: Data type name: CHARACTER             Kind value: 1
+
+  ==== OpenMP parallelism is OFF ====
+ 
+  MPI-IO support is OFF
+
+================================================================================
+== DATASET  1 ==================================================================
+-   nproc =    1
+
+
+--- !COMMENT
+src_file: m_xgScalapack.F90
+src_line: 251
+message: |
+    xgScalapack in auto mode
+...
+
+
+ getdim_nloc : deduce lmnmax  =   1, lnmax  =   1,
+                      lmnmaxso=   1, lnmaxso=   1.
+ Exchange-correlation functional for the present dataset will be:
+  LDA: new Teter (4/93) with spin-polarized option - ixc=1
+ Citation for XC functional:
+  S. Goedecker, M. Teter, J. Huetter, PRB 54, 1703 (1996)
+
+ Unit cell volume ucvol=  2.3455553E+02 bohr^3
+ Angles (23,13,12)=  9.00000000E+01  9.00000000E+01  1.20000000E+02 degrees
+
+ getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  30  30  72
+         ecut(hartree)=     40.000   => boxcut(ratio)=   2.07701
+- pspini: atom type   1  psp file is ../psp/5b.pspnc
+- pspatm: opening atomic psp file    ../psp/5b.pspnc
+-  Troullier-Martins psp for element  B         Thu Oct 27 17:29:24 EDT 1994
+-  5.00000   3.00000    940714                znucl, zion, pspdat
+    1    1    1    1      2001   0.00000      pspcod,pspxc,lmax,lloc,mmax,r2well
+    0   8.313  21.401    1   1.5924135        l,e99.0,e99.9,nproj,rcpsp
+   0.00000000   0.00000000   0.00000000   0.00000000     rms, ekb1, ekb2, epsatm
+    1  11.531  17.234    0   1.5924135        l,e99.0,e99.9,nproj,rcpsp
+   0.00000000   0.00000000   0.00000000   0.00000000     rms, ekb1, ekb2, epsatm
+    1.10004537463277    0.35216853368804    0.40909985967175   rchrg,fchrg,qchrg
+  pspatm : epsatm=    0.59609267
+         --- l  ekb(1:nproj) -->
+             0    3.906219
+ pspatm: atomic psp has been read  and splines computed
+
+- pspini: atom type   2  psp file is ../psp/7n.pspnc
+- pspatm: opening atomic psp file    ../psp/7n.pspnc
+-  Troullier-Martins psp for element  N         Thu Oct 27 17:29:45 EDT 1994
+-  7.00000   5.00000    940714                znucl, zion, pspdat
+    1    1    1    1      2001   0.00000      pspcod,pspxc,lmax,lloc,mmax,r2well
+    0   9.676  16.205    1   1.4975844        l,e99.0,e99.9,nproj,rcpsp
+   0.00000000   0.00000000   0.00000000   0.00000000     rms, ekb1, ekb2, epsatm
+    1  17.792  24.348    0   1.4975844        l,e99.0,e99.9,nproj,rcpsp
+   0.00000000   0.00000000   0.00000000   0.00000000     rms, ekb1, ekb2, epsatm
+    0.67622446232424    2.19275283188720    0.59171052714445   rchrg,fchrg,qchrg
+  pspatm : epsatm=    1.31070843
+         --- l  ekb(1:nproj) -->
+             0    5.141679
+ pspatm: atomic psp has been read  and splines computed
+
+   6.10176352E+01                                ecore*ucvol(ha*bohr**3)
+ ==== Info on pseudopotentials ====
+  Norm-conserving pseudopotentials
+  Number of pseudopotentials ..    2
+  Number of types of atoms   ..    2
+  Scalar calculation (no spin-orbit term)
+  Nonlocal part applied using Legendre polynomials
+  Max number of non-local projectors over l and type   1
+  Highest angular momentum +1 .......   2
+  Max number of (l,n)   components ..   1
+  Max number of (l,m,n) components ..   1
+
+ Pseudo-Core Charge Info: 
+   Number of radial points for pseudo-core charge .. 2501
+   XC core-correction treatment (optnlxccc) ........    1
+   Radius for pseudo-core charge for each type ..... 
+
+  - Atom type    1 has pseudo-core radius ..  3.3001
+  - Atom type    2 has pseudo-core radius ..  2.0287
+
+ Info on the Q-grid used for form factors in spline form: 
+   Number of q-points for radial functions ffspl ..   3467
+   Number of q-points for vlspl ...................   3467
+   vloc is computed in Reciprocal Space
+   model core charge treated in real-space
+
+  XC functional for type 1 is 1
+  Pseudo valence available: no
+  XC functional for type 2 is 1
+  Pseudo valence available: no
+
+ wfconv:    60 bands initialized randomly with npw=  2831, for ikpt=     1
+ wfconv:    60 bands initialized randomly with npw=  2834, for ikpt=     2
+ About to read data(r) from: io_dir/hbn_scf_out_DEN
+- File: io_dir/hbn_scf_out_DEN does not exist but found netcdf file with similar name.
+
+================================================================================
+
+          - hdr_check: checking restart file header for consistency -
+
+
+        current calculation                         restart file
+        -------------------                         ------------
+
+  calculation expects a density         |  input file contains a density
+. ABINIT  code version 8.10.3           |  ABINIT  code version 8.10.3
+. date 20201013 bantot  120 natom    4  |  date 20201013 bantot  120 natom    4
+  nkpt   2 nsym 12 ngfft  30,  30,  72  |  nkpt  12 nsym 12 ngfft  30,  30,  72
+  ntypat  2 ecut_eff  40.0000000        |  ntypat  2 ecut_eff  40.0000000
+  usepaw  0                             |  usepaw  0
+  usewvl  0                             |  usewvl  0
+  rprimd:                               |  rprimd:
+     4.7163728   0.0000000   0.0000000  |     4.7163728   0.0000000   0.0000000
+    -2.3581864   4.0844987   0.0000000  |    -2.3581864   4.0844987   0.0000000
+     0.0000000   0.0000000  12.1758362  |     0.0000000   0.0000000  12.1758362
+  symafm:                               |  symafm:
+    1  1  1  1  1  1  1  1  1  1  1  1  |    1  1  1  1  1  1  1  1  1  1  1  1
+  symrel:                               |  symrel:
+    1  0  0  0  1  0  0  0  1           |    1  0  0  0  1  0  0  0  1
+    0 -1  0 -1  0  0  0  0 -1           |    0 -1  0 -1  0  0  0  0 -1
+   -1 -1  0  1  0  0  0  0 -1           |   -1 -1  0  1  0  0  0  0 -1
+   -1  0  0  1  1  0  0  0  1           |   -1  0  0  1  1  0  0  0  1
+    0  1  0 -1 -1  0  0  0  1           |    0  1  0 -1 -1  0  0  0  1
+    1  1  0  0 -1  0  0  0 -1           |    1  1  0  0 -1  0  0  0 -1
+    1  0  0  0  1  0  0  0 -1           |    1  0  0  0  1  0  0  0 -1
+    0 -1  0 -1  0  0  0  0  1           |    0 -1  0 -1  0  0  0  0  1
+   -1 -1  0  1  0  0  0  0  1           |   -1 -1  0  1  0  0  0  0  1
+   -1  0  0  1  1  0  0  0 -1           |   -1  0  0  1  1  0  0  0 -1
+    0  1  0 -1 -1  0  0  0 -1           |    0  1  0 -1 -1  0  0  0 -1
+    1  1  0  0 -1  0  0  0  1           |    1  1  0  0 -1  0  0  0  1
+  typat:                                |  typat:
+    1  2  1  2                          |    1  2  1  2
+  so_psp  :                             |  so_psp  :
+    1  1                                |    1  1
+
+--- !WARNING
+src_file: m_hdr.F90
+src_line: 4297
+message: |
+    input kptrlatt= 2 0 0 0 2 0 0 0 1  /= disk file kptrlatt=4 0 0 0 4 0 0 0 4
+...
+
+  tnons:                                |  tnons:
+     0.0000000   0.0000000   0.0000000  |     0.0000000   0.0000000   0.0000000
+    -0.0000000  -0.0000000   0.0000000  |    -0.0000000  -0.0000000   0.0000000
+     0.0000000  -0.0000000   0.0000000  |     0.0000000  -0.0000000   0.0000000
+     0.0000000   0.0000000   0.0000000  |     0.0000000   0.0000000   0.0000000
+    -0.0000000  -0.0000000   0.0000000  |    -0.0000000  -0.0000000   0.0000000
+     0.0000000  -0.0000000   0.0000000  |     0.0000000  -0.0000000   0.0000000
+     0.0000000   0.0000000   0.0000000  |     0.0000000   0.0000000   0.0000000
+    -0.0000000  -0.0000000   0.0000000  |    -0.0000000  -0.0000000   0.0000000
+     0.0000000  -0.0000000   0.0000000  |     0.0000000  -0.0000000   0.0000000
+     0.0000000   0.0000000   0.0000000  |     0.0000000   0.0000000   0.0000000
+    -0.0000000  -0.0000000   0.0000000  |    -0.0000000  -0.0000000   0.0000000
+     0.0000000  -0.0000000   0.0000000  |     0.0000000  -0.0000000   0.0000000
+   znucl:                               |   znucl:
+    5.00  7.00                          |    5.00  7.00
+  pseudopotential atom type  1:         |  pseudopotential atom type  1:
+  pspso   0 pspxc   1                   |  pspso   0 pspxc   1
+  pspdat 940714 pspcod    1 zion   3.0  |  pspdat 940714 pspcod    1 zion   3.0
+  pseudopotential atom type  2:         |  pseudopotential atom type  2:
+  pspso   0 pspxc   1                   |  pspso   0 pspxc   1
+  pspdat 940714 pspcod    1 zion   5.0  |  pspdat 940714 pspcod    1 zion   5.0
+  xred:                                 |  xred:
+     0.6666667   0.3333333   0.0000000  |     0.6666667   0.3333333   0.0000000
+    -0.6666667  -0.3333333   0.0000000  |    -0.6666667  -0.3333333   0.0000000
+    -0.6666667  -0.3333333   0.5000000  |    -0.6666667  -0.3333333   0.5000000
+     0.6666667   0.3333333   0.5000000  |     0.6666667   0.3333333   0.5000000
+ hdr_check:  Density/Potential file is OK for restart of calculation
+================================================================================
+ IO operation completed. cpu_time:       0.0 [s], walltime:       0.0 [s]
+
+================================================================================
+ in scfcv_core: results_gs%fermie:   0.14869332325393370     
+
+ getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  30  30  72
+         ecut(hartree)=     40.000   => boxcut(ratio)=   2.07701
+ vtorho : nnsclo_now=100, note that nnsclo,dbl_nnsclo,istep=0 0 1
+ non-scf iterations; kpt #     1  , k= (  0.00000  0.00000  0.00000  ), band residuals:
+ res:  1.25E+00  1.20E+00  1.40E+00  1.23E+00  9.92E-01  1.33E+00  1.30E+00  1.29E+00
+ res:  1.10E+00  8.28E-01  8.95E-01  1.18E+00  1.29E+00  9.84E-01  1.25E+00  1.13E+00
+ res:  9.83E-01  8.65E-01  8.87E-01  9.80E-01  1.21E+00  1.01E+00  9.40E-01  1.23E+00
+ res:  1.23E+00  9.41E-01  8.20E-01  8.89E-01  9.33E-01  1.11E+00  8.94E-01  8.10E-01
+ res:  7.51E-01  1.27E+00  8.15E-01  8.78E-01  1.04E+00  9.24E-01  7.87E-01  1.12E+00
+ res:  6.38E-01  1.02E+00  9.90E-01  9.22E-01  1.06E+00  7.78E-01  7.95E-01  8.81E-01
+ res:  9.84E-01  9.29E-01  8.03E-01  8.74E-01  8.39E-01  8.41E-01  1.05E+00  9.77E-01
+ res:  9.56E-01  6.68E-01  7.75E-01  9.34E-01
+ ene: -3.64E-01 -3.07E-01  7.87E-02  1.30E-01  2.24E-01  2.48E-01  2.66E-01  3.21E-01
+ ene:  5.00E-01  6.22E-01  6.57E-01  6.79E-01  6.98E-01  7.25E-01  7.68E-01  7.86E-01
+ ene:  8.22E-01  9.25E-01  1.12E+00  1.16E+00  1.18E+00  1.25E+00  1.29E+00  1.33E+00
+ ene:  1.36E+00  1.39E+00  1.41E+00  1.44E+00  1.45E+00  1.52E+00  1.54E+00  1.56E+00
+ ene:  1.57E+00  1.59E+00  1.62E+00  1.69E+00  1.72E+00  1.79E+00  1.86E+00  1.92E+00
+ ene:  1.95E+00  1.98E+00  2.01E+00  2.06E+00  2.08E+00  2.14E+00  2.17E+00  2.27E+00
+ ene:  2.28E+00  2.34E+00  2.40E+00  2.44E+00  2.51E+00  2.59E+00  2.77E+00  2.89E+00
+ ene:  3.06E+00  3.14E+00  3.19E+00  3.30E+00
+ res:  1.30E-02  2.11E-02  1.78E-02  1.16E-02  1.06E-02  1.59E-02  1.88E-02  2.94E-02
+ res:  2.38E-02  7.92E-03  6.83E-03  1.05E-02  1.13E-02  1.64E-02  1.48E-02  3.30E-02
+ res:  3.09E-02  2.37E-02  1.64E-02  1.58E-02  8.84E-03  7.52E-03  1.40E-02  9.95E-03
+ res:  8.60E-03  8.76E-03  1.14E-02  1.59E-02  2.21E-02  8.97E-03  1.14E-02  9.08E-03
+ res:  1.49E-02  2.11E-02  1.83E-02  2.06E-02  1.20E-02  2.49E-02  7.89E-03  5.58E-03
+ res:  1.10E-02  1.70E-02  1.62E-02  1.64E-02  1.74E-02  1.33E-02  2.19E-02  1.16E-02
+ res:  1.52E-02  2.50E-02  3.20E-02  4.10E-02  2.35E-02  2.92E-02  4.35E-02  7.27E-02
+ res:  3.46E-02  3.30E-02  4.37E-02  4.64E-02
+ ene: -4.85E-01 -4.70E-01 -7.50E-02  1.74E-02  1.14E-01  1.16E-01  1.16E-01  1.18E-01
+ ene:  3.56E-01  5.48E-01  5.90E-01  5.92E-01  5.97E-01  5.97E-01  6.31E-01  6.41E-01
+ ene:  7.25E-01  7.86E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.34E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.18E+00  2.18E+00  2.19E+00  2.31E+00  2.37E+00  2.38E+00  2.42E+00
+ ene:  2.84E+00  2.86E+00  2.86E+00  2.90E+00
+ res:  1.70E-05  1.64E-05  2.35E-05  1.46E-05  9.97E-06  2.28E-05  1.61E-05  6.09E-05
+ res:  2.69E-05  2.67E-05  5.93E-06  3.00E-05  1.70E-05  3.65E-05  1.97E-05  1.80E-05
+ res:  1.23E-05  2.02E-05  7.49E-05  2.13E-05  7.65E-06  1.79E-05  3.42E-05  1.51E-05
+ res:  7.53E-06  4.35E-05  4.10E-05  1.14E-05  7.06E-05  7.66E-06  4.47E-05  1.88E-05
+ res:  4.02E-05  4.97E-06  2.94E-05  4.64E-05  2.96E-05  2.03E-05  2.59E-05  2.24E-05
+ res:  1.13E-05  2.79E-05  1.53E-05  4.79E-05  1.55E-05  5.27E-06  4.98E-05  1.18E-05
+ res:  5.47E-05  1.50E-05  9.33E-06  4.20E-05  2.24E-05  4.03E-05  1.58E-04  8.33E-05
+ res:  6.55E-03  7.32E-03  1.17E-02  1.41E-02
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.82E+00  2.82E+00  2.84E+00  2.86E+00
+ res:  7.51E-10  9.73E-10  1.32E-09  1.37E-09  1.46E-09  5.16E-09  1.57E-09  6.09E-09
+ res:  1.16E-09  2.33E-09  5.13E-10  2.58E-09  1.33E-09  2.24E-09  1.61E-09  1.31E-09
+ res:  6.92E-10  1.91E-09  3.30E-09  9.08E-10  7.14E-10  1.60E-09  1.93E-09  1.23E-09
+ res:  1.20E-09  5.64E-09  2.66E-09  8.43E-10  5.04E-09  6.17E-10  5.41E-09  2.62E-09
+ res:  4.36E-09  6.20E-10  5.41E-09  9.31E-09  5.41E-09  6.78E-09  9.69E-09  1.50E-09
+ res:  1.64E-09  1.75E-08  3.34E-09  1.94E-08  4.92E-09  2.87E-09  3.05E-08  3.16E-09
+ res:  1.38E-08  2.32E-09  2.52E-09  4.95E-09  1.75E-08  5.03E-08  1.26E-07  1.02E-07
+ res:  1.90E-03  1.90E-03  1.02E-03  5.12E-03
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.82E+00  2.83E+00  2.84E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.62E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.74E-10  1.89E-09  3.21E-09  8.83E-10  6.88E-10  1.56E-09  1.95E-09  1.22E-09
+ res:  1.28E-09  5.48E-09  2.65E-09  8.46E-10  4.88E-09  6.23E-10  5.30E-09  2.26E-09
+ res:  4.61E-09  6.11E-10  5.36E-09  9.20E-09  5.37E-09  6.62E-09  9.65E-09  1.26E-09
+ res:  1.41E-09  1.69E-09  1.25E-09  3.37E-09  4.86E-09  2.94E-09  2.93E-09  2.48E-09
+ res:  3.06E-09  2.09E-09  2.19E-09  4.87E-09  3.53E-09  8.91E-09  9.88E-09  9.82E-09
+ res:  5.52E-04  8.40E-04  3.91E-04  2.05E-03
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.84E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.81E-10  6.87E-10  1.56E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.65E-09  8.44E-10  4.88E-09  6.21E-10  5.30E-09  2.26E-09
+ res:  4.60E-09  6.10E-10  5.35E-09  9.18E-09  5.35E-09  6.61E-09  9.65E-09  1.26E-09
+ res:  1.41E-09  1.69E-09  1.25E-09  3.36E-09  4.86E-09  2.94E-09  2.93E-09  2.48E-09
+ res:  3.06E-09  2.09E-09  2.19E-09  4.86E-09  3.53E-09  8.26E-09  2.94E-09  9.78E-09
+ res:  1.22E-04  4.26E-04  1.04E-04  5.46E-04
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.81E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.65E-09  8.43E-10  4.88E-09  6.20E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.10E-10  5.35E-09  9.18E-09  5.35E-09  6.61E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.92E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.90E-09  8.28E-09  9.77E-09
+ res:  3.93E-05  1.86E-04  6.17E-05  4.10E-04
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.65E-09  8.43E-10  4.88E-09  6.20E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.10E-10  5.35E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.90E-09  8.28E-09  9.76E-09
+ res:  1.57E-05  8.40E-05  2.96E-05  1.57E-04
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.20E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.10E-10  5.35E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.90E-09  8.28E-09  9.76E-09
+ res:  5.52E-06  3.43E-05  1.85E-05  1.48E-04
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.35E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.76E-09
+ res:  2.71E-06  1.47E-05  1.28E-05  5.47E-05
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.35E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.75E-09
+ res:  8.82E-07  5.93E-06  7.05E-06  5.25E-05
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.35E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.75E-09
+ res:  4.75E-07  2.49E-06  7.32E-06  1.85E-05
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.35E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.75E-09
+ res:  1.45E-07  1.01E-06  3.84E-06  1.60E-05
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.35E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.75E-09
+ res:  8.25E-08  4.22E-07  4.65E-06  5.50E-06
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.34E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.75E-09
+ res:  2.41E-08  1.71E-07  2.14E-06  4.47E-06
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.34E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.75E-09
+ res:  1.42E-08  7.14E-08  2.22E-06  1.57E-06
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.34E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.75E-09
+ res:  9.61E-09  2.89E-08  9.24E-07  1.39E-06
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.34E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.75E-09
+ res:  9.62E-09  1.15E-08  8.79E-07  5.01E-07
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+ res:  7.45E-10  9.68E-10  1.30E-09  1.36E-09  1.31E-09  5.26E-09  1.56E-09  6.08E-09
+ res:  1.12E-09  2.29E-09  4.66E-10  2.61E-09  1.29E-09  2.23E-09  1.56E-09  1.30E-09
+ res:  6.73E-10  1.89E-09  3.21E-09  8.80E-10  6.87E-10  1.55E-09  1.95E-09  1.22E-09
+ res:  1.27E-09  5.47E-09  2.64E-09  8.42E-10  4.88E-09  6.19E-10  5.29E-09  2.26E-09
+ res:  4.60E-09  6.09E-10  5.34E-09  9.17E-09  5.35E-09  6.60E-09  9.63E-09  1.26E-09
+ res:  1.40E-09  1.68E-09  1.24E-09  3.36E-09  4.85E-09  2.94E-09  2.91E-09  2.46E-09
+ res:  3.07E-09  2.08E-09  2.18E-09  4.85E-09  3.52E-09  2.89E-09  8.28E-09  9.75E-09
+ res:  9.87E-09  8.57E-09  3.51E-07  4.68E-07
+ ene: -4.86E-01 -4.72E-01 -7.68E-02  1.63E-02  1.14E-01  1.14E-01  1.15E-01  1.15E-01
+ ene:  3.53E-01  5.46E-01  5.90E-01  5.90E-01  5.96E-01  5.96E-01  6.30E-01  6.40E-01
+ ene:  7.24E-01  7.85E-01  1.02E+00  1.08E+00  1.12E+00  1.20E+00  1.20E+00  1.26E+00
+ ene:  1.30E+00  1.30E+00  1.33E+00  1.37E+00  1.37E+00  1.46E+00  1.46E+00  1.50E+00
+ ene:  1.50E+00  1.53E+00  1.53E+00  1.61E+00  1.66E+00  1.68E+00  1.81E+00  1.87E+00
+ ene:  1.88E+00  1.88E+00  1.93E+00  1.93E+00  1.98E+00  2.04E+00  2.04E+00  2.16E+00
+ ene:  2.16E+00  2.17E+00  2.18E+00  2.18E+00  2.31E+00  2.37E+00  2.37E+00  2.41E+00
+ ene:  2.81E+00  2.81E+00  2.83E+00  2.83E+00
+     eigenvalues (hartree) for   60  bands
+              after   19 non-SCF iterations with    4 CG line minimizations
+ -4.8613E-01 -4.7156E-01 -7.6811E-02  1.6290E-02  1.1367E-01  1.1367E-01
+  1.1549E-01  1.1549E-01  3.5338E-01  5.4636E-01  5.8965E-01  5.8965E-01
+  5.9563E-01  5.9563E-01  6.2966E-01  6.4043E-01  7.2400E-01  7.8494E-01
+  1.0188E+00  1.0804E+00  1.1183E+00  1.2013E+00  1.2013E+00  1.2582E+00
+  1.3001E+00  1.3001E+00  1.3340E+00  1.3707E+00  1.3707E+00  1.4586E+00
+  1.4586E+00  1.4999E+00  1.4999E+00  1.5291E+00  1.5291E+00  1.6052E+00
+  1.6570E+00  1.6820E+00  1.8078E+00  1.8686E+00  1.8791E+00  1.8791E+00
+  1.9268E+00  1.9268E+00  1.9760E+00  2.0409E+00  2.0409E+00  2.1584E+00
+  2.1584E+00  2.1744E+00  2.1827E+00  2.1827E+00  2.3074E+00  2.3718E+00
+  2.3718E+00  2.4139E+00  2.8096E+00  2.8096E+00  2.8308E+00  2.8309E+00
+      mean kinetic energy (hartree) for    60   bands
+              after   19 non-SCF iterations with    4 CG line minimizations
+  2.5127E-01  3.0334E-01  7.1324E-01  1.1910E+00  2.0153E+00  2.0153E+00
+  2.0282E+00  2.0282E+00  5.1320E-01  2.0164E+00  1.7820E+00  1.7820E+00
+  1.8213E+00  1.8213E+00  1.2190E+00  2.3145E+00  1.2292E+00  1.8273E+00
+  1.2714E+00  1.2592E+00  1.3067E+00  1.4474E+00  1.4474E+00  2.0302E+00
+  1.3768E+00  1.3768E+00  1.3505E+00  1.8331E+00  1.8331E+00  1.6223E+00
+  1.6223E+00  1.8257E+00  1.8257E+00  1.7829E+00  1.7829E+00  1.6669E+00
+  2.0594E+00  1.7072E+00  2.0233E+00  2.1957E+00  3.1770E+00  3.1770E+00
+  2.6119E+00  2.6119E+00  2.6082E+00  2.3843E+00  2.3843E+00  3.4502E+00
+  3.4502E+00  2.4452E+00  2.4173E+00  2.4173E+00  2.4258E+00  3.0824E+00
+  3.0824E+00  3.1569E+00  3.8933E+00  3.8933E+00  3.3537E+00  3.5570E+00
+      mean non-local energy (hartree) for    60   bands
+              after   19 non-SCF iterations with    4 CG line minimizations
+  5.5382E-01  5.8620E-01  1.5091E-11  1.4817E-11  7.6479E-12  1.1465E-11
+  5.4654E-12  2.7337E-11  2.6009E-01  6.9504E-12  2.4931E-12  1.0975E-11
+  1.3252E-11  1.3810E-11  9.3507E-01  4.2272E-12  8.3886E-01  8.5702E-12
+  6.5912E-02  3.0881E-01  3.7824E-01  2.9667E-11  1.2665E-11  4.6390E-12
+  2.5653E-11  7.2985E-11  2.0766E-11  9.1227E-12  7.4765E-11  7.3508E-12
+  7.2068E-11  1.7354E-11  3.0773E-11  4.5125E-12  4.3914E-11  4.8521E-01
+  2.5192E-11  1.9168E-01  2.1984E-11  6.5321E-02  3.4161E-12  3.4457E-12
+  4.5470E-12  1.4443E-11  4.4452E-11  1.0949E-11  1.7502E-11  7.6163E-11
+  2.8286E-11  6.9644E-01  6.3702E-12  2.3001E-11  1.5171E-01  4.3733E-11
+  1.0617E-10  3.8834E-11  1.5362E-10  3.5354E-12  9.3836E-10  1.5749E-09
+ non-scf iterations; kpt #     2  , k= (  0.50000  0.00000  0.00000  ), band residuals:
+ res:  1.35E+00  1.39E+00  1.17E+00  1.33E+00  1.06E+00  1.25E+00  1.35E+00  1.44E+00
+ res:  1.09E+00  1.13E+00  1.23E+00  1.27E+00  1.23E+00  1.23E+00  1.36E+00  1.46E+00
+ res:  8.46E-01  1.12E+00  1.02E+00  1.11E+00  1.05E+00  1.17E+00  1.01E+00  1.10E+00
+ res:  9.29E-01  8.29E-01  1.12E+00  9.56E-01  1.11E+00  1.24E+00  9.85E-01  8.54E-01
+ res:  1.02E+00  1.19E+00  1.10E+00  8.53E-01  8.68E-01  8.82E-01  1.05E+00  7.87E-01
+ res:  7.75E-01  8.48E-01  1.10E+00  7.06E-01  7.01E-01  9.40E-01  1.34E+00  8.29E-01
+ res:  8.87E-01  9.89E-01  6.54E-01  8.21E-01  7.83E-01  7.40E-01  7.80E-01  9.53E-01
+ res:  7.90E-01  5.71E-01  8.82E-01  7.63E-01
+ ene: -2.37E-01 -2.20E-01 -1.66E-02  1.25E-02  1.31E-01  1.75E-01  2.35E-01  2.84E-01
+ ene:  4.55E-01  5.05E-01  6.22E-01  6.50E-01  7.38E-01  7.65E-01  8.13E-01  9.38E-01
+ ene:  9.98E-01  1.02E+00  1.05E+00  1.06E+00  1.09E+00  1.12E+00  1.21E+00  1.24E+00
+ ene:  1.26E+00  1.28E+00  1.32E+00  1.38E+00  1.46E+00  1.52E+00  1.58E+00  1.61E+00
+ ene:  1.66E+00  1.75E+00  1.86E+00  1.87E+00  1.91E+00  1.95E+00  2.06E+00  2.09E+00
+ ene:  2.14E+00  2.20E+00  2.22E+00  2.25E+00  2.27E+00  2.32E+00  2.37E+00  2.39E+00
+ ene:  2.43E+00  2.46E+00  2.51E+00  2.57E+00  2.58E+00  2.68E+00  2.72E+00  2.82E+00
+ ene:  2.89E+00  3.00E+00  3.10E+00  3.14E+00
+ res:  1.29E-02  1.40E-02  1.80E-02  2.09E-02  1.31E-02  2.01E-02  1.68E-02  1.67E-02
+ res:  1.74E-02  1.87E-02  1.16E-02  1.68E-02  1.25E-02  2.09E-02  1.20E-02  6.84E-03
+ res:  6.48E-03  5.90E-03  1.20E-02  1.38E-02  1.34E-02  2.07E-02  7.47E-03  6.39E-03
+ res:  6.89E-03  1.21E-02  1.81E-02  2.10E-02  1.02E-02  1.25E-02  1.03E-02  1.25E-02
+ res:  1.52E-02  1.16E-02  8.61E-03  8.65E-03  5.86E-03  1.71E-02  8.67E-03  9.78E-03
+ res:  1.25E-02  7.10E-03  1.19E-02  1.11E-02  1.49E-02  1.69E-02  1.54E-02  1.98E-02
+ res:  2.08E-02  2.64E-02  2.42E-02  3.65E-02  3.58E-02  3.25E-02  3.68E-02  5.28E-02
+ res:  5.55E-02  7.87E-02  9.07E-02  8.12E-02
+ ene: -3.62E-01 -3.59E-01 -1.62E-01 -1.58E-01  1.05E-02  1.38E-02  1.05E-01  1.50E-01
+ ene:  3.14E-01  3.75E-01  5.20E-01  5.36E-01  6.24E-01  6.70E-01  7.17E-01  8.69E-01
+ ene:  9.47E-01  9.55E-01  9.69E-01  9.69E-01  9.80E-01  1.01E+00  1.15E+00  1.19E+00
+ ene:  1.20E+00  1.20E+00  1.22E+00  1.29E+00  1.38E+00  1.46E+00  1.52E+00  1.52E+00
+ ene:  1.58E+00  1.68E+00  1.80E+00  1.80E+00  1.86E+00  1.87E+00  2.00E+00  2.02E+00
+ ene:  2.06E+00  2.12E+00  2.13E+00  2.13E+00  2.17E+00  2.18E+00  2.19E+00  2.25E+00
+ ene:  2.26E+00  2.29E+00  2.31E+00  2.33E+00  2.37E+00  2.40E+00  2.44E+00  2.51E+00
+ ene:  2.58E+00  2.60E+00  2.67E+00  2.70E+00
+ res:  1.90E-05  1.62E-05  2.60E-05  4.30E-05  2.77E-05  2.33E-05  1.84E-05  1.81E-05
+ res:  2.25E-05  4.30E-05  2.82E-05  2.92E-05  3.23E-05  2.10E-05  1.47E-05  1.44E-05
+ res:  1.82E-05  2.35E-05  1.46E-05  1.89E-05  4.53E-05  1.65E-05  1.82E-05  1.44E-05
+ res:  1.76E-05  3.09E-05  1.73E-05  6.00E-05  1.50E-05  3.30E-05  2.51E-05  3.31E-05
+ res:  2.33E-05  5.29E-05  2.12E-05  7.33E-05  4.89E-05  8.77E-05  3.34E-05  1.05E-04
+ res:  1.07E-04  9.15E-05  7.52E-05  1.29E-04  7.86E-05  1.12E-04  8.12E-05  5.07E-05
+ res:  2.43E-04  2.44E-04  2.61E-04  3.93E-04  2.53E-04  7.69E-04  2.86E-03  2.07E-03
+ res:  3.81E-03  6.02E-03  4.52E-03  4.89E-03
+ ene: -3.64E-01 -3.60E-01 -1.64E-01 -1.61E-01  9.03E-03  1.22E-02  1.04E-01  1.49E-01
+ ene:  3.12E-01  3.72E-01  5.18E-01  5.34E-01  6.22E-01  6.69E-01  7.16E-01  8.68E-01
+ ene:  9.46E-01  9.53E-01  9.68E-01  9.68E-01  9.79E-01  1.00E+00  1.15E+00  1.18E+00
+ ene:  1.20E+00  1.20E+00  1.22E+00  1.29E+00  1.38E+00  1.46E+00  1.51E+00  1.52E+00
+ ene:  1.57E+00  1.68E+00  1.80E+00  1.80E+00  1.86E+00  1.87E+00  2.00E+00  2.02E+00
+ ene:  2.06E+00  2.12E+00  2.12E+00  2.13E+00  2.17E+00  2.17E+00  2.19E+00  2.25E+00
+ ene:  2.25E+00  2.28E+00  2.31E+00  2.32E+00  2.36E+00  2.38E+00  2.41E+00  2.49E+00
+ ene:  2.55E+00  2.57E+00  2.64E+00  2.67E+00
+ res:  1.39E-09  1.60E-09  3.77E-09  4.06E-09  6.90E-09  4.26E-09  2.91E-09  2.87E-09
+ res:  1.16E-09  5.77E-09  2.47E-09  1.25E-09  2.07E-09  1.01E-09  8.41E-10  1.98E-09
+ res:  2.20E-09  1.98E-09  2.54E-09  2.56E-09  4.88E-09  2.18E-09  2.18E-09  2.62E-09
+ res:  2.98E-09  4.83E-09  1.10E-09  9.26E-09  1.91E-09  5.56E-09  4.27E-09  6.95E-09
+ res:  3.02E-09  2.18E-08  2.47E-08  3.58E-08  8.84E-08  4.06E-09  3.09E-09  2.13E-08
+ res:  4.57E-08  3.23E-08  1.05E-07  2.91E-08  3.42E-08  6.52E-08  1.56E-08  2.21E-07
+ res:  6.77E-07  1.02E-06  1.36E-06  1.50E-06  2.30E-06  5.89E-06  1.10E-05  8.62E-05
+ res:  2.58E-04  6.85E-04  4.47E-03  1.98E-03
+ ene: -3.64E-01 -3.60E-01 -1.64E-01 -1.61E-01  9.03E-03  1.22E-02  1.04E-01  1.49E-01
+ ene:  3.12E-01  3.72E-01  5.18E-01  5.34E-01  6.22E-01  6.69E-01  7.16E-01  8.68E-01
+ ene:  9.46E-01  9.53E-01  9.68E-01  9.68E-01  9.79E-01  1.00E+00  1.15E+00  1.18E+00
+ ene:  1.20E+00  1.20E+00  1.22E+00  1.29E+00  1.38E+00  1.46E+00  1.51E+00  1.52E+00
+ ene:  1.57E+00  1.68E+00  1.80E+00  1.80E+00  1.86E+00  1.87E+00  2.00E+00  2.02E+00
+ ene:  2.06E+00  2.12E+00  2.12E+00  2.13E+00  2.17E+00  2.17E+00  2.19E+00  2.25E+00
+ ene:  2.25E+00  2.28E+00  2.31E+00  2.32E+00  2.36E+00  2.38E+00  2.41E+00  2.49E+00
+ ene:  2.55E+00  2.56E+00  2.63E+00  2.66E+00
+ res:  1.38E-09  1.58E-09  3.74E-09  4.03E-09  6.89E-09  4.24E-09  2.89E-09  2.86E-09
+ res:  1.14E-09  5.66E-09  2.40E-09  1.23E-09  2.02E-09  9.86E-10  8.22E-10  1.94E-09
+ res:  2.15E-09  1.90E-09  2.48E-09  2.50E-09  4.72E-09  2.13E-09  2.11E-09  2.55E-09
+ res:  2.85E-09  4.60E-09  1.08E-09  8.90E-09  1.84E-09  5.30E-09  4.15E-09  6.80E-09
+ res:  2.99E-09  9.34E-10  1.15E-09  1.07E-09  4.47E-09  3.34E-09  2.76E-09  1.40E-09
+ res:  3.63E-09  2.33E-09  6.15E-09  2.51E-09  3.32E-09  9.45E-09  1.80E-09  4.27E-09
+ res:  2.28E-09  3.94E-09  6.80E-09  3.60E-09  7.38E-09  3.05E-08  6.59E-08  2.89E-06
+ res:  1.54E-05  4.27E-05  1.05E-03  5.06E-04
+ ene: -3.64E-01 -3.60E-01 -1.64E-01 -1.61E-01  9.03E-03  1.22E-02  1.04E-01  1.49E-01
+ ene:  3.12E-01  3.72E-01  5.18E-01  5.34E-01  6.22E-01  6.69E-01  7.16E-01  8.68E-01
+ ene:  9.46E-01  9.53E-01  9.68E-01  9.68E-01  9.79E-01  1.00E+00  1.15E+00  1.18E+00
+ ene:  1.20E+00  1.20E+00  1.22E+00  1.29E+00  1.38E+00  1.46E+00  1.51E+00  1.52E+00
+ ene:  1.57E+00  1.68E+00  1.80E+00  1.80E+00  1.86E+00  1.87E+00  2.00E+00  2.02E+00
+ ene:  2.06E+00  2.12E+00  2.12E+00  2.13E+00  2.17E+00  2.17E+00  2.19E+00  2.25E+00
+ ene:  2.25E+00  2.28E+00  2.31E+00  2.32E+00  2.36E+00  2.38E+00  2.41E+00  2.49E+00
+ ene:  2.55E+00  2.56E+00  2.63E+00  2.66E+00
+ res:  1.38E-09  1.58E-09  3.74E-09  4.03E-09  6.89E-09  4.24E-09  2.89E-09  2.86E-09
+ res:  1.14E-09  5.66E-09  2.40E-09  1.23E-09  2.02E-09  9.86E-10  8.22E-10  1.94E-09
+ res:  2.15E-09  1.90E-09  2.48E-09  2.50E-09  4.72E-09  2.13E-09  2.11E-09  2.55E-09
+ res:  2.85E-09  4.60E-09  1.08E-09  8.90E-09  1.84E-09  5.30E-09  4.15E-09  6.80E-09
+ res:  2.98E-09  9.34E-10  1.15E-09  1.07E-09  4.47E-09  3.34E-09  2.76E-09  1.40E-09
+ res:  3.63E-09  2.33E-09  6.14E-09  2.51E-09  3.31E-09  9.45E-09  1.80E-09  4.27E-09
+ res:  2.27E-09  3.94E-09  6.78E-09  3.57E-09  7.33E-09  2.94E-09  7.03E-09  1.39E-07
+ res:  1.31E-06  7.39E-06  6.01E-04  3.82E-04
+ ene: -3.64E-01 -3.60E-01 -1.64E-01 -1.61E-01  9.03E-03  1.22E-02  1.04E-01  1.49E-01
+ ene:  3.12E-01  3.72E-01  5.18E-01  5.34E-01  6.22E-01  6.69E-01  7.16E-01  8.68E-01
+ ene:  9.46E-01  9.53E-01  9.68E-01  9.68E-01  9.79E-01  1.00E+00  1.15E+00  1.18E+00
+ ene:  1.20E+00  1.20E+00  1.22E+00  1.29E+00  1.38E+00  1.46E+00  1.51E+00  1.52E+00
+ ene:  1.57E+00  1.68E+00  1.80E+00  1.80E+00  1.86E+00  1.87E+00  2.00E+00  2.02E+00
+ ene:  2.06E+00  2.12E+00  2.12E+00  2.13E+00  2.17E+00  2.17E+00  2.19E+00  2.25E+00
+ ene:  2.25E+00  2.28E+00  2.31E+00  2.32E+00  2.36E+00  2.38E+00  2.41E+00  2.49E+00
+ ene:  2.55E+00  2.56E+00  2.63E+00  2.66E+00
+ res:  1.38E-09  1.58E-09  3.74E-09  4.03E-09  6.88E-09  4.24E-09  2.89E-09  2.86E-09
+ res:  1.14E-09  5.66E-09  2.40E-09  1.23E-09  2.02E-09  9.86E-10  8.22E-10  1.94E-09
+ res:  2.15E-09  1.90E-09  2.48E-09  2.50E-09  4.72E-09  2.13E-09  2.11E-09  2.55E-09
+ res:  2.85E-09  4.60E-09  1.08E-09  8.90E-09  1.84E-09  5.30E-09  4.15E-09  6.79E-09
+ res:  2.98E-09  9.33E-10  1.15E-09  1.07E-09  4.46E-09  3.34E-09  2.75E-09  1.40E-09
+ res:  3.63E-09  2.33E-09  6.14E-09  2.51E-09  3.31E-09  9.44E-09  1.80E-09  4.27E-09
+ res:  2.27E-09  3.93E-09  6.78E-09  3.57E-09  7.32E-09  2.93E-09  7.02E-09  8.45E-09
+ res:  6.86E-08  4.28E-07  1.36E-04  1.48E-04
+ ene: -3.64E-01 -3.60E-01 -1.64E-01 -1.61E-01  9.03E-03  1.22E-02  1.04E-01  1.49E-01
+ ene:  3.12E-01  3.72E-01  5.18E-01  5.34E-01  6.22E-01  6.69E-01  7.16E-01  8.68E-01
+ ene:  9.46E-01  9.53E-01  9.68E-01  9.68E-01  9.79E-01  1.00E+00  1.15E+00  1.18E+00
+ ene:  1.20E+00  1.20E+00  1.22E+00  1.29E+00  1.38E+00  1.46E+00  1.51E+00  1.52E+00
+ ene:  1.57E+00  1.68E+00  1.80E+00  1.80E+00  1.86E+00  1.87E+00  2.00E+00  2.02E+00
+ ene:  2.06E+00  2.12E+00  2.12E+00  2.13E+00  2.17E+00  2.17E+00  2.19E+00  2.25E+00
+ ene:  2.25E+00  2.28E+00  2.31E+00  2.32E+00  2.36E+00  2.38E+00  2.41E+00  2.49E+00
+ ene:  2.55E+00  2.56E+00  2.62E+00  2.66E+00
+ res:  1.38E-09  1.58E-09  3.73E-09  4.03E-09  6.88E-09  4.24E-09  2.89E-09  2.86E-09
+ res:  1.14E-09  5.66E-09  2.40E-09  1.23E-09  2.02E-09  9.86E-10  8.22E-10  1.94E-09
+ res:  2.15E-09  1.90E-09  2.48E-09  2.50E-09  4.72E-09  2.13E-09  2.11E-09  2.55E-09
+ res:  2.85E-09  4.60E-09  1.08E-09  8.90E-09  1.84E-09  5.30E-09  4.15E-09  6.79E-09
+ res:  2.98E-09  9.33E-10  1.15E-09  1.07E-09  4.46E-09  3.34E-09  2.75E-09  1.40E-09
+ res:  3.63E-09  2.33E-09  6.14E-09  2.51E-09  3.31E-09  9.44E-09  1.80E-09  4.27E-09
+ res:  2.27E-09  3.93E-09  6.78E-09  3.57E-09  7.32E-09  2.93E-09  7.02E-09  8.44E-09
+ res:  5.84E-09  7.64E-08  7.46E-05  1.82E-04
+ ene: -3.64E-01 -3.60E-01 -1.64E-01 -1.61E-01  9.03E-03  1.22E-02  1.04E-01  1.49E-01
+ ene:  3.12E-01  3.72E-01  5.18E-01  5.34E-01  6.22E-01  6.69E-01  7.16E-01  8.68E-01
+ ene:  9.46E-01  9.53E-01  9.68E-01  9.68E-01  9.79E-01  1.00E+00  1.15E+00  1.18E+00
+ ene:  1.20E+00  1.20E+00  1.22E+00  1.29E+00  1.38E+00  1.46E+00  1.51E+00  1.52E+00
+ ene:  1.57E+00  1.68E+00  1.80E+00  1.80E+00  1.86E+00  1.87E+00  2.00E+00  2.02E+00
+ ene:  2.06E+00  2.12E+00  2.12E+00  2.13E+00  2.17E+00  2.17E+00  2.19E+00  2.25E+00
+ ene:  2.25E+00  2.28E+00  2.31E+00  2.32E+00  2.36E+00  2.38E+00  2.41E+00  2.49E+00
+ ene:  2.55E+00  2.56E+00  2.62E+00  2.66E+00
+ res:  1.38E-09  1.58E-09  3.73E-09  4.03E-09  6.88E-09  4.24E-09  2.89E-09  2.86E-09
+ res:  1.14E-09  5.66E-09  2.40E-09  1.23E-09  2.02E-09  9.86E-10  8.22E-10  1.94E-09
+ res:  2.15E-09  1.90E-09  2.48E-09  2.50E-09  4.72E-09  2.13E-09  2.11E-09  2.55E-09
+ res:  2.85E-09  4.60E-09  1.08E-09  8.90E-09  1.84E-09  5.30E-09  4.15E-09  6.79E-09
+ res:  2.98E-09  9.33E-10  1.15E-09  1.07E-09  4.46E-09  3.34E-09  2.75E-09  1.40E-09
+ res:  3.63E-09  2.33E-09  6.13E-09  2.51E-09  3.31E-09  9.44E-09  1.80E-09  4.27E-09
+ res:  2.27E-09  3.93E-09  6.77E-09  3.57E-09  7.32E-09  2.93E-09  7.02E-09  8.44E-09
+ res:  5.84E-09  9.25E-09  1.59E-05  9.28E-05
+ ene: -3.64E-01 -3.60E-01 -1.64E-01 -1.61E-01  9.03E-03  1.22E-02  1.04E-01  1.49E-01
+ ene:  3.12E-01  3.72E-01  5.18E-01  5.34E-01  6.22E-01  6.69E-01  7.16E-01  8.68E-01
+ ene:  9.46E-01  9.53E-01  9.68E-01  9.68E-01  9.79E-01  1.00E+00  1.15E+00  1.18E+00
+ ene:  1.20E+00  1.20E+00  1.22E+00  1.29E+00  1.38E+00  1.46E+00  1.51E+00  1.52E+00
+ ene:  1.57E+00  1.68E+00  1.80E+00  1.80E+00  1.86E+00  1.87E+00  2.00E+00  2.02E+00
+ ene:  2.06E+00  2.12E+00  2.12E+00  2.13E+00  2.17E+00  2.17E+00  2.19E+00  2.25E+00
+ ene:  2.25E+00  2.28E+00  2.31E+00  2.32E+00  2.36E+00  2.38E+00  2.41E+00  2.49E+00
+ ene:  2.55E+00  2.56E+00  2.62E+00  2.66E+00
+     eigenvalues (hartree) for   60  bands
+              after    9 non-SCF iterations with    4 CG line minimizations
+ -3.6363E-01 -3.6024E-01 -1.6400E-01 -1.6113E-01  9.0294E-03  1.2194E-02
+  1.0386E-01  1.4869E-01  3.1183E-01  3.7191E-01  5.1788E-01  5.3423E-01
+  6.2180E-01  6.6878E-01  7.1580E-01  8.6775E-01  9.4565E-01  9.5342E-01
+  9.6781E-01  9.6824E-01  9.7860E-01  1.0042E+00  1.1478E+00  1.1850E+00
+  1.1984E+00  1.2029E+00  1.2209E+00  1.2920E+00  1.3827E+00  1.4604E+00
+  1.5142E+00  1.5230E+00  1.5739E+00  1.6799E+00  1.7984E+00  1.7991E+00
+  1.8624E+00  1.8653E+00  1.9998E+00  2.0155E+00  2.0565E+00  2.1175E+00
+  2.1239E+00  2.1292E+00  2.1691E+00  2.1731E+00  2.1854E+00  2.2504E+00
+  2.2542E+00  2.2843E+00  2.3068E+00  2.3204E+00  2.3581E+00  2.3820E+00
+  2.4073E+00  2.4890E+00  2.5461E+00  2.5639E+00  2.6245E+00  2.6584E+00
+      mean kinetic energy (hartree) for    60   bands
+              after    9 non-SCF iterations with    4 CG line minimizations
+  5.8695E-01  6.0371E-01  9.3021E-01  9.5487E-01  1.6898E+00  1.7107E+00
+  1.3107E+00  1.6510E+00  8.9090E-01  1.3929E+00  1.0133E+00  1.0630E+00
+  1.0680E+00  1.1535E+00  1.3766E+00  1.5324E+00  2.3144E+00  1.1202E+00
+  2.8749E+00  2.4562E+00  2.9852E+00  1.5138E+00  1.5214E+00  2.4861E+00
+  1.4375E+00  1.4704E+00  1.9623E+00  1.8183E+00  1.8290E+00  1.8807E+00
+  2.2271E+00  2.3273E+00  2.2145E+00  2.3802E+00  2.1999E+00  2.1192E+00
+  2.2118E+00  2.6679E+00  2.5431E+00  2.5352E+00  2.6051E+00  2.2976E+00
+  2.3304E+00  2.5327E+00  2.2516E+00  2.6720E+00  2.6248E+00  2.6329E+00
+  2.7026E+00  2.7334E+00  2.7395E+00  2.6845E+00  2.6714E+00  2.8618E+00
+  2.5670E+00  3.2712E+00  2.6456E+00  3.0572E+00  3.0324E+00  2.9744E+00
+      mean non-local energy (hartree) for    60   bands
+              after    9 non-SCF iterations with    4 CG line minimizations
+  6.3516E-01  6.3664E-01  1.6798E-01  1.5654E-01  5.5576E-12  1.4899E-11
+  3.6736E-12  7.0453E-12  3.1855E-12  7.5633E-12  4.1497E-01  4.5470E-01
+  1.2592E-02  9.9355E-02  2.3058E-12  5.1275E-12  1.8127E-01  5.5114E-12
+  1.4656E-12  7.8329E-02  4.2218E-12  1.4601E-12  5.0030E-12  2.1795E-01
+  1.3401E-11  2.7216E-11  3.8703E-01  6.8979E-02  3.0064E-01  3.0207E-01
+  7.1006E-12  1.0054E-11  6.0863E-12  1.7573E-12  7.1028E-12  7.0348E-12
+  7.7982E-02  8.0192E-12  5.9115E-02  3.8486E-12  2.7555E-01  2.8786E-11
+  7.9570E-11  3.0507E-01  3.9766E-11  4.8806E-11  5.1444E-03  2.6046E-01
+  2.0323E-11  7.4694E-11  1.3030E-10  4.3761E-01  1.6635E-11  4.8636E-11
+  2.1656E-01  2.4699E-11  3.0566E-01  7.8115E-11  2.1385E-07  2.0875E-06
+ fftdatar_write: About to write data to: io_dir/hbn_nscf_WFK_out_DEN with iomode IO_MODE_ETSF
+ IO operation completed. cpu_time:       0.0 [s], walltime:       0.0 [s]
+================================================================================
+
+ ----iterations are completed or convergence reached----
+
+
+ === Gap info ===
+  >>>> For spin  1
+   Minimum optical gap =   4.4392 [eV], located at k-point      :   0.5000  0.0000  0.0000
+   Fundamental gap     =   4.4392 [eV], Top of valence bands at :   0.5000  0.0000  0.0000
+                                        Bottom of conduction at :   0.5000  0.0000  0.0000
+ Mean square residual over all n,k,spin=   91.652E-08; max=  46.773E-08
+   0.0000  0.0000  0.0000    1  4.67733E-07 kpt; spin; max resid(k); each band:
+  7.45E-10 9.68E-10 1.30E-09 1.36E-09 1.31E-09 5.26E-09 1.56E-09 6.08E-09
+  1.12E-09 2.29E-09 4.66E-10 2.61E-09 1.29E-09 2.23E-09 1.56E-09 1.30E-09
+  6.73E-10 1.89E-09 3.21E-09 8.80E-10 6.87E-10 1.55E-09 1.95E-09 1.22E-09
+  1.27E-09 5.47E-09 2.64E-09 8.42E-10 4.88E-09 6.19E-10 5.29E-09 2.26E-09
+  4.60E-09 6.09E-10 5.34E-09 9.17E-09 5.35E-09 6.60E-09 9.63E-09 1.26E-09
+  1.40E-09 1.68E-09 1.24E-09 3.36E-09 4.85E-09 2.94E-09 2.91E-09 2.46E-09
+  3.07E-09 2.08E-09 2.18E-09 4.85E-09 3.52E-09 2.89E-09 8.28E-09 9.75E-09
+  9.87E-09 8.57E-09 3.51E-07 4.68E-07
+   0.5000  0.0000  0.0000    1  9.28402E-05 kpt; spin; max resid(k); each band:
+  1.38E-09 1.58E-09 3.73E-09 4.03E-09 6.88E-09 4.24E-09 2.89E-09 2.86E-09
+  1.14E-09 5.66E-09 2.40E-09 1.23E-09 2.02E-09 9.86E-10 8.22E-10 1.94E-09
+  2.15E-09 1.90E-09 2.48E-09 2.50E-09 4.72E-09 2.13E-09 2.11E-09 2.55E-09
+  2.85E-09 4.60E-09 1.08E-09 8.90E-09 1.84E-09 5.30E-09 4.15E-09 6.79E-09
+  2.98E-09 9.33E-10 1.15E-09 1.07E-09 4.46E-09 3.34E-09 2.75E-09 1.40E-09
+  3.63E-09 2.33E-09 6.13E-09 2.51E-09 3.31E-09 9.44E-09 1.80E-09 4.27E-09
+  2.27E-09 3.93E-09 6.77E-09 3.57E-09 7.32E-09 2.93E-09 7.02E-09 8.44E-09
+  5.84E-09 9.25E-09 1.59E-05 9.28E-05
+in cg_ncwrite with path: io_dir/hbn_nscf_WFK_out_WFK.nc
+same layout Writing WFK file: io_dir/hbn_nscf_WFK_out_WFK.nc, with iomode: IO_MODE_ETSF, single writer: T
+Using netcdf library without MPI-IO support
+ individual ncwrite, cpu:     0.02, wall:     0.02
+Writing KB form factors to: io_dir/hbn_nscf_WFK_out_WFK.nc
+ prteigrs : about to open file io_dir/hbn_nscf_WFK_out_EIG
+ Eigenvalues (hartree) for nkpt=   2  k points:
+ kpt#   1, nband= 60, wtk=  0.25000, kpt=  0.0000  0.0000  0.0000 (reduced coord)
+  -0.48613   -0.47156   -0.07681    0.01629    0.11367    0.11367    0.11549    0.11549
+   0.35338    0.54636    0.58965    0.58965    0.59563    0.59563    0.62966    0.64043
+   0.72400    0.78494    1.01878    1.08039    1.11827    1.20131    1.20131    1.25822
+   1.30013    1.30013    1.33401    1.37070    1.37070    1.45863    1.45863    1.49989
+   1.49989    1.52905    1.52905    1.60520    1.65700    1.68205    1.80776    1.86860
+   1.87906    1.87906    1.92676    1.92676    1.97596    2.04087    2.04087    2.15842
+   2.15842    2.17444    2.18270    2.18270    2.30735    2.37184    2.37184    2.41390
+   2.80963    2.80963    2.83080    2.83087
+ kpt#   2, nband= 60, wtk=  0.75000, kpt=  0.5000  0.0000  0.0000 (reduced coord)
+  -0.36363   -0.36024   -0.16400   -0.16113    0.00903    0.01219    0.10386    0.14869
+   0.31183    0.37191    0.51788    0.53423    0.62180    0.66878    0.71580    0.86775
+   0.94565    0.95342    0.96781    0.96824    0.97860    1.00424    1.14781    1.18497
+   1.19840    1.20294    1.22088    1.29203    1.38265    1.46035    1.51415    1.52301
+   1.57392    1.67994    1.79845    1.79914    1.86244    1.86529    1.99976    2.01555
+   2.05655    2.11750    2.12394    2.12916    2.16911    2.17312    2.18538    2.25039
+   2.25423    2.28427    2.30685    2.32036    2.35811    2.38198    2.40730    2.48902
+   2.54611    2.56393    2.62453    2.65836
+ Total charge density [el/Bohr^3]
+      Maximum=    5.8668E-01  at reduced coord.    0.4000    0.8000    0.0000
+ Next maximum=    5.8668E-01  at reduced coord.    0.4000    0.6000    0.0000
+      Minimum=    2.8380E-03  at reduced coord.    0.0000    0.0000    0.2500
+ Next minimum=    2.8380E-03  at reduced coord.    0.0000    0.0000    0.7500
+   Integrated=    1.6000E+01
+
+== END DATASET(S) ==============================================================
+================================================================================
+  
+ -outvars: echo values of variables after computation  --------
+ 
+ These variables are accessible in NetCDF format (io_dir/hbn_nscf_WFK_out_OUT.nc)
+
+-          iomode           3
+            acell      4.7163728000E+00  4.7163728000E+00  1.2175836200E+01 Bohr
+              amu      1.08110000E+01  1.40067400E+01
+           diemac      4.50000000E+00
+             ecut      4.00000000E+01 Hartree
+-          fftalg         112
+           getden           1
+             iscf          -2
+           istwfk        1    1
+              kpt      0.00000000E+00  0.00000000E+00  0.00000000E+00
+                       5.00000000E-01  0.00000000E+00  0.00000000E+00
+         kptrlatt        2    0    0      0    2    0      0    0    1
+          kptrlen      9.43274560E+00
+P           mkmem           2
+            natom           4
+            nband          60
+           nbdbuf           2
+            ngfft          30      30      72
+             nkpt           2
+            nstep         100
+             nsym          12
+           ntypat           2
+          prtkbff           1
+            rprim      1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                      -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
+          spgroup         194
+        symmorphi           0
+           symrel      1  0  0   0  1  0   0  0  1       0 -1  0  -1  0  0   0  0 -1
+                      -1 -1  0   1  0  0   0  0 -1      -1  0  0   1  1  0   0  0  1
+                       0  1  0  -1 -1  0   0  0  1       1  1  0   0 -1  0   0  0 -1
+                       1  0  0   0  1  0   0  0 -1       0 -1  0  -1  0  0   0  0  1
+                      -1 -1  0   1  0  0   0  0  1      -1  0  0   1  1  0   0  0 -1
+                       0  1  0  -1 -1  0   0  0 -1       1  1  0   0 -1  0   0  0  1
+            tnons      0.0000000  0.0000000  0.0000000    -0.0000000 -0.0000000  0.0000000
+                       0.0000000 -0.0000000  0.0000000     0.0000000  0.0000000  0.0000000
+                      -0.0000000 -0.0000000  0.0000000     0.0000000 -0.0000000  0.0000000
+                       0.0000000  0.0000000  0.0000000    -0.0000000 -0.0000000  0.0000000
+                       0.0000000 -0.0000000  0.0000000     0.0000000  0.0000000  0.0000000
+                      -0.0000000 -0.0000000  0.0000000     0.0000000 -0.0000000  0.0000000
+           tolwfr      1.00000000E-08
+            typat      1  2  1  2
+              wtk        0.25000    0.75000
+           xangst      1.2478984965E+00  7.2047453285E-01  0.0000000000E+00
+                      -1.2478984965E+00 -7.2047453288E-01  0.0000000000E+00
+                      -1.2478984965E+00 -7.2047453288E-01  3.2215875063E+00
+                       1.2478984965E+00  7.2047453285E-01  3.2215875063E+00
+            xcart      2.3581864000E+00  1.3614995528E+00  0.0000000000E+00
+                      -2.3581864000E+00 -1.3614995529E+00  0.0000000000E+00
+                      -2.3581864000E+00 -1.3614995529E+00  6.0879181000E+00
+                       2.3581864000E+00  1.3614995528E+00  6.0879181000E+00
+             xred      6.6666666666E-01  3.3333333333E-01  0.0000000000E+00
+                      -6.6666666667E-01 -3.3333333334E-01  0.0000000000E+00
+                      -6.6666666667E-01 -3.3333333334E-01  5.0000000000E-01
+                       6.6666666666E-01  3.3333333333E-01  5.0000000000E-01
+            znucl        5.00000    7.00000
+
+================================================================================
+  
+
+================================================================================
+
+ Suggested references for the acknowledgment of ABINIT usage.
+
+ The users of ABINIT have little formal obligations with respect to the ABINIT group
+ (those specified in the GNU General Public License, http://www.gnu.org/copyleft/gpl.txt).
+ However, it is common practice in the scientific literature,
+ to acknowledge the efforts of people that have made the research possible.
+ In this spirit, please find below suggested citations of work written by ABINIT developers,
+ corresponding to implementations inside of ABINIT that you have used in the present run.
+ Note also that it will be of great value to readers of publications presenting these results,
+ to read papers enabling them to understand the theoretical formalism and details
+ of the ABINIT implementation.
+ For information on why they are suggested, see also https://docs.abinit.org/theory/acknowledgments.
+-
+- [1] Specification of an extensible and portable file format for electronic structure and crystallographic data
+- X. Gonze, C.-O. Almbladh, A. Cucca, D. Caliste, C. Freysoldt, M. Marques, V. Olevano, Y. Pouillon, M.J. Verstraete,
+- Comput. Material Science 43, 1056 (2008).
+- Comment : to be cited in case the ETSF_IO file format is used, i.e. iomode=3.
+- DOI and bibtex : see https://docs.abinit.org/theory/bibliography/#gonze2008
+-
+- [2] Recent developments in the ABINIT software package.
+- Computer Phys. Comm. 205, 106 (2016).
+- X.Gonze, F.Jollet, F.Abreu Araujo, D.Adams, B.Amadon, T.Applencourt,
+- C.Audouze, J.-M.Beuken, J.Bieder, A.Bokhanchuk, E.Bousquet, F.Bruneval
+- D.Caliste, M.Cote, F.Dahm, F.Da Pieve, M.Delaveau, M.Di Gennaro,
+- B.Dorado, C.Espejo, G.Geneste, L.Genovese, A.Gerossier, M.Giantomassi,
+- Y.Gillet, D.R.Hamann, L.He, G.Jomard, J.Laflamme Janssen, S.Le Roux,
+- A.Levitt, A.Lherbier, F.Liu, I.Lukacevic, A.Martin, C.Martins,
+- M.J.T.Oliveira, S.Ponce, Y.Pouillon, T.Rangel, G.-M.Rignanese,
+- A.H.Romero, B.Rousseau, O.Rubel, A.A.Shukri, M.Stankovski, M.Torrent,
+- M.J.Van Setten, B.Van Troeye, M.J.Verstraete, D.Waroquier, J.Wiktor,
+- B.Xu, A.Zhou, J.W.Zwanziger.
+- Comment : the fourth generic paper describing the ABINIT project.
+- Note that a version of this paper, that is not formatted for Computer Phys. Comm. 
+- is available at https://www.abinit.org/about/ABINIT16.pdf .
+- The licence allows the authors to put it on the Web.
+- DOI and bibtex : see https://docs.abinit.org/theory/bibliography/#gonze2016
+-
+- [3] ABINIT : First-principles approach of materials and nanosystem properties.
+- Computer Phys. Comm. 180, 2582-2615 (2009).
+- X. Gonze, B. Amadon, P.-M. Anglade, J.-M. Beuken, F. Bottin, P. Boulanger, F. Bruneval,
+- D. Caliste, R. Caracas, M. Cote, T. Deutsch, L. Genovese, Ph. Ghosez, M. Giantomassi
+- S. Goedecker, D.R. Hamann, P. Hermet, F. Jollet, G. Jomard, S. Leroux, M. Mancini, S. Mazevet,
+- M.J.T. Oliveira, G. Onida, Y. Pouillon, T. Rangel, G.-M. Rignanese, D. Sangalli, R. Shaltaf,
+- M. Torrent, M.J. Verstraete, G. Zerah, J.W. Zwanziger
+- Comment : the third generic paper describing the ABINIT project.
+- Note that a version of this paper, that is not formatted for Computer Phys. Comm. 
+- is available at https://www.abinit.org/about/ABINIT_CPC_v10.pdf .
+- The licence allows the authors to put it on the Web.
+- DOI and bibtex : see https://docs.abinit.org/theory/bibliography/#gonze2009
+-
+- [4] A brief introduction to the ABINIT software package.
+- Z. Kristallogr. 220, 558-562 (2005).
+- X. Gonze, G.-M. Rignanese, M. Verstraete, J.-M. Beuken, Y. Pouillon, R. Caracas, F. Jollet,
+- M. Torrent, G. Zerah, M. Mikami, Ph. Ghosez, M. Veithen, J.-Y. Raty, V. Olevano, F. Bruneval,
+- L. Reining, R. Godby, G. Onida, D.R. Hamann, and D.C. Allan.
+- Comment : the second generic paper describing the ABINIT project. Note that this paper
+- should be cited especially if you are using the GW part of ABINIT, as several authors
+- of this part are not in the list of authors of the first or third paper.
+- The .pdf of the latter paper is available at https://www.abinit.org/about/zfk_0505-06_558-562.pdf.
+- Note that it should not redistributed (Copyright by Oldenburg Wissenshaftverlag,
+- the licence allows the authors to put it on the Web).
+- DOI and bibtex : see https://docs.abinit.org/theory/bibliography/#gonze2005
+-
+- And optionally:
+-
+- [5] First-principles computation of material properties : the ABINIT software project. 
+- X. Gonze, J.-M. Beuken, R. Caracas, F. Detraux, M. Fuchs, G.-M. Rignanese, L. Sindic,
+- M. Verstraete, G. Zerah, F. Jollet, M. Torrent, A. Roy, M. Mikami, Ph. Ghosez, J.-Y. Raty, D.C. Allan.
+- Computational Materials Science 25, 478-492 (2002). http://dx.doi.org/10.1016/S0927-0256(02)00325-7
+- Comment : the original paper describing the ABINIT project.
+- DOI and bibtex : see https://docs.abinit.org/theory/bibliography/#gonze2002
+
+ Calculation completed.
+.Delivered   1 WARNINGs and   1 COMMENTs to log file.
+
+--- !FinalSummary
+program: abinit
+version: 8.10.3
+start_datetime: Tue Oct 13 10:29:30 2020
+end_datetime: Tue Oct 13 10:29:37 2020
+overall_cpu_time:           6.6
+overall_wall_time:           6.6
+exit_requested_by_user: no 
+timelimit: 0
+pseudos: 
+    B   : 689addaab186c9518e877e54a429c10d
+    N   : b32922f6e50fd55b78b426e2f84d8459
+usepaw: 0
+mpi_procs: 1
+omp_threads: 1
+num_warnings: 1
+num_comments: 1
+...
