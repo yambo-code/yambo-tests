@@ -64,6 +64,7 @@ sub RUN_input_file_test{
 
  if (&RUN_feature("negf")=="1") {$CMD=$CMD." -rt p"};
  if (&RUN_feature("collisions")=="1") {$CMD=$CMD." -collisions"};
+ 
  if (&RUN_feature("el_photon_scatt")=="1") {
    if (not $is_NEW_scatt) {$CMD=$CMD." -scattering h"}
    if (    $is_NEW_scatt) {$CMD=$CMD." -scattering eh"}
