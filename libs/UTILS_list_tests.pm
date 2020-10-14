@@ -36,6 +36,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
     push(@testdirs,$dir);
     my $n = 2;
     $dir =~ s/^.{$n}//s;
+    if (not -e $dir."/CONVERTED"){$dir.="[*]"};
     $P_str="";
     $HARD_str="";
     if ( $is_GPL ){
@@ -103,6 +104,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   if ($keys =~ /spinors/ or $keys =~ /all/)  {&LIST_ELEMENT("[SPINORS] ",$SPINORS_tests)};
   if ($keys =~ /kerr/ or $kyes =~/all/)  {if ($KERR_tests)  {&LIST_ELEMENT("[KERR]    ",$KERR_tests)}};
   if ($keys =~ /all/ or $kyes =~/all/)   {if ($BROKEN_tests){&LIST_ELEMENT("[BROKEN]  ",$BROKEN_tests)}};
+  &MY_PRINT($stdout, "\n[*] To be converted to the new format\n");
   &MY_PRINT($stdout, "\n");
  &CWD_go;
 }
