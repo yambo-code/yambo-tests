@@ -1,19 +1,19 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.               
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb              
+      `88. .8" .8"88.    888b     d"88  88     888 88      88             
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88             
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88             
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"             
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"              
                                                                           
                                                                           
-          Version 5.0.0 Revision 18543 Hash 0c249f1ff                     
-                   Branch is testing-magnons                              
-                 MPI+OpenMP+HDF5_MPI_IO Build                             
-                   http://www.yambo-code.org                              
+           Version 5.0.1 Revision 18893 Hash f5557c7fc                    
+                     Branch is devel-magnons                              
+             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
+                    http://www.yambo-code.org                             
  
- 06/29/2020 at 23:46 yambo_kerr @ VivoBook
+ 10/14/2020 at 22:48 yambo @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_MAGNONS
- Alt#1 string        : R4
+ Alt#1 string        : R2
 
  Precision           : SINGLE
   
@@ -206,7 +206,7 @@
   X grid is uniform                                : yes
   BS scattering                                    : no
   COLL scattering                                  : no
- - S/N 004545 ---------------------------------------------- v.05.00.00 r.18543 -
+ - S/N 004545 ---------------------------------------------- v.05.00.01 r.18893 -
 
  IBZ Q-points :   8
  BZ  Q-points :   64
@@ -252,9 +252,11 @@
   Bands ordered                                    : yes
   Direct v evaluation                              : no
   Approach used                                    : G-space v
-  Dipoles computed                                 : R V P P2 Magn
+  Dipoles computed                                 : R V P Spin
   Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
- - S/N 004545 ---------------------------------------------- v.05.00.00 r.18543 -
+ - S/N 004545 ---------------------------------------------- v.05.00.01 r.18893 -
+
+ [WARNING] n_sp_pol=2 and magnons requested. Spin flip BSE only is computed
 
  [05] Bethe Salpeter Equation @q1
  ================================
@@ -268,10 +270,8 @@
   [05.02] Independent Particles absorption @q1
   ============================================
 
-  [X/K] Drude nstates            :   50
-  [X/K] Drude average occ        :  0.066137
 
-  [X/K] Drude energies           :  4.800000  5.650000 [eV]
+  [WARNING] The system is a metal but Drude term not included.
   [RD./04_MAGNONS//ndb.dipoles]---------------------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :    8   64    6   64
    RL vectors                                       :   603 [WF]
@@ -286,9 +286,9 @@
    Bands ordered                                    : yes
    Direct v evaluation                              : no
    Approach used                                    : G-space v
-   Dipoles computed                                 : R V P P2 Magn
+   Dipoles computed                                 : R V P Spin
    Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-  - S/N 004545 ---------------------------------------------- v.05.00.00 r.18543 -
+  - S/N 004545 ---------------------------------------------- v.05.00.01 r.18893 -
 
  [06] Timing Overview
  ====================
@@ -296,42 +296,39 @@
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
+                   io_COL_CUT :      0.0000s CPU
+                        io_BS :      0.0000s CPU
                io_Double_Grid :      0.0000s CPU
-                   io_COL_CUT :      0.0001s CPU
-                        io_BS :      0.0001s CPU
-             io_RT_components :      0.0001s CPU ( 2 calls,   0.046 msec avg)
-                      io_ELPH :      0.0001s CPU ( 2 calls,   0.046 msec avg)
                         io_HF :      0.0001s CPU
-                io_COLLISIONS :      0.0001s CPU ( 3 calls,   0.045 msec avg)
-      IO_and_Messaging_switch :      0.0001s CPU (36 calls,   0.004 msec avg)
-                         io_X :      0.0003s CPU ( 4 calls,   0.063 msec avg)
-                 PP_uspp_init :      0.0003s CPU (18 calls,   0.018 msec avg)
-                  io_KB_pwscf :      0.0036s CPU (14 calls,   0.255 msec avg)
-                     io_QINDX :      0.0124s CPU ( 2 calls,   6.194 msec avg)
-                      io_GROT :      0.0164s CPU ( 2 calls,   8.185 msec avg)
-                    FFT_setup :      0.0216s CPU ( 6 calls,   3.605 msec avg)
-                   io_DIPOLES :      0.0316s CPU (32 calls,   0.988 msec avg)
-                  io_fragment :      0.0318s CPU (36 calls,   0.884 msec avg)
-                  WF_load_FFT :      0.0479s CPU (18 calls,   2.662 msec avg)
-                        io_WF :      0.0971s CPU (61 calls,   1.591 msec avg)
-            DIPOLE_transverse :      0.1530s CPU
-                      Dipoles :      0.2452s CPU
-                   T_space IP :      0.2895s CPU
+      IO_and_Messaging_switch :      0.0001s CPU (36 calls,   0.003 msec avg)
+                         io_X :      0.0001s CPU ( 4 calls,   0.027 msec avg)
+                 PP_uspp_init :      0.0002s CPU (18 calls,   0.012 msec avg)
+                  io_KB_pwscf :      0.0025s CPU (14 calls,   0.178 msec avg)
+                     io_QINDX :      0.0062s CPU ( 2 calls,   3.101 msec avg)
+                      io_GROT :      0.0091s CPU ( 2 calls,   4.543 msec avg)
+                    FFT_setup :      0.0145s CPU ( 6 calls,   2.419 msec avg)
+                  io_fragment :      0.0209s CPU (36 calls,   0.580 msec avg)
+                   io_DIPOLES :      0.0214s CPU (32 calls,   0.668 msec avg)
+                  WF_load_FFT :      0.0315s CPU (18 calls,   1.749 msec avg)
+                        io_WF :      0.0635s CPU (61 calls,   1.040 msec avg)
+            DIPOLE_transverse :      0.2028s CPU
+                      Dipoles :      0.2694s CPU
+                   T_space IP :      0.7468s CPU
 
  [07] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 10.00000 [Mb] (basic treshold)  100.0000 [Mb] (SAVEs treshold)
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  1.691000 [Mb]
+         Max memory used   :  2.045000 [Mb]
 
  [08] Game Over & Game summary
  =============================
 
- 06/29/2020 at 23:46 yambo_kerr @ VivoBook [start]
- 06/29/2020 at 23:46                       [end]
+ 10/14/2020 at 22:48 yambo @ VivoBook [start]
+ 10/14/2020 at 22:48                  [end]
 
   
  .-ACKNOWLEDGMENT
@@ -368,25 +365,22 @@
  | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
  | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | BSKmod= "IP"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
- | Gauge= "velocity"                # [BSE/X] Gauge (length|velocity)
+ | DipComputed= "R V P Spin"        # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx= 3151             RL    # [BSK] Exchange components
- | #EvalKerr                      # [BSE] Compute the Kerr effect
- | #AnHall                        # [BSE] Add the anomalous Hall effect to eps if using length gauge
- | DrudeWBS= ( 4.800000 , 5.650000 )  eV    # [BSE] Drude plasmon
+ | BSEprop= "magnons"               # [BSE] abs/kerr/magn/dichr trace
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %
  | % BSEBands
  |   1 |  9 |                           # [BSK] Bands range
  | %
- | EvalMagnons                    # [BSE] Compute the Kerr effect
  | % BEnRange
- |   0.20000 | 10.00000 |         eV    # [BSS] Energy range
+ | -10.00000 | 10.00000 |         eV    # [BSS] Energy range
  | %
  | % BDmRange
- |  0.300000 | 0.600000 |         eV    # [BSS] Damping range
+ |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
  | %
- | BEnSteps=  500                   # [BSS] Energy steps
+ | BEnSteps=  5001                  # [BSS] Energy steps
  | % BLongDir
  |   0.00000    | 0.100000E-4 |  0.00000    # [BSS] [cc] Electric Field
  | %

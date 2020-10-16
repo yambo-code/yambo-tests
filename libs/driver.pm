@@ -44,7 +44,7 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
  #
  if ($user_branch) {
   if ( not @branch_robot[$ib] eq ""     ) {next LOOP_BRANCH};
-  if ( not $branch_id =~ /$user_branch/ ) {next LOOP_BRANCH};
+  if ( not $branch_id eq $user_branch )   {next LOOP_BRANCH};
  }
  #
  # Stats

@@ -64,6 +64,7 @@ sub RUN_input_file_test{
 
  if (&RUN_feature("negf")=="1") {$CMD=$CMD." -rt p"};
  if (&RUN_feature("collisions")=="1") {$CMD=$CMD." -collisions"};
+ 
  if (&RUN_feature("el_photon_scatt")=="1") {
    if (not $is_NEW_scatt) {$CMD=$CMD." -scattering h"}
    if (    $is_NEW_scatt) {$CMD=$CMD." -scattering eh"}
@@ -122,6 +123,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("QPDB_expand")=="1") { $CMD=$CMD." -qpdb e"};
  if (&RUN_feature("Shifted_Grid")=="1") { $CMD=$CMD." -grid s"};
  if (&RUN_feature("High_Symm")=="1") { $CMD=$CMD." -grid h"};
+ if (&RUN_feature("avehole")=="1") { $CMD=$CMD." -avehole"};
  if (&RUN_feature("kpts_map")=="1") { $CMD=$CMD." -map"};
  if (&RUN_feature("RTDBs")=="1" && &RUN_feature("Select_Fermi")=="1") { $CMD=$CMD." -rtdb f"};
  if (&RUN_feature("RTDBs")=="1" && &RUN_feature("Select_energy")=="1") { $CMD=$CMD." -rtdb e"};

@@ -1,50 +1,49 @@
 #                                                                     
-#  ____  ____     _       ____    ____  ______      ___               
-# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
-#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
-#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
-#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
-#   |______||____| |____||_____||_____||_______/  `.___."             
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
 #                                                                     
-#                                                                     
-#                                                                     
-#       Version 4.5.0 Revision 17669 Hash d611b19c5                   
-#                    Branch is devel-sc                               
-#             MPI+SLK+SLEPC+HDF5_MPI_IO Build                         
+#       Version 5.0.1 Revision 18807 Hash ce197fd1e                   
+#                   Branch is bug-fixes                               
+#                    MPI+HDF5_IO Build                                
 #                http://www.yambo-code.org                            
 #
-#     |k| (a.u.)    b25           b26           b27           b28          k_x (rlu)     k_y (rlu)     k_z (rlu)
+#     |k| (a.u.)         b25                b26                b27                b28               k_x (rlu)          k_y (rlu)          k_z (rlu)
 #
-      0.6172318     0.8533918     0.1465998     0.2550484     0.7449312     0.0000000     0.0000000     0.0000000
-     0.20574       0.72612E-3    0.99925       0.36262E-2    0.99634        0.0000       0.33333        0.0000   
-      0.6172318     0.8533918     0.1465998     0.2550484     0.7449312     0.0000000     0.0000000     0.0000000
-      1.0287       0.99925       0.72612E-3    0.99634       0.36262E-2     0.0000       -.33333        0.0000   
+      0.617231786        0.961676657        0.382950753E-1     0.882475898E-1     0.911743939         0.00000000         0.00000000         0.00000000   
+      0.205743864        0.726118451E-3     0.999254525        0.362615171E-2     0.996341527       -0.110499858E-7     0.333333373         0.00000000   
+      0.617231786        0.961676657        0.382950753E-1     0.882475898E-1     0.911743939         0.00000000         0.00000000         0.00000000   
+       1.02871966        0.999254525        0.726117869E-3     0.996341467        0.362615683E-2     0.110499858E-7    -0.333333373         0.00000000   
 # 
-# 12/17/2019 at 12:12 ypp_rt @ dufour [start]
-# 12/17/2019 at 12:12                 [end]
+# 10/13/2020 at 16:48 ypp_rt @ baym [start]
+# 10/13/2020 at 16:48               [end]
 #
-# .-Input file : yambo.in
-# | electrons                      # [R] Electronic properties
-# | bnds                           # [R] Bands
-# | BoseTemp= 0.000000     eV      # Bosonic Temperature
-# | INTERP_mode= "NN"              # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
-# | OutputAlat= 0.000000           # [a.u.] Lattice constant used for "alat" ouput format
-# | cooIn= "rlu"                   # Points coordinates (in) cc/rlu/iku/alat
-# | cooOut= "rlu"                  # Points coordinates (out) cc/rlu/iku/alat
+# .-Input file  yambo.in
+# | electrons                        # [R] Electronic properties
+# | bnds                             # [R] Bands
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | INTERP_mode= "NN"                # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
+# | OutputAlat= 0.000000             # [a.u.] Lattice constant used for "alat" ouput format
+# | cooIn= "rlu"                     # Points coordinates (in) cc/rlu/iku/alat
+# | cooOut= "rlu"                    # Points coordinates (out) cc/rlu/iku/alat
 # | #NormN                         # Nel on the bands is renormalized to Nel in the IBZ
-# | NelFac= 1.000000               # Rescale the total number of electrons
+# | NelFac= 1.000000                 # Rescale the total number of electrons
 # | % BANDS_bands
-# |  25 | 28 |                     # Number of bands
+# |  25 | 28 |                           # Number of bands
 # | %
-# | % INTERP_Grid
-# | -1 |-1 |-1 |                             # Interpolation BZ Grid
-# | %
-# | INTERP_Shell_Fac= 20.00000     # The bigger it is a higher number of shells is used
-# | CIRCUIT_E_DB_path= "none"      # SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)
-# | BANDS_path= " G"               # BANDS path points labels (G,M,K,L...)
-# | BANDS_steps= 20                # Number of divisions
+# | INTERP_Shell_Fac= 20.00000       # The bigger it is a higher number of shells is used
+# | INTERP_NofNN= 1                  # Number of Nearest sites in the NN method
+# | CIRCUIT_E_DB_path= "none"        # SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)
+# | BANDS_path= ""                   # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
+# | BANDS_steps= 20                  # Number of divisions
 # | BANDS_built_in                 # Print the bands of the generating points of the circuit using the nearest internal point
-# | %BANDS_kpts                    # K points of the bands circuit
+# | PROJECT_mode= "none"             # Instruct ypp how to project the DOS. ATOM, LINE, PLANE.
+# | %BANDS_kpts                      # K points of the bands circuit
 # |  0.000000| 0.500000| 0.000000|
 # |  0.000000| 0.000000| 0.000000|
 # |  0.000000|-0.500000| 0.000000|
