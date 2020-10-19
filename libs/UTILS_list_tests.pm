@@ -36,9 +36,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
     push(@testdirs,$dir);
     my $n = 2;
     $dir =~ s/^.{$n}//s;
-    if (not -e $dir."/CONVERTED"){$dir.="[*]"};
-    $P_str="";
-    $HARD_str="";
+    $MORE_str="";
     if ( $is_GPL ){
       if (-e $dir."/NO_GPL")  { next DIR_LOOP };
       if (-e $dir."/QED")  { next DIR_LOOP };
@@ -48,7 +46,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
       if (-e $dir."/MAGNETIC")  { next DIR_LOOP };
     }
     if (-e $dir."/BROKEN")  {
-      $BROKEN_tests="$BROKEN_tests"." "."$dir"."$HARD_str"."$P_str";
+      $BROKEN_tests="$BROKEN_tests"." "."$dir";
       if (-e $dir."/P2Y")   {$BROKEN_tests="$BROKEN_tests"."[P2Y]"}
       if (-e $dir."/A2Y")   {$BROKEN_tests="$BROKEN_tests"."[A2Y]"}
       if (-e $dir."/RT")   {$BROKEN_tests="$BROKEN_tests"."[RT]"}
@@ -63,23 +61,24 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
       if (-e $dir."/ELPH")   {$BROKEN_tests="$BROKEN_tests"."[ELPH]"}
       if (-e $dir."/PHEL")   {$BROKEN_tests="$BROKEN_tests"."[PHEL]"}
     }else{
-     if (-e $dir."/HARD")     {$HARD_str="[H]"};
-     if (-e $dir."/PARALLEL") {$P_str="[P]"};
-     if (-e $dir."/RT")   {$RT_tests="$RT_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/QED")  {$QED_tests="$QED_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/PL" )  {$PL_tests="$PL_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/NL" )  {$NL_tests="$NL_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/SC" )  {$SC_tests="$SC_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/MAGNETIC" )  {$MAGNETIC_tests="$MAGNETIC_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/KERR")  {$KERR_tests="$KERR_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/SPIN")  {$SPIN_tests="$SPIN_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/SPINORS")  {$SPINORS_tests="$SPINORS_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/ELPH")  {$ELPH_tests="$ELPH_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/PHEL")  {$PHEL_tests="$PHEL_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/P2Y")  {$P2Y_tests="$P2Y_tests"." "."$dir"."$HARD_str"."$P_str"};
-     if (-e $dir."/A2Y")  {$A2Y_tests="$A2Y_tests"." "."$dir"."$HARD_str"."$P_str"};
+     if (-e $dir."/HARD")     {$MORE_str="[H]"};
+     if (-e $dir."/PARALLEL") {$MORE_str.="[P]"};
+     if (not -e $dir."/CONVERTED"){$MORE_str.="[*]"};
+     if (-e $dir."/RT")   {$RT_tests="$RT_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/QED")  {$QED_tests="$QED_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/PL" )  {$PL_tests="$PL_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/NL" )  {$NL_tests="$NL_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/SC" )  {$SC_tests="$SC_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/MAGNETIC" )  {$MAGNETIC_tests="$MAGNETIC_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/KERR")  {$KERR_tests="$KERR_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/SPIN")  {$SPIN_tests="$SPIN_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/SPINORS")  {$SPINORS_tests="$SPINORS_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/ELPH")  {$ELPH_tests="$ELPH_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/PHEL")  {$PHEL_tests="$PHEL_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/P2Y")  {$P2Y_tests="$P2Y_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/A2Y")  {$A2Y_tests="$A2Y_tests"." "."$dir"."$MORE_str"};
      if (!-e $dir."/SC" && !-e $dir."/MAGNETIC" && !-e $dir."/ELPH" && !-e $dir."/RT" && !-e $dir."/KERR" && !-e $dir."/QED" && !-e $dir."/PL" && !-e $dir."/NL" && !-e $dir."PHEL") {
-      $NORMAL_tests="$NORMAL_tests"." "."$dir"."$HARD_str"."$P_str";
+      $NORMAL_tests="$NORMAL_tests"." "."$dir"."$MORE_str";
      }
     };
    }
