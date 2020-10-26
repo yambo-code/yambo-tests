@@ -5,11 +5,13 @@
 # [NOTE} Spreadsheet must have the following sharing permissions: 
 #           "anybody with a link may visualise this document"
 
+#https://docs.google.com/spreadsheets/d/1RJCh6qqqdyaeqvX4Dh0I1ppEhCoNYMjIepXnRzxDhHk/edit?usp=sharing
+
 # This is the generic address of a google spreadsheet
 link="https://docs.google.com/spreadsheets/d"
 
 # This is the unique ID of the spreadsheet we want to read
-ID_spreadsheet="1LKZy4KWIr733aWuLuhYeAFi4aMw-sgJdXSQkw1gr-5A"
+ID_spreadsheet="1RJCh6qqqdyaeqvX4Dh0I1ppEhCoNYMjIepXnRzxDhHk"
 
 # This is the unique ID of the specific sheet within ID_spread we want to get
 ID_single_sheet="0"
