@@ -47,23 +47,24 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
     }
     if (-e $dir."/BROKEN")  {
       $BROKEN_tests="$BROKEN_tests"." "."$dir";
-      if (-e $dir."/P2Y")   {$BROKEN_tests="$BROKEN_tests"."[P2Y]"}
-      if (-e $dir."/A2Y")   {$BROKEN_tests="$BROKEN_tests"."[A2Y]"}
-      if (-e $dir."/RT")   {$BROKEN_tests="$BROKEN_tests"."[RT]"}
-      if (-e $dir."/QED")   {$BROKEN_tests="$BROKEN_tests"."[QED]"}
-      if (-e $dir."/PL")   {$BROKEN_tests="$BROKEN_tests"."[PL]"}
-      if (-e $dir."/NL")   {$BROKEN_tests="$BROKEN_tests"."[NL]"}
-      if (-e $dir."/SC")   {$BROKEN_tests="$BROKEN_tests"."[SC]"}
-      if (-e $dir."/MAGNETIC")   {$BROKEN_tests="$BROKEN_tests"."[MAGNETIC]"}
-      if (-e $dir."/KERR")   {$BROKEN_tests="$BROKEN_tests"."[KERR]"}
-      if (-e $dir."/SPIN")   {$BROKEN_tests="$BROKEN_tests"."[SPIN]"}
-      if (-e $dir."/SPINORS")   {$BROKEN_tests="$BROKEN_tests"."[SPINORS]"}
-      if (-e $dir."/ELPH")   {$BROKEN_tests="$BROKEN_tests"."[ELPH]"}
-      if (-e $dir."/PHEL")   {$BROKEN_tests="$BROKEN_tests"."[PHEL]"}
+      if (not -e $dir."/CONVERTED" and not -e $dir."/SAVE_converted" and not -e $dir."/SAVE_backup_converted"){$MORE_str.="[*]"};
+      if (-e $dir."/P2Y")   {$BROKEN_tests="$BROKEN_tests"."[P2Y]"."$MORE_str"}
+      if (-e $dir."/A2Y")   {$BROKEN_tests="$BROKEN_tests"."[A2Y]"."$MORE_str"}
+      if (-e $dir."/RT")   {$BROKEN_tests="$BROKEN_tests"."[RT]"."$MORE_str"}
+      if (-e $dir."/QED")   {$BROKEN_tests="$BROKEN_tests"."[QED]"."$MORE_str"}
+      if (-e $dir."/PL")   {$BROKEN_tests="$BROKEN_tests"."[PL]"."$MORE_str"}
+      if (-e $dir."/NL")   {$BROKEN_tests="$BROKEN_tests"."[NL]"."$MORE_str"}
+      if (-e $dir."/SC")   {$BROKEN_tests="$BROKEN_tests"."[SC]"."$MORE_str"}
+      if (-e $dir."/MAGNETIC")   {$BROKEN_tests="$BROKEN_tests"."[MAGNETIC]"."$MORE_str"}
+      if (-e $dir."/KERR")   {$BROKEN_tests="$BROKEN_tests"."[KERR]"."$MORE_str"}
+      if (-e $dir."/SPIN")   {$BROKEN_tests="$BROKEN_tests"."[SPIN]"."$MORE_str"}
+      if (-e $dir."/SPINORS")   {$BROKEN_tests="$BROKEN_tests"."[SPINORS]"."$MORE_str"}
+      if (-e $dir."/ELPH")   {$BROKEN_tests="$BROKEN_tests"."[ELPH]"."$MORE_str"}
+      if (-e $dir."/PHEL")   {$BROKEN_tests="$BROKEN_tests"."[PHEL]"."$MORE_str"}
     }else{
      if (-e $dir."/HARD")     {$MORE_str="[H]"};
      if (-e $dir."/PARALLEL") {$MORE_str.="[P]"};
-     if (not -e $dir."/CONVERTED"){$MORE_str.="[*]"};
+     if (not -e $dir."/CONVERTED" and not -e $dir."/SAVE_converted" and not -e $dir."/SAVE_backup_converted"){$MORE_str.="[*]"};
      if (-e $dir."/RT")   {$RT_tests="$RT_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/QED")  {$QED_tests="$QED_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/PL" )  {$PL_tests="$PL_tests"." "."$dir"."$MORE_str"};

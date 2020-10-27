@@ -22,28 +22,36 @@
 #
 sub UTILS_upload
 {
-chdir("$suite_dir");
-@paths = split(/\//,$upload_test);
-$archive = $upload_test;
-$archive =~ s/\//_/g;
-$test_dir   =$upload_test;
-$test_subdir=".";
-if ( scalar @paths > 1) {
- $test_dir=@paths[0];
- $test_subdir=$upload_test;
- $test_subdir =~ s/$test_dir\///g;
-}
-chdir("$TESTS_folder/$test_dir");
 #
 my $UPLOAD_PATH="robots/databases/$mode";
 #
-if (-d $test_subdir){
- &command("find $test_subdir -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | $grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
- &command("find . -type f $test_subdir | $grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
- &command("gzip $archive.tar");
- &FTP_upload_it("$archive.tar.gz","$UPLOAD_PATH");
- &command("rm -f $test_subdir/SAVE/*");
- &command("git add $test_subdir/SAVE");
+$user_tests="all";
+&UTILS_get_inputs_tests_list();
+@all_tests = split(/ /,$alltests);
+#
+foreach  my $test (@all_tests)
+{
+ chdir("$suite_dir");
+ $archive = $upload_test;
+ $path = (split("\/",$archive))[-1];
+ $archive =~ s/\//_/g;
+ $test_string= $test;
+ $test_string =~ s/\//_/g;
+ if ($test_string =~ /$archive/)
+ {
+  chdir("$TESTS_folder/$test/../");
+  print "$test_string - $archive - $path\n";
+  &command("find $path -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | $grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
+  &command("gzip $archive.tar");
+  &FTP_upload_it("$archive.tar.gz","$UPLOAD_PATH");
+  find( sub { push @dirs, $File::Find::name if -d }, (".") );
+  DIR_LOOP: foreach $dir (@dirs){
+   if ( $dir  =~ /SAVE/ ) {
+    &command("touch add $dir/.empty");
+    &command("git add $dir/.empty");
+   }
+  }
+ }
 }
 }
 1;
