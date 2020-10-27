@@ -107,8 +107,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  &MY_PRINT($rlog,   $msg);
  #
  # Check if I need to convert the folder
- if (-e "CONVERTED") {next};
- if (not -e "CONVERTED") {&RUN_convert_the_SAVE;next};
+ #if (-e "CONVERTED") {next};
+ if (not -e "CONVERTED") {&RUN_convert_the_SAVE};#;next};
  #
  # Loop over each test file
  LOOP_INPUTS: foreach $testname (@inputs) {

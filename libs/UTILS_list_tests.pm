@@ -34,7 +34,6 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   DIR_LOOP: foreach $dir (@dirs){
    if ( (-d $dir."/SAVE" || -d $dir."/SAVE_backup") && -d $dir."/$input_folder" && not $dir  =~ /ROBOT/  ) {
     push(@testdirs,$dir);
-   print $dir."\n";
     my $n = 2;
     $dir =~ s/^.{$n}//s;
     $MORE_str="";
