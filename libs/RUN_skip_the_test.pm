@@ -53,6 +53,7 @@ if ( "@_" eq "DIR" ){
   if (( -e "SC" or -e "MAGNETIC" or -e "QED" or -e "PL" or -e "NO_GPL") ) {$message=" skipped (GPL-PJ-restricted)"};
  }
  if (!-e "SAVE/ns.db1" and !-e "SAVE_backup/ns.db1" and not (-e "P2Y" or -e "A2Y")) { $message=" skipped (missing CORE databases)"};
+ if (-e "EMPTY" ) {$message=" (empty)"};
  if (-e "BROKEN" and ! $force) {$message=" (broken)"};
  if (-e "PARALLEL_2" && $np>2   ) {$message=" skipped (Too many CPUs)"};
  if (-e "PARALLEL_4" && $np>4   ) {$message=" skipped (Too many CPUs)"};
