@@ -31,6 +31,7 @@ sub RUN_convert_the_SAVE{
  #
  # CONVERTED RESTORING
  if(-e "SAVE_converted" or -e "SAVE_backup_converted") {
+  @dirs=();
   find( sub { push @dirs, $File::Find::name if -d }, (".") );
   DIR_LOOP: foreach $dir (@dirs){
    if ( $dir  =~ /_converted/ ) {
