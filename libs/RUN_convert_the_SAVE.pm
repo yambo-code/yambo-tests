@@ -26,6 +26,9 @@ sub RUN_convert_the_SAVE{
  #
  if (not $is_NEW_WF eq "yes" or ( not $mode eq "tests" and not $mode eq "cheers" and not $mode eq "validate") ) {return};
  #
+ undef $convert_me;
+ $convert_me=1;
+ #
  # CONVERTED RESTORING
  if(-e "SAVE_converted" or -e "SAVE_backup_converted") {
   find( sub { push @dirs, $File::Find::name if -d }, (".") );
@@ -73,18 +76,18 @@ sub RUN_convert_the_SAVE{
   &command("rm -r SAVE");
   &command("mv SAVE_backup SAVE_backup_old");
   # UNCONVERTED REMOVAL
-  #&command("cp -R FixSAVE/SAVE SAVE_backup_converted");
+  if ($convert_me) {&command("cp -R FixSAVE/SAVE SAVE_backup_converted")};
   #
   &command("mv FixSAVE/SAVE SAVE_backup");
  }else{
   &command("mv SAVE SAVE_old");
   # UNCONVERTED REMOVAL
-  #&command("cp -R FixSAVE/SAVE SAVE_converted");
+  if ($convert_me) {&command("cp -R FixSAVE/SAVE SAVE_converted")};
   #
   &command("mv FixSAVE/SAVE SAVE");
   if(-e "SAVE_old/ns.BS_PAR_Q1_interrupted") {
    # UNCONVERTED REMOVAL
-   #&command("cp SAVE_old/ns.BS_PAR_Q1_interrupted SAVE_converted/");
+   if ($convert_me) {&command("cp SAVE_old/ns.BS_PAR_Q1_interrupted SAVE_converted/")};
    #
    &command("mv SAVE_old/ns.BS_PAR_Q1_interrupted SAVE/");
   }
@@ -92,15 +95,15 @@ sub RUN_convert_the_SAVE{
  if(-e "GKKP") {
   &command("mv GKKP GKKP_old");
   # UNCONVERTED REMOVAL
-  #&command("cp -R FixSAVE/GKKP GKKP_converted");
+  if ($convert_me) {&command("cp -R FixSAVE/GKKP GKKP_converted")};
   #
   &command("mv FixSAVE/GKKP GKKP");
  }
  #
  # SAVE for shifted grids
  #
- if(-e "SHIFTED_grids" || -e "SHIFTED_GRID") {
-  &MY_PRINT($stdout, "\nConverting SAVE folder with shifted grids to new format") if ($verb ge 2);;
+ if(-e "SHIFTED_grids" or -e "SHIFTED_GRID") {
+  &MY_PRINT($stdout, "\n $r_s Converting SAVE folder with shifted grids to new format $r_e") if ($verb ge 2);;
   if(-e "SHIFTED_grids") { chdir("SHIFTED_grids"); }
   if(-e "SHIFTED_GRID")  { chdir("SHIFTED_GRID"); }
   if(-e "shift_1") {
@@ -111,7 +114,7 @@ sub RUN_convert_the_SAVE{
    &command("rm -f l_stderr r_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
    # UNCONVERTED REMOVAL
-   #&command("cp -R FixSAVE/SAVE SAVE_converted");
+   if ($convert_me) {&command("cp -R FixSAVE/SAVE SAVE_converted")};
    #
    &command("mv FixSAVE/SAVE SAVE");
    chdir("..");
@@ -124,7 +127,7 @@ sub RUN_convert_the_SAVE{
    &command("rm -f l_stderr r_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
    # UNCONVERTED REMOVAL
-   #&command("cp -R FixSAVE/SAVE SAVE_converted");
+   if ($convert_me) {&command("cp -R FixSAVE/SAVE SAVE_converted")};
    #
    &command("mv FixSAVE/SAVE SAVE");
    chdir("..");
@@ -137,7 +140,7 @@ sub RUN_convert_the_SAVE{
    &command("rm -f l_stderr r_stderr l_setup r_setup");
    &command("mv SAVE SAVE_old");
    # UNCONVERTED REMOVAL
-   #&command("cp -R FixSAVE/SAVE SAVE_converted");
+   if ($convert_me) {&command("cp -R FixSAVE/SAVE SAVE_converted")};
    #
    &command("mv FixSAVE/SAVE SAVE");
    chdir("..");
@@ -157,7 +160,7 @@ sub RUN_convert_the_SAVE{
   &command("$YPP_local $log");
   &command("rm -f l_stderr r_stderr l_setup r_setup");
   # UNCONVERTED REMOVAL
-  #&command("cp -R FixSAVE/SAVE SAVE_SOC_converted");
+  if ($convert_me) {&command("cp -R FixSAVE/SAVE SAVE_SOC_converted")};
   #
   &command("mv FixSAVE/SAVE ../SAVE_SOC");
   chdir("..");
@@ -166,14 +169,16 @@ sub RUN_convert_the_SAVE{
  &command("touch CONVERTED");
  #
  # CONVERTED COPYING
- #find( sub { push @dirs, $File::Find::name if -d }, (".") );
- #DIR_LOOP: foreach $dir (@dirs){
- # if ( $dir  =~ /_converted/ ) {
- #  &command("mv $dir ../$dir");
- #  &command("touch ../$dir/.empty");
- #  &command("git add ../$dir/.empty");
- # }
- #}
+ if ($convert_me){
+  find( sub { push @dirs, $File::Find::name if -d }, (".") );
+  DIR_LOOP: foreach $dir (@dirs){
+   if ( $dir  =~ /_converted/ ) {
+    &command("mv $dir ../$dir");
+    &command("touch ../$dir/.empty");
+    &command("git add ../$dir/.empty");
+   }
+  }
+ }
  #
 }
 1;

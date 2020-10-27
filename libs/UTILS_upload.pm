@@ -32,26 +32,36 @@ $user_tests="all";
 foreach  my $test (@all_tests)
 {
  chdir("$suite_dir");
- $archive = $upload_test;
- $path = (split("\/",$archive))[-1];
- $archive =~ s/\//_/g;
+ $user_string = $test;
+ if (not "$upload_test" eq "all") { $user_string = $upload_test};
+ $user_string =~ s/\//_/g;
  $test_string= $test;
  $test_string =~ s/\//_/g;
- if ($test_string =~ /$archive/)
+ $path = (split("\/",$test))[-1];
+ if ($test_string =~ /$user_string/)
  {
   chdir("$TESTS_folder/$test/../");
-  print "$test_string - $archive - $path\n";
-  &command("find $path -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | $grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
-  &command("gzip $archive.tar");
-  &FTP_upload_it("$archive.tar.gz","$UPLOAD_PATH");
-  find( sub { push @dirs, $File::Find::name if -d }, (".") );
-  DIR_LOOP: foreach $dir (@dirs){
+  undef $ok_dir;
+  @files=();
+  find( sub { push @files, $File::Find::name if -f }, ("$path") );
+  foreach $file (@files){
+    if ($file =~ /ns./ or $file =~ /gkkp/ or $file =~/Double/) {$ok_dir=1}
+  }
+  if (not $ok_dir) {next};
+  print "\n$r_s Uploading $test ... $r_e\n";
+  &command("find $path -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' -o -name '*.save*' -o -name '*io_files*' | $grep -v 'ROBOT_'| xargs tar cf $test_string.tar");
+  &command("gzip -f $test_string.tar");
+  &FTP_upload_it("$test_string.tar.gz","$UPLOAD_PATH");
+  @dirs=();
+  find( sub { push @dirs, $File::Find::name if -d }, ("$path") );
+  foreach $dir (@dirs){
    if ( $dir  =~ /SAVE/ ) {
-    &command("touch add $dir/.empty");
+    &command("touch $dir/.empty");
     &command("git add $dir/.empty");
    }
   }
  }
 }
+print "\n";
 }
 1;

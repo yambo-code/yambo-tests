@@ -34,6 +34,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   DIR_LOOP: foreach $dir (@dirs){
    if ( (-d $dir."/SAVE" || -d $dir."/SAVE_backup") && -d $dir."/$input_folder" && not $dir  =~ /ROBOT/  ) {
     push(@testdirs,$dir);
+   print $dir."\n";
     my $n = 2;
     $dir =~ s/^.{$n}//s;
     $MORE_str="";
@@ -45,7 +46,22 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
       if (-e $dir."/SC")  { next DIR_LOOP };
       if (-e $dir."/MAGNETIC")  { next DIR_LOOP };
     }
-    if (-e $dir."/BROKEN")  {
+    if (-e $dir."/EMPTY")  {
+      $EMPTY_tests="$EMPTY_tests"." "."$dir";
+      if (-e $dir."/P2Y")   {$EMPTY_tests="$EMPTY_tests"."[P2Y]"."$MORE_str"}
+      if (-e $dir."/A2Y")   {$EMPTY_tests="$EMPTY_tests"."[A2Y]"."$MORE_str"}
+      if (-e $dir."/RT")   {$EMPTY_tests="$EMPTY_tests"."[RT]"."$MORE_str"}
+      if (-e $dir."/QED")   {$EMPTY_tests="$EMPTY_tests"."[QED]"."$MORE_str"}
+      if (-e $dir."/PL")   {$EMPTY_tests="$EMPTY_tests"."[PL]"."$MORE_str"}
+      if (-e $dir."/NL")   {$EMPTY_tests="$EMPTY_tests"."[NL]"."$MORE_str"}
+      if (-e $dir."/SC")   {$EMPTY_tests="$EMPTY_tests"."[SC]"."$MORE_str"}
+      if (-e $dir."/MAGNETIC")   {$EMPTY_tests="$EMPTY_tests"."[MAGNETIC]"."$MORE_str"}
+      if (-e $dir."/KERR")   {$EMPTY_tests="$EMPTY_tests"."[KERR]"."$MORE_str"}
+      if (-e $dir."/SPIN")   {$EMPTY_tests="$EMPTY_tests"."[SPIN]"."$MORE_str"}
+      if (-e $dir."/SPINORS")   {$EMPTY_tests="$EMPTY_tests"."[SPINORS]"."$MORE_str"}
+      if (-e $dir."/ELPH")   {$EMPTY_tests="$EMPTY_tests"."[ELPH]"."$MORE_str"}
+      if (-e $dir."/PHEL")   {$EMPTY_tests="$EMPTY_tests"."[PHEL]"."$MORE_str"}
+    }elsif (-e $dir."/BROKEN")  {
       $BROKEN_tests="$BROKEN_tests"." "."$dir";
       if (not -e $dir."/CONVERTED" and not -e $dir."/SAVE_converted" and not -e $dir."/SAVE_backup_converted"){$MORE_str.="[*]"};
       if (-e $dir."/P2Y")   {$BROKEN_tests="$BROKEN_tests"."[P2Y]"."$MORE_str"}
@@ -104,6 +120,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   if ($keys =~ /spinors/ or $keys =~ /all/)  {&LIST_ELEMENT("[SPINORS] ",$SPINORS_tests)};
   if ($keys =~ /kerr/ or $kyes =~/all/)  {if ($KERR_tests)  {&LIST_ELEMENT("[KERR]    ",$KERR_tests)}};
   if ($keys =~ /all/ or $kyes =~/all/)   {if ($BROKEN_tests){&LIST_ELEMENT("[BROKEN]  ",$BROKEN_tests)}};
+  if ($keys =~ /all/ or $kyes =~/all/)   {if ($EMPTY_tests){&LIST_ELEMENT("[EMPTY]   ",$EMPTY_tests)}};
   &MY_PRINT($stdout, "\n[*] To be converted to the new format\n");
   &MY_PRINT($stdout, "\n");
  &CWD_go;
