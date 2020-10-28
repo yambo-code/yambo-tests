@@ -108,7 +108,10 @@ sub RUN_input_file_test{
  if (&RUN_feature("Chimod= \"LRC\"")=="1")   { $CMD=$CMD." -kernel lrc"};
  if (&RUN_feature("BSKmod= \"HF\"")=="1")   { $CMD=$CMD." -kernel hf"};
 
- if (&RUN_feature("WFs_map")=="1") { $CMD=$CMD." -wf p"};
+ if (&RUN_feature("WFs_map")=="1"){ 
+  if (not $is_WF_convertion_free) {$CMD=$CMD." -wf p"}
+  if (    $is_WF_convertion_free) {$CMD=$CMD." -soc"}
+ };
  if (&RUN_feature("fixsyms")=="1") { $CMD=$CMD." -fixsym"};
  if (&RUN_feature("RToccupations")=="1") { $CMD=$CMD." -rtplot o"};
  if (&RUN_feature("RTdeltaRho")=="1") { $CMD=$CMD." -rtplot d"};
