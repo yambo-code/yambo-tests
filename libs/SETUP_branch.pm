@@ -120,6 +120,9 @@ undef $is_NEW_scatt;
 if ($pattern=~m/devel-phonon-dynamics/ix) {$is_NEW_scatt=1;};
 if ($pattern=~m/devel-rt-modularization/ix) {$is_NEW_scatt=1;};
 #
+undef $is_WF_convertion_free;
+if ($pattern=~m/devel-phonon-dynamics/ix) {$is_WF_convertion_free=1;};
+#
 $do_A2Y_tests="yes";
 $PAR_covariant="yes";
 if ($pattern=~m/4.4/ix)   {                     undef $PAR_covariant;};

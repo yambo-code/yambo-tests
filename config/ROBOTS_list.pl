@@ -47,3 +47,4 @@ $ROBOTS{'attacc-portatile'} = 'attacc-portatile';
 $ROBOTS{'attacc-portatile'} = 'attacc-portatile';
 $ROBOTS{'attacc-portatile'} = 'attacc-portatile';
 $ROBOTS{'yurigagarin'} = 'yurigagarin.local';
+$ROBOTS{'attacc-lavoro'} = 'attacc-lavoro';
