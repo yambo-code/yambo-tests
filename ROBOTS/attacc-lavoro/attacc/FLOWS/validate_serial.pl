@@ -21,12 +21,4 @@
  CONFIG      => "gfortran_mkl.sh",
  KEYS        => "all",
 },
-{
- MPI_CPU     => 4,
- PAR_MODE    => "default",
-},
-{
- MPI_CPU     => 1,
- THREADS     => 3,
-}
 );
