@@ -71,7 +71,7 @@ sub RUN_input_file_test{
  }
  if (&RUN_feature("el_ph_scatt")=="1") {
    if (not $is_NEW_scatt) {$CMD=$CMD." -scattering p"}
-   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering ep"}
+   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering ep -J GKKP"}
  }
  if (&RUN_feature("el_el_scatt")=="1") {
    if (not $is_NEW_scatt) {$CMD=$CMD." -scattering e"}
