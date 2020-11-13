@@ -31,11 +31,6 @@ if ($np==1) {
  $MPI_CPU_conf[1]="serial";
  return;
 }
-if ($SETUP=="1" ){
- $Nr="1";
- $MPI_CPU_conf[1]="serial";
- return;
-}
 if ($yambo_exec =~ /\/p2y/ or $yambo_exec =~ /\/a2y/ or $yambo_exec =~ /\/ypp/  ) { 
  $Nr="1";
  $MPI_CPU_conf[1]="default";
