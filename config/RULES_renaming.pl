@@ -28,6 +28,11 @@ $N_PATTERNS=0;
 # [1] = REFERENCE
 # [2] = MODIFIED REFERENCE
 #
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-phonon-dynamics";
+$PATTERN[$N_PATTERNS][1]="qp_gw_ppa_gw_ppa";
+$PATTERN[$N_PATTERNS][2]="qp_gw_ppa";
+#
 @patts1 = qw(1 2);
 @patts2 = qw(UP DN);
 for $patt1 (@patts1) {$N_PATTERNS++;
