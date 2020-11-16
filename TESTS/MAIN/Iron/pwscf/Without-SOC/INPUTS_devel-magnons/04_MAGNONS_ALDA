@@ -17,19 +17,19 @@ optics                           # [R] Linear Response optical properties
 bss                              # [R] BSE solver
 bse                              # [R][BSE] Bethe Salpeter Equation.
 tddft                            # [R][K] Use TDDFT kernel
-BSEmod= "causal"                 # [BSE] resonant/retarded/coupling
+BSEmod= "resonant"                 # [BSE] resonant/retarded/coupling
 BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
 BSENGexx= 3151             RL    # [BSK] Exchange components
-BSEprop= "magn"                  # [BSE] abs/kerr/magn trace
+BSEprop= "magn esrt"                  # [BSE] abs/kerr/magn trace
 % BSEQptR
- 1 | 1 |                             # [BSK] Transferred momenta range
+ 1 | 2 |                             # [BSK] Transferred momenta range
 %
 % BSEBands
-  6 |  10 |                           # [BSK] Bands range
+  2 |  6 |                           # [BSK] Bands range
 %
 % BEnRange
- -10.00000 | 10.00000 |         eV    # [BSS] Energy range
+ -2.00000 | 4.00000 |         eV    # [BSS] Energy range
 %
 % BDmRange
  0.100000 | 0.100000 |         eV    # [BSS] Damping range
@@ -40,3 +40,4 @@ BEnSteps=  5001                   # [BSS] Energy steps
 %
 BSSNEig=  5                      # [SLEPC] Number of eigenvalues to compute
 #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+#UseNLCC
