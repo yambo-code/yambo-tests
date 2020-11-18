@@ -3,12 +3,12 @@
 @flow = (
 {
  ACTIVE      => "yes",
- CONFIG      => "pgi_cuda_SP.sh",
+ CONFIG      => "pgi_SP.sh",
  KEYS        => "all hard",
 },
 {
- MPI_CPU     => 2,
- THREADS     => 8,
+ MPI_CPU     => 8,
+ THREADS     => 2,
  PAR_MODE    => "default",
 },
 {
@@ -17,8 +17,8 @@
  PAR_MODE    => "random",
 },
 {
- MPI_CPU     => 2,
- THREADS     => 8,
+ MPI_CPU     => 4,
+ THREADS     => 4,
  PAR_MODE    => "loop",
 },
 );
