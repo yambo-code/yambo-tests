@@ -1,0 +1,58 @@
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
+#                                                                     
+#      Version 5.0.1 Revision 19057 Hash ca5531f9e                    
+#             Branch is devel-sc-rt-excitons                          
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#               http://www.yambo-code.org                             
+#
+#     |k| (a.u.)        k_x (rlu)          k_y (rlu)          k_z (rlu)
+#
+  0.00000000      0.00000000      0.00000000      0.00000000   
+  1.35696328      0.00000000      0.00000000      0.00000000   
+# 
+# 11/20/2020 at 15:59 ypp_rt @ VivoBook [start]
+# 11/20/2020 at 15:59                   [end]
+#  
+# Timing   [Min/Max/Average]: 04s/04s/04s
+#
+# .-Input file  yambo.in
+# | TDplots                          # [R] TD observables plot
+# | RTGtwotimes                      # [R] Construct G</G>/G(r)/G(a)/A(t,tp) from rho within GKBA
+# | RTtime                           # [R] Post-Processing kind: function of time
+# | INTERP_mode= "BOLTZ"             # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
+# | OutputAlat= 3.851738             # [a.u.] Lattice constant used for "alat" ouput format
+# | cooIn= "rlu"                     # Points coordinates (in) cc/rlu/iku/alat
+# | cooOut= "rlu"                    # Points coordinates (out) cc/rlu/iku/alat
+# | #NormN                         # Nel on the bands is renormalized to Nel in the IBZ
+# | NelFac= 1.000000                 # Rescale the total number of electrons
+# | INTERP_Shell_Fac= 20.00000       # The bigger it is a higher number of shells is used
+# | INTERP_NofNN= 1                  # Number of Nearest sites in the NN method
+# | CIRCUIT_E_DB_path= "none"        # SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)
+# | BANDS_path= " G"                 # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
+# | BANDS_steps=  50                 # Number of divisions
+# | BANDS_built_in                 # Print the bands of the generating points of the circuit using the nearest internal point
+# | TimeStep= 0.020002         fs    # Time step
+# | % TimeRange
+# |  25.00000 | 75.00001 |         fs    # Time-window where processing is done
+# | %
+# | LoadGhistory                   # [NEGF] Build the NEQ density from the G_lesser
+# | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
+# | % EnRngeRt
+# |  -2.00000 | 14.00000 |         eV    # Energy range
+# | %
+# | ETStpsRt=  501                   # Total Energy steps
+# | DampFactor= 50.00000       meV   # Damping parameter
+# | RhoDeph= 5.000000          meV   # Dephasing parameter for G_GKBA
+# | %BANDS_kpts                      # K points of the bands circuit
+# |  0.500000| 0.500000| 0.500000|
+# |  0.000000| 0.000000| 0.000000|
+# |  0.000000| 0.500000| 0.500000|
+# | %
