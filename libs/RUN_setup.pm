@@ -26,6 +26,7 @@ sub RUN_setup{
 #
 if ("@_" =~ "after_par_loop"){
  if ( $LAST_COMPLETED_RUN ){
+  &command("rm -f $testname");
   &command("ln -s $LAST_COMPLETED_RUN $testname");
  }
  return;
@@ -101,6 +102,7 @@ if ("@_" =~ "after_run"){
   if (!-d $dir_name and -d $testname) {&command("mv $testname $dir_name")};
   if (!-d $dir_name and !-d $testname) {&command("mkdir $dir_name")};
   if ($LAST_COMPLETED_RUN) {
+   &command("rm -f $testname");
    &command("ln -s $LAST_COMPLETED_RUN $testname");
   };
  }else{
