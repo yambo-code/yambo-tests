@@ -1,27 +1,27 @@
 &control
-         calculation = 'nscf'
-              prefix = 'CrI3_kx3_e60'
+              prefix = 'CrI3'
           pseudo_dir = '../../psps/'
            verbosity = 'high'
           wf_collect = .true.
 /&end
 &system
+      Hubbard_J(1,1) = 0.5
+        Hubbard_U(1) = 2.0
            celldm(1) = 12.6872010252
            celldm(3) = 3.1527836534275644
-             ecutwfc = 60
-    force_symmorphic = .true.
+             ecutwfc = 87
                ibrav = 4
+          lda_plus_u = .true.
+     lda_plus_u_kind = 1
             lspinorb = .true.
                  nat = 8
-                nbnd = 80
             noncolin = .true.
                 ntyp = 2
 starting_magnetization(1) = 1
 starting_magnetization(2) = 0
 /&end
 &electrons
-            conv_thr = 1e-07
-      diago_full_acc = .true.
+            conv_thr = 1e-08
 /&end
 
 
@@ -38,4 +38,4 @@ ATOMIC_POSITIONS { crystal }
   I   0.6508193310   0.0000000000   0.0722327590
   I   0.0000000000   0.6508193310   0.0722327590
 K_POINTS { automatic }
-  3  3  1  0  0  0
+ 12 12  1  0  0  0

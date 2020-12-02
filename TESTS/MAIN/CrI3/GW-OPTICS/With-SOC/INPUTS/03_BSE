@@ -1,0 +1,81 @@
+#                                                                     
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
+#                                                                     
+#      Version 5.0.1 Revision 19022 Hash 3ab5e80e8                    
+#                Branch is devel-magnons                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#               http://www.yambo-code.org                             
+#
+em1s                             # [R][Xs] Statically Screened Interaction
+optics                           # [R] Linear Response optical properties
+bss                              # [R] BSE solver
+bse                              # [R][BSE] Bethe Salpeter Equation.
+dipoles                          # [R] Oscillator strenghts (or dipoles)
+
+Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+
+BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSENGexx=  5000          RL    # [BSK] Exchange components
+BSENGblk=    13          RL    # [BSK] Exchange components
+#WehCpl                        # [BSK] eh interaction included also in coupling
+BSEprop= "abs"                   # [BSE] abs/kerr/magn/dichr trace
+BSSmod= "h"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+
+#DipBandsALL
+#ImposeAres
+
+#BSHayItrIO=10
+BSHayItrMAX=1000
+BSHayTrs=0.001           # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+#BSHayTer
+
+BSSSlepcApproach="Krylov-Schur"    # [SLEPC] Approach ("Krylov-Schur","Generalized-Davidson","Jacob-Davidson")
+BSSSlepcPrecondition="none"    # [SLEPC] Precondition technique (none|preonly+jacobi|bcgs+jacobi)
+#BSSSlepcExtraction="harmonic"
+#BSSSlepcMatrix
+BSSSlepcMaxIt=1000
+#BSSSlepcNCV= 1058
+BSSNEig= 250                    # [SLEPC] Number of eigenvalues to compute
+BSSSlepcTol=1.E-06
+BSSEnTarget=12.0   eV
+
+
+% KfnQP_E
+ 2.500000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+
+
+% BSEQptR
+ 1 | 1 |                             # [BSK] Transferred momenta range
+%
+% BSEBands
+   69 |  72 |                         # [BSK] Bands range
+%
+% BEnRange
+  0.00000 | 7.00000 |         eV    # [BSS] Energy range
+%
+% BDmRange
+ 0.100000 | 0.100000 |         eV    # [BSS] Damping range
+%
+BEnSteps= 1001                    # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+
+
+% BndsRnXs
+ 60 | 76 |                         # [Xs] Polarization function bands
+%
+NGsBlkXs= 13                RL    # [Xs] Response block size
+% LongDrXs
+ 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%
+XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
