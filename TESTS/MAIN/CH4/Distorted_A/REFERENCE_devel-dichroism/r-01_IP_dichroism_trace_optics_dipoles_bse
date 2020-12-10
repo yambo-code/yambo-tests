@@ -1,19 +1,19 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
                                                                           
-                                                                          
-          Version 5.0.1 Revision 18786 Hash 48b5dadbe                     
-                   Branch is devel-dichroism                              
+          Version 5.0.1 Revision 19026 Hash 65cebe1a5                     
+                    Branch is devel-magnons                               
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 10/06/2020 at 17:26 yambo @ VivoBook
+ 12/02/2020 at 22:27 yambo @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -32,9 +32,9 @@
  Log files           : ./LOG
 
  Job   string        : 01_IP_dichroism_trace
- Alt#1 string        : R25
+ Alt#1 string        : R1
 
- Precision           : SINGLE
+ Precision           : DOUBLE
   
  [RD./SAVE//ns.db1]--------------------------------------------------------------
   Bands                                            :  20
@@ -110,7 +110,7 @@
   Shell energy in first 30 shells:  [ mHa ]
     0.00000      221.102      442.203      663.305      884.407      1105.51      1326.61      1768.81      1989.91   
     2211.02      2432.12      2653.22      2874.32      3095.42      3537.63      3758.73      3979.83      4200.93   
-    4422.03      4643.14      4864.24      5306.44      5527.54      5748.64      5969.74      6411.95      6633.05   
+    4422.03      4643.13      4864.24      5306.44      5527.54      5748.64      5969.74      6411.95      6633.05   
     7075.25      7296.35      7517.46   
   ...
 
@@ -136,6 +136,7 @@
   [X] Filled Bands                                  :   4
   [X] Empty Bands                                   :   5  20
   [X] Direct Gap                                    :  6.071941 [eV]
+  [X] Direct Gap localized at k-point               :  1
    
    
 
@@ -149,13 +150,16 @@
   X grid is uniform                                : yes
   BS scattering                                    : no
   COLL scattering                                  : no
- - S/N 005189 ---------------------------------------------- v.05.00.01 r.18786 -
+ - S/N 005189 ---------------------------------------------- v.05.00.01 r.19026 -
 
  IBZ Q-points :  1
  BZ  Q-points :  1
 
+ K/Q-points units:
+ rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
+
  Q [1] : weight       :  1.000000
-       : point-iku    :  0.000000  0.000000  0.000000  [iku]
+       : point-rlu    :  0.000000  0.000000  0.000000  [rlu]
 
  [04] Dipoles
  ============
@@ -167,7 +171,7 @@
  - S/N 005189 ---------------------------------------------- v.04.05.02 r.17118 -
 
  [WARNING] [x,Vnl] slows the Dipoles computation. To neglect it rename the ns.kb_pp file
- [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.49958E-10   1.0000    
+ [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.56905E-10   1.0000    
 
  [WR./01_IP_dichroism_trace//ndb.dipoles]----------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
@@ -183,9 +187,9 @@
   Bands ordered                                    : no
   Direct v evaluation                              : no
   Approach used                                    : G-space v
-  Dipoles computed                                 : R V P L
+  Dipoles computed                                 : R V P
   Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
- - S/N 005189 ---------------------------------------------- v.05.00.01 r.18786 -
+ - S/N 005189 ---------------------------------------------- v.05.00.01 r.19026 -
 
  [WARNING] BSE calculation with minimal memory utilization
 
@@ -200,7 +204,7 @@
 
   [BSK] Transition groups (total):  1
 
-  [05.02] Independent Particles absorption @q1
+  [05.02] Independent Particles properties @q1
   ============================================
 
   [RD./01_IP_dichroism_trace//ndb.dipoles]----------------------------------------
@@ -217,33 +221,33 @@
    Bands ordered                                    : no
    Direct v evaluation                              : no
    Approach used                                    : G-space v
-   Dipoles computed                                 : R V P L
+   Dipoles computed                                 : R V P
    Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-  - S/N 005189 ---------------------------------------------- v.05.00.01 r.18786 -
+  - S/N 005189 ---------------------------------------------- v.05.00.01 r.19026 -
 
  [06] Timing Overview
  ====================
 
  Clock: global
-                 PP_uspp_init :      0.0000s CPU
              io_ATMPROJ_pwscf :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU ( 6 calls,   0.004 msec avg)
+                 PP_uspp_init :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
-                   io_COL_CUT :      0.0001s CPU
-                        io_BS :      0.0001s CPU
-               io_Double_Grid :      0.0001s CPU
+      IO_and_Messaging_switch :      0.0000s CPU ( 6 calls,   0.004 msec avg)
+                   io_COL_CUT :      0.0000s CPU
+                        io_BS :      0.0000s CPU
                         io_HF :      0.0001s CPU
-                         io_X :      0.0002s CPU ( 4 calls,   0.053 msec avg)
-                  io_fragment :      0.0004s CPU ( 2 calls,   0.200 msec avg)
-                  io_KB_pwscf :      0.0015s CPU ( 3 calls,   0.497 msec avg)
-                        io_WF :      0.0026s CPU ( 4 calls,   0.649 msec avg)
-                  WF_load_FFT :      0.0027s CPU
-                     io_QINDX :      0.0105s CPU ( 2 calls,   5.239 msec avg)
-                      io_GROT :      0.0138s CPU ( 2 calls,   6.884 msec avg)
-                   io_DIPOLES :      0.0298s CPU (10 calls,   2.978 msec avg)
-                   T_space IP :      0.0368s CPU
-            DIPOLE_transverse :      2.3314s CPU
-                      Dipoles :      2.3525s CPU
+               io_Double_Grid :      0.0001s CPU
+                         io_X :      0.0001s CPU ( 4 calls,   0.030 msec avg)
+                  io_fragment :      0.0002s CPU ( 2 calls,   0.080 msec avg)
+                  io_KB_pwscf :      0.0019s CPU ( 3 calls,   0.642 msec avg)
+                        io_WF :      0.0038s CPU ( 4 calls,   0.961 msec avg)
+                  WF_load_FFT :      0.0043s CPU
+                     io_QINDX :      0.0074s CPU ( 2 calls,   3.716 msec avg)
+                      io_GROT :      0.0092s CPU ( 2 calls,   4.601 msec avg)
+                   io_DIPOLES :      0.0294s CPU (10 calls,   2.940 msec avg)
+                   T_space IP :      0.0352s CPU
+            DIPOLE_transverse :      2.7267s CPU
+                      Dipoles :      2.7475s CPU
 
  [07] Memory Overview
  ====================
@@ -252,13 +256,13 @@
  Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  8.750000 [Mb]
+         Max memory used   :  17.02600 [Mb]
 
  [08] Game Over & Game summary
  =============================
 
- 10/06/2020 at 17:26 yambo @ VivoBook [start]
- 10/06/2020 at 17:26                  [end]
+ 12/02/2020 at 22:27 yambo @ VivoBook [start]
+ 12/02/2020 at 22:27                  [end]
 
  Timing   [Min/Max/Average]: 02s/02s/02s
              [Time-Profile]: 02s
@@ -298,8 +302,12 @@
  | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | BSKmod= "IP"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
  | DipBandsALL                    # [DIP] Compute all bands range, not only valence and conduction
+ | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx= 28671            RL    # [BSK] Exchange components
  | BSEprop= "abs trace dichr"       # [BSE] abs/kerr/magn/dichr trace
+ | % PL_weights
+ |  1.000000 | 1.000000 | 1.000000 |        # [PL] [cc] Weights of the carthesian components of the emitted radiation
+ | %
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %

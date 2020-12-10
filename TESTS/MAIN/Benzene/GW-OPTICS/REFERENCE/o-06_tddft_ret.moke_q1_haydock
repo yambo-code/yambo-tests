@@ -1,0 +1,94 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 19034 Hash 9840da05f                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+# moke parameters @ Q(1)            q->0 direction:  0.100000000E-4   0.00000000      0.00000000   
+#
+# [GEN] GF Energies                               : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
+# [GEN] Wavefunctions                             : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
+# [GEN] Green`s Function                          : Retarded
+# [GEN] Gauge                                     : Length
+# [GEN] [r,Vnl] included                          : yes
+#
+#
+# [K] Identifier                                  :   4915
+# [K] Dimension                                   :  22
+# [K] Bands                                       :  12  18
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : no
+# [K] Kernel`s coupling                           : no
+# [K] Exchange                                    : no
+# [K] Correlation                                 : no
+# [K] W interaction is bare                       : no
+# [K] ALDA kernel in R-space                      : yes
+# [K] RL vectors                                  :  2003 [exchange]
+# [K] E/h energy range                            :  -1.00000000     -1.00000000    [ev]
+# [K] Coupling range                              :   100.000000      100.000000    [o/o]
+#                                                 
+# [Haydock] Accuracy (requested)                  :  0.100000000E-3 [o/o]
+# [Haydock] Accuracy (reached)                    :  0.55761937E-14 [o/o]
+# [Haydock] Iterations                            :  27
+#                                                 
+# [Haydock] Accuracy (requested)                  :  0.100000000E-3 [o/o]
+# [Haydock] Accuracy (reached)                    :  0.327019918E-5 [o/o]
+# [Haydock] Iterations                            :   9
+#                                                 
+# [Haydock] Accuracy (requested)                  :  0.100000000E-3 [o/o]
+# [Haydock] Accuracy (reached)                    :  0.15152869E-09 [o/o]
+# [Haydock] Iterations                            :  30
+#
+#    E/ev[1]            moke-Im[2]         moke-Re[3]         mokeo-Im[4]        mokeo-Re[5]        moke`-Im[6]        moke`-Re[7]
+#
+# 
+# 12/09/2020 at 00:26 yambo @ VivoBook [start]
+# 12/09/2020 at 00:26                  [end]
+#
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | tddft                            # [R][K] Use TDDFT kernel
+# | ElecTemp= 0.025861         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | FFTGvecs=  9999            RL    # [FFT] Plane-waves
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 2003             RL    # [BSK] Exchange components
+# | BSEprop= "abs kerr dos esrt"     # [BSE] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |  12 | 18 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -10.00000 | 10.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 2001                   # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSHayTrs= 0.100000E-3            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | BSHayItrMAX= 150                 # [BSS] MaX number of Haydock iterations.

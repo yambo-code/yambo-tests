@@ -21,13 +21,13 @@ dipoles                          # [R] Oscillator strenghts (or dipoles)
 
 Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 
-BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
+BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
 BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-BSENGexx=  5000          RL    # [BSK] Exchange components
-BSENGblk=    13          RL    # [BSK] Exchange components
+BSENGexx=   0          RL    # [BSK] Exchange components
+BSENGblk=  13          RL    # [BSK] Exchange components
 #WehCpl                        # [BSK] eh interaction included also in coupling
 EvalKerr
-BSEprop= "magn"                   # [BSE] abs/kerr/magn/dichr trace
+BSEprop= "magn esrt"                   # [BSE] abs/kerr/magn/dichr trace
 BSSmod= "dh"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
 
 DipApproach="R-space x"
@@ -49,23 +49,17 @@ BSSNEig= 250                    # [SLEPC] Number of eigenvalues to compute
 BSSSlepcTol=1.E-06
 BSSEnTarget=12.0   eV
 
-
-% KfnQP_E
- 2.500000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
-%
-
-
 % BSEQptR
  1 | 1 |                             # [BSK] Transferred momenta range
 %
 % BSEBands
-   69 |  72 |                         # [BSK] Bands range
+   65 |  76 |                         # [BSK] Bands range
 %
 % BEnRange
-  0.00000 | 7.00000 |         eV    # [BSS] Energy range
+  -1.00000 | 4.00000 |         eV    # [BSS] Energy range
 %
 % BDmRange
- 0.100000 | 0.100000 |         eV    # [BSS] Damping range
+ 0.0100000 | 0.0100000 |         eV    # [BSS] Damping range
 %
 BEnSteps= 1001                    # [BSS] Energy steps
 % BLongDir
@@ -73,7 +67,7 @@ BEnSteps= 1001                    # [BSS] Energy steps
 %
 
 
-% BndsRnXs
+% B5dsRnXs
  60 | 76 |                         # [Xs] Polarization function bands
 %
 NGsBlkXs= 13                RL    # [Xs] Response block size

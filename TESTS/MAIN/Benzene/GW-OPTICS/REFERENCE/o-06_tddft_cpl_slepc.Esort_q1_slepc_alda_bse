@@ -1,0 +1,103 @@
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 19034 Hash 9840da05f                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+#    E [eV]             abs                kerr
+#
+    0.89977249         0.80006563E-22    -0.15256555E-21
+    0.94446569         0.30146243E-10    -0.55848043E-15
+     4.8817727         0.22123848E-09     0.61617751E-17
+     5.1040837         0.93429642E-23    -0.45502374E-23
+     5.2573779         0.56408163E-20     0.36858878E-15
+     5.3699500         0.10974855E-21    -0.87837795E-22
+     5.4146432         0.18051881E-20    -0.51329063E-15
+     5.4892440         0.94039707E-24    -0.80329420E-17
+     5.7115550         0.16673116E-22     0.34981388E-24
+     5.8648492         0.16168891E-09     0.42507968E-15
+     6.1003660         0.60241198E-22    -0.36333469E-22
+     6.1450592         0.15478037E-09    -0.41434606E-15
+     6.6123446         0.81424173E-23     0.61542112E-24
+     6.8064947         0.54229265E-24    -0.37408263E-24
+     6.8346556         0.73458954E-22     0.13082936E-17
+     6.8397626         0.28387950E-22     0.10422814E-17
+     6.8844558         0.69336103E-20     0.16231631E-20
+     6.9879498         0.23530872E-20    -0.61148149E-21
+     7.0050530         0.13793917E-12    -0.22897238E-17
+     7.0288057         0.97016042E-13    -0.19316152E-17
+     7.0497462         0.90369969E-22    -0.78106148E-21
+     7.1820999         0.11585469E-21    -0.46413319E-23
+#
+#    Re(E) [eV]         Im(E) [eV]         abs                kerr
+#
+     5.7825550         0.20622379E-15     0.39214124E-11     0.97089411E-16
+     5.9967342        -0.32651310E-15     0.19795358E-21     0.18371314E-16
+     6.0730839        -0.92688347E-15     0.47762194E-23    -0.27063139E-22
+     6.5850357        -0.10470077E-14     0.23816798E-22    -0.41505169E-23
+     6.7462703         0.23122194E-15     0.41476434E-20     0.24532984E-21
+     6.7908823        -0.17917686E-14     0.12689681E-22     0.20937241E-19
+     6.8372234        -0.11989982E-14     0.88266815E-20     0.22970125E-20
+     6.8650358        -0.15061470E-14     0.40854748E-22     0.21628760E-17
+     6.9540104         0.62325151E-15     0.14873185E-19    -0.65563770E-21
+     6.9757893         0.13117408E-14     0.19848280E-13    -0.40933590E-18
+     6.9771636         0.79778782E-15     0.13013599E-21    -0.11694051E-20
+     7.0339329        -0.23191332E-14     0.13539993E-11     0.93695061E-17
+     7.1961786         0.28912588E-15     0.22649176E-21    -0.14377589E-20
+     7.6954092        -0.82587958E-16     0.11242815E-18    -0.23638468E-14
+     7.7854026        -0.25405337E-15     0.34610650E-09     0.20962656E-14
+# 
+# 12/09/2020 at 00:25 yambo @ VivoBook [start]
+# 12/09/2020 at 00:25                  [end]
+#
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | tddft                            # [R][K] Use TDDFT kernel
+# | ElecTemp= 0.025861         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | FFTGvecs=  9999            RL    # [FFT] Plane-waves
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "s"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 2003             RL    # [BSK] Exchange components
+# | BSEprop= "abs kerr dos esrt"     # [BSE] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |  12 | 18 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -10.00000 | 10.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 2001                   # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSSNEig= 15                      # [SLEPC] Number of eigenvalues to compute
+# | BSSEnTarget= 8.000000      eV    # [SLEPC] Target energy to find eigenvalues
+# | BSSSlepcApproach= "Krylov-Schur" # [SLEPC] Approach ("Krylov-Schur","Generalized-Davidson","Jacob-Davidson")
+# | BSSSlepcMaxIt= 1000              # [SLEPC] Maximum number of iterations
+# | BSSSlepcMatrix                 # [SLEPC] Store slepc matrix, faster but more memory consuming

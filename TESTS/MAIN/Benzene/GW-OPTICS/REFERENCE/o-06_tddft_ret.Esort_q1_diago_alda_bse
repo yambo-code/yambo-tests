@@ -1,0 +1,107 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 19034 Hash 9840da05f                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+#    E [eV]             abs                kerr
+#
+    0.89977249         0.80006563E-22    -0.15256555E-21
+    0.94446569         0.30146243E-10    -0.55848043E-15
+     4.8817727         0.22123848E-09     0.61617751E-17
+     5.1040837         0.93429642E-23    -0.45502374E-23
+     5.2573779         0.56408163E-20     0.36858878E-15
+     5.3699500         0.10974855E-21    -0.87837795E-22
+     5.4146432         0.18051881E-20    -0.51329063E-15
+     5.4892440         0.94039707E-24    -0.80329420E-17
+     5.7115550         0.16673116E-22     0.34981388E-24
+     5.8648492         0.16168891E-09     0.42507968E-15
+     6.1003660         0.60241198E-22    -0.36333469E-22
+     6.1450592         0.15478037E-09    -0.41434606E-15
+     6.6123446         0.81424173E-23     0.61542112E-24
+     6.8064947         0.54229265E-24    -0.37408263E-24
+     6.8346556         0.73458954E-22     0.13082936E-17
+     6.8397626         0.28387950E-22     0.10422814E-17
+     6.8844558         0.69336103E-20     0.16231631E-20
+     6.9879498         0.23530872E-20    -0.61148149E-21
+     7.0050530         0.13793917E-12    -0.22897238E-17
+     7.0288057         0.97016042E-13    -0.19316152E-17
+     7.0497462         0.90369969E-22    -0.78106148E-21
+     7.1820999         0.11585469E-21    -0.46413319E-23
+#
+#    E [eV]             abs                kerr
+#
+    0.81811687         0.10055342E-21    -0.17327883E-21
+     1.0851347         0.15219975E-10    -0.38946264E-15
+     4.9191259         0.12617195E-19     0.20985761E-16
+     5.0656385         0.59974791E-23    -0.66909509E-23
+     5.3404669         0.77769062E-23    -0.46639339E-23
+     5.4604260         0.55848652E-10    -0.68389890E-16
+     5.6723239         0.32047648E-22    -0.25574190E-23
+     5.7885425         0.47238634E-11     0.10348163E-15
+     6.0234147         0.14702634E-21     0.19630563E-16
+     6.0731812         0.52294213E-23    -0.42640357E-22
+     6.5851092         0.22829845E-22    -0.38885021E-23
+     6.7467444         0.39225805E-20     0.23366448E-21
+     6.7910381         0.11850208E-22     0.19747371E-19
+     6.8375969         0.84176389E-20     0.21577984E-20
+     6.8655320         0.43966741E-22     0.24976139E-17
+     6.9541850         0.13795787E-19    -0.56698946E-21
+     6.9759169         0.13958279E-13    -0.24145029E-18
+     6.9780496         0.10239935E-21    -0.10267062E-20
+     7.0347777         0.10147432E-11     0.85298389E-17
+     7.1964953         0.22215411E-21    -0.11414180E-20
+     8.1202899         0.49126776E-09    -0.47467197E-14
+     8.1995283         0.15227814E-18     0.43534784E-14
+# 
+# 12/09/2020 at 00:26 yambo @ VivoBook [start]
+# 12/09/2020 at 00:26                  [end]
+#
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | tddft                            # [R][K] Use TDDFT kernel
+# | ElecTemp= 0.025861         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | FFTGvecs=  9999            RL    # [FFT] Plane-waves
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 2003             RL    # [BSK] Exchange components
+# | BSEprop= "abs kerr dos esrt"     # [BSE] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |  12 | 18 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -10.00000 | 10.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 2001                   # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSHayTrs= 0.100000E-3            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | BSHayItrMAX= 150                 # [BSS] MaX number of Haydock iterations.

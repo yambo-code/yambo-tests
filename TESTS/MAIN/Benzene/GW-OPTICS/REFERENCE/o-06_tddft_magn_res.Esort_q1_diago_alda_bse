@@ -1,0 +1,93 @@
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 19034 Hash 9840da05f                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+#    E [eV]             S+-                S-+
+#
+    0.74800832         0.98671431         0.87637841E-15
+    0.97031932         0.22521647E-15     0.20003242E-30
+     1.1236135         0.21691788E-13     0.19266180E-28
+     5.2181858         0.14860244E-17     0.13198549E-32
+     5.4404969         0.11026733E-15     0.97937066E-31
+     5.5937910         0.24951967E-02     0.22161800E-17
+     5.9486019         0.88261327E-03     0.78391811E-18
+     6.1709129         0.64311363E-16     0.57119968E-31
+     6.3242071         0.60439027E-14     0.53680643E-29
+     6.6879985         0.21019006E-18     0.18668629E-33
+     6.8532888         0.24082128E-17     0.21389228E-32
+     6.9103095         0.70427203E-06     0.62551925E-21
+     7.0636037         0.19409523E-16     0.17239121E-31
+     7.0755998         0.12598957E-16     0.11190122E-31
+     7.2288940         0.51761496E-15     0.45973446E-30
+#
+#    E [eV]             S+-                S-+
+#
+    0.15274828         0.98870594         0.87814733E-15
+    0.83345773         0.58977797E-14     0.52382809E-29
+    0.87878848         0.27521235E-13     0.24443768E-28
+     4.9291348         0.95987773E-15     0.85254273E-30
+     5.0721207         0.27755424E-03     0.24651771E-18
+     5.3607612         0.11054628E-02     0.98184822E-18
+     5.3738578         0.54715805E-14     0.48597400E-29
+     5.9709139         0.14033702E-16     0.12464432E-31
+     6.1181908         0.35545078E-14     0.31570373E-29
+     6.6224599         0.48850155E-16     0.43387656E-31
+     6.7562124         0.78283422E-16     0.69529650E-31
+     7.0191484         0.16270157E-14     0.14450804E-29
+     7.0382539         0.15979846E-13     0.14192956E-28
+     7.2094133         0.38668831E-05     0.34344823E-20
+     7.2646343         0.30047336E-15     0.26687397E-30
+# 
+# 12/09/2020 at 00:25 yambo @ VivoBook [start]
+# 12/09/2020 at 00:25                  [end]
+#
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | tddft                            # [R][K] Use TDDFT kernel
+# | ElecTemp= 0.025861         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | FFTGvecs=  9999            RL    # [FFT] Plane-waves
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+# | DipComputed= "R V P Spin"        # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 2003             RL    # [BSK] Exchange components
+# | BSEprop= "magn jdos esrt"        # [BSE] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |  12 | 18 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -2.000000 | 2.000000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.010000 | 0.010000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps=  5001                  # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | BSHayItrMAX= 150                 # [BSS] MaX number of Haydock iterations.
