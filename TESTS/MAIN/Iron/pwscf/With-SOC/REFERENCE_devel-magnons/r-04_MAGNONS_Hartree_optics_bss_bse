@@ -8,12 +8,12 @@
                                                                           
                                                                           
                                                                           
-          Version 5.0.1 Revision 18938 Hash 557744ed1                     
+          Version 5.0.1 Revision 18960 Hash ce0c40b3b                     
                     Branch is devel-magnons                               
              MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
                    http://www.yambo-code.org                              
  
- 11/08/2020 at 20:55 yambo @ unimi-XPS-8930
+ 11/13/2020 at 18:20 yambo @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_MAGNONS_Hartree
- Alt#1 string        : R4
+ Alt#1 string        : R8
 
  Precision           : SINGLE
   
@@ -162,9 +162,9 @@
   Polarization last K                              :  11
   QP states                                        :   1  11
   X grid is uniform                                : yes
-  BS scattering                                    : no
+  BS scattering                                    : yes
   COLL scattering                                  : no
- - S/N 002977 ---------------------------------------------- v.05.00.01 r.18938 -
+ - S/N 002977 ---------------------------------------------- v.05.00.01 r.18960 -
 
  IBZ Q-points :  13
  BZ  Q-points :   64
@@ -225,7 +225,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P Spin
   Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
- - S/N 002977 ---------------------------------------------- v.05.00.01 r.18938 -
+ - S/N 002977 ---------------------------------------------- v.05.00.01 r.18960 -
 
  [05] Bethe Salpeter Equation @q1
  ================================
@@ -239,7 +239,7 @@
   [BSK]         (total):  1024
   [BSK] Matricies      :  1
 
-  [05.02] Independent Particles absorption @q1
+  [05.02] Independent Particles properties @q1
   ============================================
 
 
@@ -260,7 +260,7 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P Spin
    Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-  - S/N 002977 ---------------------------------------------- v.05.00.01 r.18938 -
+  - S/N 002977 ---------------------------------------------- v.05.00.01 r.18960 -
 
   [05.03] BSE Kernel @q1 (Resonant EXCHANGE)
   ==========================================
@@ -280,7 +280,7 @@
    BS kernel          wavefunctions                 : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    Static diel. fun.  energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   3866
+   [K] Identifier                                   :   3856
    [K] Dimension                                    :  1024
    [K] Bands                                        :   3  10
    [K] Exchange                                     : yes
@@ -294,7 +294,7 @@
    [K] E/h energy range                             : -1.000000 -1.000000 ev
    [K] Coupling range                               :  100.0000  100.0000 o/o
    [IO] Kernel triangular                           : no
-  - S/N 002977 ---------------------------------------------- v.05.00.01 r.18938 -
+  - S/N 002977 ---------------------------------------------- v.05.00.01 r.18960 -
    Kernel cutoff                                    :  0.000000
    Kernel maxval                                    :  0.000000
    Kernel complete                                  : no
@@ -311,7 +311,7 @@
 
   [WR./04_MAGNONS_Hartree//ndb.BS_diago_Q1]---------------------------------------
    BS kernel          energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   3866
+   [K] Identifier                                   :   3856
    [K] Dimension                                    :  1024
    [K] Bands                                        :   3  10
    [K] Exchange                                     : yes
@@ -329,9 +329,9 @@
    |Field direction                                 :   0.00000     0.100000E-4   0.00000   
    |Eigenstates computed                            :  1024
    |Number of BSE matricies                         :  1
-  - S/N 002977 ---------------------------------------------- v.05.00.01 r.18938 -
+  - S/N 002977 ---------------------------------------------- v.05.00.01 r.18960 -
 
- Timing [Min/Max/Average]: 12s/12s/12s
+ Timing [Min/Max/Average]: 41s/41s/41s
 
  [07] Timing Overview
  ====================
@@ -340,41 +340,50 @@
                     BSE matrix (REDUX) :      0.0000s CPU
                       io_ATMPROJ_pwscf :      0.0000s CPU
                           io_KB_abinit :      0.0000s CPU
-                            io_COL_CUT :      0.0000s CPU
-                                 io_HF :      0.0000s CPU
-                        io_Double_Grid :      0.0000s CPU
-                BSE components folding :      0.0000s CPU
-                                  io_X :      0.0001s CPU ( 4 calls,   0.013 msec avg)
-               IO_and_Messaging_switch :      0.0001s CPU (47 calls,   0.002 msec avg)
-                          PP_uspp_init :      0.0002s CPU (23 calls,   0.009 msec avg)
-                           io_KB_pwscf :      0.0014s CPU (13 calls,   0.104 msec avg)
-                              io_QINDX :      0.0044s CPU ( 2 calls,   2.194 msec avg)
-                               io_GROT :      0.0045s CPU ( 2 calls,   2.228 msec avg)
-                    BSE matrix filling :      0.0054s CPU
-                          io_BSS_diago :      0.0056s CPU ( 2 calls,   2.820 msec avg)
-                             FFT_setup :      0.0107s CPU (12 calls,   0.889 msec avg)
-                            io_DIPOLES :      0.0169s CPU (30 calls,   0.564 msec avg)
-                           io_fragment :      0.0236s CPU (44 calls,   0.536 msec avg)
-                                 io_BS :      0.0252s CPU (67 calls,   0.375 msec avg)
-                           WF_load_FFT :      0.0433s CPU (23 calls,   1.882 msec avg)
-                                 io_WF :      0.0614s CPU (80 calls,   0.767 msec avg)
-                      T_space EXX Osc. :      0.0766s CPU (11 calls,   6.968 msec avg)
-                            T_space IP :      0.1224s CPU
-                     DIPOLE_transverse :      0.1963s CPU
-                               Dipoles :      0.2455s CPU
-      SERIAL_HERMITIAN_diagonalization :      4.6052s CPU
-                        LINEAR ALGEBRA :      4.6052s CPU
-                          Diago Solver :      5.0668s CPU
-                      X T_space Kernel :      7.4686s CPU
+                            io_COL_CUT :      0.0001s CPU
+                BSE components folding :      0.0001s CPU
+                                 io_HF :      0.0001s CPU
+                        io_Double_Grid :      0.0001s CPU
+               IO_and_Messaging_switch :      0.0002s CPU (47 calls,   0.004 msec avg)
+                                  io_X :      0.0002s CPU ( 4 calls,   0.049 msec avg)
+                          PP_uspp_init :      0.0005s CPU (23 calls,   0.020 msec avg)
+                           io_KB_pwscf :      0.0035s CPU (13 calls,   0.271 msec avg)
+                          io_BSS_diago :      0.0101s CPU ( 2 calls,   5.046 msec avg)
+                    BSE matrix filling :      0.0104s CPU
+                               io_GROT :      0.0130s CPU ( 2 calls,   6.502 msec avg)
+                              io_QINDX :      0.0132s CPU ( 2 calls,   6.586 msec avg)
+                             FFT_setup :      0.0207s CPU (12 calls,   1.724 msec avg)
+                            io_DIPOLES :      0.0318s CPU (30 calls,   1.062 msec avg)
+                           io_fragment :      0.0440s CPU (44 calls,   1.000 msec avg)
+                                 io_BS :      0.0446s CPU (67 calls,   0.665 msec avg)
+                           WF_load_FFT :      0.0809s CPU (23 calls,   3.519 msec avg)
+                                 io_WF :      0.1161s CPU (80 calls,   1.451 msec avg)
+                      T_space EXX Osc. :      0.1457s CPU (11 calls,  13.247 msec avg)
+                            T_space IP :      0.1709s CPU
+                     DIPOLE_transverse :      0.8396s CPU
+                               Dipoles :      0.9525s CPU
+                      X T_space Kernel :     20.2247s CPU
+      SERIAL_HERMITIAN_diagonalization :     20.2435s CPU
+                        LINEAR ALGEBRA :     20.2435s CPU
+                          Diago Solver :     20.8043s CPU
 
- [08] Game Over & Game summary
+ [08] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
+
+
+         Max memory used   :  43.28300 [Mb]
+
+ [09] Game Over & Game summary
  =============================
 
- 11/08/2020 at 20:55 yambo @ unimi-XPS-8930 [start]
- 11/08/2020 at 20:55                        [end]
+ 11/13/2020 at 18:20 yambo @ VivoBook [start]
+ 11/13/2020 at 18:21                  [end]
 
- Timing   [Min/Max/Average]: 12s/12s/12s
-             [Time-Profile]: 12s
+ Timing   [Min/Max/Average]: 42s/42s/42s
+             [Time-Profile]: 42s
 
  .-ACKNOWLEDGMENT
  |
@@ -414,7 +423,7 @@
  | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
  | DipComputed= "R V P Spin"        # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx= 3151             RL    # [BSK] Exchange components
- | BSEprop= "magn"                  # [BSE] abs/kerr/magn/dichr trace
+ | BSEprop= "magn esrt"             # [BSE] abs/kerr/magn/dichr trace
  | % PL_weights
  |  1.000000 | 1.000000 | 1.000000 |        # [PL] [cc] Weights of the carthesian components of the emitted radiation
  | %
