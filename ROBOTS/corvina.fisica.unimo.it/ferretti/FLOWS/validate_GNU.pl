@@ -3,6 +3,7 @@
 @flow = (
 {
  ACTIVE      => "yes",
+ TESTS       => "all",
  CONFIG      => "gnu_SP.sh",
  KEYS        => "all hard",
 },
