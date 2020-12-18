@@ -35,8 +35,13 @@ $PATTERN[$N_PATTERNS][2]=".qp_gw_cohsex_gw_ppa";
 #
 $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-phonon-dynamics devel-rt-modularization devel-rt-modularization-merge";
-$PATTERN[$N_PATTERNS][1]=".qp_gw_ppa";
-$PATTERN[$N_PATTERNS][2]=".qp_gw_cohsex_gw_ppa";
+$PATTERN[$N_PATTERNS][1]="part1.qp_gw_ppa";
+$PATTERN[$N_PATTERNS][2]="part1.qp_gw_cohsex_gw_ppa";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-phonon-dynamics devel-rt-modularization devel-rt-modularization-merge";
+$PATTERN[$N_PATTERNS][1]="part2.qp_gw_ppa";
+$PATTERN[$N_PATTERNS][2]="part2.qp_gw_cohsex_gw_ppa";
 #
 @patts1 = qw(1 2);
 @patts2 = qw(UP DN);
