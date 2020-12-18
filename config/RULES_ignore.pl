@@ -26,43 +26,43 @@
 #
 $N_IGNORE=0;
 #
-@IGNORE_BRANCHES="devel-phonon-dynamics devel-rt-modularization-merge";
+#@IGNORE_BRANCHES="devel-phonon-dynamics devel-rt-modularization-merge";
 #
-for $branch (@IGNORE_BRANCHES) {
-@PATTS = qw(02_carriers_Fermi_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_Fermi_fit_DB.YPP-RT_EP_Hole_abs 02_carriers_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_fit_DB.YPP-RT_EP_Hole_abs);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="$branch";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="Si_bulk/RT"};
+#for $branch (@IGNORE_BRANCHES) {
+#@PATTS = qw(02_carriers_Fermi_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_Fermi_fit_DB.YPP-RT_EP_Hole_abs 02_carriers_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_fit_DB.YPP-RT_EP_Hole_abs);
+#for $patt (@PATTS) {$N_IGNORE++;
+#$IGNORE_branch[$N_IGNORE]="$branch";
+#$IGNORE_file[$N_IGNORE]="$patt";
+#$IGNORE_test[$N_IGNORE]="Si_bulk/RT"};
 #
-@PATTS = qw(o-13_occ-data.YPP-RT_EP_Elec_abs_linewidths o-13_occ-data.YPP-RT_EP_Hole_abs_linewidths);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="$branch";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="hBN/RT"};
+#@PATTS = qw(o-13_occ-data.YPP-RT_EP_Elec_abs_linewidths o-13_occ-data.YPP-RT_EP_Hole_abs_linewidths);
+#for $patt (@PATTS) {$N_IGNORE++;
+#$IGNORE_branch[$N_IGNORE]="$branch";
+#$IGNORE_file[$N_IGNORE]="$patt";
+#$IGNORE_test[$N_IGNORE]="hBN/RT"};
 #
-@PATTS = qw( o-07_Fermi-occ-fit.YPP-RT_EP_Elec_abs_linewidths o-07_Fermi-occ-fit.YPP-RT_EP_Hole_abs_linewidths);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="$branch";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="MoS2/pwscf/RT"};
+#@PATTS = qw( o-07_Fermi-occ-fit.YPP-RT_EP_Elec_abs_linewidths o-07_Fermi-occ-fit.YPP-RT_EP_Hole_abs_linewidths);
+#for $patt (@PATTS) {$N_IGNORE++;
+#$IGNORE_branch[$N_IGNORE]="$branch";
+#$IGNORE_file[$N_IGNORE]="$patt";
+#$IGNORE_test[$N_IGNORE]="MoS2/pwscf/RT"};
 #
-@PATTS = qw(02_carriers_Fermi_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_Fermi_fit_DB.YPP-RT_EP_Hole_abs 02_carriers_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_fit_DB.YPP-RT_EP_Hole_abs);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="$branch";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="Si_bulk/RT"};
+#@PATTS = qw(02_carriers_Fermi_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_Fermi_fit_DB.YPP-RT_EP_Hole_abs 02_carriers_fit_DB.YPP-RT_EP_Elec_abs 02_carriers_fit_DB.YPP-RT_EP_Hole_abs);
+#for $patt (@PATTS) {$N_IGNORE++;
+#$IGNORE_branch[$N_IGNORE]="$branch";
+#$IGNORE_file[$N_IGNORE]="$patt";
+#$IGNORE_test[$N_IGNORE]="Si_bulk/RT"};
 #
-@PATTS = qw(o-13_occ-data.YPP-RT_EP_Elec_abs_linewidths o-13_occ-data.YPP-RT_EP_Hole_abs_linewidths);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="$branch";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="hBN/RT"};
+#@PATTS = qw(o-13_occ-data.YPP-RT_EP_Elec_abs_linewidths o-13_occ-data.YPP-RT_EP_Hole_abs_linewidths);
+#for $patt (@PATTS) {$N_IGNORE++;
+#$IGNORE_branch[$N_IGNORE]="$branch";
+#$IGNORE_file[$N_IGNORE]="$patt";
+#$IGNORE_test[$N_IGNORE]="hBN/RT"};
 #
-@PATTS = qw( o-07_Fermi-occ-fit.YPP-RT_EP_Elec_abs_linewidths o-07_Fermi-occ-fit.YPP-RT_EP_Hole_abs_linewidths);
-for $patt (@PATTS) {$N_IGNORE++;
-$IGNORE_branch[$N_IGNORE]="$branch";
-$IGNORE_file[$N_IGNORE]="$patt";
-$IGNORE_test[$N_IGNORE]="MoS2/pwscf/RT"};
-}
+#@PATTS = qw( o-07_Fermi-occ-fit.YPP-RT_EP_Elec_abs_linewidths o-07_Fermi-occ-fit.YPP-RT_EP_Hole_abs_linewidths);
+#for $patt (@PATTS) {$N_IGNORE++;
+#$IGNORE_branch[$N_IGNORE]="$branch";
+#$IGNORE_file[$N_IGNORE]="$patt";
+#$IGNORE_test[$N_IGNORE]="MoS2/pwscf/RT"};
+#}
 #
