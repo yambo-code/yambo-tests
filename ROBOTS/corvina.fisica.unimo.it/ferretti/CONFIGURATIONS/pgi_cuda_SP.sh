@@ -1,11 +1,11 @@
 #!/bin/bash
 
-source /opt/modules/init/modules_init.sh
-module purge
-module load profile/pgi
-
-export CUDA_VISIBLE_DEVICES=0,1
-export OMP_NUM_THREADS=1
+#source /opt/modules/init/modules_init.sh
+#module purge
+#module load profile/pgi
+#
+#export CUDA_VISIBLE_DEVICES=0,1
+#export OMP_NUM_THREADS=1
 
 ./configure \
  FC=pgfortran \
