@@ -119,9 +119,7 @@ if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $is_NEW_dr
 undef $is_PAR_SETUP;
 if ($pattern=~m/devel-phonon-dynamics/ix) {$is_PAR_SETUP=1;};
 #
-undef $is_NEW_scatt;
-if ($pattern=~m/devel-phonon-dynamics/ix) {$is_NEW_scatt=1;};
-if ($pattern=~m/devel-rt-modularization/ix) {$is_NEW_scatt=1;};
+$is_NEW_scatt=1;
 #
 undef $is_WF_convertion_free;
 if ($pattern=~m/devel-phonon-dynamics/ix) {$is_WF_convertion_free=1;};
