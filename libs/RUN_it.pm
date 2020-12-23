@@ -117,6 +117,9 @@ if ($system_error == 0) {
   my $msg = sprintf("%8.1f", $elapsed);
   &MESSAGE("LOG",$msg."s");
  }
+}elsif ($system_error == 256) {
+ my $msg = sprintf("%8.1f", $elapsed);
+ &MESSAGE("LOG",$msg."s [WARNING Exit Code 256]");
 }else{
  $CHECK_error="FAILED (exit code $system_error)";
  &RUN_stats("NOT_RUN");
