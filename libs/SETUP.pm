@@ -66,7 +66,6 @@ if ("$what" eq "BASIC") {
  $exec_nl   = " yambo_nl ypp_nl";
  $exec_rt   = " yambo_rt ypp_rt";
  $exec_elph = " yambo_ph ypp_ph";
- $exec_kerr = " yambo_kerr";
  $exec_ph_dyn = " yambo_ph_dyn";
  #
  # Off's 
