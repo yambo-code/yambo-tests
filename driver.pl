@@ -190,8 +190,12 @@ if ($clean and $backup_logs eq "no" and not $RUNNING_suite){
  if (not $ROBOT_id) {&UTILS_clean("BINs")};
  print "... test databases outputs logfiles bin(s)";
  if ($clean > 1) {
-  &UTILS_clean("DEEP");
-  print "... core databases";
+  print "... core databases ...";
+  &UTILS_clean("CORE");
+  print "... .tar.gz ...";
+  &UTILS_clean("TARGZ");
+  print "... pwscf/abinit ...";
+  &UTILS_clean("DFT");
  }
  print "\nCleaning done.\n";
  exit;
