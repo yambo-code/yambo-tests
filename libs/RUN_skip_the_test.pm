@@ -34,7 +34,6 @@ if ( "@_" eq "DIR" ){
  if ($project eq "nopj" ) {
   if ( $ANY eq "YES" ) {$message=" skipped (PJ-restricted)"};
  } elsif ($project ne "all") {
-  if (-e "PL" && $project !~ /pl/) { $message=" skipped (wrong PJ)"};
   if (-e "NL" && $project !~ /nl/) {$message=" skipped (wrong PJ)"};
   if (-e "NL" && not $do_NL_tests ) {$message=" skipped (wrong BRANCH)"};
   if (-e "QED" && $project !~ /qed/) {$message=" skipped (wrong PJ)"};
@@ -42,7 +41,6 @@ if ( "@_" eq "DIR" ){
   if (-e "ELPH" && $project !~ /elph/) {$message=" skipped (wrong PJ)"};
   if (-e "SC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
   if (-e "MAGNETIC" && $project !~ /magnetic/) {$message=" skipped (wrong PJ)"};
-  if (-e "KERR" && $project !~ /kerr/) {$message=" skipped (wrong PJ)"};
   if (-e "P2Y" && $project !~ /p2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && $project !~ /a2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && not $do_A2Y_tests) {$message=" skipped (wrong BRANCH)"};
@@ -50,7 +48,7 @@ if ( "@_" eq "DIR" ){
   #
  }
  if ($is_GPL) {
-  if (( -e "SC" or -e "MAGNETIC" or -e "QED" or -e "PL" or -e "NO_GPL") ) {$message=" skipped (GPL-PJ-restricted)"};
+  if (( -e "NO_GPL") ) {$message=" skipped (GPL-restricted)"};
  }
  if (!-e "SAVE/ns.db1" and !-e "SAVE_backup/ns.db1" and not (-e "P2Y" or -e "A2Y")) { $message=" skipped (missing CORE databases)"};
  if (-e "EMPTY" ) {$message=" (empty)"};
@@ -161,7 +159,7 @@ return "OK";
 #
 }
 sub ANY_project{
- if (-e "KERR" or -e "RT" or -e "ELPH" or -e "SC" or -e "MAGNETIC" or -e "QED" or -e "PL" or -e "NL" or -e "P2Y" or -e "A2Y" )  {
+ if (-e "RT" or -e "ELPH" or -e "SC" or -e "MAGNETIC" or -e "QED" or -e "NL" or -e "P2Y" or -e "A2Y" )  {
   return "YES";
  }else{
   return "NO";

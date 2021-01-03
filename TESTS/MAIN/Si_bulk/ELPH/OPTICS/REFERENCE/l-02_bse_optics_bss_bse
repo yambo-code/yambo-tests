@@ -1,90 +1,59 @@
 
 
- __    __ ______           ____     _____
-/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
-\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
- `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
-   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
-     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
-      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
+ __   __  _______  __   __  _______  _______
+|  | |  ||   _   ||  |_|  ||  _    ||       |
+|  |_|  ||  |_|  ||       || |_|   ||   _   |
+|       ||       ||       ||       ||  | |  |
+|_     _||       ||       ||  _   | |  |_|  |
+  |   |  |   _   || ||_|| || |_|   ||       |
+  |___|  |__| |__||_|   |_||_______||_______|
 
 
- <---> [01] CPU structure, Files & I/O Directories
+ <---> [01] MPI/OPENMP structure, Files & I/O Directories
  <---> [02] CORE Variables Setup
  <---> [02.01] Unit cells
  <---> [02.02] Symmetries
- <---> [02.03] RL shells
+ <---> [02.03] Reciprocal space
  <---> [02.04] K-grid lattice
- <---> Grid dimensions               : 12  12  12
- <---> [02.05] Energies [ev] & Occupations
+ <---> Grid dimensions      :  12  12  12
+ <---> [02.05] Energies & Occupations
  <---> [03] Transferred momenta grid
- <---> [RL indx] Q-grid:User defined / from ndb.kindx.
+ <---> [RL indx] Q-gridUser defined / from ndb.kindx.
  <---> X indexes |                                        | [000%] --(E) --(X)
  <---> X indexes |########################################| [100%] --(E) --(X)
  <---> SE indexes |                                        | [000%] --(E) --(X)
  <---> SE indexes |########################################| [100%] --(E) --(X)
- <---> [03.01] External/Internal QP corrections
- <---> [04] Dipoles
+ <---> [04] External/Internal QP corrections
+ <---> [QP_apply] Action to be applied: USER defined scissor
+ <---> [04.01]  QP corrections report
+ <---> [01] Dipoles
  <---> [DIP] Checking dipoles header
  <---> [WARNING] Missing non-local pseudopotential contribution
- <---> [05] Bethe Salpeter Equation @q1
- <---> [05.01] Transition Groups build-up @q1
- <---> [BSK] Size (resonant) 1728
- <---> [BSK]         (total) 1728
- <---> [05.02] Independent Particles absorption @q1
+ <---> [02] Bethe Salpeter Equation @q1
+ <---> [02.01] Transition Groups build-up @q1
+ <---> [BSK] Size (resonant):  1728
+ <---> [BSK]         (total):  1728
+ <---> [02.02] Independent Particles absorption @q1
  <---> [DIP] Checking dipoles header
- <---> [05.03] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
- <---> [05.03.01] Screened interaction header I/O
- <---> [WF-BSK] Performing Wave-Functions I/O from ./SAVE
- <---> [FFT-BSK] Mesh size: 12  12  12
- <---> [05.03.02] Wave-Function Phases
- <---> [05.03.03] Main kernel loop
+ <---> [02.03] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
+ <---> [02.03.01] Screened interaction header I/O
+ <---> [FFT-BSK] Mesh size:  12  12  12
+ <---> [02.03.02] Wave-Function Phases
+ <---> [02.03.03] Main kernel loop
+ <---> BSE file not found. Creating an empty one.
  <---> Kernel |                                        | [000%] --(E) --(X)
- <05s> Kernel |################                        | [041%] 05s(E) 12s(X)
- <10s> Kernel |###################################     | [088%] 10s(E) 11s(X)
- <11s> Kernel |########################################| [100%] 11s(E) 11s(X)
- <11s> [05.04] BSE solver(s) @q1
- <11s> [LA] SERIAL linear algebra
- <11s> [05.04.01] Inversion Solver @q1
- <12s> IP Absorption |                                        | [000%] --(E) --(X)
- <12s> IP Absorption |########################################| [100%] --(E) --(X)
- <12s> Shifted GF and Absorption |                                        | [000%] --(E) --(X)
- <12s> Shifted GF and Absorption |########################################| [100%] --(E) --(X)
- <12s> Perturbative inversion |                                        | [000%] --(E) --(X)
- <14s> Perturbative inversion |########################################| [100%] 02s(E) 02s(X)
- <14s> [PERTURBATIVE INV@EPS] Converged frequencies :  80
- <14s> [06] Timing Overview
- <14s> [TIMING]                                   io_WF :    0.0010 s CPU (          31 calls,    0.0000 s avg)
- <14s> [TIMING]                                 io_GROT :    0.0014 s CPU (           2 calls,    0.0007 s avg)
- <14s> [TIMING]                                io_QINDX :    0.0230 s CPU (           3 calls,    0.0077 s avg)
- <14s> [TIMING]                              io_COL_CUT :    0.0000 s CPU
- <14s> [TIMING]                                   io_HF :    0.0001 s CPU
- <14s> [TIMING]                              io_DIPOLES :    0.0046 s CPU (          31 calls,    0.0001 s avg)
- <14s> [TIMING]                             io_KB_pwscf :    0.0000 s CPU
- <14s> [TIMING]                            io_KB_abinit :    0.0000 s CPU
- <14s> [TIMING]                        io_ATMPROJ_pwscf :    0.0000 s CPU
- <14s> [TIMING]                                    io_X :    0.0071 s CPU (          50 calls,    0.0001 s avg)
- <14s> [TIMING]                             io_fragment :    0.0054 s CPU (          74 calls,    0.0001 s avg)
- <14s> [TIMING]                                   io_BS :    0.1175 s CPU (         409 calls,    0.0003 s avg)
- <14s> [TIMING]                                 io_ELPH :    0.0001 s CPU (           2 calls,    0.0000 s avg)
- <14s> [TIMING]                          io_Double_Grid :    0.0001 s CPU
- <14s> [TIMING]                         bz_samp_indexes :    0.3003 s CPU
- <14s> [TIMING]                                 Dipoles :    0.0008 s CPU
- <14s> [TIMING]                          eval_G_minus_G :    0.0005 s CPU
- <14s> [TIMING]                 IO_and_Messaging_switch :    0.0000 s CPU (           3 calls,    0.0000 s avg)
- <14s> [TIMING]                              T_space IP :    0.0054 s CPU
- <14s> [TIMING]                            scatter_Gamp :    0.0006 s CPU (          44 calls,    0.0000 s avg)
- <14s> [TIMING]                        X T_space Kernel :   11.5191 s CPU
- <14s> [TIMING]                               FFT_setup :    0.0025 s CPU
- <14s> [TIMING]                            PP_uspp_init :    0.0000 s CPU
- <14s> [TIMING]                             WF_load_FFT :    0.0023 s CPU
- <14s> [TIMING]                             K_WF_phases :    0.0323 s CPU
- <14s> [TIMING]                        T_space EXX Osc. :    0.0070 s CPU (          28 calls,    0.0003 s avg)
- <14s> [TIMING]                       T_space CORR Osc. :    3.2816 s CPU (         406 calls,    0.0081 s avg)
- <14s> [TIMING]                        Inversion Solver :    2.9693 s CPU
- <14s> [TIMING]                           io_BSS_invert :    0.0022 s CPU (           3 calls,    0.0007 s avg)
- <14s> [TIMING]                  BSE components folding :    0.0001 s CPU
- <14s> [TIMING]                      BSE matrix filling :    0.0383 s CPU
- <14s> [TIMING]                      BSE matrix (REDUX) :    0.0000 s CPU
- <14s> [07] Game Over & Game summary
- <14s> [TIMING]            [Time-Profile]: 14s
+ <05s> Kernel |###############################         | [078%] 05s(E) 06s(X)
+ <06s> Kernel |########################################| [100%] 06s(E) 06s(X)
+ <06s> [02.04] BSE solver(s) @q1
+ <06s> [LA] SERIAL linear algebra
+ <06s> [02.05] Inversion Solver @q1
+ <07s> IP Absorption |                                        | [000%] --(E) --(X)
+ <07s> IP Absorption |########################################| [100%] --(E) --(X)
+ <07s> Shifted GF and Absorption |                                        | [000%] --(E) --(X)
+ <07s> Shifted GF and Absorption |########################################| [100%] --(E) --(X)
+ <07s> Perturbative inversion |                                        | [000%] --(E) --(X)
+ <08s> Perturbative inversion |########################################| [100%] --(E) --(X)
+ <08s> [PERTURBATIVE INV@EPS] Converged frequencies :   80
+ <08s> [03] Timing Overview
+ <08s> [04] Game Over & Game summary
+ <08s> [TIMING]            [Time-Profile]: 08s

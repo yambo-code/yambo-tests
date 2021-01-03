@@ -56,14 +56,6 @@ if (-e "QED" && !$YPP=="1" && !$is_GPL) {
  $yambo_running=1;
  $yambo_exec = "$conf_bin/yambo_qed"
 }
-if (-e "PL" && !$is_GPL) {
- undef $yambo_running;
- if ($YPP_RT=="1" or $YPP=="1") 
-  {$yambo_exec = "$conf_bin/ypp_rt"}  
- else
-  {$yambo_exec = "$conf_bin/yambo_pl";
-   $yambo_running=1}
-}
 if (-e "NL") {
  undef $yambo_running;
  if ($YPP_NL=="1" or $YPP=="1") 
@@ -95,10 +87,6 @@ if (-e "MAGNETIC" && !$is_GPL) {
  else
   {$yambo_exec = "$conf_bin/yambo_magnetic";
    $yambo_running=1}
-}
-if (-e "KERR"  && !$YPP=="1") {
- $yambo_exec = "$conf_bin/yambo_kerr";
- $yambo_running=1
 }
 if ($CHEERS =="1") {
  undef $yambo_running;
