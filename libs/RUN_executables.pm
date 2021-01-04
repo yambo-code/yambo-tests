@@ -83,9 +83,9 @@ if (-e "SC" && !$is_GPL) {
 if (-e "MAGNETIC" && !$is_GPL) {
  undef $yambo_running;
  if ($YPP_MAGNETIC=="1" or $YPP=="1") 
-  {$yambo_exec = "$conf_bin/ypp_magnetic"}
+  {$yambo_exec = "$conf_bin/ypp_sc"}
  else
-  {$yambo_exec = "$conf_bin/yambo_magnetic";
+  {$yambo_exec = "$conf_bin/yambo_sc";
    $yambo_running=1}
 }
 if ($CHEERS =="1") {

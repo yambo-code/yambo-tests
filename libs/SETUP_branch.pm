@@ -142,7 +142,6 @@ if ($project =~ /sc/ or $project eq "all")       { $target_list .= $exec_sc; $ex
 if ($project =~ /rt/ or $project eq "all")       { $target_list .= $exec_rt; $exec_list  .= $exec_rt};
 if ($project =~ /elph/ or $project eq "all")     { $target_list .= $exec_elph; $exec_list  .= $exec_elph};
 if ($project =~ /phel/ or $project eq "all")     { $target_list .= $exec_phel; $exec_list  .= $exec_phel};
-if ($project =~ /magnetic/ or $project eq "all") { $target_list .= $exec_magn; $exec_list   .= $exec_magn};
 if (($project =~ /nl/ or $project eq "all" ) and $do_NL_tests ) { $target_list .= $exec_nl; $exec_list  .= $exec_nl};
 #
 return "OK";
