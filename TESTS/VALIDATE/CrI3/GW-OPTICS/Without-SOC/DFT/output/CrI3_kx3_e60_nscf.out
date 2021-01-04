@@ -1,5 +1,5 @@
 
-     Program PWSCF v.6.5 starts on 10Dec2020 at 18:53:38 
+     Program PWSCF v.6.6 starts on 11Dec2020 at 16:49:43 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -12,6 +12,7 @@
      Parallel version (MPI), running on     1 processors
 
      MPI processes distributed on     1 nodes
+     Fft bands division:     nmany     =       1
      Waiting for input...
      Reading input from standard input
 
@@ -21,7 +22,8 @@
      Max angular momentum in pseudopotentials (lmaxx) =  3
 
      Atomic positions and unit cell read from directory:
-     ./CrI3_kx3_e60.save/                                                                                                                                                                                                                                            
+     ./CrI3_kx3_e60.save/
+     Atomic positions from file used, from input discarded
 
 
      Subspace diagonalization in iterative solution of the eigenvalue problem:
@@ -307,30 +309,30 @@ E_u    2.00 -1.00  0.00 -2.00  1.00  0.00
 
      Dynamical RAM for          nlocal pot:      96.16 MB
 
-     Dynamical RAM for                qrad:       5.02 MB
+     Dynamical RAM for                qrad:       2.49 MB
 
      Dynamical RAM for          rho,v,vnew:      69.56 MB
 
      Dynamical RAM for           G-vectors:      22.71 MB
 
-     Dynamical RAM for          h,s,v(r/c):       1.83 MB
+     Dynamical RAM for          h,s,v(r/c):       0.46 MB
 
      Dynamical RAM for          <psi|beta>:       0.11 MB
 
-     Dynamical RAM for                 psi:     133.55 MB
+     Dynamical RAM for                 psi:      66.78 MB
 
-     Dynamical RAM for                hpsi:     133.55 MB
+     Dynamical RAM for                hpsi:      66.78 MB
 
      Dynamical RAM for      wfcinit/wfcrot:      66.83 MB
 
-     Estimated static dynamical RAM per process >     291.05 MB
+     Estimated static dynamical RAM per process >     288.52 MB
 
-     Estimated max dynamical RAM per process >     560.09 MB
+     Estimated max dynamical RAM per process >     422.64 MB
+
+     Check: negative core charge=   -0.000002
      Generating pointlists ...
      new r_m :   0.1639 (alat units)  2.0799 (a.u.) for type    1
      new r_m :   0.1639 (alat units)  2.0799 (a.u.) for type    2
-
-     Check: negative core charge=   -0.000002
 
      The potential is recalculated from file :
      ./CrI3_kx3_e60.save/charge-density
@@ -341,26 +343,27 @@ E_u    2.00 -1.00  0.00 -2.00  1.00  0.00
      Davidson diagonalization with overlap
 
      Computing kpt #:     1  of     6
-     total cpu time spent up to now is       62.6 secs
+     total cpu time spent up to now is      100.4 secs
 
      Computing kpt #:     2  of     6
-     total cpu time spent up to now is      132.7 secs
+     total cpu time spent up to now is      205.5 secs
 
      Computing kpt #:     3  of     6
-     total cpu time spent up to now is      192.2 secs
+     total cpu time spent up to now is      292.7 secs
 
      Computing kpt #:     4  of     6
-     total cpu time spent up to now is      261.1 secs
+     total cpu time spent up to now is      376.3 secs
 
      Computing kpt #:     5  of     6
-     total cpu time spent up to now is      339.6 secs
+     c_bands:  1 eigenvalues not converged
+     total cpu time spent up to now is      483.8 secs
 
      Computing kpt #:     6  of     6
-     total cpu time spent up to now is      409.6 secs
+     total cpu time spent up to now is      566.3 secs
 
-     ethr =  1.43E-10,  avg # of iterations = 46.0
+     ethr =  1.43E-10,  avg # of iterations = 83.5
 
-     total cpu time spent up to now is      409.6 secs
+     total cpu time spent up to now is      566.3 secs
 
      End of band structure calculation
 
@@ -369,12 +372,12 @@ E_u    2.00 -1.00  0.00 -2.00  1.00  0.00
 
           k = 0.0000 0.0000 0.0000 ( 43743 PWs)   bands (ev):
 
-   -74.4528 -74.4513 -46.1827 -46.1817 -46.1719 -46.1719 -46.1669 -46.1669
-   -15.6311 -14.7576 -14.3973 -14.3973 -14.3014 -14.3014  -7.2039  -6.6966
-    -6.1520  -6.1520  -6.1406  -6.1406  -5.7151  -5.3392  -5.2455  -5.2455
-    -4.7972  -4.7972  -4.3914  -3.6147  -3.5731  -3.5731  -3.2852  -2.9386
-    -2.9386  -2.9203  -2.8400  -2.8400  -2.3751  -2.3751  -1.1134  -1.1134
-    -0.5960  -0.5960   2.2260   2.5997   2.8927   3.0498   3.1028   3.8325
+   -74.4531 -74.4515 -46.1830 -46.1819 -46.1721 -46.1721 -46.1672 -46.1672
+   -15.6311 -14.7576 -14.3973 -14.3973 -14.3014 -14.3014  -7.2040  -6.6966
+    -6.1520  -6.1520  -6.1407  -6.1407  -5.7151  -5.3392  -5.2456  -5.2456
+    -4.7972  -4.7972  -4.3914  -3.6147  -3.5731  -3.5731  -3.2854  -2.9388
+    -2.9388  -2.9205  -2.8401  -2.8401  -2.3751  -2.3751  -1.1135  -1.1135
+    -0.5961  -0.5961   2.2260   2.5996   2.8927   3.0498   3.1028   3.8325
      4.1831   4.2794
 
      occupation numbers 
@@ -388,12 +391,12 @@ E_u    2.00 -1.00  0.00 -2.00  1.00  0.00
 
           k = 0.0000 0.3849 0.0000 ( 43735 PWs)   bands (ev):
 
-   -74.4520 -74.4520 -46.1826 -46.1818 -46.1719 -46.1707 -46.1680 -46.1669
-   -15.3781 -14.7309 -14.6175 -14.4940 -14.3606 -14.3377  -7.2026  -6.5835
-    -6.3183  -6.1914  -6.0472  -5.6308  -5.6170  -5.2989  -5.2396  -4.9295
-    -4.5206  -4.4201  -4.3711  -4.1517  -3.8980  -3.7809  -3.2158  -3.2136
-    -3.0896  -2.8232  -2.8060  -2.7808  -2.5522  -2.3235  -1.0934  -0.9920
-    -0.9505  -0.8360   2.4324   2.9563   3.2197   3.4797   3.5162   3.7104
+   -74.4523 -74.4522 -46.1829 -46.1820 -46.1721 -46.1710 -46.1682 -46.1672
+   -15.3781 -14.7309 -14.6175 -14.4939 -14.3606 -14.3377  -7.2026  -6.5835
+    -6.3183  -6.1914  -6.0473  -5.6308  -5.6171  -5.2990  -5.2396  -4.9296
+    -4.5206  -4.4202  -4.3712  -4.1517  -3.8980  -3.7810  -3.2158  -3.2137
+    -3.0896  -2.8233  -2.8061  -2.7808  -2.5524  -2.3236  -1.0935  -0.9921
+    -0.9506  -0.8361   2.4324   2.9563   3.2197   3.4797   3.5162   3.7104
      3.7454   4.2714
 
      occupation numbers 
@@ -407,12 +410,12 @@ E_u    2.00 -1.00  0.00 -2.00  1.00  0.00
 
           k = 0.3333 0.5774 0.0000 ( 43680 PWs)   bands (ev):
 
-   -74.4517 -74.4517 -46.1822 -46.1822 -46.1721 -46.1692 -46.1692 -46.1664
-   -15.0219 -15.0219 -14.6662 -14.4509 -14.4509 -14.3774  -6.7182  -6.7182
-    -6.2940  -6.1203  -6.1203  -5.6600  -5.6600  -5.6361  -5.2746  -4.9509
-    -4.2703  -4.2703  -4.2366  -4.0227  -4.0227  -3.6586  -3.5298  -3.5298
-    -3.0198  -2.8278  -2.6387  -2.6387  -2.4750  -2.4750  -1.0427  -0.9000
-    -0.9000  -0.6669   2.3942   2.3942   3.0398   3.3593   3.3593   3.7367
+   -74.4520 -74.4520 -46.1825 -46.1825 -46.1723 -46.1695 -46.1695 -46.1667
+   -15.0219 -15.0219 -14.6662 -14.4509 -14.4509 -14.3773  -6.7182  -6.7182
+    -6.2940  -6.1203  -6.1203  -5.6601  -5.6601  -5.6361  -5.2747  -4.9509
+    -4.2703  -4.2703  -4.2366  -4.0228  -4.0228  -3.6586  -3.5298  -3.5298
+    -3.0200  -2.8280  -2.6388  -2.6388  -2.4751  -2.4751  -1.0428  -0.9001
+    -0.9001  -0.6670   2.3942   2.3942   3.0398   3.3593   3.3593   3.7367
      3.7367   3.9052
 
      occupation numbers 
@@ -429,12 +432,12 @@ E_u    2.00 -1.00  0.00 -2.00  1.00  0.00
 
           k = 0.0000 0.0000 0.0000 ( 43743 PWs)   bands (ev):
 
-   -71.6264 -71.6249 -43.3706 -43.3692 -43.3343 -43.3343 -43.3280 -43.3280
-   -15.5924 -14.7590 -14.3932 -14.3932 -14.2974 -14.2974  -6.9358  -6.4665
+   -71.6267 -71.6252 -43.3709 -43.3695 -43.3345 -43.3345 -43.3283 -43.3283
+   -15.5924 -14.7590 -14.3932 -14.3932 -14.2973 -14.2973  -6.9358  -6.4665
     -5.9723  -5.9723  -5.8635  -5.8635  -5.6173  -5.1462  -4.6122  -4.6122
     -4.3353  -4.3115  -4.3115  -3.6060  -3.1860  -3.1860  -2.5191  -2.5191
-    -0.7117  -0.6827  -0.6827  -0.6112  -0.3051  -0.3051   0.3409   0.3409
-     0.7006   0.7006   2.3162   2.8986   3.1087   3.1331   3.2140   3.9838
+    -0.7118  -0.6828  -0.6828  -0.6114  -0.3052  -0.3052   0.3408   0.3408
+     0.7005   0.7005   2.3162   2.8986   3.1086   3.1330   3.2140   3.9838
      4.2830   4.3124
 
      occupation numbers 
@@ -448,12 +451,12 @@ E_u    2.00 -1.00  0.00 -2.00  1.00  0.00
 
           k = 0.0000 0.3849 0.0000 ( 43735 PWs)   bands (ev):
 
-   -71.6256 -71.6256 -43.3705 -43.3694 -43.3343 -43.3329 -43.3293 -43.3280
-   -15.3441 -14.7171 -14.6178 -14.4912 -14.3572 -14.3312  -6.9682  -6.3506
-    -6.2103  -5.9684  -5.7873  -5.3555  -5.1703  -4.7755  -4.7530  -4.4441
+   -71.6259 -71.6258 -43.3707 -43.3696 -43.3345 -43.3331 -43.3295 -43.3283
+   -15.3441 -14.7171 -14.6177 -14.4912 -14.3572 -14.3312  -6.9682  -6.3506
+    -6.2103  -5.9684  -5.7873  -5.3555  -5.1703  -4.7755  -4.7530  -4.4442
     -4.2612  -4.1154  -4.0550  -3.9142  -3.6414  -3.3519  -3.1609  -2.8503
-    -0.8193  -0.7532  -0.4979  -0.3849  -0.3660  -0.2672   0.2803   0.3596
-     0.4985   0.5709   2.7907   3.0207   3.2731   3.6551   3.7181   3.8140
+    -0.8195  -0.7534  -0.4981  -0.3851  -0.3661  -0.2673   0.2802   0.3595
+     0.4984   0.5708   2.7907   3.0207   3.2731   3.6551   3.7181   3.8140
      3.8709   4.5076
 
      occupation numbers 
@@ -467,12 +470,12 @@ E_u    2.00 -1.00  0.00 -2.00  1.00  0.00
 
           k = 0.3333 0.5774 0.0000 ( 43680 PWs)   bands (ev):
 
-   -71.6254 -71.6254 -43.3699 -43.3699 -43.3345 -43.3309 -43.3309 -43.3273
+   -71.6256 -71.6256 -43.3702 -43.3702 -43.3348 -43.3312 -43.3312 -43.3276
    -14.9956 -14.9956 -14.6634 -14.4497 -14.4497 -14.3715  -6.4901  -6.4901
     -6.0138  -5.9369  -5.9369  -5.4454  -5.2694  -5.2694  -4.6837  -4.5968
     -3.9783  -3.9589  -3.9589  -3.5199  -3.5199  -3.4850  -3.1167  -3.1167
-    -0.8049  -0.8049  -0.6905  -0.5001  -0.2459  -0.2459   0.4389   0.4976
-     0.4976   0.6388   2.7198   2.7198   3.1472   3.6497   3.6497   3.9208
+    -0.8051  -0.8051  -0.6906  -0.5003  -0.2460  -0.2460   0.4388   0.4974
+     0.4974   0.6386   2.7198   2.7198   3.1472   3.6497   3.6497   3.9208
      3.9208   4.0399
 
      occupation numbers 
@@ -484,57 +487,57 @@ E_u    2.00 -1.00  0.00 -2.00  1.00  0.00
      0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000   0.0000
      0.0000   0.0000
 
-     highest occupied, lowest unoccupied level (ev):    -2.3235   -1.1134
+     highest occupied, lowest unoccupied level (ev):    -2.3236   -1.1135
 
      Writing output data file ./CrI3_kx3_e60.save/
 
-     init_run     :      1.06s CPU      1.13s WALL (       1 calls)
-     electrons    :    407.05s CPU    408.26s WALL (       1 calls)
+     init_run     :      0.98s CPU      1.03s WALL (       1 calls)
+     electrons    :    551.93s CPU    565.03s WALL (       1 calls)
 
      Called by init_run:
      wfcinit      :      0.00s CPU      0.00s WALL (       1 calls)
-     wfcinit:atom :      0.09s CPU      0.13s WALL (       6 calls)
-     wfcinit:wfcr :     17.12s CPU     17.21s WALL (       6 calls)
-     potinit      :      0.18s CPU      0.22s WALL (       1 calls)
-     hinit0       :      0.61s CPU      0.63s WALL (       1 calls)
+     wfcinit:atom :      0.08s CPU      0.12s WALL (       6 calls)
+     wfcinit:wfcr :     16.03s CPU     16.38s WALL (       6 calls)
+     potinit      :      0.19s CPU      0.22s WALL (       1 calls)
+     hinit0       :      0.66s CPU      0.67s WALL (       1 calls)
 
      Called by electrons:
-     c_bands      :    407.05s CPU    408.26s WALL (       1 calls)
-     v_of_rho     :      0.15s CPU      0.16s WALL (       1 calls)
-     v_h          :      0.02s CPU      0.03s WALL (       1 calls)
-     v_xc         :      0.13s CPU      0.13s WALL (       1 calls)
+     c_bands      :    551.93s CPU    565.03s WALL (       1 calls)
+     v_of_rho     :      0.13s CPU      0.16s WALL (       1 calls)
+     v_h          :      0.03s CPU      0.03s WALL (       1 calls)
+     v_xc         :      0.11s CPU      0.13s WALL (       1 calls)
 
      Called by c_bands:
-     init_us_2    :      0.13s CPU      0.14s WALL (       6 calls)
-     cegterg      :    388.80s CPU    389.76s WALL (      17 calls)
+     init_us_2    :      0.12s CPU      0.15s WALL (       6 calls)
+     cegterg      :    534.82s CPU    547.39s WALL (      28 calls)
 
      Called by sum_band:
 
      Called by *egterg:
-     h_psi        :    238.55s CPU    239.10s WALL (     299 calls)
-     g_psi        :      0.56s CPU      0.56s WALL (     276 calls)
-     cdiaghg      :      2.70s CPU      2.70s WALL (     282 calls)
-     cegterg:over :     70.93s CPU     70.93s WALL (     276 calls)
-     cegterg:upda :     51.70s CPU     51.92s WALL (     276 calls)
-     cegterg:last :     31.70s CPU     31.70s WALL (      35 calls)
+     cdiaghg      :      1.31s CPU      1.33s WALL (     507 calls)
+     cegterg:over :     69.51s CPU     70.91s WALL (     501 calls)
+     cegterg:upda :     37.02s CPU     38.00s WALL (     501 calls)
+     cegterg:last :     68.98s CPU     70.45s WALL (     155 calls)
+     h_psi        :    360.76s CPU    369.27s WALL (     535 calls)
+     g_psi        :      0.87s CPU      0.88s WALL (     501 calls)
 
      Called by h_psi:
-     h_psi:calbec :     50.86s CPU     50.87s WALL (     299 calls)
-     vloc_psi     :    136.96s CPU    137.10s WALL (     299 calls)
-     add_vuspsi   :     50.24s CPU     50.25s WALL (     299 calls)
+     h_psi:calbec :     71.81s CPU     73.16s WALL (     535 calls)
+     vloc_psi     :    228.09s CPU    233.61s WALL (     535 calls)
+     add_vuspsi   :     60.04s CPU     61.29s WALL (     535 calls)
 
      General routines
-     calbec       :     50.86s CPU     50.87s WALL (     299 calls)
-     fft          :      0.09s CPU      0.09s WALL (       5 calls)
-     fftw         :    126.01s CPU    126.12s WALL (   10198 calls)
+     calbec       :     71.81s CPU     73.16s WALL (     535 calls)
+     fft          :      0.11s CPU      0.11s WALL (       5 calls)
+     fftw         :    206.49s CPU    211.55s WALL (   16216 calls)
      davcio       :      0.01s CPU      0.12s WALL (      12 calls)
 
      Parallel routines
 
-     PWSCF        :   6m48.34s CPU   6m49.79s WALL
+     PWSCF        :   9m13.15s CPU   9m26.44s WALL
 
 
-   This run was terminated on:  19: 0:28  10Dec2020            
+   This run was terminated on:  16:59: 9  11Dec2020            
 
 =------------------------------------------------------------------------------=
    JOB DONE.

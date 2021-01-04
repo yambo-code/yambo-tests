@@ -1,0 +1,82 @@
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
+#                                                                     
+#      Version 5.0.0 Revision 19355 Hash c56584a64                    
+#                Branch is devel-magnons                              
+#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
+#               http://www.yambo-code.org                             
+#
+    0.89977252         0.79234502E-22    -0.15037154E-21
+    0.94446570         0.30146125E-10    -0.55984214E-15
+     4.8817730         0.22123976E-09    -0.36503803E-17
+     5.1040840         0.92199507E-23    -0.44744451E-23
+     5.2573781         0.56410810E-20     0.36905996E-15
+     5.3699503         0.10982688E-21    -0.87945136E-22
+     5.4146433         0.18042750E-20    -0.51315744E-15
+     5.4892440         0.95526796E-24    -0.80880471E-17
+     5.7115555         0.16689763E-22     0.32802887E-24
+     5.8648496         0.16169018E-09     0.41755871E-15
+     6.1003666         0.60194612E-22    -0.36339654E-22
+     6.1450591         0.15477969E-09    -0.42062256E-15
+     6.6123447         0.79962081E-23     0.54349657E-24
+     6.8064952         0.54576888E-24    -0.34342971E-24
+     6.8346558         0.68834362E-22     0.12425243E-17
+     6.8397627         0.29296609E-22     0.10689848E-17
+     6.8844562         0.69362891E-20     0.16246784E-20
+     6.9879498         0.23515513E-20    -0.61172218E-21
+     7.0050530         0.13793545E-12    -0.22904381E-17
+     7.0288062         0.97018388E-13    -0.21222946E-17
+     7.0497465         0.90197182E-22    -0.77899482E-21
+     7.1820998         0.11552691E-21    -0.51024793E-23
+# 
+# 01/04/2021 at 10:28 yambo @ unimi-XPS-8930 [start]
+# 01/04/2021 at 10:28                        [end]
+#
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | tddft                            # [R][K] Use TDDFT kernel
+# | ElecTemp= 0.025861         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | FFTGvecs=  9999            RL    # [FFT] Plane-waves
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "s"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 2003             RL    # [BSK] Exchange components
+# | BSEprop= "abs kerr dos esrt"     # [BSS] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |  12 | 18 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -10.00000 | 10.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 2001                   # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSSNEig= 15                      # [SLEPC] Number of eigenvalues to compute
+# | BSSEnTarget= 8.000000      eV    # [SLEPC] Target energy to find eigenvalues
+# | BSSSlepcApproach= "Krylov-Schur" # [SLEPC] Approach ("Krylov-Schur","Generalized-Davidson","Jacob-Davidson")
+# | BSSSlepcMaxIt= 1000              # [SLEPC] Maximum number of iterations
+# | BSSSlepcMatrix                 # [SLEPC] Store slepc matrix, faster but more memory consuming
