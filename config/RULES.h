@@ -21,6 +21,12 @@ call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
 call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
 call add_RULE(".ns.wf_fragments_1_1","skip",MATERIAL="MoS2")
 call add_RULE("Lifetimes.ndb.em1d_fragment","skip",MATERIAL="Al_bulk")
+
+!
+! NEW / EXPERIMENTAL output
+!===========================
+call add_RULE(".Esort_","skip",MATERIAL="Iron")
+call add_RULE(".E_IP_","skip",MATERIAL="Iron")
 !
 ! RT
 !====
