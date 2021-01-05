@@ -18,7 +18,7 @@
 {
  ACTIVE      => "yes",
  TESTS       => "all",
- CONFIG      => "pgi_cuda_internal_SP.sh",
+ CONFIG      => "nvidia_cuda_internal_SP.sh",
  KEYS        => "all hard",
  #KEYS        => "nopj",
 },
