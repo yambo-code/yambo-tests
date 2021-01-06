@@ -74,7 +74,7 @@ if ( "@_" eq "INPUT") {
  }
  #
  # SLEPC tests only if SLEPC is linked
- if ($testname =~ m/SLEPC/ && not $BUILD =~ /SLEPC/) { 
+ if ( ($testname =~ m/SLEPC/ || $testname =~ m/slepc/ ) && not $BUILD =~ /SLEPC/) { 
   my $msg = sprintf("%-"."$left_length"."s", "$testname");
   $CHECK_error= $msg." skipped (SLEPC test but SLEPC is not linked)";
   &RUN_stats("SKIPPED");
