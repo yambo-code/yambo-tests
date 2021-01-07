@@ -8,7 +8,7 @@ YAMBO_LIBS="/data/shared/yambo-libs/std-netcdf/"
 
 ./configure cc=gcc F77=gfortran FC=gfortran MPIFC=mpifort MPIF77=mpif77 MPICC=mpicc FCFLAGS="$FC_FLAGS_OPTIMIZED" \
 --enable-keep-src --enable-iotk --enable-msgs-comps  --enable-time-profile --enable-hdf5-par-io \
---enable-int-linalg --enable-slepc-linalg --enable-open-mp \
+--enable-dp --enable-int-linalg --enable-slepc-linalg --enable-open-mp \
 --with-extlibs-path="$YAMBO_LIBS"
 
 #--enable-par-linalg --enable-int-linalg --enable-slepc-linalg --enable-open-mp \

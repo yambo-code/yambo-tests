@@ -29,11 +29,11 @@ YAMBO_LIBS="/data/shared/yambo-libs/std-netcdf"
 #mpicc=/opt/pgi/openmpi/bin/mpicc
 #mpif90=/opt/pgi/openmpi/bin/mpif90
 
-mpicc="mpiccpgi"
-mpif90="mpif90pgi"
+mpicc="mpiccnv"
+mpif90="mpif90nv"
 
 ./configure \
---enable-cuda="cuda10.1,cc75" --enable-open-mp  \
+--enable-cuda="cuda11.0,cc75" --enable-open-mp  \
 CPP="gcc -E -P" FPP="gfortran -E -P -cpp" \
 CC=pgcc F77=pgfortran FC=pgfortran MPICC=$mpicc MPIFC=$mpif90 \
 FCFLAGS="-O2 -Munroll -Mnoframe -Mdalign -Mbackslash -fast" \
