@@ -73,6 +73,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "profile:s"      => \$profile,
             "cron:s"         => \$cron,
             "branch:s"       => \$user_branch,
+            "mpirun:s"       => \$user_mpirun,
             "module:s"       => \$user_module,
             "mode=s"         => \$mode
                       );

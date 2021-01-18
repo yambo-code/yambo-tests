@@ -39,14 +39,15 @@ if ("$what" eq "BASIC") {
  #
  # Initialize parallelism
  $mpiexec = ""; 
+ if($user_mpirun) {$mpiexec = $user_mpirun; } 
  if($np_min) { 
-  $mpiexec = "mpirun"; 
+  if(not $user_mpirun) { $mpiexec = "mpirun"; }
   for ($ic=$np_min; $ic<= $np_max ; $ic++){
    $NP_set[$ic-$np_min]=$ic;
   }
  }
  elsif($np_single) { 
-  $mpiexec = "mpirun"; 
+  if(not $user_mpirun) { $mpiexec = "mpirun"; }
   $NP_set[0]=$np_single;
  }
  else
