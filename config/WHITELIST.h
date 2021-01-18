@@ -58,6 +58,9 @@ call add_RULE("o-05_KERR_IP-RPA_len.moke_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_len.off_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.moke_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.off_q1_IP","whitelist",MATERIAL="Iron")
+! Noise due to sorting procedure
+call add_RULE(".Esort","whitelist")
+call add_RULE(".E_IP","whitelist")
 !
 ! QP
 !====
