@@ -1,27 +1,27 @@
 #                                                                     
-#  __  __   ________   ___ __ __    _______   ______                  
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
 #                                                                     
 #                                                                     
-#       Version 5.0.0 Revision 19355 Hash c56584a64                   
-#                 Branch is devel-magnons                             
-#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
-#                http://www.yambo-code.org                            
+#        Version 5.0.1 Revision 19408 Hash 346abf18c                  
+#                 Branch is devel-dichroism                           
+#            MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                       
+#                 http://www.yambo-code.org                           
 #
 #
 #
-# [K] Identifier                                  :   979
-# [K] Dimension                                   :   9
-# [K] Bands                                       :   2   7
+# [K] Identifier                                  :   536
+# [K] Dimension                                   :  12
+# [K] Bands                                       :   2   8
 # [K] Exchange                                    : yes
 # [K] Correlation                                 : yes
-# [K] Kernel`s coupling                           : no
-# [K] Exchange                                    : no
+# [K] Kernel`s coupling                           : yes
+# [K] Exchange                                    : yes
 # [K] Correlation                                 : no
 # [K] W interaction is bare                       : no
 # [K] ALDA kernel in R-space                      : no
@@ -36,7 +36,7 @@
 # [W] Poles                                       :   100.000000    [o/o]
 # [W] RL vectors in the sum                       :   3695
 # [W] [r,Vnl] included                            : yes
-# [W] Field direction                             :  0.577350269E-5  0.577350269E-5  0.577350269E-5
+# [W] Field direction                             :  0.577350283E-5  0.577350283E-5  0.577350283E-5
 # [W] Coulomb Cutoff                              : ws xyz
 # [W] xc-Kernel                                   : none
 # [RIM] RL components                             : 0 [col]
@@ -45,20 +45,35 @@
 #
 #
 #
-#    E [eV]             n_deg              abs                kerr
+#    Re(E) [eV]         Im(E) [eV]         n_deg              abs                kerr               dich
 #
-     3.1200441          1.0000000         0.55715880E-11    -0.17978187E-10
-     3.5941687          1.0000000         0.52507813E-10    -0.85717234E-11
-     4.2033784          1.0000000         0.43873175E-11     0.83554985E-11
-     6.4573721          1.0000000         0.97569069E-11     0.64390590E-11
-     6.8449651          1.0000000         0.78029186E-12     0.32384471E-11
-     7.3784850          1.0000000         0.13338347E-10     0.12784004E-10
-     7.8778080          1.0000000         0.42936144E-10     0.84857109E-11
-     8.4629206          1.0000000         0.41146177E-11    -0.34192823E-11
-     9.4312437          1.0000000         0.94950181E-10    -0.49639863E-10
+    -8.5363359        -0.41630375E-08      1.0000000        -0.18518468E-11     0.79331628E-11    -0.14855353E-03
+    -8.4632044         0.35680348E-07      1.0000000        -0.82328285E-11     0.57696140E-11    -0.13002093E-03
+    -7.9866729        -0.25333073E-07      1.0000000        -0.75480365E-10    -0.26389451E-11     0.33689308E-03
+    -7.8424754         0.49918680E-06      1.0000000        -0.18912250E-11     0.23301050E-12    -0.15561195E-03
+    -7.3895698         0.39540133E-07      1.0000000        -0.12108601E-11    -0.78519387E-11    -0.14217664E-03
+    -7.3768158        -0.83465011E-07      1.0000000        -0.12641009E-11     0.13023065E-11     0.10205885E-03
+    -7.3272347         0.67266548E-07      1.0000000        -0.12222371E-10    -0.38236653E-11     0.91833252E-04
+    -6.7834821         0.32858335E-06      1.0000000        -0.36974989E-12    -0.13814887E-11    -0.77475583E-04
+    -6.3655314        -0.53801635E-07      1.0000000        -0.84181342E-11    -0.51495626E-11     0.55242062E-03
+    -4.1481762        -0.83063662E-09      1.0000000        -0.27928317E-11    -0.72786863E-11     0.16629604E-03
+    -3.5171306         0.19089146E-06      1.0000000        -0.40934898E-10     0.64684401E-12    -0.43803971E-03
+    -2.8893857        -0.92328811E-08      1.0000000        -0.83141749E-11     0.19310255E-10     0.11644659E-03
+     2.8893871        -0.67010795E-07      1.0000000         0.83141480E-11    -0.19310204E-10    -0.11644398E-03
+     3.5171304        -0.10657534E-08      1.0000000         0.40934874E-10    -0.64696447E-12     0.43807062E-03
+     4.1481771         0.48143778E-09      1.0000000         0.27928946E-11     0.72787314E-11    -0.16630284E-03
+     6.3655286        -0.75283106E-06      1.0000000         0.84182643E-11     0.51496220E-11    -0.55237312E-03
+     6.7834754         0.95372492E-08      1.0000000         0.36980410E-12     0.13816138E-11     0.77436212E-04
+     7.3272271         0.10778437E-06      1.0000000         0.12221774E-10     0.38227234E-11    -0.91965412E-04
+     7.3768144         0.12634622E-06      1.0000000         0.12648773E-11    -0.13009231E-11    -0.10189838E-03
+     7.3895717         0.64716758E-07      1.0000000         0.12107955E-11     0.78515805E-11     0.14216460E-03
+     7.8424721         0.24319218E-06      1.0000000         0.18914555E-11    -0.23303253E-12     0.15550554E-03
+     7.9866729        -0.10411965E-06      1.0000000         0.75480011E-10     0.26381803E-11    -0.33684040E-03
+     8.4632063        -0.26822375E-08      1.0000000         0.82332760E-11    -0.57709701E-11     0.13000771E-03
+     8.5363388        -0.17428265E-07      1.0000000         0.18512145E-11    -0.79312624E-11     0.14856909E-03
 # 
-# 01/04/2021 at 15:46 yambo @ unimi-XPS-8930 [start]
-# 01/04/2021 at 15:46                        [end]
+# 01/15/2021 at 14:46 yambo @ unimi-XPS-8930 [start]
+# 01/15/2021 at 14:46                        [end]
 #
 # .-Input file  yambo.in
 # | rim_cut                          # [R] Coulomb potential
@@ -85,11 +100,11 @@
 # | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
 # | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
-# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+# | BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
 # | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 # | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
 # | % DipBands
-# |   2 |  7 |                           # [DIP] Bands range for dipoles
+# |   2 |  8 |                           # [DIP] Bands range for dipoles
 # | %
 # | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
 # | BSENGexx=  4067            RL    # [BSK] Exchange components
@@ -98,12 +113,12 @@
 # | % KfnQP_E
 # |  3.400000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
 # | %
-# | BSEprop= "abs kerr esrt"         # [BSS] abs/kerr/magn/dichr trace
+# | BSEprop= "abs kerr dich esrt"    # [BSS] abs/kerr/magn/dichr trace
 # | % BSEQptR
 # |  1 | 1 |                             # [BSK] Transferred momenta range
 # | %
 # | % BSEBands
-# |   2 |  7 |                           # [BSK] Bands range
+# |   2 |  8 |                           # [BSK] Bands range
 # | %
 # | % BEnRange
 # | -20.00000 | 20.00000 |         eV    # [BSS] Energy range
@@ -117,7 +132,6 @@
 # | %
 # | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
 # | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
-# | BSHayItrMAX= 200                 # [BSS] MaX number of Haydock iterations.
 # | % BndsRnXs
 # |   1 | 20 |                           # [Xs] Polarization function bands
 # | %

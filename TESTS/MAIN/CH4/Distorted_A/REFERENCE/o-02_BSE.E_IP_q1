@@ -1,36 +1,33 @@
 #                                                                     
-#   __   __     _        __  __       ____      U  ___  u             
-#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
-#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
-#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
-#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
-# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
-#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
 #                                                                     
 #                                                                     
-#       Version 5.0.0 Revision 19355 Hash c56584a64                   
-#                 Branch is devel-magnons                             
+#       Version 5.0.1 Revision 19408 Hash 346abf18c                   
+#                Branch is devel-dichroism                            
 #           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
 #                http://www.yambo-code.org                            
 #
 #
-#    E [eV]             n_deg              abs                kerr
+#    E [eV]             n_deg              abs                kerr               dich
 #
-     9.4719408          1.0000000         0.15618698E-10    -0.31011508E-10
-     10.022060          1.0000000         0.57015277E-10     0.30766310E-11
-     10.649226          1.0000000         0.27446770E-11     0.74617521E-11
-     13.439668          1.0000000         0.58833554E-10    -0.32057531E-10
-     13.989788          1.0000000         0.71685596E-11     0.91947114E-11
-     14.017618          1.0000000         0.13299130E-10     0.10387608E-10
-     14.023229          1.0000000         0.25656079E-12     0.34073698E-11
-     14.567738          1.0000000         0.68838936E-10    -0.21951736E-11
-     14.573348          1.0000000         0.12006385E-11    -0.48836684E-12
-     14.616954          1.0000000         0.18695858E-14    -0.14354629E-12
-     15.194904          1.0000000         0.48225059E-11    -0.50192797E-11
-     15.200514          1.0000000         0.84462684E-13    -0.16155920E-11
+     9.4719410          1.0000000         0.15618697E-10    -0.31011499E-10    -0.19121940E-03
+     10.022060          1.0000000         0.57015420E-10     0.30766171E-11     0.32564221E-03
+     10.649226          1.0000000         0.27446830E-11     0.74617491E-11    -0.18508435E-03
+     13.439669          1.0000000         0.58833272E-10    -0.32057527E-10    -0.32992763E-03
+     13.989788          1.0000000         0.71685262E-11     0.91946494E-11    -0.53739332E-03
+     14.017618          1.0000000         0.13299082E-10     0.10387609E-10     0.19082177E-04
+     14.567739          1.0000000         0.68838941E-10    -0.21951848E-11    -0.10883813E-03
+     14.616954          1.0000000         0.18695775E-14    -0.14354699E-12     0.34885201E-04
+     15.194904          1.0000000         0.48225209E-11    -0.50192858E-11     0.13460759E-03
 # 
-# 01/04/2021 at 15:46 yambo @ unimi-XPS-8930 [start]
-# 01/04/2021 at 15:46                        [end]
+# 01/15/2021 at 14:46 yambo @ unimi-XPS-8930 [start]
+# 01/15/2021 at 14:46                        [end]
 #
 # .-Input file  yambo.in
 # | rim_cut                          # [R] Coulomb potential
@@ -57,11 +54,11 @@
 # | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
 # | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
-# | BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
+# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
 # | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 # | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
 # | % DipBands
-# |   2 |  8 |                           # [DIP] Bands range for dipoles
+# |   2 |  7 |                           # [DIP] Bands range for dipoles
 # | %
 # | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
 # | BSENGexx=  4067            RL    # [BSK] Exchange components
@@ -70,12 +67,12 @@
 # | % KfnQP_E
 # |  3.400000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
 # | %
-# | BSEprop= "abs kerr esrt"         # [BSS] abs/kerr/magn/dichr trace
+# | BSEprop= "abs kerr dich esrt"    # [BSS] abs/kerr/magn/dichr trace
 # | % BSEQptR
 # |  1 | 1 |                             # [BSK] Transferred momenta range
 # | %
 # | % BSEBands
-# |   2 |  8 |                           # [BSK] Bands range
+# |   2 |  7 |                           # [BSK] Bands range
 # | %
 # | % BEnRange
 # | -20.00000 | 20.00000 |         eV    # [BSS] Energy range
@@ -89,6 +86,7 @@
 # | %
 # | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
 # | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | BSHayItrMAX= 200                 # [BSS] MaX number of Haydock iterations.
 # | % BndsRnXs
 # |   1 | 20 |                           # [Xs] Polarization function bands
 # | %
