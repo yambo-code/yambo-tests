@@ -1,0 +1,103 @@
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+#       Version 5.0.0 Revision 19360 Hash 188c9dd11                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+#
+# [K] Identifier                                  :  2753
+# [K] Dimension                                   :  15
+# [K] Bands                                       :  12  18
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : no
+# [K] Kernel`s coupling                           : no
+# [K] Exchange                                    : no
+# [K] Correlation                                 : no
+# [K] W interaction is bare                       : no
+# [K] ALDA kernel in R-space                      : yes
+# [K] RL vectors                                  :  2003 [exchange]
+# [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# [K] Coupling range                              :   100.000000      100.000000    [o/o]
+#
+#
+#
+#    E [eV]             n_deg              S+-                S-+
+#
+    0.15274282          1.0000000         0.98865980         0.11129801E-14
+    0.83344781          1.0000000         0.54364194E-13     0.60700292E-28
+    0.87878036          1.0000000         0.38127168E-14     0.87142710E-29
+     4.9291315          1.0000000         0.12871328E-14     0.11872864E-29
+     5.0720778          1.0000000         0.27770415E-03     0.64408682E-18
+     5.3607187          1.0000000         0.11057393E-02     0.13656376E-17
+     5.3738647          1.0000000         0.28274371E-13     0.37197351E-28
+     5.9708757          1.0000000         0.63349730E-14     0.82647484E-29
+     6.1181560          1.0000000         0.20599428E-14     0.63586503E-29
+     6.6224580          1.0000000         0.10262840E-15     0.16731882E-30
+     6.7561793          1.0000000         0.42913146E-14     0.47792275E-29
+     7.0191345          1.0000000         0.48165720E-14     0.58057685E-29
+     7.0380406          1.0000000         0.11812860E-13     0.66347752E-29
+     7.2094302          1.0000000         0.38659564E-05     0.36222526E-20
+     7.2646437          1.0000000         0.26960400E-14     0.26901696E-29
+# 
+# 01/04/2021 at 22:12 yambo @ unimi-XPS-8930 [start]
+# 01/04/2021 at 22:12                        [end]
+#
+# .-Input file  yambo.in
+# | rim_cut                          # [R] Coulomb potential
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | tddft                            # [R][K] Use TDDFT kernel
+# | ElecTemp= 0.025861         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | FFTGvecs=  9999            RL    # [FFT] Plane-waves
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# | % CUTBox
+# |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
+# | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "s"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | DipComputed= "R V P Spin"        # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 2003             RL    # [BSK] Exchange components
+# | BSEprop= "magn jdos esrt"        # [BSS] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |  12 | 18 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -2.000000 | 2.000000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.010000 | 0.010000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps=  5001                  # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSSNEig= 15                      # [SLEPC] Number of eigenvalues to compute
+# | BSSSlepcApproach= "Krylov-Schur" # [SLEPC] Approach ("Krylov-Schur","Generalized-Davidson","Jacob-Davidson")
+# | BSSSlepcMaxIt= 1000              # [SLEPC] Maximum number of iterations

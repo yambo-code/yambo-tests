@@ -24,8 +24,12 @@
 #
 sub CHECK_file{
 $system_command = "$suite_dir/scripts/find_the_diff/$find_the_diff -r $ref_filename -o $run_filename -p $prec -m $material";
-if($verb) {&MY_PRINT($stdout, "Running floating point test: $system_command \n\n");}
-$CHECK_error = `$system_command 2>&1`;
+if($verb) {
+  $system_command = "$system_command -v";
+  &MY_PRINT($stdout, "Running floating point test: $system_command \n\n");
+}
+if(     $verb) { $CHECK_error = `$system_command 2>> find_the_diff.log`; }
+if( not $verb) { $CHECK_error = `$system_command 2>&1`; }
 chomp($CHECK_error);
 if($CHECK_error =~ /OK/) {
  my $msg = sprintf("%-"."$left_length"."s", "  $run_filename");

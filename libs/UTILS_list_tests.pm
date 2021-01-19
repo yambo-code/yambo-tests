@@ -40,10 +40,6 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
     if ( $is_GPL ){
       if (-e $dir."/NO_GPL")  { next DIR_LOOP };
       if (-e $dir."/QED")  { next DIR_LOOP };
-      if (-e $dir."/PL")  { next DIR_LOOP };
-      if (-e $dir."/NL")  { next DIR_LOOP };
-      if (-e $dir."/SC")  { next DIR_LOOP };
-      if (-e $dir."/MAGNETIC")  { next DIR_LOOP };
     }
     if (-e $dir."/EMPTY")  {
       $EMPTY_tests="$EMPTY_tests"." "."$dir";
@@ -56,6 +52,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
       if (-e $dir."/SC")   {$EMPTY_tests="$EMPTY_tests"."[SC]"."$MORE_str"}
       if (-e $dir."/MAGNETIC")   {$EMPTY_tests="$EMPTY_tests"."[MAGNETIC]"."$MORE_str"}
       if (-e $dir."/KERR")   {$EMPTY_tests="$EMPTY_tests"."[KERR]"."$MORE_str"}
+      if (-e $dir."/MAGNONS"){$EMPTY_tests="$EMPTY_tests"."[MAGNONS]"."$MORE_str"}
       if (-e $dir."/SPIN")   {$EMPTY_tests="$EMPTY_tests"."[SPIN]"."$MORE_str"}
       if (-e $dir."/SPINORS")   {$EMPTY_tests="$EMPTY_tests"."[SPINORS]"."$MORE_str"}
       if (-e $dir."/ELPH")   {$EMPTY_tests="$EMPTY_tests"."[ELPH]"."$MORE_str"}
@@ -72,6 +69,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
       if (-e $dir."/SC")   {$BROKEN_tests="$BROKEN_tests"."[SC]"."$MORE_str"}
       if (-e $dir."/MAGNETIC")   {$BROKEN_tests="$BROKEN_tests"."[MAGNETIC]"."$MORE_str"}
       if (-e $dir."/KERR")   {$BROKEN_tests="$BROKEN_tests"."[KERR]"."$MORE_str"}
+      if (-e $dir."/MAGNONS"){$BROKEN_tests="$BROKEN_tests"."[MAGNONS]"."$MORE_str"}
       if (-e $dir."/SPIN")   {$BROKEN_tests="$BROKEN_tests"."[SPIN]"."$MORE_str"}
       if (-e $dir."/SPINORS")   {$BROKEN_tests="$BROKEN_tests"."[SPINORS]"."$MORE_str"}
       if (-e $dir."/ELPH")   {$BROKEN_tests="$BROKEN_tests"."[ELPH]"."$MORE_str"}
@@ -87,13 +85,14 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
      if (-e $dir."/SC" )  {$SC_tests="$SC_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/MAGNETIC" )  {$MAGNETIC_tests="$MAGNETIC_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/KERR")  {$KERR_tests="$KERR_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/MAGNONS"){$MAGNONS_tests="$MAGNONS_tests"."[MAGNONS]"."$MORE_str"}
      if (-e $dir."/SPIN")  {$SPIN_tests="$SPIN_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/SPINORS")  {$SPINORS_tests="$SPINORS_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/ELPH")  {$ELPH_tests="$ELPH_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/PHEL")  {$PHEL_tests="$PHEL_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/P2Y")  {$P2Y_tests="$P2Y_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/A2Y")  {$A2Y_tests="$A2Y_tests"." "."$dir"."$MORE_str"};
-     if (!-e $dir."/SC" && !-e $dir."/MAGNETIC" && !-e $dir."/ELPH" && !-e $dir."/RT" && !-e $dir."/KERR" && !-e $dir."/QED" && !-e $dir."/PL" && !-e $dir."/NL" && !-e $dir."PHEL") {
+     if (!-e $dir."/SC" && !-e $dir."/MAGNETIC" && !-e $dir."/ELPH" && !-e $dir."/RT" && !-e $dir."/MAGNETIC" && !-e $dir."/QED" && !-e $dir."/NL" && !-e $dir."PHEL") {
       $NORMAL_tests="$NORMAL_tests"." "."$dir"."$MORE_str";
      }
     };
@@ -117,7 +116,8 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   if ($keys =~ /a2y/ or $keys =~ /all/)  {&LIST_ELEMENT("[A2Y]     ",$A2Y_tests)};
   if ($keys =~ /spin/ or $keys =~ /all/)  {&LIST_ELEMENT("[SPIN]    ",$SPIN_tests)};
   if ($keys =~ /spinors/ or $keys =~ /all/)  {&LIST_ELEMENT("[SPINORS] ",$SPINORS_tests)};
-  if ($keys =~ /kerr/ or $kyes =~/all/)  {if ($KERR_tests)  {&LIST_ELEMENT("[KERR]    ",$KERR_tests)}};
+  if ($keys =~ /magnons/ or $keys =~ /all/)  {&LIST_ELEMENT("[MAGNONS]    ",$SPIN_tests)};
+  if ($keys =~ /kerr/ or $kyes =~/all/)  {&LIST_ELEMENT("[KERR]    ",$KERR_tests)};
   if ($keys =~ /all/ or $kyes =~/all/)   {if ($BROKEN_tests){&LIST_ELEMENT("[BROKEN]  ",$BROKEN_tests)}};
   if ($keys =~ /all/ or $kyes =~/all/)   {if ($EMPTY_tests){&LIST_ELEMENT("[EMPTY]   ",$EMPTY_tests)}};
   &MY_PRINT($stdout, "\n[*] To be converted to the new format\n");

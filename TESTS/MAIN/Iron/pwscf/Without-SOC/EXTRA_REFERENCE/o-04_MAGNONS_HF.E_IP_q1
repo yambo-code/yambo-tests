@@ -1,0 +1,98 @@
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+#       Version 5.0.0 Revision 19355 Hash c56584a64                   
+#                 Branch is devel-magnons                             
+#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
+#                http://www.yambo-code.org                            
+#
+#
+#    E [eV]             n_deg              S+-                S-+
+#
+     4.8416594          24.000000         0.22075174E-19      0.0000000    
+     5.74934538         8.00000000        0.793110553         0.00000000   
+     6.08810608         24.0000000        0.876419239         0.00000000   
+     6.27738328         24.0000000        0.998461568         0.00000000   
+     6.28454715         6.00000000        0.998950863         0.00000000   
+     7.5238299          24.000000         0.87329547E-19      0.0000000    
+     7.7221909          12.000000         0.87649108E-19      0.0000000    
+     7.84624500         6.00000000        0.606152716         0.00000000   
+     7.95603287         12.0000000        0.997943190         0.00000000   
+     8.0070645          12.000000         0.14846160E-18      0.0000000    
+     8.3884311          16.000000         0.44158892E-19      0.0000000    
+     8.9373299          24.000000         0.10172567E-18      0.0000000    
+     9.7266438          6.0000000         0.57750195E-20      0.0000000    
+     10.1837765         24.0000000        0.469436940E-1      0.00000000   
+     10.268169          6.0000000         0.10675923E-18      0.0000000    
+     11.026121          12.000000         0.12828946E-18      0.0000000    
+     11.084558          12.000000         0.17158588E-19      0.0000000    
+     12.184856          24.000000         0.17883002E-20      0.0000000    
+     12.7385696         24.0000000        0.792083621E-4      0.00000000   
+     13.120476          16.000000         0.27573590E-19      0.0000000    
+     13.4313029         24.0000000        0.581453062E-1      0.00000000   
+     13.985016          24.000000         0.19943052E-18      0.0000000    
+     13.992670          12.000000         0.56478387E-18      0.0000000    
+     14.771336          6.0000000         0.14535855E-20      0.0000000    
+     15.531383          12.000000         0.11294016E-17      0.0000000    
+     15.582414          12.000000         0.15677274E-17      0.0000000    
+     15.990951          6.0000000         0.13266374E-19      0.0000000    
+     16.208980          12.000000         0.65036536E-19      0.0000000    
+     18.6014707         12.0000000        0.441584193E-1      0.00000000   
+     21.568020          12.000000         0.59998504E-19      0.0000000    
+     22.3057303         16.0000000        0.707769792E-3      0.00000000   
+     24.477740          6.0000000         0.29521954E-20      0.0000000    
+     27.902967          8.0000000         0.11737149E-19      0.0000000    
+     29.2373863         8.00000000        0.124317945E-1      0.00000000   
+# 
+# 01/04/2021 at 17:47 yambo @ unimi-XPS-8930 [start]
+# 01/04/2021 at 17:47                        [end]
+#
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | ElecTemp= 0.025869         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | FFTGvecs=  603             RL    # [FFT] Plane-waves
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "HF"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | DipComputed= "R V P Spin"        # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx=  675             RL    # [BSK] Exchange components
+# | BSENGBlk= 177              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
+# | % KfnQP_up_E
+# |  0.000000 | 2.500000 | 2.500000 |        # [EXTQP BSK BSS] E parameters UP (c/v) eV|adim|adim
+# | %
+# | % KfnQP_dn_E
+# |  0.000000 | 2.500000 | 2.500000 |        # [EXTQP BSK BSS] E parameters DOWN (c/v) eV|adim|adim
+# | %
+# | BSEprop= "magn esrt"             # [BSS] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |   2 |  6 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -10.00000 | 10.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps=  5001                  # [BSS] Energy steps
+# | % BLongDir
+# |   0.00000    | 0.100000E-4 |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
