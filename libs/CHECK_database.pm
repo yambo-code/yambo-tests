@@ -49,9 +49,10 @@ if ($CORE eq "CORE" and ($P2Y or $A2Y)) {
 #
 if( -e "$check_folder/$DB" ){
   my @VAR_NAMES = split(',', $VAR);
+  &command("echo ' ' > $run_filename");
   foreach my $VAR_I (@VAR_NAMES) {
   &command("$ncdump -h $check_folder/$DB | grep $VAR_I  > ${VAR_I}_check" ) ;
-  if (! -z "${VAR_I}_check") { &command("$ncdump -v $VAR_I $check_folder/$DB | $awk -f $suite_dir/scripts/find_the_diff/ndb2o.awk | head -n 10000 > $run_filename") ;}
+  if (! -z "${VAR_I}_check") { &command("$ncdump -v $VAR_I $check_folder/$DB | $awk -f $suite_dir/scripts/find_the_diff/ndb2o.awk | head -n 10000 >> $run_filename") ;}
   &command("rm ${VAR_I}_check" ) ;
   if(! -e "$ref_filename" ) {
    &RUN_stats("ERR_DB");
