@@ -40,6 +40,8 @@ if ( "@_" eq "DIR" ){
   if (-e "RT" && $project !~ /rt/) {$message=" skipped (wrong PJ)"};
   if (-e "ELPH" && $project !~ /elph/) {$message=" skipped (wrong PJ)"};
   if (-e "SC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
+  if (-e "MAGNETIC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
+  if (-e "ELECTRIC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
   if (-e "P2Y" && $project !~ /p2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && $project !~ /a2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && not $do_A2Y_tests) {$message=" skipped (wrong BRANCH)"};
