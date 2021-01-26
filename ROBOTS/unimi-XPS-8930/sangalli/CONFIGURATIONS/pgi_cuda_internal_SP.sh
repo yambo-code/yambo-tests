@@ -29,8 +29,8 @@ YAMBO_LIBS="/data/shared/yambo-libs/std-netcdf"
 #mpicc=/opt/pgi/openmpi/bin/mpicc
 #mpif90=/opt/pgi/openmpi/bin/mpif90
 
-mpicc="mpicc"
-mpif90="mpif90"
+mpicc="mpiccpgi"
+mpif90="mpif90pgi"
 
 ./configure \
 --enable-cuda="cuda10.1,cc75" --enable-open-mp  \

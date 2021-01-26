@@ -1,0 +1,110 @@
+#                                                                     
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
+#                                                                     
+#                                                                     
+#       Version 5.0.0 Revision 19360 Hash 188c9dd11                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+#
+# [K] Identifier                                  :   6722
+# [K] Dimension                                   :  15
+# [K] Bands                                       :  12  18
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : no
+# [K] Kernel`s coupling                           : yes
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : no
+# [K] W interaction is bare                       : no
+# [K] ALDA kernel in R-space                      : yes
+# [K] RL vectors                                  :  2003 [exchange]
+# [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# [K] Coupling range                              :   100.000000      100.000000    [o/o]
+#
+#
+#
+#    Re(E) [eV]         Im(E) [eV]         n_deg              S+-                S-+
+#
+    -7.1499267         0.49881328E-06      1.0000000        -0.34496521E-13    -0.18068843E-28
+    -7.0623345         0.34623517E-06      1.0000000        -0.32344492E-05    -0.12309840E-20
+    -6.7982769        -0.56083152E-07      1.0000000         0.35685083E-14     0.15669030E-28
+    -6.7663231        -0.35593197E-06      1.0000000        -0.47907480E-14    -0.63235028E-29
+    -5.4649830        -0.42178382E-06      1.0000000         0.38362681E-14     0.14530507E-29
+    -5.3697472         0.25679256E-07      1.0000000         0.18632011E-13     0.21008989E-28
+    -4.9601698         0.32722991E-07      1.0000000        -0.27279732E-14    -0.67246116E-29
+    -4.6180391         0.61744494E-07      1.0000000        -0.34146215E-03    -0.70800710E-18
+    0.14799994        -0.24464887E-06      1.0000000         0.98659229         0.11102121E-14
+    0.83033603        -0.13298104E-06      1.0000000         0.22899368E-13     0.25361371E-28
+    0.87855929        -0.36899880E-07      1.0000000        -0.55895874E-13    -0.70168326E-28
+     4.9291101         0.98692382E-07      1.0000000        -0.20126511E-14     0.11532055E-29
+     5.0490098        -0.51608578E-06      1.0000000         0.16360465E-03     0.43802248E-18
+     5.3607101        -0.34530765E-06      1.0000000         0.11025437E-02     0.13611775E-17
+     5.3733582        -0.70222647E-07      1.0000000         0.86080083E-15     0.29110726E-29
+     5.9662371        -0.44091021E-06      1.0000000         0.73317596E-14     0.75149598E-29
+     6.1142855         0.24121434E-06      1.0000000        -0.76419668E-14    -0.99329927E-29
+     6.6223836         0.34969023E-07      1.0000000         0.72509756E-14     0.74436463E-29
+     6.7561150        -0.29062639E-08      1.0000000        -0.56232772E-14    -0.63821572E-29
+     7.0189676        -0.18484417E-06      1.0000000        -0.68620156E-15    -0.54349865E-30
+     7.0352526        -0.36619880E-06      1.0000000         0.58178704E-14     0.28640241E-29
+     7.2030187        -0.24722837E-06      1.0000000         0.31271256E-05     0.27803509E-20
+     7.2620687        -0.30104036E-06      1.0000000        -0.47110566E-14    -0.58839646E-29
+# 
+# 01/04/2021 at 22:12 yambo @ unimi-XPS-8930 [start]
+# 01/04/2021 at 22:12                        [end]
+#
+# .-Input file  yambo.in
+# | rim_cut                          # [R] Coulomb potential
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | tddft                            # [R][K] Use TDDFT kernel
+# | ElecTemp= 0.025861         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | FFTGvecs=  9999            RL    # [FFT] Plane-waves
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# | % CUTBox
+# |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
+# | BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | DipComputed= "R V P Spin"        # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 2003             RL    # [BSK] Exchange components
+# | BSEprop= "magn esrt jdos"        # [BSS] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |  12 | 18 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -2.000000 | 2.000000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.010000 | 0.010000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps=  5001                  # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | BSHayItrMAX= 150                 # [BSS] MaX number of Haydock iterations.

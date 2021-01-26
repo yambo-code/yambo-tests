@@ -1,0 +1,29 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 19381 Hash ff14d8ad9                   
+#             Branch is devel-rt-vel-and-magn                         
+#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
+#                http://www.yambo-code.org                            
+#
+fixsyms                          # [R] Remove symmetries not consistent with an external perturbation
+% Efield1
+ 1.000000 | 0.000000 | 0.000000 |        # First external Electric Field
+%
+% Efield2
+ 0.000000 | 0.000000 | 0.000000 |        # Additional external Electric Field
+%
+BField= 0.000000           T     # [MAG] Magnetic field modulus
+Bpsi= 0.000000             deg   # [MAG] Magnetic field psi angle [degree]
+Btheta= 0.000000           deg   # [MAG] Magnetic field theta angle [degree]
+#RmAllSymm                     # Remove all symmetries
+RmTimeRev                     # Remove Time Reversal
+#RmSpaceInv                    # Remove Spatial Inversion
+#KeepKGrid                     # Do not expand the k-grid

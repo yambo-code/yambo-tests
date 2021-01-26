@@ -1,0 +1,40 @@
+&control
+         calculation = 'nscf'
+              prefix = 'CrI3_kx3_e60'
+          pseudo_dir = '../../psps/'
+           verbosity = 'high'
+          wf_collect = .true.
+/&end
+&system
+           celldm(1) = 12.6872010252
+           celldm(3) = 3.1527836534275644
+             ecutwfc = 60
+               ibrav = 4
+                 nat = 8
+                nbnd = 50
+               nspin = 2
+                ntyp = 2
+   tot_magnetization = 6
+starting_magnetization(1) = 1
+starting_magnetization(2) = 0
+/&end
+&electrons
+            conv_thr = 1e-07
+      diago_full_acc = .true.
+/&end
+
+
+ATOMIC_SPECIES
+  Cr    51.99               Cr.upf
+   I    126.9                I.upf
+ATOMIC_POSITIONS { crystal }
+ Cr   0.6666666670   0.3333333330   0.0000000000
+ Cr   0.3333333330   0.6666666670   0.0000000000
+  I   0.6508193310   0.6508193310  -0.0722327590
+  I   0.0000000000   0.3491806690  -0.0722327590
+  I   0.3491806690   0.0000000000  -0.0722327590
+  I   0.3491806690   0.3491806690   0.0722327590
+  I   0.6508193310   0.0000000000   0.0722327590
+  I   0.0000000000   0.6508193310   0.0722327590
+K_POINTS { automatic }
+  3  3  1  0  0  0

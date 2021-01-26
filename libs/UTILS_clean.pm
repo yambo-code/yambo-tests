@@ -60,10 +60,12 @@ if("@_" eq "ALL") {
  }else{
   &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R[0-9]*' -type d | $grep -v $hostname | xargs rm -fr");
   &command("find . -name 'ROBOT_*' -o -name '*-R[0-9]*' -type f | $grep -v $hostname | xargs rm -fr");
+  &command("find . -name '*.kindx' -o -name '*.gops' | grep -v REFERENCE | xargs rm -fr");
   &command("$git ls-files --others --exclude-standard | $grep -v $hostname | grep -v MODULES.pl | grep -v TOOLS.pl | xargs rm -fr");
   &command("rm -f outputs_and_reports_ALL-* *compile*log *config*log");
  }
  &command("rm -f scripts/find_the_diff/Makefile");
+ &command("rm -f scripts/find_the_diff/find_the_diff_R*");
 };
 #
 # CORE

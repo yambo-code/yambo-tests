@@ -39,14 +39,15 @@ if ("$what" eq "BASIC") {
  #
  # Initialize parallelism
  $mpiexec = ""; 
+ if($user_mpirun) {$mpiexec = $user_mpirun; } 
  if($np_min) { 
-  $mpiexec = "mpirun"; 
+  if(not $user_mpirun) { $mpiexec = "mpirun"; }
   for ($ic=$np_min; $ic<= $np_max ; $ic++){
    $NP_set[$ic-$np_min]=$ic;
   }
  }
  elsif($np_single) { 
-  $mpiexec = "mpirun"; 
+  if(not $user_mpirun) { $mpiexec = "mpirun"; }
   $NP_set[0]=$np_single;
  }
  else
@@ -59,15 +60,10 @@ if ("$what" eq "BASIC") {
  $target_list_basic = "yambo ypp a2y p2y ";
  $exec_list_basic =   "yambo ypp a2y p2y ";
  if("$mode" eq "cheers"){ $target_list_basic .= "ycheers ypp_sc"; $exec_list_basic .= "ycheers ypp_sc"}
- if(!$is_GPL){
-  $exec_sc   = " yambo_sc ypp_sc";
-  $exec_pl   = " yambo_rt";
-  $exec_magn = " yambo ypp";
- }
+ $exec_sc   = " yambo_sc ypp_sc";
  $exec_nl   = " yambo_nl ypp_nl";
  $exec_rt   = " yambo_rt ypp_rt";
  $exec_elph = " yambo_ph ypp_ph";
- $exec_kerr = " yambo";
  $exec_ph_dyn = " yambo_ph";
  #
  # Off's 

@@ -27,6 +27,6 @@
 },
 {
  MPI_CPU     => 1,
- THREADS     => 3,
+ THREADS     => 2,
 }
 );
