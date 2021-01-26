@@ -65,6 +65,9 @@ if ($branch_id eq "")
  $branch_key=$branch_id;
  $pattern=$branch_id;
 };
+# test-suite branch
+$test_suite_branch= qx(git rev-parse --abbrev-ref HEAD);
+$test_suite_branch=~ s/^\s+|\s+$//g;
 #
 if ($is_GPL) {$branch_key.="_gpl"; $pattern.="_gpl";};
 #

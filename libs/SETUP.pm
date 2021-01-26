@@ -61,15 +61,14 @@ if ("$what" eq "BASIC") {
  if("$mode" eq "cheers"){ $target_list_basic .= "ycheers ypp_sc"; $exec_list_basic .= "ycheers ypp_sc"}
  if(!$is_GPL){
   $exec_sc   = " yambo_sc ypp_sc";
-  $exec_pl   = " yambo_pl";
-  #$exec_pl   = " yambo_pl ypp_pl";
-  $exec_magn = " yambo_magnetic ypp_magnetic";
+  $exec_pl   = " yambo_rt";
+  $exec_magn = " yambo ypp";
  }
  $exec_nl   = " yambo_nl ypp_nl";
  $exec_rt   = " yambo_rt ypp_rt";
  $exec_elph = " yambo_ph ypp_ph";
- $exec_kerr = " yambo_kerr";
- $exec_ph_dyn = " yambo_ph_dyn";
+ $exec_kerr = " yambo";
+ $exec_ph_dyn = " yambo_ph";
  #
  # Off's 
  if ($is_off){
