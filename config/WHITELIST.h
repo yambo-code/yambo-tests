@@ -58,6 +58,7 @@ call add_RULE("o-05_KERR_IP-RPA_len.moke_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_len.off_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.moke_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.off_q1_IP","whitelist",MATERIAL="Iron")
+call add_RULE("o-04_bse.beta_q1_diago_bse","whitelist",MATERIAL="Benzene")
 !
 ! QP
 !====
