@@ -74,6 +74,8 @@ call add_RULE(".exc_qpt1_I+spin_sorted","whitelist",MATERIAL="MoS2")
 call add_RULE("o-06_ypp_exc_amplitude_SLEPC.exc_qpt1_weights","whitelist",MATERIAL="hBN")
 call add_RULE("o-06_ypp_sort_SLEPC.exc_qpt1_E_sorted","whitelist",MATERIAL="hBN")
 call add_RULE("o-06_ypp_sort_SLEPC.exc_qpt1_I_sorted","whitelist",MATERIAL="hBN")
+call add_RULE("o-06_ypp_sort.exc_qpt1_E_sorted","whitelist",MATERIAL="hBN")
+call add_RULE("o-06_ypp_sort.exc_qpt1_I_sorted","whitelist",MATERIAL="hBN")
 !
 ! AM May 2020. The hBN/GW-OPTICS keep being affected by tiny errors in random parallel mode.
 !
