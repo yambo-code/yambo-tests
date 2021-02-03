@@ -140,6 +140,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("freehole")=="1") { $CMD=$CMD." -freehole"};
  if (&RUN_feature("excitons")=="1" && &RUN_feature("amplitude")=="1")   { $CMD=$CMD." -exciton a"};
  if (&RUN_feature("excitons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -exciton w"};
+ if (&RUN_feature("excitons")=="1" && &RUN_feature("spin")=="1")   { $CMD=$CMD." -exciton sp"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -electron w"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("dos")=="1")   { $CMD=$CMD." -electron s"};
  if (&RUN_feature("eliashberg")=="1" && &RUN_feature("electron")=="1") { $CMD=$CMD." -electron e"};
