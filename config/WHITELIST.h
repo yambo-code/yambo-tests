@@ -58,6 +58,7 @@ call add_RULE("o-05_KERR_IP-RPA_len.moke_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_len.off_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.moke_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.off_q1_IP","whitelist",MATERIAL="Iron")
+call add_RULE("o-04_bse.beta_q1_diago_bse","whitelist",MATERIAL="Benzene")
 !
 ! QP
 !====
@@ -73,6 +74,8 @@ call add_RULE(".exc_qpt1_I+spin_sorted","whitelist",MATERIAL="MoS2")
 call add_RULE("o-06_ypp_exc_amplitude_SLEPC.exc_qpt1_weights","whitelist",MATERIAL="hBN")
 call add_RULE("o-06_ypp_sort_SLEPC.exc_qpt1_E_sorted","whitelist",MATERIAL="hBN")
 call add_RULE("o-06_ypp_sort_SLEPC.exc_qpt1_I_sorted","whitelist",MATERIAL="hBN")
+call add_RULE("o-06_ypp_sort.exc_qpt1_E_sorted","whitelist",MATERIAL="hBN")
+call add_RULE("o-06_ypp_sort.exc_qpt1_I_sorted","whitelist",MATERIAL="hBN")
 !
 ! AM May 2020. The hBN/GW-OPTICS keep being affected by tiny errors in random parallel mode.
 !

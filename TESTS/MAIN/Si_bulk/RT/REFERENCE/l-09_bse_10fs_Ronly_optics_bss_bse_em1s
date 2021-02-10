@@ -1,12 +1,12 @@
 
 
- ___ __  _____  __ __  _____   _____
-|   Y  ||  _  ||  Y  ||  _  \ |  _  |
-|   |  ||. |  ||.    ||. |  / |. |  |
- \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
-  |: |  |: |  ||: |  ||: |   \|: |  |
-  |::|  |:.|:.||:.|:.||::.   /|::.  |
-  `--"  `-- --"`-- --"`-----" `-----"
+ __    __ ______           ____     _____
+/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
+\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
+ `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
+   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
+     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
+      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -17,15 +17,15 @@
  <---> [02.04] K-grid lattice
  <---> Grid dimensions      :  2  2  2
  <---> [02.05] Energies & Occupations
- <---> [03] Transferred momenta grid
+ <---> [03] Transferred momenta grid and indexing
  <---> [04] External/Internal QP corrections
  <---> E<08_gw_eq/ndb.QP[ PPA@E  27.21138 = XG 1 = Xb 1-8 = Scb 1-8]
- <---> [dE_from_DB-Nearest K] Exact matches  [o/o]:  100.0000
+ <---> [dE_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
  <---> [QP_apply] Action to be applied: E<08_gw_eq/ndb.QP[ PPA@E  27.21138 = XG 1 = Xb 1-8 = Scb 1-8]
  <---> [04.01]  QP corrections report
  <---> [00.01] External RT corrections (R)
  <---> [RT] Loaded Carrier components @ 100.0000 fs
- <---> [df_from_DB-Nearest K] Exact matches  [o/o]:  100.0000
+ <---> [df_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
  <---> [WARNING][f@ R] Metallic system
  <---> [01] Dipoles
  <---> [DIP] Checking dipoles header
@@ -57,7 +57,8 @@
  <---> [03.01] Transition Groups build-up @q1
  <---> [BSK] Size (resonant):  100
  <---> [BSK]         (total):  100
- <---> [03.02] Independent Particles absorption @q1
+ <---> [BSK] Matricies      :  1
+ <---> [03.02] Independent Particles properties @q1
  <---> [WARNING] The system is a metal but Drude term not included.
  <---> [DIP] Checking dipoles header
  <---> [03.03] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
@@ -68,34 +69,32 @@
  <---> Kernel |                                        | [000%] --(E) --(X)
  <---> Kernel |########################################| [100%] --(E) --(X)
  <---> [03.04] BSE solver(s) @q1
- <---> [03.05] Haydock Solver @q1
+ <---> [03.05] Haydock Solver for abs @q1, scheme hermitian
  <---> [Haydock] Iteration 1
  <---> [Haydock] Iteration 2
- <---> [Haydock] Iteration 3 Accuracy   1580.75| 0.020000
- <---> [Haydock] Iteration 4 Accuracy  19.47856| 0.020000
- <---> [Haydock] Iteration 5 Accuracy  86.21682| 0.020000
- <---> [Haydock] Iteration 6 Accuracy  60.39101| 0.020000
- <---> [Haydock] Iteration 7 Accuracy  495.7247| 0.020000
- <---> [Haydock] Iteration 8 Accuracy  97.70403| 0.020000
- <---> [Haydock] Iteration 9 Accuracy  3.837420| 0.020000
- <---> [Haydock] Iteration 10 Accuracy  4.770187| 0.020000
- <---> [Haydock] Iteration 11 Accuracy  5.198789| 0.020000
- <---> [Haydock] Iteration 12 Accuracy  22.33067| 0.020000
- <---> [Haydock] Iteration 13 Accuracy  28.52156| 0.020000
- <---> [Haydock] Iteration 14 Accuracy  8.274324| 0.020000
- <---> [Haydock] Iteration 15 Accuracy  133.8610| 0.020000
- <---> [Haydock] Iteration 16 Accuracy  2.907660| 0.020000
- <---> [Haydock] Iteration 17 Accuracy  3.624133| 0.020000
- <---> [Haydock] Iteration 18 Accuracy  1.591782| 0.020000
- <---> [Haydock] Iteration 19 Accuracy  15.94843| 0.020000
- <---> [Haydock] Iteration 20 Accuracy  102.6985| 0.020000
- <---> [Haydock] Iteration 21 Accuracy  43.80490| 0.020000
- <---> [Haydock] Iteration 22 Accuracy  1.150973| 0.020000
- <---> [Haydock] Iteration 23 Accuracy  95.38847| 0.020000
- <---> [Haydock] Iteration 24 Accuracy  0.359642| 0.020000
- <---> [Haydock] Iteration 25 Accuracy  0.103713| 0.020000
- <---> [Haydock] Iteration 26 Accuracy  0.341372| 0.020000
- <---> [Haydock] Iteration 27 Accuracy  0.008283| 0.020000
+ <---> [Haydock] Iteration 3 Accuracy  214.9630| 0.020000
+ <---> [Haydock] Iteration 4 Accuracy  44.18552| 0.020000
+ <---> [Haydock] Iteration 5 Accuracy  45.62627| 0.020000
+ <---> [Haydock] Iteration 6 Accuracy  503.0915| 0.020000
+ <---> [Haydock] Iteration 7 Accuracy  14.40341| 0.020000
+ <---> [Haydock] Iteration 8 Accuracy  10.41209| 0.020000
+ <---> [Haydock] Iteration 9 Accuracy  29.42821| 0.020000
+ <---> [Haydock] Iteration 10 Accuracy  2.298450| 0.020000
+ <---> [Haydock] Iteration 11 Accuracy  2.077631| 0.020000
+ <---> [Haydock] Iteration 12 Accuracy  103.2087| 0.020000
+ <---> [Haydock] Iteration 13 Accuracy  16.00740| 0.020000
+ <---> [Haydock] Iteration 14 Accuracy  16.32001| 0.020000
+ <---> [Haydock] Iteration 15 Accuracy  7.318098| 0.020000
+ <---> [Haydock] Iteration 16 Accuracy  16.30203| 0.020000
+ <---> [Haydock] Iteration 17 Accuracy  2.476810| 0.020000
+ <---> [Haydock] Iteration 18 Accuracy  1.153632| 0.020000
+ <---> [Haydock] Iteration 19 Accuracy  0.408907| 0.020000
+ <---> [Haydock] Iteration 20 Accuracy  3.406820| 0.020000
+ <---> [Haydock] Iteration 21 Accuracy  0.882886| 0.020000
+ <---> [Haydock] Iteration 22 Accuracy  1.086747| 0.020000
+ <---> [Haydock] Iteration 23 Accuracy  0.048470| 0.020000
+ <---> [Haydock] Iteration 24 Accuracy  0.052230| 0.020000
+ <---> [Haydock] Iteration 25 Accuracy  0.008940| 0.020000
+ <---> [Haydock] Iteration 26 Accuracy  0.001316| 0.020000
  <---> [04] Timing Overview
- <---> [05] Memory Overview
- <---> [06] Game Over & Game summary
+ <---> [05] Game Over & Game summary

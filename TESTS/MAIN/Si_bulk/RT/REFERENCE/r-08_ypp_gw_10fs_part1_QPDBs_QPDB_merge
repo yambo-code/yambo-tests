@@ -1,19 +1,19 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
+       ###  ###     ### ###       ### #########   ########                
                                                                           
                                                                           
-          Version 5.0.1 Revision 18887 Hash 3de9777b8                     
-               Branch is devel-rt-modularization                          
-                       MPI+HDF5_IO Build                                  
+          Version 5.0.1 Revision 19435 Hash 90a894eb3                     
+                      Branch is issue414                                  
+              MPI+OpenMP+SLK+SLEPC+HDF5_IO Build                          
                    http://www.yambo-code.org                              
  
- 10/19/2020 at 13:04 ypp_rt @ baym
+ 01/31/2021 at 00:25 ypp_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 08_ypp_gw_10fs_part1
- Alt#1 string        : R1
+ Alt#1 string        : R11
 
  Precision           : SINGLE
   
@@ -127,24 +127,27 @@
 
   Compatible Grid is   : 3D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.238269E-8 -0.500000     0.238269E-8 [rlu]
-  K_min[ 2 ] : -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
-  K_min[ 3 ] : -0.500000     0.238269E-8 -0.238269E-8 [rlu]
+  K_min[ 1 ] :  0.000000 -0.500000  0.000000 [rlu]
+  K_min[ 2 ] :  0.000000  0.000000 -0.500000 [rlu]
+  K_min[ 3 ] : -0.500000  0.000000  0.000000 [rlu]
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
 
   IBZ K-points :  3
   BZ  K-points :   8
 
-  K [1] : weight       :  0.125000
+  K/Q-points units:
+  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
+
+  K [1]:  0.000000  0.000000  0.000000 [rlu]
         : wf components:  259
-        : point-iku    :  0.000000  0.000000  0.000000  [iku]
-  K [2] : weight       :  0.500000
+        : BZ grid      : X S
+  K [2]:  0.000000  0.000000 -0.500000 [rlu]
         : wf components:  266
-        : point-iku    :  0.500000 -0.500000  0.500000  [iku]
-  K [3] : weight       :  0.375000
+        : BZ grid      : X S
+  K [3]:  0.000000 -0.500000 -0.500000 [rlu]
         : wf components:  254
-        : point-iku    :  0.000000 -1.000000  0.000000  [iku]
+        : BZ grid      : X S
 
   [05.05] Energies & Occupations
   ==============================
@@ -171,15 +174,21 @@
    
   E @ K [1]:  [eV]
   -12.15619   0.00000   0.00000   0.00000   2.44087   2.44087   2.44087   3.52522
+  occ @ K [1]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [2]:  [eV]
   -9.730945 -7.200430 -1.262054 -1.262054  1.519058  3.185880  3.185880  7.329928
+  occ @ K [2]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [3]:  [eV]
    -7.89574  -7.89573  -3.01059  -3.01059   0.43763   0.43764  10.15807  10.15807
+  occ @ K [3]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
 
   [05.06] QP databases mergering
   ==============================
 
-  [WR./08_ypp_gw_10fs_part1//ndb.QP_merged_1_gw_ppa]------------------------------
+  [WR./08_ypp_gw_10fs_part1//ndb.QP_merged_1_gw_cohsex_gw_ppa]--------------------
    Lattice constants                                :  10.18300  10.18300  10.18300
    Coulomb cutoff potential                         : none
    Electronic Temperature                           :  0.000000 [K]
@@ -191,50 +200,59 @@
    QP tot states                                    :  18
    GWo SC iterations                                : 0
    GW  SC iterations                                : 0
-   Database                                         :  3
-   GW SC iterations                                 : 0
-   X G`s                                            :   59 used
-   X G`s                                            :   59 disk
-   X bands                                          :   1   8
-   X poles                                          :  100.0000 o/o
-   X e/h E range                                    : -1.000000 -1.000000 ev
-   X xc-Kernel                                      : none
-   X BZ energy Double Grid                          : no
-   Sc/G bands                                       :   1   8
-   Sc Empty Bands                                   : yes
-   Sc bands terminator                              : no
-   Sx RL components                                 :   609
-   GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-   Xs energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
-   Xs WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-   GW solver                                        : Newton
-   GW approximation                                 : PPA
-   PPA imaginary Energy                             :  27.21138 ev
-   GW SC iterations                                 : 0
-   dS/dw steps                                      :  2
-   dS/dw step                                       :  0.100000 ev
-   X G`s                                            :  1 used
-   X G`s                                            :  1 disk
-   X bands                                          :   1   8
-   X poles                                          :  100.0000 o/o
-   X e/h E range                                    : -1.000000 -1.000000 ev
-   X xc-Kernel                                      : none
-   X BZ energy Double Grid                          : no
-   Sc/G bands                                       :   1   8
-   Sc/G damping                                     :  0.100000 ev
-   Sc bands terminator                              : no
-   Sx RL components                                 :   609
+   [DB #1]Database                                  : 08_cohsex_10fs/ndb.QP
+   [DB #1]Database Operation                        : + 1.000000xE
+   [DB #1]GW solver                                 : Newton
+   [DB #1]GW approximation                          : COHSEX
+   [DB #1]GW SC iterations                          : 0
+   [DB #1]X G`s                                     :   59 used
+   [DB #1]X G`s                                     :   59 disk
+   [DB #1]X bands                                   :   1   8
+   [DB #1]X poles                                   :  100.0000 o/o
+   [DB #1]X e/h E range                             : -1.000000 -1.000000 ev
+   [DB #1]X xc-Kernel                               : none
+   [DB #1]X BZ energy Double Grid                   : no
+   [DB #1]Sc/G bands                                :   1   8
+   [DB #1]Sc Empty Bands                            : yes
+   [DB #1]Sc bands terminator                       : no
+   [DB #1]Sx RL components                          :   609
+   [DB #1]                                          
+   [DB #1]GF WF`s kind                              : Slater exchange(X)+Perdew & Zunger(C)
+   [DB #1]Xs energies kind                          : Slater exchange(X)+Perdew & Zunger(C)
+   [DB #1]Xs WF`s kind                              : Slater exchange(X)+Perdew & Zunger(C)
+   [DB #2]Database                                  : 08_cohsex_eq_emp/ndb.QP
+   [DB #2]Database Operation                        : - 1.000000xE
+   [DB #3]Database                                  : 08_gw_eq/ndb.QP
+   [DB #3]Database Operation                        : x 1.000000xZ
+   [DB #3] GW solver                                : Newton
+   [DB #3] GW approximation                         : PPA
+   [DB #3] PPA imaginary Energy                     :  27.21138 ev
+   [DB #3] GW SC iterations                         : 0
+   [DB #3] dS/dw steps                              :  2
+   [DB #3] dS/dw step                               :  0.100000 ev
+   [DB #3] X G`s                                    :  1 used
+   [DB #3] X G`s                                    :  1 disk
+   [DB #3] X bands                                  :   1   8
+   [DB #3] X poles                                  :  100.0000 o/o
+   [DB #3] X e/h E range                            : -1.000000 -1.000000 ev
+   [DB #3] X xc-Kernel                              : none
+   [DB #3] X BZ energy Double Grid                  : no
+   [DB #3] Sc/G bands                               :   1   8
+   [DB #3] Sc/G damping                             :  0.100000 ev
+   [DB #3] Sc bands terminator                      : no
+   [DB #3] Sx RL components                         :   609
+   [DB #3]                                          
+   [DB #3] GF energies kind                         : Slater exchange(X)+Perdew & Zunger(C)
+   [DB #3] GF WF`s kind                             : Slater exchange(X)+Perdew & Zunger(C)
+   [DB #3] Xs energies kind                         : Slater exchange(X)+Perdew & Zunger(C)
+   [DB #3] Xs WF`s kind                             : Slater exchange(X)+Perdew & Zunger(C)
+   [DB #1]QP @ state[ 1 ] K range                   :  1  3
+   [DB #1]QP @ state[ 1 ] b range                   :   2   7
    GF energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
    GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
    Xs energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
    Xs WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-   QP @ state[ 1 ] K range                          :  1  3
-   QP @ state[ 1 ] b range                          :   2   7
-   GF energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
-   GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-   Xs energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
-   Xs WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 003129 ---------------------------------------------- v.05.00.01 r.18887 -
+  - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
 
  [06] Timing Overview
  ====================
@@ -242,29 +260,21 @@
  Clock: global
       io_ATMPROJ_pwscf :      0.0000s CPU
           io_KB_abinit :      0.0000s CPU
+            io_DIPOLES :      0.0000s CPU
             io_COL_CUT :      0.0000s CPU
-      io_RT_components :      0.0000s CPU (2 calls,   0.025 msec avg)
-        io_Double_Grid :      0.0001s CPU (2 calls,   0.029 msec avg)
+      io_RT_components :      0.0000s CPU (2 calls,   0.023 msec avg)
+        io_Double_Grid :      0.0001s CPU (2 calls,   0.031 msec avg)
            io_KB_pwscf :      0.0002s CPU
-                 io_WF :      0.0012s CPU
-              io_QINDX :      0.0014s CPU
-               io_GROT :      0.0036s CPU (3 calls,   1.205 msec avg)
-          io_QP_and_GF :      0.0109s CPU (4 calls,   2.727 msec avg)
+                 io_WF :      0.0018s CPU
+              io_QINDX :      0.0026s CPU
+               io_GROT :      0.0066s CPU (3 calls,   2.214 msec avg)
+          io_QP_and_GF :      0.0370s CPU (4 calls,   9.258 msec avg)
 
- [07] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  332.0000 [Kb]
-
- [08] Game Over & Game summary
+ [07] Game Over & Game summary
  =============================
 
- 10/19/2020 at 13:04 ypp_rt @ baym [start]
- 10/19/2020 at 13:04               [end]
+ 01/31/2021 at 00:25 ypp_rt @ unimi-XPS-8930 [start]
+ 01/31/2021 at 00:25                         [end]
 
   
  .-ACKNOWLEDGMENT
