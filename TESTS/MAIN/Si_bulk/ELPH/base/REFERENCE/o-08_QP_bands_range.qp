@@ -1,0 +1,90 @@
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
+#                                                                     
+#      Version 5.0.1 Revision 19438 Hash 5cad2807b                    
+#                  Branch is bug-fixes                                
+#             MPI+OpenMP+SLEPC+HDF5_IO Build                          
+#               http://www.yambo-code.org                             
+#
+#
+# GW solver                                       : Newton
+# GW approximation                                : Fan + DW
+# [ph] dS/dw steps                                :  2
+# [ph] dS/dw step                                 :  0.100000001    [ev]
+# [ph] Sc/G damping                               :  0.100000001    [ev]
+# El-Ph correlation                               : yes
+# El-Ph Sc. G bands                               :   5  15
+# El-Ph phonon branches                           :   1   6
+# El-Ph momenta used                              :   8
+# Energy treshold                                 :  0.999999997E-6 [FAN]
+# Energy treshold                                 :  0.999999997E-6 [DW]
+#                                                 
+# QP @ state[ 1 ] K range                         :  1  1
+# QP @ state[ 1 ] b range                         :   1  10
+# QP @ state[ 2 ] K range                         :   7   7
+# QP @ state[ 2 ] b range                         :   1  10
+# GF energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+#                                                 
+# [ELPH] Phonon modes                             :   6
+# [ELPH] Q points                                 :   8 [avail]
+# [ELPH] K points                                 :   64
+# [ELPH] El-PH bands                              :  20
+# [ELPH] Using the Q-grid                         : yes
+#
+#
+#    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]         Width [meV]
+#
+        1                  1                 -12.08483           0.005524           0.005526           0.000000
+        1                  2                  0.000000          -0.204978E-3       -0.208584E-3       -0.116482
+        1                  3                  0.000000          -0.204978E-3       -0.208584E-3       -0.116482
+        1                   4                 0.000000          -0.204978E-3       -0.208584E-3       -0.116482
+        1                   5                 2.556584           0.013766           0.011148          -28.23494
+        1                   6                 2.556584           0.013766           0.011148          -28.23494
+        1                   7                 2.556584           0.013766           0.011148          -28.23494
+        1                   8                 3.531553          -0.032226          -0.030703          -15.44243
+        1                   9                 7.758921          -0.013000          -0.013608          -2.419945
+        1                  10                 7.896249           0.029899           0.031383          -3.360020
+         7                 1                 -7.855170           0.004658           0.004661          -0.14822E-34
+         7                 2                 -7.855161           0.004658           0.004661          -0.14822E-34
+         7                 3                 -2.944441           0.008104           0.008134          -0.61186E-13
+         7                  4                -2.944441           0.008104           0.008134          -0.61186E-13
+         7                  5                 0.607803          -0.040302          -0.037367          -9.376885
+         7                  6                 0.607808          -0.040302          -0.037367          -9.376885
+         7                  7                 10.21534          -0.064111          -0.038094          -58.47905
+         7                  8                 10.21534          -0.064111          -0.038094          -58.47905
+         7                  9                 11.21909          -0.012299          -0.004099          -52.14532
+         7                 10                 11.21909          -0.012299          -0.004099          -52.14532
+# 
+# 02/02/2021 at 17:02 yambo_ph @ attacc-lavoro [start]
+# 02/02/2021 at 17:02                          [end]
+#
+# .-Input file  yambo.in
+# | gw0                              # [R] GW approximation
+# | el_ph_corr                       # [R] Electron-Phonon Correlation
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
+# | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
+# | % GphBRnge
+# |   5 | 15 |                           # [ELPH] G[W] bands range
+# | %
+# | % ElPhModes
+# |   1 |  6 |                           # [ELPH] Phonon modes included
+# | %
+# | GDamping= 0.100000         eV    # [GW] G[W] damping
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | #WRgFsq                        # [ELPH] Dump on file gFsq coefficients
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
+# | 1|1|1|10|
+# | 7|7|1|10|
+# | %
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
+# | 1|7| 0.000000|-1.000000|
+# | %

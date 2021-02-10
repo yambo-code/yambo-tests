@@ -1,0 +1,115 @@
+#                                                                     
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 19406 Hash 78208fd33                   
+#                   Branch is bug-fixes                               
+#            MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                       
+#                http://www.yambo-code.org                            
+#
+#
+# [RT] Bands                                      :   5  10
+# [RT] K-points                                   :  12
+# [RT] Potential                                  : IP
+# [E-P] Electron-phonon                           : no
+# [E-P] Iterative time evolution                  : no
+# [E-P] Branches                                  : 0 0
+# [E-P] GF`s Memory steps                         :  2
+# [E-E] Coulomb scattering                        : no
+# [E-E] Coulomb correlation                       : no
+# [E-PHOTON] Scattering                           : no
+# [RT] Time step     (initial)                    :  0.400000019E-2 [fs]
+# [RT] NE time       (planned)                    :   40.0000000    [fs]
+# [RT] NE steps      (planned)                    :  10001
+# [RT] Lif Extr Inte/Intr(sav)                    :   0.00000000      0.00000000    [fs]
+# [RT] Lifetimes extrapolation                    : no
+# [RT] Integrator                                 : EULER + RK2
+# [RT] Radiative life time                        :   0.00000000    [fs]
+# [RT] Dephasing life time                        :  0.999999978E-2 [fs]
+# [RT] External Field(s)                          : yes
+# [RT] Number of Fields                           :  1
+# [RT] Diamagnetic term                           : no
+# [RT] Induced field                              : no
+# [DbGd] Double Grid support                      : no
+# [DbGd] Used for e-e                             :   0.00000000    [o/o]
+# [CONSTRAINS] N (ee+ep) & dN (ep)                : yes
+# [CONSTRAINS] IP Energy      (ee)                : yes
+# [FIELDs] Gauge Type                             : length
+# [FIELDs] Type                                   : QSSIN
+# [FIELDs] Polarization                           : linear
+# [FIELDs] Versor                                 :   1.00000000      0.00000000      0.00000000   
+# [FIELDs] Versor_circ                            :   0.00000000      1.00000000      0.00000000   
+# [FIELDs] Intensity                              :   1000.00000    [kWCMm2]
+# [FIELDs] Damping                                :   4.24660921    [fs]
+# [FIELDs] Frequency range                        :   1.00000000      0.00000000    [eV]
+# [FIELDs] Frequency steps                        :  1
+# [FIELDs] Frequency step                         :   0.00000000    [eV]
+# [FIELDs] Initial time                           :  0.400000019E-2 [fs]
+# [RT] Time step(now)                             :  0.400000019E-2 [fs]
+# [RT] NE time(done)                              :   0.00000000    [fs]
+# [RT] NE steps(done)                             :  1 [fs]
+# [RT] Lif Extr Inte/Intr(now)                    :   0.00000000      0.00000000    [fs]
+# [dT] Time-Dependent Time step                   : no
+#
+#
+# [Gr] Retarded Green`s function                  : none
+#
+#
+# Equilibrium spin magnetization                  :   0.00000000      0.00000000      0.00000000   
+#
+#    T [fs]             Ms_x               Ms_y               Ms_z
+#
+      0.00000000         0.00000000         0.00000000         0.00000000   
+      5.00000000                   NaN                NaN                NaN
+# 
+# 01/20/2021 at 09:43 yambo_rt @ VivoBook [start]
+# 01/20/2021 at 09:43                     [end]
+#  
+# Timing   [Min/Max/Average]: 04s/04s/04s
+#
+# .-Input file  yambo.in
+# | negf                             # [R] NEQ Real-time dynamics
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | RT_Threads= 1                    # [OPENMP/RT] Number of threads for real-time
+# | HXC_Potential= "IP"              # [SC] SC HXC Potential
+# | HARRLvcs= 27725            RL    # [HA] Hartree     RL components
+# | % RTBands
+# |   5 | 10 |                           # [RT] Bands
+# | %
+# | Integrator= "EULER + RK2"        # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
+# | PhLifeTime= 0.010000       fs    # [RT] Constant Dephasing Time
+# | % RTehEny
+# | -0.077035 | 0.990834 |         eV    # [RT] Electron-hole energy range
+# | %
+# | RTstep= 4.000000           as    # [RT] Real Time step length
+# | NETime= 40.00000           fs    # [RT] Simulation Time
+# | % IOtime
+# |  2.000000 | 1.000000 | 5.000000 |  fs    # [RT] Time between two consecutive I/O (CARRIERs - GF - OUTPUT)
+# | %
+# | % IOCachetime
+# |  0.004000 | 2.000000 |         fs    # [RT] Time between two consecutive (caching - I/O) of OBSERVABLES
+# | %
+# | % Field1_Freq
+# |  1.000000 | 0.000000 |         eV    # [RT Field1] Frequency
+# | %
+# | Field1_Int=  1000.00       kWLm2 # [RT Field1] Intensity
+# | Field1_Width= 4.246609     fs    # [RT Field1] Width
+# | Field1_FWHM= 10.00000      fs    # [RT Field1] Full Width at Half Maximum (overwrite width if set)
+# | Field1_kind= "QSSIN"             # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+# | Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
+# | % Field1_Dir
+# |  1.000000 | 0.000000 | 0.000000 |        # [RT Field1] Versor
+# | %
+# | % Field1_Dir_circ
+# |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
+# | %
+# | Field1_Tstart= 0.004000    fs    # [RT Field1] Initial Time
+# | %DephMatrix                      # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
+# | 1|1|1|-1.000000|
+# | %

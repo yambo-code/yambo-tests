@@ -95,7 +95,13 @@ sub RUN_input_file_test{
  if (&RUN_feature("HXC_Potential= default")=="1") {$POT="d"};
  if ($POT) {$CMD=$CMD." -potential ".$POT};
 
- if (&RUN_feature("magnetic")=="1" && &RUN_feature("landau")=="1")      { $CMD=$CMD." -magnetic l"};
+ if (&RUN_feature("magnetic")=="1") 
+ { 
+   if (&RUN_feature("Hamiltonian= \"landau\"")=="1") { $CMD=$CMD." -magnetic l"};
+   if (&RUN_feature("Hamiltonian= \"pauli\"")=="1") { $CMD=$CMD." -magnetic p"};
+   if (&RUN_feature("Hamiltonian= \"all\"")=="1") { $CMD=$CMD." -magnetic a"};
+ };
+
  if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p -gw0 fan"};
 
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
@@ -134,6 +140,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("freehole")=="1") { $CMD=$CMD." -freehole"};
  if (&RUN_feature("excitons")=="1" && &RUN_feature("amplitude")=="1")   { $CMD=$CMD." -exciton a"};
  if (&RUN_feature("excitons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -exciton w"};
+ if (&RUN_feature("excitons")=="1" && &RUN_feature("spin")=="1")   { $CMD=$CMD." -exciton sp"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -electron w"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("dos")=="1")   { $CMD=$CMD." -electron s"};
  if (&RUN_feature("eliashberg")=="1" && &RUN_feature("electron")=="1") { $CMD=$CMD." -electron e"};

@@ -8,12 +8,12 @@
          \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
                                                                           
                                                                           
-           Version 5.0.1 Revision 18706 Hash e137d59                      
-                    Branch is devel-andreaM                               
-                       MPI+HDF5_IO Build                                  
+          Version 5.0.1 Revision 19435 Hash 90a894eb3                     
+                      Branch is issue414                                  
+              MPI+OpenMP+SLK+SLEPC+HDF5_IO Build                          
                    http://www.yambo-code.org                              
  
- 07/31/2020 at 13:04 yambo_rt @ baym
+ 01/31/2021 at 00:25 yambo_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 07_IP_eh_space_10fs
- Alt#1 string        : R1
+ Alt#1 string        : R11
 
  Precision           : SINGLE
   
@@ -44,7 +44,7 @@
   Symmetries                                       :  24 [spatial]
   Spinor components                                :  1
   Spin polarizations                               :  1
-  Temperature                                      :  0.000000 [ev]
+  Temperature                                      :  0.000000 [eV]
   Electrons                                        :  8.000000
   WF G-vectors                                     :   369
   Max atoms/species                                :  2
@@ -52,7 +52,7 @@
   Exact exchange fraction in XC                    :  0.000000
   Exact exchange screening in XC                   :  0.000000
   Magnetic symmetries                              : no
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
 
  [02] CORE Variables Setup
  =========================
@@ -132,9 +132,9 @@
 
   Compatible Grid is   : 3D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.238269E-8 -0.500000     0.238269E-8 [rlu]
-  K_min[ 2 ] : -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
-  K_min[ 3 ] : -0.500000     0.238269E-8 -0.238269E-8 [rlu]
+  K_min[ 1 ] :  0.000000 -0.500000  0.000000 [rlu]
+  K_min[ 2 ] :  0.000000  0.000000 -0.500000 [rlu]
+  K_min[ 3 ] : -0.500000  0.000000  0.000000 [rlu]
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
 
@@ -154,47 +154,72 @@
   [X] Filled Bands                                  :   4
   [X] Empty Bands                                   :   5   8
   [X] Direct Gap                                    :  2.440868 [eV]
+  [X] Direct Gap localized at k-point               :  1
   [X] Indirect Gap                                  :  0.437631 [eV]
+  [X] Indirect Gap between k-points                 :  1  3
   [X] Last valence band width                       :  3.010587 [eV]
   [X] 1st conduction band width                     :  2.003237 [eV]
    
    
 
- [03] Transferred momenta grid
- =============================
+ [03] Transferred momenta grid and indexing
+ ==========================================
 
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
   Polarization last K                              :  3
   QP states                                        :  1  3
   X grid is uniform                                : yes
-  BS scattering                                    : yes
-  COLL scattering                                  : yes
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
+  Grids                                            : X B S
+  *ERR*BS scattering                               : yes
+  COLL scattering                                  : no
+  Sigma scattering                                 : yes
+  X scattering                                     : yes
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
+ [BZ sampling] Q-grid is User defined and/or read from the database
 
  IBZ Q-points :  3
  BZ  Q-points :   8
 
- Q [1] : weight       :  0.125000
-       : point-iku    :  0.000000  0.000000  0.000000  [iku]
- Q [2] : weight       :  0.500000
-       : point-iku    : -0.500000  0.500000 -0.500000  [iku]
- Q [3] : weight       :  0.375000
-       : point-iku    :  0.000000  1.000000  0.000000  [iku]
+ K/Q-points units:
+ rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
+
+ Q [1]:  0.000000  0.000000  0.000000 [rlu]
+ Q [2]:  0.000000  0.000000  0.500000 [rlu]
+ Q [3]:  0.000000  0.500000  0.500000 [rlu]
+
+  [03.01] X indexes
+  =================
+
+
+   [03.01.01] Sigma indexes
+   ========================
+
+   [WR./SAVE//ndb.kindx]-----------------------------------------------------------
+    Fragmentation                                    : no
+    Polarization last K                              :  3
+    QP states                                        :  1  3
+    X grid is uniform                                : yes
+    Grids                                            : X S
+    BS scattering                                    : no
+    COLL scattering                                  : no
+    Sigma scattering                                 : yes
+    X scattering                                     : yes
+   - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
 
   [03.01] External RT corrections (R)
   ===================================
 
 
-  [df_from_DB-Nearest K] Exact matches  [o/o]:  100.0000
+  [df_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
 
   Updated Carrier components
   ==========================
 
-  [f@ R] Reference Time           [fs] :  100.0000
+  [f@ R] Reference Time                :  100.0000 [fs]
   [f@ R] Bands range                   :   2   7
-  [f@ R] Maximum occupations change    :  0.563986
-  [f@ R] N of carriers                 :  0.608238
+  [f@ R] Maximum occupations change    :  0.738709
+  [f@ R] N of carriers                 :  0.789726
   [f@ R] Full and metallic bands        :   1   7
 
   [f@ R] === General ===
@@ -212,8 +237,8 @@
   [f@ R] Empty Bands                                :   8   8
    
   [f@ R] === Metallic Characters ===
-  [f@ R] N of el / N of met el                      :   8.0000      0.36013E-42
-  [f@ R] Average metallic occ.                      :  0.000000
+  [f@ R] N of el / N of met el                      :  8.000000  5.684128
+  [f@ R] Average metallic occ.                      :  0.473677
 
   [WARNING][f@ R] Metallic system
    
@@ -226,8 +251,6 @@
  [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
   Fragmentation                                    : no
  - S/N 003129 ---------------------------------------------- v.03.04.00 r.02830 -
- [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.434271E-8   1.00000   
-
  [WR./07_IP_eh_space_10fs//ndb.dipoles]------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   8   3   8
   RL vectors                                       :   387 [WF]
@@ -236,7 +259,7 @@
   Bosonic    Temperature                           :  0.000000 [K]
   DIP band range                                   :   2   7
   DIP band range limits                            :   7   2
-  DIP e/h energy range                             : -1.000000 -1.000000 ev
+  DIP e/h energy range                             : -1.000000 -1.000000 [eV]
   RL vectors in the sum                            :   387
   [r,Vnl] included                                 : yes
   Bands ordered                                    : yes
@@ -244,7 +267,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
 
  [05] Bethe Salpeter Equation @q1
  ================================
@@ -255,7 +278,7 @@
 
   [BSK] Transition groups (total):  3
 
-  [05.02] Independent Particles absorption @q1
+  [05.02] Independent Particles properties @q1
   ============================================
 
 
@@ -268,7 +291,7 @@
    Bosonic    Temperature                           :  0.000000 [K]
    DIP band range                                   :   2   7
    DIP band range limits                            :   7   2
-   DIP e/h energy range                             : -1.000000 -1.000000 ev
+   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
    RL vectors in the sum                            :   387
    [r,Vnl] included                                 : yes
    Bands ordered                                    : yes
@@ -276,7 +299,7 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P
    Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 003129 ---------------------------------------------- v.05.00.01 r.18706 -
+  - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
 
  [06] Timing Overview
  ====================
@@ -284,41 +307,33 @@
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
-                        io_BS :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
-                 PP_uspp_init :      0.0000s CPU ( 3 calls,   0.011 msec avg)
-                      io_ELPH :      0.0000s CPU ( 2 calls,   0.018 msec avg)
+                        io_BS :      0.0000s CPU
+                      io_ELPH :      0.0000s CPU ( 2 calls,   0.013 msec avg)
                         io_HF :      0.0000s CPU
+                 PP_uspp_init :      0.0000s CPU ( 3 calls,   0.009 msec avg)
+      IO_and_Messaging_switch :      0.0000s CPU (12 calls,   0.002 msec avg)
                io_Double_Grid :      0.0000s CPU
-                io_COLLISIONS :      0.0001s CPU ( 3 calls,   0.018 msec avg)
-                         io_X :      0.0001s CPU ( 4 calls,   0.017 msec avg)
-      IO_and_Messaging_switch :      0.0001s CPU (10 calls,   0.009 msec avg)
-                  WF_load_FFT :      0.0003s CPU ( 3 calls,   0.116 msec avg)
-                  io_KB_pwscf :      0.0007s CPU ( 5 calls,   0.138 msec avg)
-                  io_fragment :      0.0019s CPU ( 6 calls,   0.323 msec avg)
-                     io_QINDX :      0.0024s CPU ( 2 calls,   1.196 msec avg)
-                      io_GROT :      0.0035s CPU ( 3 calls,   1.155 msec avg)
-                        io_WF :      0.0045s CPU (10 calls,   0.447 msec avg)
-            DIPOLE_transverse :      0.0089s CPU
-                   io_DIPOLES :      0.0103s CPU (10 calls,   1.026 msec avg)
-             io_RT_components :      0.0121s CPU ( 5 calls,   2.425 msec avg)
-                      Dipoles :      0.0183s CPU
-                   T_space IP :      0.0497s CPU
+                io_COLLISIONS :      0.0000s CPU ( 3 calls,   0.012 msec avg)
+                         io_X :      0.0001s CPU ( 4 calls,   0.013 msec avg)
+                  io_KB_pwscf :      0.0004s CPU ( 5 calls,   0.077 msec avg)
+                  WF_load_FFT :      0.0006s CPU ( 3 calls,   0.208 msec avg)
+                  io_fragment :      0.0031s CPU ( 6 calls,   0.509 msec avg)
+              bz_samp_indexes :      0.0053s CPU
+                      io_GROT :      0.0067s CPU ( 3 calls,   2.239 msec avg)
+                        io_WF :      0.0078s CPU (10 calls,   0.777 msec avg)
+                     io_QINDX :      0.0095s CPU ( 3 calls,   3.168 msec avg)
+            DIPOLE_transverse :      0.0101s CPU
+                   io_DIPOLES :      0.0218s CPU (10 calls,   2.177 msec avg)
+             io_RT_components :      0.0227s CPU ( 5 calls,   4.531 msec avg)
+                      Dipoles :      0.0232s CPU
+                   T_space IP :      0.0399s CPU
 
- [07] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  563.0000 [Kb]
-
- [08] Game Over & Game summary
+ [07] Game Over & Game summary
  =============================
 
- 07/31/2020 at 13:04 yambo_rt @ baym [start]
- 07/31/2020 at 13:04                 [end]
+ 01/31/2021 at 00:25 yambo_rt @ unimi-XPS-8930 [start]
+ 01/31/2021 at 00:25                           [end]
 
   
  .-ACKNOWLEDGMENT
@@ -349,10 +364,15 @@
  | FFTGvecs=  387             RL    # [FFT] Plane-waves
  | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+ | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+ | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+ | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
  | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | BSKmod= "IP"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx= 2085             RL    # [BSK] Exchange components
  | RfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT R] Database
+ | BSEprop= "abs"                   # [BSS] abs/kerr/magn/dichr trace
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %
