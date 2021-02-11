@@ -1,0 +1,142 @@
+#                                                                     
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
+#                                                                     
+#      Version 5.0.0 Revision 19481 Hash 5ac96ac6c                    
+#                 Branch is devel-tddft                               
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#               http://www.yambo-code.org                             
+#
+#
+#
+# [K] Identifier                                  :   7845
+# [K] Dimension                                   :  12
+# [K] Bands                                       :   2   8
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : yes
+# [K] Kernel`s coupling                           : yes
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : no
+# [K] W interaction is bare                       : no
+# [K] ALDA kernel in R-space                      : no
+# [K] RL vectors                                  :   4067 [exchange]
+# [K] RL vectors                                  :  203 [correlation]
+# [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# [K] Coupling range                              :   100.000000      100.000000    [o/o]
+# [W] Interaction is diagonal                     : no
+# [W] Matrix size                                 :  203
+# [W] Bands                                       :   1  20
+# [W] e/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# [W] Poles                                       :   100.000000    [o/o]
+# [W] RL vectors in the sum                       :   3695
+# [W] [r,Vnl] included                            : yes
+# [W] Field direction                             :  0.577350283E-5  0.577350283E-5  0.577350283E-5
+# [W] Coulomb Cutoff                              : ws xyz
+# [W] xc-Kernel                                   : none
+# [RIM] RL components                             : 0 [col]
+# [RIM] Random points                             : 0 [col]
+# [SOC] Perturbative SOC                          : no
+#
+#
+#
+#    Re(E) [eV]         Im(E) [eV]         n_deg              abs
+#
+    -12.037688         0.25780908E-09      1.0000000        -0.12640979E-10
+    -10.580532         0.21234765E-08      1.0000000        -0.11846918E-10
+    -10.526505         0.18361247E-07      1.0000000        -0.42851165E-11
+    -9.9462528         0.17779189E-06      1.0000000        -0.20589447E-10
+    -9.9362316         0.18756751E-07      1.0000000        -0.21167942E-15
+    -9.9252930         0.50387641E-07      1.0000000        -0.20316894E-10
+    -9.8585300         0.74438481E-06      1.0000000        -0.98384002E-17
+    -9.8529310         0.13061624E-06      2.0000000        -0.13258645E-12
+    -5.7627459        -0.55323572E-07      1.0000000        -0.12959319E-10
+    -5.7612653        -0.17272596E-07      1.0000000        -0.13255490E-10
+    -5.7537680        -0.66401284E-08      1.0000000        -0.13114930E-10
+     5.7537670         0.17929132E-09      1.0000000         0.13116034E-10
+     5.7612629        -0.83795664E-08      1.0000000         0.13254687E-10
+     5.7627449        -0.71656707E-07      1.0000000         0.12958993E-10
+     9.8529310         0.36707138E-06      2.0000000         0.13263006E-12
+     9.8585329         0.48988693E-06      1.0000000         0.94993405E-17
+     9.9252958         0.31935605E-06      1.0000000         0.20322632E-10
+     9.9362288         0.10092676E-06      1.0000000         0.25035845E-15
+     9.9462595        -0.18575997E-06      1.0000000         0.20583396E-10
+     10.526516         0.27366465E-06      1.0000000         0.42847058E-11
+     10.580540         0.49415068E-07      1.0000000         0.11847518E-10
+     12.037709        -0.43310067E-10      1.0000000         0.12640999E-10
+# 
+# 02/11/2021 at 17:28 yambo @ VivoBook [start]
+# 02/11/2021 at 17:28                  [end]
+#
+# .-Input file  yambo.in
+# | rim_cut                          # [R] Coulomb potential
+# | optics                           # [R] Linear Response optical properties
+# | dipoles                          # [R] Oscillator strenghts (or dipoles)
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | em1s                             # [R][Xs] Statically Screened Interaction
+# | ElecTemp= 0.025869         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# | % CUTBox
+# |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | % DipBands
+# |   2 |  8 |                           # [DIP] Bands range for dipoles
+# | %
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx=  4067            RL    # [BSK] Exchange components
+# | BSENGBlk= 203              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
+# | #WehCpl                        # [BSK] eh interaction included also in coupling
+# | % KfnQP_E
+# |  3.400000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+# | %
+# | #AnHall                        # [BSE] Add the anomalous Hall effect to eps if using length gauge
+# | BSEprop= "abs esrt"              # [BSS] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |   2 |  8 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -20.00000 | 20.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 2001                   # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | % BndsRnXs
+# |   1 | 20 |                           # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs= 203              RL    # [Xs] Response block size
+# | GrFnTpXs= "R"                    # [Xs] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
+# | % LongDrXs
+# |  0.577350E-5 | 0.577350E-5 | 0.577350E-5 # [Xs] [cc] Electric Field
+# | %
+# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
