@@ -1,16 +1,16 @@
 #                                                                     
-# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
-# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
-#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
-#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
-#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
-#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
-#    ###  ###     ### ###       ### #########   ########              
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
 #                                                                     
 #                                                                     
-#       Version 5.0.1 Revision 18802 Hash 6d95de8f4                   
+#       Version 5.0.0 Revision 19471 Hash 770c6e6aa                   
 #               Branch is devel-fullfreqGW                            
-#            MPI+OpenMP+CUDA+SLK+HDF5_IO Build                        
+#              MPI+OpenMP+SLK+HDF5_IO Build                           
 #                http://www.yambo-code.org                            
 #
 #
@@ -41,22 +41,24 @@
 # Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
 # Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
 #
+# Vxc  =Slater exchange(X)+Perdew & Zunger(C)
+# Vnlxc=Hartree-Fock
 #
-#    K-point            Band               Eo                 E-Eo               Sc|Eo
+#    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-     1.00000000         5.00000000         0.00000000       -0.741607308       -0.528705537   
-     1.00000000         6.00000000        0.737129092         1.76133621       -0.315060794   
-     2.00000000         5.00000000        -1.12016749       -0.770059407        0.337501943   
-     2.00000000         6.00000000         1.40202320         1.67635274       -0.607771456   
-     3.00000000         5.00000000        -4.34634590       -0.435995311         2.14762187   
-     3.00000000         6.00000000         2.99249506         2.47171569        -1.59137678   
-     4.00000000         5.00000000        -6.88757133       -0.100732885         2.12913513   
-     4.00000000         6.00000000         5.32716942         1.35784829        -2.02510953   
+        1                   5                 0.000000          -0.733113          -0.508072
+        1                   6                 0.737129           1.771666          -0.315455
+        2                   5                -1.120167          -0.835896           0.290539
+        2                   6                 1.402023           1.705598          -0.584671
+        3                   5                -4.346346          -0.817020           1.703382
+        3                   6                 2.992495           2.573946          -1.507438
+         4                  5                -6.887571          -2.598196           1.916508
+         4                  6                 5.327169           2.334083          -1.810590
 # 
-# 02/10/2021 at 17:15 yambo @ corvina [start]
-# 02/10/2021 at 17:15                 [end]
+# 02/11/2021 at 09:37 yambo @ corvina [start]
+# 02/11/2021 at 09:38                 [end]
 #  
-# Timing   [Min/Max/Average]: 07s/07s/07s
+# Timing   [Min/Max/Average]: 59s/59s/59s
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
@@ -93,10 +95,10 @@
 # | %
 # | EnSampXm= "2l"                   # [Xm] Frequency sampling in the complex plane ("1l" one line, "2l" two lines)
 # | % EnRngeXm
-# |  0.000000 | 4.000000 |         Ry    # [Xm] Energy range
+# |  0.000000 | 2.000000 |         Ry    # [Xm] Energy range
 # | %
 # | % ImRngeXm
-# |  27.21138 | 27.21138 |         eV    # [Xm] Imaginary range
+# |  1.500000 | 1.500000 |         Ry    # [Xm] Imaginary range
 # | %
 # | % DmRngeXm
 # |  0.000000 | 0.200000 |         Ry    # [Xm] Damping range
@@ -105,7 +107,7 @@
 # | % GbndRnge
 # |   1 | 20 |                           # [GW] G[W] bands range
 # | %
-# | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze)
+# | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
 # | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
 # | GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
 # | GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
