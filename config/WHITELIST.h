@@ -58,6 +58,7 @@ call add_RULE("o-05_KERR_IP-RPA_len.moke_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_len.off_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.moke_q1_IP","whitelist",MATERIAL="Iron")
 call add_RULE("o-05_KERR_IP-RPA_vel.off_q1_IP","whitelist",MATERIAL="Iron")
+call add_RULE("o-04_bse.beta_q1_diago_bse","whitelist",MATERIAL="Benzene")
 !
 ! QP
 !====
@@ -65,14 +66,26 @@ call add_RULE("o-03_QP_COHSEX_drude.ndb.em1s_fragment_1","whitelist",MATERIAL="A
 !
 ! BSE
 !=====
-call add_RULE("o-06_ypp_sort.exc_E_sorted","whitelist",MATERIAL="hBN")
-call add_RULE("o-06_ypp_sort.exc_I_sorted","whitelist",MATERIAL="hBN")
+call add_RULE(".exc_I+spin_sorted","whitelist",MATERIAL="MoS2")
+call add_RULE(".exc_qpt1_I+spin_sorted","whitelist",MATERIAL="MoS2")
+!
+! DS Jan 2021. The following contain random numbers in the degenerate space
+!
+call add_RULE("o-06_ypp_exc_amplitude_SLEPC.exc_qpt1_weights","whitelist",MATERIAL="hBN")
+call add_RULE("o-06_ypp_sort_SLEPC.exc_qpt1_E_sorted","whitelist",MATERIAL="hBN")
+call add_RULE("o-06_ypp_sort_SLEPC.exc_qpt1_I_sorted","whitelist",MATERIAL="hBN")
 call add_RULE("o-06_ypp_sort.exc_qpt1_E_sorted","whitelist",MATERIAL="hBN")
 call add_RULE("o-06_ypp_sort.exc_qpt1_I_sorted","whitelist",MATERIAL="hBN")
-call add_RULE("o-06_ypp_sort.exc_qpt2_E_sorted","whitelist",MATERIAL="hBN")
-call add_RULE("o-06_ypp_sort.exc_qpt2_I_sorted","whitelist",MATERIAL="hBN")
-call add_RULE(".exc_I+spin_sorted","whitelist")
-call add_RULE(".exc_qpt1_I+spin_sorted","whitelist")
+!
+! AM May 2020. The hBN/GW-OPTICS keep being affected by tiny errors in random parallel mode.
+!
+call add_RULE("o-13_BSE_allq_SLEPC.eel_q4","whitelist",MATERIAL="hBN")
+call add_RULE("o-13_BSE_allq_SLEPC.eps_q4","whitelist",MATERIAL="hBN")
+call add_RULE("o-13_BSE_allq_fullL.eel_q4","whitelist",MATERIAL="hBN")
+call add_RULE("o-13_BSE_allq_fullL.eps_q4","whitelist",MATERIAL="hBN")
+call add_RULE("o-13_BSE_allq_fullL.jdos_q4_diago_bse","whitelist",MATERIAL="hBN")
+call add_RULE("o-14_ypp_sort_BSE_allq_fullL.exc_qpt2","whitelist",MATERIAL="hBN")
+call add_RULE("o-16_ypp_weight_BSE_allq.exc_qpt2_weights","whitelist",MATERIAL="hBN")
 !
 ! SC
 !=====

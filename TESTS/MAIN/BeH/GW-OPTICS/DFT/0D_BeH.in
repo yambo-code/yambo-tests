@@ -1,0 +1,41 @@
+
+ndtset 2   jdtset  1 2
+
+#accesswff 3
+
+ diemac 1.0d0
+ diemix 0.333333333333d0
+
+ kptopt 0
+ kpt 3*0.0d0
+
+#Run 1 Groundstate calculation
+ nstep1      1000
+ toldfe1    1.0d-12
+ nband1     4 2
+ iscf1      3
+ prtden1    1
+
+#Definition of th k point grid
+ acell 12 10 10
+ ecut 14
+ natom 2
+ ntypat 2
+ typat  1 2
+ znucl 1.0 4.0
+ nsppol 2
+
+ xcart   -1.50 0.0  0.0
+          1.50 0.0  0.0
+
+#Run 2  wf
+ iscf2     -2
+ getden2   1
+ getwfk2   1
+ nband2    50 50
+ nstep2     3000
+ tolwfr2     1.0d-10
+ occopt2   1
+ prtkbff2  
+ symmorphi2 0
+ istwfk2   *1

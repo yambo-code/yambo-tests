@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -24,10 +24,14 @@
 #
 sub RUN_input_file_test{
 
- my $NEW_file=$INPUT_file."_generated";
+ undef $NEW_file;
  my $CMD;
- &command("echo \"ORIGINAL\" >> $INPUT_file");
- &command("cp $INPUT_file $NEW_file");
+ if (-f $INPUT_file) 
+ {
+  $NEW_file=$INPUT_file."_generated";
+  &command("echo \"ORIGINAL\" >> $INPUT_file");
+  &command("cp $INPUT_file $NEW_file");
+ }
 
  if ($SETUP=="1")   { $CMD=$CMD." -setup" };
  if ($HF=="1")      { $CMD=$CMD." -hf"};
@@ -60,9 +64,22 @@ sub RUN_input_file_test{
 
  if (&RUN_feature("negf")=="1") {$CMD=$CMD." -rt p"};
  if (&RUN_feature("collisions")=="1") {$CMD=$CMD." -collisions"};
- if (&RUN_feature("el_photon_scatt")=="1") {$CMD=$CMD." -scattering h"};
- if (&RUN_feature("el_ph_scatt")=="1") {$CMD=$CMD." -scattering p"};
- if (&RUN_feature("el_el_scatt")=="1") {$CMD=$CMD." -scattering e"};
+ 
+ if (&RUN_feature("el_photon_scatt")=="1") {
+   if (not $is_NEW_scatt) {$CMD=$CMD." -scattering h"}
+   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering eh"}
+ }
+ if (&RUN_feature("el_ph_scatt")=="1") {
+   if (not $is_NEW_scatt) {$CMD=$CMD." -scattering p"}
+   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering ep -J GKKP"}
+ }
+ if (&RUN_feature("el_el_scatt")=="1") {
+   if (not $is_NEW_scatt) {$CMD=$CMD." -scattering e"}
+   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering ee"}
+ }
+ if (&RUN_feature("ph_el_scatt")=="1") {
+   if (    $is_NEW_scatt) {$CMD=$CMD." -scattering pe"}
+ }
 
  my $POT;
  if (&RUN_feature("HXC_Potential= IP")=="1") {$POT="ip"};
@@ -78,7 +95,13 @@ sub RUN_input_file_test{
  if (&RUN_feature("HXC_Potential= default")=="1") {$POT="d"};
  if ($POT) {$CMD=$CMD." -potential ".$POT};
 
- if (&RUN_feature("magnetic")=="1" && &RUN_feature("landau")=="1")      { $CMD=$CMD." -magnetic l"};
+ if (&RUN_feature("magnetic")=="1") 
+ { 
+   if (&RUN_feature("Hamiltonian= \"landau\"")=="1") { $CMD=$CMD." -magnetic l"};
+   if (&RUN_feature("Hamiltonian= \"pauli\"")=="1") { $CMD=$CMD." -magnetic p"};
+   if (&RUN_feature("Hamiltonian= \"all\"")=="1") { $CMD=$CMD." -magnetic a"};
+ };
+
  if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p -gw0 fan"};
 
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
@@ -91,7 +114,10 @@ sub RUN_input_file_test{
  if (&RUN_feature("Chimod= \"LRC\"")=="1")   { $CMD=$CMD." -kernel lrc"};
  if (&RUN_feature("BSKmod= \"HF\"")=="1")   { $CMD=$CMD." -kernel hf"};
 
- if (&RUN_feature("WFs_map")=="1") { $CMD=$CMD." -wf p"};
+ if (&RUN_feature("WFs_map")=="1"){ 
+  if (not $is_WF_convertion_free) {$CMD=$CMD." -wf p"}
+  if (    $is_WF_convertion_free) {$CMD=$CMD." -soc"}
+ };
  if (&RUN_feature("fixsyms")=="1") { $CMD=$CMD." -fixsym"};
  if (&RUN_feature("RToccupations")=="1") { $CMD=$CMD." -rtplot o"};
  if (&RUN_feature("RTdeltaRho")=="1") { $CMD=$CMD." -rtplot d"};
@@ -103,8 +129,10 @@ sub RUN_input_file_test{
  if (&RUN_feature("K_grid")=="1") { $CMD=$CMD." -grid k"};
  if (&RUN_feature("QPDB_edit")=="1") { $CMD=$CMD." -qpdb g"};
  if (&RUN_feature("QPDB_merge")=="1") { $CMD=$CMD." -qpdb m"};
+ if (&RUN_feature("QPDB_expand")=="1") { $CMD=$CMD." -qpdb e"};
  if (&RUN_feature("Shifted_Grid")=="1") { $CMD=$CMD." -grid s"};
  if (&RUN_feature("High_Symm")=="1") { $CMD=$CMD." -grid h"};
+ if (&RUN_feature("avehole")=="1") { $CMD=$CMD." -avehole"};
  if (&RUN_feature("kpts_map")=="1") { $CMD=$CMD." -map"};
  if (&RUN_feature("RTDBs")=="1" && &RUN_feature("Select_Fermi")=="1") { $CMD=$CMD." -rtdb f"};
  if (&RUN_feature("RTDBs")=="1" && &RUN_feature("Select_energy")=="1") { $CMD=$CMD." -rtdb e"};
@@ -112,6 +140,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("freehole")=="1") { $CMD=$CMD." -freehole"};
  if (&RUN_feature("excitons")=="1" && &RUN_feature("amplitude")=="1")   { $CMD=$CMD." -exciton a"};
  if (&RUN_feature("excitons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -exciton w"};
+ if (&RUN_feature("excitons")=="1" && &RUN_feature("spin")=="1")   { $CMD=$CMD." -exciton sp"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("wavefunction")=="1")   { $CMD=$CMD." -electron w"};
  if (&RUN_feature("electrons")=="1" && &RUN_feature("dos")=="1")   { $CMD=$CMD." -electron s"};
  if (&RUN_feature("eliashberg")=="1" && &RUN_feature("electron")=="1") { $CMD=$CMD." -electron e"};
@@ -124,8 +153,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("p2y")=="1")   { return "OK" };
  if (&RUN_feature("a2y")=="1")   { return "OK" };
 
- if ($CMD) {
-  #print "\nCMD $CMD @ $testname\n";
+ if ($CMD and $NEW_file) {
   &command("$yambo_exec -Q $CMD -F $NEW_file $log");
   if (compare("$INPUT_file","$NEW_file") == 0) {
    return "Input not Generated";

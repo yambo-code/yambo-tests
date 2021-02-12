@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -23,8 +23,8 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SETUP_keys{
-my @PJs = ("sc","rt","pl","elph","kerr","magnetic","nl","hard","nopj","qp-dbs","p2y","a2y"); 
-my @FTs = ("gw", "bse", "rpa","all"); 
+my @PJs = ("sc","rt","elph","magnetic","nl","hard","nopj","qp-dbs","p2y","a2y");
+my @FTs = ("gw", "bse", "rpa","all","spin","spinors","kerr","magnons","pl"); 
 $project= '';
 foreach my $index (0..$#PJs) {
     next if ($keys !~ /$PJs[$index]/ and $keys !~ /all/);

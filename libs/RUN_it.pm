@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -31,10 +31,11 @@ my $CPU_cmd= " ";
 if ($yambo_running) {$CPU_cmd=$CPU_flag};
 #
 # CMD line
+#
 if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
- $command_line = "$nice $yambo_exec -F $INPUT_file $flags $in_dir_cmd_line $force_serial $log";
+ $command_line = "$nice $yambo_exec $INPUT_option $INPUT_file $flags $in_dir_cmd_line $force_serial $log";
 }else{
- $command_line = "$nice $mpiexec -np $np $yambo_exec -F $INPUT_file $flags $in_dir_cmd_line $force_serial $CPU_cmd $log";
+ $command_line = "$nice $mpiexec -np $np $yambo_exec $INPUT_option $INPUT_file $flags $in_dir_cmd_line $force_serial $CPU_cmd $log";
 }
 #
 # *** RUN ***
@@ -59,7 +60,7 @@ if ($pid) {
     die($@) if $@ ne "TIMEOUT!\n";
     #print "Run timed out.\n";
     waitpid($pid, 0);
-    #print "Child reaped.\n";
+    #print "Child $pid after waiting .\n";
   }
 } else {
   #print "Run started $command_line.\n";
@@ -116,6 +117,9 @@ if ($system_error == 0) {
   my $msg = sprintf("%8.1f", $elapsed);
   &MESSAGE("LOG",$msg."s");
  }
+}elsif ($system_error == 256) {
+ my $msg = sprintf("%8.1f", $elapsed);
+ &MESSAGE("LOG",$msg."s [WARNING Exit Code 256]");
 }else{
  $CHECK_error="FAILED (exit code $system_error)";
  &RUN_stats("NOT_RUN");

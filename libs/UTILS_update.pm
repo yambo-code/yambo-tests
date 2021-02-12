@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -84,18 +84,16 @@ if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "dev
 }else{
  $REF_folder="REFERENCE_".$branch_key;
 };
-if (not -d $REF_folder) 
-{ 
- print "\nUPDATE: Adding $REF_folder FOLDER";
- &command("mkdir -p ../$REF_folder");
- &command("$git add ../$REF_folder");
-};
-if ("@_" eq "RM" and "$REF_folder" eq "REFERENCE"){
+if ("@_" eq "RM" && $ref_filename =~ /$REF_folder/){
  &command("$git rm ../$ref_filename");
 }
 if ("@_" eq "ADD")
 {
- print "\nUPDATE: Adding";
+ if (not -d $REF_folder) 
+ { 
+  print "...$REF_folder FOLDER";
+  &command("mkdir -p ../$REF_folder");
+ };
  if (not -f "../$REF_folder/$run_filename") 
  {
   &command("cp $run_filename ../$REF_folder");
@@ -110,13 +108,15 @@ if ("@_" eq "ADD")
    print "...$file";
   }
  }
- if (-f "yambo.in_generated") {
+}
+if ("@_" eq "INPUT") {
+ print "\nUPDATE: Adding";
+ if (-f "$testname/yambo.in_generated") {
   &command("cp yambo.in_generated ../$input_folder/$testname");
   &command("$git add ../$input_folder/$testname");
-   print "...$input_folder/$testname";
+  print "...$input_folder/$testname";
  };
- print "\n";
 }
-#
+print "\n";
 }
 1;

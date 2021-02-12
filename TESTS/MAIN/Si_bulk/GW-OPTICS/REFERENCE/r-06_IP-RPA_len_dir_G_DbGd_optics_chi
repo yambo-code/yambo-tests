@@ -1,18 +1,18 @@
                                                                 
-     ____  ____     _       ____    ____  ______      ___       
-    |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.     
-      \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \    
-       \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |    
-       _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /    
-      |______||____| |____||_____||_____||_______/  `.___."     
+     __  __   ________   ___ __ __    _______   ______          
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\         
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \        
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \       
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \      
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \     
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/     
                                                                 
                                                                 
-                                                                
-           Version 4.3.0 Revision 15209 Hash ca63943            
-                        MPI+OpenMP Build                        
+           Version 4.3.0 Revision 15212 Hash b75c95f            
+                         MPI+SLK Build                          
                    http://www.yambo-code.org                    
  
- 01/16/2018 at 10:48 YAMBO @ anomaly
+ 01/17/2018 at 16:19 YAMBO @ narro
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -29,8 +29,8 @@
  Input file     is   yambo.in
  Report file    is   ./r-06_IP-RPA_len_dir_G_DbGd_optics_chi
  Job string(main): 06_IP-RPA_len_dir_G_DbGd
-             (#1): 04_MAP_fine_grid-serial-devel-dbgd-X
-             (#2): R1
+             (#1): 04_MAP_fine_grid-serial-devel-double-grid
+             (#2): R3
  Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
@@ -138,16 +138,13 @@
   [02.05] Double K-grid
   =====================
 
-  K-points             :  418
-  Bands                :  32
-  Is the grid expanded :yes
-
+  Kpts (IBZ): CG,FG,DUPL.    :   10   408     0
+  Kpts ( BZ): CG,FG,DUPL.    :   256  16384      0
+  Bands                      :  32
 
   [02.06] Energies [ev] & Occupations
   ===================================
 
-
-  [WARNING] Double grid produces   8.008654 e-.
   [X]Fermi Level        [ev]:  6.624800
   [X]VBM / CBm          [ev]: -0.612258  0.519713
   [X]Electronic Temp. [ev K]: 0.1723E-4 0.2000   
@@ -242,7 +239,7 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 002577 -------------------------- v.04.03.00 r.15209 -
+ - S/N 002577 -------------------------- v.04.03.00 r.15212 -
 
  IBZ Q-points : 19
  BZ  Q-points : 256
@@ -290,8 +287,6 @@
  [04] Optics
  ===========
 
-
- DbGd@q[1] k->k-q transitions included [%]: 1.5384616
  [RD./SAVE//ns.kb_pp_pwscf]----------------------------------
   Fragmentation                    :yes
  - S/N 002577 -------------------------- v.04.00.01 r.04546 -
@@ -317,25 +312,23 @@
   Direct v evaluation    :no
   Field momentum norm    :0.10000E-4
   Wavefunctions          :Slater exchange(X)+Perdew & Zunger(C)
- - S/N 002577 -------------------------- v.04.03.00 r.15209 -
-
- DbGd@q[2] k->k-q transitions included [%]: 1.4201183
+ - S/N 002577 -------------------------- v.04.03.00 r.15212 -
  [WF] Performing Wave-Functions I/O from ./SAVE
 
  [FFT-X] Mesh size: 12  12  12
 
 
- Timing [Min/Max/Average]: 28s/28s/28s
+ Timing [Min/Max/Average]: 36s/36s/36s
 
  [05] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
                                io_WF :     0.00s CPU (      25 calls,   0.000 s avg)
-                             io_GROT :     0.00s CPU (       2 calls,   0.001 s avg)
+                             io_GROT :     0.00s CPU (       2 calls,   0.002 s avg)
                             io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
                           io_COL_CUT :     0.00s CPU
-                      io_Double_Grid :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU (       2 calls,   0.002 s avg)
                                io_HF :     0.00s CPU
                           io_DIPOLES :     0.00s CPU (      13 calls,   0.000 s avg)
                          io_KB_pwscf :     0.00s CPU (      12 calls,   0.000 s avg)
@@ -346,27 +339,27 @@
                              Dipoles :     0.00s CPU
                    DIPOLE_transverse :     0.00s CPU
                          io_fragment :     0.00s CPU (      40 calls,   0.000 s avg)
-                      Xo (procedure) :    27.00s CPU (       2 calls,  13.805 s avg)
+                      Xo (procedure) :    35.00s CPU (       2 calls,  17.950 s avg)
                           Xo (REDUX) :     0.00s CPU (       2 calls,   0.000 s avg)
 
  [06] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 1.000000Mb (basic treshold)  10.00000Mb (SAVEs treshold)
+ Memory treshold are: 1.024000Gb (basic treshold)  10.24000Gb (SAVEs treshold)
 
-         TOTAL not deallocated :  1.660000Mb
+         TOTAL not deallocated :  1.515520Gb
 
-         Max memory used   :  3.948000Mb
+         Max memory used   :  3.637000Mb
 
  [07] Game Over & Game summary
  =============================
 
- 01/16/2018 at 10:48 YAMBO @ anomaly [start]
- 01/16/2018 at 10:48                 [end]
+ 01/17/2018 at 16:19 YAMBO @ narro [start]
+ 01/17/2018 at 16:19               [end]
 
- Timing   [Min/Max/Average]: 28s/28s/28s
-             [Time-Profile]:  28.15175s
+ Timing   [Min/Max/Average]: 36s/36s/36s
+             [Time-Profile]:  36.62000s
 
  .-ACKNOWLEDGMENT
  |
@@ -389,8 +382,6 @@
  | ElecTemp=0.1723E-4     eV      # Electronic Temperature
  | BoseTemp=0.1723E-4     eV      # Bosonic Temperature
  | FFTGvecs=  411         RL      # [FFT] Plane-waves
- | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
- | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
  | Chimod= "IP"                   # [X] IP/Hartree/ALDA/LRC/BSfxc
  | NGsBlkXd= 1            RL      # [Xd] Response block size
  | % QpntsRXd

@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -40,6 +40,7 @@ if ("@_" eq "RESTORE") {
 #
 # ALL
 if("@_" eq "ALL") {
+ &command("find . -type d -empty | xargs rm -fr");
  if ($ROBOT_id) 
  {
   @rob_to_clean=split(/-/, $ROBOT_id);
@@ -57,16 +58,33 @@ if("@_" eq "ALL") {
    };
   }
  }else{
-  &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R*' -type d | $grep -v $hostname | xargs rm -fr");
+  &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R[0-9]*' -type d | $grep -v $hostname | xargs rm -fr");
+  &command("find . -name 'ROBOT_*' -o -name '*-R[0-9]*' -type f | $grep -v $hostname | xargs rm -fr");
+  &command("find . -name '*.kindx' -o -name '*.gops' | grep -v REFERENCE | xargs rm -fr");
   &command("$git ls-files --others --exclude-standard | $grep -v $hostname | grep -v MODULES.pl | grep -v TOOLS.pl | xargs rm -fr");
   &command("rm -f outputs_and_reports_ALL-* *compile*log *config*log");
  }
  &command("rm -f scripts/find_the_diff/Makefile");
+ &command("rm -f scripts/find_the_diff/find_the_diff_R*");
 };
 #
-# DEEP
-if("@_" eq "DEEP") {
+# CORE
+if("@_" eq "CORE") {
  &command("$git status --ignored | $grep -e '/ns.' -e '/ndb.' | xargs rm -fr");
+ &command("find . -type d -empty | xargs rm -fr");
+};
+#
+# TARGZ
+if("@_" eq "TARGZ") {
+ &command("$git status --ignored | $grep -e '.tar.gz' | xargs rm -fr");
+ &command("find . -type d -empty | xargs rm -fr");
+};
+#
+# TARGZ
+if("@_" eq "DFT") {
+ &command("$git status --ignored | $grep -e 'WFK.nc' | xargs rm -fr");
+ &command("$git status --ignored | $grep -e 'QEX' | xargs rm -fr");
+ &command("find . -type d -empty | xargs rm -fr");
 };
 #
 # BINs
@@ -76,9 +94,9 @@ if("@_" eq "BINs" ) {
   $branchdir =@branches[$ib];
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
-   $conf_bin  = "$branchdir/bin-$conf_file-$FC_kind";
-   if ($ROBOT_id) {$conf_bin  = "$branchdir/bin-$conf_file-*R$ROBOT_id"};
-   &command("rm -fr $conf_bin* $branchdir/bin-precompiled*");
+   $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind";
+   if ($ROBOT_id) {$conf_bin  = "$suite_dir/bin-$conf_file-*R$ROBOT_id"};
+   &command("rm -fr $conf_bin* $suite_dir/bin-precompiled*");
   }
  }
 }
@@ -87,7 +105,9 @@ sub ROBOT_clean
 {
  $ID = shift;
  print "Cleaning ROBOT #".$ID."\n";
- $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | xargs rm -fr";
+ $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | grep    MAIN | xargs rm -fr";
+ &command("$cmd");
+ $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | grep -v MAIN | xargs rm -fr";
  &command("$cmd");
  $cmd="$git ls-files --others --exclude-standard | $grep -e 'ROBOT_Nr_$ID/' | $grep -v $hostname |  xargs rm -f";
  &command("$cmd");

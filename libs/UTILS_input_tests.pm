@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -45,6 +45,7 @@ LOOP: foreach $test ( <$path/*> ) {
  if (index($test, ".actions")>0) {next LOOP};
  if (index($test, ".input")>0) {next LOOP};
  if (index($test, ".flags")>0) {next LOOP};
+ if (index($test, ".Double_Grid_MAP")>0) {next LOOP};
  my $name = substr($test,length($path)+1,length($test)) ;
  $tests_list="$tests_list $name";
 }
@@ -68,7 +69,7 @@ if($user_tests){
   my @list = split(";",$user_tests);
   foreach my $element (@list) {
    my @list2=split(" ",$element);
-   if (not $list2[0] =~ /all/ and $#list==1) {$element .= " all"};
+   if (not $list2[0] =~ /all/ and $#list2==0) {$element .= " all"};
    $input_tests .= "$element;";
   };
  } 

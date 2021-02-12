@@ -18,7 +18,8 @@
 ! GENERAL
 !=========
 call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
-call add_RULE(".ndb.kindx","skip",MATERIAL="Si_bulk hBN LiF")
+call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
+call add_RULE(".ns.wf_fragments_1_1","skip",MATERIAL="MoS2")
 call add_RULE("Lifetimes.ndb.em1d_fragment","skip",MATERIAL="Al_bulk")
 !
 ! RT
@@ -44,9 +45,13 @@ call add_RULE(".YPP-eps","skip",COLS=(/3,4,6,7/),Material="Si_bulk")
 call add_RULE(".induced_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 call add_RULE(".total_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 !
-! As the collisions are calculated with a numerical treshold the actual number of elements
-! in the DB can change with the number of processors. Still the results can be ok.
-call add_RULE("ndb.COLLISIONS_HXC_fragment_2","skip",MATERIAL="hBN Si_bulk")
+! Temporary
+call add_RULE("08_ypp_bands","align",REF_row=2,Material="MoS2")
+call add_RULE("08_ypp_dos","align",REF_row=2,Material="MoS2")
+call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_EP_Elec_linewidth","align",REF_row=1,Material="MoS2")
+call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_EP_widths_ratio","align",REF_row=1,Material="MoS2")
+call add_RULE("08_ypp_fit_occ_DbGd.YPP-NEQ_linewidths","align",REF_row=1,Material="MoS2")
+call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_occupations","align",REF_row=1,Material="MoS2")
 !
 ! El/Ho Temperatures
 !
@@ -64,6 +69,10 @@ call add_RULE(".polarization_F","skip",COLS=(/5,6,7/),MATERIAL="hBN")
 ! KERR
 !======
 call add_RULE("any","no_statistics",MATERIAL="Cobalt Nickel Iron")
+! The next two rules should be applied only to Iron/pwscf/Without-SOC
+! However this possibility is not implemented at present
+call add_RULE(".moke","no_statistics",VAL_treshold=1.E-3,COLS=(/2,3/),MATERIAL="Iron")
+call add_RULE(".off","no_statistics",VAL_treshold=1.E-3,COLS=(/2,3/),MATERIAL="Iron")
 !
 ! QP
 !====

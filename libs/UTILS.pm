@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -88,7 +88,11 @@ $RUN_local=$_[0];
 for $ipatt (1...$N_PATTERNS) 
  {
   if ($RUN_local =~ $PATTERN[$ipatt][2] and ($PATTERN_branch[$ipatt] =~ /$branch_key/ or $PATTERN_branch[$ipatt] =~ "any")){ 
-   $RUN_local =~ s/$PATTERN[$ipatt][2]/$PATTERN[$ipatt][1]/;
+   if ($PATTERN[$ipatt][3] and "$PATTERN[$ipatt][3]" eq "end") {
+     $RUN_local =~ s/$PATTERN[$ipatt][2]$/$PATTERN[$ipatt][1]/;
+   }else{
+     $RUN_local =~ s/$PATTERN[$ipatt][2]/$PATTERN[$ipatt][1]/;
+   }
   }
  } 
 $ref_filename = $REF_prefix."REFERENCE_$branch_key/".$RUN_local;

@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -27,11 +27,6 @@ sub CHECK_GPL_skip{
 if ($is_GPL) 
 {
  undef $skip_the_file;
- #if ("@_" =~ /.external_field/ ) { $skip_the_file="yes" };
- if ("@_" =~ /.energy/         ) { $skip_the_file="yes" };
- if ("@_" =~ /.carriers/       ) { $skip_the_file="yes" };
- if ("@_" =~ /.magnetization/  ) { $skip_the_file="yes" };
- if ("@_" =~ /.thermodynamics/ ) { $skip_the_file="yes" };
  if ("@_" =~ /.ean_RADlifetimes/ ) { $skip_the_file="yes" };
  #
  if ($skip_the_file){

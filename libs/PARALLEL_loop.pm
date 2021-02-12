@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -21,39 +21,92 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub PARALLEL_loop{
+# 
+# Pre-def
+@THREE[0] = [(1,1,1)];
+@THREE[1] = [(2,1,1)];
+@THREE[2] = [(1,2,1)];
+@THREE[3] = [(1,1,2)];
+@THREE[4] = [(1,2,2)];
+@THREE[5] = [(2,1,2)];
+@THREE[6] = [(2,2,1)];
+@THREE[7] = [(2,2,2)];
+#
+@TWO[0] = [(1,1)];
+@TWO[1] = [(1,2)];
+@TWO[2] = [(2,1)];
+@TWO[3] = [(2,2)];
+@TWO[4] = [(1,4)];
+@TWO[5] = [(4,1)];
+@TWO[6] = [(2,4)];
+@TWO[7] = [(4,2)];
+@TWO[8] = [(8,1)];
+@TWO[9] = [(1,8)];
 #
 my $KPT;
-@KPT = (1,2);
+@KPT = (1,2,4);
 if (-f "KPT_1") {@KPT = (1)};
+#
 my $QPT;
-@QPT = (1,2);
+@QPT = (1,2,4);
 if (-f "KPT_1") {@QPT = (1)};
+#
 my $FREQ;
 @FREQ = (1,2);
 if (-f "FREQ_1") {@FREQ = (1)};
 if (-f "KPT_1") {@FREQ = (1,2,4)};
+#
 my $GQK;
-@GQK[0] = [(1,1,1)];
-@GQK[1] = [(1,1,2)];
-@GQK[2] = [(1,2,2)];
-@GQK[3] = [(2,2,2)];
-@GQK[4] = [(2,1,2)];
-@GQK[5] = [(2,2,1)];
+if (-f "KPT_1") 
+{
+ @GQK[0] = [(1,1,1)];
+ @GQK[1] = [(2,1,1)];
+ @GQK[2] = [(4,1,1)];
+ @GQK[2] = [(8,1,1)];
+}else{
+ @GQK = @THREE;
+}
+#
 my @QK;
-if (-f "KPT_1") {@GQK[6] = [(4,1,1)]};
-@QK[0] = [(1,1)];
-@QK[1] = [(1,2)];
-@QK[2] = [(2,1)];
-@QK[3] = [(2,2)];
-@GK=@QK;
-if (-f "KPT_1") {@GK[4] = [(4,1)]};
+if (-f "KPT_1") 
+{
+ @QK[0] = [(1,1)];
+}else{
+ @QK = @TWO;
+}
+#
+my @GK;
+if (-f "KPT_1") 
+{
+ @GK[0] = [(1,1)];
+ @GK[1] = [(2,1)];
+ @GK[2] = [(4,1)];
+ @GK[2] = [(8,1)];
+}else{
+ @GK=@TWO;
+}
+#
 my @CV;
-@CV=@QK;
+if (-f "VALENCE_1") 
+{
+ @CV[0] = [(1,1)];
+ @CV[1] = [(2,1)];
+ @CV[2] = [(4,1)];
+ @CV[3] = [(8,1)];
+}elsif (-f "VALENCE_1"){
+ @CV[0] = [(1,1)];
+ @CV[1] = [(1,2)];
+ @CV[2] = [(1,4)];
+ @CV[3] = [(1,8)];
+}else{
+ @CV = @TWO;
+}
+#
 my @EH;
-@EH= (1,2);
-if (-f "VALENCE_1" && -f "CONDUCTION_1") {@EH = (1); @KPT = (1,2,4,8)};
+@EH= (1,2,4,8);
+#
 my @SB;
-@SB=@QK;
+@SB=@TWO;
 #
 $N_kcv=0;
 $N_gkcv=0;
@@ -115,10 +168,8 @@ foreach $q (@QPT){
 #
 $N_wqkb=0;
 foreach $w (@FREQ){ 
- #foreach $q (@QPT){ 
   foreach $k (@KPT){ 
    if (&PAR_conf_check({w=>$w}) eq 1){next};
-   #if (&PAR_conf_check({k=>$q}) eq 1){next};
    if (&PAR_conf_check({k=>$k}) eq 1){next};
    @conf = ( $w, $k );
    $trace=&trace( @conf );
@@ -126,14 +177,6 @@ foreach $w (@FREQ){
    @WK[$N_wqkb]= [ @conf ];
    $N_wqkb++; 
   }
-  #if (&PAR_conf_check({k=>$q}) eq 1){next};
-  #if (&PAR_conf_check({c=>@$sb[1],v=>@$sb[1]}) eq 1){next};
-  #@conf = ( $q, @$sb[0], @$sb[1] );
-  #$trace=&trace( @conf );
-  #if (not $trace eq $np) {next};
-  #@QSB[$N_qsb]= [ @conf ];
-  #$N_qsb++; 
- #}
 };
 #
 $N_keht=0;

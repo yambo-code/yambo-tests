@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -44,6 +44,7 @@ $verbosity_level = "highest" if ($verb ge 2);
 &MY_PRINT( $fh, "\n            Precision : $prec ") if (!$reduced_log);
 &MY_PRINT( $fh, "\n             Hostname : $host ") if (!$reduced_log);
 &MY_PRINT( $fh, "\n                 User : $user ") if (!$reduced_log);
+&MY_PRINT( $fh, "\n    test-suite branch : $test_suite_branch");
 #
 if ($branch) {
  &MY_PRINT( $fh,  "\n             revision : $REVISION ") if (!$reduced_log);
@@ -51,7 +52,7 @@ if ($branch) {
  &MY_PRINT( $fh,  "\n             compiler : $FC_kind_ext ") if (!$reduced_log);
  &MY_PRINT( $fh,  "\n                  mpi : $MPI_kind ") if (!$reduced_log);
  &MY_PRINT( $fh,  "\n              bin dir : $conf_bin");
- &MY_PRINT( $fh,  "\n           shortname  : $branch_key") if (!$reduced_log);
+ &MY_PRINT( $fh,  "\n            shortname : $branch_key") if (!$reduced_log);
 }
 #
 if ($branch) {

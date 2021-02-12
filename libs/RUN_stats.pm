@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -141,10 +141,16 @@ if ("@_" eq "NO_OUT"){
  &its_a_fail("CHECK");
 };
 if ("@_" eq "SILENT"){
- $test_ok_action="SKIP";
  $test_silent++;
+ $test_ok_action="SKIP";
 };
 if ("@_" eq "DIR_SKIPPED"){
+ $test_skipped++;
+ $test_ok_action="SKIP";
+ &MESSAGE("LOG","\n$CHECK_error") if ($verb);
+};
+if ("@_" eq "TOO_MANY_FAILS"){
+ $test_skipped++;
  $test_ok_action="SKIP";
  &MESSAGE("LOG","\n$CHECK_error") if ($verb);
 };
@@ -188,7 +194,7 @@ if ("@_" eq "ERROR_CPU_CONF"){
  $test_skipped_cpuconf++;
  $test_ok_action="SKIP";
  &MESSAGE("SKIP","\n"."$skip_msg"." $CHECK_error");
- &MESSAGE("LOG"," [$r_s $CHECK_error  $r_e]");
+ &MESSAGE("LOG","\n[$r_s $CHECK_error  $r_e]");
 };
 if ("@_" eq "WRONG_DEP"){
  $test_skipped++;

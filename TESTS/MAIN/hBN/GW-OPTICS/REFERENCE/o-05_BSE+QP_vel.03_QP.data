@@ -1,92 +1,103 @@
-#                                                           
-#  __  __   ________   ___ __ __    _______   ______        
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
-#                                                           
-#                                                           
-#        Version 4.3.0 Revision 15337 Hash 5b057cb          
-#                        MPI Build                          
-#                http://www.yambo-code.org                  
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
+#                                                                     
+#      Version 5.0.0 Revision 18590 Hash 59b90e960                    
+#                  Branch is bug-fixes                                
+#            MPI+OpenMP+SLK+HDF5_MPI_IO Build                         
+#               http://www.yambo-code.org                             
 #
 #
-# GW solver              : Newton
-# PPA imaginary pt   [ev]: 27.21138
-# GW SC iterations       :0
-# dS/dw steps            : 2
-# dS/dw step         [ev]:  0.10000
-# X G`s            [used]: 151
-# X G`s            [disk]: 151
-# X bands                :   1   60
-# X poles           [o/o]: 100.0000
-# X e/h E range      [ev]:-1.000000 -1.000000
-# X xc-Kernel            : none
-# X BZ energy Double Grid: no
-# X BZ Double Grid points:0
-# Sc/G bands             :   1   60
-# Sc/G damping       [ev]:  0.10000
-# Sc bands terminator    : no
-# Sx RL components       : 3149
-# QP @ K 001 - 004 : b 008 - 009
 #
-#    Eo [eV]      DeltaE [eV]
+# GW solver                                       : Newton
+# GW approximation                                : PPA
+# PPA imaginary Energy                            :   27.2113800    [ev]
+# GW SC iterations                                : 0
+# dS/dw steps                                     :  2
+# dS/dw step                                      :  0.100000001    [ev]
+# X G`s                                           :  151 [used]
+# X G`s                                           :  151 [disk]
+# X bands                                         :    1   60
+# X poles                                         :   100.000000    [o/o]
+# X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
+# X xc-Kernel                                     : none
+# X BZ energy Double Grid                         : no
+# Sc/G bands                                      :    1   60
+# Sc/G damping                                    :  0.100000001    [ev]
+# Sc bands terminator                             : no
+# Sx RL components                                :  3149
+#                                                 
+# QP @ state[ 1 ] K range                         :   1   4
+# QP @ state[ 1 ] b range                         :   8   9
+# GF energies kind                                : Teter 93(XC)
+# GF WF`s kind                                    : Teter 93(XC)
+# Xs energies kind                                : Teter 93(XC)
+# Xs WF`s kind                                    : Teter 93(XC)
 #
-   -0.908688    -2.005233
-   -0.882467    -2.000770
-   -0.625208    -1.724974
-    0.000000    -1.599545
-    4.094734     0.269975
-    4.656361     0.357798
-    5.277161    -0.249249
-    7.961606     0.133810
+#
+#    Eo [eV]            DeltaE [eV]
+#
+   -0.908688247        -2.00580692   
+   -0.882467031        -2.00133967   
+   -0.625208259        -1.72489190   
+     0.00000000        -1.59932494   
+     4.09473419        0.270016849   
+     4.65636063        0.357874870   
+     5.27716112       -0.249177128   
+     7.96160603        0.133940175   
 # 
-# 06/28/2018 at 14:35 YAMBO_RT @ narro [start]
-# 06/28/2018 at 14:35                  [end]
-#  
-# Timing   [Min/Max/Average]: 05s/05s/05s
+# 08/26/2020 at 12:30 yambo @ unimi-XPS-8930 [start]
+# 08/26/2020 at 12:30                        [end]
 #
-# .-Input file : ../INPUTS-devel-current-approach/05_BSE+QP_vel
-# | optics                         # [R OPT] Optics
-# | bse                            # [R BSE] Bethe Salpeter Equation.
-# | bsk                            # [R BSK] Bethe Salpeter Equation kernel
-# | bss                            # [R BSS] Bethe Salpeter Equation solver
-# | em1s                           # [R Xs] Static Inverse Dielectric Matrix
-# | BoseTemp= 0.000000     eV      # Bosonic Temperature
-# | FFTGvecs=  3473        RL      # [FFT] Plane-waves
-# | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
-# | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
-# | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-# | BSSmod= "d"                    # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
-# | BSENGexx=  51          RL      # [BSK] Exchange components
-# | BSENGBlk=  51          RL      # [BSK] Screened interaction block size
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | em1s                             # [R][Xs] Statically Screened Interaction
+# | FFTGvecs=  3473            RL    # [FFT] Plane-waves
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+# | Gauge= "velocity"                # [BSE/X] Gauge (length|velocity)
+# | BSENGexx=  51              RL    # [BSK] Exchange components
+# | BSENGBlk=  51              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
 # | #WehCpl                        # [BSK] eh interaction included also in coupling
-# | KfnQPdb= " E < 03_QP/ndb.QP"   # [EXTQP BSK BSS] Database
-# | Gauge= "velocity"              # [BSE] Gauge (length|velocity)
-# | #EvalKerr                      # [BSE] Compute the Kerr effect
-# | #AnHall                        # [BSE] Add the anomalous Hall effect to eps if using length gauge
-# | % BEnRange
-# |  4.000000 | 8.000000 | eV      # [BSS] Energy range
-# | %
-# | % BDmRange
-# |   0.02500 |  0.02500 | eV      # [BSS] Damping range
-# | %
-# | BEnSteps=  400                 # [BSS] Energy steps
-# | % BLongDir
-# |  0.577350 | 0.577350 | 0.577350 |        # [BSS] [cc] Electric Field
+# | KfnQPdb= " E < 03_QP/ndb.QP"     # [EXTQP BSK BSS] Database action
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
 # | %
 # | % BSEBands
-# |   7 | 10 |                     # [BSK] Bands range
+# |   7 | 10 |                           # [BSK] Bands range
 # | %
+# | % BEnRange
+# |  4.000000 | 8.000000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.025000 | 0.025000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps=  400                   # [BSS] Energy steps
+# | % BLongDir
+# |  0.577350E-5 | 0.577350E-5 | 0.577350E-5 # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
 # | % BndsRnXs
-# |    1 |  60 |                   # [Xs] Polarization function bands
+# |    1 |  60 |                         # [Xs] Polarization function bands
 # | %
-# | NGsBlkXs=  51          RL      # [Xs] Response block size
-# | % DmRngeXs
-# | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
-# | %
+# | NGsBlkXs=  51              RL    # [Xs] Response block size
 # | % LongDrXs
-# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
 # | %
+# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)

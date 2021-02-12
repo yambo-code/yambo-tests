@@ -1,5 +1,5 @@
 !
-!        Copyright (C) 2000-2019 the YAMBO team
+!        Copyright (C) 2000-2020 the YAMBO team
 !              http://www.yambo-code.org
 !
 ! Authors (see AUTHORS file for details): AM
@@ -24,24 +24,25 @@
 subroutine eval_the_moments(fl)
  !
  use DIFF
+ implicit none
  type(obj) :: fl
- real(SP)  :: RIntegrate,W(fl%N),dW,W2(fl%N)
+ real(SP)  :: RIntegrate,W(N_data_to_check),dW,F(N_data_to_check)
  fl%Max=-1.
- dW=1./(fl%N-1)
- do i_d=1,fl%N
+ dW=1./(N_data_to_check-1)
+ do i_d=1,N_data_to_check
    W(i_d)=(i_d-1)*dW
  enddo
  do i_c=1,fl%N_col
    if (skip_column(i_c)) cycle
-   do i_d=1,fl%N
+   do i_d=1,N_data_to_check
      fl%Max(i_c)=max(fl%Max(i_c),abs(fl%D(i_d,i_c)))
    enddo
    do i_m=1,N_m
-     do i_d=1,fl%N
-       W2(i_d)=W(i_d)
-       if (i_m>1) W2(i_d)=W(i_d)**(i_m-1)
+     do i_d=1,N_data_to_check
+       F(i_d)=fl%D(i_d,i_c)
+       if (i_m>1) F(i_d)=F(i_d)*W(i_d)**(i_m-1)
      enddo
-     fl%M(i_m,i_c)=RIntegrate(fl%D(:,i_c),W2,fl%N)
+     fl%M(i_m,i_c)=RIntegrate(F,W,N_data_to_check)
    enddo
  enddo
  !
@@ -89,10 +90,15 @@ function RIntegrate(F,W,N)
  !
 end function
 !
-character(256) function string_remove(string_in,what)
+function string_remove(string_in,what)
+ !
+ use DIFF,   ONLY:str_length
+ !
+ implicit none
  !
  character(*)     :: string_in
- character(*)     :: what
+ character(*)     ::  what
+ character(str_length) :: string_remove
  !
  ! Work Space
  !
@@ -112,7 +118,7 @@ subroutine string_split(string_in,string_out,n_non_empty_strings)
   implicit none
   !
   character(*)          :: string_in
-  character(256)        :: string_out(N_max_col)
+  character(str_length) :: string_out(N_max_col)
   integer               :: n_non_empty_strings
   !
   ! Work Space
@@ -163,6 +169,8 @@ end subroutine
 !
 character(8) function intc(i)
  !
+ implicit none
+ !
  character(8) temp
  integer, intent(in) :: i
  !
@@ -190,6 +198,8 @@ character(8) function intc(i)
 end function intc
 !
 subroutine sort(n,arrin,indx)                             
+  !
+  implicit none
   !
   integer, parameter  :: SP  = selected_real_kind(6,30)
   !

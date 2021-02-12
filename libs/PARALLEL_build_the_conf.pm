@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -26,18 +26,22 @@ sub PARALLEL_build_the_conf{
 #
 if ( $LIFE=="1" or ( $GW=="1" and $EM1D=="1" ) or ($COHSEX=="1" and $COLL=="0") or ($COHSEX=="1" and $COLL=="1" and $EM1S=="0") ) { 
  foreach $f1 (@QSB){ foreach $f2 (@GQKCV){ foreach $f3 (@KCV){
+  if ($Nr==10) {next};
   $Nr++;
-  $MPI_CPU_conf[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\" X_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3].@$f2[4]\" X_all_q_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3].@$f2[4]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\" X_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3].@$f2[4]\" X_and_IO_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3].@$f2[4]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
  }}}
  return;
 }
 #
 # Standard linear-response (G-space)
 #
-if ( $DIPOLES=="1" ) {
+if ( $DIPOLES=="1" or $OPTICS=="1" ) {
  foreach $f1 (@KCV){
-  $Nr++;
-  $MPI_CPU_conf[$Nr]="DIP_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
+   foreach $f2 (@GKCV){
+    if ($Nr==10) {next};
+    $Nr++;
+    $MPI_CPU_conf[$Nr]="DIP_CPU=\"@$f1[0].@$f1[1].@$f1[2]\" X_CPU=\"@$f2[0].1.@$f2[1].@$f2[2].@$f2[3]\"";
+   }
  }
  return;
 }
@@ -46,8 +50,9 @@ if ( $DIPOLES=="1" ) {
 #
 if ($GW=="0" and $EM1S=="1" and $BSE=="0" and $COLL=="0") { 
  foreach $f1 (@GQKCV){ foreach $f2 (@KCV){
+  if ($Nr==10) {next};
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
  }}
  return;
 }
@@ -56,6 +61,7 @@ if ($GW=="0" and $EM1S=="1" and $BSE=="0" and $COLL=="0") {
 #
 if ($BSE=="1" and $EM1S=="0") {  foreach $f2 (@KCV){
  foreach $f1 (@KEHT){
+  if ($Nr==10) {next};
   $Nr++;
   $MPI_CPU_conf[$Nr]="BS_CPU=\"@$f1[0].@$f1[1].@$f1[2]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
   #print "KEHT(1) $testname $MPI_CPU_conf[$Nr]\n";
@@ -67,8 +73,9 @@ if ($BSE=="1" and $EM1S=="0") {  foreach $f2 (@KCV){
 #
 if ($BSE=="1" and $EM1S=="1" ) { 
  foreach $f1 (@GQKCV){ foreach $f2 (@KEHT){ foreach $f3 (@KCV){
+  if ($Nr==10) {next};
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" BS_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" BS_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
   #print "KEHT(2) $testname $MPI_CPU_conf[$Nr]\n";
  }}}
  return;
@@ -78,6 +85,7 @@ if ($BSE=="1" and $EM1S=="1" ) {
 #
 if ( (($HF=="1" and $GW=="0") or $SC=="1" or ($GW=="1" and $EP=="1") or ($GW=="1" and $EPHOT=="1")) and $COLL=="0" and $NEGF=="0" and $NLOPTICS=="0" ) { 
  foreach $f1 (@QSB){
+  if ($Nr==10) {next};
   $Nr++;
   $MPI_CPU_conf[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
  }
@@ -88,6 +96,7 @@ if ( (($HF=="1" and $GW=="0") or $SC=="1" or ($GW=="1" and $EP=="1") or ($GW=="1
 #
 if ($SC=="0" and $NLOPTICS=="1" and $COLL=="0") {
  foreach $f1 (@WK){ foreach $f2 (@KCV){
+  if ($Nr==10) {next};
   $Nr++;
   $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
  }}
@@ -98,6 +107,7 @@ if ($SC=="0" and $NLOPTICS=="1" and $COLL=="0") {
 #
 if ($SC=="0" and $NEGF=="1" and $COLL=="0") {
  foreach $f1 (@QKSB){ foreach $f2 (@KCV){
+  if ($Nr==10) {next};
   $Nr++;
   $MPI_CPU_conf[$Nr]="RT_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
  }}
@@ -108,8 +118,9 @@ if ($SC=="0" and $NEGF=="1" and $COLL=="0") {
 #
 if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_rt") { 
  foreach $f1 (@GQKCV){ foreach $f2 (@QKSB){ foreach $f3 (@KCV){
+  if ($Nr==10) {next};
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" RT_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" RT_CPU=\"@$f2[0].@$f2[1].@$f2[2].@$f2[3]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
  }}}
  return;
 }
@@ -118,8 +129,9 @@ if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_rt") {
 #
 if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_sc") { 
  foreach $f1 (@GQKCV){ foreach $f2 (@QSB){ foreach $f3 (@KCV){
+  if ($Nr==10) {next};
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
  }}}
  return;
 }
@@ -128,8 +140,9 @@ if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_sc") {
 #
 if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_nl") { 
  foreach $f1 (@GQKCV){ foreach $f2 (@QSB){ foreach $f3 (@KCV){
+  if ($Nr==10) {next};
   $Nr++;
-  $MPI_CPU_conf[$Nr]="X_all_q_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
+  $MPI_CPU_conf[$Nr]="X_and_IO_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" X_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3].@$f1[4]\" SE_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f3[0].@$f3[1].@$f3[2]\"";
   }}}
  return;
 }
@@ -138,6 +151,7 @@ if ($EM1S=="1" and $COLL=="1" and $yambo_exec=~"yambo_nl") {
 #
 if ($COLL=="1" and $yambo_exec=~"yambo_rt"  ) { 
  foreach $f1 (@QKSB){
+  if ($Nr==10) {next};
   $Nr++;
   $MPI_CPU_conf[$Nr]="RT_CPU=\"@$f1[0].@$f1[1].@$f1[2].@$f1[3]\"";
  }
@@ -148,6 +162,7 @@ if ($COLL=="1" and $yambo_exec=~"yambo_rt"  ) {
 #
 if ($COLL=="1" and $yambo_exec=~"yambo_sc"  ) { 
  foreach $f1 (@QSB){
+  if ($Nr==10) {next};
   $Nr++;
   $MPI_CPU_conf[$Nr]="SE_CPU=\"@$f1[0].@$f1[1].@$f1[2]\"";
  }
@@ -158,6 +173,7 @@ if ($COLL=="1" and $yambo_exec=~"yambo_sc"  ) {
 #
 if ($COLL=="1" and $yambo_exec=~"yambo_nl"  ) { 
  foreach $f1 (@WK){
+  if ($Nr==10) {next};
   $Nr++;
   $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1]\"";
  }

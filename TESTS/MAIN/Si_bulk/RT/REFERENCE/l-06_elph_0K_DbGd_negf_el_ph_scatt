@@ -1,90 +1,64 @@
 
 
+ __   __  _______  __   __  _______  _______
+|  | |  ||   _   ||  |_|  ||  _    ||       |
+|  |_|  ||  |_|  ||       || |_|   ||   _   |
+|       ||       ||       ||       ||  | |  |
+|_     _||       ||       ||  _   | |  |_|  |
+  |   |  |   _   || ||_|| || |_|   ||       |
+  |___|  |__| |__||_|   |_||_______||_______|
 
-_|      _|   _|_|   _|      _|  _|_|_|     _|_|
-  _|  _|   _|    _| _|_|  _|_| _|    _| _|    _|
-    _|     _|_|_|_| _|  _|  _| _|_|_|   _|    _|
-    _|     _|    _| _|      _| _|    _| _|    _|
-    _|     _|    _| _|      _| _|_|_|     _|_|
 
-
-
- <---> [01] CPU structure, Files & I/O Directories
+ <---> [01] MPI/OPENMP structure, Files & I/O Directories
  <---> [02] CORE Variables Setup
  <---> [02.01] Unit cells
  <---> [02.02] Symmetries
- <---> [02.03] RL shells
+ <---> [02.03] Reciprocal space
  <---> [02.04] K-grid lattice
+ <---> Grid dimensions      :  2  2  2
  <---> [02.05] Double K-grid
- <---> [02.06] Energies [ev] & Occupations
+ <---> [02.06] Energies & Occupations
  <---> [03] Transferred momenta grid
- <---> [04] IP Real-Time Dynamics
- <---> Scattering(s):el-ph
- <---> [04.01] Initialization
+ <---> [04] Dipoles
+ <---> [WARNING] Cannot use DIP_P on the flight at the moment. Setting io_DIP=.true.
+ <---> [DIP] Checking dipoles header
+ <---> [WARNING] DIPOLES database not correct or missing
  <---> [x,Vnl] computed using 8 projectors
- <---> [WF-Oscillators/G space] Performing Wave-Functions I/O from ./SAVE
- <---> Dipoles: iR, P and P2 (T): |                                        | [000%] --(E) --(X)
- <---> Dipoles: iR, P and P2 (T): |########################################| [100%] --(E) --(X)
- <---> [04.02] External/Internal QP corrections
- <---> [04.03] External RT corrections (G)
- <---> [RT] Loaded Carrier components @ 0.0000000 fs
- <---> [df_from_DB-Nearest K] Exact matches  [o/o]: 1.4925373
- <---> [df_from_DB-Nearest K] Neighbours    [user]: 1
- <---> [df_from_DB-Nearest K]               [real]: 1
- <---> [df_from_DB-Nearest K] Interpolations [o/o]: 98.507462
- <---> [df_from_DB-Nearest K] Exact matches  [o/o]: 102.48756
- <---> Integrator: EULER + RK2 + RWA
- <---> [04.04] Dephasing matrix setup
+ <---> Dipoles: iR, P, V and P2 (T) |                                        | [000%] --(E) --(X)
+ <---> Dipoles: iR, P, V and P2 (T) |########################################| [100%] --(E) --(X)
+ <---> [DIP] Writing dipoles header
+ <---> [05] IP Real-Time Dynamics +el-ph
+ <---> [05.01] Initialization
+ <---> [05.01.01] External/Internal QP corrections
+ <---> [QP_apply] Action to be applied: USER defined scissor
+ <---> [DIP] Checking dipoles header
+ <---> [05.02] External RT corrections (G)
+ <---> [RT] Loaded Carrier components @ 0.000000 fs
+ <---> [df_from_DB-Nearest K] Exact matches  [o/o]:  100.0000
+ <---> [df_from_DB-Nearest K-BARE FineGd] Exact matches  [o/o]:  0.502513
+ <---> [df_from_DB-Nearest K-BARE FineGd] Neighbours    [user]:  1
+ <---> [df_from_DB-Nearest K-BARE FineGd]               [real]:  1
+ <---> [df_from_DB-Nearest K-BARE FineGd] Interpolations [o/o]:  99.49748
+ <---> Integrator EULER + RK2 + RWA
+ <---> [05.03] Dephasing matrix setup
  <---> [RT] Quasiparticle Dephasing applied
- <---> [04.05] El-Ph matrix elements loading and setup
- <---> [04.06] Messaging
- <---> [WF-RT] Performing Wave-Functions I/O from ./SAVE
- <---> [FFT-RT] Mesh size: 12  12  12
- <---> [04.07] Start and Restart
+ <---> [05.04] El-Ph matrix elements loading and setup
+ <---> [05.05] Messaging
+ <---> [FFT-RT] Mesh size:  18  18  18
+ <---> [05.06] Start and Restart
  <---> Reference Lifetimes, GF, Self-Energy ...
- <01s> Output files definition ...
- <01s> [04.08] Real-Time dynamics
- <01s> [RT] Dynamics (T<0.2803E-44 fs) : |                                        | [000%] --(E) --(X)
- <02m-50s> [RT] Dynamics (T<0.2803E-44 fs) : |########################################| [100%] 02m-49s(E) 02m-49s(X)
- <02m-50s> [05] Timing Overview
- <02m-50s> [TIMING]                                   io_WF :     0.00s CPU (        20 calls,   0.065 millisec avg)
- <02m-50s> [TIMING]                                 io_GROT :     0.00s CPU (         3 calls,   0.439 millisec avg)
- <02m-50s> [TIMING]                                io_QINDX :     0.00s CPU (         2 calls,   0.273 millisec avg)
- <02m-50s> [TIMING]                              io_COL_CUT :     0.00s CPU
- <02m-50s> [TIMING]                          io_Double_Grid :     0.00s CPU
- <02m-50s> [TIMING]                                   io_HF :     0.00s CPU
- <02m-50s> [TIMING]                              io_DIPOLES :     0.00s CPU
- <02m-50s> [TIMING]                             io_KB_pwscf :     0.00s CPU (         5 calls,   0.078 millisec avg)
- <02m-50s> [TIMING]                            io_KB_abinit :     0.00s CPU
- <02m-50s> [TIMING]                                    io_X :     0.00s CPU (         4 calls,   0.036 millisec avg)
- <02m-50s> [TIMING]                                   io_BS :     0.00s CPU
- <02m-50s> [TIMING]                                 io_ELPH :     0.00s CPU (        11 calls,   0.201 millisec avg)
- <02m-50s> [TIMING]                        io_RT_components :    10.00s CPU (     41416 calls,   0.000 sec avg)
- <02m-50s> [TIMING]                           io_COLLISIONS :     0.00s CPU (         3 calls,   0.036 millisec avg)
- <02m-50s> [TIMING]                 IO_and_Messaging_switch :     0.00s CPU (     10618 calls,   0.003 millisec avg)
- <02m-50s> [TIMING]                                 Dipoles :     0.00s CPU
- <02m-50s> [TIMING]                       DIPOLE_transverse :     0.00s CPU
- <02m-50s> [TIMING]                            PP_uspp_init :     0.00s CPU (         5 calls,   0.013 millisec avg)
- <02m-50s> [TIMING]                             WF_load_FFT :     0.00s CPU (         5 calls,   0.156 millisec avg)
- <02m-50s> [TIMING]                             io_fragment :     3.00s CPU (     40409 calls,   0.000 sec avg)
- <02m-50s> [TIMING]                               FFT_setup :     0.00s CPU (         5 calls,   4.391 millisec avg)
- <02m-50s> [TIMING]                       el_density_matrix :     0.00s CPU
- <02m-50s> [TIMING]                        Bare_Hamiltonian :     0.00s CPU
- <02m-50s> [TIMING]                               V_Hartree :     0.00s CPU
- <02m-50s> [TIMING]                               XCo_local :     0.00s CPU
- <02m-50s> [TIMING]                     XC_potential_driver :     0.00s CPU
- <02m-50s> [TIMING]                       V_real_space_to_H :     0.00s CPU (         9 calls,   0.366 millisec avg)
- <02m-50s> [TIMING]                         V_qp_basis_to_H :     0.00s CPU (         3 calls,   0.001 millisec avg)
- <02m-50s> [TIMING]                     RT relaxation (e-p) :  2m31.00s CPU (       203 calls,   0.745 sec avg)
- <02m-50s> [TIMING]                           RT life merge :     0.00s CPU (       406 calls,   0.003 millisec avg)
- <02m-50s> [TIMING]                        RT output (INIT) :     0.00s CPU
- <02m-50s> [TIMING]                          RT Hamiltonian :     0.00s CPU (     10001 calls,   0.005 millisec avg)
- <02m-50s> [TIMING]                          RT observables :     1.00s CPU (       201 calls,   0.006 sec avg)
- <02m-50s> [TIMING]                           RT average Op :     0.00s CPU (      2814 calls,   0.052 millisec avg)
- <02m-50s> [TIMING]                            RT avg redux :     0.00s CPU (      2814 calls,   0.001 millisec avg)
- <02m-50s> [TIMING]                      RT occupations fit :     0.00s CPU (       201 calls,   4.792 millisec avg)
- <02m-50s> [TIMING]                         RT databases IO :    10.00s CPU (      5001 calls,   0.002 sec avg)
- <02m-50s> [TIMING]                               RT output :     0.00s CPU (      1407 calls,   0.131 millisec avg)
- <02m-50s> [TIMING]                           RT integrator :     5.00s CPU (     10000 calls,   0.001 sec avg)
- <02m-50s> [06] Game Over & Game summary
- <02m-50s> [TIMING]            [Time-Profile]: 02m-50s
+ <---> Output files definition ...
+ <---> [05.07] Real-Time dynamics
+ <---> [RT] Dynamics |                                        | [000%] --(E) --(X)
+ <05s> [RT] Dynamics |#####                                   | [013%] 05s(E) 39s(X)
+ <10s> [RT] Dynamics |##########                              | [026%] 10s(E) 37s(X)
+ <15s> [RT] Dynamics |################                        | [040%] 15s(E) 37s(X)
+ <20s> [RT] Dynamics |#####################                   | [053%] 20s(E) 37s(X)
+ <26s> [RT] Dynamics |##########################              | [067%] 25s(E) 37s(X)
+ <31s> [RT] Dynamics |################################        | [080%] 30s(E) 37s(X)
+ <36s> [RT] Dynamics |#####################################   | [094%] 35s(E) 37s(X)
+ <38s> [RT] Dynamics |########################################| [100%] 37s(E) 37s(X)
+ <38s> [06] Timing Overview
+ <38s> [07] Memory Overview
+ <38s> [08] Game Over & Game summary
+ <38s> [TIMING]            [Time-Profile]: 38s

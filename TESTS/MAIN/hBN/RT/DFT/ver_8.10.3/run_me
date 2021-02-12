@@ -1,0 +1,12 @@
+rm -f output/*
+rm -f logs/*
+rm -fr io_dir/hbn* io_dir/SAVE io_dir/gs.dat
+abinit < 01_scf.files > logs/hbn_scf.log
+abinit < 02_nscf_WFK.files > logs/hbn_nscf_WFK.log
+cd io_dir; a2y -F hbn_nscf_WFK_out_WFK.nc; yambo; ypp_rt; cd ..
+rm -fr io_dir/SAVE;
+abinit < 03_nscf_DbGd_WFK.files > logs/hbn_nscf_DbGd_WFK.log
+cd io_dir; a2y -w -F hbn_nscf_DbGd_WFK_out_WFK.nc 
+mv FixSymm/SAVE/ns.* ../../../SAVE/
+mv SAVE/ns.db1  ../../../DbGdx9/SAVE/
+cd ..

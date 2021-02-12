@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -26,6 +26,7 @@ sub UTILS_list_backups{
  my $n_backups_to_save=50;
  my $n_backups=0;
  my @dir = ( "backup_and_www/$host/$user/" );
+ print "checking folder backup_and_www/$host/$user/";
  if ($mode eq "bench") {@dir="benchmark-results/"};
  my @dirs;
  find( sub { push @dirs, $File::Find::name if -d }, @dir );
@@ -49,6 +50,16 @@ sub UTILS_list_backups{
    push @dirs_to_process_2019, $dir;
    $n_backups++;
   }
+  if ($dir =~ /\/2020\//) {
+   #print "check 2020: $dir\n";
+   push @dirs_to_process_2020, $dir;
+   $n_backups++;
+  }
+  if ($dir =~ /\/2021\//) {
+   #print "check 2021: $dir\n";
+   push @dirs_to_process_2021, $dir;
+   $n_backups++;
+  }
  }
  #
  if ($clean and $backup_logs eq "yes") {
@@ -58,7 +69,9 @@ sub UTILS_list_backups{
  @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2017;
  @dirs_2018   = sort { $a1 = (split ( '2018', $a )) [1]; $b1 = (split ( '2018', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2018;
  @dirs_2019   = sort { $a1 = (split ( '2019', $a )) [1]; $b1 = (split ( '2019', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2019;
- push(@sorted_dirs, @dirs_2018, @dirs_2019);
+ @dirs_2020   = sort { $a1 = (split ( '2020', $a )) [1]; $b1 = (split ( '2020', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2020;
+ @dirs_2021   = sort { $a1 = (split ( '2021', $a )) [1]; $b1 = (split ( '2021', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2021;
+ push(@sorted_dirs, @dirs_2018, @dirs_2019, @dirs_2020, @dirs_2021);
  if ($branch_php or $report) 
  {
   @reversed_dirs = reverse @sorted_dirs

@@ -1,18 +1,19 @@
-                                                                
-     __  __   ________   ___ __ __    _______   ______          
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\         
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \        
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \       
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \      
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \     
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/     
-                                                                
-                                                                
-           Version 4.3.0 Revision 15207 Hash 1b80b32            
-                         MPI+SLK Build                          
-                   http://www.yambo-code.org                    
+                                                                          
+     __  __   ________   ___ __ __    _______   ______                    
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+                                                                          
+                                                                          
+          Version 4.5.0 Revision 17775 Hash 6a0ceb78c                     
+              Branch is issue129-wfout-shell-size                         
+                  MPI+OpenMP+SLK+SLEPC Build                              
+                   http://www.yambo-code.org                              
  
- 11/17/2017 at 10:26 YAMBO_NL @ narro
+ 02/10/2020 at 19:19 yambo_nl @ narro
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -21,17 +22,21 @@
  * THREADS    (max): 1
  * THREADS TOT(max): 1
  * I/O NODES       : 1
- * Fragmented WFs  :no
+ * NODES(computing): 1
+ *            (I/O): 1
+ * Fragmented WFs  : no
 
  CORE databases in   .
  Additional I/O in   .
  Communications in   .
  Input file     is   yambo.in
  Report file    is   ./r-09_non_linear_sex_coll_nloptics
- Job string(main): 09_non_linear_sex_coll
-             (#1): 09_coll_sex-serial-devel-nl
-             (#2): R15
- Log files      in ./LOG
+ Precision      is   DOUBLE
+ Log files      in   ./LOG
+
+ Job string(s)-dir(s) (main): 09_non_linear_sex_coll
+                     (alt#1): 09_coll_sex-serial-issue129-wfout-shell-size
+                     (alt#2): R9
   
  [RD./SAVE//ns.db1]------------------------------------------
   Bands                           :  60
@@ -64,7 +69,7 @@
 
   Direct Lattice(DL) unit cell [iru  /  cc(a.u.)]
   A1 = 1.000000  0.000000  0.000000      4.716373  0.000000  0.000000
-  A2 =-0.500000  1.000000  0.000000     -2.358186  4.084499  0.000000
+  A2 = -0.50000  1.000000  0.000000      -2.35819  4.084499  0.000000
   A3 = 0.000000  0.000000  1.000000      0.000000  0.000000  12.17584
 
   DL volume [au]: 234.5556
@@ -80,7 +85,7 @@
 
   DL (S)ymmetries [cc]
   [S1] 1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000  1.000000
-  [S2] 1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000 -1.000000
+  [S2]  1.00000   0.00000   0.00000   0.00000   1.00000   0.00000   0.00000   0.00000  -1.00000
 
   [SYMs] K-space Time-reversal not included
   [SYMs] Group table built correctly
@@ -106,16 +111,16 @@
   ======================
 
   Compatible Grid is 2D
-  B1 [rlu]=0.5000    -.1490E-7  0.000   
-  B2      =0.4470E-7 -.5000     0.000   
+  B1 [rlu]= 0.500    -0.149E-7   0.00   
+  B2      = 0.447E-7 -0.500      0.00   
   Grid dimensions               : 2  2
   K lattice UC volume       [au]: 0.264383
 
   [02.05] Energies [ev] & Occupations
   ===================================
 
-  [X]VBM / CBm          [ev]:  0.000000  4.439179
   [X]Fermi Level        [ev]:  0.000000
+  [X]VBM / CBm          [ev]:  0.000000  4.439179
   [X]Electronic Temp. [ev K]:  0.00      0.00    
   [X]Bosonic    Temp. [ev K]:  0.00      0.00    
   [X]Finite Temperature mode: no
@@ -130,7 +135,7 @@
 
   *X* K [1] : 0.000000  0.000000  0.000000 ( cc) * Comp.s 2831 * weight  0.250000
               0.000000  0.000000  0.000000 (rlu)
-  E -17.27438 -16.87790  -6.13629  -3.60287  -0.95313  -0.95313  -0.90350  -0.90350
+  E  -17.2744  -16.8779   -6.1363   -3.6029   -0.9531   -0.9531   -0.9035   -0.9035
   E   5.56969  10.82108  11.99899  11.99899  12.16172  12.16172  13.08768  13.38081
   E  15.65496  17.31309  23.67638  25.35275  26.38354  28.64327  28.64327  30.19186
   E  31.33208  31.33208  32.25410  33.25239  33.25239  35.64526  35.64526  36.76782
@@ -140,8 +145,8 @@
   E  72.40771  72.40771  72.98380  72.98583
    
   *X* K [2] : 0.666104  0.384575  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
-              0.500000  0.250000  0.000000 (rlu)
-  E -13.94090 -13.84870  -8.50880  -8.43081  -3.80045  -3.71434  -1.21991   0.00000
+              0.500000 -0.149E-7  0.000000 (rlu)
+  E  -13.9409  -13.8487   -8.5088   -8.4308   -3.8004   -3.7143   -1.2199    0.0000
   E   4.43918   6.07403  10.04617  10.49086  12.87391  14.15232  15.43176  19.56660
   E  21.68618  21.89773  22.28918  22.30096  22.58293  23.28063  27.18728  28.19855
   E  28.56390  28.68745  29.17566  31.11183  33.57776  35.69200  37.15599  37.39719
@@ -150,9 +155,9 @@
   E  57.29465  58.11204  58.72637  59.09394  60.12127  60.77073  61.45970  63.68365
   E  65.23691  65.72187  67.36990  68.25643
    
-  *X* K [3] :0.5955E-7 -0.769150  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
-             0.4470E-7 -0.500000  0.000000 (rlu)
-  E -13.94090 -13.84870  -8.50880  -8.43081  -3.80045  -3.71434  -1.21991   0.00000
+  *X* K [3] :0.5955E-7  -0.76915  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
+             0.4470E-7  -0.50000  0.000000 (rlu)
+  E  -13.9409  -13.8487   -8.5088   -8.4308   -3.8004   -3.7143   -1.2199    0.0000
   E   4.43918   6.07403  10.04617  10.49086  12.87391  14.15232  15.43176  19.56660
   E  21.68618  21.89773  22.28918  22.30096  22.58293  23.28063  27.18728  28.19855
   E  28.56390  28.68745  29.17566  31.11183  33.57776  35.69200  37.15599  37.39719
@@ -161,9 +166,9 @@
   E  57.29465  58.11204  58.72637  59.09394  60.12127  60.77073  61.45970  63.68365
   E  65.23691  65.72187  67.36990  68.25643
    
-  *X* K [4] :-0.666104  0.384575  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
-             -0.500000  0.250000  0.000000 (rlu)
-  E -13.94090 -13.84870  -8.50880  -8.43081  -3.80045  -3.71434  -1.21991   0.00000
+  *X* K [4] : -0.66610  0.384575  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
+              -0.50000  0.500000  0.000000 (rlu)
+  E  -13.9409  -13.8487   -8.5088   -8.4308   -3.8004   -3.7143   -1.2199    0.0000
   E   4.43918   6.07403  10.04617  10.49086  12.87391  14.15232  15.43176  19.56660
   E  21.68618  21.89773  22.28918  22.30096  22.58293  23.28063  27.18728  28.19855
   E  28.56390  28.68745  29.17566  31.11183  33.57776  35.69200  37.15599  37.39719
@@ -182,33 +187,108 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 004393 -------------------------- v.04.03.00 r.15207 -
+ - S/N 004393 -------------------------- v.04.05.00 r.17775 -
 
  IBZ Q-points :  4
  BZ  Q-points :  4
 
  Q [00001] : 0.00      0.00      0.00     (iku) * weight  0.250000
  Q [00002] : 0.500000  0.250000  0.000000 (iku) * weight  0.250000
- Q [00003] :0.4470E-7 -.5000     0.000    (iku) * weight  0.250000
- Q [00004] :-0.500000  0.250000  0.000000 (iku) * weight  0.250000
+ Q [00003] : 0.447E-7 -0.500      0.00    (iku) * weight  0.250000
+ Q [00004] : -0.50000   0.25000   0.00000 (iku) * weight  0.250000
   
  Q [00001] : 0.00      0.00      0.00     (cc ) * weight  0.250000
  Q [00002] : 0.666104  0.384575  0.000000 (cc ) * weight  0.250000
- Q [00003] :0.5955E-7 -.7692     0.000    (cc ) * weight  0.250000
- Q [00004] :-0.666104  0.384575  0.000000 (cc ) * weight  0.250000
+ Q [00003] : 0.596E-7 -0.769      0.00    (cc ) * weight  0.250000
+ Q [00004] : -0.66610   0.38458   0.00000 (cc ) * weight  0.250000
 
-  [03.01] Initialization
+ [04] Dipoles
+ ============
+
+ [RD./09_coll_sex-serial-issue129-wfout-shell-size//ndb.dipoles]-
+  Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
+  RL vectors                   (WF):  797
+  Fragmentation                    :yes
+  Electronic Temperature        [K]: 0.000000
+  Bosonic    Temperature        [K]: 0.000000
+  X band range           :  1  20
+ *ERR* X band range limits    :  8   9
+  X e/h energy range [ev]: -1.00000  -1.00000
+  RL vectors in the sum  :  797
+  [r,Vnl] included       :yes
+ *ERR* Bands ordered          :yes
+ *ERR* Direct v evaluation    :no
+  Field momentum norm    :0.1000E-4
+ *ERR* Approach used          :G-space v
+  Dipoles computed       :R V P
+  Wavefunctions          :Teter 93(XC)
+ - S/N 004393 -------------------------- v.04.05.00 r.17775 -
+
+ [WARNING] DIPOLES database not correct or missing
+  System with reduced dimensionality
+  Smallest q vectors (crystal coordinates) :
+       0.500000      0.500000      0.000000
+  Lenght of G vectors in each direction:     1.53830019    1.53830017    0.51603726
+ [WF-Oscillators/G space] Performing Wave-Functions I/O from ./SAVE
+
+ [WF-Oscillators/G space loader] Normalization (few states)  min/max  :0.719E-16  1.00    
+
+
+ [WARNING] Forced lowering on cutoff on WFs
+
+ [WARNING] Covariant Dipoles not in 3d. Assuming non periodic system.
+ [RD./SAVE//ns.kb_pp]----------------------------------------
+  Fragmentation                    :no
+ - S/N 004393 -------------------------- v.04.05.00 r.17775 -
+ [WR./09_non_linear_sex_coll//ndb.dipoles]-------------------
+  Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
+  RL vectors                   (WF):  371
+  Fragmentation                    :yes
+  Electronic Temperature        [K]: 0.000000
+  Bosonic    Temperature        [K]: 0.000000
+  X band range           :  1  10
+  X band range limits    : 10   1
+  X e/h energy range [ev]: -1.00000  -1.00000
+  RL vectors in the sum  :  797
+  [r,Vnl] included       :yes
+  Bands ordered          :no
+  Direct v evaluation    :yes
+  Field momentum norm    :0.1000E-4
+  Approach used          :Covariant
+  Dipoles computed       :R V P
+  Wavefunctions          :Teter 93(XC)
+ - S/N 004393 -------------------------- v.04.05.00 r.17775 -
+ [WR./09_non_linear_sex_coll//ndb.Overlap]-------------------
+  Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
+  RL vectors                   (WF):  371
+  Fragmentation                    :yes
+  Electronic Temperature        [K]: 0.000000
+  Bosonic    Temperature        [K]: 0.000000
+  X band range           :  1  10
+  X band range limits    : 10   1
+  X e/h energy range [ev]: -1.00000  -1.00000
+  RL vectors in the sum  :  797
+  [r,Vnl] included       :yes
+  Bands ordered          :no
+  Direct v evaluation    :yes
+  Field momentum norm    :0.1000E-4
+  Approach used          :Covariant
+  Dipoles computed       :R V P
+  Wavefunctions          :Teter 93(XC)
+ - S/N 004393 -------------------------- v.04.05.00 r.17775 -
+
+  [04.01] Initialization
   ======================
 
   Dephasing Time          [fs]: 32.910594
   Sampling  Time          [fs]: 1.0839168
   Total simulation time   [fs]: 33.994511
 
-  [03.02] Messaging
+  [04.02] Messaging
   =================
 
   ---General---
-  Integrator                 :INVINT
+  Integrator                 :CRANKNIC
   Simulation time        [fs]: 33.990000
   Step length            [fs]:   0.01000
   NE Steps                   :  3400
@@ -216,7 +296,8 @@
   Damping                [eV]: 0.2000000
   Dephasing              [fs]: 6.5821189
   Efield                     :SOFTSIN
-  Efield FWHM            [fs]: 2.0000000
+  Efield width           [fs]: 0.0000000
+  Efield T_0             [fs]: 0.0000000
   Efield Amplitude      [V/m]:0.19410E+7
   Frequencies range          : 4.0000000  5.0000000
   Frequencies steps          :  5
@@ -224,83 +305,47 @@
   Use Dipoles                :no
   Induced Field              :no
   Force Snd Order Dipoles    :no
-   Lenght of G vectors in each direction:     1.53830019    1.53830017    0.51603726
-  [RD./09_coll_sex-serial-devel-nl//ndb.dip_iR_and_P]---------
+  Evaluate Current           :no
+  WF sampling                :no
+  [RD./09_non_linear_sex_coll//ndb.dipoles]-------------------
    Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
-   RL vectors                   (WF):  797
-   Fragmentation                    :yes
-   Electronic Temperature        [K]: 0.0000000
-   Bosonic    Temperature        [K]: 0.0000000
-   X band range           :  1  20
-  *ERR* X band range limits    :  8   9
-   X e/h energy range [ev]:-1.0000000 -1.0000000
-   RL vectors in the sum  :  797
-   [r,Vnl] included       :yes
-   Using shifted grids    :no
-  *ERR* Using covariant dipoles:no
-  *ERR* Using G-space approach :yes
-   Using R-space approach :no
-   Direct v evaluation    :no
-   Field momentum norm    :0.10000E-4
-   Wavefunctions          :Teter 93(XC)
-  - S/N 004393 -------------------------- v.04.03.00 r.15207 -
-   Lenght of G vectors in each direction:     1.53830019    1.53830017    0.51603726
-  [WF] Performing Wave-Functions I/O from ./SAVE
-
-  [WF loader] Normalization (few states)  min/max  :0.7187E-16  1.000    
-
-
-  [WARNING] Covariant Dipoles not in 3d. Assuming non periodic system.
-  [WF] Performing Wave-Functions I/O from ./SAVE
-
-  [FFT-Oscillators/R space] Mesh size:  9   9  24
-
-  [WR./09_non_linear_sex_coll//ndb.dip_iR_and_P]--------------
-   Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
-   RL vectors                   (WF):  797
+   RL vectors                   (WF):  371
    Fragmentation                    :yes
    Electronic Temperature        [K]: 0.0000000
    Bosonic    Temperature        [K]: 0.0000000
    X band range           :  1  10
    X band range limits    : 10   1
-   X e/h energy range [ev]:-1.0000000 -1.0000000
+   X e/h energy range [ev]: -1.000000  -1.000000
    RL vectors in the sum  :  797
    [r,Vnl] included       :yes
-   Using shifted grids    :no
-   Using covariant dipoles:yes
-   Using G-space approach :no
-   Using R-space approach :no
-   Direct v evaluation    :no
+   Bands ordered          :no
+   Direct v evaluation    :yes
    Field momentum norm    :0.10000E-4
+   Approach used          :Covariant
+   Dipoles computed       :R V P
    Wavefunctions          :Teter 93(XC)
-  - S/N 004393 -------------------------- v.04.03.00 r.15207 -
-  [WR./09_non_linear_sex_coll//ndb.Overlap]-------------------
+  - S/N 004393 -------------------------- v.04.05.00 r.17775 -
+  [RD./09_non_linear_sex_coll//ndb.Overlap]-------------------
    Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
-   RL vectors                   (WF):  797
+   RL vectors                   (WF):  371
    Fragmentation                    :yes
    Electronic Temperature        [K]: 0.0000000
    Bosonic    Temperature        [K]: 0.0000000
    X band range           :  1  10
    X band range limits    : 10   1
-   X e/h energy range [ev]:-1.0000000 -1.0000000
+   X e/h energy range [ev]: -1.000000  -1.000000
    RL vectors in the sum  :  797
    [r,Vnl] included       :yes
-   Using shifted grids    :no
-   Using covariant dipoles:yes
-   Using G-space approach :no
-   Using R-space approach :no
-   Direct v evaluation    :no
+   Bands ordered          :no
+   Direct v evaluation    :yes
    Field momentum norm    :0.10000E-4
+   Approach used          :Covariant
+   Dipoles computed       :R V P
    Wavefunctions          :Teter 93(XC)
-  - S/N 004393 -------------------------- v.04.03.00 r.15207 -
-   Lenght of G vectors in each direction:     1.53830019    1.53830017    0.51603726
-  [WF] Performing Wave-Functions I/O from ./SAVE
-
-  [FFT-NL] Mesh size: 12  12  27
-
-  [RD./09_coll_sex-serial-devel-nl//ndb.COLLISIONS_HXC]-------
+  - S/N 004393 -------------------------- v.04.05.00 r.17775 -
+  [RD./09_coll_sex-serial-issue129-wfout-shell-size//ndb.COLLISIONS_HXC]-
    Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
-   RL vectors                   (WF):  797
+  *WRN* RL vectors                   (WF):  797
    COLLISIONS name                 :HARTREE+SEX
    Total number of COLLISIONS      :  84
    COLLISIONS kind                 : 1327
@@ -311,7 +356,7 @@
    Exchange RL vectors             : 11
    X matrix size          :11
    X band range           :1 - 20
-   X e/h energy range [ev]:-1.000000 - -1.000000
+   X e/h energy range [ev]: -1.00000 -  -1.00000
    X Time ordering        :T
    X xc-Kernel            :none
    X Drude frequency      : 0.000000 0.000000
@@ -321,9 +366,10 @@
    Field direction        :0.1000E-4  0.000000  0.000000
    BZ energy Double Grid  : no
    BZ energy DbGd points  :0
+   BZ Q point size factor : 1.000000
    RIM RL components      :0
    RIM random points      :0
-  - S/N 004393 -------------------------- v.04.03.00 r.15207 -
+  - S/N 004393 -------------------------- v.04.05.00 r.17775 -
    
    * * * Polarization * * *
   ==========================
@@ -331,12 +377,12 @@
    Direction: 1
    Numer of k-points per string : 2
    Numer of different strings   : 2
-   Electronic Phase :       0.00001492   mod(2)
+   Electronic Phase :      -0.00000000   mod(2)
    Ionic      Phase :       0.00000000   mod(1)
-   Total      Phase :       0.00001492   mod(1)
-   Polarization :       0.00007037  mod( 4.71637297) (e/Volume).bohr
-   Polarization :       0.00000030  mod( 0.02010770) e/bohr^2
-   Polarization :       0.00001717  mod( 1.15045728) C/m^2
+   Total      Phase :      -0.00000000   mod(1)
+   Polarization :      -0.00000000  mod( 4.71637297) (e/Volume).bohr
+   Polarization :      -0.00000000  mod( 0.02010770) e/bohr^2
+   Polarization :      -0.00000000  mod( 1.15045728) C/m^2
    
    Direction: 2
    Numer of k-points per string : 2
@@ -350,26 +396,35 @@
    
    The total polarization has module 1 !!
    
-   Initial Polarization :0.3000E-06 0.5448E-11  0.000    
+   
+   * * * Non-linear dynamics parameters * * *
+  ============================================
+   Initial Polarization      :-0.538E-11  0.187E-11   0.00    
+   Initial <Dip_x/y/z>       : 0.160E-20 -0.176E-20 -0.300E-01
   [WR./09_non_linear_sex_coll//ndb.Nonlinear]-----------------
    Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
-   RL vectors                   (WF):  797
+   RL vectors                   (WF):  547
    Global Gauge                     :length
    [RT] Time steps       :  3400
    [RT] Time step    [fs]:   0.01000
    [NL] Damping      [fs]: 0.2000000
-   [NL] Bands   ange     :  5  10
+   [NL] Bands  range     :  5  10
    [NL] Energy range     : 4.0000000  5.0000000
    [NL] Number of freqs  :  5
    [NL] Force 2nd approx :no
    [NL] Use DIPOLES      :no
    [NL] Induced Field    :no
-   [RT] Integrator           :INVINT
+  [NL] Number of G in HARTREE :  547
+  [NL] Number of G in EXCHANGE(DFT) : 11
+   [NL] WF sample order  :0
+   [NL] WF sample valence:0
+   [NL] WF sample kpoints:0
+   [RT] Integrator           :CRANKNIC
    [NL] Correlation           :SEX
    [FIELDs] Type           :SOFTSIN
    [FIELDs] Versor                : 0.0000000  1.0000000  0.0000000
    [FIELDs] Intensity     [kWCMm2]: 1000.0   
-   [FIELDs] Damping           [fs]: 82.682747
+   [FIELDs] Damping           [fs]: 0.0000000
    [FIELDs] Frequency range   [eV]:  0.100000   0.100000
    [FIELDs] Frequency steps       : 1
    [FIELDs] Frequency step    [eV]: 0.0000000
@@ -377,7 +432,7 @@
    [FIELDs] Type           :SOFTSIN
   [FIELDs] Versor                : 0.000000  1.000000  0.000000
   [FIELDs] Intensity     [kWCMm2]: 1000.   
-  [FIELDs] Damping           [fs]: 82.68275
+  [FIELDs] Field width       [fs]: 0.000000
   [FIELDs] Frequency range   [eV]: 4.000000  4.000000
   [FIELDs] Frequency steps       : 1
   [FIELDs] Frequency step    [eV]: 0.000000
@@ -386,7 +441,7 @@
    [FIELDs] Type           :SOFTSIN
   [FIELDs] Versor                : 0.000000  1.000000  0.000000
   [FIELDs] Intensity     [kWCMm2]: 1000.   
-  [FIELDs] Damping           [fs]: 82.68275
+  [FIELDs] Field width       [fs]: 0.000000
   [FIELDs] Frequency range   [eV]: 4.200000  4.200000
   [FIELDs] Frequency steps       : 1
   [FIELDs] Frequency step    [eV]: 0.000000
@@ -395,7 +450,7 @@
    [FIELDs] Type           :SOFTSIN
   [FIELDs] Versor                : 0.000000  1.000000  0.000000
   [FIELDs] Intensity     [kWCMm2]: 1000.   
-  [FIELDs] Damping           [fs]: 82.68275
+  [FIELDs] Field width       [fs]: 0.000000
   [FIELDs] Frequency range   [eV]: 4.400000  4.400000
   [FIELDs] Frequency steps       : 1
   [FIELDs] Frequency step    [eV]: 0.000000
@@ -404,7 +459,7 @@
    [FIELDs] Type           :SOFTSIN
   [FIELDs] Versor                : 0.000000  1.000000  0.000000
   [FIELDs] Intensity     [kWCMm2]: 1000.   
-  [FIELDs] Damping           [fs]: 82.68275
+  [FIELDs] Field width       [fs]: 0.000000
   [FIELDs] Frequency range   [eV]: 4.600000  4.600000
   [FIELDs] Frequency steps       : 1
   [FIELDs] Frequency step    [eV]: 0.000000
@@ -413,57 +468,60 @@
    [FIELDs] Type           :SOFTSIN
   [FIELDs] Versor                : 0.000000  1.000000  0.000000
   [FIELDs] Intensity     [kWCMm2]: 1000.   
-  [FIELDs] Damping           [fs]: 82.68275
+  [FIELDs] Field width       [fs]: 0.000000
   [FIELDs] Frequency range   [eV]: 4.800000  4.800000
   [FIELDs] Frequency steps       : 1
   [FIELDs] Frequency step    [eV]: 0.000000
   [FIELDs] Initial time      [fs]:   0.0100
   [FIELDs] Polarization :linear
 
- Timing [Min/Max/Average]: 14s/14s/14s
+ Timing [Min/Max/Average]: 23s/23s/23s
 
- [04] Timing Overview
+ [05] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                               io_WF :     0.00s CPU (      19 calls,   0.001 s avg)
-                             io_GROT :     0.00s CPU (       5 calls,   0.000 s avg)
-                            io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
-                          io_COL_CUT :     0.00s CPU
-                      io_Double_Grid :     0.00s CPU
-                               io_HF :     0.00s CPU
-                          io_DIPOLES :     0.00s CPU (       7 calls,   0.001 s avg)
-                         io_KB_pwscf :     0.00s CPU
-                        io_KB_abinit :     0.00s CPU
-                                io_X :     0.00s CPU (       4 calls,   0.000 s avg)
-                         io_fragment :     0.00s CPU (     350 calls,   0.000 s avg)
-                               io_BS :     0.00s CPU
-                             io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
-                    io_RT_components :     0.00s CPU (       2 calls,   0.000 s avg)
-                       io_COLLISIONS :     0.00s CPU (     175 calls,   0.000 s avg)
-                      eval_G_minus_G :     0.00s CPU
-             IO_and_Messaging_switch :     0.00s CPU (       9 calls,   0.000 s avg)
-                         io_Overlaps :     0.00s CPU (       8 calls,   0.000 s avg)
-                             Dipoles :     0.00s CPU
-                      LINEAR ALGEBRA :     0.00s CPU (      32 calls,   0.000 s avg)
-                    SERIAL_inversion :     2.00s CPU (  272048 calls,   0.000 s avg)
-                     COLLISIONS_load :     0.00s CPU (       2 calls,   0.030 s avg)
-                    NL Berry Pol NEQ :     3.00s CPU (   17001 calls,   0.000 s avg)
-                               io_NL :     0.00s CPU (       7 calls,   0.003 s avg)
-                      NL Hamiltonian :     3.00s CPU (   34000 calls,   0.000 s avg)
-                         NL build_dG :     0.00s CPU (   17000 calls,   0.000 s avg)
-                     NL COLL_compose :     1.00s CPU (   17000 calls,   0.000 s avg)
-                       NL Integrator :     2.00s CPU (   17000 calls,   0.000 s avg)
-                   SERIAL_lin_system :     1.00s CPU (  544000 calls,   0.000 s avg)
+                                    io_WF :    0.0071 s CPU (          31 calls,    0.0002 s avg)
+                                  io_GROT :    0.0009 s CPU (           3 calls,    0.0003 s avg)
+                                 io_QINDX :    0.0005 s CPU (           2 calls,    0.0003 s avg)
+                               io_COL_CUT :    0.0000 s CPU
+                                    io_HF :    0.0001 s CPU
+                               io_DIPOLES :    0.0040 s CPU (          12 calls,    0.0003 s avg)
+                              io_KB_pwscf :    0.0000 s CPU (           2 calls,    0.0000 s avg)
+                             io_KB_abinit :    0.0011 s CPU (           6 calls,    0.0002 s avg)
+                         io_ATMPROJ_pwscf :    0.0000 s CPU
+                                     io_X :    0.0006 s CPU (           4 calls,    0.0002 s avg)
+                              io_fragment :    0.0262 s CPU (         358 calls,    0.0001 s avg)
+                                    io_BS :    0.0000 s CPU
+                                  io_ELPH :    0.0001 s CPU (           2 calls,    0.0001 s avg)
+                         io_RT_components :    0.0001 s CPU (           2 calls,    0.0000 s avg)
+                            io_COLLISIONS :    0.0608 s CPU (         175 calls,    0.0003 s avg)
+                           io_Double_Grid :    0.0001 s CPU
+                                  Dipoles :    0.0377 s CPU
+                              io_Overlaps :    0.0027 s CPU (          11 calls,    0.0002 s avg)
+                  IO_and_Messaging_switch :    0.0001 s CPU (          18 calls,    0.0000 s avg)
+                             PP_uspp_init :    0.0002 s CPU (           9 calls,    0.0000 s avg)
+                              WF_load_FFT :    0.0074 s CPU (           9 calls,    0.0008 s avg)
+                           eval_G_minus_G :    0.0013 s CPU (           2 calls,    0.0006 s avg)
+                           LINEAR ALGEBRA :    0.0002 s CPU (          32 calls,    0.0000 s avg)
+                                FFT_setup :    0.0006 s CPU (           5 calls,    0.0001 s avg)
+                        DIPOLE_transverse :    0.0198 s CPU
+                          COLLISIONS_load :    0.0608 s CPU (           2 calls,    0.0304 s avg)
+                         NL Berry Pol NEQ :    5.1032 s CPU (       34001 calls,    0.0002 s avg)
+                                    io_NL :    0.0137 s CPU (           7 calls,    0.0020 s avg)
+                           NL Hamiltonian :    9.0751 s CPU (       68000 calls,    0.0001 s avg)
+                              NL build_dG :    0.6320 s CPU (       34000 calls,    0.0000 s avg)
+                          NL COLL_compose :    3.4615 s CPU (       34000 calls,    0.0001 s avg)
+                            NL Integrator :    3.5641 s CPU (       34000 calls,    0.0001 s avg)
 
- [05] Game Over & Game summary
+ [06] Game Over & Game summary
  =============================
 
- 11/17/2017 at 10:26 YAMBO_NL @ narro [start]
- 11/17/2017 at 10:26                  [end]
+ 02/10/2020 at 19:19 yambo_nl @ narro [start]
+ 02/10/2020 at 19:19                  [end]
 
- Timing   [Min/Max/Average]: 14s/14s/14s
-             [Time-Profile]:  14.41200s
+ Timing   [Min/Max/Average]: 23s/23s/23s
+             [Time-Profile]: 24s
 
  .-ACKNOWLEDGMENT
  |
@@ -475,27 +533,41 @@
  | spirit, please find below the reference we kindly ask you to use
  | in order to acknowledge YAMBO:
  |
+ | Many-body perturbation theory calculations using the yambo code
+ | D. Sangalli, A. Ferretti, H. Miranda, C. Attaccalite, I. Marri, E. Cannuccia, P. Melo,
+ | M Marsili, F Palear9, A Marrazzo, G Prandini, P Bonfà, M O Atambo, F Affinito,
+ | M Palummo, A Molina-Sánchez, C Hogan, M Grüning, D Varsano and A Marini.
+ | J. Phys.: Condens. Matter 31, 325902 (2019).
+ |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
- | Computer Physics Communications  180, 1392 (2009).
+ | A. Marini, C. Hogan, M. Grüning, D. Varsano
+ | Computer Physics Communications 180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | nloptics                       # [R NL] Non-linear optics
- | FFTGvecs=  797         RL      # [FFT] Plane-waves
+ | nloptics                       # [R] Non-linear spectroscopy
+ | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+ | NL_Threads= 1                  # [OPENMP/NL] Number of threads for nl-optics
+ | FFTGvecs=  371         RL      # [FFT] Plane-waves
  | % NLBands
- |   5 | 10 |                     # [NL] Bands
+ |   5 | 10 |                     # [NL] Bands range
  | %
- | NLstep=   0.0100       fs      # [NL] Real Time step length
+ | NLverbosity= "high"            # [NL] Verbosity level (low | high)
+ | NLstep=   0.0100       fs      # [NL] Time step length
  | NLtime= 33.99451       fs      # [NL] Simulation Time
+ | NLintegrator= "CRANKNIC"       # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
  | NLCorrelation= "SEX"           # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
  | NLLrcAlpha= 0.000000           # [NL] Long Range Correction
  | % NLEnRange
  |  4.000000 | 5.000000 | eV      # [NL] Energy range
  | %
  | NLEnSteps=  5                  # [NL] Energy steps
- | NLDamping= 0.200000    eV      # [NL] Damping
+ | NLDamping= 0.200000    eV      # [NL] Damping (or dephasing)
+ | #EvalCurrent                   # [NL] Evaluate the current
+ | HARRLvcs=  547         RL      # [HA] Hartree     RL components
+ | EXXRLvcs= 11           RL      # [XX] Exchange    RL components
  | % ExtF_Dir
- |  0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Versor
+ |  0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Field Versor
  | %
+ | ExtF_kind= "SOFTSIN"           # [NL ExtF] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
  | ExtF_Tstart=   0.0100  fs      # [NL ExtF] Initial Time

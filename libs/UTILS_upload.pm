@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -22,31 +22,46 @@
 #
 sub UTILS_upload
 {
-chdir("$suite_dir");
-@paths = split(/\//,$upload_test);
-$archive = $upload_test;
-$archive =~ s/\//_/;
-$test_dir   =$upload_test;
-$test_subdir=".";
-if ( scalar @paths > 1) {
- $test_dir=@paths[0];
- $test_subdir=$upload_test;
- $test_subdir =~ s/$test_dir\///;
-}
-chdir("$TESTS_folder/$test_dir");
 #
 my $UPLOAD_PATH="robots/databases/$mode";
 #
-if (-d $test_subdir){
- &command("find $test_subdir -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' | $grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
- &command("find . -type f $test_subdir | $grep -v 'ROBOT_'| xargs tar cvf $archive.tar");
- &command("gzip $archive.tar");
- &FTP_upload_it("$archive.tar.gz","$UPLOAD_PATH");
- &command("rm -f $test_subdir/SAVE/*");
- &command("git add $test_subdir/SAVE");
-}else
+$user_tests="all";
+&UTILS_get_inputs_tests_list();
+@all_tests = split(/ /,$alltests);
+#
+foreach  my $test (@all_tests)
 {
- &FTP_upload_it("$upload_test","$UPLOAD_PATH");
+ chdir("$suite_dir");
+ $user_string = $test;
+ if (not "$upload_test" eq "all") { $user_string = $upload_test};
+ $user_string =~ s/\//_/g;
+ $test_string= $test;
+ $test_string =~ s/\//_/g;
+ $path = (split("\/",$test))[-1];
+ if ($test_string =~ /$user_string/)
+ {
+  chdir("$TESTS_folder/$test/../");
+  undef $ok_dir;
+  @files=();
+  find( sub { push @files, $File::Find::name if -f }, ("$path") );
+  foreach $file (@files){
+    if ($file =~ /ns./ or $file =~ /gkkp/ or $file =~/Double/) {$ok_dir=1}
+  }
+  if (not $ok_dir) {next};
+  print "\n$r_s Uploading $test ... $r_e\n";
+  &command("find $path -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' -o -name '*.save*' -o -name '*io_files*' | $grep -v 'ROBOT_'| xargs tar cf $test_string.tar");
+  &command("gzip -f $test_string.tar");
+  &FTP_upload_it("$test_string.tar.gz","$UPLOAD_PATH");
+  @dirs=();
+  find( sub { push @dirs, $File::Find::name if -d }, ("$path") );
+  foreach $dir (@dirs){
+   if ( $dir  =~ /SAVE/ ) {
+    &command("touch $dir/.empty");
+    &command("git add $dir/.empty");
+   }
+  }
+ }
 }
+print "\n";
 }
 1;

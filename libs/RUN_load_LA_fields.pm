@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -25,12 +25,13 @@ sub RUN_load_LA_fields{
 my $nl_here=1;
 $nl_here=$nl if ($nl);
 #
-$LA_field[1]="X_all_q_nCPU_LinAlg_INV=$nl_here";
-$LA_field[2]="X_q_0_nCPU_LinAlg_INV=$nl_here";
-$LA_field[3]="X_finite_q_nCPU_LinAlg_INV=$nl_here";
-$LA_field[4]="BS_nCPU_LinAlg_INV=$nl_here";
-$LA_field[5]="BS_nCPU_LinAlg_DIAGO=$nl_here";
-$LA_field[6]="SE_nCPU_LinAlg_DIAGO=$nl_here";
+$LA_field[1]="X_nCPU_LinAlg_INV=$nl_here";
+$LA_field[2]="X_and_IO_nCPU_LinAlg_INV=$nl_here";
+$LA_field[3]="X_q_0_nCPU_LinAlg_INV=$nl_here";
+$LA_field[4]="X_finite_q_nCPU_LinAlg_INV=$nl_here";
+$LA_field[5]="BS_nCPU_LinAlg_INV=$nl_here";
+$LA_field[6]="BS_nCPU_LinAlg_DIAGO=$nl_here";
+$LA_field[7]="SE_nCPU_LinAlg_DIAGO=$nl_here";
 #
 }
 1;

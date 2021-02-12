@@ -1,0 +1,44 @@
+#                                                                     
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 18807 Hash ce197fd1e                   
+#                    Branch is develop                                
+#               MPI+OpenMP+SLK+HDF5_IO Build                          
+#                http://www.yambo-code.org                            
+#
+gw0                              # [R] GW approximation
+ppa                              # [R][Xp] Plasmon Pole Approximation for the Screened Interaction
+dyson                            # [R] Dyson Equation solver
+HF_and_locXC                     # [R] Hartree-Fock
+em1d                             # [R][X] Dynamically Screened Interaction
+EXXRLvcs= 19641            RL    # [XX] Exchange    RL components
+VXCRLvcs= 19641            RL    # [XC] XCpotential RL components
+DipApproach= "Covariant"         # [Xp] [G-space v/R-space x/Covariant/Shifted grids]
+Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+% BndsRnXp
+  1 | 14 |                           # [Xp] Polarization function bands
+%
+NGsBlkXp= 1                Ry    # [Xp] Response block size
+% LongDrXp
+ 1.000000 | 0.000000 | 0.000000 |        # [Xp] [cc] Electric Field
+%
+PPAPntXp= 20.0             eV    # [Xp] PPA imaginary energy
+XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
+% GbndRnge
+  1 | 14 |                           # [GW] G[W] bands range
+%
+GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze)
+DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
+GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
+GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
+%QPkrange                        # [GW] QP generalized Kpoint/Band indices
+1|1|10|11|
+%
+#3|3|10|11|

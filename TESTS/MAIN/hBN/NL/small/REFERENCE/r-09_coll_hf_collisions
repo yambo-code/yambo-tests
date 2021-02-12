@@ -1,18 +1,19 @@
-                                                                
-     __  __   ________   ___ __ __    _______   ______          
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\         
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \        
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \       
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \      
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \     
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/     
-                                                                
-                                                                
-           Version 4.3.0 Revision 15207 Hash 1b80b32            
-                         MPI+SLK Build                          
-                   http://www.yambo-code.org                    
+                                                                          
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
+                                                                          
+          Version 4.5.0 Revision 17775 Hash 6a0ceb78c                     
+              Branch is issue129-wfout-shell-size                         
+                  MPI+OpenMP+SLK+SLEPC Build                              
+                   http://www.yambo-code.org                              
  
- 11/17/2017 at 10:25 YAMBO_NL @ narro
+ 02/10/2020 at 19:18 yambo_nl @ narro
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -21,16 +22,20 @@
  * THREADS    (max): 1
  * THREADS TOT(max): 1
  * I/O NODES       : 1
- * Fragmented WFs  :no
+ * NODES(computing): 1
+ *            (I/O): 1
+ * Fragmented WFs  : no
 
  CORE databases in   .
  Additional I/O in   .
  Communications in   .
  Input file     is   yambo.in
  Report file    is   ./r-09_coll_hf_collisions
- Job string(main): 09_coll_hf
-             (#1): R15
- Log files      in ./LOG
+ Precision      is   DOUBLE
+ Log files      in   ./LOG
+
+ Job string(s)-dir(s) (main): 09_coll_hf
+                     (alt#1): R9
   
  [RD./SAVE//ns.db1]------------------------------------------
   Bands                           :  60
@@ -63,7 +68,7 @@
 
   Direct Lattice(DL) unit cell [iru  /  cc(a.u.)]
   A1 = 1.000000  0.000000  0.000000      4.716373  0.000000  0.000000
-  A2 =-0.500000  1.000000  0.000000     -2.358186  4.084499  0.000000
+  A2 = -0.50000  1.000000  0.000000      -2.35819  4.084499  0.000000
   A3 = 0.000000  0.000000  1.000000      0.000000  0.000000  12.17584
 
   DL volume [au]: 234.5556
@@ -79,7 +84,7 @@
 
   DL (S)ymmetries [cc]
   [S1] 1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000  1.000000
-  [S2] 1.000000  0.000000  0.000000  0.000000  1.000000  0.000000  0.000000  0.000000 -1.000000
+  [S2]  1.00000   0.00000   0.00000   0.00000   1.00000   0.00000   0.00000   0.00000  -1.00000
 
   [SYMs] K-space Time-reversal not included
   [SYMs] Group table built correctly
@@ -105,16 +110,16 @@
   ======================
 
   Compatible Grid is 2D
-  B1 [rlu]=0.5000    -.1490E-7  0.000   
-  B2      =0.4470E-7 -.5000     0.000   
+  B1 [rlu]= 0.500    -0.149E-7   0.00   
+  B2      = 0.447E-7 -0.500      0.00   
   Grid dimensions               : 2  2
   K lattice UC volume       [au]: 0.264383
 
   [02.05] Energies [ev] & Occupations
   ===================================
 
-  [X]VBM / CBm          [ev]:  0.000000  4.439179
   [X]Fermi Level        [ev]:  0.000000
+  [X]VBM / CBm          [ev]:  0.000000  4.439179
   [X]Electronic Temp. [ev K]:  0.00      0.00    
   [X]Bosonic    Temp. [ev K]:  0.00      0.00    
   [X]Finite Temperature mode: no
@@ -129,7 +134,7 @@
 
   *X* K [1] : 0.000000  0.000000  0.000000 ( cc) * Comp.s 2831 * weight  0.250000
               0.000000  0.000000  0.000000 (rlu)
-  E -17.27438 -16.87790  -6.13629  -3.60287  -0.95313  -0.95313  -0.90350  -0.90350
+  E  -17.2744  -16.8779   -6.1363   -3.6029   -0.9531   -0.9531   -0.9035   -0.9035
   E   5.56969  10.82108  11.99899  11.99899  12.16172  12.16172  13.08768  13.38081
   E  15.65496  17.31309  23.67638  25.35275  26.38354  28.64327  28.64327  30.19186
   E  31.33208  31.33208  32.25410  33.25239  33.25239  35.64526  35.64526  36.76782
@@ -139,8 +144,8 @@
   E  72.40771  72.40771  72.98380  72.98583
    
   *X* K [2] : 0.666104  0.384575  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
-              0.500000  0.250000  0.000000 (rlu)
-  E -13.94090 -13.84870  -8.50880  -8.43081  -3.80045  -3.71434  -1.21991   0.00000
+              0.500000 -0.149E-7  0.000000 (rlu)
+  E  -13.9409  -13.8487   -8.5088   -8.4308   -3.8004   -3.7143   -1.2199    0.0000
   E   4.43918   6.07403  10.04617  10.49086  12.87391  14.15232  15.43176  19.56660
   E  21.68618  21.89773  22.28918  22.30096  22.58293  23.28063  27.18728  28.19855
   E  28.56390  28.68745  29.17566  31.11183  33.57776  35.69200  37.15599  37.39719
@@ -149,9 +154,9 @@
   E  57.29465  58.11204  58.72637  59.09394  60.12127  60.77073  61.45970  63.68365
   E  65.23691  65.72187  67.36990  68.25643
    
-  *X* K [3] :0.5955E-7 -0.769150  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
-             0.4470E-7 -0.500000  0.000000 (rlu)
-  E -13.94090 -13.84870  -8.50880  -8.43081  -3.80045  -3.71434  -1.21991   0.00000
+  *X* K [3] :0.5955E-7  -0.76915  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
+             0.4470E-7  -0.50000  0.000000 (rlu)
+  E  -13.9409  -13.8487   -8.5088   -8.4308   -3.8004   -3.7143   -1.2199    0.0000
   E   4.43918   6.07403  10.04617  10.49086  12.87391  14.15232  15.43176  19.56660
   E  21.68618  21.89773  22.28918  22.30096  22.58293  23.28063  27.18728  28.19855
   E  28.56390  28.68745  29.17566  31.11183  33.57776  35.69200  37.15599  37.39719
@@ -160,9 +165,9 @@
   E  57.29465  58.11204  58.72637  59.09394  60.12127  60.77073  61.45970  63.68365
   E  65.23691  65.72187  67.36990  68.25643
    
-  *X* K [4] :-0.666104  0.384575  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
-             -0.500000  0.250000  0.000000 (rlu)
-  E -13.94090 -13.84870  -8.50880  -8.43081  -3.80045  -3.71434  -1.21991   0.00000
+  *X* K [4] : -0.66610  0.384575  0.000000 ( cc) * Comp.s 2834 * weight  0.250000
+              -0.50000  0.500000  0.000000 (rlu)
+  E  -13.9409  -13.8487   -8.5088   -8.4308   -3.8004   -3.7143   -1.2199    0.0000
   E   4.43918   6.07403  10.04617  10.49086  12.87391  14.15232  15.43176  19.56660
   E  21.68618  21.89773  22.28918  22.30096  22.58293  23.28063  27.18728  28.19855
   E  28.56390  28.68745  29.17566  31.11183  33.57776  35.69200  37.15599  37.39719
@@ -181,20 +186,20 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 004393 -------------------------- v.04.03.00 r.15207 -
+ - S/N 004393 -------------------------- v.04.05.00 r.17775 -
 
  IBZ Q-points :  4
  BZ  Q-points :  4
 
  Q [00001] : 0.00      0.00      0.00     (iku) * weight  0.250000
  Q [00002] : 0.500000  0.250000  0.000000 (iku) * weight  0.250000
- Q [00003] :0.4470E-7 -.5000     0.000    (iku) * weight  0.250000
- Q [00004] :-0.500000  0.250000  0.000000 (iku) * weight  0.250000
+ Q [00003] : 0.447E-7 -0.500      0.00    (iku) * weight  0.250000
+ Q [00004] : -0.50000   0.25000   0.00000 (iku) * weight  0.250000
   
  Q [00001] : 0.00      0.00      0.00     (cc ) * weight  0.250000
  Q [00002] : 0.666104  0.384575  0.000000 (cc ) * weight  0.250000
- Q [00003] :0.5955E-7 -.7692     0.000    (cc ) * weight  0.250000
- Q [00004] :-0.666104  0.384575  0.000000 (cc ) * weight  0.250000
+ Q [00003] : 0.596E-7 -0.769      0.00    (cc ) * weight  0.250000
+ Q [00004] : -0.66610   0.38458   0.00000 (cc ) * weight  0.250000
 
  [04] Extended collisions
  ========================
@@ -203,11 +208,11 @@
   [04.01] HARTREE+FOCK (e-e correlation)
   ======================================
 
-  [WF] Performing Wave-Functions I/O from ./SAVE
+  [WF-HARTREE+FOCK Collisions] Performing Wave-Functions I/O from ./SAVE
 
   [FFT-HARTREE+FOCK Collisions] Mesh size: 12  12  27
 
-  [WF loader] Normalization (few states)  min/max  :0.158E-14  1.00    
+  [WF-HARTREE+FOCK Collisions loader] Normalization (few states)  min/max  :0.158E-14  1.00    
 
   [WR./09_coll_hf//ndb.COLLISIONS_HXC]------------------------
    Brillouin Zone Q/K grids (IBZ/BZ):  4   4   4   4
@@ -222,42 +227,47 @@
    Exchange RL vectors             : 11
    RIM RL components      :0
    RIM random points      :0
-  - S/N 004393 -------------------------- v.04.03.00 r.15207 -
+  - S/N 004393 -------------------------- v.04.05.00 r.17775 -
 
- Timing [Min/Max/Average]: 01s/01s/01s
+ Timing [Min/Max/Average]: 02s/02s/02s
 
  [05] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                               io_WF :     0.00s CPU (       7 calls,   0.001 s avg)
-                             io_GROT :     0.00s CPU (       3 calls,   0.001 s avg)
-                            io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
-                          io_COL_CUT :     0.00s CPU
-                      io_Double_Grid :     0.00s CPU
-                               io_HF :     0.00s CPU
-                          io_DIPOLES :     0.00s CPU
-                         io_KB_pwscf :     0.00s CPU
-                        io_KB_abinit :     0.00s CPU
-                                io_X :     0.00s CPU (       4 calls,   0.000 s avg)
-                               io_BS :     0.00s CPU
-                             io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
-                    io_RT_components :     0.00s CPU (       2 calls,   0.000 s avg)
-                       io_COLLISIONS :     0.00s CPU (      89 calls,   0.000 s avg)
-                     COLLISIONS_eval :     1.00s CPU
-             IO_and_Messaging_switch :     0.00s CPU
-             HARTREE+FOCK Collisions :     1.00s CPU
-         COLLISIONS_linearize_and_IO :     0.00s CPU (      84 calls,   0.000 s avg)
-                         io_fragment :     0.00s CPU (      84 calls,   0.000 s avg)
+                                    io_WF :    0.0013 s CPU (           7 calls,    0.0002 s avg)
+                                  io_GROT :    0.0009 s CPU (           3 calls,    0.0003 s avg)
+                                 io_QINDX :    0.0005 s CPU (           2 calls,    0.0002 s avg)
+                               io_COL_CUT :    0.0000 s CPU
+                                    io_HF :    0.0000 s CPU
+                               io_DIPOLES :    0.0000 s CPU
+                              io_KB_pwscf :    0.0000 s CPU
+                             io_KB_abinit :    0.0001 s CPU
+                         io_ATMPROJ_pwscf :    0.0000 s CPU
+                                     io_X :    0.0001 s CPU (           4 calls,    0.0000 s avg)
+                                    io_BS :    0.0000 s CPU
+                                  io_ELPH :    0.0000 s CPU (           2 calls,    0.0000 s avg)
+                         io_RT_components :    0.0000 s CPU (           2 calls,    0.0000 s avg)
+                            io_COLLISIONS :    0.0403 s CPU (          89 calls,    0.0005 s avg)
+                           io_Double_Grid :    0.0001 s CPU
+                          COLLISIONS_eval :    2.6074 s CPU
+                  IO_and_Messaging_switch :    0.0000 s CPU
+                  HARTREE+FOCK Collisions :    2.6070 s CPU
+                                FFT_setup :    0.0009 s CPU
+                             PP_uspp_init :    0.0000 s CPU
+                              WF_load_FFT :    0.0035 s CPU
+                             scatter_Gamp :    0.0025 s CPU (         420 calls,    0.0000 s avg)
+              COLLISIONS_linearize_and_IO :    0.0405 s CPU (          84 calls,    0.0005 s avg)
+                              io_fragment :    0.0116 s CPU (          84 calls,    0.0001 s avg)
 
  [06] Game Over & Game summary
  =============================
 
- 11/17/2017 at 10:25 YAMBO_NL @ narro [start]
- 11/17/2017 at 10:26                  [end]
+ 02/10/2020 at 19:18 yambo_nl @ narro [start]
+ 02/10/2020 at 19:18                  [end]
 
- Timing   [Min/Max/Average]: 01s/01s/01s
-             [Time-Profile]:  1.800000s
+ Timing   [Min/Max/Average]: 02s/02s/02s
+             [Time-Profile]: 02s
 
  .-ACKNOWLEDGMENT
  |
@@ -269,18 +279,25 @@
  | spirit, please find below the reference we kindly ask you to use
  | in order to acknowledge YAMBO:
  |
+ | Many-body perturbation theory calculations using the yambo code
+ | D. Sangalli, A. Ferretti, H. Miranda, C. Attaccalite, I. Marri, E. Cannuccia, P. Melo,
+ | M Marsili, F Palear9, A Marrazzo, G Prandini, P Bonfà, M O Atambo, F Affinito,
+ | M Palummo, A Molina-Sánchez, C Hogan, M Grüning, D Varsano and A Marini.
+ | J. Phys.: Condens. Matter 31, 325902 (2019).
+ |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
- | Computer Physics Communications  180, 1392 (2009).
+ | A. Marini, C. Hogan, M. Grüning, D. Varsano
+ | Computer Physics Communications 180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | collisions                     # [R] Eval the extended Collisions
+ | collisions                     # [R] Collisions
  | BoseTemp= 0.000000     eV      # Bosonic Temperature
+ | RT_Threads= 1                  # [OPENMP/RT] Number of threads for real-time
  | % COLLBands
  |   5 | 10 |                     # [COLL] Bands for the collisions
  | %
  | HXC_Potential= "HARTREE+FOCK"  # [SC] SC HXC Potential
  | FFTGvecs=  797         RL      # [FFT] Plane-waves
- | HARRLvcs=  547         RL      # [HA] Hartree  RL components
- | EXXRLvcs= 11           RL      # [XX] Exchange RL components
+ | HARRLvcs=  547         RL      # [HA] Hartree     RL components
+ | EXXRLvcs= 11           RL      # [XX] Exchange    RL components

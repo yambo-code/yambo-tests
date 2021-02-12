@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -51,8 +51,8 @@ if ($DIPOLES eq "1") { $description .= " dipoles" };
 $HF=&RUN_feature("HF_and_locXC");
 if ($HF eq "1") { $description .= " HF" };
 if ($NLOPTICS ne "1"){
-  $OPTICS=&RUN_feature("optics");
-  if ($OPTICS eq "1") { $description .= " optics" };
+ $OPTICS=&RUN_feature("optics");
+ if ($OPTICS eq "1") { $description .= " optics" };
 };
 $SC=&RUN_feature("scrun");
 $MAGNETIC=&RUN_feature("magnetic");
@@ -103,6 +103,7 @@ if ($YPP eq "1") { $description .= " post-processing" };
 if ($YPP eq "2") { $description .= " sorting" };
 #
 if (&RUN_feature("RealTime") eq "1" or &RUN_feature("RT_X") eq "1" or &RUN_feature("RTDBs") eq "1") {$YPP_RT=1}
+if (&RUN_feature("TDplots") eq "1") {$YPP_RT=1}
 if ($YPP_RT eq "1") { $description .= " post-processing rt" };
 #
 if (&RUN_feature("ypp_sc") eq "1" ) {$YPP_SC=1}

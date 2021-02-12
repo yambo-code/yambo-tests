@@ -1,45 +1,45 @@
-#                                                           
-#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$     
-# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$    
-#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$    
-#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$    
-#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$    
-#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$    
-#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/    
-#     |__/   |__/  |__/|__/     |__/|_______/  \______/     
-#                                                           
-#      Version 4.4.0 Revision 16869 Hash 1be972252          
-#                  MPI+SLK+OpenMP Build                     
-#               http://www.yambo-code.org                   
+#                                                                     
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
+#                                                                     
+#        Version 5.0.0 Revision 18614 Hash 555c293                    
+#                   Branch is bug-fixes                               
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.org                            
 #
 # Hartree-Fock Components and Corrections
 #
-#    K-point      Band         Eo           Ehf          DFT          HF
+#    K-point            Band               Eo                 Ehf                GAUPBE(XC)         Hartree-Fock
 #
-     1.00000      1.00000      0.00000      0.80122    -21.58052    -20.77930
+     1.00000000         1.00000000         0.00000000         1.41120601        -21.4938622        -20.0826550   
 # 
-# 07/11/2019 at 18:03 YAMBO @ VivoBook [start]
-# 07/11/2019 at 18:03                  [end]
+# 09/16/2020 at 15:44 yambo @ yurigagarin.local [start]
+# 09/16/2020 at 15:44                           [end]
 #
-# .-Input file : yambo.in
-# | HF_and_locXC                   # [R XX] Hartree-Fock Self-energy and Vxc
-# | rim_cut                        # [R RIM CUT] Coulomb potential
-# | BoseTemp= 0.000000     eV      # Bosonic Temperature
-# | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
-# | RandQpts=0                     # [RIM] Number of random q-points in the BZ
-# | RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
-# | CUTGeo= "ws xyz"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# .-Input file  yambo.in
+# | HF_and_locXC                     # [R] Hartree-Fock
+# | rim_cut                          # [R] Coulomb potential
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "ws x"                   # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
 # | % CUTBox
-# |  0.00     | 0.00     | 0.00     |        # [CUT] [au] Box sides
+# |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
 # | %
-# | CUTRadius= 0.000000            # [CUT] [au] Sphere/Cylinder radius
-# | CUTCylLen= 0.000000            # [CUT] [au] Cylinder length
-# | CUTwsGvec= 1.700000            # [CUT] WS cutoff: number of G to be modified
-# | EXXRLvcs= 257          RL      # [XX] Exchange    RL components
-# | VXCRLvcs= 257          RL      # [XC] XCpotential RL components
-# | %QPkrange                      # # [GW] QP generalized Kpoint/Band indices
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
+# | EXXRLvcs= 257              RL    # [XX] Exchange    RL components
+# | VXCRLvcs= 257              RL    # [XC] XCpotential RL components
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
 # | 1|1|1|1|
 # | %
-# | %QPerange                      # # [GW] QP generalized Kpoint/Energy indices
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
 # | 1|1| 0.000000|-1.000000|
 # | %

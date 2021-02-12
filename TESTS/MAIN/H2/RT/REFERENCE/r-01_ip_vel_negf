@@ -1,18 +1,19 @@
-                                                                
-                                                                
-    Y88b    /   e           e    e      888~~\    ,88~-_        
-     Y88b  /   d8b         d8b  d8b     888   |  d888   \       
-      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |      
-       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |      
-        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /       
-       /   /      Y88b /          Y888b 888__/    `88_-~        
-                                                                
-                                                                
-          Version 4.3.0 Revision 15746 Hash 61e4334             
-                        MPI+SLK Build                           
-                  http://www.yambo-code.org                     
+                                                                          
+      __   __     _        __  __       ____      U  ___  u               
+      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
+       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
+      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
+        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
+    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
+     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+                                                                          
+                                                                          
+          Version 4.5.0 Revision 17716 Hash b668b2258                     
+                      Branch is devel-sc                                  
+                      MPI+SLK+SLEPC Build                                 
+                   http://www.yambo-code.org                              
  
- 08/25/2018 at 16:07 YAMBO_RT @ NewLaptop
+ 01/09/2020 at 12:25 yambo_rt @ dufour
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -21,16 +22,20 @@
  * THREADS    (max): 1
  * THREADS TOT(max): 1
  * I/O NODES       : 1
- * Fragmented WFs  :yes
+ * NODES(computing): 1
+ *            (I/O): 1
+ * Fragmented WFs  : yes
 
  CORE databases in   .
  Additional I/O in   .
  Communications in   .
  Input file     is   yambo.in
  Report file    is   ./r-01_ip_vel_negf
- Job string(main): 01_ip_vel
-             (#1): R7
- Log files      in ./LOG
+ Precision      is   SINGLE
+ Log files      in   ./LOG
+
+ Job string(s)-dir(s) (main): 01_ip_vel
+                     (alt#1): R2
   
  [RD./SAVE//ns.db1]------------------------------------------
   Bands                           :  50
@@ -48,7 +53,7 @@
   Exact exchange fraction in XC   : 0.000000
   Exact exchange screening in XC  : 0.000000
   Magnetic symmetries             : no
- - S/N 002684 -------------------------- v.04.03.00 r.15746 -
+ - S/N 002684 -------------------------- v.04.05.00 r.17716 -
 
  [02] CORE Variables Setup
  =========================
@@ -147,7 +152,7 @@
   X grid is uniform     :yes
   BS scattering         :no
   COLL scattering       :no
- - S/N 002684 -------------------------- v.04.03.00 r.15746 -
+ - S/N 002684 -------------------------- v.04.05.00 r.17716 -
 
  IBZ Q-points : 1
  BZ  Q-points : 1
@@ -156,36 +161,78 @@
   
  Q [00001] : 0.00      0.00      0.00     (cc ) * weight  1.000000
 
- [04] IP Real-Time Dynamics
+ [04] Dipoles
+ ============
+
+
+ [WARNING] DIPOLES database not correct or missing
+ [RD./SAVE//ns.kb_pp]----------------------------------------
+  Fragmentation                    :yes
+ - S/N 002684 -------------------------- v.04.05.00 r.17716 -
+
+ [WARNING]Allocation attempt of kbv of zero size.
+ [WF-Oscillators/G space] Performing Wave-Functions I/O from ./SAVE
+
+ [WF-Oscillators/G space loader] Normalization (few states)  min/max  :0.130E-09  1.00    
+
+ [WR./01_ip_vel//ndb.dipoles]--------------------------------
+  Brillouin Zone Q/K grids (IBZ/BZ): 1  1  1  1
+  RL vectors                   (WF):  4945
+  Fragmentation                    :yes
+  Electronic Temperature        [K]: 0.000000
+  Bosonic    Temperature        [K]: 0.000000
+  X band range           :  1   9
+  X band range limits    :  9   1
+  X e/h energy range [ev]:-1.000000 -1.000000
+  RL vectors in the sum  :  4945
+  [r,Vnl] included       :yes
+  Bands ordered          :no
+  Direct v evaluation    :no
+  Field momentum norm    :0.1000E-4
+  Approach used          :G-space v
+  Dipoles computed       :R V P P2
+  Wavefunctions          :Teter 93(XC)
+ - S/N 002684 -------------------------- v.04.05.00 r.17716 -
+
+ [05] IP Real-Time Dynamics
  ==========================
 
 
-  [04.01] Initialization
+  [05.01] Initialization
   ======================
 
-  [RD./SAVE//ns.kb_pp]----------------------------------------
+  [RD./01_ip_vel//ndb.dipoles]--------------------------------
+   Brillouin Zone Q/K grids (IBZ/BZ): 1  1  1  1
+   RL vectors                   (WF):  4945
    Fragmentation                    :yes
-  - S/N 002684 -------------------------- v.04.03.00 r.15746 -
-  [WF] Performing Wave-Functions I/O from ./SAVE
+   Electronic Temperature        [K]: 0.0000000
+   Bosonic    Temperature        [K]: 0.0000000
+   X band range           :  1   9
+   X band range limits    :  9   1
+   X e/h energy range [ev]:-1.0000000 -1.0000000
+   RL vectors in the sum  :  4945
+   [r,Vnl] included       :yes
+   Bands ordered          :no
+   Direct v evaluation    :no
+   Field momentum norm    :0.10000E-4
+   Approach used          :G-space v
+   Dipoles computed       :R V P P2
+   Wavefunctions          :Teter 93(XC)
+  - S/N 002684 -------------------------- v.04.05.00 r.17716 -
 
-  [WF loader] Normalization (few states)  min/max  :0.1297E-09  1.000    
-
-
-  [04.02] Dephasing matrix setup
+  [05.02] Dephasing matrix setup
   ==============================
 
 
-  [WARNING]Field starting time corrected to respect the I/O times.
-
-  [04.03] Messaging
+  [05.03] Messaging
   =================
 
   ---General---
   Integrator                 :EULER + RK2 + RWA
   Simulation time        [fs]: 19.980000
-  Basic time step        [fs]:   0.01000
-             steps           : 1999
-        time step   (now)[fs]:   0.01000
+  Basic time step        [fs]:   0.00500
+             steps           :  3997
+        time step   (now)[fs]:   0.00500
   ---Memory---
   Memory depth(G)        [fs]: 0.0000000
   Memory steps(G)            : 2
@@ -194,21 +241,24 @@
   Hxc approximation          :IP
 
   ---I/O---
-  T between I/O of J,P,f [fs]:  0.100000
+  T between I/O of   OBS [fs]:  0.100000
             I/O of   GFs [fs]: 0.5000000
                  outputs [fs]:  0.100000
 
-  ---Damping and retarded GF---
-  Retarded Green`s function   :HS
+  ---Damping---
   Damping (Phase)    [fs/meV]: 0.000       Infinity
           (Radiative)[fs/meV]: 0.000       Infinity
+
+  ---Retarded GF---
+  Retarded Green`s function  :HS
           Energy ref  (c)[eV]: 0.0000000
                       (v)[eV]: 0.0000000
           Analytic term (c)[eV,adim,eV^-1]: 0.000      0.000      0.000    
                         (v)[eV,adim,eV^-1]: 0.000      0.000      0.000    
 
-  ---Double Grid---
-  Double Grid support          :no
+  ---K Grid---
+  Double Grid support        :no
+  K-points            (TOTAL): 1
 
   ---Fields---
   Gauge                       :velocity
@@ -221,60 +271,74 @@
   Field1 electric field         [V/m]:0.61378E+7
   Field1 max intensity      [kW/cm^2]: 10000.   
   Field1 max fluence        [nJ/cm^2]: 0.0000000
-  Field1 final time              [fs]: 0.1200000
+  Field1 final time              [fs]: 0.1100000
   Field1 half maximum full width [fs]: 0.0000000
 
-  [04.04] Start and Restart
+  [05.04] Start and Restart
   =========================
 
    
 
-  [04.05] Real-Time dynamics
+  [05.05] Real-Time dynamics
   ==========================
 
 
- Timing [Min/Max/Average]: 04s/04s/04s
+ Timing [Min/Max/Average]: 01s/01s/01s
 
- [05] Timing Overview
+ [06] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
-                                    io_WF :     0.00s CPU (       4 calls,   0.000 s avg)
-                                  io_GROT :     0.00s CPU (       3 calls,   0.000 s avg)
-                                 io_QINDX :     0.00s CPU (       2 calls,   0.000 s avg)
-                               io_COL_CUT :     0.00s CPU
-                           io_Double_Grid :     0.00s CPU
-                                    io_HF :     0.00s CPU
-                               io_DIPOLES :     0.00s CPU
-                              io_KB_pwscf :     0.00s CPU (       2 calls,   0.000 s avg)
-                             io_KB_abinit :     0.00s CPU (       3 calls,   0.000 s avg)
-                                     io_X :     0.00s CPU (       4 calls,   0.000 s avg)
-                                    io_BS :     0.00s CPU
-                                  io_ELPH :     0.00s CPU (       2 calls,   0.000 s avg)
-                         io_RT_components :     2.00s CPU (     807 calls,   0.003 s avg)
-                            io_COLLISIONS :     0.00s CPU (       3 calls,   0.000 s avg)
-                  IO_and_Messaging_switch :     0.00s CPU (    4003 calls,   0.000 s avg)
-                                  Dipoles :     0.00s CPU
-                        DIPOLE_transverse :     0.00s CPU
-                             PP_uspp_init :     0.00s CPU
-                              WF_load_FFT :     0.00s CPU
-                              io_fragment :     0.00s CPU (       2 calls,   0.000 s avg)
-                                RT output :     0.00s CPU (     804 calls,   0.001 s avg)
-                           RT observables :     0.00s CPU (    1999 calls,   0.000 s avg)
-                            RT average Op :     0.00s CPU (    3998 calls,   0.000 s avg)
-                             RT avg redux :     0.00s CPU (    3998 calls,   0.000 s avg)
-                           RT Hamiltonian :     0.00s CPU (    3997 calls,   0.000 s avg)
-                           RT Apply Field :     0.00s CPU (    3997 calls,   0.000 s avg)
-                            RT integrator :     0.00s CPU (    3996 calls,   0.000 s avg)
+                                    io_WF :    0.0000 s CPU (       4 calls,    0.0000 s avg)
+                                  io_GROT :    0.0000 s CPU (       3 calls,    0.0000 s avg)
+                                 io_QINDX :    0.0000 s CPU (       2 calls,    0.0000 s avg)
+                               io_COL_CUT :    0.0000 s CPU
+                                    io_HF :    0.0040 s CPU
+                               io_DIPOLES :    0.0000 s CPU (       6 calls,    0.0000 s avg)
+                              io_KB_pwscf :    0.0000 s CPU (       2 calls,    0.0000 s avg)
+                             io_KB_abinit :    0.0000 s CPU (       3 calls,    0.0000 s avg)
+                         io_ATMPROJ_pwscf :    0.0000 s CPU
+                                     io_X :    0.0000 s CPU (       4 calls,    0.0000 s avg)
+                                    io_BS :    0.0000 s CPU
+                                  io_ELPH :    0.0000 s CPU (       2 calls,    0.0000 s avg)
+                         io_RT_components :    1.4160 s CPU (     807 calls,    0.0018 s avg)
+                            io_COLLISIONS :    0.0000 s CPU (       3 calls,    0.0000 s avg)
+                           io_Double_Grid :    0.0000 s CPU
+                                  Dipoles :    0.0160 s CPU
+                  IO_and_Messaging_switch :    0.0040 s CPU (    8000 calls,    0.0000 s avg)
+                        DIPOLE_transverse :    0.0080 s CPU
+                              io_fragment :    0.0000 s CPU (       4 calls,    0.0000 s avg)
+                             PP_uspp_init :    0.0000 s CPU
+                              WF_load_FFT :    0.0040 s CPU
+                         RT output (INIT) :    0.0000 s CPU
+                           RT Hamiltonian :    0.0320 s CPU (    7993 calls,    0.0000 s avg)
+                           RT Apply Field :    0.0120 s CPU (    7993 calls,    0.0000 s avg)
+                           RT observables :    0.0040 s CPU (     200 calls,    0.0000 s avg)
+                            RT average Op :    0.0040 s CPU (     400 calls,    0.0000 s avg)
+                             RT avg redux :    0.0000 s CPU (     400 calls,    0.0000 s avg)
+                          RT databases IO :    1.4120 s CPU (    3997 calls,    0.0004 s avg)
+                                RT output :    0.0720 s CPU (     800 calls,    0.0001 s avg)
+                            RT integrator :    0.0600 s CPU (    7992 calls,    0.0000 s avg)
 
- [06] Game Over & Game summary
+ [07] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 10.00000Mb (basic treshold)  100.0000Mb (SAVEs treshold)
+
+  
+         TOTAL not deallocated :  406.0000Kb
+
+         Max memory used   :  1.496000Mb
+
+ [08] Game Over & Game summary
  =============================
 
- 08/25/2018 at 16:07 YAMBO_RT @ NewLaptop [start]
- 08/25/2018 at 16:08                      [end]
+ 01/09/2020 at 12:25 yambo_rt @ dufour [start]
+ 01/09/2020 at 12:25                   [end]
 
- Timing   [Min/Max/Average]: 04s/04s/04s
-             [Time-Profile]: 04s
+ Timing   [Min/Max/Average]: 01s/01s/01s
+             [Time-Profile]: 02s
 
  .-ACKNOWLEDGMENT
  |
@@ -286,28 +350,36 @@
  | spirit, please find below the reference we kindly ask you to use
  | in order to acknowledge YAMBO:
  |
+ | Many-body perturbation theory calculations using the yambo code
+ | D. Sangalli, A. Ferretti, H. Miranda, C. Attaccalite, I. Marri, E. Cannuccia, P. Melo,
+ | M Marsili, F Palear9, A Marrazzo, G Prandini, P Bonfà, M O Atambo, F Affinito,
+ | M Palummo, A Molina-Sánchez, C Hogan, M Grüning, D Varsano and A Marini.
+ | J. Phys.: Condens. Matter 31, 325902 (2019).
+ |
  | Yambo: An ab initio tool for excited state calculations
- | A. Marini, C. Hogan, M. Gr\"uning, D. Varsano
- | Computer Physics Communications  180, 1392 (2009).
+ | A. Marini, C. Hogan, M. Grüning, D. Varsano
+ | Computer Physics Communications 180, 1392 (2009).
  |
   
  .-Input file : yambo.in
- | negf                           # [R] Real-Time dynamics
+ | negf                           # [R] NEQ Real-time dynamics
  | BoseTemp= 0.000000     eV      # Bosonic Temperature
- | DBsIOoff= "GF OCCs"            # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,W,SC,BS,ALL)
+ | DBsIOoff= "GF OCCs"            # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,OBS,W,SC,BS,ALL)
  | HXC_Potential= "IP"            # [SC] SC HXC Potential
  | FFTGvecs=  4945        RL      # [FFT] Plane-waves
+ | Gauge= "velocity"              # [BSE/X] Gauge (length|velocity)
  | % RTBands
  |   1 |  9 |                     # [RT] Bands
  | %
  | Integrator= "EULER + RK2 + RWA" # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
+ | PhLifeTime= 0.000000   fs      # [RT] Constant Dephasing Time
  | % RTehEny
  |   0.00000 | 14.96685 | eV      # [RT] Electron-hole energy range
  | %
- | RTstep=   0.0100       fs      # [RT] Real Time step length
+ | RTstep=   0.0050       fs      # [RT] Real Time step length
  | NETime= 19.98000       fs      # [RT] Simulation Time
  | % IOtime
- |   0.10000 |  0.50000 |  0.10000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+ |   0.10000 |  0.50000 |  0.10000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
  | %
  | % Field1_Freq
  |  0.00     | 0.00     | eV      # [RT Field1] Frequency
@@ -323,3 +395,6 @@
  |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
  | %
  | Field1_Tstart=  0.10000fs      # [RT Field1] Initial Time
+ | %DephMatrix                    # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
+ | 1|1|1|-1.000000|
+ | %

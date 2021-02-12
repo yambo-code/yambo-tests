@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -25,6 +25,11 @@ sub UTILS_download
 if (!$wget) {return};
 &CWD_save;
 #
+#
+$user_tests="all";
+&UTILS_get_inputs_tests_list();
+@all_tests = split(/ /,$alltests);
+#
 my $LINK="http://www.yambo-code.org/robots/databases/$mode";
 my $EXTENSION=".tar.gz";
 if ($mode eq "bench") {
@@ -37,9 +42,6 @@ foreach $dir (<*>) {
  if ($download ne " ") {
   if( ($download ne "all") && ($download ne $dir) ){ next; };
  };
- my @dirs = ( "$dir" );
- my @files;
- find( sub { push @files, $File::Find::name if /\.db1$/ }, @dirs );
  chdir($dir);
  if ($veryclean) {&clean};
  my $do_it="no";
@@ -76,21 +78,26 @@ foreach $dir (<*>) {
     for my $charp ('a' .. "$last_chp") { 
      $i1=$i1+1;
      $filename[$i1] = "$BASE".".$char$charp";
+     $position[$i1] = ".";
     }
    }
    if ($dir =~ /hBN_bench/) {
     $i1=0;
     $BASE = "hBN_bench.tar";
     $filename[0] = "hBN_bench.tar";
+    $position[0] = ".";
    }
   }else{
-   $i1=0;
-   $filename[$i1] = $dir;
-   foreach $subdir (<*>) {
-    next if (not -d $subdir);
-    next if ($subdir =~ /INPUTS/ or $subdir =~ /REFERENCE/ or $subdir =~ /SAVE/ or $subdir =~ /BROKEN/ or $subdir =~ /DFT/ );
-    $i1=$i1+1;
-    $filename[$i1] = "${dir}_${subdir}";
+   $i1=-1;
+   foreach  my $test (@all_tests)
+   {
+    if ($test =~ /$dir/)
+    {
+     $i1=$i1+1;
+     $filename[$i1] = $test;
+     $filename[$i1] =~ s/\//_/g;
+     $position[$i1] = $test."/../";
+    }
    }
   }
   $imax=$i1;
@@ -102,6 +109,7 @@ foreach $dir (<*>) {
    my $file_exist = `$cmd`;
    if ($mode eq "tests" or $mode eq "cheers" or $mode eq "validate"){
     if ( "$file_exist" eq "exists\n") {
+     chdir("$suite_dir/$TESTS_folder/$position[$i1]");
      &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
      &MY_PRINT($stdout, " downloading ...\n");
      if ($force) {&command("rm -f $filename[$i1]$EXTENSION ")};

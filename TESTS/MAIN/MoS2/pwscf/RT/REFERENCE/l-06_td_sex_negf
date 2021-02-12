@@ -9,48 +9,63 @@
       \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
 
 
- <---> [01] CPU structure, Files & I/O Directories
+ <---> [01] MPI/OPENMP structure, Files & I/O Directories
  <---> [02] CORE Variables Setup
  <---> [02.01] Unit cells
  <---> [02.02] Symmetries
- <---> [02.03] RL shells
+ <---> [02.03] Reciprocal space
  <---> [02.04] K-grid lattice
- <---> [02.05] Energies [ev] & Occupations
+ <---> Grid dimensions      :  3  3
+ <---> [02.05] Energies & Occupations
  <---> [03] Transferred momenta grid
- <---> [04] External corrections
- <---> [05] HARTREE+SEX Real-Time Dynamics
- <---> Scattering(s):none
- <---> [05.01] Initialization
+ <---> [04] Dipoles
  <---> [DIP] Checking dipoles header
+ <---> [WARNING] DIPOLES database not correct or missing
  <---> [x,Vnl] computed using 38 projectors
- <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> Dipoles: iR, P and P2 (T): |                                        | [000%] --(E) --(X)
- <---> Dipoles: iR, P and P2 (T): |########################################| [100%] --(E) --(X)
- <---> [WF] Performing Wave-Functions I/O from ./SAVE
- <---> [FFT-Spin oscillators/R space] Mesh size:   9    9   49
- <01s> Dipoles: spin |                                        | [000%] --(E) --(X)
- <01s> Dipoles: spin |########################################| [100%] --(E) --(X)
- <01s> [DIP] Writing dipoles header
- <01s> [M  0.036 Gb] Alloc WF ( 0.035)
- <01s> [WF] Performing Wave-Functions I/O from ./SAVE
- <01s> [FFT-RT] Mesh size:  12   12   60
- <01s> [05.02] External QP corrections (G)
- <01s> [05.03] Dephasing matrix setup
- <01s> [WARNING]Field starting time corrected to respect the I/O times.
- <01s> [05.04] Electronic Collisions loading and setup
- <01s> [05.05] Messaging
- <01s> [05.06] Start and Restart
- <01s> [xc] Functional Slater exchange(X)+Perdew & Zunger(C)
- <01s> [xc] LIBXC used to calculate xc functional
- <01s> [M  0.003 Gb] Free WF ( 0.035)
- <01s> HARTREE+SEX collisions I/O: |                                        | [000%] --(E) --(X)
- <01s> HARTREE+SEX collisions I/O: |########################################| [100%] --(E) --(X)
- <01s> Reference Lifetimes, GF, Self-Energy ...
- <01s> [05.07] Real-Time dynamics
- <01s> [RT] Dynamics : |                                        | [000%] --(E) --(X)
- <07s> [RT] Dynamics : |###                                     | [009%] 05s(E) 59s(X)
- <12s> [RT] Dynamics : |########                                | [022%] 10s(E) 48s(X)
- <17s> [RT] Dynamics : |#########################               | [062%] 15s(E) 25s(X)
- <20s> [RT] Dynamics : |########################################| [100%] 19s(E) 19s(X)
- <21s> [06] Timing Overview
- <21s> [07] Game Over & Game summary
+ <---> Dipoles: iR, P, V and P2 (T) |                                        | [000%] --(E) --(X)
+ <---> Dipoles: iR, P, V and P2 (T) |########################################| [100%] --(E) --(X)
+ <---> Dipoles: orbital magnetization |                                        | [000%] --(E) --(X)
+ <---> Dipoles: orbital magnetization |########################################| [100%] --(E) --(X)
+ <---> Dipoles: spin |                                        | [000%] --(E) --(X)
+ <---> Dipoles: spin |########################################| [100%] --(E) --(X)
+ <---> [DIP] Writing dipoles header
+ <---> [05] HARTREE+SEX Real-Time Dynamics
+ <---> [05.01] Initialization
+ <---> [05.01.01] External/Internal QP corrections
+ <---> [QP_apply] Action to be applied: USER defined scissor
+ <---> [05.01.01.01]  QP corrections report
+ <---> [DIP] Checking dipoles header
+ <---> Integrator EULER + RK2 + RWA
+ <---> [05.02] Dephasing matrix setup
+ <---> [05.03] Electronic Collisions loading and setup
+ <---> [05.04] Messaging
+ <---> [MEMORY] Alloc WF%c( 182.0160 [Mb]) TOTAL:  189.7360 [Mb] (traced)  197.4760 [Mb] (memstat)
+ <---> [FFT-RT] Mesh size:   32   32  158
+ <03s> [05.05] Start and Restart
+ <03s> [MEMORY] Alloc WF%c( 55.61600 [Mb]) TOTAL:  259.4040 [Mb] (traced)  268.3280 [Mb] (memstat)
+ <03s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.7910 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <04s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.7940 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <05s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.7970 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <05s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.8000 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <06s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.8030 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <06s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.8060 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <07s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.8090 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <08s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.8120 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <08s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.8150 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <09s> [MEMORY] Alloc WF%c( 55.61600 [Mb]) TOTAL:  259.4310 [Mb] (traced)  271.9640 [Mb] (memstat)
+ <13s> [MEMORY]  Free WF%c( 55.61600 [Mb]) TOTAL:  203.8420 [Mb] (traced)  274.4920 [Mb] (memstat)
+ <15s> HARTREE+SEX collisions I/O |                                        | [000%] --(E) --(X)
+ <17s> HARTREE+SEX collisions I/O |########################################| [100%] 02s(E) 02s(X)
+ <17s> Reference Lifetimes, GF, Self-Energy ...
+ <17s> Output files definition ...
+ <17s> [05.06] Real-Time dynamics
+ <17s> [RT] Dynamics |                                        | [000%] --(E) --(X)
+ <22s> [RT] Dynamics |##########                              | [026%] 05s(E) 18s(X)
+ <27s> [RT] Dynamics |#####################                   | [053%] 10s(E) 18s(X)
+ <32s> [RT] Dynamics |################################        | [080%] 15s(E) 18s(X)
+ <36s> [RT] Dynamics |########################################| [100%] 18s(E) 18s(X)
+ <36s> [MEMORY]  Free WF%c( 182.0160 [Mb]) TOTAL:  8.500000 [Mb] (traced)  246.0800 [Mb] (memstat)
+ <36s> [06] Timing Overview
+ <36s> [07] Memory Overview
+ <36s> [08] Game Over & Game summary
+ <36s> [TIMING]            [Time-Profile]: 36s

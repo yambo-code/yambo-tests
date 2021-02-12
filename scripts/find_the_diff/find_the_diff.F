@@ -1,5 +1,5 @@
 !
-!        Copyright (C) 2000-2019 the YAMBO team
+!        Copyright (C) 2000-2020 the YAMBO team
 !              http://www.yambo-code.org
 !
 ! Authors (see AUTHORS file for details): AM
@@ -30,13 +30,14 @@ program find_the_diff
  interface
    !
    subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
-&                      VAL_treshold,REF_col,USER_error)
+&                      VAL_treshold,REF_col,REF_row,USER_error)
     use DIFF, ONLY:SP
     character(*) :: PATTERN,RULE
     character(*), optional ::TITLE
     character(*), optional ::TITLES(:)
     character(*), optional ::MATERIAL
     integer,      optional ::REF_col
+    integer,      optional ::REF_row
     integer,      optional ::COL
     integer,      optional ::COLS(:)
     real(SP),     optional ::USER_error
@@ -142,7 +143,6 @@ program find_the_diff
  sort_data=.FALSE.
  broad_data=.FALSE.
  last_row=.FALSE.
- align=.FALSE.
  skip_column=.FALSE.
  no_statistics=.FALSE.
  average_column=.FALSE.
@@ -162,11 +162,11 @@ program find_the_diff
      if (index(RULES(i_r)%action,"TRESHOLD") >0)  TRESHOLD=RULES(i_r)%treshold
      !
      if (RULES(i_r)%REF_col>0) i_REF_col=RULES(i_r)%REF_col
+     if (RULES(i_r)%REF_row>0) i_REF_row=RULES(i_r)%REF_row
      !
      if (.not.sort_data) sort_data=index(RULES(i_r)%action,"sort")>0
      if (.not.broad_data)broad_data=index(RULES(i_r)%action,"broad")>0
      if (.not.last_row)  last_row  =index(RULES(i_r)%action,"last_row")>0
-     if (.not.align)     align     =index(RULES(i_r)%action,"align")>0
      if (.not.no_statistics)    no_statistics  =index(RULES(i_r)%action,"no_statistics")>0
      if (index(RULES(i_r)%action,"skip")>0   ) then
        do i_c=1,max(ref%N_col,out%N_col)
@@ -197,14 +197,8 @@ program find_the_diff
    out%D(1,:)=out%D(out%N,:)
    out%N=1
  endif
- if (align) then
-   do i_r=1,ref%N
-     if (i_REF_col>0) then
-       delta_ref=ref%D(i_r,i_REF_col)-out%D(i_r,i_REF_col)
-     endif
-     out%D(i_r,:)=out%D(i_r,:)+delta_ref
-   enddo
- else if (i_REF_col>0.and..not.sort_data) then
+ !
+ if (i_REF_col>0.and..not.sort_data) then
    do i_r=1,ref%N
      do i_c=1,ref%N_col
        if (i_c==i_REF_col) cycle
@@ -213,6 +207,19 @@ program find_the_diff
      enddo
      out%D(i_r,i_REF_col)=0.
      ref%D(i_r,i_REF_col)=0.
+   enddo
+ endif
+ !
+ if (i_REF_row>0) then
+   do i_c=1,ref%N_col
+     if (i_REF_col>0 .and. i_c==i_REF_col) cycle
+     do i_r=1,ref%N
+       if (i_r==i_REF_row) cycle
+       out%D(i_r,i_c)=out%D(i_r,i_c)-out%D(i_REF_row,i_c)
+       ref%D(i_r,i_c)=ref%D(i_r,i_c)-ref%D(i_REF_row,i_c)
+     enddo
+     out%D(i_REF_row,i_c)=0.
+     ref%D(i_REF_row,i_c)=0.
    enddo
  endif
  !
@@ -242,8 +249,11 @@ program find_the_diff
    deallocate(tmp)
  endif
  !
- call eval_the_moments(ref) 
- call eval_the_moments(out)
+ N_data_to_check=min(ref%N,out%N)
+ !
+ call eval_the_moments(ref,N_data_to_check) 
+ call eval_the_moments(out,N_data_to_check)
+ !
  do i_c=1,ref%N_col
    ERROR(i_c)=ERROR(i_c)*PREC*ref%Max(i_c)
    if (ERROR(i_c)<TRESHOLD) ERROR(i_c)=1.E-5
@@ -266,24 +276,16 @@ program find_the_diff
    do i_c=1,ref%N_col
      write(*,"(a,i2,2g20.10)")  " MAX@COLUMN #",i_c,ref%Max(i_c),out%Max(i_c)
      do i_m=1,N_m
-       write(*,"(a,i2,a,i2,2g20.10)")  " M(",i_m,")X@COLUMN #",i_c,ref%M(i_m,i_c),out%M(i_m,i_c)
+       write(*,"(a,i2,a,i2,2g20.10)")  " M(",i_m,")@COLUMN #",i_c,ref%M(i_m,i_c),out%M(i_m,i_c)
      enddo
    enddo
  endif
  !
- if (ref%N/=out%N) then
-   write (CHECK_result,'(a,2(i6,a))') "Different number of elements:",ref%N," [REF]",out%N," [OUT]"
-   write (*,'(a)') trim(CHECK_result)
-   stop
- endif
  if (ref%N_col/=out%N_col) then
    if( .not.(abs(ref%N_col-out%N_col)==count(skip_column)) ) then
      write (CHECK_result,'(a,2(i6,a))') "Different number of columns:",ref%N_col," [REF]",out%N_col," [OUT]"
      write (*,'(a)') trim(CHECK_result)
      stop
-   !else
-   !  write (CHECK_result,'(a,2(i6,a))') " OK ] Different number of columns:",&
-   !          &    ref%N_col," [REF]",out%N_col," [OUT] ignored due to rules"
    endif
  endif
  !
@@ -309,8 +311,8 @@ program find_the_diff
  MAX_ERR_RULES=0.
  i_c_ref=0
  str= " "
- do i_d=1,ref%N
-   call check(ref%D(i_d,:),out%D(i_d,:),i_d==ref%N,"VALUE")
+ do i_d=1,N_data_to_check
+   call check(ref%D(i_d,:),out%D(i_d,:),i_d==N_data_to_check,"VALUE")
  enddo
  !
  write (*,'(a)') trim(CHECK_result)

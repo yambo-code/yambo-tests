@@ -1,0 +1,45 @@
+&control
+  calculation = 'scf',
+  restart_mode = 'from_scratch',
+  prefix = 'BP',
+  tstress=.true.
+  tprnfor=.true.
+  pseudo_dir = './',
+  outdir = './',
+  wf_collect=.true.
+!  etot_conv_thr=1.0D-5
+!  forc_conv_thr=1.0d-5
+!  nstep=200
+ /
+ &system
+  ibrav =9,
+  celldm(1)=6.244951286   !8.655, !in borh's units
+  celldm(2)= 3.413047218
+  celldm(3)= 1.377089574, !c/a
+  nat = 4,
+  ntyp = 1,
+  ecutwfc = 40,
+ /
+  &electrons
+   electron_maxstep = 100
+   conv_thr = 1.0d-10
+   mixing_mode = 'plain'
+   mixing_beta = 0.7
+   mixing_ndim = 8
+   diagonalization = 'david'
+   diago_david_ndim = 4
+   diago_full_acc = .true.
+/
+
+ATOMIC_SPECIES
+P 30.97  P.pbe-hgh.UPF
+
+ATOMIC_POSITIONS (alat)
+P        0.501229674   0.670376624   0.010290808
+P        0.001220085   0.030939161   0.698826845
+P        0.001231653   0.670423640   0.937772015
+P        0.501218104   0.030893251   1.626308038
+
+K_POINTS (automatic)
+6 3 6 0 0 0
+

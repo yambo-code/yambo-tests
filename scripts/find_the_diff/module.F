@@ -1,5 +1,5 @@
 !
-!        Copyright (C) 2000-2019 the YAMBO team
+!        Copyright (C) 2000-2020 the YAMBO team
 !              http://www.yambo-code.org
 !
 ! Authors (see AUTHORS file for details): AM
@@ -23,26 +23,30 @@
 !
 module DIFF
  !
- integer, parameter  :: SP  = selected_real_kind(6,30)
- integer, parameter  :: N_m = 2,N_max_col=50,N_max_rules=500
+ implicit none
  !
- character(256) :: str,str1,CHECK_result="OK",MATERIAL="any"
- character(256) :: data_str(N_max_col),titles(N_max_col)
- integer        :: ind,ierr,ivar,N,i_c,i_m,i_d,i_r,i_c_ref,i_t,i_rule=0,i_REF_col
+ integer, parameter  :: str_length = 512
+ integer, parameter  :: SP  = selected_real_kind(6,30)
+ integer, parameter  :: N_m = 4,N_max_col=50,N_max_rules=500
+ !
+ character(str_length) :: str,str1,CHECK_result="OK",MATERIAL="any"
+ character(str_length) :: data_str(N_max_col),titles(N_max_col)
+ integer        :: ind,ierr,ivar,N,i_c,i_m,i_d,i_r,i_c_ref,i_t,i_rule=0,i_REF_col,i_REF_row,N_data_to_check
  character(13)  :: subname="find_the_diff"
  real(SP)       :: PREC=0.01,MAX_ERR_RULES,MAX_ERR,O_ref,R_ref,delta_ref,TRESHOLD,USER_error
  real(SP)       :: ERROR(N_max_col)
  logical        :: VERB=.FALSE.,skip_column(N_max_col)=.FALSE.,average_column(N_max_col)=.FALSE.,&
-&                  l_out_exists,l_ref_exists,broad_data,last_row,align,no_statistics,l_whitelisted,&
+&                  l_out_exists,l_ref_exists,broad_data,last_row,no_statistics,l_whitelisted,&
 &                  l_rules_skip,sort_data
  !
  type rule 
-   character(256)         :: pattern  = "fake-pattern"
-   character(256)         :: action   = " "
-   character(256)         :: material = "any"
+   character(str_length)         :: pattern  = "fake-pattern"
+   character(str_length)         :: action   = " "
+   character(str_length)         :: material = "any"
    integer                :: REF_col=0
+   integer                :: REF_row=0
    integer                :: column(N_max_col) = 0
-   character(256)         :: title(N_max_col)  = " "
+   character(str_length)         :: title(N_max_col)  = " "
    logical                :: whitelisted=.FALSE.
    real(SP)               :: prec = 0.1
    real(SP)               :: treshold = 0
@@ -53,7 +57,7 @@ module DIFF
    integer                :: unit      
    integer                :: N      
    integer                :: N_col
-   character(256)         :: name      
+   character(str_length)         :: name      
    real(SP)               :: Max(N_max_col)
    real(SP)               :: M(N_m,N_max_col)
    real(SP), allocatable  :: D(:,:)
@@ -61,6 +65,6 @@ module DIFF
  !
  type(obj)            :: ref,out
  type(rule)           :: RULES(N_max_rules)
- character(256)       :: FILTER_action(N_max_col)= " ",FILTER_pattern=" ",ch_tmp
+ character(str_length)       :: FILTER_action(N_max_col)= " ",FILTER_pattern=" ",ch_tmp
  !
 end module

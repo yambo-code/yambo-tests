@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -27,6 +27,7 @@ sub CHECK_database{
 $VAR = "@_[0]";
 $DB  = "@_[1]";
 $CORE= "@_[2]";
+$FIRST= "@_[3]";
 $run_filename = "o-$testname.$DB";
 &gimme_reference($run_filename);
 #
@@ -38,7 +39,7 @@ if ($CORE eq "CORE" and ($P2Y or $A2Y)) {
   $target_dir = "$suite_dir/$TESTS_folder/$testdir/$ROBOT_wd/$check_folder";
   if(! -d $target_dir ) { &command("mkdir -p $target_dir"); };
   #
-  if( -d $target_dir && -e "SAVE/$DB" ) {  &command("cp SAVE/$DB $target_dir") ; };
+  if( -d $target_dir && -e "SAVE/$DB" && $FIRST eq "FIRST") {  &command("cp SAVE/* $target_dir") ; };
   #
   if($P2Y) {&CWD_save_p2y;};
   if($A2Y) {&CWD_save_a2y;};
@@ -47,12 +48,17 @@ if ($CORE eq "CORE" and ($P2Y or $A2Y)) {
 };
 #
 if( -e "$check_folder/$DB" ){
- &command("$ncdump -v $VAR $check_folder/$DB | $awk -f $suite_dir/scripts/find_the_diff/ndb2o.awk | head -n 10000 > $run_filename") ;
- if(! -e "$ref_filename" ) {
-  &RUN_stats("ERR_DB");
-  if ($CORE eq "CORE" and $P2Y) {$CWD_go_p2y};
-  if ($CORE eq "CORE" and $A2Y) {$CWD_go_a2y};
-  return;
+  my @VAR_NAMES = split(',', $VAR);
+  &command("rm -rf $run_filename");
+  foreach my $VAR_I (@VAR_NAMES) {
+  &command("$ncdump -h $check_folder/$DB | grep $VAR_I  > ${VAR_I}_check" ) ;
+  if (! -z "${VAR_I}_check") { &command("$ncdump -v $VAR_I $check_folder/$DB | $awk -f $suite_dir/scripts/find_the_diff/ndb2o.awk | head -n 10000 >> $run_filename") ;}
+  &command("rm ${VAR_I}_check" ) ;
+  if(! -e "$ref_filename" ) {
+   &RUN_stats("ERR_DB");
+   if ($CORE eq "CORE" and $P2Y) {$CWD_go_p2y};
+   if ($CORE eq "CORE" and $A2Y) {$CWD_go_a2y};
+  }
  }
 } else{
  if (-e "$ref_filename"){

@@ -1,20 +1,20 @@
 
 
- __   __  _______  __   __  _______  _______
-|  | |  ||   _   ||  |_|  ||  _    ||       |
-|  |_|  ||  |_|  ||       || |_|   ||   _   |
-|       ||       ||       ||       ||  | |  |
-|_     _||       ||       ||  _   | |  |_|  |
-  |   |  |   _   || ||_|| || |_|   ||       |
-  |___|  |__| |__||_|   |_||_______||_______|
+____    ____    ___      .___  ___.  .______     ______
+\   \  /   /   /   \     |   \/   |  |   _  \   /  __  \
+ \   \/   /   /  ^  \    |  \  /  |  |  |_)  | |  |  |  |
+  \_    _/   /  /_\  \   |  |\/|  |  |   _  <  |  |  |  |
+    |  |    /  _____  \  |  |  |  |  |  |_)  | |  `--"  |
+    |__|   /__/     \__\ |__|  |__|  |______/   \______/
 
 
- <---> [01] CPU structure, Files & I/O Directories
+
+ <---> [01] MPI/OPENMP structure, Files & I/O Directories
  <---> [02] Y(ambo) P(ost)/(re) P(rocessor)
  <---> [03] Core DB
  <---> :: Electrons             : 26.00000
- <---> :: Temperature       [ev]: 0.000000
- <---> :: Lattice factors [a.u.]: 11.75442  10.17962  60.00000
+ <---> :: Temperature           : 0.000000 [eV]
+ <---> :: Lattice factors       :  5.87721   5.08981  30.00000 [a.u.]
  <---> :: K points              :  9
  <---> :: Bands                 :  40
  <---> :: Symmetries            : 2
@@ -25,87 +25,97 @@
  <---> [05] CORE Variables Setup
  <---> [05.01] Unit cells
  <---> [05.02] Symmetries
- <---> [05.03] RL shells
+ <---> [05.03] Reciprocal space
  <---> [05.04] K-grid lattice
- <---> [05.05] Energies [ev] & Occupations
+ <---> Grid dimensions      :  3  3
+ <---> [05.05] Energies & Occupations
  <---> [06] == Real-Time Post-Processing ==
  <---> Output files definition ...
  <---> [06.01] Real-Time components (Occupations, Lifetimes,...)
  <---> Searching the carriers database in SAVE/ndb.RT_carriers...
- <---> [RD./08_ep_DbGd-serial-bug-fixes/ndb.RT_carriers]-----------
- <--->  Coulomb cutoff potential         :none
- <--->  Fragmentation                    :yes
- <--->  Electronic Temperature        [K]: 0.200000
- <--->  Bosonic    Temperature        [K]: 0.000000
- <--->  [RT] Bands                      : 23  30
- <--->  [RT] K-points                   :  36
- <--->  [RT] Potential                  :HARTREE+SEX
- <--->  [E-P] Electron-phonon           :yes
- <--->  [E-P] Completed Collision(CCA)  :yes
- <--->  [E-P] Branches                  :  1   9
- <--->  [E-P] GF`s Memory steps         : 2
- <--->  [E-E] Coulomb scattering        :no
- <--->  [E-E] Coulomb correlation       :no
- <--->  [E-PHOTON] Scattering           :no
- <--->  [RT] Time step     (initial)[fs]:  0.04000
- <--->  [RT]                   (now)[fs]:  0.04000
- <--->  [RT] NE time       (planned)[fs]: 50.00000
- <--->  [RT]                  (done)[fs]: 49.92000
- <--->  [RT] Lifetimes Inter/Intra  [fs]: 1.440000  0.480000
- <--->  [RT]                   (now)[fs]: 1.440000  0.480000
- <--->  [RT] I/O time               [fs]: 0.240000
- <--->  [RT] NE steps         (done)[fs]: 1251
- <--->  [RT] Lifetimes extrapolation    :no
- <--->  [dT] Time-Dependent Time step   :no
- <--->  [RT] Integrator                 :EULER + RK2 + RWA
- <--->  [RT] Radiative life time    [fs]: 0.000000
- <--->  [RT] Dephasing life time    [fs]: 0.000000
- <--->  [RT] External Field(s)          :yes
- <--->  [RT] Number of Fields           : 1
- <--->  [RT] Diamagnetic term           :no
- <--->  [RT] Induced field              :no
- <--->  [Gr] Retarded Green`s function  : HS
- <--->  [Gr] Damping (c) Energy ref [eV]:  0.0000000
- <--->  [Gr] Damping (c) [eV,adim,eV^-1]:   0.100000  0.0000000  0.0000000
- <--->  [Gr] Damping (v) Energy ref [eV]:  0.0000000
- <--->  [Gr] Damping (v) [eV,adim,eV^-1]:   0.100000  0.0000000  0.0000000
- <--->  [DbGd] Double Grid support      :yes
- <--->  [DbGd] Number of k-points       :  36
- <--->  [DbGd] Used for e-e        [o/o]: 0.000000
- <--->  [CONSTRAINS] N (ee+ep) & dN (ep):yes
- <--->  [CONSTRAINS] IP Energy      (ee):yes
- <--->  [FIELDs] Gauge Type             :length
- <--->  [FIELDs] Type                   :QSSIN
- <--->  [FIELDs] Polarization           :linear
- <--->  [FIELDs] Versor                 : 1.000000  0.000000  0.000000
- <--->  [FIELDs] Versor_circ            : 0.000000  1.000000  0.000000
- <--->  [FIELDs] Intensity      [kWCMm2]: 3000.
- <--->  [FIELDs] Damping            [fs]: 3.000000
- <--->  [FIELDs] Frequency range    [eV]: 2.685000  2.685000
- <--->  [FIELDs] Frequency steps        : 1
- <--->  [FIELDs] Frequency step     [eV]: 0.000000
- <--->  [FIELDs] Initial time       [fs]: 0.240000
- <---> - S/N 000945 -------------------------- v.04.04.00 r.16077 -
- <---> [CARRIERS] Uniform grid       :yes
- <---> [CARRIERS] Time range     [fs]:  0.00000  10.08000
- <---> [CARRIERS] Time step      [fs]: 10.07994
+ <---> [RD./08_ep_DbGd-serial-devel-rt-modularization-merge/ndb.RT_carriers]-----------
+ <--->  Coulomb cutoff potential                         : none
+ <--->  Fragmentation                                    : yes
+ <--->  Electronic Temperature                           :  0.200000 [K]
+ <--->  Bosonic    Temperature                           :  0.000000 [K]
+ <--->  [RT] Bands                                       :  23  30
+ <--->  [RT] K-points                                    :  106
+ <--->  [RT] Potential                                   : HARTREE+SEX
+ <--->  [E-P] Electron-phonon                            : yes
+ <--->  [E-P] Iterative time evolution                   : no
+ <--->  [E-P] Branches                                   :   1   9
+ <--->  [E-P] GF`s Memory steps                          :  2
+ <--->  [E-E] Coulomb scattering                         : no
+ <--->  [E-E] Coulomb correlation                        : no
+ <--->  [E-PHOTON] Scattering                            : no
+ <--->  [FineGd] Brillouin Symmetry  mode                : expanded
+ <--->  [FineGd] Fine Grid  BZ mapped mode               : BZ
+ <--->  [FineGd] Fine Grid IBZ mapped mode               : BZ
+ <--->  [FineGd] Bands                                   :   40
+ <--->  [FineGd] Number of pts (Energy grid)             :   98
+ <--->  [FineGd] Number of pts (fine+coarse, IBZ-map)    :  106
+ <--->  [FineGd] Number of pts (fine+coarse, BZ-map)     :  106
+ <--->  [RT] Time step     (initial)                     :  0.040000 [fs]
+ <--->  [RT] NE time       (planned)                     :  50.00000 [fs]
+ <--->  [RT] NE steps      (planned)                     :  1251
+ <--->  [RT] Lif Extr Inte/Intr(sav)                     :  1.440000  0.480000 [fs]
+ <--->  [RT] Lifetimes extrapolation                     : no
+ <--->  [RT] Integrator                                  : EULER + RK2 + RWA
+ <--->  [RT] Radiative life time                         :  0.000000 [fs]
+ <--->  [RT] Dephasing life time                         :  0.000000 [fs]
+ <--->  [RT] External Field(s)                           : yes
+ <--->  [RT] Number of Fields                            :  1
+ <--->  [RT] Diamagnetic term                            : no
+ <--->  [RT] Induced field                               : no
+ <--->  [Gr] Retarded Green`s function                   : HS
+ <--->  [Gr] Damping (c) Energy ref                      :  0.000000 ev
+ <--->  [Gr] Damping (c)                                 :  0.100000  0.000000  0.000000 ev,adim,ev^-1
+ <--->  [Gr] Damping (v) Energy ref                      :  0.000000 ev
+ <--->  [Gr] Damping (v)                                 :  0.100000  0.000000  0.000000 ev,adim,ev^-1
+ <--->  [DbGd] Double Grid support                       : yes
+ <--->  [DbGd] Used for e-e                              :  0.000000 [o/o]
+ <--->  [CONSTRAINS] N (ee+ep) & dN (ep)                 : yes
+ <--->  [CONSTRAINS] IP Energy      (ee)                 : yes
+ <--->  [FIELDs] Gauge Type                              : length
+ <--->  [FIELDs] Type                                    : QSSIN
+ <--->  [FIELDs] Polarization                            : linear
+ <--->  [FIELDs] Versor                                  :  1.000000  0.000000  0.000000
+ <--->  [FIELDs] Versor_circ                             :  0.000000  1.000000  0.000000
+ <--->  [FIELDs] Intensity                               :   3000.00    [kWCMm2]
+ <--->  [FIELDs] Damping                                 :  3.000000 [fs]
+ <--->  [FIELDs] Frequency range                         :  2.685000  2.685000 [eV]
+ <--->  [FIELDs] Frequency steps                         :  1
+ <--->  [FIELDs] Frequency step                          :  0.000000 [eV]
+ <--->  [FIELDs] Initial time                            :  0.240000 [fs]
+ <---> - S/N 009037 ---------------------------------------------- v.05.00.01 r.19097 -
+ <---> [CARRIERS] Uniform grid       :no
+ <---> [CARRIERS] Time range         :  0.00000  10.08000 [fs]
+ <---> [CARRIERS] Time step          : 10.00019 [fs]
  <---> [CARRIERS] Time steps         : 2
- <---> [CARRIERS] Damping       [meV]: 0.000000
- <---> [CARRIERS] Field damping [meV]: 410.2867
- <---> [07] Interpolation tool
+ <---> [07] Interpolation and plotting:Levels Occupations
  <---> [WARNING]User bands restricted to 23 - 30
- <---> [07.01] Loading special Points for the HCP lattice
- <---> [07.02] Interpolation
- <---> Number of K-points in the circuit : 31
- <---> Circuit path         : G
- <---> [INTERPOLATION] Number of shells:   512
- <---> [INTERPOLATION@E_on_built_in] Errors: Max, Avg, Avg_rel =   5.43892384E-07  1.00919152E-07  1.32664343E-06
+ <---> [07.01] Special Points for the HCP lattice
+ <---> [07.02] Circuit analyzer/generator
+ <---> Number of Q/K-points in the circuit : 31
+ <---> [07.03] Real-Time components maps
+ <---> [07.04] Levels interpolation
+ <---> [INTERPOLATION] Number of shells:  1383
+ <---> Interpolation@E_K_PATH (star) |                                        | [000%] --(E) --(X)
+ <---> Interpolation@E_K_PATH (star) |########################################| [100%] --(E) --(X)
+ <---> Interpolation@E_K_PATH (H fill) |                                        | [000%] --(E) --(X)
+ <---> Interpolation@E_K_PATH (H fill) |########################################| [100%] --(E) --(X)
+ <---> Interpolate@E_K_PATH Fourier |                                        | [000%] --(E) --(X)
+ <---> Interpolate@E_K_PATH Fourier |########################################| [100%] --(E) --(X)
+ <---> [INTERPOLATION@E_K_PATH] Errors: Max, Avg, Avg_rel =   6.71297312E-06  7.71934651E-07  9.40272275E-06
+ <---> Interpolate@E_K_PATH Fourier |                                        | [000%] --(E) --(X)
+ <---> Interpolate@E_K_PATH Fourier |########################################| [100%] --(E) --(X)
  <---> Spinor Components |                                        | [000%] --(E) --(X)
  <---> Spinor Components |########################################| [100%] --(E) --(X)
- <---> [spin-Nearest K] Exact matches  [o/o]: 11.11111
- <---> [spin-Nearest K] Neighbours    [user]: 1
- <---> [spin-Nearest K]               [real]: 1
- <---> [spin-Nearest K] Interpolations [o/o]: 88.88889
- <---> Interpolation |                                        | [000%] --(E) --(X)
- <---> Interpolation |########################################| [100%] --(E) --(X)
- <---> [08] Game Over & Game summary
+ <---> [spin-Nearest K] Exact matches       :  3.225806 [o/o]
+ <---> [spin-Nearest K] Border points       :  11
+ <---> [spin-Nearest K] Neighbours    [user]:  1
+ <---> [spin-Nearest K]               [real]:  2
+ <---> [spin-Nearest K] Interpolations      :  96.77419 [o/o]
+ <---> [08] Timing Overview
+ <---> [09] Memory Overview
+ <---> [10] Game Over & Game summary

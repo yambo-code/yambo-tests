@@ -1,0 +1,39 @@
+#                                                                     
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
+#                                                                     
+#      Version 4.5.0 Revision 18066 Hash 4889a5fdb                    
+#                Branch is devel-andreaM                              
+#                       MPI Build                                     
+#               http://www.yambo-code.org                             
+#
+electrons                      # [R] Electronic properties
+dos                            # [R] DOS
+BoseTemp= 0.000000     eV      # Bosonic Temperature
+StdoHash=  80                  # [IO] Live-timing Hashes
+PROJECT_mode= "LINE"           # Instruct ypp how to project the DOS. ATOM, LINE, PLANE.
+PROJECT_path= "X1 Y T"         # Project path. PLANE mode: 3 points in the plane. LINE mode: any series of points.
+PROJECT_steps= 50             # Project LINE/PLANE-axis steps.
+PROJECT_depth= 30             # Project perpendicular direction divisions.
+PROJECT_threshold= 0.000000    # [o/o] Project threshold above which the project DOS is printed.
+% DOSERange
+ -5.00000 |  3.00000 | eV      # Energy range
+%
+DOSESteps=  200                # Energy steps
+DOS_broad=  0.07000    eV      # Broadening of the DOS
+% DOS_bands
+  6 | 14 |                     # DOS bands
+%
+#DOSUsesOcc                    # Weight the DOS with the occupation factors
+INTERP_mode= "BOLTZ"           # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
+% INTERP_Grid
+-1 |-1 |-1 |                             # Interpolation BZ Grid
+%
+INTERP_Shell_Fac= 10.00000     # The bigger it is a higher number of shells is used
+

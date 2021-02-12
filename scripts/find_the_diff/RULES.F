@@ -1,5 +1,5 @@
 !
-!        Copyright (C) 2000-2019 the YAMBO team
+!        Copyright (C) 2000-2020 the YAMBO team
 !              http://www.yambo-code.org
 !
 ! Authors (see AUTHORS file for details): AM
@@ -22,9 +22,9 @@
 ! MA 02111-1307, USA or visit http://www.gnu.org/copyleft/gpl.txt.
 !
 subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
-&                   VAL_treshold,REF_col,USER_error)
+&                   VAL_treshold,REF_col,REF_row,USER_error)
   !
-  use DIFF, ONLY:SP,RULES,i_c,i_t,i_rule,N_max_col
+  use DIFF, ONLY:SP,RULES,i_c,i_t,i_rule,N_max_col,str_length
   !
   implicit none
   character(*) :: PATTERN,RULE
@@ -32,6 +32,7 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
   character(*), optional ::TITLES(:)
   character(*), optional ::MATERIAL
   integer,      optional ::REF_col
+  integer,      optional ::REF_row
   integer,      optional ::COL
   integer,      optional ::COLS(:)
   real(SP),     optional ::USER_prec
@@ -39,7 +40,7 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
   real(SP),     optional ::VAL_treshold
   !
   integer        :: N,i_r
-  character(256) :: str(N_max_col)
+  character(str_length) :: str(N_max_col)
   !
   if (present(MATERIAL)) then
     call string_split(MATERIAL,str,N)
@@ -99,6 +100,10 @@ subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
     !
     if (present(REF_col)) then
       RULES(i_rule)%REF_col=REF_col
+    endif
+    !
+    if (present(REF_row)) then
+      RULES(i_rule)%REF_row=REF_row
     endif
     !
     if (RULE=="skip".and..not.present(COL).and..not.present(COLS).and..not.present(TITLE).and..not.present(TITLEs)) then

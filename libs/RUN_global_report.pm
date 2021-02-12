@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -57,7 +57,8 @@ if ("$what" eq "INIT") {
  $INITIAL_time   = [gettimeofday];
  $REFERENCE_time = [gettimeofday];
 }elsif ("$what" eq "BRANCH_KEY"){
- &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nBranch                  :$branch_key");
+ &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nYambo      branch       :$branch_key");
+ &MESSAGE("REPORT ERROR SKIP WHITE RULES","\nTest-suite branch       :$test_suite_branch");
 }elsif ("$what" eq "TITLE"){
  &RUN_setup("INIT");
  &UTILS_time($date_now,$time_now);

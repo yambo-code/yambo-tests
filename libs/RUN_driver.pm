@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -24,11 +24,12 @@
 #
 sub RUN_driver{
 #
-&CWD_save;
+$RUN_driver_base_path=abs_path();
 #
 # Loop over test directories
 $numtests = @input_tests_list; # Number of elements
 $count_tests=0;
+$max_admitted_fails=1000;
 #
 &RUN_setup("INIT");
 #
@@ -36,7 +37,7 @@ $count_tests=0;
 #
 LOOP_DIRS: foreach my $testline (@input_tests_list) {
  #
- &CWD_go;
+ chdir($RUN_driver_base_path);
  #
  chdir("$TESTS_folder");
  #
@@ -87,7 +88,14 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    foreach $testname (@inputs) { 
      if (not -f "$ROBOT_wd/$input_folder/$testname" and -f "$ROBOT_wd/INPUTS/$testname" and not $is_GPL ) 
      {
-       &command("cp $ROBOT_wd/INPUTS/$testname* $ROBOT_wd/$input_folder");
+       &MY_PRINT($stdout, "loading INPUTS for : $testname not found in $input_folder \n") if ($verb);
+       &CWD_save;
+       chdir("INPUTS");
+       foreach $in_file (<$testname*>)
+       {
+         if (not -f "../$ROBOT_wd/$input_folder/$in_file"){ &command("cp $in_file ../$ROBOT_wd/$input_folder/")};
+       }
+       &CWD_go;
      }
    }
   };
@@ -99,22 +107,26 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
  &MY_PRINT($rlog,   $msg);
  #
  # Check if I need to convert the folder
- if (not -e "CONVERTED") {&RUN_convert_the_SAVE};
+ #if (-e "CONVERTED") {next};
+ if (not -e "CONVERTED") {&RUN_convert_the_SAVE};#;next};
  #
  # Loop over each test file
  LOOP_INPUTS: foreach $testname (@inputs) {
   #
-  if( $test_with_fails > 40) {next LOOP_INPUTS;}
+  if( $test_with_fails > $max_admitted_fails ) {
+    $CHECK_error=" skipped (too many fails)";
+    &RUN_stats("TOO_MANY_FAILS");
+    next LOOP_INPUTS;
+  }
   if (not -f "$input_folder/$testname" and $is_GPL ) {next LOOP_INPUTS;}
   #
   &MY_PRINT($stdout, "\nRunning input: $testname\n") if ($verb);
   #
   # Do actions and create the input (if any)
-  &RUN_load_actions(".actions");
+  #&RUN_load_actions(".actions");
   &RUN_load_actions(".input");
   #
   # Input file dump
-  #
   &RUN_input_load;
   #
   # Runlevels
@@ -148,6 +160,8 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    next LOOP_INPUTS;
   };
   #
+  undef $LAST_COMPLETED_RUN;
+  #
   # Do the actual run!
   LOOP: for ($ir=1; $ir<=$Nr ; $ir++){
    #
@@ -164,6 +178,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    }
    #
    &RUN_setup("before_run");
+   &RUN_load_actions(".actions");
    #
    # Check if extra flags are needed (JOB specific)
    $error=&RUN_user_flags($ir);
@@ -188,10 +203,11 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      &RUN_load_PAR_fields;
      $string=$MPI_CPU_conf[1];
      &command("rm -fr yambo.in LOG r-${testname}* o-${testname}*");
-     #print "$testname B\n";
+     #print "$testname $ir B\n";
      # Re-Create the input (if any)
      &RUN_load_actions(".input");
      &RUN_setup("before_run");
+     &RUN_load_actions(".actions");
      $N_random_tries++;
      #
      $RUN_result=&RUN_it;
@@ -207,7 +223,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      }
     }
     #
-    if ($check_input_generation) {
+    if ($check_input_generation and -f $INPUT_file) {
      my $msg = sprintf("%-"."$left_length"."s", "  $INPUT_file");
      &MESSAGE("LOG","\n"."$msg"."[$g_s  $INFILE_CHECK  $g_e]");
     }
@@ -224,12 +240,15 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    #
   }
   #
+  if ($check_input_generation and $update_test) { &UPDATE_action("INPUT")};
+  if (not $update_test) {&RUN_setup("after_par_loop")};
+  #
  } # End loop on input files
  #
  if (not $update_test) {&RUN_setup("after_tests_loop")};
  #
 }
-&CWD_go;
+chdir($RUN_driver_base_path);
 #
 }
 1;

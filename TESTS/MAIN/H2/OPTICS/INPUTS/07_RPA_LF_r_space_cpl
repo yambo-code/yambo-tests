@@ -1,38 +1,42 @@
-#                                                           
-#  __  __   ________   ___ __ __    _______   ______        
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
-#                                                           
-#                                                           
-#               Version 4.0.2 Revision 4854                 
-#                    MPI+OpenMP Build                       
-#                http://www.yambo-code.org                  
+#                                                                     
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
+#                                                                     
+#                                                                     
+#       Version 4.5.0 Revision 18086 Hash 7ddec4937                   
+#                 Branch is devel-andreaM                             
+#                        MPI Build                                    
+#                http://www.yambo-code.org                            
 #
-optics                       # [R OPT] Optics
-bss                          # [R BSS] Bethe Salpeter Equation solver
-bse                          # [R BSE] Bethe Salpeter Equation.
-bsk                          # [R BSK] Bethe Salpeter Equation kernel
-NonPDirs= "XYZ"              # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
-BSEmod= "coupling"           # [BSE] resonant/causal/x_coupling/xc_coupling
-BSKmod= "Hartree"            # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-BSSmod= "dh"                 # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
-BSENGexx= 123          RL    # [BSK] Exchange components
-Gauge= "length"              # [BSE] Gauge (length|velocity)
+optics                         # [R] Linear Response optical properties
+bss                            # [R] BSE solver
+bse                            # [R][BSE] Bethe Salpeter Equation.
+dipoles                        # [R] Oscillator strenghts (or dipoles)
+NonPDirs= "XYZ"                # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
+BSEmod= "coupling"             # [BSE] resonant/retarded/coupling
+BSKmod= "HARTREE"              # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "hd"                   # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx= 123          RL      # [BSK] Exchange components
+% BSEQptR
+ 1 | 1 |                       # [BSK] Transferred momenta range
+%
+% BSEBands
+   1 |  50 |                   # [BSK] Bands range
+%
 % BEnRange
-  0.00000 | 15.00000 | eV    # [BSS] Energy range
+  0.00000 | 15.00000 | eV      # [BSS] Energy range
 %
 % BDmRange
-  0.10000 |  0.10000 | eV    # [BSS] Damping range
+ 0.100000 | 0.100000 | eV      # [BSS] Damping range
 %
-BEnSteps= 200                # [BSS] Energy steps
+BEnSteps= 200                  # [BSS] Energy steps
 % BLongDir
  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %
-% BSEBands
-   1 |  50 |                 # [BSK] Bands range
-%
-BSHayTrs= 0.00500           # [BSS] [o/o] Haydock treshold. Strict(>0)/Average(<0)
+#WRbsWF                        # [BSS] Write to disk excitonic the WFs
+BSHayTrs= 0.005000             # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)

@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -31,22 +31,17 @@ if ($np==1) {
  $MPI_CPU_conf[1]="serial";
  return;
 }
-if ($SETUP=="1" or $yambo_exec =~ /\/ypp/) { 
+if ($SETUP=="1"){
  $Nr="1";
- $MPI_CPU_conf[1]="serial";
+ if (-f "KPT_1" or not $is_PAR_SETUP) {$MPI_CPU_conf[1]="serial"};
  return;
 }
-if ($yambo_exec =~ /\/p2y/) { 
+if ($yambo_exec =~ /\/p2y/ or $yambo_exec =~ /\/a2y/ or $yambo_exec =~ /\/ypp/  ) { 
  $Nr="1";
- $MPI_CPU_conf[1]="p2y_par";
+ $MPI_CPU_conf[1]="default";
  return;
 }
-if ($yambo_exec =~ /\/a2y/) { 
- $Nr="1";
- $MPI_CPU_conf[1]="a2y_par";
- return;
-}
-if ($RIMCUT=="1"){
+if ($RIMCUT=="1" and not $GW  and not $OPTICS ){
  $Nr="1";
  $MPI_CPU_conf[1]="default";
  return;
@@ -60,14 +55,12 @@ if ( $default_parallel ){
 # PARALLEL section
 #
 $PAR_field[0]="DIP_ROLEs= \"k.c.v\""; #  => KCV
-$PAR_field[1]="X_q_0_ROLEs= \"g.k.c.v\""; #  => GKCV
-$PAR_field[2]="X_finite_q_ROLEs= \"g.q.k.c.v\""; # => GQKCV
-$PAR_field[3]="X_all_q_ROLEs= \"g.q.k.c.v\""; # => GQKCV
+$PAR_field[1]="X_and_IO_ROLEs= \"g.q.k.c.v\""; # => GQKCV/GKCV
+$PAR_field[2]="X_ROLEs= \"g.q.k.c.v\""; # => GQKCV
+$PAR_field[3]="BS_ROLEs= \"k.eh.t\""; # => KEHT
 $PAR_field[4]="SE_ROLEs= \"q.qp.b\""; # => QSB
-$PAR_field[5]="BS_ROLEs= \"k.eh.t\""; # => KEHT
-$PAR_field[6]="RT_ROLEs= \"q.k.qp.b\""; # => QKSB
-$PAR_field[7]="NL_ROLEs= \"w.k\""; # => WK
-$PAR_field[8]="X_ROLEs= \"g.q.k.c.v\""; # => GQKCV
+$PAR_field[5]="RT_ROLEs= \"q.k.qp.b\""; # => QKSB
+$PAR_field[6]="NL_ROLEs= \"w.k\""; # => WK
 #
 # Resets
 #
@@ -90,7 +83,6 @@ if ($random_parallel){
  &PARALLEL_loop() ;
 }
 # Combination
-#
 &PARALLEL_build_the_conf();
 #
 }

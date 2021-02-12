@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -24,6 +24,13 @@
 #
 sub RUN_setup{
 #
+if ("@_" =~ "after_par_loop"){
+ if ( $LAST_COMPLETED_RUN ){
+  &command("rm -f $testname");
+  &command("ln -s $LAST_COMPLETED_RUN $testname");
+ }
+ return;
+}
 if ("@_" =~ "INIT"){
  #
  # Global cpu_conf
@@ -38,8 +45,6 @@ if ("@_" =~ "INIT"){
  }
 };
 if ("@_" =~ "before_run"){
- #
- undef $LAST_COMPLETED_RUN;
  #
  # cpu_conf
  $cpu_conf="[".$string;
@@ -80,8 +85,13 @@ if ("@_" =~ "before_run"){
  close IN;
  #
  # Input file
+ $INPUT_option="-F";
  $INPUT_file="yambo.in";
- if ($yambo_exec =~ /\/p2y/) { $INPUT_file=$P2Y_datafile };
+ if ($yambo_exec =~ /\/p2y/) { 
+  $INPUT_file=$P2Y_datafile;
+  $INPUT_option="-I";
+  $INPUT_file=".";
+ };
  if ($yambo_exec =~ /\/a2y/) { $INPUT_file=$A2Y_datafile };
 }
 if ("@_" =~ "after_run"){
@@ -91,12 +101,15 @@ if ("@_" =~ "after_run"){
  if (-d $testname or $update_test){
   if (!-d $dir_name and -d $testname) {&command("mv $testname $dir_name")};
   if (!-d $dir_name and !-d $testname) {&command("mkdir $dir_name")};
-  if ($ir == $Nr and $LAST_COMPLETED_RUN) {&command("ln -s $LAST_COMPLETED_RUN $testname")};
+  if ($LAST_COMPLETED_RUN) {
+   &command("rm -f $testname");
+   &command("ln -s $LAST_COMPLETED_RUN $testname");
+  };
  }else{
   if (!-d $dir_name) {&command("mkdir $dir_name"); };
  }
  #
- if (-e $INPUT_file ) { copy($INPUT_file, $dir_name) or &MESSAGE("ERROR WHITE","\nError copying file $INPUT_file to $dir_name $!\n"); };
+ if (-e $INPUT_file and -f $INPUT_file ) { copy($INPUT_file, $dir_name) or &MESSAGE("ERROR WHITE","\nError copying file $INPUT_file to $dir_name $!\n"); };
  foreach $file (<o-*$testname*>) 			{ move($file,$dir_name) };
  foreach $file (<r-*$testname*>,<ref_*>,<run_*>) 	{ move($file,$dir_name) };
  foreach $file (<l-*$testname*>) 			{ move($file,$dir_name) };

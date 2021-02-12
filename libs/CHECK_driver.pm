@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -32,16 +32,26 @@ $CHECK_CORE="1";
 if ($nt and $nt>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE"); $n_stats=1; };
 if (        $np>1 and $SETUP=="1") {undef $CHECK_CORE;  &RUN_stats("SKIPPED_CORE"); $n_stats=1; };
 if (              not $SETUP=="1") {undef $CHECK_CORE};
-if ($P2Y){&CHECK_database("EIGENVALUES","ns.db1","CORE")};
-if ($A2Y){&CHECK_database("EIGENVALUES","ns.db1","CORE")};
+if ($P2Y){
+  &CHECK_database("EIGENVALUES","ns.db1","CORE","FIRST");
+  &CHECK_database("PP_KB_K1","ns.kb_pp_pwscf_fragment_1","CORE");
+  &CHECK_database("ATOM_PROJ_IK1_SP_POL1","ns.atom_proj_pwscf_fragment_1","CORE");
+  &CHECK_database('WF_COMPONENTS_@_SP_POL1_K1_BAND_GRP_1',"ns.wf_fragments_1_1","CORE");
+}
+if ($A2Y){
+  &CHECK_database("EIGENVALUES","ns.db1","CORE","FIRST");
+  &CHECK_database("PP_KB_IK1_SP_POL1","ns.kb_pp_fragment_1","CORE");
+  &CHECK_database('WF_COMPONENTS_@_SP_POL1_K1_BAND_GRP_1',"ns.wf_fragments_1_1","CORE");
+}
 if ($CHECK_CORE){
  &CHECK_database("Qindx,Sindx","ndb.kindx","CORE");
  &CHECK_database("ng_in_shell,E_of_shell","ndb.gops","CORE");
 }
 if ( $is_OLD_IO eq "yes"  ) { &CHECK_database("Sx_Vxc","ndb.HF_and_locXC","")};
 if ( $is_OLD_IO eq "no"   ) { &CHECK_database("Sx,Vxc","ndb.HF_and_locXC","")};
-if ( $is_NEW_DBGD eq "no"  ) { &CHECK_database("BLOCK_TABLE","ndb.Double_Grid","")};
-if ( $is_NEW_DBGD eq "yes" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ","ndb.Double_Grid","")};
+if ( $is_NEW_DBGD eq "v1"  ) { &CHECK_database("BLOCK_TABLE","ndb.Double_Grid","")};
+if ( $is_NEW_DBGD eq "v2" ) { &CHECK_database("BLOCK_TABLE_IBZ,BLOCK_TABLE_BZ","ndb.Double_Grid","")};
+if ( $is_NEW_DBGD eq "v3" ) { &CHECK_database("IBZ_E_MAP,IBZ_K_RANGE","ndb.Double_Grid","")};
 &CHECK_database("X_Q_1","ndb.em1s_fragment_1","");
 if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 &CHECK_database("X_Q_1","ndb.pp_fragment_1","");
@@ -49,6 +59,10 @@ if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 &CHECK_database("QP_kpts","ndb.QP","");
 &CHECK_database("QP_E","ndb.QP","");
 &CHECK_database("QP_Z","ndb.QP","");
+&CHECK_database("QP_table","ndb.QP_expanded","");
+&CHECK_database("QP_kpts","ndb.QP_expanded","");
+&CHECK_database("QP_E","ndb.QP_expanded","");
+&CHECK_database("QP_Z","ndb.QP_expanded","");
 &CHECK_database("BLOCK_TABLE","ndb.E_SOC_map","");
 &CHECK_database("CUT_BARE_QPG","ndb.cutoff","");
 &CHECK_database("RIM_qpg","ndb.RIM","");
@@ -60,17 +74,21 @@ if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 # OUT files
 O_file_loop: foreach $run_filename (<o-$testname.*>){
  #
+ ($tmpname,$tmppath,$tmpsuffix) = fileparse($run_filename,".yaml");
+ if( $tmpsuffix eq ".yaml" ) {next;}
+ #
  $n_stats++;
  #
  &gimme_reference($run_filename);
- #print "\n$run_filename $ref_filename\n";
+ #
+ if (&CHECK_ignore($run_filename)) {next O_file_loop};
  #
  if (!-e "$ref_filename") { 
   &RUN_stats("NO_REF");
-  if ($update_test and  (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) ) {&UPDATE_action("ADD")};
+  if ($update_test) {&UPDATE_action("ADD")};
  }else{
   my $ERR=&CHECK_file;
-  if ($ERR eq "FAIL" and $update_test and (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) )
+  if ($update_test and $ERR eq "FAIL" and (not $CHECK_error =~ /WHITELISTED/ and not $CHECK_error =~ /RULES-SUCC/) ) 
   {
    &UPDATE_action("RM");
    &UPDATE_action("ADD");
@@ -102,10 +120,17 @@ R_file_loop: foreach $ref_filename (@OFILES){
  if ($ref_filename =~ /db1/) {next R_file_loop};
  if ($ref_filename =~ /gops/ or $ref_filename =~ /kindx/) {next R_file_loop};
  if ($ref_filename =~ /em1d/ and $LIFE eq "1") {next R_file_loop};
+ #
+ if (&CHECK_ignore($ref_filename)) {next R_file_loop};
+ #
  for $ipatt (1...$N_PATTERNS) 
  {
   if ($ref_filename =~ $PATTERN[$ipatt][1] and ($PATTERN_branch[$ipatt] =~ /$branch_key/ or $PATTERN_branch[$ipatt] =~ "any")){ 
-   $ref_filename =~ s/$PATTERN[$ipatt][1]/$PATTERN[$ipatt][2]/;
+   if ($PATTERN[$ipatt][3] and "$PATTERN[$ipatt][3]" eq "end") {
+     $ref_filename =~ s/$PATTERN[$ipatt][1]$/$PATTERN[$ipatt][2]/;
+   }else{
+     $ref_filename =~ s/$PATTERN[$ipatt][1]/$PATTERN[$ipatt][2]/;
+   }
   }
  } 
  #
@@ -115,7 +140,7 @@ R_file_loop: foreach $ref_filename (@OFILES){
  $run_filename =~ s{.*/}{};
  ($base, $dir, $ext) = fileparse($run_filename, qr/\.[^.]*/);
  #
- if ( $ext=~ /hf/  and $is_STABLE=~"yes" ) { next R_file_loop};
+ if (&CHECK_ignore($run_filename)) {next R_file_loop};
  #
  if (!-e "$run_filename") { 
   &RUN_stats("NO_OUT");

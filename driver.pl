@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -27,7 +27,8 @@ use lib ".";
 use autodie;
 do "config/MODULES.pl";
 do "config/TOOLS.pl";
-do "config/RULES.pl";
+do "config/RULES_renaming.pl";
+do "config/RULES_ignore.pl";
 do "config/ROBOTS_list.pl";
 #
 # The location of the test-suite directory
@@ -47,6 +48,7 @@ if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$R
 $hostname=hostname();
 $host=$ROBOTS{$hostname};
 if ($USER_host and -d "ROBOTS/$USER_host") {$host=$USER_host};
+if (-f "./.running_robot.pl")  {do ".running_robot.pl"};
 #
 if ("$host" eq "") {
   print "\n** WARNING ** Hostname empty.\n";
@@ -188,8 +190,12 @@ if ($clean and $backup_logs eq "no" and not $RUNNING_suite){
  if (not $ROBOT_id) {&UTILS_clean("BINs")};
  print "... test databases outputs logfiles bin(s)";
  if ($clean > 1) {
-  &UTILS_clean("DEEP");
-  print "... core databases";
+  print "... core databases ...";
+  &UTILS_clean("CORE");
+  print "... .tar.gz ...";
+  &UTILS_clean("TARGZ");
+  print "... pwscf/abinit ...";
+  &UTILS_clean("DFT");
  }
  print "\nCleaning done.\n";
  exit;
@@ -289,7 +295,7 @@ if ($RUNNING_suite) {
  #
  &RUN_global_report("INIT");
  #
- if (not $no_net) {&command("cd $suite_dir; $git pull")};
+ if (not $not_network) {&command("cd $suite_dir; $git pull")};
  #
  &SETUP_branch("load_the_branches");
  #

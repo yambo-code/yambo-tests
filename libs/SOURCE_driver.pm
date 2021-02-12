@@ -1,5 +1,5 @@
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -58,12 +58,12 @@ if ($FAILED_conf_comp_branches) {
 # Precompiled (bin) exe's test
 #
 if ("$precompiled_is_run" eq "yes") {
- $conf_bin  = "bin";
- if ($keep_bin) {$conf_bin  = "bin-precompiled-$ROBOT_string"};
+ $conf_bin  = "$BRANCH/bin";
+ if ($keep_bin) {$conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key"};
  &MY_PRINT($stdout, "\n -       Source Check : precompiled ($conf_bin) ... ");
  $bin_check=&exe_check;
  if ( "$bin_check" eq "FAIL") {
-  &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH/$conf_bin, skipping...\n");
+  &MY_PRINT($stdout, "\n\nCore executable missing from $conf_bin, skipping...\n");
   return "FAIL";
  }
 }
@@ -76,6 +76,7 @@ if ($compile) {
  &command("$git checkout $branch_id -q");
  &MY_PRINT($stdout, "Updating ...");
  &command("$git pull -q --no-rebase");
+ &command("$git submodule update --recursive --remote");
  #
  # CHECK AGE
  #
@@ -106,16 +107,20 @@ if ($compile) {
 #
 # BIN's
 if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
- $conf_bin  = "bin-precompiled-$ROBOT_string";
+ $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key";
  chdir $BRANCH;
- &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
+ &command("rm -fr $conf_bin; mkdir $conf_bin");
+ @executables = split(/\s+/, $exec_list);
+ while($exec = shift(@executables)) {&command("cp bin/$exec $conf_bin/")};
 # if (-d "lib/bin" ) {&command("cp lib/bin/* $conf_bin/")};
 # if (-d "bin-libs") {&command("cp bin-libs/* $conf_bin/")};
- if (-d "lib/bin")  {&command("find ./lib/bin/  | xargs cp -t $conf_bin/ 2> /dev/null")};
- if (-d "bin-libs") {&command("find ./bin-libs/ | xargs cp -t $conf_bin/ 2> /dev/null")};
+# if (-d "lib/bin")  {&command("find ./lib/bin/  | xargs cp -t $conf_bin/ 2> /dev/null")};
+# if (-d "bin-libs") {&command("find ./bin-libs/ | xargs cp -t $conf_bin/ 2> /dev/null")};
+ if (-e "lib/bin/ncdump")  {&command("cp lib/bin/ncdump  $conf_bin/")};
+ if (-e "bin-libs/ncdump") {&command("cp bin-libs/ncdump $conf_bin/")};
  chdir $suite_dir;
 }elsif (not $keep_bin){
- $conf_bin  = "bin-$conf_file-$FC_kind-$ROBOT_string";
+ $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind-$ROBOT_string-$branch_key";
 }
 #
 # branch string
@@ -146,7 +151,7 @@ if ($compile)
   &MY_PRINT($stdout,  "\n -       Source Check : compiled ($conf_bin) ... ");
   $bin_check=&exe_check;
   if ( "$bin_check" eq "FAIL") {
-   &MY_PRINT($stdout, "\n\nCore executable missing from $BRANCH/$conf_bin, skipping...\n");
+   &MY_PRINT($stdout, "\n\nCore executable missing from $conf_bin, skipping...\n");
    &LOGs_move;
    return "FAIL";
   }
@@ -169,8 +174,8 @@ if (not "$ERROR" eq "OK") {
 #
 my $sys_ncdump = `which ncdump`; chomp($sys_ncdump);
 my $sys_nccopy = `which nccopy`; chomp($sys_nccopy);
-if (-e "$BRANCH/$conf_bin/ncdump") {
- $ncdump = "$BRANCH/$conf_bin/ncdump"; 
+if (-e "$conf_bin/ncdump") {
+ $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
  &MY_PRINT($stdout, "\n               ncdump : $ncdump");
 }elsif(-e $sys_ncdump) { 
@@ -179,8 +184,8 @@ if (-e "$BRANCH/$conf_bin/ncdump") {
 }else{ 
  die "\n ncdump not found\n";
 }
-if (-e "$BRANCH/$conf_bin/nccopy") {
- $nccopy = "$BRANCH/$conf_bin/nccopy"; 
+if (-e "$conf_bin/nccopy") {
+ $nccopy = "$conf_bin/nccopy"; 
  chomp($nccopy);
  &MY_PRINT($stdout, "\n               nccopy : $nccopy");
 }elsif(-e $sys_nccopy) { 
@@ -211,7 +216,7 @@ return "OK";
 sub exe_check{
  @executables = split(/\s+/, $exec_list);
  while($make_exec = shift(@executables)) {
-  if( -x "$BRANCH/$conf_bin/$make_exec") 
+  if( -x "$conf_bin/$make_exec") 
   { 
    &MY_PRINT($stdout, "($make_exec $g_s OK $g_e) ");
   }else{

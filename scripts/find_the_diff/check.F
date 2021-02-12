@@ -1,5 +1,5 @@
 !
-!        Copyright (C) 2000-2019 the YAMBO team
+!        Copyright (C) 2000-2020 the YAMBO team
 !              http://www.yambo-code.org
 !
 ! Authors (see AUTHORS file for details): AM
@@ -23,6 +23,7 @@
 !
 subroutine check(R,O,REPORT,FIELD)
   use DIFF
+  implicit none
   real(SP) :: R(N_max_col),O(N_max_col),DATA_diff
   real(SP) :: R_average,O_average,E_average
   logical  :: REPORT

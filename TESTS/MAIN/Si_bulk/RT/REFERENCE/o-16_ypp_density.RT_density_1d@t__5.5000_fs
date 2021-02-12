@@ -1,46 +1,48 @@
-#                                                           
-#  __  __   ________   ___ __ __    _______   ______        
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
-#                                                           
-#                                                           
-#        Version 4.2.0 Revision 14428 Hash 698a636          
-#                  MPI+SLK+OpenMP Build                     
-#                http://www.yambo-code.org                  
+#                                                                     
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
+#                                                                     
+#                                                                     
+#       Version 4.5.0 Revision 18037 Hash 0b1b50156                   
+#                  Branch is devel-rt-io                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
 #
-# Computing the density from the G lesser
-#
-#    ||a1 [A]     
-#
-    0.000       -.1102E-5
-   0.3175       -.6170E-6
-   0.6351       0.2956E-6
-   0.9526       0.6492E-6
-    1.270       0.2905E-6
-    1.588       -.3159E-6
-    1.905       -.6695E-6
-    2.223       -.3036E-6
-    2.540       0.6239E-6
-    2.858       0.1121E-5
-    3.175       0.5604E-6
-    3.493       -.5326E-6
+# Computing the density from the G lesser  
+#  
+#    ||a1 [A]           
+#  
+     0.00000000       -0.102958325E-5
+    0.317526937       -0.558179806E-6
+    0.635053873        0.311880569E-6
+    0.952580869        0.640126359E-6
+     1.27010775        0.284242589E-6
+     1.58763492       -0.309564768E-6
+     1.90516174       -0.660507396E-6
+     2.22268867       -0.320050617E-6
+     2.54021549        0.564979587E-6
+     2.85774255        0.104872993E-5
+     3.17526984        0.528206783E-6
+     3.49279642       -0.500278702E-6
 # 
-# 04/10/2017 at 17:10 YPP_RT @ anomaly [start]
-# 04/10/2017 at 17:10                  [end]
+# 03/26/2020 at 01:48 ypp_rt @ narro [start]
+# 03/26/2020 at 01:48                [end]
 #
-# .-Input file : yambo.in
-# | RealTime                     # [R] Real-Time Post-Processing
-# | RTdeltaRho                   # [R] Analize the density
-# | RTtime                       # [R] Post-Processing kind: function of time
-# | TimeStep= 0.500005     fs    # Time step
+# .-Input file  yambo.in
+# | RealTime                       # [R] TD Post-Processing
+# | RTdeltaRho                     # [R] Analize the density
+# | RTtime                         # [R] Post-Processing kind: function of time
+# | TimeStep= 0.500005     fs      # Time step
 # | % TimeRange
-# |   0.00000 | 15.00000 | fs    # Time-window where processing is done
+# |   0.00000 | 15.00000 | fs      # Time-window where processing is done
 # | %
-# | LoadGhistory                 # [NEGF] Build the NEQ density from the G_lesser
-# | Format= "g"                  # Output format [(c)ube/(g)nuplot/(x)crysden]
-# | Direction= "1"               # [rlu] [1/2/3] for 1d or [12/13/23] for 2d [123] for 3D
-# | FFTGvecs=  387         RL    # [FFT] Plane-waves
+# | LoadGhistory                   # [NEGF] Build the NEQ density from the G_lesser
+# | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
+# | Format= "g"                    # Output format [(c)ube/(g)nuplot/(x)crysden]
+# | Direction= "1"                 # [rlu] [1/2/3] for 1d or [12/13/23] for 2d [123] for 3D
+# | FFTGvecs=  387         RL      # [FFT] Plane-waves

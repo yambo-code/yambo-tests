@@ -1,0 +1,108 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
+#                                                                     
+#       Version 4.5.0 Revision 17794 Hash 8a6fead7f                   
+#                   Branch is bug-fixes                               
+#              MPI+OpenMP+HDF5_MPI_IO Build                           
+#                http://www.yambo-code.org                            
+#
+# GW [Newton Solver]
+#
+# == PPA-GN GW ==
+#
+# PPA imaginary pt   [ev]: 27.2113800048828
+# RIM G`s                : 1
+# RIM random pts         : 3000000
+# GW SC iterations       :0
+# dS/dw steps            : 2
+# dS/dw step         [ev]:  0.1000000014901
+# X G`s            [used]: 151
+# X G`s            [disk]: 151
+# X bands                :   1   60
+# X poles           [o/o]: 100.000000000000
+# X e/h E range      [ev]:-1.00000000000000 -1.00000000000000
+# X xc-Kernel            : none
+# X BZ energy Double Grid: no
+# X BZ Double Grid points:0
+# Sc/G bands             :   1   60
+# Sc/G damping       [ev]:  0.1000000014901
+# Sc bands terminator    : no
+# Sx RL components       : 3149
+#
+# QP @ K 1 - 4 : b 8 - 9
+#
+# GF energies kind       :Teter 93(XC)
+# GF WF`s     kind       :Teter 93(XC)
+# Xs energies kind       :Teter 93(XC)
+# Xs WF`s     kind       :Teter 93(XC)
+#
+#    K-point                 Band                    Eo                      E-Eo                    Sc|Eo
+#
+    1.00000000000000        8.00000000000000       -0.88246703147888       -1.70756208896637        4.32678270339966
+    1.00000000000000        9.00000000000000        5.27716112136841        0.53881925344467       -4.02790212631226
+    2.00000000000000        8.00000000000000        0.00000000000000       -1.32919907569885        3.34323954582214
+    2.00000000000000        9.00000000000000        4.09473419189453        0.99392974376678       -4.56399917602539
+    3.00000000000000        8.00000000000000       -0.90868824720383       -1.71199679374695        4.33077573776245
+    3.00000000000000        9.00000000000000        7.96160602569580        0.90034425258636       -4.36726093292236
+    4.00000000000000        8.00000000000000       -0.62520825862885       -1.44643497467041        3.33362054824829
+    4.00000000000000        9.00000000000000        4.65636062622070        1.08042454719543       -4.42301130294800
+# 
+# 02/27/2020 at 14:45 yambo @ claudio-notebook [start]
+# 02/27/2020 at 14:46                          [end]
+#  
+# Timing   [Min/Max/Average]: 07s/07s/07s
+#
+# .-Input file : yambo.in
+# | HF_and_locXC                   # [R] Hartree-Fock
+# | gw0                            # [R] GW approximation
+# | rim_cut                        # [R] Coulomb potential
+# | em1d                           # [R][X] Dynamically Screened Interaction
+# | ppa                            # [R][Xp] Plasmon Pole Approximation for the Screened Interaction
+# | BoseTemp= 0.00000000000eV0     # Bosonic Temperature
+# | FFTGvecs=  3473        RL      # [FFT] Plane-waves
+# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
+# | RandQpts= 3000000              # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
+# | % Em1Anys
+# |  8.65657043457031 | 8.65657043457031 | 2.# [RIM] X Y Z Static Inverse dielectric matrix
+# | %
+# | IDEm1Ref= 1                    # [RIM] Dielectric matrix reference component 1(x)/2(y)/3(z)
+# | CUTGeo= "none"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# | % CUTBox
+# |  0.0000000000000     | 0.0000000000000   # [CUT] [au] Box sides  |
+# | %
+# | CUTRadius= 0.00000000000000    # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.00000000000000    # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.00000000000000    # [CUT] WS cutoff: number of G to be modified
+# | EXXRLvcs= 3149         RL      # [XX] Exchange    RL components
+# | VXCRLvcs=  3581        RL      # [XC] XCpotential RL components
+# | Chimod= "HARTREE"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | % BndsRnXp
+# |    1 |  60 |                   # [Xp] Polarization function bands
+# | %
+# | NGsBlkXp= 151          RL      # [Xp] Response block size
+# | % LongDrXp
+# | 0.999999974737875E-5 | 0.00000000000000  # [Xp] [cc] Electric Field
+# | %
+# | PPAPntXp= 27.2113800048eV8     # [Xp] PPA imaginary energy
+# | XTermKind= "none"              # [X] X terminator ("none","BG" Bruneval-Gonze)
+# | % GbndRnge
+# |    1 |  60 |                   # [GW] G[W] bands range
+# | %
+# | GTermKind= "none"              # [GW] GW terminator ("none","BG" Bruneval-Gonze)
+# | DysSolver= "n"                 # [GW] Dyson Equation solver ("n","s","g")
+# | %QPkrange                      # # [GW] QP generalized Kpoint/Band indices
+# | 1|4|8|9|
+# | %
+# | %QPerange                      # # [GW] QP generalized Kpoint/Energy indices
+# | 1|4| 0.00000000000000|-1.00000000000000|
+# | %

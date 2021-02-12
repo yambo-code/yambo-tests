@@ -1,0 +1,41 @@
+#                                                                     
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 19381 Hash ff14d8ad9                   
+#             Branch is devel-rt-vel-and-magn                         
+#            MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                       
+#                http://www.yambo-code.org                            
+#
+negf                             # [R] NEQ Real-time dynamics
+HXC_Potential= "IP"              # [SC] SC HXC Potential
+% RTBands
+  5 | 10 |                           # [RT] Bands
+%
+Integrator= "RK2"                # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
+PhLifeTime= 0.010000       fs    # [RT] Constant Dephasing Time
+RTstep= 4.00000           as    # [RT] Real Time step length
+NETime= 40.0000           fs    # [RT] Simulation Time
+% IOtime
+ 2.000000 | 1.000000 | 5.000000 |  fs    # [RT] Time between two consecutive I/O (CARRIERs - GF - OUTPUT)
+%
+% Field1_Freq
+ 1.000000 | 0.000000 |         eV    # [RT Field1] Frequency
+%
+Field1_Int= 1000.000000       kWLm2 # [RT Field1] Intensity
+Field1_FWHM= 10.000000     fs    # [RT Field1] Width
+Field1_kind= "QSSIN"              # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"               # [RT Field1] Pol(linear|circular)
+% Field1_Dir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT Field1] Versor
+%
+% Field1_Dir_circ
+ 0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
+%
+Field1_Tstart= 0.000000    fs    # [RT Field1] Initial Time

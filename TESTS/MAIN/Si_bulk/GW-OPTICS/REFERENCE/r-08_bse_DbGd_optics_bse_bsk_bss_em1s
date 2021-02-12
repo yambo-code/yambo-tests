@@ -1,18 +1,18 @@
                                                                 
-     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$       
-    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$      
-     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$      
-      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$      
-       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$      
-        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$      
-        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/      
-        |__/   |__/  |__/|__/     |__/|_______/  \______/       
+    :::   :::   :::     ::::    ::::  :::::::::   ::::::::      
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:     
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+     
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+     
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+     
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#     
+       ###  ###     ### ###       ### #########   ########      
                                                                 
-          Version 4.3.0 Revision 15209 Hash ca63943             
-                       MPI+OpenMP Build                         
-                  http://www.yambo-code.org                     
+                                                                
+           Version 4.3.0 Revision 15212 Hash b75c95f            
+                         MPI+SLK Build                          
+                   http://www.yambo-code.org                    
  
- 01/16/2018 at 10:49 YAMBO @ anomaly
+ 01/17/2018 at 16:20 YAMBO @ narro
 
  [01] CPU structure, Files & I/O Directories
  ===========================================
@@ -29,8 +29,8 @@
  Input file     is   yambo.in
  Report file    is   ./r-08_bse_DbGd_optics_bse_bsk_bss_em1s
  Job string(main): 08_bse_DbGd
-             (#1): 04_MAP_fine_grid-serial-devel-dbgd-X
-             (#2): R1
+             (#1): 04_MAP_fine_grid-serial-devel-double-grid
+             (#2): R3
  Log files      in ./LOG
   
  [RD./SAVE//ns.db1]------------------------------------------
@@ -138,16 +138,13 @@
   [02.05] Double K-grid
   =====================
 
-  K-points             :  418
-  Bands                :  32
-  Is the grid expanded :yes
-
+  Kpts (IBZ): CG,FG,DUPL.    :   10   408     0
+  Kpts ( BZ): CG,FG,DUPL.    :   256  16384      0
+  Bands                      :  32
 
   [02.06] Energies [ev] & Occupations
   ===================================
 
-
-  [WARNING] Double grid produces   8.008654 e-.
   [X]Fermi Level        [ev]:  6.624800
   [X]VBM / CBm          [ev]: -0.612258  0.519713
   [X]Electronic Temp. [ev K]: 0.1723E-4 0.2000   
@@ -242,7 +239,7 @@
   X grid is uniform     :yes
   BS scattering         :yes
   COLL scattering       :no
- - S/N 002577 -------------------------- v.04.03.00 r.15209 -
+ - S/N 002577 -------------------------- v.04.03.00 r.15212 -
 
  IBZ Q-points : 19
  BZ  Q-points : 256
@@ -313,13 +310,12 @@
    X e/h E range      [ev]:-1.000000 -1.000000
    X xc-Kernel            : none
    X BZ energy Double Grid: no
-   X BZ Double Grid points:0
    Sc/G bands             :  1  10
    Sc/G damping       [ev]:  0.10000
    Sc bands terminator    : no
    Sx RL components       :  89
    QP @ K 001 - 008 : b 001 - 010
-  - S/N 002577 -------------------------- v.04.03.00 r.15209 -
+  - S/N 002577 -------------------------- v.04.03.00 r.15212 -
 
   E<03GoWo_PPA_corrections/ndb.QP[ E-E PPA: 27.21138 XG:  9 Xb:  1  10 Scb:  1  10]
 
@@ -331,30 +327,28 @@
   = FIT report for E<03GoWo_PPA_corrections/ndb.QP[ E-E PPA: 27.21138 XG:  9 Xb:  1  10 Scb:  1  10] =
   = First column (conduction), Second column (valence) =
 
-   Gap correction (database) [ev]:-0.637112
-               (FIT, actual) [ev]: 1.342046
-   Energies 0th order        [ev]: 1.314233  0.609299
-   Energies 1st order            : 1.121778  1.082777
+   Gap correction (database) [ev]:-0.637113
+               (FIT, actual) [ev]: 1.342038
+   Energies 0th order        [ev]: 1.314225  0.609299
+   Energies 1st order            : 1.121781  1.082777
                             Error:   0.0014    0.0021
    
 
-  [K]Fermi Level        [ev]:  1.229615
-  [K]VBM / CBm          [ev]: -1.183141  0.571012
+  [K]Fermi Level        [ev]:  1.229612
+  [K]VBM / CBm          [ev]: -1.183137  0.571020
   [K]Electronic Temp. [ev K]: 0.1723E-4 0.2000   
   [K]Bosonic    Temp. [ev K]:  0.00      0.00    
   [K]Finite Temperature mode: no
   [K]El. density      [cm-3]: 0.205E+24
   [K]States summary         : Full        Metallic    Empty
                                  0001-0004               0005-0032
-  [K]Indirect Gaps      [ev]: 1.754154  4.804517
-  [K]Direct Gaps        [ev]: 3.770036  6.512689
-  [QP apply] Ind. Gap Correction   [ev]: 0.622183
+  [K]Indirect Gaps      [ev]: 1.754157  4.804520
+  [K]Direct Gaps        [ev]: 3.770025  6.512676
+  [QP apply] Ind. Gap Correction   [ev]: 0.622186
 
  [04] Static Dielectric Matrix
  =============================
 
-
- DbGd@q[1] k->k-q transitions included [%]: 1.538462
  [RD./SAVE//ns.kb_pp_pwscf]----------------------------------
   Fragmentation                    :yes
  - S/N 002577 -------------------------- v.04.00.01 r.04546 -
@@ -380,7 +374,7 @@
   Direct v evaluation    :no
   Field momentum norm    :0.1000E-4
   Wavefunctions          :Slater exchange(X)+Perdew & Zunger(C)
- - S/N 002577 -------------------------- v.04.03.00 r.15209 -
+ - S/N 002577 -------------------------- v.04.03.00 r.15212 -
  [WR./08_bse_DbGd//ndb.em1s]---------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ):  19  256   10  256
   RL vectors                   (WF):  411
@@ -402,16 +396,13 @@
   [r,Vnl] included       :yes
   Field direction        :0.1000E-4  0.000     0.000   
   BZ energy Double Grid  :yes
-  BZ energy DbGd points  :  418
-  BZ Q point size factor : 1.000000
+  BZ energy DbGd points  : 16640
  [WR./08_bse_DbGd//ndb.em1s_fragment_1]----------------------
   :: Current Q-pt index     : 1
   :: X energy range     [ev]: 0.00      0.00    
   :: X damping range    [ev]:0.1000E-2 0.1000E-2
   :: Number of frequencies  : 1
- - S/N 002577 -------------------------- v.04.03.00 r.15209 -
-
- DbGd@q[2] k->k-q transitions included [%]: 1.420118
+ - S/N 002577 -------------------------- v.04.03.00 r.15212 -
  [WF] Performing Wave-Functions I/O from ./SAVE
 
  [FFT-X] Mesh size: 12  12  12
@@ -421,47 +412,15 @@
   :: X energy range     [ev]: 0.00      0.00    
   :: X damping range    [ev]:0.1000E-2 0.1000E-2
   :: Number of frequencies  : 1
- - S/N 002577 -------------------------- v.04.03.00 r.15209 -
+ - S/N 002577 -------------------------- v.04.03.00 r.15212 -
 
- DbGd@q[3] k->k-q transitions included [%]: 1.365385
-
- DbGd@q[4] k->k-q transitions included [%]: 1.364645
-
- DbGd@q[5] k->k-q transitions included [%]: 1.365385
-
- DbGd@q[6] k->k-q transitions included [%]: 1.365385
-
- DbGd@q[7] k->k-q transitions included [%]: 1.390533
-
- DbGd@q[8] k->k-q transitions included [%]: 1.379438
-
- DbGd@q[9] k->k-q transitions included [%]: 1.360947
-
- DbGd@q[10] k->k-q transitions included [%]: 1.375740
-
- DbGd@q[11] k->k-q transitions included [%]: 1.366124
-
- DbGd@q[12] k->k-q transitions included [%]: 1.360947
-
- DbGd@q[13] k->k-q transitions included [%]: 1.360947
-
- DbGd@q[14] k->k-q transitions included [%]: 1.366124
-
- DbGd@q[15] k->k-q transitions included [%]: 1.366864
-
- DbGd@q[16] k->k-q transitions included [%]: 1.366864
-
- DbGd@q[17] k->k-q transitions included [%]: 1.360947
-
- DbGd@q[18] k->k-q transitions included [%]: 1.368343
-
- DbGd@q[19] k->k-q transitions included [%]: 1.360947
-
- Timing [Min/Max/Average]: 04s/04s/04s
+ Timing [Min/Max/Average]: 39s/39s/39s
 
  [05] Response Functions in Transition space
  ===========================================
 
+
+ [WARNING]Allocation of k%ptbz failed. Object was already allocated in [%ptbz]
 
   [05.01] Transition Groups build-up
   ==================================
@@ -495,7 +454,7 @@
    Direct v evaluation    :no
    Field momentum norm    :0.1000E-4
    Wavefunctions          :Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 002577 -------------------------- v.04.03.00 r.15209 -
+  - S/N 002577 -------------------------- v.04.03.00 r.15212 -
 
   [05.04] Bethe-Salpeter (Resonant CORRRELATION EXCHANGE)
   =======================================================
@@ -526,14 +485,13 @@
     [r,Vnl] included       :yes
     Field direction        :0.1000E-4  0.000     0.000   
     BZ energy Double Grid  :yes
-    BZ energy DbGd points  :  418
-    BZ Q point size factor : 1.000000
+    BZ energy DbGd points  : 16640
    [RD./08_bse_DbGd//ndb.em1s_fragment_1]----------------------
     :: Current Q-pt index     : 1
     :: X energy range     [ev]: 0.00      0.00    
     :: X damping range    [ev]:0.1000E-2 0.1000E-2
     :: Number of frequencies  : 1
-   - S/N 002577 -------------------------- v.04.03.00 r.15209 -
+   - S/N 002577 -------------------------- v.04.03.00 r.15212 -
    [WF] Performing Wave-Functions I/O from ./SAVE
 
    [FFT-BSK] Mesh size: 12  12  12
@@ -553,7 +511,7 @@
     BS kernel          wavefunctions :Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies      :Slater exchange(X)+Perdew & Zunger(C)
                        wavefunctions :Slater exchange(X)+Perdew & Zunger(C)
-    BSK|Identifier              :  3926
+    BSK|Identifier              :  4876
        |Dimension               : 2304
        |Bands                   :  2   7
        |Exchange           [res]:yes
@@ -579,7 +537,7 @@
        |xc-Kernel               :none
     RIM|RL components      [col]:0
        |Random points      [col]:0
-   - S/N 002577 -------------------------- v.04.03.00 r.15209 -
+   - S/N 002577 -------------------------- v.04.03.00 r.15212 -
 
    [05.04.03] Kernel loop
    ======================
@@ -594,13 +552,11 @@
   [06.01] Inversion solver
   ========================
 
-
-  DbGd@q[1] k->k-q transitions included [%]: 1.538462
   [PERTURBATIVE INV@EPS] Converged frequencies : 101
   [FULL INV@EPS] Frequencies TODO :0
   [WR./08_bse_DbGd//ndb.BS_invert_Q1]-------------------------
    BS kernel          energies      : E < 03GoWo_PPA_corrections/ndb.QP + E Fit
-   BSK Identifier                  :  3926
+   BSK Identifier                  :  4876
    Field direction                 :0.1000E-4  0.000     0.000   
    Using energy Double Grid        :yes
    Energy range                [ev]: 1.000000  6.000000
@@ -612,19 +568,19 @@
    [PL]  Number of frequencies     : 101
    [PL]  Perturbative to full ratio: 1.000000
    [PL]  Treshold             [o/o]: 0.500000
-  - S/N 002577 -------------------------- v.04.03.00 r.15209 -
+  - S/N 002577 -------------------------- v.04.03.00 r.15212 -
 
- Timing [Min/Max/Average]: 15s/15s/15s
+ Timing [Min/Max/Average]: 01m-14s/01m-14s/01m-14s
 
  [07] Timing Overview
  ====================
 
  Routines: global (Only MASTER cpu here)
                                io_WF :     0.00s CPU (      37 calls,   0.000 s avg)
-                             io_GROT :     0.00s CPU (       2 calls,   0.001 s avg)
-                            io_QINDX :     0.00s CPU (       2 calls,   0.001 s avg)
+                             io_GROT :     0.00s CPU (       2 calls,   0.002 s avg)
+                            io_QINDX :     0.00s CPU (       2 calls,   0.002 s avg)
                           io_COL_CUT :     0.00s CPU
-                      io_Double_Grid :     0.00s CPU
+                      io_Double_Grid :     0.00s CPU (       2 calls,   0.000 s avg)
                                io_HF :     0.00s CPU
                           io_DIPOLES :     0.00s CPU (      24 calls,   0.000 s avg)
                          io_KB_pwscf :     0.00s CPU (      12 calls,   0.000 s avg)
@@ -633,10 +589,10 @@
                                io_BS :     0.00s CPU (      58 calls,   0.001 s avg)
                         io_QP_and_GF :     0.00s CPU
              IO_and_Messaging_switch :     0.00s CPU (       7 calls,   0.000 s avg)
-                             Dipoles :     0.00s CPU (       2 calls,   0.011 s avg)
+                             Dipoles :     0.00s CPU (       2 calls,   0.014 s avg)
                    DIPOLE_transverse :     0.00s CPU
                          io_fragment :     0.00s CPU (      99 calls,   0.000 s avg)
-                      Xo (procedure) :     3.00s CPU (      19 calls,   0.169 s avg)
+                      Xo (procedure) :    38.00s CPU (      19 calls,   2.045 s avg)
                           Xo (REDUX) :     0.00s CPU (      19 calls,   0.000 s avg)
                        X (procedure) :     0.00s CPU (      19 calls,   0.000 s avg)
                       LINEAR ALGEBRA :     0.00s CPU (      19 calls,   0.000 s avg)
@@ -645,34 +601,35 @@
                       eval_G_minus_G :     0.00s CPU
                           T_space IP :     0.00s CPU
                     X T_space Kernel :     3.00s CPU
-                    T_space EXX Osc. :     0.00s CPU (      10 calls,   0.000 s avg)
-                   T_space CORR Osc. :     0.00s CPU (      55 calls,   0.017 s avg)
-                    Inversion Solver :    15.00s CPU
-                       io_BSS_invert :     0.00s CPU (       3 calls,   0.001 s avg)
+                    T_space EXX Osc. :     0.00s CPU (      10 calls,   0.001 s avg)
+                   T_space CORR Osc. :     1.00s CPU (      55 calls,   0.022 s avg)
+                    Inversion Solver :  1m14.00s CPU
+                       io_BSS_invert :     0.00s CPU (       3 calls,   0.000 s avg)
 
  [08] Memory Overview
  ====================
 
  Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 1.000000Mb (basic treshold)  10.00000Mb (SAVEs treshold)
+ Memory treshold are: 1.024000Gb (basic treshold)  10.24000Gb (SAVEs treshold)
 
-         TOTAL not deallocated :  2.236000Mb
+         TOTAL not deallocated :  2.105344Gb
 
  MAX allocations:
 
                BS_blk(iB)%mat [%mat] :  23.88787Gb ([05.02] CPU-dependent Block structure)
+                    K_slk%blc [%blc] :  42.46733Gb ([06.01] Inversion solver)
                               BS_mat :  42.46733Gb ([06.01] Inversion solver)
 
-         Max memory used   :  67.44500Mb
+         Max memory used   :  108.7340Mb
 
  [09] Game Over & Game summary
  =============================
 
- 01/16/2018 at 10:49 YAMBO @ anomaly [start]
- 01/16/2018 at 10:49                 [end]
+ 01/17/2018 at 16:20 YAMBO @ narro [start]
+ 01/17/2018 at 16:22               [end]
 
- Timing   [Min/Max/Average]: 23s/23s/23s
-             [Time-Profile]:  24.01539s
+ Timing   [Min/Max/Average]: 01m-56s/01m-56s/01m-56s
+             [Time-Profile]:  116.8360s
 
  .-ACKNOWLEDGMENT
  |
@@ -698,9 +655,6 @@
  | ElecTemp=0.1723E-4     eV      # Electronic Temperature
  | BoseTemp= 0.000000     eV      # Bosonic Temperature
  | FFTGvecs=  411         RL      # [FFT] Plane-waves
- | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
- | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
- | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
  | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
  | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
  | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc

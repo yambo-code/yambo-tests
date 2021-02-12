@@ -1,0 +1,68 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
+#                                                                     
+#       Version 5.0.1 Revision 19026 Hash 65cebe1a5                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+em1s                             # [R][Xs] Statically Screened Interaction
+optics                           # [R] Linear Response optical properties
+bss                              # [R] BSE solver
+bse                              # [R][BSE] Bethe Salpeter Equation.
+dipoles                          # [R] Oscillator strenghts (or dipoles)
+
+Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+
+BSENGexx= 4000            RL    # [BSK] Exchange components
+BSENGBlk= 200            RL    # [BSK] Exchange components
+#WehCpl                          # [BSK] eh interaction included also in coupling
+BSEprop= "magnons"              # [BSE] abs/kerr/magn/dichr trace
+BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSHayTrs=0.001
+#BSHayTer
+BSHayItrMAX=200
+
+rim_cut
+CUTGeo= "ws xyz"             # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere
+CUTwsGvec= 0.700000            # [CUT] WS cutoff: number of G to be modified
+
+KfnQPdb=" E < 03_gw_pauli/ndb.QP"
+
+% BSEQptR
+ 1 | 1 |                             # [BSK] Transferred momenta range
+%
+% BSEBands
+  14 | 19 |                           # [BSK] Bands range
+%
+% BEnRange
+ -3.00000 | 3.00000 |         eV    # [BSS] Energy range
+%
+% BDmRange
+ 0.010000 | 0.010000 |         eV    # [BSS] Damping range
+%
+BEnSteps= 2001                    # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+#WRbsWF                        # [BSS] Write to disk excitonic the WFs
+% BndsRnXs
+  14 | 19 |                           # [Xs] Polarization function bands
+%
+NGsBlkXs= 200                RL    # [Xs] Response block size
+% LongDrXs
+ 1.000000 | 1.000000 | 1.000000 |        # [Xs] [cc] Electric Field
+%
+XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
+
+
+

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#        Copyright (C) 2000-2019 the YAMBO team
+#        Copyright (C) 2000-2020 the YAMBO team
 #              http://www.yambo-code.org
 #
 # Authors (see AUTHORS file for details): AM
@@ -32,4 +32,21 @@ $ROBOTS{'narro'} = 'narro';
 $ROBOTS{'VivoBook'} = 'VivoBook';
 $ROBOTS{'bacalhau'} = 'bacalhau';
 $ROBOTS{'doncamillo'} = 'doncamillo';
+$ROBOTS{'corvina'} = 'corvina.fisica.unimo.it';
 $ROBOTS{'lyskamm'} = 'lyskamm.mlib.ism.cnr.it';
+$ROBOTS{'baym'} = 'baym';
+$ROBOTS{'claudio-notebook'} = 'claudio-notebook';
+$ROBOTS{'endangered.dodo'} = 'endangered.dodo';
+$ROBOTS{'frontend'} = 'frontend';
+$ROBOTS{'attacc-lavoro'} = 'attacc-lavoro';
+$ROBOTS{'unimi-XPS-8930'} = 'unimi-XPS-8930';
+$ROBOTS{'attacc-portatile'} = 'attacc-portatile';
+$ROBOTS{'attacc-portatile'} = 'attacc-portatile';
+$ROBOTS{'attacc-portatile'} = 'attacc-portatile';
+$ROBOTS{'attacc-portatile'} = 'attacc-portatile';
+$ROBOTS{'attacc-portatile'} = 'attacc-portatile';
+$ROBOTS{'attacc-portatile'} = 'attacc-portatile';
+$ROBOTS{'yurigagarin'} = 'yurigagarin.local';
+$ROBOTS{'attacc-lavoro'} = 'attacc-lavoro';
+$ROBOTS{'VivoBook'} = 'VivoBook';
+$ROBOTS{'AcerAspire'} = 'AcerAspire';
