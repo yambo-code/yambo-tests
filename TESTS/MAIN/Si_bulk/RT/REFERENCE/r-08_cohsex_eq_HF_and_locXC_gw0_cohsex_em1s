@@ -1,19 +1,19 @@
                                                                           
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
                                                                           
-    Y88b    /   e           e    e      888~~\    ,88~-_                  
-     Y88b  /   d8b         d8b  d8b     888   |  d888   \                 
-      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |                
-       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |                
-        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /                 
-       /   /      Y88b /          Y888b 888__/    `88_-~                  
-                                                                          
-                                                                          
-         Version 5.0.1 Revision 19426 Hash 611f1c556                      
+         Version 5.0.1 Revision 19427 Hash b8253a486                      
                    Branch is devel-andreaM                                
-                      MPI+HDF5_IO Build                                   
+              MPI+OpenMP+SLK+SLEPC+HDF5_IO Build                          
                   http://www.yambo-code.org                               
  
- 01/26/2021 at 16:28 yambo_rt @ baym
+ 01/27/2021 at 11:22 yambo_rt @ baym
  ==================================================
 
  Cores               :  1
@@ -41,7 +41,7 @@
   K-points                                         :  3
   G-vectors                                        :  2085 [RL space]
   Components                                       :  266 [wavefunctions]
-  Symmetries                                       :   48 [spatial+T-reV]
+  Symmetries                                       :  24 [spatial]
   Spinor components                                :  1
   Spin polarizations                               :  1
   Temperature                                      :  0.000000 [eV]
@@ -49,8 +49,10 @@
   WF G-vectors                                     :   369
   Max atoms/species                                :  2
   No. of atom species                              :  1
+  Exact exchange fraction in XC                    :  0.000000
+  Exact exchange screening in XC                   :  0.000000
   Magnetic symmetries                              : no
- - S/N 003129 ---------------------------------------------- v.03.04.00 r.02830 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
 
  [02] CORE Variables Setup
  =========================
@@ -79,12 +81,10 @@
   [02.02] Symmetries
   ==================
 
-  Inversion symmetry    : yes
+  Inversion symmetry    : no
   Spatial inversion     : no
-  Inversion index       :  25
-  K-space Time-reversal : yes
+  K-space Time-reversal : no
   Magnetic symmetries   : no
-  Time-reversal derived K-space symmetries:   25   48
   Group table correct   : yes
   Symmetries units      :  [cc]
 
@@ -112,30 +112,6 @@
    [S 22]:  1.000000  0.000000  0.000000  0.000000  0.000000  1.000000  0.000000  1.000000  0.000000
    [S 23]: -1.000000  0.000000  0.000000  0.000000  0.000000  1.000000  0.000000 -1.000000  0.000000
    [S 24]: -1.000000  0.000000  0.000000  0.000000  0.000000 -1.000000  0.000000  1.000000  0.000000
-   [S*25]: -1.000000 -0.000000 -0.000000 -0.000000 -1.000000 -0.000000 -0.000000 -0.000000 -1.000000
-   [S*26]:  1.000000 -0.000000 -0.000000 -0.000000  1.000000 -0.000000 -0.000000 -0.000000 -1.000000
-   [S*27]:  1.000000 -0.000000 -0.000000 -0.000000 -1.000000 -0.000000 -0.000000 -0.000000  1.000000
-   [S*28]: -1.000000 -0.000000 -0.000000 -0.000000  1.000000 -0.000000 -0.000000 -0.000000  1.000000
-   [S*29]: -0.000000 -0.000000 -1.000000 -1.000000 -0.000000 -0.000000 -0.000000 -1.000000 -0.000000
-   [S*30]: -0.000000 -0.000000  1.000000  1.000000 -0.000000 -0.000000 -0.000000 -1.000000 -0.000000
-   [S*31]: -0.000000 -0.000000  1.000000 -1.000000 -0.000000 -0.000000 -0.000000  1.000000 -0.000000
-   [S*32]: -0.000000 -0.000000 -1.000000  1.000000 -0.000000 -0.000000 -0.000000  1.000000 -0.000000
-   [S*33]: -0.000000 -1.000000 -0.000000 -0.000000 -0.000000 -1.000000 -1.000000 -0.000000 -0.000000
-   [S*34]: -0.000000  1.000000 -0.000000 -0.000000 -0.000000  1.000000 -1.000000 -0.000000 -0.000000
-   [S*35]: -0.000000  1.000000 -0.000000 -0.000000 -0.000000 -1.000000  1.000000 -0.000000 -0.000000
-   [S*36]: -0.000000 -1.000000 -0.000000 -0.000000 -0.000000  1.000000  1.000000 -0.000000 -0.000000
-   [S*37]: -0.000000  1.000000 -0.000000  1.000000 -0.000000 -0.000000 -0.000000 -0.000000 -1.000000
-   [S*38]: -0.000000 -1.000000 -0.000000 -1.000000 -0.000000 -0.000000 -0.000000 -0.000000 -1.000000
-   [S*39]: -0.000000 -1.000000 -0.000000  1.000000 -0.000000 -0.000000 -0.000000 -0.000000  1.000000
-   [S*40]: -0.000000  1.000000 -0.000000 -1.000000 -0.000000 -0.000000 -0.000000 -0.000000  1.000000
-   [S*41]: -0.000000 -0.000000  1.000000 -0.000000 -1.000000 -0.000000  1.000000 -0.000000 -0.000000
-   [S*42]: -0.000000 -0.000000 -1.000000 -0.000000 -1.000000 -0.000000 -1.000000 -0.000000 -0.000000
-   [S*43]: -0.000000 -0.000000 -1.000000 -0.000000  1.000000 -0.000000  1.000000 -0.000000 -0.000000
-   [S*44]: -0.000000 -0.000000  1.000000 -0.000000  1.000000 -0.000000 -1.000000 -0.000000 -0.000000
-   [S*45]: -1.000000 -0.000000 -0.000000 -0.000000 -0.000000  1.000000 -0.000000  1.000000 -0.000000
-   [S*46]: -1.000000 -0.000000 -0.000000 -0.000000 -0.000000 -1.000000 -0.000000 -1.000000 -0.000000
-   [S*47]:  1.000000 -0.000000 -0.000000 -0.000000 -0.000000 -1.000000 -0.000000  1.000000 -0.000000
-   [S*48]:  1.000000 -0.000000 -0.000000 -0.000000 -0.000000  1.000000 -0.000000 -1.000000 -0.000000
 
   [02.03] Reciprocal space
   ========================
@@ -156,9 +132,9 @@
 
   Compatible Grid is   : 3D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.238269E-8 -0.500000     0.238269E-8 [rlu]
-  K_min[ 2 ] : -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
-  K_min[ 3 ] : -0.500000     0.238269E-8 -0.238269E-8 [rlu]
+  K_min[ 1 ] :  0.000000 -0.500000  0.000000 [rlu]
+  K_min[ 2 ] :  0.000000  0.000000 -0.500000 [rlu]
+  K_min[ 3 ] : -0.500000  0.000000  0.000000 [rlu]
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
 
@@ -194,13 +170,12 @@
   Polarization last K                              :  3
   QP states                                        :  1  3
   X grid is uniform                                : yes
-  Grids                                            : X B S
-  *ERR*BS scattering                               : yes
+  Grids                                            : X S
+  BS scattering                                    : no
   COLL scattering                                  : no
   Sigma scattering                                 : yes
   X scattering                                     : yes
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
- [BZ sampling] Q-grid is User defined and/or read from the database
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
 
  IBZ Q-points :  3
  BZ  Q-points :   8
@@ -209,27 +184,8 @@
  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
  Q [1]:  0.000000  0.000000  0.000000 [rlu]
- Q [2]: -0.686608E-8 -0.686608E-8  0.500000    [rlu]
+ Q [2]:  0.000000  0.000000  0.500000 [rlu]
  Q [3]:  0.000000  0.500000  0.500000 [rlu]
-
-  [03.01] X indexes
-  =================
-
-
-   [03.01.01] Sigma indexes
-   ========================
-
-   [WR./SAVE//ndb.kindx]-----------------------------------------------------------
-    Fragmentation                                    : no
-    Polarization last K                              :  3
-    QP states                                        :  1  3
-    X grid is uniform                                : yes
-    Grids                                            : X S
-    BS scattering                                    : no
-    COLL scattering                                  : no
-    Sigma scattering                                 : yes
-    X scattering                                     : yes
-   - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
 
  [04] Dipoles
  ============
@@ -257,7 +213,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
 
  [05] Static Dielectric Matrix
  =============================
@@ -287,7 +243,7 @@
   BZ energy Double Grid                            : no
   BZ energy DbGd points                            : 0
   BZ Q point size factor                           :  1.000000
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
  [RD./08_cohsex_eq//ndb.dipoles]-------------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   8   3   8
   RL vectors                                       :   387 [WF]
@@ -304,7 +260,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
  [FFT-X] Mesh size:  12  12  12
 
  [X-CG] R(p) Tot o/o(of R):   17  128  100
@@ -313,14 +269,14 @@
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000  0.100000 eV
   Number of frequencies                            :  1
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
  [X-CG] R(p) Tot o/o(of R):   24  128  100
  [WR./08_cohsex_eq//ndb.em1s_fragment_2]-----------------------------------------
   Current Q-pt index                               :  2
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000  0.100000 eV
   Number of frequencies                            :  1
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
  [X-CG] R(p) Tot o/o(of R):   21  128  100
 
  [06] Local Exchange-Correlation + Non-Local Fock
@@ -348,7 +304,7 @@
   Exchange summation bands                         :   4
   RIM RL components                                : 0
   RIM random points                                : 0
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
+ - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
 
  [xc] E_xc :  -2.441824 [Ha]
       E_xc :  -4.883649 [Ry]
@@ -405,6 +361,8 @@
    
    
 
+  [WARNING]Symmetrize states with the same energy: in rare case this symmetrization can introduce errors
+
  [07] Dyson equation: Newton solver
  ==================================
 
@@ -451,7 +409,11 @@
    X energy range                                   :  0.000000  0.000000 eV
    X damping range                                  :  0.100000  0.100000 eV
    Number of frequencies                            :  1
-  - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
+  - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
+
+  [WARNING]Detected a degeneracy breakdown induced by COHSEX Sc of  3.824941% in states (n,k)=(4,3)-(3,3)
+
+  [WARNING]Detected a degeneracy breakdown induced by COHSEX Sc of  6.068382% in states (n,k)=(4,1)-(2,1)-(3,1)
 
   [07.02] QP properties and I/O
   =============================
@@ -464,26 +426,26 @@
   -nlXC: non-Local XC (Hartree-Fock)
 
   QP [eV] @ K [1] (iku):  0.000000  0.000000  0.000000
-   B=2 Eo=  0.00 E= -1.50 E-Eo= -1.50 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.46744 lXC=-11.39291 So=  0.57575
-   B=3 Eo=  0.00 E= -1.39 E-Eo= -1.39 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.46744 lXC=-11.39289 So=  0.68256
-   B=4 Eo=  0.00 E= -1.24 E-Eo= -1.24 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.46743 lXC=-11.39290 So=  0.83448
-   B=5 Eo=  2.44 E=  2.79 E-Eo=  0.35 Re(Z)=1.00 Im(Z)=  0.00000 nlXC= -4.97465 lXC=-10.04041 So= -4.71812
-   B=6 Eo=  2.44 E=  2.79 E-Eo=  0.35 Re(Z)=1.00 Im(Z)=  0.00000 nlXC= -4.97465 lXC=-10.04042 So= -4.71942
-   B=7 Eo=  2.44 E=  2.78 E-Eo=  0.34 Re(Z)=1.00 Im(Z)=  0.00000 nlXC= -4.97465 lXC=-10.04040 So= -4.72766
+   B=2 Eo=  0.00 E= -1.38 E-Eo= -1.38 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.46744 lXC=-11.39291 So=  0.69760
+   B=3 Eo=  0.00 E= -1.38 E-Eo= -1.38 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.46744 lXC=-11.39289 So=  0.69760
+   B=4 Eo=  0.00 E= -1.38 E-Eo= -1.38 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.46743 lXC=-11.39290 So=  0.69760
+   B=5 Eo=  2.44 E=  2.78 E-Eo=  0.34 Re(Z)=1.00 Im(Z)=  0.00000 nlXC= -4.97465 lXC=-10.04041 So= -4.72173
+   B=6 Eo=  2.44 E=  2.78 E-Eo=  0.34 Re(Z)=1.00 Im(Z)=  0.00000 nlXC= -4.97465 lXC=-10.04042 So= -4.72173
+   B=7 Eo=  2.44 E=  2.78 E-Eo=  0.34 Re(Z)=1.00 Im(Z)=  0.00000 nlXC= -4.97465 lXC=-10.04040 So= -4.72173
 
   QP [eV] @ K [2] (iku):  0.500000 -0.500000  0.500000
    B=2 Eo= -7.20 E= -9.22 E-Eo= -2.02 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.61293 lXC=-10.17719 So=  1.41323
-   B=3 Eo= -1.26 E= -2.60 E-Eo= -1.34 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.31370 lXC=-11.11119 So=  0.86085
-   B=4 Eo= -1.26 E= -2.60 E-Eo= -1.34 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.31370 lXC=-11.11120 So=  0.86056
+   B=3 Eo= -1.26 E= -2.60 E-Eo= -1.34 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.31370 lXC=-11.11119 So=  0.86070
+   B=4 Eo= -1.26 E= -2.60 E-Eo= -1.34 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.31370 lXC=-11.11120 So=  0.86070
    B=5 Eo=  1.52 E=  1.77 E-Eo=  0.25 Re(Z)=1.00 Im(Z)=  0.00000 nlXC= -5.09548 lXC=-10.13258 So= -4.78927
-   B=6 Eo=  3.19 E=  3.76 E-Eo=  0.57 Re(Z)=1.00 Im(Z)= 0.000000 nlXC=-4.482603 lXC=-9.674896 So=-4.621428
-   B=7 Eo=  3.19 E=  3.76 E-Eo=  0.58 Re(Z)=1.00 Im(Z)= 0.000000 nlXC=-4.482605 lXC=-9.674893 So=-4.616921
+   B=6 Eo=  3.19 E=  3.76 E-Eo=  0.57 Re(Z)=1.00 Im(Z)= 0.000000 nlXC=-4.482603 lXC=-9.674896 So=-4.619174
+   B=7 Eo=  3.19 E=  3.76 E-Eo=  0.57 Re(Z)=1.00 Im(Z)= 0.000000 nlXC=-4.482605 lXC=-9.674893 So=-4.619174
 
   QP [eV] @ K [3] (iku):  0.000000 -1.000000  0.000000
    B=2 Eo= -7.90 E= -9.76 E-Eo= -1.86 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-14.98414 lXC=-10.85461 So=  2.26463
-   B=3 Eo= -3.01 E= -4.46 E-Eo= -1.45 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.06214 lXC=-10.62166 So=  0.99510
-   B=4 Eo= -3.01 E= -4.37 E-Eo= -1.36 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.06214 lXC=-10.62168 So=  1.07754
-   B=5 Eo=  0.44 E=  0.57 E-Eo=  0.14 Re(Z)=1.00 Im(Z)= 0.000000 nlXC=-4.275577 lXC=-9.027228 So=-4.614840
+   B=3 Eo= -3.01 E= -4.41 E-Eo= -1.40 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.06214 lXC=-10.62166 So=  1.03632
+   B=4 Eo= -3.01 E= -4.41 E-Eo= -1.40 Re(Z)=1.00 Im(Z)=  0.00000 nlXC=-13.06214 lXC=-10.62168 So=  1.03632
+   B=5 Eo=  0.44 E=  0.57 E-Eo=  0.14 Re(Z)=1.00 Im(Z)= 0.000000 nlXC=-4.275577 lXC=-9.027228 So=-4.614841
    B=6 Eo=  0.44 E=  0.57 E-Eo=  0.14 Re(Z)=1.00 Im(Z)= 0.000000 nlXC=-4.275575 lXC=-9.027223 So=-4.614841
    B=7 Eo= 10.16 E= 10.83 E-Eo=  0.68 Re(Z)=1.00 Im(Z)=  0.00000 nlXC= -3.78383 lXC=-10.52823 So= -6.06793
 
@@ -517,53 +479,52 @@
    GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
    Xs energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
    Xs WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 003129 ---------------------------------------------- v.05.00.01 r.19426 -
+  - S/N 003129 ---------------------------------------------- v.05.00.01 r.19427 -
 
  [08] Timing Overview
  ====================
 
  Clock: global
                                        GW(REDUX) :      0.0000s CPU
+                                      Xo (REDUX) :      0.0000s CPU ( 3 calls,   0.000 msec avg)
                                        HF(REDUX) :      0.0000s CPU
                                 io_ATMPROJ_pwscf :      0.0000s CPU
-                                      Xo (REDUX) :      0.0000s CPU ( 3 calls,   0.003 msec avg)
                                     io_KB_abinit :      0.0000s CPU
+      MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0000s CPU ( 3 calls,   0.003 msec avg)
+      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU ( 3 calls,   0.004 msec avg)
                                       io_COL_CUT :      0.0000s CPU
+                                       X (REDUX) :      0.0000s CPU ( 3 calls,   0.005 msec avg)
                                            io_BS :      0.0000s CPU
-      MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0000s CPU ( 3 calls,   0.007 msec avg)
-      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU ( 3 calls,   0.010 msec avg)
                                   io_Double_Grid :      0.0000s CPU
-                                         io_ELPH :      0.0000s CPU ( 2 calls,   0.017 msec avg)
-                                io_RT_components :      0.0000s CPU ( 2 calls,   0.018 msec avg)
-                                       X (REDUX) :      0.0000s CPU ( 3 calls,   0.016 msec avg)
-                                   io_COLLISIONS :      0.0001s CPU ( 3 calls,   0.018 msec avg)
-                                    PP_uspp_init :      0.0001s CPU ( 6 calls,   0.013 msec avg)
-                         IO_and_Messaging_switch :      0.0001s CPU (13 calls,   0.009 msec avg)
-                                     io_KB_pwscf :      0.0007s CPU ( 5 calls,   0.131 msec avg)
-                                    scatter_Gamp :      0.0008s CPU (57 calls,   0.014 msec avg)
-                               SERIAL_lin_system :      0.0021s CPU ( 3 calls,   0.703 msec avg)
-                                  LINEAR ALGEBRA :      0.0021s CPU ( 3 calls,   0.710 msec avg)
-                                  eval_G_minus_G :      0.0022s CPU
-                                         io_GROT :      0.0025s CPU ( 2 calls,   1.242 msec avg)
-                                           io_HF :      0.0028s CPU ( 3 calls,   0.939 msec avg)
-                                   X (procedure) :      0.0037s CPU ( 3 calls,   1.229 msec avg)
-                                     WF_load_FFT :      0.0040s CPU ( 6 calls,   0.667 msec avg)
-                                        io_QINDX :      0.0047s CPU ( 3 calls,   1.569 msec avg)
-                                      el_density :      0.0047s CPU ( 2 calls,   2.364 msec avg)
-                                     io_fragment :      0.0051s CPU (13 calls,   0.393 msec avg)
-                                    io_QP_and_GF :      0.0062s CPU
-                             XC_potential_driver :      0.0069s CPU ( 2 calls,   3.472 msec avg)
-                                 bz_samp_indexes :      0.0079s CPU
-                               DIPOLE_transverse :      0.0081s CPU
-                                       XCo_local :      0.0083s CPU
-                                           io_WF :      0.0091s CPU (25 calls,   0.362 msec avg)
-                                      io_DIPOLES :      0.0100s CPU (10 calls,   0.999 msec avg)
-                                            io_X :      0.0172s CPU (14 calls,   1.230 msec avg)
-                                         Dipoles :      0.0211s CPU
-                                  Xo (procedure) :      0.0300s CPU ( 3 calls,   9.987 msec avg)
-                                         GW(ppa) :      0.0881s CPU
-                                       FFT_setup :      0.0925s CPU ( 5 calls,  18.497 msec avg)
-                                              HF :      0.2027s CPU
+                         IO_and_Messaging_switch :      0.0000s CPU (13 calls,   0.002 msec avg)
+                                         io_ELPH :      0.0000s CPU ( 2 calls,   0.014 msec avg)
+                                io_RT_components :      0.0000s CPU ( 2 calls,   0.015 msec avg)
+                                   io_COLLISIONS :      0.0000s CPU ( 3 calls,   0.014 msec avg)
+                                    PP_uspp_init :      0.0001s CPU ( 6 calls,   0.009 msec avg)
+                                    scatter_Gamp :      0.0004s CPU (57 calls,   0.006 msec avg)
+                                     io_KB_pwscf :      0.0005s CPU ( 5 calls,   0.093 msec avg)
+                                  eval_G_minus_G :      0.0009s CPU
+                               SERIAL_lin_system :      0.0010s CPU ( 3 calls,   0.338 msec avg)
+                                  LINEAR ALGEBRA :      0.0010s CPU ( 3 calls,   0.340 msec avg)
+                                   X (procedure) :      0.0017s CPU ( 3 calls,   0.561 msec avg)
+                                        io_QINDX :      0.0024s CPU ( 2 calls,   1.214 msec avg)
+                                     WF_load_FFT :      0.0024s CPU ( 6 calls,   0.405 msec avg)
+                                           io_HF :      0.0027s CPU ( 3 calls,   0.903 msec avg)
+                                         io_GROT :      0.0034s CPU ( 3 calls,   1.138 msec avg)
+                                      el_density :      0.0042s CPU ( 2 calls,   2.114 msec avg)
+                                     io_fragment :      0.0049s CPU (13 calls,   0.376 msec avg)
+                               DIPOLE_transverse :      0.0056s CPU
+                             XC_potential_driver :      0.0060s CPU ( 2 calls,   3.009 msec avg)
+                                       FFT_setup :      0.0061s CPU ( 5 calls,   1.213 msec avg)
+                                    io_QP_and_GF :      0.0061s CPU
+                                       XCo_local :      0.0062s CPU
+                                           io_WF :      0.0078s CPU (25 calls,   0.311 msec avg)
+                                      io_DIPOLES :      0.0096s CPU (10 calls,   0.957 msec avg)
+                                  Xo (procedure) :      0.0097s CPU ( 3 calls,   3.239 msec avg)
+                                         Dipoles :      0.0132s CPU
+                                            io_X :      0.0164s CPU (14 calls,   1.171 msec avg)
+                                         GW(ppa) :      0.0295s CPU
+                                              HF :      0.0564s CPU
 
  [09] Memory Overview
  ====================
@@ -572,13 +533,13 @@
  Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  4.214000 [Mb]
+         Max memory used   :  3.250000 [Mb]
 
  [10] Game Over & Game summary
  =============================
 
- 01/26/2021 at 16:28 yambo_rt @ baym [start]
- 01/26/2021 at 16:28                 [end]
+ 01/27/2021 at 11:22 yambo_rt @ baym [start]
+ 01/27/2021 at 11:22                 [end]
 
   
  .-ACKNOWLEDGMENT
@@ -610,6 +571,9 @@
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
  | FFTGvecs=  387             RL    # [FFT] Plane-waves
  | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+ | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+ | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+ | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
  | EXXRLvcs=  609             RL    # [XX] Exchange    RL components
  | VXCRLvcs= 2085             RL    # [XC] XCpotential RL components
  | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
@@ -625,6 +589,7 @@
  |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
  | %
  | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
+ | QPsymmtrz                      # [GW] Force symmetrization of states with the same energy
  | GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
  | GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
  | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
