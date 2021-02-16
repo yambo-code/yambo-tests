@@ -1,17 +1,17 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
                                                                           
-                                                                          
-          Version 5.0.0 Revision 19525 Hash 596cb9576                     
-                     Branch is devel-tddft                                
+         Version 5.0.0 Revision 19525 Hash 596cb9576                      
+                    Branch is devel-tddft                                 
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+                  http://www.yambo-code.org                               
  
  02/16/2021 at 14:48 yambo @ VivoBook
  ==================================================
@@ -27,11 +27,11 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-04_TDDFT_rim_cut_optics_dipoles_bss_bse
+ Report file         : ./r-04_TDDFT_lowcut_rim_cut_optics_dipoles_bss_bse
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 04_TDDFT
+ Job   string        : 04_TDDFT_lowcut
  Alt#1 string        : R2
 
  Precision           : SINGLE
@@ -230,7 +230,7 @@
 
 
  See if it works, next some info has to be dumped to the database
- [WR./04_TDDFT//ndb.cutoff]------------------------------------------------------
+ [WR./04_TDDFT_lowcut//ndb.cutoff]-----------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
   CutOff Geometry                                  : ws xyz
   Coulomb cutoff potential                         : ws xyz  0.700
@@ -254,7 +254,7 @@
  - S/N 002233 ---------------------------------------------- v.04.05.02 r.17118 -
 
  [WARNING] [x,Vnl] slows the Dipoles computation. To neglect it rename the ns.kb_pp file
- [WR./04_TDDFT//ndb.dipoles]-----------------------------------------------------
+ [WR./04_TDDFT_lowcut//ndb.dipoles]----------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
   RL vectors                                       :   3695 [WF]
   Fragmentation                                    : yes
@@ -292,7 +292,7 @@
   Optical renormalization       :  843.5417 [a.u.]
   Polarizability dimension      : volume
 
-  [RD./04_TDDFT//ndb.dipoles]-----------------------------------------------------
+  [RD./04_TDDFT_lowcut//ndb.dipoles]----------------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
    RL vectors                                       :   3695 [WF]
    Fragmentation                                    : yes
@@ -324,7 +324,7 @@
   [06.04] Main kernel loop
   ========================
 
-  [WR./04_TDDFT//ndb.BS_PAR_Q1]---------------------------------------------------
+  [WR./04_TDDFT_lowcut//ndb.BS_PAR_Q1]--------------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
    RL vectors                                       :   3695 [WF]
    Coulomb cutoff potential                         : ws xyz  0.700
@@ -332,7 +332,7 @@
    BS kernel          wavefunctions                 : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    Static diel. fun.  energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   5030
+   [K] Identifier                                   :   7443
    [K] Dimension                                    :   9
    [K] Bands                                        :   2   7
    [K] Exchange                                     : yes
@@ -361,9 +361,9 @@
   [07.01] Diago Solver @q1
   ========================
 
-  [WR./04_TDDFT//ndb.BS_diago_Q1]-------------------------------------------------
+  [WR./04_TDDFT_lowcut//ndb.BS_diago_Q1]------------------------------------------
    BS kernel          energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   5030
+   [K] Identifier                                   :   7443
    [K] Dimension                                    :   9
    [K] Bands                                        :   2   7
    [K] Exchange                                     : yes
@@ -387,7 +387,7 @@
   ====================================================
 
   Accuracy (requested)      :  0.100000E-2 [o/o]
-  Accuracy (reached)        :  0.115011E-5 [o/o]
+  Accuracy (reached)        :  0.752477E-6 [o/o]
   Iterations                :   4
 
  [08] Timing Overview
@@ -398,36 +398,36 @@
                       io_ATMPROJ_pwscf :      0.0000s CPU
                     BSE matrix filling :      0.0000s CPU
                           io_KB_abinit :      0.0000s CPU
+                          PP_uspp_init :      0.0000s CPU ( 2 calls,   0.021 msec avg)
                IO_and_Messaging_switch :      0.0000s CPU (11 calls,   0.004 msec avg)
-                          PP_uspp_init :      0.0000s CPU ( 2 calls,   0.025 msec avg)
                 BSE components folding :      0.0001s CPU
                                  io_HF :      0.0001s CPU
                         io_Double_Grid :      0.0001s CPU
-                                  io_X :      0.0001s CPU ( 4 calls,   0.029 msec avg)
+                                  io_X :      0.0001s CPU ( 4 calls,   0.030 msec avg)
                            io_fragment :      0.0001s CPU ( 3 calls,   0.049 msec avg)
-                                 io_BS :      0.0003s CPU ( 2 calls,   0.126 msec avg)
+                                 io_BS :      0.0002s CPU ( 2 calls,   0.090 msec avg)
       SERIAL_HERMITIAN_diagonalization :      0.0003s CPU
                         LINEAR ALGEBRA :      0.0003s CPU
-                           io_KB_pwscf :      0.0013s CPU ( 3 calls,   0.421 msec avg)
-                                 io_WF :      0.0016s CPU ( 7 calls,   0.225 msec avg)
-                            io_COL_CUT :      0.0080s CPU ( 4 calls,   2.007 msec avg)
-                          io_BSS_diago :      0.0083s CPU ( 2 calls,   4.140 msec avg)
-                        io_BSS_Haydock :      0.0090s CPU ( 2 calls,   4.478 msec avg)
-                              io_QINDX :      0.0098s CPU ( 2 calls,   4.882 msec avg)
+                           io_KB_pwscf :      0.0013s CPU ( 3 calls,   0.432 msec avg)
+                                 io_WF :      0.0016s CPU ( 7 calls,   0.223 msec avg)
+                           WF_load_FFT :      0.0026s CPU ( 2 calls,   1.324 msec avg)
+                      T_space EXX Osc. :      0.0048s CPU
+                          io_BSS_diago :      0.0082s CPU ( 2 calls,   4.091 msec avg)
+                            io_COL_CUT :      0.0082s CPU ( 4 calls,   2.059 msec avg)
+                        io_BSS_Haydock :      0.0086s CPU ( 2 calls,   4.281 msec avg)
+                              io_QINDX :      0.0098s CPU ( 2 calls,   4.880 msec avg)
                             T_space IP :      0.0110s CPU
-                           WF_load_FFT :      0.0181s CPU ( 2 calls,   9.049 msec avg)
-                               io_GROT :      0.0226s CPU ( 2 calls,  11.310 msec avg)
-                            io_DIPOLES :      0.0259s CPU (10 calls,   2.591 msec avg)
-                        Coulomb Cutoff :      0.0377s CPU
-                      T_space EXX Osc. :      0.0389s CPU
-                   XC_potential_driver :      0.1015s CPU
-                     DIPOLE_transverse :      0.1182s CPU
-                             FFT_setup :      0.1220s CPU
-                               Dipoles :      0.1369s CPU
-                        Haydock Solver :      0.1382s CPU
-                          Diago Solver :      0.1589s CPU
-                   T_space ALDA scatt. :      0.3001s CPU (45 calls,   6.669 msec avg)
-                      X T_space Kernel :      0.5996s CPU
+                   XC_potential_driver :      0.0126s CPU
+                             FFT_setup :      0.0168s CPU
+                               io_GROT :      0.0226s CPU ( 2 calls,  11.285 msec avg)
+                            io_DIPOLES :      0.0258s CPU (10 calls,   2.585 msec avg)
+                   T_space ALDA scatt. :      0.0377s CPU (45 calls,   0.838 msec avg)
+                        Coulomb Cutoff :      0.0380s CPU
+                      X T_space Kernel :      0.0906s CPU
+                     DIPOLE_transverse :      0.1170s CPU
+                               Dipoles :      0.1357s CPU
+                        Haydock Solver :      0.1360s CPU
+                          Diago Solver :      0.1587s CPU
 
  [09] Memory Overview
  ====================
@@ -436,7 +436,7 @@
  Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  29.05300 [Mb]
+         Max memory used   :  13.07500 [Mb]
 
  [10] Game Over & Game summary
  =============================
@@ -495,6 +495,7 @@
  | %
  | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx=  4067            RL    # [BSK] Exchange components
+ | BSENGfxc=  4067            RL    # [BSK] Fxc components
  | BSEprop= "abs esrt"              # [BSS] abs/kerr/magn/dichr trace
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
