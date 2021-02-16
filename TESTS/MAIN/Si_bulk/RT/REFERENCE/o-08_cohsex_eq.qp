@@ -1,88 +1,98 @@
-#                                                           
-#  __  __   ________   ___ __ __    _______   ______        
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
-#                                                           
-#                                                           
-#       Version 4.5.0 Revision 17240 Hash 6d7967373         
-#                   Branch is bug-fixes                     
-#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build            
-#                http://www.yambo-code.org                  
+#                                                                     
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
+#                                                                     
+#      Version 5.0.1 Revision 19427 Hash b8253a486                    
+#                Branch is devel-andreaM                              
+#           MPI+OpenMP+SLK+SLEPC+HDF5_IO Build                        
+#               http://www.yambo-code.org                             
 #
-# GW [Newton Solver]
 #
-# == COHSEX GW ==
+# GW solver                                       : Newton
+# GW approximation                                : COHSEX
+# GW SC iterations                                : 0
+# X G`s                                           :   59 [used]
+# X G`s                                           :   59 [disk]
+# X bands                                         :   1   8
+# X poles                                         :   100.000000    [o/o]
+# X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
+# X xc-Kernel                                     : none
+# X BZ energy Double Grid                         : no
+# Sc Empty Bands                                  : no
+# Sc bands terminator                             : no
+# Sx RL components                                :   609
+#                                                 
+# QP @ state[ 1 ] K range                         :  1  3
+# QP @ state[ 1 ] b range                         :   2   7
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
 #
-# GW SC iterations       :0
-# X G`s            [used]:  59
-# X G`s            [disk]:  59
-# X bands                :  1   8
-# X poles           [o/o]: 100.0000
-# X e/h E range      [ev]:-1.000000 -1.000000
-# X xc-Kernel            : none
-# X BZ energy Double Grid: no
-# X BZ Double Grid points:0
-# Sc Empty Bands         : no
-# Sc bands terminator    : no
-# Sx RL components       :  609
+# Vxc  =Slater exchange(X)+Perdew & Zunger(C)
+# Vnlxc=Hartree-Fock
 #
-# QP @ K 1 - 3 : b 2 - 7
+#    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-#    K-point      Band         Eo           E-Eo         Sc|Eo
-#
-    1.000000     2.000000     0.000000    -1.376928     0.697595
-    1.000000     3.000000     0.000000    -1.376948     0.697595
-    1.000000     4.000000     0.000000    -1.376936     0.697595
-    1.000000     5.000000     2.440868     0.344025    -4.721732
-    1.000000     6.000000     2.440868     0.344035    -4.721732
-    1.000000     7.000000     2.440868     0.344013    -4.721732
-    2.000000     2.000000    -7.200430    -2.022511     1.413237
-    2.000000     3.000000    -1.262054    -1.341809     0.860701
-    2.000000     4.000000    -1.262054    -1.341797     0.860701
-    2.000000     5.000000     1.519058     0.247822    -4.789276
-    2.000000     6.000000     3.185880     0.573118    -4.619174
-    2.000000     7.000000     3.185880     0.573114    -4.619174
-    3.000000     2.000000    -7.895731    -1.864892     2.264624
-    3.000000     3.000000    -3.010587    -1.404185     1.036299
-    3.000000     4.000000    -3.010587    -1.404164     1.036299
-    3.000000     5.000000     0.437631     0.136813    -4.614837
-    3.000000     6.000000     0.437640     0.136807    -4.614839
-     3.00000      7.00000     10.15807      0.67645     -6.06794
+        1                  2                  0.000000          -1.376931           0.697597
+        1                  3                  0.000000          -1.376951           0.697597
+        1                   4                 0.000000          -1.376931           0.697597
+        1                   5                 2.440868           0.344024          -4.721734
+        1                   6                 2.440868           0.344034          -4.721734
+        1                   7                 2.440868           0.344011          -4.721734
+        2                  2                 -7.200430          -2.022515           1.413230
+        2                  3                 -1.262054          -1.341809           0.860703
+        2                   4                -1.262054          -1.341797           0.860703
+        2                   5                 1.519058           0.247821          -4.789275
+        2                   6                 3.185880           0.573119          -4.619174
+        2                   7                 3.185880           0.573113          -4.619174
+        3                  2                 -7.895731          -1.864895           2.264629
+        3                  3                 -3.010587          -1.404159           1.036320
+        3                   4                -3.010587          -1.404137           1.036320
+        3                   5                 0.437631           0.136811          -4.614841
+        3                   6                 0.437640           0.136808          -4.614841
+        3                   7                 10.15807           0.676463          -6.067928
 # 
-# 09/16/2019 at 09:04 yambo_rt @ castore [start]
-# 09/16/2019 at 09:04                    [end]
+# 01/27/2021 at 11:22 yambo_rt @ baym [start]
+# 01/27/2021 at 11:22                 [end]
 #
-# .-Input file : yambo.in
-# | HF_and_locXC                   # [R] Hartree-Fock
-# | gw0                            # [R] GW approximation
-# | cohsex                         # [R][Xp] COlumb Hole Screened EXchange
-# | em1s                           # [R][Xs] Statically Screened Interaction
-# | BoseTemp= 0.000000     eV      # Bosonic Temperature
-# | FFTGvecs=  387         RL      # [FFT] Plane-waves
-# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
-# | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
-# | EXXRLvcs=  609         RL      # [XX] Exchange    RL components
-# | VXCRLvcs= 2085         RL      # [XC] XCpotential RL components
-# | Chimod= "HARTREE"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# .-Input file  yambo.in
+# | HF_and_locXC                     # [R] Hartree-Fock
+# | gw0                              # [R] GW approximation
+# | cohsex                           # [R][Xp] COlumb Hole Screened EXchange
+# | em1s                             # [R][Xs] Statically Screened Interaction
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | FFTGvecs=  387             RL    # [FFT] Plane-waves
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
+# | EXXRLvcs=  609             RL    # [XX] Exchange    RL components
+# | VXCRLvcs= 2085             RL    # [XC] XCpotential RL components
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | % BndsRnXs
-# |   1 |  8 |                     # [Xs] Polarization function bands
+# |   1 |  8 |                           # [Xs] Polarization function bands
 # | %
-# | NGsBlkXs=  59          RL      # [Xs] Response block size
-# | GrFnTpXs= "R"                  # [Xs] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
+# | NGsBlkXs=  59              RL    # [Xs] Response block size
+# | GrFnTpXs= "R"                    # [Xs] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
 # | % DmRngeXs
-# |   0.10000 |  0.10000 | eV      # [Xs] Damping range
+# |  0.100000 | 0.100000 |         eV    # [Xs] Damping range
 # | %
 # | % LongDrXs
-# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
 # | %
-# | %QPkrange                      # # [GW] QP generalized Kpoint/Band indices
+# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
+# | QPsymmtrz                      # [GW] Force symmetrization of states with the same energy
+# | GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
+# | GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
 # | 1|3|2|7|
 # | %
-# | %QPerange                      # # [GW] QP generalized Kpoint/Energy indices
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
 # | 1|3| 0.000000|-1.000000|
 # | %

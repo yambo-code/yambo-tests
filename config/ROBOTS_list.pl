@@ -49,3 +49,4 @@ $ROBOTS{'attacc-portatile'} = 'attacc-portatile';
 $ROBOTS{'yurigagarin'} = 'yurigagarin.local';
 $ROBOTS{'attacc-lavoro'} = 'attacc-lavoro';
 $ROBOTS{'VivoBook'} = 'VivoBook';
+$ROBOTS{'AcerAspire'} = 'AcerAspire';
