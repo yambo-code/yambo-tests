@@ -1,19 +1,19 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
                                                                           
-                                                                          
-          Version 5.0.0 Revision 19481 Hash 5ac96ac6c                     
+          Version 5.0.0 Revision 19528 Hash 2e0cd5e8a                     
                      Branch is devel-tddft                                
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 02/11/2021 at 17:57 yambo @ VivoBook
+ 03/05/2021 at 17:24 yambo @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_TDDFT
- Alt#1 string        : R12
+ Alt#1 string        : R7
 
  Precision           : SINGLE
   
@@ -199,7 +199,7 @@
   COLL scattering                                  : no
   Sigma scattering                                 : yes
   X scattering                                     : yes
- - S/N 006487 ---------------------------------------------- v.05.00.00 r.19481 -
+ - S/N 006487 ---------------------------------------------- v.05.00.00 r.19528 -
  [BZ sampling] Q-grid is User defined and/or read from the database
 
  IBZ Q-points :  1
@@ -227,7 +227,7 @@
     COLL scattering                                  : no
     Sigma scattering                                 : yes
     X scattering                                     : yes
-   - S/N 006487 ---------------------------------------------- v.05.00.00 r.19481 -
+   - S/N 006487 ---------------------------------------------- v.05.00.00 r.19528 -
    Non-periodic chartesian directions : none
    Optical renormalization            :  843.5417 [au]
    Polarizability dimension           : volume
@@ -262,16 +262,13 @@
   RIM corrections included                         : no
   RIM RL components                                : 0
   RIM random points                                : 0
- - S/N 006487 ---------------------------------------------- v.05.00.00 r.19481 -
+ - S/N 006487 ---------------------------------------------- v.05.00.00 r.19528 -
 
  [05] Dipoles
  ============
 
 
  [WARNING] DIPOLES database not correct or missing
- [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
-  Fragmentation                                    : yes
- - S/N 006487 ---------------------------------------------- v.05.00.00 r.19481 -
  [WR./04_TDDFT//ndb.dipoles]-----------------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
   RL vectors                                       :   3695 [WF]
@@ -282,13 +279,15 @@
   DIP band range limits                            :   4   5
   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
   RL vectors in the sum                            :   3695
-  [r,Vnl] included                                 : yes
+  [r,Vnl] included                                 : no
   Bands ordered                                    : yes
   Direct v evaluation                              : no
-  Approach used                                    : G-space v
+  Approach used                                    : R-space x
   Dipoles computed                                 : R V P
   Wavefunctions                                    : B3LYP(XC)
- - S/N 006487 ---------------------------------------------- v.05.00.00 r.19481 -
+ - S/N 006487 ---------------------------------------------- v.05.00.00 r.19528 -
+
+ [WARNING] Missing non-local pseudopotential contribution
 
  [WARNING] BSE calculation with minimal memory utilization
 
@@ -320,18 +319,22 @@
    DIP band range limits                            :   4   5
    DIP e/h energy range                             : -1.000000 -1.000000 [eV]
    RL vectors in the sum                            :   3695
-   [r,Vnl] included                                 : yes
+   [r,Vnl] included                                 : no
    Bands ordered                                    : yes
    Direct v evaluation                              : no
-   Approach used                                    : G-space v
+   Approach used                                    : R-space x
    Dipoles computed                                 : R V P
    Wavefunctions                                    : B3LYP(XC)
-  - S/N 006487 ---------------------------------------------- v.05.00.00 r.19481 -
+  - S/N 006487 ---------------------------------------------- v.05.00.00 r.19528 -
 
   [06.03] TDDFT Kernel @q1 (Resonant CORRRELATION EXCHANGE)
   =========================================================
 
   [BSE] Exchange components :   4067
+
+  [WARNING] Exchange Kernel FFT size is too big. NG_X reduced 28671 --> 4139 (21889   mHa)
+
+  [WARNING] Bigger FFT discarded to avoid slow computation for corr part of Kernel
 
   [06.04] Wave-Function Phases
   ============================
@@ -353,7 +356,7 @@
    BS kernel          wavefunctions                 : B3LYP(XC)
    Static diel. fun.  energies                      : B3LYP(XC)
    wavefunctions                                    : B3LYP(XC)
-   [K] Identifier                                   :   4305
+   [K] Identifier                                   :   5901
    [K] Dimension                                    :   9
    [K] Bands                                        :   2   7
    [K] Exchange                                     : yes
@@ -381,7 +384,7 @@
    [RIM] Random points                              : 0 [col]
    [SOC] Perturbative SOC                           : no
    [IO] Kernel triangular                           : no
-  - S/N 006487 ---------------------------------------------- v.05.00.00 r.19481 -
+  - S/N 006487 ---------------------------------------------- v.05.00.00 r.19528 -
    Kernel cutoff                                    :  0.000000
    Kernel maxval                                    :  0.000000
    Kernel complete                                  : no
@@ -398,7 +401,7 @@
 
   [WR./04_TDDFT//ndb.BS_diago_Q1]-------------------------------------------------
    BS kernel          energies                      : B3LYP(XC)
-   [K] Identifier                                   :   4305
+   [K] Identifier                                   :   5901
    [K] Dimension                                    :   9
    [K] Bands                                        :   2   7
    [K] Exchange                                     : yes
@@ -430,13 +433,13 @@
    [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
    [BSS] Eigenstates computed                       :   9
    [BSS] Number of BSE matricies                    :  1
-  - S/N 006487 ---------------------------------------------- v.05.00.00 r.19481 -
+  - S/N 006487 ---------------------------------------------- v.05.00.00 r.19528 -
 
   [07.02] Haydock Solver for abs @q1, scheme hermitian
   ====================================================
 
   Accuracy (requested)      :  0.100000E-2 [o/o]
-  Accuracy (reached)        :  0.764256E-6 [o/o]
+  Accuracy (reached)        :  0.216051E-6 [o/o]
   Iterations                :   4
 
  [08] Timing Overview
@@ -448,40 +451,40 @@
                       io_ATMPROJ_pwscf :      0.0000s CPU
                     BSE matrix filling :      0.0000s CPU
                           io_KB_abinit :      0.0000s CPU
-                          PP_uspp_init :      0.0000s CPU ( 2 calls,   0.019 msec avg)
-               IO_and_Messaging_switch :      0.0000s CPU (11 calls,   0.004 msec avg)
-                BSE components folding :      0.0000s CPU
+                BSE components folding :      0.0001s CPU
+               IO_and_Messaging_switch :      0.0001s CPU (13 calls,   0.004 msec avg)
                                  io_HF :      0.0001s CPU
                         io_Double_Grid :      0.0001s CPU
-                                  io_X :      0.0001s CPU ( 4 calls,   0.031 msec avg)
-                                 io_BS :      0.0002s CPU ( 2 calls,   0.110 msec avg)
-                        eval_G_minus_G :      0.0002s CPU
+                          PP_uspp_init :      0.0001s CPU ( 3 calls,   0.023 msec avg)
+                                  io_X :      0.0001s CPU ( 4 calls,   0.033 msec avg)
+                                 io_BS :      0.0003s CPU ( 2 calls,   0.132 msec avg)
+                        eval_G_minus_G :      0.0003s CPU
       SERIAL_HERMITIAN_diagonalization :      0.0003s CPU
                         LINEAR ALGEBRA :      0.0003s CPU
-                           io_fragment :      0.0038s CPU ( 3 calls,   1.282 msec avg)
-                      T_space EXX Osc. :      0.0048s CPU
-                           WF_load_FFT :      0.0057s CPU ( 2 calls,   2.862 msec avg)
-                     T_space CORR Osc. :      0.0074s CPU
-                            io_COL_CUT :      0.0079s CPU ( 4 calls,   1.969 msec avg)
-                        io_BSS_Haydock :      0.0084s CPU ( 2 calls,   4.182 msec avg)
-                          io_BSS_diago :      0.0110s CPU ( 2 calls,   5.488 msec avg)
+                           io_fragment :      0.0038s CPU ( 3 calls,   1.264 msec avg)
+                           io_KB_pwscf :      0.0043s CPU
+                      T_space EXX Osc. :      0.0049s CPU
+                     DIPOLE_transverse :      0.0072s CPU
+                     T_space CORR Osc. :      0.0079s CPU
+                            io_COL_CUT :      0.0081s CPU ( 4 calls,   2.031 msec avg)
+                           WF_load_FFT :      0.0083s CPU ( 3 calls,   2.783 msec avg)
+                        io_BSS_Haydock :      0.0085s CPU ( 2 calls,   4.262 msec avg)
+                       bz_samp_indexes :      0.0109s CPU
+                          io_BSS_diago :      0.0110s CPU ( 2 calls,   5.525 msec avg)
                             T_space IP :      0.0112s CPU
-                   XC_potential_driver :      0.0127s CPU
-                                 io_WF :      0.0129s CPU ( 7 calls,   1.840 msec avg)
-                           io_KB_pwscf :      0.0130s CPU ( 3 calls,   4.340 msec avg)
-                       bz_samp_indexes :      0.0137s CPU
-                             FFT_setup :      0.0177s CPU ( 3 calls,   5.901 msec avg)
-                              io_QINDX :      0.0209s CPU ( 3 calls,   6.968 msec avg)
-                     DIPOLE_transverse :      0.0213s CPU
-                               io_GROT :      0.0218s CPU ( 2 calls,  10.911 msec avg)
-                            io_DIPOLES :      0.0259s CPU (10 calls,   2.585 msec avg)
-                   T_space ALDA scatt. :      0.0363s CPU (45 calls,   0.807 msec avg)
-                        Coulomb Cutoff :      0.0385s CPU
-                               Dipoles :      0.0396s CPU
-                           K_WF_phases :      0.0595s CPU
-                        Haydock Solver :      0.1390s CPU
-                      X T_space Kernel :      0.1637s CPU
-                          Diago Solver :      0.1646s CPU
+                   XC_potential_driver :      0.0130s CPU
+                                 io_WF :      0.0173s CPU (10 calls,   1.727 msec avg)
+                              io_QINDX :      0.0184s CPU ( 3 calls,   6.130 msec avg)
+                               io_GROT :      0.0218s CPU ( 2 calls,  10.904 msec avg)
+                            io_DIPOLES :      0.0260s CPU (10 calls,   2.604 msec avg)
+                   T_space ALDA scatt. :      0.0369s CPU (45 calls,   0.819 msec avg)
+                        Coulomb Cutoff :      0.0375s CPU
+                             FFT_setup :      0.0420s CPU (20 calls,   2.101 msec avg)
+                           K_WF_phases :      0.0602s CPU
+                               Dipoles :      0.0713s CPU
+                        Haydock Solver :      0.1376s CPU
+                      X T_space Kernel :      0.1652s CPU
+                          Diago Solver :      0.1680s CPU
 
  [09] Memory Overview
  ====================
@@ -490,13 +493,13 @@
  Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  9.582000 [Mb]
+         Max memory used   :  9.811000 [Mb]
 
  [10] Game Over & Game summary
  =============================
 
- 02/11/2021 at 17:57 yambo @ VivoBook [start]
- 02/11/2021 at 17:57                  [end]
+ 03/05/2021 at 17:24 yambo @ VivoBook [start]
+ 03/05/2021 at 17:24                  [end]
 
   
  .-ACKNOWLEDGMENT
@@ -547,9 +550,11 @@
  | % DipBands
  |   2 |  7 |                           # [DIP] Bands range for dipoles
  | %
+ | DipApproach= "R-space x"         # [DIP] [G-space v/R-space x/Covariant/Shifted grids]
  | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx=  4067            RL    # [BSK] Exchange components
- | #AnHall                        # [BSE] Add the anomalous Hall effect to eps if using length gauge
+ | BSENGfxc=  4139            RL    # [BSK] Fxc components
+ | BSENGBlk= 203              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
  | BSEprop= "abs esrt"              # [BSS] abs/kerr/magn/dichr trace
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range

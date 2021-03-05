@@ -1,14 +1,14 @@
 #                                                                     
-#   __   __     _        __  __       ____      U  ___  u             
-#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
-#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
-#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
-#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
-# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
-#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
 #                                                                     
-#                                                                     
-#       Version 5.0.0 Revision 19481 Hash 5ac96ac6c                   
+#       Version 5.0.0 Revision 19528 Hash 2e0cd5e8a                   
 #                  Branch is devel-tddft                              
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
@@ -16,11 +16,11 @@
 #
 #    E [eV]             n_deg              abs
 #
-     8.7900057          3.0000000         0.12892801E-10
-     13.232038          6.0000000         0.10098398E-10
+     8.7900057          3.0000000         0.82253111E-11
+     13.232038          6.0000000         0.56603832E-11
 # 
-# 02/11/2021 at 17:57 yambo @ VivoBook [start]
-# 02/11/2021 at 17:57                  [end]
+# 03/05/2021 at 17:24 yambo @ VivoBook [start]
+# 03/05/2021 at 17:24                  [end]
 #
 # .-Input file  yambo.in
 # | rim_cut                          # [R] Coulomb potential
@@ -49,9 +49,11 @@
 # | % DipBands
 # |   2 |  7 |                           # [DIP] Bands range for dipoles
 # | %
+# | DipApproach= "R-space x"         # [DIP] [G-space v/R-space x/Covariant/Shifted grids]
 # | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
 # | BSENGexx=  4067            RL    # [BSK] Exchange components
-# | #AnHall                        # [BSE] Add the anomalous Hall effect to eps if using length gauge
+# | BSENGfxc=  4139            RL    # [BSK] Fxc components
+# | BSENGBlk= 203              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
 # | BSEprop= "abs esrt"              # [BSS] abs/kerr/magn/dichr trace
 # | % BSEQptR
 # |  1 | 1 |                             # [BSK] Transferred momenta range
