@@ -35,7 +35,7 @@ if ( $LIFE=="1" or ( $GW=="1" and $EM1D=="1" ) or ($COHSEX=="1" and $COLL=="0") 
 #
 # Standard linear-response (G-space)
 #
-if ( $DIPOLES=="1" or $OPTICS=="1" ) {
+if ( $DIPOLES=="1" or $OPTICS=="1" and $BSE=="0") {
  foreach $f1 (@KCV){
    foreach $f2 (@GKCV){
     if ($Nr==10) {next};
