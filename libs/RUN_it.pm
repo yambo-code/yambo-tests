@@ -93,6 +93,7 @@ LOG_LOOP: {
    }
    if ($line =~ /USER parallel structure does not fit the current run parameters/) { $wrong_cpu_conf = 1; }
    if ($line =~ /Impossible to define an appropriate parallel structure/)          { $wrong_cpu_conf = 1; }
+   if ($line =~ /DIPOLES Parallelization over v bands not accepted/)               { $wrong_cpu_conf = 1; }
   }
  }
 }
