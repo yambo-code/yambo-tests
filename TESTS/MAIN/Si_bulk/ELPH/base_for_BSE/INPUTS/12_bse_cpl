@@ -1,0 +1,54 @@
+#                                                           
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$     
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$    
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$    
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$    
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$    
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$    
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/    
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/     
+#                                                           
+#              Version 3.3.1 Revision 2071                  
+#               http://www.yambo-code.org                   
+#
+optics                       # [R OPT] Optics
+bse                          # [R BSE] Bethe Salpeter Equation.
+bsk                          # [R BSK] Bethe Salpeter Equation kernel
+bss                          # [R BSS] Bethe Salpeter Equation solver
+em1s                         # [R Xs] Static Inverse Dielectric Matrix
+FFTGvecs=  411         RL    # [FFT] Plane-waves
+% KfnQP_E
+ 0.700000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+BSEmod= "coupling"             # [BSE] resonant/causal/coupling
+BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSENGexx= 229          RL    # [BSK] Exchange components
+BSENGBlk=  5          RL    # [BSK] Screened interaction block size
+% BSEBands
+  4 |  5 |                   # [BSK] Bands range
+%
+BSSmod= "d"                  # [BSS] Solvers `h/d/(p/f)i/t`
+% BEnRange
+  2.00000 | 5.50000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
+%
+WRbsWF                        # [BSS] Write to disk excitonic the WFs
+BEnSteps= 80                # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+FFTGvecs=  311         RL    # [FFT] Plane-waves
+Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+% BndsRnXs
+   1 |  10 |                 # [Xs] Polarization function bands
+%
+NGsBlkXs=  5          RL    # [Xs] Response block size
+% LongDrXs
+0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+%
+% DmRngeXs
+  0.00100 |  0.00100 | eV    # [Xs] Damping range
+
