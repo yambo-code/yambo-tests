@@ -36,7 +36,7 @@ mpif90="mpif90nv"
 --enable-cuda="cuda11.0,cc75" --enable-open-mp  \
 CPP="gcc -E -P" FPP="gfortran -E -P -cpp" \
 CC=pgcc F77=pgfortran FC=pgfortran MPICC=$mpicc MPIFC=$mpif90 \
-FCFLAGS="-O2 -Munroll -Mnoframe -Mdalign -Mbackslash -fast" \
+FCFLAGS="-O2 -Munroll -Mnoframe -Mdalign -Mbackslash -fast -C -Mbounds" \
 --enable-keep-src --enable-msgs-comps \
 --enable-time-profile --enable-memory-profile \
 --enable-int-linalg --enable-open-mp \
