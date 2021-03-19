@@ -1,19 +1,19 @@
                                                                           
-    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.               
-     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb              
-      `88. .8" .8"88.    888b     d"88  88     888 88      88             
-       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88             
-        `88" .88ooo888.  8  `888"   88  88    `88b 88      88             
-         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"             
-        o88o88o      888o8          88 o88bood8P"   `Ybod8P"              
+     __  __   ________   ___ __ __    _______   ______                    
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
                                                                           
                                                                           
-           Version 5.0.0 Revision 19528 Hash 2e0cd5e8a                    
-                      Branch is devel-tddft                               
-             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
-                    http://www.yambo-code.org                             
+          Version 5.0.0 Revision 19675 Hash f008a56d1                     
+                     Branch is devel-tddft                                
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+                   http://www.yambo-code.org                              
  
- 03/05/2021 at 17:23 yambo @ VivoBook
+ 03/19/2021 at 14:14 yambo @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_TDDFT
- Alt#1 string        : R7
+ Alt#1 string        : R3
 
  Precision           : SINGLE
   
@@ -199,7 +199,7 @@
   COLL scattering                                  : no
   Sigma scattering                                 : yes
   X scattering                                     : yes
- - S/N 002233 ---------------------------------------------- v.05.00.00 r.19528 -
+ - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
 
  IBZ Q-points :  1
  BZ  Q-points :  1
@@ -242,13 +242,17 @@
   RIM corrections included                         : no
   RIM RL components                                : 0
   RIM random points                                : 0
- - S/N 002233 ---------------------------------------------- v.05.00.00 r.19528 -
+ - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
 
  [05] Dipoles
  ============
 
 
  [WARNING] DIPOLES database not correct or missing
+ [FFT-Oscillators/R space/Real Space] Mesh size:  20  20  20
+
+ [WF-Oscillators/R space/Real Space loader] Normalization (few states)  min/max  :  0.284021E-8   1.00001   
+
  [WR./04_TDDFT//ndb.dipoles]-----------------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
   RL vectors                                       :   3695 [WF]
@@ -259,15 +263,13 @@
   DIP band range limits                            :   4   5
   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
   RL vectors in the sum                            :   3695
-  [r,Vnl] included                                 : no
+  [r,Vnl] included                                 : yes
   Bands ordered                                    : yes
   Direct v evaluation                              : no
   Approach used                                    : R-space x
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
- - S/N 002233 ---------------------------------------------- v.05.00.00 r.19528 -
-
- [WARNING] Missing non-local pseudopotential contribution
+ - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
 
  [WARNING] BSE calculation with minimal memory utilization
 
@@ -299,18 +301,20 @@
    DIP band range limits                            :   4   5
    DIP e/h energy range                             : -1.000000 -1.000000 [eV]
    RL vectors in the sum                            :   3695
-   [r,Vnl] included                                 : no
+   [r,Vnl] included                                 : yes
    Bands ordered                                    : yes
    Direct v evaluation                              : no
    Approach used                                    : R-space x
    Dipoles computed                                 : R V P
    Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-  - S/N 002233 ---------------------------------------------- v.05.00.00 r.19528 -
+  - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
 
   [06.03] TDDFT Kernel @q1 (Resonant CORRRELATION EXCHANGE)
   =========================================================
 
   [BSE] Exchange components :   4067
+  [FFT-BSK] Mesh size:   39   39   39
+
   [xc] Functional : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
   [xc] LIBXC used to calculate xc functional
 
@@ -321,7 +325,7 @@
   [06.04] Main kernel loop
   ========================
 
-  [WR./04_TDDFT//ndb.BS_PAR_Q1]---------------------------------------------------
+  [WR./04_TDDFT//ndb.BS_head_Q1]--------------------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
    RL vectors                                       :   3695 [WF]
    Coulomb cutoff potential                         : ws xyz  0.700
@@ -329,25 +333,22 @@
    BS kernel          wavefunctions                 : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    Static diel. fun.  energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   9394
+   [K] Identifier                                   :  1
    [K] Dimension                                    :   9
    [K] Bands                                        :   2   7
-   [K] Exchange                                     : yes
-   [K] Correlation                                  : no
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : no
    [K] Kernel`s coupling                            : no
-   [K] Exchange                                     : no
-   [K] Correlation                                  : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
    [K] W interaction is bare                        : no
    [K] ALDA kernel in R-space                       : yes
-   [K] RL vectors                                   :   4067 [exchange]
+   [K] RL vectors exchange                          :   4067
    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-   [IO] Kernel triangular                           : no
-  - S/N 002233 ---------------------------------------------- v.05.00.00 r.19528 -
-   Kernel cutoff                                    :  0.000000
-   Kernel maxval                                    :  0.000000
+   [IO] Kernel IO mode                              : 2D_standard
+  - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
    Kernel complete                                  : no
-   Kernel cutoff                                    :  0.000000
    Kernel maxval                                    :  0.000000
    Kernel complete                                  : yes
 
@@ -360,25 +361,25 @@
 
   [WR./04_TDDFT//ndb.BS_diago_Q1]-------------------------------------------------
    BS kernel          energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   9394
+   [K] Identifier                                   :  1
    [K] Dimension                                    :   9
    [K] Bands                                        :   2   7
-   [K] Exchange                                     : yes
-   [K] Correlation                                  : no
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : no
    [K] Kernel`s coupling                            : no
-   [K] Exchange                                     : no
-   [K] Correlation                                  : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
    [K] W interaction is bare                        : no
    [K] ALDA kernel in R-space                       : yes
-   [K] RL vectors                                   :   4067 [exchange]
+   [K] RL vectors exchange                          :   4067
    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-   [IO] Kernel triangular                           : no
+   [IO] Kernel IO mode                              : 2D_standard
    [BSS] Eigenstates included                       : no
    [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
    [BSS] Eigenstates computed                       :   9
    [BSS] Number of BSE matricies                    :  1
-  - S/N 002233 ---------------------------------------------- v.05.00.00 r.19528 -
+  - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
 
   [07.02] Haydock Solver for abs @q1, scheme hermitian
   ====================================================
@@ -393,38 +394,38 @@
  Clock: global
                     BSE matrix (REDUX) :      0.0000s CPU
                       io_ATMPROJ_pwscf :      0.0000s CPU
-                    BSE matrix filling :      0.0000s CPU
                           io_KB_abinit :      0.0000s CPU
-                BSE components folding :      0.0001s CPU
-               IO_and_Messaging_switch :      0.0001s CPU (13 calls,   0.004 msec avg)
+                    BSE matrix filling :      0.0000s CPU
+               IO_and_Messaging_switch :      0.0000s CPU (10 calls,   0.004 msec avg)
                                  io_HF :      0.0001s CPU
                         io_Double_Grid :      0.0001s CPU
-                          PP_uspp_init :      0.0001s CPU ( 3 calls,   0.026 msec avg)
-                                  io_X :      0.0001s CPU ( 4 calls,   0.029 msec avg)
-                           io_fragment :      0.0002s CPU ( 3 calls,   0.050 msec avg)
-                                 io_BS :      0.0002s CPU ( 2 calls,   0.121 msec avg)
+                                  io_X :      0.0001s CPU ( 4 calls,   0.030 msec avg)
+                BSE components folding :      0.0001s CPU
+                           io_fragment :      0.0002s CPU ( 3 calls,   0.051 msec avg)
+                          PP_uspp_init :      0.0002s CPU ( 3 calls,   0.055 msec avg)
+                                 io_BS :      0.0002s CPU ( 2 calls,   0.097 msec avg)
                            io_KB_pwscf :      0.0003s CPU
       SERIAL_HERMITIAN_diagonalization :      0.0003s CPU
                         LINEAR ALGEBRA :      0.0003s CPU
-                                 io_WF :      0.0025s CPU (10 calls,   0.255 msec avg)
-                     DIPOLE_transverse :      0.0033s CPU
-                            io_COL_CUT :      0.0083s CPU ( 4 calls,   2.063 msec avg)
-                          io_BSS_diago :      0.0084s CPU ( 2 calls,   4.181 msec avg)
-                        io_BSS_Haydock :      0.0085s CPU ( 2 calls,   4.263 msec avg)
-                              io_QINDX :      0.0101s CPU ( 2 calls,   5.053 msec avg)
-                            T_space IP :      0.0110s CPU
-                           WF_load_FFT :      0.0202s CPU ( 3 calls,   6.718 msec avg)
-                               io_GROT :      0.0228s CPU ( 2 calls,  11.400 msec avg)
-                            io_DIPOLES :      0.0259s CPU (10 calls,   2.585 msec avg)
-                      T_space EXX Osc. :      0.0376s CPU
-                        Coulomb Cutoff :      0.0386s CPU
-                               Dipoles :      0.0622s CPU
-                   XC_potential_driver :      0.0976s CPU
-                        Haydock Solver :      0.1371s CPU
-                             FFT_setup :      0.1410s CPU ( 3 calls,  47.011 msec avg)
-                          Diago Solver :      0.1579s CPU
-                   T_space ALDA scatt. :      0.3127s CPU (45 calls,   6.948 msec avg)
-                      X T_space Kernel :      0.6088s CPU
+                                 io_WF :      0.0028s CPU (10 calls,   0.276 msec avg)
+                     DIPOLE_transverse :      0.0040s CPU
+                            io_COL_CUT :      0.0081s CPU ( 4 calls,   2.036 msec avg)
+                        io_BSS_Haydock :      0.0085s CPU ( 2 calls,   4.272 msec avg)
+                              io_QINDX :      0.0103s CPU ( 2 calls,   5.148 msec avg)
+                            T_space IP :      0.0112s CPU
+                          io_BSS_diago :      0.0139s CPU ( 2 calls,   6.974 msec avg)
+                           WF_load_FFT :      0.0205s CPU ( 3 calls,   6.831 msec avg)
+                               io_GROT :      0.0245s CPU ( 2 calls,  12.232 msec avg)
+                            io_DIPOLES :      0.0267s CPU (10 calls,   2.671 msec avg)
+                      T_space EXX Osc. :      0.0355s CPU
+                        Coulomb Cutoff :      0.0375s CPU
+                               Dipoles :      0.0645s CPU
+                   XC_potential_driver :      0.0975s CPU
+                             FFT_setup :      0.1382s CPU ( 3 calls,  46.070 msec avg)
+                   T_space ALDA scatt. :      0.2991s CPU (45 calls,   6.647 msec avg)
+                        Haydock Solver :      0.3492s CPU
+                          Diago Solver :      0.5101s CPU
+                      X T_space Kernel :      0.5960s CPU
 
  [09] Memory Overview
  ====================
@@ -438,8 +439,8 @@
  [10] Game Over & Game summary
  =============================
 
- 03/05/2021 at 17:23 yambo @ VivoBook [start]
- 03/05/2021 at 17:23                  [end]
+ 03/19/2021 at 14:14 yambo @ VivoBook [start]
+ 03/19/2021 at 14:14                  [end]
 
   
  .-ACKNOWLEDGMENT
