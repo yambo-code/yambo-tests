@@ -5,8 +5,7 @@ export  LIBDIR=/usr/lib/x86_64-linux-gnu/
 
 
 ./configure FC=gfortran F77=gfortran  --enable-open-mp --enable-par-linalg --enable-hdf5-par-io \
---with-blas-libs=" -Wl,--start-group   ${LIBDIR}/libmkl_gf_lp64.a ${LIBDIR}/libmkl_sequential.a ${LIBDIR}/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
---with-lapack-libs=" -Wl,--start-group ${LIBDIR}/libmkl_gf_lp64.a ${LIBDIR}/libmkl_sequential.a ${LIBDIR}/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
+--with-blas-libs="-lblas" --with-lapack-libs="-llapack" \
 --with-fft-libs=" -Wl,--start-group    ${LIBDIR}/libmkl_gf_lp64.a ${LIBDIR}/libmkl_sequential.a ${LIBDIR}/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
 --with-scalapack-libs=" -Wl,--start-group -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 ${LIBDIR}/libmkl_sequential.a ${LIBDIR}/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
 --with-blacs-libs=" -Wl,--start-group -lmkl_blacs_openmpi_lp64 ${LIBDIR}/libmkl_sequential.a ${LIBDIR}/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
