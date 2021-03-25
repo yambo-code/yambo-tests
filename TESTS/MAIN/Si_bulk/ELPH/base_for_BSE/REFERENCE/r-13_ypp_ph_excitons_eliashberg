@@ -1,19 +1,19 @@
                                                                           
-    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.               
-     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb              
-      `88. .8" .8"88.    888b     d"88  88     888 88      88             
-       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88             
-        `88" .88ooo888.  8  `888"   88  88    `88b 88      88             
-         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"             
-        o88o88o      888o8          88 o88bood8P"   `Ybod8P"              
+    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
+       ###  ###     ### ###       ### #########   ########                
                                                                           
                                                                           
-           Version 5.0.0 Revision 19562 Hash 29cc3087e                    
-                       Branch is bug-fixes                                
-                  MPI+OpenMP+SLK+HDF5_IO Build                            
-                    http://www.yambo-code.org                             
+          Version 5.0.1 Revision 19700 Hash bd3479218                     
+                      Branch is bug-fixes                                 
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+                   http://www.yambo-code.org                              
  
- 03/18/2021 at 15:12 ypp_ph @ attacc-portatile
+ 03/25/2021 at 14:00 ypp_ph @ attacc-lavoro
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 13_ypp_ph
- Alt#1 string        : 11_gFsq-serial-bugfixes
- Alt#2 string        : 12_bse_cpl-serial-bugfixes
+ Alt#1 string        : 11_gFsq-serial-bug-fixes
+ Alt#2 string        : 12_bse_res-serial-bug-fixes
  Alt#3 string        : R1
 
  Precision           : SINGLE
@@ -266,20 +266,20 @@
  [06] Excitonic Properties @ Q-index #1
  ======================================
 
- [RD./12_bse_cpl-serial-bugfixes//ndb.BS_diago_Q1]-------------------------------
+ [RD./12_bse_res-serial-bug-fixes//ndb.BS_diago_Q1]------------------------------
   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-  [K] Identifier                                   :   9531
-  [K] Dimension                                    :   64
-  [K] Bands                                        :   4   5
-  [K] Exchange                                     : yes
-  [K] Correlation                                  : yes
-  [K] Kernel`s coupling                            : yes
-  [K] Exchange                                     : yes
-  [K] Correlation                                  : no
+  [K] Identifier                                   :  2749
+  [K] Dimension                                    :   576
+  [K] Bands                                        :   2   7
+  [K] Exchange res                                 : yes
+  [K] Correlation res                              : yes
+  [K] Kernel`s coupling                            : no
+  [K] Exchange cpl                                 : no
+  [K] Correlation cpl                              : no
   [K] W interaction is bare                        : no
   [K] ALDA kernel in R-space                       : no
-  [K] RL vectors                                   :  229 [exchange]
-  [K] RL vectors                                   :   9 [correlation]
+  [K] RL vectors exchange                          :  229
+  [K] RL vectors correlation                       :   9
   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
   [K] Coupling range                               :  100.0000  100.0000 [o/o]
   [W] Interaction is diagonal                      : no
@@ -288,18 +288,22 @@
   [W] e/h energy range                             : -1.000000 -1.000000 [eV]
   [W] Poles                                        :  100.0000 [o/o]
   [W] RL vectors in the sum                        :   331
-  [W] [r,Vnl] included                             : no
+  *WRN*[W] [r,Vnl] included                        : no
+  [W] Longitudinal Gauge                           : no
   [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
   [W] Coulomb Cutoff                               : none
   [W] xc-Kernel                                    : none
-  [RIM] RL components                              : 0 [col]
-  [RIM] Random points                              : 0 [col]
+  [RIM] RL components col                          : 0
+  [RIM] Random points col                          : 0
   [SOC] Perturbative SOC                           : no
+  [IO] Kernel IO mode                              : 2D_standard
   [BSS] Eigenstates included                       : yes
   [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
-  [BSS] Eigenstates computed                       :  128
+  [BSS] Eigenstates computed                       :   576
   [BSS] Number of BSE matricies                    :  1
- - S/N 006087 ---------------------------------------------- v.05.00.00 r.19562 -
+ - S/N 006087 ---------------------------------------------- v.05.00.01 r.19700 -
+
+ [WARNING] 2 excitonic states added to the USER selection to preserve degeneracy
 
   [06.01] Excitonic Generalized Eliashberg functions
   ==================================================
@@ -309,22 +313,23 @@
  ====================
 
  Clock: global
-      io_ATMPROJ_pwscf :      0.0000s CPU
-            io_COL_CUT :      0.0000s CPU
-        io_Double_Grid :      0.0001s CPU ( 2 calls,   0.039 msec avg)
-            io_DIPOLES :      0.0032s CPU
-              io_QINDX :      0.0032s CPU
-                 io_WF :      0.0050s CPU
-               io_GROT :      0.0052s CPU ( 2 calls,   2.619 msec avg)
-          io_BSS_diago :      0.0117s CPU ( 4 calls,   2.934 msec avg)
-           io_fragment :      0.0335s CPU (50 calls,   0.670 msec avg)
-               io_ELPH :      0.0731s CPU (51 calls,   1.433 msec avg)
+      IO_and_Messaging_switch :      0.0000s CPU
+             io_ATMPROJ_pwscf :      0.0000s CPU
+                   io_COL_CUT :      0.0001s CPU
+               io_Double_Grid :      0.0002s CPU ( 2 calls,   0.092 msec avg)
+                     io_QINDX :      0.0066s CPU
+                   io_DIPOLES :      0.0071s CPU
+                        io_WF :      0.0087s CPU
+                      io_GROT :      0.0104s CPU ( 2 calls,   5.195 msec avg)
+                 io_BSS_diago :      0.0513s CPU ( 4 calls,  12.836 msec avg)
+                  io_fragment :      0.0733s CPU (50 calls,   1.467 msec avg)
+                      io_ELPH :      0.1692s CPU (51 calls,   3.318 msec avg)
 
  [08] Game Over & Game summary
  =============================
 
- 03/18/2021 at 15:12 ypp_ph @ attacc-portatile [start]
- 03/18/2021 at 15:12                           [end]
+ 03/25/2021 at 14:00 ypp_ph @ attacc-lavoro [start]
+ 03/25/2021 at 14:00                        [end]
 
   
  .-ACKNOWLEDGMENT
@@ -353,6 +358,6 @@
  | eliashberg                       # [R] Eliashberg
  | States= "1 - 1"                  # Index of the BS state(s)
  | BSQindex= 1                      # Q-Index of the BS state(s)
- | Degen_Step= 0.010000       eV    # Maximum energy separation of two degenerate states
+ | Degen_Step= 0.100000E-2    eV    # Maximum energy separation of two degenerate states
  | PhBroad= 0.100000E-2       eV    # Phonon broadening (Eliashberg & DOS)
  | PhStps= 200                      # Energy steps
