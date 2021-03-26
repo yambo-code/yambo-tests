@@ -1,0 +1,63 @@
+#   __   __     _        __  __       ____      U  ___  u   
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
+#                                                           
+#               Version 3.3.1 Revision 2126                 
+#                http://www.yambo-code.org                  
+#
+optics                       # [R OPT] Optics
+bse                          # [R BSE] Bethe Salpeter Equation.
+bsk                          # [R BSK] Bethe Salpeter Equation kernel
+bss                          # [R BSS] Bethe Salpeter Equation solver
+em1s                         # [R Xs] Static Inverse Dielectric Matrix
+NonPDirs= "XYZ"              # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
+Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+BSEmod= "coupling"           # [BSE] resonant/causal/coupling
+BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "s"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx= 1535         mHa   # [BSK] Exchange components
+BSENGBlk=  595         mHa   # [BSK] Screened interaction block size
+WehCpl                      # [BSK] eh interaction included also in coupling
+KfnQPdb= "E < 04_QP/ndb.QP uki"  # [EXTQP BSK BSS] Database
+
+BSSNEig= 30                     # [SLEPC] Number of eigenvalues to compute
+BSSEnTarget= 0.000000      eV    # [SLEPC] Target energy to find eigenvalues
+BSSSlepcApproach= "Krylov-Schur" # [SLEPC] Approach ("Krylov-Schur","Generalized-Davidson","Jacob-Davidson")
+BSSSlepcPrecondition= "none" # [SLEPC] Precondition technique (none|preonly+jacobi|bcgs+jacobi)
+BSSSlepcExtraction= "ritz"       # [SLEPC] Extraction technique (ritz|harmonic)
+BSSSlepcMaxIt=0                  # [SLEPC] Maximum number of iterations
+BSSSlepcNCV=0                    # [SLEPC] Dimension of the subspace
+BSSSlepcTol= 0.100000E-5         # [SLEPC] Tolerance for the iterative solver
+BSSSlepcMatrix                # [SLEPC] Store slepc matrix, faster but more memory consuming
+
+
+% BEnRange
+ 5.000000 | 15.000000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
+%
+BEnSteps=  500               # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 1.000000 | 1.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+  14 |  34 |                 # [BSK] Bands range
+%
+% QpntsRXs
+ 1 | 1 |                     # [Xs] Transferred momenta
+%
+% BndsRnXs
+   1 |  50 |                 # [Xs] Polarization function bands
+%
+NGsBlkXs= 1535         mHa   # [Xs] Response block size
+% DmRngeXs
+  0.001000 |  0.001000 | eV    # [Xs] Damping range
+%
+% LongDrXs
+ 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%
