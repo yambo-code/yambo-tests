@@ -1,23 +1,23 @@
 #                                                                     
-#  __  __   ________   ___ __ __    _______   ______                  
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
 #                                                                     
 #                                                                     
-#       Version 5.0.0 Revision 19472 Hash 511580750                   
-#                   Branch is bug-fixes                               
-#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#                http://www.yambo-code.org                            
+#        Version 5.0.1 Revision 19712 Hash 2697a63c3                  
+#                    Branch is bug-fixes                              
+#                     MPI+HDF5_IO Build                               
+#                 http://www.yambo-code.org                           
 #
 #
 # DIP band range                                  :    1   60
 # DIP band range limits                           :   8   9
 # DIP e/h energy range                            :  -1.00000000     -1.00000000    [eV]
-# RL vectors in the sum                           :   3462
+# RL vectors in the sum                           :   3473
 # [r,Vnl] included                                : yes
 # Bands ordered                                   : yes
 # Direct v evaluation                             : no
@@ -37,29 +37,29 @@
         0.149012E-7       -0.500000          -0.500000           1.000000
        -0.500000           0.500000           0.500000           1.000000
 # 
-# 02/22/2021 at 22:11 ypp @ VivoBook [start]
-# 02/22/2021 at 22:11                [end]
+# 04/06/2021 at 13:59 ypp @ baym [start]
+# 04/06/2021 at 13:59            [end]
 #
 # .-Input file  yambo.in
-# | electrons                        # [R] Electronic properties
 # | dipoles                          # [R] Dipole properties
 # | PROJECT_mode= "none"             # Instruct ypp how to project the DOS. ATOM, LINE, PLANE.
 # | PROJECT_path= "none"             # Project path. PLANE mode: 3 points in the plane. LINE mode: any series of points.
 # | PROJECT_steps=-1                 # Project LINE/PLANE-axis steps.
 # | PROJECT_depth= 1                 # Project perpendicular direction divisions.
+# | INTERP_mode= "NN"                # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
+# | INTERP_Shell_Fac= 20.00000       # The bigger it is a higher number of shells is used
+# | INTERP_NofNN= 1                  # Number of Nearest sites in the NN method
+# | DIP_kind= "IP"                   # Kind of DIPOLES use (IP, EXCITONIC, MASK)
+# | cooOut= "rlu"                    # Points coordinates (out) cc/rlu/iku/alat
 # | % DIP_E_range
 # | -1.000000 |-1.000000 |         eV    # E/h pairs energy window
 # | %
-# | % DIP_bands
-# |    1 |  60 |                         # E/h pairs bands selection
+# | % DIP_C_bands
+# |    9 |  60 |                         # E/h pairs conduction bands selection
 # | %
 # | % DIP_direction
 # |  1.000000 | 0.000000 | 0.000000 |        # Field direction versor
 # | %
-# | cooOut= "rlu"                    # Points coordinates (out) cc/rlu/iku/alat
-# | INTERP_mode= "NN"                # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
-# | % INTERP_Grid
-# | -1 |-1 |-1 |                             # Interpolation BZ Grid
+# | % DIP_V_bands
+# |   1 |  8 |                           # E/h pairs valence bands selection
 # | %
-# | INTERP_Shell_Fac= 20.00000       # The bigger it is a higher number of shells is used
-# | INTERP_NofNN= 1                  # Number of Nearest sites in the NN method

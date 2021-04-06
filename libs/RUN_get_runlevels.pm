@@ -91,6 +91,7 @@ if (&RUN_feature("bzgrids") eq "1" or &RUN_feature("kpts_map") eq "1" or &RUN_fe
 if (&RUN_feature("QPDBs") eq "1") {$YPP=1}
 if (&RUN_feature("exciton") eq "1") {$YPP=1}
 if (&RUN_feature("electrons") eq "1") {$YPP=1}
+if (&RUN_feature("dipoles") eq "1") {$YPP=1}
 if (&RUN_feature("sort") eq "1") 
 {
  $YPP=2;
