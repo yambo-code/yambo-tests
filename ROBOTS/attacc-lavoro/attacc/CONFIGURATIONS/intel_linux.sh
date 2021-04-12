@@ -11,6 +11,6 @@ export  YAMBO_LIBS=/home/attacc/SOFTWARE/YAMBO_LIBS_INTEL
 --with-fft-libs="$MKL_LIBS" --with-fft-includedir="$MKL_INCLUDE" \
 --with-scalapack-libs="$MKL_SCALAPACK" --with-blacs-libs="$MKL_SCALAPACK" \
 --with-iotk-path="${YAMBO_LIBS}" --with-libxc-path="${YAMBO_LIBS}" \
---with-hdf5-path="${YAMBO_LIBS}" --with-netcdf-path="${YAMBO_LIBS}" --with-netcdff-path="${YAMBO_LIBS}"\
---enable-slepc-linalg
+--with-hdf5-path="${YAMBO_LIBS}" --with-netcdf-path="${YAMBO_LIBS}" --with-netcdff-path="${YAMBO_LIBS}" \
+--enable-slepc-linalg  --with-petsc-path="${YAMBO_LIBS}" --with-slepc-path="${YAMBO_LIBS}"
 
