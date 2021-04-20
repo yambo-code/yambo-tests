@@ -18,7 +18,7 @@
 {
  ACTIVE      => "yes",
  TESTS       => "all",
- CONFIG      => "gfortran_linux.sh",
+ CONFIG      => "intel_linux.sh",
  KEYS        => "all",
 },
 );

@@ -18,7 +18,23 @@
 {
  ACTIVE      => "yes",
  TESTS       => "all",
- CONFIG      => "gfortran_linux.sh",
+ CONFIG      => "intel_linux.sh",
  KEYS        => "all",
 },
+{
+ ACTIVE      => "yes",
+ TESTS       => "all",
+ MPI_CPU     => 4,
+ PAR_MODE    => "default",
+ CONFIG      => "intel_linux.sh",
+ KEYS        => "all",
+},
+{
+ ACTIVE      => "yes",
+ TESTS       => "all",
+ MPI_CPU     => 1,
+ THREADS     => 2,
+ CONFIG      => "intel_linux.sh",
+ KEYS        => "all",
+}
 );
