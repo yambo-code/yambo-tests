@@ -6,7 +6,7 @@ export MKL_SCALAPACK=" ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a -Wl,--star
 
 export  YAMBO_LIBS=/home/attacc/SOFTWARE/YAMBO_LIBS_INTEL
 
-./configure FC=mpiifort F77=mpiifort  --enable-open-mp --enable-par-linalg --enable-hdf5-par-io \
+./configure CC=mpiicc FC=mpiifort F77=mpiifort  --enable-open-mp --enable-par-linalg --enable-hdf5-par-io \
 --with-blas-libs="$MKL_LIBS" --with-lapack-libs="$MKL_LAPACK" \
 --with-fft-libs="$MKL_LIBS" --with-fft-includedir="$MKL_INCLUDE" \
 --with-scalapack-libs="$MKL_SCALAPACK" --with-blacs-libs="$MKL_SCALAPACK" \
