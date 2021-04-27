@@ -25,13 +25,13 @@
 sub FTP_list
 {
 if (!$ncftpls) {die "Undefined ncftp ( $ncftpls)"};
-&command("$ncftpls -l -u 1945528\@aruba.it -p 5fv94ktp ftp://ftp.yambo-code.org/www.yambo-code.org/@_");
+&command("$ncftpls -l -u 1945528\@aruba.it ftp://ftp.yambo-code.org/www.yambo-code.org/@_");
 die "\n";
 }
 sub FTP_it
 {
 if (!$ncftp) {die "Undefined ncftp ( $ncftp)"};
-&command("$ncftp -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org");
+&command("$ncftp -u 1945528\@aruba.it ftp.yambo-code.org");
 die "\n";
 }
 sub FTP_upload_it
