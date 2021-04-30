@@ -1,0 +1,43 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
+#                                                                     
+#       Version 5.0.1 Revision 19777 Hash 2e5ec25b3                   
+#                 Branch is devel-andreaM                             
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.org                            
+#
+optics                           # [R] Linear Response optical properties
+bse                              # [R][BSE] Bethe Salpeter Equation.
+dipoles                          # [R] Oscillator strenghts (or dipoles)
+BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
+BSKmod= "IP"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSENGexx= 19641            RL    # [BSK] Exchange components
+KfnRTdb= "f @ 20 fs < 08_rt/ndb.RT_carriers"                  # [EXTRT BSK BSS] Database
+KfnRT_N= 1                       # [EXTRT BSK BSS] Interpolation neighbours
+BSEprop= "abs kerr"                   # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+BSEdips= "xy"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+% BSEQptR
+ 1 | 1 |                             # [BSK] Transferred momenta range
+%
+% BSEBands
+  6 | 14 |                           # [BSK] Bands range
+%
+RTOccMode= "R"                   # [RT-BSE] (K)ernel/(R)esiduals. BSE components to be corrected with the TD occupations
+ForceEqTrans                  # [RT-BSE] Use only equilibrium transitions
+% BEnRange
+  0.00000 | 10.00000 |         eV    # [BSS] Energy range
+%
+% BDmRange
+ 0.100000 | 0.100000 |         eV    # [BSS] Damping range
+%
+BEnSteps= 1000                   # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
