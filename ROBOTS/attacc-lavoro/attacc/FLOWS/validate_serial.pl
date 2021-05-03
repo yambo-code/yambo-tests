@@ -18,7 +18,7 @@
 {
  ACTIVE      => "yes",
  TESTS       => "all",
- CONFIG      => "gfortran_mkl.sh",
+ CONFIG      => "gfortran_linux.sh",
  KEYS        => "all",
 },
 );
