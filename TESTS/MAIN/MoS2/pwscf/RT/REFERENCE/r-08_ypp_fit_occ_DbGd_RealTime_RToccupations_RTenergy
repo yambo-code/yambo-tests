@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-          Version 5.0.1 Revision 19740 Hash 1adaab22d                     
+     ____  ____     _       ____    ____  ______      ___                 
+    |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.               
+      \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \              
+       \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |              
+       _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /              
+      |______||____| |____||_____||_____||_______/  `.___."               
+                                                                          
+                                                                          
+                                                                          
+          Version 5.0.1 Revision 19773 Hash 47c9c190c                     
                       Branch is bug-fixes                                 
-            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
                    http://www.yambo-code.org                              
  
- 04/16/2021 at 20:33 ypp_rt @ attacc-portatile
+ 05/06/2021 at 22:54 ypp_rt @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 08_ypp_fit_occ_DbGd
- Alt#1 string        : 08_ep_DbGd-serial-bugfixes
- Alt#2 string        : R1
+ Alt#1 string        : 08_ep_DbGd-serial-bug-fixes
+ Alt#2 string        : R4
 
  Precision           : SINGLE
   
@@ -294,10 +294,10 @@
 
   [FFT-Spinor-factor] Mesh size:   15   15   80
 
-  [WF-Spinor-factor loader] Normalization (few states)  min/max  :  0.244044E-8  0.999989   
+  [WF-Spinor-factor loader] Normalization (few states)  min/max  :  0.168161E-7  0.999986   
 
 
- Timing [Min/Max/Average]: 02s/02s/02s
+ Timing [Min/Max/Average]: 04s/04s/04s
 
  [07] Timing Overview
  ====================
@@ -306,28 +306,37 @@
              io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU (17 calls,   0.002 msec avg)
+      IO_and_Messaging_switch :      0.0001s CPU (17 calls,   0.004 msec avg)
              RT output (INIT) :      0.0001s CPU
-               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.035 msec avg)
-                 PP_uspp_init :      0.0002s CPU ( 9 calls,   0.017 msec avg)
-                  io_KB_pwscf :      0.0024s CPU
-                     io_QINDX :      0.0028s CPU
-                   io_DIPOLES :      0.0033s CPU
-                  io_fragment :      0.0048s CPU ( 9 calls,   0.537 msec avg)
-                      io_GROT :      0.0079s CPU ( 3 calls,   2.630 msec avg)
-                    FFT_setup :      0.0163s CPU ( 9 calls,   1.811 msec avg)
-                        io_WF :      0.0251s CPU (28 calls,   0.895 msec avg)
-                  WF_load_FFT :      0.0391s CPU ( 9 calls,   4.341 msec avg)
-             io_RT_components :      0.3368s CPU (37 calls,   9.102 msec avg)
+               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.075 msec avg)
+                 PP_uspp_init :      0.0003s CPU ( 9 calls,   0.029 msec avg)
+                  io_KB_pwscf :      0.0048s CPU
+                     io_QINDX :      0.0053s CPU
+                   io_DIPOLES :      0.0063s CPU
+                  io_fragment :      0.0112s CPU ( 9 calls,   1.247 msec avg)
+                      io_GROT :      0.0148s CPU ( 3 calls,   4.943 msec avg)
+                    FFT_setup :      0.0312s CPU ( 9 calls,   3.466 msec avg)
+                        io_WF :      0.0487s CPU (28 calls,   1.739 msec avg)
+                  WF_load_FFT :      0.0526s CPU ( 9 calls,   5.840 msec avg)
+             io_RT_components :      0.6347s CPU (37 calls,  17.154 msec avg)
 
- [08] Game Over & Game summary
+ [08] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
+
+
+         Max memory used   :  4.110000 [Mb]
+
+ [09] Game Over & Game summary
  =============================
 
- 04/16/2021 at 20:33 ypp_rt @ attacc-portatile [start]
- 04/16/2021 at 20:33                           [end]
+ 05/06/2021 at 22:54 ypp_rt @ VivoBook [start]
+ 05/06/2021 at 22:54                   [end]
 
- Timing   [Min/Max/Average]: 02s/02s/02s
-             [Time-Profile]: 02s
+ Timing   [Min/Max/Average]: 04s/04s/04s
+             [Time-Profile]: 04s
 
  .-ACKNOWLEDGMENT
  |
