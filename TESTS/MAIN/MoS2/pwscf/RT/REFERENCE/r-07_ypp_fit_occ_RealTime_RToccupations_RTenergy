@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-          Version 5.0.1 Revision 19773 Hash 47c9c190c                     
-                      Branch is bug-fixes                                 
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
+                                                                          
+         Version 5.0.1 Revision 19773 Hash 47c9c190c                      
+                     Branch is bug-fixes                                  
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+                  http://www.yambo-code.org                               
  
- 05/06/2021 at 22:53 ypp_rt @ VivoBook
+ 05/06/2021 at 23:30 ypp_rt @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -33,7 +33,7 @@
 
  Job   string        : 07_ypp_fit_occ
  Alt#1 string        : 07_ep-serial-bug-fixes
- Alt#2 string        : R4
+ Alt#2 string        : R7
 
  Precision           : SINGLE
   
@@ -305,20 +305,20 @@
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
-                   io_COL_CUT :      0.0001s CPU
+                   io_COL_CUT :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0001s CPU (17 calls,   0.004 msec avg)
              RT output (INIT) :      0.0001s CPU
-      IO_and_Messaging_switch :      0.0001s CPU (17 calls,   0.006 msec avg)
-               io_Double_Grid :      0.0002s CPU ( 2 calls,   0.078 msec avg)
-                 PP_uspp_init :      0.0003s CPU ( 9 calls,   0.032 msec avg)
-                  io_KB_pwscf :      0.0049s CPU
-                     io_QINDX :      0.0062s CPU
-                   io_DIPOLES :      0.0075s CPU
-                  io_fragment :      0.0134s CPU ( 9 calls,   1.491 msec avg)
-                      io_GROT :      0.0156s CPU ( 3 calls,   5.214 msec avg)
-                    FFT_setup :      0.0424s CPU ( 9 calls,   4.712 msec avg)
-                        io_WF :      0.0564s CPU (28 calls,   2.014 msec avg)
-                  WF_load_FFT :      0.0586s CPU ( 9 calls,   6.514 msec avg)
-             io_RT_components :      0.5394s CPU (37 calls,  14.578 msec avg)
+               io_Double_Grid :      0.0002s CPU ( 2 calls,   0.077 msec avg)
+                 PP_uspp_init :      0.0003s CPU ( 9 calls,   0.029 msec avg)
+                  io_KB_pwscf :      0.0045s CPU
+                     io_QINDX :      0.0051s CPU
+                   io_DIPOLES :      0.0059s CPU
+                  io_fragment :      0.0120s CPU ( 9 calls,   1.334 msec avg)
+                      io_GROT :      0.0150s CPU ( 3 calls,   4.994 msec avg)
+                    FFT_setup :      0.0332s CPU ( 9 calls,   3.684 msec avg)
+                        io_WF :      0.0499s CPU (28 calls,   1.784 msec avg)
+                  WF_load_FFT :      0.0536s CPU ( 9 calls,   5.957 msec avg)
+             io_RT_components :      0.5319s CPU (37 calls,  14.376 msec avg)
 
  [08] Memory Overview
  ====================
@@ -332,8 +332,8 @@
  [09] Game Over & Game summary
  =============================
 
- 05/06/2021 at 22:53 ypp_rt @ VivoBook [start]
- 05/06/2021 at 22:53                   [end]
+ 05/06/2021 at 23:30 ypp_rt @ VivoBook [start]
+ 05/06/2021 at 23:30                   [end]
 
  Timing   [Min/Max/Average]: 02s/02s/02s
              [Time-Profile]: 02s
@@ -365,7 +365,7 @@
  | RTenergy                         # [R] Post-Processing kind: function of energy
  | TimeStep= 4.960094         fs    # Time step
  | % TimeRange
- |   0.00000 | 50.00000 |         fs    # Time-window where processing is done
+ |   0.00000 | 49.68000 |         fs    # Time-window where processing is done
  | %
  | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
  | #SkipFermiFIT                  # [NEGF] Do a Fermi Fit of occupations (and lifetimes ratio)
