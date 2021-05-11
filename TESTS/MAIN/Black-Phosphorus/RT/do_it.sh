@@ -19,11 +19,21 @@ endif
 #
 # IP (eq@neq)
 if ( "$argv[1]" =~ Y-neq) then
- rm -fr  neq/eqtrans/*Y-*
- yambo_rt -F INPUTS/11_ip_neq -J neq/full/Y-IP_neq,08_rt,dips
+ rm -fr  neq/full/*Y-*
+ foreach TIME (`seq 1 20 20`)
+cat << EOF > awk
+{
+gsub("TIME",$TIME)
+print \$0
+}
+EOF
+  awk -f awk < INPUTS/11_ip_neq > in_${TIME}
+  yambo_rt -F in_${TIME} -J neq/full/Y-IP_neq_$TIME,08_rt,dips
+  rm -f awk in_$TIME
+ end
 endif
 if ( "$argv[1]" =~ YPP-neq) then
- rm -f neq/eqtrans/*YPP-*
+ rm -f neq/full/*YPP-*
  ypp_rt -F INPUTS/11_ip_neq_ypp_procedure -J neq/full/YPP-IP_neq,08_rt,dips
 endif
 
@@ -31,7 +41,17 @@ endif
 # IP (eq@neq)
 if ( "$argv[1]" =~ Y-neq-eqtrans ) then
  rm -fr  neq/eqtrans/*Y-*
- yambo_rt -F INPUTS/10_ip_neq_eq_transitions -J neq/eqtrans/Y-IP_neq,08_rt,dips
+ foreach TIME (`seq 1 20 20`)
+cat << EOF > awk
+{
+gsub("TIME",$TIME)
+print \$0
+}
+EOF
+  awk -f awk < INPUTS/10_ip_neq_eq_transitions  > in_${TIME}
+  yambo_rt -F in_${TIME} -J neq/eqtrans/Y-IP_neq_$TIME,08_rt,dips
+  rm -f awk in_$TIME
+ end
 endif
 if ( "$argv[1]" =~ YPP-neq-eqtrans ) then
  rm -f neq/eqtrans/*YPP-*
