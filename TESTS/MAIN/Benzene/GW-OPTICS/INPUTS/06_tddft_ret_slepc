@@ -1,0 +1,67 @@
+#                                                                     
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
+#                                                                     
+#       Version 5.0.1 Revision 19031 Hash 952a48540                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+optics                           # [R] Linear Response optical properties
+bss                              # [R] BSE solver
+bse                              # [R][BSE] Bethe Salpeter Equation.
+tddft                            # [R][K] Use TDDFT kernel
+
+BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "s"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx=  2000            RL    # [BSK] Exchange components
+BSEprop= "abs dos"                   # [BSE] abs/kerr/magn/dichr trace
+#ImposeAsym
+#DipBandsAll
+#Gauge="velocity"
+
+BSHayTrs=0.0001
+#BSHayTer
+BSHayItrMAX=150
+
+BSSSlepcApproach="Krylov-Schur"    # [SLEPC] Approach ("Krylov-Schur","Generalized-Davidson","Jacob-Davidson")
+#BSSSlepcPrecondition="bcgs+jacobi"    # [SLEPC] Precondition technique (none|preonly+jacobi|bcgs+jacobi)
+#BSSSlepcExtraction="harmonic"
+BSSSlepcMatrix
+BSSSlepcMaxIt=1000
+#BSSSlepcNCV= 1058
+BSSNEig= 15                    # [SLEPC] Number of eigenvalues to compute
+BSSSlepcTol=1.E-06
+BSSEnTarget=8.0     eV
+#WRbsWF                        # [BSS] Write to disk excitonic the WFs
+
+rim_cut
+CUTGeo= "ws xyz"             # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere
+CUTwsGvec= 0.700000            # [CUT] WS cutoff: number of G to be modified
+
+#UseNLCC
+
+% BSEQptR
+ 1 | 1 |                             # [BSK] Transferred momenta range
+%
+% BSEBands
+  12 | 18 |                           # [BSK] Bands range
+%
+% BEnRange
+ -10.00000 | 10.00000 |         eV    # [BSS] Energy range
+%
+% BDmRange
+ 0.100000 | 0.100000 |         eV    # [BSS] Damping range
+%
+BEnSteps= 2001                    # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+#WRbsWF                        # [BSS] Write to disk excitonic the WFs

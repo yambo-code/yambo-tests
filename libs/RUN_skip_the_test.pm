@@ -40,6 +40,8 @@ if ( "@_" eq "DIR" ){
   if (-e "RT" && $project !~ /rt/) {$message=" skipped (wrong PJ)"};
   if (-e "ELPH" && $project !~ /elph/) {$message=" skipped (wrong PJ)"};
   if (-e "SC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
+  if (-e "MAGNETIC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
+  if (-e "ELECTRIC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
   if (-e "P2Y" && $project !~ /p2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && $project !~ /a2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && not $do_A2Y_tests) {$message=" skipped (wrong BRANCH)"};
@@ -90,20 +92,20 @@ if ( "@_" eq "INPUT") {
  };
  #
  # Tests with Covariant dipoles are broken in parallel
- if ($testname =~ m/Covariant/ && $np>1 && not ($PAR_covariant eq "yes")) { 
-  my $msg = sprintf("%-"."$left_length"."s", "$testname");
-  $CHECK_error= $msg." skipped (Covariant test not working in parallel)";
-  &RUN_stats("SKIPPED");
-  return "FAIL";
- };
+ #if ($testname =~ m/Covariant/ && $np>1 && not ($PAR_covariant eq "yes")) { 
+ # my $msg = sprintf("%-"."$left_length"."s", "$testname");
+ # $CHECK_error= $msg." skipped (Covariant test not working in parallel)";
+ # &RUN_stats("SKIPPED");
+ # return "FAIL";
+ #};
  #
  # Magnetic Tests are broken in parallel
- if ($testdir =~ m/MAGNETIC/ && $np>1) { 
-  my $msg = sprintf("%-"."$left_length"."s", "$testname");
-  $CHECK_error= $msg." skipped (MAGNETIC tests not working in parallel)";
-  &RUN_stats("SKIPPED");
-  return "FAIL";
- };
+ #if ($testdir =~ m/MAGNETIC/ && $np>1) { 
+ # my $msg = sprintf("%-"."$left_length"."s", "$testname");
+ # $CHECK_error= $msg." skipped (MAGNETIC tests not working in parallel)";
+ # &RUN_stats("SKIPPED");
+ # return "FAIL";
+ #};
  #
  # Features
  #

@@ -65,6 +65,9 @@ if ($branch_id eq "")
  $branch_key=$branch_id;
  $pattern=$branch_id;
 };
+# test-suite branch
+$test_suite_branch= qx(git rev-parse --abbrev-ref HEAD);
+$test_suite_branch=~ s/^\s+|\s+$//g;
 #
 if ($is_GPL) {$branch_key.="_gpl"; $pattern.="_gpl";};
 #
@@ -107,7 +110,6 @@ $is_NEW_YPP="yes";
 $PAR_COMP="-j";
 $PAR_COMP_LIB="";
 if ($pattern=~m/bug-fixes/ix) {$PAR_COMP_LIBS="-j";};
-if ($pattern=~m/gpl/ix) {undef $is_NEW_driver;};
 if ($pattern=~m/4.5/ix) {undef $is_NEW_driver;};
 if ($pattern=~m/4.4/ix) {undef $is_NEW_driver;};
 if ($pattern=~m/4.3/ix) {undef $do_NL_tests; undef $is_NEW_driver;};

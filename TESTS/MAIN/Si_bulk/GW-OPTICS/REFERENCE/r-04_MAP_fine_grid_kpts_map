@@ -1,19 +1,19 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
                                                                           
-                                                                          
-           Version 5.0.1 Revision 18708 Hash e137d59                      
-                    Branch is devel-andreaM                               
-                       MPI+HDF5_IO Build                                  
-                   http://www.yambo-code.org                              
+         Version 5.0.0 Revision 19547 Hash 53446ff7e                      
+                     Branch is bug-fixes                                  
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+                  http://www.yambo-code.org                               
  
- 08/06/2020 at 09:09 ypp @ baym
+ 03/15/2021 at 22:24 ypp @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_MAP_fine_grid
- Alt#1 string        : R3
+ Alt#1 string        : R8
 
  Precision           : SINGLE
   
@@ -41,10 +41,10 @@
   K-points                                         :  10
   G-vectors                                        :  2085 [RL space]
   Components                                       :  271 [wavefunctions]
-  Symmetries                                       :   48 [spatial+T-rev]
+  Symmetries                                       :   48 [spatial+T-reV]
   Spinor components                                :  1
   Spin polarizations                               :  1
-  Temperature                                      :  0.000000 [ev]
+  Temperature                                      :  0.000000 [eV]
   Electrons                                        :  8.000000
   WF G-vectors                                     :   400
   Max atoms/species                                :  2
@@ -168,45 +168,48 @@
 
   Compatible Grid is   : 3D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] : -0.125000 -0.125000  0.000000 [rlu]
-  K_min[ 2 ] :  0.000000  0.125000  0.125000 [rlu]
-  K_min[ 3 ] :  0.125000  0.000000  0.125000 [rlu]
+  K_min[ 1 ] : -0.125000  0.000000 -0.125000 [rlu]
+  K_min[ 2 ] :  0.125000  0.125000  0.000000 [rlu]
+  K_min[ 3 ] :  0.000000 -0.125000 -0.125000 [rlu]
   Grid dimensions      :   8   8   8
   K lattice UC volume  :  0.003671 [a.u.]
 
   IBZ K-points :  10
   BZ  K-points :  256
 
-  K [ 1] : weight       :  0.031250
+  K/Q-points units:
+  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
+
+  K [ 1]:  0.125000  0.125000  0.125000 [rlu]
         : wf components:  271
-        : point-iku    : -0.125000  0.125000  0.125000  [iku]
-  K [ 2] : weight       :  0.093750
+        : BZ grid      : X S
+  K [ 2]:  0.125000  0.125000  0.375000 [rlu]
         : wf components:  262
-        : point-iku    : -0.375000  0.375000 -0.125000  [iku]
-  K [ 3] : weight       :  0.093750
+        : BZ grid      : X S
+  K [ 3]:  0.125000  0.125000 -0.375000 [rlu]
         : wf components:  259
-        : point-iku    :  0.375000 -0.375000  0.625000  [iku]
-  K [ 4] : weight       :  0.093750
+        : BZ grid      : X S
+  K [ 4]:  0.125000  0.125000 -0.125000 [rlu]
         : wf components:  263
-        : point-iku    :  0.125000 -0.125000  0.375000  [iku]
-  K [ 5] : weight       :  0.093750
+        : BZ grid      : X S
+  K [ 5]:  0.125000  0.375000  0.375000 [rlu]
         : wf components:  257
-        : point-iku    : -0.125000  0.625000  0.125000  [iku]
-  K [ 6] : weight       :  0.187500
+        : BZ grid      : X S
+  K [ 6]:  0.125000  0.375000 -0.375000 [rlu]
         : wf components:  258
-        : point-iku    :  0.625000 -0.125000  0.875000  [iku]
-  K [ 7] : weight       :  0.187500
+        : BZ grid      : X S
+  K [ 7]:  0.125000  0.375000 -0.125000 [rlu]
         : wf components:  259
-        : point-iku    :  0.375000  0.125000  0.625000  [iku]
-  K [ 8] : weight       :  0.093750
+        : BZ grid      : X S
+  K [ 8]:  0.125000 -0.375000 -0.375000 [rlu]
         : wf components:  254
-        : point-iku    : -0.125000 -0.875000  0.125000  [iku]
-  K [ 9] : weight       :  0.031250
+        : BZ grid      : X S
+  K [ 9]:  0.375000  0.375000  0.375000 [rlu]
         : wf components:  256
-        : point-iku    : -0.375000  0.375000  0.375000  [iku]
-  K [10] : weight       :  0.093750
+        : BZ grid      : X S
+  K [10]:  0.375000  0.375000 -0.375000 [rlu]
         : wf components:  255
-        : point-iku    :  0.375000 -0.375000  1.125000  [iku]
+        : BZ grid      : X S
 
   [05.05] Energies & Occupations
   ==============================
@@ -224,31 +227,53 @@
   [X] Filled Bands                                  :   4
   [X] Empty Bands                                   :    5   32
   [X] Direct Gap                                    :  2.845550 [eV]
+  [X] Direct Gap localized at k-point               :  1
   [X] Indirect Gap                                  :  1.131971 [eV]
+  [X] Indirect Gap between k-points                 :   1   8
   [X] Last valence band width                       :  2.755636 [eV]
   [X] 1st conduction band width                     :  2.048974 [eV]
    
    
   E @ K [ 1]:  [eV]
   -11.57854  -1.30680   0.00000   0.00000   2.84555   3.31127   3.31127   5.11850
+  occ @ K [ 1]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [ 2]:  [eV]
   -10.50550  -4.36475  -2.07248  -0.49487   3.08456   4.00940   4.17925   6.64183
+  occ @ K [ 2]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [ 3]:  [eV]
   -9.296724 -6.547387 -2.022418 -1.305209  2.520328  3.845369  4.446792  7.718273
+  occ @ K [ 3]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [ 4]:  [eV]
   -11.02628  -2.93237  -1.05817  -0.96503   2.43637   4.09287   4.83135   5.08190
+  occ @ K [ 4]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [ 5]:  [eV]
   -9.948709 -4.634017 -2.447633 -1.970089  1.609630  3.179766  6.392619  6.667132
+  occ @ K [ 5]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [ 6]:  [eV]
   -8.226751 -6.652530 -3.894392 -2.755636  2.666182  4.586179  5.647480  7.828043
+  occ @ K [ 6]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [ 7]:  [eV]
   -9.509999 -5.580154 -3.109990 -1.686659  3.180945  3.878547  5.362269  6.320596
+  occ @ K [ 7]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [ 8]:  [eV]
   -8.414911 -6.540134 -3.244960 -2.457132  1.131971  2.235586  8.701805  8.765241
+  occ @ K [ 8]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [ 9]:  [eV]
   -10.04791  -5.72924  -0.81371  -0.81371   2.03823   3.78176   3.78176   8.07498
+  occ @ K [ 9]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [10]:  [eV]
   -8.778052 -6.391228 -3.807023 -1.638232  2.120642  5.812999  5.859259  7.336612
+  occ @ K [10]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
 
  [06] Double Grid DB(s)
  ======================
@@ -262,10 +287,10 @@
    K-points                                         :   408
    G-vectors                                        :  1 [RL space]
    Components                                       :  1 [wavefunctions]
-   Symmetries                                       :   48 [spatial+T-rev]
+   Symmetries                                       :   48 [spatial+T-reV]
    Spinor components                                :  1
    Spin polarizations                               :  1
-   Temperature                                      :  0.000000 [ev]
+   Temperature                                      :  0.000000 [eV]
    Electrons                                        :  8.000000
    WF G-vectors                                     :  1
    Max atoms/species                                :  2
@@ -287,17 +312,17 @@
   [06.04] Double Grid IBZ-IBZ mapping
   ===================================
 
-  :: IBZ-IBZ Fine Grid pts per Coarse grid BZ pt ::   0  16
-  :: IBZ-IBZ Fine Grid points used - read        ::   106   408
-  :: IBZ-IBZ Duplicated points                   :: 0
-  :: IBZ-IBZ Blocks filling (excl. coarse grid)  ::   8  16
+  :: IBZ-IBZ Fine Grid pts per Coarse grid BZ pt :  0  16
+  :: IBZ-IBZ Fine Grid points used - read        :  106   408
+  :: IBZ-IBZ Duplicated points                   :0
+  :: IBZ-IBZ Blocks filling (excl. coarse grid)  :  8  16
 
   [06.05] Double Grid BZ-BZ mapping
   =================================
 
-  :: BZ-BZ Fine Grid pts per Coarse grid BZ pt ::   64   64
-  :: BZ-BZ Duplicated points                   :: 0
-  :: BZ-BZ Blocks filling (excl. coarse grid)  ::   64   64
+  :: BZ-BZ Fine Grid pts per Coarse grid BZ pt :  64   64
+  :: BZ-BZ Duplicated points                   :0
+  :: BZ-BZ Blocks filling (excl. coarse grid)  :  64   64
 
   [06.06] Double Grid Database I/O
   ================================
@@ -311,20 +336,21 @@
    [FineGd] Number of pts (Energy grid)             :   408
    [FineGd] Number of pts (fine+coarse, IBZ-map)    :  116
    [FineGd] Number of pts (fine+coarse, BZ-map)     :  16640
-  - S/N 007994 ---------------------------------------------- v.05.00.01 r.18708 -
+  - S/N 007994 ---------------------------------------------- v.05.00.00 r.19547 -
 
- Timing [Min/Max/Average]: 01m-58s/01m-58s/01m-58s
+ Timing [Min/Max/Average]: 44s/44s/44s
 
  [07] Timing Overview
  ====================
 
  Clock: global
-      io_ATMPROJ_pwscf :      0.0000s CPU
             io_COL_CUT :      0.0000s CPU
-                 io_WF :      0.0010s CPU
-              io_QINDX :      0.0014s CPU
-               io_GROT :      0.0025s CPU (2 calls,   1.247 msec avg)
-        io_Double_Grid :      0.0058s CPU (3 calls,   1.938 msec avg)
+            io_DIPOLES :      0.0000s CPU
+      io_ATMPROJ_pwscf :      0.0000s CPU
+                 io_WF :      0.0024s CPU
+              io_QINDX :      0.0035s CPU
+               io_GROT :      0.0056s CPU (2 calls,   2.794 msec avg)
+        io_Double_Grid :      0.0127s CPU (3 calls,   4.224 msec avg)
 
  [08] Memory Overview
  ====================
@@ -338,11 +364,11 @@
  [09] Game Over & Game summary
  =============================
 
- 08/06/2020 at 09:09 ypp @ baym [start]
- 08/06/2020 at 09:11            [end]
+ 03/15/2021 at 22:24 ypp @ VivoBook [start]
+ 03/15/2021 at 22:25                [end]
 
- Timing   [Min/Max/Average]: 01m-58s/01m-58s/01m-58s
-             [Time-Profile]: 01m-58s
+ Timing   [Min/Max/Average]: 44s/44s/44s
+             [Time-Profile]: 44s
 
  .-ACKNOWLEDGMENT
  |
@@ -371,6 +397,7 @@
  | FineGd_mode= "mixed"             # Fine Grid mode. Symmetry expanded, unexpanded or mixed.
  | BZ_DbGd_Nk=0                     # BZ Number of points in the fine grid
  | SkipCheck                      # Skip internal consistency check on k-point grids
+ | #SkipBorderPts                 # Skip points in the Fine Grid that are on the surface of coarse gride smal BZ`s
  | %FineGd_DB1_paths                # Paths to the SAVE folders with the Fine Grid DB1
  | "FINE_GRID" |
  | %

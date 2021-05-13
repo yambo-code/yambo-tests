@@ -31,7 +31,8 @@
  PAR_MODE    => "default",
 },
 {
- MPI_CPU     => 1,
+ MPI_CPU     => 2,
  THREADS     => 2,
+ PAR_MODE    => "random",
 }
 );

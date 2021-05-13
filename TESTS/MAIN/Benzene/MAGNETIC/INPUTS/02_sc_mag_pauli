@@ -1,0 +1,32 @@
+#                                                           
+# :::   :::   :::     ::::    ::::  :::::::::   ::::::::    
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+:   
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+   
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+   
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+   
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#   
+#    ###  ###     ### ###       ### #########   ########    
+#                                                           
+#                                                           
+#        Version 4.2.0 Revision 14153 Hash 049dad1          
+#                      MPI+SLK Build                        
+#                http://www.yambo-code.org                  
+#
+scrun                        # [R] Self-Consistent single-particle calculation
+magnetic                     # [R] Magnetic fields
+HXC_Potential= "default"     # [SC] SC HXC Potential
+HARRLvcs= 10 Ha
+VXCRLvcs= 10 Ha
+% SCBands
+  14 | 19 |                   # [SC] Bands
+%
+SCIter= 5                  # [SC] SC Iterations
+SCEtresh=   0.0001     eV    # [SC] Energy convergence threshold
+SCRhoTresh=0.1000E-7         # [SC] Rho convergence threshold
+BandMix= 100.0000            # [SC] Band mixing
+Hamiltonian= "pauli"        # [MAG] Hamiltonian kind [pauli,landau,all]
+B_Field= 1.E4      T     # [MAG] Magnetic field modulus
+
+rim_cut
+CUTGeo= "ws xyz"             # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere
+CUTwsGvec= 0.700000            # [CUT] WS cutoff: number of G to be modified
