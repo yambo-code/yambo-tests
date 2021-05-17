@@ -263,10 +263,10 @@ program find_the_diff
  if ( VERB  ) then 
    write(*,"(a)") 
    write(*,"(2a)")   " REF (file)    :",trim(ref%name)
-   write(*,"(a,i4)") "     (elements):",ref%N
+   write(*,"(a,i6)") "     (elements):",ref%N
    write(*,"(a,i2)") "     (columns) :",ref%N_col
    write(*,"(2a)")   " OUT (file)    :",trim(out%name)
-   write(*,"(a,i4)") "     (elements):",out%N
+   write(*,"(a,i6)") "     (elements):",out%N
    write(*,"(a,i2)") "     (columns) :",out%N_col
    write(*,"(a)")    " TITLES         "
    do i_c=1,ref%N_col
