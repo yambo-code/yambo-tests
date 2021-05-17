@@ -1,5 +1,4 @@
 &control
-         calculation = 'nscf'
               prefix = 'NiBr2'
           pseudo_dir = '../../pseudo'
            verbosity = 'high'
@@ -10,21 +9,17 @@
            celldm(3) = 3.5996562475955844
              degauss = 0.005
              ecutwfc = 70
-    force_symmorphic = .true.
                ibrav = 4
-            lspinorb = .false.
+            lspinorb = .true.
                  nat = 3
-                nbnd = 30
-            noncolin = .false.
-               nspin = 2
+            noncolin = .true.
                 ntyp = 2
          occupations = 'smearing'
 starting_magnetization(1) = 1
 starting_magnetization(2) = 0
 /&end
 &electrons
-            conv_thr = 1e-07
-      diago_full_acc = .true.
+            conv_thr = 1e-08
 /&end
 
 
@@ -36,4 +31,4 @@ ATOMIC_POSITIONS { crystal }
  Br   0.6666666700   0.3333333300   0.1038888250
  Br   0.3333333300   0.6666666700  -0.1038888250
 K_POINTS { automatic }
-  3 3 1  0 0 0
+  3  3  1  0  0  0
