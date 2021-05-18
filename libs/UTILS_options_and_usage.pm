@@ -50,6 +50,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "status"         => \$repo_check,
             "broken=s"       => \$tag_test_as_broken,
             "update=s"       => \$update_test,
+            "as_master"      => \$update_as_master,
             "upload=s"       => \$upload_test,
             "colors"         => \$use_colors,
             "kill:s"         => \$kill_me,
@@ -166,6 +167,7 @@ if ($help==2) {
    (TEST control)
              -mode   <MODE>         Running mode. Can be: bench,validate. Optional.
              -update <TEST>         Update all REFERENCE files of <TEST>. The test path is <TEST_folder>/<TEST>.
+             -as_master             Update treating the current branch as it is master
              -upload <TEST>         Upload the <TEST_folder>/<TEST> directory.
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
 
