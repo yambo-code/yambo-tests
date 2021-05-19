@@ -99,15 +99,16 @@ sub UTILS_list_backups{
    #
    if ( ($backup_logs eq "yes" or ($data_id <= $id_to_clean[1] and $data_id >= $id_to_clean[0]) ) and not $clean) 
    {
-    print "ID    : $data_id\n";
+    print  "ID           : $data_id\n";
     if ($date) {
-     print "DATE  : $date\n";
-     print "TIME  : $time\n";
-     print "ROBOT : $robot_id\n";
-     print "BRANCH: $branch_in_the_log\n";
-     print "FC    : $FC_kind $MPI_kind\n";
+     print "DATE         : $date\n";
+     print "TIME         : $time\n";
+     print "ROBOT        : $robot_id\n";
+     print "BRANCH (Y-TS): $branch_in_the_log - $test_suite_branch\n";
+     print "FC           : $FC_kind $MPI_kind\n";
+     print "BUILD        : $BUILD\n";
     }
-    print "DIR   : $dir\n";
+    print "DIR          : $dir\n";
     print "\n";
    }elsif ($clean and $backup_logs eq "yes") {
     if ($data_id<$first_to_keep) {

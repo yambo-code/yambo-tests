@@ -56,9 +56,8 @@ sub PHP_key_words{
  # Notice that here date and time are already defined
  $robot_id = (split(/REPORT-R/,@_[0]))[1];
  $robot_id = (split(/-/,$robot_id))[0];
- &get_line("Branch");
- $branch_in_the_log=$pattern[0][1];
- if( $branch_in_the_log eq ""){$branch_in_the_log="none";}
+ &get_line("Test-suite branch");
+ $test_suite_branch=$pattern[0][2];
  &get_line("Build");
  if ($n_patterns eq 0)
  {
@@ -73,6 +72,7 @@ sub PHP_key_words{
  $branch_in_the_log=$pattern[0][1];
  if( $branch_in_the_log eq ""){$branch_in_the_log="none";}
  $BUILD=$pattern[0][3];
+ $CONF=$pattern[0][2];
  $BUILD =~ s/\+/ /g;
  $MPI_kind=$pattern[0][5];
  $FC_kind=$pattern[0][7];
@@ -292,7 +292,7 @@ return
 sub PHP_upload
 {
 chdir("$suite_dir/backup_and_www/$host/www");
-&command("$ncftpput -R -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org www.yambo-code.org/robots .")
+&command("$ncftpput -R -u 1945528\@aruba.it -p Qqrmm3vHhrTER3X ftp.yambo-code.org www.yambo-code.org/robots .")
 }
 #
 sub get_line{
