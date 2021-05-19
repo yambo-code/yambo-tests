@@ -1,13 +1,16 @@
-#!/bin/sh
-source /opt/intel/bin/compilervars.sh -arch intel64 -platform linux
+#!/bin/bash
 export  YAMBO_LIBS=/home/attacc/SOFTWARE/YAMBO_LIBS/
-./configure FC=gfortran F77=gfortran  --enable-open-mp --enable-par-linalg --enable-hdf5-par-io --enable-slepc-linalg \
---with-blas-libs=" -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_gf_lp64.a ${MKLROOT}/lib/intel64/libmkl_sequential.a ${MKLROOT}/lib/intel64/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
---with-lapack-libs=" -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_gf_lp64.a ${MKLROOT}/lib/intel64/libmkl_sequential.a ${MKLROOT}/lib/intel64/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
---with-fft-libs=" -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_gf_lp64.a ${MKLROOT}/lib/intel64/libmkl_sequential.a ${MKLROOT}/lib/intel64/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
---with-scalapack-libs=" -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a ${MKLROOT}/lib/intel64/libmkl_blacs_openmpi_lp64.a ${MKLROOT}/lib/intel64/libmkl_sequential.a ${MKLROOT}/lib/intel64/libmkl_co
-re.a -Wl,--end-group -lpthread -lm -ldl" \
---with-blacs-libs=" -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_blacs_openmpi_lp64.a ${MKLROOT}/lib/intel64/libmkl_sequential.a ${MKLROOT}/lib/intel64/libmkl_core.a -Wl,--end-group -lpthread -lm -ldl" \
---with-hdf5-path=${YAMBO_LIBS} --with-netcdf-path=${YAMBO_LIBS} --with-netcdff-path=${YAMBO_LIBS} --with-iotk-path=${YAMBO_LIBS} --with-libxc-path=${YAMBO_LIBS} --with-slepc-path=${YAMBO_LIBS} --with-petsc-path=${YA
-MBO_LIBS}
+export  INCLUDEDIR=/usr/include/
+export  LIBDIR=/usr/lib/x86_64-linux-gnu/
+
+export BLACS="${YAMBO_LIBS}/lib/libblacs.a ${YAMBO_LIBS}/lib/libblacs_C_init.a ${YAMBO_LIBS}/lib/libblacs_init.a"
+
+
+./configure FC=gfortran F77=gfortran  --enable-open-mp --enable-par-linalg --enable-hdf5-par-io \
+--with-blas-libs="-lblas" --with-lapack-libs="-llapack"  --with-fft-libs="${YAMBO_LIBS}/lib/libfftw3.a" \
+--with-fft-includedir="${YAMBO_LIBS}/include" \
+--with-scalapack-libs="${YAMBO_LIBS}/lib/libscalapack.a" --with-blacs-libs="${BLACS}" \
+--with-iotk-path="${YAMBO_LIBS}" --with-libxc-path="${YAMBO_LIBS}" \
+--with-hdf5-path="${YAMBO_LIBS}" --with-netcdf-path="${YAMBO_LIBS}" --with-netcdff-path="${YAMBO_LIBS}"\
+--enable-slepc-linalg --with-petsc-path="${YAMBO_LIBS}" --with-slepc-path="${YAMBO_LIBS}"
 

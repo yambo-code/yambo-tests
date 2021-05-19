@@ -1,33 +1,60 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
 #                                                                     
-#  **    **    **     ****     ****  ******     *******               
-# //**  **    ****   /**/**   **/** /*////**   **/////**              
-#  //****    **//**  /**//** ** /** /*   /**  **     //**             
-#   //**    **  //** /** //***  /** /******  /**      /**             
-#    /**   **********/**  //*   /** /*//// **/**      /**             
-#    /**  /**//////**/**   /    /** /*    /**//**     **              
-#    /**  /**     /**/**        /** /*******  //*******               
-#    //   //      // //         //  ///////    ///////                
-#                                                                     
-#       Version 5.0.0 Revision 18576 Hash 35d9a199c                   
+#       Version 5.0.1 Revision 19773 Hash 47c9c190c                   
 #                   Branch is bug-fixes                               
-#              MPI+OpenMP+HDF5_MPI_IO Build                           
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
 #
-# [RT] Bands                                      :  23  30
-# [RT] K-points                                   :   36
+# [RT] Bands                                      :  25  28
+# [RT] K-points                                   :  106
 # [RT] Potential                                  : HARTREE+SEX
 # [E-P] Electron-phonon                           : yes
-# [E-P] Completed Collision(CCA)                  : yes
+# [E-P] Iterative time evolution                  : no
 # [E-P] Branches                                  :   1   9
 # [E-P] GF`s Memory steps                         :  2
 # [E-E] Coulomb scattering                        : no
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
-# [RT] Time step         (now)[fs]                :  0.400000028E-1
-# [RT] NE time          (done)[fs]                :   49.9200020   
-# [RT] NE steps         (done)[fs]                :  1249
-# [RT] Lif Extr Inte/Intr(now)[fs]                :   1.44000006     0.480000019   
+# [RT] Time step     (initial)                    :  0.400000028E-1 [fs]
+# [RT] NE time       (planned)                    :   49.9999962    [fs]
+# [RT] NE steps      (planned)                    :  1251
+# [RT] Lif Extr Inte/Intr(sav)                    :   1.44000006     0.480000019    [fs]
+# [RT] Lifetimes extrapolation                    : no
+# [RT] Integrator                                 : EULER + RK2 + RWA
+# [RT] Radiative life time                        :   0.00000000    [fs]
+# [RT] Dephasing life time                        :   0.00000000    [fs]
+# [RT] External Field(s)                          : yes
+# [RT] Number of Fields                           :  1
+# [RT] Diamagnetic term                           : no
+# [RT] Induced field                              : no
+# [DbGd] Double Grid support                      : yes
+# [DbGd] Used for e-e                             :   0.00000000    [o/o]
+# [CONSTRAINS] N (ee+ep) & dN (ep)                : yes
+# [CONSTRAINS] IP Energy      (ee)                : yes
+# [FIELDs] Gauge Type                             : length
+# [FIELDs] Type                                   : QSSIN
+# [FIELDs] Polarization                           : linear
+# [FIELDs] Versor                                 :   1.00000000      0.00000000      0.00000000   
+# [FIELDs] Versor_circ                            :   0.00000000      1.00000000      0.00000000   
+# [FIELDs] Intensity                              :   3000.00024    [kWCMm2]
+# [FIELDs] Damping                                :   3.00000000    [fs]
+# [FIELDs] Frequency range                        :   2.68499994      2.68499994    [eV]
+# [FIELDs] Frequency steps                        :  1
+# [FIELDs] Frequency step                         :   0.00000000    [eV]
+# [FIELDs] Initial time                           :  0.240000010    [fs]
+# [RT] Time step(now)                             :  0.400000028E-1 [fs]
+# [RT] NE time(done)                              :   50.0000038    [fs]
+# [RT] NE steps(done)                             :  1251 [fs]
+# [RT] Lif Extr Inte/Intr(now)                    :   1.44000006     0.480000019    [fs]
 # [dT] Time-Dependent Time step                   : no
 # [RT] I/O time          (input) [fs]             :  0.240000010   
 # [RT] I/O time            (now) [fs]             :  0.240000010   
@@ -40,34 +67,43 @@
 # [Gr] Damping (v)                                :  0.100000001      0.00000000      0.00000000    [ev,adim,ev^-1]
 #
 #
+# [FineGd] Brillouin Symmetry  mode               : expanded
+# [FineGd] Fine Grid  BZ mapped mode              : BZ
+# [FineGd] Fine Grid IBZ mapped mode              : BZ
+# [FineGd] Bands                                  :   40
+# [FineGd] Number of pts (Energy grid)            :   98
+# [FineGd] Number of pts (fine+coarse, IBZ-map)   :  106
+# [FineGd] Number of pts (fine+coarse, BZ-map)    :  106
+#
+#
 # Fitted Fermi Levels [eV]
 #
 #    Time [fs]          Ef(e)              Ef(h)              Ef(e-up)           Ef(h-up)           Ef(e-dn)           Ef(h-dn)           Ef(e-EP)           Ef(h-EP)
 #
      0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000   
-     5.03999996        -1.29719341         0.00000000        -1.30585515        -4.79257488        -1.28661489        0.379268289       -0.985892475         1.54913008   
-     10.0799999         3.46790648        -4.24510193       -0.547992826        -5.23833418         6.02661419        -5.14976931        -1.19641864         1.62712359   
-     15.1200008         3.17320871        -2.08890080       -0.490644991        -3.11893010         3.86224389        0.843174517        -1.22507727         1.63334477   
-     20.1599998         2.05237532        -1.18098474       -0.338046432        -1.62860179         3.01458716        0.926692069        -1.21844494         1.62790012   
-     25.2000027         1.57054043       -0.617848337        0.434988476E-1     -1.38059425         2.23686504         1.02350414        -1.20600092         1.62284839   
-     30.2400017         1.37220097       -0.245034486         1.01669717       -0.815064192         1.91118300         1.11051977        -1.19301820         1.61891103   
-     35.2800026         1.08669984        0.416081548E-1     0.928710818       -0.623632491         1.76538920         1.20524228        -1.18090558         1.61652112   
-     40.3199997        0.927855074        0.719250679        0.836608768       -0.521920800         1.45548165         1.67414999        -1.16989863         1.61523783   
-     45.3600044        0.815889716        0.919247925        0.575791180       -0.510337293         1.21825397         1.67528081        -1.16017377         1.61478376   
-     49.9200020        0.727414131         1.04004264        0.471003950       -0.382348955         1.17573965         1.67668951        -1.15235698         1.61551046   
+     5.03999996        -1.14131927        -18.3825855        -1.14062822         1.60728860        -1.14861095         1.60728741        -1.17612052        0.875180721   
+     10.0799999        0.129408121        0.681688040E-1     -1.03698647       -0.459738486E-1     -1.00218749       -0.460914411E-1    -0.522519052         1.25747848   
+     15.1200008       -0.223987326E-1     0.398381561        -1.03846991        0.296767354        -1.01259553        0.296656787       -0.493873745         1.32813168   
+     20.1599998       -0.106722139        0.602760375       -0.357111916E-1     0.512498081       -0.352491587E-1     0.512436986       -0.406394213         1.37727702   
+     25.2000027       -0.145072788        0.753076851       -0.581928827E-1     0.671628118       -0.576863699E-1     0.671597421       -0.337009341         1.43095016   
+     30.2400017       -0.154439628        0.865521729       -0.676727965E-1     0.790960729       -0.672787204E-1     0.790937364       -0.278293401         1.55124760   
+     35.2800026       -0.175026283        0.952887654       -0.792830586E-1     0.856976748       -0.853685364E-1     0.856945753       -0.247221157         1.58091486   
+     40.3199997       -0.188641638         1.02230537       -0.836896226E-1     0.941316664       -0.963931754E-1     0.941326678       -0.230662882         1.59240544   
+     45.3600044       -0.198115051         1.06830037       -0.107651636         1.00670159       -0.107686944         1.00674307       -0.221292317         1.59471548   
+     49.6800041       -0.195998684         1.11030757       -0.115526594         1.05145574       -0.115459003         1.05153537       -0.213932902         1.59466445   
 # 
-# 07/19/2020 at 17:19 ypp_rt @ VivoBook [start]
-# 07/19/2020 at 17:19                   [end]
+# 05/06/2021 at 23:31 ypp_rt @ VivoBook [start]
+# 05/06/2021 at 23:31                   [end]
 #  
-# Timing   [Min/Max/Average]: 02s/02s/02s
+# Timing   [Min/Max/Average]: 03s/03s/03s
 #
 # .-Input file  yambo.in
 # | RealTime                         # [R] TD Post-Processing
 # | RToccupations                    # [R] Analize time-dependent occupations
 # | RTenergy                         # [R] Post-Processing kind: function of energy
-# | TimeStep= 5.039972         fs    # Time step
+# | TimeStep= 4.960094         fs    # Time step
 # | % TimeRange
-# |   0.00000 | 49.92000 |         fs    # Time-window where processing is done
+# |   0.00000 | 49.68000 |         fs    # Time-window where processing is done
 # | %
 # | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
 # | #SkipFermiFIT                  # [NEGF] Do a Fermi Fit of occupations (and lifetimes ratio)

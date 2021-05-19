@@ -1,0 +1,38 @@
+&control
+         calculation = 'nscf'
+              prefix = 'NiBr2'
+          pseudo_dir = '../../pseudo'
+           verbosity = 'high'
+          wf_collect = .true.
+/&end
+&system
+           celldm(1) = 6.9451076104
+           celldm(3) = 3.5996562475955844
+             degauss = 0.005
+             ecutwfc = 70
+    force_symmorphic = .true.
+               ibrav = 4
+            lspinorb = .true.
+                 nat = 3
+                nbnd = 60
+            noncolin = .true.
+                ntyp = 2
+         occupations = 'smearing'
+starting_magnetization(1) = 1
+starting_magnetization(2) = 0
+/&end
+&electrons
+            conv_thr = 1e-07
+      diago_full_acc = .true.
+/&end
+
+
+ATOMIC_SPECIES
+  Ni  58.6934               Ni.upf
+  Br   79.904               Br.upf
+ATOMIC_POSITIONS { crystal }
+ Ni   0.0000000000   0.0000000000   0.0000000000
+ Br   0.6666666700   0.3333333300   0.1038888250
+ Br   0.3333333300   0.6666666700  -0.1038888250
+K_POINTS { automatic }
+  3 3 1  0 0 0

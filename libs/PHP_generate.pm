@@ -292,7 +292,7 @@ return
 sub PHP_upload
 {
 chdir("$suite_dir/backup_and_www/$host/www");
-&command("$ncftpput -R -u 1945528\@aruba.it -p 5fv94ktp ftp.yambo-code.org www.yambo-code.org/robots .")
+&command("$ncftpput -R -u 1945528\@aruba.it -p Qqrmm3vHhrTER3X ftp.yambo-code.org www.yambo-code.org/robots .")
 }
 #
 sub get_line{
