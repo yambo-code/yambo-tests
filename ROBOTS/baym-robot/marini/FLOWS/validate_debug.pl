@@ -33,7 +33,7 @@
  PAR_MODE    => "default",
 },
 {
- ACTIVE      => "yes",
+ ACTIVE      => "no",
  MPI_CPU     => 4,
  THREADS     => "2",
  SLK_CPU     => 4,

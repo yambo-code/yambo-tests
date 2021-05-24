@@ -13,10 +13,7 @@ fi
 $CONF_LINE \
 --with-extlibs-path=$YAMBO_EXT_LIBS \
 --enable-memory-profile=yes \
---enable-par-linalg=yes \
---enable-slepc-linalg=yes \
 --enable-time-profile=yes \
 --enable-msgs-comps=yes \
---enable-open-mp=yes \
 --enable-keep-src \
 --enable-debug-flags
