@@ -25,7 +25,7 @@
  ACTIVE      => "yes",
  TESTS       => "all",
  MPI_CPU     => 8,
- PAR_MODE    => "random",
+ PAR_MODE    => "default",
  CONFIG      => "gfortran_linux.sh",
  KEYS        => "all",
 },
