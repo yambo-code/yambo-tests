@@ -125,6 +125,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("RTfitbands")=="1") { $CMD=$CMD." -rtmode b"};
  if (&RUN_feature("RTdos")=="1") { $CMD=$CMD." -rtmode d"};
  if (&RUN_feature("RTtime")=="1") { $CMD=$CMD." -rtmode t"};
+ if (&RUN_feature("RTabs")=="1") { $CMD=$CMD." -rtplot a"};
  if (&RUN_feature("RT_X")=="1") { $CMD=$CMD." -rtplot X"};
  if (&RUN_feature("K_grid")=="1") { $CMD=$CMD." -grid k"};
  if (&RUN_feature("QPDB_edit")=="1") { $CMD=$CMD." -qpdb g"};
