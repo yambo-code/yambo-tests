@@ -11,5 +11,6 @@ export BLACS="${YAMBO_LIBS}/lib/libblacs.a ${YAMBO_LIBS}/lib/libblacs_C_init.a $
 --with-fft-includedir="${YAMBO_LIBS}/include" \
 --with-scalapack-libs="${YAMBO_LIBS}/lib/libscalapack.a" --with-blacs-libs="${BLACS}" \
 --with-iotk-path="${YAMBO_LIBS}" --with-libxc-path="${YAMBO_LIBS}" \
---with-hdf5-path="${YAMBO_LIBS}" --with-netcdf-path="${YAMBO_LIBS}" --with-netcdff-path="${YAMBO_LIBS}" \
---enable-slepc-linalg  --with-petsc-path="${YAMBO_LIBS}" --with-slepc-path="${YAMBO_LIBS}"
+--enable-slepc-linalg  --with-petsc-path="${YAMBO_LIBS}" --with-slepc-path="${YAMBO_LIBS}" \
+--with-netcdf-path="${YAMBO_LIBS}" --with-netcdff-path="${YAMBO_LIBS}" --with-hdf5-path="${YAMBO_LIBS}" 
+
