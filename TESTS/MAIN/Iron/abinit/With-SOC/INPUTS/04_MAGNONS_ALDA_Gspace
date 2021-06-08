@@ -1,0 +1,39 @@
+#                                                                     
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
+#                                                                     
+#                                                                     
+#       Version 5.1.0 Revision 19802 Hash 9117dbc63                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+optics                           # [R] Linear Response optical properties
+chi                              # [R][CHI] Dyson equation for Chi.
+tddft                            # [R][K] Use TDDFT kernel
+Chimod= "ALDA"                   # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+Chiprop= "magn"                   # [X] abs/kerr/magn
+FxcGRLc= 2                 Ry    # [TDDFT] XC-kernel RL size
+NGsBlkXd= 2                Ry    # [Xd] Response block size
+% QpntsRXd
+ 1 | 3 |                             # [Xd] Transferred momenta
+%
+% BndsRnXd
+  11 | 20 |                           # [Xd] Polarization function bands
+%
+GrFnTpXd= "R"                    # [Xd] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
+% EnRngeXd
+-10.00000 | 10.00000 |         eV    # [Xd] Energy range
+%
+% DmRngeXd
+ 0.100000 | 0.100000 |         eV    # [Xd] Damping range
+%
+ETStpsXd=  5001                  # [Xd] Total Energy steps
+% LongDrXd
+ 1.000000 | 0.000000 | 0.000000 |        # [Xd] [cc] Electric Field
+%

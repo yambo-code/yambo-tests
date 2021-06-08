@@ -1,0 +1,39 @@
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
+#                                                                     
+#      Version 5.1.0 Revision 19802 Hash 9117dbc63                    
+#                Branch is devel-magnons                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#               http://www.yambo-code.org                             
+#
+optics                           # [R] Linear Response optical properties
+kernel                           # [R] Kernel
+chi                              # [R][CHI] Dyson equation for Chi.
+dipoles                          # [R] Oscillator strenghts (or dipoles)
+Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+Chiprop= "magn"                   # [X] abs/kerr/magn
+NGsBlkXd= 2                Ry    # [Xd] Response block size
+% QpntsRXd
+ 1 | 3 |                             # [Xd] Transferred momenta
+%
+% BndsRnXd
+  5 | 13 |                           # [Xd] Polarization function bands
+%
+GrFnTpXd= "R"                    # [Xd] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
+% EnRngeXd
+-10.00000 | 10.00000 |         eV    # [Xd] Energy range
+%
+% DmRngeXd
+ 0.100000 | 0.100000 |         eV    # [Xd] Damping range
+%
+ETStpsXd=  5001                  # [Xd] Total Energy steps
+% LongDrXd
+ 1.000000 | 0.000000 | 0.000000 |        # [Xd] [cc] Electric Field
+%
