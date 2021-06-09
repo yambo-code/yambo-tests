@@ -1,0 +1,91 @@
+#                                                                     
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
+#                                                                     
+#                                                                     
+#        Version 5.0.1 Revision 19898 Hash dabdd91a1                  
+#                 Branch is devel-dbgrid-ph                           
+#          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                     
+#                 http://www.yambo-code.org                           
+#
+#
+# GW solver                                       : Newton
+# GW approximation                                : Fan + DW
+# [ph] dS/dw steps                                :  2
+# [ph] dS/dw step                                 :  0.100000001    [ev]
+# [ph] Sc/G damping                               :  0.100000001    [ev]
+# El-Ph correlation                               : yes
+# El-Ph Sc. G bands                               :   1  20
+# El-Ph phonon branches                           :   1   6
+# El-Ph momenta used                              :   8
+# Energy treshold                                 :  0.999999997E-6 [FAN]
+# Energy treshold                                 :  0.999999997E-6 [DW]
+#                                                 
+# QP @ state[ 1 ] K range                         :  1  1
+# QP @ state[ 1 ] b range                         :   1  10
+# QP @ state[ 2 ] K range                         :   7   7
+# QP @ state[ 2 ] b range                         :   1  10
+# GF energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+#                                                 
+# [ELPH] Phonon modes                             :   6
+# [ELPH] Q points                                 :   8 [avail]
+# [ELPH] K points                                 :   64
+# [ELPH] El-PH bands                              :  20
+# [ELPH] Using the Q-grid                         : yes
+# PH double-grid                                  : yes
+#
+#
+#    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]         Width [meV]
+#
+        1                  1                 -12.08483          -0.023258          -0.023570           0.029497
+        1                  2                  0.000000           0.038231           0.039424           9.755065
+        1                  3                  0.000000           0.038231           0.039424           9.755065
+        1                   4                 0.000000           0.038231           0.039424           9.755065
+        1                   5                 2.556584           0.009160           0.006571          -28.57045
+        1                   6                 2.556584           0.009160           0.006571          -28.57045
+        1                   7                 2.556584           0.009160           0.006571          -28.57045
+        1                   8                 3.531553          -0.064281          -0.060964          -16.35731
+        1                   9                 7.758921          -0.017341          -0.018154          -2.472944
+        1                  10                 7.896249           0.009865           0.010409          -2.991048
+         7                 1                 -7.855170          -0.020770          -0.016585           43.56966
+         7                 2                 -7.855161          -0.020770          -0.016585           43.56966
+         7                 3                 -2.944441           0.007250           0.007506           2.864280
+         7                  4                -2.944441           0.007250           0.007506           2.864280
+         7                  5                 0.607803          -0.031447          -0.029489          -9.274474
+         7                  6                 0.607808          -0.031447          -0.029489          -9.274474
+         7                  7                 10.21534          -0.081291          -0.049924          -56.20996
+         7                  8                 10.21534          -0.081291          -0.049924          -56.20996
+         7                  9                 11.21909          -0.001343           0.005636          -53.60745
+         7                 10                 11.21909          -0.001343           0.005636          -53.60745
+# 
+# 05/06/2021 at 22:56 yambo_ph @ attacc-portatile [start]
+# 05/06/2021 at 22:56                             [end]
+#
+# .-Input file  yambo.in
+# | gw0                              # [R] GW approximation
+# | el_ph_corr                       # [R] Electron-Phonon Correlation
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
+# | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
+# | % GphBRnge
+# |   1 | 20 |                           # [ELPH] G[W] bands range
+# | %
+# | % ElPhModes
+# |   1 |  6 |                           # [ELPH] Phonon modes included
+# | %
+# | GDamping= 0.100000         eV    # [GW] G[W] damping
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | #WRgFsq                        # [ELPH] Dump on file gFsq coefficients
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
+# | 1|1|1|10|
+# | 7|7|1|10|
+# | %
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
+# | 1|7| 0.000000|-1.000000|
+# | %
