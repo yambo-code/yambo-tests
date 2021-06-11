@@ -1,0 +1,51 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 19773 Hash 47c9c190c                   
+#                   Branch is bug-fixes                               
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#     |k| (a.u.)         b29                b30                b31                b32                b33                b34                b35                b36               k_x (rlu)          k_y (rlu)          k_z (rlu)
+#
+       0.0000000         0.20031935E-07    -0.10186341E-07    -0.60435923E-08     0.18044375E-08     0.60899765E-08    -0.47148205E-08     0.41109161E-09    -0.54296834E-09      0.0000000          0.0000000          0.0000000    
+       1.2358327         0.20031935E-07    -0.10186341E-07    -0.60435923E-08     0.18044375E-08     0.60899765E-08    -0.47148205E-08     0.41109161E-09    -0.54296834E-09      0.0000000          0.0000000          0.0000000    
+      0.887616515       -0.174622983E-8    -0.894942787E-8     0.195723260E-8    -0.529689714E-8    -0.174622983E-8     0.250292942E-8     0.479667506E-8     0.278487278E-8     0.333333284        0.298023224E-7      0.00000000   
+       1.2358327         0.20031935E-07    -0.10186341E-07    -0.60435923E-08     0.18044375E-08     0.60899765E-08    -0.47148205E-08     0.41109161E-09    -0.54296834E-09      0.0000000          0.0000000          0.0000000    
+       1.58404887       -0.174622983E-8    -0.894942787E-8     0.195723260E-8    -0.529689714E-8    -0.174622983E-8     0.250292942E-8     0.479667506E-8     0.278487278E-8    -0.333333284       -0.298023224E-7      0.00000000   
+# 
+# 05/17/2021 at 17:06 ypp @ VivoBook [start]
+# 05/17/2021 at 17:06                [end]
+#
+# .-Input file  yambo.in
+# | electrons                        # [R] Electronic properties
+# | bnds                             # [R] Bands
+# | ElecTemp= 0.025878         eV    # Electronic Temperature
+# | PROJECT_mode= "none"             # Instruct ypp how to project the DOS. ATOM, LINE, PLANE.
+# | INTERP_mode= "NN"                # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
+# | INTERP_Shell_Fac= 20.00000       # The bigger it is a higher number of shells is used
+# | INTERP_NofNN= 1                  # Number of Nearest sites in the NN method
+# | OutputAlat= 1.000000             # [a.u.] Lattice constant used for "alat" ouput format
+# | cooIn= "rlu"                     # Points coordinates (in) cc/rlu/iku/alat
+# | cooOut= "rlu"                    # Points coordinates (out) cc/rlu/iku/alat
+# | % BANDS_bands
+# |   29 |  36 |                         # Number of bands
+# | %
+# | CIRCUIT_E_DB_path= "none"        # SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)
+# | BANDS_path= " M"                 # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
+# | BANDS_steps= 30                  # Number of divisions
+# | BANDS_built_in                 # Print the bands of the generating points of the circuit using the nearest internal point
+# | GfnQPdb= "E < ./02_gw_ppa/ndb.QP" # [EXTQP G] Database action
+# | %BANDS_kpts                      # K points of the bands circuit
+# |  0.000000| 0.000000| 0.000000|
+# |  0.250000| 0.250000| 0.000000|
+# |  0.500000| 0.000000| 0.000000|
+# |  0.000000| 0.000000| 0.000000|
+# | %
