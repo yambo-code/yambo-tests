@@ -46,6 +46,7 @@ call add_RULE(".induced_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 call add_RULE(".total_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 !
 ! Temporary
+call add_RULE("04_ypp_abs_dft-eels_along_E","skip",MATERIAL="MoS2")
 call add_RULE("08_ypp_bands","align",REF_row=2,Material="MoS2")
 call add_RULE("08_ypp_dos","align",REF_row=2,Material="MoS2")
 call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_EP_Elec_linewidth","align",REF_row=1,Material="MoS2")
