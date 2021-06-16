@@ -1,19 +1,19 @@
                                                                           
-     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
-    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
-     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
-      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
-       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
-        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
-        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
-        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
+     __  __   ________   ___ __ __    _______   ______                    
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
                                                                           
-         Version 5.0.0 Revision 19360 Hash 188c9dd11                      
-                   Branch is devel-magnons                                
+                                                                          
+          Version 5.1.0 Revision 20042 Hash dd01d5cc8                     
+                     Branch is devel-tddft                                
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                  http://www.yambo-code.org                               
+                   http://www.yambo-code.org                              
  
- 01/04/2021 at 22:12 yambo @ unimi-XPS-8930
+ 06/16/2021 at 12:19 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 06_tddft_magn_cpl_slepc
- Alt#1 string        : R3
+ Alt#1 string        : R11
 
  Precision           : SINGLE
   
@@ -66,8 +66,22 @@
   number of C  atoms    :   5
   number of H  atoms    :   6
   number of ** atoms    :  1
-  Alat factors          :  27.04825  28.30919  18.89726 [a.u.]
 
+  List of atomic coordinates    : [cc]
+  C1       : -2.295620  1.325378  0.000000
+  C2       : -2.295620 -1.325378  0.000000
+  C3       :  0.000000 -2.650757  0.000000
+  C4       :  2.295620 -1.325378  0.000000
+  C5       :  2.295620  1.325378  0.000000
+  H1       :  0.000000  4.705966  0.000000
+  H2       : -4.075497  2.352993  0.000000
+  H3       : -4.075497 -2.352993  0.000000
+  H4       :  0.000000 -4.705966  0.000000
+  H5       :  4.075497 -2.352993  0.000000
+  H6       :  4.075497  2.352993  0.000000
+  **1       :  0.000000  2.650757  0.000000
+
+  Alat factors          :  27.04825  28.30919  18.89726 [a.u.]
   Direct lattice volume :   14469.9    [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]:  1.000000  0.000000  0.000000  [iru]
@@ -152,7 +166,7 @@
   [X] Valence Band Max                     [spin UP]: -0.436843 [eV]
   [X] Filled Bands                         [spin UP]:  16
   [X] Empty Bands                          [spin UP]:  17  19
-  [X] Direct Gap                           [spin UP]:  0.748008 [eV]
+  [X] Direct Gap                           [spin UP]:  0.899773 [eV]
   [X] Direct Gap localized at k-point      [spin UP]:  1
    
   [X] === Spin dn channel ===
@@ -160,9 +174,12 @@
   [X] Valence Band Max                     [spin DN]: -4.570607 [eV]
   [X] Filled Bands                         [spin DN]:  15
   [X] Empty Bands                          [spin DN]:  16  19
-  [X] Direct Gap                           [spin DN]:  0.899773 [eV]
+  [X] Direct Gap                           [spin DN]:  4.881773 [eV]
   [X] Direct Gap localized at k-point      [spin DN]:  1
    
+  [X] === Overall gap ===
+  [X] Direct Gap                                    :  0.748008 [eV]
+  [X] Direct Gap localized at k-point               :  1
    
 
  [03] Transferred momenta grid and indexing
@@ -178,7 +195,7 @@
   COLL scattering                                  : no
   Sigma scattering                                 : yes
   X scattering                                     : yes
- - S/N 009310 ---------------------------------------------- v.05.00.00 r.19360 -
+ - S/N 009310 ---------------------------------------------- v.05.01.00 r.20042 -
 
  IBZ Q-points :  1
  BZ  Q-points :  1
@@ -221,13 +238,11 @@
   RIM corrections included                         : no
   RIM RL components                                : 0
   RIM random points                                : 0
- - S/N 009310 ---------------------------------------------- v.05.00.00 r.19360 -
+ - S/N 009310 ---------------------------------------------- v.05.01.00 r.20042 -
 
  [05] Dipoles
  ============
 
-
- [WARNING] DIPOLES database not correct or missing
  [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
   Fragmentation                                    : yes
  - S/N 009310 ---------------------------------------------- v.04.05.00 r.17938 -
@@ -251,17 +266,25 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P Spin
   Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
- - S/N 009310 ---------------------------------------------- v.05.00.00 r.19360 -
+ - S/N 009310 ---------------------------------------------- v.05.01.00 r.20042 -
+
+ [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
+
+ [WARNING] In case H contains other non local terms, these are neglected
+
+ [06] Bethe Salpeter Equation driver
+ ===================================
+
 
  [WARNING] BSE calculation with minimal memory utilization
 
  [WARNING] n_sp_pol=2 and magnons requested. Spin flip BSE only is computed
 
- [06] Bethe Salpeter Equation @q1
+ [07] Bethe Salpeter Equation @q1
  ================================
 
 
-  [06.01] Transition Groups build-up @q1
+  [07.01] Transition Groups build-up @q1
   ======================================
 
   [BSK] Transition groups (total):  2
@@ -269,7 +292,7 @@
   [BSK]         (total):  23
   [BSK] Matricies      :  1
 
-  [06.02] Independent Particles properties @q1
+  [07.02] Independent Particles properties @q1
   ============================================
 
   Optical renormalization       :   14469.9    [a.u.]
@@ -291,9 +314,9 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P Spin
    Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-  - S/N 009310 ---------------------------------------------- v.05.00.00 r.19360 -
+  - S/N 009310 ---------------------------------------------- v.05.01.00 r.20042 -
 
-  [06.03] TDDFT Kernel @q1 (Resonant CORRRELATION EXCHANGE) (Coupling CORRRELATION EXCHANGE)
+  [07.03] TDDFT Kernel @q1 (Resonant CORRRELATION EXCHANGE) (Coupling CORRRELATION EXCHANGE)
   ==========================================================================================
 
   [BSE] Exchange components :  2003
@@ -306,10 +329,10 @@
 
   [WARNING] Fxc not coded for GGA. Using LDA part only of the functional
 
-  [06.04] Main kernel loop
+  [07.04] Main kernel loop
   ========================
 
-  [WR./06_tddft_magn_cpl_slepc//ndb.BS_PAR_Q1]------------------------------------
+  [WR./06_tddft_magn_cpl_slepc//ndb.BS_head_Q1]-----------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
    RL vectors                                       :   9999 [WF]
    Coulomb cutoff potential                         : ws xyz  0.700
@@ -317,96 +340,105 @@
    BS kernel          wavefunctions                 : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    Static diel. fun.  energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   9134
+   [K] Identifier                                   :  1966
    [K] Dimension                                    :  15
    [K] Bands                                        :  12  18
-   [K] Exchange                                     : yes
-   [K] Correlation                                  : no
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : no
    [K] Kernel`s coupling                            : yes
-   [K] Exchange                                     : yes
-   [K] Correlation                                  : no
+   [K] Exchange cpl                                 : yes
+   [K] Correlation cpl                              : no
    [K] W interaction is bare                        : no
    [K] ALDA kernel in R-space                       : yes
-   [K] RL vectors                                   :  2003 [exchange]
+   [K] RL vectors exchange                          :  2003
    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-   [IO] Kernel triangular                           : no
-  - S/N 009310 ---------------------------------------------- v.05.00.00 r.19360 -
-   Kernel cutoff                                    :  0.000000
-   Kernel maxval                                    :  0.000000
+   [IO] Kernel IO mode                              : 2D_standard
+  - S/N 009310 ---------------------------------------------- v.05.01.00 r.20042 -
    Kernel complete                                  : no
-   Kernel cutoff                                    :  0.000000
    Kernel maxval                                    :  0.000000
    Kernel complete                                  : yes
 
- [07] BSE solver(s) @q1
+ [08] BSE solver(s) @q1
  ======================
 
 
-  [07.01] Slepc Solver @q1
+  [08.01] Slepc Solver @q1
   ========================
+
+  [SLEPC] Approach                          : Krylov-Schur
+  [SLEPC] Extraction method                 : ritz
+  [SLEPC] Number of requested eigenvalues   :  15
+  [SLEPC] Criterion is target energy        :  0.000000 [eV]
+  [SLEPC] Stopping condition tolerance      :  0.100000E-5
+  [SLEPC] Stopping condition max iterations :  1000
+  [SLEPC] Number of iterations              :  1
+  [SLEPC] Number of eigenvalues        [NEV]:  15
+  [SLEPC] Max. subspace size of solver [NCV]:  23
+  [SLEPC] Max. allowed dim             [MPD]:  23
+  [SLEPC] Number of converged states        :  23
 
   [WR./06_tddft_magn_cpl_slepc//ndb.BS_diago_Q1]----------------------------------
    BS kernel          energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   9134
+   [K] Identifier                                   :  1966
    [K] Dimension                                    :  15
    [K] Bands                                        :  12  18
-   [K] Exchange                                     : yes
-   [K] Correlation                                  : no
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : no
    [K] Kernel`s coupling                            : yes
-   [K] Exchange                                     : yes
-   [K] Correlation                                  : no
+   [K] Exchange cpl                                 : yes
+   [K] Correlation cpl                              : no
    [K] W interaction is bare                        : no
    [K] ALDA kernel in R-space                       : yes
-   [K] RL vectors                                   :  2003 [exchange]
+   [K] RL vectors exchange                          :  2003
    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-   [IO] Kernel triangular                           : no
+   [IO] Kernel IO mode                              : 2D_standard
    [BSS] Eigenstates included                       : no
    [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
    [BSS] Eigenstates computed                       :  15
    [BSS] Number of BSE matricies                    :  1
-  - S/N 009310 ---------------------------------------------- v.05.00.00 r.19360 -
+  - S/N 009310 ---------------------------------------------- v.05.01.00 r.20042 -
 
- [08] Timing Overview
+ [09] Timing Overview
  ====================
 
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
-       BSE components folding :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU (  7 calls,   0.002 msec avg)
              SERIAL_inversion :      0.0000s CPU
                LINEAR ALGEBRA :      0.0000s CPU
                         io_HF :      0.0000s CPU
                io_Double_Grid :      0.0000s CPU
-                 PP_uspp_init :      0.0000s CPU (  4 calls,   0.012 msec avg)
-                         io_X :      0.0001s CPU (  4 calls,   0.013 msec avg)
-                  io_fragment :      0.0003s CPU (  8 calls,   0.043 msec avg)
-                        io_BS :      0.0004s CPU (  4 calls,   0.093 msec avg)
-                  io_KB_pwscf :      0.0012s CPU (  4 calls,   0.309 msec avg)
-                   io_COL_CUT :      0.0046s CPU (  4 calls,   1.158 msec avg)
-                      io_GROT :      0.0051s CPU (  2 calls,   2.563 msec avg)
-                     io_QINDX :      0.0052s CPU (  2 calls,   2.599 msec avg)
-                 io_BSS_diago :      0.0057s CPU (  2 calls,   2.846 msec avg)
-                   T_space IP :      0.0074s CPU
-                        io_WF :      0.0098s CPU ( 15 calls,   0.651 msec avg)
-                    FFT_setup :      0.0099s CPU (  2 calls,   4.947 msec avg)
-                   io_DIPOLES :      0.0160s CPU ( 12 calls,   1.330 msec avg)
-                  WF_load_FFT :      0.0286s CPU (  4 calls,   7.154 msec avg)
-          XC_potential_driver :      0.0468s CPU
-          T_space ALDA scatt. :      0.0846s CPU (276 calls,   0.307 msec avg)
-                 Slepc Solver :      0.1341s CPU
-            DIPOLE_transverse :      0.1530s CPU
-             X T_space Kernel :      0.1659s CPU
-                      Dipoles :      0.1793s CPU
-               Coulomb Cutoff :      0.3338s CPU
+      IO_and_Messaging_switch :      0.0000s CPU ( 10 calls,   0.003 msec avg)
+                 PP_uspp_init :      0.0000s CPU (  4 calls,   0.010 msec avg)
+                         io_X :      0.0000s CPU (  4 calls,   0.012 msec avg)
+       BSE components folding :      0.0001s CPU
+                        io_BS :      0.0002s CPU (  4 calls,   0.056 msec avg)
+                  io_fragment :      0.0003s CPU (  8 calls,   0.032 msec avg)
+                  io_KB_pwscf :      0.0029s CPU (  4 calls,   0.722 msec avg)
+                   io_COL_CUT :      0.0044s CPU (  4 calls,   1.104 msec avg)
+                      io_GROT :      0.0050s CPU (  2 calls,   2.507 msec avg)
+                     io_QINDX :      0.0051s CPU (  2 calls,   2.563 msec avg)
+                   T_space IP :      0.0072s CPU
+                 io_BSS_diago :      0.0084s CPU (  2 calls,   4.210 msec avg)
+                    FFT_setup :      0.0095s CPU (  2 calls,   4.744 msec avg)
+                        io_WF :      0.0098s CPU ( 15 calls,   0.656 msec avg)
+                   io_DIPOLES :      0.0156s CPU ( 12 calls,   1.298 msec avg)
+                  WF_load_FFT :      0.0286s CPU (  4 calls,   7.158 msec avg)
+          XC_potential_driver :      0.0497s CPU
+          T_space ALDA scatt. :      0.0873s CPU (276 calls,   0.316 msec avg)
+                 Slepc Solver :      0.1245s CPU
+             X T_space Kernel :      0.1734s CPU
+            DIPOLE_transverse :      0.1859s CPU
+               Coulomb Cutoff :      0.3336s CPU
+                      Dipoles :      1.2124s CPU
 
- [09] Game Over & Game summary
+ [10] Game Over & Game summary
  =============================
 
- 01/04/2021 at 22:12 yambo @ unimi-XPS-8930 [start]
- 01/04/2021 at 22:12                        [end]
+ 06/16/2021 at 12:19 yambo @ unimi-XPS-8930 [start]
+ 06/16/2021 at 12:19                        [end]
 
   
  .-ACKNOWLEDGMENT
@@ -458,7 +490,7 @@
  | BSSmod= "s"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
  | DipComputed= "R V P Spin"        # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx= 2003             RL    # [BSK] Exchange components
- | BSEprop= "magn esrt jdos"        # [BSS] abs/kerr/magn/dichr trace
+ | BSEprop= "magn jdos"             # [BSS] abs/kerr/magn/dichr trace
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %
@@ -477,6 +509,7 @@
  | %
  | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
  | BSSNEig= 15                      # [SLEPC] Number of eigenvalues to compute
+ | BSSEnTarget= 0.000000      eV    # [SLEPC] Target energy to find eigenvalues
  | BSSSlepcApproach= "Krylov-Schur" # [SLEPC] Approach ("Krylov-Schur","Generalized-Davidson","Jacob-Davidson")
  | BSSSlepcMaxIt= 1000              # [SLEPC] Maximum number of iterations
  | BSSSlepcMatrix                 # [SLEPC] Store slepc matrix, faster but more memory consuming
