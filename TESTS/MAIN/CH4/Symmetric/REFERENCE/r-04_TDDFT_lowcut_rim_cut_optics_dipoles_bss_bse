@@ -1,19 +1,19 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
                                                                           
-                                                                          
-          Version 5.0.0 Revision 19675 Hash f008a56d1                     
+          Version 5.1.0 Revision 20042 Hash dd01d5cc8                     
                      Branch is devel-tddft                                
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 03/19/2021 at 14:14 yambo @ VivoBook
+ 06/16/2021 at 13:52 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_TDDFT_lowcut
- Alt#1 string        : R3
+ Alt#1 string        : R20
 
  Precision           : SINGLE
   
@@ -65,8 +65,15 @@
   Atoms in the cell     :  H  C
   number of H  atoms    :   4
   number of C  atoms    :  1
-  Alat factors          :  9.448630  9.448630  9.448630 [a.u.]
 
+  List of atomic coordinates    : [cc]
+  H1       :  1.275565  1.275565  1.275565
+  H2       : -1.275565 -1.275565  1.275565
+  H3       :  1.275565 -1.275565 -1.275565
+  H4       : -1.275565  1.275565 -1.275565
+  C1       :  0.000000  0.000000  0.000000
+
+  Alat factors          :  9.448630  9.448630  9.448630 [a.u.]
   Direct lattice volume :  843.5417 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]:  1.000000  0.000000  0.000000  [iru]
@@ -199,7 +206,7 @@
   COLL scattering                                  : no
   Sigma scattering                                 : yes
   X scattering                                     : yes
- - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
+ - S/N 002233 ---------------------------------------------- v.05.01.00 r.20042 -
 
  IBZ Q-points :  1
  BZ  Q-points :  1
@@ -242,13 +249,11 @@
   RIM corrections included                         : no
   RIM RL components                                : 0
   RIM random points                                : 0
- - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
+ - S/N 002233 ---------------------------------------------- v.05.01.00 r.20042 -
 
  [05] Dipoles
  ============
 
-
- [WARNING] DIPOLES database not correct or missing
  [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
   Fragmentation                                    : yes
  - S/N 002233 ---------------------------------------------- v.04.05.02 r.17118 -
@@ -272,17 +277,23 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
- - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
+ - S/N 002233 ---------------------------------------------- v.05.01.00 r.20042 -
 
- [WARNING] Only commutator with non-local pseudopotential contribution included in position and velocity dipol
+ [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
+
+ [WARNING] In case H contains other non local terms, these are neglected
+
+ [06] Bethe Salpeter Equation driver
+ ===================================
+
 
  [WARNING] BSE calculation with minimal memory utilization
 
- [06] Bethe Salpeter Equation @q1
+ [07] Bethe Salpeter Equation @q1
  ================================
 
 
-  [06.01] Transition Groups build-up @q1
+  [07.01] Transition Groups build-up @q1
   ======================================
 
   [BSK] Transition groups (total):  1
@@ -290,7 +301,7 @@
   [BSK]         (total):   9
   [BSK] Matricies      :  1
 
-  [06.02] Independent Particles properties @q1
+  [07.02] Independent Particles properties @q1
   ============================================
 
   Optical renormalization       :  843.5417 [a.u.]
@@ -312,10 +323,10 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P
    Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-  - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
+  - S/N 002233 ---------------------------------------------- v.05.01.00 r.20042 -
 
-  [06.03] TDDFT Kernel @q1 (Resonant CORRRELATION EXCHANGE)
-  =========================================================
+  [07.03] TDDFT Kernel @q1 (Resonant ALDA EXCHANGE)
+  =================================================
 
   [BSE] Exchange components :   4067
   [FFT-BSK] Mesh size:  20  20  20
@@ -323,11 +334,13 @@
   [xc] Functional : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
   [xc] LIBXC used to calculate xc functional
 
-  [WARNING] Fxc not coded for GGA. Using LDA part only of the functional
+  [WARNING] USPP corrections to rho gradient not implemented
 
   [WARNING] Fxc not coded for GGA. Using LDA part only of the functional
 
-  [06.04] Main kernel loop
+  [WARNING] Fxc not coded for GGA. Using LDA part only of the functional
+
+  [07.04] Main kernel loop
   ========================
 
   [WR./04_TDDFT_lowcut//ndb.BS_head_Q1]-------------------------------------------
@@ -338,7 +351,7 @@
    BS kernel          wavefunctions                 : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    Static diel. fun.  energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
    wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   3620
+   [K] Identifier                                   :   6495
    [K] Dimension                                    :   9
    [K] Bands                                        :   2   7
    [K] Exchange res                                 : yes
@@ -352,21 +365,21 @@
    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
    [K] Coupling range                               :  100.0000  100.0000 [o/o]
    [IO] Kernel IO mode                              : 2D_standard
-  - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
+  - S/N 002233 ---------------------------------------------- v.05.01.00 r.20042 -
    Kernel complete                                  : no
    Kernel maxval                                    :  0.000000
    Kernel complete                                  : yes
 
- [07] BSE solver(s) @q1
+ [08] BSE solver(s) @q1
  ======================
 
 
-  [07.01] Diago Solver @q1
+  [08.01] Diago Solver @q1
   ========================
 
   [WR./04_TDDFT_lowcut//ndb.BS_diago_Q1]------------------------------------------
    BS kernel          energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   [K] Identifier                                   :   3620
+   [K] Identifier                                   :   6495
    [K] Dimension                                    :   9
    [K] Bands                                        :   2   7
    [K] Exchange res                                 : yes
@@ -384,68 +397,59 @@
    [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
    [BSS] Eigenstates computed                       :   9
    [BSS] Number of BSE matricies                    :  1
-  - S/N 002233 ---------------------------------------------- v.05.00.00 r.19675 -
+  - S/N 002233 ---------------------------------------------- v.05.01.00 r.20042 -
 
-  [07.02] Haydock Solver for abs @q1, scheme hermitian
+  [08.02] Haydock Solver for abs @q1, scheme hermitian
   ====================================================
 
   Accuracy (requested)      :  0.100000E-2 [o/o]
-  Accuracy (reached)        :  0.165748E-6 [o/o]
+  Accuracy (reached)        :  0.139425E-6 [o/o]
   Iterations                :   4
 
- [08] Timing Overview
+ [09] Timing Overview
  ====================
 
  Clock: global
                     BSE matrix (REDUX) :      0.0000s CPU
+                    BSE matrix filling :      0.0000s CPU
                       io_ATMPROJ_pwscf :      0.0000s CPU
                           io_KB_abinit :      0.0000s CPU
-                    BSE matrix filling :      0.0000s CPU
-                          PP_uspp_init :      0.0000s CPU ( 2 calls,   0.017 msec avg)
+                          PP_uspp_init :      0.0000s CPU ( 2 calls,   0.009 msec avg)
+                                 io_HF :      0.0000s CPU
+                        io_Double_Grid :      0.0000s CPU
                IO_and_Messaging_switch :      0.0000s CPU (10 calls,   0.003 msec avg)
-                                 io_HF :      0.0001s CPU
-                        io_Double_Grid :      0.0001s CPU
-                                  io_X :      0.0001s CPU ( 4 calls,   0.030 msec avg)
-                BSE components folding :      0.0001s CPU
-                           io_fragment :      0.0001s CPU ( 3 calls,   0.049 msec avg)
-                                 io_BS :      0.0001s CPU ( 2 calls,   0.075 msec avg)
-      SERIAL_HERMITIAN_diagonalization :      0.0003s CPU
-                        LINEAR ALGEBRA :      0.0003s CPU
-                           io_KB_pwscf :      0.0013s CPU ( 3 calls,   0.419 msec avg)
-                                 io_WF :      0.0015s CPU ( 7 calls,   0.221 msec avg)
-                           WF_load_FFT :      0.0026s CPU ( 2 calls,   1.322 msec avg)
-                      T_space EXX Osc. :      0.0050s CPU
-                            io_COL_CUT :      0.0081s CPU ( 4 calls,   2.035 msec avg)
-                        io_BSS_Haydock :      0.0084s CPU ( 2 calls,   4.191 msec avg)
-                              io_QINDX :      0.0099s CPU ( 2 calls,   4.964 msec avg)
-                            T_space IP :      0.0110s CPU
-                   XC_potential_driver :      0.0126s CPU
-                          io_BSS_diago :      0.0138s CPU ( 2 calls,   6.910 msec avg)
-                             FFT_setup :      0.0166s CPU
-                               io_GROT :      0.0245s CPU ( 2 calls,  12.272 msec avg)
-                            io_DIPOLES :      0.0258s CPU (10 calls,   2.582 msec avg)
-                        Coulomb Cutoff :      0.0374s CPU
-                   T_space ALDA scatt. :      0.0381s CPU (45 calls,   0.846 msec avg)
-                      X T_space Kernel :      0.0974s CPU
-                     DIPOLE_transverse :      0.1179s CPU
-                               Dipoles :      0.1366s CPU
-                        Haydock Solver :      0.3533s CPU
-                          Diago Solver :      0.5013s CPU
-
- [09] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  13.07500 [Mb]
+      SERIAL_HERMITIAN_diagonalization :      0.0000s CPU
+                        LINEAR ALGEBRA :      0.0000s CPU
+                BSE components folding :      0.0000s CPU
+                                  io_X :      0.0000s CPU ( 4 calls,   0.012 msec avg)
+                                 io_BS :      0.0001s CPU ( 2 calls,   0.034 msec avg)
+                           io_fragment :      0.0001s CPU ( 3 calls,   0.045 msec avg)
+                                 io_WF :      0.0008s CPU ( 7 calls,   0.116 msec avg)
+                           WF_load_FFT :      0.0014s CPU ( 2 calls,   0.698 msec avg)
+                           io_KB_pwscf :      0.0019s CPU ( 3 calls,   0.649 msec avg)
+                      T_space EXX Osc. :      0.0025s CPU
+                            io_COL_CUT :      0.0043s CPU ( 4 calls,   1.068 msec avg)
+                        io_BSS_Haydock :      0.0045s CPU ( 2 calls,   2.249 msec avg)
+                              io_QINDX :      0.0052s CPU ( 2 calls,   2.607 msec avg)
+                            T_space IP :      0.0058s CPU
+                          io_BSS_diago :      0.0075s CPU ( 2 calls,   3.734 msec avg)
+                             FFT_setup :      0.0090s CPU
+                   XC_potential_driver :      0.0104s CPU
+                               io_GROT :      0.0123s CPU ( 2 calls,   6.139 msec avg)
+                            io_DIPOLES :      0.0141s CPU (10 calls,   1.408 msec avg)
+                   T_space ALDA scatt. :      0.0196s CPU (45 calls,   0.435 msec avg)
+                        Coulomb Cutoff :      0.0203s CPU
+                     DIPOLE_transverse :      0.0450s CPU
+                      X T_space Kernel :      0.0540s CPU
+                        Haydock Solver :      0.0758s CPU
+                          Diago Solver :      0.0911s CPU
+                               Dipoles :      1.0539s CPU
 
  [10] Game Over & Game summary
  =============================
 
- 03/19/2021 at 14:14 yambo @ VivoBook [start]
- 03/19/2021 at 14:14                  [end]
+ 06/16/2021 at 13:52 yambo @ unimi-XPS-8930 [start]
+ 06/16/2021 at 13:52                        [end]
 
   
  .-ACKNOWLEDGMENT
