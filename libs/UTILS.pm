@@ -78,10 +78,9 @@ sub CWD_go_a2y{
 sub gimme_reference
 {
 my $RUN_local=$_[0];
-$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$RUN_local;
-if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$testname."/".$RUN_local};
+$ref_filename = $REF_prefix.$REF_folder."/".$RUN_local;
+if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix.$REF_folder."/".$testname."/".$RUN_local};
 if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE/".$RUN_local};
-#
 if(-e "$ref_filename" ) {return};
 #
 $RUN_local=$_[0];
@@ -95,8 +94,8 @@ for $ipatt (1...$N_PATTERNS)
    }
   }
  } 
-$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$RUN_local;
-if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE_$branch_key/".$testname."/".$RUN_local};
+$ref_filename = $REF_prefix.$REF_folder."/".$RUN_local;
+if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix.$REF_folder."/".$testname."/".$RUN_local};
 if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE/".$RUN_local};
 if(! -e "$ref_filename" ) {$ref_filename = $REF_prefix."REFERENCE/".$testname."/".$RUN_local};
 if(! -e "$ref_filename" ) { 

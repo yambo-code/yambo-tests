@@ -8,7 +8,7 @@
 ! 
 ! Columns can be given in OPTIONS as:
 !
-! 1. COLS=(/col_start,col_end/): starting and ending columns
+! 1. COLS=(/col_1,col_2,..../): columns
 ! 2. COL=col
 ! 3. TITLES=(/"T1","T2"/): titles of the column
 ! 4. MATERIAL="hBN". Applies to a specific material
@@ -22,13 +22,19 @@ call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
 call add_RULE(".ns.wf_fragments_1_1","skip",MATERIAL="MoS2")
 call add_RULE("Lifetimes.ndb.em1d_fragment","skip",MATERIAL="Al_bulk")
 !
+! INTEL
+!=======
+call add_RULE(".bands_built_in_spin","skip",COLS=(/6,7,8/),MATERIAL="NiBr2")
+!
 ! RT
 !====
 call add_RULE(".YPP-RT_occupations_DATA","skip",MATERIAL="Si_bulk")
 call add_RULE(".YPP-RT_","no_statistics",MATERIAL="Si_bulk")
-call add_RULE(".current","average",COLS=(/2,3,4/),VAL_treshold=1.E-10,MATERIAL="hBN AlAs Si_bulk MoS2")
-call add_RULE(".polarization","average",COLS=(/2,3,4/),MATERIAL="hBN AlAs MoS2")
-call add_RULE(".polarization","average",COLS=(/2,3,4/),MATERIAL="hBN AlAs MoS2")
+call add_RULE("11_ip_neq_ypp_procedure.YPP-TR_Anomalous_Hall_IP","average",COLS=(/2,3/),MATERIAL="Black-Phosphorus")
+call add_RULE("10_ip_neq_ypp_procedure.YPP-TR_Anomalous_Hall_IP","average",COLS=(/2,3,4,5,6,7/),MATERIAL="Black-Phosphorus")
+call add_RULE(".current","average",COLS=(/2,3,4/),VAL_treshold=1.E-10,MATERIAL="hBN AlAs Si_bulk MoS2 Black-Phosphorus")
+call add_RULE(".current","average",COLS=(/2,3,4/),VAL_treshold=1.E-10,MATERIAL="hBN AlAs Si_bulk MoS2 Black-Phosphorus")
+call add_RULE(".polarization","average",COLS=(/2,3,4/),MATERIAL="hBN AlAs MoS2 Black-Phosphorus")
 call add_RULE(".magnetization","average",COLS=(/2,3,4/),MATERIAL="hBN AlAs MoS2")
 call add_RULE("-eps_along_E","skip",TITLES=(/"eps_d2","eps_d3"/),MATERIAL="hBN AlAs MoS2 WSe2 H2")
 call add_RULE("-eps_along_E","skip",COLS=(/3,4,6,7/),MATERIAL="hBN AlAs MoS2 WSe2 H2")
@@ -37,8 +43,8 @@ call add_RULE("-eels_along_E","skip",COLS=(/3,4,6,7/),MATERIAL="hBN AlAs MoS2 WS
 call add_RULE(".N_dN_E_conservation_factors","skip",MATERIAL="Si_bulk WSe2")
 call add_RULE(".energy","skip",TITLES=(/"dE_xc [eV]","dE_tot[eV]"/),MATERIAL="MoS2 WSe2")
 call add_RULE(".energy","no_statistics",USER_prec=5/100.,MATERIAL="hBN AlAs")
-call add_RULE(".carriers","no_statistics",VAL_treshold=1.E-7,MATERIAL="hBN AlAs MoS2 WSe2 Si_bulk")
-call add_RULE(".dynamics","no_statistics",VAL_treshold=1.E-7,MATERIAL="hBN AlAs MoS2 WSe2 Si_bulk")
+call add_RULE(".carriers","no_statistics",VAL_treshold=1.E-7)
+call add_RULE(".dynamics","no_statistics",VAL_treshold=1.E-7)
 call add_RULE("o-04_elel+elph_0K.carriers","no_statistics",USER_prec=7/100.,MATERIAL="Si_bulk")
 call add_RULE("o-04_elel+elph_0K.dynamics","no_statistics",USER_prec=7/100.,MATERIAL="Si_bulk")
 call add_RULE(".YPP-eps","skip",COLS=(/3,4,6,7/),Material="Si_bulk")
@@ -46,7 +52,6 @@ call add_RULE(".induced_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 call add_RULE(".total_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 !
 ! Temporary
-call add_RULE("04_ypp_abs_dft-eels_along_E","skip",MATERIAL="MoS2")
 call add_RULE("08_ypp_bands","align",REF_row=2,Material="MoS2")
 call add_RULE("08_ypp_dos","align",REF_row=2,Material="MoS2")
 call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_EP_Elec_linewidth","align",REF_row=1,Material="MoS2")
