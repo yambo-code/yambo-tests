@@ -112,10 +112,6 @@ if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
  &command("rm -fr $conf_bin; mkdir $conf_bin");
  @executables = split(/\s+/, $exec_list);
  while($exec = shift(@executables)) {&command("cp bin/$exec $conf_bin/")};
-# if (-d "lib/bin" ) {&command("cp lib/bin/* $conf_bin/")};
-# if (-d "bin-libs") {&command("cp bin-libs/* $conf_bin/")};
-# if (-d "lib/bin")  {&command("find ./lib/bin/  | xargs cp -t $conf_bin/ 2> /dev/null")};
-# if (-d "bin-libs") {&command("find ./bin-libs/ | xargs cp -t $conf_bin/ 2> /dev/null")};
  if (-e "lib/bin/ncdump")  {&command("cp lib/bin/ncdump  $conf_bin/")};
  if (-e "bin-libs/ncdump") {&command("cp bin-libs/ncdump $conf_bin/")};
  chdir $suite_dir;
