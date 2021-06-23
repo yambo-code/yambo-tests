@@ -110,7 +110,8 @@ if ($YPP_RT eq "1") { $description .= " post-processing rt" };
 if (&RUN_feature("ypp_sc") eq "1" ) {$YPP_SC=1}
 if ($YPP_SC eq "1") { $description .= " sc" };
 #
-if ((&RUN_feature("gkkp") eq "1" and $RUN_feature("el_ph_corr") ne "1") or &RUN_feature("eliashberg") eq "1") {$YPP_PH=1}
+if (&RUN_feature("gkkp") eq "1" and &RUN_feature("el_ph_corr") ne "1") {$YPP_PH=1}
+if (&RUN_feature("eliashberg") eq "1") {$YPP_PH=1}
 if (&RUN_feature("gkkp_dg") eq "1" or &RUN_feature("phonons") eq "1") {$YPP_PH=1}
 if ($YPP_PH eq "1") { $description .= " post-processing ph" };
 #
