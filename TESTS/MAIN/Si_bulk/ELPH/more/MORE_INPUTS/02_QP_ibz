@@ -1,0 +1,37 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+#       Version 5.1.0 Revision 20086 Hash c5d8725b6                   
+#                Branch is devel-dbgrid-ph                            
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+gw0                              # [R] GW approximation
+el_ph                        # [R] Electron-Phonon Correlation
+el_ph_corr                       # [R] Electron-Phonon Correlation
+SE_Threads=0                     # [OPENMP/GW] Number of threads for self-energy
+DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
+% GphBRnge
+  1 | 12 |                           # [ELPH] G[W] bands range
+%
+% ElPhModes
+  1 |  6 |                           # [ELPH] Phonon modes included
+%
+GDamping= 0.100000         eV    # [GW] G[W] damping
+RandQpts=0                       # [RIM] Number of random q-points in the BZ
+GkkpDB= "gkkp"          # [ELPH] GKKP database (gkkp | gkkp_expanded | genFroh )
+#WRgFsq                        # [ELPH] Dump on file gFsq coefficients
+%QPkrange                        # [GW] QP generalized Kpoint/Band indices
+1|8|1|12|
+%
+%QPerange                    # [GW] QP generalized Kpoint/Energy indices
+  1|  7| 0.0|-1.0|
+%
+
