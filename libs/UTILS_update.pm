@@ -59,31 +59,9 @@ if (not -f "$ROBOT_wd/SAVE/ndb.gops" and not "../SAVE/ndb.gops")
  die "\n\n It seems the test-suite could not run";
 }
 #
-if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "develop") 
-{
- $REF="REFERENCE";
-}else{
- $REF="REFERENCE_".$branch_key;
- print "\nUPDATE: Adding $REF\n";
- if (not -d $REF) 
- { 
-  &command("mkdir -p $REF");
-  &command("$git add $REF");
- }
-}
-#
-&command("$git add INPUTS");
-&command("$git add $REF");
-#
 }
 sub UPDATE_action{
 #
-if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "develop") 
-{
- $REF_folder="REFERENCE";
-}else{
- $REF_folder="REFERENCE_".$branch_key;
-};
 if ("@_" eq "RM" && $ref_filename =~ /$REF_folder/){
  &command("$git rm ../$ref_filename");
 }
@@ -93,6 +71,7 @@ if ("@_" eq "ADD")
  { 
   print "...$REF_folder FOLDER";
   &command("mkdir -p ../$REF_folder");
+  &command("$git add ../$REF_folder");
  };
  if (not -f "../$REF_folder/$run_filename") 
  {
@@ -111,6 +90,11 @@ if ("@_" eq "ADD")
 }
 if ("@_" eq "INPUT") {
  print "\nUPDATE: Adding";
+ if (not -d $input_folder) { 
+  print "...$input_folder FOLDER";
+  &command("mkdir -p ../$input_folder");
+  &command("$git add ../$input_folder");
+ }
  if (-f "$testname/yambo.in_generated") {
   &command("cp yambo.in_generated ../$input_folder/$testname");
   &command("$git add ../$input_folder/$testname");

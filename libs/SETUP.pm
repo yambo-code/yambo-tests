@@ -92,6 +92,10 @@ if ("$what" eq "BASIC") {
  #
  if (!$np_min and !$np_single and !$nt) {$PAR_string="SERIAL"};
  #
+ $REF_folder="REFERENCE_".$branch_key;
+ if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "develop")  {$REF_folder="REFERENCE"};
+ if ($update_test and $update_as_master)  {$REF_folder="REFERENCE"};
+ #
 }
 }
 1;
