@@ -23,12 +23,12 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SETUP_keys{
-my @PJs = ("sc","rt","elph","magnetic","nl","hard","nopj","qp-dbs","p2y","a2y");
+my @PJr = ("sc","rt","elph","magnetic","nl","hard","nopj","kerr","qp-dbs","p2y","a2y");
 my @FTs = ("gw", "bse", "rpa","all","spin","spinors","kerr","magnons","pl"); 
 $project= '';
-foreach my $index (0..$#PJs) {
-    next if ($keys !~ /$PJs[$index]/ and $keys !~ /all/);
-    $project .= " ".$PJs[$index];
+foreach my $index (0..$#PJr) {
+    next if ($keys !~ /$PJr[$index]/ and $keys !~ /all/);
+    $project .= " ".$PJr[$index];
 }
 $if=-1;
 foreach my $index (0..$#FTs) {

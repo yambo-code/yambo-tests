@@ -1,16 +1,16 @@
-#  __      __   ______   __       __  _______    ______               
-# |  \    /  \ /      \ |  \     /  \|       \  /      \              
-#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
-#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
-#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
-#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
-#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
-#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
-#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
 #                                                                     
-#       Version 5.0.1 Revision 19773 Hash 47c9c190c                   
-#                   Branch is bug-fixes                               
-#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 19790 Hash ae98f21d5                   
+#                 Branch is devel-andreaM                             
+#                    MPI+HDF5_IO Build                                
 #                http://www.yambo-code.org                            
 #
 TDplots                          # [R] TD observables plot
@@ -19,13 +19,17 @@ RTabs                            # [R] Transient absorption
 RTtime                           # [R] Post-Processing kind: function of time
 TimeStep= 1.000000         fs    # Time step
 % TimeRange
- 10.000000 | 10.000000 |         fs    # Time-window where processing is done
+ 10.00000 | 10.00000 |         fs    # Time-window where processing is done
 %
+BSQindex= 1                      # Q-Index of the BS state(s)
 % EnRngeRt
   0.00000 | 10.00000 |         eV    # Energy range
 %
 ETStpsRt=  500                   # Total Energy steps
 DampFactor= 0.100000       eV    # Damping parameter
-#Transmission                  # Compute the transient transmissions
-#Reflectivity                  # Compute the transient reflectivity
-#IncludeIP                     # Include the v-v and c-c contribution at IP level
+TRabsOBS= "abs"                  # [RT] RT observable. It can be a combination of (abs)bsorption, (trans)mission, (refl)ectivity, (kerr
+% TRabsDIPdir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT] Dipole direction
+%
+TRabsDIPplane= "none"            # [RT] Dipole rotation plane
+TRabsMODE= "cv eq"               # [RT] TRabs mode. It can be a combination of cv,vv,cc,ip,eq

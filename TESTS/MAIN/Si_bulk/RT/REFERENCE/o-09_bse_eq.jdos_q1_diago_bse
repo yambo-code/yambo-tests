@@ -1,17 +1,17 @@
 #                                                                     
-# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
-#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
-#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
-#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
-#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
-#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
-#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
 #                                                                     
 #                                                                     
-#        Version 5.0.1 Revision 19773 Hash 47c9c190c                  
-#                    Branch is bug-fixes                              
-#          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                     
-#                 http://www.yambo-code.org                           
+#                                                                     
+#       Version 5.0.1 Revision 19797 Hash cc36c1bda                   
+#                 Branch is devel-andreaM                             
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.org                            
 #
 # Joint density of states @ Q(1)
 #
@@ -34,18 +34,18 @@
 #
 #
 #
-# [K] Identifier                                  :   391
+# [K] Identifier                                  :   3279
 # [K] Dimension                                   :   72
 # [K] Bands                                       :   2   7
-# [K] Exchange res                                : yes
-# [K] Correlation res                             : yes
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : yes
 # [K] Kernel`s coupling                           : no
-# [K] Exchange cpl                                : no
-# [K] Correlation cpl                             : no
+# [K] Exchange                                    : no
+# [K] Correlation                                 : no
 # [K] W interaction is bare                       : no
 # [K] ALDA kernel in R-space                      : no
-# [K] RL vectors exchange                         :   531
-# [K] RL vectors correlation                      :   59
+# [K] RL vectors                                  :   531 [exchange]
+# [K] RL vectors                                  :   59 [correlation]
 # [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
 # [K] Coupling range                              :   100.000000      100.000000    [o/o]
 # [W] Interaction is diagonal                     : no
@@ -55,15 +55,14 @@
 # [W] Poles                                       :   100.000000    [o/o]
 # [W] RL vectors in the sum                       :   387
 # [W] [r,Vnl] included                            : yes
-# [W] Longitudinal Gauge                          : yes
 # [W] Field direction                             :  0.999999975E-5   0.00000000      0.00000000   
 # [W] Coulomb Cutoff                              : none
 # [W] xc-Kernel                                   : none
-# [RIM] RL components col                         : 0
-# [RIM] Random points col                         : 0
+# [RIM] RL components                             : 0 [col]
+# [RIM] Random points                             : 0 [col]
 # [SOC] Perturbative SOC                          : no
 #
-#    E/ev[1]            jdos-Im[2]         jdos-Re[3]         jdoso-Im[4]        jdoso-Re[5]
+#    E/ev[1]            jdos-Im[2]         jdos-Re[3]         jdos_o-Im[4]       jdos_o-Re[5]
 #
      0.00000000         0.00000000         7.44411516         0.00000000         7.45005417   
     0.200400800E-1     0.123340660E-2      7.44423723        0.120186992E-2      7.45016956   
@@ -566,8 +565,8 @@
      9.97995949        0.651869595         3.81180215        0.852238536         4.58558846   
      10.0000000        0.683676422         3.94085717        0.902212262         4.75286388   
 # 
-# 04/28/2021 at 23:07 yambo_rt @ VivoBook [start]
-# 04/28/2021 at 23:07                     [end]
+# 05/11/2021 at 18:41 yambo_rt @ baym [start]
+# 05/11/2021 at 18:41                 [end]
 #
 # .-Input file  yambo.in
 # | optics                           # [R] Linear Response optical properties
@@ -578,9 +577,6 @@
 # | FFTGvecs=  387             RL    # [FFT] Plane-waves
 # | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
-# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
-# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
 # | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
@@ -590,7 +586,8 @@
 # | BSENGBlk=  59              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
 # | #WehCpl                        # [BSK] eh interaction included also in coupling
 # | KfnQPdb= "E < 08_gw_eq/ndb.QP"   # [EXTQP BSK BSS] Database action
-# | BSEprop= "abs"                   # [BSS] abs/kerr/magn/dichr trace
+# | BSEprop= "abs"                   # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
 # | % BSEQptR
 # |  1 | 1 |                             # [BSK] Transferred momenta range
 # | %
@@ -607,7 +604,7 @@
 # | % BLongDir
 # |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
 # | %
-# | WRbsWF                         # [BSS] Write to disk excitonic the WFs
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
 # | BSHayTrs= 0.020000               # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
 # | % BndsRnXs
 # |   1 |  8 |                           # [Xs] Polarization function bands

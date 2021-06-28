@@ -7,12 +7,13 @@ export  BLACS="${YAMBO_LIBS}/lib/libblacs.a ${YAMBO_LIBS}/lib/libblacs_C_init.a 
 export  NVIDIA_DIR="/opt/nvidia/hpc_sdk/Linux_x86_64/2021/math_libs/lib64/"
 
 ./configure FC=nvfortran F77=nvfortran  CC=nvc CPP="gcc -E -P" FPP="gfortran -E -P -cpp" \
---enable-open-mp --enable-par-linalg --enable-hdf5-par-io  \
+--enable-open-mp --enable-par-linalg --enable-hdf5-par-io --enable-slepc-linalg \
 --with-blas-libs="${YAMBO_LIBS}/lib/libblas.a" --with-lapack-libs="${YAMBO_LIBS}/lib/liblapack.a" \
 --with-fft-libs="${YAMBO_LIBS}/lib/libfftw3.a" \
 --with-extlibs-path="${YAMBO_LIBS}" \
 --with-fft-includedir="${YAMBO_LIBS}/include" \
 --with-scalapack-libs="${YAMBO_LIBS}/lib/libscalapack.a" --with-blacs-libs="${BLACS}" \
 --with-iotk-path="${YAMBO_LIBS}" --with-libxc-path="${YAMBO_LIBS}" \
+--with-petsc-path="${YAMBO_LIBS}" --with-slepc-path="${YAMBO_LIBS}" \
 --with-netcdf-path="${YAMBO_LIBS}" --with-netcdff-path="${YAMBO_LIBS}" --with-hdf5-path="${YAMBO_LIBS}" 
 

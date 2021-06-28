@@ -86,7 +86,8 @@ if ($len eq 1) {$nice_level="19"};
 if ($mode eq "bench" or $nice_level) { $run_duration = 24*60*60*7 };
 if ($verb ge 2) { $log = "" };
 if ($nice_level) {$nice="nice -n"."$nice_level"};
-#
+my $len= length($as_master);
+if ($len eq 0) {$as_master="yes"};
 my $len= length($backup_logs);
 if ($len eq 0) {$backup_logs="yes"};
 if ($report) {$backup_logs="yes"};
