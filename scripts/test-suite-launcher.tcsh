@@ -1,4 +1,5 @@
 #!/usr/bin/tcsh
+cd  /scratch/marini/yambo-tests-robot/
 cat << EOF > script.awk
 {
 if (NR==1 || index(\$0,"END")>0) {print_me="no"};
@@ -10,7 +11,7 @@ if (NR       == 1    ){print "module purge"};
 if (print_me == "yes"){print "module load "\$0 };
 }
 EOF
-cat /scratch/marini/yambo-tests-robot/ROBOTS/baym-robot/marini/MODULES | awk -f script.awk > module.tcsh
+cat ROBOTS/baym-robot/marini/MODULES | awk -f script.awk > module.tcsh
 chmod u+x module.tcsh
 source module.tcsh
 rm -f module.tcsh script.awk
