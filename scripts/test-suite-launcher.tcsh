@@ -11,7 +11,7 @@ if (NR       == 1    ){print "module purge"};
 if (print_me == "yes"){print "module load "\$0 };
 }
 EOF
-cat baym-robot/marini/MODULES | awk -f script.awk > module.tcsh
+cat ROBOTS/baym-robot/marini/MODULES | awk -f script.awk > module.tcsh
 chmod u+x module.tcsh
 source module.tcsh
 rm -f module.tcsh script.awk
