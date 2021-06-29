@@ -34,15 +34,14 @@ $i_file = 0;
 $i_dir = 0;
 foreach $dir (@reversed_dirs) {
  @files = glob("$dir/REPORT*");
- $branch_in_the_log="none";
+ $yambo_branch="none";
  foreach $file (@files) {
   $i_file = $i_file+1;
   open(REPORT,"<","$suite_dir/$file");
   @lines = <REPORT>;
   &PHP_key_words($file);
-  if ($branch_php and not "$branch_php" eq "$branch_in_the_log" ) {next};
-  if (not $branch_php and not "$branch_key" eq "$branch_in_the_log") {next} ;
-  #print "$dir"."  KEY $branch_key"." LOG $branch_in_the_log"." PHP $branch_php\n";
+  if ($branch_php and not "$branch_php" eq "$yambo_branch" ) {next};
+  if (not $branch_php and not "$branch_key" eq "$yambo_branch") {next} ;
   $i_dir = $i_dir+1;
   if ($i_dir > 21 ) {next};
   print "Processing $dir...\n";
@@ -56,8 +55,11 @@ sub PHP_key_words{
  # Notice that here date and time are already defined
  $robot_id = (split(/REPORT-R/,@_[0]))[1];
  $robot_id = (split(/-/,$robot_id))[0];
+ &get_line("Yambo      branch");
+ $yambo_branch=$pattern[0][2];
  &get_line("Test-suite branch");
- $test_suite_branch=$pattern[0][2];
+ $tsuite_branch=$pattern[0][2];
+ if( $yambo_branch eq ""){$yambo_branch="none";}
  &get_line("Build");
  if ($n_patterns eq 0)
  {
@@ -69,10 +71,7 @@ sub PHP_key_words{
    undef $duration;
    return;
  }
- $branch_in_the_log=$pattern[0][1];
- if( $branch_in_the_log eq ""){$branch_in_the_log="none";}
  $BUILD=$pattern[0][3];
- $CONF=$pattern[0][2];
  $BUILD =~ s/\+/ /g;
  $MPI_kind=$pattern[0][5];
  $FC_kind=$pattern[0][7];
@@ -84,6 +83,8 @@ sub PHP_key_words{
   $MPI_kind=" ";
  }
 #
+&get_line("Compilation Scheme");
+$scheme=$pattern[0][2]; 
 $Yambo_precision="unknown";
 &get_line("Compilation Precision");
 if ($n_patterns > 0) { $Yambo_precision=$pattern[0][2];  };
@@ -119,17 +120,17 @@ $MAX_phps=20;
 chdir("backup_and_www/$host/www");
 for( $j = 1; $j < $MAX_phps ; $j = $j + 1 )
 {
- $main_dat = $branch_in_the_log."/".$host."_".$branch_in_the_log."_".$j."_main.dat";
+ $main_dat = $yambo_branch."/".$host."_".$yambo_branch."_".$j."_main.dat";
  if (! -f $main_dat) { last} ;
 }
 #
 chdir("$suite_dir");
-$main_dat = $host."_".$branch_in_the_log."_".$j."_main.dat";
-$error_php=$host."_".$branch_in_the_log."_".$j."_error.php";
-$report_php=$host."_".$branch_in_the_log."_".$j."_report.php";
-$conf_php=$host."_".$branch_in_the_log."_".$j."_conf.php";
-$comp_tgz=$host."_".$branch_in_the_log."_".$j."_comp.tgz";
-$logs_tgz=$host."_".$branch_in_the_log."_".$j."_logs.tgz";
+$main_dat = $host."_".$yambo_branch."_".$j."_main.dat";
+$error_php=$host."_".$yambo_branch."_".$j."_error.php";
+$report_php=$host."_".$yambo_branch."_".$j."_report.php";
+$conf_php=$host."_".$yambo_branch."_".$j."_conf.php";
+$comp_tgz=$host."_".$yambo_branch."_".$j."_comp.tgz";
+$logs_tgz=$host."_".$yambo_branch."_".$j."_logs.tgz";
 #
 # RETRIVE DATA
 #
@@ -283,8 +284,8 @@ if ( "$compress" eq "yes" ){ &command("tar -czf $comp_tgz compilation/*comp*.log
 #
 # Final copying
 #
-&command("mkdir -p backup_and_www/$host/www/$branch_in_the_log");
-&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$branch_in_the_log");   
+&command("mkdir -p backup_and_www/$host/www/$yambo_branch");
+&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$yambo_branch");   
 #
 return
 }

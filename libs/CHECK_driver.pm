@@ -100,14 +100,14 @@ O_file_loop: foreach $run_filename (<o-$testname.*>){
 my $ref_dir;
 $ref_dir="${REF_prefix}REFERENCE";
 my @OFILES = (<$ref_dir/o-$testname.*>);
-if ( -d $REF_prefix."REFERENCE_$branch_key/$testname")
+if ( -d $REF_prefix.$REF_folder."/$testname")
 {
- $ref_dir="${REF_prefix}REFERENCE_${branch_key}/$testname";
+ $ref_dir="${REF_prefix}.${REF_folder}/$testname";
  my @MFILES = (<$ref_dir/o-$testname.*>);
  push @OFILES, @MFILES;
-}elsif ( -d $REF_prefix."REFERENCE_$branch_key")
+}elsif ( -d $REF_prefix.$REF_folder)
 {
- $ref_dir="${REF_prefix}REFERENCE_${branch_key}";
+ $ref_dir="${REF_prefix}${REF_folder}";
  my @MFILES = (<$ref_dir/o-$testname.*>);
  push @OFILES, @MFILES;
 }
