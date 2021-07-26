@@ -72,7 +72,7 @@ subroutine read_the_data(fl)
           head=ch_save(1)
           head=head(i1_pos:len_trim(ch_save(1)))
           tit_length=nint(real(len_trim(head))/fl%n_col)
-          if (title_length<1) tit_length=1
+          if (tit_length<1) tit_length=1
           write (fmt_,'(i2.2,a1,i2.2)') fl%N_col,"A",tit_length
           read(head,'('//trim(fmt_)//')') data_str(1:fl%N_col)
           !do i_c=1,fl%N_col
