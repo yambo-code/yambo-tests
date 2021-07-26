@@ -1,19 +1,19 @@
                                                                           
-     **    **    **     ****     ****  ******     *******                 
-    //**  **    ****   /**/**   **/** /*////**   **/////**                
-     //****    **//**  /**//** ** /** /*   /**  **     //**               
-      //**    **  //** /** //***  /** /******  /**      /**               
-       /**   **********/**  //*   /** /*//// **/**      /**               
-       /**  /**//////**/**   /    /** /*    /**//**     **                
-       /**  /**     /**/**        /** /*******  //*******                 
-       //   //      // //         //  ///////    ///////                  
+    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
+       ###  ###     ### ###       ### #########   ########                
                                                                           
-          Version 5.0.1 Revision 19797 Hash cc36c1bda                     
-                    Branch is devel-andreaM                               
-                       MPI+HDF5_IO Build                                  
+                                                                          
+          Version 5.1.0 Revision 20241 Hash a72896abc                     
+                Branch is devel-rt-vel-and-magn                           
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 05/13/2021 at 09:42 ypp_rt @ baym
+ 07/26/2021 at 02:05 ypp_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 16_ypp_density
- Alt#1 string        : 15_td_sex-serial-devel-andreaM
- Alt#2 string        : R3
+ Alt#1 string        : 15_td_sex-serial-devel-rt-vel-and-magn
+ Alt#2 string        : R23
 
  Precision           : SINGLE
   
@@ -60,8 +60,15 @@
   Cell kind             :  FCC
   Atoms in the cell     :  Si
   number of Si atoms    :  2
-  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
 
+  List of atomic masses
+  Mass of Si    :  0.000000
+
+  List of atomic coordinates    : [cc]
+  Si1       :  0.000000  0.000000  0.000000  order 1
+  Si2       :  2.545750  2.545750  2.545750  order 1
+
+  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
   Direct lattice volume :  263.9777 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]: -0.500000  0.000000  0.500000  [iru]
@@ -73,6 +80,7 @@
    B[ 1 ]: -1.000000 -1.000000  1.000000  [iku]
    B[ 2 ]:  1.000000  1.000000  1.000000  [iku]
    B[ 3 ]: -1.000000  1.000000 -1.000000  [iku]
+   
 
   [05.02] Symmetries
   ==================
@@ -110,9 +118,9 @@
 
   Compatible Grid is   : 3D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.000000 -0.500000  0.000000 [rlu]
-  K_min[ 2 ] : -0.500000  0.000000  0.000000 [rlu]
-  K_min[ 3 ] :  0.000000  0.000000 -0.500000 [rlu]
+  K_min[ 1 ] :  0.238269E-8 -0.500000     0.238269E-8 [rlu]
+  K_min[ 2 ] : -0.500000     0.238269E-8 -0.238269E-8 [rlu]
+  K_min[ 3 ] : -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
 
@@ -124,11 +132,11 @@
 
   K [1]:  0.000000  0.000000  0.000000 [rlu]
         : wf components:  259
-  K [2]:  0.000000  0.000000 -0.500000 [rlu]
+  K [2]: -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
         : wf components:  266
   K [3]:  0.000000 -0.500000 -0.500000 [rlu]
         : wf components:  254
-  K [4]:  0.000000 -0.500000  0.000000 [rlu]
+  K [4]:  0.238269E-8 -0.500000     0.238269E-8 [rlu]
         : wf components:  266
 
   [05.05] Energies & Occupations
@@ -178,8 +186,6 @@
  [07] Time dependent density plot
  ================================
 
- [FFT-WF] Mesh size:  12  12  12
-
  [WF-WF loader] Normalization (few states)  min/max  :  0.100824E-7   1.00000   
 
 
@@ -187,38 +193,28 @@
  ====================
 
  Clock: global
-      IO_and_Messaging_switch :      0.0000s CPU (  2 calls,   0.003 msec avg)
              io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
                  PP_uspp_init :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0000s CPU ( 2 calls,   0.009 msec avg)
                    io_COL_CUT :      0.0000s CPU
-               io_Double_Grid :      0.0001s CPU (  2 calls,   0.030 msec avg)
              RT output (INIT) :      0.0001s CPU
-                  io_KB_pwscf :      0.0002s CPU
-                    FFT_setup :      0.0006s CPU
-                  WF_load_FFT :      0.0006s CPU
-                   io_DIPOLES :      0.0011s CPU
-                     io_QINDX :      0.0013s CPU
-                        io_WF :      0.0026s CPU (  7 calls,   0.367 msec avg)
-                      io_GROT :      0.0029s CPU (  3 calls,   0.968 msec avg)
-            el_density_matrix :      0.0064s CPU ( 31 calls,   0.206 msec avg)
-                  io_fragment :      0.0379s CPU (124 calls,   0.306 msec avg)
-             io_RT_components :      0.1418s CPU (127 calls,   1.117 msec avg)
+               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.046 msec avg)
+                  io_KB_pwscf :      0.0001s CPU
+                    FFT_setup :      0.0008s CPU
+                  WF_load_FFT :      0.0010s CPU
+                   io_DIPOLES :      0.0017s CPU
+                     io_QINDX :      0.0017s CPU
+                        io_WF :      0.0028s CPU ( 7 calls,   0.399 msec avg)
+                      io_GROT :      0.0036s CPU ( 3 calls,   1.214 msec avg)
+            el_density_matrix :      0.0105s CPU (31 calls,   0.339 msec avg)
+             io_RT_components :      0.0268s CPU (34 calls,   0.789 msec avg)
 
- [09] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  561.0000 [Kb]
-
- [10] Game Over & Game summary
+ [09] Game Over & Game summary
  =============================
 
- 05/13/2021 at 09:42 ypp_rt @ baym [start]
- 05/13/2021 at 09:42               [end]
+ 07/26/2021 at 02:05 ypp_rt @ unimi-XPS-8930 [start]
+ 07/26/2021 at 02:05                         [end]
 
   
  .-ACKNOWLEDGMENT
@@ -246,9 +242,9 @@
  | RealTime                         # [R] TD Post-Processing
  | RTdeltaRho                       # [R] Analize the density
  | RTtime                           # [R] Post-Processing kind: function of time
- | TimeStep= 0.480009         fs    # Time step
+ | TimeStep= 0.500005         fs    # Time step
  | % TimeRange
- |   0.00000 | 14.98000 |         fs    # Time-window where processing is done
+ |   0.00000 | 15.00000 |         fs    # Time-window where processing is done
  | %
  | LoadGhistory                   # [NEGF] Build the NEQ density from the G_lesser
  | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
