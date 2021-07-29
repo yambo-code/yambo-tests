@@ -77,18 +77,21 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   #
   $error=&SOURCE_driver( );
   #
-  # MSGs
-  #
-  &UTILS_title($stdout);
-  &MY_PRINT($stdout, "\n$line");
-  #
   if ($error =~ "FAIL") {
     if ( $error eq "COMP FAIL" or $error eq "CONF FAIL") {
+      $compilation_failed="yes";
+      &UTILS_title($stdout);
+      &MY_PRINT($stdout, "\n$line");
       &RUN_global_report("TITLE");
       goto REPORT;
     };
     next LOOP_CONF;
   }
+  #
+  # MSGs
+  #
+  &UTILS_title($stdout);
+  &MY_PRINT($stdout, "\n$line");
   #
   # find_the_diff
   &COMPILE_find_the_diff("compile");

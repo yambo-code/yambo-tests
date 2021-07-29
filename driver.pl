@@ -263,6 +263,8 @@ if (!$RUNNING_suite) {
 #=================
 if ($RUNNING_suite) {
  #
+ $compilation_failed="no";
+ #
  if ($clean) {
   &UTILS_clean("ALL");
   if ($clean>1) {&UTILS_clean("BINs")};
@@ -330,7 +332,7 @@ if ($RUNNING_suite) {
    #
    my $ERROR=&FLOW_load();
    #
-   if ("$active" eq "yes" and "$ERROR" eq "OK" ) 
+   if ("$active" eq "yes" and "$ERROR" eq "OK" and $compilation_failed eq "no") 
    {
     if ($cpu_conf_file) { &CPU_CONF_setup }; 
     &driver();
@@ -376,7 +378,7 @@ if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
  exit "\n";
 }
 #
-&RUN_global_report("FINAL");
+if($AT_LEAST_ONE) { &RUN_global_report("FINAL"); }
 #
 close $rlog;
 #close $tlog; # This is closed in driver.pm inside the branches loop
