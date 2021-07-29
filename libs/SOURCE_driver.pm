@@ -90,7 +90,7 @@ if ($compile) {
  if ("$ERROR" eq "FAIL") {
   &LOGs_move;
   $FAILED_conf_comp_branches.="$branch_id ";
-  return "FAIL";
+  return "CONF FAIL";
  }
  #
  chdir $suite_dir;
@@ -138,7 +138,7 @@ if ($compile)
    &LOGs_move;
    $FAILED_conf_comp_branches.="$branch_id ";
    if ($backup_logs eq "yes"){ &UTILS_backup };
-   return "FAIL";
+   return "COMP FAIL";
   }
   chdir $BRANCH;
   &command("rm -fr $conf_bin; cp -fr bin $conf_bin");

@@ -386,7 +386,7 @@ close $wlog;
 close $ulog;
 close $flog;
 #
-if ( ($backup_logs eq "yes" and $RUNNING_suite and $AT_LEAST_ONE) or ($backup_logs eq "yes" and not $RUNNING_suite)) {
+if ( ($backup_logs eq "yes" and $RUNNING_suite) or ($backup_logs eq "yes" and not $RUNNING_suite)) {
  &UTILS_backup();
  &UTILS_backup_save();
  if ($report){ 
