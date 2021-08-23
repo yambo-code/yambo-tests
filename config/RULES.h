@@ -47,10 +47,8 @@ call add_RULE(".N_dN_E_conservation_factors","skip",MATERIAL="Si_bulk WSe2")
 call add_RULE(".energy","skip",TITLES=(/"dE_xc [eV]","dE_tot[eV]"/),MATERIAL="MoS2 WSe2")
 call add_RULE(".energy","no_statistics",USER_prec=5/100.,MATERIAL="hBN AlAs")
 call add_RULE(".carriers","no_statistics",VAL_treshold=1.E-7)
-call add_RULE(".dynamics","no_statistics",VAL_treshold=1.E-7)
+call add_RULE(".carriers","skip",COL=2)
 call add_RULE("o-04_elel+elph_0K.carriers","no_statistics",USER_prec=7/100.,MATERIAL="Si_bulk")
-call add_RULE("o-04_elel+elph_0K.dynamics","no_statistics",USER_prec=7/100.,MATERIAL="Si_bulk")
-call add_RULE(".YPP-eps","skip",COLS=(/3,4,6,7/),Material="Si_bulk")
 call add_RULE(".induced_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 call add_RULE(".total_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 !
@@ -62,13 +60,10 @@ call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_EP_widths_ratio","align",REF_row=1,Mat
 call add_RULE("08_ypp_fit_occ_DbGd.YPP-NEQ_linewidths","align",REF_row=1,Material="MoS2")
 call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_occupations","align",REF_row=1,Material="MoS2")
 !
-! El/Ho Temperatures
+! El/Ho Temperatures / Fermi levels
 !
 call add_RULE(".mean_EPlifetimes","skip",TITLES=(/"T Hole  [K]","T Elec  [K]"/),MATERIAL="Si_bulk")
-call add_RULE(".carriers","skip",TITLES=(/"T(hol) [K]","T(el)  [K]"/),MATERIAL="MoS2 WSe2 Si_bulk")
-call add_RULE(".dynamics","skip",TITLES=(/"T(hol) [K]","T(el)  [K]"/),MATERIAL="MoS2 WSe2 Si_bulk")
-! New format 
-call add_RULE(".carriers","skip",TITLES=(/"T_hole [K]","T_elec [K]"/),MATERIAL="MoS2 WSe2 Si_bulk")
+call add_RULE(".carriers","skip",TITLES=(/"T_hole [K]","T_elec [K]","Ef(h) [eV]","Ef(e) [eV]"/),MATERIAL="MoS2 WSe2 Si_bulk")
 !
 ! NL
 !====
