@@ -43,6 +43,7 @@ call add_RULE("-eps_along_E","skip",COLS=(/3,4,6,7/),MATERIAL="hBN AlAs MoS2 WSe
 call add_RULE("-eels_along_E","skip",TITLES=(/"eel_d2","eel_d3"/),MATERIAL="hBN AlAs MoS2 WSe2 H2 Si_bulk")
 call add_RULE("-eels_along_E","skip",COLS=(/3,4,6,7/),MATERIAL="hBN AlAs MoS2 WSe2 H2 Si_bulk")
 call add_RULE(".N_dN_E_conservation_factors","skip",MATERIAL="Si_bulk WSe2")
+call add_RULE(".orb_magnetization","skip")
 call add_RULE(".energy","skip",TITLES=(/"dE_xc [eV]","dE_tot[eV]"/),MATERIAL="MoS2 WSe2")
 call add_RULE(".energy","no_statistics",USER_prec=5/100.,MATERIAL="hBN AlAs")
 call add_RULE(".carriers","no_statistics",VAL_treshold=1.E-7)
