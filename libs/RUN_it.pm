@@ -107,4 +107,46 @@ if ($system_error == 0) {
 $LAST_COMPLETED_RUN=$dir_name;
 return "OK";
 }
+#
+sub RUN_wait_and_kill{
+#
+# DS: New implementation of alarm using fork
+#     This avoids leaving defunct processes and need to call KILL
+my $pid = fork();
+if ($pid) {
+  if (eval{
+    local $SIG{ALRM} = sub {
+      kill KILL => -$pid;
+      die "TIMEOUT!\n";
+    };
+    alarm($run_duration);
+    waitpid($pid, 0);
+    alarm(0);
+    return 1;
+  }) {
+    #print "Run completed.\n";
+  } else {
+    die($@) if $@ ne "TIMEOUT!\n";
+    #print "Run timed out.\n";
+    waitpid($pid, 0);
+    #print "Child $pid after waiting .\n";
+  }
+} else {
+  #print "Run started $command_line.\n";
+  if (not $safe_mode) {setpgrp(0,0)};
+  if (not $dry_run) {&command("$command_line")};   # launch the yambo job
+  #print "After run \n";
+  exit;
+}
+}
+#
+sub RUN_wait_and_kill_TIME_out{
+use Time::Out qw(timeout) ;
+timeout $run_duration => sub{
+ $system_error=system($command_line)
+};
+if ($@){
+ print "$INPUT_file timed-out\n";
+}
+}
 1;
