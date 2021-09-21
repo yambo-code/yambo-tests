@@ -42,6 +42,7 @@ $ROBOTS{'attacc-lavoro'} = 'attacc-lavoro';
 $ROBOTS{'pc-tsn10'} = 'pc-tsn10';
 $ROBOTS{'unimi-XPS-8930'} = 'unimi-XPS-8930';
 $ROBOTS{'attacc-portatile'} = 'attacc-portatile';
+$ROBOTS{'pc-tsn10'} = 'pc-tsn10';
 $ROBOTS{'yurigagarin'} = 'yurigagarin.local';
 $ROBOTS{'attacc-lavoro'} = 'attacc-lavoro';
 $ROBOTS{'VivoBook'} = 'VivoBook';
