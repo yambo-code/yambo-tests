@@ -41,11 +41,7 @@ if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
 # *** RUN ***
 $test_start = [gettimeofday];
 #
-if (eval {require Time::Out;} ne 1) {
- &RUN_wait_and_kill();
-} else {
- &RUN_wait_and_kill_TIME_out();
-}
+&RUN_wait_and_kill();
 #
 # Clock update
 $test_end   = [gettimeofday]; 
@@ -112,11 +108,16 @@ sub RUN_wait_and_kill{
 #
 # DS: New implementation of alarm using fork
 #     This avoids leaving defunct processes and need to call KILL
+#
 my $pid = fork();
 if ($pid) {
+  #print "Forked pid $pid";
   if (eval{
     local $SIG{ALRM} = sub {
       kill KILL => -$pid;
+      my $kill_cmd="pkill $testname ";
+      KILL => -$pid;
+      &command("$kill_cmd");
       die "TIMEOUT!\n";
     };
     alarm($run_duration);
@@ -137,16 +138,6 @@ if ($pid) {
   if (not $dry_run) {&command("$command_line")};   # launch the yambo job
   #print "After run \n";
   exit;
-}
-}
-#
-sub RUN_wait_and_kill_TIME_out{
-use Time::Out qw(timeout) ;
-timeout $run_duration => sub{
- $system_error=system($command_line)
-};
-if ($@){
- print "$INPUT_file timed-out\n";
 }
 }
 1;
