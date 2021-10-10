@@ -18,34 +18,45 @@
  <---> Grid dimensions      :  12  12  12
  <---> [02.05] Double K-grid
  <---> [02.06] Energies & Occupations
- <---> [03] Transferred momenta grid
+ <---> [03] Transferred momenta grid and indexing
  <---> [04] External/Internal QP corrections
  <---> [QP_apply] Action to be applied: USER defined scissor
  <---> [04.01]  QP corrections report
  <---> [01] Dipoles
  <---> [DIP] Checking dipoles header
- <---> [WARNING] Missing non-local pseudopotential contribution
- <---> [02] Bethe Salpeter Equation @q1
- <---> [02.01] Transition Groups build-up @q1
+ <---> [WARNING] [r,Vnl^pseudo] not included in position and velocity dipoles
+ <---> [WARNING] In case H contains other non local terms, also these are neglected
+ <---> [02] Bethe Salpeter Equation driver
+ <---> [03] Bethe Salpeter Equation @q1
+ <---> [03.01] Transition pre-analysis @q1
+ <---> [03.01.01] Transition Groups build-up @q1
  <---> [BSK] Size (resonant):  1728
  <---> [BSK]         (total):  1728
- <---> [02.02] Independent Particles absorption @q1
+ <---> [BSK] N. of matrices :  1
+ <---> [03.01.02] Loading Dipoles @q1
  <---> [DIP] Checking dipoles header
- <---> [02.03] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
- <---> Complete BSE file found in ./02_bse-serial-develop//ndb.BS_PAR_Q1. Loading kernel.
- <---> Loading BSE kernel |                                        | [000%] --(E) --(X)
- <---> Loading BSE kernel |########################################| [100%] --(E) --(X)
- <---> [03] BSE solver(s) @q1
+ <---> BSE dipoles |                                        | [000%] --(E) --(X)
+ <---> BSE dipoles |########################################| [100%] --(E) --(X)
+ <---> [03.01.03] Independent Particles properties @q1
+ <---> IP properties |                                        | [000%] --(E) --(X)
+ <---> IP properties |########################################| [100%] --(E) --(X)
+ <---> [03.01.04] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
+ <---> Trying to load complete BSE file  : ./03_bse_dbgd//ndb.BS_PAR_Q1
+ <---> Complete BSE file loading  : ./02_bse-serial-bug-fixes//ndb.BS_PAR_Q1
+ <---> Loading full BSE kernel |                                        | [000%] --(E) --(X)
+ <---> Loading full BSE kernel |########################################| [100%] --(E) --(X)
+ <---> [03.02] BSE solver(s) @q1
  <---> [LA] SERIAL linear algebra
- <---> [03.01] Inversion Solver @q1
- <---> DbGd@q[1] k->k-q (trans %, q-rad %)]:  1.742567  1.500000
+ <---> [03.03] Inversion Solver @q1
+ <---> Folding BSE Kernel |                                        | [000%] --(E) --(X)
+ <---> Folding BSE Kernel |########################################| [100%] --(E) --(X)
+ <---> DbGd@q[1] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.742567  0.015000
  <---> IP Absorption |                                        | [000%] --(E) --(X)
  <---> IP Absorption |########################################| [100%] --(E) --(X)
  <---> Shifted GF and Absorption |                                        | [000%] --(E) --(X)
  <---> Shifted GF and Absorption |########################################| [100%] --(E) --(X)
  <---> Perturbative inversion |                                        | [000%] --(E) --(X)
- <02s> Perturbative inversion |########################################| [100%] --(E) --(X)
- <02s> [PERTURBATIVE INV@EPS] Converged frequencies :   80
- <02s> [04] Timing Overview
- <02s> [05] Game Over & Game summary
- <02s> [TIMING]            [Time-Profile]: 02s
+ <---> Perturbative inversion |########################################| [100%] --(E) --(X)
+ <---> [PERTURBATIVE INV@EPS] Converged frequencies :   80
+ <---> [04] Timing Overview
+ <---> [05] Game Over & Game summary
