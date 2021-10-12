@@ -1,17 +1,17 @@
 #                                                                     
-# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
-#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
-#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
-#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
-#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
-#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
-#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
 #                                                                     
-#                                                                     
-# Version 5.1.0 Revision 20393 Hash (prev commit) 4910e0284           
-#                    Branch is bug-fixes                              
-#          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                     
-#                 http://www.yambo-code.org                           
+# Version 5.1.0 Revision 20381 Hash (prev commit) b29bbcf9c           
+#                 Branch is devel-andreaM                             
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.org                            
 #
 # Absorption @ Q(1):  0.999999975E-5   0.00000000      0.00000000    [q->0 direction]
 #
@@ -43,18 +43,18 @@
 #
 #
 #
-# [K] Identifier                                  :   8919
+# [K] Identifier                                  :   5239
 # [K] Dimension                                   :  1728
 # [K] Bands                                       :   4   6
-# [K] Exchange res                                : yes
-# [K] Correlation res                             : yes
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : yes
 # [K] Kernel`s coupling                           : no
-# [K] Exchange cpl                                : no
-# [K] Correlation cpl                             : no
+# [K] Exchange                                    : no
+# [K] Correlation                                 : no
 # [K] W interaction is bare                       : no
 # [K] ALDA kernel in R-space                      : no
-# [K] RL vectors exchange                         :  229
-# [K] RL vectors correlation                      :  27
+# [K] RL vectors                                  :  229 [exchange]
+# [K] RL vectors                                  :  27 [correlation]
 # [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
 # [K] Coupling range                              :   100.000000      100.000000    [o/o]
 # [W] Interaction is diagonal                     : no
@@ -63,13 +63,12 @@
 # [W] e/h energy range                            :  -1.00000000     -1.00000000    [eV]
 # [W] Poles                                       :   100.000000    [o/o]
 # [W] RL vectors in the sum                       :   331
-# [W] [r,Vnl] included                            : yes
-# [W] Longitudinal Gauge                          : yes
+# [W] [r,Vnl] included                            : no
 # [W] Field direction                             :  0.999999975E-5   0.00000000      0.00000000   
 # [W] Coulomb Cutoff                              : none
 # [W] xc-Kernel                                   : none
-# [RIM] RL components col                         : 0
-# [RIM] Random points col                         : 0
+# [RIM] RL components                             : 0 [col]
+# [RIM] Random points                             : 0 [col]
 # [SOC] Perturbative SOC                          : no
 # [INV] Converged frequencies                     :   100.000000    [o/o]
 #
@@ -161,10 +160,10 @@
      5.94936705         3.97868419        -9.89939308         6.39131737        -11.8925056         5.75594664        -11.5675888   
      6.00000000         3.73391461        -9.64624786         5.93849516        -11.6737881         5.35098219        -11.2738314   
 # 
-# 10/10/2021 at 15:55 yambo_ph @ unimi-XPS-8930 [start]
-# 10/10/2021 at 15:55                           [end]
+# 10/04/2021 at 11:51 yambo_ph @ baym [start]
+# 10/04/2021 at 11:51                 [end]
 #  
-# Timing   [Min/Max/Average]: 04s/04s/04s
+# Timing   [Min/Max/Average]: 07s/07s/07s
 #
 # .-Input file  yambo.in
 # | optics                           # [R] Linear Response optical properties
@@ -175,9 +174,6 @@
 # | FFTGvecs=  411             RL    # [FFT] Plane-waves
 # | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
-# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
-# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
 # | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
 # | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 # | BSSmod= "i"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
