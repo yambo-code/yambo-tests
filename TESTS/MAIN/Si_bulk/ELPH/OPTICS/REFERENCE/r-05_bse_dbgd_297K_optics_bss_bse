@@ -1,19 +1,19 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
                                                                           
-                                                                          
-    Version 5.1.0 Revision 20393 Hash (prev commit) 4910e0284             
-                      Branch is bug-fixes                                 
-            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+    Version 5.1.0 Revision 20381 Hash (prev commit) b29bbcf9c             
+                    Branch is devel-andreaM                               
+                       MPI+HDF5_IO Build                                  
                    http://www.yambo-code.org                              
  
- 10/10/2021 at 15:55 yambo_ph @ unimi-XPS-8930
+ 10/04/2021 at 11:51 yambo_ph @ baym
  ==================================================
 
  Cores               :  1
@@ -32,10 +32,10 @@
  Log files           : ./LOG
 
  Job   string        : 05_bse_dbgd_297K
- Alt#1 string        : 02_bse-serial-bug-fixes
- Alt#2 string        : 01_em1s-serial-bug-fixes
+ Alt#1 string        : 02_bse-serial-devel-andreaM
+ Alt#2 string        : 01_em1s-serial-devel-andreaM
  Alt#3 string        : 01_MAP_FineGd
- Alt#4 string        : R5
+ Alt#4 string        : R2
 
  Precision           : SINGLE
   
@@ -228,7 +228,7 @@
   COLL scattering                                  : no
   Sigma scattering                                 : yes
   X scattering                                     : yes
- - S/N 002451 ---------------------------------------------- v.05.01.00 r.20393 -
+ - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
 
  IBZ Q-points :   44
  BZ  Q-points :   864
@@ -319,7 +319,7 @@
   [ELPH] El-PH bands                               :  10
   [ELPH] Using the Q-grid                          : no
   PH double-grid                                   : no
- - S/N 006087 ---------------------------------------------- v.05.01.00 r.20393 -
+ - S/N 006087 ---------------------------------------------- v.05.01.00 r.20381 -
 
  EW<QP_dbs/ndb.QP[ E-P Fan + DW * Sphb 1-10]
 
@@ -426,12 +426,12 @@
   Eqp @ K [28]
   -10.16174  -7.61636  -3.81684  -2.37475   2.08350   4.05039   3.68704   7.28609
 
- Timing [Min/Max/Average]: 02s/02s/02s
+ Timing [Min/Max/Average]: 04s/04s/04s
 
  [01] Dipoles
  ============
 
- [RD./01_em1s-serial-bug-fixes//ndb.dipoles]-------------------------------------
+ [RD./01_em1s-serial-devel-andreaM//ndb.dipoles]---------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
   *WRN*RL vectors                                  :   331 [WF]
   Fragmentation                                    : yes
@@ -447,7 +447,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 002451 ---------------------------------------------- v.05.01.00 r.20393 -
+ - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
 
  [WARNING] [r,Vnl^pseudo] not included in position and velocity dipoles
 
@@ -476,7 +476,7 @@
    [03.01.02] Loading Dipoles @q1
    ==============================
 
-   [RD./01_em1s-serial-bug-fixes//ndb.dipoles]-------------------------------------
+   [RD./01_em1s-serial-devel-andreaM//ndb.dipoles]---------------------------------
     Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
     *WRN*RL vectors                                  :   331 [WF]
     Fragmentation                                    : yes
@@ -492,7 +492,7 @@
     Approach used                                    : G-space v
     Dipoles computed                                 : R V P
     Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   - S/N 002451 ---------------------------------------------- v.05.01.00 r.20393 -
+   - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
 
    [03.01.03] Independent Particles properties @q1
    ===============================================
@@ -502,66 +502,28 @@
    ==========================================================
 
    [BSE] Exchange components :  229
-   [RD./02_bse-serial-bug-fixes//ndb.BS_head_Q1]-----------------------------------
+   [RD./02_bse-serial-devel-andreaM//ndb.BS_Q1_CPU_0]------------------------------
     Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
     *WRN*RL vectors                                  :   459 [WF]
     Coulomb cutoff potential                         : none
+    Parallel CPUs
+    Parallel Roles
     Fragmentation                                    : no
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   8919
+    [K] Identifier                                   :   5239
     [K] Dimension                                    :  1728
     [K] Bands                                        :   4   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
+    [K] Exchange                                     : yes
+    [K] Correlation                                  : yes
     [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
+    [K] Exchange                                     : no
+    [K] Correlation                                  : no
     [K] W interaction is bare                        : no
     [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  229
-    [K] RL vectors correlation                       :  27
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [W] Interaction is diagonal                      : no
-    [W] Matrix size                                  :  27
-    [W] Bands                                        :   1  10
-    [W] e/h energy range                             : -1.000000 -1.000000 [eV]
-    [W] Poles                                        :  100.0000 [o/o]
-    [W] RL vectors in the sum                        :   331
-    *WRN*[W] [r,Vnl] included                        : no
-    [W] Longitudinal Gauge                           : no
-    [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-    [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-   - S/N 002451 ---------------------------------------------- v.05.01.00 r.20393 -
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : yes
-   [RD./02_bse-serial-bug-fixes//ndb.BS_head_Q1]-----------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
-    *WRN*RL vectors                                  :   459 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : no
-    BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
-    Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   8919
-    [K] Dimension                                    :  1728
-    [K] Bands                                        :   4   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  229
-    [K] RL vectors correlation                       :  27
+    [K] RL vectors                                   :  229 [exchange]
+    [K] RL vectors                                   :  27 [correlation]
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
     [W] Interaction is diagonal                      : no
@@ -571,17 +533,13 @@
     [W] Poles                                        :  100.0000 [o/o]
     [W] RL vectors in the sum                        :   331
     [W] [r,Vnl] included                             : no
-    [W] Longitudinal Gauge                           : no
     [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
     [W] Coulomb Cutoff                               : none
     [W] xc-Kernel                                    : none
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
+    [RIM] RL components                              : 0 [col]
+    [RIM] Random points                              : 0 [col]
     [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-   - S/N 002451 ---------------------------------------------- v.05.01.00 r.20393 -
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : yes
+   - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
 
   [03.02] BSE solver(s) @q1
   =========================
@@ -590,14 +548,14 @@
   [03.03] Inversion Solver @q1
   ============================
 
-  [RD./02_bse-serial-bug-fixes//ndb.BS_invert_Q1]---------------------------------
+  [RD./02_bse-serial-devel-andreaM//ndb.BS_invert_Q1]-----------------------------
    *ERR* BS kernel          energies                : Slater exchange(X)+Perdew & Zunger(C)
 
   DbGd@q[1] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.742567  0.015000
   [PERTURBATIVE INV@EPS] Converged frequencies :   80
   [WR./05_bse_dbgd_297K//ndb.BS_invert_Q1]----------------------------------------
    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-   BSK Identifier                                   :   8919
+   BSK Identifier                                   :   5239
    Field direction                                  :  0.100000E-4   0.00000      0.00000   
    Using energy Double Grid                         : yes
    Energy range                [ev]                 :  2.000000  6.000000
@@ -609,46 +567,57 @@
    [PL]  Number of frequencies                      :   80
    [PL]  Perturbative to full ratio                 :  1.000000
    [PL]  Treshold             [o/o]                 :  0.500000
-  - S/N 002451 ---------------------------------------------- v.05.01.00 r.20393 -
+  - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
+
+ Timing [Min/Max/Average]: 02s/02s/02s
 
  [04] Timing Overview
  ====================
 
  Clock: global
            BSE matrix (REDUX) :      0.0000s CPU
-             io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
+             io_ATMPROJ_pwscf :      0.0000s CPU
                   io_KB_pwscf :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU (  7 calls,   0.002 msec avg)
+      IO_and_Messaging_switch :      0.0000s CPU (  7 calls,   0.003 msec avg)
                    io_COL_CUT :      0.0000s CPU
                         io_HF :      0.0001s CPU
                       io_ELPH :      0.0001s CPU (  2 calls,   0.026 msec avg)
-       BSE components folding :      0.0001s CPU
-               eval_G_minus_G :      0.0003s CPU
-                  io_fragment :      0.0004s CPU
-                   T_space IP :      0.0007s CPU
-                      Dipoles :      0.0022s CPU
-                 io_QP_and_GF :      0.0027s CPU
-                      io_GROT :      0.0029s CPU (  2 calls,   1.430 msec avg)
-                         io_X :      0.0031s CPU (  4 calls,   0.766 msec avg)
-               io_Double_Grid :      0.0040s CPU
-                        io_WF :      0.0041s CPU
-                  BSE dipoles :      0.0049s CPU
-                io_BSS_invert :      0.0062s CPU (  3 calls,   2.057 msec avg)
-                   io_DIPOLES :      0.0084s CPU ( 33 calls,   0.256 msec avg)
-           BSE matrix filling :      0.0175s CPU
-                     io_QINDX :      0.0211s CPU (  3 calls,   7.017 msec avg)
-                        io_BS :      0.0278s CPU (407 calls,   0.068 msec avg)
-             Inversion Solver :      1.7131s CPU
+       BSE components folding :      0.0002s CPU
+               eval_G_minus_G :      0.0005s CPU
+                   T_space IP :      0.0009s CPU
+                 io_QP_and_GF :      0.0012s CPU
+                         io_X :      0.0024s CPU (  4 calls,   0.600 msec avg)
+                      io_GROT :      0.0025s CPU (  2 calls,   1.273 msec avg)
+                      Dipoles :      0.0028s CPU
+               io_Double_Grid :      0.0036s CPU
+                        io_WF :      0.0037s CPU
+                io_BSS_invert :      0.0055s CPU (  3 calls,   1.835 msec avg)
+                  io_fragment :      0.0129s CPU ( 29 calls,   0.444 msec avg)
+                        io_BS :      0.0145s CPU (409 calls,   0.035 msec avg)
+           BSE matrix filling :      0.0168s CPU
+                     io_QINDX :      0.0204s CPU (  3 calls,   6.795 msec avg)
+                  BSE dipoles :      0.0205s CPU
+                   io_DIPOLES :      0.0227s CPU ( 31 calls,   0.734 msec avg)
+             Inversion Solver :      2.5262s CPU
 
- [05] Game Over & Game summary
+ [05] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
+
+
+         Max memory used   :  46.60700 [Mb]
+
+ [06] Game Over & Game summary
  =============================
 
- 10/10/2021 at 15:55 yambo_ph @ unimi-XPS-8930 [start]
- 10/10/2021 at 15:55                           [end]
+ 10/04/2021 at 11:51 yambo_ph @ baym [start]
+ 10/04/2021 at 11:51                 [end]
 
- Timing   [Min/Max/Average]: 04s/04s/04s
-             [Time-Profile]: 04s
+ Timing   [Min/Max/Average]: 07s/07s/07s
+             [Time-Profile]: 07s
 
  .-ACKNOWLEDGMENT
  |
@@ -680,9 +649,6 @@
  | FFTGvecs=  411             RL    # [FFT] Plane-waves
  | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
- | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
- | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
- | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
  | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
  | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
  | BSSmod= "i"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
