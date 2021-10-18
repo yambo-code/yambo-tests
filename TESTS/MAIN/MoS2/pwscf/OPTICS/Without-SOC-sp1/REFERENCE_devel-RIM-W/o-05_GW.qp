@@ -1,38 +1,38 @@
 #                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
 #                                                                     
-# Y88b    /   e           e    e      888~~\    ,88~-_                
-#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
-#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
-#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
-#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
-#    /   /      Y88b /          Y888b 888__/    `88_-~                
 #                                                                     
-#                                                                     
-#      Version 5.0.1 Revision 18808 Hash f5f50f378                    
-#                 Branch is devel-RIM-W                               
-#              MPI+OpenMP+SLK+HDF5_IO Build                           
-#               http://www.yambo-code.org                             
+#       Version 5.0.0 Revision 19472 Hash 511580750                   
+#                  Branch is devel-RIM-W                              
+#           MPI+OpenMP+SLK+SLEPC+HDF5_IO Build                        
+#                http://www.yambo-code.org                            
 #
 #
 # GW solver                                       : Newton
 # GW approximation                                : PPA
 # PPA imaginary Energy                            :   27.2113800    [ev]
 # RIM G`s                                         :  3
-# RIM random pts                                  :   500000
+# RIM random pts                                  :   50000
 # GW SC iterations                                : 0
 # dS/dw steps                                     :  2
 # dS/dw step                                      :  0.100000001    [ev]
-# X G`s                                           :  307 [used]
-# X G`s                                           :  307 [disk]
-# X bands                                         :    1   40
+# X G`s                                           :   55 [used]
+# X G`s                                           :   55 [disk]
+# X bands                                         :   1  20
 # X poles                                         :   100.000000    [o/o]
 # X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
 # X xc-Kernel                                     : none
 # X BZ energy Double Grid                         : no
-# Sc/G bands                                      :    1   40
+# Sc/G bands                                      :   1  20
 # Sc/G damping                                    :  0.100000001    [ev]
 # Sc bands terminator                             : no
-# Sx RL components                                :   56613
+# Sx RL components                                :  109
 #                                                 
 # QP @ state[ 1 ] K range                         :  1  3
 # QP @ state[ 1 ] b range                         :  11  16
@@ -41,32 +41,34 @@
 # Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
 # Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
 #
+# Vxc  =Slater exchange(X)+Perdew & Zunger(C)
+# Vnlxc=Hartree-Fock
 #
-#    K-point            Band               Eo                 E-Eo               Sc|Eo
+#    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-     1.00000000         11.0000000        -1.52552855       -0.637527287        0.928332627   
-     1.00000000         12.0000000        -1.52552843       -0.637584150        0.928332627   
-     1.00000000         13.0000000       -0.226542681       -0.467247874        0.116018265   
-     1.00000000         14.0000000         2.90069985         3.27270293       -0.886479676   
-     1.00000000         15.0000000         2.90070009         3.27174592       -0.886479676   
-     1.00000000         16.0000000         3.19321084         3.25335574       -0.829028130   
-     2.00000000         11.0000000        -1.78490436        -1.16095960         1.40079892   
-     2.00000000         12.0000000        -1.32213223       -0.860323370         1.15802765   
-     2.00000000         13.0000000        -1.12483084       -0.506931007        0.569233656   
-     2.00000000         14.0000000         2.37529922         3.38044667       -0.930646181   
-     2.00000000         15.0000000         2.42241240         3.51753902       -0.764829278   
-     2.00000000         16.0000000         3.49605346         3.40224195        -1.32055390   
-     3.00000000         11.0000000        -3.12042856        -1.13917518         1.64622068   
-     3.00000000         12.0000000        -2.30570126        -1.07780278         1.67181349   
-     3.00000000         13.0000000         0.00000000       -0.303532690        0.215657666   
-     3.00000000         14.0000000         1.87601888         3.58037400       -0.815188944   
-     3.00000000         15.0000000         2.96241212         3.40720868        -1.19652307   
-     3.00000000         16.0000000         3.83737969         3.69639468        -1.20820594   
+        1                  11                -1.525528           2.131788           1.239086
+        1                  12                -1.525528           2.128994           1.232297
+        1                  13                -0.226543           2.236601           0.529587
+        1                  14                 2.900700           6.337678          -0.237081
+        1                  15                 2.900700           6.331528          -0.240489
+        1                  16                 3.193211           6.189453          -0.175755
+        2                  11                -1.784904           0.276696           1.728724
+        2                  12                -1.322132           1.241267           1.462132
+        2                  13                -1.124831           2.110228           0.978235
+        2                  14                 2.375299           6.735333          -0.411773
+        2                  15                 2.422412           7.334373          -0.251849
+        2                  16                 3.496053           6.749855          -0.651992
+        3                  11                -3.120429           0.057805           1.914672
+        3                  12                -2.305701           0.624105           1.940559
+        3                  13                 0.000000           2.920732           0.638096
+        3                  14                 1.876019           7.454242          -0.334529
+        3                  15                 2.962412           6.639761          -0.549581
+        3                  16                 3.837380           7.509566          -0.669577
 # 
-# 10/21/2020 at 16:15 yambo @ corvina [start]
-# 10/21/2020 at 16:15                 [end]
+# 10/18/2021 at 12:32 yambo @ corvina [start]
+# 10/18/2021 at 12:32                 [end]
 #  
-# Timing   [Min/Max/Average]: 32s/32s/32s
+# Timing   [Min/Max/Average]: 03s/03s/03s
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
@@ -80,14 +82,14 @@
 # | X_and_IO_CPU= "2.1.1"            # [PARALLEL] CPUs for each role
 # | X_and_IO_ROLEs= "g.k.q"          # [PARALLEL] CPUs roles (q,g,k,c,v)
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 3                     # [OPENMP/X] Number of threads for response functions
 # | DIP_CPU= "2.1"                   # [PARALLEL] CPUs for each role
 # | DIP_ROLEs= "v.k"                 # [PARALLEL] CPUs roles (k,c,v)
-# | X_Threads=  4                    # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads=  4                  # [OPENMP/X] Number of threads for dipoles
+# | DIP_Threads= 3                   # [OPENMP/X] Number of threads for dipoles
 # | SE_CPU= "2.1"                    # [PARALLEL] CPUs for each role
 # | SE_ROLEs= "b.q"                  # [PARALLEL] CPUs roles (q,qp,b)
-# | SE_Threads=  4                   # [OPENMP/GW] Number of threads for self-energy
-# | RandQpts=  500000                # [RIM] Number of random q-points in the BZ
+# | SE_Threads= 3                    # [OPENMP/GW] Number of threads for self-energy
+# | RandQpts=  50000                 # [RIM] Number of random q-points in the BZ
 # | RandGvec= 3                RL    # [RIM] Coulomb interaction RS components
 # | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
 # | % CUTBox
@@ -96,22 +98,22 @@
 # | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
 # | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
 # | CUTwsGvec= 0.000000              # [CUT] WS cutoff: number of G to be modified
-# | EXXRLvcs=  56613           RL    # [XX] Exchange    RL components
-# | VXCRLvcs=  56613           RL    # [XC] XCpotential RL components
+# | EXXRLvcs= 109              RL    # [XX] Exchange    RL components
+# | VXCRLvcs= 109              RL    # [XC] XCpotential RL components
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | % BndsRnXp
-# |    1 |  40 |                         # [Xp] Polarization function bands
+# |   1 | 20 |                           # [Xp] Polarization function bands
 # | %
-# | NGsBlkXp= 307              RL    # [Xp] Response block size
+# | NGsBlkXp=  55              RL    # [Xp] Response block size
 # | % LongDrXp
 # |  0.707107E-5 | 0.707107E-5 |  0.00000    # [Xp] [cc] Electric Field
 # | %
 # | PPAPntXp= 27.21138         eV    # [Xp] PPA imaginary energy
 # | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
 # | % GbndRnge
-# |    1 |  40 |                         # [GW] G[W] bands range
+# |   1 | 20 |                           # [GW] G[W] bands range
 # | %
-# | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze)
+# | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
 # | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
 # | GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
 # | GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
