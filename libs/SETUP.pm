@@ -76,6 +76,8 @@ if ("$what" eq "BASIC") {
  &MY_PRINT($stdout, "\n= Starting Yambo test-suite") if (!$reduced_log);
  &MY_PRINT($stdout, "\n$double_line\n") if (!$reduced_log);
  #
+ &command("$suite_dir/scripts/killer.tcsh $ROBOT_wd &");
+ #
 }elsif ("$what" == "DIR"){
  #
  $PAR_string="SERIAL";

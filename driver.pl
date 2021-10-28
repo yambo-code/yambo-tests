@@ -371,6 +371,8 @@ if ($RUNNING_suite) {
  exit "\n";
 }
 #
+&command("touch ${ROBOT_wd}_DONE &");
+#
 &COMPILE_find_the_diff("clean");
 #
 if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
@@ -381,7 +383,6 @@ if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
 if($AT_LEAST_ONE) { &RUN_global_report("FINAL"); }
 #
 close $rlog;
-#close $tlog; # This is closed in driver.pm inside the branches loop
 close $slog;
 close $elog;
 close $wlog;
