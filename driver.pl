@@ -373,7 +373,7 @@ if ($RUNNING_suite) {
  exit "\n";
 }
 #
-&command("touch ${ROBOT_id}_DONE &");
+&command("touch ${ROBOT_string}_DONE &");
 #
 &COMPILE_find_the_diff("clean");
 #
