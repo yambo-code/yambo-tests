@@ -69,10 +69,12 @@ if ($kill_me){
   &KILL_me("driver.pl","perl",$ROBOT_id);
   &KILL_me("yambo",$ROBOT_id);
   &KILL_me("ypp",$ROBOT_id);
+  &KILL_me("job_stopper",$ROBOT_id);
  }else{
   &KILL_me("driver.pl","perl");
   &KILL_me("yambo");
   &KILL_me("ypp");
+  &KILL_me("job_stopper");
  }
  print "Killing action finalized.\n";
  exit;
@@ -371,7 +373,7 @@ if ($RUNNING_suite) {
  exit "\n";
 }
 #
-&command("touch ${ROBOT_wd}_DONE &");
+&command("touch ${ROBOT_id}_DONE &");
 #
 &COMPILE_find_the_diff("clean");
 #
