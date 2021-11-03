@@ -96,7 +96,8 @@ $time=~ s/\-/h/g;
 $time.="m";
 #
 &get_line("TOTAL");
-$duration="$pattern[0][3]h$pattern[0][4]m$pattern[0][5]s";
+$duration="";
+if( $pattern[0][3] != "") { $duration="$pattern[0][3]h$pattern[0][4]m$pattern[0][5]s"; }
 #
 &get_line("Running tests");
 $size=@{ $pattern[0] };
