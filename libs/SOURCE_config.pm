@@ -24,7 +24,7 @@
 #
 sub SOURCE_config{
  #
- chdir $BRANCH;
+ chdir("$BRANCH");
  #
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config-$ROBOT_string.log";
@@ -37,8 +37,20 @@ sub SOURCE_config{
  # Backticks capture the output
  #
  &MY_PRINT($stdout, "Configuring ...");
+ #
+ &command("mkdir $suite_dir/compile_${branch_key}");
+ chdir("$suite_dir/compile_${branch_key}");
+ &command("cat $suite_dir/$conf_path > conf_local.sh");
+ $string1="\.\/configure";
+ $string2="$BRANCH/configure";
+ $string1=~ s/\//\\\//ig;
+ $string2=~ s/\//\\\//ig;
+ my $cmd_sed="sed -i \"s/$string1/$string2/g\" conf_local.sh";
+ &command($cmd_sed);
+ &command("chmod +x conf_local.sh");
+ #
  open( CONFLOGFILE,'>>',$conf_logfile);
- &command("$suite_dir/$conf_path >> $conf_logfile 2>&1");
+ &command("./conf_local.sh >> $conf_logfile 2>&1");
  close(CONFLOGFILE);
  #
  if (-e "Makefile"){ 

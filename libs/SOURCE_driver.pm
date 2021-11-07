@@ -144,7 +144,7 @@ if ($compile)
    $BUILD="FAILED";
    return "COMP FAIL";
   }
-  chdir $BRANCH;
+  chdir("$suite_dir/compile_${branch_key}");
   &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
   &command("if [ -d lib/bin  ]; then cp lib/bin/*  $conf_bin/; fi");
   &command("if [ -d bin-libs ]; then cp bin-libs/* $conf_bin/; fi");

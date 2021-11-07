@@ -23,7 +23,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SOURCE_compile{
- chdir $BRANCH;
+ chdir("$suite_dir/compile_${branch_key}");
  open( COMPLOGFILE,'>>',$comp_logfile);
  &MY_PRINT($stdout, "ext-libs ...");
  &command("make $PAR_COMP_LIBS ext-libs >> $comp_logfile 2>&1");
@@ -33,7 +33,7 @@ sub SOURCE_compile{
    &command("make $PAR_COMP $make_exec >> $comp_logfile 2>&1");
    if (not $make_exec =~ /ext-libs/ and not $make_exec =~ /interfaces/)
    {
-     if (not -x "$BRANCH/bin/$make_exec") {
+     if (not -x "$suite_dir/compile_${branch_key}/bin/$make_exec") {
       &MY_PRINT($stdout, "FAILED! Skipping.\n");
       return "FAIL";
      }
