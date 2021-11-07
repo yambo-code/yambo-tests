@@ -97,6 +97,8 @@ if ($compile) {
  #
  chdir $suite_dir;
  #
+}else{
+ $comp_folder=$BRANCH;
 }
 #
 # FC kind
@@ -144,7 +146,7 @@ if ($compile)
    $BUILD="FAILED";
    return "COMP FAIL";
   }
-  chdir("$suite_dir/compile_${branch_key}");
+  chdir("$comp_folder");
   &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
   &command("if [ -d lib/bin  ]; then cp lib/bin/*  $conf_bin/; fi");
   &command("if [ -d bin-libs ]; then cp bin-libs/* $conf_bin/; fi");

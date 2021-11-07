@@ -29,17 +29,18 @@ sub SOURCE_config{
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config-$ROBOT_string.log";
  $comp_logfile = "$suite_dir/"."compile-$ROBOT_string.log";
+ $comp_folder  = "$suite_dir/"."compile_${branch_key}";
  #
  # If Makefile present, clean sources
- if(-e "Makefile") { $result = `make clean_all 2>&1` };
+ if(-e "config/report") { $result = `make clean_all 2>&1` };
  #
  # Run this configure script, and log (append) the output, including STDOUT and STDERR
  # Backticks capture the output
  #
  &MY_PRINT($stdout, "Configuring ...");
  #
- &command("mkdir $suite_dir/compile_${branch_key}");
- chdir("$suite_dir/compile_${branch_key}");
+ if(!-d $comp_folder) { &command("mkdir $comp_folder"); };
+ chdir("$comp_folder");
  &command("cat $suite_dir/$conf_path > conf_local.sh");
  $string1="\.\/configure";
  $string2="$BRANCH/configure";

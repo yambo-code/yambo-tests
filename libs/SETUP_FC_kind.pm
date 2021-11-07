@@ -23,7 +23,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SETUP_FC_kind{
-open(SETUP_file,"<","$BRANCH/config/setup");
+open(SETUP_file,"<","$comp_folder/config/setup");
 $MPI_kind="unknown";
 $MPI_kind_short="unknown";
 $FC_kind="unknown";
