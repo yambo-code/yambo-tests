@@ -1,19 +1,19 @@
                                                                           
-     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
-    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
-     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
-      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
-       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
-        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
-        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
-        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
                                                                           
-         Version 5.0.1 Revision 18845 Hash ad4d0d37d                      
-                      Branch is develop                                   
-              MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                          
-                  http://www.yambo-code.org                               
+    Version 5.1.0 Revision 20381 Hash (prev commit) b29bbcf9c             
+                    Branch is devel-andreaM                               
+                       MPI+HDF5_IO Build                                  
+                   http://www.yambo-code.org                              
  
- 12/15/2020 at 10:58 yambo_ph @ unimi-XPS-8930
+ 10/04/2021 at 11:51 yambo_ph @ baym
  ==================================================
 
  Cores               :  1
@@ -32,10 +32,10 @@
  Log files           : ./LOG
 
  Job   string        : 05_bse_dbgd_297K
- Alt#1 string        : 02_bse-serial-develop
- Alt#2 string        : 01_em1s-serial-develop
+ Alt#1 string        : 02_bse-serial-devel-andreaM
+ Alt#2 string        : 01_em1s-serial-devel-andreaM
  Alt#3 string        : 01_MAP_FineGd
- Alt#4 string        : R7
+ Alt#4 string        : R2
 
  Precision           : SINGLE
   
@@ -44,10 +44,10 @@
   K-points                                         :  28
   G-vectors                                        :  2085 [RL space]
   Components                                       :  271 [wavefunctions]
-  Symmetries                                       :   48 [spatial+T-rev]
+  Symmetries                                       :   48 [spatial+T-reV]
   Spinor components                                :  1
   Spin polarizations                               :  1
-  Temperature                                      :  0.000000 [ev]
+  Temperature                                      :  0.000000 [eV]
   Electrons                                        :  8.000000
   WF G-vectors                                     :   431
   Max atoms/species                                :  2
@@ -65,8 +65,12 @@
   Cell kind             :  FCC
   Atoms in the cell     :  Si
   number of Si atoms    :  2
-  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
 
+  List of atomic coordinates    : [cc]
+  Si1       :  0.000000  0.000000  0.000000
+  Si2       :  2.545750  2.545750  2.545750
+
+  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
   Direct lattice volume :  263.9777 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]: -0.500000  0.000000  0.500000  [iru]
@@ -78,6 +82,7 @@
    B[ 1 ]: -1.000000 -1.000000  1.000000  [iku]
    B[ 2 ]:  1.000000  1.000000  1.000000  [iku]
    B[ 3 ]: -1.000000  1.000000 -1.000000  [iku]
+   
 
   [02.02] Symmetries
   ==================
@@ -164,6 +169,16 @@
   K_min[ 3 ] : -0.083333  0.000000 -0.083333 [rlu]
   Grid dimensions      :  12  12  12
   K lattice UC volume  :  0.001088 [a.u.]
+  [RD./01_MAP_FineGd//ndb.Double_Grid]--------------------------------------------
+   Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
+   [FineGd] Brillouin Symmetry  mode                : mixed
+   [FineGd] Fine Grid  BZ mapped mode               : BZ
+   [FineGd] Fine Grid IBZ mapped mode               : IBZ
+   [FineGd] Bands                                   :  10
+   [FineGd] Number of pts (Energy grid)             :  1001
+   [FineGd] Number of pts (fine+coarse, IBZ-map)    :   60
+   [FineGd] Number of pts (fine+coarse, BZ-map)     :   48840
+  - S/N 002306 ---------------------------------------------- v.05.00.01 r.18845 -
 
   [02.05] Double K-grid
   =====================
@@ -200,17 +215,20 @@
    
    
 
- [03] Transferred momenta grid
- =============================
+ [03] Transferred momenta grid and indexing
+ ==========================================
 
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
   Polarization last K                              :  28
   QP states                                        :   1  28
   X grid is uniform                                : yes
+  Grids                                            : X B S
   BS scattering                                    : yes
   COLL scattering                                  : no
- - S/N 002451 ---------------------------------------------- v.05.00.01 r.18845 -
+  Sigma scattering                                 : yes
+  X scattering                                     : yes
+ - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
 
  IBZ Q-points :   44
  BZ  Q-points :   864
@@ -218,94 +236,50 @@
  K/Q-points units:
  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
- Q [ 1] : weight       :  0.001157
-       : point-rlu    :  0.000000  0.000000  0.000000  [rlu]
- Q [ 2] : weight       :  0.013889
-       : point-rlu    : -0.083333 -0.083333 -0.166667  [rlu]
- Q [ 3] : weight       :  0.009259
-       : point-rlu    : -0.166667 -0.166667 -0.166667  [rlu]
- Q [ 4] : weight       :  0.006944
-       : point-rlu    : -0.083333 -0.083333  0.000000  [rlu]
- Q [ 5] : weight       :  0.027778
-       : point-rlu    : -0.250000 -0.250000 -0.333333  [rlu]
- Q [ 6] : weight       :  0.027778
-       : point-rlu    : -0.166667  0.083333 -0.083333  [rlu]
- Q [ 7] : weight       :  0.013889
-       : point-rlu    : -0.166667 -0.166667 -0.333333  [rlu]
- Q [ 8] : weight       :  0.027778
-       : point-rlu    :  0.000000 -0.250000 -0.083333  [rlu]
- Q [ 9] : weight       :  0.009259
-       : point-rlu    :  0.000000  0.000000  0.333333  [rlu]
- Q [10] : weight       :  0.027778
-       : point-rlu    : -0.416667 -0.416667 -0.500000  [rlu]
- Q [11] : weight       :  0.055556
-       : point-rlu    : -0.166667  0.250000 -0.083333  [rlu]
- Q [12] : weight       :  0.027778
-       : point-rlu    : -0.166667 -0.166667 -0.500000  [rlu]
- Q [13] : weight       :  0.027778
-       : point-rlu    :  0.000000 -0.416667 -0.083333  [rlu]
- Q [14] : weight       :  0.004630
-       : point-rlu    :  0.149012E-7  0.149012E-7 -0.500000     [rlu]
- Q [15] : weight       :  0.027778
-       : point-rlu    : -0.166667 -0.583333 -0.083333  [rlu]
- Q [16] : weight       :  0.027778
-       : point-rlu    : -0.166667 -0.166667  0.333333  [rlu]
- Q [17] : weight       :  0.027778
-       : point-rlu    : -0.166667 -0.166667  0.166667  [rlu]
- Q [18] : weight       :  0.006944
-       : point-rlu    : -0.166667 -0.166667  0.000000  [rlu]
- Q [19] : weight       :  0.027778
-       : point-rlu    : -0.083333 -0.250000 -0.333333  [rlu]
- Q [20] : weight       :  0.006944
-       : point-rlu    :  0.000000 -0.250000 -0.250000  [rlu]
- Q [21] : weight       :  0.055556
-       : point-rlu    : -0.250000 -0.416667 -0.500000  [rlu]
- Q [22] : weight       :  0.027778
-       : point-rlu    : -0.166667  0.250000  0.083333  [rlu]
- Q [23] : weight       :  0.027778
-       : point-rlu    :  0.083333 -0.333333 -0.250000  [rlu]
- Q [24] : weight       :  0.027778
-       : point-rlu    : -0.166667 -0.333333 -0.500000  [rlu]
- Q [25] : weight       :  0.027778
-       : point-rlu    :  0.000000 -0.416667 -0.250000  [rlu]
- Q [26] : weight       :  0.055556
-       : point-rlu    :  0.583333  0.416667  0.333333  [rlu]
- Q [27] : weight       :  0.055556
-       : point-rlu    :  0.250000 -0.333333 -0.250000  [rlu]
- Q [28] : weight       :  0.027778
-       : point-rlu    : -0.166667 -0.333333  0.333333  [rlu]
- Q [29] : weight       :  0.027778
-       : point-rlu    :  0.000000  0.416667 -0.250000  [rlu]
- Q [30] : weight       :  0.027778
-       : point-rlu    : -0.583333 -0.333333 -0.250000  [rlu]
- Q [31] : weight       :  0.013889
-       : point-rlu    :  0.149012E-7  0.250000    -0.250000     [rlu]
- Q [32] : weight       :  0.006944
-       : point-rlu    :  0.000000  0.333333  0.333333  [rlu]
- Q [33] : weight       :  0.027778
-       : point-rlu    : -0.083333 -0.416667 -0.500000  [rlu]
- Q [34] : weight       :  0.027778
-       : point-rlu    : -0.166667 -0.500000 -0.500000  [rlu]
- Q [35] : weight       :  0.006944
-       : point-rlu    :  0.000000 -0.416667 -0.416667  [rlu]
- Q [36] : weight       :  0.027778
-       : point-rlu    :  0.750000  0.416667  0.333333  [rlu]
- Q [37] : weight       :  0.027778
-       : point-rlu    : -0.166667  0.416667  0.250000  [rlu]
- Q [38] : weight       :  0.013889
-       : point-rlu    :  0.083333  0.500000  0.583333  [rlu]
- Q [39] : weight       :  0.013889
-       : point-rlu    : -0.166667  0.500000  0.333333  [rlu]
- Q [40] : weight       :  0.013889
-       : point-rlu    :  0.000000  0.416667  0.583333  [rlu]
- Q [41] : weight       :  0.013889
-       : point-rlu    :  0.000000  0.333333 -0.333333  [rlu]
- Q [42] : weight       :  0.027778
-       : point-rlu    : -0.166667 -0.416667  0.250000  [rlu]
- Q [43] : weight       :  0.003472
-       : point-rlu    :  0.000000 -0.500000 -0.500000  [rlu]
- Q [44] : weight       :  0.006944
-       : point-rlu    : -0.750000 -0.500000 -0.250000  [rlu]
+ Q [ 1]:  0.000000  0.000000  0.000000 [rlu]
+ Q [ 2]: -0.083333 -0.083333 -0.166667 [rlu]
+ Q [ 3]: -0.166667 -0.166667 -0.166667 [rlu]
+ Q [ 4]: -0.083333 -0.083333  0.000000 [rlu]
+ Q [ 5]: -0.250000 -0.250000 -0.333333 [rlu]
+ Q [ 6]: -0.166667  0.083333 -0.083333 [rlu]
+ Q [ 7]: -0.166667 -0.166667 -0.333333 [rlu]
+ Q [ 8]:  0.000000 -0.250000 -0.083333 [rlu]
+ Q [ 9]:  0.000000  0.000000  0.333333 [rlu]
+ Q [10]: -0.416667 -0.416667 -0.500000 [rlu]
+ Q [11]: -0.166667  0.250000 -0.083333 [rlu]
+ Q [12]: -0.166667 -0.166667 -0.500000 [rlu]
+ Q [13]:  0.000000 -0.416667 -0.083333 [rlu]
+ Q [14]:  0.149012E-7  0.149012E-7 -0.500000    [rlu]
+ Q [15]: -0.166667 -0.583333 -0.083333 [rlu]
+ Q [16]: -0.166667 -0.166667  0.333333 [rlu]
+ Q [17]: -0.166667 -0.166667  0.166667 [rlu]
+ Q [18]: -0.166667 -0.166667  0.000000 [rlu]
+ Q [19]: -0.083333 -0.250000 -0.333333 [rlu]
+ Q [20]:  0.000000 -0.250000 -0.250000 [rlu]
+ Q [21]: -0.250000 -0.416667 -0.500000 [rlu]
+ Q [22]: -0.166667  0.250000  0.083333 [rlu]
+ Q [23]:  0.083333 -0.333333 -0.250000 [rlu]
+ Q [24]: -0.166667 -0.333333 -0.500000 [rlu]
+ Q [25]:  0.000000 -0.416667 -0.250000 [rlu]
+ Q [26]:  0.583333  0.416667  0.333333 [rlu]
+ Q [27]:  0.250000 -0.333333 -0.250000 [rlu]
+ Q [28]: -0.166667 -0.333333  0.333333 [rlu]
+ Q [29]:  0.000000  0.416667 -0.250000 [rlu]
+ Q [30]: -0.583333 -0.333333 -0.250000 [rlu]
+ Q [31]:  0.149012E-7  0.250000    -0.250000    [rlu]
+ Q [32]:  0.000000  0.333333  0.333333 [rlu]
+ Q [33]: -0.083333 -0.416667 -0.500000 [rlu]
+ Q [34]: -0.166667 -0.500000 -0.500000 [rlu]
+ Q [35]:  0.000000 -0.416667 -0.416667 [rlu]
+ Q [36]:  0.750000  0.416667  0.333333 [rlu]
+ Q [37]: -0.166667  0.416667  0.250000 [rlu]
+ Q [38]:  0.083333  0.500000  0.583333 [rlu]
+ Q [39]: -0.166667  0.500000  0.333333 [rlu]
+ Q [40]:  0.000000  0.416667  0.583333 [rlu]
+ Q [41]:  0.000000  0.333333 -0.333333 [rlu]
+ Q [42]: -0.166667 -0.416667  0.250000 [rlu]
+ Q [43]:  0.000000 -0.500000 -0.500000 [rlu]
+ Q [44]: -0.750000 -0.500000 -0.250000 [rlu]
 
  [04] External/Internal QP corrections
  =====================================
@@ -328,7 +302,7 @@
   [ph] dS/dw step                                  :  0.100000 ev
   [ph] Sc/G damping                                :  0.100000 ev
   El-Ph correlation                                : yes
-  El-Ph Sc. G bands                                :    1   50
+  El-Ph Sc. G bands                                :   1  10
   El-Ph phonon branches                            :   1   6
   El-Ph momenta used                               :   50
   Energy treshold                                  :  0.100000E-5 FAN
@@ -338,26 +312,33 @@
   QP @ state[ 1 ] b range                          :   1   8
   GF energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
   GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 006087 ---------------------------------------------- v.05.00.01 r.18845 -
+                                                   
+  [ELPH] Phonon modes                              :   6
+  [ELPH] Q points                                  :   50 [avail]
+  [ELPH] K points                                  :   64
+  [ELPH] El-PH bands                               :  10
+  [ELPH] Using the Q-grid                          : no
+  PH double-grid                                   : no
+ - S/N 006087 ---------------------------------------------- v.05.01.00 r.20381 -
 
- EW<QP_dbs/ndb.QP[ E-P Fan + DW = Sphb 1-50]
+ EW<QP_dbs/ndb.QP[ E-P Fan + DW * Sphb 1-10]
 
- [WdE_from_DB-Nearest K] Exact matches  [o/o]:  7.142858
+ [WdE_from_DB-Nearest K] Exact matches       :  7.142858 [o/o]
 
  [WdE_from_DB-Nearest K] Border points       :  2
  [WdE_from_DB-Nearest K] Neighbours    [user]:  1
  [WdE_from_DB-Nearest K]               [real]:  1
- [WdE_from_DB-Nearest K] Interpolations [o/o]:  92.85714
+ [WdE_from_DB-Nearest K] Interpolations      :  92.85714 [o/o]
 
- [WdE_from_DB-Nearest K-BARE FineGd] Exact matches  [o/o]:  0.099900
+ [WdE_from_DB-Nearest K-BARE FineGd] Exact matches       :  0.099900 [o/o]
  [WdE_from_DB-Nearest K-BARE FineGd] Neighbours    [user]:  1
  [WdE_from_DB-Nearest K-BARE FineGd]               [real]:  1
- [WdE_from_DB-Nearest K-BARE FineGd] Interpolations [o/o]:  99.90010
+ [WdE_from_DB-Nearest K-BARE FineGd] Interpolations      :  99.90010 [o/o]
 
  [WARNING] Wrong QP width sign fixed
   
 
- [QP_apply] Action to be applied: EW<QP_dbs/ndb.QP[ E-P Fan + DW = Sphb 1-50]
+ [QP_apply] Action to be applied: EW<QP_dbs/ndb.QP[ E-P Fan + DW * Sphb 1-10]
  [QP_apply] Action to be applied: USER defined scissor
 
   [04.01]  QP corrections report
@@ -368,89 +349,89 @@
   [K+QP] Bosonic    Temperature                     :  0.255946E-1   297.013    [eV K]
   [K+QP] Finite Temperature mode                    : yes
   [K+QP] El. density                                :  0.20451E+24 [cm-3]
-  [K+QP] Fermi Level                                :  0.483247 [eV]
+  [K+QP] Fermi Level                                :  0.483267 [eV]
 
   [K+QP] === Gaps and Widths ===
-  [K+QP] Conduction Band Min                        :  0.645080 [eV]
-  [K+QP] Valence Band Max                           : -0.855957 [eV]
+  [K+QP] Conduction Band Min                        :  0.645038 [eV]
+  [K+QP] Valence Band Max                           : -0.855977 [eV]
   [K+QP] Filled Bands                               :   4
   [K+QP] Empty Bands                                :    5   50
-  [K+QP] Direct Gap                                 :  3.407773 [eV]
+  [K+QP] Direct Gap                                 :  3.407756 [eV]
   [K+QP] Direct Gap localized at k-point            :  1
-  [K+QP] Indirect Gap                               :  1.501037 [eV]
+  [K+QP] Indirect Gap                               :  1.501015 [eV]
   [K+QP] Indirect Gap between k-points              :   1  16
-  [K+QP] Last valence band width                    :  3.320338 [eV]
+  [K+QP] Last valence band width                    :  3.318910 [eV]
   [K+QP] 1st conduction band width                  :  2.466681 [eV]
    
    
   [coarse-grid] Minimum Bare Gap        [ev]:  0.854732
-  [coarse-grid] Minimum Gap Correction  [ev]:  0.646305
+  [coarse-grid] Minimum Gap Correction  [ev]:  0.646283
   [FineGd] Minimum Bare Gap        [ev]:  0.854732
-  [FineGd] Minimum Gap Correction  [ev]: -0.391772
+  [FineGd] Minimum Gap Correction  [ev]:  0.308235
    
   Eqp @ K [ 1]
-  -12.75489  -1.62210  -0.91155  -0.85596   2.55182   2.70392   2.03130   3.39754
+  -12.75491  -1.62212  -0.91157  -0.85598   2.55178   2.70388   2.03128   3.39752
   Eqp @ K [ 2]
-  -12.26664  -3.71795  -2.19039  -1.04796   2.64946   3.10931   2.80688   5.04414
+  -12.26666  -3.71797  -2.19041  -1.04792   2.64943   3.10928   2.80686   5.04413
   Eqp @ K [ 3]
-  -11.13927  -6.55027  -2.65228  -1.70077   2.14657   3.49545   2.85303   6.73607
+  -11.13928  -6.55029  -2.65230  -1.70073   2.14654   3.49542   2.85301   6.73605
   Eqp @ K [ 4]
-  -10.40616  -7.73815  -2.57690  -2.13572   2.00358   3.18900   2.96807   7.09963
+  -10.40618  -7.73817  -2.57692  -2.13572   2.00354   3.18895   2.96805   7.09961
   Eqp @ K [ 5]
-  -11.56574  -5.68304  -2.11658  -1.98967   2.20702   3.24784   3.37083   5.25611
+  -11.56576  -5.68306  -2.11660  -1.98964   2.20699   3.24781   3.37081   5.25609
   Eqp @ K [ 6]
-  -12.50425  -2.68733  -1.58303  -1.29804   2.17523   3.20016   2.96403   4.22147
+  -12.50427  -2.68735  -1.58305  -1.29800   2.17519   3.20014   2.96401   4.22146
   Eqp @ K [ 7]
-  -12.01499  -3.87601  -2.33996  -2.27944   1.60619   3.85165   3.97657   4.21514
+  -12.01500  -3.87603  -2.33998  -2.27946   1.60616   3.85161   3.97656   4.21512
   Eqp @ K [ 8]
-  -11.07985  -5.74026  -3.70955  -2.70750   1.99413   3.69852   3.86675   5.35147
+  -11.07987  -5.74028  -3.70957  -2.70753   1.99409   3.69850   3.86673   5.35145
   Eqp @ K [ 9]
-  -9.914246 -7.562822 -4.314819 -2.947952  2.251542  3.912912  5.219646  5.582254
+  -9.914264 -7.562841 -4.314838 -2.947977  2.251501  3.912888  5.219627  5.582235
   Eqp @ K [10]
-  -10.67293  -6.45916  -4.37726  -2.42841   2.89731   3.56517   4.58162   5.08046
+  -10.67295  -6.45918  -4.37728  -2.42842   2.89727   3.56514   4.58160   5.08044
   Eqp @ K [11]
-  -11.78470  -4.74759  -2.98949  -1.68943   2.49395   3.50326   3.85529   4.16410
+  -11.78472  -4.74761  -2.98951  -1.68939   2.49392   3.50323   3.85527   4.16408
   Eqp @ K [12]
-  -10.35266  -6.55007  -3.75434  -3.36965   0.72387   1.76371   6.94162   6.99691
+  -10.35268  -6.55009  -3.75436  -3.36967   0.72383   1.76368   6.94160   6.99689
   Eqp @ K [13]
-  -9.117980 -7.917628 -4.638216 -3.800463  1.357585  2.565140  6.455800  7.951249
+  -9.117998 -7.917647 -4.638235 -3.800489  1.357544  2.565116  6.455781  7.951231
   Eqp @ K [14]
-  -9.484908 -7.602229 -5.136083 -3.233968  2.002848  5.039830  5.351552  6.054210
+  -9.484926 -7.602247 -5.136102 -3.233993  2.002806  5.039806  5.351533  6.054191
   Eqp @ K [15]
-  -10.54994  -7.20173  -3.37601  -2.33619   2.53964   3.14905   3.83878   6.06197
+  -10.54996  -7.20175  -3.37603  -2.33622   2.53960   3.14903   3.83876   6.06195
   Eqp @ K [16]
-  -9.213512 -7.927019 -4.032314 -3.614619  0.645080  1.231082  8.452776  8.536223
+  -9.213531 -7.927038 -4.032333 -3.613211  0.645038  1.231040  8.452757  8.536205
   Eqp @ K [17]
-  -10.17529  -6.78595  -4.29504  -3.44836   1.58247   2.94074   5.08473   6.94051
+  -10.17531  -6.78597  -4.29506  -3.44839   1.58243   2.94072   5.08471   6.94050
   Eqp @ K [18]
-  -11.29151  -5.17088  -3.18424  -2.90989   1.04796   2.65060   5.38161   5.57564
+  -11.29153  -5.17090  -3.18426  -2.90991   1.04792   2.65056   5.38159   5.57563
   Eqp @ K [19]
-  -12.03046  -4.73165  -1.54598  -1.46881   1.95445   3.45434   2.77781   6.20256
+  -12.03047  -4.73167  -1.54600  -1.46878   1.95442   3.45431   2.77779   6.20254
   Eqp @ K [20]
-  -11.32997  -5.65167  -3.74778  -1.68057   2.72383   3.98687   3.44071   5.41429
+  -11.32999  -5.65169  -3.74780  -1.68058   2.72379   3.98683   3.44069   5.41427
   Eqp @ K [21]
-  -10.11011  -7.10042  -4.89874  -2.49244   1.90076   5.33966   4.72637   6.47903
+  -10.11013  -7.10044  -4.89876  -2.49246   1.90072   5.33962   4.72635   6.47901
   Eqp @ K [22]
-  -10.05741  -7.18016  -4.39331  -3.00499   1.37149   4.40525   5.06953   5.24957
+  -10.05743  -7.18018  -4.39333  -3.00502   1.37145   4.40522   5.06951   5.24955
   Eqp @ K [23]
-  -10.89195  -6.48545  -3.24411  -2.61929   1.88456   4.26620   4.20167   4.32399
+  -10.89197  -6.48547  -3.24413  -2.61932   1.88452   4.26618   4.20165   4.32397
   Eqp @ K [24]
-  -9.857812 -7.195601 -4.798972 -3.455990  3.111761  3.728966  4.044191  6.849842
+  -9.857831 -7.195620 -4.798991 -3.456016  3.111720  3.728942  4.044172  6.849823
   Eqp @ K [25]
-  -8.999280 -7.929564 -4.984406 -4.176295  2.954414  4.227983  4.416641  5.809858
+  -8.999299 -7.929583 -4.984425 -4.174887  2.954372  4.227942  4.416622  5.809839
   Eqp @ K [26]
-  -9.215974 -7.844609 -5.115168 -3.205980  1.076039  4.115020  6.454526  6.642241
+  -9.215993 -7.844628 -5.115187 -3.206006  1.075998  4.114996  6.454507  6.642221
   Eqp @ K [27]
-  -10.79644  -7.32350  -1.93944  -1.90119   1.55916   3.33249   2.65746   6.92675
+  -10.79646  -7.32352  -1.93946  -1.90119   1.55912   3.33245   2.65745   6.92673
   Eqp @ K [28]
-  -10.16172  -7.61634  -3.81682  -2.37472   2.08354   4.05041   3.68706   7.28611
+  -10.16174  -7.61636  -3.81684  -2.37475   2.08350   4.05039   3.68704   7.28609
 
- Timing [Min/Max/Average]: 02s/02s/02s
+ Timing [Min/Max/Average]: 04s/04s/04s
 
  [01] Dipoles
  ============
 
- [RD./01_em1s-serial-develop//ndb.dipoles]---------------------------------------
+ [RD./01_em1s-serial-devel-andreaM//ndb.dipoles]---------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
   *WRN*RL vectors                                  :   331 [WF]
   Fragmentation                                    : yes
@@ -458,7 +439,7 @@
   *WRN*Bosonic    Temperature                      :  0.000000 [K]
   DIP band range                                   :   1  10
   DIP band range limits                            :   4   5
-  DIP e/h energy range                             : -1.000000 -1.000000 ev
+  DIP e/h energy range                             : -1.000000 -1.000000 [eV]
   *WRN*RL vectors in the sum                       :   331
   [r,Vnl] included                                 : no
   Bands ordered                                    : yes
@@ -466,104 +447,115 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 002451 ---------------------------------------------- v.05.00.01 r.18845 -
+ - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
 
- [WARNING] Missing non-local pseudopotential contribution
+ [WARNING] [r,Vnl^pseudo] not included in position and velocity dipoles
 
- [02] Bethe Salpeter Equation @q1
+ [WARNING] In case H contains other non local terms, also these are neglected
+
+ [02] Bethe Salpeter Equation driver
+ ===================================
+
+
+ [03] Bethe Salpeter Equation @q1
  ================================
 
 
-  [02.01] Transition Groups build-up @q1
-  ======================================
-
-  [BSK] Transition groups (total):  28
-  [BSK] Size (resonant):  1728
-  [BSK]         (total):  1728
-
-  [02.02] Independent Particles absorption @q1
-  ============================================
-
-  [RD./01_em1s-serial-develop//ndb.dipoles]---------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
-   *WRN*RL vectors                                  :   331 [WF]
-   Fragmentation                                    : yes
-   *WRN*Electronic Temperature                      :  0.000000 [K]
-   *WRN*Bosonic    Temperature                      :  0.000000 [K]
-   DIP band range                                   :   1  10
-   DIP band range limits                            :   4   5
-   DIP e/h energy range                             : -1.000000 -1.000000 ev
-   *WRN*RL vectors in the sum                       :   331
-   [r,Vnl] included                                 : no
-   Bands ordered                                    : yes
-   Direct v evaluation                              : no
-   Approach used                                    : G-space v
-   Dipoles computed                                 : R V P
-   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 002451 ---------------------------------------------- v.05.00.01 r.18845 -
-
-  [02.03] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
-  =======================================================
-
-  [BSE] Exchange components :  229
-  [RD./02_bse-serial-develop//ndb.BS_PAR_Q1]--------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
-   *WRN*RL vectors                                  :   459 [WF]
-   Coulomb cutoff potential                         : none
-   Fragmentation                                    : no
-   BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
-   Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
-   wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   [K] Identifier                                   :   9683
-   [K] Dimension                                    :  1728
-   [K] Bands                                        :   4   6
-   [K] Exchange                                     : yes
-   [K] Correlation                                  : yes
-   [K] Kernel`s coupling                            : no
-   [K] Exchange                                     : no
-   [K] Correlation                                  : no
-   [K] W interaction is bare                        : no
-   [K] ALDA kernel in R-space                       : no
-   [K] RL vectors                                   :  229 exchange
-   [K] RL vectors                                   :  27 correlation
-   [K] E/h energy range                             : -1.000000 -1.000000 ev
-   [K] Coupling range                               :  100.0000  100.0000 o/o
-   [W] Interaction is diagonal                      : no
-   [W] Matrix size                                  :  27
-   [W] Bands                                        :   1  10
-   [W] e/h energy range                             : -1.000000 -1.000000 ev
-   [W] Poles                                        :  100.0000 o/o
-   [W] RL vectors in the sum                        :   331
-   [W] [r,Vnl] included                             : no
-   [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-   [W] Coulomb Cutoff                               : none
-   [W] xc-Kernel                                    : none
-   [RIM] RL components                              : 0 col
-   [RIM] Random points                              : 0 col
-   [SOC] Perturbative SOC                           : no
-   [IO] Kernel triangular                           : no
-  - S/N 002451 ---------------------------------------------- v.05.00.01 r.18845 -
-   Kernel cutoff                                    :  0.000000
-   Kernel maxval                                    :  0.000000
-   Kernel complete                                  : yes
-   Kernel cutoff                                    :  0.000000
-   Kernel maxval                                    :  0.000000
-
- [03] BSE solver(s) @q1
- ======================
+  [03.01] Transition pre-analysis @q1
+  ===================================
 
 
-  [03.01] Inversion Solver @q1
+   [03.01.01] Transition Groups build-up @q1
+   =========================================
+
+   [BSK] Transition groups (total):  28
+   [BSK] Size (resonant):  1728
+   [BSK]         (total):  1728
+   [BSK] N. of matrices :  1
+
+   [03.01.02] Loading Dipoles @q1
+   ==============================
+
+   [RD./01_em1s-serial-devel-andreaM//ndb.dipoles]---------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
+    *WRN*RL vectors                                  :   331 [WF]
+    Fragmentation                                    : yes
+    *WRN*Electronic Temperature                      :  0.000000 [K]
+    *WRN*Bosonic    Temperature                      :  0.000000 [K]
+    DIP band range                                   :   1  10
+    DIP band range limits                            :   4   5
+    DIP e/h energy range                             : -1.000000 -1.000000 [eV]
+    *WRN*RL vectors in the sum                       :   331
+    [r,Vnl] included                                 : no
+    Bands ordered                                    : yes
+    Direct v evaluation                              : no
+    Approach used                                    : G-space v
+    Dipoles computed                                 : R V P
+    Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
+   - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
+
+   [03.01.03] Independent Particles properties @q1
+   ===============================================
+
+
+   [03.01.04] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
+   ==========================================================
+
+   [BSE] Exchange components :  229
+   [RD./02_bse-serial-devel-andreaM//ndb.BS_Q1_CPU_0]------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :    44   864    28   864
+    *WRN*RL vectors                                  :   459 [WF]
+    Coulomb cutoff potential                         : none
+    Parallel CPUs
+    Parallel Roles
+    Fragmentation                                    : no
+    BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
+    Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
+    wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
+    [K] Identifier                                   :   5239
+    [K] Dimension                                    :  1728
+    [K] Bands                                        :   4   6
+    [K] Exchange                                     : yes
+    [K] Correlation                                  : yes
+    [K] Kernel`s coupling                            : no
+    [K] Exchange                                     : no
+    [K] Correlation                                  : no
+    [K] W interaction is bare                        : no
+    [K] ALDA kernel in R-space                       : no
+    [K] RL vectors                                   :  229 [exchange]
+    [K] RL vectors                                   :  27 [correlation]
+    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+    [K] Coupling range                               :  100.0000  100.0000 [o/o]
+    [W] Interaction is diagonal                      : no
+    [W] Matrix size                                  :  27
+    [W] Bands                                        :   1  10
+    [W] e/h energy range                             : -1.000000 -1.000000 [eV]
+    [W] Poles                                        :  100.0000 [o/o]
+    [W] RL vectors in the sum                        :   331
+    [W] [r,Vnl] included                             : no
+    [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
+    [W] Coulomb Cutoff                               : none
+    [W] xc-Kernel                                    : none
+    [RIM] RL components                              : 0 [col]
+    [RIM] Random points                              : 0 [col]
+    [SOC] Perturbative SOC                           : no
+   - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
+
+  [03.02] BSE solver(s) @q1
+  =========================
+
+
+  [03.03] Inversion Solver @q1
   ============================
 
-  [RD./02_bse-serial-develop//ndb.BS_invert_Q1]-----------------------------------
+  [RD./02_bse-serial-devel-andreaM//ndb.BS_invert_Q1]-----------------------------
    *ERR* BS kernel          energies                : Slater exchange(X)+Perdew & Zunger(C)
 
-  DbGd@q[1] k->k-q (trans %, q-rad %)]:  1.742567  1.500000
+  DbGd@q[1] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.742567  0.015000
   [PERTURBATIVE INV@EPS] Converged frequencies :   80
   [WR./05_bse_dbgd_297K//ndb.BS_invert_Q1]----------------------------------------
    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-   BSK Identifier                                   : 0
+   BSK Identifier                                   :   5239
    Field direction                                  :  0.100000E-4   0.00000      0.00000   
    Using energy Double Grid                         : yes
    Energy range                [ev]                 :  2.000000  6.000000
@@ -575,7 +567,7 @@
    [PL]  Number of frequencies                      :   80
    [PL]  Perturbative to full ratio                 :  1.000000
    [PL]  Treshold             [o/o]                 :  0.500000
-  - S/N 002451 ---------------------------------------------- v.05.00.01 r.18845 -
+  - S/N 002451 ---------------------------------------------- v.05.01.00 r.20381 -
 
  Timing [Min/Max/Average]: 02s/02s/02s
 
@@ -584,38 +576,48 @@
 
  Clock: global
            BSE matrix (REDUX) :      0.0000s CPU
-             io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU (  3 calls,   0.002 msec avg)
+             io_ATMPROJ_pwscf :      0.0000s CPU
                   io_KB_pwscf :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0000s CPU (  7 calls,   0.003 msec avg)
                    io_COL_CUT :      0.0000s CPU
-       BSE components folding :      0.0000s CPU
-                        io_HF :      0.0000s CPU
-                      io_ELPH :      0.0000s CPU (  2 calls,   0.023 msec avg)
-               eval_G_minus_G :      0.0002s CPU
-                  io_fragment :      0.0010s CPU
-                      Dipoles :      0.0034s CPU
-                 io_QP_and_GF :      0.0037s CPU
-                      io_GROT :      0.0046s CPU (  2 calls,   2.304 msec avg)
-                         io_X :      0.0052s CPU (  4 calls,   1.310 msec avg)
-               io_Double_Grid :      0.0065s CPU
-                        io_WF :      0.0075s CPU
-                   T_space IP :      0.0082s CPU
-                     io_QINDX :      0.0087s CPU (  2 calls,   4.340 msec avg)
-                io_BSS_invert :      0.0105s CPU (  3 calls,   3.494 msec avg)
-                   io_DIPOLES :      0.0139s CPU ( 33 calls,   0.420 msec avg)
-           BSE matrix filling :      0.0171s CPU
-                        io_BS :      0.0427s CPU (407 calls,   0.105 msec avg)
-             Inversion Solver :      2.5159s CPU
+                        io_HF :      0.0001s CPU
+                      io_ELPH :      0.0001s CPU (  2 calls,   0.026 msec avg)
+       BSE components folding :      0.0002s CPU
+               eval_G_minus_G :      0.0005s CPU
+                   T_space IP :      0.0009s CPU
+                 io_QP_and_GF :      0.0012s CPU
+                         io_X :      0.0024s CPU (  4 calls,   0.600 msec avg)
+                      io_GROT :      0.0025s CPU (  2 calls,   1.273 msec avg)
+                      Dipoles :      0.0028s CPU
+               io_Double_Grid :      0.0036s CPU
+                        io_WF :      0.0037s CPU
+                io_BSS_invert :      0.0055s CPU (  3 calls,   1.835 msec avg)
+                  io_fragment :      0.0129s CPU ( 29 calls,   0.444 msec avg)
+                        io_BS :      0.0145s CPU (409 calls,   0.035 msec avg)
+           BSE matrix filling :      0.0168s CPU
+                     io_QINDX :      0.0204s CPU (  3 calls,   6.795 msec avg)
+                  BSE dipoles :      0.0205s CPU
+                   io_DIPOLES :      0.0227s CPU ( 31 calls,   0.734 msec avg)
+             Inversion Solver :      2.5262s CPU
 
- [05] Game Over & Game summary
+ [05] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
+
+
+         Max memory used   :  46.60700 [Mb]
+
+ [06] Game Over & Game summary
  =============================
 
- 12/15/2020 at 10:58 yambo_ph @ unimi-XPS-8930 [start]
- 12/15/2020 at 10:58                           [end]
+ 10/04/2021 at 11:51 yambo_ph @ baym [start]
+ 10/04/2021 at 11:51                 [end]
 
- Timing   [Min/Max/Average]: 04s/04s/04s
-             [Time-Profile]: 04s
+ Timing   [Min/Max/Average]: 07s/07s/07s
+             [Time-Profile]: 07s
 
  .-ACKNOWLEDGMENT
  |
@@ -647,18 +649,21 @@
  | FFTGvecs=  411             RL    # [FFT] Plane-waves
  | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
- | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
- | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
- | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
  | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
  | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
- | BSSmod= "i"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+ | BSSmod= "i"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+ | DbGdQsize= 1.000000              # [X,DbGd][o/o] Percentual of the total DbGd transitions to be used
  | BSENGexx= 229              RL    # [BSK] Exchange components
  | BSENGBlk= 27               RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
  | #WehCpl                        # [BSK] eh interaction included also in coupling
  | KfnQPdb= "E W < QP_dbs/ndb.QP"   # [EXTQP BSK BSS] Database action
  | % KfnQP_E
  |  0.700000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+ | %
+ | BSEprop= "abs"                   # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+ | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+ | % PL_weights
+ |  0.577350 | 0.577350 | 0.577350 |        # [PL] [cc] Weights of the carthesian components of the emitted radiation
  | %
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
@@ -679,3 +684,4 @@
  | BSSInvMode= "p"                  # [BSS] Inversion solver modality `(f)ull/(p)erturbative`
  | BSEPSInvTrs= 0.010000            # [BSS EPS] Inversion treshold. Relative[o/o](>0)/Absolute(<0)
  | BSSInvPFratio= 1.000000          # [BSS] Inversion solver. Ratio between the number of frequencies solved pert/full
+ | BSPLInvTrs= 0.500000             # [BSS PL] Inversion treshold
