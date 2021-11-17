@@ -24,12 +24,16 @@
 #
 sub SOURCE_config{
  #
+ use File::Basename;
+ #
  chdir("$BRANCH");
+ #
+ $conf_name=basename($conf_path);
  #
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config-$ROBOT_string.log";
  $comp_logfile = "$suite_dir/"."compile-$ROBOT_string.log";
- $comp_folder  = "$suite_dir/"."compile_${branch_key}";
+ $comp_folder  = "$suite_dir/"."compile_${branch_key}_${conf_name}";
  #
  # If Makefile present, clean sources
  if(-e "config/report") { $result = `make clean_all 2>&1` };
