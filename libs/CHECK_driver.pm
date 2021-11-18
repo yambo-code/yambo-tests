@@ -145,7 +145,7 @@ R_file_loop: foreach $ref_filename (@OFILES){
  if (&CHECK_ignore($run_filename)) {next R_file_loop};
  #
  $SKIP_MPIIO=(  ("$BUILD" =~ "MPI_IO" ) && ( "$run_filename" =~ "fragment_2")    );
- $SKIP_SERIO=( !("$BUILD" =~ "MPI_IO" ) && ( "$run_filename" =~ /COLLISIONS\z/) );
+ $SKIP_SERIO=( !("$BUILD" =~ "MPI_IO" ) && ( "$run_filename" =~ "COLLISIONS") && !( "$run_filename" =~ "fragment_2")  );
  if ( (!-e "$run_filename") && !( $SKIP_MPIIO || $SKIP_SERIO ) ) { 
   &RUN_stats("NO_OUT");
   if ($update_test and (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) ) 
