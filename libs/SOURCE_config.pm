@@ -33,7 +33,7 @@ sub SOURCE_config{
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config-$ROBOT_string.log";
  $comp_logfile = "$suite_dir/"."compile-$ROBOT_string.log";
- $comp_folder  = "$suite_dir/"."compile_${branch_key}_${conf_name}";
+ $comp_folder  = "$suite_dir/"."compile_${branch_key}/"."${conf_name}";
  #
  # If Makefile present, clean sources
  if(-e "config/report") { $result = `make clean_all 2>&1` };
@@ -43,7 +43,7 @@ sub SOURCE_config{
  #
  &MY_PRINT($stdout, "Configuring ...");
  #
- if(!-d $comp_folder) { &command("mkdir $comp_folder"); };
+ if(!-d $comp_folder) { &command("mkdir -p $comp_folder"); };
  chdir("$comp_folder");
  &command("cat $suite_dir/$conf_path > conf_local.sh");
  $string1="\.\/configure";
