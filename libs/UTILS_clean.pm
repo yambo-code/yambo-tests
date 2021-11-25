@@ -109,7 +109,7 @@ if("@_" eq "BINs" ) {
    $conf_file = (split(/\//, $conf_file))[-1];
    $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind";
    if ($ROBOT_id) {$conf_bin  = "$suite_dir/bin-$conf_file-*R$ROBOT_id"};
-   &command("rm -fr $conf_bin* $suite_dir/bin-precompiled*");
+   &command("rm -fr $conf_bin* $suite_dir/bin-precompiled* compile_*");
   }
  }
 }
