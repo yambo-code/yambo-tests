@@ -61,7 +61,7 @@ if("@_" eq "ALL") {
   &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R[0-9]*' -type d | $grep -v $hostname | xargs rm -fr");
   &command("find . -name 'ROBOT_*' -o -name '*-R[0-9]*' -type f | $grep -v $hostname | xargs rm -fr");
   &command("find . -name '*.kindx' -o -name '*.gops' | grep -v REFERENCE | xargs rm -fr");
-  &command("$git ls-files --others --exclude-standard | $grep -v $hostname | grep -v MODULES.pl | grep -v TOOLS.pl | xargs rm -fr");
+  &command("$git ls-files --others --exclude-standard | $grep -v $hostname | grep -v MODULES.pl | grep -v TOOLS.pl | grep -v compile\_ | xargs rm -fr");
   &command("rm -f outputs_and_reports_ALL-* *compile*log *config*log");
  }
  &command("rm -f scripts/find_the_diff/Makefile");
@@ -87,6 +87,19 @@ if("@_" eq "DFT") {
  &command("find . -type d -empty | xargs rm -fr");
 };
 #
+# COMPs
+if("@_" eq "COMPs") {
+ &LOAD_branches;
+ for $ib ( 0 .. $#branches ) {
+  $branchdir =@branches[$ib];
+  foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
+   $conf_file = (split(/\//, $conf_file))[-1];
+   $comp_folder  = "$suite_dir/compile_${branchdir}_${conf_file}";
+   &command("rm -fr $comp_folder");
+  }
+ }
+}
+#
 # BINs
 if("@_" eq "BINs" ) {
  &LOAD_branches;
@@ -96,7 +109,7 @@ if("@_" eq "BINs" ) {
    $conf_file = (split(/\//, $conf_file))[-1];
    $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind";
    if ($ROBOT_id) {$conf_bin  = "$suite_dir/bin-$conf_file-*R$ROBOT_id"};
-   &command("rm -fr $conf_bin* $suite_dir/bin-precompiled*");
+   &command("rm -fr $conf_bin* $suite_dir/bin-precompiled* compile_*");
   }
  }
 }
