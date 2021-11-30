@@ -47,3 +47,4 @@ $ROBOTS{'yurigagarin'} = 'yurigagarin.local';
 $ROBOTS{'attacc-lavoro'} = 'attacc-lavoro';
 $ROBOTS{'VivoBook'} = 'VivoBook';
 $ROBOTS{'AcerAspire'} = 'AcerAspire';
+$ROBOTS{'corvina'} = 'corvina.fisica.unimo.it';
