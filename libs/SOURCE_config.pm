@@ -33,7 +33,7 @@ sub SOURCE_config{
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config-$ROBOT_string.log";
  $comp_logfile = "$suite_dir/"."compile-$ROBOT_string.log";
- $comp_folder  = "$suite_dir/"."compile_${branch_key}/"."${conf_name}";
+ $comp_folder  = "$suite_dir/"."compile/${branchdir}/${conf_name}";
  #
  # If Makefile present, clean sources
  if(-e "config/report") { $result = `make clean_all 2>&1` };

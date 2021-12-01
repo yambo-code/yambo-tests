@@ -94,7 +94,7 @@ if("@_" eq "COMPs") {
   $branchdir =@branches[$ib];
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
-   $comp_folder  = "$suite_dir/compile_${branchdir}_${conf_file}";
+   $comp_folder  = "$suite_dir/compile_dir/${branchdir}/${conf_file}";
    &command("rm -fr $comp_folder");
   }
  }
@@ -109,7 +109,7 @@ if("@_" eq "BINs" ) {
    $conf_file = (split(/\//, $conf_file))[-1];
    $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind";
    if ($ROBOT_id) {$conf_bin  = "$suite_dir/bin-$conf_file-*R$ROBOT_id"};
-   &command("rm -fr $conf_bin* $suite_dir/bin-precompiled* compile_*");
+   &command("rm -fr $conf_bin* $suite_dir/bin-precompiled* $suite_dir/compile_dir");
   }
  }
 }
