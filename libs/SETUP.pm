@@ -76,7 +76,7 @@ if ("$what" eq "BASIC") {
  &MY_PRINT($stdout, "\n= Starting Yambo test-suite") if (!$reduced_log);
  &MY_PRINT($stdout, "\n$double_line\n") if (!$reduced_log);
  #
- &command("$suite_dir/scripts/job_stopper.tcsh $ROBOT_string &");
+ if (! -f "KILLER_yambo_".$ROBOT_string.".awk" ) { &command("$suite_dir/scripts/job_stopper.tcsh $ROBOT_string &")};
  #
 }elsif ("$what" == "DIR"){
  #

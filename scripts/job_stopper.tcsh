@@ -7,19 +7,19 @@ while ( $robot != 0 )
  else
   foreach exe ( yambo ypp a2y p2y e2y)
    #echo "KILLING $robot $exe"
-if (! -f KILLER_$exe.awk) then
-cat << EOF > KILLER_$exe.awk
+if (! -f KILLER_${exe}_${robot}.awk) then
+cat << EOF > KILLER_${exe}_${robot}.awk
 {
- if (index(\$3,"$exe")>0 && index(\$1,"$robot")>0)
+ if (index(\$3,"$exe")>0 && index(\$3,"$robot")>0)
  {
-  if (\$3 > 1800) { print \$1};
+  if (\$1 > 1800) { print \$2};
  }
 }
 EOF
 endif
-   set NL=`ps -eo comm,pid,etimes | awk -f KILLER_$exe.awk`
-   if ( $NL > ) then
-     ps -eo comm,pid,etimes | awk -f KILLER_$exe.awk | xargs kill -9
+   set NL=`ps -eo etimes,pid,cmd:150 | awk -f KILLER_${exe}_${robot}.awk`
+   if ( "$NL" != "") then
+     ps -eo etimes,pid,cmd:150 | awk -f KILLER_${exe}_${robot}.awk | xargs kill -9
    endif
   end
   sleep 60
