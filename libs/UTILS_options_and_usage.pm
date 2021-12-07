@@ -139,7 +139,9 @@ if ($help>=1) {
              -keep_bin              Do not overwrite the robot specific bin-precompiled folder
              -robot  <ID's>         Robot ID. [ID's can be of the form N or N-M]
              -branch [WHAT]         Branch selection.
+             -compdir[WHAT]         Folder where the branch was compiled (i.e. compile_dir/devel-rt-vel-and-magn/default.sh ).
              -module [WHAT]         Environment module selection.
+             -mpirun [WHAT]         Command name for mpirun if different from standard (default: mpirun)
 
    (TEST selection)
              -flow   <FILE>         Use the flow of calculations defined in <FILE> 
