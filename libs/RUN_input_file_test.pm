@@ -82,17 +82,17 @@ sub RUN_input_file_test{
  }
 
  my $POT;
- if (&RUN_feature("HXC_Potential= IP")=="1") {$POT="ip"};
- if (&RUN_feature("HXC_Potential= HARTREE")=="1") {$POT=$POT."h"};
- if (&RUN_feature("HXC_Potential= HARTREE+SEX")=="1") {$POT=$POT."hsex"};
- if (&RUN_feature("HXC_Potential= GS_xc")=="1") {$POT=$POT."gs"};
- if (&RUN_feature("HXC_Potential= COH")=="1") {$POT=$POT."coh"}
- if (&RUN_feature("HXC_Potential= SEX")=="1") {$POT=$POT."sex"}
- if (&RUN_feature("HXC_Potential= FOCK")=="1") {$POT=$POT."f"}
- if (&RUN_feature("HXC_Potential= LDA_X")=="1") {$POT=$POT."ldax"};
- if (&RUN_feature("HXC_Potential= PZ")=="1") {$POT=$POT."pz"};
- if (&RUN_feature("HXC_Potential= DEFAULT")=="1") {$POT="d"};
- if (&RUN_feature("HXC_Potential= default")=="1") {$POT="d"};
+ if (&RUN_feature("HXC_Potential IP")=="1") {$POT="ip"};
+ if (&RUN_feature("HXC_Potential HARTREE")=="1") {$POT=$POT."h"};
+ if (&RUN_feature("HXC_Potential SEX")=="1") {$POT=$POT."sex"};
+ if (&RUN_feature("HXC_Potential CVONLY")=="1") {$POT=$POT."cvonly"};
+ if (&RUN_feature("HXC_Potential GS_xc")=="1") {$POT=$POT."gs"};
+ if (&RUN_feature("HXC_Potential COH")=="1") {$POT=$POT."coh"}
+ if (&RUN_feature("HXC_Potential FOCK")=="1") {$POT=$POT."f"}
+ if (&RUN_feature("HXC_Potential LDA_X")=="1") {$POT=$POT."ldax"};
+ if (&RUN_feature("HXC_Potential PZ")=="1") {$POT=$POT."pz"};
+ if (&RUN_feature("HXC_Potential DEFAULT")=="1") {$POT="d"};
+ if (&RUN_feature("HXC_Potential default")=="1") {$POT="d"};
  if ($POT) {$CMD=$CMD." -potential ".$POT};
 
  if (&RUN_feature("magnetic")=="1") 
