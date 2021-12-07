@@ -62,7 +62,13 @@ sub RUN_input_file_test{
  if (&RUN_feature("BSSmod= \"hdi\"")=="1")  {$CMD=$CMD." -Ksolver hdi"};
  if (&RUN_feature("BSSmod= \"i\"")=="1")  {$CMD=$CMD." -Ksolver i"};
 
- if (&RUN_feature("negf")=="1") {$CMD=$CMD." -rt p"};
+ if (&RUN_feature("negf")=="1") 
+ {
+   if (&RUN_feature("Field1")=="1") {$CMD_tmp=" -rt p1"};
+   if (&RUN_feature("Field2")=="1") {$CMD_tmp=" -rt p2"};
+   if (&RUN_feature("Field3")=="1") {$CMD_tmp=" -rt p3"};
+   $CMD=$CMD.$CMD_tmp;
+ };
  if (&RUN_feature("collisions")=="1") {$CMD=$CMD." -collisions"};
  
  if (&RUN_feature("el_photon_scatt")=="1") {
