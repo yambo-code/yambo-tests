@@ -1,0 +1,42 @@
+#                                                           
+#  **    **    **     ****     ****  ******     *******     
+# //**  **    ****   /**/**   **/** /*////**   **/////**    
+#  //****    **//**  /**//** ** /** /*   /**  **     //**   
+#   //**    **  //** /** //***  /** /******  /**      /**   
+#    /**   **********/**  //*   /** /*//// **/**      /**   
+#    /**  /**//////**/**   /    /** /*    /**//**     **    
+#    /**  /**     /**/**        /** /*******  //*******     
+#    //   //      // //         //  ///////    ///////      
+#                                                           
+#               Version 4.0.2 Revision 4960                 
+#                    MPI+OpenMP Build                       
+#                http://www.yambo-code.org                  
+#
+negf                         # [R] Real-Time dynamics
+% RTBands
+  7 | 10 |                   # [SC] Bands
+%
+# NEW
+HXC_Potential= "HARTREE+SEX"          # [SC] SC Potential
+Integrator= "RK2"        # [RT] Integrator. Use keywords space separated  ( "EULER/RK2/HEUN" "EXP" "RWA" "INTERPOLATE")
+RTstep= 10.00000       as    # [RT] Real Time step length
+NETime= 75.00000       fs    # [RT] Simulation Time (alternative to NEsteps)
+% IOtime
+   1.000 |   0.0100 |   0.1000 |  fs    # [RT] Time between to consecutive I/O (J,P,CARRIERs - GF - OUTPUT)
+%
+
+% Field1_Freq
+ 5.63     | 0.00     | eV    # [RT Probe] Frequency
+%
+Field1_Int= 1.E5       kWLm2 # [RT Probe] Intensity
+Field1_FWHM= 10.000000   fs    # [RT Probe] Damping
+Field1_kind= "QSSIN"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"
+% Field1_Dir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT Probe] Versor
+%
+EXXRLvcs= 107       RL    # [XX] Exchange RL components
+CORRLvcs= 107       RL
+HARRLvcs= 2733       RL    # [XX] Hartree  RL components
+
+SaveGhistory

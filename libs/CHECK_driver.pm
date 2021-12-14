@@ -66,10 +66,12 @@ if (not $LIFE=="1") {&CHECK_database("X_Q_1","ndb.em1d_fragment_1","")};
 &CHECK_database("BLOCK_TABLE","ndb.E_SOC_map","");
 &CHECK_database("CUT_BARE_QPG","ndb.cutoff","");
 &CHECK_database("RIM_qpg","ndb.RIM","");
-&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_HXC_fragment_2","");
-&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_COH_fragment_2","");
-&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_GW_NEQ_fragment_2","");
-&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_P_fragment_2","");
+$append="";
+if(not $BUILD =~ /MPI_IO/) { $append="_fragment_2"; }
+&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_HXC$append","");
+&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_COH$append","");
+&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_GW_NEQ$append","");
+&CHECK_database("COLLISIONS_v","ndb.COLLISIONS_P$append","");
 #
 # OUT files
 O_file_loop: foreach $run_filename (<o-$testname.*>){
@@ -142,7 +144,9 @@ R_file_loop: foreach $ref_filename (@OFILES){
  #
  if (&CHECK_ignore($run_filename)) {next R_file_loop};
  #
- if (!-e "$run_filename") { 
+ $SKIP_MPIIO=(  ("$BUILD" =~ "MPI_IO" ) && ( "$run_filename" =~ "fragment_2")    );
+ $SKIP_SERIO=( !("$BUILD" =~ "MPI_IO" ) && ( "$run_filename" =~ "COLLISIONS") && !( "$run_filename" =~ "fragment_2")  );
+ if ( (!-e "$run_filename") && !( $SKIP_MPIIO || $SKIP_SERIO ) ) { 
   &RUN_stats("NO_OUT");
   if ($update_test and (not $CHECK_error =~ /WHITELISTED/) and (not $CHECK_error =~ /RULES-SUCC/) ) 
   {

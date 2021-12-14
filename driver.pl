@@ -191,6 +191,8 @@ if ($clean and $backup_logs eq "no" and not $RUNNING_suite){
  if (not $ROBOT_id) {&UTILS_clean("BINs")};
  print "... test databases outputs logfiles bin(s)";
  if ($clean > 1) {
+  print "... compiled yambo ...";
+  &UTILS_clean("COMPs");
   print "... core databases ...";
   &UTILS_clean("CORE");
   print "... .tar.gz ...";
