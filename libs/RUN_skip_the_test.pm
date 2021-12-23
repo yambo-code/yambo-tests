@@ -83,6 +83,14 @@ if ( "@_" eq "INPUT") {
   return "FAIL";
  };
  #
+ # Reconstruction of G lesser works only with MPI-IO
+  if ( ($testname =~ m/_Gless/ || $testname =~ m/_G_less/ ) && not $BUILD =~ /MPI_IO/) {
+  my $msg = sprintf("%-"."$left_length"."s", "$testname");
+  $CHECK_error= $msg." skipped (G lesser reconstruction not code with serial IO)";
+  &RUN_stats("SKIPPED");
+  return "FAIL";
+ };
+ #
  # p2y HDF5 tests only if p2y compiled with HDF5 support
  if ($testname =~ m/HDF5/ && not $BUILD =~ /HDF5/) { 
   my $msg = sprintf("%-"."$left_length"."s", "$testname");

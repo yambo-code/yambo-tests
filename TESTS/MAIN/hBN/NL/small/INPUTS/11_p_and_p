@@ -1,0 +1,52 @@
+#                                                                     
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
+#                                                                     
+# Version 5.1.0 Revision 20367 Hash (prev commit) f3f87580e           
+#                   Branch is devel-nl                                
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#               http://www.yambo-code.org                             
+#
+nloptics                         # [R] Non-linear spectroscopy
+DIP_Threads=0                    # [OPENMP/X] Number of threads for dipoles
+NL_Threads=0                     # [OPENMP/NL] Number of threads for nl-optics
+% NLBands
+   6 |  11 |                         # [NL] Bands range
+%
+NLverbosity= "high"              # [NL] Verbosity level (low | high)
+NLstep=   0.0200       fs    # [NL] Real Time step length
+NLtime=35.000000           fs    # [NL] Simulation Time
+NLintegrator= "CRANKNIC"           # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
+NLCorrelation= "IPA"             # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
+NLLrcAlpha= 0.000000             # [NL] Long Range Correction
+NLDamping= 0.200000        eV    # [NL] Damping (or dephasing)
+RADLifeTime=6.000000      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
+#EvalCurrent                   # [NL] Evaluate the current
+HARRLvcs=  797             RL    # [HA] Hartree     RL components
+EXXRLvcs=  797             RL    # [XX] Exchange    RL components
+% Field1_Dir
+ 0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Field Versor
+%
+Field1_Int=  10000.00         kWLm2 # [NL ExtF] Field Intensity
+Field1_kind= "QSSIN"             # [NL ExtF] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_Width= 5.000000       fs    # [NL ExtF] Field Width
+% Field1_Freq
+ 2.00000 | 2.00000 |         eV    # [NL ExtF] Field Frequency
+%
+Field1_Tstart= 0.010000      fs    # [NL ExtF] Initial Time
+% Field2_Dir
+ 0.000000 | 1.000000 | 0.000000 |        # [NL ExtF] Field Versor
+%
+% Field2_Freq
+ 6.00000 | 6.00000 |         eV    # [NL ExtF] Field Frequency
+%
+Field2_Int= 100.000000        kWLm2 # [NL ExtF] Field Intensity
+Field2_Width= 5.000000      fs    # [NL ExtF] Field Width
+Field2_kind= "QSSIN"               # [NL ExtF] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field2_Tstart= 5.00000     fs    # [NL ExtF] Initial Time
