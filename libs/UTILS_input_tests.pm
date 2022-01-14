@@ -108,10 +108,24 @@ if($user_tests){
  &MY_PRINT($stdout, " -     Test selection : (none)");
 }
 @dummy= split(/\s*;\s*/, $input_tests);  # split 0+ spaces before/after
+#
+# Sort SOC test after Without SOC tests
+my $ic=-1;
+my $prevs="";
+foreach my $lline (@dummy) {
+ $ic++;
+ print("$lline\n"); 
+ if( "$lline" =~ "Without-SOC" && $dummy[$ic-1] =~ "With-SOC" ) {
+   $prevs=$dummy[$ic-1];
+   $dummy[$ic-1]=$dummy[$ic];
+   $dummy[$ic]=$prevs;
+ }
+}
+#
 &CWD_save;
 chdir("$suite_dir/$TESTS_folder");
 @input_tests_list=" ";
-my $ic=-1;
+$ic=-1;
 foreach my $lline (@dummy) {
  $ic++;
  @inputs = split(/\s+/,$lline);  # Split 1 or more spaces
