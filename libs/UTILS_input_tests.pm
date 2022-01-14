@@ -114,7 +114,6 @@ my $ic=-1;
 my $prevs="";
 foreach my $lline (@dummy) {
  $ic++;
- print("$lline\n"); 
  if( "$lline" =~ "Without-SOC" && $dummy[$ic-1] =~ "With-SOC" ) {
    $prevs=$dummy[$ic-1];
    $dummy[$ic-1]=$dummy[$ic];
