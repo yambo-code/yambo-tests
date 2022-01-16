@@ -50,3 +50,4 @@ $ROBOTS{'yurigagarin'} = 'yurigagarin.local';
 $ROBOTS{'attacc-lavoro'} = 'attacc-lavoro';
 $ROBOTS{'VivoBook'} = 'VivoBook';
 $ROBOTS{'AcerAspire'} = 'AcerAspire';
+$ROBOTS{'starfire'} = 'starfire.fisica.unimo.it';
