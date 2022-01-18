@@ -1,0 +1,29 @@
+&control
+         calculation = 'scf'
+              prefix = 'gs_converged'
+          pseudo_dir = './'
+           verbosity = 'high'
+/&end
+&system
+           celldm(1) = 10.474
+             ecutwfc = 80.0
+    force_symmorphic = .true.
+               ibrav = 2
+            lspinorb = .true.
+                 nat = 2
+            noncolin = .true.
+                ntyp = 2
+         occupations = 'fixed'
+/&end
+&electrons
+            conv_thr = 1e-06
+      diago_full_acc = .false.
+/&end
+ATOMIC_SPECIES
+  Ga      1.0  Ga_rel.pz-rrkj3.UPF
+  As      1.0  As_rel.pz-rrkj3.UPF
+ATOMIC_POSITIONS { alat }
+ Ga   0.0000000000   0.0000000000   0.0000000000
+ As   0.2500000000   0.2500000000   0.2500000000
+K_POINTS { automatic }
+  6  6  6  0  0  0

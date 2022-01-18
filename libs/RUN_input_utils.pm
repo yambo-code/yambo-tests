@@ -24,15 +24,20 @@
 #
 sub RUN_feature{
 my @string = split(/\s+/, "@_");
+#print "string is\n "; #DEBUG
+#print " @string \n";   #DEBUG
 my $result=0;
 LOOP: for (my $il=0; $il<=$#INPUT ; $il++){
  my $ir=0;
  my $in_line=$INPUT[$il];
  $in_line =~ s/\+/ /g;
+ #print "inline is \n";             #DEBUG
+ #print "$in_line $ir $#string \n"; #DEBUG
  LOOPF: for (my $if=0; $if<=$#string ; $if++){
   if ($in_line =~ /$string[$if]/){ 
    $ir++;
-   #print "$in_line $string[$if] $ir $#string\n";
+   #print "$ir check gives \n";  #DEBUG
+   #print " $string[$if] $if\n"; #DEBUG
   };
  }
  if ($ir == $#string+1) {  return 1 };

@@ -38,15 +38,15 @@ if ( "@_" eq "DIR" ){
   if (-e "NL" && not $do_NL_tests ) {$message=" skipped (wrong BRANCH)"};
   if (-e "QED" && $project !~ /qed/) {$message=" skipped (wrong PJ)"};
   if (-e "RT" && $project !~ /rt/) {$message=" skipped (wrong PJ)"};
+  if (-e "KERR" && $project !~ /kerr/) {$message=" skipped (wrong PJ)"};
   if (-e "ELPH" && $project !~ /elph/) {$message=" skipped (wrong PJ)"};
   if (-e "SC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
-  if (-e "MAGNETIC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
-  if (-e "ELECTRIC" && $project !~ /sc/) {$message=" skipped (wrong PJ)"};
+  if (-e "MAGNETIC" && $project !~ /magnetic/) {$message=" skipped (wrong PJ)"};
+  if (-e "ELECTRIC" && $project !~ /electric/) {$message=" skipped (wrong PJ)"};
   if (-e "P2Y" && $project !~ /p2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && $project !~ /a2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && not $do_A2Y_tests) {$message=" skipped (wrong BRANCH)"};
   if ( $ANY eq "NO" and $project !~ /nopj/) {$message=" skipped (running only $project tests)"};
-  #
  }
  if ($is_GPL) {
   if (( -e "NO_GPL") ) {$message=" skipped (GPL-restricted)"};
@@ -79,6 +79,14 @@ if ( "@_" eq "INPUT") {
  if ( ($testname =~ m/SLEPC/ || $testname =~ m/slepc/ ) && not $BUILD =~ /SLEPC/) { 
   my $msg = sprintf("%-"."$left_length"."s", "$testname");
   $CHECK_error= $msg." skipped (SLEPC test but SLEPC is not linked)";
+  &RUN_stats("SKIPPED");
+  return "FAIL";
+ };
+ #
+ # Reconstruction of G lesser works only with MPI-IO
+  if ( ($testname =~ m/_Gless/ || $testname =~ m/_G_less/ ) && not $BUILD =~ /MPI_IO/) {
+  my $msg = sprintf("%-"."$left_length"."s", "$testname");
+  $CHECK_error= $msg." skipped (G lesser reconstruction not code with serial IO)";
   &RUN_stats("SKIPPED");
   return "FAIL";
  };
@@ -160,7 +168,7 @@ return "OK";
 #
 }
 sub ANY_project{
- if (-e "RT" or -e "ELPH" or -e "SC" or -e "MAGNETIC" or -e "QED" or -e "NL" or -e "P2Y" or -e "A2Y" )  {
+ if (-e "RT" or -e "ELPH" or -e "SC" or -e "MAGNETIC" or -e "QED" or -e "NL" or -e "P2Y" or -e "A2Y" or -e "KERR" )  {
   return "YES";
  }else{
   return "NO";

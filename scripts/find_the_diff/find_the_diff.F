@@ -251,6 +251,12 @@ program find_the_diff
  !
  N_data_to_check=min(ref%N,out%N)
  !
+ if (abs(ref%N-out%N)>10) then
+   write (CHECK_result,'(a,2(i6,a))') "Number of rows differ by more than 10:",ref%N," [REF]",out%N," [OUT]"
+   write (*,'(a)') trim(CHECK_result)
+   stop
+ endif
+ !
  call eval_the_moments(ref,N_data_to_check) 
  call eval_the_moments(out,N_data_to_check)
  !
@@ -263,10 +269,10 @@ program find_the_diff
  if ( VERB  ) then 
    write(*,"(a)") 
    write(*,"(2a)")   " REF (file)    :",trim(ref%name)
-   write(*,"(a,i4)") "     (elements):",ref%N
+   write(*,"(a,i6)") "     (elements):",ref%N
    write(*,"(a,i2)") "     (columns) :",ref%N_col
    write(*,"(2a)")   " OUT (file)    :",trim(out%name)
-   write(*,"(a,i4)") "     (elements):",out%N
+   write(*,"(a,i6)") "     (elements):",out%N
    write(*,"(a,i2)") "     (columns) :",out%N_col
    write(*,"(a)")    " TITLES         "
    do i_c=1,ref%N_col

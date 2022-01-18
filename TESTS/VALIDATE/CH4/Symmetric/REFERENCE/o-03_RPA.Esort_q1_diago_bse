@@ -1,0 +1,98 @@
+#                                                                     
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+#       Version 5.0.0 Revision 19528 Hash 2e0cd5e8a                   
+#                  Branch is devel-tddft                              
+#          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                     
+#                http://www.yambo-code.org                            
+#
+#
+#
+# [K] Identifier                                  :   6010
+# [K] Dimension                                   :   9
+# [K] Bands                                       :   2   7
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : no
+# [K] Kernel`s coupling                           : no
+# [K] Exchange                                    : no
+# [K] Correlation                                 : no
+# [K] W interaction is bare                       : no
+# [K] ALDA kernel in R-space                      : no
+# [K] RL vectors                                  :   4067 [exchange]
+# [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# [K] Coupling range                              :   100.000000      100.000000    [o/o]
+#
+#
+#
+#    E [eV]             n_deg              abs
+#
+     8.8299484          2.0000000         0.85188957E-11
+     8.8314209          1.0000000         0.21575725E-12
+     9.4266558          2.0000000         0.56459407E-11
+     9.4305525          1.0000000         0.27775997E-12
+     9.6109705          1.0000000         0.11517520E-11
+     9.6168604          1.0000000         0.21743910E-12
+     9.8211880          1.0000000         0.54887404E-12
+# 
+# 03/05/2021 at 18:05 yambo @ VivoBook [start]
+# 03/05/2021 at 18:05                  [end]
+#  
+# Timing   [Min/Max/Average]: 03s/03s/03s
+#
+# .-Input file  yambo.in
+# | rim_cut                          # [R] Coulomb potential
+# | optics                           # [R] Linear Response optical properties
+# | dipoles                          # [R] Oscillator strenghts (or dipoles)
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | ElecTemp= 0.025861         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# | % CUTBox
+# |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
+# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "HARTREE"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | % DipBands
+# |   2 |  7 |                           # [DIP] Bands range for dipoles
+# | %
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx=  4067            RL    # [BSK] Exchange components
+# | BSEprop= "abs esrt"              # [BSS] abs/kerr/magn/dichr trace
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |   2 |  7 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -20.00000 | 20.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 2001                   # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | BSHayItrMAX= 200                 # [BSS] MaX number of Haydock iterations.

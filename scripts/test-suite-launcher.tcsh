@@ -5,6 +5,13 @@ cd  /scratch/marini/yambo-tests-robot/
 set ybranch="master"
 set flow="validate"
 #
+if ( $#argv == 0 ) then
+ echo 
+ echo "test-suite-launcher.tcsh -y YBRANCH -t TBRANCH -m MODULE -f FLOW"
+ echo 
+ exit
+endif
+#
 @ n = 0
 while ( $n < $#argv)
  @ n += 1
