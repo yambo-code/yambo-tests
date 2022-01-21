@@ -60,6 +60,11 @@ sub UTILS_list_backups{
    push @dirs_to_process_2021, $dir;
    $n_backups++;
   }
+  if ($dir =~ /\/2022\//) {
+   #print "check 2022: $dir\n";
+   push @dirs_to_process_2022, $dir;
+   $n_backups++;
+  }
  }
  #
  if ($clean and $backup_logs eq "yes") {
@@ -71,7 +76,8 @@ sub UTILS_list_backups{
  @dirs_2019   = sort { $a1 = (split ( '2019', $a )) [1]; $b1 = (split ( '2019', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2019;
  @dirs_2020   = sort { $a1 = (split ( '2020', $a )) [1]; $b1 = (split ( '2020', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2020;
  @dirs_2021   = sort { $a1 = (split ( '2021', $a )) [1]; $b1 = (split ( '2021', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2021;
- push(@sorted_dirs, @dirs_2018, @dirs_2019, @dirs_2020, @dirs_2021);
+ @dirs_2022   = sort { $a1 = (split ( '2022', $a )) [1]; $b1 = (split ( '2022', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2022;
+ push(@sorted_dirs, @dirs_2018, @dirs_2019, @dirs_2020, @dirs_2021, @dirs_2022);
  if ($branch_php or $report) 
  {
   @reversed_dirs = reverse @sorted_dirs
@@ -99,15 +105,18 @@ sub UTILS_list_backups{
    #
    if ( ($backup_logs eq "yes" or ($data_id <= $id_to_clean[1] and $data_id >= $id_to_clean[0]) ) and not $clean) 
    {
-    print "ID    : $data_id\n";
+    print "ID        : $data_id\n";
     if ($date) {
-     print "DATE  : $date\n";
-     print "TIME  : $time\n";
-     print "ROBOT : $robot_id\n";
-     print "BRANCH: $branch_in_the_log\n";
-     print "FC    : $FC_kind $MPI_kind\n";
+     print "DATE      : $date\n";
+     print "TIME      : $time\n";
+     print "ROBOT     : $robot_id\n";
+     print "BRANCH (Y): $yambo_branch\n";
+     print "BRANCH(TS): $tsuite_branch\n";
+     print "FC        : $FC_kind $MPI_kind\n";
+     print "BUILD     : $BUILD\n";
+     print "Scheme    : $scheme\n";
     }
-    print "DIR   : $dir\n";
+    print "DIR       : $dir\n";
     print "\n";
    }elsif ($clean and $backup_logs eq "yes") {
     if ($data_id<$first_to_keep) {

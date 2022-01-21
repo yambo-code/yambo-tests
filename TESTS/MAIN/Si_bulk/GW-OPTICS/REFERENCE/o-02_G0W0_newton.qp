@@ -1,101 +1,102 @@
-#                                                           
-#  __  __   ________   ___ __ __    _______   ______        
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
-#                                                           
-#                                                           
-#        Version 4.2.0 Revision 14239 Hash f1a5d3c          
-#                      MPI+SLK Build                        
-#                http://www.yambo-code.org                  
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+#       Version 5.0.0 Revision 19547 Hash 53446ff7e                   
+#                   Branch is bug-fixes                               
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
 #
-# GW [Newton Solver]
 #
-#  == Real Axis GW ==
-#  GW SC iterations       :0
-#  dS/dw steps            : 2
-#  dS/dw step         [ev]:  0.10000
-#  X G`s            [used]: 1
-#  X G`s            [disk]: 1
-#  X bands                :  1  10
-#  X poles           [o/o]: 100.0000
-#  X e/h E range      [ev]:-1.000000 -1.000000
-#  X xc-Kernel            : none
-#  X damping range    [ev]:  0.10000   0.10000
-#  X Steps                : 100
-#  X BZ energy Double Grid: no
-#  X BZ Double Grid points:0
-#  Sc/G bands             :  1  10
-#  Sc/G damping       [ev]:  0.10000
-#  Sc bands terminator    : no
-#  Sx RL components       :  89
-#  QP @ K 001 - 002 : b 001 - 010
+# GW solver                                       : Newton
+# GW approximation                                : Real Axis
+# GW SC iterations                                : 0
+# dS/dw steps                                     :  2
+# dS/dw step                                      :  0.100000001    [ev]
+# X G`s                                           :  1 [used]
+# X G`s                                           :  1 [disk]
+# X bands                                         :   1  12
+# X poles                                         :   100.000000    [o/o]
+# X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
+# X xc-Kernel                                     : none
+# X damping range                                 :  0.100000001     0.100000001    [ev]
+# X Steps                                         :  100
+# X BZ energy Double Grid                         : no
+# Sc/G bands                                      :   1  10
+# Sc/G damping                                    :  0.100000001    [ev]
+# Sc bands terminator                             : no
+# Sx RL components                                :   89
+#                                                 
+# QP @ state[ 1 ] K range                         :  1  2
+# QP @ state[ 1 ] b range                         :   2   7
+# GF energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
 #
-#  K-point    Band       Eo         E-Eo       Sc|Eo
+# Vxc  =Slater exchange(X)+Perdew & Zunger(C)
+# Vnlxc=Hartree-Fock
 #
-   1.00000    1.00000  -11.57854   -1.52636    4.64817
-  1.000000   2.000000  -1.306803   0.366798   2.121786
-  1.000000   3.000000   0.000000   0.483091   1.804458
-  1.000000   4.000000   0.000000   0.484252   1.805987
-  1.000000   5.000000   2.845550   1.766931  -2.139755
-  1.000000   6.000000   3.311271   1.793446  -2.193213
-  1.000000   7.000000   3.311271   1.802053  -2.183072
-  1.000000   8.000000   5.118498   2.228162  -2.351821
-  1.000000   9.000000   7.690063   2.608458  -2.532627
-   1.00000   10.00000    7.69006    2.61010   -2.53064
-   2.00000    1.00000  -10.50550   -1.27595    4.58457
-  2.000000   2.000000  -4.364751  -0.112442   3.163270
-  2.000000   3.000000  -2.072483   0.280452   2.326632
-  2.000000   4.000000  -0.494872   0.395785   1.993096
-  2.000000   5.000000   3.084565   1.745703  -2.286479
-  2.000000   6.000000   4.009398   1.884307  -2.528171
-  2.000000   7.000000   4.179252   1.797235  -2.399444
-  2.000000   8.000000   6.641828   2.306708  -2.710586
-  2.000000   9.000000   6.882210   2.316780  -2.640547
-   2.00000   10.00000   10.10071    3.17395   -2.25173
+#    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
+#
+        1                  2                 -1.306803           0.387702           2.146288
+        1                  3                  0.000000           0.502649           1.827432
+        1                   4                 0.000000           0.503897           1.829033
+        1                   5                 2.845550           1.748684          -2.164219
+        1                   6                 3.311271           1.775658          -2.217658
+        1                   7                 3.311271           1.784844          -2.206949
+        2                  2                 -4.364751          -0.094766           3.185924
+        2                  3                 -2.072483           0.300255           2.350504
+        2                   4                -0.494872           0.415848           2.016758
+        2                   5                 3.084565           1.726641          -2.311641
+        2                   6                 4.009398           1.863144          -2.553788
+        2                   7                 4.179252           1.778600          -2.424926
 # 
-# 01/26/2017 at 16:20 YAMBO @ narro [start]
-# 01/26/2017 at 16:20               [end]
+# 03/15/2021 at 22:24 yambo @ VivoBook [start]
+# 03/15/2021 at 22:24                  [end]
 #  
-# Timing   [Min/Max/Average]: 07s/07s/07s
+# Timing   [Min/Max/Average]: 13s/13s/13s
 #
-# .-Input file : yambo.in
-# | em1d                         # [R Xd] Dynamical Inverse Dielectric Matrix
-# | HF_and_locXC                 # [R XX] Hartree-Fock Self-energy and Vxc
-# | gw0                          # [R GW] GoWo Quasiparticle energy levels
-# | rim_cut                      # [R RIM CUT] Coulomb potential
-# | BoseTemp= 0.000000     eV    # Bosonic Temperature
-# | FFTGvecs=  411         RL    # [FFT] Plane-waves
-# | RandQpts=0                   # [RIM] Number of random q-points in the BZ
-# | RandGvec= 1            RL    # [RIM] Coulomb interaction RS components
-# | CUTGeo= "none"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere X/Y/Z/XY..
-# | % CUTBox
-# |  0.00     | 0.00     | 0.00     |        # [CUT] [au] Box sides
-# | %
-# | CUTRadius= 0.000000          # [CUT] [au] Sphere/Cylinder radius
-# | CUTCylLen= 0.000000          # [CUT] [au] Cylinder length
-# | EXXRLvcs=  7           Ry    # [XX] Exchange RL components
-# | Chimod= ""                   # [X] IP/Hartree/ALDA/LRC/BSfxc
+# .-Input file  yambo.in
+# | HF_and_locXC                     # [R] Hartree-Fock
+# | gw0                              # [R] GW approximation
+# | em1d                             # [R][X] Dynamically Screened Interaction
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | FFTGvecs=  411             RL    # [FFT] Plane-waves
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
+# | EXXRLvcs=  7               Ry    # [XX] Exchange    RL components
+# | VXCRLvcs= 2085             RL    # [XC] XCpotential RL components
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | % GbndRnge
-# |   1 | 10 |                   # [GW] G[W] bands range
+# |   1 | 10 |                           # [GW] G[W] bands range
 # | %
-# | GDamping=  0.10000     eV    # [GW] G[W] damping
-# | dScStep=  0.10000      eV    # [GW] Energy step to evaluate Z factors
 # | % BndsRnXd
-# |   1 | 10 |                   # [Xd] Polarization function bands
+# |   1 | 12 |                           # [Xd] Polarization function bands
 # | %
-# | NGsBlkXd= 1            RL    # [Xd] Response block size
+# | NGsBlkXd= 1                RL    # [Xd] Response block size
 # | % DmRngeXd
-# |   0.10000 |  0.10000 | eV    # [Xd] Damping range
+# |  0.100000 | 0.100000 |         eV    # [Xd] Damping range
 # | %
-# | ETStpsXd= 100                # [Xd] Total Energy steps
+# | ETStpsXd= 100                    # [Xd] Total Energy steps
 # | % LongDrXd
-# | 0.1000E-4 | 0.000    | 0.000    |        # [Xd] [cc] Electric Field
+# |  0.100000E-4 |  0.00000    |  0.00000    # [Xd] [cc] Electric Field
 # | %
-# | DysSolver= "n"               # [GW] Dyson Equation solver ("n","s","g")
-# | %QPkrange                    # [GW] QP generalized Kpoint/Band indices
-# |   1|  2|  1| 10|
+# | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
+# | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
+# | GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
+# | GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
+# | 1|2|2|7|
+# | %
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
+# | 1|2| 0.000000|-1.000000|
 # | %

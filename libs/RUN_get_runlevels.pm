@@ -91,6 +91,7 @@ if (&RUN_feature("bzgrids") eq "1" or &RUN_feature("kpts_map") eq "1" or &RUN_fe
 if (&RUN_feature("QPDBs") eq "1") {$YPP=1}
 if (&RUN_feature("exciton") eq "1") {$YPP=1}
 if (&RUN_feature("electrons") eq "1") {$YPP=1}
+if (&RUN_feature("dipoles") eq "1" and &RUN_feature("DIP_kind") eq "1") {$YPP=1}
 if (&RUN_feature("sort") eq "1") 
 {
  $YPP=2;
@@ -109,7 +110,9 @@ if ($YPP_RT eq "1") { $description .= " post-processing rt" };
 if (&RUN_feature("ypp_sc") eq "1" ) {$YPP_SC=1}
 if ($YPP_SC eq "1") { $description .= " sc" };
 #
-if (&RUN_feature("gkkp") eq "1" or &RUN_feature("eliashberg") eq "1") {$YPP_PH=1}
+if (&RUN_feature("gkkp") eq "1" and &RUN_feature("el_ph_corr") ne "1") {$YPP_PH=1}
+if (&RUN_feature("eliashberg") eq "1") {$YPP_PH=1}
+if (&RUN_feature("gkkp_dg") eq "1" or &RUN_feature("phonons") eq "1") {$YPP_PH=1}
 if ($YPP_PH eq "1") { $description .= " post-processing ph" };
 #
 $YPP_NL=&RUN_feature("nonlinear");

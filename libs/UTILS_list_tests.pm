@@ -92,7 +92,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
      if (-e $dir."/PHEL")  {$PHEL_tests="$PHEL_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/P2Y")  {$P2Y_tests="$P2Y_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/A2Y")  {$A2Y_tests="$A2Y_tests"." "."$dir"."$MORE_str"};
-     if (!-e $dir."/SC" && !-e $dir."/MAGNETIC" && !-e $dir."/ELPH" && !-e $dir."/RT" && !-e $dir."/MAGNETIC" && !-e $dir."/QED" && !-e $dir."/NL" && !-e $dir."PHEL") {
+     if (!-e $dir."/SC" && !-e $dir."/MAGNETIC" && !-e $dir."/ELPH" && !-e $dir."/RT" && !-e $dir."/MAGNETIC" && !-e $dir."/QED" && !-e $dir."/NL" && !-e $dir."PHEL" && !-e $dir."/KERR") {
       $NORMAL_tests="$NORMAL_tests"." "."$dir"."$MORE_str";
      }
     };
@@ -104,7 +104,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   if (not $keys) {$keys="all"};
   #
   if ($keys =~ /nopj/ or $keys =~ /all/) {&LIST_ELEMENT("[YAMBO]   ",$NORMAL_tests)};
-  if ($keys =~ /qed/ or $kyes =~/all/) {&LIST_ELEMENT("[QED]     ",$QED_tests)};
+  if ($keys =~ /qed/ or $keys =~/all/) {&LIST_ELEMENT("[QED]     ",$QED_tests)};
   if ($keys =~ /pl/ or $keys =~ /all/)  {&LIST_ELEMENT("[PL]      ",$PL_tests)};
   if ($keys =~ /nl/ or $keys =~ /all/)  {&LIST_ELEMENT("[NL]      ",$NL_tests)};
   if ($keys =~ /rt/ or $keys =~ /all/)  {&LIST_ELEMENT("[RT]      ",$RT_tests)};
@@ -117,9 +117,9 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   if ($keys =~ /spin/ or $keys =~ /all/)  {&LIST_ELEMENT("[SPIN]    ",$SPIN_tests)};
   if ($keys =~ /spinors/ or $keys =~ /all/)  {&LIST_ELEMENT("[SPINORS] ",$SPINORS_tests)};
   if ($keys =~ /magnons/ or $keys =~ /all/)  {&LIST_ELEMENT("[MAGNONS]    ",$SPIN_tests)};
-  if ($keys =~ /kerr/ or $kyes =~/all/)  {&LIST_ELEMENT("[KERR]    ",$KERR_tests)};
-  if ($keys =~ /all/ or $kyes =~/all/)   {if ($BROKEN_tests){&LIST_ELEMENT("[BROKEN]  ",$BROKEN_tests)}};
-  if ($keys =~ /all/ or $kyes =~/all/)   {if ($EMPTY_tests){&LIST_ELEMENT("[EMPTY]   ",$EMPTY_tests)}};
+  if ($keys =~ /kerr/ or $keys =~/all/)  {&LIST_ELEMENT("[KERR]    ",$KERR_tests)};
+  if ($keys =~ /all/ or $keys =~/all/)   {if ($BROKEN_tests){&LIST_ELEMENT("[BROKEN]  ",$BROKEN_tests)}};
+  if ($keys =~ /all/ or $keys =~/all/)   {if ($EMPTY_tests){&LIST_ELEMENT("[EMPTY]   ",$EMPTY_tests)}};
   &MY_PRINT($stdout, "\n[*] To be converted to the new format\n");
   &MY_PRINT($stdout, "\n");
  &CWD_go;

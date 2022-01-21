@@ -24,21 +24,38 @@
 #
 sub SOURCE_config{
  #
- chdir $BRANCH;
+ use File::Basename;
+ #
+ chdir("$BRANCH");
+ #
+ $conf_name=basename($conf_path);
  #
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config-$ROBOT_string.log";
  $comp_logfile = "$suite_dir/"."compile-$ROBOT_string.log";
+ $comp_folder  = "$suite_dir/"."compile_dir/${branch_key}/${conf_name}";
  #
  # If Makefile present, clean sources
- if(-e "Makefile") { $result = `make clean_all 2>&1` };
+ if(-e "config/report") { $result = `make clean_all 2>&1` };
  #
  # Run this configure script, and log (append) the output, including STDOUT and STDERR
  # Backticks capture the output
  #
  &MY_PRINT($stdout, "Configuring ...");
+ #
+ if(!-d $comp_folder) { &command("mkdir -p $comp_folder"); };
+ chdir("$comp_folder");
+ &command("cat $suite_dir/$conf_path > conf_local.sh");
+ $string1="\.\/configure";
+ $string2="$BRANCH/configure";
+ $string1=~ s/\//\\\//ig;
+ $string2=~ s/\//\\\//ig;
+ my $cmd_sed="sed -i \"s/$string1/$string2/g\" conf_local.sh";
+ &command($cmd_sed);
+ &command("chmod +x conf_local.sh");
+ #
  open( CONFLOGFILE,'>>',$conf_logfile);
- &command("$suite_dir/$conf_path >> $conf_logfile 2>&1");
+ &command("./conf_local.sh >> $conf_logfile 2>&1");
  close(CONFLOGFILE);
  #
  if (-e "Makefile"){ 

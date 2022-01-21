@@ -50,6 +50,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "status"         => \$repo_check,
             "broken=s"       => \$tag_test_as_broken,
             "update=s"       => \$update_test,
+            "as_master"      => \$update_as_master,
             "upload=s"       => \$upload_test,
             "colors"         => \$use_colors,
             "kill:s"         => \$kill_me,
@@ -73,6 +74,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "profile:s"      => \$profile,
             "cron:s"         => \$cron,
             "branch:s"       => \$user_branch,
+            "compdir:s"      => \$user_comp_folder,
             "mpirun:s"       => \$user_mpirun,
             "module:s"       => \$user_module,
             "mode=s"         => \$mode
@@ -137,7 +139,9 @@ if ($help>=1) {
              -keep_bin              Do not overwrite the robot specific bin-precompiled folder
              -robot  <ID's>         Robot ID. [ID's can be of the form N or N-M]
              -branch [WHAT]         Branch selection.
+             -compdir[WHAT]         Folder where the branch was compiled (i.e. compile_dir/devel-rt-vel-and-magn/default.sh ).
              -module [WHAT]         Environment module selection.
+             -mpirun [WHAT]         Command name for mpirun if different from standard (default: mpirun)
 
    (TEST selection)
              -flow   <FILE>         Use the flow of calculations defined in <FILE> 
@@ -166,6 +170,7 @@ if ($help==2) {
    (TEST control)
              -mode   <MODE>         Running mode. Can be: bench,validate. Optional.
              -update <TEST>         Update all REFERENCE files of <TEST>. The test path is <TEST_folder>/<TEST>.
+             -as_master             Update treating the current branch as it is master
              -upload <TEST>         Upload the <TEST_folder>/<TEST> directory.
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
 

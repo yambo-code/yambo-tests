@@ -1,0 +1,47 @@
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
+#                                                                     
+#      Version 4.5.0 Revision 17724 Hash 4108bf5a2                    
+#                   Branch is devel-sc                                
+#                  MPI+SLK+SLEPC Build                                
+#               http://www.yambo-code.org                             
+#
+negf                           # [R] NEQ Real-time dynamics
+HXC_Potential= "IP"            # [SC] SC HXC Potential
+FFTGvecs= 1529        RL      # [FFT] Plane-waves
+% GfnQP_E
+ 0.160000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
+%
+% GfnQP_Wv
+ 0.1     | 0.00     | 0.00     |        # [EXTQP G] W parameters  (valence) eV| 1|eV^-1
+%
+GfnQP_Wc_E= 0.000000   eV      # [EXTQP G] W Energy reference  (conduction)
+% GfnQP_Wc
+ 0.1     | 0.00     | 0.00     |        # [EXTQP G] W parameters  (conduction) eV| 1 |eV^-1
+%
+% RTBands
+  6 | 14 |                     # [RT] Bands
+%
+Integrator= "EULER + RK4"      # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
+RTstep= 1.00       as      # [RT] Real Time step length
+NETime= 20.0000       fs      # [RT] Simulation Time
+% IOtime
+  0.20000 | 10.00000 |  0.10000 |  fs    # [RT] Time between to consecutive I/O (OBSERVABLEs,CARRIERs - GF - OUTPUT)
+%
+% Field1_Freq
+ 4.0000 | 4.0000 | eV      # [RT Field1] Frequency
+%
+Field1_Int= 5E7   kWLm2   # [RT Field1] Intensity
+Field1_Width= 5.0000 fs      # [RT Field1] Width
+Field1_kind= "QSSIN"           # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"           # [RT Field1] Pol(linear|circular)
+% Field1_Dir
+ 0     | 1.     | 0.     |        # [RT Field1] Versor
+%
