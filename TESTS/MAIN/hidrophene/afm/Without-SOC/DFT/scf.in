@@ -1,0 +1,32 @@
+&control
+         calculation = 'scf'
+              prefix = 'hidrophene'
+           verbosity = 'high'
+          wf_collect = .true.
+          pseudo_dir = '../../../pseudo/'
+/&end
+&system
+           celldm(1) = 7.0
+           celldm(3) = 3.0
+             ecutwfc = 40
+               ibrav = 4
+                 nat = 2
+                ntyp = 2
+                nbnd = 5
+         occupations = 'smearing'
+             degauss = 0.010
+               nspin = 2
+             starting_magnetization(1) =  1.0
+             starting_magnetization(2) = -1.0
+/&end
+&electrons
+            conv_thr = 1e-08
+/&end
+ATOMIC_SPECIES
+H1   1.000  H.upf
+H2   1.000  H.upf
+ATOMIC_POSITIONS { crystal }
+H1            0.0000000000        0.0000000000        0.0
+H2            0.3333333333        0.6666666667       -0.0
+K_POINTS { automatic }
+ 6 6 1  0  0  0
