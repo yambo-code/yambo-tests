@@ -76,7 +76,17 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   &SETUP("DIR");
   #
   $error=&SOURCE_driver( );
-  if ($error eq "FAIL") {next LOOP_CONF};
+  #
+  if ($error =~ "FAIL") {
+    if ( $error eq "COMP FAIL" or $error eq "CONF FAIL") {
+      $compilation_failed="yes";
+      &UTILS_title($stdout);
+      &MY_PRINT($stdout, "\n$line");
+      &RUN_global_report("TITLE");
+      goto REPORT;
+    };
+    next LOOP_CONF;
+  }
   #
   # MSGs
   #
@@ -100,6 +110,7 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   # Report total passes/failures
   &RUN_stats("REPORT");
   # 
+  REPORT:
   &RUN_global_report("RUNTIME");
   # 
   # Files closing
