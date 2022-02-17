@@ -95,8 +95,10 @@ call add_RULE(".exc_weights_at","skip",COLS=(/4/))
 call add_RULE(".exc_qpt1_weights_at","skip",COLS=(/4,6/))
 call add_RULE("I_sorted","skip",COLS=(/3/))
 call add_RULE("E_sorted","skip",COLS=(/3/))
+call add_RULE("E+spin_sorted","skip",COLS=(/3/))
 call add_RULE("I_sorted","sort",REF_col=1)
 call add_RULE("E_sorted","sort",REF_col=1)
+call add_RULE("E+spin_sorted","sort",REF_col=1)
 !
 ! SC
 !=====
