@@ -98,7 +98,14 @@ if ($system_error == 0) {
  $CHECK_error="FAILED (exit code $system_error)";
  &RUN_stats("NOT_RUN");
  return "FAIL";
-};
+}
+#
+if( -f "INPUTS/$testname.yambopy"){
+ &MESSAGE("LOG","Running yambopy test for $testname");
+ if (not -d $testname){&command("mkdir $testname")};
+ $yambopy_command_line="python3 INPUTS/$testname.yambopy > $testname/o-${testname}_std.yambopy.out";
+ if (not $dry_run) {&command("$yambopy_command_line")};   # launch the yambopy job
+}
 #
 $LAST_COMPLETED_RUN=$dir_name;
 return "OK";
