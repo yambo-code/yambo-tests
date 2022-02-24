@@ -5,8 +5,11 @@ ns_db1='SAVE/ns.db1'
 
 ylat = YamboLatticeDB.from_db_file(filename=ns_db1)
 
-out = open('01_init/o-01_init_std.yambopy.out','w')
-out.write(ylat.__str__()+'\n')
+out = open('o-01_init.yambopy.std_out','w')
+out.write('#YamboLatticeDB\n')
+np.savetxt(out,ylat.lat,header='lattice:')
+np.savetxt(out,ylat.atomic_numbers,header='atomic numbers:')
+np.savetxt(out,ylat.red_atomic_positions,header='atom positions:')
 out.write('# Additional data\n')
 np.savetxt(out,ylat.car_kpoints,header='kpoints c.c.')
 out.write('# symmetries c.c.\n')
