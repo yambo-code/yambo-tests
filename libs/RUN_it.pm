@@ -103,7 +103,7 @@ if ($system_error == 0) {
 if( -f "INPUTS/$testname.yambopy"){
  &MESSAGE("LOG","Running yambopy test for $testname");
  if (not -d $testname){&command("mkdir $testname")};
- $yambopy_command_line="python3 INPUTS/$testname.yambopy > $testname/o-${testname}_std.yambopy.out";
+ $yambopy_command_line="python3 INPUTS/$testname.yambopy";
  if (not $dry_run) {&command("$yambopy_command_line")};   # launch the yambopy job
 }
 #

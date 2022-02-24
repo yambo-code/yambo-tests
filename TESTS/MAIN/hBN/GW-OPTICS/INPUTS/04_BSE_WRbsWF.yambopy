@@ -8,4 +8,6 @@ yexc = YamboExcitonDB.from_db_file(ylat,filename=exc_db)
 
 yexc.save_chi('04_BSE_WRbsWF/o-04_BSE_WRbsWF_EPS2.yambopy.out',emax=6)
 
-print(yexc)
+out = open('04_BSE_WRbsWF/o-04_BSE_WRbsWF_std.yambopy.out','w')
+out.write(yexc.__str__())
+out.close()
