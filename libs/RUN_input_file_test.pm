@@ -109,6 +109,8 @@ sub RUN_input_file_test{
  };
 
  if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p -gw0 fan"};
+ if (&RUN_feature("ExcPhLifeT")=="1")      { $CMD=$CMD." -excph l"};
+ if (&RUN_feature("ExcPhOptics")=="1")      { $CMD=$CMD." -excph o"};
 
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
  if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
