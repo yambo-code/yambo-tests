@@ -27,7 +27,8 @@ sub SOURCE_compile{
  open( COMPLOGFILE,'>>',$comp_logfile);
  &MY_PRINT($stdout, "ext-libs ...");
  &command("make $PAR_COMP_LIBS ext-libs >> $comp_logfile 2>&1");
- @executables = split(/ /, $target_list);
+ @executables;
+ if ($compile eq "all"     )  {@executables = split(/ /, $target_list)};
  foreach $make_exec (@executables) {
    &MY_PRINT($stdout, "$make_exec ...");
    &command("make $PAR_COMP $make_exec >> $comp_logfile 2>&1");
@@ -38,7 +39,7 @@ sub SOURCE_compile{
       return "FAIL";
      }
    }
- }
+ };
  close(COMPLOGFILE);
  &MY_PRINT($stdout, "done.");
  chdir $suite_dir;

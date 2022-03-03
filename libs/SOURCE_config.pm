@@ -45,7 +45,9 @@ sub SOURCE_config{
  #
  if(!-d $comp_folder) { &command("mkdir -p $comp_folder"); };
  chdir("$comp_folder");
- &command("cat $suite_dir/$conf_path > conf_local.sh");
+ &command("rm -f conf_local.sh");
+ if (not $ext_libs_path eq "none") {&command("echo YAMBO_EXT_LIBS=$ext_libs_path/$user_module > conf_local.sh")};
+ &command("cat $suite_dir/$conf_path >> conf_local.sh");
  $string1="\.\/configure";
  $string2="$BRANCH/configure";
  $string1=~ s/\//\\\//ig;

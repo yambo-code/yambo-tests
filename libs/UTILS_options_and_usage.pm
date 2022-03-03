@@ -36,7 +36,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "l:s"            => \$listtests,
             "d=s"            => \$download,
             "c+"             => \$clean,
-            "compile"        => \$compile,
+            "compile=s"      => \$compile,
             "i"              => \$info,
             "u"              => \$upload,
             "b:s"            => \$backup_logs,
@@ -85,6 +85,7 @@ sub UTILS_robot_info {
 print <<ROBOT_info
 
   Running on host    : $host
+  Yambo libs path    : $ext_libs_path
   By user            : $user
   Version            : $version
   Available     CPU's: $SYSTEM_NP
@@ -127,7 +128,7 @@ if ($help>=1) {
              -l       [<SET>]       List available SETs (-l) or input files for a SET (-l <SET>).
              -c                     Clean.
              -d      <SET>|all|list Download & Update the core databases.
-             -compile               Compile the sources.
+             -compile<WHAT>         Compile the sources. WHAT=all|ext-libs.
              -tests  <TESTS>|all    List* of tests to perform, or all "-tests all".
 
    (Running options)
