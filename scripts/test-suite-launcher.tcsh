@@ -57,4 +57,4 @@ source module.tcsh
 rm -f module.tcsh script.awk
 git checkout $tbranch
 git pull
-./driver.pl -flow $flow -report -branch $ybranch -nice -newer 300 -input -safe -host baym-robot
+./driver.pl -flow $flow -report -branch $ybranch -nice -newer 300 -input -safe -module $module
