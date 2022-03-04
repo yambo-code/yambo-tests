@@ -4,7 +4,7 @@ cd /scratch/marini/yambo-tests-robot
 rm -fr compile_dir
 ./driver.pl -b -c 2>&1
 ./driver.pl -c 2>&1
-git checkout develop
+git checkout devel-andreaM
 cd ROBOTS
 git checkout master
 cd ..
