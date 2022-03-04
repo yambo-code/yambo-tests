@@ -124,7 +124,7 @@ sub ROBOT_clean
  &command("$cmd");
  $cmd="$git ls-files --others --exclude-standard | $grep -e 'ROBOT_Nr_$ID/' | $grep -v $hostname |  xargs rm -f";
  &command("$cmd");
- &command("rm -f outputs_and_reports_ALL-R$ID.* ROBOT_Nr_$ID scripts/find_the_diff/find_the_diff_R$ID");
+ &command("rm -f outputs_and_reports_ALL-R$ID.* ROBOT_Nr_$ID KILLE*R$ID.awk scripts/find_the_diff/find_the_diff_R$ID");
  &command("rm -fr bin-precompiled-R$ID-*");
  &command("rm -f *R${ID}-*.log");
 }
