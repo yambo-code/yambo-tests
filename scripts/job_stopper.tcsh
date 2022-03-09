@@ -6,13 +6,12 @@ while ( $robot != 0 )
   set robot = 0
  else
   foreach exe ( yambo ypp a2y p2y e2y)
-   #echo "KILLING $robot $exe"
 if (! -f KILLER_${exe}_${robot}.awk) then
 cat << EOF > KILLER_${exe}_${robot}.awk
 {
  if (index(\$3,"$exe")>0 && index(\$3,"$robot")>0)
  {
-  if (\$1 > 600) { print \$2};
+  if (\$1 > 1200) { print \$2};
  }
 }
 EOF
