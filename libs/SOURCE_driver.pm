@@ -43,6 +43,19 @@ if ($select_conf_file){
   $precompiled_is_run = "yes";
  }
 }
+# Compilation folder
+#
+if ( $user_comp_folder eq "" ){
+  $comp_folder = $BRANCH ;
+}else{
+  chdir "/";
+  if ( -d $user_comp_folder){
+    $comp_folder = "$user_comp_folder" ;
+  } else {
+    $comp_folder="${suite_dir}/$user_comp_folder";
+  }
+  chdir $suite_dir;
+}
 #
 if ($BRANCH_is_correctly_compiled[$ib]) {
  if($BUILD =~ /OpenMP/ and !$nt) {$openmp_is_off="yes"};
@@ -58,7 +71,7 @@ if ($FAILED_conf_comp_branches) {
 # Precompiled (bin) exe's test
 #
 if ("$precompiled_is_run" eq "yes") {
- $conf_bin  = "$BRANCH/bin";
+ $conf_bin  = "$comp_folder/bin";
  if ($keep_bin) {$conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key"};
  &MY_PRINT($stdout, "\n -       Source Check : precompiled ($conf_bin) ... ");
  $bin_check=&exe_check;
@@ -97,8 +110,6 @@ if ($compile) {
  #
  chdir $suite_dir;
  #
-}else{
- $comp_folder=$BRANCH;
 }
 #
 # FC kind
@@ -112,8 +123,8 @@ if ($compile) {
 # BIN's
 if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
  $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key";
- chdir $BRANCH;
  &command("rm -fr $conf_bin; mkdir $conf_bin");
+ chdir $comp_folder;
  @executables = split(/\s+/, $exec_list);
  while($exec = shift(@executables)) {&command("cp bin/$exec $conf_bin/")};
  if (-e "lib/bin/ncdump")  {&command("cp lib/bin/ncdump  $conf_bin/")};
@@ -243,7 +254,7 @@ sub SOURCE_delay{
  }
 }
 sub LOGs_move{
- chdir $BRANCH;
+ chdir $comp_folder;
  my $extension=$branch_key.'-'.$FC_kind.'-'.$conf_file.'-'.$ROBOT_string.'-'.$host;
  &command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
  &command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");

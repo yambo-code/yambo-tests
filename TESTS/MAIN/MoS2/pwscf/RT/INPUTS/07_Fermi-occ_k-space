@@ -1,0 +1,34 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+#       Version 5.1.0 Revision 20287 Hash 7a2aec48b                   
+#             Branch is devel-rt-vel-and-magn                         
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+RTDBs                            # [R] Carriers database generation
+Select_Fermi                     # [R] NEQ DBs according to Fermi distribution
+RTpumpNel= 1.000000              # [RT] Number of electrons excited by hand per unit cell
+% RTBands
+   1 |  40 |                         # [RT] Bands range
+%
+RTpumpBZWd= 0.100000             # [RT][iku] K region size
+cooIn= "rlu"                     # Points coordinates (in) cc/rlu/iku/alat
+BANDS_path= ""                   # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
+% RTmuEh
+ -0.100000 | -1.100000 |   eV    # [RT] Chemical potentials hole | electron
+%
+% RTtempEh
+ 0.010000 | 0.000000 |         eV    # [RT] Effective temperature hole | electron
+%
+RTautotuneThr= 0.000000          # [RT] Threshold to match no. of pumped holes and electrons.
+%RTpumpBZ                        # [RT] K-points manually excited
+ 0.333333 | 0.3333333 | 0.000000 |
+%
