@@ -13,7 +13,7 @@
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 04/11/2022 at 01:33 yambo_ph @ unimi-XPS-8930
+ 04/11/2022 at 01:33 ypp_ph @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -27,15 +27,12 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-05_excph_lifetimes_excph_ExcGkkp_ExcPhLifeT
+ Report file         : ./r-04_ypp_dbgrid_freq_gkkp_gkkp_dg
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 05_excph_lifetimes
- Alt#1 string        : 01_init-serial-devel-excph-clean
- Alt#2 string        : 02_bse_allq-serial-devel-excph-clean
- Alt#3 string        : 04_ypp_dbgrid_freq-serial-devel-excph-clean
- Alt#4 string        : R7
+ Job   string        : 04_ypp_dbgrid_freq
+ Alt#1 string        : R7
 
  Precision           : SINGLE
   
@@ -57,11 +54,23 @@
   Magnetic symmetries                              : no
  - S/N 007666 ---------------------------------------------- v.05.01.00 r.21155 -
 
- [02] CORE Variables Setup
+ [02] Y(ambo) P(ost)/(re) P(rocessor)
+ ====================================
+
+
+ [03] Core DB
+ ============
+
+
+ [04] K-point grid
+ =================
+
+
+ [05] CORE Variables Setup
  =========================
 
 
-  [02.01] Unit cells
+  [05.01] Unit cells
   ==================
 
   Cell kind             :  HCP
@@ -91,7 +100,7 @@
    B[ 3 ]:  0.000000  0.000000  1.000000  [iku]
    
 
-  [02.02] Symmetries
+  [05.02] Symmetries
   ==================
 
   Inversion symmetry    : yes
@@ -128,7 +137,7 @@
    [S*23]: -0.500000 -0.866025 -0.000000 -0.866025  0.500000 -0.000000 -0.000000 -0.000000 -1.000000
    [S*24]: -0.500000  0.866025 -0.000000  0.866025  0.500000 -0.000000 -0.000000 -0.000000 -1.000000
 
-  [02.03] Reciprocal space
+  [05.03] Reciprocal space
   ========================
 
   nG shells         :  1542
@@ -158,7 +167,7 @@
     8483.78      8631.86      8772.98      8829.25      9030.73      9070.51      9100.61      9163.68   
   ...
 
-  [02.04] K-grid lattice
+  [05.04] K-grid lattice
   ======================
 
   Compatible Grid is   : 2D
@@ -168,13 +177,26 @@
   Grid dimensions      :  3  3
   K lattice UC volume  :  0.047682 [a.u.]
 
-  [02.05] Energies & Occupations
+  IBZ K-points :  3
+  BZ  K-points :   9
+
+  K/Q-points units:
+  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
+
+  K [1]:  0.000000  0.000000  0.000000 [rlu]
+        : wf components:   3439
+  K [2]:  0.000000  0.333333  0.000000 [rlu]
+        : wf components:   3453
+  K [3]:  0.333333  0.333333  0.000000 [rlu]
+        : wf components:   3459
+
+  [05.05] Energies & Occupations
   ==============================
 
   [X] === General ===
   [X] Electronic Temperature                        :  0.000000  0.000000 [eV K]
-  [X] Bosonic    Temperature                        :  0.861772E-4   1.00004    [eV K]
-  [X] Finite Temperature mode                       : yes
+  [X] Bosonic    Temperature                        :  0.000000  0.000000 [eV K]
+  [X] Finite Temperature mode                       : no
   [X] El. density                                   :  0.93400E+23 [cm-3]
   [X] Fermi Level                                   : -6.019924 [eV]
 
@@ -191,155 +213,99 @@
   [X] 1st conduction band width                     :  2.504336 [eV]
    
    
+  E @ K [1]:  [eV]
+  -17.80937  -5.45212  -1.38584  -1.38584   4.67626   5.84630   7.18919   8.03777
+  occ @ K [1]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
+  E @ K [2]:  [eV]
+  -15.85564  -6.97398  -3.70782  -2.73097   6.97410   8.02379   9.62913  10.21065
+  occ @ K [2]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
+  E @ K [3]:  [eV]
+  -14.10328  -8.16822  -7.18639   0.00000   4.46976  12.03517  13.37120  14.48832
+  occ @ K [3]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
 
- [03] Transferred momenta grid and indexing
- ==========================================
+ [06] == Electron-Phonon Databases ==
+ ====================================
 
- [RD./SAVE//ndb.kindx]-----------------------------------------------------------
-  Fragmentation                                    : no
-  Polarization last K                              :  3
-  QP states                                        :  1  3
-  X grid is uniform                                : yes
-  Grids                                            : X B C S
-  BS scattering                                    : yes
-  COLL scattering                                  : yes
-  Sigma scattering                                 : yes
-  X scattering                                     : yes
- - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
 
- IBZ Q-points :  3
- BZ  Q-points :   9
+  [06.01] PH-Double Grid initialization
+  =====================================
 
- K/Q-points units:
- rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
+  [RD./SAVE//ndb.elph_gkkp_expanded]----------------------------------------------
+   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+   Fragmentation                                    : yes
+   [ELPH] Phonon modes                              :   6
+   [ELPH] Q points                                  :   9 [avail]
+   [ELPH] K points                                  :   9
+   [ELPH] El-PH bands                               :   8
+   [ELPH] Using the Q-grid                          : yes
+   [ELPH] Bare interaction                          : no
+  - S/N 007666 ---------------------------------------------- v.05.01.01 r.21293 -
+  GKKP database : gkkp_expanded
 
- Q [1]:  0.000000  0.000000  0.000000 [rlu]
- Q [2]:  0.000000  0.333333  0.000000 [rlu]
- Q [3]:  0.333333  0.333333  0.000000 [rlu]
+  [06.02] Double Grid Energies-IBZ mapping and Fine Grid re-ordering
+  ==================================================================
 
- [04] Excitonic gkkp
- ===================
 
- Found Lout with dimension: 36 x 36
- L kind out: Lbar
- Found Lin with dimension: 36 x 36
- L kind  in: Lbar
- [RD./SAVE//ndb.elph_gkkp_expanded]----------------------------------------------
-  Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-  Fragmentation                                    : yes
-  [ELPH] Phonon modes                              :   6
-  [ELPH] Q points                                  :   9 [avail]
-  [ELPH] K points                                  :   9
-  [ELPH] El-PH bands                               :   8
-  [ELPH] Using the Q-grid                          : yes
-  [ELPH] Bare interaction                          : no
- - S/N 007666 ---------------------------------------------- v.05.01.01 r.21293 -
+  [06.03] Double Grid K-points expansion ...
+  ==========================================
 
- [WARNING][EXCPH] Exc-ph matrix elements not correct or missing. To be computed
- Found Lin with dimension: 36 x 36
- L kind  in: Lbar
- [RD./SAVE//ndb.elph_gkkp_expanded]----------------------------------------------
-  Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-  Fragmentation                                    : yes
-  [ELPH] Phonon modes                              :   6
-  [ELPH] Q points                                  :   9 [avail]
-  [ELPH] K points                                  :   9
-  [ELPH] El-PH bands                               :   8
-  [ELPH] Using the Q-grid                          : yes
-  [ELPH] Bare interaction                          : no
- - S/N 007666 ---------------------------------------------- v.05.01.01 r.21293 -
-  Excitons renormalizations  (without Bose factor):
-  Exciton 1: R =   5.06277271E-02     R_abs =   1.89665449
-  Exciton 2: R =   4.83614492         R_abs =   9.84233841E-02
-  Exciton 3: R =   1.42420709         R_abs =   1.50242877
-  Exciton 4: R =   1.43797040         R_abs =   1.44267046
-  Exciton 5: R =  0.316334635         R_abs =   17.8044987
-  Max satellite weight:
-  Exciton 1 max(W_sat)=  0.190660089
-     for iq = 9        il = 5         ib = 1        w(iq,il) =    149.613892     meV
-  Exciton 2 max(W_sat)=   21.7110252
-     for iq = 8        il = 5         ib = 1        w(iq,il) =    149.613892     meV
-  Exciton 3 max(W_sat)=   7.11535597
-     for iq = 1        il = 5         ib = 3        w(iq,il) =    173.910461     meV
-  Exciton 4 max(W_sat)=   7.08720875
-     for iq = 1        il = 5         ib = 4        w(iq,il) =    173.910461     meV
-  Exciton 5 max(W_sat)=   1.82901001
-     for iq = 1        il = 5         ib = 5        w(iq,il) =    173.910461     meV
+  :: Found 225 (27) points in the BZ (IBZ)
 
- [05] EXCPH-LifTime
- ==================
+  [06.04] Double Grid IBZ-IBZ mapping
+  ===================================
 
- Found Lout with dimension: 36 x 36
- L kind out: Lbar
- [RD./05_excph_lifetimes//ndb.excph_gkkp]----------------------------------------
-  Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-  Fragmentation                                    : yes
-  Exciton states           :  1   5
-  Exciton sum (scattered):  1   8
- - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-  [K] L_kind in                                    : Lbar
-  [K] L_kind out                                   : Lbar
- [RD./SAVE//ndb.elph_gkkp_expanded]----------------------------------------------
-  Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-  Fragmentation                                    : yes
-  [ELPH] Phonon modes                              :   6
-  [ELPH] Q points                                  :   9 [avail]
-  [ELPH] K points                                  :   9
-  [ELPH] El-PH bands                               :   8
-  [ELPH] Using the Q-grid                          : yes
-  [ELPH] Bare interaction                          : no
- - S/N 007666 ---------------------------------------------- v.05.01.01 r.21293 -
- Minimum excitonic energy : 2.120551  eV, at q-point :1
- FAN treshold: 0.008065  cm-1
- Self-energy broadening : 0.500000 meV
- [RD./04_ypp_dbgrid_freq-serial-devel-excph-clean//ndb.PH_Double_Grid]-----------
-  Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-  Fragmentation                                    : yes
-  [FineGd] Brillouin Symmetry  mode                : mixed
-  [FineGd] Fine Grid  BZ mapped mode               : BZ
-  [FineGd] Fine Grid IBZ mapped mode               : IBZ
-  [FineGd] Bands                                   :   6
-  [FineGd] Number of pts (Energy grid)             :  27
-  [FineGd] Number of pts (fine+coarse, IBZ-map)    :  24
-  [FineGd] Number of pts (fine+coarse, BZ-map)     :  225
- - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-  [Ekpq_mode] E(k+q) energy mode                   : interp
- Using PH-double-grid
- Double grid number of q-points :  225
- EXC_E(k+q) calculated using a smooth Fourier interpolation
- [INTERPOLATION] Number of shells:  17
- Minimum exctonic energy with DbGd: 2.120552 eV
- Minimum q-point in the DbGrid :     0.000000    0.000000    0.000000 [rlu]
- Exciton lifetimes:
+  :: IBZ-IBZ Fine Grid pts per Coarse grid BZ pt :  0  12
+  :: IBZ-IBZ Fine Grid points used - read        : 21  27
+  :: IBZ-IBZ Duplicated points                   : 3
+  :: IBZ-IBZ Blocks filling (excl. coarse grid)  :  4  11
 
- [06] Timing Overview
+  [06.05] Double Grid BZ-BZ mapping
+  =================================
+
+  :: BZ-BZ Fine Grid pts per Coarse grid BZ pt : 21  26
+  :: BZ-BZ Fine Grid points used - read        : 216  225
+  :: BZ-BZ Duplicated points                   :  9
+  :: BZ-BZ Blocks filling (excl. coarse grid)  : 20  25
+
+  [06.06] Double Grid Database I/O
+  ================================
+
+  [WR./04_ypp_dbgrid_freq//ndb.PH_Double_Grid]------------------------------------
+   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+   Fragmentation                                    : yes
+   [FineGd] Brillouin Symmetry  mode                : mixed
+   [FineGd] Fine Grid  BZ mapped mode               : BZ
+   [FineGd] Fine Grid IBZ mapped mode               : IBZ
+   [FineGd] Bands                                   :   6
+   [FineGd] Number of pts (Energy grid)             :  27
+   [FineGd] Number of pts (fine+coarse, IBZ-map)    :  24
+   [FineGd] Number of pts (fine+coarse, BZ-map)     :  225
+  - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+   [Ekpq_mode] E(k+q) energy mode                   : interp
+
+ [07] Timing Overview
  ====================
 
  Clock: global
-         io_ATMPROJ_pwscf :      0.0000s CPU
-             io_KB_abinit :      0.0000s CPU
-               io_COL_CUT :      0.0001s CPU
-                    io_BS :      0.0001s CPU
-                    io_HF :      0.0001s CPU
-                    io_WF :      0.0023s CPU
-              io_KB_pwscf :      0.0028s CPU
-      INTERPOLATE Fourier :      0.0032s CPU ( 2 calls,   1.594 msec avg)
-           io_Double_Grid :      0.0035s CPU ( 2 calls,   1.752 msec avg)
-               io_DIPOLES :      0.0036s CPU
-                     io_X :      0.0077s CPU ( 4 calls,   1.927 msec avg)
-                 io_QINDX :      0.0112s CPU ( 2 calls,   5.611 msec avg)
-                  io_GROT :      0.0191s CPU ( 2 calls,   9.571 msec avg)
-            io_EXCPH_gkkp :      0.0433s CPU (22 calls,   1.968 msec avg)
-              io_fragment :      0.0501s CPU (82 calls,   0.611 msec avg)
-             io_BSS_diago :      0.1029s CPU (14 calls,   7.351 msec avg)
-                  io_ELPH :      0.1059s CPU (68 calls,   1.557 msec avg)
-               EXCPH_gkkp :      0.1843s CPU
+      IO_and_Messaging_switch :      0.0000s CPU
+                   io_DIPOLES :      0.0000s CPU
+                   io_COL_CUT :      0.0000s CPU
+             io_ATMPROJ_pwscf :      0.0000s CPU
+                        io_WF :      0.0010s CPU
+                     io_QINDX :      0.0018s CPU
+                  io_fragment :      0.0018s CPU (3 calls,   0.606 msec avg)
+               io_Double_Grid :      0.0064s CPU (3 calls,   2.149 msec avg)
+                      io_GROT :      0.0073s CPU (2 calls,   3.626 msec avg)
+                      io_ELPH :      0.0080s CPU (5 calls,   1.603 msec avg)
 
- [07] Game Over & Game summary
+ [08] Game Over & Game summary
  =============================
 
- 04/11/2022 at 01:33 yambo_ph @ unimi-XPS-8930 [start]
- 04/11/2022 at 01:33                           [end]
+ 04/11/2022 at 01:33 ypp_ph @ unimi-XPS-8930 [start]
+ 04/11/2022 at 01:33                         [end]
 
   
  .-ACKNOWLEDGMENT
@@ -364,20 +330,12 @@
  |
   
  .-Input file  yambo.in
- | excph                            # [R] Exction-phonon
- | ExcGkkp                          # [R][EXCPH] Exciton-Phonon Matrix Elelements
- | ExcPhLifeT                       # [R][EXCPH] Exciton-Phonon Life-Times
- | BoseTemp= 1.000000         Kn    # Bosonic Temperature
- | % ELPhExcStates
- |   1 |  5 |                           # [EXCPH] Incoming (external) exciton states
- | %
- | % ELPhExcSum
- |   1 |  8 |                           # [EXCPH] Outgoing (virtual) exciton states
- | %
- | LoutPath= "none"                 # [EXCPH] Path of the outgoing L
- | % ElPhModes
- |   1 |  6 |                           # [ELPH] Phonon modes included
- | %
- | EXCTemp= 1.000000          Kn    # [EXCPH] Excitonic Temperature (for luminescence spectra)
- | #DiagExcph                     # [EXCPH] Use only Diagonal Exciton-phonon matrix elements
- | LDamping= 0.500000E-3      eV    # [EXCPH] Damping of exc-ph self-energy
+ | gkkp                             # [R] gkkp databases
+ | gkkp_dg                          # [R] GKKP double grid
+ | BoseTemp= 0.000000         eV    # Bosonic Temperature
+ | PHfreqF= "../DGRID/bn.freq_15x15" # PWscf format file containing the phonon frequencies
+ | PHmodeF= "none"                  # PWscf format file containing the phonon modes
+ | FineGd_mode= "mixed"             # Fine Grid mode. Symmetry expanded, unexpanded or mixed.
+ | #SkipBorderPts                 # Skip points in the Fine Grid that are on the surface of coarse gride smal BZ`s
+ | EkplusQmode= "interp"            # E(k+q) energies calculation mode (interp | dftp)
+ | #TestPHDGrid                   # Test double-grid: set all values of the fine grid equal to the couse ones
