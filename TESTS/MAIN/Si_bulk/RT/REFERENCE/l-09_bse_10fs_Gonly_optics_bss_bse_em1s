@@ -1,12 +1,12 @@
 
 
- __    __ ______           ____     _____
-/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
-\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
- `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
-   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
-     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
-      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
+ ___ __  _____  __ __  _____   _____
+|   Y  ||  _  ||  Y  ||  _  \ |  _  |
+|   |  ||. |  ||.    ||. |  / |. |  |
+ \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
+  |: |  |: |  ||: |  ||: |   \|: |  |
+  |::|  |:.|:.||:.|:.||::.   /|::.  |
+  `--"  `-- --"`-- --"`-----" `-----"
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -19,9 +19,9 @@
  <---> [02.05] Energies & Occupations
  <---> [03] Transferred momenta grid and indexing
  <---> [04] External/Internal QP corrections
- <---> E<08_ypp_gw_10fs_Gonly_part2/ndb.QP_merged_1_gw_cohsex_gw_ppa[ XG 59 = Xb 1-8 = Scb 1-8 = PPA@E  27.21138 = XG 1 = Xb 1-8 = Scb 1-8 = PPA@E  27.21138 = XG 1 = Xb 1-8 = Scb 1-8]
+ <---> E<08_ypp_gw_10fs_Gonly_part2/ndb.QP_merged_1_gw_cohsex_gw_ppa[ XG 59 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8]
  <---> [dE_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
- <---> [QP_apply] Action to be applied: E<08_ypp_gw_10fs_Gonly_part2/ndb.QP_merged_1_gw_cohsex_gw_ppa[ XG 59 = Xb 1-8 = Scb 1-8 = PPA@E  27.21138 = XG 1 = Xb 1-8 = Scb 1-8 = PPA@E  27.21138 = XG 1 = Xb 1-8 = Scb 1-8]
+ <---> [QP_apply] Action to be applied: E<08_ypp_gw_10fs_Gonly_part2/ndb.QP_merged_1_gw_cohsex_gw_ppa[ XG 59 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8]
  <---> [04.01]  QP corrections report
  <---> [00.01] External RT corrections (K)
  <---> [RT] Loaded Carrier components @ 100.0000 fs
@@ -29,11 +29,13 @@
  <---> [WARNING][f@ K] Metallic system
  <---> [01] Dipoles
  <---> [DIP] Checking dipoles header
- <---> [WARNING] DIPOLES database not correct or missing
+ <---> [WARNING][DIP] Database not correct or missing. To be computed
  <---> [x,Vnl] computed using 8 projectors
  <---> Dipoles: P, V and iR (T) |                                        | [000%] --(E) --(X)
  <---> Dipoles: P, V and iR (T) |########################################| [100%] --(E) --(X)
  <---> [DIP] Writing dipoles header
+ <---> [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
+ <---> [WARNING] In case H contains other non local terms, these are neglected
  <---> [02] Static Dielectric Matrix
  <---> [LA] SERIAL linear algebra
  <---> [DIP] Checking dipoles header
@@ -53,48 +55,67 @@
  <---> Xo@q[3] |########################################| [100%] --(E) --(X)
  <---> X@q[3] |                                        | [000%] --(E) --(X)
  <---> X@q[3] |########################################| [100%] --(E) --(X)
- <---> [03] Bethe Salpeter Equation @q1
- <---> [03.01] Transition Groups build-up @q1
+ <---> [03] Bethe Salpeter Equation driver
+ <---> [BSE] Response kind is : Lbar
+ <---> [04] Bethe Salpeter Equation @q1
+ <---> [04.01] Transition pre-analysis @q1
+ <---> [04.01.01] Transition Groups build-up @q1
  <---> [BSK] Size (resonant):  100
  <---> [BSK]         (total):  100
- <---> [BSK] Matricies      :  1
- <---> [03.02] Independent Particles properties @q1
- <---> [WARNING] The system is a metal but Drude term not included.
+ <---> [BSK] N. of matrices :  1
+ <---> [04.01.02] Loading Dipoles @q1
  <---> [DIP] Checking dipoles header
- <---> [03.03] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
- <---> [03.03.01] Screened interaction header I/O
+ <---> BSE dipoles |                                        | [000%] --(E) --(X)
+ <---> BSE dipoles |########################################| [100%] --(E) --(X)
+ <---> [04.01.03] Independent Particles properties @q1
+ <---> [WARNING] The system is a metal but Drude term not included.
+ <---> IP properties |                                        | [000%] --(E) --(X)
+ <---> IP properties |########################################| [100%] --(E) --(X)
+ <---> [04.01.04] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
+ <---> [04.01.04.01] Screened interaction header I/O
  <---> [FFT-BSK] Mesh size:  12  12  12
- <---> [03.03.02] Wave-Function Phases
- <---> [03.03.03] Main kernel loop
+ <---> [04.01.04.02] Wave-Function Phases
+ <---> [04.01.04.03] Main kernel loop
+ <---> Looking for ./09_bse_10fs_Gonly//ndb.BS_PAR_Q1.
+ <---> BSE file not found. Creating an empty one.
  <---> Kernel |                                        | [000%] --(E) --(X)
  <---> Kernel |########################################| [100%] --(E) --(X)
- <---> [03.04] BSE solver(s) @q1
- <---> [03.05] Haydock Solver for abs @q1, scheme hermitian
+ <---> [04.01.05] BSE solver(s) @q1
+ <---> [04.01.06] Haydock Solver for abs @q1, scheme hermitian
  <---> [Haydock] Iteration 1
  <---> [Haydock] Iteration 2
- <---> [Haydock] Iteration 3 Accuracy  145.8737| 0.020000
- <---> [Haydock] Iteration 4 Accuracy  66.70988| 0.020000
- <---> [Haydock] Iteration 5 Accuracy  416.0449| 0.020000
- <---> [Haydock] Iteration 6 Accuracy  108.4016| 0.020000
- <---> [Haydock] Iteration 7 Accuracy  22.73517| 0.020000
- <---> [Haydock] Iteration 8 Accuracy  8.930077| 0.020000
- <---> [Haydock] Iteration 9 Accuracy  7.175601| 0.020000
- <---> [Haydock] Iteration 10 Accuracy  6.254202| 0.020000
- <---> [Haydock] Iteration 11 Accuracy  10.92941| 0.020000
- <---> [Haydock] Iteration 12 Accuracy  107.9740| 0.020000
- <---> [Haydock] Iteration 13 Accuracy  0.639619| 0.020000
- <---> [Haydock] Iteration 14 Accuracy  0.284267| 0.020000
- <---> [Haydock] Iteration 15 Accuracy  394.9466| 0.020000
- <---> [Haydock] Iteration 16 Accuracy  0.280084| 0.020000
- <---> [Haydock] Iteration 17 Accuracy  1.269310| 0.020000
- <---> [Haydock] Iteration 18 Accuracy  1.333105| 0.020000
- <---> [Haydock] Iteration 19 Accuracy  0.284690| 0.020000
- <---> [Haydock] Iteration 20 Accuracy  0.392118| 0.020000
- <---> [Haydock] Iteration 21 Accuracy  1.027140| 0.020000
- <---> [Haydock] Iteration 22 Accuracy  0.433472| 0.020000
- <---> [Haydock] Iteration 23 Accuracy  0.338426| 0.020000
- <---> [Haydock] Iteration 24 Accuracy  0.034982| 0.020000
- <---> [Haydock] Iteration 25 Accuracy  0.015428| 0.020000
- <---> [Haydock] Iteration 26 Accuracy  0.012552| 0.020000
- <---> [04] Timing Overview
- <---> [05] Game Over & Game summary
+ <---> [Haydock] Iteration 3 Accuracy  139.5073| 0.020000
+ <---> [Haydock] Iteration 4 Accuracy  37.10189| 0.020000
+ <---> [Haydock] Iteration 5 Accuracy  32.48462| 0.020000
+ <---> [Haydock] Iteration 6 Accuracy  816.0973| 0.020000
+ <---> [Haydock] Iteration 7 Accuracy  20.86202| 0.020000
+ <---> [Haydock] Iteration 8 Accuracy  7.489731| 0.020000
+ <---> [Haydock] Iteration 9 Accuracy  129.0654| 0.020000
+ <---> [Haydock] Iteration 10 Accuracy  27.13706| 0.020000
+ <---> [Haydock] Iteration 11 Accuracy  389.3609| 0.020000
+ <---> [Haydock] Iteration 12 Accuracy  6.769453| 0.020000
+ <---> [Haydock] Iteration 13 Accuracy  2.047335| 0.020000
+ <---> [Haydock] Iteration 14 Accuracy  1.839142| 0.020000
+ <---> [Haydock] Iteration 15 Accuracy  2.425533| 0.020000
+ <---> [Haydock] Iteration 16 Accuracy  0.918330| 0.020000
+ <---> [Haydock] Iteration 17 Accuracy  0.814908| 0.020000
+ <---> [Haydock] Iteration 18 Accuracy  1.004578| 0.020000
+ <---> [Haydock] Iteration 19 Accuracy  0.477256| 0.020000
+ <---> [Haydock] Iteration 20 Accuracy  0.806122| 0.020000
+ <---> [Haydock] Iteration 21 Accuracy  7.797905| 0.020000
+ <---> [Haydock] Iteration 22 Accuracy  1.067103| 0.020000
+ <---> [Haydock] Iteration 23 Accuracy  3.218430| 0.020000
+ <---> [Haydock] Iteration 24 Accuracy  0.923034| 0.020000
+ <---> [Haydock] Iteration 25 Accuracy  0.264011| 0.020000
+ <---> [Haydock] Iteration 26 Accuracy  0.199140| 0.020000
+ <---> [Haydock] Iteration 27 Accuracy  0.047780| 0.020000
+ <---> [Haydock] Iteration 28 Accuracy  0.046717| 0.020000
+ <---> [Haydock] Iteration 29 Accuracy  0.069488| 0.020000
+ <---> [Haydock] Iteration 30 Accuracy  0.032732| 0.020000
+ <---> [Haydock] Iteration 31 Accuracy  0.050943| 0.020000
+ <---> [Haydock] Iteration 32 Accuracy  0.024889| 0.020000
+ <---> [Haydock] Iteration 33 Accuracy  0.004008| 0.020000
+ <---> [Haydock] Iteration 34 Accuracy  0.009624| 0.020000
+ <---> [05] Timing Overview
+ <---> [06] Memory Overview
+ <---> [07] Game Over & Game summary
