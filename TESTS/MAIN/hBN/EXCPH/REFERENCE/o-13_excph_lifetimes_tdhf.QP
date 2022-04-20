@@ -1,37 +1,38 @@
 #                                                                     
-#                                                                     
-# Y88b    /   e           e    e      888~~\    ,88~-_                
-#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
-#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
-#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
-#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
-#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
 #                                                                     
 #                                                                     
 # Version 5.1.1 Revision 21307 Hash (prev commit) a1c3037f1           
-#              Branch is devel-excph-clean                            
+#               Branch is devel-excph-clean                           
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#               http://www.yambo-code.org                             
+#                http://www.yambo-code.org                            
 #
 #
 # === Exciton LifeTimes ===
 #
 # Exciton Sum                  : 1 - 8
-# Exciton States               : 1 - 5
+# Exciton States               : 1 - 6
 # Self-Energy broadening       : 0.500000 meV
-# FAN treshold                 : 0.100000E-2 meV
+# FAN treshold                 : 10.00000 meV
 # PH Doble-Grid                : no
 #
 #    Band               E [eV]             Width [meV]
 #
-        1                  2.323586           0.475904
-        2                  2.323791           0.576363
-        3                  5.738419           2.143295
-         4                 5.738424           3.921793
-         5                 7.620311           10.28800
+        1                  2.323586           0.164148
+        2                  2.323791           0.124776
+        3                  5.738419           2.139385
+         4                 5.738424           3.918176
+         5                 7.620311           10.28773
+         6                 7.620448           1.894673
 # 
-# 04/20/2022 at 18:52 yambo_ph @ unimi-XPS-8930 [start]
-# 04/20/2022 at 18:52                           [end]
+# 04/20/2022 at 22:38 yambo_ph @ unimi-XPS-8930 [start]
+# 04/20/2022 at 22:38                           [end]
 #
 # .-Input file  yambo.in
 # | excph                            # [R] Exction-phonon
@@ -39,12 +40,13 @@
 # | ExcPhLifeT                       # [R][EXCPH] Exciton-Phonon Life-Times
 # | BoseTemp= 1.000000         Kn    # Bosonic Temperature
 # | % ELPhExcStates
-# |   1 |  5 |                           # [EXCPH] Incoming (external) exciton states
+# |   1 |  6 |                           # [EXCPH] Incoming (external) exciton states
 # | %
 # | % ELPhExcSum
 # |   1 |  8 |                           # [EXCPH] Outgoing (virtual) exciton states
 # | %
 # | LoutPath= "none"                 # [EXCPH] Path of the outgoing L
+# | FANdEtresh= 0.010000       eV    # [ELPH] Energy treshold for Fan denominator
 # | % ElPhModes
 # |   1 |  6 |                           # [ELPH] Phonon modes included
 # | %
