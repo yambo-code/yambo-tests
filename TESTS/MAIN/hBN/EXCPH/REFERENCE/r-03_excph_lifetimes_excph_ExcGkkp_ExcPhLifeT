@@ -1,19 +1,19 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.               
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb              
+      `88. .8" .8"88.    888b     d"88  88     888 88      88             
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88             
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88             
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"             
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"              
                                                                           
                                                                           
     Version 5.1.1 Revision 21307 Hash (prev commit) a1c3037f1             
-                  Branch is devel-excph-clean                             
-            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+                   Branch is devel-excph-clean                            
+             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
+                    http://www.yambo-code.org                             
  
- 04/20/2022 at 17:06 yambo_ph @ unimi-XPS-8930
+ 04/20/2022 at 18:52 yambo_ph @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -34,7 +34,7 @@
  Job   string        : 03_excph_lifetimes
  Alt#1 string        : 01_init-serial-devel-excph-clean
  Alt#2 string        : 02_bse_allq-serial-devel-excph-clean
- Alt#3 string        : R10
+ Alt#3 string        : R14
 
  Precision           : SINGLE
   
@@ -319,31 +319,31 @@
  ====================
 
  Clock: global
-      IO_and_Messaging_switch :      0.0000s CPU ( 3 calls,   0.003 msec avg)
              io_ATMPROJ_pwscf :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0000s CPU ( 3 calls,   0.002 msec avg)
                  io_KB_abinit :      0.0000s CPU
+                   io_COL_CUT :      0.0000s CPU
                         io_BS :      0.0000s CPU
-                   io_COL_CUT :      0.0001s CPU
-               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.046 msec avg)
-                        io_HF :      0.0001s CPU
-                  io_KB_pwscf :      0.0030s CPU
-                   io_DIPOLES :      0.0040s CPU
-                        io_WF :      0.0044s CPU
-              bz_samp_indexes :      0.0057s CPU
-                         io_X :      0.0065s CPU ( 4 calls,   1.614 msec avg)
-                     io_QINDX :      0.0120s CPU ( 5 calls,   2.392 msec avg)
-                      io_GROT :      0.0202s CPU ( 2 calls,  10.084 msec avg)
-                io_EXCPH_gkkp :      0.0324s CPU (22 calls,   1.473 msec avg)
-                  io_fragment :      0.0379s CPU (82 calls,   0.463 msec avg)
-                 io_BSS_diago :      0.0419s CPU (14 calls,   2.991 msec avg)
-                      io_ELPH :      0.0730s CPU (68 calls,   1.074 msec avg)
-                   EXCPH_gkkp :      0.1084s CPU
+                        io_HF :      0.0000s CPU
+               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.040 msec avg)
+                        io_WF :      0.0010s CPU
+                  io_KB_pwscf :      0.0013s CPU
+                   io_DIPOLES :      0.0016s CPU
+                         io_X :      0.0032s CPU ( 4 calls,   0.802 msec avg)
+              bz_samp_indexes :      0.0053s CPU
+                      io_GROT :      0.0060s CPU ( 2 calls,   2.995 msec avg)
+                     io_QINDX :      0.0085s CPU ( 5 calls,   1.696 msec avg)
+                io_EXCPH_gkkp :      0.0323s CPU (22 calls,   1.469 msec avg)
+                  io_fragment :      0.0375s CPU (82 calls,   0.457 msec avg)
+                 io_BSS_diago :      0.0421s CPU (14 calls,   3.007 msec avg)
+                      io_ELPH :      0.0717s CPU (68 calls,   1.054 msec avg)
+                   EXCPH_gkkp :      0.1086s CPU
 
  [07] Game Over & Game summary
  =============================
 
- 04/20/2022 at 17:06 yambo_ph @ unimi-XPS-8930 [start]
- 04/20/2022 at 17:06                           [end]
+ 04/20/2022 at 18:52 yambo_ph @ unimi-XPS-8930 [start]
+ 04/20/2022 at 18:52                           [end]
 
   
  .-ACKNOWLEDGMENT
@@ -384,4 +384,5 @@
  | %
  | EXCTemp= 1.000000          Kn    # [EXCPH] Excitonic Temperature (for luminescence spectra)
  | #DiagExcph                     # [EXCPH] Use only Diagonal Exciton-phonon matrix elements
+ | #NoMatrxEl                     # [EXCPH] Set all exciton-phonon matrix elements to one (for testing purpose)
  | LDamping= 0.500000E-3      eV    # [EXCPH] Damping of exc-ph self-energy

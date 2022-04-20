@@ -27,14 +27,13 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-13_excph_lifetimes_excph_ExcGkkp_ExcPhLifeT
+ Report file         : ./r-13_excph_lifetimes_tdhf_excph_ExcGkkp_ExcPhLifeT
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 13_excph_lifetimes
- Alt#1 string        : 11_init-serial-devel-excph-clean
- Alt#2 string        : 12_bse_allq-serial-devel-excph-clean
- Alt#3 string        : R14
+ Job   string        : 13_excph_lifetimes_tdhf
+ Alt#1 string        : 12_tdhf_allq-serial-devel-excph-clean
+ Alt#2 string        : R14
 
  Precision           : SINGLE
   
@@ -174,9 +173,9 @@
   Polarization last K                              :   9
   QP states                                        :   1   9
   X grid is uniform                                : yes
-  *ERR*Grids                                       : X B S
+  *ERR*Grids                                       : X B C S
   BS scattering                                    : yes
-  *ERR*COLL scattering                             : no
+  COLL scattering                                  : yes
   Sigma scattering                                 : yes
   X scattering                                     : yes
  - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
@@ -251,29 +250,29 @@
   [ELPH] Bare interaction                          : no
  - S/N 007666 ---------------------------------------------- v.05.01.01 r.21293 -
   Excitons renormalizations  (without Bose factor):
-  Exciton 1: R =  0.122368962         R_abs =   2.48558927
-  Exciton 2: R =   14.2490959         R_abs =  0.227293536
-  Exciton 3: R =   1.58285105         R_abs =   7.64643955
-  Exciton 4: R =   1.57048512         R_abs =   4.53190660
-  Exciton 5: R =  0.189126641         R_abs =   3.23764968
+  Exciton 1: R =   1.04521358         R_abs =   2.56723452
+  Exciton 2: R =   1.06145239         R_abs =   1.90694726
+  Exciton 3: R =   4.28677702         R_abs =   1.65478671
+  Exciton 4: R =   7.84402466         R_abs =   1.76574659
+  Exciton 5: R =   20.5837975         R_abs =  0.312321663
   Max satellite weight:
-  Exciton 1 max(W_sat)=  0.464888424
-     for iq = 1        il = 5         ib = 1        w(iq,il) =    173.910461     meV
-  Exciton 2 max(W_sat)=   43.9046974
-     for iq = 9        il = 5         ib = 1        w(iq,il) =    149.613892     meV
-  Exciton 3 max(W_sat)=   6.92503309
-     for iq = 1        il = 5         ib = 3        w(iq,il) =    173.910461     meV
-  Exciton 4 max(W_sat)=   6.89979887
-     for iq = 1        il = 5         ib = 4        w(iq,il) =    173.910461     meV
-  Exciton 5 max(W_sat)=   1.02693248
-     for iq = 1        il = 5         ib = 5        w(iq,il) =    173.910461     meV
+  Exciton 1 max(W_sat)=   4.23199511
+     for iq = 1        il = 1         ib = 2        w(iq,il) =    6.71501780     meV
+  Exciton 2 max(W_sat)=   4.78175926
+     for iq = 1        il = 1         ib = 1        w(iq,il) =    6.71501780     meV
+  Exciton 3 max(W_sat)=   16.7987022
+     for iq = 5        il = 6         ib = 3        w(iq,il) =    183.844513     meV
+  Exciton 4 max(W_sat)=   37.3009529
+     for iq = 5        il = 6         ib = 3        w(iq,il) =    183.844513     meV
+  Exciton 5 max(W_sat)=   113.673027
+     for iq = 9        il = 4         ib = 6        w(iq,il) =    135.495392     meV
 
  [05] EXCPH-LifTime
  ==================
 
  Found Lout with dimension: 36 x 36
  L kind out: Lbar
- [RD./13_excph_lifetimes//ndb.excph_gkkp]----------------------------------------
+ [RD./13_excph_lifetimes_tdhf//ndb.excph_gkkp]-----------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   9   9   9   9
   Fragmentation                                    : yes
   Number of qpoints (BZ)   :  9
@@ -293,7 +292,7 @@
   [ELPH] Using the Q-grid                          : yes
   [ELPH] Bare interaction                          : no
  - S/N 007666 ---------------------------------------------- v.05.01.01 r.21293 -
- Minimum excitonic energy : 2.120553  eV, at q-point :1
+ Minimum excitonic energy : 2.323586  eV, at q-point :1
  FAN treshold: 0.008065  cm-1
  Self-energy broadening : 0.500000 meV
  Exciton lifetimes:
@@ -303,24 +302,24 @@
 
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU ( 3 calls,   0.003 msec avg)
+      IO_and_Messaging_switch :      0.0000s CPU ( 3 calls,   0.002 msec avg)
                  io_KB_abinit :      0.0000s CPU
-                   io_COL_CUT :      0.0000s CPU
                         io_BS :      0.0000s CPU
-                        io_HF :      0.0000s CPU
-               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.042 msec avg)
+                   io_COL_CUT :      0.0000s CPU
+                        io_HF :      0.0001s CPU
+               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.034 msec avg)
+                         io_X :      0.0001s CPU ( 4 calls,   0.021 msec avg)
                         io_WF :      0.0010s CPU
                   io_KB_pwscf :      0.0013s CPU
                    io_DIPOLES :      0.0016s CPU
-                         io_X :      0.0033s CPU ( 4 calls,   0.827 msec avg)
-                      io_GROT :      0.0039s CPU ( 3 calls,   1.296 msec avg)
-              bz_samp_indexes :      0.0052s CPU
-                     io_QINDX :      0.0103s CPU ( 5 calls,   2.057 msec avg)
-                io_EXCPH_gkkp :      0.0328s CPU (22 calls,   1.490 msec avg)
-                  io_fragment :      0.0374s CPU (82 calls,   0.456 msec avg)
-                      io_ELPH :      0.0714s CPU (68 calls,   1.050 msec avg)
-                 io_BSS_diago :      0.0942s CPU (32 calls,   2.944 msec avg)
-                   EXCPH_gkkp :      0.1465s CPU
+                      io_GROT :      0.0040s CPU ( 3 calls,   1.344 msec avg)
+              bz_samp_indexes :      0.0050s CPU
+                     io_QINDX :      0.0085s CPU ( 5 calls,   1.692 msec avg)
+                io_EXCPH_gkkp :      0.0328s CPU (22 calls,   1.489 msec avg)
+                  io_fragment :      0.0370s CPU (81 calls,   0.457 msec avg)
+                      io_ELPH :      0.0713s CPU (68 calls,   1.049 msec avg)
+                 io_BSS_diago :      0.0787s CPU (32 calls,   2.459 msec avg)
+                   EXCPH_gkkp :      0.1366s CPU
 
  [07] Game Over & Game summary
  =============================

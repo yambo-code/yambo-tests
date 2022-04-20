@@ -1,0 +1,85 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+# Version 5.1.1 Revision 21307 Hash (prev commit) a1c3037f1           
+#               Branch is devel-excph-clean                           
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+#    E [eV]             n_deg              abs
+#
+     11.9740973         2.00000000        0.257814944   
+     12.2007284         2.00000000        0.261510164   
+     12.407228          1.0000000         0.46005279E-11
+     13.023789          2.0000000         0.12852949E-09
+     13.177587          2.0000000         0.33784468E-10
+     13.3599396         2.00000000        0.270408185E-8
+     13.384087          1.0000000         0.82108549E-10
+     13.5772696         1.00000000        0.108362723E-2
+     14.4096317         2.00000000        0.188251415E-4
+     14.554127          1.0000000         0.95774605E-13
+     14.7050638         3.00000000        0.196629718   
+     15.6819210         3.00000000        0.253359200E-8
+     15.754755          3.0000000         0.18087620E-10
+     16.7316132         3.00000000        0.559851713E-2
+     19.160484          2.0000000         0.35741987E-09
+     19.7661381         2.00000000        0.101179123   
+     20.2101765         2.00000000        0.993704982E-2
+     20.7429943         2.00000000        0.202659063E-7
+# 
+# 04/20/2022 at 18:44 yambo_ph @ unimi-XPS-8930 [start]
+# 04/20/2022 at 18:44                           [end]
+#  
+# Timing   [Min/Max/Average]: 04s/04s/04s
+#
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | dipoles                          # [R] Oscillator strenghts (or dipoles)
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | FFTGvecs=  4653            RL    # [FFT] Plane-waves
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "HF"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | % DipBands
+# |   3 |  6 |                           # [DIP] Bands range for dipoles
+# | %
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 1005             RL    # [BSK] Exchange components
+# | BSENGBlk= 1005             RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
+# | % KfnQP_E
+# |  5.000000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+# | %
+# | BSEprop= "abs esrt"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+# | % BSEQptR
+# |   1 |  9 |                           # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |   3 |  6 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# |   0.00000 | 10.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 1000                   # [BSS] Energy steps
+# | % BLongDir
+# |   0.00000    | 0.100000E-4 |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | WRbsWF                         # [BSS] Write to disk excitonic the WFs

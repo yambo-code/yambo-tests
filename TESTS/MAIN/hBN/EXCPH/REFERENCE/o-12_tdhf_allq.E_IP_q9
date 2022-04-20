@@ -1,0 +1,81 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+# Version 5.1.1 Revision 21307 Hash (prev commit) a1c3037f1           
+#               Branch is devel-excph-clean                           
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+#    E [eV]             n_deg              abs
+#
+     9.46976280         1.00000000        0.359659418E-1
+     9.6762629          1.0000000         0.32079381E-09
+     10.8463030         1.00000000        0.149760665E-1
+     10.855605          2.0000000         0.80134857E-10
+     14.7050638         6.00000000        0.284152120   
+     15.6819229         6.00000000        0.194689331E-8
+     15.754755          6.0000000         0.23042249E-10
+     16.656149          1.0000000         0.13298447E-10
+     16.7316132         6.00000000        0.857593026E-2
+     16.8626499         1.00000000        0.261301268E-2
+     17.0351715         1.00000000        0.516861305E-1
+     18.032690          1.0000000         0.10713318E-09
+     18.4210129         2.00000000        0.197330632E-7
+     24.2215576         1.00000000        0.249943941E-7
+# 
+# 04/20/2022 at 18:44 yambo_ph @ unimi-XPS-8930 [start]
+# 04/20/2022 at 18:44                           [end]
+#  
+# Timing   [Min/Max/Average]: 04s/04s/04s
+#
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | dipoles                          # [R] Oscillator strenghts (or dipoles)
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | FFTGvecs=  4653            RL    # [FFT] Plane-waves
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "HF"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | % DipBands
+# |   3 |  6 |                           # [DIP] Bands range for dipoles
+# | %
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 1005             RL    # [BSK] Exchange components
+# | BSENGBlk= 1005             RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
+# | % KfnQP_E
+# |  5.000000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+# | %
+# | BSEprop= "abs esrt"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+# | % BSEQptR
+# |   1 |  9 |                           # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |   3 |  6 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# |   0.00000 | 10.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 1000                   # [BSS] Energy steps
+# | % BLongDir
+# |   0.00000    | 0.100000E-4 |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | WRbsWF                         # [BSS] Write to disk excitonic the WFs

@@ -1,0 +1,128 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+# Version 5.1.1 Revision 21307 Hash (prev commit) a1c3037f1           
+#               Branch is devel-excph-clean                           
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+#
+# [K] Identifier                                  :   5641
+# [K] Q-point                                     :  0.333333343     0.500000060      0.00000000   
+# [K] Dimension                                   :   36
+# [K] Bands                                       :   3   6
+# [K] Exchange res                                : yes
+# [K] Correlation res                             : yes
+# [K] Kernel`s coupling                           : no
+# [K] Exchange cpl                                : no
+# [K] Correlation cpl                             : no
+# [K] W interaction is bare                       : yes
+# [K] ALDA kernel in R-space                      : no
+# [K] RL vectors exchange                         :  1005
+# [K] RL vectors correlation                      :  1005
+# [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# [K] Coupling range                              :   100.000000      100.000000    [o/o]
+# [K] L kind                                      : Lbar
+# [W] Interaction is diagonal                     : yes
+# [W] Matrix size                                 :  1
+# [RIM] RL components col                         : 0
+# [RIM] Random points col                         : 0
+# [SOC] Perturbative SOC                          : no
+#
+#
+#
+#    E [eV]             n_deg              abs
+#
+     2.39018273         1.00000000        0.669082254E-1
+     3.3937268          1.0000000         0.60316134E-10
+     3.4821546          1.0000000         0.22027255E-10
+     4.3167200          1.0000000         0.74497899E-11
+     6.81190348         1.00000000        0.100819413E-1
+     7.49722862         1.00000000        0.118928138E-7
+     7.5929441          1.0000000         0.32870312E-09
+     7.93724203         1.00000000        0.409040183   
+     8.13782501         1.00000000        0.726592600   
+     8.26243687         1.00000000        0.178640853E-7
+     8.48324871         1.00000000        0.947252940E-2
+     8.60399342         1.00000000        0.869833753E-1
+     8.77114487         1.00000000        0.434587337E-1
+     8.98613167         1.00000000        0.351491660   
+     9.28733730         1.00000000        0.259019004E-6
+     9.3259983          1.0000000         0.40340131E-09
+     9.4097462          1.0000000         0.52699084E-09
+     9.6464901          1.0000000         0.19965077E-09
+     9.7966719          1.0000000         0.98837660E-09
+     9.9643736          1.0000000         0.68590889E-09
+     10.120411          1.0000000         0.27696217E-10
+     10.417675          1.0000000         0.94550250E-10
+     10.5445700         1.00000000        0.742047923E-4
+     10.596770          1.0000000         0.34931710E-09
+     10.6951761         1.00000000        0.401026715E-3
+     10.7200861         1.00000000        0.154365330E-5
+     10.7254725         1.00000000        0.223044716E-1
+     11.0809927         1.00000000        0.736422688E-1
+     11.4031668         1.00000000        0.729049509E-2
+     11.5327501         1.00000000        0.235406477E-1
+     11.5592451         1.00000000        0.219238624E-1
+     11.7972622         1.00000000        0.840224791E-2
+     11.8885431         1.00000000        0.217978204E-7
+     11.9083309         1.00000000        0.640140101E-7
+     13.943980          1.0000000         0.25758293E-09
+     17.7326679         1.00000000        0.299292076E-7
+# 
+# 04/20/2022 at 18:44 yambo_ph @ unimi-XPS-8930 [start]
+# 04/20/2022 at 18:44                           [end]
+#  
+# Timing   [Min/Max/Average]: 04s/04s/04s
+#
+# .-Input file  yambo.in
+# | optics                           # [R] Linear Response optical properties
+# | dipoles                          # [R] Oscillator strenghts (or dipoles)
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | FFTGvecs=  4653            RL    # [FFT] Plane-waves
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "HF"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | % DipBands
+# |   3 |  6 |                           # [DIP] Bands range for dipoles
+# | %
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 1005             RL    # [BSK] Exchange components
+# | BSENGBlk= 1005             RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
+# | % KfnQP_E
+# |  5.000000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+# | %
+# | BSEprop= "abs esrt"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+# | % BSEQptR
+# |   1 |  9 |                           # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |   3 |  6 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# |   0.00000 | 10.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 1000                   # [BSS] Energy steps
+# | % BLongDir
+# |   0.00000    | 0.100000E-4 |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | WRbsWF                         # [BSS] Write to disk excitonic the WFs
