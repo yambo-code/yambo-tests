@@ -1,6 +1,6 @@
 
-PW=pw.x_dev
-PH=ph.x_dev
+PW=pw.x_6.6
+PH=ph.x_6.6
 
 P2Y=p2y_excph
 YAMBO_PH=yambo_ph_excph
@@ -46,7 +46,7 @@ echo "More shifted grids: shift 1"
 mkdir mos2_s1.save
 cp mos2.save/charge-density.dat mos2.save/data-file-schema.xml mos2_s1.save/
 $PW < input/nscf_shift1.in > mos2.nscf_s1.out
-cd mos2_s2.save
+cd mos2_s1.save
 $P2Y
 $YAMBO_PH  -F ../../OPTICS/With-SOC/MORE_inputs/01_setup
 cd ..
