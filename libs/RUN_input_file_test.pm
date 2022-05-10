@@ -128,6 +128,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("fixsyms")=="1") { $CMD=$CMD." -fixsym"};
  if (&RUN_feature("RToccupations")=="1") { $CMD=$CMD." -rtplot o"};
  if (&RUN_feature("RTdeltaRho")=="1") { $CMD=$CMD." -rtplot d"};
+ if (&RUN_feature("RTGtwotimes")=="1") { $CMD=$CMD." -rtplot g"};
  if (&RUN_feature("RTenergy")=="1") { $CMD=$CMD." -rtmode e"};
  if (&RUN_feature("RTfitbands")=="1") { $CMD=$CMD." -rtmode b"};
  if (&RUN_feature("RTdos")=="1") { $CMD=$CMD." -rtmode d"};
