@@ -48,7 +48,7 @@ if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$R
 $hostname=hostname();
 $host=$ROBOTS{$hostname};
 if ($USER_host and -d "ROBOTS/$USER_host") {$host=$USER_host};
-if (-f "./config/running_robot.pl")  {do "./config/running_robot.pl"};
+if (-f ".running_robot.pl")  {do ".running_robot.pl"};
 #
 if ("$host" eq "") {
   print "\n** WARNING ** Hostname empty.\n";

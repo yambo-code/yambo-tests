@@ -45,7 +45,7 @@ else
  git add ROBOTS/$robot/
  git add ROBOTS/$robot/$user/
  echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
- echo '$'"host='"$robot"';" > config/running_robot.pl
+ echo '$'"host='"$robot"';" > ./running_robot.pl
 fi
 if ! test -d ROBOTS/$robot/$user/SCRIPTS; then
   mkdir -p ROBOTS/$robot/$user/SCRIPTS
@@ -154,7 +154,7 @@ esac
 #
 AC_ARG_WITH(yambo, AC_HELP_STRING([--with-yambo-libs=<path>],[Path to the folder where the test-suite will install the Yambo ext-libs],[32]))
 if test "$with_yambo_libs" = ""; then with_yambo_libs="none"; fi
-echo '$'"ext_libs_path='"$with_yambo_libs"';" >> config/running_robot.pl
+echo '$'"ext_libs_path='"$with_yambo_libs"';" >> ./running_robot.pl
 # ============================================================================
 # System specific setups
 case "${host}" in
