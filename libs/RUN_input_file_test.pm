@@ -57,6 +57,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("BSSmod= \"d\"")=="1")  {$CMD=$CMD." -Ksolver d"};
  if (&RUN_feature("BSSmod= \"s\"")=="1")  {$CMD=$CMD." -Ksolver s"};
  if (&RUN_feature("BSSmod= \"h\"")=="1")  {$CMD=$CMD." -Ksolver h"};
+ if (&RUN_feature("BSSmod= \"hi\"")=="1")  {$CMD=$CMD." -Ksolver hi"};
  if (&RUN_feature("BSSmod= \"hd\"")=="1")  {$CMD=$CMD." -Ksolver hd"};
  if (&RUN_feature("BSSmod= \"dh\"")=="1")  {$CMD=$CMD." -Ksolver hd"};
  if (&RUN_feature("BSSmod= \"hdi\"")=="1")  {$CMD=$CMD." -Ksolver hdi"};
@@ -129,6 +130,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("fixsyms")=="1") { $CMD=$CMD." -fixsym"};
  if (&RUN_feature("RToccupations")=="1") { $CMD=$CMD." -rtplot o"};
  if (&RUN_feature("RTdeltaRho")=="1") { $CMD=$CMD." -rtplot d"};
+ if (&RUN_feature("RTGtwotimes")=="1") { $CMD=$CMD." -rtplot g"};
  if (&RUN_feature("RTenergy")=="1") { $CMD=$CMD." -rtmode e"};
  if (&RUN_feature("RTfitbands")=="1") { $CMD=$CMD." -rtmode b"};
  if (&RUN_feature("RTdos")=="1") { $CMD=$CMD." -rtmode d"};
