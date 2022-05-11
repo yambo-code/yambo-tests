@@ -20,24 +20,25 @@ bsk                          # [R BSK] Bethe Salpeter Equation kernel
 Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
 BSEmod= "causal"             # [BSE] resonant/causal/coupling
 BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-BSSmod= "i"                 # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSSmod= "hi"                 # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
 BSENGexx= 229          RL    # [BSK] Exchange components
 BSENGBlk=1            RL    # [BSK] Screened interaction block size
 Gauge= "length"              # [BSE] Gauge (length|velocity)
 KfnQPdb= "E < 03_GoWo_PPA_corrections/ndb.QP"              # [EXTQP BSK BSS] Database
 % BEnRange
-  1.00000 | 6.0000 | eV    # [BSS] Energy range
+  3.00000 | 5.0000 | eV    # [BSS] Energy range
 %
 % BDmRange
   0.10000 |  0.10000 | eV    # [BSS] Damping range
 %
-BEnSteps= 101                # [BSS] Energy steps
+BEnSteps= 51                # [BSS] Energy steps
 % BLongDir
  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %
 % BSEBands
    2 |  7 |                 # [BSK] Bands range
 %
+BSHayTrs=0.05        # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
 #BSSInvKdiag
 BSSInvMode= "pf"             # [BSS] Inversion solver modality `(f)ull/(p)erturbative`
 BSSInvPFratio= 1.000000      # [BSS] Inversion solver. Ratio between the number of frequencies solved pert/full
