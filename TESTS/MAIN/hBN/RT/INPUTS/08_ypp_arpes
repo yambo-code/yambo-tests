@@ -1,0 +1,46 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+# Version 5.1.0 Revision 21173 Hash (prev commit) 53fc9a9             
+#             Branch is devel-sc-rt-excitons                          
+#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
+#                http://www.yambo-code.org                            
+#
+TDplots                          # [R] TD observables plot
+TDplotmode                       # [R] TD plot control
+RTARPES                          # [R] Transient ARPES
+RTtime                           # [R] Post-Processing kind: function of time
+% EnRngeRt
+  0.00000 | 8.00000 |         eV    # Energy range
+%
+ETStpsRt= 200                    # Total Energy steps
+DampFactor= 0.100000       eV    # Damping parameter
+Gauge= "length"                  # [RT] Gauge (length|velocity)
+States= "1 - 1"                  # Index of the BS state(s)
+BSQindex= 1                      # Q-Index of the BS state(s)
+% TRabsExcPol
+ 1.000000 | 0.000000 | 0.000000 |        # [RT] Polarization of the exciton in the initial state
+%
+
+
+INTERP_mode= "BOLTZ"              # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
+OutputAlat= 3.851738           # [a.u.] Lattice constant used for "alat" ouput format
+cooIn= "rlu"                   # Points coordinates (in) cc/rlu/iku/alat
+cooOut= "rlu"                  # Points coordinates (out) cc/rlu/iku/alat
+
+INTERP_Shell_Fac= 4.00000     # The bigger it is a higher number of shells is used
+#BANDS_path= "L G X"            # BANDS path points labels (G,M,K,L...)
+BANDS_steps= 50                # Number of divisions
+BANDS_built_in                 # Print the bands of the generating points of the circuit using the nearest internal point
+%BANDS_kpts                    # K points of the bands circuit
+0.0 | 0.0 | 0.0 |
+0.333333333333 | 0.333333333333 | 0.0 |
+%
+

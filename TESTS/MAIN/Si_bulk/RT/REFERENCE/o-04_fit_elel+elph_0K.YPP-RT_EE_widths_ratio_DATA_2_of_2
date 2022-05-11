@@ -1,16 +1,16 @@
 #                                                                     
-#  ____  ____     _       ____    ____  ______      ___               
-# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
-#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
-#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
-#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
-#   |______||____| |____||_____||_____||_______/  `.___."             
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
 #                                                                     
 #                                                                     
-#                                                                     
-#       Version 4.5.0 Revision 18068 Hash 2b0c3aab2                   
-#                    Branch is develop                                
-#                        MPI Build                                    
+# Version 5.1.1 Revision 21370 Hash (prev commit) fedd9aea5           
+#             Branch is devel-sc-rt-excitons                          
+#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
 #                http://www.yambo-code.org                            
 #
 #
@@ -18,22 +18,17 @@
 # [RT] K-points                                   :  3
 # [RT] Potential                                  : HARTREE+GS_xc
 # [E-P] Electron-phonon                           : yes
-# [E-P] Completed Collision(CCA)                  : yes
+# [E-P] Iterative time evolution                  : no
 # [E-P] Branches                                  :   1   6
 # [E-P] GF`s Memory steps                         :  2
 # [E-E] Coulomb scattering                        : yes
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
-# [RT] Time step (initial)                        :  0.200000014E-1 [fs]
-# [RT]           (now)                            :  0.200000014E-1 [fs]
-# [RT] NE time (planned)                          :   99.9999924    [fs]
-# [RT]         (done)                             :   100.000008    [fs]
-# [RT] Lifetimes Inter/Intra (user)               :   37.2072372      12.4024124    [fs]
-# [RT]                       (running)            :   37.2072372      12.4024124    [fs]
-# [RT] I/O time                                   :   20.6706886    [fs]
-# [RT] NE steps (done)                            :   5001
+# [RT] Time step     (initial)                    :  0.200000014E-1 [fs]
+# [RT] NE time       (planned)                    :   99.9999924    [fs]
+# [RT] NE steps      (planned)                    :   5001
+# [RT] Lif Extr Inte/Intr(sav)                    :  0.900000036     0.300000012    [fs]
 # [RT] Lifetimes extrapolation                    : yes
-# [dT] Time-Dependent Time step                   : no
 # [RT] Integrator                                 : EULER + RK2 + RWA
 # [RT] Radiative life time                        :   0.00000000    [fs]
 # [RT] Dephasing life time                        :   0.00000000    [fs]
@@ -42,10 +37,16 @@
 # [RT] Diamagnetic term                           : no
 # [RT] Induced field                              : no
 # [DbGd] Double Grid support                      : no
-# [DbGd] Number of k-points                       : 0
 # [DbGd] Used for e-e                             :   0.00000000    [o/o]
 # [CONSTRAINS] N (ee+ep) & dN (ep)                : yes
 # [CONSTRAINS] IP Energy      (ee)                : yes
+# [RT] Time step(now)                             :  0.200000014E-1 [fs]
+# [RT] NE time(done)                              :   100.000008    [fs]
+# [RT] NE steps(done)                             :   5001 [fs]
+# [RT] Lif Extr Inte/Intr(now)                    :  0.900000036     0.300000012    [fs]
+# [dT] Time-Dependent Time step                   : no
+# [RT] I/O time          (input) [fs]             :  0.500000060   
+# [RT] I/O time            (now) [fs]             :  0.500000060   
 #
 #
 # [Gr] Retarded Green`s function                  : HS
@@ -60,41 +61,41 @@
 #    #1                 #2                 #3                 #4
 #   E [eV]             @ 40.0000          @ 45.0000          @ 50.0000
 #
-    -7.89573145       -0.822792575E-2    -0.833861437E-2    -0.845057052E-2
-    -7.20042992       -0.215698685E-1    -0.218085814E-1    -0.220495984E-1
-    -3.01058745       -0.145332694       -0.146240100       -0.147150815   
-    -3.01058745       -0.145326704       -0.146234125       -0.147144362   
-    -1.26205385       -0.365382791       -0.366567343       -0.367750823   
-    -1.26205385       -0.365385175       -0.366568416       -0.367751598   
-     0.00000000       -0.728929520       -0.729597151       -0.730262339   
-     0.00000000       -0.728916645       -0.729582071       -0.730247438   
-     0.00000000       -0.728910983       -0.729577303       -0.730244756   
-    0.437631011        0.545939267        0.546678007        0.547419846   
-    0.437639922        0.541030943        0.541794002        0.542562783   
-     1.51905835        0.286138386        0.287207246        0.288276851   
-     2.44086790        0.214775011        0.215801179        0.216824934   
-     2.44086790        0.214749843        0.215774894        0.216800064   
-     2.44086790        0.214754507        0.215779498        0.216805637   
-     3.18587971        0.129237413        0.130021200        0.130807295   
-     3.18587971        0.129237726        0.130021662        0.130807444   
-     10.1580734        0.280768098E-2     0.285016373E-2     0.289307907E-2
+    -7.89573145       -0.784462783E-2    -0.790991820E-2    -0.797556248E-2
+    -7.20042992       -0.207598209E-1    -0.209017787E-1    -0.210448168E-1
+    -3.01058745       -0.142645672       -0.143196657       -0.143748790   
+    -3.01058745       -0.142639980       -0.143191367       -0.143742889   
+    -1.26205385       -0.361969739       -0.362695307       -0.363417208   
+    -1.26205385       -0.361972570       -0.362696946       -0.363420904   
+     0.00000000       -0.727247119       -0.727653801       -0.728058219   
+     0.00000000       -0.727230728       -0.727638066       -0.728041887   
+     0.00000000       -0.727226138       -0.727632821       -0.728039026   
+    0.437631011        0.543870330        0.544320822        0.544776857   
+    0.437639922        0.538867474        0.539338470        0.539808154   
+     1.51905835        0.282997280        0.283652872        0.284307510   
+     2.44086790        0.211759210        0.212385729        0.213009998   
+     2.44086790        0.211732924        0.212359637        0.212984145   
+     2.44086790        0.211737633        0.212364435        0.212988392   
+     3.18587971        0.126914099        0.127389833        0.127866641   
+     3.18587971        0.126914516        0.127390236        0.127867162   
+     10.1580734        0.267010950E-2     0.269502797E-2     0.272013014E-2
 # 
-# 04/07/2020 at 10:13 ypp_rt @ marini-Galago-UltraPro [start]
-# 04/07/2020 at 10:13                                 [end]
+# 04/11/2022 at 22:26 ypp_rt @ VivoBook [start]
+# 04/11/2022 at 22:26                   [end]
 #
 # .-Input file  yambo.in
-# | RealTime                       # [R] TD Post-Processing
-# | RToccupations                  # [R] Analize time-dependent occupations
-# | RTenergy                       # [R] Post-Processing kind: function of energy
-# | TimeStep= 5.000051     fs      # Time step
+# | RealTime                         # [R] TD Post-Processing
+# | RToccupations                    # [R] Analize time-dependent occupations
+# | RTenergy                         # [R] Post-Processing kind: function of energy
+# | TimeStep= 4.999992         fs    # Time step
 # | % TimeRange
-# |   0.00000 | 50.00000 | fs      # Time-window where processing is done
+# |   0.00000 | 50.00000 |         fs    # Time-window where processing is done
 # | %
 # | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
 # | #SkipFermiFIT                  # [NEGF] Do a Fermi Fit of occupations (and lifetimes ratio)
-# | %QPkrange                      #  generalized Kpoint/Band indices
+# | %QPkrange                        #  generalized Kpoint/Band indices
 # | 1|3|2|7|
 # | %
-# | %QPerange                      #  generalized Kpoint/Energy indices
+# | %QPerange                        #  generalized Kpoint/Energy indices
 # | 1|3| 0.000000|-1.000000|
 # | %
