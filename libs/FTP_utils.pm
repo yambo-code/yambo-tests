@@ -25,13 +25,13 @@
 sub FTP_list
 {
 if (!$ncftpls) {die "Undefined ncftp ( $ncftpls)"};
-&command("$ncftpls -l -u 1945528\@aruba.it -p Qqrmm3vHhrTER3X ftp://ftp.yambo-code.org/www.yambo-code.org/@_");
+&command("$ncftpls -l -u 1945528\@aruba.it -p uQ\\\$66cx\\*W3T\\*Wh ftp://ftp.yambo-code.org/www.yambo-code.org/@_");
 die "\n";
 }
 sub FTP_it
 {
 if (!$ncftp) {die "Undefined ncftp ( $ncftp)"};
-&command("$ncftp -u 1945528\@aruba.it -p Qqrmm3vHhrTER3X ftp.yambo-code.org");
+&command("$ncftp -u 1945528\@aruba.it -p uQ\\\$66cx\\*W3T\\*Wh ftp.yambo-code.org");
 die "\n";
 }
 sub FTP_upload_it
@@ -41,6 +41,6 @@ if (!$ncftpput) {return};
 my $what  = shift;
 my $where = shift;
 #
-&command("$ncftpput -u 1945528\@aruba.it -p Qqrmm3vHhrTER3X ftp.yambo-code.org www.yambo-code.org/$where $what");
+&command("$ncftpput -u 1945528\@aruba.it -p uQ\\\$66cx\\*W3T\\*Wh ftp.yambo-code.org www.yambo-code.org/$where $what");
 }
 1;
