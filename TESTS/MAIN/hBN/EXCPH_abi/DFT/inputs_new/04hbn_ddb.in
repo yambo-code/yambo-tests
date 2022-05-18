@@ -2,43 +2,9 @@
 #Ground state calculation (self consistent part)
  
 ecut   4.0  #40      # Minimal kinetic energy cut-off, in Hartree
-iomode 3             # Thi sis needed only for the WFs
+iomode 3             # This is needed just for the WFs
 
-ndtset 7
- 
-#Ground state calculation (self consistent part)
-prtden1   1       # Print the density, for use by dataset 2
-kptopt1  1        # Option for the automatic generation of k points
-nshiftk1 1
-nband1 10
-rfphon1 0
-nqpt1 0
-getwfk1 0
-prtwf1 1
-prtkbff2 1
- 
-#non-self consistent calculation one dense kpt mesh for EPH below
-getden2 1
-nband2 60
-ngkpt2 8 8 8
-kptopt2 3          # this asks to print the WFKs in full the BZ (use 4 with SOC)
-iscf2 -2
-tolwfr2 1.0d-8
-nshiftk2 1
-istwfk2 *1
-rfphon2 0
-nqpt2 0
-prtwf2 1
- 
-#ddk perturbation
-tolwfr3 1.e-22
-rfelfd3 2
-rfphon3 0
-rfdir3 1 1 1
-getwfk3 1
-nqpt3 1
-prtwf3 1
-
+ndtset 3
 
 #phonon and dde perturbation
 rfdir 1 1 1
@@ -46,26 +12,24 @@ rfatpol 1 4
 getwfk 1
 prtwf 0
 
-# If I set the following variables, later I can use
-#             iqpt4 1
-# in place of
-#              qpt4 0.0 0.0 0.0
-# and similarly for the other q-points
-# Without I must specify 
-#ngqpt 2 2 2
-#shiftq  0 0 0
-#qptopt 3
 
-# DFPT procedure, I need to specify the q-points on a regular grid
-# This will give me dVscf on a coarse grid
-rfphon4 1 nqpt4 1 qpt4 0.0 0.0 0.0
-rfelfd4 3    # gamma point contribution due to Beorn effective charges
-getddk4 3    #
+#######################################################################
+# EPH stuff
+#######################################################################
+getddb_filepath "io_dir/hbn_DDB"
+ddb_ngqpt 2 2 2        # this must be the same as the DFPT step
+ddb_shiftq 0 0 0
+ph_ngqpt 8 8 8         # just for phonon stuff 
+eph_ngqpt_fine 8 8 8   # for electron phonon potential interpolation and integration of self energies etc...
+                       # (both must be a sub-mesh, or the same, of the k-mesh)
 
-rfphon5 1 nqpt5 1 qpt5 0.5 0.0 0.0
-rfphon6 1 nqpt6 1 qpt6 0.0 0.0 0.5
-rfphon7 1 nqpt7 1 qpt7 0.5 0.0 0.5
+# interpolate potential into new DVDB file
+eph_task1 14            # new version by Matteo
+getwfk1 2 getdvdb_filepath1 "io_dir/hbn_DVDB"
 
+
+#### To add extra variables  to select I/O mode related to new elph_task 14 defined by gmatteo
+#### Still to be defined
 
 #######################################################################
 #Common input variables
@@ -74,9 +38,11 @@ toldfe 1.0d-10
  
 pseudos "B.psp8, N.psp8"
 
-ngkpt 2 2 2
-shiftk  0 0 0
+optdriver 7 # need to repeat this for each qpt
+ngkpt 8 8 8
 kptopt 3
+
+shiftk  0 0 0
 
 acell  4.7163728  4.7163728 12.1758362
 rprim    1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
