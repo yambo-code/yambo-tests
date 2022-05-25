@@ -1,6 +1,6 @@
-ABINIT="abinit_9.6"
-MRGDDB="mrgddb_9.6"
-MRGDV="mrgdv_9.6"
+ABINIT="abinit_ibte"
+MRGDDB="mrgddb_ibte"
+MRGDV="mrgdv_ibte"
 A2Y="a2y_a2y"
 
 rm -rf io_dir_new

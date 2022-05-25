@@ -4,19 +4,11 @@
 ecut   4.0  #40      # Minimal kinetic energy cut-off, in Hartree
 iomode 3             # This is needed just for the WFs
 
-ndtset 3
-
-#phonon and dde perturbation
-rfdir 1 1 1
-rfatpol 1 4
-getwfk 1
-prtwf 0
-
 
 #######################################################################
 # EPH stuff
 #######################################################################
-getddb_filepath "io_dir/hbn_DDB"
+getddb_filepath "io_dir_new/hbn_DDB"
 ddb_ngqpt 2 2 2        # this must be the same as the DFPT step
 ddb_shiftq 0 0 0
 ph_ngqpt 8 8 8         # just for phonon stuff 
@@ -24,8 +16,8 @@ eph_ngqpt_fine 8 8 8   # for electron phonon potential interpolation and integra
                        # (both must be a sub-mesh, or the same, of the k-mesh)
 
 # interpolate potential into new DVDB file
-eph_task1 14            # new version by Matteo
-getwfk1 2 getdvdb_filepath1 "io_dir/hbn_DVDB"
+eph_task 14            # new version by Matteo
+getwfk_filepath "io_dir_new/hbn_out_DS2_WFK.nc"  2 getdvdb_filepath "io_dir_new/hbn_DVDB"
 
 
 #### To add extra variables  to select I/O mode related to new elph_task 14 defined by gmatteo
@@ -40,7 +32,7 @@ pseudos "B.psp8, N.psp8"
 
 optdriver 7 # need to repeat this for each qpt
 ngkpt 8 8 8
-kptopt 3
+kptopt 1
 
 shiftk  0 0 0
 

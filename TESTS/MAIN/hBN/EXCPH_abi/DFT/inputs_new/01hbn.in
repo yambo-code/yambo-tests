@@ -1,1 +1,109 @@
-../inputs/01hbn.in
+#h-BN
+#Ground state calculation (self consistent part)
+ 
+ecut   4.0  #40      # Minimal kinetic energy cut-off, in Hartree
+iomode 3             # Thi sis needed only for the WFs
+
+ndtset 7
+ 
+#Ground state calculation (self consistent part)
+prtden1   1       # Print the density, for use by dataset 2
+kptopt1  1        # Option for the automatic generation of k points
+nshiftk1 1
+nband1 10
+rfphon1 0
+nqpt1 0
+getwfk1 0
+prtwf1 1
+prtkbff2 1
+ 
+#non-self consistent calculation one dense kpt mesh for EPH below
+getden2 1
+nband2 60
+ngkpt2 8 8 8
+kptopt2 1          # this asks to print the WFKs in full the BZ (use 4 with SOC)
+iscf2 -2
+tolwfr2 1.0d-8
+nshiftk2 1
+istwfk2 *1
+rfphon2 0
+nqpt2 0
+prtwf2 1
+ 
+#ddk perturbation
+tolwfr3 1.e-22
+rfelfd3 2
+rfphon3 0
+rfdir3 1 1 1
+getwfk3 1
+nqpt3 1
+prtwf3 1
+
+
+#phonon and dde perturbation
+rfdir 1 1 1
+rfatpol 1 4
+getwfk 1
+prtwf 0
+
+# If I set the following variables,
+#             ngqpt 2 2 2
+#             shiftq  0 0 0
+#             qptopt 3
+# later I can use
+#             iqpt4 1
+#             iqpt5 2
+#             ...
+# in place of
+#              qpt4 0.0 0.0 0.0
+#              qpt5 0.5 0.0 0.0
+#              ...
+# 
+
+# DFPT procedure, I need to specify the q-points on a regular grid
+# This will give me dVscf on a coarse grid
+rfphon4 1 nqpt4 1 qpt4 0.0 0.0 0.0
+rfelfd4 3    # gamma point contribution due to Beorn effective charges
+getddk4 3    #
+
+rfphon5 1 nqpt5 1 qpt5 0.5 0.0 0.0
+rfphon6 1 nqpt6 1 qpt6 0.0 0.0 0.5
+rfphon7 1 nqpt7 1 qpt7 0.5 0.0 0.5
+
+
+#######################################################################
+#Common input variables
+#######################################################################
+toldfe 1.0d-10
+ 
+pseudos "B.psp8, N.psp8"
+
+ngkpt 2 2 2
+shiftk  0 0 0
+kptopt 3
+
+acell  4.7163728  4.7163728 12.1758362
+rprim    1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+        -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
+         0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
+ 
+#Definition of the atom types
+ntypat 2           # There are two types of atoms
+znucl 5 7        # The keyword "zatnum" refers to the atomic number of the
+                  # possible type(s) of atom. The pseudopotential(s)
+                  # mentioned in the "files" file must correspond
+                  # to the type(s) of atom.
+#Definition of the atoms
+natom 4           # There are four  atoms
+typat  1 2 1 2
+     xcart    2.3581864000E+00  1.3614995528E+00  0.0000000000E+00
+             -2.3581864000E+00 -1.3614995528E+00  0.0000000000E+00
+             -2.3581864000E+00 -1.3614995528E+00  6.0879181000E+00
+              2.3581864000E+00  1.3614995528E+00  6.0879181000E+00
+
+#Definition of the planewave basis set
+symmorphi 0
+ 
+#Definition of the SCF procedure
+nstep 100          # Maximal number of SCF cycles
+diemac 4.50
