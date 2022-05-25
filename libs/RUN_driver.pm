@@ -123,7 +123,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
   &MY_PRINT($stdout, "\nRunning input: $testname\n") if ($verb);
   #
   # Do actions and create the input (if any)
-  #&RUN_load_actions(".actions");
   &RUN_load_actions(".input");
   #
   # Input file dump
