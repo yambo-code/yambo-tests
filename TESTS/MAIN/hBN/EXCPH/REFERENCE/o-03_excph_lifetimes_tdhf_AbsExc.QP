@@ -1,0 +1,55 @@
+#                                                                     
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
+#                                                                     
+#                                                                     
+# Version 5.1.0 Revision 21744 Hash (prev commit) 1d9c0d132           
+#               Branch is devel-excph-clean                           
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+# === Exciton LifeTimes ===
+#
+# Exciton Sum                  : 1 - 8
+# Exciton States               : 1 - 6
+# Self-Energy broadening       : 5.000000 meV
+# FAN treshold                 : 10.00000 meV
+# PH Doble-Grid                : no
+#
+#    Band               E [eV]             Width [meV]
+#
+        1                  2.323589           0.829953
+        2                  2.323796           0.829953
+        3                  5.738418           15.02920
+         4                 5.738425           15.02920
+         5                 7.620311           13.96057
+         6                 7.620448           13.96057
+# 
+# 05/25/2022 at 23:09 yambo_ph @ unimi-XPS-8930 [start]
+# 05/25/2022 at 23:09                           [end]
+#
+# .-Input file  yambo.in
+# | excph                            # [R] Exction-phonon
+# | ExcGkkp                          # [R][EXCPH] Exciton-Phonon Matrix Elelements
+# | ExcPhLifeT                       # [R][EXCPH] Exciton-Phonon Life-Times
+# | BoseTemp= 10.00000         Kn    # Bosonic Temperature
+# | % ELPhExcStates
+# |   1 |  6 |                           # [EXCPH] Incoming (external) exciton states
+# | %
+# | % ELPhExcSum
+# |   1 |  8 |                           # [EXCPH] Outgoing (virtual) exciton states
+# | %
+# | LoutPath= "none"                 # [EXCPH] Path of the outgoing L
+# | FANdEtresh= 0.010000       eV    # [ELPH] Energy treshold for Fan denominator
+# | % ElPhModes
+# |   1 |  6 |                           # [ELPH] Phonon modes included
+# | %
+# | EXCTemp= 10.00000          Kn    # [EXCPH] Excitonic Temperature (for luminescence spectra)
+# | #NoMatrxEl                     # [EXCPH] Set all exciton-phonon matrix elements to one (for testing purpose)
+# | LDamping= 0.005000         eV    # [EXCPH] Damping of exc-ph self-energy
