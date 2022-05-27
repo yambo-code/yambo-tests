@@ -16,6 +16,8 @@ $MRGDV  < inputs_new/03mrgdv.in  > 03mrgdv_new.log
 echo "abinit final step"
 $ABINIT < inputs_new/04hbn_ddb.files > 04hbn_ddb_new.log
 
-echo "generate the yambo SAVE"
-
+echo "generate the yambo SAVE with GKKP_abinit folder"
+cd io_dir_new
+ln -s hbn_out_GSTORE.nc hbn_out_DS2_GKKP.nc
+$A2Y -F hbn_out_DS2_WFK.nc
 
