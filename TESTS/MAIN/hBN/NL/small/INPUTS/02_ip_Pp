@@ -1,0 +1,63 @@
+#                                                           
+#  ____  ____     _       ____    ____  ______      ___     
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.   
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \  
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |  
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /  
+#   |______||____| |____||_____||_____||_______/  `.___."   
+#                                                           
+#                                                           
+#                                                           
+#        Version 4.0.3 Revision 13710 Hash c3a87be          
+#                     MPI+OpenMP Build                      
+#                http://www.yambo-code.org                  
+#
+nloptics                     # [R NL] Non-linear optics
+NL_Threads=0                 # [OPENMP/NL] Number of threads for nl-optics
+% NLBands
+  1 | 10 |                   # [NL] Bands
+%
+NLstep=   0.0100       fs    # [NL] Real Time step length
+NLverbosity= "high"           # [NL] Verbosity level (low | high)
+NLtime= 65.02843       fs    # [NL] Simulation Time
+NLintegrator= "CRANKNIC"       # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
+NLCorrelation= "IPA"         # [NL] Correlation ("IPA/RPA/TDDFT/LRC/LRW/JGM/SEX")
+NLLrcAlpha= 0.000000         # [NL] Long Range Correction
+% NLEnRange
+ 2.00000 | 8.000000 | eV    # [NL] Energy range
+%
+NLEnSteps=  1               # [NL] Energy steps
+NLDamping= 0.200000    eV    # [NL] Damping
+#UseDipoles                  # [NL] Use Covariant Dipoles (just for test purpose)
+#FrSndOrd                    # [NL] Force second order in Covariant Dipoles
+EvalCurrent                   # [NL] Evaluate the current
+
+
+
+% IOtime
+   0.0500 |   1.0000 |   0.1000 |  fs    # [RT] Time between to consecutive I/O (CARRIERs - GF - OUTPUT)
+%
+% IOCachetime
+   0.0100 |   1.0000 |   fs    # [RT] Time between two consecutive (caching - I/O) of OBSERVABLES
+%
+
+
+% Field1_Dir
+ 0.000000 | 1.000000 | 0.000000 |        # [NL Field1] Versor
+%
+Field1_FrStep= 0.000000  eV    # [NL Field1] Frequency step
+Field1_Int=1000.0        kWLm2 # [NL Field1] Intensity
+Field1_kind= "DELTA"         # [NL Field1] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_Tstart=   10.000  fs    # [NL Field1] Initial Time
+
+% Field2_Freq
+ 4.440000 | 0.000000 | eV        # [NL Field1] Versor
+%
+% Field2_Dir
+ 0.000000 | 1.000000 | 0.000000 |        # [NL Field1] Versor
+%
+Field2_FrStep= 0.000000  eV    # [NL Field1] Frequency step
+Field2_Int=100000.0        kWLm2 # [NL Field1] Intensity
+Field2_FWHM= 5.000000   fs    # [RT Probe] Damping
+Field2_kind= "QSSIN"         # [NL Field1] Kind(SIN|SOFTSIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_Tstart=   0.0100  fs    # [NL Field1] Initial Time
