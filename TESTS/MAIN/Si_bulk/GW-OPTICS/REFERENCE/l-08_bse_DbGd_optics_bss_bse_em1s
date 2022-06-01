@@ -1,12 +1,12 @@
 
 
-____    ____    ___      .___  ___.  .______     ______
-\   \  /   /   /   \     |   \/   |  |   _  \   /  __  \
- \   \/   /   /  ^  \    |  \  /  |  |  |_)  | |  |  |  |
-  \_    _/   /  /_\  \   |  |\/|  |  |   _  <  |  |  |  |
-    |  |    /  _____  \  |  |  |  |  |  |_)  | |  `--"  |
-    |__|   /__/     \__\ |__|  |__|  |______/   \______/
-
+ __    __ ______           ____     _____
+/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
+\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
+ `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
+   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
+     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
+      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -20,159 +20,311 @@ ____    ____    ___      .___  ___.  .______     ______
  <---> [02.06] Energies & Occupations
  <---> [03] Transferred momenta grid and indexing
  <---> [04] External/Internal QP corrections
- <---> E<03_GoWo_PPA_corrections/ndb.QP[ PPA@E  27.21138 = XG 9 = Xb 1-12 = Scb 1-10]
+ <---> E<03_GoWo_PPA_corrections/ndb.QP[ PPA@E  27.21138 * XG 9 * Xb 1-12 * Scb 1-10]
  <---> [dE_from_DB-Nearest K] Exact matches       :  80.00000 [o/o]
  <---> [dE_from_DB-Nearest K] Border points       :  2
  <---> [dE_from_DB-Nearest K] Neighbours    [user]:  1
  <---> [dE_from_DB-Nearest K]               [real]:  3
  <---> [dE_from_DB-Nearest K] Interpolations      :  20.00000 [o/o]
  <---> [dE_from_DB-Nearest K-BARE FineGd] Exact matches       :  0.000000 [o/o]
- <---> [dE_from_DB-Nearest K-BARE FineGd] Border points       :  26
+ <---> [dE_from_DB-Nearest K-BARE FineGd] Border points       :  27
  <---> [dE_from_DB-Nearest K-BARE FineGd] Neighbours    [user]:  1
  <---> [dE_from_DB-Nearest K-BARE FineGd]               [real]:  1
  <---> [dE_from_DB-Nearest K-BARE FineGd] Interpolations      :  100.0000 [o/o]
- <---> [QP_apply] Action to be applied: E<03_GoWo_PPA_corrections/ndb.QP[ PPA@E  27.21138 = XG 9 = Xb 1-12 = Scb 1-10]
+ <---> [QP_apply] Action to be applied: E<03_GoWo_PPA_corrections/ndb.QP[ PPA@E  27.21138 * XG 9 * Xb 1-12 * Scb 1-10]
  <---> [04.01]  QP corrections report
  <---> [01] Dipoles
  <---> [DIP] Checking dipoles header
- <---> [WARNING] DIPOLES database not correct or missing
- <---> [x,Vnl] computed using 8 projectors
- <---> Dipoles: P, V and iR (T) |                                        | [000%] --(E) --(X)
- <---> Dipoles: P, V and iR (T) |########################################| [100%] --(E) --(X)
- <---> [DIP] Writing dipoles header
- <---> [WARNING] Only commutator with non-local pseudopotential contribution included in position and velocity dipol
+ <---> [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
+ <---> [WARNING] In case H contains other non local terms, these are neglected
  <---> [02] Static Dielectric Matrix
  <---> [LA] SERIAL linear algebra
- <---> DbGd@q[1] k->k-q (trans %, q-rad %)]:  1.538462  1.500000
+ <---> DbGd@q[1] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.538462  0.015000
  <---> [DIP] Checking dipoles header
  <---> [X] Upper matrix triangle filled
  <---> Xo@q[1] |                                        | [000%] --(E) --(X)
  <---> Xo@q[1] |########################################| [100%] --(E) --(X)
  <---> X@q[1] |                                        | [000%] --(E) --(X)
  <---> X@q[1] |########################################| [100%] --(E) --(X)
- <---> DbGd@q[2] k->k-q (trans %, q-rad %)]:  1.420118  1.500000
+ <---> DbGd@q[2] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.420118  0.015000
  <---> [FFT-X] Mesh size:  12  12  12
  <---> Xo@q[2] |                                        | [000%] --(E) --(X)
  <---> Xo@q[2] |########################################| [100%] --(E) --(X)
  <---> X@q[2] |                                        | [000%] --(E) --(X)
  <---> X@q[2] |########################################| [100%] --(E) --(X)
- <---> DbGd@q[3] k->k-q (trans %, q-rad %)]:  1.365385  1.500000
+ <---> DbGd@q[3] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.365385  0.015000
  <---> Xo@q[3] |                                        | [000%] --(E) --(X)
  <---> Xo@q[3] |########################################| [100%] --(E) --(X)
  <---> X@q[3] |                                        | [000%] --(E) --(X)
  <---> X@q[3] |########################################| [100%] --(E) --(X)
- <---> DbGd@q[4] k->k-q (trans %, q-rad %)]:  1.364645  1.500000
+ <---> DbGd@q[4] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.364645  0.015000
  <---> Xo@q[4] |                                        | [000%] --(E) --(X)
- <02s> Xo@q[4] |########################################| [100%] --(E) --(X)
- <02s> X@q[4] |                                        | [000%] --(E) --(X)
- <02s> X@q[4] |########################################| [100%] --(E) --(X)
- <02s> DbGd@q[5] k->k-q (trans %, q-rad %)]:  1.365385  1.500000
- <02s> Xo@q[5] |                                        | [000%] --(E) --(X)
+ <---> Xo@q[4] |########################################| [100%] --(E) --(X)
+ <---> X@q[4] |                                        | [000%] --(E) --(X)
+ <---> X@q[4] |########################################| [100%] --(E) --(X)
+ <---> DbGd@q[5] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.365385  0.015000
+ <---> Xo@q[5] |                                        | [000%] --(E) --(X)
  <02s> Xo@q[5] |########################################| [100%] --(E) --(X)
  <02s> X@q[5] |                                        | [000%] --(E) --(X)
  <02s> X@q[5] |########################################| [100%] --(E) --(X)
- <02s> DbGd@q[6] k->k-q (trans %, q-rad %)]:  1.365385  1.500000
+ <02s> DbGd@q[6] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.365385  0.015000
  <02s> Xo@q[6] |                                        | [000%] --(E) --(X)
  <02s> Xo@q[6] |########################################| [100%] --(E) --(X)
  <02s> X@q[6] |                                        | [000%] --(E) --(X)
  <02s> X@q[6] |########################################| [100%] --(E) --(X)
- <02s> DbGd@q[7] k->k-q (trans %, q-rad %)]:  1.390533  1.500000
+ <02s> DbGd@q[7] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.390533  0.015000
  <02s> Xo@q[7] |                                        | [000%] --(E) --(X)
- <03s> Xo@q[7] |########################################| [100%] --(E) --(X)
- <03s> X@q[7] |                                        | [000%] --(E) --(X)
- <03s> X@q[7] |########################################| [100%] --(E) --(X)
- <03s> DbGd@q[8] k->k-q (trans %, q-rad %)]:  1.379438  1.500000
- <03s> Xo@q[8] |                                        | [000%] --(E) --(X)
- <03s> Xo@q[8] |########################################| [100%] --(E) --(X)
- <03s> X@q[8] |                                        | [000%] --(E) --(X)
- <03s> X@q[8] |########################################| [100%] --(E) --(X)
- <03s> DbGd@q[9] k->k-q (trans %, q-rad %)]:  1.360947  1.500000
- <03s> Xo@q[9] |                                        | [000%] --(E) --(X)
+ <02s> Xo@q[7] |########################################| [100%] --(E) --(X)
+ <02s> X@q[7] |                                        | [000%] --(E) --(X)
+ <02s> X@q[7] |########################################| [100%] --(E) --(X)
+ <02s> DbGd@q[8] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.379438  0.015000
+ <02s> Xo@q[8] |                                        | [000%] --(E) --(X)
+ <02s> Xo@q[8] |########################################| [100%] --(E) --(X)
+ <02s> X@q[8] |                                        | [000%] --(E) --(X)
+ <02s> X@q[8] |########################################| [100%] --(E) --(X)
+ <02s> DbGd@q[9] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.360947  0.015000
+ <02s> Xo@q[9] |                                        | [000%] --(E) --(X)
  <03s> Xo@q[9] |########################################| [100%] --(E) --(X)
  <03s> X@q[9] |                                        | [000%] --(E) --(X)
  <03s> X@q[9] |########################################| [100%] --(E) --(X)
- <03s> DbGd@q[10] k->k-q (trans %, q-rad %)]:  1.375740  1.500000
+ <03s> DbGd@q[10] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.375740  0.015000
  <03s> Xo@q[10] |                                        | [000%] --(E) --(X)
  <03s> Xo@q[10] |########################################| [100%] --(E) --(X)
  <03s> X@q[10] |                                        | [000%] --(E) --(X)
  <03s> X@q[10] |########################################| [100%] --(E) --(X)
- <03s> DbGd@q[11] k->k-q (trans %, q-rad %)]:  1.366124  1.500000
+ <03s> DbGd@q[11] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.366124  0.015000
  <03s> Xo@q[11] |                                        | [000%] --(E) --(X)
- <04s> Xo@q[11] |########################################| [100%] --(E) --(X)
- <04s> X@q[11] |                                        | [000%] --(E) --(X)
- <04s> X@q[11] |########################################| [100%] --(E) --(X)
- <04s> DbGd@q[12] k->k-q (trans %, q-rad %)]:  1.360947  1.500000
- <04s> Xo@q[12] |                                        | [000%] --(E) --(X)
- <04s> Xo@q[12] |########################################| [100%] --(E) --(X)
- <04s> X@q[12] |                                        | [000%] --(E) --(X)
- <04s> X@q[12] |########################################| [100%] --(E) --(X)
- <04s> DbGd@q[13] k->k-q (trans %, q-rad %)]:  1.360947  1.500000
- <04s> Xo@q[13] |                                        | [000%] --(E) --(X)
+ <03s> Xo@q[11] |########################################| [100%] --(E) --(X)
+ <03s> X@q[11] |                                        | [000%] --(E) --(X)
+ <03s> X@q[11] |########################################| [100%] --(E) --(X)
+ <03s> DbGd@q[12] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.360947  0.015000
+ <03s> Xo@q[12] |                                        | [000%] --(E) --(X)
+ <03s> Xo@q[12] |########################################| [100%] --(E) --(X)
+ <03s> X@q[12] |                                        | [000%] --(E) --(X)
+ <03s> X@q[12] |########################################| [100%] --(E) --(X)
+ <03s> DbGd@q[13] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.360947  0.015000
+ <03s> Xo@q[13] |                                        | [000%] --(E) --(X)
  <04s> Xo@q[13] |########################################| [100%] --(E) --(X)
  <04s> X@q[13] |                                        | [000%] --(E) --(X)
  <04s> X@q[13] |########################################| [100%] --(E) --(X)
- <04s> DbGd@q[14] k->k-q (trans %, q-rad %)]:  1.366124  1.500000
+ <04s> DbGd@q[14] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.366124  0.015000
  <04s> Xo@q[14] |                                        | [000%] --(E) --(X)
- <05s> Xo@q[14] |########################################| [100%] --(E) --(X)
- <05s> X@q[14] |                                        | [000%] --(E) --(X)
- <05s> X@q[14] |########################################| [100%] --(E) --(X)
- <05s> DbGd@q[15] k->k-q (trans %, q-rad %)]:  1.366864  1.500000
- <05s> Xo@q[15] |                                        | [000%] --(E) --(X)
- <05s> Xo@q[15] |########################################| [100%] --(E) --(X)
- <05s> X@q[15] |                                        | [000%] --(E) --(X)
- <05s> X@q[15] |########################################| [100%] --(E) --(X)
- <05s> DbGd@q[16] k->k-q (trans %, q-rad %)]:  1.366864  1.500000
- <05s> Xo@q[16] |                                        | [000%] --(E) --(X)
- <05s> Xo@q[16] |########################################| [100%] --(E) --(X)
- <05s> X@q[16] |                                        | [000%] --(E) --(X)
- <05s> X@q[16] |########################################| [100%] --(E) --(X)
- <05s> DbGd@q[17] k->k-q (trans %, q-rad %)]:  1.360947  1.500000
- <05s> Xo@q[17] |                                        | [000%] --(E) --(X)
+ <04s> Xo@q[14] |########################################| [100%] --(E) --(X)
+ <04s> X@q[14] |                                        | [000%] --(E) --(X)
+ <04s> X@q[14] |########################################| [100%] --(E) --(X)
+ <04s> DbGd@q[15] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.366864  0.015000
+ <04s> Xo@q[15] |                                        | [000%] --(E) --(X)
+ <04s> Xo@q[15] |########################################| [100%] --(E) --(X)
+ <04s> X@q[15] |                                        | [000%] --(E) --(X)
+ <04s> X@q[15] |########################################| [100%] --(E) --(X)
+ <04s> DbGd@q[16] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.366864  0.015000
+ <04s> Xo@q[16] |                                        | [000%] --(E) --(X)
+ <04s> Xo@q[16] |########################################| [100%] --(E) --(X)
+ <04s> X@q[16] |                                        | [000%] --(E) --(X)
+ <04s> X@q[16] |########################################| [100%] --(E) --(X)
+ <04s> DbGd@q[17] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.360947  0.015000
+ <04s> Xo@q[17] |                                        | [000%] --(E) --(X)
  <05s> Xo@q[17] |########################################| [100%] --(E) --(X)
  <05s> X@q[17] |                                        | [000%] --(E) --(X)
  <05s> X@q[17] |########################################| [100%] --(E) --(X)
- <06s> DbGd@q[18] k->k-q (trans %, q-rad %)]:  1.368343  1.500000
- <06s> Xo@q[18] |                                        | [000%] --(E) --(X)
- <06s> Xo@q[18] |########################################| [100%] --(E) --(X)
- <06s> X@q[18] |                                        | [000%] --(E) --(X)
- <06s> X@q[18] |########################################| [100%] --(E) --(X)
- <06s> DbGd@q[19] k->k-q (trans %, q-rad %)]:  1.360947  1.500000
- <06s> Xo@q[19] |                                        | [000%] --(E) --(X)
- <06s> Xo@q[19] |########################################| [100%] --(E) --(X)
- <06s> X@q[19] |                                        | [000%] --(E) --(X)
- <06s> X@q[19] |########################################| [100%] --(E) --(X)
- <06s> [03] Bethe Salpeter Equation @q1
- <06s> [03.01] Transition Groups build-up @q1
- <06s> [BSK] Size (resonant):  2304
- <06s> [BSK]         (total):  2304
- <06s> [BSK] Matricies      :  1
- <06s> [03.02] Independent Particles properties @q1
- <06s> [DIP] Checking dipoles header
- <06s> [03.03] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
- <06s> [03.03.01] Screened interaction header I/O
- <06s> [FFT-BSK] Mesh size:  12  12  12
- <06s> [03.03.02] Wave-Function Phases
- <06s> [03.03.03] Main kernel loop
- <06s> BSE file not found. Creating an empty one.
- <06s> Kernel |                                        | [000%] --(E) --(X)
- <11s> Kernel |###################                     | [048%] 05s(E) 10s(X)
- <16s> Kernel |########################################| [100%] 10s(E) 10s(X)
- <16s> [03.04] BSE solver(s) @q1
- <16s> [LA] SERIAL linear algebra
- <16s> [03.05] Inversion Solver @q1
- <17s> DbGd@q[1] k->k-q (trans %, q-rad %)]:  1.538462  1.500000
- <17s> IP Absorption |                                        | [000%] --(E) --(X)
- <17s> IP Absorption |########################################| [100%] --(E) --(X)
- <18s> Shifted GF and Absorption |                                        | [000%] --(E) --(X)
- <18s> Shifted GF and Absorption |########################################| [100%] --(E) --(X)
- <19s> Perturbative inversion |                                        | [000%] --(E) --(X)
- <25s> Perturbative inversion |################                        | [041%] 05s(E) 12s(X)
- <30s> Perturbative inversion |###########################             | [068%] 10s(E) 15s(X)
- <35s> Perturbative inversion |#####################################   | [093%] 15s(E) 16s(X)
- <36s> Perturbative inversion |########################################| [100%] 16s(E) 16s(X)
- <36s> [PERTURBATIVE INV@EPS] Converged frequencies :  101
- <36s> [FULL INV@EPS] Frequencies TODO : 0
- <36s> [04] Timing Overview
- <36s> [05] Memory Overview
- <36s> [06] Game Over & Game summary
- <36s> [TIMING]            [Time-Profile]: 36s
+ <05s> DbGd@q[18] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.368343  0.015000
+ <05s> Xo@q[18] |                                        | [000%] --(E) --(X)
+ <05s> Xo@q[18] |########################################| [100%] --(E) --(X)
+ <05s> X@q[18] |                                        | [000%] --(E) --(X)
+ <05s> X@q[18] |########################################| [100%] --(E) --(X)
+ <05s> DbGd@q[19] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.360947  0.015000
+ <05s> Xo@q[19] |                                        | [000%] --(E) --(X)
+ <05s> Xo@q[19] |########################################| [100%] --(E) --(X)
+ <05s> X@q[19] |                                        | [000%] --(E) --(X)
+ <05s> X@q[19] |########################################| [100%] --(E) --(X)
+ <05s> [03] Bethe Salpeter Equation driver
+ <05s> [04] Bethe Salpeter Equation @q1
+ <05s> [04.01] Transition pre-analysis @q1
+ <05s> [04.01.01] Transition Groups build-up @q1
+ <05s> [BSK] Size (resonant):  2304
+ <05s> [BSK]         (total):  2304
+ <05s> [BSK] N. of matrices :  1
+ <05s> [04.01.02] Loading Dipoles @q1
+ <05s> [DIP] Checking dipoles header
+ <05s> BSE dipoles |                                        | [000%] --(E) --(X)
+ <05s> BSE dipoles |########################################| [100%] --(E) --(X)
+ <05s> [04.01.03] Independent Particles properties @q1
+ <05s> IP properties |                                        | [000%] --(E) --(X)
+ <05s> IP properties |########################################| [100%] --(E) --(X)
+ <05s> [04.01.04] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
+ <05s> [04.01.04.01] Screened interaction header I/O
+ <05s> [FFT-BSK] Mesh size:  12  12  12
+ <05s> [04.01.04.02] Wave-Function Phases
+ <05s> [04.01.04.03] Main kernel loop
+ <05s> BSE file not found. Creating an empty one.
+ <05s> Kernel |                                        | [000%] --(E) --(X)
+ <10s> Kernel |##################################      | [086%] 05s(E) 05s(X)
+ <11s> Kernel |########################################| [100%] 05s(E) 05s(X)
+ <11s> [04.01.05] BSE solver(s) @q1
+ <11s> [LA] SERIAL linear algebra
+ <11s> [04.01.06] Inversion Solver @q1
+ <11s> Folding BSE Kernel |                                        | [000%] --(E) --(X)
+ <11s> Folding BSE Kernel |########################################| [100%] --(E) --(X)
+ <12s> DbGd@q[1] k->k-q (trans %, q-rad/q-rad_smallest)]:  1.538462  0.015000
+ <12s> IP Absorption |                                        | [000%] --(E) --(X)
+ <12s> IP Absorption |########################################| [100%] --(E) --(X)
+ <12s> Shifted GF and Absorption |                                        | [000%] --(E) --(X)
+ <12s> Shifted GF and Absorption |########################################| [100%] --(E) --(X)
+ <13s> Perturbative inversion |                                        | [000%] --(E) --(X)
+ <16s> Perturbative inversion |########################################| [100%] 03s(E) 03s(X)
+ <16s> [PERTURBATIVE INV@EPS] Converged frequencies :   51
+ <16s> [FULL INV@EPS] Frequencies TODO : 0
+ <16s> [04.01.07] Haydock Solver for abs @q1, scheme hermitian
+ <16s> [Haydock] Using Double Grid method
+ <16s> [Haydock] Number of Coarse grid BZ kpts : 256
+ <16s> [Haydock] Number of Fine grid BZ kpts   : 16640
+ <17s> [Haydock] Iteration 1
+ <17s> [Haydock] Iteration 2
+ <17s> [Haydock] Iteration 3 Accuracy  30.25115| 0.050000
+ <17s> [Haydock] Iteration 4 Accuracy  55.88891| 0.050000
+ <18s> [Haydock] Iteration 5 Accuracy  458.7058| 0.050000
+ <18s> [Haydock] Iteration 6 Accuracy  19.41772| 0.050000
+ <18s> [Haydock] Iteration 7 Accuracy  138.5134| 0.050000
+ <18s> [Haydock] Iteration 8 Accuracy  40.25928| 0.050000
+ <19s> [Haydock] Iteration 9 Accuracy  31.14179| 0.050000
+ <19s> [Haydock] Iteration 10 Accuracy  31.06652| 0.050000
+ <19s> [Haydock] Iteration 11 Accuracy  54.83055| 0.050000
+ <19s> [Haydock] Iteration 12 Accuracy  94.78410| 0.050000
+ <20s> [Haydock] Iteration 13 Accuracy  32.67708| 0.050000
+ <20s> [Haydock] Iteration 14 Accuracy  23.90339| 0.050000
+ <20s> [Haydock] Iteration 15 Accuracy  207.3466| 0.050000
+ <20s> [Haydock] Iteration 16 Accuracy  58.61624| 0.050000
+ <20s> [Haydock] Iteration 17 Accuracy  14.88455| 0.050000
+ <21s> [Haydock] Iteration 18 Accuracy  16.03452| 0.050000
+ <21s> [Haydock] Iteration 19 Accuracy  6.884452| 0.050000
+ <21s> [Haydock] Iteration 20 Accuracy  24.53967| 0.050000
+ <21s> [Haydock] Iteration 21 Accuracy  24.20039| 0.050000
+ <22s> [Haydock] Iteration 22 Accuracy  12.71549| 0.050000
+ <22s> [Haydock] Iteration 23 Accuracy  67.68796| 0.050000
+ <22s> [Haydock] Iteration 24 Accuracy  6.036116| 0.050000
+ <22s> [Haydock] Iteration 25 Accuracy  17.59936| 0.050000
+ <23s> [Haydock] Iteration 26 Accuracy  9.844380| 0.050000
+ <23s> [Haydock] Iteration 27 Accuracy  9.001141| 0.050000
+ <23s> [Haydock] Iteration 28 Accuracy  5.600897| 0.050000
+ <23s> [Haydock] Iteration 29 Accuracy  88.17586| 0.050000
+ <24s> [Haydock] Iteration 30 Accuracy  349.9186| 0.050000
+ <24s> [Haydock] Iteration 31 Accuracy  8.934811| 0.050000
+ <24s> [Haydock] Iteration 32 Accuracy  4.388402| 0.050000
+ <24s> [Haydock] Iteration 33 Accuracy  7.924747| 0.050000
+ <25s> [Haydock] Iteration 34 Accuracy  8.648834| 0.050000
+ <25s> [Haydock] Iteration 35 Accuracy  2.593860| 0.050000
+ <25s> [Haydock] Iteration 36 Accuracy  1.860767| 0.050000
+ <25s> [Haydock] Iteration 37 Accuracy  2.184688| 0.050000
+ <26s> [Haydock] Iteration 38 Accuracy  3.598791| 0.050000
+ <26s> [Haydock] Iteration 39 Accuracy  11.90642| 0.050000
+ <26s> [Haydock] Iteration 40 Accuracy  5.311942| 0.050000
+ <26s> [Haydock] Iteration 41 Accuracy  8.378248| 0.050000
+ <27s> [Haydock] Iteration 42 Accuracy  11.69038| 0.050000
+ <27s> [Haydock] Iteration 43 Accuracy  2.203573| 0.050000
+ <27s> [Haydock] Iteration 44 Accuracy  3.894206| 0.050000
+ <27s> [Haydock] Iteration 45 Accuracy  7.899973| 0.050000
+ <28s> [Haydock] Iteration 46 Accuracy  2.698564| 0.050000
+ <28s> [Haydock] Iteration 47 Accuracy  1.705954| 0.050000
+ <28s> [Haydock] Iteration 48 Accuracy  9.795852| 0.050000
+ <28s> [Haydock] Iteration 49 Accuracy  1.869625| 0.050000
+ <28s> [Haydock] Iteration 50 Accuracy  3.730559| 0.050000
+ <29s> [Haydock] Iteration 51 Accuracy  3.887904| 0.050000
+ <29s> [Haydock] Iteration 52 Accuracy  5.289714| 0.050000
+ <29s> [Haydock] Iteration 53 Accuracy  2.104318| 0.050000
+ <29s> [Haydock] Iteration 54 Accuracy  1.873903| 0.050000
+ <30s> [Haydock] Iteration 55 Accuracy  1.936953| 0.050000
+ <30s> [Haydock] Iteration 56 Accuracy  11.47889| 0.050000
+ <30s> [Haydock] Iteration 57 Accuracy  7.207578| 0.050000
+ <30s> [Haydock] Iteration 58 Accuracy  0.983350| 0.050000
+ <31s> [Haydock] Iteration 59 Accuracy  7.196512| 0.050000
+ <31s> [Haydock] Iteration 60 Accuracy  0.697242| 0.050000
+ <31s> [Haydock] Iteration 61 Accuracy  1.642875| 0.050000
+ <31s> [Haydock] Iteration 62 Accuracy  2.614315| 0.050000
+ <32s> [Haydock] Iteration 63 Accuracy  1.438759| 0.050000
+ <32s> [Haydock] Iteration 64 Accuracy  0.926794| 0.050000
+ <32s> [Haydock] Iteration 65 Accuracy  33.34526| 0.050000
+ <32s> [Haydock] Iteration 66 Accuracy  0.703832| 0.050000
+ <33s> [Haydock] Iteration 67 Accuracy  5.929151| 0.050000
+ <33s> [Haydock] Iteration 68 Accuracy  1.070348| 0.050000
+ <33s> [Haydock] Iteration 69 Accuracy  0.688277| 0.050000
+ <33s> [Haydock] Iteration 70 Accuracy  1.526705| 0.050000
+ <33s> [Haydock] Iteration 71 Accuracy  3.435183| 0.050000
+ <34s> [Haydock] Iteration 72 Accuracy  0.654429| 0.050000
+ <34s> [Haydock] Iteration 73 Accuracy  11.49740| 0.050000
+ <34s> [Haydock] Iteration 74 Accuracy  0.717984| 0.050000
+ <34s> [Haydock] Iteration 75 Accuracy  0.401800| 0.050000
+ <35s> [Haydock] Iteration 76 Accuracy  1.516761| 0.050000
+ <35s> [Haydock] Iteration 77 Accuracy  3.750497| 0.050000
+ <35s> [Haydock] Iteration 78 Accuracy  1.183952| 0.050000
+ <35s> [Haydock] Iteration 79 Accuracy  2.813966| 0.050000
+ <36s> [Haydock] Iteration 80 Accuracy  0.501704| 0.050000
+ <36s> [Haydock] Iteration 81 Accuracy  0.301711| 0.050000
+ <36s> [Haydock] Iteration 82 Accuracy  1.583898| 0.050000
+ <36s> [Haydock] Iteration 83 Accuracy  5.396234| 0.050000
+ <37s> [Haydock] Iteration 84 Accuracy  7.117151| 0.050000
+ <37s> [Haydock] Iteration 85 Accuracy  1.361966| 0.050000
+ <37s> [Haydock] Iteration 86 Accuracy  0.369086| 0.050000
+ <37s> [Haydock] Iteration 87 Accuracy  0.386632| 0.050000
+ <37s> [Haydock] Iteration 88 Accuracy  1.639540| 0.050000
+ <38s> [Haydock] Iteration 89 Accuracy  6.213667| 0.050000
+ <38s> [Haydock] Iteration 90 Accuracy  2.490326| 0.050000
+ <38s> [Haydock] Iteration 91 Accuracy  0.789302| 0.050000
+ <38s> [Haydock] Iteration 92 Accuracy  0.224702| 0.050000
+ <39s> [Haydock] Iteration 93 Accuracy  0.413663| 0.050000
+ <39s> [Haydock] Iteration 94 Accuracy  1.172938| 0.050000
+ <39s> [Haydock] Iteration 95 Accuracy  0.328445| 0.050000
+ <39s> [Haydock] Iteration 96 Accuracy  1.204709| 0.050000
+ <40s> [Haydock] Iteration 97 Accuracy  0.501906| 0.050000
+ <40s> [Haydock] Iteration 98 Accuracy  0.155929| 0.050000
+ <40s> [Haydock] Iteration 99 Accuracy  0.556031| 0.050000
+ <40s> [Haydock] Iteration 100 Accuracy  0.858014| 0.050000
+ <41s> [Haydock] Iteration 101 Accuracy  0.395813| 0.050000
+ <41s> [Haydock] Iteration 102 Accuracy  0.716274| 0.050000
+ <41s> [Haydock] Iteration 103 Accuracy  0.286764| 0.050000
+ <41s> [Haydock] Iteration 104 Accuracy  0.207747| 0.050000
+ <41s> [Haydock] Iteration 105 Accuracy  0.634050| 0.050000
+ <42s> [Haydock] Iteration 106 Accuracy  0.221425| 0.050000
+ <42s> [Haydock] Iteration 107 Accuracy  0.481932| 0.050000
+ <42s> [Haydock] Iteration 108 Accuracy  0.405544| 0.050000
+ <42s> [Haydock] Iteration 109 Accuracy  0.097253| 0.050000
+ <43s> [Haydock] Iteration 110 Accuracy  0.292203| 0.050000
+ <43s> [Haydock] Iteration 111 Accuracy  0.442969| 0.050000
+ <43s> [Haydock] Iteration 112 Accuracy  0.065766| 0.050000
+ <43s> [Haydock] Iteration 113 Accuracy  0.379555| 0.050000
+ <44s> [Haydock] Iteration 114 Accuracy  0.235710| 0.050000
+ <44s> [Haydock] Iteration 115 Accuracy  0.048744| 0.050000
+ <44s> [Haydock] Iteration 116 Accuracy  0.315982| 0.050000
+ <44s> [Haydock] Iteration 117 Accuracy  0.249016| 0.050000
+ <45s> [Haydock] Iteration 118 Accuracy  0.129749| 0.050000
+ <45s> [Haydock] Iteration 119 Accuracy  0.267100| 0.050000
+ <45s> [Haydock] Iteration 120 Accuracy  0.154585| 0.050000
+ <45s> [Haydock] Iteration 121 Accuracy  0.115742| 0.050000
+ <45s> [Haydock] Iteration 122 Accuracy  0.226205| 0.050000
+ <46s> [Haydock] Iteration 123 Accuracy  0.120872| 0.050000
+ <46s> [Haydock] Iteration 124 Accuracy  0.108392| 0.050000
+ <46s> [Haydock] Iteration 125 Accuracy  0.212050| 0.050000
+ <46s> [Haydock] Iteration 126 Accuracy  0.086865| 0.050000
+ <47s> [Haydock] Iteration 127 Accuracy  0.081758| 0.050000
+ <47s> [Haydock] Iteration 128 Accuracy  0.166600| 0.050000
+ <47s> [Haydock] Iteration 129 Accuracy  0.089616| 0.050000
+ <47s> [Haydock] Iteration 130 Accuracy  0.118776| 0.050000
+ <48s> [Haydock] Iteration 131 Accuracy  0.148274| 0.050000
+ <48s> [Haydock] Iteration 132 Accuracy  0.032121| 0.050000
+ <48s> [Haydock] Iteration 133 Accuracy  0.069956| 0.050000
+ <48s> [Haydock] Iteration 134 Accuracy  0.128276| 0.050000
+ <49s> [Haydock] Iteration 135 Accuracy  0.041009| 0.050000
+ <49s> [Haydock] Iteration 136 Accuracy  0.120426| 0.050000
+ <49s> [Haydock] Iteration 137 Accuracy  0.092008| 0.050000
+ <49s> [Haydock] Iteration 138 Accuracy  0.017020| 0.050000
+ <49s> [Haydock] Iteration 139 Accuracy  0.080921| 0.050000
+ <50s> [Haydock] Iteration 140 Accuracy  0.076178| 0.050000
+ <50s> [Haydock] Iteration 141 Accuracy  0.009372| 0.050000
+ <50s> [Haydock] Iteration 142 Accuracy  0.094023| 0.050000
+ <50s> [Haydock] Iteration 143 Accuracy  0.053987| 0.050000
+ <51s> [Haydock] Iteration 144 Accuracy  0.042267| 0.050000
+ <51s> [Haydock] Iteration 145 Accuracy  0.074337| 0.050000
+ <51s> [Haydock] Iteration 146 Accuracy  0.029733| 0.050000
+ <51s> [Haydock] Iteration 147 Accuracy  0.040187| 0.050000
+ <51s> [05] Timing Overview
+ <51s> [06] Game Over & Game summary
+ <51s> [TIMING]            [Time-Profile]: 51s

@@ -29,7 +29,7 @@ do "config/MODULES.pl";
 do "config/TOOLS.pl";
 do "config/RULES_renaming.pl";
 do "config/RULES_ignore.pl";
-do "config/ROBOTS_list.pl";
+do "ROBOTS/ROBOTS_list.pl";
 #
 # The location of the test-suite directory
 $suite_dir=abs_path();
@@ -48,11 +48,11 @@ if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$R
 $hostname=hostname();
 $host=$ROBOTS{$hostname};
 if ($USER_host and -d "ROBOTS/$USER_host") {$host=$USER_host};
-if (-f "./.running_robot.pl")  {do ".running_robot.pl"};
+if (-f ".running_robot.pl")  {do ".running_robot.pl"};
 #
 if ("$host" eq "") {
   print "\n** WARNING ** Hostname empty.\n";
-  print " Check that the host is specified in config/ROBOTS_list.pl or run with driver.pl -host {YOUR_HOSTNAME}\n\n";
+  print " Check that the host is specified in ROBOTS/ROBOTS_list.pl or run with driver.pl -host {YOUR_HOSTNAME}\n\n";
 }
 #
 # Glob available configurations/flows
@@ -69,10 +69,12 @@ if ($kill_me){
   &KILL_me("driver.pl","perl",$ROBOT_id);
   &KILL_me("yambo",$ROBOT_id);
   &KILL_me("ypp",$ROBOT_id);
+  &KILL_me("job_stopper",$ROBOT_id);
  }else{
   &KILL_me("driver.pl","perl");
   &KILL_me("yambo");
   &KILL_me("ypp");
+  &KILL_me("job_stopper");
  }
  print "Killing action finalized.\n";
  exit;
@@ -373,6 +375,8 @@ if ($RUNNING_suite) {
  exit "\n";
 }
 #
+&command("touch ${ROBOT_string}_DONE &");
+#
 &COMPILE_find_the_diff("clean");
 #
 if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
@@ -383,7 +387,6 @@ if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
 if($AT_LEAST_ONE) { &RUN_global_report("FINAL"); }
 #
 close $rlog;
-#close $tlog; # This is closed in driver.pm inside the branches loop
 close $slog;
 close $elog;
 close $wlog;

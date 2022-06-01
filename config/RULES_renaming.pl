@@ -28,10 +28,14 @@ $N_PATTERNS=0;
 # [1] = REFERENCE
 # [2] = MODIFIED REFERENCE
 #
-#$N_PATTERNS++;
-#$PATTERN_branch[$N_PATTERNS]="devel-phonon-dynamics devel-rt-modularization devel-rt-modularization-merge";
-#$PATTERN[$N_PATTERNS][1]=".qp_gw_ppa_gw_ppa";
-#$PATTERN[$N_PATTERNS][2]=".qp_gw_cohsex_gw_ppa";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN[$N_PATTERNS][1]=".moke_q1_diago";
+$PATTERN[$N_PATTERNS][2]=".moke_q1_diago_bse";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN[$N_PATTERNS][1]=".moke_q1_haydock";
+$PATTERN[$N_PATTERNS][2]=".moke_q1_haydock_bse";
 #
 #$N_PATTERNS++;
 #$PATTERN_branch[$N_PATTERNS]="devel-phonon-dynamics devel-rt-modularization devel-rt-modularization-merge";
