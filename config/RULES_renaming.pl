@@ -56,6 +56,26 @@ $PATTERN_branch[$N_PATTERNS]="devel-rt-rotate";
 $PATTERN[$N_PATTERNS][1]="YPP-2D_occ_dos";
 $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
 #
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-nl";
+$PATTERN[$N_PATTERNS][1]="polarization_F";
+$PATTERN[$N_PATTERNS][2]="NL_pol_F";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-nl";
+$PATTERN[$N_PATTERNS][1]="current_F";
+$PATTERN[$N_PATTERNS][2]="NL_curr_F";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-nl";
+$PATTERN[$N_PATTERNS][1]="e_total_F";
+$PATTERN[$N_PATTERNS][2]="NL_Etot_F";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-nl";
+$PATTERN[$N_PATTERNS][1]="external_potential_F";
+$PATTERN[$N_PATTERNS][2]="NL_ext_pot_F";
+#
 $BRANCH_LIST="4.0 4.1 4.2 4.3 4.4";
 #
 $N_PATTERNS++;
