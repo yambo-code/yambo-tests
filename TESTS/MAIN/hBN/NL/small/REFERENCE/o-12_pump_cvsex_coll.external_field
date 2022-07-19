@@ -1,0 +1,93 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
+#                                                                     
+# Version 5.1.0 Revision 21618 Hash (prev commit) 5b9ac68d8           
+#                   Branch is devel-nl                                
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+# [RT] Bands                                      :   5  10
+# [RT] K-points                                   : 0
+# [RT] Potential                                  : HARTREE+SEX
+# [E-E] Coulomb scattering                        : no
+# [E-E] Coulomb correlation                       : no
+# [E-PHOTON] Scattering                           : no
+# [RT] Time step(now)                             :  0.200000000E-1 [fs]
+# [RT] NE time(done)                              :   0.00000000    [fs]
+# [RT] NE steps(done)                             :  1 [fs]
+# [RT] Lif Extr Inte/Intr(now)                    :  -1.00000000     -1.00000000    [fs]
+# [dT] Time-Dependent Time step                   : no
+#
+#
+#    Time[fs]           E_x/Re[V/m]        E_y/Re[V/m]        E_z/Re[V/m]        E_x/Im[V/m]        E_y/Im[V/m]        E_z/Im[V/m]        Profile  [V/m]     Int. [kW/cm^2]     Fluence[nJ/cm^2]
+#
+      0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+      5.00000000        -0.00000000        -158349.480        -0.00000000        -0.00000000        -0.00000000        -0.00000000         243864.134         6.65584374         0.00000000   
+      10.0000000        -0.00000000         1131432.33        -0.00000000        -0.00000000        -0.00000000        -0.00000000         1133917.70         339.802836         0.00000000   
+      15.0000000        -0.00000000        -1443239.74        -0.00000000        -0.00000000        -0.00000000        -0.00000000         1939637.86         552.900254         0.00000000   
+      20.0000000        -0.00000000         50379.1715        -0.00000000        -0.00000000        -0.00000000        -0.00000000         1220577.30        0.673708264         0.00000000   
+      25.0000000        -0.00000000         193961.971        -0.00000000        -0.00000000        -0.00000000        -0.00000000         282563.099         9.98626323         0.00000000   
+      30.0000000        -0.00000000        -24060.9656        -0.00000000        -0.00000000        -0.00000000        -0.00000000         24064.1828        0.153672422         0.00000000   
+      35.0000000        -0.00000000         535.177456        -0.00000000        -0.00000000        -0.00000000        -0.00000000         753.932231        0.760265798E-4      0.00000000   
+# 
+# 07/19/2022 at 23:43 yambo_nl @ VivoBook [start]
+# 07/19/2022 at 23:43                     [end]
+#  
+# Timing   [Min/Max/Average]: 03s/03s/03s
+#
+# .-Input file  yambo.in
+# | nloptics                         # [R] Non-linear spectroscopy
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | NL_Threads= 1                    # [OPENMP/NL] Number of threads for nl-optics
+# | FFTGvecs=  797             RL    # [FFT] Plane-waves
+# | % NLBands
+# |   5 | 10 |                           # [NL] Bands range
+# | %
+# | NLverbosity= "high"              # [NL] Verbosity level (low | high)
+# | NLstep= 0.020000           fs    # [NL] Time step length
+# | NLtime= 35.00000           fs    # [NL] Simulation Time
+# | NLintegrator= "CRANKNIC"         # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
+# | NLCorrelation= "SEX"             # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
+# | NLLrcAlpha= 0.000000             # [NL] Long Range Correction
+# | % NLEnRange
+# |  0.200000 | 8.000000 |         eV    # [NL] Energy range
+# | %
+# | NLEnSteps= 1                     # [NL] Energy steps
+# | NLDamping= 0.000000        eV    # [NL] Damping (or dephasing)
+# | RADLifeTime= 0.000000      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
+# | #EvalCurrent                   # [NL] Evaluate the current
+# | #FrPolPerdic                   # [DIP] Force periodicity of polarization respect to the external field
+# | HARRLvcs=  547             RL    # [HA] Hartree     RL components
+# | EXXRLvcs= 11               RL    # [XX] Exchange    RL components
+# | % Field1_Freq
+# |  2.000000 | 2.000000 |         eV    # [RT Field1] Frequency
+# | %
+# | Field1_Int= 100.0000       kWLm2 # [RT Field1] Intensity
+# | Field1_Width= 5.000000     fs    # [RT Field1] Width
+# | Field1_FWHM= 11.77410      fs    # [RT Field1] Full Width at Half Maximum (overwrite width if set)
+# | Field1_kind= "DELTA"             # [RT Field1] Kind(SIN|COS|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+# | Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
+# | % Field1_Dir
+# |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor
+# | %
+# | Field1_Tstart= 40.02000    fs    # [RT Field1] Initial Time
+# | % Field2_Freq
+# |  3.000000 | 3.000000 |         eV    # [RT Field2] Frequency
+# | %
+# | Field2_Int=  1000.00       kWLm2 # [RT Field2] Intensity
+# | Field2_Width= 5.000000     fs    # [RT Field2] Width
+# | Field2_FWHM= 11.77410      fs    # [RT Field2] Full Width at Half Maximum (overwrite width if set)
+# | Field2_kind= "QSSIN"             # [RT Field2] Kind(SIN|COS|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+# | Field2_pol= "linear"             # [RT Field2] Pol(linear|circular)
+# | % Field2_Dir
+# |  0.000000 | 1.000000 | 0.000000 |        # [RT Field2] Versor
+# | %
+# | Field2_Tstart= 0.020000    fs    # [RT Field2] Initial Time

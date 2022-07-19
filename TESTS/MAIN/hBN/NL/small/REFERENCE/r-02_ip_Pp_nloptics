@@ -1,19 +1,19 @@
                                                                           
-     **    **    **     ****     ****  ******     *******                 
-    //**  **    ****   /**/**   **/** /*////**   **/////**                
-     //****    **//**  /**//** ** /** /*   /**  **     //**               
-      //**    **  //** /** //***  /** /******  /**      /**               
-       /**   **********/**  //*   /** /*//// **/**      /**               
-       /**  /**//////**/**   /    /** /*    /**//**     **                
-       /**  /**     /**/**        /** /*******  //*******                 
-       //   //      // //         //  ///////    ///////                  
+      __   __     _        __  __       ____      U  ___  u               
+      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
+       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
+      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
+        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
+    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
+     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+                                                                          
                                                                           
     Version 5.1.0 Revision 21618 Hash (prev commit) 5b9ac68d8             
                       Branch is devel-nl                                  
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 07/19/2022 at 17:29 yambo_nl @ VivoBook
+ 07/19/2022 at 17:28 yambo_nl @ VivoBook
  ==================================================
 
  Cores               :  1
@@ -27,11 +27,11 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-02_linear_optics_ip_nloptics
+ Report file         : ./r-02_ip_Pp_nloptics
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 02_linear_optics_ip
+ Job   string        : 02_ip_Pp
  Alt#1 string        : R4
 
  Precision           : DOUBLE
@@ -189,7 +189,7 @@
  [RD./SAVE//ns.kb_pp]------------------------------------------------------------
   Fragmentation                                    : no
  - S/N 004393 ---------------------------------------------- v.05.00.01 r.18825 -
- [WR./02_linear_optics_ip//ndb.dipoles]------------------------------------------
+ [WR./02_ip_Pp//ndb.dipoles]-----------------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
   RL vectors                                       :   797 [WF]
   Fragmentation                                    : yes
@@ -206,7 +206,7 @@
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Teter 93(XC)
  - S/N 004393 ---------------------------------------------- v.05.01.00 r.21618 -
- [WR./02_linear_optics_ip//ndb.Overlap]------------------------------------------
+ [WR./02_ip_Pp//ndb.Overlap]-----------------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
   RL vectors                                       :   797 [WF]
   Fragmentation                                    : yes
@@ -230,28 +230,28 @@
  [NL] Pump and probe configuration: verbosity set to high
 
  [WARNING] Non-linear optics properties can be obtained with SOFTSIN/SIN fields only
- Radiative life-time equal to zero
- Total simulation time       :  35.02843 [fs]
+ Radiative life-time sets equal to the phase lifetime: 6.582119 fs
+ Total simulation time       :  65.02843 [fs]
  Simulation time step        :  0.010000 [fs]
 
   [05.01] Messaging
   =================
 
   ---General---
-  Integrator                 : INVINT
-  Simulation time            :  35.02000 [fs]
+  Integrator                 : CRANKNIC
+  Simulation time            :  65.02000 [fs]
   Step length                :  0.010000 [fs]
-  NE Steps                   :   3503
+  NE Steps                   :   6503
   Correlation                IPA
-  Damping                    :  0.000000 [eV]
-  Dephasing                  :  0.000000 [fs]
-  Radiative LifeTime         : -1.000000 [fs]
+  Damping                    :  0.200000 [eV]
+  Dephasing                  :  6.582119 [fs]
+  Radiative LifeTime         :  6.582119 [fs]
   Efield                     DELTA
   Efield width               :  0.000000 [fs]
   Efield Amplitude      [V/m]:  0.194095E+7
-  Efield                     none
-  Efield width               :  0.000000 [fs]
-  Efield Amplitude      [V/m]:  0.000000
+  Efield                     QSSIN
+  Efield width               :  2.123305 [fs]
+  Efield Amplitude      [V/m]:  0.194095E+8
   Efield T_0                 :  0.000000 [fs]
   Frequencies range          :  2.000000  8.000000
   Frequencies steps          :  1
@@ -261,7 +261,7 @@
   Force Snd Order Dipoles    : no
   Evaluate Current           : yes
   Enforce periodic pol.      : no
-  [RD./02_linear_optics_ip//ndb.dipoles]------------------------------------------
+  [RD./02_ip_Pp//ndb.dipoles]-----------------------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
    RL vectors                                       :   797 [WF]
    Fragmentation                                    : yes
@@ -278,7 +278,7 @@
    Dipoles computed                                 : R V P
    Wavefunctions                                    : Teter 93(XC)
   - S/N 004393 ---------------------------------------------- v.05.01.00 r.21618 -
-  [RD./02_linear_optics_ip//ndb.Overlap]------------------------------------------
+  [RD./02_ip_Pp//ndb.Overlap]-----------------------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
    RL vectors                                       :   797 [WF]
    Fragmentation                                    : yes
@@ -333,43 +333,43 @@
   Initial Current         : -0.68650E-18  0.68228E-18  -0.0000    
   Initial <v>=<[Hloc,r]>  :  0.99461E-09 -0.74726E-09 -0.40594E-12
 
- Timing [Min/Max/Average]: 03s/03s/03s
+ Timing [Min/Max/Average]: 10s/10s/10s
 
  [07] Timing Overview
  ====================
 
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
-                  io_KB_pwscf :      0.0000s CPU (   2 calls,   0.024 msec avg)
+                  io_KB_pwscf :      0.0001s CPU (    2 calls,   0.031 msec avg)
+               io_Double_Grid :      0.0001s CPU
+                   io_COL_CUT :      0.0001s CPU
              RT output (INIT) :      0.0001s CPU
                         io_HF :      0.0001s CPU
-               io_Double_Grid :      0.0001s CPU
-                io_COLLISIONS :      0.0001s CPU (   3 calls,   0.049 msec avg)
-                         io_X :      0.0003s CPU (   4 calls,   0.068 msec avg)
-                 PP_uspp_init :      0.0004s CPU (   9 calls,   0.040 msec avg)
-                   io_COL_CUT :      0.0004s CPU
-               LINEAR ALGEBRA :      0.0004s CPU (  32 calls,   0.012 msec avg)
-                    RT output :      0.0018s CPU (  36 calls,   0.049 msec avg)
-                    FFT_setup :      0.0036s CPU (   5 calls,   0.715 msec avg)
-               eval_G_minus_G :      0.0036s CPU
-                  io_Overlaps :      0.0086s CPU (  15 calls,   0.575 msec avg)
-                     io_QINDX :      0.0094s CPU (   2 calls,   4.721 msec avg)
-                   io_DIPOLES :      0.0106s CPU (  16 calls,   0.659 msec avg)
-                      io_GROT :      0.0122s CPU (   3 calls,   4.056 msec avg)
-                  WF_load_FFT :      0.0135s CPU (   9 calls,   1.503 msec avg)
-      IO_and_Messaging_switch :      0.0153s CPU (7027 calls,   0.002 msec avg)
-              DIPOLE_overlaps :      0.0211s CPU
-                 io_KB_abinit :      0.0218s CPU (   6 calls,   3.633 msec avg)
-                        io_WF :      0.0533s CPU (  31 calls,   1.718 msec avg)
-       DIPOLE_buil_covariants :      0.0618s CPU
-             io_RT_components :      0.0865s CPU ( 110 calls,   0.787 msec avg)
-            DIPOLE_transverse :      0.1035s CPU
-              RT databases IO :      0.1069s CPU (3503 calls,   0.031 msec avg)
-                  NL build_dG :      0.1488s CPU (3503 calls,   0.042 msec avg)
-                NL Integrator :      0.4088s CPU (3503 calls,   0.117 msec avg)
-             NL Berry Pol NEQ :      0.5400s CPU (3504 calls,   0.154 msec avg)
-               NL Hamiltonian :      0.8324s CPU (7006 calls,   0.119 msec avg)
-                      Dipoles :      1.1828s CPU
+                io_COLLISIONS :      0.0002s CPU (    3 calls,   0.065 msec avg)
+                         io_X :      0.0003s CPU (    4 calls,   0.081 msec avg)
+                 PP_uspp_init :      0.0004s CPU (    9 calls,   0.046 msec avg)
+               LINEAR ALGEBRA :      0.0005s CPU (   32 calls,   0.015 msec avg)
+               eval_G_minus_G :      0.0039s CPU
+                    FFT_setup :      0.0052s CPU (    5 calls,   1.036 msec avg)
+                     io_QINDX :      0.0077s CPU (    2 calls,   3.847 msec avg)
+                      io_GROT :      0.0098s CPU (    3 calls,   3.262 msec avg)
+                  WF_load_FFT :      0.0163s CPU (    9 calls,   1.816 msec avg)
+                  io_Overlaps :      0.0172s CPU (   15 calls,   1.145 msec avg)
+              DIPOLE_overlaps :      0.0232s CPU
+                 io_KB_abinit :      0.0264s CPU (    6 calls,   4.402 msec avg)
+      IO_and_Messaging_switch :      0.0286s CPU (13027 calls,   0.002 msec avg)
+                        io_WF :      0.0604s CPU (   31 calls,   1.949 msec avg)
+       DIPOLE_buil_covariants :      0.0739s CPU
+                   io_DIPOLES :      0.0753s CPU (   16 calls,   4.706 msec avg)
+                    RT output :      0.0824s CPU ( 2608 calls,   0.032 msec avg)
+            DIPOLE_transverse :      0.1024s CPU
+             io_RT_components :      0.2159s CPU (  218 calls,   0.990 msec avg)
+              RT databases IO :      0.2609s CPU ( 6503 calls,   0.040 msec avg)
+                  NL build_dG :      0.5383s CPU (13006 calls,   0.041 msec avg)
+                      Dipoles :      1.2536s CPU
+             NL Berry Pol NEQ :      1.9421s CPU (13007 calls,   0.000 sec avg)
+                NL Integrator :      2.3891s CPU (13006 calls,   0.000 sec avg)
+               NL Hamiltonian :      3.1699s CPU (26012 calls,   0.000 sec avg)
 
  [08] Memory Overview
  ====================
@@ -383,11 +383,11 @@
  [09] Game Over & Game summary
  =============================
 
- 07/19/2022 at 17:29 yambo_nl @ VivoBook [start]
+ 07/19/2022 at 17:28 yambo_nl @ VivoBook [start]
  07/19/2022 at 17:29                     [end]
 
- Timing   [Min/Max/Average]: 04s/04s/04s
-             [Time-Profile]: 04s
+ Timing   [Min/Max/Average]: 11s/11s/11s
+             [Time-Profile]: 11s
 
  .-ACKNOWLEDGMENT
  |
@@ -421,16 +421,16 @@
  | %
  | NLverbosity= "high"              # [NL] Verbosity level (low | high)
  | NLstep= 0.010000           fs    # [NL] Time step length
- | NLtime= 35.02843           fs    # [NL] Simulation Time
- | NLintegrator= "INVINT"           # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
+ | NLtime= 65.02843           fs    # [NL] Simulation Time
+ | NLintegrator= "CRANKNIC"         # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
  | NLCorrelation= "IPA"             # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
  | NLLrcAlpha= 0.000000             # [NL] Long Range Correction
  | % NLEnRange
  |  2.000000 | 8.000000 |         eV    # [NL] Energy range
  | %
  | NLEnSteps= 1                     # [NL] Energy steps
- | NLDamping= 0.000000        eV    # [NL] Damping (or dephasing)
- | RADLifeTime=-1.000000      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
+ | NLDamping= 0.200000        eV    # [NL] Damping (or dephasing)
+ | RADLifeTime= 6.582119      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
  | EvalCurrent                    # [NL] Evaluate the current
  | #FrPolPerdic                   # [DIP] Force periodicity of polarization respect to the external field
  | HARRLvcs=  797             RL    # [HA] Hartree     RL components
@@ -447,3 +447,15 @@
  |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor
  | %
  | Field1_Tstart= 0.010000    fs    # [RT Field1] Initial Time
+ | % Field2_Freq
+ |  4.440000 | 0.000000 |         eV    # [RT Field2] Frequency
+ | %
+ | Field2_Int=  100000.       kWLm2 # [RT Field2] Intensity
+ | Field2_Width= 2.123305     fs    # [RT Field2] Width
+ | Field2_FWHM= 5.000000      fs    # [RT Field2] Full Width at Half Maximum (overwrite width if set)
+ | Field2_kind= "QSSIN"             # [RT Field2] Kind(SIN|COS|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+ | Field2_pol= "linear"             # [RT Field2] Pol(linear|circular)
+ | % Field2_Dir
+ |  0.000000 | 1.000000 | 0.000000 |        # [RT Field2] Versor
+ | %
+ | Field2_Tstart= 0.010000    fs    # [RT Field2] Initial Time

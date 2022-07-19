@@ -1,0 +1,83 @@
+#                                                                     
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
+#                                                                     
+# Version 5.1.0 Revision 21618 Hash (prev commit) 5b9ac68d8           
+#                   Branch is devel-nl                                
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+# [RT] Bands                                      :   1  10
+# [RT] K-points                                   : 0
+# [RT] Potential                                  : IP
+# [E-E] Coulomb scattering                        : no
+# [E-E] Coulomb correlation                       : no
+# [E-PHOTON] Scattering                           : no
+# [RT] Time step(now)                             :  0.100000000E-1 [fs]
+# [RT] NE time(done)                              :   0.00000000    [fs]
+# [RT] NE steps(done)                             :  1 [fs]
+# [RT] Lif Extr Inte/Intr(now)                    :  -1.00000000     -1.00000000    [fs]
+# [dT] Time-Dependent Time step                   : no
+#
+#
+#    Time[fs]           E_x/Re[V/m]        E_y/Re[V/m]        E_z/Re[V/m]        E_x/Im[V/m]        E_y/Im[V/m]        E_z/Im[V/m]        Profile  [V/m]     Int. [kW/cm^2]     Fluence[nJ/cm^2]
+#
+      0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+      5.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+      10.0000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+      15.0000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+      20.0000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+      25.0000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+      30.0000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+      35.0000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+      35.0200000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
+# 
+# 07/19/2022 at 17:29 yambo_nl @ VivoBook [start]
+# 07/19/2022 at 17:29                     [end]
+#  
+# Timing   [Min/Max/Average]: 04s/04s/04s
+#
+# .-Input file  yambo.in
+# | nloptics                         # [R] Non-linear spectroscopy
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | NL_Threads= 1                    # [OPENMP/NL] Number of threads for nl-optics
+# | FFTGvecs=  797             RL    # [FFT] Plane-waves
+# | % NLBands
+# |   1 | 10 |                           # [NL] Bands range
+# | %
+# | NLverbosity= "high"              # [NL] Verbosity level (low | high)
+# | NLstep= 0.010000           fs    # [NL] Time step length
+# | NLtime= 35.02843           fs    # [NL] Simulation Time
+# | NLintegrator= "INVINT"           # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
+# | NLCorrelation= "IPA"             # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
+# | NLLrcAlpha= 0.000000             # [NL] Long Range Correction
+# | % NLEnRange
+# |  2.000000 | 8.000000 |         eV    # [NL] Energy range
+# | %
+# | NLEnSteps= 1                     # [NL] Energy steps
+# | NLDamping= 0.000000        eV    # [NL] Damping (or dephasing)
+# | RADLifeTime=-1.000000      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
+# | EvalCurrent                    # [NL] Evaluate the current
+# | #FrPolPerdic                   # [DIP] Force periodicity of polarization respect to the external field
+# | HARRLvcs=  797             RL    # [HA] Hartree     RL components
+# | EXXRLvcs=  797             RL    # [XX] Exchange    RL components
+# | % Field1_Freq
+# |  0.100000 | 0.100000 |         eV    # [RT Field1] Frequency
+# | %
+# | Field1_Int=  1000.00       kWLm2 # [RT Field1] Intensity
+# | Field1_Width= 0.000000     fs    # [RT Field1] Width
+# | Field1_FWHM= 0.000000      fs    # [RT Field1] Full Width at Half Maximum (overwrite width if set)
+# | Field1_kind= "DELTA"             # [RT Field1] Kind(SIN|COS|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+# | Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
+# | % Field1_Dir
+# |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor
+# | %
+# | Field1_Tstart= 0.010000    fs    # [RT Field1] Initial Time
