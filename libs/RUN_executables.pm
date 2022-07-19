@@ -68,6 +68,8 @@ if (-e "NL") {
  undef $yambo_running;
  if ($YPP_NL=="1" or $YPP=="1") 
   {$yambo_exec = "$conf_bin/ypp_nl"}
+ elsif ($YPP_RT=="1") 
+  {$yambo_exec = "$conf_bin/ypp_rt"}
  else
   {$yambo_exec = "$conf_bin/yambo_nl";
    $yambo_running=1}

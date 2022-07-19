@@ -61,7 +61,7 @@ if ("$what" eq "BASIC") {
  $exec_list_basic =   "yambo ypp a2y p2y ";
  if("$mode" eq "cheers"){ $target_list_basic .= "ycheers ypp_sc"; $exec_list_basic .= "ycheers ypp_sc"}
  $exec_sc   = " yambo_sc ypp_sc";
- $exec_nl   = " yambo_nl ypp_nl";
+ $exec_nl   = " yambo_nl ypp_nl ypp_rt";
  $exec_rt   = " yambo_rt ypp_rt";
  $exec_elph = " yambo_ph ypp_ph";
  $exec_ph_dyn = " yambo_ph";
