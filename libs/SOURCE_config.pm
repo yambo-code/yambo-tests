@@ -46,7 +46,16 @@ sub SOURCE_config{
  if(!-d $comp_folder) { &command("mkdir -p $comp_folder"); };
  chdir("$comp_folder");
  &command("rm -f conf_local.sh");
- if (not $ext_libs_path eq "none") {&command("echo YAMBO_EXT_LIBS=$ext_libs_path/$user_module > conf_local.sh")};
+ if (not $ext_libs_path eq "none") {
+  open(FH, '<', "$suite_dir/$conf_path") or die $!;
+  while(<FH>){
+   if ($_ =~ /par-io/) {$PAR_IO=(split(" ",(split("=",$_))[1]))[0]};
+   if ($_ =~ /par-linalg/) {$PAR_LINALG=(split(" ",(split("=",$_))[1]))[0]};
+   if ($_ =~ /slepc-linalg/) {$SLEPC=(split(" ",(split("=",$_))[1]))[0]};
+  }
+  close(FH);
+  &command("echo YAMBO_EXT_LIBS=$ext_libs_path/${user_module}/PAR_IO-${PAR_IO}_PAR_LINALG-${PAR_LINALG}_SLEPC-${SLEPC} > conf_local.sh");
+ };
  &command("cat $suite_dir/$conf_path >> conf_local.sh");
  $string1="\.\/configure";
  $string2="$BRANCH/configure";
