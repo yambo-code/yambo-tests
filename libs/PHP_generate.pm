@@ -294,7 +294,7 @@ return
 sub PHP_upload
 {
 chdir("$suite_dir/backup_and_www/$host/www");
-&command("$ncftpput -R -u 1945528\@aruba.it -p uQ\\\$66cx\\*W3T\\*Wh ftp.yambo-code.org www.yambo-code.org/robots .")
+&FTP_upload_it(".","robots","-R");
 }
 #
 sub get_line{

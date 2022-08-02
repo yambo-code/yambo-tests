@@ -651,6 +651,7 @@ ac_subst_files=''
 ac_user_opts='
 enable_option_checking
 with_host
+enable_ftp
 with_ncftp
 with_ncftpls
 with_ncftpput
@@ -1284,6 +1285,13 @@ if test -n "$ac_init_help"; then
    esac
   cat <<\_ACEOF
 
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --enable-ftp            Stick to standard FTP rather then SFTP. Default is
+                          no.
+
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
@@ -1892,6 +1900,12 @@ fi
 # ============================================================================
 # TOOLS
 # ncftp/ncftpls/ncftpput
+# Check whether --enable-ftp was given.
+if test "${enable_ftp+set}" = set; then :
+  enableval=$enable_ftp;
+fi
+
+#
 
 # Check whether --with-ncftp was given.
 if test "${with_ncftp+set}" = set; then :
@@ -1900,7 +1914,24 @@ else
   with_ncftp="ncftp"
 fi
 
-for ac_prog in $with_ncftp
+
+# Check whether --with-ncftpls was given.
+if test "${with_ncftpls+set}" = set; then :
+  withval=$with_ncftpls;
+else
+  with_ncftpls="ncftpls"
+fi
+
+
+# Check whether --with-ncftpput was given.
+if test "${with_ncftpput+set}" = set; then :
+  withval=$with_ncftpput;
+else
+  with_ncftpput="ncftpput"
+fi
+
+if ! test x"$enable_ftp" = "x"; then
+ for ac_prog in $with_ncftp
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
@@ -1943,16 +1974,7 @@ fi
 done
 test -n "$ncftp" || ncftp="none"
 
-
-
-# Check whether --with-ncftpls was given.
-if test "${with_ncftpls+set}" = set; then :
-  withval=$with_ncftpls;
-else
-  with_ncftpls="ncftpls"
-fi
-
-for ac_prog in $with_ncftpls
+ for ac_prog in $with_ncftpls
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
@@ -1995,16 +2017,7 @@ fi
 done
 test -n "$ncftpls" || ncftpls="none"
 
-
-
-# Check whether --with-ncftpput was given.
-if test "${with_ncftpput+set}" = set; then :
-  withval=$with_ncftpput;
-else
-  with_ncftpput="ncftpput"
-fi
-
-for ac_prog in $with_ncftpput
+ for ac_prog in $with_ncftpput
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
@@ -2046,6 +2059,13 @@ fi
   test -n "$ncftpput" && break
 done
 test -n "$ncftpput" || ncftpput="none"
+
+else
+ ncftp="none";
+ ncftpls="none";
+ ncftpput="none";
+fi
+
 
 
 # wget

@@ -75,14 +75,22 @@ AC_SUBST(hostname)
 # ============================================================================
 # TOOLS
 # ncftp/ncftpls/ncftpput
+AC_ARG_ENABLE(ftp, AC_HELP_STRING([--enable-ftp],[Stick to standard FTP rather then SFTP. Default is no.]))
+#
 AC_ARG_WITH(ncftp, AC_HELP_STRING([--with-ncftp=<exe>],[User-defined ncftp],[32]),[],[with_ncftp="ncftp"]) 
-AC_CHECK_PROGS(ncftp,[$with_ncftp],[none])
-AC_SUBST(ncftp)
 AC_ARG_WITH(ncftpls, AC_HELP_STRING([--with-ncftpls=<exe>],[User-defined ncftpls],[32]),[],[with_ncftpls="ncftpls"]) 
-AC_CHECK_PROGS(ncftpls,[$with_ncftpls],[none])
-AC_SUBST(ncftpls)
 AC_ARG_WITH(ncftpput, AC_HELP_STRING([--with-ncftpput=<exe>],[User-defined ncftpput],[32]),[],[with_ncftpput="ncftpput"]) 
-AC_CHECK_PROGS(ncftpput,[$with_ncftpput],[none])
+if ! test x"$enable_ftp" = "x"; then
+ AC_CHECK_PROGS(ncftp,[$with_ncftp],[none])
+ AC_CHECK_PROGS(ncftpls,[$with_ncftpls],[none])
+ AC_CHECK_PROGS(ncftpput,[$with_ncftpput],[none])
+else
+ ncftp="none";
+ ncftpls="none";
+ ncftpput="none";
+fi
+AC_SUBST(ncftp)
+AC_SUBST(ncftpls)
 AC_SUBST(ncftpput)
 # wget
 AC_ARG_WITH(wget, AC_HELP_STRING([--with-wget=<exe>],[User-defined wget],[32]),[],[with_wget="wget"]) 
