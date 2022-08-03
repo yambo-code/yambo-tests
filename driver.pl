@@ -267,6 +267,8 @@ if (!$RUNNING_suite) {
 #=================
 if ($RUNNING_suite) {
  #
+ $select_conf_file=$user_conf_file;
+ #
  $compilation_failed="no";
  #
  if ($clean) {
