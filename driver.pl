@@ -59,11 +59,6 @@ if ("$host" eq "") {
 #
 &SETUP_files;
 #
-my $len= length($kill_me);
-if ($len eq 0) {
- $kill_me=`whoami`;
- chomp($kill_me);
-}
 if ($kill_me){
  if ($ROBOT_id) {
   &KILL_me("driver.pl","perl",$ROBOT_id);
@@ -394,6 +389,9 @@ close $elog;
 close $wlog;
 close $ulog;
 close $flog;
+#
+# Kill the job stoppers 
+&KILL_me("job_stopper",$ROBOT_string);
 #
 if ( ($backup_logs eq "yes" and $RUNNING_suite) or ($backup_logs eq "yes" and not $RUNNING_suite)) {
  &UTILS_backup();

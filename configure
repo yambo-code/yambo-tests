@@ -587,8 +587,10 @@ PACKAGE_URL=''
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
 PERL_LIB
+test_suite_dir
 grep_cmd
 NP_cmd
+source_dir
 rsync
 txt2html
 awk
@@ -1846,6 +1848,8 @@ username=`whoami`
 robot="$hostname"
 user="$username"
 if test "$domainame" != ""; then robot="$hostname.$domainame"; fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking the robot name" >&5
+$as_echo_n "checking the robot name... " >&6; }
 
 # Check whether --with-host was given.
 if test "${with_host+set}" = set; then :
@@ -1855,8 +1859,13 @@ else
 fi
 
 robot="$with_host"
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking the $robot/$user ROBOT" >&5
-$as_echo_n "checking the $robot/$user ROBOT... " >&6; }
+if test -f .running_robot.pl; then
+ robot=`head -n 1 .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $robot" >&5
+$as_echo "$robot" >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking the $robot/$user configuration" >&5
+$as_echo_n "checking the $robot/$user configuration... " >&6; }
 if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -d ROBOTS/$robot/$user/FLOWS; then
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: found" >&5
 $as_echo "found" >&6; }
@@ -2341,7 +2350,7 @@ if test $rsync = "none"; then as_fn_error $? "Please provide the path to a worki
 if ! test -f ROBOTS/$robot/$user/MODULES; then
  { $as_echo "$as_me:${as_lineno-$LINENO}: Filling $robot/$user/MODULES" >&5
 $as_echo "$as_me: Filling $robot/$user/MODULES" >&6;}
- cp config/SAMPLE_modules    ROBOTS/$robot/$user/MODULES
+ cp config/SAMPLE_modules ROBOTS/$robot/$user/MODULES
 else
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: found an existing MODULES file" >&5
 $as_echo "found an existing MODULES file" >&6; }
@@ -2365,6 +2374,7 @@ case $with_yambo in
    fi
    { $as_echo "$as_me:${as_lineno-$LINENO}: result: found an existing BRANCHES file" >&5
 $as_echo "found an existing BRANCHES file" >&6; }
+   source_dir=`head -n 1 ROBOTS/$robot/$user/BRANCHES| sed 's/#//' | cut -d ' ' -f 1`
    ;;
   *)
     if test -f ROBOTS/$robot/$user/BRANCHES; then
@@ -2383,13 +2393,14 @@ $as_echo "$with_yambo already in the BRANCHES file" >&6; }
       fi
     else
       if test -f $with_yambo/driver/yambo.h ; then
-         { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
 $as_echo "$with_yambo" >&6; }
-         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+        echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
       fi
     fi
     ;;
 esac
+
 #
 # ... libraries
 #
@@ -2400,7 +2411,9 @@ if test "${with_yambo+set}" = set; then :
 fi
 
 if test "$with_yambo_libs" = ""; then with_yambo_libs="none"; fi
-echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
+if ! test -f .running_robot.pl; then
+ echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
+fi
 # ============================================================================
 # System specific setups
 case "${host}" in
@@ -2425,11 +2438,12 @@ git config credential.helper store
 # ============================================================================
 # PERL_LIB
 #
-PERL_LIB=`pwd`
-PERL_LIB="${PERL_LIB}/libs"
+test_suite_dir=`pwd`
+PERL_LIB="${test_suite_dir}/libs"
+
 
 # ============================================================================
-ac_config_files="$ac_config_files config/MODULES.pl config/TOOLS.pl"
+ac_config_files="$ac_config_files config/MODULES.pl config/TOOLS.pl scripts/branch_continuous_testing.tcsh scripts/reset.sh scripts/test-suite-launcher.tcsh"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3138,6 +3152,9 @@ do
   case $ac_config_target in
     "config/MODULES.pl") CONFIG_FILES="$CONFIG_FILES config/MODULES.pl" ;;
     "config/TOOLS.pl") CONFIG_FILES="$CONFIG_FILES config/TOOLS.pl" ;;
+    "scripts/branch_continuous_testing.tcsh") CONFIG_FILES="$CONFIG_FILES scripts/branch_continuous_testing.tcsh" ;;
+    "scripts/reset.sh") CONFIG_FILES="$CONFIG_FILES scripts/reset.sh" ;;
+    "scripts/test-suite-launcher.tcsh") CONFIG_FILES="$CONFIG_FILES scripts/test-suite-launcher.tcsh" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -3587,3 +3604,4 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
 
+chmod ug+x scripts/*sh

@@ -183,10 +183,9 @@ if (not "$ERROR" eq "OK") {
  return "FAIL";
 }
 #
-# NCDUMP/NCCOPY
+# NCDUMP
 #
 my $sys_ncdump = `which ncdump`; chomp($sys_ncdump);
-my $sys_nccopy = `which nccopy`; chomp($sys_nccopy);
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
@@ -196,16 +195,6 @@ if (-e "$conf_bin/ncdump") {
  &MY_PRINT($stdout, "\n               ncdump : $ncdump");
 }else{ 
  die "\n ncdump not found\n";
-}
-if (-e "$conf_bin/nccopy") {
- $nccopy = "$conf_bin/nccopy"; 
- chomp($nccopy);
- &MY_PRINT($stdout, "\n               nccopy : $nccopy");
-}elsif(-e $sys_nccopy) { 
- $nccopy = "$sys_nccopy"; 
- &MY_PRINT($stdout, "\n               nccopy : $nccopy");
-}else{ 
- &MY_PRINT($stdout, "\n               nccopy : not found");
 }
 #
 # Rename the conf/comp logs

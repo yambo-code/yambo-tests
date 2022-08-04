@@ -34,9 +34,14 @@ username=`whoami`
 robot="$hostname"
 user="$username"
 if test "$domainame" != ""; then robot="$hostname.$domainame"; fi
+AC_MSG_CHECKING([the robot name])
 AC_ARG_WITH(host, AC_HELP_STRING([--with-host=<HOST>],[User-defined HOST],[32]),[],[with_host="$robot"]) 
 robot="$with_host"
-AC_MSG_CHECKING([the $robot/$user ROBOT])
+if test -f .running_robot.pl; then
+ robot=`head -n 1 .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+fi
+AC_MSG_RESULT($robot)
+AC_MSG_CHECKING([the $robot/$user configuration])
 if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -d ROBOTS/$robot/$user/FLOWS; then
  AC_MSG_RESULT(found)
 else
@@ -119,7 +124,7 @@ if test $rsync = "none"; then AC_MSG_ERROR([Please provide the path to a working
 #
 if ! test -f ROBOTS/$robot/$user/MODULES; then
  AC_MSG_NOTICE(Filling $robot/$user/MODULES)
- cp config/SAMPLE_modules    ROBOTS/$robot/$user/MODULES
+ cp config/SAMPLE_modules ROBOTS/$robot/$user/MODULES
 else
  AC_MSG_RESULT(found an existing MODULES file)
 fi
@@ -135,6 +140,7 @@ case $with_yambo in
      AC_MSG_ERROR([Please provide the path to the Yambo source using the --with-yambo=<PATH> option])
    fi
    AC_MSG_RESULT(found an existing BRANCHES file)
+   source_dir=`head -n 1 ROBOTS/$robot/$user/BRANCHES| sed 's/#//' | cut -d ' ' -f 1`
    ;;
   *) 
     if test -f ROBOTS/$robot/$user/BRANCHES; then
@@ -151,18 +157,21 @@ case $with_yambo in
       fi
     else
       if test -f $with_yambo/driver/yambo.h ; then
-         AC_MSG_RESULT($with_yambo)
-         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+        AC_MSG_RESULT($with_yambo)
+        echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
       fi
     fi
     ;;
 esac
+AC_SUBST(source_dir)
 #
 # ... libraries
 #
 AC_ARG_WITH(yambo, AC_HELP_STRING([--with-yambo-libs=<path>],[Path to the folder where the test-suite will install the Yambo ext-libs],[32]))
 if test "$with_yambo_libs" = ""; then with_yambo_libs="none"; fi
-echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
+if ! test -f .running_robot.pl; then
+ echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
+fi
 # ============================================================================
 # System specific setups
 case "${host}" in
@@ -187,9 +196,11 @@ git config credential.helper store
 # ============================================================================
 # PERL_LIB
 #
-PERL_LIB=`pwd`	
-PERL_LIB="${PERL_LIB}/libs"
+test_suite_dir=`pwd`	
+PERL_LIB="${test_suite_dir}/libs"
+AC_SUBST(test_suite_dir)
 AC_SUBST(PERL_LIB)
 # ============================================================================
-AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl])
+AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl scripts/branch_continuous_testing.tcsh scripts/reset.sh scripts/test-suite-launcher.tcsh])
 AC_OUTPUT
+chmod ug+x scripts/*sh

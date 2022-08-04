@@ -53,7 +53,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "as_master"      => \$update_as_master,
             "upload=s"       => \$upload_test,
             "colors"         => \$use_colors,
-            "kill:s"         => \$kill_me,
+            "kill"           => \$kill_me,
             "edit:s"         => \$edit,
             "flow=s"         => \$flow,
             "autotest"       => \$autotest,
@@ -92,6 +92,7 @@ print <<ROBOT_info
   Available  CPU conf: $cpu_avail
   Available Compilers: $conf_avail
   Available     flows: $flows_avail
+  Available    stamps: $stamps
 
   Available   modules:
 
@@ -104,6 +105,8 @@ for( $i = 1; $i <= $n_modules; $i = $i + 1 )
 }
 print "\n";
 
+if ($#scripts_avail>0)
+{
 print <<SCRIPTS_info
   Available   scripts: 
 SCRIPTS_info
@@ -114,6 +117,8 @@ for( $i = 0; $i <= $#scripts_avail; $i = $i + 1 )
 }
 print "\n";
 }
+
+}
 sub UTILS_usage {
 
 if ($help>=1) {
@@ -123,7 +128,7 @@ if ($help>=1) {
            
    where <ARGS> must include at least one of:
              -h                     This help & status (use -h -h to see more options).
-             -kill    <USER>        Kill the test-suite runs for user <USER>. If not given use the current one.
+             -kill                  Kill and stop all current test-suite components running. 
              -i                     Robot info
              -l       [<SET>]       List available SETs (-l) or input files for a SET (-l <SET>).
              -c                     Clean.

@@ -1,0 +1,42 @@
+#!/usr/bin/tcsh
+#
+if ( $#argv == 0 ) then
+ echo 
+ echo "branch_continuous_testing.tcsh -b BRANCH"
+ echo 
+ exit
+endif
+#
+@ n = 0
+while ( $n < $#argv)
+ @ n += 1
+ if ( "$argv[$n]" == "-b" ) then
+  @ n += 1
+  set branch="$argv[$n]"
+ endif
+ if ( "$argv[$n]" == "-s" ) then
+  @ n += 1
+  set SRC="$argv[$n]"
+ endif
+ if ( "$argv[$n]" == "-r" ) then
+  @ n += 1
+  set robot="$argv[$n]"
+ endif
+end
+#
+set robot_dir=ROBOTS/@robot@/@user@
+#
+while ( 1 > 0) 
+ cd @source_dir@
+ git checkout $branch >& /dev/null
+ set last_hash=`git log --pretty=format:"%h" | head -n 1` 
+ cd @test_suite_dir@
+ if ( ! -f "$robot_dir/STAMPS/$branch.$last_hash" ) then
+  rm -f $robot_dir/STAMPS/$branch.*
+  touch $robot_dir/STAMPS/$branch.$last_hash
+  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f test -c serial_io.sh 
+  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_PIO   -f test -c parallel_io.sh 
+  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_OPENMPI-4.1.4_SIO -f test -c serial_io.sh 
+  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m INTEL_SIO                   -f test -c serial_io.sh 
+ endif
+end
