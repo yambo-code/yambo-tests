@@ -65,10 +65,10 @@ if (print_me == "yes"){print "module load "\$0 };
 EOF
 cat ROBOTS/@robot@/@user@/MODULES | awk -f script.awk > module.tcsh
 chmod u+x module.tcsh
-source module.tcsh 2>&1
+source module.tcsh 
 rm -f module.tcsh script.awk
-git checkout $tbranch 2>&1
-git pull 2>&1
+git checkout $tbranch 
+git pull 
 if ( "$flow" == "ext-libs" ) then
  ./driver.pl -compile ext-libs -branch $ybranch -module $module $conf
 else
