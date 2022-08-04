@@ -31,12 +31,19 @@ while ( 1 > 0)
  git checkout $branch >& /dev/null
  set last_hash=`git log --pretty=format:"%h" | head -n 1` 
  cd @test_suite_dir@
+ #
+ # count the running robots
+ set NR=`ls /tmp/*is_running |wc -l`
+ if ( $NR > 3 ) continue
+ #
  if ( ! -f "$robot_dir/STAMPS/$branch.$last_hash" ) then
-  rm -f $robot_dir/STAMPS/$branch.*
-  touch $robot_dir/STAMPS/$branch.$last_hash
+  touch /tmp/@robot@_is_running
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f test -c serial_io.sh 
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_PIO   -f test -c parallel_io.sh 
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_OPENMPI-4.1.4_SIO -f test -c serial_io.sh 
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m INTEL_SIO                   -f test -c serial_io.sh 
+  rm -f $robot_dir/STAMPS/$branch.*
+  touch $robot_dir/STAMPS/$branch.$last_hash
+  rm -f /tmp/@robot@_is_running
  endif
 end
