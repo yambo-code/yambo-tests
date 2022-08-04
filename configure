@@ -663,6 +663,7 @@ with_awk
 with_txt2html
 with_rsync
 with_yambo
+with_yambo_libs
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1873,10 +1874,7 @@ else
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: created" >&5
 $as_echo "created" >&6; }
  mkdir -p ROBOTS/$robot/$user
- git add ROBOTS/$robot/
- git add ROBOTS/$robot/$user/
  echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
- echo '$'"host='"$robot"';" > .running_robot.pl
 fi
 if ! test -d ROBOTS/$robot/$user/SCRIPTS; then
   mkdir -p ROBOTS/$robot/$user/SCRIPTS
@@ -2405,15 +2403,14 @@ esac
 # ... libraries
 #
 
-# Check whether --with-yambo was given.
-if test "${with_yambo+set}" = set; then :
-  withval=$with_yambo;
+# Check whether --with-yambo_libs was given.
+if test "${with_yambo_libs+set}" = set; then :
+  withval=$with_yambo_libs;
 fi
 
 if test "$with_yambo_libs" = ""; then with_yambo_libs="none"; fi
-if ! test -f .running_robot.pl; then
- echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
-fi
+echo '$'"host='"$robot"';" > .running_robot.pl
+echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
 # ============================================================================
 # System specific setups
 case "${host}" in
