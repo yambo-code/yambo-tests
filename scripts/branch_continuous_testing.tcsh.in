@@ -27,7 +27,7 @@ mkdir -p $branch_dir/logs
 while ( 1 > 0) 
  #
  cd @source_dir@
- git checkout $branch >& /dev/null
+ git checkout $branch 2>&1
  set last_hash=`git log --pretty=format:"%h" | head -n 1` 
  cd @test_suite_dir@
  #
@@ -49,8 +49,8 @@ while ( 1 > 0)
   #
   touch ~/yambo-testing/@robot@_is_running
   rm -f $branch_dir/last.log
-  @test_suite_dir@/scripts/reset.sh >& /dev/null
-  set flow="test"
+  @test_suite_dir@/scripts/reset.sh 
+  #set flow="test"
   set flow="SER_PD8_PR8_PS8_POS8"
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f $flow -c serial_io.sh -b > $log_dir/log-@robot@-${TIME} 
   ln -s $log_dir/log-@robot@-${TIME} $branch_dir/last.log
@@ -62,7 +62,7 @@ while ( 1 > 0)
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_OPENMPI-4.1.4_SIO -f $flow -c serial_io.sh -b >> $log_dir/log-@robot@-${TIME}
   set flow="SER_PD8"
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m INTEL_SIO                   -f $flow -c serial_io.sh -r >> $log_dir/log-@robot@-${TIME}
-  @test_suite_dir@/driver.pl -kill >& /dev/null
+  @test_suite_dir@/driver.pl -kill >  /dev/null
   rm -f $branch_dir/last_tested_hash.*
   touch $branch_dir/last_tested_hash.$last_hash
   rm -f ~/yambo-testing/@robot@_is_running
