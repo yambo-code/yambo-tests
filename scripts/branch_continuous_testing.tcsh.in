@@ -2,7 +2,7 @@
 #
 if ( $#argv == 0 ) then
  echo 
- echo "branch_continuous_testing.tcsh -b BRANCH"
+ echo "branch_continuous_testing.tcsh -b BRANCH -r ROBOT"
  echo 
  exit
 endif
@@ -14,17 +14,15 @@ while ( $n < $#argv)
   @ n += 1
   set branch="$argv[$n]"
  endif
- if ( "$argv[$n]" == "-s" ) then
-  @ n += 1
-  set SRC="$argv[$n]"
- endif
  if ( "$argv[$n]" == "-r" ) then
   @ n += 1
   set robot="$argv[$n]"
  endif
 end
 #
-set robot_dir=ROBOTS/@robot@/@user@
+set branch_dir=~/yambo-testing/$branch
+mkdir -p $branch_dir
+mkdir -p $branch_dir/logs
 #
 while ( 1 > 0) 
  cd @source_dir@
@@ -32,18 +30,32 @@ while ( 1 > 0)
  set last_hash=`git log --pretty=format:"%h" | head -n 1` 
  cd @test_suite_dir@
  #
+ # stop if needed
+ if ( -f ~/stop_the_@robot@ ) break
+ #
  # count the running robots
- set NR=`ls /tmp/*is_running |wc -l`
+ set NR=`find ~/yambo-testing/ -name '*is_running' |wc -l`
  if ( $NR > 3 ) continue
  #
- if ( ! -f "$robot_dir/STAMPS/$branch.$last_hash" ) then
-  touch /tmp/@robot@_is_running
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f test -c serial_io.sh 
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_PIO   -f test -c parallel_io.sh 
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_OPENMPI-4.1.4_SIO -f test -c serial_io.sh 
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m INTEL_SIO                   -f test -c serial_io.sh 
-  rm -f $robot_dir/STAMPS/$branch.*
-  touch $robot_dir/STAMPS/$branch.$last_hash
-  rm -f /tmp/@robot@_is_running
+ set YEAR=`date +%Y`
+ set MONTH=`date +%m`
+ set DAY=`date +%d`
+ set TIME=`date +%H-%M`
+ set log_dir="$branch_dir/logs/$YEAR/$MONTH/$DAY"
+ mkdir -p $log_dir
+ #
+ if ( ! -f "$branch_dir/last_tested_hash.$last_hash" ) then
+  touch ~/yambo-testing/@robot@_is_running
+  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f test -c serial_io.sh > $log_dir/log-@robot@-${TIME} 
+  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_PIO   -f test -c parallel_io.sh >> $log_dir/log-@robot@-${TIME}
+  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_OPENMPI-4.1.4_SIO -f test -c serial_io.sh >> $log_dir/log-@robot@-${TIME}
+  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m INTEL_SIO                   -f test -c serial_io.sh >> $log_dir/log-@robot@-${TIME}
+  @test_suite_dir@/driver.pl -c
+  @test_suite_dir@/driver.pl -kill
+  rm -f $branch_dir/last_tested_hash.*
+  touch $branch_dir/last_tested_hash.$last_hash
+  rm -f ~/yambo-testing/@robot@_is_running
+  rm -f $branch_dir/last.log 
+  ln -s $log_dir/log-@robot@-${TIME} $branch_dir/last.log
  endif
 end

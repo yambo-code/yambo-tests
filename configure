@@ -2375,27 +2375,28 @@ $as_echo "found an existing BRANCHES file" >&6; }
    source_dir=`head -n 1 ROBOTS/$robot/$user/BRANCHES| sed 's/#//' | cut -d ' ' -f 1`
    ;;
   *)
-    if test -f ROBOTS/$robot/$user/BRANCHES; then
-      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
-      if ! test x"$GREP" = "x0"; then
-       if test -f $with_yambo/driver/yambo.F ; then
-         { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
-$as_echo "$with_yambo" >&6; }
-         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
-       else
-         as_fn_error $? "could not locate the Yambo source" "$LINENO" 5
-       fi
-      else
-       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo already in the BRANCHES file" >&5
-$as_echo "$with_yambo already in the BRANCHES file" >&6; }
-      fi
-    else
-      if test -f $with_yambo/driver/yambo.h ; then
+   if test -f ROBOTS/$robot/$user/BRANCHES; then
+     GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
+     if ! test x"$GREP" = "x0"; then
+      if test -f $with_yambo/driver/yambo.F ; then
         { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
 $as_echo "$with_yambo" >&6; }
         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+      else
+        as_fn_error $? "could not locate the Yambo source" "$LINENO" 5
       fi
-    fi
+     else
+      { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo already in the BRANCHES file" >&5
+$as_echo "$with_yambo already in the BRANCHES file" >&6; }
+     fi
+   else
+     if test -f $with_yambo/driver/yambo.F ; then
+       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
+$as_echo "$with_yambo" >&6; }
+       echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+     fi
+   fi
+   source_dir=$with_yambo
     ;;
 esac
 

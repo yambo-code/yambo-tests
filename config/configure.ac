@@ -140,24 +140,25 @@ case $with_yambo in
    source_dir=`head -n 1 ROBOTS/$robot/$user/BRANCHES| sed 's/#//' | cut -d ' ' -f 1`
    ;;
   *) 
-    if test -f ROBOTS/$robot/$user/BRANCHES; then
-      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
-      if ! test x"$GREP" = "x0"; then 
-       if test -f $with_yambo/driver/yambo.F ; then
-         AC_MSG_RESULT($with_yambo)
-         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
-       else
-         AC_MSG_ERROR([could not locate the Yambo source])
-       fi
-      else
-       AC_MSG_RESULT($with_yambo already in the BRANCHES file)
-      fi
-    else
-      if test -f $with_yambo/driver/yambo.h ; then
+   if test -f ROBOTS/$robot/$user/BRANCHES; then
+     GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
+     if ! test x"$GREP" = "x0"; then 
+      if test -f $with_yambo/driver/yambo.F ; then
         AC_MSG_RESULT($with_yambo)
         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+      else
+        AC_MSG_ERROR([could not locate the Yambo source])
       fi
-    fi
+     else
+      AC_MSG_RESULT($with_yambo already in the BRANCHES file)
+     fi
+   else
+     if test -f $with_yambo/driver/yambo.F ; then
+       AC_MSG_RESULT($with_yambo)
+       echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+     fi
+   fi
+   source_dir=$with_yambo
     ;;
 esac
 AC_SUBST(source_dir)
