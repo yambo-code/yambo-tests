@@ -30,22 +30,12 @@ $N_PATTERNS=0;
 #
 $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-andreaM";
-$PATTERN[$N_PATTERNS][1]=".moke_q1_diago";
-$PATTERN[$N_PATTERNS][2]=".moke_q1_diago_bse";
+$PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_001_k_001";
+$PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_1_k_1";
 $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-andreaM";
-$PATTERN[$N_PATTERNS][1]=".moke_q1_haydock";
-$PATTERN[$N_PATTERNS][2]=".moke_q1_haydock_bse";
-#
-#$N_PATTERNS++;
-#$PATTERN_branch[$N_PATTERNS]="devel-phonon-dynamics devel-rt-modularization devel-rt-modularization-merge";
-#$PATTERN[$N_PATTERNS][1]="part1.qp_gw_ppa";
-#$PATTERN[$N_PATTERNS][2]="part1.qp_gw_cohsex_gw_ppa";
-#
-#$N_PATTERNS++;
-#$PATTERN_branch[$N_PATTERNS]="devel-phonon-dynamics devel-rt-modularization devel-rt-modularization-merge";
-#$PATTERN[$N_PATTERNS][1]="part2.qp_gw_ppa";
-#$PATTERN[$N_PATTERNS][2]="part2.qp_gw_cohsex_gw_ppa";
+$PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_010_k_002";
+$PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_10_k_2";
 #
 @patts1 = qw(1 2);
 @patts2 = qw(UP DN);
