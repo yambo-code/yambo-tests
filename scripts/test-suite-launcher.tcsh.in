@@ -66,11 +66,11 @@ EOF
 cat ROBOTS/@robot@/@user@/MODULES | awk -f script.awk > module.tcsh
 chmod u+x module.tcsh
 source module.tcsh 
-rm -f module.tcsh script.awk
+#rm -f module.tcsh script.awk
 git checkout $tbranch 
 git pull 
 if ( "$flow" == "ext-libs" ) then
  ./driver.pl -compile ext-libs -branch $ybranch -module $module $conf
 else
- ./driver.pl -flow $flow $report $backup -branch $ybranch -nice -input -safe -module $module $conf
+ ./driver.pl -flow $flow $report $backup -branch $ybranch -nice -input -module $module $conf
 endif
