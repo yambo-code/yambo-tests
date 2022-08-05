@@ -112,6 +112,20 @@ if ($compile) {
  #
 }
 #
+# NCDUMP
+#
+my $sys_ncdump = `which ncdump`; chomp($sys_ncdump);
+if (-e "$conf_bin/ncdump") {
+ $ncdump = "$conf_bin/ncdump"; 
+ chomp($ncdump);
+ &MY_PRINT($stdout, "\n               ncdump : $ncdump");
+}elsif(-e $sys_ncdump) { 
+ $ncdump = "$sys_ncdump"; 
+ &MY_PRINT($stdout, "\n               ncdump : $ncdump");
+}else{ 
+ die "\n ncdump not found\n";
+}
+#
 # FC kind
 #
 if ($compile) { 
@@ -127,8 +141,7 @@ if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
  chdir $comp_folder;
  @executables = split(/\s+/, $exec_list);
  while($exec = shift(@executables)) {&command("cp bin/$exec $conf_bin/")};
- if (-e "lib/bin/ncdump")  {&command("cp lib/bin/ncdump  $conf_bin/")};
- if (-e "bin-libs/ncdump") {&command("cp bin-libs/ncdump $conf_bin/")};
+ &command("cp $ncdump $conf_bin/");
  chdir $suite_dir;
 }elsif (not $keep_bin){
  $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind-$ROBOT_string-$branch_key";
@@ -181,20 +194,6 @@ if (not "$ERROR" eq "OK") {
  &MY_PRINT($stdout, "\n$ERROR. Code build is $BUILD, skipping...\n");
  &LOGs_move;
  return "FAIL";
-}
-#
-# NCDUMP
-#
-my $sys_ncdump = `which ncdump`; chomp($sys_ncdump);
-if (-e "$conf_bin/ncdump") {
- $ncdump = "$conf_bin/ncdump"; 
- chomp($ncdump);
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
-}elsif(-e $sys_ncdump) { 
- $ncdump = "$sys_ncdump"; 
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
-}else{ 
- die "\n ncdump not found\n";
 }
 #
 # Rename the conf/comp logs
