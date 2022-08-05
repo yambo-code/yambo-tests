@@ -167,6 +167,9 @@ AC_SUBST(source_dir)
 #
 AC_ARG_WITH(yambo_libs, AC_HELP_STRING([--with-yambo-libs=<path>],[Path to the folder where the test-suite will install the Yambo ext-libs],[32]))
 if test "$with_yambo_libs" = ""; then with_yambo_libs="none"; fi
+if test -f .running_robot.pl; then
+ with_yambo_libs=`tail -n 1 .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+fi
 echo '$'"host='"$robot"';" > .running_robot.pl
 echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
 # ============================================================================

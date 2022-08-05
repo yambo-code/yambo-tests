@@ -57,8 +57,9 @@ while ( 1 > 0)
   set flow="PR8"
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f $flow -c serial_io.sh -b >> $log_dir/log-@robot@-${TIME} 
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f $flow -c serial_io.sh -b >> $log_dir/log-@robot@-${TIME} 
-  set flow="SER_PD8_PR8_PS8_POS8"
+  set flow="PD8"
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_PIO   -f $flow -c parallel_io.sh -b >> $log_dir/log-@robot@-${TIME}
+  set flow="SER_PD8"
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_OPENMPI-4.1.4_SIO -f $flow -c serial_io.sh -b >> $log_dir/log-@robot@-${TIME}
   set flow="SER_PD8"
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m INTEL_SIO                   -f $flow -c serial_io.sh -r >> $log_dir/log-@robot@-${TIME}
