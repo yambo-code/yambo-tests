@@ -52,7 +52,7 @@ while ( 1 > 0)
   @test_suite_dir@/scripts/reset.sh 
   #set flow="test"
   set flow="SER_PD8_PR8_PS8_POS8"
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f $flow -c serial_io.sh -b > $log_dir/log-@robot@-${TIME} 
+  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f $flow -c serial_io.sh > $log_dir/log-@robot@-${TIME} 
   ln -s $log_dir/log-@robot@-${TIME} $branch_dir/last.log
   set flow="PR8"
   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f $flow -c serial_io.sh -b >> $log_dir/log-@robot@-${TIME} 
@@ -70,6 +70,6 @@ while ( 1 > 0)
   rm -f $branch_dir/last.log 
  endif
  #
- sleep 1h
+ sleep 10m
  #
 end
