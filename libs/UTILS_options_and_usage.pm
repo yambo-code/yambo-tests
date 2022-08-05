@@ -68,7 +68,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "host=s"         => \$USER_host,
             "failed=s"       => \$failed,
             "php=s"          => \$branch_php,
-            "safe"           => \$safe_mode,
+            "unsafe"         => \$unsafe_mode,
             "input"          => \$check_input_generation,
             "keep_bin"       => \$keep_bin,
             "profile:s"      => \$profile,
@@ -140,7 +140,7 @@ if ($help>=1) {
              -host   [HOST]         Use HOST instead of current hostname.
              -dry                   Run in dry mode. Not actual job is launched.
              -nice   [VALUE]        Run with priority VALUE. With no VALUE max nice level is used (lower priority).
-             -safe                  Safe run
+             -unsafe                Avoid safe running that uses perl time selection
              -no_net                Skip network assisted operations
              -keep_bin              Do not overwrite the robot specific bin-precompiled folder
              -robot  <ID's>         Robot ID. [ID's can be of the form N or N-M]
