@@ -55,7 +55,8 @@ if ($ncftpput)
 {
  &command("$ncftpput $rec -u 1945528\@aruba.it -p uQ\\\$66cx\\*W3T\\*Wh ftp.yambo-code.org www.yambo-code.org/$where $what");
 }else{
- &command("echo 'put $rec $what htdocs/$where ' > cmds");
+ &command("echo 'put $rec $what htdocs/$where' > cmds");
+ &command("echo 'chmod 775 htdocs/$where' >> cmds");
  &command("sftp -b cmds yambo.user\@media.yambo-code.eu");
  &command("rm -f cmds");
 }

@@ -294,7 +294,7 @@ return
 sub PHP_upload
 {
 chdir("$suite_dir/backup_and_www/$host/www");
-&FTP_upload_it(".","robots","-R");
+&FTP_upload_it("$yambo_branch","robots/$yambo_branch","-R");
 }
 #
 sub get_line{
