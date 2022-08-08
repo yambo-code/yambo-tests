@@ -97,7 +97,7 @@ $time.="m";
 #
 &get_line("TOTAL");
 $duration="";
-if( $pattern[0][3] != "") { $duration="$pattern[0][3]h$pattern[0][4]m$pattern[0][5]s"; }
+if( $pattern[0][5] != "") { $duration="$pattern[0][3]h$pattern[0][4]m$pattern[0][5]s"; }
 #
 &get_line("Running tests");
 $size=@{ $pattern[0] };
@@ -180,7 +180,6 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $check_noout[$i]=$pattern[$i][8];
  $check_nodb[$i]=$pattern[$i][11];
 }
-
 #
 # OLD VERSION
 #
