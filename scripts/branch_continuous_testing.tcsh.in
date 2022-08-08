@@ -39,7 +39,6 @@ while ( 1 > 0)
     set TIME=`date +%H-%M`
     touch ~/yambo-testing/@robot@_is_running
     @test_suite_dir@/scripts/reset.sh 
-echo "@test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m $module -f $flow  > $branch_dir/log-@robot@-${flow}-${TIME}"
     @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m $module -f $flow  > $branch_dir/log-@robot@-${flow}-${TIME} 
     @test_suite_dir@/driver.pl -kill > /dev/null
    endif
