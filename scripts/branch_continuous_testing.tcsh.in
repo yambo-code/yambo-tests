@@ -1,74 +1,48 @@
 #!/usr/bin/tcsh
 #
-if ( $#argv == 0 ) then
- echo 
- echo "branch_continuous_testing.tcsh -b BRANCH -r ROBOT"
- echo 
- exit
-endif
-#
-@ n = 0
-while ( $n < $#argv)
- @ n += 1
- if ( "$argv[$n]" == "-b" ) then
-  @ n += 1
-  set branch="$argv[$n]"
- endif
- if ( "$argv[$n]" == "-r" ) then
-  @ n += 1
-  set robot="$argv[$n]"
- endif
-end
-#
-set branch_dir=~/yambo-testing/$branch
-mkdir -p $branch_dir
-mkdir -p $branch_dir/logs
-#
 while ( 1 > 0) 
  #
- cd @source_dir@
- git checkout $branch
- set last_hash=`git log --pretty=format:"%h" | head -n 1` 
+ # update branch and flows
+ #
  cd @test_suite_dir@
+ ./scripts/wget_from_google_drive.sh
+ rm -f ROBOTS/@robot@/@user@/FLOWS/run.*
+ cat control_room.csv | awk -f scripts/robot_update.awk
  #
- # stop if needed
- if ( -f ~/stop_the_@robot@ ) break
- #
- # count the running robots
- set NR=`find ~/yambo-testing/ -name '*is_running' |wc -l`
- if ( $NR > 3 ) continue
- #
- set YEAR=`date +%Y`
- set MONTH=`date +%m`
- set DAY=`date +%d`
- set TIME=`date +%H-%M`
- set log_dir="$branch_dir/logs/$YEAR/$MONTH/$DAY"
- mkdir -p $log_dir
- #
- if ( ! -f "$branch_dir/last_tested_hash.$last_hash" ) then
+ foreach run_file ( ROBOTS/@robot@/@user@/FLOWS/run.*.tcsh )
   #
-  touch ~/yambo-testing/@robot@_is_running
-  rm -f $branch_dir/last.log
-  @test_suite_dir@/scripts/reset.sh 
-  #set flow="test"
-  set flow="SER_PD8_PR8_PS8_POS8"
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f $flow -c serial_io.sh > $log_dir/log-@robot@-${TIME} 
-  ln -s $log_dir/log-@robot@-${TIME} $branch_dir/last.log
-  set flow="PR8"
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f $flow -c serial_io.sh -b >> $log_dir/log-@robot@-${TIME} 
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_SIO   -f $flow -c serial_io.sh -b >> $log_dir/log-@robot@-${TIME} 
-  set flow="PD8"
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_MPICH-4.0.2_PIO   -f $flow -c parallel_io.sh -b >> $log_dir/log-@robot@-${TIME}
-  set flow="SER_PD8"
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m GF-10.2.1_OPENMPI-4.1.4_SIO -f $flow -c serial_io.sh -b >> $log_dir/log-@robot@-${TIME}
-  set flow="SER_PD8"
-  @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m INTEL_SIO                   -f $flow -c serial_io.sh -r >> $log_dir/log-@robot@-${TIME}
-  @test_suite_dir@/driver.pl -kill >  /dev/null
-  rm -f $branch_dir/last_tested_hash.*
-  touch $branch_dir/last_tested_hash.$last_hash
-  rm -f ~/yambo-testing/@robot@_is_running
-  rm -f $branch_dir/last.log 
- endif
+  source $run_file
+  set flow=`basename $run_file`
+  set flow=`echo $flow |sed 's/.tcsh//'`
+  #
+  set branch_dir=~/yambo-testing/$branch
+  mkdir -p $branch_dir
+  mkdir -p $branch_dir/logs
+  #
+  cd @source_dir@
+  git checkout $branch
+  set last_hash=`git log --pretty=format:"%h" | head -n 1` 
+  cd @test_suite_dir@
+  #
+  # stop if needed
+  if ( -f ~/stop_the_@robot@ ) break
+  #
+  # count the running robots
+  set NR=`find ~/yambo-testing/ -name '*is_running' |wc -l`
+  if ( $NR > 3 ) continue
+  #
+  if ( ! -f "$branch_dir/last_tested_hash.$last_hash" ) then
+   touch ~/yambo-testing/@robot@_is_running
+   @test_suite_dir@/scripts/reset.sh 
+   @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m $module -f $flow  > ~/yambo-testing/log-@robot@-${flow}-${TIME} 
+   @test_suite_dir@/driver.pl -kill >  /dev/null
+  endif
+  #
+ end
+ #
+ rm -f $branch_dir/last_tested_hash.*
+ touch $branch_dir/last_tested_hash.$last_hash
+ rm -f ~/yambo-testing/@robot@_is_running
  #
  sleep 10m
  #

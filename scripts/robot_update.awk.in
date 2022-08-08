@@ -1,0 +1,68 @@
+{
+ na=split($0,a,",");  
+ if (NR == 1) {
+  NRUNS=0;
+ };
+ if (a[1] == "@robot@") { 
+  HEAD=0;
+  if (a[2] != "NONE" && a[3] != "NONE") {
+   FLOWS= " ";
+   for (i = 5; i <= 10; i++){ 
+    if (a[i] != "NONE") {
+     if (HEAD==0) {
+      NRUNS=NRUNS+1;
+      flow_file="ROBOTS/@robot@/@user@/FLOWS/run."NRUNS".pl";
+      env_file="ROBOTS/@robot@/@user@/FLOWS/run."NRUNS".tcsh";
+      print "#!/usr/bin/perl " > flow_file;
+      print "@flow = (" >> flow_file;
+      print "{" >> flow_file;
+      print "ACTIVE      => \"yes\"," >> flow_file;
+      print "CONFIG      => \""a[4]"\"," >> flow_file;
+      print "TESTS       => \"all\"," >> flow_file;
+      print "KEYS        => \"all hard\"," >> flow_file;
+      HEAD=1;
+      print "set module = "a[3] >> env_file;
+      print "set branch = "a[2] >> env_file;
+     }else{
+      print "{" >> flow_file;
+     };
+     PAR=0;
+     SLK=0;
+     OMP=0;
+     if (index(a[i],"P") > 0) {
+      PAR=1;
+      if (index(a[i],"D") > 0) {print "PAR_MODE    => \"default\"," >>flow_file};
+      if (index(a[i],"R") > 0) {print "PAR_MODE    => \"random\"," >>flow_file};
+      if (index(a[i],"L") > 0) {print "PAR_MODE    => \"loop\"," >>flow_file};
+      if (index(a[i],"S") > 0) { SLK =1 };
+     };
+     if (index(a[i],"O") > 0) { OMP =1 };
+     #
+     gsub("P"," ",a[i]);
+     gsub("D"," ",a[i]);
+     gsub("R"," ",a[i]);
+     gsub("L"," ",a[i]);
+     gsub("S"," ",a[i]);
+     gsub("O"," ",a[i]);
+     #
+     nb=split(a[i],b," ");
+     J=1;
+     if (PAR == 1) {
+      print "NP          => \""b[J]"\"," >> flow_file;
+      J=J+1;
+     }
+     if (SLK == 1) {
+      print "SLK_CPU     => \""b[J]"\"," >> flow_file;
+      J=J+1;
+     }
+     if (OMP == 1) {
+      print "THREADS     => \""b[J]"\"," >> flow_file;
+      J=J+1;
+     }
+     print "}," >> flow_file;
+    }
+   }
+   print ");" >> flow_file;
+  }
+ }
+}

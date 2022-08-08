@@ -201,6 +201,7 @@ PERL_LIB="${test_suite_dir}/libs"
 AC_SUBST(test_suite_dir)
 AC_SUBST(PERL_LIB)
 # ============================================================================
-AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl scripts/branch_continuous_testing.tcsh scripts/reset.sh scripts/test-suite-launcher.tcsh])
+AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl scripts/branch_continuous_testing.tcsh scripts/reset.sh 
+                 scripts/test-suite-launcher.tcsh scripts/run_the_continous_testing.sh scripts/robot_update.awk])
 AC_OUTPUT
 chmod ug+x scripts/*sh
