@@ -11,6 +11,7 @@ while ( 1 > 0)
  cat control_room.csv | awk -f scripts/robot_update.awk
  #
  set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh'`
+ set log_dir="."
  #
  if ( "$files" != "" ) then
   #
@@ -36,10 +37,17 @@ while ( 1 > 0)
    if ( $NR > 3 ) continue
    #
    if ( ! -f "$branch_dir/last_tested_hash.$last_hash" ) then
-    set TIME=`date +%d-%m_%Hh-%Mm`
+    if ( ! -f ~/yambo-testing/@robot@_is_running ) then
+     set M=`date +%m`
+     set D=`date +%d`
+     set log_dir="$branch_dir/$M/$D"
+     mkdir -p $log_dir
+     rm -f $log_dir/log*
+     ln -s $log_dir $branch_dir/latest_logs
+    endif
     touch ~/yambo-testing/@robot@_is_running
-    @test_suite_dir@/scripts/reset.sh 
-    @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m $module -f $flow -r > $branch_dir/log-@robot@-${flow}-${TIME} 
+    set T=`date +%T`
+    @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
     @test_suite_dir@/driver.pl -kill > /dev/null
    endif
    #
