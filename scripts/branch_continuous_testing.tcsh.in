@@ -36,10 +36,10 @@ while ( 1 > 0)
    if ( $NR > 3 ) continue
    #
    if ( ! -f "$branch_dir/last_tested_hash.$last_hash" ) then
-    set TIME=`date +%H-%M`
+    set TIME=`date +%d-%m_%Hh-%Mm`
     touch ~/yambo-testing/@robot@_is_running
     @test_suite_dir@/scripts/reset.sh 
-    @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m $module -f $flow  > $branch_dir/log-@robot@-${flow}-${TIME} 
+    @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t devel-andreaM -m $module -f $flow -r > $branch_dir/log-@robot@-${flow}-${TIME} 
     @test_suite_dir@/driver.pl -kill > /dev/null
    endif
    #
