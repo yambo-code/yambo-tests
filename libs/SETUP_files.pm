@@ -34,13 +34,6 @@ if (-e "./ROBOTS/$host/$user/CONFIGURATIONS"){
  $conf_avail = join(" ", @files);
 }
 #
-if (-e "./ROBOTS/$host/$user/STAMPS"){
- opendir(DIR,"./ROBOTS/$host/$user/STAMPS");
- @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/STAMPS/$_" } readdir(DIR);
- closedir DIR;
- $stamps = join(" ", @files);
-}
-#
 if (-e "./ROBOTS/$host/$user/SCRIPTS"){
  opendir(DIR,"./ROBOTS/$host/$user/SCRIPTS");
  @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/SCRIPTS/$_" } readdir(DIR);

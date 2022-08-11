@@ -92,7 +92,6 @@ print <<ROBOT_info
   Available  CPU conf: $cpu_avail
   Available Compilers: $conf_avail
   Available     flows: $flows_avail
-  Available    stamps: $stamps
 
   Available   modules:
 
