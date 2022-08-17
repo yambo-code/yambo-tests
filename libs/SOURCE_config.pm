@@ -58,6 +58,9 @@ sub SOURCE_config{
   close(FH);
   &command("echo YAMBO_EXT_LIBS=$ext_libs_path/${user_module}/PAR_IO-${PAR_IO}_PAR_LINALG-${PAR_LINALG}_SLEPC-${SLEPC} > conf_local.sh");
  };
+ if (not $driver_branch eq "none") {
+  &command("echo DRIVER_LINE=--with-yambo-libs-branch=$driver_branch >> conf_local.sh");
+ }
  &command("cat $suite_dir/$conf_path >> conf_local.sh");
  $string1="\.\/configure";
  $string2="$BRANCH/configure";

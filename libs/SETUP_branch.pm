@@ -157,7 +157,19 @@ while($line = shift(@BLINES)) {
  chomp($line);
  next if ( ($line =~ /#/) or ($line eq "") );
  $ib++;
- ($branches[$ib],$branch_identity[$ib],$branch_robot[$ib]) = split ' ', $line;
+ my @spl = split(' ', $line);
+ $n_spl=@spl;
+ $branches[$ib]=$spl[0];
+ if ($n_spl>1) {
+  $branch_identity[$ib]=$spl[1];
+ }else{
+  $branch_identity[$ib]=(split('\/',$branches[$ib]))[-1];
+ };
+ if ($n_spl>2) {
+  $driver_branch[$ib]=$spl[2];
+ }else{
+  $driver_branch[$ib]="none";
+ };
 }
 close(BRANCHES_file);
 }
