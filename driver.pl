@@ -218,6 +218,7 @@ if ($branch_php) {
  }else{
   #&PHP_folders_rename(); 
   &PHP_generate(); 
+  $yambo_branch=$branch_php;
   &PHP_upload();
   print "PHP generation finalized.\n";
   die; 
