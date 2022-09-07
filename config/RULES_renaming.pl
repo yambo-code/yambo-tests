@@ -29,11 +29,11 @@ $N_PATTERNS=0;
 # [2] = MODIFIED REFERENCE
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
 $PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_001_k_001";
 $PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_1_k_1";
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-andreaM";
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
 $PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_010_k_002";
 $PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_10_k_2";
 #
