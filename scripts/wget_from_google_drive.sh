@@ -17,7 +17,7 @@ ID_spreadsheet="1RJCh6qqqdyaeqvX4Dh0I1ppEhCoNYMjIepXnRzxDhHk"
 ID_single_sheet="0"
 
 # Name of the .csv output file
-csv_out="test.csv"
+csv_out="control_room.csv"
 
 # Calling wget
-wget --output-file="logs.csv" "$link/$ID_spreadsheet/export?format=csv&gid=$ID_single_sheet" -O "$csv_out"
+wget --output-file="control_room.log" "$link/$ID_spreadsheet/export?format=csv&gid=$ID_single_sheet" -O "$csv_out"
