@@ -109,6 +109,7 @@ sub UTILS_list_backups{
     if ($date) {
      print "DATE      : $date\n";
      print "TIME      : $time\n";
+     print "DURATION  : $duration\n";
      print "ROBOT     : $robot_id\n";
      print "BRANCH (Y): $yambo_branch\n";
      print "BRANCH(TS): $tsuite_branch\n";

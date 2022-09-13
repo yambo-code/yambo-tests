@@ -1,0 +1,76 @@
+#!/usr/bin/tcsh
+#
+cd @test_suite_dir@
+#
+set ybranch="master"
+set tbranch="master"
+set flow="validate"
+set conf=" "
+set report=" "
+set backup=" "
+#
+if ( $#argv == 0 ) then
+ echo 
+ echo "test-suite-launcher.tcsh -y YBRANCH -t [TBRANCH] -m MODULE -f FLOW/ext-libs -c [CONFFILE] -r -b"
+ echo 
+ echo  "-r -> report"
+ echo  "-b -> backup"
+ echo
+ echo  "[] are optionals"
+ exit
+endif
+#
+@ n = 0
+while ( $n < $#argv)
+ @ n += 1
+ if ( "$argv[$n]" == "-y" ) then
+  @ n += 1
+  set ybranch="$argv[$n]"
+  set tbranch="$ybranch"
+ endif
+ if ( "$argv[$n]" == "-t" ) then
+  @ n += 1
+  set tbranch="$argv[$n]"
+ endif
+ if ( "$argv[$n]" == "-m" ) then
+  @ n += 1
+  set module="$argv[$n]"
+ endif
+ if ( "$argv[$n]" == "-f" ) then
+  @ n += 1
+  set flow="$argv[$n]"
+ endif
+ if ( "$argv[$n]" == "-c" ) then
+  @ n += 1
+  set conf="-conf $argv[$n]"
+ endif
+ if ( "$argv[$n]" == "-r" ) then
+  set report="-report"
+ endif
+ if ( "$argv[$n]" == "-b" ) then
+  set backup="-b"
+ endif
+end
+#
+cat << EOF > script.awk
+{
+if (NR==1 || index(\$0,"END")>0) {print_me="no"};
+if (index(\$0,"$module")>0){
+  print_me="yes";
+  next;
+}
+if (NR       == 1    ){print "module purge"};
+if (print_me == "yes"){print "module load "\$0 };
+}
+EOF
+cat ROBOTS/@robot@/@user@/MODULES | awk -f script.awk > module.tcsh
+chmod u+x module.tcsh
+source module.tcsh 
+rm -f module.tcsh script.awk
+git checkout $tbranch 
+git pull 
+if ( "$flow" == "ext-libs" ) then
+ ./driver.pl -compile ext-libs -branch $ybranch -module $module $conf
+else
+ ./driver.pl -flow $flow $report $backup -branch $ybranch -input -module $module $conf
+endif
