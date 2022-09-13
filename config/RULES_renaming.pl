@@ -28,15 +28,6 @@ $N_PATTERNS=0;
 # [1] = REFERENCE
 # [2] = MODIFIED REFERENCE
 #
-$N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
-$PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_001_k_001";
-$PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_1_k_1";
-$N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
-$PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_010_k_002";
-$PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_10_k_2";
-#
 @patts1 = qw(1 2);
 @patts2 = qw(UP DN);
 for $patt1 (@patts1) {$N_PATTERNS++;
@@ -49,6 +40,21 @@ $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="devel-rt-rotate";
 $PATTERN[$N_PATTERNS][1]="YPP-2D_occ_dos";
 $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
+#
+$BRANCH_LIST="4.0 4.1 4.2 4.3 4.4 5.0 5.1";
+#
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
+$PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_1_k_1";
+$PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_001_k_001";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
+$PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_10_k_2";
+$PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_010_k_002";
+$N_PATTERNS++;
+$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
+$PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_10_k_1";
+$PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_010_k_001";
 #
 $BRANCH_LIST="4.0 4.1 4.2 4.3 4.4";
 #
