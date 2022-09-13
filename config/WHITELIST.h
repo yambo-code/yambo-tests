@@ -17,6 +17,12 @@
 !=======
 call add_RULE("o-03_optics.eps_q1_inv_rpa_dyson","whitelist",MATERIAL="Dummy")
 !
+! Intel
+!=======
+call add_RULE("o-11_ip_neq_ypp_procedure.YPP-TR_Anomalous_Hall_IP","whitelist",Compiler="intel",Material="Black-Phosphorus")
+call add_RULE("o-01_hf.ndb.cutoff","whitelist",Compiler="intel",Material="He")
+call add_RULE("o-02_EPS-IP_shifted_grids_G","whitelist",Compiler="intel",Material="Iron")
+!
 ! RT
 !====
 ! Noise...(?)
@@ -30,7 +36,7 @@ call add_RULE("o-03_elel.carriers","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-02_plot_elph_0K_adaptative.YPP-RT_occupations_k1_kRT1_b","whitelist",MATERIAL="Si_bulk")
 call add_RULE("o-08_ypp_plot_occ_DbGd.YPP-RT_occupations_k3","whitelist",MATERIAL="MoS2")
 call add_RULE("o-08_ypp_fit_occ_DbGd.YPP-RT_NEQ_linewidths","whitelist",MATERIAL="MoS2")
-call add_RULE("o-04_td_dft.magnetization","whitelist",MATERIAL="MoS2")
+call add_RULE("o-04_td_ip_spin_proj.spin_magnetization","whitelist",MATERIAL="MoS2")
 call add_RULE("_FIT_holes","whitelist")
 call add_RULE("_FIT_electrons","whitelist")
 call add_RULE("_FIT_electrons","whitelist")

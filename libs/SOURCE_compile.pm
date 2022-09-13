@@ -23,22 +23,23 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SOURCE_compile{
- chdir $BRANCH;
+ chdir("$comp_folder");
  open( COMPLOGFILE,'>>',$comp_logfile);
  &MY_PRINT($stdout, "ext-libs ...");
  &command("make $PAR_COMP_LIBS ext-libs >> $comp_logfile 2>&1");
- @executables = split(/ /, $target_list);
+ @executables =  ("yambo");
+ if (not $compile eq "ext-libs")  {@executables = split(/\s+/, $target_list)};
  foreach $make_exec (@executables) {
    &MY_PRINT($stdout, "$make_exec ...");
    &command("make $PAR_COMP $make_exec >> $comp_logfile 2>&1");
    if (not $make_exec =~ /ext-libs/ and not $make_exec =~ /interfaces/)
    {
-     if (not -x "$BRANCH/bin/$make_exec") {
+     if (not -x "$comp_folder/bin/$make_exec") {
       &MY_PRINT($stdout, "FAILED! Skipping.\n");
       return "FAIL";
      }
    }
- }
+ };
  close(COMPLOGFILE);
  &MY_PRINT($stdout, "done.");
  chdir $suite_dir;
