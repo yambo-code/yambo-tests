@@ -109,7 +109,8 @@ sub RUN_input_file_test{
    if (&RUN_feature("Hamiltonian= \"all\"")=="1") { $CMD=$CMD." -magnetic a"};
  };
 
- if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p -gw0 fan"};
+ if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation ep -gw0 fan"};
+ if (&RUN_feature("ph_el_corr")=="1")      { $CMD=$CMD." -correlation pe -gw0 X"};
 
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
  if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
@@ -135,6 +136,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("RTtime")=="1") { $CMD=$CMD." -rtmode t"};
  if (&RUN_feature("RTabs")=="1") { $CMD=$CMD." -rtplot a"};
  if (&RUN_feature("RT_X")=="1") { $CMD=$CMD." -rtplot X"};
+ if (&RUN_feature("RTGtwotimes")=="1") { $CMD=$CMD." -rtplot g"};
  if (&RUN_feature("K_grid")=="1") { $CMD=$CMD." -grid k"};
  if (&RUN_feature("QPDB_edit")=="1") { $CMD=$CMD." -qpdb g"};
  if (&RUN_feature("QPDB_merge")=="1") { $CMD=$CMD." -qpdb m"};
