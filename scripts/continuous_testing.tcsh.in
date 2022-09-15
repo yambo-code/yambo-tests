@@ -21,11 +21,11 @@ while ( 1 > 0)
    set flow=`basename $run_file`
    set flow=`echo $flow |sed 's/.tcsh//'`
    #
-   set branch_dir=~/yambo-testing/$branch
+   set branch_dir=~/yambo-testing/$ybranch
    mkdir -p $branch_dir
    #
    cd @source_dir@
-   git checkout $branch
+   git checkout $ybranch
    git pull
    set last_hash=`git log --pretty=format:"%h" | head -n 1` 
    cd @test_suite_dir@
@@ -46,10 +46,12 @@ while ( 1 > 0)
      rm -f $branch_dir/latest_logs
      ln -s $log_dir $branch_dir/latest_logs
      @test_suite_dir@/scripts/reset.sh
+    else
+     continue
     endif
     touch ~/yambo-testing/@robot@_is_running
     set T=`date +%T`
-    @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t $branch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
+    @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
     @test_suite_dir@/driver.pl -kill > /dev/null
    endif
    #
