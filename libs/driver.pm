@@ -109,6 +109,9 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   # Files closing
   close $tlog;
   #
+  # Remove KILLER files created by scripts/job_stopper.tcsh
+  &command("rm KILLER_*_R${ROBOT_id}.awk");
+  #
   if ($backup_logs eq "yes"){ &UTILS_backup };
   #
  } # End LOOP_CONF configurations
