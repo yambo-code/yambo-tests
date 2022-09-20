@@ -44,15 +44,15 @@ $PATTERN[$N_PATTERNS][2]="YPP-TD_dos";
 $BRANCH_LIST="4.0 4.1 4.2 4.3 4.4 5.0 5.1";
 #
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_1_k_1";
 $PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_001_k_001";
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_10_k_2";
 $PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_010_k_002";
 $N_PATTERNS++;
-$PATTERN_branch[$N_PATTERNS]="devel-andreaM bug-fixes";
+$PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_10_k_1";
 $PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_010_k_001";
 #

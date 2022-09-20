@@ -21,11 +21,11 @@ while ( 1 > 0)
    set flow=`basename $run_file`
    set flow=`echo $flow |sed 's/.tcsh//'`
    #
-   set branch_dir=~/yambo-testing/$branch
+   set branch_dir=~/yambo-testing/$ybranch
    mkdir -p $branch_dir
    #
    cd @source_dir@
-   git checkout $branch
+   git checkout $ybranch
    git pull
    set last_hash=`git log --pretty=format:"%h" | head -n 1` 
    cd @test_suite_dir@
@@ -35,27 +35,24 @@ while ( 1 > 0)
    #
    # count the running robots
    set NR=`find ~/yambo-testing/ -name '*is_running' |wc -l`
-   if ( $NR > 3 ) continue
    #
-   if ( ! -f "$branch_dir/last_tested_hash.$last_hash" ) then
-    if ( ! -f ~/yambo-testing/@robot@_is_running ) then
-     set M=`date +%m`
-     set D=`date +%d`
-     set log_dir="$branch_dir/$M/$D"
-     mkdir -p $log_dir
-     rm -f $branch_dir/latest_logs
-     ln -s $log_dir $branch_dir/latest_logs
-     @test_suite_dir@/scripts/reset.sh
-    endif
+   if ( $NR < 3 && ! -f "$branch_dir/last_tested_hash.$last_hash" && ! -f ~/yambo-testing/@robot@_is_running ) then
+    set M=`date +%m`
+    set D=`date +%d`
+    set log_dir="$branch_dir/$M/$D"
+    mkdir -p $log_dir
+    rm -f $branch_dir/latest_logs
+    ln -s $log_dir $branch_dir/latest_logs
+    @test_suite_dir@/scripts/reset.sh
     touch ~/yambo-testing/@robot@_is_running
     set T=`date +%T`
-    @test_suite_dir@/scripts/test-suite-launcher.tcsh -y $branch -t $branch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
+    @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
     @test_suite_dir@/driver.pl -kill > /dev/null
    endif
    #
   end
   #
-  if ( "$branch" != "" && -f  ~/yambo-testing/@robot@_is_running ) then
+  if ( "$ybranch" != "" && -f  ~/yambo-testing/@robot@_is_running ) then
    rm -f $branch_dir/last_tested_hash.*
    touch $branch_dir/last_tested_hash.$last_hash
    rm -f ~/yambo-testing/@robot@_is_running
