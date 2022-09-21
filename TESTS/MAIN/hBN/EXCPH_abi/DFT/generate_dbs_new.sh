@@ -2,10 +2,16 @@ ABINIT="abinit_ibte"
 MRGDDB="mrgddb_ibte"
 MRGDV="mrgdv_ibte"
 A2Y="a2y_a2y"
-qkind="q_bz" # "q_ibz"
+
+# Control the two possible options from here
+# So far only expand="yes" generates usable GKKP_expanded
 expand="yes" # "no"
 
-if [ "$expand" == "yes" ] ; then  qkind="q_bz" ; fi
+
+qkind="q_ibz" # "q_ibz"
+if [ "$expand" == "yes" ] ; then
+  qkind="q_bz"
+fi
 
 if ! test -f io_dir_new/hbn_out_DS1_WFK.nc || ! test -f io_dir_new/hbn_out_DS2_WFK.nc ; then
   rm -rf io_dir_new
@@ -35,7 +41,9 @@ if [ "$expand" == "yes" ] ; then
 fi
 
 GKKP_file="GKKP"
-if [ "$qkind" == "q_bz" ] ; then  GKKP_file="GKKP_expanded" ; fi
+if [ "$qkind" == "q_bz" ] ; then
+  GKKP_file="GKKP_expanded"
+fi
 
 
 echo "generate the yambo SAVE with GKKP_abinit folder"
