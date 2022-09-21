@@ -4,7 +4,7 @@
 ecut   4.0  #40      # Minimal kinetic energy cut-off, in Hartree
 iomode 3             # Thi sis needed only for the WFs
 
-ndtset 7
+ndtset 5
  
 #Ground state calculation (self consistent part)
 prtden1   1       # Print the density, for use by dataset 2
@@ -15,12 +15,11 @@ rfphon1 0
 nqpt1 0
 getwfk1 0
 prtwf1 1
-prtkbff2 1
  
 #non-self consistent calculation one dense kpt mesh for EPH below
 getden2 1
 nband2 10
-ngkpt2 6 6 6
+ngkpt2 6 6 1
 kptopt2 1          # this asks to print the WFKs in full the BZ (use 4 with SOC)
 iscf2 -2
 tolwfr2 1.0d-8
@@ -29,6 +28,7 @@ istwfk2 *1
 rfphon2 0
 nqpt2 0
 prtwf2 1
+prtkbff2 1
  
 #ddk perturbation
 tolwfr3 1.e-22
@@ -67,8 +67,8 @@ rfelfd4 3    # gamma point contribution due to Beorn effective charges
 getddk4 3    #
 
 rfphon5 1 nqpt5 1 qpt5 0.5 0.0 0.0
-rfphon6 1 nqpt6 1 qpt6 0.0 0.0 0.5
-rfphon7 1 nqpt7 1 qpt7 0.5 0.0 0.5
+#rfphon6 1 nqpt6 1 qpt6 0.0 0.0 0.5
+#rfphon7 1 nqpt7 1 qpt7 0.5 0.0 0.5
 
 
 #######################################################################
@@ -78,7 +78,7 @@ toldfe 1.0d-10
  
 pseudos "B.psp8, N.psp8"
 
-ngkpt 2 2 2
+ngkpt 2 2 1
 shiftk  0 0 0
 kptopt 3
 
