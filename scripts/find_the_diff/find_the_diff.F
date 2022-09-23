@@ -29,13 +29,14 @@ program find_the_diff
  !
  interface
    !
-   subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,USER_prec,&
+   subroutine add_RULE(PATTERN,RULE,TITLE,TITLES,COL,COLS,MATERIAL,COMPILER,USER_prec,&
 &                      VAL_treshold,REF_col,REF_row,USER_error)
     use DIFF, ONLY:SP
     character(*) :: PATTERN,RULE
     character(*), optional ::TITLE
     character(*), optional ::TITLES(:)
     character(*), optional ::MATERIAL
+    character(*), optional ::COMPILER
     integer,      optional ::REF_col
     integer,      optional ::REF_row
     integer,      optional ::COL
@@ -90,6 +91,9 @@ program find_the_diff
      case ("-p", "--precision") 
        call arg_check(str1)
        read(str1,*,iostat=ierr) PREC
+     case ("-c", "--compiler") 
+       call arg_check(str1)
+       COMPILER=str1
      case ("-v") 
        VERB=.TRUE.
    end select
@@ -155,7 +159,8 @@ program find_the_diff
  !
  do i_r=1,N_max_rules
    if ( (index(out%name,trim(RULES(i_r)%pattern))  >0 .or. trim(RULES(i_r)%pattern)=="any" ).and. &
-&       (index(MATERIAL,trim(RULES(i_r)%material)) >0 .or. trim(RULES(i_r)%material)=="any") ) then
+&       (index(MATERIAL,trim(RULES(i_r)%material)) >0 .or. trim(RULES(i_r)%material)=="any").and. &
+&       (index(COMPILER,trim(RULES(i_r)%compiler)) >0 .or. trim(RULES(i_r)%compiler)=="any")) then
      !
      if (index(RULES(i_r)%action,"USER_error")>0) USER_error=RULES(i_r)%error
      if (index(RULES(i_r)%action,"USER_prec")>0)  PREC=RULES(i_r)%prec

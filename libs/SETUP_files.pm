@@ -31,29 +31,29 @@ if (-e "./ROBOTS/$host/$user/CONFIGURATIONS"){
  opendir(DIR,"./ROBOTS/$host/$user/CONFIGURATIONS");
  @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/CONFIGURATIONS/$_" } readdir(DIR);
  closedir DIR;
+ $conf_avail = join(" ", @files);
 }
-$conf_avail = join(" ", @files);
 #
 if (-e "./ROBOTS/$host/$user/SCRIPTS"){
  opendir(DIR,"./ROBOTS/$host/$user/SCRIPTS");
  @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/SCRIPTS/$_" } readdir(DIR);
  closedir DIR;
+ @scripts_avail = sort {$a cmp $b} @files;
 }
-@scripts_avail = sort {$a cmp $b} @files;
 #
 if (-e "./ROBOTS/$host/$user/FLOWS"){
  opendir(DIR,"./ROBOTS/$host/$user/FLOWS");
  @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/FLOWS/$_" } readdir(DIR);
  closedir DIR;
+ $flows_avail = join(" ", @files);
 }
-$flows_avail = join(" ", @files);
 #
 if (-e "./ROBOTS/$host/$user/CPU_CONFIGURATIONS"){
  opendir(DIR,"./ROBOTS/$host/$user/CPU_CONFIGURATIONS");
  @files = grep { (!/^\./) && -f "./ROBOTS/$host/$user/CPU_CONFIGURATIONS/$_" } readdir(DIR);
  closedir DIR;
+ $cpu_avail = join(" ", @files);
 }
-$cpu_avail = join(" ", @files);
 #
 $n_modules=0;
 undef $mod_add;

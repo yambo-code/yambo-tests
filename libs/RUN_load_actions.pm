@@ -36,7 +36,7 @@ if( -e "$input_folder/$testname"."$_[0]") {
   if ("$_[0]" eq ".input")   {&command("$actions_cmd")};
  }
  close(ACTIONS);
- if ( -e "BASE_input" and "$_[0]" eq ".input") {  &command("cat BASE_input >> yambo.in") };
+ if ( -e "BASE_input" and "$_[0]" eq ".input") {  &command("cat BASE_input > yambo.in") };
 }
 }
 1;

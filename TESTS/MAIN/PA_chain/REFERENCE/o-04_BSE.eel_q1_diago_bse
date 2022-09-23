@@ -1,213 +1,233 @@
-#                                                           
-#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$     
-# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$    
-#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$    
-#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$    
-#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$    
-#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$    
-#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/    
-#     |__/   |__/  |__/|__/     |__/|_______/  \______/     
-#                                                           
-#      Version 4.4.0 Revision 16392 Hash b15dff1b5          
-#                  MPI+SLK+OpenMP Build                     
-#               http://www.yambo-code.org                   
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+# Version 5.1.0 Revision 20475 Hash (prev commit) 9b099404b           
+#                    Branch is develop                                
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.org                            
 #
-# EELS @ Q(1)  [q->0 direction]:0.1000E-4  0.000     0.000   
+# EELS @ Q(1):  0.999999975E-5   0.00000000      0.00000000    [q->0 direction]
+#
+# [GEN] GF Energies                               : Slater exchange(X)+Perdew & Zunger(C)
+# [GEN] Wavefunctions                             : Slater exchange(X)+Perdew & Zunger(C)
+# [GEN] Green`s Function                          : Retarded
+# [GEN] Gauge                                     : Length
+# [GEN] [r,Vnl] included                          : yes
+#
+# DIP band range                                  :   5   8
+# DIP band range limits                           :   5   6
+# DIP e/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# RL vectors in the sum                           :   4999
+# [r,Vnl] included                                : yes
+# Bands ordered                                   : yes
+# Direct v evaluation                             : no
+# Approach used                                   : G-space v
+# Dipoles computed                                : R V P
+# Wavefunctions                                   : Slater exchange(X)+Perdew & Zunger(C)
 #
 #
-# - Energies      are  E < 02_QP_PPA/ndb.QP + E Fit
-# - Wavefunctions are Slater exchange(X)+Perdew & Zunger(C)
 #
-# - The Green`s function is Retarded -
-# - Using the Length Gauge -
-# - [r,Vnl] *is* included -
+# [K] Identifier                                  :   7129
+# [K] Dimension                                   :  30
+# [K] Bands                                       :   5   8
+# [K] Exchange                                    : yes
+# [K] Correlation                                 : yes
+# [K] Kernel`s coupling                           : no
+# [K] Exchange                                    : no
+# [K] Correlation                                 : no
+# [K] W interaction is bare                       : no
+# [K] ALDA kernel in R-space                      : no
+# [K] RL vectors                                  :   4999 [exchange]
+# [K] RL vectors                                  :  21 [correlation]
+# [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# [K] Coupling range                              :   100.000000      100.000000    [o/o]
+# [W] Interaction is diagonal                     : no
+# [W] Matrix size                                 :  21
+# [W] Bands                                       :   1  25
+# [W] e/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# [W] Poles                                       :   100.000000    [o/o]
+# [W] RL vectors in the sum                       :   4999
+# [W] [r,Vnl] included                            : yes
+# [W] Field direction                             :  0.577350283E-5  0.577350283E-5  0.577350283E-5
+# [W] Coulomb Cutoff                              : box xy
+# [W] xc-Kernel                                   : none
+# [RIM] RL components                             : 0 [col]
+# [RIM] Random points                             : 0 [col]
+# [SOC] Perturbative SOC                          : no
 #
-#   BSK|Identifier              :1092
-#      |Dimension               :30
-#      |Bands                   :5 - 8
-#      |Exchange           [res]: yes
-#      |Correlation        [res]: yes
-#      |Kernel`s coupling       : no
-#      |Exchange           [cpl]: no
-#      |Correlation        [cpl]: no
-#      |W interaction is bare   : no
-#      |ALDA kernel in R-space  : no
-#      |RL vectors    [exchange]:4999
-#      |RL vectors [correlation]:21
-#      |E/h energy range    [ev]:-1.000000 - -1.000000
-#      |Coupling range     [o/o]: 100.0000 -  100.0000
-#    W |Interaction is diagonal : no
-#      |Matrix size             :21
-#      |Bands                   :1 - 25
-#      |e/h energy range    [ev]:-1.000000 - -1.000000
-#      |Poles              [o/o]: 100.0000
-#      |RL vectors in the sum   :4999
-#      |[r,Vnl] included        : yes
-#      |Field direction         :0.5774E-5 0.5774E-5 0.5774E-5
-#      |Coulomb Cutoff          :box xy
-#      |xc-Kernel               :none
-#   RIM|RL components      [col]:0
-#      |Random points      [col]:0
+#    E/ev[1]            EEL-Im[2]          EEL-Re[3]          EEL_o-Im[4]        EEL_o-Re[5]
 #
-#    E/ev[1]      EEL-Im[2]    EEL-Re[3]    EELo-Im[4]   EELo-Re[5]
-#
-    0.000000    -0.000000    -1.000000    -0.000000    -1.000000
-   0.101        0.348E-09    -1.00        0.180E-10    -1.00    
-   0.202        0.737E-09    -1.00        0.361E-10    -1.00    
-   0.303        0.122E-08    -1.00        0.546E-10    -1.00    
-   0.404        0.188E-08    -1.00        0.736E-10    -1.00    
-   0.505        0.289E-08    -1.00        0.935E-10    -1.00    
-   0.606        0.460E-08    -1.00        0.114E-09    -1.00    
-   0.707        0.796E-08    -1.00        0.136E-09    -1.00    
-   0.808        0.159E-07    -1.00        0.160E-09    -1.00    
-   0.909        0.396E-07    -1.00        0.186E-09    -1.00    
-    1.01        0.863E-07    -1.00        0.213E-09    -1.00    
-    1.11        0.467E-07    -1.00        0.244E-09    -1.00    
-    1.21        0.184E-07    -1.00        0.278E-09    -1.00    
-    1.31        0.917E-08    -1.00        0.316E-09    -1.00    
-    1.41        0.556E-08    -1.00        0.359E-09    -1.00    
-    1.52        0.402E-08    -1.00        0.408E-09    -1.00    
-    1.62        0.369E-08    -1.00        0.465E-09    -1.00    
-    1.72        0.296E-08    -1.00        0.532E-09    -1.00    
-    1.82        0.216E-08    -1.00        0.610E-09    -1.00    
-    1.92        0.185E-08    -1.00        0.704E-09    -1.00    
-    2.02        0.176E-08    -1.00        0.818E-09    -1.00    
-    2.12        0.182E-08    -1.00        0.959E-09    -1.00    
-    2.222       0.2027E-8    -1.000       0.1136E-8    -1.000   
-    2.323       0.2424E-8    -1.000       0.1364E-8    -1.000   
-    2.424       0.3139E-8    -1.000       0.1663E-8    -1.000   
-    2.525       0.4474E-8    -1.000       0.2068E-8    -1.000   
-    2.626       0.7257E-8    -1.000       0.2638E-8    -1.000   
-    2.727       0.1423E-7    -1.000       0.3475E-8    -1.000   
-    2.828       0.3551E-7    -1.000       0.4778E-8    -1.000   
-    2.929       0.5887E-7    -1.000       0.6967E-8    -1.000   
-    3.030       0.2668E-7    -1.000       0.1105E-7    -1.000   
-    3.131       0.1286E-7    -1.000       0.1990E-7    -1.000   
-    3.232       0.9320E-8    -1.000       0.4359E-7    -1.000   
-    3.333       0.1025E-7    -1.000       0.1149E-6    -1.000   
-    3.434       0.1712E-7    -1.000       0.1302E-6    -1.000   
-    3.535       0.4090E-7    -1.000       0.5041E-7    -1.000   
-    3.636       0.5534E-7    -1.000       0.2231E-7    -1.000   
-    3.737       0.2264E-7    -1.000       0.1226E-7    -1.000   
-    3.838       0.9984E-8    -1.000       0.7818E-8    -1.000   
-    3.939       0.5489E-8    -1.000       0.5577E-8    -1.000   
-    4.040       0.3484E-8    -1.000       0.4394E-8    -1.000   
-    4.141       0.2425E-8    -1.000       0.3868E-8    -1.000   
-    4.242       0.1797E-8    -1.000       0.3994E-8    -1.000   
-    4.343       0.1392E-8    -1.000       0.5424E-8    -1.000   
-    4.444       0.1114E-8    -1.000       0.9749E-8    -1.000   
-    4.55        0.915E-09    -1.00        0.810E-08    -1.00    
-    4.65        0.767E-09    -1.00        0.538E-08    -1.00    
-    4.75        0.654E-09    -1.00        0.563E-08    -1.00    
-    4.85        0.565E-09    -1.00        0.838E-08    -1.00    
-    4.95        0.494E-09    -1.00        0.171E-07    -1.00    
-    5.05        0.436E-09    -1.00        0.429E-07    -1.00    
-    5.15        0.388E-09    -1.00        0.389E-07    -1.00    
-    5.25        0.349E-09    -1.00        0.151E-07    -1.00    
-    5.35        0.315E-09    -1.00        0.712E-08    -1.00    
-    5.45        0.287E-09    -1.00        0.415E-08    -1.00    
-    5.56        0.263E-09    -1.00        0.279E-08    -1.00    
-    5.66        0.242E-09    -1.00        0.210E-08    -1.00    
-    5.76        0.224E-09    -1.00        0.174E-08    -1.00    
-    5.86        0.209E-09    -1.00        0.163E-08    -1.00    
-    5.96        0.195E-09    -1.00        0.185E-08    -1.00    
-    6.06        0.184E-09    -1.00        0.286E-08    -1.00    
-    6.16        0.174E-09    -1.00        0.614E-08    -1.00    
-    6.26        0.165E-09    -1.00        0.589E-08    -1.00    
-    6.36        0.158E-09    -1.00        0.252E-08    -1.00    
-    6.46        0.152E-09    -1.00        0.134E-08    -1.00    
-    6.57        0.147E-09    -1.00        0.884E-09    -1.00    
-    6.67        0.144E-09    -1.00        0.658E-09    -1.00    
-    6.77        0.141E-09    -1.00        0.525E-09    -1.00    
-    6.87        0.140E-09    -1.00        0.439E-09    -1.00    
-    6.97        0.140E-09    -1.00        0.377E-09    -1.00    
-    7.07        0.141E-09    -1.00        0.330E-09    -1.00    
-    7.17        0.144E-09    -1.00        0.294E-09    -1.00    
-    7.27        0.149E-09    -1.00        0.265E-09    -1.00    
-    7.37        0.157E-09    -1.00        0.241E-09    -1.00    
-    7.47        0.168E-09    -1.00        0.220E-09    -1.00    
-    7.58        0.182E-09    -1.00        0.203E-09    -1.00    
-    7.68        0.203E-09    -1.00        0.188E-09    -1.00    
-    7.78        0.231E-09    -1.00        0.174E-09    -1.00    
-    7.88        0.271E-09    -1.00        0.163E-09    -1.00    
-    7.98        0.329E-09    -1.00        0.153E-09    -1.00    
-    8.08        0.417E-09    -1.00        0.144E-09    -1.00    
-    8.18        0.558E-09    -1.00        0.135E-09    -1.00    
-    8.28        0.800E-09    -1.00        0.128E-09    -1.00    
-    8.38        0.126E-08    -1.00        0.122E-09    -1.00    
-    8.48        0.230E-08    -1.00        0.116E-09    -1.00    
-    8.59        0.520E-08    -1.00        0.110E-09    -1.00    
-    8.69        0.134E-07    -1.00        0.106E-09    -1.00    
-    8.79        0.117E-07    -1.00        0.101E-09    -1.00    
-    8.89        0.446E-08    -1.00        0.976E-10    -1.00    
-    8.99        0.206E-08    -1.00        0.942E-10    -1.00    
-    9.09        0.118E-08    -1.00        0.912E-10    -1.00    
-    9.19        0.799E-09    -1.00        0.887E-10    -1.00    
-    9.29        0.561E-09    -1.00        0.865E-10    -1.00    
-    9.39        0.399E-09    -1.00        0.847E-10    -1.00    
-    9.49        0.304E-09    -1.00        0.833E-10    -1.00    
-    9.60        0.243E-09    -1.00        0.823E-10    -1.00    
-    9.70        0.200E-09    -1.00        0.817E-10    -1.00    
-    9.80        0.169E-09    -1.00        0.817E-10    -1.00    
-    9.90        0.145E-09    -1.00        0.822E-10    -1.00    
-    10.0        0.127E-09    -1.00        0.834E-10    -1.00    
+     0.00000000        -0.00000000        -1.00000000        -0.00000000        -1.00000000   
+    0.10101010         0.34821920E-09     -1.0000000         0.17956229E-10     -1.0000000    
+    0.20202020         0.73686585E-09     -1.0000000         0.36092140E-10     -1.0000000    
+    0.30303031         0.12190522E-08     -1.0000000         0.54591956E-10     -1.0000000    
+    0.40404040         0.18812008E-08     -1.0000000         0.73649579E-10     -1.0000000    
+    0.50505048         0.28882732E-08     -1.0000000         0.93473868E-10     -1.0000000    
+    0.60606062         0.46033275E-08     -1.0000000         0.11429475E-09     -1.0000000    
+    0.70707071         0.79635623E-08     -1.0000000         0.13637053E-09     -1.0000000    
+    0.80808079         0.15920504E-07     -1.0000000         0.15999678E-09     -1.0000000    
+    0.90909094         0.39566068E-07     -1.0000000         0.18551723E-09     -1.0000000    
+     1.0101010         0.86272600E-07     -1.0000000         0.21333808E-09     -1.0000000    
+     1.1111110         0.46701533E-07     -1.0000001         0.24394609E-09     -1.0000000    
+     1.2121212         0.18380721E-07     -1.0000000         0.27793223E-09     -1.0000000    
+     1.3131312         0.91740668E-08     -1.0000000         0.31602401E-09     -1.0000000    
+     1.4141414         0.55618359E-08     -1.0000000         0.35912856E-09     -1.0000000    
+     1.5151514         0.40205519E-08     -1.0000000         0.40839240E-09     -1.0000000    
+     1.6161616         0.36863184E-08     -1.0000000         0.46528573E-09     -1.0000000    
+     1.7171715         0.29570131E-08     -1.0000000         0.53172095E-09     -1.0000000    
+     1.8181819         0.21598943E-08     -1.0000000         0.61022870E-09     -1.0000000    
+     1.9191918         0.18517839E-08     -1.0000000         0.70421480E-09     -1.0000000    
+     2.0202019         0.17646536E-08     -1.0000000         0.81835894E-09     -1.0000000    
+     2.1212122         0.18231590E-08     -1.0000000         0.95923292E-09     -1.0000000    
+     2.22222209        0.202661155E-8     -1.00000000        0.113630627E-8     -1.00000000   
+     2.32323217        0.242362197E-8     -1.00000000        0.136362932E-8     -1.00000000   
+     2.42424250        0.313884940E-8     -1.00000000        0.166277658E-8     -1.00000000   
+     2.52525258        0.447472503E-8     -1.00000000        0.206824780E-8     -1.00000000   
+     2.62626243        0.725785387E-8     -1.00000000        0.263796918E-8     -1.00000000   
+     2.72727251        0.142342715E-7     -1.00000000        0.347520568E-8     -1.00000000   
+     2.82828283        0.355107659E-7     -1.00000000        0.477835993E-8     -1.00000000   
+     2.92929292        0.588715530E-7     -1.00000000        0.696713398E-8     -1.00000000   
+     3.03030276        0.266786859E-7     -1.00000000        0.110496607E-7     -1.00000000   
+     3.13131309        0.128568933E-7     -1.00000000        0.198973478E-7     -1.00000000   
+     3.23232317        0.932001853E-8     -1.00000000        0.435934915E-7    -0.999999881   
+     3.33333325        0.102515747E-7     -1.00000000        0.114874794E-6    -0.999999881   
+     3.43434310        0.171236980E-7     -1.00000000        0.130230219E-6     -1.00000012   
+     3.53535342        0.408995291E-7     -1.00000000        0.504126021E-7     -1.00000012   
+     3.63636374        0.553368373E-7     -1.00000000        0.223124026E-7     -1.00000012   
+     3.73737359        0.226375434E-7     -1.00000012        0.122551231E-7     -1.00000012   
+     3.83838367        0.998365302E-8     -1.00000000        0.781746579E-8     -1.00000000   
+     3.93939400        0.548909451E-8     -1.00000000        0.557648905E-8     -1.00000000   
+     4.04040384        0.348404638E-8     -1.00000000        0.439364012E-8     -1.00000000   
+     4.14141417        0.242493048E-8     -1.00000000        0.386798549E-8     -1.00000000   
+     4.24242449        0.179647797E-8     -1.00000000        0.399345668E-8     -1.00000000   
+     4.34343433        0.139146872E-8     -1.00000000        0.542347456E-8     -1.00000000   
+     4.44444418        0.111407306E-8     -1.00000000        0.974887282E-8     -1.00000000   
+     4.5454545         0.91506824E-09     -1.0000000         0.80998861E-08     -1.0000000    
+     4.6464643         0.76702905E-09     -1.0000000         0.53830278E-08     -1.0000000    
+     4.7474747         0.65366207E-09     -1.0000000         0.56347669E-08     -1.0000000    
+     4.8484850         0.56477373E-09     -1.0000000         0.83827123E-08     -1.0000000    
+     4.9494948         0.49370702E-09     -1.0000000         0.17151070E-07     -1.0000000    
+     5.0505052         0.43595660E-09     -1.0000000         0.42874699E-07     -1.0000000    
+     5.1515150         0.38838133E-09     -1.0000000         0.38863941E-07     -1.0000000    
+     5.2525249         0.34873318E-09     -1.0000000         0.15084018E-07     -1.0000000    
+     5.3535352         0.31536823E-09     -1.0000000         0.71209989E-08     -1.0000000    
+     5.4545450         0.28706099E-09     -1.0000000         0.41520538E-08     -1.0000000    
+     5.5555553         0.26288294E-09     -1.0000000         0.27948559E-08     -1.0000000    
+     5.6565657         0.24212124E-09     -1.0000000         0.20962183E-08     -1.0000000    
+     5.7575755         0.22422195E-09     -1.0000000         0.17385909E-08     -1.0000000    
+     5.8585858         0.20875134E-09     -1.0000000         0.16301361E-08     -1.0000000    
+     5.9595957         0.19536760E-09     -1.0000000         0.18459252E-08     -1.0000000    
+     6.0606055         0.18380121E-09     -1.0000000         0.28580762E-08     -1.0000000    
+     6.1616158         0.17383994E-09     -1.0000000         0.61397012E-08     -1.0000000    
+     6.2626262         0.16531936E-09     -1.0000000         0.58939986E-08     -1.0000000    
+     6.3636360         0.15811498E-09     -1.0000000         0.25169589E-08     -1.0000000    
+     6.4646463         0.15213773E-09     -1.0000000         0.13421552E-08     -1.0000000    
+     6.5656567         0.14733134E-09     -1.0000000         0.88423946E-09     -1.0000000    
+     6.6666665         0.14367171E-09     -1.0000000         0.65787775E-09     -1.0000000    
+     6.7676764         0.14116822E-09     -1.0000000         0.52545329E-09     -1.0000000    
+     6.8686862         0.13986777E-09     -1.0000000         0.43857409E-09     -1.0000000    
+     6.9696965         0.13986175E-09     -1.0000000         0.37686096E-09     -1.0000000    
+     7.0707068         0.14129703E-09     -1.0000000         0.33047684E-09     -1.0000000    
+     7.1717172         0.14439393E-09     -1.0000000         0.29414945E-09     -1.0000000    
+     7.2727275         0.14947296E-09     -1.0000000         0.26481084E-09     -1.0000000    
+     7.3737369         0.15699728E-09     -1.0000000         0.24055419E-09     -1.0000000    
+     7.4747472         0.16764051E-09     -1.0000000         0.22012958E-09     -1.0000000    
+     7.5757570         0.18239663E-09     -1.0000000         0.20268100E-09     -1.0000000    
+     7.6767673         0.20276708E-09     -1.0000000         0.18760049E-09     -1.0000000    
+     7.7777777         0.23109042E-09     -1.0000000         0.17444302E-09     -1.0000000    
+     7.8787880         0.27115293E-09     -1.0000000         0.16287433E-09     -1.0000000    
+     7.9797974         0.32938868E-09     -1.0000000         0.15263812E-09     -1.0000000    
+     8.0808077         0.41741741E-09     -1.0000000         0.14353417E-09     -1.0000000    
+     8.1818180         0.55790117E-09     -1.0000000         0.13540390E-09     -1.0000000    
+     8.2828283         0.79968338E-09     -1.0000000         0.12812018E-09     -1.0000000    
+     8.3838387         0.12629844E-08     -1.0000000         0.12158030E-09     -1.0000000    
+     8.4848490         0.23013644E-08     -1.0000000         0.11570044E-09     -1.0000000    
+     8.5858583         0.51940834E-08     -1.0000000         0.11041237E-09     -1.0000000    
+     8.6868687         0.13379877E-07     -1.0000000         0.10566018E-09     -1.0000000    
+     8.7878780         0.11715410E-07     -1.0000000         0.10139891E-09     -1.0000000    
+     8.8888884         0.44639323E-08     -1.0000000         0.97592497E-10     -1.0000000    
+     8.9898987         0.20611923E-08     -1.0000000         0.94213096E-10     -1.0000000    
+     9.0909090         0.11760838E-08     -1.0000000         0.91240404E-10     -1.0000000    
+     9.1919184         0.79940582E-09     -1.0000000         0.88661183E-10     -1.0000000    
+     9.2929287         0.56130328E-09     -1.0000000         0.86469547E-10     -1.0000000    
+     9.3939390         0.39899600E-09     -1.0000000         0.84667252E-10     -1.0000000    
+     9.4949493         0.30424557E-09     -1.0000000         0.83264409E-10     -1.0000000    
+     9.5959597         0.24276711E-09     -1.0000000         0.82280974E-10     -1.0000000    
+     9.6969700         0.19999703E-09     -1.0000000         0.81748767E-10     -1.0000000    
+     9.7979794         0.16886817E-09     -1.0000000         0.81714233E-10     -1.0000000    
+     9.8989897         0.14545602E-09     -1.0000000         0.82243018E-10     -1.0000000    
+     10.000000         0.12739676E-09     -1.0000000         0.83426155E-10     -1.0000000    
 # 
-# 01/16/2019 at 12:33 YAMBO @ narro [start]
-# 01/16/2019 at 12:34               [end]
+# 11/30/2021 at 15:42 yambo @ baym [start]
+# 11/30/2021 at 15:42              [end]
 #  
-# Timing   [Min/Max/Average]: 05s/05s/05s
+# Timing   [Min/Max/Average]: 02s/02s/02s
 #
-# .-Input file : yambo.in
-# | optics                         # [R OPT] Optics
-# | bse                            # [R BSE] Bethe Salpeter Equation.
-# | bsk                            # [R BSK] Bethe Salpeter Equation kernel
-# | bss                            # [R BSS] Bethe Salpeter Equation solver
-# | em1s                           # [R Xs] Static Inverse Dielectric Matrix
-# | rim_cut                        # [R RIM CUT] Coulomb potential
-# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
-# | K_Threads= 1                   # [OPENMP/BSK] Number of threads for response functions
-# | RandQpts=0                     # [RIM] Number of random q-points in the BZ
-# | RandGvec= 1            RL      # [RIM] Coulomb interaction RS components
-# | CUTGeo= "box xy"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# .-Input file  yambo.in
+# | rim_cut                          # [R] Coulomb potential
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | em1s                             # [R][Xs] Statically Screened Interaction
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "box xy"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
 # | % CUTBox
 # |  19.00000 | 19.00000 |  0.00000 |        # [CUT] [au] Box sides
 # | %
-# | CUTRadius= 0.000000            # [CUT] [au] Sphere/Cylinder radius
-# | CUTCylLen= 0.000000            # [CUT] [au] Cylinder length
-# | CUTwsGvec= 0.700000            # [CUT] WS cutoff: number of G to be modified
-# | Chimod= "HARTREE"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
-# | BSEmod= "retarded"             # [BSE] resonant/retarded/coupling
-# | BSKmod= "SEX"                  # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-# | BSSmod= "hdi"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
-# | BSENGexx=  4999        RL      # [BSK] Exchange components
-# | BSENGBlk= 21           RL      # [BSK] Screened interaction block size
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "hdi"                    # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | BSENGexx=  4999            RL    # [BSK] Exchange components
+# | BSENGBlk= 21               RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
 # | #WehCpl                        # [BSK] eh interaction included also in coupling
-# | KfnQPdb= "E < 02_QP_PPA/ndb.QP" # [EXTQP BSK BSS] Database
-# | % BEnRange
-# |   0.00000 | 10.00000 | eV      # [BSS] Energy range
+# | KfnQPdb= "E < 02_QP_PPA/ndb.QP"  # [EXTQP BSK BSS] Database action
+# | BSEprop= "abs jdos"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+# | % PL_weights
+# |  0.577350 | 0.577350 | 0.577350 |        # [PL] [cc] Weights of the carthesian components of the emitted radiation
 # | %
-# | % BDmRange
-# |   0.10000 |  0.10000 | eV      # [BSS] Damping range
-# | %
-# | BEnSteps= 100                  # [BSS] Energy steps
-# | % BLongDir
-# | 0.1000E-4 | 0.000    | 0.000    |        # [BSS] [cc] Electric Field
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
 # | %
 # | % BSEBands
-# |   5 |  8 |                     # [BSK] Bands range
+# |   5 |  8 |                           # [BSK] Bands range
 # | %
-# | BSSInvMode= "pf"               # [BSS] Inversion solver modality `(f)ull/(p)erturbative`
-# | BSEPSInvTrs=   0.0100          # [BSS EPS] Inversion treshold. Relative[o/o](>0)/Absolute(<0)
-# | BSSInvPFratio= 1.000000        # [BSS] Inversion solver. Ratio between the number of frequencies solved pert/full
-# | BSHayTrs=  0.02000             # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | % BEnRange
+# |   0.00000 | 10.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 100                    # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | BSSInvMode= "pf"                 # [BSS] Inversion solver modality `(f)ull/(p)erturbative`
+# | BSEPSInvTrs= 0.010000            # [BSS EPS] Inversion treshold. Relative[o/o](>0)/Absolute(<0)
+# | BSSInvPFratio= 1.000000          # [BSS] Inversion solver. Ratio between the number of frequencies solved pert/full
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSHayTrs= 0.020000               # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | BSPLInvTrs= 0.500000             # [BSS PL] Inversion treshold
 # | % BndsRnXs
-# |   1 | 25 |                     # [Xs] Polarization function bands
+# |   1 | 25 |                           # [Xs] Polarization function bands
 # | %
-# | NGsBlkXs= 21           RL      # [Xs] Response block size
-# | % DmRngeXs
-# | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
-# | %
+# | NGsBlkXs= 21               RL    # [Xs] Response block size
 # | % LongDrXs
-# | 0.5774E-5 |0.5774E-5 |0.5774E-5 |        # [Xs] [cc] Electric Field
+# |  0.577350E-5 | 0.577350E-5 | 0.577350E-5 # [Xs] [cc] Electric Field
 # | %
+# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)

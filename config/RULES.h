@@ -25,7 +25,7 @@ call add_RULE("o-02_BSE_CPL.Esort_q1_diago_bse","skip",COL=2,MATERIAL="CH4")
 !
 ! INTEL
 !=======
-call add_RULE(".bands_built_in_spin","skip",COLS=(/6,7,8/),MATERIAL="NiBr2")
+call add_RULE(".bands_built_in_spin","skip",COLS=(/6,7,8/),MATERIAL="NiBr2",Compiler="intel")
 !
 ! RT
 !====
@@ -33,8 +33,8 @@ call add_RULE(".YPP-RT_occupations_DATA","skip",MATERIAL="Si_bulk")
 call add_RULE(".YPP-RT_","no_statistics",MATERIAL="Si_bulk")
 call add_RULE("11_ip_neq_ypp_procedure.YPP-TR_Anomalous_Hall_IP","average",COLS=(/2,3/),MATERIAL="Black-Phosphorus")
 call add_RULE("10_ip_neq_ypp_procedure.YPP-TR_Anomalous_Hall_IP","average",COLS=(/2,3,4,5,6,7/),MATERIAL="Black-Phosphorus")
-call add_RULE(".YPP-current","average",COLS=(/3,4/),VAL_treshold=1.E-9,MATERIAL="hBN")
-call add_RULE(".YPP-polarization","avergae",COLS=(/3,4/),VAL_treshold=1.E-9,MATERIAL="hBN")
+call add_RULE("-current","average",COLS=(/3,4/),VAL_treshold=1.E-9,MATERIAL="hBN")
+call add_RULE("-polarization","average",COLS=(/3,4/),VAL_treshold=1.E-9,MATERIAL="hBN")
 call add_RULE(".current","average",COLS=(/2,3,4/),VAL_treshold=1.E-10,MATERIAL="hBN AlAs Si_bulk MoS2 Black-Phosphorus")
 call add_RULE(".polarization","average",COLS=(/2,3,4/),MATERIAL="hBN AlAs MoS2 Black-Phosphorus")
 call add_RULE(".magnetization","average",COLS=(/2,3,4/),MATERIAL="hBN AlAs MoS2")
@@ -53,6 +53,9 @@ call add_RULE(".induced_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 call add_RULE(".total_field","skip",COLS=(/3,4,6,7/),Material="hBN")
 !
 ! Temporary
+!===========
+call add_RULE(".G_k1_w ","skip",COL=3,Material="hBN")
+call add_RULE(".G_w_integrated ","skip",COL=3,Material="hBN")
 call add_RULE("08_ypp_bands","align",REF_row=2,Material="MoS2")
 call add_RULE("08_ypp_dos","align",REF_row=2,Material="MoS2")
 call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_EP_Elec_linewidth","align",REF_row=1,Material="MoS2")
@@ -61,7 +64,7 @@ call add_RULE("08_ypp_fit_occ_DbGd.YPP-NEQ_linewidths","align",REF_row=1,Materia
 call add_RULE("08_ypp_fit_occ_DbGd.YPP-RT_occupations","align",REF_row=1,Material="MoS2")
 !
 ! El/Ho Temperatures / Fermi levels
-!
+!===================================
 call add_RULE(".mean_EPlifetimes","skip",TITLES=(/"T Hole  [K]","T Elec  [K]"/),MATERIAL="Si_bulk")
 call add_RULE(".carriers","skip",TITLES=(/"T_hole [K]","T_elec [K]","Ef(h) [eV]","Ef(e) [eV]"/),MATERIAL="MoS2 WSe2 Si_bulk")
 !
@@ -94,9 +97,13 @@ call add_RULE(".eel_q1_haydock_bse","skip",TITLES=(/"EEL`/Im[6]","EEL`/Re[7]"/))
 call add_RULE(".exc_weights_at","skip",COLS=(/4/))
 call add_RULE(".exc_qpt1_weights_at","skip",COLS=(/4,6/))
 call add_RULE("I_sorted","skip",COLS=(/3/))
+call add_RULE("I+spin_sorted","skip",COLS=(/3/))
 call add_RULE("E_sorted","skip",COLS=(/3/))
+call add_RULE("E+spin_sorted","skip",COLS=(/3/))
 call add_RULE("I_sorted","sort",REF_col=1)
+call add_RULE("I+spin_sorted","sort",REF_col=1)
 call add_RULE("E_sorted","sort",REF_col=1)
+call add_RULE("E+spin_sorted","sort",REF_col=1)
 !
 ! SC
 !=====
