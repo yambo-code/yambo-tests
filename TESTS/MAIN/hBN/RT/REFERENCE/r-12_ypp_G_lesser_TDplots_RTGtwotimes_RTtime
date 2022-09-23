@@ -1,19 +1,19 @@
+     __      __   ______   __       __  _______    ______                 
+    |  \    /  \ /      \ |  \     /  \|       \  /      \                
+     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
+      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
+       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
+        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
+        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
+        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
+         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
-                                                                          
-                                                                          
-          Version 5.1.0 Revision 20808 Hash 523a05b1e                     
-                Branch is devel-rt-vel-and-magn                           
-            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+    Version 5.1.1 Revision 21291 Hash (prev commit) cdfbeb53f             
+                    Branch is devel-andreaM                               
+                     MPI+HDF5_MPI_IO Build                                
                    http://www.yambo-code.org                              
  
- 08/31/2021 at 09:35 ypp_rt @ unimi-XPS-8930
+ 03/08/2022 at 15:47 ypp_rt @ baym
  ==================================================
 
  Cores               :  1
@@ -32,9 +32,9 @@
  Log files           : ./LOG
 
  Job   string        : 12_ypp_G_lesser
- Alt#1 string        : 11_td_sex_dbgd_Gless-serial-devel-rt-vel-and-magn
- Alt#2 string        : 10_ypp_Map_FineGridx9-serial-devel-rt-vel-and-magn
- Alt#3 string        : R10
+ Alt#1 string        : 11_td_sex_dbgd_Gless-serial-devel-andreaM
+ Alt#2 string        : 10_ypp_Map_FineGridx9-serial-devel-andreaM
+ Alt#3 string        : R3
 
  Precision           : SINGLE
   
@@ -149,7 +149,7 @@
         : wf components:  2834
   K [4]: -0.500000  0.500000  0.000000 [rlu]
         : wf components:  2834
-  [RD./10_ypp_Map_FineGridx9-serial-devel-rt-vel-and-magn//ndb.Double_Grid]-------
+  [RD./10_ypp_Map_FineGridx9-serial-devel-andreaM//ndb.Double_Grid]---------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
    [FineGd] Brillouin Symmetry  mode                : expanded
    [FineGd] Fine Grid  BZ mapped mode               : BZ
@@ -158,7 +158,7 @@
    [FineGd] Number of pts (Energy grid)             :  216
    [FineGd] Number of pts (fine+coarse, IBZ-map)    :  216
    [FineGd] Number of pts (fine+coarse, BZ-map)     :  216
-  - S/N 001018 ---------------------------------------------- v.05.01.00 r.20808 -
+  - S/N 001018 ---------------------------------------------- v.05.01.01 r.21291 -
 
   [05.05] Double K-grid
   =====================
@@ -175,9 +175,9 @@
   ==============================
 
   [X] === General ===
-  [X] Electronic Temperature                        :  0.172347E-4  0.200000    [eV K]
+  [X] Electronic Temperature                        :  0.258520E-4  0.300000    [eV K]
   [X] Bosonic    Temperature                        :  0.000000  0.000000 [eV K]
-  [X] Finite Temperature mode                       : no
+  [X] Finite Temperature mode                       : yes
   [X] El. density                                   :  0.46033E+24 [cm-3]
   [X] Fermi Level                                   :  6.631414 [eV]
 
@@ -187,9 +187,9 @@
   [X] Filled Bands                                  :   8
   [X] Empty Bands                                   :    9   60
   [X] Direct Gap                                    :  4.439179 [eV]
-  [X] Direct Gap localized at k-point               :  2
+  [X] Direct Gap localized at k                     :  2
   [X] Indirect Gap                                  :  4.439179 [eV]
-  [X] Indirect Gap between k-points                 :  2  2
+  [X] Indirect Gap between kpts                     :  2  2
   [X] Last valence band width                       :  0.903503 [eV]
   [X] 1st conduction band width                     :  1.130507 [eV]
    
@@ -248,7 +248,7 @@
   ================
 
 
- Timing [Min/Max/Average]: 20s/20s/20s
+ Timing [Min/Max/Average]: 45s/45s/45s
 
  [09] Timing Overview
  ====================
@@ -257,26 +257,39 @@
       IO_and_Messaging_switch :      0.0000s CPU
              io_ATMPROJ_pwscf :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
-               INTERPOLATE bz :      0.0000s CPU
                   io_KB_pwscf :      0.0000s CPU
-             RT output (INIT) :      0.0000s CPU
-                        io_WF :      0.0010s CPU
-                 io_KB_abinit :      0.0014s CPU
-                     io_QINDX :      0.0015s CPU
-                   io_DIPOLES :      0.0018s CPU
-                      io_GROT :      0.0040s CPU (   3 calls,   1.335 msec avg)
-               io_Double_Grid :      0.0051s CPU (   2 calls,   2.571 msec avg)
-          INTERPOLATE Fourier :      1.7862s CPU (   2 calls,   0.893 sec avg)
-             io_RT_components :      2.5750s CPU (2504 calls,   0.001 sec avg)
+             RT output (INIT) :      0.0001s CPU
+               INTERPOLATE bz :      0.0001s CPU
+                        io_WF :      0.0017s CPU
+                 io_KB_abinit :      0.0026s CPU
+                     io_QINDX :      0.0028s CPU
+                   io_DIPOLES :      0.0032s CPU
+                      io_GROT :      0.0073s CPU (   3 calls,   2.419 msec avg)
+               io_Double_Grid :      0.0105s CPU (   2 calls,   5.240 msec avg)
+          INTERPOLATE Fourier :      1.7915s CPU (   2 calls,   0.896 sec avg)
+             io_RT_components :      9.6844s CPU (5004 calls,   0.002 sec avg)
 
- [10] Game Over & Game summary
+ [10] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
+
+
+ Not deallocated components:
+
+         interpls(ID)%engre [%engre] :  67.43100 [Mb] Host ([08.03] Interpolation@work: Circuit)
+
+         Max memory used   :  172.5410 [Mb]
+
+ [11] Game Over & Game summary
  =============================
 
- 08/31/2021 at 09:35 ypp_rt @ unimi-XPS-8930 [start]
- 08/31/2021 at 09:35                         [end]
+ 03/08/2022 at 15:47 ypp_rt @ baym [start]
+ 03/08/2022 at 15:48               [end]
 
- Timing   [Min/Max/Average]: 20s/20s/20s
-             [Time-Profile]: 20s
+ Timing   [Min/Max/Average]: 45s/45s/45s
+             [Time-Profile]: 45s
 
  .-ACKNOWLEDGMENT
  |
@@ -312,10 +325,10 @@
  | #NormN                         # Nel on the bands is renormalized to Nel in the IBZ
  | NelFac= 1.000000                 # Rescale the total number of electrons
  | CIRCUIT_E_DB_path= "none"        # SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)
- | BANDS_path= ""                   # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
+ | BANDS_path= " Lmp G"             # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
  | BANDS_steps=  50                 # Number of divisions
  | BANDS_built_in                 # Print the bands of the generating points of the circuit using the nearest internal point
- | TimeStep= 0.020002         fs    # Time step
+ | TimeStep= 0.009998         fs    # Time step
  | % TimeRange
  |  25.00000 | 75.00001 |         fs    # Time-window where processing is done
  | %

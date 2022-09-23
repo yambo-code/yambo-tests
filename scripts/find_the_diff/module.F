@@ -29,7 +29,7 @@ module DIFF
  integer, parameter  :: SP  = selected_real_kind(6,30)
  integer, parameter  :: N_m = 4,N_max_col=50,N_max_rules=500
  !
- character(str_length) :: str,str1,CHECK_result="OK",MATERIAL="any"
+ character(str_length) :: str,str1,CHECK_result="OK",MATERIAL="any",COMPILER="any"
  character(str_length) :: data_str(N_max_col),titles(N_max_col)
  integer        :: ind,ierr,ivar,N,i_c,i_m,i_d,i_r,i_c_ref,i_t,i_rule=0,i_REF_col,i_REF_row,N_data_to_check
  character(13)  :: subname="find_the_diff"
@@ -43,6 +43,7 @@ module DIFF
    character(str_length)         :: pattern  = "fake-pattern"
    character(str_length)         :: action   = " "
    character(str_length)         :: material = "any"
+   character(str_length)         :: compiler = "any"
    integer                :: REF_col=0
    integer                :: REF_row=0
    integer                :: column(N_max_col) = 0

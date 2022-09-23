@@ -26,7 +26,7 @@ sub UTILS_list_backups{
  my $n_backups_to_save=50;
  my $n_backups=0;
  my @dir = ( "backup_and_www/$host/$user/" );
- print "checking folder backup_and_www/$host/$user/";
+ #print "checking folder backup_and_www/$host/$user/";
  if ($mode eq "bench") {@dir="benchmark-results/"};
  my @dirs;
  find( sub { push @dirs, $File::Find::name if -d }, @dir );
