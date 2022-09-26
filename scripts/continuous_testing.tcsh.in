@@ -10,10 +10,16 @@ while ( 1 > 0)
  rm -f ROBOTS/@robot@/@user@/FLOWS/run.*
  cat control_room.csv | awk -f scripts/robot_update.awk
  #
+ # Files to run
+ #
  set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh'`
  set log_dir="."
  #
- if ( "$files" != "" ) then
+ # Check if robot is free
+ #
+ set NR=`find ~/yambo-testing/ -name '*is_running' |wc -l`
+ #
+ if ( $NR < 3 && ! -f ~/yambo-testing/@robot@ && "$files" != "" ) then
   #
   foreach run_file ( ROBOTS/@robot@/@user@/FLOWS/run.*.tcsh )
    #
@@ -33,10 +39,7 @@ while ( 1 > 0)
    # stop if needed
    if ( -f ~/yambo-testing/stop_@robot@ ) break
    #
-   # count the running robots
-   set NR=`find ~/yambo-testing/ -name '*is_running' |wc -l`
-   #
-   if ( $NR < 3 && ! -f "$branch_dir/last_tested_hash.$last_hash" && ! -f ~/yambo-testing/@robot@_is_running ) then
+   if ( ! -f "$branch_dir/last_tested_hash.$last_hash" ) then
     set M=`date +%m`
     set D=`date +%d`
     set log_dir="$branch_dir/$M/$D"
