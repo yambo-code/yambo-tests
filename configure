@@ -1771,6 +1771,11 @@ ac_configure="$SHELL $ac_aux_dir/configure"  # Please don't use this var.
 
 #
 # ============================================================================
+# FILES
+#
+CFG_FILES="scripts/continuous_testing.tcsh scripts/reset.sh scripts/launcher.tcsh scripts/robot_update.awk scripts/launch_the_robot.sh"
+rm -f $CFG_FILES
+# ============================================================================
 # ROBOT setup
 # Make sure we can run config.sub.
 $SHELL "$ac_aux_dir/config.sub" sun4 >/dev/null 2>&1 ||
@@ -2444,7 +2449,7 @@ PERL_LIB="${test_suite_dir}/libs"
 
 
 # ============================================================================
-ac_config_files="$ac_config_files config/MODULES.pl config/TOOLS.pl scripts/branch_continuous_testing.tcsh scripts/reset.sh scripts/test-suite-launcher.tcsh scripts/robot_update.awk scripts/run_the_continous_testing.sh"
+ac_config_files="$ac_config_files config/MODULES.pl config/TOOLS.pl ${CFG_FILES}"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3153,11 +3158,7 @@ do
   case $ac_config_target in
     "config/MODULES.pl") CONFIG_FILES="$CONFIG_FILES config/MODULES.pl" ;;
     "config/TOOLS.pl") CONFIG_FILES="$CONFIG_FILES config/TOOLS.pl" ;;
-    "scripts/branch_continuous_testing.tcsh") CONFIG_FILES="$CONFIG_FILES scripts/branch_continuous_testing.tcsh" ;;
-    "scripts/reset.sh") CONFIG_FILES="$CONFIG_FILES scripts/reset.sh" ;;
-    "scripts/test-suite-launcher.tcsh") CONFIG_FILES="$CONFIG_FILES scripts/test-suite-launcher.tcsh" ;;
-    "scripts/robot_update.awk") CONFIG_FILES="$CONFIG_FILES scripts/robot_update.awk" ;;
-    "scripts/run_the_continous_testing.sh") CONFIG_FILES="$CONFIG_FILES scripts/run_the_continous_testing.sh" ;;
+    "${CFG_FILES}") CONFIG_FILES="$CONFIG_FILES ${CFG_FILES}" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
