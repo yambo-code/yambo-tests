@@ -587,8 +587,10 @@ PACKAGE_URL=''
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
 PERL_LIB
+test_suite_dir
 grep_cmd
 NP_cmd
+source_dir
 rsync
 txt2html
 awk
@@ -651,6 +653,7 @@ ac_subst_files=''
 ac_user_opts='
 enable_option_checking
 with_host
+enable_ftp
 with_ncftp
 with_ncftpls
 with_ncftpput
@@ -660,6 +663,7 @@ with_awk
 with_txt2html
 with_rsync
 with_yambo
+with_yambo_libs
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1284,6 +1288,13 @@ if test -n "$ac_init_help"; then
    esac
   cat <<\_ACEOF
 
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --enable-ftp            Stick to standard FTP rather then SFTP. Default is
+                          no.
+
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
@@ -1297,6 +1308,8 @@ Optional Packages:
   --with-txt2html=<exe>         User-defined txt2html
   --with-rsync=<exe>            User-defined rsync
   --with-yambo=<path>           Path to the yambo source to test
+  --with-yambo-libs=<path>      Path to the folder where the test-suite will
+                                install the Yambo ext-libs
 
 Report bugs to <yambo@yambo-code.org>.
 _ACEOF
@@ -1758,6 +1771,11 @@ ac_configure="$SHELL $ac_aux_dir/configure"  # Please don't use this var.
 
 #
 # ============================================================================
+# FILES
+#
+CFG_FILES="scripts/continuous_testing.tcsh scripts/reset.sh scripts/launcher.tcsh scripts/robot_update.awk scripts/launch_the_robot.sh"
+rm -f $CFG_FILES
+# ============================================================================
 # ROBOT setup
 # Make sure we can run config.sub.
 $SHELL "$ac_aux_dir/config.sub" sun4 >/dev/null 2>&1 ||
@@ -1836,6 +1854,8 @@ username=`whoami`
 robot="$hostname"
 user="$username"
 if test "$domainame" != ""; then robot="$hostname.$domainame"; fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking the robot name" >&5
+$as_echo_n "checking the robot name... " >&6; }
 
 # Check whether --with-host was given.
 if test "${with_host+set}" = set; then :
@@ -1845,8 +1865,13 @@ else
 fi
 
 robot="$with_host"
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking the $robot/$user ROBOT" >&5
-$as_echo_n "checking the $robot/$user ROBOT... " >&6; }
+if test -f .running_robot.pl; then
+ robot=`head -n 1 .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $robot" >&5
+$as_echo "$robot" >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking the $robot/$user configuration" >&5
+$as_echo_n "checking the $robot/$user configuration... " >&6; }
 if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -d ROBOTS/$robot/$user/FLOWS; then
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: found" >&5
 $as_echo "found" >&6; }
@@ -1854,9 +1879,7 @@ else
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: created" >&5
 $as_echo "created" >&6; }
  mkdir -p ROBOTS/$robot/$user
- git add ROBOTS/$robot/
- git add ROBOTS/$robot/$user/
- echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> config/ROBOTS_list.pl
+ echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
 fi
 if ! test -d ROBOTS/$robot/$user/SCRIPTS; then
   mkdir -p ROBOTS/$robot/$user/SCRIPTS
@@ -1889,6 +1912,12 @@ fi
 # ============================================================================
 # TOOLS
 # ncftp/ncftpls/ncftpput
+# Check whether --enable-ftp was given.
+if test "${enable_ftp+set}" = set; then :
+  enableval=$enable_ftp;
+fi
+
+#
 
 # Check whether --with-ncftp was given.
 if test "${with_ncftp+set}" = set; then :
@@ -1897,7 +1926,24 @@ else
   with_ncftp="ncftp"
 fi
 
-for ac_prog in $with_ncftp
+
+# Check whether --with-ncftpls was given.
+if test "${with_ncftpls+set}" = set; then :
+  withval=$with_ncftpls;
+else
+  with_ncftpls="ncftpls"
+fi
+
+
+# Check whether --with-ncftpput was given.
+if test "${with_ncftpput+set}" = set; then :
+  withval=$with_ncftpput;
+else
+  with_ncftpput="ncftpput"
+fi
+
+if ! test x"$enable_ftp" = "x"; then
+ for ac_prog in $with_ncftp
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
@@ -1940,16 +1986,7 @@ fi
 done
 test -n "$ncftp" || ncftp="none"
 
-
-
-# Check whether --with-ncftpls was given.
-if test "${with_ncftpls+set}" = set; then :
-  withval=$with_ncftpls;
-else
-  with_ncftpls="ncftpls"
-fi
-
-for ac_prog in $with_ncftpls
+ for ac_prog in $with_ncftpls
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
@@ -1992,16 +2029,7 @@ fi
 done
 test -n "$ncftpls" || ncftpls="none"
 
-
-
-# Check whether --with-ncftpput was given.
-if test "${with_ncftpput+set}" = set; then :
-  withval=$with_ncftpput;
-else
-  with_ncftpput="ncftpput"
-fi
-
-for ac_prog in $with_ncftpput
+ for ac_prog in $with_ncftpput
 do
   # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog; ac_word=$2
@@ -2043,6 +2071,13 @@ fi
   test -n "$ncftpput" && break
 done
 test -n "$ncftpput" || ncftpput="none"
+
+else
+ ncftp="none";
+ ncftpls="none";
+ ncftpput="none";
+fi
+
 
 
 # wget
@@ -2318,7 +2353,7 @@ if test $rsync = "none"; then as_fn_error $? "Please provide the path to a worki
 if ! test -f ROBOTS/$robot/$user/MODULES; then
  { $as_echo "$as_me:${as_lineno-$LINENO}: Filling $robot/$user/MODULES" >&5
 $as_echo "$as_me: Filling $robot/$user/MODULES" >&6;}
- cp config/SAMPLE_modules    ROBOTS/$robot/$user/MODULES
+ cp config/SAMPLE_modules ROBOTS/$robot/$user/MODULES
 else
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: found an existing MODULES file" >&5
 $as_echo "found an existing MODULES file" >&6; }
@@ -2342,31 +2377,49 @@ case $with_yambo in
    fi
    { $as_echo "$as_me:${as_lineno-$LINENO}: result: found an existing BRANCHES file" >&5
 $as_echo "found an existing BRANCHES file" >&6; }
+   source_dir=`head -n 1 ROBOTS/$robot/$user/BRANCHES| sed 's/#//' | cut -d ' ' -f 1`
    ;;
   *)
-    if test -f ROBOTS/$robot/$user/BRANCHES; then
-      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
-      if ! test x"$GREP" = "x0"; then
-       if test -f $with_yambo/driver/yambo.F ; then
-         { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
+   if test -f ROBOTS/$robot/$user/BRANCHES; then
+     GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
+     if ! test x"$GREP" = "x0"; then
+      if test -f $with_yambo/driver/yambo.F ; then
+        { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
 $as_echo "$with_yambo" >&6; }
-         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
-       else
-         as_fn_error $? "could not locate the Yambo source" "$LINENO" 5
-       fi
+        echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
       else
-       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo already in the BRANCHES file" >&5
+        as_fn_error $? "could not locate the Yambo source" "$LINENO" 5
+      fi
+     else
+      { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo already in the BRANCHES file" >&5
 $as_echo "$with_yambo already in the BRANCHES file" >&6; }
-      fi
-    else
-      if test -f $with_yambo/driver/yambo.h ; then
-         { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
+     fi
+   else
+     if test -f $with_yambo/driver/yambo.F ; then
+       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
 $as_echo "$with_yambo" >&6; }
-         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
-      fi
-    fi
+       echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+     fi
+   fi
+   source_dir=$with_yambo
     ;;
 esac
+
+#
+# ... libraries
+#
+
+# Check whether --with-yambo_libs was given.
+if test "${with_yambo_libs+set}" = set; then :
+  withval=$with_yambo_libs;
+fi
+
+if test "$with_yambo_libs" = ""; then with_yambo_libs="none"; fi
+if test -f .running_robot.pl; then
+ with_yambo_libs=`tail -n 1 .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+fi
+echo '$'"host='"$robot"';" > .running_robot.pl
+echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
 # ============================================================================
 # System specific setups
 case "${host}" in
@@ -2391,11 +2444,12 @@ git config credential.helper store
 # ============================================================================
 # PERL_LIB
 #
-PERL_LIB=`pwd`
-PERL_LIB="${PERL_LIB}/libs"
+test_suite_dir=`pwd`
+PERL_LIB="${test_suite_dir}/libs"
+
 
 # ============================================================================
-ac_config_files="$ac_config_files config/MODULES.pl config/TOOLS.pl"
+ac_config_files="$ac_config_files config/MODULES.pl config/TOOLS.pl ${CFG_FILES}"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3104,6 +3158,7 @@ do
   case $ac_config_target in
     "config/MODULES.pl") CONFIG_FILES="$CONFIG_FILES config/MODULES.pl" ;;
     "config/TOOLS.pl") CONFIG_FILES="$CONFIG_FILES config/TOOLS.pl" ;;
+    "${CFG_FILES}") CONFIG_FILES="$CONFIG_FILES ${CFG_FILES}" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -3553,3 +3608,4 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
 
+chmod ug+x scripts/*sh

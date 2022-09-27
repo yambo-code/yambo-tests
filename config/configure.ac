@@ -26,6 +26,11 @@ AC_INIT(driver.pl, 5.0, yambo@yambo-code.org)
 AC_CONFIG_AUX_DIR([config])
 #
 # ============================================================================
+# FILES
+#
+CFG_FILES="scripts/continuous_testing.tcsh scripts/reset.sh scripts/launcher.tcsh scripts/robot_update.awk scripts/launch_the_robot.sh"
+rm -f $CFG_FILES
+# ============================================================================
 # ROBOT setup
 AC_CANONICAL_HOST
 domainame=`domainname -d`
@@ -34,17 +39,20 @@ username=`whoami`
 robot="$hostname"
 user="$username"
 if test "$domainame" != ""; then robot="$hostname.$domainame"; fi
+AC_MSG_CHECKING([the robot name])
 AC_ARG_WITH(host, AC_HELP_STRING([--with-host=<HOST>],[User-defined HOST],[32]),[],[with_host="$robot"]) 
 robot="$with_host"
-AC_MSG_CHECKING([the $robot/$user ROBOT])
+if test -f .running_robot.pl; then
+ robot=`head -n 1 .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+fi
+AC_MSG_RESULT($robot)
+AC_MSG_CHECKING([the $robot/$user configuration])
 if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -d ROBOTS/$robot/$user/FLOWS; then
  AC_MSG_RESULT(found)
 else
  AC_MSG_RESULT(created)
  mkdir -p ROBOTS/$robot/$user
- git add ROBOTS/$robot/
- git add ROBOTS/$robot/$user/
- echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> config/ROBOTS_list.pl
+ echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
 fi
 if ! test -d ROBOTS/$robot/$user/SCRIPTS; then
   mkdir -p ROBOTS/$robot/$user/SCRIPTS
@@ -74,14 +82,22 @@ AC_SUBST(hostname)
 # ============================================================================
 # TOOLS
 # ncftp/ncftpls/ncftpput
+AC_ARG_ENABLE(ftp, AC_HELP_STRING([--enable-ftp],[Stick to standard FTP rather then SFTP. Default is no.]))
+#
 AC_ARG_WITH(ncftp, AC_HELP_STRING([--with-ncftp=<exe>],[User-defined ncftp],[32]),[],[with_ncftp="ncftp"]) 
-AC_CHECK_PROGS(ncftp,[$with_ncftp],[none])
-AC_SUBST(ncftp)
 AC_ARG_WITH(ncftpls, AC_HELP_STRING([--with-ncftpls=<exe>],[User-defined ncftpls],[32]),[],[with_ncftpls="ncftpls"]) 
-AC_CHECK_PROGS(ncftpls,[$with_ncftpls],[none])
-AC_SUBST(ncftpls)
 AC_ARG_WITH(ncftpput, AC_HELP_STRING([--with-ncftpput=<exe>],[User-defined ncftpput],[32]),[],[with_ncftpput="ncftpput"]) 
-AC_CHECK_PROGS(ncftpput,[$with_ncftpput],[none])
+if ! test x"$enable_ftp" = "x"; then
+ AC_CHECK_PROGS(ncftp,[$with_ncftp],[none])
+ AC_CHECK_PROGS(ncftpls,[$with_ncftpls],[none])
+ AC_CHECK_PROGS(ncftpput,[$with_ncftpput],[none])
+else
+ ncftp="none";
+ ncftpls="none";
+ ncftpput="none";
+fi
+AC_SUBST(ncftp)
+AC_SUBST(ncftpls)
 AC_SUBST(ncftpput)
 # wget
 AC_ARG_WITH(wget, AC_HELP_STRING([--with-wget=<exe>],[User-defined wget],[32]),[],[with_wget="wget"]) 
@@ -110,7 +126,7 @@ if test $rsync = "none"; then AC_MSG_ERROR([Please provide the path to a working
 #
 if ! test -f ROBOTS/$robot/$user/MODULES; then
  AC_MSG_NOTICE(Filling $robot/$user/MODULES)
- cp config/SAMPLE_modules    ROBOTS/$robot/$user/MODULES
+ cp config/SAMPLE_modules ROBOTS/$robot/$user/MODULES
 else
  AC_MSG_RESULT(found an existing MODULES file)
 fi
@@ -126,28 +142,41 @@ case $with_yambo in
      AC_MSG_ERROR([Please provide the path to the Yambo source using the --with-yambo=<PATH> option])
    fi
    AC_MSG_RESULT(found an existing BRANCHES file)
+   source_dir=`head -n 1 ROBOTS/$robot/$user/BRANCHES| sed 's/#//' | cut -d ' ' -f 1`
    ;;
   *) 
-    if test -f ROBOTS/$robot/$user/BRANCHES; then
-      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
-      if ! test x"$GREP" = "x0"; then 
-       if test -f $with_yambo/driver/yambo.F ; then
-         AC_MSG_RESULT($with_yambo)
-         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
-       else
-         AC_MSG_ERROR([could not locate the Yambo source])
-       fi
+   if test -f ROBOTS/$robot/$user/BRANCHES; then
+     GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
+     if ! test x"$GREP" = "x0"; then 
+      if test -f $with_yambo/driver/yambo.F ; then
+        AC_MSG_RESULT($with_yambo)
+        echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
       else
-       AC_MSG_RESULT($with_yambo already in the BRANCHES file)
+        AC_MSG_ERROR([could not locate the Yambo source])
       fi
-    else
-      if test -f $with_yambo/driver/yambo.h ; then
-         AC_MSG_RESULT($with_yambo)
-         echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
-      fi
-    fi
+     else
+      AC_MSG_RESULT($with_yambo already in the BRANCHES file)
+     fi
+   else
+     if test -f $with_yambo/driver/yambo.F ; then
+       AC_MSG_RESULT($with_yambo)
+       echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+     fi
+   fi
+   source_dir=$with_yambo
     ;;
 esac
+AC_SUBST(source_dir)
+#
+# ... libraries
+#
+AC_ARG_WITH(yambo_libs, AC_HELP_STRING([--with-yambo-libs=<path>],[Path to the folder where the test-suite will install the Yambo ext-libs],[32]))
+if test "$with_yambo_libs" = ""; then with_yambo_libs="none"; fi
+if test -f .running_robot.pl; then
+ with_yambo_libs=`tail -n 1 .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+fi
+echo '$'"host='"$robot"';" > .running_robot.pl
+echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
 # ============================================================================
 # System specific setups
 case "${host}" in
@@ -172,9 +201,11 @@ git config credential.helper store
 # ============================================================================
 # PERL_LIB
 #
-PERL_LIB=`pwd`	
-PERL_LIB="${PERL_LIB}/libs"
+test_suite_dir=`pwd`	
+PERL_LIB="${test_suite_dir}/libs"
+AC_SUBST(test_suite_dir)
 AC_SUBST(PERL_LIB)
 # ============================================================================
-AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl])
+AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl ${CFG_FILES}])
 AC_OUTPUT
+chmod ug+x scripts/*sh

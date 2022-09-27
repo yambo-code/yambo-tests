@@ -140,7 +140,7 @@ if ($pid) {
   }
 } else {
   #print "Run started $command_line.\n";
-  if (not $safe_mode) {setpgrp(0,0)};
+  if ($unsafe_mode) {setpgrp(0,0)};
   if (not $dry_run) {&command("$command_line")};   # launch the yambo job
   #print "After run \n";
   exit;
