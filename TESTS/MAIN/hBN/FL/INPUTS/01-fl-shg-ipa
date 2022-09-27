@@ -1,0 +1,41 @@
+#                                                                     
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+# Version 5.1.0 Revision 21686 Hash (prev commit) 8febcbe64           
+#                Branch is devel-fl-merged                            
+#             MPI+SLK+SLEPC+HDF5_MPI_IO Build                         
+#                http://www.yambo-code.org                            
+#
+floptics                         # [R] Floquet approach to Non-linear spectroscopy
+% NLBands
+  1 |  8 |                           # [NL] Bands range
+%
+% NLEnRange
+  0.20000 | 10.00000 |         eV    # [NL] Energy range
+%
+NLEnSteps=  500                  # [NL] Energy steps
+NLDamping= 0.150000        eV    # [NL] Damping (or dephasing)
+NLCorrelation= "IPA"             # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
+% Field1_Dir
+ 1.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor
+%
+Xorder= 2                        # [FL] Max order of the response/exc functions
+Xadd_mode=0                      # [FL] Additional modes to ensure convercence
+Xthresh_1= 0.100000              # [FL] Self-consistent threshold on 1st order response function
+Xthresh_2= 0.100000E-5           # [FL] Self-consistent threshold on 2nd order response function
+FL_solver= "D"                   # [FL] Eigenproblem solver mode ("(D)IAGONALIZATION/(L)ANCZOS")
+FL_deg_thresh= 0.100000E-4       # [FL] Degeneracy threshold in KS band structure
+FL_deg_lift= 0.100000E-1         # [FL] Degeneracy lifting of KS band structure
+S_inv_mode= "N"                  # [FL] Inversion method ("(N)UMERICAL/(D)UFFIN/(P)ERTURBATIVE")
+FL_beta= 1.000000                # [FL] Mixing beta
+FL_max_it= 11                    # [FL] Maximum number of iterations
+% GfnQP_E
+ 3.300000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
+%
