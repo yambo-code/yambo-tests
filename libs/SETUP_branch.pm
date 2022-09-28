@@ -106,6 +106,7 @@ if ($pattern=~m/4.0/ix){$is_NEW_EXC_SORT="no"};
 if ($pattern=~m/3.4/ix){$is_NEW_EXC_SORT="no"};
 #
 $do_NL_tests="yes";
+$do_FL_tests="yes";
 $is_NEW_YPP="yes";
 $PAR_COMP="-j";
 $PAR_COMP_LIB="";
@@ -145,6 +146,7 @@ if ($project =~ /rt/ or $project eq "all")       { $target_list .= $exec_rt; $ex
 if ($project =~ /elph/ or $project eq "all")     { $target_list .= $exec_elph; $exec_list  .= $exec_elph};
 if ($project =~ /phel/ or $project eq "all")     { $target_list .= $exec_phel; $exec_list  .= $exec_phel};
 if (($project =~ /nl/ or $project eq "all" ) and $do_NL_tests ) { $target_list .= $exec_nl; $exec_list  .= $exec_nl};
+if (($project =~ /fl/ or $project eq "all" ) and $do_FL_tests ) { $target_list .= $exec_fl; $exec_list  .= $exec_fl};
 #
 return "OK";
 }

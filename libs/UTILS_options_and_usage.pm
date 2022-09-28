@@ -231,7 +231,7 @@ EndOfUsage
 
  * keys is string of projects/features:
    
-   projects = nopj sc rt elph magnetic nl hard
+   projects = nopj sc rt elph magnetic nl fl hard
    features = bse gw hf rpa spin spinors kerr pl magnons (more to come)
 
    Using -keys all all projects/features are used

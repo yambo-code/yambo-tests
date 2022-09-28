@@ -52,6 +52,10 @@ if (-e "RT") {
   {$yambo_exec = "$conf_bin/yambo_rt";
    $yambo_running=1}
 }
+if (-e "FL" && !$YPP=="1" && !$is_GPL) {
+ $yambo_running=1;
+ $yambo_exec = "$conf_bin/yambo_fl"
+}
 if (-e "QED" && !$YPP=="1" && !$is_GPL) {
  $yambo_running=1;
  $yambo_exec = "$conf_bin/yambo_qed"

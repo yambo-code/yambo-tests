@@ -23,7 +23,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SETUP_keys{
-my @PJr = ("sc","rt","elph","magnetic","nl","hard","nopj","kerr","qp-dbs","p2y","a2y");
+my @PJr = ("sc","rt","elph","magnetic","nl","fl","hard","nopj","kerr","qp-dbs","p2y","a2y");
 my @FTs = ("gw", "bse", "rpa","all","spin","spinors","kerr","magnons","pl"); 
 $project= '';
 foreach my $index (0..$#PJr) {

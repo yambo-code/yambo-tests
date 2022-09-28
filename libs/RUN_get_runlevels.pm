@@ -44,13 +44,15 @@ $NEGF=&RUN_feature("negf");
 if ($NEGF eq "1") { $description .= " NEGF" };
 $NLOPTICS=&RUN_feature("nloptics");
 if ($NLOPTICS eq "1") { $description .= " Non Linear optics" };
+$FLOPTICS=&RUN_feature("floptics");
+if ($FLOPTICS eq "1") { $description .= " Floquet Non Linear optics" };
 $SETUP=&RUN_feature("setup");
 if ($SETUP eq "1") { $description .= " setup" };
 $DIPOLES=&RUN_feature("dipoles");
 if ($DIPOLES eq "1") { $description .= " dipoles" };
 $HF=&RUN_feature("HF_and_locXC");
 if ($HF eq "1") { $description .= " HF" };
-if ($NLOPTICS ne "1"){
+if ($NLOPTICS ne "1" && $FLOPTICS ne "1"){
  $OPTICS=&RUN_feature("optics");
  if ($OPTICS eq "1") { $description .= " optics" };
 };
