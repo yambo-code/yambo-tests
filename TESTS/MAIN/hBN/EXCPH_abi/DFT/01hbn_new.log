@@ -1,4 +1,4 @@
-  ABINIT 9.7.4
+  ABINIT 9.9.0
   
  DeprecationWarning: 
 
@@ -19,9 +19,24 @@ io_dir_new/hbn_out
   Give root name for generic temporary files:
 io_dir_new/hbn_t
 
+--- !COMMENT
+src_file: m_dtfil.F90
+src_line: 1441
+message: |
+    Output file: 01hbn_new.out already exists.
+...
 
-.Version 9.7.4 of ABINIT 
-.(MPI version, prepared for a x86_64_linux_gnu9.4 computer) 
+
+--- !COMMENT
+src_file: m_dtfil.F90
+src_line: 1465
+message: |
+    Renaming old: 01hbn_new.out to: 01hbn_new.out0002
+...
+
+
+.Version 9.9.0 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_gnu11.2 computer) 
 
 .Copyright (C) 1998-2022 ABINIT group . 
  ABINIT comes with ABSOLUTELY NO WARRANTY.
@@ -35,24 +50,24 @@ io_dir_new/hbn_t
  acknowledgments of the ABINIT effort.
  For more information, see https://www.abinit.org .
 
-.Starting date : Thu 22 Sep 2022.
-- ( at 09h36 )
+.Starting date : Sun  9 Oct 2022.
+- ( at 15h26 )
   
 
  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
  === Build Information === 
-  Version       : 9.7.4
-  Build target  : x86_64_linux_gnu9.4
-  Build date    : 20220527
+  Version       : 9.9.0
+  Build target  : x86_64_linux_gnu11.2
+  Build date    : 20221002
 
  === Compiler Suite === 
-  C compiler       : gnu9.4
-  C++ compiler     : gnu9.4
-  Fortran compiler : gnu9.4
+  C compiler       : gnu11.2
+  C++ compiler     : gnu11.2
+  Fortran compiler : gnu11.2
   CFLAGS           : -g -O2
   CXXFLAGS         : -g -O2 -mtune=native -march=native
-  FCFLAGS          : -g -ffree-line-length-none  -fopenmp   -I/data/shared/yambo-libs/de ...
+  FCFLAGS          : -g -ffree-line-length-none -fallow-argument-mismatch  -fopenmp   -I ...
   FC_LDFLAGS       : 
 
  === Optimizations === 
@@ -159,7 +174,7 @@ io_dir_new/hbn_t
 
 --- !COMMENT
 src_file: m_ingeo.F90
-src_line: 900
+src_line: 890
 message: |
     The tolerance on symmetries =   1.000E-05 is bigger than 1.0e-8.
     In order to avoid spurious effects, the atomic coordinates have been
@@ -238,7 +253,7 @@ message: |
 
 --- !WARNING
 src_file: m_invars2.F90
-src_line: 2037
+src_line: 2059
 message: |
     nbdbuf is not specified in input, using `nbdbuf = 2*nspinor` that may be too small!
     As a consequence, the NSCF cycle may have problems to converge the last bands within nstep iterations.
@@ -581,8 +596,6 @@ P          mk1mem5          4
               qpt3     0.00000000E+00  0.00000000E+00  0.00000000E+00
               qpt4     0.00000000E+00  0.00000000E+00  0.00000000E+00
               qpt5     5.00000000E-01  0.00000000E+00  0.00000000E+00
-          rfatpol           1       4
-            rfdir           1       1       1
            rfelfd1          0
            rfelfd2          0
            rfelfd3          2
@@ -664,12 +677,12 @@ P          mk1mem5          4
   ==== OpenMP parallelism is ON ====
 - Max_threads:       1
 - Num_threads:       1
-- Num_procs:         6
+- Num_procs:         12
 - Dynamic:           F
  
   ==== Using MPI-2 specifications ==== 
   MPI-IO support is ON
-  xmpi_tag_ub ................    268435455
+  xmpi_tag_ub ................   2147483647
   xmpi_bsize_ch ..............            1
   xmpi_bsize_int .............            4
   xmpi_bsize_sp ..............            4
@@ -688,7 +701,7 @@ P          mk1mem5          4
 
 --- !COMMENT
 src_file: m_xgScalapack.F90
-src_line: 236
+src_line: 230
 message: |
     xgScalapack in auto mode
 ...
@@ -805,7 +818,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 
  Simple mixing update:
   residual square of the potential:    112.80084914509912
-{SCF_istep: 1 , Vnl|psi>: 200 , wall_time: '  0.52 [s] '} <<< TIME
+{SCF_istep: 1 , Vnl|psi>: 200 , wall_time: '  1.17 [s] '} <<< TIME
 
  ITER STEP NUMBER     2
  Max number of non-self-consistent loops: 2
@@ -818,7 +831,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.601      0.399
-{SCF_istep: 2 , Vnl|psi>: 200 , wall_time: '  0.07 [s] '} <<< TIME
+{SCF_istep: 2 , Vnl|psi>: 200 , wall_time: '  0.15 [s] '} <<< TIME
 
  ITER STEP NUMBER     3
  Total charge density [el/Bohr^3]
@@ -830,7 +843,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.934      0.128     -0.621E-01
-{SCF_istep: 3 , Vnl|psi>: 100 , wall_time: '  0.04 [s] '} <<< TIME
+{SCF_istep: 3 , Vnl|psi>: 100 , wall_time: '  0.09 [s] '} <<< TIME
 
  ITER STEP NUMBER     4
  Total charge density [el/Bohr^3]
@@ -842,7 +855,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.09     -0.932E-01 -0.549E-02  0.735E-02
-{SCF_istep: 4 , Vnl|psi>: 100 , wall_time: '  0.04 [s] '} <<< TIME
+{SCF_istep: 4 , Vnl|psi>: 100 , wall_time: '  0.09 [s] '} <<< TIME
 
  ITER STEP NUMBER     5
  Total charge density [el/Bohr^3]
@@ -854,7 +867,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.07     -0.528E-01 -0.714E-02 -0.340E-02 -0.225E-02
-{SCF_istep: 5 , Vnl|psi>: 100 , wall_time: '  0.04 [s] '} <<< TIME
+{SCF_istep: 5 , Vnl|psi>: 100 , wall_time: '  0.09 [s] '} <<< TIME
 
  ITER STEP NUMBER     6
  Total charge density [el/Bohr^3]
@@ -866,7 +879,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.627      0.424     -0.516E-01  0.271E-02 -0.993E-03
-{SCF_istep: 6 , Vnl|psi>: 100 , wall_time: '  0.04 [s] '} <<< TIME
+{SCF_istep: 6 , Vnl|psi>: 100 , wall_time: '  0.09 [s] '} <<< TIME
 
  ITER STEP NUMBER     7
  Total charge density [el/Bohr^3]
@@ -878,7 +891,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.894      0.166     -0.512E-01 -0.102E-01  0.198E-02
-{SCF_istep: 7 , Vnl|psi>: 100 , wall_time: '  0.04 [s] '} <<< TIME
+{SCF_istep: 7 , Vnl|psi>: 100 , wall_time: '  0.09 [s] '} <<< TIME
 
  ITER STEP NUMBER     8
  Total charge density [el/Bohr^3]
@@ -890,7 +903,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.08     -0.720E-01 -0.139E-01  0.675E-02 -0.506E-03
-{SCF_istep: 8 , Vnl|psi>: 100 , wall_time: '  0.04 [s] '} <<< TIME
+{SCF_istep: 8 , Vnl|psi>: 100 , wall_time: '  0.09 [s] '} <<< TIME
 
  ITER STEP NUMBER     9
  Total charge density [el/Bohr^3]
@@ -902,7 +915,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.09     -0.822E-01 -0.415E-02 -0.765E-03 -0.361E-03
-{SCF_istep: 9 , Vnl|psi>: 100 , wall_time: '  0.04 [s] '} <<< TIME
+{SCF_istep: 9 , Vnl|psi>: 100 , wall_time: '  0.09 [s] '} <<< TIME
 
  ITER STEP NUMBER    10
  Total charge density [el/Bohr^3]
@@ -936,7 +949,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS1_DEN with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS1_DEN.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS1_DEN.nc
- IO operation completed. cpu:  0.06 [s] , wall:  0.40 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.30 [s] <<< TIME
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS1_GSR.nc
  Integrated electronic density in atomic spheres:
  ------------------------------------------------
@@ -965,7 +978,7 @@ _setup2: Arith. and geom. avg. npw (full set) are    1011.250    1011.216
 in cg_ncwrite with path: io_dir_new/hbn_out_DS1_WFK.nc
 same layout Writing WFK file: io_dir_new/hbn_out_DS1_WFK.nc, with iomode: IO_MODE_ETSF, single writer: F
 Using collective IO for the CGs
- collective ncwrite completed. cpu:  0.05 [s] , wall:  0.29 [s] <<< TIME
+ collective ncwrite completed. cpu:  0.09 [s] , wall:  0.23 [s] <<< TIME
  prteigrs : about to open file io_dir_new/hbn_out_DS1_EIG
  Fermi (or HOMO) energy (hartree) =   0.11749   Average Vxc (hartree)=  -0.37683
  Eigenvalues (hartree) for nkpt=   2  k points:
@@ -999,7 +1012,7 @@ Using collective IO for the CGs
 
 --- !COMMENT
 src_file: m_xgScalapack.F90
-src_line: 236
+src_line: 230
 message: |
     xgScalapack in auto mode
 ...
@@ -1042,8 +1055,8 @@ message: |
           -------------------                           ------------
 
   calculation expects a wf_planewave        |  input file contains a wf_planewave
-. ABINIT  code version 9.7.4                |  ABINIT  code version 9.7.4
-. date 20220922 bantot       70 natom    4  |  date 20220922 bantot       20 natom    4
+. ABINIT  code version 9.9.0                |  ABINIT  code version 9.9.0
+. date 20221009 bantot       70 natom    4  |  date 20221009 bantot       20 natom    4
   nkpt       7 nsym 12 ngfft  20,  20,  50  |  nkpt       2 nsym 12 ngfft  20,  20,  50
   ntypat  2 ecut_eff  20.0000000            |  ntypat  2 ecut_eff  20.0000000
   usepaw  0                                 |  usepaw  0
@@ -1055,7 +1068,7 @@ message: |
 
 --- !COMMENT
 src_file: m_hdr.F90
-src_line: 4198
+src_line: 3987
 message: |
     input nkpt=7 not equal disk file nkpt=2
 ...
@@ -1082,7 +1095,7 @@ message: |
 
 --- !COMMENT
 src_file: m_hdr.F90
-src_line: 4443
+src_line: 4232
 message: |
     input kptrlatt = 6 0 0 0 6 0 0 0 1  /= disk file kptrlatt = 2 0 0 0 2 0 0 0 1
 ...
@@ -1090,7 +1103,7 @@ message: |
 
 --- !WARNING
 src_file: m_hdr.F90
-src_line: 4467
+src_line: 4256
 message: |
     input ival=0 not equal disk file ival=8
 ...
@@ -1124,7 +1137,7 @@ message: |
 
 --- !COMMENT
 src_file: m_hdr.F90
-src_line: 4741
+src_line: 4530
 message: |
     Restart of self-consistent calculation need translated wavefunctions.
 ...
@@ -1158,8 +1171,8 @@ message: |
           -------------------                           ------------
 
   calculation expects a density             |  input file contains a density
-. ABINIT  code version 9.7.4                |  ABINIT  code version 9.7.4
-. date 20220922 bantot       70 natom    4  |  date 20220922 bantot       20 natom    4
+. ABINIT  code version 9.9.0                |  ABINIT  code version 9.9.0
+. date 20221009 bantot       70 natom    4  |  date 20221009 bantot       20 natom    4
   nkpt       7 nsym 12 ngfft  20,  20,  50  |  nkpt       2 nsym 12 ngfft  20,  20,  50
   ntypat  2 ecut_eff  20.0000000            |  ntypat  2 ecut_eff  20.0000000
   usepaw  0                                 |  usepaw  0
@@ -1190,7 +1203,7 @@ message: |
 
 --- !COMMENT
 src_file: m_hdr.F90
-src_line: 4443
+src_line: 4232
 message: |
     input kptrlatt = 6 0 0 0 6 0 0 0 1  /= disk file kptrlatt = 2 0 0 0 2 0 0 0 1
 ...
@@ -1198,7 +1211,7 @@ message: |
 
 --- !WARNING
 src_file: m_hdr.F90
-src_line: 4467
+src_line: 4256
 message: |
     input ival=0 not equal disk file ival=8
 ...
@@ -1231,7 +1244,7 @@ message: |
      0.6666667   0.3333333   0.5000000      |     0.6666667   0.3333333   0.5000000
  hdr_check:  Density/Potential file is OK for restart of calculation
 ================================================================================
- read_rhor completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
+ read_rhor completed. cpu:  0.03 [s] , wall:  0.03 [s] <<< TIME
 
 ================================================================================
 
@@ -1257,7 +1270,7 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS2_DEN with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS2_DEN.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS2_DEN.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.41 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.34 [s] <<< TIME
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS2_GSR.nc
  Integrated electronic density in atomic spheres:
  ------------------------------------------------
@@ -1295,7 +1308,7 @@ message: |
 in cg_ncwrite with path: io_dir_new/hbn_out_DS2_WFK.nc
 same layout Writing WFK file: io_dir_new/hbn_out_DS2_WFK.nc, with iomode: IO_MODE_ETSF, single writer: F
 Using collective IO for the CGs
- collective ncwrite completed. cpu:  0.07 [s] , wall:  0.40 [s] <<< TIME
+ collective ncwrite completed. cpu:  0.09 [s] , wall:  0.33 [s] <<< TIME
 Writing KB form factors to: io_dir_new/hbn_out_DS2_WFK.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS2_WFK.nc
  prteigrs : about to open file io_dir_new/hbn_out_DS2_EIG
@@ -1335,7 +1348,7 @@ Writing KB form factors to: io_dir_new/hbn_out_DS2_WFK.nc
 
 --- !COMMENT
 src_file: m_xgScalapack.F90
-src_line: 236
+src_line: 230
 message: |
     xgScalapack in auto mode
 ...
@@ -1426,49 +1439,49 @@ message: |
  getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  20  20  50
          ecut(hartree)=     20.000   => boxcut(ratio)=   2.03982
 -ETOT  1  -52.369467750696     -5.237E+01 5.820E-01 0.000E+00
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.22 [s]
  ETOT  2  -52.452558005338     -8.309E-02 2.067E-03 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  3  -52.452877230781     -3.192E-04 9.954E-05 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  4  -52.452879043156     -1.812E-06 4.078E-06 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  5  -52.452879054763     -1.161E-08 3.456E-07 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
  ETOT  6  -52.452879054846     -8.225E-11 5.422E-08 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  7  -52.452879054846     -7.319E-13 2.027E-09 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  8  -52.452879054846      2.274E-13 8.168E-10 0.000E+00
- dfpt_scfcv: previous iteration took  0.08 [s]
+ dfpt_scfcv: previous iteration took  0.19 [s]
  ETOT  9  -52.452879054846     -2.345E-13 3.488E-11 0.000E+00
- dfpt_scfcv: previous iteration took  0.08 [s]
+ dfpt_scfcv: previous iteration took  0.17 [s]
  ETOT 10  -52.452879054846      4.974E-14 1.356E-11 0.000E+00
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
  ETOT 11  -52.452879054846     -2.842E-14 6.326E-13 0.000E+00
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.12 [s]
  ETOT 12  -52.452879054846      1.421E-14 2.340E-13 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 13  -52.452879054846     -1.421E-14 1.147E-14 0.000E+00
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 14  -52.452879054846      1.421E-14 4.092E-15 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 15  -52.452879054846      0.000E+00 2.064E-16 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 16  -52.452879054846      0.000E+00 7.196E-17 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 17  -52.452879054846     -7.105E-15 3.768E-18 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 18  -52.452879054846      7.105E-15 1.265E-18 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 19  -52.452879054846     -7.105E-15 1.081E-19 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 20  -52.452879054846      0.000E+00 2.844E-20 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 21  -52.452879054846      0.000E+00 3.798E-21 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 22  -52.452879054846     -1.421E-14 6.493E-22 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 23  -52.452879054846      0.000E+00 9.345E-23 0.000E+00
 
  At SCF step   23   max residual=  9.34E-23 < tolwfr=  1.00E-22 =>converged.
@@ -1476,12 +1489,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS3_DEN13 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_DEN13.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_DEN13.nc
- IO operation completed. cpu:  0.03 [s] , wall:  0.30 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.29 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS3_POT13 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_POT13.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_POT13.nc
- IO operation completed. cpu:  0.04 [s] , wall:  0.30 [s] <<< TIME
+ IO operation completed. cpu:  0.03 [s] , wall:  0.19 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_POT13.nc
 ================================================================================
 
@@ -1500,7 +1513,7 @@ message: |
    0.5000  0.5000  0.0000    1  9.34445E-23 kpt; spin; max resid(k); each band:
   6.01E-23 5.41E-23 2.64E-23 4.80E-23 5.18E-23 6.52E-23 8.21E-23 7.00E-23
   9.34E-23
- MY_KPT_BANDS part of WFK written to file. completed. cpu:  0.01 [s] , wall:  0.14 [s] <<< TIME
+ MY_KPT_BANDS part of WFK written to file. completed. cpu:  0.04 [s] , wall:  0.11 [s] <<< TIME
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_EVK.nc
  dfpt_looppert : ek2=    7.5723765085E+01
           f-sum rule ratio=    1.4129145488E+00
@@ -1543,49 +1556,49 @@ message: |
  getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  20  20  50
          ecut(hartree)=     20.000   => boxcut(ratio)=   2.03982
 -ETOT  1  -52.369467897143     -5.237E+01 5.820E-01 0.000E+00
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
  ETOT  2  -52.452557709788     -8.309E-02 2.067E-03 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  3  -52.452876932580     -3.192E-04 9.954E-05 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  4  -52.452878744942     -1.812E-06 4.078E-06 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  5  -52.452878756550     -1.161E-08 3.456E-07 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  6  -52.452878756632     -8.210E-11 5.422E-08 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
  ETOT  7  -52.452878756633     -6.679E-13 2.136E-09 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.19 [s]
  ETOT  8  -52.452878756633     -4.974E-14 8.168E-10 0.000E+00
- dfpt_scfcv: previous iteration took  0.08 [s]
+ dfpt_scfcv: previous iteration took  0.18 [s]
  ETOT  9  -52.452878756633     -1.350E-13 3.741E-11 0.000E+00
- dfpt_scfcv: previous iteration took  0.08 [s]
+ dfpt_scfcv: previous iteration took  0.17 [s]
  ETOT 10  -52.452878756633      7.105E-15 1.356E-11 0.000E+00
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
  ETOT 11  -52.452878756633      7.105E-14 6.873E-13 0.000E+00
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
  ETOT 12  -52.452878756633      0.000E+00 2.352E-13 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 13  -52.452878756633     -7.105E-15 1.263E-14 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 14  -52.452878756633      0.000E+00 4.165E-15 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 15  -52.452878756633      0.000E+00 2.307E-16 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 16  -52.452878756633      7.105E-15 7.433E-17 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 17  -52.452878756633     -7.105E-15 4.243E-18 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 18  -52.452878756633      2.132E-14 1.337E-18 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 19  -52.452878756633      0.000E+00 1.099E-19 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 20  -52.452878756633     -2.842E-14 3.069E-20 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 21  -52.452878756633      2.842E-14 4.262E-21 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 22  -52.452878756633     -2.842E-14 7.211E-22 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.11 [s]
  ETOT 23  -52.452878756633      2.842E-14 9.848E-23 0.000E+00
 
  At SCF step   23   max residual=  9.85E-23 < tolwfr=  1.00E-22 =>converged.
@@ -1593,12 +1606,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS3_DEN14 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_DEN14.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_DEN14.nc
- IO operation completed. cpu:  0.04 [s] , wall:  0.41 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.28 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS3_POT14 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_POT14.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_POT14.nc
- IO operation completed. cpu:  0.04 [s] , wall:  0.33 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.24 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_POT14.nc
 ================================================================================
 
@@ -1617,7 +1630,7 @@ message: |
    0.5000  0.5000  0.0000    1  9.84790E-23 kpt; spin; max resid(k); each band:
   6.01E-23 5.41E-23 2.64E-23 4.80E-23 5.18E-23 6.52E-23 8.13E-23 6.73E-23
   9.85E-23
- MY_KPT_BANDS part of WFK written to file. completed. cpu:  0.02 [s] , wall:  0.12 [s] <<< TIME
+ MY_KPT_BANDS part of WFK written to file. completed. cpu:  0.04 [s] , wall:  0.12 [s] <<< TIME
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_EVK.nc
  dfpt_looppert : ek2=    7.5723765085E+01
           f-sum rule ratio=    1.4129145227E+00
@@ -1660,25 +1673,25 @@ message: |
  getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  20  20  50
          ecut(hartree)=     20.000   => boxcut(ratio)=   2.03982
 -ETOT  1  -4.3751168242763     -4.375E+00 9.507E-03 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
  ETOT  2  -4.3785822008554     -3.465E-03 1.154E-04 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.19 [s]
  ETOT  3  -4.3785953343808     -1.313E-05 3.968E-07 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  4  -4.3785953933292     -5.895E-08 1.913E-09 0.000E+00
- dfpt_scfcv: previous iteration took  0.08 [s]
+ dfpt_scfcv: previous iteration took  0.19 [s]
  ETOT  5  -4.3785953936070     -2.778E-10 2.629E-11 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
  ETOT  6  -4.3785953936083     -1.326E-12 7.390E-14 0.000E+00
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.19 [s]
  ETOT  7  -4.3785953936083      4.441E-15 1.993E-15 0.000E+00
- dfpt_scfcv: previous iteration took  0.07 [s]
+ dfpt_scfcv: previous iteration took  0.16 [s]
  ETOT  8  -4.3785953936083     -1.776E-15 5.612E-18 0.000E+00
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
  ETOT  9  -4.3785953936083     -1.776E-15 1.634E-19 0.000E+00
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.12 [s]
  ETOT 10  -4.3785953936083      2.665E-15 4.613E-22 0.000E+00
- dfpt_scfcv: previous iteration took  0.05 [s]
+ dfpt_scfcv: previous iteration took  0.12 [s]
  ETOT 11  -4.3785953936083     -1.776E-15 8.960E-23 0.000E+00
 
  At SCF step   11   max residual=  8.96E-23 < tolwfr=  1.00E-22 =>converged.
@@ -1686,12 +1699,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS3_DEN15 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_DEN15.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_DEN15.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.41 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.23 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS3_POT15 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_POT15.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_POT15.nc
- IO operation completed. cpu:  0.04 [s] , wall:  0.66 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.25 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_POT15.nc
 ================================================================================
 
@@ -1710,7 +1723,7 @@ message: |
    0.5000  0.5000  0.0000    1  7.92413E-23 kpt; spin; max resid(k); each band:
   4.19E-23 3.60E-23 3.23E-23 5.90E-23 4.01E-23 1.78E-23 7.01E-23 2.38E-23
   7.92E-23
- MY_KPT_BANDS part of WFK written to file. completed. cpu:  0.05 [s] , wall:  0.25 [s] <<< TIME
+ MY_KPT_BANDS part of WFK written to file. completed. cpu:  0.04 [s] , wall:  0.12 [s] <<< TIME
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS3_EVK.nc
  dfpt_looppert : ek2=    8.5214229427E+00
           f-sum rule ratio=    1.0189695597E+00
@@ -1744,7 +1757,7 @@ message: |
 
 --- !COMMENT
 src_file: m_xgScalapack.F90
-src_line: 236
+src_line: 230
 message: |
     xgScalapack in auto mode
 ...
@@ -1879,63 +1892,63 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    328.54530732407233
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   10.594353683159     -4.650E-01 1.377E-03 9.573E+00
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.922      0.777E-01
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.24 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   10.581284981601     -1.307E-02 4.490E-04 4.273E-01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.993      0.291E-01 -0.219E-01
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   10.580862862421     -4.221E-04 1.367E-05 7.323E-03
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.02      0.762E-02 -0.247E-01 -0.208E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   10.580857829245     -5.033E-06 5.234E-06 4.661E-04
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.898      0.112     -0.604E-02 -0.377E-02 -0.106E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   10.580857599357     -2.299E-07 1.892E-07 2.045E-04
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.687      0.396     -0.831E-01 -0.183E-02  0.145E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   10.580857328502     -2.709E-07 1.231E-07 8.401E-07
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.09     -0.381E-01 -0.608E-01  0.664E-02 -0.425E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   10.580857327369     -1.133E-09 4.871E-09 3.531E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.927      0.895E-01 -0.781E-02 -0.967E-02  0.131E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   10.580857327363     -6.054E-12 3.269E-09 1.597E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.906      0.132     -0.409E-01  0.188E-02  0.533E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   10.580857327359     -4.178E-12 1.267E-10 1.124E-09
@@ -1952,12 +1965,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN1 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN1.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN1.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.28 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.35 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT1 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT1.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT1.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.32 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.28 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT1.nc
 ================================================================================
 
@@ -2035,63 +2048,63 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    2246.4679573127328
- dfpt_scfcv: previous iteration took  0.07 [s]
+ dfpt_scfcv: previous iteration took  0.17 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   24.342135928043     -8.053E-01 8.249E-03 8.924E+01
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.15     -0.147
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   24.325171161234     -1.696E-02 3.570E-04 3.136E+00
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.03     -0.221E-01 -0.951E-02
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   24.324364020776     -8.071E-04 3.236E-05 1.429E-01
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.952      0.753E-01 -0.290E-01  0.185E-02
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   24.324328306189     -3.571E-05 3.459E-07 6.889E-03
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.967      0.623E-01 -0.300E-01  0.132E-03  0.237E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   24.324326744685     -1.562E-06 3.575E-08 4.602E-05
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.02      0.105E-01 -0.256E-01 -0.388E-02  0.936E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   24.324326719589     -2.510E-08 8.323E-10 4.587E-06
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.993      0.278E-01 -0.217E-01  0.674E-03  0.401E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   24.324326718412     -1.177E-09 1.427E-11 1.525E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.09     -0.491E-01 -0.366E-01 -0.723E-03  0.126E-02
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   24.324326718380     -3.195E-11 2.388E-12 6.419E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.05     -0.220E-01 -0.261E-01  0.239E-03  0.301E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   24.324326718378     -2.728E-12 8.660E-14 1.822E-10
@@ -2108,12 +2121,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN3 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN3.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN3.nc
- IO operation completed. cpu:  0.03 [s] , wall:  0.50 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.26 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT3 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT3.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT3.nc
- IO operation completed. cpu:  0.03 [s] , wall:  1.33 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.24 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT3.nc
 ================================================================================
 
@@ -2180,70 +2193,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    1566.7190404321002
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   10.594538675480     -2.177E+00 3.381E-02 6.423E+01
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.904      0.958E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   10.505063405093     -8.948E-02 5.177E-04 1.461E+01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.699      0.289      0.119E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   10.488711911749     -1.635E-02 8.514E-05 1.648E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.655      0.292      0.560E-01 -0.349E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   10.486587661382     -2.124E-03 7.225E-06 2.100E-03
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.03     -0.105E-01 -0.174E-01 -0.270E-02  0.266E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   10.486582592661     -5.069E-06 1.843E-07 9.561E-05
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.902      0.110     -0.691E-02 -0.420E-02 -0.104E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   10.486582523700     -6.896E-08 9.233E-08 8.495E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.627      0.372      0.527E-02 -0.226E-02 -0.144E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   10.486582465276     -5.842E-08 5.182E-09 5.076E-06
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.15     -0.314E-01 -0.128      0.100E-01  0.509E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   10.486582462243     -3.033E-09 2.676E-09 6.820E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.961      0.859E-01 -0.294E-01 -0.170E-01 -0.455E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   10.486582462180     -6.321E-11 1.231E-10 2.848E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.04     -0.558E-01  0.144E-02  0.120E-01  0.170E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   10.486582462173     -6.480E-12 3.115E-11 1.206E-09
@@ -2260,12 +2273,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN4 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN4.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN4.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.37 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.22 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT4 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT4.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT4.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.37 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.23 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT4.nc
 ================================================================================
 
@@ -2343,70 +2356,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    24432.576152470789
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.16 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   26.646253351717     -1.856E+01 1.858E-01 2.701E+03
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.893      0.107
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   25.792271628469     -8.540E-01 5.309E-03 2.763E+02
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.874      0.142     -0.155E-01
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   25.735464525397     -5.681E-02 1.145E-03 3.993E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.27     -0.229     -0.370E-01 -0.474E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   25.734865681814     -5.988E-04 1.019E-04 8.634E-02
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.933      0.118     -0.458E-01 -0.557E-02  0.317E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   25.734841130130     -2.455E-05 1.242E-06 1.130E-03
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.06     -0.362E-01 -0.289E-01  0.554E-02  0.105E-02
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   25.734840745963     -3.842E-07 1.235E-08 4.691E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.10     -0.758E-01 -0.287E-01  0.390E-03  0.433E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   25.734840733769     -1.219E-08 8.926E-10 1.911E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.06     -0.393E-01 -0.186E-01  0.174E-02  0.712E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   25.734840733572     -1.965E-10 8.000E-12 2.454E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.996      0.146E-01 -0.118E-01  0.611E-03  0.246E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   25.734840733587      1.455E-11 7.292E-14 7.448E-11
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.04     -0.207E-01 -0.162E-01  0.791E-03  0.210E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   25.734840733611      2.365E-11 7.429E-15 5.759E-12
@@ -2423,12 +2436,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN6 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN6.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN6.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.31 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.35 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT6 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT6.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT6.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.30 [s] <<< TIME
+ IO operation completed. cpu:  0.09 [s] , wall:  0.26 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT6.nc
 ================================================================================
 
@@ -2495,63 +2508,63 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    328.54527365873400
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   10.594355574714     -4.650E-01 1.377E-03 9.573E+00
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.922      0.777E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   10.581286873658     -1.307E-02 4.487E-04 4.273E-01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.993      0.291E-01 -0.219E-01
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   10.580864754520     -4.221E-04 1.384E-05 7.323E-03
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.02      0.762E-02 -0.247E-01 -0.208E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.24 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   10.580859724035     -5.030E-06 5.215E-06 4.679E-04
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.897      0.112     -0.604E-02 -0.379E-02 -0.107E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   10.580859493407     -2.306E-07 1.885E-07 2.061E-04
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.686      0.397     -0.832E-01 -0.183E-02  0.145E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   10.580859220682     -2.727E-07 1.228E-07 8.197E-07
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.10     -0.409E-01 -0.618E-01  0.679E-02 -0.379E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   10.580859219576     -1.106E-09 4.850E-09 3.351E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.925      0.915E-01 -0.799E-02 -0.967E-02  0.132E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   10.580859219570     -6.082E-12 3.255E-09 1.566E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.877      0.159     -0.388E-01  0.178E-02  0.443E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   10.580859219566     -4.547E-12 1.254E-10 1.078E-09
@@ -2568,12 +2581,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN7 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN7.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN7.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.28 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.27 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT7 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT7.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT7.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.28 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.25 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT7.nc
 ================================================================================
 
@@ -2651,63 +2664,63 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    2246.4682133370488
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.17 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   24.342163754647     -8.053E-01 8.249E-03 8.924E+01
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.15     -0.147
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   24.325199049907     -1.696E-02 3.570E-04 3.136E+00
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.03     -0.221E-01 -0.951E-02
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   24.324391932435     -8.071E-04 3.179E-05 1.429E-01
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.952      0.753E-01 -0.290E-01  0.185E-02
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   24.324356219603     -3.571E-05 3.459E-07 6.889E-03
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.967      0.623E-01 -0.300E-01  0.132E-03  0.237E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   24.324354658136     -1.561E-06 3.610E-08 4.602E-05
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.02      0.105E-01 -0.256E-01 -0.388E-02  0.936E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   24.324354633039     -2.510E-08 8.458E-10 4.581E-06
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.993      0.278E-01 -0.217E-01  0.672E-03  0.401E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   24.324354631859     -1.180E-09 1.329E-11 1.536E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.09     -0.493E-01 -0.366E-01 -0.731E-03  0.126E-02
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   24.324354631829     -3.035E-11 2.704E-12 6.459E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.05     -0.223E-01 -0.261E-01  0.252E-03  0.300E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   24.324354631828     -6.821E-13 8.055E-14 1.810E-10
@@ -2724,12 +2737,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN9 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN9.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN9.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.35 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.35 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT9 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT9.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT9.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.37 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.25 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT9.nc
 ================================================================================
 
@@ -2796,77 +2809,77 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    1566.7188288158723
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   10.594576217589     -2.177E+00 3.380E-02 6.423E+01
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.904      0.958E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   10.505101049031     -8.948E-02 5.176E-04 1.461E+01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.699      0.289      0.119E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   10.488749612066     -1.635E-02 8.515E-05 1.648E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.655      0.292      0.560E-01 -0.349E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   10.486625711894     -2.124E-03 7.598E-06 2.037E-03
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.03     -0.103E-01 -0.169E-01 -0.262E-02  0.218E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   10.486620284313     -5.428E-06 1.612E-07 9.723E-05
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.894      0.119     -0.698E-02 -0.429E-02 -0.104E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   10.486620221377     -6.294E-08 9.604E-08 1.008E-04
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.652      0.325      0.272E-01 -0.238E-02 -0.196E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   10.486620174025     -4.735E-08 5.825E-09 9.063E-06
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.13      0.157E-01 -0.159      0.139E-01  0.516E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   10.486620168606     -5.420E-09 3.341E-09 1.642E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.952      0.112     -0.417E-01 -0.213E-01 -0.681E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   10.486620168456     -1.502E-10 1.349E-10 5.292E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.05     -0.782E-01  0.865E-02  0.171E-01 -0.608E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   10.486620168438     -1.785E-11 2.939E-11 1.534E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.13     -0.994E-01 -0.346E-01  0.374E-03  0.256E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER    12
  ETOT 12   10.486620168438      7.958E-13 2.101E-12 1.348E-11
@@ -2883,12 +2896,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN10 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN10.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN10.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.32 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.35 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT10 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT10.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT10.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.34 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.26 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT10.nc
 ================================================================================
 
@@ -2966,63 +2979,63 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    24432.571520929156
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.16 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   26.646488535241     -1.856E+01 1.858E-01 2.701E+03
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.893      0.107
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   25.792506784133     -8.540E-01 5.311E-03 2.763E+02
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.874      0.142     -0.155E-01
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   25.735699694849     -5.681E-02 9.686E-04 3.993E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.27     -0.229     -0.370E-01 -0.474E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   25.735100850585     -5.988E-04 1.057E-04 8.634E-02
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.933      0.118     -0.458E-01 -0.557E-02  0.317E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   25.735076298713     -2.455E-05 1.313E-06 1.130E-03
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.06     -0.362E-01 -0.289E-01  0.554E-02  0.105E-02
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   25.735075914571     -3.841E-07 1.199E-08 4.692E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.10     -0.758E-01 -0.287E-01  0.389E-03  0.433E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   25.735075902317     -1.225E-08 9.214E-10 1.910E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.06     -0.392E-01 -0.186E-01  0.174E-02  0.712E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   25.735075902221     -9.641E-11 8.233E-12 2.458E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.996      0.146E-01 -0.118E-01  0.610E-03  0.246E-03
- dfpt_scfcv: previous iteration took  0.06 [s]
+ dfpt_scfcv: previous iteration took  0.13 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   25.735075902146     -7.458E-11 8.334E-14 7.494E-11
@@ -3039,12 +3052,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN12 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN12.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN12.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.32 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.26 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT12 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT12.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT12.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.33 [s] <<< TIME
+ IO operation completed. cpu:  0.09 [s] , wall:  0.30 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT12.nc
 ================================================================================
 
@@ -3111,70 +3124,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    6705.1110985411651
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     2
  ETOT  2  -366.50438064075     -4.322E+00 7.047E-02 3.251E+02
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.987      0.134E-01
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.24 [s]
 
  ITER STEP NUMBER     3
  ETOT  3  -366.72933411435     -2.250E-01 1.190E-03 1.727E+01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.01      0.287E-01 -0.353E-01
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.24 [s]
 
  ITER STEP NUMBER     4
  ETOT  4  -366.74256518747     -1.323E-02 1.026E-04 1.733E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.837      0.190     -0.200E-01 -0.688E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.24 [s]
 
  ITER STEP NUMBER     5
  ETOT  5  -366.74352078244     -9.556E-04 2.187E-05 5.469E-01
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.675      0.375     -0.367E-01 -0.143E-01  0.122E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     6
  ETOT  6  -366.74406780276     -5.470E-04 3.265E-06 1.895E-03
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.07     -0.201E-01 -0.538E-01 -0.303E-02  0.181E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     7
  ETOT  7  -366.74407025300     -2.450E-06 4.687E-07 1.662E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.978      0.348E-01 -0.728E-02 -0.597E-02  0.495E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     8
  ETOT  8  -366.74407026611     -1.310E-08 1.972E-09 1.048E-06
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.03     -0.135E-01 -0.157E-01 -0.801E-03  0.766E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     9
  ETOT  9  -366.74407026667     -5.643E-10 1.566E-09 1.059E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.10     -0.115      0.114E-01 -0.113E-02 -0.246E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER    10
  ETOT 10  -366.74407026670     -3.092E-11 1.886E-11 4.030E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.02      0.870E-02 -0.329E-01  0.455E-02  0.484E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER    11
  ETOT 11  -366.74407026670     -2.444E-12 7.054E-12 9.189E-11
@@ -3191,12 +3204,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN16 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN16.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN16.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.30 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.29 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT16 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT16.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT16.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.47 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.26 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT16.nc
 ================================================================================
 
@@ -3261,56 +3274,56 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    1134.0134182206509
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     2
  ETOT  2  -8.8936690571775     -9.263E-01 7.047E-03 3.951E+01
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.912      0.882E-01
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.23 [s]
 
  ITER STEP NUMBER     3
  ETOT  3  -8.9215087179919     -2.784E-02 8.202E-05 6.176E-01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.988      0.227E-01 -0.111E-01
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.23 [s]
 
  ITER STEP NUMBER     4
  ETOT  4  -8.9220501286310     -5.414E-04 3.562E-06 2.502E-02
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.993      0.431E-01 -0.324E-01 -0.330E-02
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.23 [s]
 
  ITER STEP NUMBER     5
  ETOT  5  -8.9220668710839     -1.674E-05 4.662E-08 2.673E-04
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.18     -0.175     -0.829E-02  0.302E-02  0.420E-03
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.23 [s]
 
  ITER STEP NUMBER     6
  ETOT  6  -8.9220669714638     -1.004E-07 6.331E-10 4.453E-07
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.03     -0.378E-01  0.265E-02  0.806E-03  0.570E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.24 [s]
 
  ITER STEP NUMBER     7
  ETOT  7  -8.9220669717209     -2.571E-10 1.363E-12 1.242E-08
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.20     -0.200      0.145E-02  0.290E-03 -0.172E-03
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.23 [s]
 
  ITER STEP NUMBER     8
  ETOT  8  -8.9220669717247     -3.757E-12 1.687E-14 1.006E-10
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.08     -0.894E-01  0.916E-02 -0.420E-03  0.398E-05
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.23 [s]
 
  ITER STEP NUMBER     9
  ETOT  9  -8.9220669717247     -1.954E-14 1.174E-15 1.208E-12
@@ -3327,12 +3340,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_DEN18 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN18.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_DEN18.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.30 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.21 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS4_POT18 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT18.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT18.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.33 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.25 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS4_POT18.nc
 ================================================================================
 
@@ -3414,7 +3427,7 @@ message: |
 
 --- !COMMENT
 src_file: m_xgScalapack.F90
-src_line: 236
+src_line: 230
 message: |
     xgScalapack in auto mode
 ...
@@ -3522,77 +3535,77 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    871.11115112854861
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   14.255565482823     -7.255E-01 8.074E-02 6.638E+02
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.662      0.338
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   13.785446942818     -4.701E-01 2.960E-03 5.118E+01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.725      0.233      0.428E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   13.743557421062     -4.189E-02 1.157E-04 4.307E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.736      0.253      0.270E-01 -0.156E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   13.740583209770     -2.974E-03 1.575E-05 5.747E-02
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.940      0.797E-01 -0.991E-02 -0.544E-02 -0.384E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   13.740543888782     -3.932E-05 2.747E-06 2.355E-03
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.996      0.312E-01 -0.163E-01 -0.114E-01 -0.325E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   13.740542354107     -1.535E-06 1.674E-08 9.573E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.886      0.131     -0.125E-01 -0.360E-02 -0.173E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   13.740542311993     -4.211E-08 3.528E-09 3.035E-05
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.694      0.376     -0.635E-01 -0.750E-02  0.313E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   13.740542286306     -2.569E-08 1.379E-10 1.852E-06
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.747      0.216      0.557E-01 -0.171E-01 -0.155E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   13.740542285079     -1.227E-09 6.192E-11 1.581E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.893      0.128      0.359E-02 -0.251E-01  0.904E-03
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   13.740542285001     -7.822E-11 1.199E-11 4.123E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.03      0.140E-01 -0.451E-01 -0.115E-02 -0.182E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    12
  ETOT 12   13.740542284998     -2.814E-12 1.649E-13 5.914E-11
@@ -3603,12 +3616,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN1 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN1.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN1.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.32 [s] <<< TIME
+ IO operation completed. cpu:  0.05 [s] , wall:  0.32 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT1 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT1.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT1.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.47 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.26 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT1.nc
 ================================================================================
 
@@ -3681,70 +3694,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    688.65995591157809
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   8.4655062939548     -1.060E+00 9.200E-03 5.404E+01
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.830      0.170
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   8.3990290281173     -6.648E-02 1.487E-04 5.399E-01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.04     -0.202E-01 -0.211E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   8.3986435740800     -3.855E-04 1.752E-05 5.917E-02
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.811      0.214     -0.178E-01 -0.749E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   8.3986164712472     -2.710E-05 2.500E-06 1.476E-02
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.705      0.329     -0.284E-01 -0.447E-02 -0.664E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   8.3986047564563     -1.171E-05 4.901E-07 5.424E-04
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.735      0.226      0.564E-01 -0.176E-01 -0.488E-03
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   8.3986042972235     -4.592E-07 6.266E-08 2.414E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.928      0.124     -0.270E-01 -0.253E-01 -0.190E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   8.3986042841389     -1.308E-08 6.121E-09 4.284E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.00      0.138E-01 -0.945E-02 -0.691E-02 -0.157E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   8.3986042839791     -1.598E-10 1.852E-09 9.432E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.698      0.346     -0.345E-01 -0.850E-02 -0.149E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   8.3986042839161     -6.298E-11 1.809E-10 5.397E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.772      0.203      0.361E-01 -0.872E-02 -0.186E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   8.3986042839125     -3.638E-12 5.702E-11 7.448E-10
@@ -3755,12 +3768,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN2 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN2.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN2.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.30 [s] <<< TIME
+ IO operation completed. cpu:  0.05 [s] , wall:  0.54 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT2 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT2.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT2.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.27 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.25 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT2.nc
 ================================================================================
 
@@ -3834,70 +3847,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    1935.1933053888799
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   22.525260185375     -1.204E+00 1.223E-01 6.063E+01
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.12     -0.122
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   22.505692527619     -1.957E-02 6.995E-02 1.784E+00
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.04     -0.306E-01 -0.120E-01
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   22.504734107774     -9.584E-04 1.077E-04 8.925E-02
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.870      0.166     -0.380E-01  0.159E-02
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   22.504643003864     -9.110E-05 1.662E-03 1.415E-03
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.15     -0.116     -0.411E-01  0.507E-02  0.407E-04
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   22.504642530064     -4.738E-07 8.324E-06 3.747E-05
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.19     -0.198      0.375E-02  0.441E-02 -0.370E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   22.504642521541     -8.523E-09 9.568E-05 7.021E-07
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.14     -0.153      0.793E-02  0.561E-03  0.177E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   22.504642521466     -7.492E-11 6.774E-07 1.960E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.628      0.453     -0.895E-01  0.770E-02  0.119E-03
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   22.504642521310     -1.561E-10 6.703E-06 1.383E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.915      0.160     -0.807E-01  0.539E-02  0.228E-03
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   22.504642521300     -9.777E-12 5.501E-08 3.178E-10
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.826      0.179      0.191E-01 -0.284E-01  0.385E-02
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   22.504642521301      4.547E-13 5.040E-07 3.054E-11
@@ -3908,12 +3921,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN3 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN3.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN3.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.38 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.31 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT3 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT3.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT3.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.36 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.26 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT3.nc
 ================================================================================
 
@@ -3983,84 +3996,84 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    6693.4372116056293
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   16.330111359582     -6.455E+00 3.839E-01 4.339E+03
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.680      0.320
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   13.914755206708     -2.415E+00 5.062E-02 4.970E+01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.906      0.902E-01  0.354E-02
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   13.891286627743     -2.347E-02 9.233E-04 4.270E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.618      0.363      0.248E-01 -0.618E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   13.887749600183     -3.537E-03 3.408E-04 3.754E-01
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.940      0.134     -0.658E-01 -0.667E-02 -0.228E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   13.887520460324     -2.291E-04 1.379E-06 6.325E-03
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.956      0.959E-01 -0.184E-01 -0.312E-01 -0.214E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   13.887516881615     -3.579E-06 1.219E-06 8.273E-04
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.803      0.224     -0.150E-01 -0.786E-02 -0.451E-02
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   13.887516520529     -3.611E-07 3.081E-08 7.923E-05
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.817      0.217     -0.234E-01 -0.120E-01 -0.238E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   13.887516474187     -4.634E-08 9.730E-09 1.161E-05
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.702      0.316      0.138E-01 -0.285E-01 -0.478E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   13.887516463322     -1.086E-08 7.931E-10 6.775E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.945      0.118     -0.481E-01 -0.159E-01 -0.749E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   13.887516462879     -4.425E-10 3.246E-10 3.906E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.05     -0.424E-01 -0.488E-02 -0.379E-02  0.413E-03
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER    12
  ETOT 12   13.887516462874     -5.798E-12 2.664E-10 5.317E-10
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.863      0.145     -0.691E-02 -0.652E-03 -0.914E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    13
  ETOT 13   13.887516462873     -3.411E-13 9.219E-11 6.596E-11
@@ -4071,12 +4084,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN4 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN4.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN4.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.31 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.25 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT4 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT4.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT4.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.67 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.26 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT4.nc
 ================================================================================
 
@@ -4149,70 +4162,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    2288.8420696907265
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   8.6372203582424     -2.992E+00 1.283E-02 1.133E+02
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.874      0.126
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   8.4912183729481     -1.460E-01 3.225E-04 2.003E+00
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.920      0.852E-01 -0.568E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   8.4889867362833     -2.232E-03 2.905E-05 1.678E-02
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.06     -0.521E-01 -0.570E-02 -0.170E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   8.4889826068442     -4.129E-06 6.037E-07 6.406E-03
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.701      0.361     -0.567E-01 -0.550E-02  0.191E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   8.4889784520424     -4.155E-06 4.073E-08 6.545E-04
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.779      0.238     -0.798E-02 -0.841E-02 -0.921E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   8.4889779361151     -5.159E-07 2.650E-09 3.947E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.762      0.254      0.193E-01 -0.385E-01  0.234E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   8.4889779078755     -2.824E-08 1.589E-09 4.893E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.04      0.601E-02 -0.329E-01 -0.131E-01  0.106E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   8.4889779076549     -2.206E-10 6.366E-12 2.444E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.922      0.944E-01 -0.105E-01 -0.448E-02 -0.233E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   8.4889779076443     -1.069E-11 1.231E-12 3.100E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.679      0.341     -0.163E-01 -0.385E-02  0.272E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   8.4889779076318     -1.251E-11 1.982E-14 2.303E-10
@@ -4223,12 +4236,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN5 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN5.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN5.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.34 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.31 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT5 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT5.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT5.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.31 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.29 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT5.nc
 ================================================================================
 
@@ -4302,70 +4315,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    17604.340729231804
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     2
  ETOT  2  -3.9470208504636     -1.287E+01 1.913E+00 3.565E+02
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.942      0.576E-01
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     3
  ETOT  3  -4.4311614445779     -4.841E-01 1.714E-01 5.278E+01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.842      0.170     -0.119E-01
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     4
  ETOT  4  -4.4694590497585     -3.830E-02 2.062E-01 1.322E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.32     -0.258     -0.588E-01  0.116E-02
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     5
  ETOT  5  -4.4697697747671     -3.107E-04 2.745E-02 1.211E-02
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.20     -0.245      0.354E-01  0.740E-02 -0.137E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     6
  ETOT  6  -4.4697718598346     -2.085E-06 4.945E-02 1.208E-04
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.11     -0.125      0.119E-01 -0.113E-02 -0.237E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     7
  ETOT  7  -4.4697718812077     -2.137E-08 5.949E-03 2.908E-06
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.10     -0.963E-01 -0.506E-02  0.197E-02 -0.300E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     8
  ETOT  8  -4.4697718823164     -1.109E-09 1.081E-02 3.473E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.907      0.148     -0.594E-01  0.438E-02 -0.217E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     9
  ETOT  9  -4.4697718825319     -2.156E-10 1.467E-03 9.076E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.11     -0.751E-01 -0.433E-01  0.496E-02 -0.210E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER    10
  ETOT 10  -4.4697718825256      6.366E-12 3.610E-03 2.574E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.648      0.430     -0.612E-01 -0.200E-01  0.361E-02
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER    11
  ETOT 11  -4.4697718825474     -2.183E-11 5.911E-04 2.027E-10
@@ -4376,12 +4389,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN6 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN6.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN6.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.30 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.22 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT6 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT6.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT6.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.35 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.25 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT6.nc
 ================================================================================
 
@@ -4451,77 +4464,77 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    871.11069842502741
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   14.255566884827     -7.255E-01 8.074E-02 6.638E+02
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.662      0.338
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   13.785449723758     -4.701E-01 2.964E-03 5.118E+01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.725      0.233      0.428E-01
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   13.743560338273     -4.189E-02 1.224E-04 4.307E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.736      0.253      0.270E-01 -0.156E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   13.740586156189     -2.974E-03 1.581E-05 5.752E-02
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.939      0.798E-01 -0.986E-02 -0.541E-02 -0.384E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   13.740546790976     -3.937E-05 2.967E-06 2.333E-03
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.996      0.312E-01 -0.165E-01 -0.114E-01 -0.357E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   13.740545281768     -1.509E-06 1.334E-08 9.492E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.886      0.132     -0.127E-01 -0.358E-02 -0.174E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   13.740545238508     -4.326E-08 3.923E-09 2.853E-05
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.697      0.369     -0.597E-01 -0.738E-02  0.304E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   13.740545214661     -2.385E-08 1.583E-10 1.906E-06
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.733      0.228      0.581E-01 -0.175E-01 -0.163E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   13.740545213384     -1.277E-09 7.456E-11 1.561E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.901      0.118      0.421E-02 -0.248E-01  0.761E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   13.740545213307     -7.731E-11 9.785E-12 3.940E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.04      0.122E-01 -0.445E-01 -0.148E-02 -0.172E-02
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    12
  ETOT 12   13.740545213303     -3.666E-12 1.260E-13 5.392E-11
@@ -4532,12 +4545,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN7 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN7.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN7.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.30 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.37 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT7 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT7.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT7.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.46 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.26 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT7.nc
 ================================================================================
 
@@ -4610,70 +4623,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    688.65984968485930
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   8.4655086955090     -1.060E+00 9.200E-03 5.404E+01
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.830      0.170
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   8.3990313463747     -6.648E-02 1.487E-04 5.400E-01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.04     -0.202E-01 -0.211E-01
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   8.3986459089564     -3.854E-04 1.747E-05 5.920E-02
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.811      0.214     -0.178E-01 -0.749E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   8.3986187871205     -2.712E-05 2.485E-06 1.477E-02
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.705      0.329     -0.284E-01 -0.447E-02 -0.664E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   8.3986070641910     -1.172E-05 4.875E-07 5.422E-04
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.735      0.226      0.565E-01 -0.176E-01 -0.489E-03
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.29 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   8.3986066052405     -4.590E-07 6.319E-08 2.418E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.929      0.124     -0.272E-01 -0.254E-01 -0.190E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   8.3986065921111     -1.313E-08 6.093E-09 4.086E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.01      0.782E-02 -0.101E-01 -0.668E-02 -0.139E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   8.3986065919531     -1.580E-10 1.867E-09 8.399E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.707      0.335     -0.337E-01 -0.822E-02 -0.141E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.28 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   8.3986065918984     -5.474E-11 1.795E-10 4.576E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.790      0.191      0.283E-01 -0.778E-02 -0.165E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.29 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   8.3986065918950     -3.325E-12 5.790E-11 7.781E-10
@@ -4684,12 +4697,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN8 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN8.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN8.nc
- IO operation completed. cpu:  0.03 [s] , wall:  0.32 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.37 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT8 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT8.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT8.nc
- IO operation completed. cpu:  0.06 [s] , wall:  0.37 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.26 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT8.nc
 ================================================================================
 
@@ -4763,70 +4776,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    1935.1942107444036
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.23 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   22.525286633553     -1.204E+00 1.223E-01 6.063E+01
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.12     -0.122
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.23 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   22.505719081554     -1.957E-02 7.518E-02 1.783E+00
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.04     -0.306E-01 -0.120E-01
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.23 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   22.504760684053     -9.584E-04 1.167E-04 8.920E-02
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.871      0.166     -0.380E-01  0.159E-02
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.22 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   22.504669573021     -9.111E-05 1.623E-03 1.415E-03
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.15     -0.117     -0.410E-01  0.506E-02  0.414E-04
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   22.504669099704     -4.733E-07 9.028E-06 3.756E-05
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.19     -0.197      0.363E-02  0.435E-02 -0.360E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   22.504669091162     -8.542E-09 9.351E-05 7.616E-07
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.13     -0.134      0.448E-02  0.659E-03  0.255E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   22.504669091114     -4.809E-11 7.364E-07 2.881E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.603      0.483     -0.945E-01  0.787E-02  0.148E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   22.504669090872     -2.420E-10 6.546E-06 1.225E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.955      0.115     -0.741E-01  0.381E-02  0.389E-03
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   22.504669090864     -8.185E-12 6.084E-08 3.830E-10
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.818      0.197      0.117E-01 -0.297E-01  0.396E-02
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   22.504669090863     -1.251E-12 4.936E-07 2.903E-11
@@ -4837,12 +4850,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN9 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN9.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN9.nc
- IO operation completed. cpu:  0.03 [s] , wall:  0.31 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.26 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT9 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT9.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT9.nc
- IO operation completed. cpu:  0.04 [s] , wall:  0.35 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.22 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT9.nc
 ================================================================================
 
@@ -4912,84 +4925,84 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    6693.4359880628790
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   16.330146267373     -6.455E+00 3.839E-01 4.339E+03
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.680      0.320
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   13.914790749679     -2.415E+00 5.062E-02 4.970E+01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.906      0.902E-01  0.354E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   13.891322210637     -2.347E-02 9.233E-04 4.270E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.618      0.363      0.248E-01 -0.618E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   13.887785158762     -3.537E-03 3.408E-04 3.754E-01
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.940      0.134     -0.658E-01 -0.667E-02 -0.228E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   13.887556020386     -2.291E-04 1.379E-06 6.325E-03
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.956      0.959E-01 -0.184E-01 -0.312E-01 -0.214E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   13.887552441695     -3.579E-06 1.219E-06 8.273E-04
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.803      0.224     -0.150E-01 -0.786E-02 -0.451E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   13.887552080621     -3.611E-07 3.081E-08 7.923E-05
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.817      0.217     -0.234E-01 -0.120E-01 -0.238E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   13.887552034279     -4.634E-08 9.729E-09 1.161E-05
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.702      0.316      0.138E-01 -0.285E-01 -0.478E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   13.887552023420     -1.086E-08 7.931E-10 6.776E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.945      0.118     -0.481E-01 -0.159E-01 -0.749E-04
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   13.887552022976     -4.443E-10 3.246E-10 3.906E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.05     -0.424E-01 -0.488E-02 -0.379E-02  0.413E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER    12
  ETOT 12   13.887552022966     -9.777E-12 2.664E-10 5.317E-10
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.863      0.145     -0.691E-02 -0.652E-03 -0.914E-04
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER    13
  ETOT 13   13.887552022968      2.046E-12 9.220E-11 6.596E-11
@@ -5000,12 +5013,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN10 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN10.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN10.nc
- IO operation completed. cpu:  0.04 [s] , wall:  0.35 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.26 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT10 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT10.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT10.nc
- IO operation completed. cpu:  0.03 [s] , wall:  0.34 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.25 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT10.nc
 ================================================================================
 
@@ -5078,70 +5091,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    2288.8416014281065
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     2
  ETOT  2   8.6372594484387     -2.992E+00 1.283E-02 1.133E+02
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.874      0.126
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     3
  ETOT  3   8.4912573136514     -1.460E-01 3.225E-04 2.003E+00
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.920      0.852E-01 -0.568E-02
- dfpt_scfcv: previous iteration took  0.11 [s]
+ dfpt_scfcv: previous iteration took  0.25 [s]
 
  ITER STEP NUMBER     4
  ETOT  4   8.4890256830308     -2.232E-03 2.905E-05 1.677E-02
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.06     -0.521E-01 -0.570E-02 -0.170E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.26 [s]
 
  ITER STEP NUMBER     5
  ETOT  5   8.4890215541446     -4.129E-06 6.036E-07 6.406E-03
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.701      0.361     -0.567E-01 -0.550E-02  0.191E-03
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     6
  ETOT  6   8.4890173993758     -4.155E-06 4.073E-08 6.545E-04
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.779      0.238     -0.799E-02 -0.841E-02 -0.921E-03
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     7
  ETOT  7   8.4890168834631     -5.159E-07 2.650E-09 3.947E-05
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.762      0.254      0.193E-01 -0.385E-01  0.234E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     8
  ETOT  8   8.4890168552313     -2.823E-08 1.589E-09 4.894E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.04      0.599E-02 -0.329E-01 -0.132E-01  0.106E-02
- dfpt_scfcv: previous iteration took  0.12 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER     9
  ETOT  9   8.4890168550150     -2.162E-10 6.362E-12 2.435E-08
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.923      0.933E-01 -0.105E-01 -0.444E-02 -0.231E-02
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER    10
  ETOT 10   8.4890168549950     -2.001E-11 1.226E-12 3.044E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.680      0.340     -0.163E-01 -0.383E-02  0.278E-03
- dfpt_scfcv: previous iteration took  0.13 [s]
+ dfpt_scfcv: previous iteration took  0.27 [s]
 
  ITER STEP NUMBER    11
  ETOT 11   8.4890168549880     -7.049E-12 1.970E-14 2.312E-10
@@ -5152,12 +5165,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN11 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN11.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN11.nc
- IO operation completed. cpu:  0.03 [s] , wall:  0.33 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.34 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT11 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT11.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT11.nc
- IO operation completed. cpu:  0.04 [s] , wall:  0.33 [s] <<< TIME
+ IO operation completed. cpu:  0.08 [s] , wall:  0.26 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT11.nc
 ================================================================================
 
@@ -5231,70 +5244,70 @@ message: |
 
  Simple mixing update:
   residual square of the potential:    17604.338697382744
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     2
  ETOT  2  -3.9467871663041     -1.287E+01 1.913E+00 3.565E+02
 
  Pulay update with  1 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.942      0.576E-01
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     3
  ETOT  3  -4.4309273565327     -4.841E-01 1.714E-01 5.278E+01
 
  Pulay update with  2 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.842      0.170     -0.119E-01
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     4
  ETOT  4  -4.4692248740380     -3.830E-02 3.882E-01 1.322E+00
 
  Pulay update with  3 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.32     -0.258     -0.588E-01  0.116E-02
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     5
  ETOT  5  -4.4695355970784     -3.107E-04 2.170E-02 1.211E-02
 
  Pulay update with  4 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.20     -0.245      0.354E-01  0.740E-02 -0.137E-03
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     6
  ETOT  6  -4.4695376820132     -2.085E-06 7.471E-02 1.207E-04
 
  Pulay update with  5 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.11     -0.125      0.120E-01 -0.114E-02 -0.237E-03
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     7
  ETOT  7  -4.4695377033045     -2.129E-08 4.424E-03 2.901E-06
 
  Pulay update with  6 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.10     -0.965E-01 -0.502E-02  0.197E-02 -0.299E-03
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER     8
  ETOT  8  -4.4695377044450     -1.141E-09 1.566E-02 3.427E-07
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.909      0.146     -0.592E-01  0.440E-02 -0.222E-03
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER     9
  ETOT  9  -4.4695377046742     -2.292E-10 1.013E-03 7.487E-09
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=   1.14     -0.103     -0.467E-01  0.664E-02 -0.358E-03
- dfpt_scfcv: previous iteration took  0.10 [s]
+ dfpt_scfcv: previous iteration took  0.20 [s]
 
  ITER STEP NUMBER    10
  ETOT 10  -4.4695377046369      3.729E-11 3.120E-03 7.251E-10
 
  Pulay update with  7 previous iterations:
  mixing of old trial potential: alpha(m:m-4)=  0.815      0.236     -0.418E-01 -0.113E-01  0.234E-02
- dfpt_scfcv: previous iteration took  0.09 [s]
+ dfpt_scfcv: previous iteration took  0.21 [s]
 
  ITER STEP NUMBER    11
  ETOT 11  -4.4695377046287      8.185E-12 4.147E-04 2.544E-10
@@ -5305,12 +5318,12 @@ message: |
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_DEN12 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN12.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_DEN12.nc
- IO operation completed. cpu:  0.04 [s] , wall:  0.32 [s] <<< TIME
+ IO operation completed. cpu:  0.06 [s] , wall:  0.28 [s] <<< TIME
 
  fftdatar_write: About to write data to: io_dir_new/hbn_out_DS5_POT12 with iomode: IO_MODE_ETSF
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT12.nc
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT12.nc
- IO operation completed. cpu:  0.02 [s] , wall:  0.35 [s] <<< TIME
+ IO operation completed. cpu:  0.07 [s] , wall:  0.25 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_out_DS5_POT12.nc
 ================================================================================
 
@@ -5533,8 +5546,6 @@ P          mk1mem5          4
               qpt3     0.00000000E+00  0.00000000E+00  0.00000000E+00
               qpt4     0.00000000E+00  0.00000000E+00  0.00000000E+00
               qpt5     5.00000000E-01  0.00000000E+00  0.00000000E+00
-          rfatpol           1       4
-            rfdir           1       1       1
            rfelfd1          0
            rfelfd2          0
            rfelfd3          2
@@ -5597,18 +5608,18 @@ P          mk1mem5          4
 
 ================================================================================
   
- Proc.   0 individual time (sec): cpu=         38.6  wall=         63.7
+ Proc.   0 individual time (sec): cpu=         82.1  wall=         96.7
 
  Calculation completed.
 .Delivered   4 WARNINGs and  13 COMMENTs to log file.
 
 --- !FinalSummary
 program: abinit
-version: 9.7.4
-start_datetime: Thu Sep 22 09:36:04 2022
-end_datetime: Thu Sep 22 09:37:08 2022
-overall_cpu_time:          38.6
-overall_wall_time:          63.7
+version: 9.9.0
+start_datetime: Sun Oct 09 15:26:23 2022
+end_datetime: Sun Oct 09 15:27:59 2022
+overall_cpu_time:          82.1
+overall_wall_time:          96.7
 exit_requested_by_user: no 
 timelimit: 0
 pseudos: 

@@ -1,4 +1,4 @@
-  ABINIT 9.7.4
+  ABINIT 9.9.0
   
  DeprecationWarning: 
 
@@ -19,8 +19,8 @@ io_dir_new/hbn_q_ibz_out
   Give root name for generic temporary files:
 io_dir_new/hbn_q_ibz_t
 
-.Version 9.7.4 of ABINIT 
-.(MPI version, prepared for a x86_64_linux_gnu9.4 computer) 
+.Version 9.9.0 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_gnu11.2 computer) 
 
 .Copyright (C) 1998-2022 ABINIT group . 
  ABINIT comes with ABSOLUTELY NO WARRANTY.
@@ -34,24 +34,24 @@ io_dir_new/hbn_q_ibz_t
  acknowledgments of the ABINIT effort.
  For more information, see https://www.abinit.org .
 
-.Starting date : Thu 22 Sep 2022.
-- ( at 09h34 )
+.Starting date : Sun  9 Oct 2022.
+- ( at 15h35 )
   
 
  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
  === Build Information === 
-  Version       : 9.7.4
-  Build target  : x86_64_linux_gnu9.4
-  Build date    : 20220527
+  Version       : 9.9.0
+  Build target  : x86_64_linux_gnu11.2
+  Build date    : 20221002
 
  === Compiler Suite === 
-  C compiler       : gnu9.4
-  C++ compiler     : gnu9.4
-  Fortran compiler : gnu9.4
+  C compiler       : gnu11.2
+  C++ compiler     : gnu11.2
+  Fortran compiler : gnu11.2
   CFLAGS           : -g -O2
   CXXFLAGS         : -g -O2 -mtune=native -march=native
-  FCFLAGS          : -g -ffree-line-length-none  -fopenmp   -I/data/shared/yambo-libs/de ...
+  FCFLAGS          : -g -ffree-line-length-none -fallow-argument-mismatch  -fopenmp   -I ...
   FC_LDFLAGS       : 
 
  === Optimizations === 
@@ -158,7 +158,7 @@ io_dir_new/hbn_q_ibz_t
 
 --- !COMMENT
 src_file: m_ingeo.F90
-src_line: 900
+src_line: 890
 message: |
     The tolerance on symmetries =   1.000E-05 is bigger than 1.0e-8.
     In order to avoid spurious effects, the atomic coordinates have been
@@ -179,15 +179,15 @@ message: |
  symspgr: optical characteristics = uniaxial
  Optical axis (in reduced coordinates, real space ) :   0   0   1
  invars2: take the default value of fband=  1.25000000E-01
- For input ecut=  4.000000E+00 best grid ngfft=      10      10      24
-       max ecut=  4.793300E+00
+ For input ecut=  2.000000E+01 best grid ngfft=      20      20      50
+       max ecut=  2.080426E+01
 
  ==== FFT mesh ====
-  FFT mesh divisions ........................    10   10   24
-  Augmented FFT divisions ...................    11   11   24
+  FFT mesh divisions ........................    20   20   50
+  Augmented FFT divisions ...................    21   21   50
   FFT algorithm .............................   112
   FFT cache size ............................    16
- getmpw: optimal value of mpw= 102
+ getmpw: optimal value of mpw= 1011
 
  Symmetries : space group P6_3/m m c (#194); Bravais hP (primitive hexag.)
 
@@ -197,19 +197,19 @@ memory: analysis of memory needs
 ================================================================================
  Values of the parameters that define the memory need of the present run
      intxc =       0    ionmov =       0      iscf =       7    lmnmax =       4
-     lnmax =       4     mgfft =      24  mpssoang =       2    mqgrid =    3001
+     lnmax =       4     mgfft =      50  mpssoang =       2    mqgrid =    3001
      natom =       4  nloc_mem =       1    nspden =       1   nspinor =       1
     nsppol =       1      nsym =      12    n1xccc =    2501    ntypat =       2
     occopt =       1   xclevel =       2
 -    mband =           9        mffmem =           1         mkmem =           7
-       mpw =         102          nfft =        2400          nkpt =           7
+       mpw =        1011          nfft =       20000          nkpt =           7
 ================================================================================
-P This job should need less than                       1.885 Mbytes of memory.
+P This job should need less than                       8.495 Mbytes of memory.
   Rough estimation (10% accuracy) of disk space for files :
-_ WF disk file :      0.100 Mbytes ; DEN or POT disk file :      0.020 Mbytes.
+_ WF disk file :      0.974 Mbytes ; DEN or POT disk file :      0.155 Mbytes.
 ================================================================================
 
- Biggest array : f_fftgr(disk), with      0.2950 MBytes.
+ Biggest array : f_fftgr(disk), with      2.4434 MBytes.
 --------------------------------------------------------------------------------
 ------------- Echo of variables that govern the present computation ------------
 --------------------------------------------------------------------------------
@@ -229,7 +229,7 @@ _ WF disk file :      0.100 Mbytes ; DEN or POT disk file :      0.020 Mbytes.
               amu      1.08110000E+01  1.40067400E+01
         ddb_ngqpt        2    2    1
            diemac      4.50000000E+00
-             ecut      4.00000000E+00 Hartree
+             ecut      2.00000000E+01 Hartree
    eph_ngqpt_fine        6    6    1
          eph_task          11
 -          fftalg         112
@@ -247,7 +247,7 @@ _ WF disk file :      0.100 Mbytes ; DEN or POT disk file :      0.020 Mbytes.
 P           mkmem           7
             natom           4
             nband           9
-            ngfft          10      10      24
+            ngfft          20      20      50
              nkpt           7
             nstep         100
              nsym          12
@@ -306,12 +306,12 @@ P           mkmem           7
   ==== OpenMP parallelism is ON ====
 - Max_threads:       1
 - Num_threads:       1
-- Num_procs:         6
+- Num_procs:         12
 - Dynamic:           F
  
   ==== Using MPI-2 specifications ==== 
   MPI-IO support is ON
-  xmpi_tag_ub ................    268435455
+  xmpi_tag_ub ................   2147483647
   xmpi_bsize_ch ..............            1
   xmpi_bsize_int .............            4
   xmpi_bsize_sp ..............            4
@@ -330,7 +330,7 @@ P           mkmem           7
 
 --- !COMMENT
 src_file: m_xgScalapack.F90
-src_line: 236
+src_line: 230
 message: |
     xgScalapack in auto mode
 ...
@@ -350,14 +350,14 @@ message: |
   J.P.Perdew, K.Burke, M.Ernzerhof, PRL 77, 3865 (1996)
 
  Reading eigenvalues from: io_dir_new/hbn_out_DS2_WFK.nc , with iomode: IO_MODE_ETSF
- wfk_read_eigenvalues_io completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
- wfk_read_eigenvalues completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
+ wfk_read_eigenvalues_io completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
+ wfk_read_eigenvalues completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
 
 --- !COMMENT
 src_file: m_hdr.F90
-src_line: 5133
+src_line: 4913
 message: |
-    istwfk read from Header differs from the values specified in the input file (this is not critical)
+    istwfk from header differs from the values specified in the input file (not critical)
 ...
 
 
@@ -396,19 +396,9 @@ message: |
   Tsmear value ........................       0.010000
   Tphysel value .......................       0.000000
 
- eph%init completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
+ eph%init completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
  eph%ebands_postprocess: completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
  Opening DDB file: io_dir_new/hbn_DDB
-  inprep8 : nband(1)=           9
-        occ  0.20000000000000D+01  0.20000000000000D+01  0.20000000000000D+01
-             0.20000000000000D+01  0.20000000000000D+01  0.20000000000000D+01
-             0.20000000000000D+01  0.20000000000000D+01  0.00000000000000D+00
- Opening DDB file: io_dir_new/hbn_DDB
-  inprep8 : nband(1)=           9
-        occ  0.20000000000000D+01  0.20000000000000D+01  0.20000000000000D+01
-             0.20000000000000D+01  0.20000000000000D+01  0.20000000000000D+01
-             0.20000000000000D+01  0.20000000000000D+01  0.00000000000000D+00
- About to open file io_dir_new/hbn_DDB
  Unit cell volume ucvol=  2.3455553E+02 bohr^3
  Angles (23,13,12)=  9.00000000E+01  9.00000000E+01  1.20000000E+02 degrees
 
@@ -486,7 +476,7 @@ message: |
 
 --- !COMMENT
 src_file: m_phonons.F90
-src_line: 2919
+src_line: 2821
 message: |
     ph_nqpath <= 0 or ph_ndivsm <= 0. Phonon bands won't be produced. Returning
 ...
@@ -505,8 +495,8 @@ message: |
 -Debye temperature from partial sums:     0.1294645290E+04 (K)
 
  Allocating tetra%ibz%indexes with memory: 0.0  [Mb] <<< MEM
- tetra accumulate completed. cpu:  0.05 [s] , wall:  0.05 [s] <<< TIME
- mkphdos completed. cpu:  0.20 [s] , wall:  0.20 [s] <<< TIME
+ tetra accumulate completed. cpu:  0.07 [s] , wall:  0.07 [s] <<< TIME
+ mkphdos completed. cpu:  0.22 [s] , wall:  0.22 [s] <<< TIME
 Initial frequency mesh not large enough. Recomputing PHDOS with wmin, wmax: -0.00150 0.00807
 
  mkphdos: calculating phonon DOS using tetrahedron method:
@@ -521,10 +511,10 @@ Initial frequency mesh not large enough. Recomputing PHDOS with wmin, wmax: -0.0
 -Debye temperature from partial sums:     0.1294645290E+04 (K)
 
  Allocating tetra%ibz%indexes with memory: 0.0  [Mb] <<< MEM
- tetra accumulate completed. cpu:  0.06 [s] , wall:  0.06 [s] <<< TIME
- mkphdos completed. cpu:  0.22 [s] , wall:  0.22 [s] <<< TIME
+ tetra accumulate completed. cpu:  0.08 [s] , wall:  0.08 [s] <<< TIME
+ mkphdos completed. cpu:  0.23 [s] , wall:  0.23 [s] <<< TIME
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_q_ibz_out_PHDOS.nc
- eph%ifc: completed. cpu:  0.59 [s] , wall:  0.89 [s] <<< TIME
+ eph%ifc: completed. cpu:  0.64 [s] , wall:  0.83 [s] <<< TIME
 - Analyzing DVDB file: io_dir_new/hbn_DVDB ...
 - dvdb_new completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
  Comparing WFK crystal with DVDB crystal
@@ -608,18 +598,18 @@ Initial frequency mesh not large enough. Recomputing PHDOS with wmin, wmax: -0.0
 
  All the independent perturbations are available
 
- getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  10  10  24
-         ecut(hartree)=      4.000   => boxcut(ratio)=   2.18936
+ getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  20  20  50
+         ecut(hartree)=     20.000   => boxcut(ratio)=   2.03982
 
  ==== Coarse FFT mesh used for the wavefunctions ====
-  FFT mesh divisions ........................    10   10   24
-  Augmented FFT divisions ...................    11   11   24
+  FFT mesh divisions ........................    20   20   50
+  Augmented FFT divisions ...................    21   21   50
   FFT algorithm .............................   112
   FFT cache size ............................    16
 
  ==== Dense FFT mesh used for densities and potentials ====
-  FFT mesh divisions ........................    10   10   24
-  Augmented FFT divisions ...................    11   11   24
+  FFT mesh divisions ........................    20   20   50
+  Augmented FFT divisions ...................    21   21   50
   FFT algorithm .............................   112
   FFT cache size ............................    16
 - pspini: atom type   1  psp file is B.psp8
@@ -684,71 +674,93 @@ Initial frequency mesh not large enough. Recomputing PHDOS with wmin, wmax: -0.0
   Pseudo valence available: yes
 
 === Gstore parameters ===
+ ==== Electron bands ====
+  Number of spinorial components ...... 1
+  Number of spin polarizations ........ 1
+  Number of k-points in the IBZ ....... 7
+  kptopt .............................. 1
+  Maximum number of bands ............. 10
+  Occupation option ................... 1
+
+  kptrlatt .............. [6, 0, 0, 0, 6, 0, 0, 0, 1]
+  shiftk ................ [   0.0000E+00,    0.0000E+00,    0.0000E+00]
+  Number of valence electrons .........          16.00
+  Extra cell charge (from GS run)......           0.00
+  Extra electrons (after GS run).......           0.00
+  Fermi level  ........................       0.202129
+  Entropy .............................       0.000000
+  Tsmear value ........................       0.010000
+  Tphysel value .......................       0.000000
+
  kzone: bz
- qzone: ibz
  kfilter: none
- with_vk: 0
- nqibz, nqbz: 7 36
- glob_nq_spin: [7]
  nkibz, nkbz: 7 36
  glob_nk_spin: [36]
+ qzone: ibz
+ nqibz, nqbz: 7 36
+ glob_nq_spin: [7]
+ with_vk: 1
 
- === Gstore MPI distribution ===
+  === MPI distribution ===
 P Number of CPUs for parallelism over perturbations: 1
 P Number of perturbations treated by this CPU: 12
 P Number of CPUs for parallelism over q-points: 1
 P Number of CPUs for parallelism over k-points: 1
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_q_ibz_out_GSTORE.nc
- gstore_new: completed. cpu:  0.08 [s] , wall:  0.45 [s] <<< TIME
+ gstore_new: completed. cpu:  0.09 [s] , wall:  0.36 [s] <<< TIME
+ Begin computation of e-ph matrix elements with qbuf_size: 4
 
  Building W(R,r) using q-mesh ngqpt: [2, 2, 1] , with nprocs_rpt: 1
- Gaussian filter with qdamp: 0.1
+ Using Gaussian filter with qdamp: 0.1
 
  Note: this part may take some time depending on the number of MPI procs, ngqpt and nfft points.
  Use boxcutmin < 2.0 (> 1.1) to decrease nfft, reduce memory requirements and speedup the calculation.
  Using rspace_cell method for integration weights: 0
  Total number of R-points in real-space big box: 4
  Number of R-points treated by this MPI rank: 4
- ngfft: 10 10 24
+ ngfft: 20 20 50
  dvdb_add_lr: 1
- Memory required for W(R,r): 0.9 [Mb] <<< MEM
-
---- !COMMENT
-src_file: m_dvdb.F90
-src_line: 1276
-message: |
-    Performing FFT interpolation of DFPT potentials as input ngfft differs from ngfft_file.
-...
-
- IBZ q-point [1/2] completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
- IBZ q-point [2/2] completed. cpu:  0.04 [s] , wall:  0.04 [s] <<< TIME
+ Memory required for W(R,r): 7.3 [Mb] <<< MEM
+ IBZ q-point [1/2] completed. cpu:  0.13 [s] , wall:  0.13 [s] <<< TIME
+ IBZ q-point [2/2] completed. cpu:  0.28 [s] , wall:  0.28 [s] <<< TIME
 
 
 
- Construction of W(R,r) completed. cpu:  0.06 [s] , wall:  0.06 [s] <<< TIME
- Memory needed for Fourier components u(G):      0.1 [Mb] <<< MEM
+ Construction of W(R,r) completed. cpu:  0.44 [s] , wall:  0.44 [s] <<< TIME
+ Using cache for Vscf(q) with MAX input size: 0.00  [Mb]
+ Max number of q-points stored in memory: 0
+ Use extra cache with 3 natom potentials: no
+ One DFPT potential requires: 0.15  [Mb]
+ QCACHE_KIND: 4
+ Memory allocated for Q-cache: 0.0  [Mb] <<< MEM
+ Max memory inside MPI comm: 0.0  [Mb] <<< MEM
+ Qcache from W(R, r) + symmetrization completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
+
+
+ gstore_fill_bks_mask completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
+ Memory needed for Fourier components u(G):      0.5 [Mb] <<< MEM
  Storing wavefunctions in single precision array as `enable_gw_dpc="no"`
  Memory needed for real-space u(r):      0.0 [Mb] <<< MEM
- wfd_init completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
+ wfd_init completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
  ==== Wavefunctions for GSTORE calculation ====
   Number of irreducible k-points ........ 7
   Number of spinorial components ........ 1
   Number of spin-density components ..... 1
   Number of spin polarizations .......... 1
-  Plane wave cutoff energy ..............   4.0
-  Max number of G-vectors ............... 102
-  Total number of FFT points ............ 2400
-  Number of FFT points treated by me .... 2400
+  Plane wave cutoff energy ..............  20.0
+  Max number of G-vectors ............... 1016
+  Total number of FFT points ............ 20000
+  Number of FFT points treated by me .... 20000
 
 
  ==== FFT mesh for wavefunctions ====
-  FFT mesh divisions ........................    10   10   24
-  Augmented FFT divisions ...................    11   11   24
+  FFT mesh divisions ........................    20   20   50
+  Augmented FFT divisions ...................    21   21   50
   FFT algorithm .............................   112
   FFT cache size ............................    16
 
  Total number of (b,k,s) states stored by this rank: 70
- Memory allocated for Fourier components u(G):      0.1 [Mb] <<< MEM
+ Memory allocated for Fourier components u(G):      0.5 [Mb] <<< MEM
  Memory needed for wfd%s datastructure:      0.0 [Mb] <<< MEM
  Memory needed for wfd%s(0)%k datastructure:      0.0 [Mb] <<< MEM
  Memory allocated for Kdata array:      0.0 [Mb] <<< MEM
@@ -757,7 +769,7 @@ message: |
 
  wfd_read_wfk: Reading file: io_dir_new/hbn_out_DS2_WFK.nc  with iomode: IO_MODE_ETSF , master_only: yes
  About to read: 70  (b, k, s) states in total.
- For spin: 1 , will read: 7  k-points.
+ For spin: 1 , will read: 7  k-points out of: 7
  Reading k-point [1/7] spin [1/1] completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
  Reading k-point [2/7] spin [1/1] completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
  Reading k-point [3/7] spin [1/1] completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
@@ -769,41 +781,59 @@ message: |
 
 
  Computing mpw. This may take some time for dense k/q meshes...
- Optimal value of mpw: 102
- gmax and mpw completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
+ Optimal value of mpw: 1016
+ gmax and mpw completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_q_ibz_out_GSTORE.nc
- My q-point [1/7] completed. cpu:  0.37 [s] , wall:  0.37 [s] <<< TIME
- My q-point [2/7] completed. cpu:  0.37 [s] , wall:  0.37 [s] <<< TIME
- My q-point [3/7] completed. cpu:  0.38 [s] , wall:  0.38 [s] <<< TIME
- My q-point [4/7] completed. cpu:  0.37 [s] , wall:  0.37 [s] <<< TIME
- My q-point [5/7] completed. cpu:  0.37 [s] , wall:  0.37 [s] <<< TIME
- My q-point [6/7] completed. cpu:  0.37 [s] , wall:  0.37 [s] <<< TIME
- My q-point [7/7] completed. cpu:  0.37 [s] , wall:  0.37 [s] <<< TIME
-
-
- gstore_compute completed. cpu:  2.84 [s] , wall:  2.85 [s] <<< TIME
-
-
- Initializing gstore object from: io_dir_new/hbn_q_ibz_out_GSTORE.nc 
-
- Comparing input crystal with the one from GSTORE file
 === Gstore parameters ===
+ ==== Electron bands ====
+  Number of spinorial components ...... 1
+  Number of spin polarizations ........ 1
+  Number of k-points in the IBZ ....... 7
+  kptopt .............................. 1
+  Maximum number of bands ............. 10
+  Occupation option ................... 1
+
+  kptrlatt .............. [6, 0, 0, 0, 6, 0, 0, 0, 1]
+  shiftk ................ [   0.0000E+00,    0.0000E+00,    0.0000E+00]
+  Number of valence electrons .........          16.00
+  Extra cell charge (from GS run)......           0.00
+  Extra electrons (after GS run).......           0.00
+  Fermi level  ........................       0.202129
+  Entropy .............................       0.000000
+  Tsmear value ........................       0.010000
+  Tphysel value .......................       0.000000
+
  kzone: bz
- qzone: ibz
  kfilter: none
- with_vk: 0
- nqibz, nqbz: 7 36
- glob_nq_spin: [7]
  nkibz, nkbz: 7 36
  glob_nk_spin: [36]
+ qzone: ibz
+ nqibz, nqbz: 7 36
+ glob_nq_spin: [7]
+ with_vk: 1
 
- === Gstore MPI distribution ===
+  === MPI distribution ===
 P Number of CPUs for parallelism over perturbations: 1
 P Number of perturbations treated by this CPU: 12
 P Number of CPUs for parallelism over q-points: 1
 P Number of CPUs for parallelism over k-points: 1
- Local memory for e-ph matrix elements: 2.3  [Mb] <<< MEM
- Reading completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
+ Computing phonon frequencies and displacements in the IBZ
+ phonon computation + output completed. cpu:  0.24 [s] , wall:  0.24 [s] <<< TIME
+ Computing and writing velocity operator matrix elements in the IBZ
+ Note that not all the k-points in the IBZ are computed when kfilter is activated!
+ Computation of vk completed. cpu:  0.04 [s] , wall:  0.04 [s] <<< TIME
+ My q-point [1/7] completed. cpu:  3.27 [s] , wall:  3.27 [s] <<< TIME
+ My q-point [2/7] completed. cpu:  3.21 [s] , wall:  3.21 [s] <<< TIME
+ My q-point [3/7] completed. cpu:  3.21 [s] , wall:  3.21 [s] <<< TIME
+ My q-point [4/7] completed. cpu:  3.21 [s] , wall:  3.21 [s] <<< TIME
+ My q-point [5/7] completed. cpu:  3.22 [s] , wall:  3.22 [s] <<< TIME
+ My q-point [6/7] completed. cpu:  3.23 [s] , wall:  3.23 [s] <<< TIME
+ My q-point [7/7] completed. cpu:  3.23 [s] , wall:  3.23 [s] <<< TIME
+
+
+ My gstore computation completed. cpu: 23.33 [s] , wall: 23.41 [s] <<< TIME
+
+
 
 == END DATASET(S) ==============================================================
 ================================================================================
@@ -817,7 +847,7 @@ P Number of CPUs for parallelism over k-points: 1
               amu      1.08110000E+01  1.40067400E+01
         ddb_ngqpt        2    2    1
            diemac      4.50000000E+00
-             ecut      4.00000000E+00 Hartree
+             ecut      2.00000000E+01 Hartree
    eph_ngqpt_fine        6    6    1
          eph_task          11
            etotal      0.0000000000E+00
@@ -832,7 +862,7 @@ P Number of CPUs for parallelism over k-points: 1
 P           mkmem           7
             natom           4
             nband           9
-            ngfft          10      10      24
+            ngfft          20      20      50
              nkpt           7
             nstep         100
              nsym          12
@@ -872,18 +902,18 @@ P           mkmem           7
 
 ================================================================================
   
- Proc.   0 individual time (sec): cpu=          3.9  wall=          4.7
+ Proc.   0 individual time (sec): cpu=         24.7  wall=         25.4
 
  Calculation completed.
-.Delivered   0 WARNINGs and   5 COMMENTs to log file.
+.Delivered   0 WARNINGs and   4 COMMENTs to log file.
 
 --- !FinalSummary
 program: abinit
-version: 9.7.4
-start_datetime: Thu Sep 22 09:34:06 2022
-end_datetime: Thu Sep 22 09:34:11 2022
-overall_cpu_time:           3.9
-overall_wall_time:           4.7
+version: 9.9.0
+start_datetime: Sun Oct 09 15:35:53 2022
+end_datetime: Sun Oct 09 15:36:18 2022
+overall_cpu_time:          24.7
+overall_wall_time:          25.4
 exit_requested_by_user: no 
 timelimit: 0
 pseudos: 
@@ -893,5 +923,5 @@ usepaw: 0
 mpi_procs: 1
 omp_threads: 1
 num_warnings: 0
-num_comments: 5
+num_comments: 4
 ...

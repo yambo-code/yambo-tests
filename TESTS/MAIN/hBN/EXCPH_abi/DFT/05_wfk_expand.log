@@ -1,4 +1,4 @@
-  ABINIT 9.7.4
+  ABINIT 9.9.0
   
  DeprecationWarning: 
 
@@ -19,8 +19,24 @@ io_dir_new/hbn_wfk_expanded_out
   Give root name for generic temporary files:
 io_dir_new/hbn_wfk_expanded_t
 
-.Version 9.7.4 of ABINIT 
-.(MPI version, prepared for a x86_64_linux_gnu9.4 computer) 
+--- !COMMENT
+src_file: m_dtfil.F90
+src_line: 1441
+message: |
+    Output file: 05_wfk_expand.out already exists.
+...
+
+
+--- !COMMENT
+src_file: m_dtfil.F90
+src_line: 1465
+message: |
+    Renaming old: 05_wfk_expand.out to: 05_wfk_expand.out0002
+...
+
+
+.Version 9.9.0 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_gnu11.2 computer) 
 
 .Copyright (C) 1998-2022 ABINIT group . 
  ABINIT comes with ABSOLUTELY NO WARRANTY.
@@ -34,24 +50,24 @@ io_dir_new/hbn_wfk_expanded_t
  acknowledgments of the ABINIT effort.
  For more information, see https://www.abinit.org .
 
-.Starting date : Thu 22 Sep 2022.
-- ( at 09h38 )
+.Starting date : Sun  9 Oct 2022.
+- ( at 15h30 )
   
 
  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
  === Build Information === 
-  Version       : 9.7.4
-  Build target  : x86_64_linux_gnu9.4
-  Build date    : 20220527
+  Version       : 9.9.0
+  Build target  : x86_64_linux_gnu11.2
+  Build date    : 20221002
 
  === Compiler Suite === 
-  C compiler       : gnu9.4
-  C++ compiler     : gnu9.4
-  Fortran compiler : gnu9.4
+  C compiler       : gnu11.2
+  C++ compiler     : gnu11.2
+  Fortran compiler : gnu11.2
   CFLAGS           : -g -O2
   CXXFLAGS         : -g -O2 -mtune=native -march=native
-  FCFLAGS          : -g -ffree-line-length-none  -fopenmp   -I/data/shared/yambo-libs/de ...
+  FCFLAGS          : -g -ffree-line-length-none -fallow-argument-mismatch  -fopenmp   -I ...
   FC_LDFLAGS       : 
 
  === Optimizations === 
@@ -158,7 +174,7 @@ io_dir_new/hbn_wfk_expanded_t
 
 --- !COMMENT
 src_file: m_ingeo.F90
-src_line: 900
+src_line: 890
 message: |
     The tolerance on symmetries =   1.000E-05 is bigger than 1.0e-8.
     In order to avoid spurious effects, the atomic coordinates have been
@@ -304,12 +320,12 @@ P           mkmem           7
   ==== OpenMP parallelism is ON ====
 - Max_threads:       1
 - Num_threads:       1
-- Num_procs:         6
+- Num_procs:         12
 - Dynamic:           F
  
   ==== Using MPI-2 specifications ==== 
   MPI-IO support is ON
-  xmpi_tag_ub ................    268435455
+  xmpi_tag_ub ................   2147483647
   xmpi_bsize_ch ..............            1
   xmpi_bsize_int .............            4
   xmpi_bsize_sp ..............            4
@@ -328,7 +344,7 @@ P           mkmem           7
 
 --- !COMMENT
 src_file: m_xgScalapack.F90
-src_line: 236
+src_line: 230
 message: |
     xgScalapack in auto mode
 ...
@@ -344,14 +360,14 @@ message: |
   J.P.Perdew, K.Burke, M.Ernzerhof, PRL 77, 3865 (1996)
 
  Reading eigenvalues from: io_dir_new/hbn_out_DS2_WFK.nc , with iomode: IO_MODE_ETSF
- wfk_read_eigenvalues_io completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
- wfk_read_eigenvalues completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
+ wfk_read_eigenvalues_io completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
+ wfk_read_eigenvalues completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
 
 --- !COMMENT
 src_file: m_hdr.F90
-src_line: 5133
+src_line: 4913
 message: |
-    istwfk read from Header differs from the values specified in the input file (this is not critical)
+    istwfk from header differs from the values specified in the input file (not critical)
 ...
 
 
@@ -464,10 +480,10 @@ message: |
 
  Converting: io_dir_new/hbn_out_DS2_WFK.nc to io_dir_new/hbn_wfk_expanded_out_WFK.nc
  Reading eigenvalues from: io_dir_new/hbn_out_DS2_WFK.nc , with iomode: IO_MODE_ETSF
- wfk_read_eigenvalues_io completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
- wfk_read_eigenvalues completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
+ wfk_read_eigenvalues_io completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
+ wfk_read_eigenvalues completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
 Using Netcdf-IO to generate full WFK file
- FULL_WFK written to: io_dir_new/hbn_wfk_expanded_out_WFK.nc completed. cpu:  0.05 [s] , wall:  0.19 [s] <<< TIME
+ FULL_WFK written to: io_dir_new/hbn_wfk_expanded_out_WFK.nc completed. cpu:  0.10 [s] , wall:  0.29 [s] <<< TIME
 
 == END DATASET(S) ==============================================================
 ================================================================================
@@ -541,18 +557,18 @@ P           mkmem           7
 
 ================================================================================
   
- Proc.   0 individual time (sec): cpu=          0.4  wall=          0.7
+ Proc.   0 individual time (sec): cpu=          0.7  wall=          1.1
 
  Calculation completed.
-.Delivered   0 WARNINGs and   3 COMMENTs to log file.
+.Delivered   0 WARNINGs and   5 COMMENTs to log file.
 
 --- !FinalSummary
 program: abinit
-version: 9.7.4
-start_datetime: Thu Sep 22 09:38:13 2022
-end_datetime: Thu Sep 22 09:38:14 2022
-overall_cpu_time:           0.4
-overall_wall_time:           0.7
+version: 9.9.0
+start_datetime: Sun Oct 09 15:30:08 2022
+end_datetime: Sun Oct 09 15:30:09 2022
+overall_cpu_time:           0.7
+overall_wall_time:           1.1
 exit_requested_by_user: no 
 timelimit: 0
 pseudos: 
@@ -562,5 +578,5 @@ usepaw: 0
 mpi_procs: 1
 omp_threads: 1
 num_warnings: 0
-num_comments: 3
+num_comments: 5
 ...

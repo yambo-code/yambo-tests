@@ -1,6 +1,6 @@
 
-.Version 9.7.4 of ABINIT 
-.(MPI version, prepared for a x86_64_linux_gnu9.4 computer) 
+.Version 9.9.0 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_gnu11.2 computer) 
 
 .Copyright (C) 1998-2022 ABINIT group . 
  ABINIT comes with ABSOLUTELY NO WARRANTY.
@@ -14,8 +14,8 @@
  acknowledgments of the ABINIT effort.
  For more information, see https://www.abinit.org .
 
-.Starting date : Thu 22 Sep 2022.
-- ( at 09h37 )
+.Starting date : Sun  9 Oct 2022.
+- ( at 15h38 )
   
 - input  file    -> inputs_new/04hbn_ddb_q_bz.in
 - output file    -> 04hbn_ddb_q_bz_new.out
@@ -81,7 +81,7 @@ P           mkmem           7
               occ      2.000000  2.000000  2.000000  2.000000  2.000000  2.000000
                        2.000000  2.000000  0.000000
         optdriver           7
-         ph_ngqpt        6    6    6
+         ph_ngqpt        6    6    1
             rprim      1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
                       -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
                        0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
@@ -203,19 +203,19 @@ meta: {optdriver: 7, eph_task: 11, }
   4)   5.00000000E-01  5.00000000E-01  0.00000000E+00
 
  The interatomic forces have been obtained
- Average speed of sound partial sums:     0.4200923954E-02 (at units)
--                                   =           9.1903 [km/s]
+ Average speed of sound partial sums:     0.6486918391E-02 (at units)
+-                                   =          14.1914 [km/s]
 
- Debye frequency from partial sums:     0.2655094108E-02 (Ha)
--                                 =     0.1746968001E+02 (THz)
--Debye temperature from partial sums:     0.8384114128E+03 (K)
+ Debye frequency from partial sums:     0.4099902543E-02 (Ha)
+-                                 =     0.2697606284E+02 (THz)
+-Debye temperature from partial sums:     0.1294645290E+04 (K)
 
- Average speed of sound partial sums:     0.4200923954E-02 (at units)
--                                   =           9.1903 [km/s]
+ Average speed of sound partial sums:     0.6486918391E-02 (at units)
+-                                   =          14.1914 [km/s]
 
- Debye frequency from partial sums:     0.2655094108E-02 (Ha)
--                                 =     0.1746968001E+02 (THz)
--Debye temperature from partial sums:     0.8384114128E+03 (K)
+ Debye frequency from partial sums:     0.4099902543E-02 (Ha)
+-                                 =     0.2697606284E+02 (THz)
+-Debye temperature from partial sums:     0.1294645290E+04 (K)
 
 - Writing phonon DOS to netcdf file: io_dir_new/hbn_q_bz_out_PHDOS.nc
 
@@ -252,25 +252,38 @@ meta: {optdriver: 7, eph_task: 11, }
 --------------------------------------------------------------------------------
 
 === Gstore parameters ===
- kzone: bz
- qzone: bz
- kfilter: none
- with_vk: 0
- nqibz, nqbz: 7 36
- glob_nq_spin: [36]
- nkibz, nkbz: 7 36
- glob_nk_spin: [36]
- Initializing gstore object from: io_dir_new/hbn_q_bz_out_GSTORE.nc 
+ ==== Electron bands ====
+  Number of spinorial components ...... 1
+  Number of spin polarizations ........ 1
+  Number of k-points in the IBZ ....... 7
+  kptopt .............................. 1
+  Maximum number of bands ............. 10
+  Occupation option ................... 1
 
-=== Gstore parameters ===
+  kptrlatt .............. [6, 0, 0, 0, 6, 0, 0, 0, 1]
+  shiftk ................ [   0.0000E+00,    0.0000E+00,    0.0000E+00]
+  Number of valence electrons .........          16.00
+  Extra cell charge (from GS run)......           0.00
+  Extra electrons (after GS run).......           0.00
+  Fermi level  ........................       0.202129
+  Entropy .............................       0.000000
+  Tsmear value ........................       0.010000
+  Tphysel value .......................       0.000000
+
  kzone: bz
- qzone: bz
  kfilter: none
- with_vk: 0
- nqibz, nqbz: 7 36
- glob_nq_spin: [36]
  nkibz, nkbz: 7 36
  glob_nk_spin: [36]
+ qzone: bz
+ nqibz, nqbz: 7 36
+ glob_nq_spin: [36]
+ with_vk: 1
+
+  === MPI distribution ===
+P Number of CPUs for parallelism over perturbations: 1
+P Number of perturbations treated by this CPU: 12
+P Number of CPUs for parallelism over q-points: 1
+P Number of CPUs for parallelism over k-points: 1
 
 == END DATASET(S) ==============================================================
 ================================================================================
@@ -304,7 +317,7 @@ P           mkmem           7
               occ      2.000000  2.000000  2.000000  2.000000  2.000000  2.000000
                        2.000000  2.000000  0.000000
         optdriver           7
-         ph_ngqpt        6    6    6
+         ph_ngqpt        6    6    1
             rprim      1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
                       -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
                        0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
@@ -419,10 +432,10 @@ P           mkmem           7
 - The licence allows the authors to put it on the Web.
 - DOI and bibtex: see https://docs.abinit.org/theory/bibliography/#gonze2016
 -
-- Proc.   0 individual time (sec): cpu=         62.7  wall=         63.9
+- Proc.   0 individual time (sec): cpu=        119.9  wall=        120.8
 
 ================================================================================
 
  Calculation completed.
 .Delivered   0 WARNINGs and   4 COMMENTs to log file.
-+Overall time at end (sec) : cpu=         62.7  wall=         63.9
++Overall time at end (sec) : cpu=        119.9  wall=        120.8
