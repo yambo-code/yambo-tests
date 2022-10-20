@@ -1,12 +1,12 @@
 
 
- __   __  _______  __   __  _______  _______
-|  | |  ||   _   ||  |_|  ||  _    ||       |
-|  |_|  ||  |_|  ||       || |_|   ||   _   |
-|       ||       ||       ||       ||  | |  |
-|_     _||       ||       ||  _   | |  |_|  |
-  |   |  |   _   || ||_|| || |_|   ||       |
-  |___|  |__| |__||_|   |_||_______||_______|
+ ___ __  _____  __ __  _____   _____
+|   Y  ||  _  ||  Y  ||  _  \ |  _  |
+|   |  ||. |  ||.    ||. |  / |. |  |
+ \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
+  |: |  |: |  ||: |  ||: |   \|: |  |
+  |::|  |:.|:.||:.|:.||::.   /|::.  |
+  `--"  `-- --"`-- --"`-----" `-----"
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -19,8 +19,7 @@
  <---> [02.05] Energies & Occupations
  <---> [03] Transferred momenta grid and indexing
  <---> [04] Dipoles
- <---> [DIP] Checking dipoles header
- <---> [WARNING][DIP] Database not correct or missing. To be computed
+ <---> [DIP] Database not correct or missing. To be computed
  <---> [x,Vnl] computed using 102 projectors
  <---> [WARNING] [x,Vnl] slows the Dipoles computation. To neglect it rename the ns.kb_pp file
  <---> Dipoles: P, V and iR (T) |                                        | [000%] --(E) --(X)
@@ -28,56 +27,59 @@
  <---> Dipoles: spin |                                        | [000%] --(E) --(X)
  <---> [FFT-Spin oscillators/R space] Mesh size:   7   7  27
  <---> Dipoles: spin |########################################| [100%] --(E) --(X)
- <---> [DIP] Writing dipoles header
  <---> [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
  <---> [WARNING] In case H contains other non local terms, these are neglected
  <---> [05] Bethe Salpeter Equation driver
  <---> [WARNING] n_sp_pol=2 and magnons requested. Spin flip BSE only is computed
- <---> [06] Bethe Salpeter Equation @q1
- <---> [06.01] Transition pre-analysis @q1
- <---> [06.01.01] Transition Groups build-up @q1
+ <---> [05.01] Bethe Salpeter Equation @q1
+ <---> [05.01.01] Transition pre-analysis @q1
+ <---> [05.01.02] Transition Groups build-up @q1
  <---> [BSK] Size (resonant):   81
  <---> [BSK]         (total):   81
  <---> [BSK] N. of matrices :  1
- <---> [06.01.02] Loading Dipoles @q1
- <---> [DIP] Checking dipoles header
+ <---> [05.01.03] Loading Dipoles @q1
  <---> BSE dipoles |                                        | [000%] --(E) --(X)
  <---> BSE dipoles |########################################| [100%] --(E) --(X)
- <---> [06.01.03] Independent Particles properties @q1
+ <---> [05.01.04] Independent Particles properties @q1
  <---> IP properties |                                        | [000%] --(E) --(X)
  <---> IP properties |########################################| [100%] --(E) --(X)
- <---> [06.01.04] TDDFT Kernel @q1 ALDA
- <---> [FFT-BSK] Mesh size:   7   7  27
+ <---> [05.01.05] TDDFT Kernel @q1 ALDA
+ <---> [05.01.06] Main kernel loop
+ <---> [FFT-TDDFT] Mesh size:   7   7  27
  <---> [xc] Functional : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
  <---> [xc] LIBXC used to calculate xc functional
  <---> [xc] Including NLCC, core corrections density loaded from pseudo
  <---> [WARNING] Fxc not coded for GGA. Using LDA part only of the functional
  <---> [WARNING] Fxc not coded for GGA. Using LDA part only of the functional
- <---> [06.01.05] Main kernel loop
- <---> BSE file not found. Creating an empty one.
- <---> Kernel |                                        | [000%] --(E) --(X)
- <---> Kernel |########################################| [100%] --(E) --(X)
- <---> [06.02] BSE solver(s) @q1
+ <---> [FFT-BSK-2] Mesh size:   7   7  27
+ <---> Kernel tddft |                                        | [000%] --(E) --(X)
+ <---> Kernel tddft |########################################| [100%] --(E) --(X)
+ <---> Final I/O |                                        | [000%] --(E) --(X)
+ <---> Final I/O |########################################| [100%] --(E) --(X)
+ <---> [05.02] BSE solver(s) @q1
  <---> [LA] SERIAL linear algebra
- <---> [06.02.01] Diago Solver @q1
- <---> Folding BSE Kernel |                                        | [000%] --(E) --(X)
- <---> Folding BSE Kernel |########################################| [100%] --(E) --(X)
+ <---> [05.03] Diago Solver @q1
+ <---> Unfolding BSE components |                                        | [000%] --(E) --(X)
+ <---> Unfolding BSE components |########################################| [100%] --(E) --(X)
  <---> BSK diagonalize |                                        | [000%] --(E) --(X)
  <---> BSK diagonalize |########################################| [100%] --(E) --(X)
- <---> MAG residuals |                                        | [000%] --(E) --(X)
- <---> MAG residuals |########################################| [100%] --(E) --(X)
+ <---> mag1 residuals |                                        | [000%] --(E) --(X)
+ <---> mag1 residuals |########################################| [100%] --(E) --(X)
  <---> BSK resp. funct |                                        | [000%] --(E) --(X)
  <---> BSK resp. funct |########################################| [100%] --(E) --(X)
- <---> [06.02.02] Haydock Solver for magnons @q1, scheme hermitian
+ <---> [05.04] Haydock Solver in the magnons basis @q1 using the hermitian scheme
  <---> [Haydock] Iteration 1
  <---> [Haydock] Iteration 2
- <---> [Haydock] Iteration 3 Accuracy  1.640129| 0.005000
- <---> [Haydock] Iteration 4 Accuracy  0.132451| 0.005000
- <---> [Haydock] Iteration 5 Accuracy  0.136170| 0.005000
- <---> [Haydock] Iteration 6 Accuracy  0.002385| 0.005000
- <---> [Haydock] Iteration 7 Accuracy  0.007832| 0.005000
- <---> [Haydock] Iteration 8 Accuracy  0.005458| 0.005000
- <---> [Haydock] Iteration 9 Accuracy  0.002050| 0.005000
- <---> [Haydock] Iteration 10 Accuracy  0.842155E-3| 0.005000
- <---> [07] Timing Overview
- <---> [08] Game Over & Game summary
+ <---> [Haydock] Iteration 3 Accuracy  6.407125| 0.005000
+ <---> [Haydock] Iteration 4 Accuracy  6.148036| 0.005000
+ <---> [Haydock] Iteration 5 Accuracy  0.636725| 0.005000
+ <---> [Haydock] Iteration 6 Accuracy  0.010071| 0.005000
+ <---> [Haydock] Iteration 7 Accuracy  0.026792| 0.005000
+ <---> [Haydock] Iteration 8 Accuracy  0.007791| 0.005000
+ <---> [Haydock] Iteration 9 Accuracy  0.004809| 0.005000
+ <---> [Haydock] Iteration 10 Accuracy  0.006962| 0.005000
+ <---> [Haydock] Iteration 11 Accuracy  0.006265| 0.005000
+ <---> [Haydock] Iteration 12 Accuracy  0.001741| 0.005000
+ <---> [Haydock] Iteration 13 Accuracy  0.003288| 0.005000
+ <---> [06] Timing Overview
+ <---> [07] Game Over & Game summary
