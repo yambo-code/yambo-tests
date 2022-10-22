@@ -1,26 +1,47 @@
 #                                                                     
-#   __   __     _        __  __       ____      U  ___  u             
-#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
-#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
-#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
-#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
-# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
-#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
 #                                                                     
-#                                                                     
-#       Version 5.1.0 Revision 20042 Hash dd01d5cc8                   
-#                  Branch is devel-tddft                              
+# Version 5.1.0 Revision 21691 Hash (prev commit) a6748323a           
+#                Branch is devel-dichroism                            
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
+# Sorted IP Energies @ Q(1):  0.999999975E-5   0.00000000      0.00000000    [q->0 direction]
 #
-#    E [eV]             n_deg              abs
+# [GEN] GF Energies                               : B3LYP(XC)
+# [GEN] Green`s Function                          : Retarded
 #
-     8.7900057          3.0000000         0.82253111E-11
-     13.232038          6.0000000         0.56603832E-11
+# [GEN] Gauge                                     : Length
+# [GEN] [r,Vnl] included                          : yes
+#
+# DIP band range                                  :   2   7
+# DIP band range limits                           :   4   5
+# DIP e/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# RL vectors in the sum                           :   3695
+# [r,Vnl] included                                : yes
+# Bands ordered                                   : yes
+# Direct v evaluation                             : no
+# Approach used                                   : R-space x
+# Dipoles computed                                : R V P
+# Wavefunctions                                   : B3LYP(XC)
+#
+#
+#    E [eV]             N_deg              eps
+#
+        8.790006           3.000000           0.82253E-11
+        13.23204           6.000000           0.56604E-11
 # 
-# 06/16/2021 at 14:58 yambo @ unimi-XPS-8930 [start]
-# 06/16/2021 at 14:58                        [end]
+# 10/22/2022 at 15:09 yambo @ unimi-XPS-8930 [start]
+# 10/22/2022 at 15:09                        [end]
+#  
+# Timing   [Min/Max/Average]: 02s/02s/02s
 #
 # .-Input file  yambo.in
 # | rim_cut                          # [R] Coulomb potential
@@ -36,15 +57,15 @@
 # | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
 # | RandQpts=0                       # [RIM] Number of random q-points in the BZ
 # | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
-# | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
 # | % CUTBox
 # |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
 # | %
 # | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
 # | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
 # | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
-# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
 # | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
 # | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
 # | % DipBands
 # |   2 |  7 |                           # [DIP] Bands range for dipoles
@@ -52,9 +73,8 @@
 # | DipApproach= "R-space x"         # [DIP] [G-space v/R-space x/Covariant/Shifted grids]
 # | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
 # | BSENGexx=  4067            RL    # [BSK] Exchange components
-# | BSENGfxc=  4139            RL    # [BSK] Fxc components
 # | BSENGBlk= 203              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
-# | BSEprop= "abs esrt"              # [BSS] abs/kerr/magn/dichr trace
+# | #WehCpl                        # [BSK] eh interaction included also in coupling
 # | % BSEQptR
 # |  1 | 1 |                             # [BSK] Transferred momenta range
 # | %
@@ -69,8 +89,9 @@
 # | %
 # | BEnSteps= 2001                   # [BSS] Energy steps
 # | % BLongDir
-# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# |  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field versor
 # | %
+# | BSEprop= "abs esrt jdos"         # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
 # | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
 # | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
 # | BSHayItrMAX= 200                 # [BSS] MaX number of Haydock iterations.
