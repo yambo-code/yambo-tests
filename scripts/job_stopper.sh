@@ -3,9 +3,10 @@
 robot=$1
 while [ $robot != 0 ]; do
  if [ -e ${robot}_DONE ]; then
-  set robot = 0
+  robot=0
  else
   for exe in yambo ypp a2y p2y e2y; do
+
 if [ ! -f KILLER_${exe}_${robot}.awk ]; then
 cat << EOF > KILLER_${exe}_${robot}.awk
 {
@@ -16,7 +17,7 @@ cat << EOF > KILLER_${exe}_${robot}.awk
 }
 EOF
 fi
-   set NL=`ps -eo etimes,pid,cmd:150 | awk -f KILLER_${exe}_${robot}.awk`
+   NL=`ps -eo etimes,pid,cmd:150 | awk -f KILLER_${exe}_${robot}.awk`
    if [ ! "$NL" == "" ]; then
      ps -eo etimes,pid,cmd:150 | awk -f KILLER_${exe}_${robot}.awk | xargs kill -9
    fi
