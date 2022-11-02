@@ -141,6 +141,7 @@ $exec_list   = $exec_list_basic;
 #
 # If project = all or user-selected 
 if ($project =~ /magnetic/ or $project =~ /sc/ or  $project eq "all") { $target_list .= $exec_sc; $exec_list  .= $exec_sc};
+if ($project =~ /surf/ or $project eq "all")     { $target_list .= $exec_surf; $exec_list  .= $exec_surf};
 if ($project =~ /rt/ or $project eq "all")       { $target_list .= $exec_rt; $exec_list  .= $exec_rt};
 if ($project =~ /elph/ or $project eq "all")     { $target_list .= $exec_elph; $exec_list  .= $exec_elph};
 if ($project =~ /phel/ or $project eq "all")     { $target_list .= $exec_phel; $exec_list  .= $exec_phel};

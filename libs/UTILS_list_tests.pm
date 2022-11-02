@@ -47,6 +47,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
       if (-e $dir."/A2Y")   {$EMPTY_tests="$EMPTY_tests"."[A2Y]"."$MORE_str"}
       if (-e $dir."/RT")   {$EMPTY_tests="$EMPTY_tests"."[RT]"."$MORE_str"}
       if (-e $dir."/QED")   {$EMPTY_tests="$EMPTY_tests"."[QED]"."$MORE_str"}
+      if (-e $dir."/SURF")   {$EMPTY_tests="$EMPTY_tests"."[SURF]"."$MORE_str"}
       if (-e $dir."/PL")   {$EMPTY_tests="$EMPTY_tests"."[PL]"."$MORE_str"}
       if (-e $dir."/NL")   {$EMPTY_tests="$EMPTY_tests"."[NL]"."$MORE_str"}
       if (-e $dir."/SC")   {$EMPTY_tests="$EMPTY_tests"."[SC]"."$MORE_str"}
@@ -64,6 +65,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
       if (-e $dir."/A2Y")   {$BROKEN_tests="$BROKEN_tests"."[A2Y]"."$MORE_str"}
       if (-e $dir."/RT")   {$BROKEN_tests="$BROKEN_tests"."[RT]"."$MORE_str"}
       if (-e $dir."/QED")   {$BROKEN_tests="$BROKEN_tests"."[QED]"."$MORE_str"}
+      if (-e $dir."/SURF")   {$BROKEN_tests="$BROKEN_tests"."[SURF]"."$MORE_str"}
       if (-e $dir."/PL")   {$BROKEN_tests="$BROKEN_tests"."[PL]"."$MORE_str"}
       if (-e $dir."/NL")   {$BROKEN_tests="$BROKEN_tests"."[NL]"."$MORE_str"}
       if (-e $dir."/SC")   {$BROKEN_tests="$BROKEN_tests"."[SC]"."$MORE_str"}
@@ -80,6 +82,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
      if (not -e $dir."/CONVERTED" and not -e $dir."/SAVE_converted" and not -e $dir."/SAVE_backup_converted"){$MORE_str.="[*]"};
      if (-e $dir."/RT")   {$RT_tests="$RT_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/QED")  {$QED_tests="$QED_tests"." "."$dir"."$MORE_str"};
+     if (-e $dir."/SURF")  {$SURF_tests="$SURF_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/PL" )  {$PL_tests="$PL_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/NL" )  {$NL_tests="$NL_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/SC" )  {$SC_tests="$SC_tests"." "."$dir"."$MORE_str"};
@@ -92,7 +95,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
      if (-e $dir."/PHEL")  {$PHEL_tests="$PHEL_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/P2Y")  {$P2Y_tests="$P2Y_tests"." "."$dir"."$MORE_str"};
      if (-e $dir."/A2Y")  {$A2Y_tests="$A2Y_tests"." "."$dir"."$MORE_str"};
-     if (!-e $dir."/SC" && !-e $dir."/MAGNETIC" && !-e $dir."/ELPH" && !-e $dir."/RT" && !-e $dir."/MAGNETIC" && !-e $dir."/QED" && !-e $dir."/NL" && !-e $dir."PHEL" && !-e $dir."/KERR") {
+     if (!-e $dir."/SC" && !-e $dir."/MAGNETIC" && !-e $dir."/ELPH" && !-e $dir."/RT" && !-e $dir."/MAGNETIC" && !-e $dir."/QED" && !-e $dir."/SURF" && !-e $dir."/NL" && !-e $dir."PHEL" && !-e $dir."/KERR") {
       $NORMAL_tests="$NORMAL_tests"." "."$dir"."$MORE_str";
      }
     };
@@ -105,6 +108,7 @@ if ("@_" eq "list_all" ) {  # -l without options, "default" is overwritten
   #
   if ($keys =~ /nopj/ or $keys =~ /all/) {&LIST_ELEMENT("[YAMBO]   ",$NORMAL_tests)};
   if ($keys =~ /qed/ or $keys =~/all/) {&LIST_ELEMENT("[QED]     ",$QED_tests)};
+  if ($keys =~ /surf/ or $keys =~/all/) {&LIST_ELEMENT("[SURF]    ",$SURF_tests)};
   if ($keys =~ /pl/ or $keys =~ /all/)  {&LIST_ELEMENT("[PL]      ",$PL_tests)};
   if ($keys =~ /nl/ or $keys =~ /all/)  {&LIST_ELEMENT("[NL]      ",$NL_tests)};
   if ($keys =~ /rt/ or $keys =~ /all/)  {&LIST_ELEMENT("[RT]      ",$RT_tests)};

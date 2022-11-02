@@ -54,6 +54,8 @@ if ($NLOPTICS ne "1"){
  $OPTICS=&RUN_feature("optics");
  if ($OPTICS eq "1") { $description .= " optics" };
 };
+$SURF=&RUN_feature("sursp");
+if ($SURF eq "1") { $description .= " Surf. spec." };
 $SC=&RUN_feature("scrun");
 $MAGNETIC=&RUN_feature("magnetic");
 if ($SC eq "1") { $description .= " SC cycle" };

@@ -37,6 +37,7 @@ if ( "@_" eq "DIR" ){
   if (-e "NL" && $project !~ /nl/) {$message=" skipped (wrong PJ)"};
   if (-e "NL" && not $do_NL_tests ) {$message=" skipped (wrong BRANCH)"};
   if (-e "QED" && $project !~ /qed/) {$message=" skipped (wrong PJ)"};
+  if (-e "SURF" && $project !~ /surf/) {$message=" skipped (wrong PJ)"};
   if (-e "RT" && $project !~ /rt/) {$message=" skipped (wrong PJ)"};
   if (-e "KERR" && $project !~ /kerr/) {$message=" skipped (wrong PJ)"};
   if (-e "ELPH" && $project !~ /elph/) {$message=" skipped (wrong PJ)"};
@@ -168,7 +169,7 @@ return "OK";
 #
 }
 sub ANY_project{
- if (-e "RT" or -e "ELPH" or -e "SC" or -e "MAGNETIC" or -e "QED" or -e "NL" or -e "P2Y" or -e "A2Y" or -e "KERR" )  {
+ if (-e "RT" or -e "ELPH" or -e "SC" or -e "MAGNETIC" or -e "QED" or -e "SURF" or -e "NL" or -e "P2Y" or -e "A2Y" or -e "KERR" )  {
   return "YES";
  }else{
   return "NO";

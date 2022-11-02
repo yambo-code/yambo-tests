@@ -56,6 +56,10 @@ if (-e "QED" && !$YPP=="1" && !$is_GPL) {
  $yambo_running=1;
  $yambo_exec = "$conf_bin/yambo_qed"
 }
+if (-e "SURF" && !$YPP=="1") {
+ $yambo_running=1;
+ $yambo_exec = "$conf_bin/yambo_surf"
+}
 if (-e "PL" && !$is_GPL) {
  undef $yambo_running;
  if ($YPP_RT=="1" or $YPP=="1") 
