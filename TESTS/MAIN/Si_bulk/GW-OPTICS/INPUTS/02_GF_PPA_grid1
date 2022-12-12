@@ -1,0 +1,43 @@
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+# Version 5.1.1 Revision 21181 Hash (prev commit) 4394c0edc           
+#                   Branch is devel-mpa                               
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.org                            
+#
+gw0                              # [R] GW approximation
+ppa                              # [R][Xp] Plasmon Pole Approximation for the Screened Interaction
+HF_and_locXC                     # [R] Hartree-Fock
+em1d                             # [R][X] Dynamically Screened Interaction
+EXXRLvcs= 2085             RL    # [XX] Exchange    RL components
+VXCRLvcs= 2085             RL    # [XC] XCpotential RL components
+Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+% BndsRnXp
+   1 |  12 |                         # [Xp] Polarization function bands
+%
+NGsBlkXp= 1                Ry    # [Xp] Response block size
+% LongDrXp
+ 1.000000 | 0.000000 | 0.000000 |        # [Xp] [cc] Electric Field
+%
+PPAPntXp= 27.21138         eV    # [Xp] PPA imaginary energy
+% GbndRnge
+   1 |  10 |                         # [GW] G[W] bands range
+%
+GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
+DysSolver= "g"                   # [GW] Dyson Equation solver ("n","s","g")
+GEnSteps= 15                     # [GW] Green`s Function (GF) energy steps
+% GEnRnge
+ -1.00000 | 1.00000 |      eV    # [GW] GF energy range
+%
+%QPkrange                        # [GW] QP generalized Kpoint/Band indices
+1|1|4|5|
+8|8|4|5|
+%
