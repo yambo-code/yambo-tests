@@ -15,18 +15,21 @@ bse                          # [R BSE] Bethe Salpeter Equation.
 bsk                          # [R BSK] Bethe Salpeter Equation kernel
 bss                          # [R BSS] Bethe Salpeter Equation solver
 em1s                         # [R Xs] Static Inverse Dielectric Matrix
+rim_cut                      # [R] Coulomb potential
+
+CUTGeo= "slab z"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
+RandQpts=500000               # [RIM] Number of random q-points in the BZ
+RandGvec= 2            RL      # [RIM] Coulomb interaction RS components
+
 Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
 BSEmod= "causal"           # [BSE] resonant/causal/coupling
 BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 BSEprop= "abs jdos"
 
-NonPDirs="z"
 BSSmod= "hdi"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
 BSENGexx=  109         RL    # [BSK] Exchange components
 BSENGBlk= 55           RL    # [BSK] Screened interaction block size
-% KfnQP_E
- 1.00000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
-%
+KfnQPdb=" E < 06_GW_slabz_rim/ndb.QP"
 % BEnRange
  -1.00000 | 5.000000 | eV    # [Xd] Energy range
 %
