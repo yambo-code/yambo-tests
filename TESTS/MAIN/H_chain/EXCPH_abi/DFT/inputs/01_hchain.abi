@@ -1,0 +1,102 @@
+# H-chain
+# DFT / DFPT / ELPH calculations
+
+# Control
+pp_dirpath     "pseudo" # QE: pseudo_dir
+pseudos        "H.psp8" # QE: ATOMIC_SPECIES 
+output_file    "output/01_hchain.abo"
+outdata_prefix "io_dir/01_hchain_o"
+ indata_prefix "io_dir/01_hchain_i"
+tmpdata_prefix "io_dir/01_hchain_tmp"
+
+ecut   10.0   # In Hartree. QE: ecutwfc=20 (Ry)
+iomode 3      # Binary files in netCDF format
+
+ndtset 7
+
+# 1. SCF calculation
+prtden1  1   # Print the density, for use by dataset 2
+kptopt1  1   # Kpoints using symmetries
+rfphon1 0
+nqpt1 0
+toldfe1 1.e-6
+getwfk1 0
+prtwf1 1
+#toldfe1 1.0d-15 # QE: conv_thr
+nstep1 100
+nband1 2
+
+# 2. NSCF calculation for wave functions
+getden2 1
+getwfk2 0
+kptopt2 1
+iscf2 -2 
+#tolwfr2 1.0d-18
+istwfk2 *1 # Store wfk without trev
+rfphon2 0
+nqpt2 0 
+prtwf2 1
+prtkbff2 1
+nstep2 100
+nband2 10
+#tolwfr2 1.e-12
+
+# 3. DFPT ddk perturbation at q=0
+iscf3 -3
+#tolwfr3 1.e-12
+rfelfd3 2
+rfphon3 0
+rfdir3 1 1 1
+getwfk3 1
+#prtwf3 1
+
+# 4. DFPT Long-range electric field correction at q=0
+rfelfd4 3
+getddk4 3
+
+###
+# Common parameters
+###
+
+# DFPT part
+rfphon 1
+getwfk 1   # Use GS wave functions from dataset1
+kptopt 3   #QE: nosym=.true.,noinv=.true.
+rfatpol   1 2  # Treat displacements of all atoms
+rfdir   1 1 1  # Do all directions (symmetry will be used)
+nqpt 1
+ngqpt 6 1 1
+shiftq 0 0 0
+qptopt 1
+###
+
+# Main system
+tolwfr 1.e-12
+nband  1
+nbdbuf 2
+
+ngkpt 6 1 1 # QE: K_POINTS automatic
+nshiftk 1
+shiftk  0 0 0
+acell  5.17785  10.0 10.0 # QE: celldm(1:3)
+# QE: ibrav= 4
+rprim    1.00000000  0.000000  0.000000
+         0.00000000  1.931300  0.000000
+         0.00000000  0.000000  1.931300
+ntypat 1         # QE: ntyp
+znucl 1          # QE: ATOMIC_SPECIES
+natom 2          # QE: nat
+typat  1 1       # QE: ATOMIC_POSITIONS
+    xred   0.0000000  0.00000  0.0000
+           0.2700730  0.00000  0.0000
+symmorphi 0        # QE: force_symmorphic=.true.
+nstep 200          # QE: electron_maxstep
+diemac 4.5         # Unique to abinit. Large gaps -> 2:4
+iprcel 21
+
+#5.-10. DFPT phonon calculations at all remaining q!=0
+iqpt3 1
+iqpt4 1
+iqpt5 2
+iqpt6 3
+iqpt7 4

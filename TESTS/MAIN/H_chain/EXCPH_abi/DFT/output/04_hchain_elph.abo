@@ -1,0 +1,392 @@
+
+.Version 9.7.4 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_gnu9.4 computer) 
+
+.Copyright (C) 1998-2022 ABINIT group . 
+ ABINIT comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read https://docs.abinit.org/theory/acknowledgments for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see https://www.abinit.org .
+
+.Starting date : Tue 13 Dec 2022.
+- ( at 10h04 )
+  
+- input  file    -> inputs/04_hchain_elph.abi
+- output file    -> output/04_hchain_elph.abo
+- root for input  files -> io_dir/04_hchain_elph_i
+- root for output files -> io_dir/04_hchain_elph_o
+
+
+ Symmetries : space group P4/m m m (#123); Bravais tP (primitive tetrag.)
+================================================================================
+ Values of the parameters that define the memory need of the present run
+     intxc =       0    ionmov =       0      iscf =       7    lmnmax =       3
+     lnmax =       3     mgfft =      60  mpssoang =       2    mqgrid =    3001
+     natom =       2  nloc_mem =       1    nspden =       1   nspinor =       1
+    nsppol =       1      nsym =       8    n1xccc =       0    ntypat =       1
+    occopt =       1   xclevel =       2
+-    mband =          10        mffmem =           1         mkmem =           4
+       mpw =        2932          nfft =       57600          nkpt =           4
+ For the susceptibility and dielectric matrices, or tddft :
+   mgfft =        36  nbnd_in_blk=     5    nfft =     12960     npw =       315
+================================================================================
+P This job should need less than                      23.478 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      1.792 Mbytes ; DEN or POT disk file :      0.441 Mbytes.
+================================================================================
+
+--------------------------------------------------------------------------------
+------------- Echo of variables that govern the present computation ------------
+--------------------------------------------------------------------------------
+-
+- outvars: echo of selected default values                                      
+-   iomode0 =  0 , fftalg0 =112 , wfoptalg0 =  0
+-
+- outvars: echo of global parameters not present in the input file              
+-  max_nthreads =    1
+-
+ -outvars: echo values of preprocessed input variables --------
+-          iomode           3
+            acell      5.1778500000E+00  1.0000000000E+01  1.0000000000E+01 Bohr
+              amu      1.00794000E+00
+        ddb_ngqpt        6    1    1
+           diemac      4.50000000E+00
+             ecut      1.00000000E+01 Hartree
+   eph_ngqpt_fine        6    1    1
+         eph_task          11
+-          fftalg         112
+           iprcel          21
+           istwfk        2    0    0    3
+              ixc          11
+              kpt      0.00000000E+00  0.00000000E+00  0.00000000E+00
+                       1.66666667E-01  0.00000000E+00  0.00000000E+00
+                       3.33333333E-01  0.00000000E+00  0.00000000E+00
+                       5.00000000E-01  0.00000000E+00  0.00000000E+00
+         kptrlatt        6    0    0      0    1    0      0    0    1
+          kptrlen      3.10671000E+01
+P           mkmem           4
+            natom           2
+            nband          10
+           nbdbuf           2
+            ngfft          16      60      60
+             nkpt           4
+            nstep         200
+             nsym           8
+           ntypat           1
+              occ      2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+                       0.000000  0.000000  0.000000  0.000000
+        optdriver           7
+         ph_ngqpt        6    1    1
+            rprim      1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  1.9313000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  1.9313000000E+00
+          spgroup         123
+        symmorphi           0
+           symrel      1  0  0   0  1  0   0  0  1       1  0  0   0  1  0   0  0 -1
+                       1  0  0   0 -1  0   0  0 -1       1  0  0   0 -1  0   0  0  1
+                       1  0  0   0  0  1   0  1  0       1  0  0   0  0  1   0 -1  0
+                       1  0  0   0  0 -1   0 -1  0       1  0  0   0  0 -1   0  1  0
+           tolwfr      1.00000000E-12
+            typat      1  1
+              wtk        0.16667    0.33333    0.33333    0.16667
+           xangst      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       7.4000007658E-01  0.0000000000E+00  0.0000000000E+00
+            xcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       1.3983974831E+00  0.0000000000E+00  0.0000000000E+00
+             xred      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.7007300000E-01  0.0000000000E+00  0.0000000000E+00
+            znucl        1.00000
+
+================================================================================
+
+ chkinp: Checking input parameters for consistency.
+
+================================================================================
+== DATASET  1 ==================================================================
+-   mpi_nproc: 1, omp_nthreads: 1 (-1 if OMP is not activated)
+
+
+--- !DatasetInfo
+iteration_state: {dtset: 1, }
+dimensions: {natom: 2, nkpt: 4, mband: 10, nsppol: 1, nspinor: 1, nspden: 1, mpw: 2932, }
+cutoff_energies: {ecut:  10.0, pawecutdg:  -1.0, }
+electrons: {nelect:   2.00000000E+00, charge:   0.00000000E+00, occopt:   1.00000000E+00, tsmear:   1.00000000E-02, }
+meta: {optdriver: 7, eph_task: 11, }
+...
+
+ mkfilename: getwfk from: io_dir/01_hchain_o_DS2_WFK.nc
+
+ mkfilename: getddb from: io_dir/hchain_DDB
+
+ mkfilename: getdvdb from: io_dir/hchain_DVDB
+
+ Exchange-correlation functional for the present dataset will be:
+  GGA: Perdew-Burke-Ernzerhof functional - ixc=11
+ Citation for XC functional:
+  J.P.Perdew, K.Burke, M.Ernzerhof, PRL 77, 3865 (1996)
+
+- Reading GS states from WFK file: io_dir/01_hchain_o_DS2_WFK.nc
+- Reading DDB from file: io_dir/hchain_DDB
+- Reading DVDB from file: io_dir/hchain_DVDB
+
+
+
+ Real(R)+Recip(G) space primitive vectors, cartesian coordinates (Bohr,Bohr^-1):
+ R(1)=  5.1778500  0.0000000  0.0000000  G(1)=  0.1931304  0.0000000  0.0000000
+ R(2)=  0.0000000 19.3130000  0.0000000  G(2)=  0.0000000  0.0517786  0.0000000
+ R(3)=  0.0000000  0.0000000 19.3130000  G(3)=  0.0000000  0.0000000  0.0517786
+ Unit cell volume ucvol=  1.9312965E+03 bohr^3
+ Angles (23,13,12)=  9.00000000E+01  9.00000000E+01  9.00000000E+01 degrees
+ Now the whole DDB is in central memory
+
+================================================================================
+
+ Dielectric Tensor and Effective Charges 
+
+
+ anaddb : Zero the imaginary part of the Dynamical Matrix at Gamma,
+   and impose the ASR on the effective charges 
+
+ The violation of the charge neutrality conditions
+ by the effective charges is as follows :
+    atom        electric field
+ displacement     direction
+       1               1        0.002578        0.000000
+       1               2        0.000000        0.000000
+       1               3        0.000000        0.000000
+       2               1        0.000000        0.000000
+       2               2        0.008329        0.000000
+       2               3        0.000000        0.000000
+       3               1        0.000000        0.000000
+       3               2        0.000000        0.000000
+       3               3        0.008329        0.000000
+
+ Effective charge tensors after 
+ imposition of the charge neutrality,
+ and eventual restriction to some part :
+   atom    displacement
+         1         1    3.882136E-05    0.000000E+00    0.000000E+00
+         1         2    0.000000E+00    5.410302E-06    0.000000E+00
+         1         3    0.000000E+00    0.000000E+00    5.410302E-06
+         2         1   -3.882136E-05    0.000000E+00    0.000000E+00
+         2         2    0.000000E+00   -5.410302E-06    0.000000E+00
+         2         3    0.000000E+00    0.000000E+00   -5.410302E-06
+ Now, the imaginary part of the dynamical matrix is zeroed
+- Found dielectric tensor and Born effective charges in DDB file: io_dir/hchain_DDB
+- Cannot find quadrupole tensor in DDB file: io_dir/hchain_DDB
+ Values initialized with zeros.
+       Homogeneous q point set in the B.Z.
+ Grid q points  :        6
+  1)   0.00000000E+00  0.00000000E+00  0.00000000E+00
+  2)   1.66666667E-01  0.00000000E+00  0.00000000E+00
+  3)   3.33333333E-01  0.00000000E+00  0.00000000E+00
+  4)   5.00000000E-01  0.00000000E+00  0.00000000E+00
+  5)  -3.33333333E-01  0.00000000E+00  0.00000000E+00
+  6)  -1.66666667E-01  0.00000000E+00  0.00000000E+00
+
+ The interatomic forces have been obtained
+ Average speed of sound partial sums:     0.7828699400E-03 (at units)
+-                                   =           1.7127 [km/s]
+
+ Debye frequency from partial sums:     0.2450324595E-03 (Ha)
+-                                 =     0.1612236134E+01 (THz)
+-Debye temperature from partial sums:     0.7737503914E+02 (K)
+
+- Writing phonon DOS to netcdf file: io_dir/04_hchain_elph_o_PHDOS.nc
+
+--- Pseudopotential description ------------------------------------------------
+- pspini: atom type   1  psp file is pseudo/H.psp8
+- pspatm: opening atomic psp file    pseudo/H.psp8
+- H     ONCVPSP-3.2.3.1  r_core=   1.00957   0.70586
+-  1.00000   1.00000    170501                znucl, zion, pspdat
+    8   11    1    4       300   0.00000      pspcod,pspxc,lmax,lloc,mmax,r2well
+    2.99000000000000    0.00000000000000    0.00000000000000   rchrg,fchrg,qchrg
+     nproj     2     1
+     extension_switch     1
+  pspatm : epsatm=    0.36235122
+         --- l  ekb(1:nproj) -->
+             0   -1.701123   -0.534484
+             1   -0.503321
+ pspatm: atomic psp has been read  and splines computed
+
+   1.44940486E+00                                ecore*ucvol(ha*bohr**3)
+--------------------------------------------------------------------------------
+
+=== Gstore parameters ===
+ kzone: bz
+ qzone: bz
+ kfilter: none
+ with_vk: 0
+ nqibz, nqbz: 4 6
+ glob_nq_spin: [6]
+ nkibz, nkbz: 4 6
+ glob_nk_spin: [6]
+ Initializing gstore object from: io_dir/04_hchain_elph_o_GSTORE.nc 
+
+=== Gstore parameters ===
+ kzone: bz
+ qzone: bz
+ kfilter: none
+ with_vk: 0
+ nqibz, nqbz: 4 6
+ glob_nq_spin: [6]
+ nkibz, nkbz: 4 6
+ glob_nk_spin: [6]
+
+== END DATASET(S) ==============================================================
+================================================================================
+  
+ -outvars: echo values of variables after computation  --------
+-          iomode           3
+            acell      5.1778500000E+00  1.0000000000E+01  1.0000000000E+01 Bohr
+              amu      1.00794000E+00
+        ddb_ngqpt        6    1    1
+           diemac      4.50000000E+00
+             ecut      1.00000000E+01 Hartree
+   eph_ngqpt_fine        6    1    1
+         eph_task          11
+           etotal      0.0000000000E+00
+            fcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+-          fftalg         112
+           iprcel          21
+              ixc          11
+         kptrlatt        6    0    0      0    1    0      0    0    1
+          kptrlen      3.10671000E+01
+P           mkmem           4
+            natom           2
+            nband          10
+           nbdbuf           2
+            ngfft          16      60      60
+             nkpt           4
+            nstep         200
+             nsym           8
+           ntypat           1
+              occ      2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+                       0.000000  0.000000  0.000000  0.000000
+        optdriver           7
+         ph_ngqpt        6    1    1
+            rprim      1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  1.9313000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  1.9313000000E+00
+          spgroup         123
+           strten      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+        symmorphi           0
+           symrel      1  0  0   0  1  0   0  0  1       1  0  0   0  1  0   0  0 -1
+                       1  0  0   0 -1  0   0  0 -1       1  0  0   0 -1  0   0  0  1
+                       1  0  0   0  0  1   0  1  0       1  0  0   0  0  1   0 -1  0
+                       1  0  0   0  0 -1   0 -1  0       1  0  0   0  0 -1   0  1  0
+           tolwfr      1.00000000E-12
+            typat      1  1
+           xangst      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       7.4000007658E-01  0.0000000000E+00  0.0000000000E+00
+            xcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       1.3983974831E+00  0.0000000000E+00  0.0000000000E+00
+             xred      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.7007300000E-01  0.0000000000E+00  0.0000000000E+00
+            znucl        1.00000
+
+================================================================================
+
+
+- Timing analysis has been suppressed with timopt=0
+
+
+
+================================================================================
+
+ Suggested references for the acknowledgment of ABINIT usage.
+
+ The users of ABINIT have little formal obligations with respect to the ABINIT group
+ (those specified in the GNU General Public License, http://www.gnu.org/copyleft/gpl.txt).
+ However, it is common practice in the scientific literature,
+ to acknowledge the efforts of people that have made the research possible.
+ In this spirit, please find below suggested citations of work written by ABINIT developers,
+ corresponding to implementations inside of ABINIT that you have used in the present run.
+ Note also that it will be of great value to readers of publications presenting these results,
+ to read papers enabling them to understand the theoretical formalism and details
+ of the ABINIT implementation.
+ For information on why they are suggested, see also https://docs.abinit.org/theory/acknowledgments.
+-
+- [1] Specification of an extensible and portable file format for electronic structure and crystallographic data
+- X. Gonze, C.-O. Almbladh, A. Cucca, D. Caliste, C. Freysoldt, M. Marques, V. Olevano, Y. Pouillon, M.J. Verstraete,
+- Comput. Material Science 43, 1056 (2008).
+- Comment: to be cited in case the ETSF_IO file format is used, i.e. iomode=3.
+- DOI and bibtex: see https://docs.abinit.org/theory/bibliography/#gonze2008
+-
+- [2] Preconditioning of self-consistent-field cycles in density functional theory: the extrapolar method
+- P.-M. Anglade, X. Gonze, Phys. Rev. B 78, 045126 (2008).
+- Comment: to be cited in case the extrapolar conditioner is used, i.e. non-vanishing iprcel.
+- DOI and bibtex: see https://docs.abinit.org/theory/bibliography/#anglade2008
+-
+- [3] The Abinit project: Impact, environment and recent developments.
+- Computer Phys. Comm. 248, 107042 (2020).
+- X.Gonze, B. Amadon, G. Antonius, F.Arnardi, L.Baguet, J.-M.Beuken,
+- J.Bieder, F.Bottin, J.Bouchet, E.Bousquet, N.Brouwer, F.Bruneval,
+- G.Brunin, T.Cavignac, J.-B. Charraud, Wei Chen, M.Cote, S.Cottenier,
+- J.Denier, G.Geneste, Ph.Ghosez, M.Giantomassi, Y.Gillet, O.Gingras,
+- D.R.Hamann, G.Hautier, Xu He, N.Helbig, N.Holzwarth, Y.Jia, F.Jollet,
+- W.Lafargue-Dit-Hauret, K.Lejaeghere, M.A.L.Marques, A.Martin, C.Martins,
+- H.P.C. Miranda, F.Naccarato, K. Persson, G.Petretto, V.Planes, Y.Pouillon,
+- S.Prokhorenko, F.Ricci, G.-M.Rignanese, A.H.Romero, M.M.Schmitt, M.Torrent,
+- M.J.van Setten, B.Van Troeye, M.J.Verstraete, G.Zerah and J.W.Zwanzig
+- Comment: the fifth generic paper describing the ABINIT project.
+- Note that a version of this paper, that is not formatted for Computer Phys. Comm. 
+- is available at https://www.abinit.org/sites/default/files/ABINIT20.pdf .
+- The licence allows the authors to put it on the Web.
+- DOI and bibtex: see https://docs.abinit.org/theory/bibliography/#gonze2020
+-
+- [4] Optimized norm-conserving Vanderbilt pseudopotentials.
+- D.R. Hamann, Phys. Rev. B 88, 085117 (2013).
+- Comment: Some pseudopotential generated using the ONCVPSP code were used.
+- DOI and bibtex: see https://docs.abinit.org/theory/bibliography/#hamann2013
+-
+- [5] ABINIT: Overview, and focus on selected capabilities
+- J. Chem. Phys. 152, 124102 (2020).
+- A. Romero, D.C. Allan, B. Amadon, G. Antonius, T. Applencourt, L.Baguet,
+- J.Bieder, F.Bottin, J.Bouchet, E.Bousquet, F.Bruneval,
+- G.Brunin, D.Caliste, M.Cote,
+- J.Denier, C. Dreyer, Ph.Ghosez, M.Giantomassi, Y.Gillet, O.Gingras,
+- D.R.Hamann, G.Hautier, F.Jollet, G. Jomard,
+- A.Martin, 
+- H.P.C. Miranda, F.Naccarato, G.Petretto, N.A. Pike, V.Planes,
+- S.Prokhorenko, T. Rangel, F.Ricci, G.-M.Rignanese, M.Royo, M.Stengel, M.Torrent,
+- M.J.van Setten, B.Van Troeye, M.J.Verstraete, J.Wiktor, J.W.Zwanziger, and X.Gonze.
+- Comment: a global overview of ABINIT, with focus on selected capabilities .
+- Note that a version of this paper, that is not formatted for J. Chem. Phys 
+- is available at https://www.abinit.org/sites/default/files/ABINIT20_JPC.pdf .
+- The licence allows the authors to put it on the Web.
+- DOI and bibtex: see https://docs.abinit.org/theory/bibliography/#romero2020
+-
+- [6] Recent developments in the ABINIT software package.
+- Computer Phys. Comm. 205, 106 (2016).
+- X.Gonze, F.Jollet, F.Abreu Araujo, D.Adams, B.Amadon, T.Applencourt,
+- C.Audouze, J.-M.Beuken, J.Bieder, A.Bokhanchuk, E.Bousquet, F.Bruneval
+- D.Caliste, M.Cote, F.Dahm, F.Da Pieve, M.Delaveau, M.Di Gennaro,
+- B.Dorado, C.Espejo, G.Geneste, L.Genovese, A.Gerossier, M.Giantomassi,
+- Y.Gillet, D.R.Hamann, L.He, G.Jomard, J.Laflamme Janssen, S.Le Roux,
+- A.Levitt, A.Lherbier, F.Liu, I.Lukacevic, A.Martin, C.Martins,
+- M.J.T.Oliveira, S.Ponce, Y.Pouillon, T.Rangel, G.-M.Rignanese,
+- A.H.Romero, B.Rousseau, O.Rubel, A.A.Shukri, M.Stankovski, M.Torrent,
+- M.J.Van Setten, B.Van Troeye, M.J.Verstraete, D.Waroquier, J.Wiktor,
+- B.Xu, A.Zhou, J.W.Zwanziger.
+- Comment: the fourth generic paper describing the ABINIT project.
+- Note that a version of this paper, that is not formatted for Computer Phys. Comm. 
+- is available at https://www.abinit.org/sites/default/files/ABINIT16.pdf .
+- The licence allows the authors to put it on the Web.
+- DOI and bibtex: see https://docs.abinit.org/theory/bibliography/#gonze2016
+-
+- Proc.   0 individual time (sec): cpu=          4.2  wall=          4.9
+
+================================================================================
+
+ Calculation completed.
+.Delivered   0 WARNINGs and   4 COMMENTs to log file.
++Overall time at end (sec) : cpu=          4.2  wall=          4.9

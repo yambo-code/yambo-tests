@@ -1,0 +1,55 @@
+#h-BN
+
+# Control
+pp_dirpath     "pseudo" # QE: pseudo_dir
+pseudos        "H.psp8" # QE: ATOMIC_SPECIES 
+output_file    "output/04_hchain_elph.abo"
+outdata_prefix "io_dir/04_hchain_elph_o"
+ indata_prefix "io_dir/04_hchain_elph_i"
+tmpdata_prefix "io_dir/04_hchain_elph_tmp"
+
+#EPH
+ecut   10.0   # In Hartree. QE: ecutwfc=20 (Ry)
+iomode 3      # Binary files in netCDF format
+
+# EPH stuff
+getddb_filepath "io_dir/hchain_DDB"
+ddb_ngqpt 6 1 1        # this must be the same as the DFPT step
+ddb_shiftq 0 0 0
+ph_ngqpt 6 1 1         # just for phonon stuff
+eph_ngqpt_fine 6 1 1   
+# for electron phonon potential interpolation and integration of self energies etc...
+# (both must be a sub-mesh, or the same, of the k-mesh)
+
+# interpolate potential into new DVDB file
+eph_task 11            # new version by Matteo
+getwfk_filepath "io_dir/01_hchain_o_DS2_WFK.nc"  2 getdvdb_filepath "io_dir/hchain_DVDB"
+gstore_kzone "bz"
+gstore_qzone "bz"
+
+# Main system
+tolwfr 1.e-12
+nband 10
+nbdbuf 2
+
+optdriver 7
+
+kptopt 1
+ngkpt 6 1 1 # QE: K_POINTS automatic
+nshiftk 1
+shiftk  0 0 0
+acell  5.17785  10.0 10.0 # QE: celldm(1:3)
+# QE: ibrav= 4
+rprim    1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+         0.0000000000E+00  1.931300          0.0000000000E+00
+         0.0000000000E+00  0.0000000000E+00  1.931300
+ntypat 1        # QE: ntyp
+znucl 1        # QE: ATOMIC_SPECIES
+natom 2          # QE: nat
+typat  1 1   # QE: ATOMIC_POSITIONS
+    xred   0.0000000000E+00  0.0000000000E+00  0.000000000E+00
+           0.2700730  0.000000000E+00  0.000000000E+00
+symmorphi 0        # QE: force_symmorphic=.true.
+nstep 200          # QE: electron_maxstep
+diemac 4.50        # Unique to abinit. Large gaps -> 2:4
+iprcel 21
