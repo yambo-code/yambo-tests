@@ -9,7 +9,7 @@ outdata_prefix "io_dir/01_hchain_o"
  indata_prefix "io_dir/01_hchain_i"
 tmpdata_prefix "io_dir/01_hchain_tmp"
 
-ecut   10.0   # In Hartree. QE: ecutwfc=20 (Ry)
+ecut   40.0   # In Hartree. QE: ecutwfc=20 (Ry)
 iomode 3      # Binary files in netCDF format
 
 ndtset 7
@@ -19,7 +19,7 @@ prtden1  1   # Print the density, for use by dataset 2
 kptopt1  1   # Kpoints using symmetries
 rfphon1 0
 nqpt1 0
-toldfe1 1.e-6
+toldfe1 1.e-10
 getwfk1 0
 prtwf1 1
 #toldfe1 1.0d-15 # QE: conv_thr
@@ -81,14 +81,19 @@ shiftk  0 0 0
 acell  5.17785  10.0 10.0 # QE: celldm(1:3)
 # QE: ibrav= 4
 rprim    1.00000000  0.000000  0.000000
-         0.00000000  1.931300  0.000000
-         0.00000000  0.000000  1.931300
+         0.00000000  1.000000  0.000000
+         0.00000000  0.000000  1.000000
+#         0.00000000  1.931300  0.000000
+#         0.00000000  0.000000  1.931300
 ntypat 1         # QE: ntyp
 znucl 1          # QE: ATOMIC_SPECIES
 natom 2          # QE: nat
 typat  1 1       # QE: ATOMIC_POSITIONS
-    xred   0.0000000  0.00000  0.0000
-           0.2700730  0.00000  0.0000
+ xcart  0.00  0.0  0.0
+        0.74  0.0  0.0
+        Angstrom
+#    xred   0.0000000  0.00000  0.0000
+#           0.2700730  0.00000  0.0000
 symmorphi 0        # QE: force_symmorphic=.true.
 nstep 200          # QE: electron_maxstep
 diemac 4.5         # Unique to abinit. Large gaps -> 2:4
