@@ -113,10 +113,10 @@ if ($pattern=~m/bug-fixes/ix) {$PAR_COMP_LIBS="-j";};
 if ($pattern=~m/4.5/ix) {undef $is_NEW_driver;};
 if ($pattern=~m/4.4/ix) {undef $is_NEW_driver;};
 if ($pattern=~m/4.3/ix) {undef $do_NL_tests; undef $is_NEW_driver;};
-if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $is_NEW_driver;};
-if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $is_NEW_driver;};
-if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $is_NEW_driver; undef $PAR_COMP;};
-if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP; undef $do_NL_tests; undef $is_NEW_driver; undef $PAR_COMP;};
+if ($pattern=~m/4.2/ix) {undef $is_NEW_YPP ; undef $do_NL_tests; undef $is_NEW_driver;};
+if ($pattern=~m/4.1/ix) {undef $is_NEW_YPP ; undef $do_NL_tests; undef $is_NEW_driver;};
+if ($pattern=~m/4.0/ix) {undef $is_NEW_YPP ; undef $do_NL_tests; undef $is_NEW_driver; undef $PAR_COMP;};
+if ($pattern=~m/3.4/ix) {undef $is_NEW_YPP ; undef $do_NL_tests; undef $is_NEW_driver; undef $PAR_COMP;};
 #
 undef $is_PAR_SETUP;
 if ($pattern=~m/devel-phonon-dynamics/ix) {$is_PAR_SETUP=1;};
@@ -157,7 +157,19 @@ while($line = shift(@BLINES)) {
  chomp($line);
  next if ( ($line =~ /#/) or ($line eq "") );
  $ib++;
- ($branches[$ib],$branch_identity[$ib],$branch_robot[$ib]) = split ' ', $line;
+ my @spl = split(' ', $line);
+ $n_spl=@spl;
+ $branches[$ib]=$spl[0];
+ if ($n_spl>1) {
+  $branch_identity[$ib]=$spl[1];
+ }else{
+  $branch_identity[$ib]=(split('\/',$branches[$ib]))[-1];
+ };
+ if ($n_spl>2) {
+  $driver_branch[$ib]=$spl[2];
+ }else{
+  $driver_branch[$ib]="none";
+ };
 }
 close(BRANCHES_file);
 }

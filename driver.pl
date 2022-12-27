@@ -59,11 +59,6 @@ if ("$host" eq "") {
 #
 &SETUP_files;
 #
-my $len= length($kill_me);
-if ($len eq 0) {
- $kill_me=`whoami`;
- chomp($kill_me);
-}
 if ($kill_me){
  if ($ROBOT_id) {
   &KILL_me("driver.pl","perl",$ROBOT_id);
@@ -267,6 +262,8 @@ if (!$RUNNING_suite) {
 #=================
 if ($RUNNING_suite) {
  #
+ $select_conf_file=$user_conf_file;
+ #
  $compilation_failed="no";
  #
  if ($clean) {
@@ -392,6 +389,12 @@ close $elog;
 close $wlog;
 close $ulog;
 close $flog;
+#
+# Kill the job stoppers 
+&KILL_me("job_stopper",$ROBOT_string);
+#
+# Delete KILLER files created by scripts/job_stopper.sh
+&command("rm KILLER_*_${ROBOT_string}.awk");
 #
 if ( ($backup_logs eq "yes" and $RUNNING_suite) or ($backup_logs eq "yes" and not $RUNNING_suite)) {
  &UTILS_backup();
