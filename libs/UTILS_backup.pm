@@ -35,26 +35,6 @@ sub UTILS_list_backups{
   @reps  = glob("$dir/REPORT*");
   @comps = glob("$dir/compilation/*");
   next if (scalar(@reps) eq 0 and scalar(@comps) eq 0);
-  if ($dir =~ /\/2017\//) {
-   #print "check 2017: $dir\n";
-   push @dirs_to_process_2017, $dir;
-   $n_backups++;
-  }
-  if ($dir =~ /\/2018\//) {
-   #print "check 2018: $dir\n";
-   push @dirs_to_process_2018, $dir;
-   $n_backups++;
-  }
-  if ($dir =~ /\/2019\//) {
-   #print "check 2019: $dir\n";
-   push @dirs_to_process_2019, $dir;
-   $n_backups++;
-  }
-  if ($dir =~ /\/2020\//) {
-   #print "check 2020: $dir\n";
-   push @dirs_to_process_2020, $dir;
-   $n_backups++;
-  }
   if ($dir =~ /\/2021\//) {
    #print "check 2021: $dir\n";
    push @dirs_to_process_2021, $dir;
@@ -65,20 +45,34 @@ sub UTILS_list_backups{
    push @dirs_to_process_2022, $dir;
    $n_backups++;
   }
+  if ($dir =~ /\/2023\//) {
+   #print "check 2023: $dir\n";
+   push @dirs_to_process_2023, $dir;
+   $n_backups++;
+  }
+  if ($dir =~ /\/2024\//) {
+   #print "check 2024: $dir\n";
+   push @dirs_to_process_2024, $dir;
+   $n_backups++;
+  }
+  if ($dir =~ /\/2025\//) {
+   #print "check 2025: $dir\n";
+   push @dirs_to_process_2025, $dir;
+   $n_backups++;
+  }
  }
  #
  if ($clean and $backup_logs eq "yes") {
   $first_to_keep=$n_backups-$n_backups_to_save+1;
   print "\nCleaning backups with ID < $first_to_keep\n";
  };
- @dirs_2017   = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2017;
- @dirs_2018   = sort { $a1 = (split ( '2018', $a )) [1]; $b1 = (split ( '2018', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2018;
- @dirs_2019   = sort { $a1 = (split ( '2019', $a )) [1]; $b1 = (split ( '2019', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2019;
- @dirs_2020   = sort { $a1 = (split ( '2020', $a )) [1]; $b1 = (split ( '2020', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2020;
  @dirs_2021   = sort { $a1 = (split ( '2021', $a )) [1]; $b1 = (split ( '2021', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2021;
  @dirs_2022   = sort { $a1 = (split ( '2022', $a )) [1]; $b1 = (split ( '2022', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2022;
- #push(@sorted_dirs, @dirs_2017, @dirs_2018, @dirs_2019, @dirs_2020, @dirs_2021, @dirs_2022);
- push(@sorted_dirs, @dirs_2022);
+ @dirs_2023   = sort { $a1 = (split ( '2023', $a )) [1]; $b1 = (split ( '2023', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2023;
+ @dirs_2024   = sort { $a1 = (split ( '2024', $a )) [1]; $b1 = (split ( '2024', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2024;
+ @dirs_2025   = sort { $a1 = (split ( '2025', $a )) [1]; $b1 = (split ( '2025', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2025;
+ #push(@sorted_dirs, @dirs_2021, @dirs_2022, @dirs_2023, @dirs_2024, @dirs_2025);
+ push(@sorted_dirs, @dirs_2022, @dirs_2023);
  if ($branch_php or $report) 
  {
   @reversed_dirs = reverse @sorted_dirs
