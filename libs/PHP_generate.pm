@@ -28,6 +28,9 @@ if( not ( -d "backup_and_www/$host/www/" ) ){ &command("mkdir -p backup_and_www/
 if( not ($branch_key eq "") ){ &command("rm -fr backup_and_www/$host/www/$branch_key");}
 if(     ($branch_key eq "") ){ &command("rm -fr backup_and_www/$host/www/*");}
 #
+$local_branch=$branch_key;
+if ($branch_php) {$local_branch=$branch_php};
+#
 &UTILS_list_backups;
 #
 $i_file = 0;
@@ -40,7 +43,7 @@ foreach $dir (@reversed_dirs) {
   open(REPORT,"<","$suite_dir/$file");
   @lines = <REPORT>;
   &PHP_key_words($file);
-  if ($branch_php and not "$branch_php" eq "$yambo_branch" ) {next};
+  if (    $branch_php and not $branch_php eq $yambo_branch) {next};
   if (not $branch_php and not "$branch_key" eq "$yambo_branch") {next} ;
   $i_dir = $i_dir+1;
   if ($i_dir > 21 ) {next};
@@ -284,8 +287,8 @@ if ( "$compress" eq "yes" ){ &command("tar -czf $comp_tgz compilation/*comp*.log
 #
 # Final copying
 #
-&command("mkdir -p backup_and_www/$host/www/$yambo_branch");
-&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$yambo_branch");   
+&command("mkdir -p backup_and_www/$host/www/$local_branch");
+&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$local_branch");   
 #
 return
 }
@@ -293,7 +296,7 @@ return
 sub PHP_upload
 {
 chdir("$suite_dir/backup_and_www/$host/www");
-&FTP_upload_it("$yambo_branch","robots","-R");
+&FTP_upload_it("$local_branch","robots","-R");
 }
 #
 sub get_line{
