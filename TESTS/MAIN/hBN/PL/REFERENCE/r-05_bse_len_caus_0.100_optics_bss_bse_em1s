@@ -13,7 +13,7 @@
                     MPI+HDF5_MPI_IO Build                                 
                   http://www.yambo-code.org                               
  
- 01/25/2023 at 16:59 yambo @ int2
+ 01/25/2023 at 17:45 yambo_rt @ int2
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 05_bse_len_caus_0.100
- Alt#1 string        : R5
+ Alt#1 string        : R1
 
  Precision           : DOUBLE
   
@@ -199,6 +199,8 @@
  Q [2]:  0.500000    -0.123152E-7   0.00000    [rlu]
  Q [3]:  0.000000  0.000000  0.500000 [rlu]
  Q [4]:  0.500000    -0.123152E-7  0.500000    [rlu]
+
+ [WARNING] Carriers database ./database/02_ypp_carriers_0.100/ndb.RT_carriers not found
 
  [04] Dipoles
  ============
@@ -413,7 +415,7 @@
      BS kernel          wavefunctions                 : Teter 93(XC)
      Static diel. fun.  energies                      : Teter 93(XC)
      wavefunctions                                    : Teter 93(XC)
-     [K] Identifier                                   :   4737
+     [K] Identifier                                   :   4785
      [K] Dimension                                    :   64
      [K] Bands                                        :   5  10
      [K] Exchange res                                 : yes
@@ -459,7 +461,7 @@
 
    [WR./05_bse_len_caus_0.100//ndb.BS_diago_Q1]------------------------------------
     BS kernel          energies                      : Teter 93(XC)
-    [K] Identifier                                   :   4737
+    [K] Identifier                                   :   4785
     [K] Dimension                                    :   64
     [K] Bands                                        :   5  10
     [K] Exchange res                                 : yes
@@ -511,8 +513,8 @@
  [09] Game Over & Game summary
  =============================
 
- 01/25/2023 at 16:59 yambo @ int2 [start]
- 01/25/2023 at 16:59              [end]
+ 01/25/2023 at 17:45 yambo_rt @ int2 [start]
+ 01/25/2023 at 17:46                 [end]
 
  Timing   [Min/Max/Average]: 08s/08s/08s
   
@@ -554,12 +556,14 @@
  | BSENGexx=  51              RL    # [BSK] Exchange components
  | BSENGBlk=  51              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
  | #WehCpl                        # [BSK] eh interaction included also in coupling
+ | KfnRTdb= "f @ 0 fs < ./database/02_ypp_carriers_0.100/ndb.RT_carriers" # [EXTRT BSK BSS] Database
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %
  | % BSEBands
  |   5 | 10 |                           # [BSK] Bands range
  | %
+ | RTOccMode= "R"                   # [RT-BSE] (K)ernel/(R)esiduals. BSE components to be corrected with the TD occupations
  | % BEnRange
  |   0.00000 | 10.00000 |         eV    # [BSS] Energy range
  | %

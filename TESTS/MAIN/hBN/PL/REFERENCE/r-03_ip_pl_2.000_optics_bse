@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
+                                                                          
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.               
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb              
+      `88. .8" .8"88.    888b     d"88  88     888 88      88             
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88             
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88             
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"             
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"              
+                                                                          
                                                                           
     Version 5.1.0 Revision 21876 Hash (prev commit) bff73e280             
-                       Branch is fix-pl                                   
-                     MPI+HDF5_MPI_IO Build                                
-                   http://www.yambo-code.org                              
+                        Branch is fix-pl                                  
+                      MPI+HDF5_MPI_IO Build                               
+                    http://www.yambo-code.org                             
  
- 01/25/2023 at 16:58 yambo @ int2
+ 01/25/2023 at 17:44 yambo_rt @ int2
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 03_ip_pl_2.000
- Alt#1 string        : R5
+ Alt#1 string        : R1
 
  Precision           : DOUBLE
   
@@ -244,6 +244,8 @@
   -13.89947 -13.89946  -8.61129  -8.61129  -3.79606  -3.79606  -0.62521  -0.62521
     7.05636   7.05636  10.26806  10.26806  13.60832  13.60832  16.94706  16.94706
 
+  [WARNING] Carriers database ./database/02_ypp_carriers_2.000/ndb.RT_carriers not found
+
  [05] Dipoles
  ============
 
@@ -329,8 +331,8 @@
  [09] Game Over & Game summary
  =============================
 
- 01/25/2023 at 16:58 yambo @ int2 [start]
- 01/25/2023 at 16:58              [end]
+ 01/25/2023 at 17:44 yambo_rt @ int2 [start]
+ 01/25/2023 at 17:44                 [end]
 
   
  .-ACKNOWLEDGMENT
@@ -367,12 +369,14 @@
  | % KfnQP_E
  |  2.400000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
  | %
+ | KfnRTdb= "f @ 0 fs < ./database/02_ypp_carriers_2.000/ndb.RT_carriers" # [EXTRT BSK BSS] Database
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %
  | % BSEBands
  |   1 | 10 |                           # [BSK] Bands range
  | %
+ | RTOccMode= "R"                   # [RT-BSE] (K)ernel/(R)esiduals. BSE components to be corrected with the TD occupations
  | % BEnRange
  | -10.00000 | 10.00000 |         eV    # [BSS] Energy range
  | %
