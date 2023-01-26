@@ -1,0 +1,44 @@
+#                                                                     
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+# Version 5.1.0 Revision 21431 Hash (prev commit) 6d142e007           
+#                      Branch is 5.1                                  
+#                  MPI+HDF5_MPI_IO Build                              
+#                http://www.yambo-code.org                            
+#
+optics                           # [R] Linear Response optical properties
+photolum
+bse
+BSEmod= "causal"             # [BSE] resonant/causal/coupling/ causal for PL
+BSEprop="abs photolum"
+BSKmod= "IP"                # [BSE] IP=noexciton/Hartree/HF/ALDA/SEX=exciton/BSfxc
+% KfnQP_E
+ 2.400000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+% BEnRange
+ -10.00000 | 10.00000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
+%
+BEnSteps= 2000               # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+  7 | 10 |                   # [BSK] Bands range
+%
+Gauge= "velocity"                # [BSE/X] Gauge (length|velocity
+%PL_weights
+1.0000000 | 0.0000000| 0.000000|
+%
+KfnRTdb= "f @ 0 fs < ./02_ypp_carriers_fermi_2.000/ndb.RT_carriers" # [EXTRT BSK BSS] Database
+RfnRTdb= "f @ 0 fs < ./02_ypp_carriers_fermi_2.000/ndb.RT_carriers" # [EXTRT R] Database
+RTOccMode="R"
