@@ -1,0 +1,106 @@
+#                                                                     
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
+#                                                                     
+# Version 5.1.0 Revision 21689 Hash (prev commit) bd0300d4a           
+#                   Branch is bug-fixes                               
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#
+# GW solver                                       : Newton
+# GW approximation                                : PPA
+# PPA imaginary Energy                            :   27.2113800    [ev]
+# RIM G`s                                         :  3
+# RIM random pts                                  :   500000
+# GW SC iterations                                : 0
+# dS/dw steps                                     :  2
+# dS/dw step                                      :  0.100000001    [ev]
+# X G`s                                           :  307 [used]
+# X G`s                                           :  307 [disk]
+# X bands                                         :    1   40
+# X poles                                         :   100.000000    [o/o]
+# X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
+# X Hxc Kernel                                    : HARTREE
+# X BZ energy Double Grid                         : no
+# Sc/G bands                                      :  11  20
+# Sc/G damping                                    :  0.100000001    [ev]
+# Sc bands terminator                             : no
+# Sx RL components                                :   457
+#                                                 
+# QP @ state[ 1 ] K range                         :  1  1
+# QP @ state[ 1 ] b range                         :  11  16
+# GF energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+#
+# Vxc  =Slater exchange(X)+Perdew & Zunger(C)
+# Vnlxc=Hartree-Fock
+#
+#    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
+#
+        1                  11                -1.525528          -1.388495          -0.532401
+        1                  12                -1.525528          -1.389945          -0.531904
+        1                  13                -0.226543          -0.180127          -0.288397
+        1                  14                 2.900700           3.762076          -1.261766
+        1                  15                 2.900700           3.762754          -1.261930
+        1                  16                 3.193211           3.922537          -0.965313
+# 
+# 10/24/2022 at 16:51 yambo @ unimi-XPS-8930 [start]
+# 10/24/2022 at 16:52                        [end]
+#  
+# Timing   [Min/Max/Average]: 12s/12s/12s
+#
+# .-Input file  yambo.in
+# | HF_and_locXC                     # [R] Hartree-Fock
+# | gw0                              # [R] GW approximation
+# | dyson                            # [R] Dyson Equation solver
+# | rim_cut                          # [R] Coulomb potential
+# | em1d                             # [R][X] Dynamically Screened Interaction
+# | ppa                              # [R][Xp] Plasmon Pole Approximation for the Screened Interaction
+# | el_el_corr                       # [R] Electron-Electron Correlation
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | FFTGvecs=  8845            RL    # [FFT] Plane-waves
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
+# | RandQpts=  500000                # [RIM] Number of random q-points in the BZ
+# | RandGvec= 3                RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
+# | % CUTBox
+# |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.000000              # [CUT] WS cutoff: number of G to be modified
+# | EXXRLvcs= 10               Ry    # [XX] Exchange    RL components
+# | VXCRLvcs= 10               Ry    # [XC] XCpotential RL components
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | % BndsRnXp
+# |    1 |  40 |                         # [Xp] Polarization function bands
+# | %
+# | NGsBlkXp= 307              RL    # [Xp] Response block size
+# | % LongDrXp
+# |  0.707107E-5 | 0.707107E-5 |  0.00000    # [Xp] [cc] Electric Field
+# | %
+# | PPAPntXp= 27.21138         eV    # [Xp] PPA imaginary energy
+# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
+# | % GbndRnge
+# |  11 | 20 |                           # [GW] G[W] bands range
+# | %
+# | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
+# | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g","q")
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
+# | 1|1|11|16|
+# | %
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
+# | 1|3| 0.000000|-1.000000|
+# | %
