@@ -26,6 +26,11 @@ AC_INIT(driver.pl, 5.0, yambo@yambo-code.org)
 AC_CONFIG_AUX_DIR([config])
 #
 # ============================================================================
+# FILES
+#
+CFG_FILES="scripts/continuous_testing.tcsh scripts/reset.sh scripts/launcher.tcsh scripts/robot_update.awk scripts/launch_the_robot.sh"
+rm -f $CFG_FILES
+# ============================================================================
 # ROBOT setup
 AC_CANONICAL_HOST
 domainame=`domainname -d`
@@ -201,7 +206,6 @@ PERL_LIB="${test_suite_dir}/libs"
 AC_SUBST(test_suite_dir)
 AC_SUBST(PERL_LIB)
 # ============================================================================
-AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl scripts/branch_continuous_testing.tcsh scripts/reset.sh 
-                 scripts/test-suite-launcher.tcsh scripts/robot_update.awk scripts/run_the_continous_testing.sh])
+AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl ${CFG_FILES}])
 AC_OUTPUT
 chmod ug+x scripts/*sh

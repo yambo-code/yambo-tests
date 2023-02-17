@@ -7,7 +7,7 @@
   HEAD=0;
   if (a[2] != "NONE" && a[3] != "NONE" && a[2] != "none") {
    FLOWS= " ";
-   for (i = 5; i <= 10; i++){ 
+   for (i = 6; i <= 11; i++){ 
     if (a[i] != "NONE") {
      if (HEAD==0) {
       NRUNS=NRUNS+1;
@@ -17,12 +17,13 @@
       print "@flow = (" >> flow_file;
       print "{" >> flow_file;
       print "ACTIVE      => \"yes\"," >> flow_file;
-      print "CONFIG      => \""a[4]"\"," >> flow_file;
+      print "CONFIG      => \""a[5]"\"," >> flow_file;
       print "TESTS       => \"all\"," >> flow_file;
       print "KEYS        => \"all hard\"," >> flow_file;
       HEAD=1;
-      print "set module = "a[3] >> env_file;
-      print "set branch = "a[2] >> env_file;
+      print "set module  = "a[4] > env_file;
+      print "set ybranch = "a[2] >> env_file;
+      print "set tbranch = "a[3] >> env_file;
      }else{
       print "{" >> flow_file;
      };

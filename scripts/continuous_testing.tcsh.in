@@ -1,0 +1,68 @@
+#!/usr/bin/tcsh
+#
+while ( 1 > 0) 
+ #
+ # update branch and flows
+ #
+ cd @test_suite_dir@
+ ./scripts/wget_from_google_drive.sh
+ set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh' | xargs rm -f`
+ rm -f ROBOTS/@robot@/@user@/FLOWS/run.*
+ cat control_room.csv | awk -f scripts/robot_update.awk
+ #
+ # Files to run
+ #
+ set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh'`
+ set log_dir="."
+ #
+ # Check if robot is free
+ #
+ set NR=`find ~/yambo-testing/ -name '*is_running' |wc -l`
+ #
+ if ( $NR < 3 && ! -f ~/yambo-testing/@robot@ && "$files" != "" ) then
+  #
+  foreach run_file ( ROBOTS/@robot@/@user@/FLOWS/run.*.tcsh )
+   #
+   source $run_file
+   set flow=`basename $run_file`
+   set flow=`echo $flow |sed 's/.tcsh//'`
+   #
+   set branch_dir=~/yambo-testing/$ybranch
+   mkdir -p $branch_dir
+   #
+   cd @source_dir@
+   git checkout $ybranch
+   git pull
+   set last_hash=`git log --pretty=format:"%h" | head -n 1` 
+   cd @test_suite_dir@
+   #
+   # stop if needed
+   if ( -f ~/yambo-testing/stop_@robot@ ) break
+   #
+   if ( ! -f "$branch_dir/last_tested_hash.$last_hash" ) then
+    set M=`date +%m`
+    set D=`date +%d`
+    set log_dir="$branch_dir/$M/$D"
+    mkdir -p $log_dir
+    rm -f $branch_dir/latest_logs
+    ln -s $log_dir $branch_dir/latest_logs
+    @test_suite_dir@/scripts/reset.sh
+    touch ~/yambo-testing/@robot@_is_running
+    set T=`date +%T`
+    @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
+    @test_suite_dir@/driver.pl -kill > /dev/null
+   endif
+   #
+  end
+  #
+  if ( "$ybranch" != "" && -f  ~/yambo-testing/@robot@_is_running ) then
+   rm -f $branch_dir/last_tested_hash.*
+   touch $branch_dir/last_tested_hash.$last_hash
+   rm -f ~/yambo-testing/@robot@_is_running
+  endif
+  #
+ endif
+ #
+ sleep 10m
+ #
+end
