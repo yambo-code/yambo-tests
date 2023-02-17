@@ -1,17 +1,17 @@
 #                                                                     
-#  __  __   ________   ___ __ __    _______   ______                  
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
 #                                                                     
 #                                                                     
-#       Version 5.0.0 Revision 19471 Hash 770c6e6aa                   
+# Version 5.1.0 Revision 21151 Hash (prev commit) cbe495906           
 #               Branch is devel-fullfreqGW                            
 #              MPI+OpenMP+SLK+HDF5_IO Build                           
-#                http://www.yambo-code.org                            
+#               http://www.yambo-code.org                             
 #
 #
 # GW solver                                       : Newton
@@ -46,19 +46,19 @@
 #
 #    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-        1                   5                 0.000000          -0.733113          -0.508072
-        1                   6                 0.737129           1.771666          -0.315455
-        2                   5                -1.120167          -0.835896           0.290539
-        2                   6                 1.402023           1.705598          -0.584671
-        3                   5                -4.346346          -0.817020           1.703382
-        3                   6                 2.992495           2.573946          -1.507438
-         4                  5                -6.887571          -2.598196           1.916508
-         4                  6                 5.327169           2.334083          -1.810590
+        1                   5                 0.000000          -0.557077          -0.360996
+        1                   6                 0.737129           1.462074          -0.499705
+        2                   5                -1.120167          -0.306400           0.566367
+        2                   6                 1.402023           1.277364          -0.799630
+        3                   5                -4.346346          -0.612300           0.133791
+        3                   6                 2.992495          -0.863660          -1.917876
+         4                  5                -6.887571           0.883760          -1.348408
+         4                  6                 5.327169          -1.530040           0.477478
 # 
-# 02/11/2021 at 09:37 yambo @ corvina [start]
-# 02/11/2021 at 09:38                 [end]
+# 02/16/2022 at 21:18 yambo @ corvina [start]
+# 02/16/2022 at 21:18                 [end]
 #  
-# Timing   [Min/Max/Average]: 59s/59s/59s
+# Timing   [Min/Max/Average]: 06s/06s/06s
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
@@ -73,7 +73,7 @@
 # | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
 # | RandQpts=0                       # [RIM] Number of random q-points in the BZ
 # | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
-# | CUTGeo= "box xy"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# | CUTGeo= "box xy"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
 # | % CUTBox
 # |  19.00000 | 19.00000 |  0.00000 |        # [CUT] [au] Box sides
 # | %
@@ -93,24 +93,24 @@
 # | % LongDrXm
 # |  0.100000E-4 |  0.00000    |  0.00000    # [Xm] [cc] Electric Field
 # | %
-# | EnSampXm= "2l"                   # [Xm] Frequency sampling in the complex plane ("1l" one line, "2l" two lines)
+# | EnSampXm= "1l"                   # [Xm] Frequency sampling in the complex plane ("1l" one line, "2l" two lines)
 # | % EnRngeXm
-# |  0.000000 | 2.000000 |         Ry    # [Xm] Energy range
+# |  0.000000 | 0.500000 |         Ha    # [Xm] Energy range
 # | %
 # | % ImRngeXm
-# |  1.500000 | 1.500000 |         Ry    # [Xm] Imaginary range
+# |  0.100000 | 0.100000 |         Ha    # [Xm] Imaginary range
 # | %
 # | % DmRngeXm
-# |  0.000000 | 0.200000 |         Ry    # [Xm] Damping range
+# |  0.000000 | 0.100000 |         Ha    # [Xm] Damping range
 # | %
 # | ETStpsXm=  8                     # [Xm] Total Energy steps
+# | IntSolXm= "PT"                   # [Xm] MPA interpolation solver ("LA" linear algebra, "PT" Pade-Thiele)
+# | #mpERdb                        # [Xm] Write to disk MPA poles and residues
 # | % GbndRnge
 # |   1 | 20 |                           # [GW] G[W] bands range
 # | %
 # | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
 # | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g")
-# | GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
-# | GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
 # | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
 # | 1|4|5|6|
 # | %
