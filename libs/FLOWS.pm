@@ -40,6 +40,7 @@ sub FLOW_load
   undef @branches;
   ($branches[0],$branch_identity[0]) = split(/ /, $flow_branch);
  };
+ if ("$select_conf_file" eq "" and $user_conf_file) {$select_conf_file=$user_conf_file};
  if (not "$select_conf_file" eq "") {$compile="yes"};
  if ($np_single>1) { 
   if ( "$par_mode" eq "default" ) {
