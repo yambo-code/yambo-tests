@@ -26,6 +26,7 @@ DURATION="$(( ${END} - ${START} ))"
 echo "Duration: $DURATION" >> generate_dbs.time
 
 MATERIAL=hchain
+GKKP=GKKP_expanded
 
 mkdir $MATERIAL.export
 mv elph_dir/s.dbph* $MATERIAL.export
@@ -55,11 +56,11 @@ GkkpExpand                     # Expand the gkkp in the whole BZ
 EOF
 #
 $yambo_ph -F input/01init.in
-$ypp_ph   -F input/02GKKP.in -J GKKP_exapnded -C GKKP_expanded  > qpt_mesh_global.txt
+$ypp_ph   -F input/02GKKP.in -J $GKKP -C $GKKP  > qpt_mesh_global.txt
 
 cd ../
 rm -rf ../SAVE
-rm -rf ../GKKP_expanded
+rm -rf ../$GKKP
 mv $MATERIAL.export/r_setup ../
 mv $MATERIAL.export/SAVE    ../
-mv $MATERIAL.export/GKKP_expanded ../
+mv $MATERIAL.export/$GKKP   ../
