@@ -48,6 +48,7 @@ sub RUN_input_file_test{
  if ($LIFE=="1")    { $CMD=$CMD." -lifetimes"};
 
  if (&RUN_feature("rim_cut")=="1") {$CMD=$CMD." -coulomb"};
+ if (&RUN_feature("rim_w")=="1")   {$CMD=$CMD." -rw"};
  if ($GW=="1" && $EM1D=="1") {$CMD=$CMD." -gw0 r"}
 
  if (&RUN_feature("DysSolver= \"n\"")=="1") {$CMD=$CMD." -dyson n"};
