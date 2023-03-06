@@ -75,7 +75,6 @@ $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][1]="o-05_rx_greenfunc.G_Sc_band_10_k_1";
 $PATTERN[$N_PATTERNS][2]="o-05_rx_greenfunc.G_Sc_band_010_k_001";
->>>>>>> bug-fixes
 #
 $BRANCH_LIST="4.0 4.1 4.2 4.3 4.4";
 #

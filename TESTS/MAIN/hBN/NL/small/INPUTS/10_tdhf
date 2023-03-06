@@ -1,0 +1,53 @@
+#                                                                     
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
+#                                                                     
+# Version 5.1.0 Revision 21598 Hash (prev commit) 65a3e5c0a           
+#                   Branch is devel-nl                                
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+optics                           # [R] Linear Response optical properties
+bss                              # [R] BSE solver
+#rim_cut                          # [R] Coulomb potential
+bse                              # [R][BSE] Bethe Salpeter Equation.
+dipoles                          # [R] Oscillator strenghts (or dipoles)
+
+#RandQpts=1000000                 # [RIM] Number of random q-points in the BZ
+#RandGvec=  51              RL    # [RIM] Coulomb interaction RS components
+#CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
+
+BSKmod= "HF"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
+BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+BSENGexx=  547             RL    # [BSK] Exchange components
+BSENGBlk=  11              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
+WehCpl                      # [BSK] eh interaction included also in coupling
+% KfnQP_E
+ 5.000000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+% BSEQptR
+ 1 | 1 |                             # [BSK] Transferred momenta range
+%
+% BSEBands
+  5 | 10 |                           # [BSK] Bands range
+%
+% BEnRange
+-10.00000 | 10.00000 |         eV    # [BSS] Energy range
+%
+% BDmRange
+ 0.025000 | 0.025000 |         eV    # [BSS] Damping range
+%
+BEnSteps= 20001                  # [BSS] Energy steps
+% BLongDir
+ 0.000000 | 1.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+BSEprop= "abs jdos esrt"         # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+#WRbsWF                        # [BSS] Write to disk excitonic the WFs
