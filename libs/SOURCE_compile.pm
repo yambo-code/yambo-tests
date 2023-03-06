@@ -23,12 +23,15 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SOURCE_compile{
- chdir("$comp_folder");
+ chdir("$comp_folder"); 
  open( COMPLOGFILE,'>>',$comp_logfile);
  &MY_PRINT($stdout, "ext-libs ...");
  &command("make $PAR_COMP_LIBS ext-libs >> $comp_logfile 2>&1");
  @executables =  ("yambo");
- if (not $compile eq "ext-libs")  {@executables = split(/\s+/, $target_list)};
+ if (not $compile eq "ext-libs")  {
+   &command("rm -rf bin");
+   @executables = split(/\s+/, $target_list)
+ };
  foreach $make_exec (@executables) {
    &MY_PRINT($stdout, "$make_exec ...");
    &command("make $PAR_COMP $make_exec >> $comp_logfile 2>&1");
