@@ -1,7 +1,10 @@
-OPTS="-a 2 -e 16"
-a2y=a2y_magn        # a2y_4.1
+OPTS="-a 2 -e 4"
+a2y=a2y_magn_t        # a2y_4.1
 more="_converted" # ""
 kind="WFK.nc"     # "KSS"
+abinit=abinit_9.6
+#
+#$abinit < Fe_noSO.files > Fe_e50_k4_noSO.log 
 #
 $a2y $OPTS -F Fe_e50_k4_noSO.o_DS2_${kind}
 mv SAVE/* ../Without-SOC/SAVE_backup${more}/
