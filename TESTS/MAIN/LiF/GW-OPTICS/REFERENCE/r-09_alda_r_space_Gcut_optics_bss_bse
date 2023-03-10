@@ -1,17 +1,17 @@
                                                                           
-                                                                          
-    Y88b    /   e           e    e      888~~\    ,88~-_                  
-     Y88b  /   d8b         d8b  d8b     888   |  d888   \                 
-      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |                
-       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |                
-        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /                 
-       /   /      Y88b /          Y888b 888__/    `88_-~                  
-                                                                          
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
                                                                           
     Version 5.1.0 Revision 22026 Hash (prev commit) 3ddfa14f2             
-                    Branch is devel-tddft                                 
+                     Branch is devel-tddft                                
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                  http://www.yambo-code.org                               
+                   http://www.yambo-code.org                              
  
  03/10/2023 at 10:31 yambo @ unimi-XPS-8930
  ==================================================
@@ -27,11 +27,11 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-09_alda_g_space_optics_chi_tddft
+ Report file         : ./r-09_alda_r_space_Gcut_optics_bss_bse
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 09_alda_g_space
+ Job   string        : 09_alda_r_space_Gcut
  Alt#1 string        : R8
 
  Precision           : SINGLE
@@ -147,7 +147,7 @@
 
   nG shells         :  29
   nG charge         :   749
-  nG WFs            :  1850
+  nG WFs            :   749
   nC WFs            :  1392
   G-vecs. in first 2 shells:  [ Number ]
     1   9
@@ -240,7 +240,7 @@
  - S/N 004744 ---------------------------------------------- v.05.00.01 r.18825 -
  [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.85004E-09  0.99996    
 
- [WR./09_alda_g_space//ndb.dipoles]----------------------------------------------
+ [WR./09_alda_r_space_Gcut//ndb.dipoles]-----------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   19  256   10  256
   RL vectors                                       :   749 [WF]
   Fragmentation                                    : yes
@@ -262,62 +262,137 @@
 
  [WARNING] In case H contains other non local terms, these are neglected
 
- [05] Optics
- ===========
+ [05] Bethe Salpeter Equation driver
+ ===================================
 
- [xc] Functional : Teter 93(XC)
- [xc] LIBXC used to calculate xc functional
- [RD./09_alda_g_space//ndb.dipoles]----------------------------------------------
-  Brillouin Zone Q/K grids (IBZ/BZ)                :   19  256   10  256
-  RL vectors                                       :   749 [WF]
-  Fragmentation                                    : yes
-  Electronic Temperature                           :  0.000000 [K]
-  Bosonic    Temperature                           :  0.000000 [K]
-  DIP band range                                   :   3   5
-  DIP band range limits                            :   4   5
-  DIP e/h energy range                             : -1.000000 -1.000000 [eV]
-  RL vectors in the sum                            :   749
-  [r,Vnl] included                                 : yes
-  Bands ordered                                    : yes
-  Direct v evaluation                              : no
-  Approach used                                    : G-space v
-  Dipoles computed                                 : R V P
-  Wavefunctions                                    : Teter 93(XC)
- - S/N 004744 ---------------------------------------------- v.05.01.00 r.22026 -
- [X-CG] R(p) Tot o/o(of R):    18   512   100
+
+ [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+
+  [05.01] Bethe Salpeter Equation @q1
+  ===================================
+
+
+   [05.01.01] Transition pre-analysis @q1
+   ======================================
+
+
+   [05.01.02] Transition Groups build-up @q1
+   =========================================
+
+   [BSK] Transition groups (total):  10
+   [BSK] Size (resonant):   512
+   [BSK]         (total):   512
+   [BSK] N. of matrices :  1
+
+   [05.01.03] Loading Dipoles @q1
+   ==============================
+
+   [RD./09_alda_r_space_Gcut//ndb.dipoles]-----------------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :   19  256   10  256
+    RL vectors                                       :   749 [WF]
+    Fragmentation                                    : yes
+    Electronic Temperature                           :  0.000000 [K]
+    Bosonic    Temperature                           :  0.000000 [K]
+    DIP band range                                   :   3   5
+    DIP band range limits                            :   4   5
+    DIP e/h energy range                             : -1.000000 -1.000000 [eV]
+    RL vectors in the sum                            :   749
+    [r,Vnl] included                                 : yes
+    Bands ordered                                    : yes
+    Direct v evaluation                              : no
+    Approach used                                    : G-space v
+    Dipoles computed                                 : R V P
+    Wavefunctions                                    : Teter 93(XC)
+   - S/N 004744 ---------------------------------------------- v.05.01.00 r.22026 -
+
+   [05.01.04] Independent Particles properties @q1
+   ===============================================
+
+
+   [05.01.05] TDDFT Kernel @q1 (Resonant ALDA EXCHANGE)
+   ====================================================
+
+   [BSE] Exchange components :   59
+   [xc] Functional : Teter 93(XC)
+   [xc] LIBXC used to calculate xc functional
+
+   [05.01.06] Main kernel loop
+   ===========================
+
+   [WR./09_alda_r_space_Gcut//ndb.BS_head_Q1]--------------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :   19  256   10  256
+    RL vectors                                       :   749 [WF]
+    Coulomb cutoff potential                         : none
+    Fragmentation                                    : no
+    BS kernel          wavefunctions                 : Teter 93(XC)
+    Static diel. fun.  energies                      : Teter 93(XC)
+    wavefunctions                                    : Teter 93(XC)
+    [K] Identifier                                   :   6286
+    [K] Dimension                                    :   512
+    [K] Bands                                        :   3   5
+    [K] Exchange res                                 : yes
+    [K] Correlation res                              : no
+    [K] Kernel`s coupling                            : no
+    [K] Exchange cpl                                 : no
+    [K] Correlation cpl                              : no
+    [K] W interaction is bare                        : no
+    [K] ALDA kernel in R-space                       : yes
+    [K] RL vectors exchange                          :   59
+    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+    [K] Coupling range                               :  100.0000  100.0000 [o/o]
+    [IO] Kernel IO mode                              : 2D_standard
+    [X] Response Kind                                : BAR
+   - S/N 004744 ---------------------------------------------- v.05.01.00 r.22026 -
+    Kernel complete                                  : no
+    Kernel maxval                                    :  0.000000
+    Kernel complete                                  : yes
+
+  [05.02] BSE solver(s) @q1
+  =========================
+
+
+  [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+
+  [05.03] Haydock Solver in the optics basis @q1 using the hermitian scheme
+  =========================================================================
+
+  Accuracy (requested)      :  0.005000 [o/o]
+  Accuracy (reached)        :  0.003543 [o/o]
+  Iterations                :  29
+
+ Timing [Min/Max/Average]: 05s/05s/05s
 
  [06] Timing Overview
  ====================
 
  Clock: global
-                             Xo (REDUX) :      0.0000s CPU
-                       io_ATMPROJ_pwscf :      0.0000s CPU
-                             io_COL_CUT :      0.0000s CPU
-                            io_KB_pwscf :      0.0000s CPU (  2 calls,   0.011 msec avg)
-                                  io_HF :      0.0000s CPU
-                         io_Double_Grid :      0.0000s CPU
-                IO_and_Messaging_switch :      0.0001s CPU ( 27 calls,   0.003 msec avg)
-                                   io_X :      0.0001s CPU (  5 calls,   0.016 msec avg)
-                           PP_uspp_init :      0.0002s CPU ( 12 calls,   0.015 msec avg)
-                         eval_G_minus_G :      0.0004s CPU
-      MATRIX transfer (X_G_X_redux_1_1) :      0.0013s CPU (300 calls,   0.004 msec avg)
-      MATRIX transfer (X_G_X_redux_2_1) :      0.0020s CPU (300 calls,   0.007 msec avg)
-                              X (REDUX) :      0.0023s CPU
-                                io_GROT :      0.0025s CPU (  2 calls,   1.228 msec avg)
-                    XC_potential_driver :      0.0027s CPU
-                               io_QINDX :      0.0030s CPU (  2 calls,   1.489 msec avg)
-                             io_DIPOLES :      0.0077s CPU ( 28 calls,   0.275 msec avg)
-                              FFT_setup :      0.0077s CPU (  2 calls,   3.845 msec avg)
-                           io_KB_abinit :      0.0079s CPU ( 12 calls,   0.655 msec avg)
-                            io_fragment :      0.0121s CPU ( 40 calls,   0.302 msec avg)
-                            WF_load_FFT :      0.0150s CPU ( 12 calls,   1.249 msec avg)
-                                  io_WF :      0.0229s CPU ( 55 calls,   0.416 msec avg)
-                      DIPOLE_transverse :      0.0249s CPU
-                         Xo (procedure) :      0.0263s CPU
-                      SERIAL_lin_system :      0.1289s CPU (300 calls,   0.430 msec avg)
-                         LINEAR ALGEBRA :      0.1292s CPU (300 calls,   0.431 msec avg)
-                          X (procedure) :      0.2241s CPU
-                                Dipoles :      1.0296s CPU
+             io_ATMPROJ_pwscf :      0.0000s CPU
+                   io_COL_CUT :      0.0000s CPU
+                  io_KB_pwscf :      0.0000s CPU (     2 calls,   0.012 msec avg)
+                        io_HF :      0.0000s CPU
+               io_Double_Grid :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0001s CPU (    28 calls,   0.002 msec avg)
+                         io_X :      0.0001s CPU (     5 calls,   0.017 msec avg)
+                 PP_uspp_init :      0.0001s CPU (    11 calls,   0.013 msec avg)
+             T_space EXX Osc. :      0.0014s CPU (    10 calls,   0.140 msec avg)
+          XC_potential_driver :      0.0025s CPU
+                      io_GROT :      0.0026s CPU (     2 calls,   1.291 msec avg)
+               io_BSS_Haydock :      0.0026s CPU (     2 calls,   1.303 msec avg)
+                    FFT_setup :      0.0030s CPU
+                     io_QINDX :      0.0032s CPU (     2 calls,   1.600 msec avg)
+                  BSE dipoles :      0.0032s CPU
+                        io_BS :      0.0066s CPU (    55 calls,   0.120 msec avg)
+                   io_DIPOLES :      0.0074s CPU (    28 calls,   0.264 msec avg)
+                 io_KB_abinit :      0.0078s CPU (    12 calls,   0.650 msec avg)
+                  io_fragment :      0.0090s CPU (    30 calls,   0.299 msec avg)
+                  WF_load_FFT :      0.0101s CPU (    11 calls,   0.917 msec avg)
+                        io_WF :      0.0179s CPU (    43 calls,   0.416 msec avg)
+                   T_space IP :      0.0236s CPU
+            DIPOLE_transverse :      0.0246s CPU
+               Haydock Solver :      0.1134s CPU
+                      Dipoles :      1.0291s CPU
+          T_space ALDA scatt. :      4.8146s CPU (131328 calls,   0.000 sec avg)
+             X T_space Kernel :      4.9641s CPU
 
  [07] Game Over & Game summary
  =============================
@@ -325,7 +400,9 @@
  03/10/2023 at 10:31 yambo @ unimi-XPS-8930 [start]
  03/10/2023 at 10:31                        [end]
 
-  
+ Timing   [Min/Max/Average]: 06s/06s/06s
+             [Time-Profile]: 06s
+
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -349,29 +426,38 @@
   
  .-Input file  yambo.in
  | optics                           # [R] Linear Response optical properties
- | chi                              # [R][CHI] Dyson equation for Chi.
- | tddft                            # [R][K] Use TDDFT kernel
+ | bss                              # [R] BSE solver
+ | bse                              # [R][BSE] Bethe Salpeter Equation.
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
  | FFTGvecs=  749             RL    # [FFT] Plane-waves
- | X_nCPU_LinAlg_INV= 1             # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+ | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+ | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
- | Chimod= "ALDA"                   # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
- | FxcGRLc=  59               RL    # [TDDFT] XC-kernel RL size
- | NGsBlkXd=  59              RL    # [Xd] Response block size
- | % QpntsRXd
- |  1 | 1 |                             # [Xd] Transferred momenta
- | %
- | % BndsRnXd
- |   3 |  5 |                           # [Xd] Polarization function bands
- | %
- | % EnRngeXd
- |   7.50000 | 25.00000 |         eV    # [Xd] Energy range
- | %
- | % DmRngeXd
- |  0.100000 | 0.300000 |         eV    # [Xd] Damping range
- | %
- | ETStpsXd= 300                    # [Xd] Total Energy steps
- | % LongDrXd
- |  1.000000 | 0.000000 | 0.000000 |        # [Xd] [cc] Electric Field
- | %
+ | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+ | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+ | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+ | BSSmod= "h"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
  | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+ | BSENGexx=  59              RL    # [BSK] Exchange components
+ | BSENGfxc=  59              RL    # [BSK] Fxc components
+ | FxcCutScheme= "lower_Gmax"       # [TDDFT] ("none","lower_Gmax","lower_GmGp","full_grid")
+ | % BSEQptR
+ |  1 | 1 |                             # [BSK] Transferred momenta range
+ | %
+ | % BSEBands
+ |   3 |  5 |                           # [BSK] Bands range
+ | %
+ | % BEnRange
+ |   7.50000 | 25.00000 |         eV    # [BSS] Energy range
+ | %
+ | % BDmRange
+ |  0.100000 | 0.300000 |         eV    # [BSS] Damping range
+ | %
+ | BEnSteps= 300                    # [BSS] Energy steps
+ | % BLongDir
+ |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+ | %
+ | BSEprop= "abs"                   # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+ | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+ | BSHayTrs= 0.005000               # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
