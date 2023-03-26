@@ -22,6 +22,7 @@ call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
 call add_RULE(".ns.wf_fragments_1_1","skip",MATERIAL="MoS2")
 call add_RULE("Lifetimes.ndb.em1d_fragment","skip",MATERIAL="Al_bulk")
 call add_RULE("o-02_BSE_CPL.Esort_q1_diago_bse","skip",COL=2,MATERIAL="CH4")
+call add_RULE("o-04_TDDFT_func_der.Esort_q1_diago_alda_bse","skip",COL=2,MATERIAL="CH4")
 !
 ! INTEL
 !=======
