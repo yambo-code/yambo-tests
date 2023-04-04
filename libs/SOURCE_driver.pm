@@ -89,7 +89,8 @@ if ($compile) {
  &command("$git checkout $branch_id -q");
  &MY_PRINT($stdout, "Updating ...");
  &command("$git pull -q --no-rebase");
- &command("$git submodule update --recursive --remote");
+ # &command("$git submodule update --recursive --remote");
+ &command("cd ROBOTS && git checkout master && git pull -q --no-rebase  && cd ..");
  #
  # CHECK AGE
  #
