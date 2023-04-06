@@ -33,7 +33,7 @@ sub SOURCE_config{
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config-$ROBOT_string.log";
  $comp_logfile = "$suite_dir/"."compile-$ROBOT_string.log";
- $comp_folder  = "$suite_dir/"."compile_dir/"."${branch_key_no_slash}";
+ $comp_folder  = "$suite_dir/"."compile_dir/"."${branch_key}";
  if ($user_module) {$comp_folder  = "$comp_folder/$user_module/"};
  $comp_folder  = "$comp_folder/$conf_name/";
  #
