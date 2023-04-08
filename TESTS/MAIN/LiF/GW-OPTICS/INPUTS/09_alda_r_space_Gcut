@@ -6,31 +6,32 @@
 #     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /     
 #    /   /      Y88b /          Y888b 888__/    `88_-~      
 #                                                           
-#              Version 4.0.0 Revision 4147                  
-#                       MPI Build                           
+#              Version 3.3.1 Revision 2093                  
 #               http://www.yambo-code.org                   
 #
 optics                       # [R OPT] Optics
 bse                          # [R BSE] Bethe Salpeter Equation.
-tddft                        # [R   K] Use TDDFT kernel
 bsk                          # [R BSK] Bethe Salpeter Equation kernel
 bss                          # [R BSS] Bethe Salpeter Equation solver
-BSEmod= "causal"             # [BSE] resonant/causal/x_coupling/xc_coupling
+FFTGvecs=  749         RL    # [FFT] Plane-waves
+Chimod= "Hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+BSEmod= "causal"             # [BSE] resonant/causal/coupling
 BSKmod= "ALDA"               # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-FxcLibxc                     # [BSK] force computing Fxc via libxc
 BSSmod= "h"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
-BSENGexx=  50301       RL    # [BSK] Exchange components
+BSHayTrs=  0.005             # [BSS] Relative [o/o] Haydock treshold. Strict(>0)/Average(<0)
+BSENGexx= 59         RL      # [BSK] Exchange components
+BSENGfxc= 59         RL      # [BSK] Screened interaction block size
+FxcCutScheme= "lower_Gmax"       # [TDDFT] ("none","lower_Gmax","lower_GmGp","full_grid")
 % BEnRange
-  6.00000 | 12.00000 | eV    # [BSS] Energy range
+  7.50000 | 25.00000 | eV    # [BSS] Energy range
 %
 % BDmRange
-  0.10000 |  0.10000 | eV    # [BSS] Damping range
+  0.10000 |  0.30000 | eV    # [BSS] Damping range
 %
-BEnSteps=  400               # [BSS] Energy steps
+BEnSteps= 300                # [BSS] Energy steps
 % BLongDir
  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %
 % BSEBands
-   1 |  40 |                 # [BSK] Bands range
+  3 | 5 |                   # [BSK] Bands range
 %
-BSHayTrs=0.1000E-2           # [BSS] [o/o] Haydock treshold. Strict(>0)/Average(<0)
