@@ -30,7 +30,7 @@ $user_tests="all";
 &UTILS_get_inputs_tests_list();
 @all_tests = split(/ /,$alltests);
 #
-my $LINK="https://media.yambo-code.eu/robots/databases/$mode";
+my $LINK="http://www.yambo-code.org/robots/databases/$mode";
 my $EXTENSION=".tar.gz";
 if ($mode eq "bench") {
  $LINK="http://potzie.fisica.unimo.it/ferretti/yambo-benchmarks-databases";
