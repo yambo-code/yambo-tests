@@ -100,6 +100,7 @@ if ($pattern=~m/4.2/ix){$is_NEW_DBGD="v1"};
 if ($pattern=~m/4.1/ix){$is_NEW_DBGD="v1"};
 if ($pattern=~m/4.0/ix){$is_NEW_DBGD="v1"};
 if ($pattern=~m/3.4/ix){$is_NEW_DBGD="v1"};
+if ($pattern=~m/fixes/ix){$is_NEW_DBGD="v3"};
 #
 $is_NEW_EXC_SORT="yes";
 if ($pattern=~m/4.4/ix){$is_NEW_EXC_SORT="no"};
