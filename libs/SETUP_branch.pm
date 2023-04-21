@@ -65,6 +65,10 @@ if ($branch_id eq "")
  $branch_key=$branch_id;
  $pattern=$branch_id;
 };
+# A no-slash branch_key is needed when the branch is composed (like mantain/gw)
+$branch_key_no_slash=$branch_key;
+$branch_key_no_slash=~ s/\//-/g;
+#
 # test-suite branch
 $test_suite_branch= qx(git rev-parse --abbrev-ref HEAD);
 $test_suite_branch=~ s/^\s+|\s+$//g;

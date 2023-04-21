@@ -1,19 +1,19 @@
                                                                           
-     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
-    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
-     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
-      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
-       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
-        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
-        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
-        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
+     __  __   ________   ___ __ __    _______   ______                    
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
                                                                           
-         Version 5.1.0 Revision 20042 Hash dd01d5cc8                      
-                    Branch is devel-tddft                                 
+                                                                          
+    Version 5.1.0 Revision 22045 Hash (prev commit) 918604c24             
+                     Branch is devel-tddft                                
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                  http://www.yambo-code.org                               
+                   http://www.yambo-code.org                              
  
- 06/16/2021 at 13:48 yambo @ unimi-XPS-8930
+ 03/26/2023 at 23:47 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_alda_r_space_gcut
- Alt#1 string        : R18
+ Alt#1 string        : R16
 
  Precision           : SINGLE
   
@@ -110,6 +110,7 @@
    B[ 1 ]:  1.000000  0.000000  0.000000  [iku]
    B[ 2 ]:  0.000000  1.000000  0.500000  [iku]
    B[ 3 ]:  0.000000  0.000000  1.000000  [iku]
+   
 
   [02.02] Symmetries
   ==================
@@ -175,9 +176,9 @@
   [X] Filled Bands                                  :   37
   [X] Empty Bands                                   :   38  100
   [X] Direct Gap                                    :  3.548374 [eV]
-  [X] Direct Gap localized at k-point               :  1
+  [X] Direct Gap localized at k                     :  1
   [X] Indirect Gap                                  :  3.492822 [eV]
-  [X] Indirect Gap between k-points                 :  1  2
+  [X] Indirect Gap between kpts                     :  1  2
   [X] Last valence band width                       :  0.385033 [eV]
   [X] 1st conduction band width                     :  0.055552 [eV]
    
@@ -196,7 +197,7 @@
   COLL scattering                                  : no
   Sigma scattering                                 : yes
   X scattering                                     : yes
- - S/N 002577 ---------------------------------------------- v.05.01.00 r.20042 -
+ - S/N 002577 ---------------------------------------------- v.05.01.00 r.22045 -
 
  IBZ Q-points :  3
  BZ  Q-points :   4
@@ -216,7 +217,7 @@
  - S/N 002577 ---------------------------------------------- v.05.00.01 r.18825 -
 
  [WARNING] [x,Vnl] slows the Dipoles computation. To neglect it rename the ns.kb_pp file
- [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.118834E-7  0.992532   
+ [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.434805E-7  0.986686   
 
  [WR./04_alda_r_space_gcut//ndb.dipoles]-----------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   4   2   4
@@ -224,7 +225,7 @@
   Fragmentation                                    : yes
   Electronic Temperature                           :  0.000000 [K]
   Bosonic    Temperature                           :  0.000000 [K]
-  DIP band range                                   :   20   60
+  DIP band range                                   :   30   40
   DIP band range limits                            :   37   38
   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
   RL vectors in the sum                            :   989
@@ -234,7 +235,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 002577 ---------------------------------------------- v.05.01.00 r.20042 -
+ - S/N 002577 ---------------------------------------------- v.05.01.00 r.22045 -
 
  [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
 
@@ -244,134 +245,142 @@
  ===================================
 
 
- [06] Bethe Salpeter Equation @q1
- ================================
+ [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+
+  [05.01] Bethe Salpeter Equation @q1
+  ===================================
 
 
-  [06.01] Transition Groups build-up @q1
-  ======================================
-
-  [BSK] Transition groups (total):  2
-  [BSK] Size (resonant):  1656
-  [BSK]         (total):  1656
-  [BSK] Matricies      :  1
-
-  [06.02] Independent Particles properties @q1
-  ============================================
-
-  Optical renormalization       :  541.2625 [a.u.]
-  Polarizability dimension      : area
-
-  [RD./04_alda_r_space_gcut//ndb.dipoles]-----------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   4   2   4
-   RL vectors                                       :   989 [WF]
-   Fragmentation                                    : yes
-   Electronic Temperature                           :  0.000000 [K]
-   Bosonic    Temperature                           :  0.000000 [K]
-   DIP band range                                   :   20   60
-   DIP band range limits                            :   37   38
-   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
-   RL vectors in the sum                            :   989
-   [r,Vnl] included                                 : yes
-   Bands ordered                                    : yes
-   Direct v evaluation                              : no
-   Approach used                                    : G-space v
-   Dipoles computed                                 : R V P
-   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 002577 ---------------------------------------------- v.05.01.00 r.20042 -
-
-  [06.03] TDDFT Kernel @q1 (Resonant ALDA EXCHANGE)
-  =================================================
-
-  [BSE] Exchange components :  107
-  [FFT-BSK] Mesh size:  12  15  15
-
-  [xc] Functional : Slater exchange(X)+Perdew & Zunger(C)
-  [xc] LIBXC used to calculate xc functional
-
-  [06.04] Main kernel loop
-  ========================
-
-  [WR./04_alda_r_space_gcut//ndb.BS_head_Q1]--------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   4   2   4
-   RL vectors                                       :   989 [WF]
-   Coulomb cutoff potential                         : none
-   Fragmentation                                    : no
-   BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
-   Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
-   wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   [K] Identifier                                   :   8869
-   [K] Dimension                                    :  1656
-   [K] Bands                                        :   20   60
-   [K] Exchange res                                 : yes
-   [K] Correlation res                              : no
-   [K] Kernel`s coupling                            : no
-   [K] Exchange cpl                                 : no
-   [K] Correlation cpl                              : no
-   [K] W interaction is bare                        : no
-   [K] ALDA kernel in R-space                       : yes
-   [K] RL vectors exchange                          :  107
-   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-   [K] Coupling range                               :  100.0000  100.0000 [o/o]
-   [IO] Kernel IO mode                              : 2D_standard
-  - S/N 002577 ---------------------------------------------- v.05.01.00 r.20042 -
-   Kernel complete                                  : no
-   Kernel maxval                                    :  0.000000
-   Kernel complete                                  : yes
-
- [07] BSE solver(s) @q1
- ======================
+   [05.01.01] Transition pre-analysis @q1
+   ======================================
 
 
-  [07.01] Haydock Solver for abs @q1, scheme hermitian
-  ====================================================
+   [05.01.02] Transition Groups build-up @q1
+   =========================================
+
+   [BSK] Transition groups (total):  2
+   [BSK] Size (resonant):   96
+   [BSK]         (total):   96
+   [BSK] N. of matrices :  1
+
+   [05.01.03] Loading Dipoles @q1
+   ==============================
+
+   [RD./04_alda_r_space_gcut//ndb.dipoles]-----------------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :   3   4   2   4
+    RL vectors                                       :   989 [WF]
+    Fragmentation                                    : yes
+    Electronic Temperature                           :  0.000000 [K]
+    Bosonic    Temperature                           :  0.000000 [K]
+    DIP band range                                   :   30   40
+    DIP band range limits                            :   37   38
+    DIP e/h energy range                             : -1.000000 -1.000000 [eV]
+    RL vectors in the sum                            :   989
+    [r,Vnl] included                                 : yes
+    Bands ordered                                    : yes
+    Direct v evaluation                              : no
+    Approach used                                    : G-space v
+    Dipoles computed                                 : R V P
+    Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
+   - S/N 002577 ---------------------------------------------- v.05.01.00 r.22045 -
+
+   [05.01.04] Independent Particles properties @q1
+   ===============================================
+
+   Optical renormalization       :  541.2625 [a.u.]
+   Polarizability dimension      : area
+
+
+   [05.01.05] TDDFT Kernel @q1 (Resonant ALDA EXCHANGE)
+   ====================================================
+
+   [BSE] Exchange components :  107
+   [xc] Functional : Slater exchange(X)+Perdew & Zunger(C)
+   [xc] LIBXC used to calculate xc functional
+
+   [05.01.06] Main kernel loop
+   ===========================
+
+   [WR./04_alda_r_space_gcut//ndb.BS_head_Q1]--------------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :   3   4   2   4
+    RL vectors                                       :   989 [WF]
+    Coulomb cutoff potential                         : none
+    Fragmentation                                    : no
+    BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
+    Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
+    wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
+    [K] Identifier                                   :  2946
+    [K] Dimension                                    :   96
+    [K] Bands                                        :   30   40
+    [K] Exchange res                                 : yes
+    [K] Correlation res                              : no
+    [K] Kernel`s coupling                            : no
+    [K] Exchange cpl                                 : no
+    [K] Correlation cpl                              : no
+    [K] W interaction is bare                        : no
+    [K] ALDA kernel in R-space                       : yes
+    [K] RL vectors exchange                          :  107
+    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+    [K] Coupling range                               :  100.0000  100.0000 [o/o]
+    [IO] Kernel IO mode                              : 2D_standard
+    [X] Response Kind                                : BAR
+   - S/N 002577 ---------------------------------------------- v.05.01.00 r.22045 -
+    Kernel complete                                  : no
+    Kernel maxval                                    :  0.000000
+    Kernel complete                                  : yes
+
+  [05.02] BSE solver(s) @q1
+  =========================
+
+
+  [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+
+  [05.03] Haydock Solver in the optics basis @q1 using the hermitian scheme
+  =========================================================================
 
   Accuracy (requested)      :  0.005000 [o/o]
-  Accuracy (reached)        :  0.004260 [o/o]
-  Iterations                :  137
+  Accuracy (reached)        :  0.001254 [o/o]
+  Iterations                :  15
 
- Timing [Min/Max/Average]: 54s/54s/54s
-
- [08] Timing Overview
+ [06] Timing Overview
  ====================
 
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
-                  io_KB_pwscf :      0.0000s CPU (      2 calls,   0.012 msec avg)
+                  io_KB_pwscf :      0.0000s CPU (   2 calls,   0.010 msec avg)
                         io_HF :      0.0000s CPU
                io_Double_Grid :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU (     12 calls,   0.003 msec avg)
-                 PP_uspp_init :      0.0000s CPU (      3 calls,   0.017 msec avg)
-                         io_X :      0.0001s CPU (      4 calls,   0.016 msec avg)
+      IO_and_Messaging_switch :      0.0000s CPU (  12 calls,   0.003 msec avg)
+                 PP_uspp_init :      0.0000s CPU (   3 calls,   0.012 msec avg)
+                         io_X :      0.0001s CPU (   5 calls,   0.016 msec avg)
+                        io_BS :      0.0002s CPU (   3 calls,   0.079 msec avg)
                     FFT_setup :      0.0004s CPU
-                      io_GROT :      0.0043s CPU (      2 calls,   2.150 msec avg)
-          XC_potential_driver :      0.0044s CPU
-                  io_fragment :      0.0049s CPU (      6 calls,   0.823 msec avg)
-                     io_QINDX :      0.0050s CPU (      2 calls,   2.492 msec avg)
-                   T_space IP :      0.0087s CPU
-               io_BSS_Haydock :      0.0094s CPU (      3 calls,   3.131 msec avg)
-                 io_KB_abinit :      0.0138s CPU (      4 calls,   3.439 msec avg)
-                   io_DIPOLES :      0.0151s CPU (     12 calls,   1.261 msec avg)
-                        io_BS :      0.0180s CPU (      4 calls,   4.495 msec avg)
-                  WF_load_FFT :      0.0335s CPU (      3 calls,  11.154 msec avg)
-                        io_WF :      0.0337s CPU (     11 calls,   3.066 msec avg)
-             T_space EXX Osc. :      0.0375s CPU (      2 calls,  18.757 msec avg)
-               Haydock Solver :      0.6052s CPU
-            DIPOLE_transverse :      0.7170s CPU
-                      Dipoles :      1.7262s CPU
-          T_space ALDA scatt. :     52.0119s CPU (1371996 calls,   0.000 sec avg)
-             X T_space Kernel :     53.7727s CPU
+             T_space EXX Osc. :      0.0016s CPU (   2 calls,   0.783 msec avg)
+                      io_GROT :      0.0021s CPU (   2 calls,   1.029 msec avg)
+                  io_fragment :      0.0022s CPU (   6 calls,   0.372 msec avg)
+               io_BSS_Haydock :      0.0024s CPU (   2 calls,   1.177 msec avg)
+                     io_QINDX :      0.0025s CPU (   2 calls,   1.256 msec avg)
+                  BSE dipoles :      0.0027s CPU
+          XC_potential_driver :      0.0043s CPU
+                 io_KB_abinit :      0.0051s CPU (   4 calls,   1.272 msec avg)
+                   io_DIPOLES :      0.0068s CPU (  12 calls,   0.565 msec avg)
+                        io_WF :      0.0144s CPU (  11 calls,   1.306 msec avg)
+                  WF_load_FFT :      0.0145s CPU (   3 calls,   4.821 msec avg)
+                   T_space IP :      0.0226s CPU
+               Haydock Solver :      0.0711s CPU
+          T_space ALDA scatt. :      0.1443s CPU (4656 calls,   0.031 msec avg)
+            DIPOLE_transverse :      0.1503s CPU
+             X T_space Kernel :      0.1739s CPU
+                      Dipoles :      1.1546s CPU
 
- [09] Game Over & Game summary
+ [07] Game Over & Game summary
  =============================
 
- 06/16/2021 at 13:48 yambo @ unimi-XPS-8930 [start]
- 06/16/2021 at 13:49                        [end]
+ 03/26/2023 at 23:47 yambo @ unimi-XPS-8930 [start]
+ 03/26/2023 at 23:47                        [end]
 
- Timing   [Min/Max/Average]: 56s/56s/56s
-             [Time-Profile]: 56s
-
+  
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -406,18 +415,18 @@
  | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
  | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
  | NonPDirs= "YZ"                   # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
- | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | BSSmod= "h"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
  | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx= 107              RL    # [BSK] Exchange components
  | BSENGfxc= 107              RL    # [BSK] Fxc components
- | BSEprop= "abs"                   # [BSS] abs/kerr/magn/dichr trace
+ | FxcCutScheme= "full_grid"        # [TDDFT] ("none","lower_Gmax","lower_GmGp","full_grid")
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %
  | % BSEBands
- |   20 |  60 |                         # [BSK] Bands range
+ |   30 |  40 |                         # [BSK] Bands range
  | %
  | % BEnRange
  |   0.00000 | 10.00000 |         eV    # [BSS] Energy range
@@ -429,4 +438,6 @@
  | % BLongDir
  |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
  | %
+ | BSEprop= "abs"                   # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+ | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
  | BSHayTrs= 0.005000               # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
