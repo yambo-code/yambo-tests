@@ -1,12 +1,12 @@
 
 
- ___ __  _____  __ __  _____   _____
-|   Y  ||  _  ||  Y  ||  _  \ |  _  |
-|   |  ||. |  ||.    ||. |  / |. |  |
- \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
-  |: |  |: |  ||: |  ||: |   \|: |  |
-  |::|  |:.|:.||:.|:.||::.   /|::.  |
-  `--"  `-- --"`-- --"`-----" `-----"
+ __   __  _______  __   __  _______  _______
+|  | |  ||   _   ||  |_|  ||  _    ||       |
+|  |_|  ||  |_|  ||       || |_|   ||   _   |
+|       ||       ||       ||       ||  | |  |
+|_     _||       ||       ||  _   | |  |_|  |
+  |   |  |   _   || ||_|| || |_|   ||       |
+  |___|  |__| |__||_|   |_||_______||_______|
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -18,89 +18,97 @@
  <---> Grid dimensions      :  3  3
  <---> [02.05] Energies & Occupations
  <---> [03] Transferred momenta grid and indexing
+ <---> [BZ sampling] Q-grid is User defined and/or read from the database
+ <---> [03.01] X indexes
+ <---> X [eval] |                                        | [000%] --(E) --(X)
+ <---> X [eval] |########################################| [100%] --(E) --(X)
+ <---> X[REDUX] |                                        | [000%] --(E) --(X)
+ <---> X[REDUX] |########################################| [100%] --(E) --(X)
+ <---> [03.01.01] Sigma indexes
+ <---> Sigma [eval] |                                        | [000%] --(E) --(X)
+ <---> Sigma [eval] |########################################| [100%] --(E) --(X)
+ <---> Sigma[REDUX] |                                        | [000%] --(E) --(X)
+ <---> Sigma[REDUX] |########################################| [100%] --(E) --(X)
  <---> [04] External/Internal QP corrections
  <---> [QP_apply] Action to be applied: USER defined scissor
  <---> [04.01]  QP corrections report
- <---> [01] Dipoles
- <---> [DIP] Checking dipoles header
- <--->  [DIP] Database not correct or missing. To be computed
- <---> [x,Vnl] computed using 38 projectors
- <---> Dipoles: P, V and iR (T) |                                        | [000%] --(E) --(X)
- <06s> Dipoles: P, V and iR (T) |##########                              | [025%] 05s(E) 19s(X)
- <11s> Dipoles: P, V and iR (T) |####################                    | [051%] 10s(E) 19s(X)
- <16s> Dipoles: P, V and iR (T) |###############################         | [077%] 15s(E) 19s(X)
- <20s> Dipoles: P, V and iR (T) |########################################| [100%] 19s(E) 19s(X)
- <20s> [DIP] Writing dipoles header
- <20s> [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
- <20s> [WARNING] In case H contains other non local terms, these are neglected
- <20s> [02] Bethe Salpeter Equation driver
- <20s> [03] Bethe Salpeter Equation @q1
- <20s> [03.01] Transition Groups build-up @q1
- <20s> [BSK] Size (resonant):  216
- <20s> [BSK]         (total):  216
- <20s> [BSK] Matricies      :  1
- <20s> [03.02] Independent Particles properties @q1
- <20s> [DIP] Checking dipoles header
- <20s> [03.03] TDDFT Kernel @q1 (Resonant ALDA EXCHANGE)
- <20s> [FFT-BSK] Mesh size:   15   15   80
- <20s> [xc] Functional : Slater exchange(X)+Perdew & Zunger(C)
- <20s> [xc] LIBXC used to calculate xc functional
- <20s> [03.04] Main kernel loop
- <20s> BSE file not found. Creating an empty one.
- <20s> Kernel |                                        | [000%] --(E) --(X)
- <37s> Kernel |########################                | [060%] 16s(E) 27s(X)
- <46s> Kernel |#####################################   | [094%] 26s(E) 27s(X)
- <48s> Kernel |########################################| [100%] 27s(E) 27s(X)
- <48s> [04] BSE solver(s) @q1
- <48s> [LA] SERIAL linear algebra
- <48s> [04.01] Diago Solver @q1
- <48s> Folding BSE Kernel |                                        | [000%] --(E) --(X)
- <48s> Folding BSE Kernel |########################################| [100%] --(E) --(X)
- <48s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <48s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <48s> EPS R residuals |                                        | [000%] --(E) --(X)
- <48s> EPS R residuals |########################################| [100%] --(E) --(X)
- <48s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <48s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <48s> [LA] SERIAL linear algebra
- <48s> [04.02] Inversion Solver @q1
- <48s> IP Absorption |                                        | [000%] --(E) --(X)
- <48s> IP Absorption |########################################| [100%] --(E) --(X)
- <48s> Shifted GF and Absorption |                                        | [000%] --(E) --(X)
- <48s> Shifted GF and Absorption |########################################| [100%] --(E) --(X)
- <48s> Perturbative inversion |                                        | [000%] --(E) --(X)
- <48s> Perturbative inversion |########################################| [100%] --(E) --(X)
- <48s> [PERTURBATIVE INV@EPS] Converged frequencies :  300
- <48s> [FULL INV@EPS] Frequencies TODO : 0
- <48s> [04.03] Haydock Solver for abs @q1, scheme hermitian
- <48s> [Haydock] Iteration 1
- <48s> [Haydock] Iteration 2
- <48s> [Haydock] Iteration 3 Accuracy  226.2758| 0.100000E-2
- <48s> [Haydock] Iteration 4 Accuracy  39.31512| 0.100000E-2
- <48s> [Haydock] Iteration 5 Accuracy  86.50050| 0.100000E-2
- <48s> [Haydock] Iteration 6 Accuracy  37.43010| 0.100000E-2
- <48s> [Haydock] Iteration 7 Accuracy  37.26630| 0.100000E-2
- <48s> [Haydock] Iteration 8 Accuracy  0.338135| 0.100000E-2
- <48s> [Haydock] Iteration 9 Accuracy  0.057357| 0.100000E-2
- <48s> [Haydock] Iteration 10 Accuracy  0.228045| 0.100000E-2
- <48s> [Haydock] Iteration 11 Accuracy  0.230805| 0.100000E-2
- <48s> [Haydock] Iteration 12 Accuracy  0.099396| 0.100000E-2
- <48s> [Haydock] Iteration 13 Accuracy  0.092925| 0.100000E-2
- <48s> [Haydock] Iteration 14 Accuracy  0.055035| 0.100000E-2
- <48s> [Haydock] Iteration 15 Accuracy  0.057320| 0.100000E-2
- <48s> [Haydock] Iteration 16 Accuracy  0.047424| 0.100000E-2
- <48s> [Haydock] Iteration 17 Accuracy  0.019027| 0.100000E-2
- <48s> [Haydock] Iteration 18 Accuracy  0.015479| 0.100000E-2
- <48s> [Haydock] Iteration 19 Accuracy  0.030768| 0.100000E-2
- <48s> [Haydock] Iteration 20 Accuracy  0.011185| 0.100000E-2
- <48s> [Haydock] Iteration 21 Accuracy  0.006171| 0.100000E-2
- <48s> [Haydock] Iteration 22 Accuracy  0.006556| 0.100000E-2
- <48s> [Haydock] Iteration 23 Accuracy  0.020659| 0.100000E-2
- <48s> [Haydock] Iteration 24 Accuracy  0.009082| 0.100000E-2
- <48s> [Haydock] Iteration 25 Accuracy  0.009247| 0.100000E-2
- <48s> [Haydock] Iteration 26 Accuracy  0.003872| 0.100000E-2
- <48s> [Haydock] Iteration 27 Accuracy  0.567673E-3| 0.100000E-2
- <48s> [Haydock] Iteration 28 Accuracy  0.293224E-3| 0.100000E-2
- <48s> [05] Timing Overview
- <48s> [06] Game Over & Game summary
- <48s> [TIMING]            [Time-Profile]: 48s
+ <---> [05] Dipoles
+ <---> [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
+ <---> [WARNING] In case H contains other non local terms, these are neglected
+ <---> [06] Bethe Salpeter Equation driver
+ <---> [06.01] Bethe Salpeter Equation @q1
+ <---> [06.01.01] Transition pre-analysis @q1
+ <---> [06.01.02] Transition Groups build-up @q1
+ <---> [BSK] Size (resonant):  216
+ <---> [BSK]         (total):  216
+ <---> [BSK] N. of matrices :  1
+ <---> [06.01.03] Loading Dipoles @q1
+ <---> BSE dipoles |                                        | [000%] --(E) --(X)
+ <---> BSE dipoles |########################################| [100%] --(E) --(X)
+ <---> [06.01.04] Independent Particles properties @q1
+ <---> IP properties |                                        | [000%] --(E) --(X)
+ <---> IP properties |########################################| [100%] --(E) --(X)
+ <---> [06.01.05] TDDFT Kernel @q1 (Resonant ALDA EXCHANGE)
+ <---> [FFT-BSK] Mesh size:   15   15   80
+ <---> [xc] Functional : Slater exchange(X)+Perdew & Zunger(C)
+ <---> [xc] LIBXC used to calculate xc functional
+ <---> [06.01.06] Main kernel loop
+ <---> Kernel |                                        | [000%] --(E) --(X)
+ <10s> Kernel |######                                  | [016%] 10s(E) 01m-03s(X)
+ <40s> Kernel |########################                | [060%] 40s(E) 01m-06s(X)
+ <01m-03s> Kernel |#####################################   | [094%] 01m-02s(E) 01m-06s(X)
+ <01m-06s> Kernel |########################################| [100%] 01m-06s(E) 01m-06s(X)
+ <01m-06s> [06.02] BSE solver(s) @q1
+ <01m-06s> [LA] SERIAL linear algebra
+ <01m-06s> [06.03] Diago Solver @q1
+ <01m-06s> Folding BSE Kernel |                                        | [000%] --(E) --(X)
+ <01m-06s> Folding BSE Kernel |########################################| [100%] --(E) --(X)
+ <01m-06s> BSK diagonalize |                                        | [000%] --(E) --(X)
+ <01m-06s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <01m-06s> EPS R residuals |                                        | [000%] --(E) --(X)
+ <01m-06s> EPS R residuals |########################################| [100%] --(E) --(X)
+ <01m-06s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <01m-06s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <01m-06s> [LA] SERIAL linear algebra
+ <01m-06s> [06.04] Inversion Solver @q1
+ <01m-06s> IP Absorption |                                        | [000%] --(E) --(X)
+ <01m-06s> IP Absorption |########################################| [100%] --(E) --(X)
+ <01m-06s> Shifted GF and Absorption |                                        | [000%] --(E) --(X)
+ <01m-06s> Shifted GF and Absorption |########################################| [100%] --(E) --(X)
+ <01m-06s> Perturbative inversion |                                        | [000%] --(E) --(X)
+ <01m-06s> Perturbative inversion |########################################| [100%] --(E) --(X)
+ <01m-06s> [PERTURBATIVE INV@EPS] Converged frequencies :  300
+ <01m-06s> [FULL INV@EPS] Frequencies TODO : 0
+ <01m-06s> [06.05] Haydock Solver in the optics basis @q1 using the hermitian scheme
+ <01m-06s> [Haydock] Iteration 1
+ <01m-06s> [Haydock] Iteration 2
+ <01m-06s> [Haydock] Iteration 3 Accuracy  108.5702| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 4 Accuracy  17.53490| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 5 Accuracy  135.3187| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 6 Accuracy  424.6872| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 7 Accuracy  6.845901| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 8 Accuracy  2.945797| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 9 Accuracy  4.361299| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 10 Accuracy  0.694460| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 11 Accuracy  0.137813| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 12 Accuracy  0.048377| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 13 Accuracy  0.107947| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 14 Accuracy  0.100019| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 15 Accuracy  0.017404| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 16 Accuracy  0.054550| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 17 Accuracy  0.057874| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 18 Accuracy  0.049295| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 19 Accuracy  0.015108| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 20 Accuracy  0.008847| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 21 Accuracy  0.032767| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 22 Accuracy  0.015841| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 23 Accuracy  0.016133| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 24 Accuracy  0.010665| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 25 Accuracy  0.001229| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 26 Accuracy  0.001625| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 27 Accuracy  0.001857| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 28 Accuracy  0.969571E-3| 0.100000E-2
+ <01m-06s> [Haydock] Iteration 29 Accuracy  0.717249E-4| 0.100000E-2
+ <01m-06s> [07] Timing Overview
+ <01m-06s> [08] Game Over & Game summary
+ <01m-06s> [TIMING]            [Time-Profile]: 01m-06s

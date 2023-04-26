@@ -44,6 +44,15 @@ if ($ncftp)
 }
 die "\n";
 }
+sub FTP_mkdir
+{
+#
+my $dir  = shift;
+#
+&command("echo 'mkdir htdocs/$dir' > cmds");
+&command("sftp -b cmds yambo.user\@media.yambo-code.eu");
+&command("rm -f cmds");
+}
 sub FTP_upload_it
 {
 #
