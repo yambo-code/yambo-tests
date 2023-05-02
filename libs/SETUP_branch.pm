@@ -65,6 +65,10 @@ if ($branch_id eq "")
  $branch_key=$branch_id;
  $pattern=$branch_id;
 };
+# A no-slash branch_key is needed when the branch is composed (like mantain/gw)
+$branch_key_no_slash=$branch_key;
+$branch_key_no_slash=~ s/\//-/g;
+#
 # test-suite branch
 $test_suite_branch= qx(git rev-parse --abbrev-ref HEAD);
 $test_suite_branch=~ s/^\s+|\s+$//g;
@@ -96,6 +100,7 @@ if ($pattern=~m/4.2/ix){$is_NEW_DBGD="v1"};
 if ($pattern=~m/4.1/ix){$is_NEW_DBGD="v1"};
 if ($pattern=~m/4.0/ix){$is_NEW_DBGD="v1"};
 if ($pattern=~m/3.4/ix){$is_NEW_DBGD="v1"};
+if ($pattern=~m/fixes/ix){$is_NEW_DBGD="v3"};
 #
 $is_NEW_EXC_SORT="yes";
 if ($pattern=~m/4.4/ix){$is_NEW_EXC_SORT="no"};
