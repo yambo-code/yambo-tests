@@ -118,7 +118,7 @@ if ($cpu_conf_file) {
 }elsif (!$default_parallel && !$random_parallel && $np>1) {
  $dir_extension.="-${run_id}";
 }
-return "$prefix"."$dir_extension"."-$branch_key";
+return "$prefix"."$dir_extension"."-$branch_key_no_slash";
 }
 sub debug{
  $what = shift;
