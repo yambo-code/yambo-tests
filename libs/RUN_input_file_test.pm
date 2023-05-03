@@ -36,10 +36,10 @@ sub RUN_input_file_test{
  if ($SETUP=="1")   { $CMD=$CMD." -setup" };
  if ($HF=="1")      { $CMD=$CMD." -hf"};
  if ($GW=="1"  &&  &RUN_feature("_gw_")==0) { $CMD=$CMD." -dyson n"};
- if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -gw0 p"};
+ if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -se p"};
  if ($PPA=="1" &&  &RUN_feature("gw")==0  &&  &RUN_feature("_gw_")==0)    { $CMD=$CMD." -X p"};
- if ($MPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -gw0 m"};
- if ($COHSEX=="1" &&  &RUN_feature("_gw_")==0)  { $CMD=$CMD." -gw0 c"};
+ if ($MPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -se m"};
+ if ($COHSEX=="1" &&  &RUN_feature("_gw_")==0)  { $CMD=$CMD." -se c"};
  if ($BSE=="1")     { $CMD=$CMD." -optics b"};
  if ($CHI=="1")     { $CMD=$CMD." -optics c"};
  if ($EM1S=="1")    { $CMD=$CMD." -X s"};
@@ -49,7 +49,7 @@ sub RUN_input_file_test{
 
  if (&RUN_feature("rim_cut")=="1") {$CMD=$CMD." -coulomb"};
  if (&RUN_feature("rim_w")=="1")   {$CMD=$CMD." -rw"};
- if ($GW=="1" && $EM1D=="1") {$CMD=$CMD." -gw0 r"}
+ if ($GW=="1" && $EM1D=="1") {$CMD=$CMD." -se r"}
 
  if (&RUN_feature("DysSolver= \"n\"")=="1") {$CMD=$CMD." -dyson n"};
  if (&RUN_feature("DysSolver= \"s\"")=="1") {$CMD=$CMD." -dyson s"}
@@ -111,8 +111,8 @@ sub RUN_input_file_test{
    if (&RUN_feature("Hamiltonian= \"all\"")=="1") { $CMD=$CMD." -magnetic a"};
  };
 
- if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation ep -gw0 fan"};
- if (&RUN_feature("ph_el_corr")=="1")      { $CMD=$CMD." -correlation pe -gw0 X"};
+ if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation ep -se fan"};
+ if (&RUN_feature("ph_el_corr")=="1")      { $CMD=$CMD." -correlation pe -se X"};
 
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
  if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
