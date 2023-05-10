@@ -184,10 +184,15 @@ if($download){
 # Clean and exit
 if ($clean and $backup_logs eq "no" and not $RUNNING_suite){ 
  if (not $ROBOT_id) {print "Cleaning"};
- &UTILS_clean("ALL");
- if (not $ROBOT_id) {&UTILS_clean("BINs")};
- print "... test databases outputs logfiles bin(s)";
- if ($clean > 1) {
+ if ($clean > 0 || "$clean" eq "ALL") {
+   print "... test databases outputs logfiles";
+   &UTILS_clean("ALL");
+ }
+ if (not $ROBOT_id) {
+   print "... bin(s)";
+   &UTILS_clean("BINs")
+ }
+ if ($clean > 1 || "$clean" eq "ALL") {
   print "... compiled yambo ...";
   &UTILS_clean("COMPs");
   print "... core databases ...";
