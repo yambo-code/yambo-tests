@@ -197,6 +197,18 @@ if ($clean and $backup_logs eq "no" and not $RUNNING_suite){
   print "... pwscf/abinit ...";
   &UTILS_clean("DFT");
  }
+ if ("$clean" eq "COMPs") {
+  print "... compiled yambo ...";
+  &UTILS_clean("COMPs");
+ }
+ if ("$clean" eq "CORE") {
+  print "... core databases ...";
+  &UTILS_clean("CORE");
+ }
+ if ("$clean" eq "TARGZ") {
+  print "... .tar.gz ...";
+  &UTILS_clean("TARGZ");
+ }
  print "\nCleaning done.\n";
  exit;
 };
