@@ -41,7 +41,7 @@ if ($yambo_exec =~ /\/p2y/ or $yambo_exec =~ /\/a2y/ or $yambo_exec =~ /\/ypp/  
  $MPI_CPU_conf[1]="default";
  return;
 }
-if ($RIMCUT=="1" and not $GW  and not $OPTICS ){
+if ( ($RIMCUT=="1" or $RIMW=="1") and not $GW  and not $OPTICS ){
  $Nr="1";
  $MPI_CPU_conf[1]="default";
  return;
