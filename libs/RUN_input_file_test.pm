@@ -35,21 +35,21 @@ sub RUN_input_file_test{
 
  if ($SETUP=="1")   { $CMD=$CMD." -setup" };
  if ($HF=="1")      { $CMD=$CMD." -hf"};
- if ($GW=="1"  &&  &RUN_feature("_gw_")==0) { $CMD=$CMD." -dyson n"};
- if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -se p"};
- if ($PPA=="1" &&  &RUN_feature("gw")==0  &&  &RUN_feature("_gw_")==0)    { $CMD=$CMD." -X p"};
- if ($MPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -se m"};
+ if ($GW=="1"  &&  &RUN_feature("_gw_")==0) { $CMD=$CMD." -se gw -dyson n"};
+ if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -se gw -X p"};
  if ($COHSEX=="1" &&  &RUN_feature("_gw_")==0)  { $CMD=$CMD." -se c"};
  if ($BSE=="1")     { $CMD=$CMD." -optics b"};
  if ($CHI=="1")     { $CMD=$CMD." -optics c"};
  if ($EM1S=="1")    { $CMD=$CMD." -X s"};
- if ($EM1D=="1")    { $CMD=$CMD." -X d"};
+ if ($EM1D=="1" && $MPA=="0")    { $CMD=$CMD." -X d"};
+ if ($MPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -X m"};
+ if ($PPA=="1" &&  &RUN_feature("gw")==0  &&  &RUN_feature("_gw_")==0)    { $CMD=$CMD." -X p"};
  if ($SC=="1")      { $CMD=$CMD." -sc"};
  if ($LIFE=="1")    { $CMD=$CMD." -lifetimes"};
 
  if (&RUN_feature("rim_cut")=="1") {$CMD=$CMD." -coulomb"};
  if (&RUN_feature("rim_w")=="1")   {$CMD=$CMD." -rw"};
- if ($GW=="1" && $EM1D=="1") {$CMD=$CMD." -se r"}
+ if ($GW=="1" && $EM1D=="1") {$CMD=$CMD." -se gw"}
 
  if (&RUN_feature("DysSolver= \"n\"")=="1") {$CMD=$CMD." -dyson n"};
  if (&RUN_feature("DysSolver= \"s\"")=="1") {$CMD=$CMD." -dyson s"}
