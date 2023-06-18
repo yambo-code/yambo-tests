@@ -617,6 +617,7 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+USE_PRIVATE_LIB
 PERL_LIB_PRIVATE
 PERL_LIB
 test_suite_dir
@@ -2616,9 +2617,13 @@ git config credential.helper store
 #
 test_suite_dir=`pwd`
 PERL_LIB="${test_suite_dir}/libs"
+
+
+# PRIVATE PART
 PERL_LIB_PRIVATE="${test_suite_dir}/ROBOTS"
 
-
+USE_PRIVATE_LIB="#"
+if test -f ROBOTS/FTP_utils.pm; then USE_PRIVATE_LIB="use FTP_utils;"; fi;
 
 # ============================================================================
 ac_config_files="$ac_config_files config/MODULES.pl config/TOOLS.pl ${CFG_FILES}"
