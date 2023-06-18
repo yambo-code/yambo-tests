@@ -203,8 +203,10 @@ git config credential.helper store
 #
 test_suite_dir=`pwd`	
 PERL_LIB="${test_suite_dir}/libs"
+PERL_LIB_PRIVATE="${test_suite_dir}/libs_private"
 AC_SUBST(test_suite_dir)
 AC_SUBST(PERL_LIB)
+AC_SUBST(PERL_LIB_PRIVATE)
 # ============================================================================
 AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl ${CFG_FILES}])
 AC_OUTPUT
