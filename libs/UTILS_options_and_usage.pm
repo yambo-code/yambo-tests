@@ -36,6 +36,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "l:s"            => \$listtests,
             "d=s"            => \$download,
             "c+"             => \$clean,
+            "clean=s"        => \$clean,
             "compile=s"      => \$compile,
             "i"              => \$info,
             "u"              => \$upload,
@@ -130,7 +131,8 @@ if ($help>=1) {
              -kill                  Kill and stop all current test-suite components running. 
              -i                     Robot info
              -l       [<SET>]       List available SETs (-l) or input files for a SET (-l <SET>).
-             -c                     Clean.
+             -c                     Clean default (-c -c for cleaning everything).
+             -clean  [WHAT]         Clean specific features (use togther with -branch=branchname)
              -d      <SET>|all|list Download & Update the core databases.
              -compile<WHAT>         Compile the sources. WHAT=all|ext-libs.
              -tests  <TESTS>|all    List* of tests to perform, or all "-tests all".
