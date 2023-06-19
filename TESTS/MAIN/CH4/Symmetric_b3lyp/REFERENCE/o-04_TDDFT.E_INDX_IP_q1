@@ -1,21 +1,21 @@
-#  __      __   ______   __       __  _______    ______               
-# |  \    /  \ /      \ |  \     /  \|       \  /      \              
-#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
-#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
-#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
-#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
-#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
-#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
-#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
+#                                                                     
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
+#                                                                     
 #                                                                     
 # Version 5.1.0 Revision 22208 Hash (prev commit) a391fb0cb           
 #                Branch is phys/dichroism                             
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#                http://www.yambo-code.org                            
+#               http://www.yambo-code.org                             
 #
-# Sorted Interacting Energies @ Q(1):  0.999999975E-5   0.00000000      0.00000000    [q->0 direction]
+# Sorted IP Energies indexes @ Q(1):  0.999999975E-5   0.00000000      0.00000000    [q->0 direction]
 #
-# [GEN] GF Energies                               : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
+# [GEN] GF Energies                               : B3LYP(XC)
 # [GEN] Green`s Function                          : Retarded
 #
 # [GEN] Gauge                                     : Length
@@ -30,33 +30,23 @@
 # Direct v evaluation                             : no
 # Approach used                                   : R-space x
 # Dipoles computed                                : R V P
-# Wavefunctions                                   : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
+# Wavefunctions                                   : B3LYP(XC)
 #
 #
-# [K] Identifier                                  :   9307
-# [K] Dimension                                   :   9
-# [K] Bands                                       :   2   7
-# [K] Exchange res                                : yes
-# [K] Correlation res                             : no
-# [K] Kernel`s coupling                           : no
-# [K] Exchange cpl                                : no
-# [K] Correlation cpl                             : no
-# [K] W interaction is bare                       : no
-# [K] ALDA kernel in R-space                      : yes
-# [K] RL vectors exchange                         :   4067
-# [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
-# [K] Coupling range                              :   100.000000      100.000000    [o/o]
-# [X] Response Kind                               : BAR
+#     E [eV]            ikbz               ib1                ib2                isp1               isp2
 #
-#
-#    E [eV]             N_deg              eps
-#
-        7.352048           3.000000           0.78976E-11
-        11.54400           3.000000           0.16289E-20
-        11.81880           3.000000           0.11281E-10
+        8.790006           1                   4                  5                 1                  1
+        8.790006           1                  3                   5                 1                  1
+        8.790006           1                  2                   5                 1                  1
+        13.23204           1                   4                  6                 1                  1
+        13.23204           1                   4                  7                 1                  1
+        13.23204           1                  3                   6                 1                  1
+        13.23204           1                  3                   7                 1                  1
+        13.23204           1                  2                   6                 1                  1
+        13.23204           1                  2                   7                 1                  1
 # 
-# 06/20/2023 at 00:54 yambo @ unimi-XPS-8930 [start]
-# 06/20/2023 at 00:54                        [end]
+# 06/20/2023 at 00:57 yambo @ unimi-XPS-8930 [start]
+# 06/20/2023 at 00:57                        [end]
 #  
 # Timing   [Min/Max/Average]: 02s/02s/02s
 #
@@ -91,6 +81,8 @@
 # | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
 # | BSENGexx=  4067            RL    # [BSK] Exchange components
 # | FxcLibxc                       # [BSK] force computing Fxc via libxc
+# | BSENGBlk= 203              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
+# | #WehCpl                        # [BSK] eh interaction included also in coupling
 # | % BSEQptR
 # |  1 | 1 |                             # [BSK] Transferred momenta range
 # | %
