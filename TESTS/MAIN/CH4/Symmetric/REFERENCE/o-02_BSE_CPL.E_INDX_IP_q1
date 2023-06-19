@@ -1,19 +1,19 @@
-#  __      __   ______   __       __  _______    ______               
-# |  \    /  \ /      \ |  \     /  \|       \  /      \              
-#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
-#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
-#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
-#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
-#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
-#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
-#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
 #                                                                     
 # Version 5.1.0 Revision 22208 Hash (prev commit) a391fb0cb           
 #                Branch is phys/dichroism                             
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
-# Sorted IP Energies @ Q(1):  0.999999975E-5   0.00000000      0.00000000    [q->0 direction]
+# Sorted IP Energies indexes @ Q(1):  0.999999975E-5   0.00000000      0.00000000    [q->0 direction]
 #
 # [GEN] GF Energies                               : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
 # [GEN] Green`s Function                          : Retarded
@@ -21,7 +21,7 @@
 # [GEN] Gauge                                     : Length
 # [GEN] [r,Vnl] included                          : yes
 #
-# DIP band range                                  :   2   7
+# DIP band range                                  :   2   8
 # DIP band range limits                           :   4   5
 # DIP e/h energy range                            :  -1.00000000     -1.00000000    [eV]
 # RL vectors in the sum                           :   3695
@@ -33,13 +33,25 @@
 # Wavefunctions                                   : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
 #
 #
-#    E [eV]             N_deg              eps
+#     E [eV]            ikbz               ib1                ib2                isp1               isp2
 #
-        10.44634           3.000000           0.60824E-10
-        14.85944           6.000000           0.81832E-10
+        10.44634           1                   4                  5                 1                  1
+        10.44634           1                  3                   5                 1                  1
+        10.44634           1                  2                   5                 1                  1
+        14.85944           1                   4                  7                 1                  1
+        14.85944           1                   4                  6                 1                  1
+        14.85944           1                  3                   7                 1                  1
+        14.85944           1                  3                   6                 1                  1
+        14.85944           1                  2                   7                 1                  1
+        14.85944           1                  2                   6                 1                  1
+        15.79578           1                   4                  8                 1                  1
+        15.79578           1                  3                   8                 1                  1
+        15.79578           1                  2                   8                 1                  1
 # 
 # 06/19/2023 at 23:43 yambo @ unimi-XPS-8930 [start]
 # 06/19/2023 at 23:43                        [end]
+#  
+# Timing   [Min/Max/Average]: 02s/02s/02s
 #
 # .-Input file  yambo.in
 # | rim_cut                          # [R] Coulomb potential
@@ -67,10 +79,10 @@
 # | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+# | BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
 # | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
 # | % DipBands
-# |   2 |  7 |                           # [DIP] Bands range for dipoles
+# |   2 |  8 |                           # [DIP] Bands range for dipoles
 # | %
 # | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
 # | BSENGexx=  4067            RL    # [BSK] Exchange components
@@ -83,7 +95,7 @@
 # |  1 | 1 |                             # [BSK] Transferred momenta range
 # | %
 # | % BSEBands
-# |   2 |  7 |                           # [BSK] Bands range
+# |   2 |  8 |                           # [BSK] Bands range
 # | %
 # | % BEnRange
 # | -20.00000 | 20.00000 |         eV    # [BSS] Energy range
@@ -95,10 +107,9 @@
 # | % BLongDir
 # |  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field versor
 # | %
-# | BSEprop= "abs esrt jdos"         # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEprop= "abs jdos esrt"         # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
 # | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
 # | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
-# | BSHayItrMAX= 200                 # [BSS] MaX number of Haydock iterations.
 # | % BndsRnXs
 # |   1 | 20 |                           # [Xs] Polarization function bands
 # | %
