@@ -90,13 +90,20 @@ if("@_" eq "DFT") {
 # COMPs
 if("@_" eq "COMPs") {
  &LOAD_branches;
+ if ($user_branch) {
+   $comp_folder  = "$suite_dir/compile_dir/${user_branch}";
+   print "\nrm -fr $comp_folder\n";
+   &command("rm -fr $comp_folder");
+ } else {
  for $ib ( 0 .. $#branches ) {
+  print "$ib @branches[$ib]\n";
   $branchdir =@branches[$ib];
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
    $comp_folder  = "$suite_dir/compile_dir/${branch_key}/${conf_file}";
    &command("rm -fr $comp_folder");
   }
+ }
  }
 }
 #

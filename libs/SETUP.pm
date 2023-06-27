@@ -96,6 +96,7 @@ if ("$what" eq "BASIC") {
  #
  $REF_folder="REFERENCE_".$branch_key_no_slash;
  if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "develop")  {$REF_folder="REFERENCE"};
+ if ($is_GPL)  {$REF_folder="REFERENCE_gpl"};
  if ($update_test and $update_as_master)  {$REF_folder="REFERENCE"};
  #
 }
