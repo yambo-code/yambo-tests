@@ -1,19 +1,19 @@
                                                                           
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
                                                                           
-    Y88b    /   e           e    e      888~~\    ,88~-_                  
-     Y88b  /   d8b         d8b  d8b     888   |  d888   \                 
-      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |                
-       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |                
-        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /                 
-       /   /      Y88b /          Y888b 888__/    `88_-~                  
-                                                                          
-                                                                          
-         Version 5.1.0 Revision 20798 Hash 5f78164ac                      
-               Branch is devel-rt-vel-and-magn                            
-            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+    Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f             
+                  Branch is phys/non-linear                               
+               MPI+OpenMP+SLK+HDF5_MPI_IO Build                           
                   http://www.yambo-code.org                               
  
- 08/24/2021 at 11:39 yambo_rt @ unimi-XPS-8930
+ 06/30/2023 at 17:32 yambo_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 02_collisions_sex_cvonly
- Alt#1 string        : R14
+ Alt#1 string        : R7
 
  Precision           : SINGLE
   
@@ -154,9 +154,9 @@
   [X] Filled Bands                                  :   8
   [X] Empty Bands                                   :    9   60
   [X] Direct Gap                                    :  4.439179 [eV]
-  [X] Direct Gap localized at k-point               :  2
+  [X] Direct Gap localized at k                     :  2
   [X] Indirect Gap                                  :  4.439179 [eV]
-  [X] Indirect Gap between k-points                 :  2  2
+  [X] Indirect Gap between kpts                     :  2  2
   [X] Last valence band width                       :  0.903504 [eV]
   [X] 1st conduction band width                     :  1.130507 [eV]
    
@@ -167,15 +167,13 @@
 
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
-  Polarization last K                              :   4
+  Polarization last K ( bz)                        :   4
+  Polarization last K (ibz)                        :   4
   QP states                                        :   1   4
   X grid is uniform                                : yes
-  Grids                                            : X S
-  BS scattering                                    : no
-  COLL scattering                                  : no
-  Sigma scattering                                 : yes
-  X scattering                                     : yes
- - S/N 001718 ---------------------------------------------- v.05.01.00 r.20798 -
+  Grids (string)                                   :  X S
+  Grids (int-vector)                               :  1  0  0  1
+ - S/N 001718 ---------------------------------------------- v.05.01.00 r.22214 -
 
  IBZ Q-points :   4
  BZ  Q-points :   4
@@ -212,7 +210,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Teter 93(XC)
- - S/N 001718 ---------------------------------------------- v.05.01.00 r.20798 -
+ - S/N 001718 ---------------------------------------------- v.05.01.00 r.22214 -
 
  [05] Static Dielectric Matrix
  =============================
@@ -231,7 +229,7 @@
   X band range                                     :    1   50
   X e/h energy range                               : -1.000000 -1.000000 [eV]
   X Time ordering                                  : T
-  X xc-Kernel                                      : none
+  X Hxc Kernel                                     : HARTREE
   X Drude frequency                                :  0.000000  0.000000
   X poles                                          :  100.0000 [o/o]
   RL vectors in the sum                            :   3583
@@ -239,8 +237,9 @@
   Field direction                                  :  0.100000E-4   0.00000      0.00000   
   BZ energy Double Grid                            : no
   BZ energy DbGd points                            : 0
-  BZ Q point size factor                           :  1.000000
- - S/N 001718 ---------------------------------------------- v.05.01.00 r.20798 -
+  BZ Q point size factor                           : -1.000000
+  X Optical Averaged directions                    : none
+ - S/N 001718 ---------------------------------------------- v.05.01.00 r.22214 -
  [RD./02_collisions_sex_cvonly//ndb.dipoles]-------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
   RL vectors                                       :   3583 [WF]
@@ -257,21 +256,21 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Teter 93(XC)
- - S/N 001718 ---------------------------------------------- v.05.01.00 r.20798 -
+ - S/N 001718 ---------------------------------------------- v.05.01.00 r.22214 -
  [X-CG] R(p) Tot o/o(of R):   513  1344   100
  [WR./02_collisions_sex_cvonly//ndb.em1s_fragment_1]-----------------------------
   Current Q-pt index                               :  1
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000E-2  0.100000E-2 eV
   Number of frequencies                            :  1
- - S/N 001718 ---------------------------------------------- v.05.01.00 r.20798 -
+ - S/N 001718 ---------------------------------------------- v.05.01.00 r.22214 -
  [X-CG] R(p) Tot o/o(of R):   825  1344   100
  [WR./02_collisions_sex_cvonly//ndb.em1s_fragment_2]-----------------------------
   Current Q-pt index                               :  2
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000E-2  0.100000E-2 eV
   Number of frequencies                            :  1
- - S/N 001718 ---------------------------------------------- v.05.01.00 r.20798 -
+ - S/N 001718 ---------------------------------------------- v.05.01.00 r.22214 -
  [X-CG] R(p) Tot o/o(of R):   825  1344   100
  [X-CG] R(p) Tot o/o(of R):   825  1344   100
 
@@ -279,9 +278,9 @@
  ========================
 
 
- [WARNING]Only CV components included
+ [WARNING] Only CV components included
 
-  [06.01] HARTREE+SEX CVONLY (e-e correlation)
+  [06.01] HARTREE+SEX+CVONLY (e-e correlation)
   ============================================
 
   [RD./02_collisions_sex_cvonly//ndb.em1s]----------------------------------------
@@ -298,7 +297,7 @@
    X band range                                     :    1   50
    X e/h energy range                               : -1.000000 -1.000000 [eV]
    X Time ordering                                  : T
-   X xc-Kernel                                      : none
+   X Hxc Kernel                                     : HARTREE
    X Drude frequency                                :  0.000000  0.000000
    X poles                                          :  100.0000 [o/o]
    RL vectors in the sum                            :   3583
@@ -306,13 +305,14 @@
    Field direction                                  :  0.100000E-4   0.00000      0.00000   
    BZ energy Double Grid                            : no
    BZ energy DbGd points                            : 0
-   BZ Q point size factor                           :  1.000000
+   BZ Q point size factor                           : -1.000000
+   X Optical Averaged directions                    : none
   [RD./02_collisions_sex_cvonly//ndb.em1s_fragment_1]-----------------------------
    Current Q-pt index                               :  1
    X energy range                                   :  0.000000  0.000000 eV
    X damping range                                  :  0.100000E-2  0.100000E-2 eV
    Number of frequencies                            :  1
-  - S/N 001718 ---------------------------------------------- v.05.01.00 r.20798 -
+  - S/N 001718 ---------------------------------------------- v.05.01.00 r.22214 -
 
   [WARNING] Hartree Sigma FFT size is too big. NG_H reduced 3415 --> 2733 (38470   mHa)
 
@@ -325,10 +325,11 @@
    COLLISIONS kind                                  :  1327
    Bands                                            :   7  10
    Bands mixing                                     :  100.0000
+   CV only scattering                               : yes
    Collisions Cutoff                                :  0.000000
    Hartree  RL vectors                              :  2733
    Exchange RL vectors                              :  107
-  - S/N 001718 ---------------------------------------------- v.05.01.00 r.20798 -
+  - S/N 001718 ---------------------------------------------- v.05.01.00 r.22214 -
 
  [07] Timing Overview
  ====================
@@ -337,46 +338,44 @@
                                       Xo (REDUX) :      0.0000s CPU (  4 calls,   0.001 msec avg)
                                 io_ATMPROJ_pwscf :      0.0000s CPU
                                       io_COL_CUT :      0.0000s CPU
-                                           io_BS :      0.0000s CPU
-                                     io_KB_pwscf :      0.0000s CPU (  2 calls,   0.009 msec avg)
+                                     io_KB_pwscf :      0.0000s CPU (  2 calls,   0.010 msec avg)
                                            io_HF :      0.0000s CPU
-                                         io_ELPH :      0.0000s CPU (  2 calls,   0.015 msec avg)
-                                io_RT_components :      0.0000s CPU (  2 calls,   0.015 msec avg)
+                                io_RT_components :      0.0000s CPU (  2 calls,   0.016 msec avg)
                                   io_Double_Grid :      0.0000s CPU
       MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0000s CPU (  4 calls,   0.009 msec avg)
-      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU (  4 calls,   0.010 msec avg)
-                                       X (REDUX) :      0.0000s CPU (  4 calls,   0.011 msec avg)
-                                    PP_uspp_init :      0.0001s CPU (  6 calls,   0.013 msec avg)
-                         IO_and_Messaging_switch :      0.0003s CPU (144 calls,   0.002 msec avg)
-                     COLLISIONS_linearize_and_IO :      0.0007s CPU ( 16 calls,   0.046 msec avg)
-                                        io_QINDX :      0.0029s CPU (  2 calls,   1.442 msec avg)
-                                         io_GROT :      0.0038s CPU (  3 calls,   1.282 msec avg)
-                                   io_COLLISIONS :      0.0039s CPU ( 23 calls,   0.168 msec avg)
-                               SERIAL_lin_system :      0.0042s CPU (  4 calls,   1.038 msec avg)
-                                  LINEAR ALGEBRA :      0.0042s CPU (  4 calls,   1.040 msec avg)
-                                   X (procedure) :      0.0053s CPU (  4 calls,   1.334 msec avg)
-                                    scatter_Gamp :      0.0071s CPU (144 calls,   0.049 msec avg)
-                                    io_KB_abinit :      0.0087s CPU (  6 calls,   1.448 msec avg)
-                                      io_DIPOLES :      0.0089s CPU ( 16 calls,   0.554 msec avg)
-                                           io_WF :      0.0138s CPU ( 25 calls,   0.550 msec avg)
-                                     io_fragment :      0.0300s CPU ( 85 calls,   0.353 msec avg)
-                                       FFT_setup :      0.0410s CPU ( 34 calls,   1.207 msec avg)
-                                     WF_load_FFT :      0.0441s CPU (  6 calls,   7.343 msec avg)
-                                            io_X :      0.1820s CPU ( 91 calls,   2.000 msec avg)
-                               DIPOLE_transverse :      0.3245s CPU
-                   HARTREE+SEX CVONLY Collisions :      0.5929s CPU
-                                 COLLISIONS_eval :      0.5931s CPU
-                                  Xo (procedure) :      0.9710s CPU (  4 calls, 242.754 msec avg)
-                                         Dipoles :      1.3304s CPU
+      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU (  4 calls,   0.011 msec avg)
+                                       X (REDUX) :      0.0000s CPU (  4 calls,   0.012 msec avg)
+                                    PP_uspp_init :      0.0001s CPU (  6 calls,   0.014 msec avg)
+                         IO_and_Messaging_switch :      0.0005s CPU (147 calls,   0.003 msec avg)
+                     COLLISIONS_linearize_and_IO :      0.0025s CPU ( 16 calls,   0.157 msec avg)
+                                        io_QINDX :      0.0035s CPU (  2 calls,   1.731 msec avg)
+                                         io_GROT :      0.0035s CPU (  3 calls,   1.183 msec avg)
+                                   io_COLLISIONS :      0.0055s CPU ( 24 calls,   0.230 msec avg)
+                                    io_KB_abinit :      0.0056s CPU (  6 calls,   0.928 msec avg)
+                                    scatter_Gamp :      0.0073s CPU (144 calls,   0.051 msec avg)
+                                      io_DIPOLES :      0.0076s CPU ( 16 calls,   0.476 msec avg)
+                               SERIAL_lin_system :      0.0094s CPU (  4 calls,   2.345 msec avg)
+                                  LINEAR ALGEBRA :      0.0094s CPU (  4 calls,   2.348 msec avg)
+                                   X (procedure) :      0.0106s CPU (  4 calls,   2.638 msec avg)
+                                           io_WF :      0.0131s CPU ( 25 calls,   0.522 msec avg)
+                                     io_fragment :      0.0396s CPU ( 85 calls,   0.465 msec avg)
+                                       FFT_setup :      0.0425s CPU ( 34 calls,   1.249 msec avg)
+                                     WF_load_FFT :      0.0429s CPU (  6 calls,   7.154 msec avg)
+                                            io_X :      0.0823s CPU ( 78 calls,   1.055 msec avg)
+                               DIPOLE_transverse :      0.1730s CPU
+                   HARTREE+SEX+CVONLY Collisions :      0.3454s CPU
+                                 COLLISIONS_eval :      0.3456s CPU
+                                  Xo (procedure) :      0.9772s CPU (  4 calls, 244.307 msec avg)
+                                         Dipoles :      1.1779s CPU
 
  [08] Game Over & Game summary
  =============================
 
- 08/24/2021 at 11:39 yambo_rt @ unimi-XPS-8930 [start]
- 08/24/2021 at 11:39                           [end]
+ 06/30/2023 at 17:32 yambo_rt @ unimi-XPS-8930 [start]
+ 06/30/2023 at 17:32                           [end]
 
  Timing   [Min/Max/Average]: 02s/02s/02s
-             [Time-Profile]: 03s
+             [Time-Profile]: 02s
 
  .-ACKNOWLEDGMENT
  |
@@ -404,6 +403,8 @@
  | em1s                             # [R][Xs] Statically Screened Interaction
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
  | FFTGvecs=  3583            RL    # [FFT] Plane-waves
+ | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+ | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
  | RT_Threads= 1                    # [OPENMP/RT] Number of threads for real-time
  | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
  | % BndsRnXs
@@ -413,11 +414,10 @@
  | % LongDrXs
  |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
  | %
- | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
  | % COLLBands
  |   7 | 10 |                           # [COLL] Bands for the collisions
  | %
- | HXC_Potential= "HARTREE+SEX CVONLY" # [SC] SC HXC Potential
+ | HXC_Potential= "HARTREE+SEX+CVONLY" # [SC] SC HXC Potential
  | HARRLvcs= 2733             RL    # [HA] Hartree     RL components
  | EXXRLvcs= 107              RL    # [XX] Exchange    RL components
  | CORRLvcs= 107              RL    # [GW] Correlation RL components

@@ -1,26 +1,22 @@
 #                                                                     
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
 #                                                                     
-# Y88b    /   e           e    e      888~~\    ,88~-_                
-#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
-#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
-#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
-#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
-#    /   /      Y88b /          Y888b 888__/    `88_-~                
 #                                                                     
-#                                                                     
-#      Version 5.1.0 Revision 20097 Hash 5df12bdd1                    
-#            Branch is devel-rt-vel-and-magn                          
-#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#               http://www.yambo-code.org                             
+# Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f           
+#                 Branch is phys/non-linear                           
+#             MPI+OpenMP+SLK+HDF5_MPI_IO Build                        
+#                 http://www.yambo-code.org                           
 #
 #
 # [RT] Bands                                      :   7  10
 # [RT] K-points                                   :   4
 # [RT] Potential                                  : HARTREE+GS_xc
-# [E-P] Electron-phonon                           : no
-# [E-P] Iterative time evolution                  : no
-# [E-P] Branches                                  : 0 0
-# [E-P] GF`s Memory steps                         :  2
 # [E-E] Coulomb scattering                        : no
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
@@ -46,7 +42,8 @@
 # [FIELDs] Versor                                 :   1.00000000      0.00000000      0.00000000   
 # [FIELDs] Versor_circ                            :   0.00000000      1.00000000      0.00000000   
 # [FIELDs] Intensity                              :   1000.00000    [kWCMm2]
-# [FIELDs] Damping                                :   0.00000000    [fs]
+# [FIELDs] Width                                  :   0.00000000    [fs]
+# [FIELDs] Chirp                                  :   0.00000000    [fs]
 # [FIELDs] Frequency range                        :   0.00000000      0.00000000    [eV]
 # [FIELDs] Frequency steps                        :  1
 # [FIELDs] Frequency step                         :   0.00000000    [eV]
@@ -56,7 +53,8 @@
 # [FIELDs] Versor                                 :   1.00000000      0.00000000      0.00000000   
 # [FIELDs] Versor_circ                            :   0.00000000      1.00000000      0.00000000   
 # [FIELDs] Intensity                              :   1000000.00    [kWCMm2]
-# [FIELDs] Damping                                :   2.12330461    [fs]
+# [FIELDs] Width                                  :   2.12330461    [fs]
+# [FIELDs] Chirp                                  :   0.00000000    [fs]
 # [FIELDs] Frequency range                        :   5.69999981      0.00000000    [eV]
 # [FIELDs] Frequency steps                        :  1
 # [FIELDs] Frequency step                         :   0.00000000    [eV]
@@ -570,13 +568,14 @@
       7.99000025       -0.241558655E-5      0.00000000         0.00000000       -0.290037883E-5     -0.00000000        -0.00000000   
       8.00000000       -0.143715670E-5      0.00000000         0.00000000       -0.349024867E-5     -0.00000000        -0.00000000   
 # 
-# 06/28/2021 at 18:24 ypp_rt @ VivoBook [start]
-# 06/28/2021 at 18:24                   [end]
+# 06/30/2023 at 22:57 ypp_rt @ unimi-XPS-8930 [start]
+# 06/30/2023 at 22:57                         [end]
 #
 # .-Input file  yambo.in
 # | RealTime                         # [R] TD Post-Processing
 # | RT_X                             # [R] Response functions Post-Processing
 # | Xorder= 1                        # Max order of the response/exc functions
+# | PumpKey= "04_td_hdft_coll_P"     # Keyword to select groups of PUMP databases
 # | % EnRngeRt
 # |  3.000000 | 8.000000 |         eV    # Energy range
 # | %
