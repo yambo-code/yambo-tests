@@ -90,13 +90,20 @@ if("@_" eq "DFT") {
 # COMPs
 if("@_" eq "COMPs") {
  &LOAD_branches;
+ if ($user_branch) {
+   $comp_folder  = "$suite_dir/compile_dir/${user_branch}";
+   print "\nrm -fr $comp_folder\n";
+   &command("rm -fr $comp_folder");
+ } else {
  for $ib ( 0 .. $#branches ) {
+  print "$ib @branches[$ib]\n";
   $branchdir =@branches[$ib];
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
    $comp_folder  = "$suite_dir/compile_dir/${branch_key}/${conf_file}";
    &command("rm -fr $comp_folder");
   }
+ }
  }
 }
 #
@@ -124,7 +131,8 @@ sub ROBOT_clean
  &command("$cmd");
  $cmd="$git ls-files --others --exclude-standard | $grep -e 'ROBOT_Nr_$ID/' | $grep -v $hostname |  xargs rm -f";
  &command("$cmd");
- &command("rm -f outputs_and_reports_ALL-R$ID.* ROBOT_Nr_$ID scripts/find_the_diff/find_the_diff_R$ID");
+ &command("rm -f outputs_and_reports_ALL-R$ID.* ROBOT_Nr_$ID KILLE*R$ID.awk scripts/find_the_diff/find_the_diff_R$ID");
+ &command("rm -fr bin-precompiled-R$ID-*");
  &command("rm -f *R${ID}-*.log");
 }
 1;

@@ -25,8 +25,12 @@
 sub PHP_generate{
 #
 if( not ( -d "backup_and_www/$host/www/" ) ){ &command("mkdir -p backup_and_www/$host/www/");}
-if( not ($branch_key eq "") ){ &command("rm -fr backup_and_www/$host/www/$branch_key");}
-if(     ($branch_key eq "") ){ &command("rm -fr backup_and_www/$host/www/*");}
+if( not ($branch_key_no_slash eq "") ){ &command("rm -fr backup_and_www/$host/www/$branch_key_no_slash");}
+if(     ($branch_key_no_slash eq "") ){ &command("rm -fr backup_and_www/$host/www/*");}
+#
+$local_branch=$branch_key;
+if ($branch_php) {$local_branch=$branch_php};
+$local_branch=~ s/\//-/g;
 #
 &UTILS_list_backups;
 #
@@ -40,8 +44,8 @@ foreach $dir (@reversed_dirs) {
   open(REPORT,"<","$suite_dir/$file");
   @lines = <REPORT>;
   &PHP_key_words($file);
-  if ($branch_php and not "$branch_php" eq "$yambo_branch" ) {next};
-  if (not $branch_php and not "$branch_key" eq "$yambo_branch") {next} ;
+  if (    $branch_php and not $local_branch eq $yambo_branch) {next};
+  if (not $branch_php and not "$branch_key_no_slash" eq "$yambo_branch") {next} ;
   $i_dir = $i_dir+1;
   if ($i_dir > 21 ) {next};
   print "Processing $dir...\n";
@@ -60,6 +64,10 @@ sub PHP_key_words{
  &get_line("Test-suite branch");
  $tsuite_branch=$pattern[0][2];
  if( $yambo_branch eq ""){$yambo_branch="none";}
+ # Remove slashes
+ $yambo_branch=~ s/\//-/g;
+ $tsuite_branch=~ s/\//-/g;
+ #
  &get_line("Build");
  if ($n_patterns eq 0)
  {
@@ -97,7 +105,7 @@ $time.="m";
 #
 &get_line("TOTAL");
 $duration="";
-if( $pattern[0][3] != "") { $duration="$pattern[0][3]h$pattern[0][4]m$pattern[0][5]s"; }
+if( $pattern[0][5] != "") { $duration="$pattern[0][3]h$pattern[0][4]m$pattern[0][5]s"; }
 #
 &get_line("Running tests");
 $size=@{ $pattern[0] };
@@ -180,7 +188,6 @@ for( $i = 0; $i < $n_patterns; $i = $i + 1 ){
  $check_noout[$i]=$pattern[$i][8];
  $check_nodb[$i]=$pattern[$i][11];
 }
-
 #
 # OLD VERSION
 #
@@ -285,8 +292,8 @@ if ( "$compress" eq "yes" ){ &command("tar -czf $comp_tgz compilation/*comp*.log
 #
 # Final copying
 #
-&command("mkdir -p backup_and_www/$host/www/$yambo_branch");
-&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$yambo_branch");   
+&command("mkdir -p backup_and_www/$host/www/$local_branch");
+&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$local_branch");   
 #
 return
 }
@@ -294,7 +301,8 @@ return
 sub PHP_upload
 {
 chdir("$suite_dir/backup_and_www/$host/www");
-&command("$ncftpput -R -u 1945528\@aruba.it -p uQ\\\$66cx\\*W3T\\*Wh ftp.yambo-code.org www.yambo-code.org/robots .")
+&FTP_mkdir("robots/$local_branch");
+&FTP_upload_it("$local_branch","robots","-R");
 }
 #
 sub get_line{

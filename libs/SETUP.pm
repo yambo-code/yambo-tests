@@ -76,6 +76,8 @@ if ("$what" eq "BASIC") {
  &MY_PRINT($stdout, "\n= Starting Yambo test-suite") if (!$reduced_log);
  &MY_PRINT($stdout, "\n$double_line\n") if (!$reduced_log);
  #
+ if (! -f "KILLER_yambo_".$ROBOT_string.".awk" ) { &command("$suite_dir/scripts/job_stopper.sh $ROBOT_string &")};
+ #
 }elsif ("$what" == "DIR"){
  #
  $PAR_string="SERIAL";
@@ -92,8 +94,9 @@ if ("$what" eq "BASIC") {
  #
  if (!$np_min and !$np_single and !$nt) {$PAR_string="SERIAL"};
  #
- $REF_folder="REFERENCE_".$branch_key;
+ $REF_folder="REFERENCE_".$branch_key_no_slash;
  if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "develop")  {$REF_folder="REFERENCE"};
+ if ($is_GPL)  {$REF_folder="REFERENCE_gpl"};
  if ($update_test and $update_as_master)  {$REF_folder="REFERENCE"};
  #
 }

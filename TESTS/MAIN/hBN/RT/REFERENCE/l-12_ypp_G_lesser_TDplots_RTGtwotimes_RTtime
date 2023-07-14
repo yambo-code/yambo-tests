@@ -1,12 +1,12 @@
 
 
-____    ____    ___      .___  ___.  .______     ______
-\   \  /   /   /   \     |   \/   |  |   _  \   /  __  \
- \   \/   /   /  ^  \    |  \  /  |  |  |_)  | |  |  |  |
-  \_    _/   /  /_\  \   |  |\/|  |  |   _  <  |  |  |  |
-    |  |    /  _____  \  |  |  |  |  |  |_)  | |  `--"  |
-    |__|   /__/     \__\ |__|  |__|  |______/   \______/
-
+ __   __  _______  __   __  _______  _______
+|  | |  ||   _   ||  |_|  ||  _    ||       |
+|  |_|  ||  |_|  ||       || |_|   ||   _   |
+|       ||       ||       ||       ||  | |  |
+|_     _||       ||       ||  _   | |  |_|  |
+  |   |  |   _   || ||_|| || |_|   ||       |
+  |___|  |__| |__||_|   |_||_______||_______|
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -33,39 +33,49 @@ ____    ____    ___      .___  ___.  .______     ______
  <---> [06] == Real-Time Post-Processing ==
  <---> Output files definition ...
  <---> [07] Two times Green function reconstruction
- <---> [Glesser] Uniform grid       :no
+ <---> [Glesser] Uniform grid       :yes
  <---> [Glesser] Time range         : 25.00000  75.00001 [fs]
- <---> [Glesser] Time step          : 0.020002 [fs]
- <---> [Glesser] Time steps         : 2501
+ <---> [Glesser] Time step          : 0.009998 [fs]
+ <---> [Glesser] Time steps         :  5001
  <---> [Glesser] Damping            : 50.00000 [meV]
  <---> Reconstructing G<(t,t') from rho
  <---> G<(k,w) at time  50.00000 fs
  <---> Build G<(t,t'): |                                        | [000%] --(E) --(X)
- <03s> Build G<(t,t'): |########################################| [100%] 03s(E) 03s(X)
- <03s> FT@G<(t,t') |                                        | [000%] --(E) --(X)
- <08s> FT@G<(t,t') |################                        | [041%] 05s(E) 11s(X)
- <13s> FT@G<(t,t') |#################################       | [082%] 10s(E) 12s(X)
- <15s> FT@G<(t,t') |########################################| [100%] 12s(E) 12s(X)
- <15s> [08] Loading special Points for the HCP lattice
- <15s> [08.01] Special Points for the HCP lattice
- <15s> [08.02] Circuit analyzer/generator
- <15s> Number of Q/K-points in the circuit :  81
- <15s> [08.03] Interpolation@work: Circuit
- <15s> [INTERPOLATION] Number of shells:   4307
- <15s> Interpolation@RT_G_w (star) |                                        | [000%] --(E) --(X)
- <15s> Interpolation@RT_G_w (star) |########################################| [100%] --(E) --(X)
- <15s> Interpolation@RT_G_w (H fill) |                                        | [000%] --(E) --(X)
- <15s> Interpolation@RT_G_w (H fill) |########################################| [100%] --(E) --(X)
- <16s> Interpolation@RT_G_w (computing engre) |                                        | [000%] --(E) --(X)
- <18s> Interpolation@RT_G_w (computing engre) |########################################| [100%] 02s(E) 02s(X)
- <18s> Interpolate@RT_G_w Fourier |                                        | [000%] --(E) --(X)
- <20s> Interpolate@RT_G_w Fourier |########################################| [100%] --(E) --(X)
- <20s> [INTERPOLATION@RT_G_w] Errors: Max, Avg, Avg_rel =   6.06436901E-09  1.73662057E-11  9.81644273E-01
- <20s> Interpolate@RT_G_w Fourier |                                        | [000%] --(E) --(X)
- <20s> Interpolate@RT_G_w Fourier |########################################| [100%] --(E) --(X)
- <20s> [08.04] Plotting
- <20s> Generating output for interpolated G_k_w
- <20s> Generating output for built_in G_k_w
- <20s> [09] Timing Overview
- <20s> [10] Game Over & Game summary
- <20s> [TIMING]            [Time-Profile]: 20s
+ <05s> Build G<(t,t'): |#################                       | [043%] 05s(E) 11s(X)
+ <10s> Build G<(t,t'): |##################################      | [087%] 10s(E) 11s(X)
+ <11s> Build G<(t,t'): |########################################| [100%] 11s(E) 11s(X)
+ <11s> FT@G<(t,t') |                                        | [000%] --(E) --(X)
+ <16s> FT@G<(t,t') |#######                                 | [018%] 05s(E) 27s(X)
+ <21s> FT@G<(t,t') |##############                          | [036%] 10s(E) 27s(X)
+ <26s> FT@G<(t,t') |#####################                   | [054%] 15s(E) 27s(X)
+ <31s> FT@G<(t,t') |############################            | [072%] 20s(E) 27s(X)
+ <36s> FT@G<(t,t') |####################################    | [090%] 25s(E) 27s(X)
+ <39s> FT@G<(t,t') |########################################| [100%] 27s(E) 27s(X)
+ <39s> [08] Loading special Points for the HCP lattice
+ <39s> [08.01] Special Points for the HCP lattice
+ <39s> [08.02] Circuit analyzer/generator
+ <39s> Number of Q/K-points in the circuit :  81
+ <39s> Circuit path         : Lmp G
+ <39s> [08.03] Interpolation@work: Circuit
+ <39s> [INTERPOLATION] Number of shells:   4307
+ <39s> [MEMORY] Alloc interpls(ID)%engre( 67.43100 [Mb]) TOTAL:  87.60000 [Mb] (traced)  82.24000 [Mb] (memstat)
+ <39s> Interpolation@RT_G_w (star) |                                        | [000%] --(E) --(X)
+ <39s> Interpolation@RT_G_w (star) |########################################| [100%] --(E) --(X)
+ <39s> Interpolation@RT_G_w (H fill) |                                        | [000%] --(E) --(X)
+ <39s> Interpolation@RT_G_w (H fill) |########################################| [100%] --(E) --(X)
+ <39s> Interpolation@RT_G_w (computing engre) |                                        | [000%] --(E) --(X)
+ <39s> [MEMORY] Alloc PAR_engre( 67.43100 [Mb]) TOTAL:  172.5410 [Mb] (traced)  166.9320 [Mb] (memstat)
+ <43s> Interpolation@RT_G_w (computing engre) |########################################| [100%] 03s(E) 03s(X)
+ <43s> [MEMORY]  Free PAR_engre( 67.43100 [Mb]) TOTAL:  88.48100 [Mb] (traced)  166.9320 [Mb] (memstat)
+ <43s> Interpolate@RT_G_w Fourier |                                        | [000%] --(E) --(X)
+ <44s> Interpolate@RT_G_w Fourier |########################################| [100%] --(E) --(X)
+ <44s> [INTERPOLATION@RT_G_w] Errors: Max, Avg, Avg_rel =   6.70680889E-09  1.91495847E-11  9.81504560E-01
+ <44s> Interpolate@RT_G_w Fourier |                                        | [000%] --(E) --(X)
+ <45s> Interpolate@RT_G_w Fourier |########################################| [100%] --(E) --(X)
+ <45s> [08.04] Plotting
+ <45s> Generating output for interpolated G_k_w
+ <45s> Generating output for built_in G_k_w
+ <45s> [09] Timing Overview
+ <45s> [10] Memory Overview
+ <45s> [11] Game Over & Game summary
+ <45s> [TIMING]            [Time-Profile]: 45s

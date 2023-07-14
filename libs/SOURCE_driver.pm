@@ -122,21 +122,22 @@ if ($compile) {
 #
 # BIN's
 if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
- $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key";
+ $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key_no_slash";
  &command("rm -fr $conf_bin; mkdir $conf_bin");
  chdir $comp_folder;
  @executables = split(/\s+/, $exec_list);
  while($exec = shift(@executables)) {&command("cp bin/$exec $conf_bin/")};
- if (-e "lib/bin/ncdump")  {&command("cp lib/bin/ncdump  $conf_bin/")};
- if (-e "bin-libs/ncdump") {&command("cp bin-libs/ncdump $conf_bin/")};
+ if (-f "lib/bin/ncdump") {
+  &command("cp lib/bin/ncdump $conf_bin/");
+ }
  chdir $suite_dir;
 }elsif (not $keep_bin){
- $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind-$ROBOT_string-$branch_key";
+ $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind-$ROBOT_string-$branch_key_no_slash";
 }
 #
 # branch string
 #
-$branch=$branch_key."-".$conf_file;
+$branch=$branch_key_no_slash."-".$conf_file;
 #
 if ($compile)
 {
@@ -183,10 +184,10 @@ if (not "$ERROR" eq "OK") {
  return "FAIL";
 }
 #
-# NCDUMP/NCCOPY
+# NCDUMP
 #
-my $sys_ncdump = `which ncdump`; chomp($sys_ncdump);
-my $sys_nccopy = `which nccopy`; chomp($sys_nccopy);
+my $sys_ncdump = `which ncdump`; 
+chomp($sys_ncdump);
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
@@ -196,16 +197,6 @@ if (-e "$conf_bin/ncdump") {
  &MY_PRINT($stdout, "\n               ncdump : $ncdump");
 }else{ 
  die "\n ncdump not found\n";
-}
-if (-e "$conf_bin/nccopy") {
- $nccopy = "$conf_bin/nccopy"; 
- chomp($nccopy);
- &MY_PRINT($stdout, "\n               nccopy : $nccopy");
-}elsif(-e $sys_nccopy) { 
- $nccopy = "$sys_nccopy"; 
- &MY_PRINT($stdout, "\n               nccopy : $nccopy");
-}else{ 
- &MY_PRINT($stdout, "\n               nccopy : not found");
 }
 #
 # Rename the conf/comp logs
@@ -255,7 +246,7 @@ sub SOURCE_delay{
 }
 sub LOGs_move{
  chdir $comp_folder;
- my $extension=$branch_key.'-'.$FC_kind.'-'.$conf_file.'-'.$ROBOT_string.'-'.$host;
+ my $extension=$branch_key_no_slash.'-'.$FC_kind.'-'.$conf_file.'-'.$ROBOT_string.'-'.$host;
  &command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
  &command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");
  chdir $suite_dir;

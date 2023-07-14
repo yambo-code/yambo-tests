@@ -17,6 +17,13 @@
 !=======
 call add_RULE("o-03_optics.eps_q1_inv_rpa_dyson","whitelist",MATERIAL="Dummy")
 !
+! Intel
+!=======
+call add_RULE("o-11_ip_neq.eel_q1_IP","whitelist",Compiler="intel",Material="Black-Phosphorus")
+call add_RULE(".YPP-TR_Anomalous_Hall_IP","whitelist",Compiler="intel",Material="Black-Phosphorus")
+call add_RULE("o-01_hf.ndb.cutoff","whitelist",Compiler="intel",Material="He")
+call add_RULE("o-02_EPS-IP_shifted_grids_G","whitelist",Compiler="intel",Material="Iron")
+!
 ! RT
 !====
 ! Noise...(?)
