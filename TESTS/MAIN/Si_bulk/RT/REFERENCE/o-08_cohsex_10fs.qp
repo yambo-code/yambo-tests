@@ -1,28 +1,27 @@
 #                                                                     
-#  __  __   ________   ___ __ __    _______   ______                  
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
 #                                                                     
 #                                                                     
-#       Version 5.0.1 Revision 19435 Hash 90a894eb3                   
-#                   Branch is issue414                                
-#           MPI+OpenMP+SLK+SLEPC+HDF5_IO Build                        
-#                http://www.yambo-code.org                            
+# Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f           
+#                    Branch is bug-fixes                              
+#          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                     
+#                 http://www.yambo-code.org                           
 #
 #
 # GW solver                                       : Newton
 # GW approximation                                : COHSEX
-# GW SC iterations                                : 0
 # X G`s                                           :   59 [used]
 # X G`s                                           :   59 [disk]
 # X bands                                         :   1   8
 # X poles                                         :   100.000000    [o/o]
 # X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
-# X xc-Kernel                                     : none
+# X Hxc Kernel                                    : HARTREE
 # X BZ energy Double Grid                         : no
 # Sc/G bands                                      :   1   8
 # Sc Empty Bands                                  : yes
@@ -40,34 +39,35 @@
 #
 #    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-        1                  2                  0.000000           2.154793           1.936780
-        1                  3                  0.000000           2.154808           1.936793
-        1                   4                 0.000000           2.154855           1.936801
-        1                   5                 2.440868           2.579824          -1.858650
-        1                   6                 2.440868           2.579622          -1.858873
-        1                   7                 2.440868           2.579600          -1.858774
-        2                  2                 -7.200430           0.298295           3.567662
-        2                  3                 -1.262054           1.784954           2.597755
-        2                   4                -1.262054           1.785030           2.597832
-        2                   5                 1.519058           2.455946          -1.720927
-        2                   6                 3.185880           2.761824          -2.014827
-        2                   7                 3.185880           2.761810          -2.014886
-        3                  2                 -7.895731           0.226623           4.064263
-        3                  3                 -3.010587           1.329430           3.018164
-        3                   4                -3.010587           1.329371           3.018252
-        3                   5                 0.437631           2.003313          -1.306174
-        3                   6                 0.437640           2.005411          -1.357948
-        3                   7                 10.15807           3.993030          -2.723401
+        1                  2                  0.000000           2.185731          -1.489746
+        1                  3                  0.000000           2.185741          -1.489739
+        1                   4                 0.000000           2.185909          -1.489604
+        1                   5                 2.440868           2.149274          -2.737311
+        1                   6                 2.440868           2.149185          -2.737392
+        1                   7                 2.440868           2.149206          -2.737388
+        2                  2                 -7.200430           0.187145           3.669774
+        2                  3                 -1.262054           2.104853           1.520005
+        2                   4                -1.262054           2.104717           1.519904
+        2                   5                 1.519058           2.488437          -2.097271
+        2                   6                 3.185880           2.628348          -2.246907
+        2                   7                 3.185880           2.628346          -2.246922
+        3                  2                 -7.895731           0.565803           4.174349
+        3                  3                 -3.010587           1.074860           2.680789
+        3                   4                -3.010587           1.074884           2.680789
+        3                   5                 0.437631           1.513039           1.666002
+        3                   6                 0.437640           1.513066           1.666012
+        3                   7                 10.15807           4.114139          -2.678213
 # 
-# 01/31/2021 at 00:25 yambo_rt @ unimi-XPS-8930 [start]
-# 01/31/2021 at 00:25                           [end]
+# 07/15/2023 at 00:48 yambo_rt @ unimi-XPS-8930 [start]
+# 07/15/2023 at 00:48                           [end]
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
 # | gw0                              # [R] GW approximation
 # | cohsex                           # [R][Xp] COlumb Hole Screened EXchange
 # | em1s                             # [R][Xs] Statically Screened Interaction
-# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | el_el_corr                       # [R] Electron-Electron Correlation
+# | BoseTemp= 0.861734E-4      eV    # Bosonic Temperature
 # | FFTGvecs=  387             RL    # [FFT] Plane-waves
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
@@ -76,7 +76,7 @@
 # | EXXRLvcs=  609             RL    # [XX] Exchange    RL components
 # | VXCRLvcs= 2085             RL    # [XC] XCpotential RL components
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
-# | XfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT Xd] Database
+# | XfnRTdb= "f @ 0. ps < 02_carriers_Fermi_DB/ndb.RT_carriers" # [EXTRT Xd] Database
 # | % BndsRnXs
 # |   1 |  8 |                           # [Xs] Polarization function bands
 # | %
@@ -88,11 +88,8 @@
 # | % LongDrXs
 # |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
 # | %
-# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
-# | GfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT G] Database
+# | GfnRTdb= "f @ 0. ps < 02_carriers_Fermi_DB/ndb.RT_carriers" # [EXTRT G] Database
 # | UseEbands                      # [GW] Force COHSEX to use empty bands
-# | GWoIter=0                        # [GW] GWo self-consistent (evGWo) iterations on eigenvalues
-# | GWIter=0                         # [GW] GW  self-consistent (evGW)  iterations on eigenvalues
 # | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
 # | 1|3|2|7|
 # | %
