@@ -1,32 +1,32 @@
 #                                                                     
-#  __  __   ________   ___ __ __    _______   ______                  
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
 #                                                                     
-#                                                                     
-# Version 5.1.1 Revision 21370 Hash (prev commit) fedd9aea5           
-#             Branch is devel-sc-rt-excitons                          
-#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
-#                http://www.yambo-code.org                            
+# Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f           
+#                Branch is phys/excitons                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#               http://www.yambo-code.org                             
 #
 #
 # Warning. The components do not sum up to the last column
 #
-#    E [eV]             Res cc'            Res vv'            Res intra          Res nn             Res all
+#    E [eV]             Res cc'            Res vv'            Res intra          Res nn             Res all [Re]       Res all [Im]
 #
-   -0.871727824       -0.145664532E-2    -0.155072501E-1      0.00000000         0.00000000       -0.264693853E-1
-   -0.871708393        0.145595567E-2     0.154870581E-1      0.00000000         0.00000000        0.264400337E-1
-   -0.452791154        0.103452271E-5    -0.170831743E-5      0.00000000         0.00000000        0.243418663E-5
-    0.987051547        0.600105636E-7     0.188298557E-6      0.00000000         0.00000000        0.463371038E-6
-     1.42453098        0.811327664E-5     0.292145996E-4      0.00000000         0.00000000        0.370892576E-5
-     1.42463958       -0.300181114E-5    -0.454977344E-4      0.00000000         0.00000000       -0.208094043E-4
+   -0.871727824       -0.145663507E-2    -0.155072212E-1      0.00000000         0.00000000       -0.264692307E-1      1.32877123   
+   -0.871708393        0.145595148E-2     0.154871643E-1      0.00000000         0.00000000        0.264402032E-1     -1.32904649   
+   -0.452791154        0.106264270E-5    -0.145641388E-5      0.00000000         0.00000000        0.288445153E-5     0.246803742E-3
+    0.987051547        0.600104784E-7     0.188298486E-6      0.00000000         0.00000000        0.463370611E-6     0.133755744E-7
+     1.42453098        0.811327300E-5     0.292146142E-4      0.00000000         0.00000000        0.370894463E-5     0.460874026E-5
+     1.42463958       -0.300180909E-5    -0.454977890E-4      0.00000000         0.00000000       -0.208094352E-4    -0.466391066E-5
 # 
-# 04/11/2022 at 22:36 ypp_rt @ VivoBook [start]
-# 04/11/2022 at 22:36                   [end]
+# 07/15/2023 at 15:21 ypp_rt @ unimi-XPS-8930 [start]
+# 07/15/2023 at 15:21                         [end]
 #
 # .-Input file  yambo.in
 # | TDplots                          # [R] TD observables plot
@@ -47,10 +47,12 @@
 # | % TRabsExcPol
 # |  1.000000 | 0.000000 | 0.000000 |        # [RT] Polarization of the exciton in the initial state
 # | %
-# | TRabsOBS= "abs kerr"             # [RT] RT observable. It can be a combination of (abs)bsorption, (trans)mission, (refl)ectivity, (kerr
+# | EXCTemp= 0.37835E-43       eV    # [EXCPH] Excitonic Temperature (for luminescence spectra)
+# | TRabsNExc=  8                    # [RT] Index of the last exciton considered for inter/intra excitons transitions
+# | TRabsOBS= "abs kerr"             # [RT] RT obs. Use a combination of (abs)bsorption, (trans)mission, (refl)ectivity, (kerr)err
 # | % TRabsDIPdir
-# |  0.100000E-4 |  0.00000    |  0.00000    # [RT] Dipole reference direction. Defines the internal `x` axis
+# |  1.000000 | 0.000000 | 0.000000 |        # [RT] Dipole reference direction. Defines the internal `x` axis
 # | %
 # | TRabsDIPplane= "xx yy xy"        # [RT] Dipole rotation plane
-# | TRabsMODE= "cv eq"               # [RT] TRabs mode. It can be a combination of cv,vv,cc,ip,eq
+# | TRabsMODE= "cv inter-exc eq"     # [RT] TRabs mode. It can be a combination of cv,vv,cc,ip,eq
 # | TRabsEtresh= 0.010000      eV    # [RT] Treshold imposed on the e/h pairs energy
