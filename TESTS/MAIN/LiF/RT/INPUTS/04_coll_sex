@@ -1,0 +1,38 @@
+#                                                           
+#   __   __     _        __  __       ____      U  ___  u   
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/    
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |    
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |    
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/     
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\       
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)      
+#                                                           
+#                                                           
+#               Version 4.0.2 Revision 5425                 
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+collisions                   # [R] Eval the extended Collisions
+#em1s                         # [R Xs] Static Inverse Dielectric Matrix
+#Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
+#% BndsRnXs
+#  1 | 10 |                   # [Xs] Polarization function bands
+#%
+#NGsBlkXs=  51          RL    # [Xs] Response block size
+#% DmRngeXs
+#  0.0010 |  0.0010 | eV    # [Xs] Damping range
+#%
+#% LongDrXs
+# 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+#%
+# OLD
+Potential= "COHSEX"          # [SC] SC Potential
+# NEW
+HXC_Potential= "HARTREE+SEX CVONLY"          # [SC] SC Potential
+% COLLBands
+  3 |  5 |                   # [COLL] Bands for the collisions
+%
+HARRLvcs= 749        RL    # [XX] HARTREE  RL components
+EXXRLvcs= 51         RL    # [XX] Exchange RL components
+CORRLvcs= 51         RL    # [XX] Exchange RL components
+
