@@ -1,19 +1,19 @@
-                                                                          
-     ____  ____     _       ____    ____  ______      ___                 
-    |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.               
-      \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \              
-       \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |              
-       _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /              
-      |______||____| |____||_____||_____||_______/  `.___."               
-                                                                          
-                                                                          
+     __      __   ______   __       __  _______    ______                 
+    |  \    /  \ /      \ |  \     /  \|       \  /      \                
+     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
+      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
+       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
+        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
+        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
+        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
+         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
     Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f             
                    Branch is phys/non-linear                              
-             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 07/24/2023 at 17:38 yambo_rt @ unimi-XPS-8930
+ 07/25/2023 at 09:55 yambo_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -33,7 +33,7 @@
 
  Job   string        : 05_coll_sex_bse_allsymm
  Alt#1 string        : bse_kernel
- Alt#2 string        : R8
+ Alt#2 string        : R4
 
  Precision           : SINGLE
   
@@ -241,7 +241,7 @@
    *WRN*Brillouin Zone Q/K grids (IBZ/BZ)           :   19  256   10  256
    RL vectors                                       :   749 [WF]
    Coulomb cutoff potential                         : none
-   [K] Identifier                                   :   6222
+   [K] Identifier                                   :   8678
    [K] Dimension                                    :   512
    [K] Bands                                        :   3   5
    [K] Exchange res                                 : yes
@@ -251,7 +251,7 @@
    [K] Correlation cpl                              : no
    [K] W interaction is bare                        : no
    [K] ALDA kernel in R-space                       : no
-   [K] RL vectors exchange                          :   749
+   [K] RL vectors exchange                          :   339
    [K] RL vectors correlation                       :   51
    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
    [K] Coupling range                               :  100.0000  100.0000 [o/o]
@@ -278,7 +278,7 @@
    *WRN*Brillouin Zone Q/K grids (IBZ/BZ)           :   19  256   10  256
    RL vectors                                       :   749 [WF]
    Coulomb cutoff potential                         : none
-   [K] Identifier                                   :   6222
+   [K] Identifier                                   :   8678
    [K] Dimension                                    :   512
    [K] Bands                                        :   3   5
    [K] Exchange res                                 : yes
@@ -288,7 +288,7 @@
    [K] Correlation cpl                              : no
    [K] W interaction is bare                        : no
    [K] ALDA kernel in R-space                       : no
-   [K] RL vectors exchange                          :   749
+   [K] RL vectors exchange                          :   339
    [K] RL vectors correlation                       :   51
    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
    [K] Coupling range                               :  100.0000  100.0000 [o/o]
@@ -311,7 +311,80 @@
   - S/N 004744 ---------------------------------------------- v.05.01.00 r.22214 -
    Kernel maxval                                    :  0.000000
    Kernel complete                                  : yes
+  [WR./05_coll_sex_bse_allsymm//ndb.COLLISIONS_HXC_header]------------------------
+   Brillouin Zone Q/K grids (IBZ/BZ)                :   60  256   60  256
+   RL vectors                                       :   749 [WF]
+   COLLISIONS name                                  : HARTREE+SEX
+   Total number of COLLISIONS                       :  120
+   COLLISIONS kind                                  :  1327
+   Bands                                            :   3   5
+   Bands mixing                                     :  100.0000
+   CV only scattering                               : yes
+   Collisions Cutoff                                :  0.000000
+   Hartree  RL vectors                              :   339
+   Exchange RL vectors                              :   51
+  - S/N 004744 ---------------------------------------------- v.05.01.00 r.22214 -
 
-  [ERROR] STOP signal received while in[04.01] HARTREE+SEX CVONLY (e-e correlation)
+ [05] Timing Overview
+ ====================
 
-  [ERROR] Different cutoff between coll(hartree) and bse(exch)
+ Clock: global
+            IO_and_Messaging_switch :      0.0000s CPU (    2 calls,   0.003 msec avg)
+                        io_KB_pwscf :      0.0000s CPU
+                   io_ATMPROJ_pwscf :      0.0000s CPU
+                         io_DIPOLES :      0.0000s CPU
+                         io_COL_CUT :      0.0000s CPU
+                              io_HF :      0.0000s CPU
+                   io_RT_components :      0.0000s CPU (    2 calls,   0.021 msec avg)
+                     io_Double_Grid :      0.0001s CPU
+                               io_X :      0.0001s CPU (    5 calls,   0.023 msec avg)
+                              io_WF :      0.0010s CPU
+                       io_KB_abinit :      0.0012s CPU
+                            io_GROT :      0.0032s CPU (    3 calls,   1.083 msec avg)
+                           io_QINDX :      0.0038s CPU (    2 calls,   1.920 msec avg)
+        COLLISIONS_linearize_and_IO :      0.0065s CPU (  120 calls,   0.054 msec avg)
+                      io_COLLISIONS :      0.0084s CPU (  128 calls,   0.065 msec avg)
+                              io_BS :      0.8678s CPU (92556 calls,   0.009 msec avg)
+      HARTREE+SEX CVONLY Collisions :      0.9952s CPU
+                    COLLISIONS_eval :      1.0243s CPU
+
+ [06] Game Over & Game summary
+ =============================
+
+ 07/25/2023 at 09:55 yambo_rt @ unimi-XPS-8930 [start]
+ 07/25/2023 at 09:55                           [end]
+
+  
+ .-ACKNOWLEDGMENT
+ |
+ | The users of YAMBO have little formal obligations with respect to
+ | the YAMBO group (those specified in the GNU General Public
+ | License, http://www.gnu.org/copyleft/gpl.txt). However, it is
+ | common practice in the scientific literature, to acknowledge the
+ | efforts of people that have made the research possible. In this
+ | spirit, please find below the reference we kindly ask you to use
+ | in order to acknowledge YAMBO
+ |
+ | Many-body perturbation theory calculations using the yambo code
+ | D. Sangalli, A. Ferretti, H. Miranda, C. Attaccalite, I. Marri, E. Cannuccia, P. Melo,
+ | M Marsili, F Paleari, A Marrazzo, G Prandini, P Bonfà, M O Atambo, F Affinito,
+ | M Palummo, A Molina-Sánchez, C Hogan, M Grüning, D Varsano and A Marini.
+ | J. Phys.: Condens. Matter 31, 325902 (2019).
+ |
+ | Yambo: An ab initio tool for excited state calculations
+ | A. Marini, C. Hogan, M. Grüning, D. Varsano
+ | Computer Physics Communications 180, 1392 (2009).
+ |
+  
+ .-Input file  yambo.in
+ | collisions                       # [R] Collisions
+ | BoseTemp= 0.000000         eV    # Bosonic Temperature
+ | RT_Threads= 1                    # [OPENMP/RT] Number of threads for real-time
+ | % COLLBands
+ |   3 |  5 |                           # [COLL] Bands for the collisions
+ | %
+ | HXC_Potential= "HARTREE+SEX CVONLY" # [SC] SC HXC Potential
+ | FFTGvecs=  749             RL    # [FFT] Plane-waves
+ | HARRLvcs=  339             RL    # [HA] Hartree     RL components
+ | EXXRLvcs=  51              RL    # [XX] Exchange    RL components
+ | CORRLvcs=  51              RL    # [GW] Correlation RL components

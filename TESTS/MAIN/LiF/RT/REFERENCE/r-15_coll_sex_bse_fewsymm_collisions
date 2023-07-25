@@ -1,11 +1,11 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+     __  __   ________   ___ __ __    _______   ______                    
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
                                                                           
                                                                           
     Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f             
@@ -13,7 +13,7 @@
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 07/24/2023 at 17:19 yambo_rt @ unimi-XPS-8930
+ 07/25/2023 at 08:49 yambo_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -33,7 +33,7 @@
 
  Job   string        : 15_coll_sex_bse_fewsymm
  Alt#1 string        : 04_bse_cpl-serial-phys-non-linear
- Alt#2 string        : R6
+ Alt#2 string        : R1
 
  Precision           : SINGLE
   
@@ -236,7 +236,7 @@
    *WRN*Brillouin Zone Q/K grids (IBZ/BZ)           :   60  256   60  256
    RL vectors                                       :   749 [WF]
    Coulomb cutoff potential                         : none
-   [K] Identifier                                   :   51
+   [K] Identifier                                   :   465
    [K] Dimension                                    :   512
    [K] Bands                                        :   3   5
    [K] Exchange res                                 : yes
@@ -246,7 +246,7 @@
    [K] Correlation cpl                              : no
    [K] W interaction is bare                        : no
    [K] ALDA kernel in R-space                       : no
-   [K] RL vectors exchange                          :   749
+   [K] RL vectors exchange                          :   339
    [K] RL vectors correlation                       :   51
    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
    [K] Coupling range                               :  100.0000  100.0000 [o/o]
@@ -273,7 +273,7 @@
    *WRN*Brillouin Zone Q/K grids (IBZ/BZ)           :   60  256   60  256
    RL vectors                                       :   749 [WF]
    Coulomb cutoff potential                         : none
-   [K] Identifier                                   :   51
+   [K] Identifier                                   :   465
    [K] Dimension                                    :   512
    [K] Bands                                        :   3   5
    [K] Exchange res                                 : yes
@@ -283,7 +283,7 @@
    [K] Correlation cpl                              : no
    [K] W interaction is bare                        : no
    [K] ALDA kernel in R-space                       : no
-   [K] RL vectors exchange                          :   749
+   [K] RL vectors exchange                          :   339
    [K] RL vectors correlation                       :   51
    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
    [K] Coupling range                               :  100.0000  100.0000 [o/o]
@@ -316,7 +316,7 @@
    Bands mixing                                     :  100.0000
    CV only scattering                               : yes
    Collisions Cutoff                                :  0.000000
-   Hartree  RL vectors                              :   749
+   Hartree  RL vectors                              :   339
    Exchange RL vectors                              :   51
   - S/N 004744 ---------------------------------------------- v.05.01.00 r.22214 -
 
@@ -326,30 +326,30 @@
  ====================
 
  Clock: global
+                   io_ATMPROJ_pwscf :      0.0000s CPU
             IO_and_Messaging_switch :      0.0000s CPU (     2 calls,   0.003 msec avg)
                         io_KB_pwscf :      0.0000s CPU
-                   io_ATMPROJ_pwscf :      0.0000s CPU
                          io_DIPOLES :      0.0000s CPU
                          io_COL_CUT :      0.0000s CPU
                               io_HF :      0.0000s CPU
-                   io_RT_components :      0.0000s CPU (     2 calls,   0.022 msec avg)
                      io_Double_Grid :      0.0000s CPU
-                               io_X :      0.0001s CPU (     5 calls,   0.022 msec avg)
+                   io_RT_components :      0.0000s CPU (     2 calls,   0.020 msec avg)
+                               io_X :      0.0001s CPU (     5 calls,   0.021 msec avg)
+                              io_WF :      0.0009s CPU
                        io_KB_abinit :      0.0011s CPU
-                              io_WF :      0.0013s CPU
-                            io_GROT :      0.0036s CPU (     3 calls,   1.197 msec avg)
-                           io_QINDX :      0.0051s CPU (     2 calls,   2.532 msec avg)
-                      io_COLLISIONS :      0.0463s CPU (   520 calls,   0.089 msec avg)
-        COLLISIONS_linearize_and_IO :      0.0664s CPU (   512 calls,   0.130 msec avg)
-                              io_BS :      3.8234s CPU (395248 calls,   0.000 sec avg)
-      HARTREE+SEX CVONLY Collisions :      4.4233s CPU
-                    COLLISIONS_eval :      4.5197s CPU
+                            io_GROT :      0.0031s CPU (     3 calls,   1.028 msec avg)
+                           io_QINDX :      0.0040s CPU (     2 calls,   1.982 msec avg)
+                      io_COLLISIONS :      0.0376s CPU (   520 calls,   0.072 msec avg)
+        COLLISIONS_linearize_and_IO :      0.0545s CPU (   512 calls,   0.107 msec avg)
+                              io_BS :      3.7227s CPU (395248 calls,   0.000 sec avg)
+      HARTREE+SEX CVONLY Collisions :      4.3006s CPU
+                    COLLISIONS_eval :      4.3886s CPU
 
  [06] Game Over & Game summary
  =============================
 
- 07/24/2023 at 17:19 yambo_rt @ unimi-XPS-8930 [start]
- 07/24/2023 at 17:19                           [end]
+ 07/25/2023 at 08:49 yambo_rt @ unimi-XPS-8930 [start]
+ 07/25/2023 at 08:49                           [end]
 
  Timing   [Min/Max/Average]: 04s/04s/04s
              [Time-Profile]: 04s
@@ -384,6 +384,6 @@
  | %
  | HXC_Potential= "HARTREE+SEX CVONLY" # [SC] SC HXC Potential
  | FFTGvecs=  749             RL    # [FFT] Plane-waves
- | HARRLvcs=  749             RL    # [HA] Hartree     RL components
+ | HARRLvcs=  339             RL    # [HA] Hartree     RL components
  | EXXRLvcs=  51              RL    # [XX] Exchange    RL components
  | CORRLvcs=  51              RL    # [GW] Correlation RL components

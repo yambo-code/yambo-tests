@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
+                                                                          
+    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
+       ###  ###     ### ###       ### #########   ########                
+                                                                          
                                                                           
     Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f             
                    Branch is phys/non-linear                              
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 07/24/2023 at 18:16 yambo_rt @ unimi-XPS-8930
+ 07/25/2023 at 08:49 yambo_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -33,7 +33,7 @@
 
  Job   string        : 16_td_sex_bse_fewsymm
  Alt#1 string        : 15_coll_sex_bse_fewsymm-serial-phys-non-linear
- Alt#2 string        : R13
+ Alt#2 string        : R1
 
  Precision           : SINGLE
   
@@ -438,7 +438,7 @@
     Bands mixing                                     :  100.0000
     CV only scattering                               : yes
     Collisions Cutoff                                :  0.000000
-    Hartree  RL vectors                              :   749
+    Hartree  RL vectors                              :   339
     Exchange RL vectors                              :   51
    - S/N 004744 ---------------------------------------------- v.05.01.00 r.22214 -
 
@@ -509,47 +509,47 @@
  ====================
 
  Clock: global
-             io_ATMPROJ_pwscf :      0.0000s CPU
                eval_G_minus_G :      0.0000s CPU
+             io_ATMPROJ_pwscf :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
+                  io_KB_pwscf :      0.0000s CPU (    2 calls,   0.011 msec avg)
                io_Double_Grid :      0.0000s CPU
                         io_HF :      0.0000s CPU
-             RT output (INIT) :      0.0001s CPU
-                  io_KB_pwscf :      0.0001s CPU (    2 calls,   0.029 msec avg)
+             RT output (INIT) :      0.0000s CPU
                          io_X :      0.0001s CPU (    5 calls,   0.023 msec avg)
-                      io_GROT :      0.0031s CPU (    3 calls,   1.029 msec avg)
+                      io_GROT :      0.0031s CPU (    3 calls,   1.041 msec avg)
                  PP_uspp_init :      0.0035s CPU (  256 calls,   0.014 msec avg)
-                     io_QINDX :      0.0039s CPU (    2 calls,   1.962 msec avg)
-                 RT avg redux :      0.0047s CPU (10002 calls,   0.000 msec avg)
-      IO_and_Messaging_switch :      0.0178s CPU (10520 calls,   0.002 msec avg)
-                    RT output :      0.0225s CPU (  404 calls,   0.056 msec avg)
-                   io_DIPOLES :      0.0228s CPU (  520 calls,   0.044 msec avg)
-                io_COLLISIONS :      0.0257s CPU ( 1032 calls,   0.025 msec avg)
-              COLLISIONS_load :      0.0272s CPU (    2 calls,  13.591 msec avg)
-         COLLISIONS (sym-red) :      0.0563s CPU (10001 calls,   0.006 msec avg)
-                  WF_load_FFT :      0.1104s CPU (  256 calls,   0.431 msec avg)
-       COLLISIONS (G average) :      0.1155s CPU (10001 calls,   0.012 msec avg)
-                  io_fragment :      0.1185s CPU (  512 calls,   0.231 msec avg)
-                 io_KB_abinit :      0.1190s CPU (  258 calls,   0.461 msec avg)
-             io_RT_components :      0.1316s CPU (  165 calls,   0.798 msec avg)
-              RT databases IO :      0.1445s CPU ( 5001 calls,   0.029 msec avg)
-                        io_WF :      0.3019s CPU (  769 calls,   0.393 msec avg)
-               RT Apply Field :      0.4713s CPU (10001 calls,   0.047 msec avg)
-            DIPOLE_transverse :      0.7036s CPU
-                RT integrator :      1.3938s CPU (10000 calls,   0.000 sec avg)
-                      Dipoles :      1.7199s CPU
-                RT average Op :      2.0189s CPU (10002 calls,   0.000 sec avg)
-               RT observables :      2.1314s CPU ( 5001 calls,   0.000 sec avg)
-         COLLISIONS (compose) :     60.6362s CPU (10001 calls,   0.006 sec avg)
-               RT Hamiltonian :     61.3640s CPU (10001 calls,   0.006 sec avg)
+                     io_QINDX :      0.0040s CPU (    2 calls,   2.023 msec avg)
+                 RT avg redux :      0.0046s CPU (10002 calls,   0.000 msec avg)
+                    RT output :      0.0130s CPU (  404 calls,   0.032 msec avg)
+      IO_and_Messaging_switch :      0.0199s CPU (10520 calls,   0.002 msec avg)
+                   io_DIPOLES :      0.0232s CPU (  520 calls,   0.045 msec avg)
+                io_COLLISIONS :      0.0259s CPU ( 1032 calls,   0.025 msec avg)
+              COLLISIONS_load :      0.0273s CPU (    2 calls,  13.655 msec avg)
+         COLLISIONS (sym-red) :      0.0592s CPU (10001 calls,   0.006 msec avg)
+                  WF_load_FFT :      0.1128s CPU (  256 calls,   0.441 msec avg)
+       COLLISIONS (G average) :      0.1172s CPU (10001 calls,   0.012 msec avg)
+                 io_KB_abinit :      0.1184s CPU (  258 calls,   0.459 msec avg)
+                  io_fragment :      0.1212s CPU (  512 calls,   0.237 msec avg)
+             io_RT_components :      0.1380s CPU (  165 calls,   0.836 msec avg)
+              RT databases IO :      0.1539s CPU ( 5001 calls,   0.031 msec avg)
+                        io_WF :      0.3048s CPU (  769 calls,   0.396 msec avg)
+               RT Apply Field :      0.4628s CPU (10001 calls,   0.046 msec avg)
+            DIPOLE_transverse :      0.7091s CPU
+                RT integrator :      1.3877s CPU (10000 calls,   0.000 sec avg)
+                      Dipoles :      1.7229s CPU
+                RT average Op :      2.0319s CPU (10002 calls,   0.000 sec avg)
+               RT observables :      2.1557s CPU ( 5001 calls,   0.000 sec avg)
+         COLLISIONS (compose) :     61.4062s CPU (10001 calls,   0.006 sec avg)
+               RT Hamiltonian :     62.1328s CPU (10001 calls,   0.006 sec avg)
 
  [07] Game Over & Game summary
  =============================
 
- 07/24/2023 at 18:16 yambo_rt @ unimi-XPS-8930 [start]
- 07/24/2023 at 18:17                           [end]
+ 07/25/2023 at 08:49 yambo_rt @ unimi-XPS-8930 [start]
+ 07/25/2023 at 08:50                           [end]
 
- Timing   [Min/Max/Average]: 01m-06s/01m-06s/01m-06s
+ Timing   [Min/Max/Average]: 01m-07s/01m-07s/01m-07s
              [Time-Profile]: 01m-07s
 
  .-ACKNOWLEDGMENT
@@ -580,7 +580,7 @@
  | RT_Threads= 1                    # [OPENMP/RT] Number of threads for real-time
  | HXC_Potential= "HARTREE+SEX CVONLY" # [SC] SC HXC Potential
  | FFTGvecs=  749             RL    # [FFT] Plane-waves
- | HARRLvcs=  749             RL    # [HA] Hartree     RL components
+ | HARRLvcs=  339             RL    # [HA] Hartree     RL components
  | % GfnQP_E
  |  5.800000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
  | %
