@@ -147,10 +147,10 @@ case $with_yambo in
   *) 
    if test -f ROBOTS/$robot/$user/BRANCHES; then
      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
-     if ! test x"$GREP" = "x0"; then 
+     if test x"$GREP" = "x0"; then 
       if test -f $with_yambo/driver/yambo.F ; then
         AC_MSG_RESULT($with_yambo)
-        echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+        echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
       else
         AC_MSG_ERROR([could not locate the Yambo source])
       fi
@@ -160,7 +160,7 @@ case $with_yambo in
    else
      if test -f $with_yambo/driver/yambo.F ; then
        AC_MSG_RESULT($with_yambo)
-       echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+       echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
      fi
    fi
    source_dir=$with_yambo
