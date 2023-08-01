@@ -68,7 +68,9 @@ if ("$what" eq "BASIC") {
  #
  # Off's 
  if ($is_off){
-  if ($is_off =~ /mpi/ and $np_min==1 and $np_max==1 ){$mpi_is_off="yes"};
+  if ($is_off =~ /mpi/) {$mpi_is_off="yes"};
+  if ($mpi_is_off and $np_min and $np_min>1) {undef $mpi_is_off};
+  if ($mpi_is_off and $np_max and $np_max>1) {undef $mpi_is_off};
   if ($is_off =~ /openmp/ ){$openmp_is_off="yes"};
  }
  #
