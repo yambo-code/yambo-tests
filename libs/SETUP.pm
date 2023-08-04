@@ -68,10 +68,8 @@ if ("$what" eq "BASIC") {
  #
  # Off's 
  if ($is_off){
-  if ($is_off =~ /mpi/) {$mpi_is_off="yes"};
-  if ($mpi_is_off and $np_min and $np_min>1) {undef $mpi_is_off};
-  if ($mpi_is_off and $np_max and $np_max>1) {undef $mpi_is_off};
-  if ($is_off =~ /openmp/ ){$openmp_is_off="yes"};
+  if ($is_off =~    /mpi/ ) {$mpi_is_off="yes"};
+  if ($is_off =~ /openmp/ ) {$openmp_is_off="yes"};
  }
  #
  &MY_PRINT($stdout, "\n$double_line") if (!$reduced_log);

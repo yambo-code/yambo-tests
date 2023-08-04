@@ -38,6 +38,11 @@ while ( 1 > 0)
    set last_hash=`git log --pretty=format:"%h" | head -n 1` 
    cd @test_suite_dir@
    #
+   set off_flag=" "
+   if ( "$options" == "mpioff" ) then
+     set off_flag="-o mpi"
+   fi
+   #
    # stop if needed
    if ( -f ~/yambo-testing/stop_@robot@ ) break
    #
