@@ -13,29 +13,23 @@
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
-em1s                             # [R][Xs] Statically Screened Interaction
 optics                           # [R] Linear Response optical properties
 bss                              # [R] BSE solver
 bse                              # [R][BSE] Bethe Salpeter Equation.
 dipoles                          # [R] Oscillator strenghts (or dipoles)
 
-Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
-BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSKmod= "2NDBORN"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 
 BSENGexx= 4000            RL    # [BSK] Exchange components
-BSENGBlk= 200            RL    # [BSK] Exchange components
+BSENGBlk= 4000            RL    # [BSK] Exchange components
 #WehCpl                          # [BSK] eh interaction included also in coupling
 BSEprop= "abs esrt jdos"              # [BSE] abs/kerr/magn/dichr trace
 
-BSSmod= "hdi"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
-# Haydock
-BSHayTrs=0.001
-#BSHayTer
-BSHayItrMAX=200
+BSSmod= "i"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
 # Inversion
-BSSInvMode= "pf"                 # [BSS] Inversion solver modality `(f)ull/(p)erturbative`
-BSEPSInvTrs= 0.010000            # [BSS EPS] Inversion treshold. Relative[o/o](>0)/Absolute(<0)
+BSSInvMode= "pf"                  # [BSS] Inversion solver modality `(f)ull/(p)erturbative`
+BSEPSInvTrs= -0.010000            # [BSS EPS] Inversion treshold. Relative[o/o](>0)/Absolute(<0)
 BSSInvPFratio= 1.000000          # [BSS] Inversion solver. Ratio between the number of frequencies solved pert/full
 BSPLInvTrs= 0.500000             # [BSS PL] Inversion treshold
 
@@ -52,27 +46,19 @@ CUTwsGvec= 0.700000            # [CUT] WS cutoff: number of G to be modified
  1 | 1 |                             # [BSK] Transferred momenta range
 %
 % BSEBands
-  2 | 7 |                           # [BSK] Bands range
+  1 | 10 |                           # [BSK] Bands range
 %
 % BEnRange
- -20.00000 | 20.00000 |         eV    # [BSS] Energy range
+  2.00000 | 10.00000 |         eV    # [BSS] Energy range
 %
 % BDmRange
- 0.10000 | 0.10000 |         eV    # [BSS] Damping range
+ 0.030000 | 0.030000 |         eV    # [BSS] Damping range
 %
-BEnSteps= 2001                    # [BSS] Energy steps
+BEnSteps= 3001                    # [BSS] Energy steps
 % BLongDir
  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %
 #WRbsWF                        # [BSS] Write to disk excitonic the WFs
-% BndsRnXs
-  1 | 20 |                           # [Xs] Polarization function bands
-%
-NGsBlkXs= 200                RL    # [Xs] Response block size
-% LongDrXs
- 1.000000 | 1.000000 | 1.000000 |        # [Xs] [cc] Electric Field
-%
-XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
 
 
 
