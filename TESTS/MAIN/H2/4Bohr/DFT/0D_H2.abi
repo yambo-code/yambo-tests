@@ -1,0 +1,49 @@
+
+ndtset 2   jdtset  1 2
+
+iomode 3
+
+# Common variables
+acell  15 15 15
+ecut 14
+natom 2
+ntypat 1
+typat  1 1
+nsppol 1
+nkpt 1
+kptopt 0
+znucl 1 1
+diemac 2.0 
+
+xcart   -2.0  0.0  0.0
+         2.0  0.0  0.0
+
+pp_dirpath  "./"
+pseudos    "1h.pspnc"
+output_file "0D_H2.out"
+tmpdata_prefix "0D_H2_tmp"
+outdata_prefix "0D_H2_o"
+ indata_prefix "0D_H2_i"
+
+
+#Run 1 Groundstate calculation
+nstep1      1000
+toldfe1    1.0d-12
+nband1     4
+iscf1      3
+prtden1    1
+
+#Run 2  wf
+ iscf2     -2
+ getden2   1
+ getwfk2   1
+ nband2    50
+ nstep2     3000
+ tolwfr2     1.0d-10
+ occopt2 1
+ prtwf2   1
+ prtkbff2 1
+ symmorphi2 0
+ istwfk2 *1
+
+
