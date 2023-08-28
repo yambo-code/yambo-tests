@@ -56,7 +56,7 @@ while ( 1 > 0)
     @test_suite_dir@/scripts/reset.sh
     touch ~/yambo-testing/@robot@_is_running
     set T=`date +%T`
-    @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
+    @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow $off_flag -r > $log_dir/log-@robot@-${flow}-${T} 
     @test_suite_dir@/driver.pl -kill > /dev/null
    endif
    #
