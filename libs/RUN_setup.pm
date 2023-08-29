@@ -51,7 +51,6 @@ if ("@_" =~ "before_run"){
  if (not $string eq "serial"){
   if($np gt 1){ 
    $cpu_conf=$cpu_conf."(N=$np)";
-   undef $check_input_generation;
   };
   if(not $random_parallel and not $default_parallel){ $cpu_conf=$cpu_conf."(ID=$ir)" };
  }

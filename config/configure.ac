@@ -205,6 +205,12 @@ test_suite_dir=`pwd`
 PERL_LIB="${test_suite_dir}/libs"
 AC_SUBST(test_suite_dir)
 AC_SUBST(PERL_LIB)
+# PRIVATE PART
+PERL_LIB_PRIVATE="${test_suite_dir}/ROBOTS"
+AC_SUBST(PERL_LIB_PRIVATE)
+USE_PRIVATE_LIB="#"
+if test -f ROBOTS/FTP_utils.pm; then USE_PRIVATE_LIB="use FTP_utils;"; fi;
+AC_SUBST(USE_PRIVATE_LIB)
 # ============================================================================
 AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl ${CFG_FILES}])
 AC_OUTPUT

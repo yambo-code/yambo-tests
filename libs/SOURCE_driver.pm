@@ -86,8 +86,10 @@ if ($compile) {
  &MY_PRINT($stdout, "\n -   Source configure :");
  chdir $BRANCH;
  &MY_PRINT($stdout, " Checking out as $branch_id ...");
+ &MY_PRINT($stdout, "Updating (1) ...");
+ &command("$git pull -q --no-rebase");
  &command("$git checkout $branch_id -q");
- &MY_PRINT($stdout, "Updating ...");
+ &MY_PRINT($stdout, "Updating (2) ...");
  &command("$git pull -q --no-rebase");
  &command("$git submodule update --recursive --remote");
  #
