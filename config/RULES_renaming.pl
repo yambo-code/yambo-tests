@@ -23,10 +23,20 @@
 # License along with this program; if not, write to the Free
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
-$N_PATTERNS=0;
+# This file containts 2 sections:
 #
-# [1] = REFERENCE
-# [2] = MODIFIED REFERENCE
+# Sec. I: here we define renaming rules for output files.
+#         These rules are composed of PATTERN_branch and PATTERN fields. The first
+#         identifies the branch and the second the renaming rule.
+#         PATTERN[*][1] = REFERENCE
+#         PATTERN[*][2] = MODIFIED REFERENCE
+#
+# Sec II: here we define runlevel alternatives. Again this is based on RNLVLRN_branch
+#         RNLVLRN[*][1] = RUNLEVEL_old
+#         RNLVLRN[*][2] = RUNLEVEL_new 
+#
+# ============ SEC I =================
+$N_PATTERNS=0;
 #
 @patts1 = qw(1 2);
 @patts2 = qw(UP DN);
@@ -114,4 +124,13 @@ $N_PATTERNS++;
 $PATTERN_branch[$N_PATTERNS]="$BRANCH_LIST";
 $PATTERN[$N_PATTERNS][2]="merged.-02_QP_PPA";
 $PATTERN[$N_PATTERNS][1]="merged.02_QP_PPA";
+#
+# ============ SEC II =================
+$N_RUNLVLRN=0;
+#
+$N_RUNLVLRN++;
+$RUNLVLRN_branch[$N_RUNLVLRN]="yoda/develop";
+$RUNLVLRN[$N_RUNLVLRN][1]="gw0";
+$RUNLVLRN[$N_RUNLVLRN][2]="self_energy";
+#
 

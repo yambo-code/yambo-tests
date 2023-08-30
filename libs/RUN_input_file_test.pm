@@ -23,7 +23,7 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub RUN_input_file_test{
-
+ #
  undef $NEW_file;
  my $CMD;
  if (-f $INPUT_file) 
@@ -32,29 +32,37 @@ sub RUN_input_file_test{
   &command("echo \"ORIGINAL\" >> $INPUT_file");
   &command("cp $INPUT_file $NEW_file");
  }
-
+ #
+ # SETUP
  if ($SETUP=="1")   { $CMD=$CMD." -setup" };
+ #
+ # hF
  if ($HF=="1")      { $CMD=$CMD." -hf"};
- if ($GW=="1"  &&  &RUN_feature("_gw_")==0) { $CMD=$CMD." -se gw -dyson n"};
- if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -se gw -X p"};
- if ($COHSEX=="1" &&  &RUN_feature("_gw_")==0)  { $CMD=$CMD." -se c"};
+ #
+ # GW
+ undef $GW_cmd;
+ if ($GW=="1")     {$GW_cmd=" -se gw"};
+ if ($PPA=="1")    {$GW_cmd=$GW_cmd." -X p"};
+ if ($MPA=="1")    { $GW_cmd=$GW_cmd." -X m"};
+ if ($COHSEX=="1") { $GW_cmd=" -se c -dyson n"};
+ if ($LIFE=="1")   { $GW_cmd=" -lifetimes"};
+ $CMD=$CMD.$GW_cmd;
+ if (&RUN_feature("DysSolver= \"n\"")=="1") {$CMD=$CMD." -dyson n"};
+ if (&RUN_feature("DysSolver= \"s\"")=="1") {$CMD=$CMD." -dyson s"}
+ if (&RUN_feature("DysSolver= \"g\"")=="1") {$CMD=$CMD." -dyson g"};
+ #
+ # RESP
  if ($BSE=="1")     { $CMD=$CMD." -optics b"};
  if ($CHI=="1")     { $CMD=$CMD." -optics c"};
  if ($EM1S=="1")    { $CMD=$CMD." -X s"};
  if ($EM1D=="1" && $MPA=="0")    { $CMD=$CMD." -X d"};
- if ($MPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -X m"};
- if ($PPA=="1" &&  &RUN_feature("gw")==0  &&  &RUN_feature("_gw_")==0)    { $CMD=$CMD." -X p"};
  if ($SC=="1")      { $CMD=$CMD." -sc"};
- if ($LIFE=="1")    { $CMD=$CMD." -lifetimes"};
-
+ #
+ # RIM
  if (&RUN_feature("rim_cut")=="1") {$CMD=$CMD." -coulomb"};
  if (&RUN_feature("rim_w")=="1")   {$CMD=$CMD." -rw"};
- if ($GW=="1" && $EM1D=="1") {$CMD=$CMD." -se gw"}
-
- if (&RUN_feature("DysSolver= \"n\"")=="1") {$CMD=$CMD." -dyson n"};
- if (&RUN_feature("DysSolver= \"s\"")=="1") {$CMD=$CMD." -dyson s"}
- if (&RUN_feature("DysSolver= \"g\"")=="1") {$CMD=$CMD." -dyson g"};
-
+ #
+ # BSS
  if (&RUN_feature("BSSmod= \"di\"")=="1") {$CMD=$CMD." -Ksolver di"};
  if (&RUN_feature("BSSmod= \"d\"")=="1")  {$CMD=$CMD." -Ksolver d"};
  if (&RUN_feature("BSSmod= \"s\"")=="1")  {$CMD=$CMD." -Ksolver s"};
@@ -64,7 +72,8 @@ sub RUN_input_file_test{
  if (&RUN_feature("BSSmod= \"dh\"")=="1")  {$CMD=$CMD." -Ksolver hd"};
  if (&RUN_feature("BSSmod= \"hdi\"")=="1")  {$CMD=$CMD." -Ksolver hdi"};
  if (&RUN_feature("BSSmod= \"i\"")=="1")  {$CMD=$CMD." -Ksolver i"};
-
+ #
+ # NEGF
  if (&RUN_feature("negf")=="1") 
  {
    if (&RUN_feature("Field1")=="1") {$CMD_tmp=" -rt p1"};
@@ -73,7 +82,6 @@ sub RUN_input_file_test{
    $CMD=$CMD.$CMD_tmp;
  };
  if (&RUN_feature("collisions")=="1") {$CMD=$CMD." -collisions"};
- 
  if (&RUN_feature("el_photon_scatt")=="1") {
    if (not $is_NEW_scatt) {$CMD=$CMD." -scattering h"}
    if (    $is_NEW_scatt) {$CMD=$CMD." -scattering eh"}
@@ -89,7 +97,8 @@ sub RUN_input_file_test{
  if (&RUN_feature("ph_el_scatt")=="1") {
    if (    $is_NEW_scatt) {$CMD=$CMD." -scattering pe"}
  }
-
+ #
+ # POTs
  my $POT;
  if (&RUN_feature("HXC_Potential IP")=="1") {$POT="ip"};
  if (&RUN_feature("HXC_Potential HARTREE")=="1") {$POT=$POT."h"};

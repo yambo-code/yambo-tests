@@ -179,6 +179,11 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    &RUN_setup("before_run");
    &RUN_load_actions(".actions");
    #
+   if ($np>1) {undef $check_input_generation};
+   #
+   # Apply input file renaming rules 
+   if ( not $check_input_generation) {&RUN_input_apply_renaming_rules};
+   #
    # Check if extra flags are needed (JOB specific)
    $error=&RUN_user_flags($ir);
    #
