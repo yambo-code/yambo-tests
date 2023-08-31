@@ -29,7 +29,16 @@ do "config/MODULES.pl";
 do "config/TOOLS.pl";
 do "config/RULES_renaming.pl";
 do "config/RULES_ignore.pl";
-do "ROBOTS/ROBOTS_list.pl";
+#
+# ROBOTS repo
+#
+if ( -d "ROBOTS") 
+{
+ do "ROBOTS/ROBOTS_list.pl";
+ do "ROBOTS/FTP_credentials.pl";
+}else{
+ do "config/FTP_empty_credentials.pl";
+}
 #
 # The location of the test-suite directory
 $suite_dir=abs_path();
