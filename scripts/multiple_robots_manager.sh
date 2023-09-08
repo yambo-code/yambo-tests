@@ -114,7 +114,7 @@ for test in test.* ; do
   ./scripts/launch_the_robot.sh
  fi
  #
- # Kill
+ # Kill 
  if [ ! -z $KILL ] && [ ! -z $PID ] ; then
   repeat "="
   message "Killing $robot.$ID with PID "$PID
