@@ -5,7 +5,7 @@ while ( 1 > 0)
  # update branch and flows
  #
  cd @test_suite_dir@
- git pull
+ git pull >& /dev/null
  ./scripts/wget_from_google_drive.sh
  set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh' | xargs rm -f`
  rm -f ROBOTS/@robot@/@user@/FLOWS/run.*
@@ -32,9 +32,9 @@ while ( 1 > 0)
    mkdir -p $branch_dir
    #
    cd @source_dir@
-   git pull
-   git checkout $ybranch
-   git pull
+   git pull >& /dev/null
+   git checkout $ybranch  >& /dev/null
+   git pull  >& /dev/null
    set last_hash=`git log --pretty=format:"%h" | head -n 1` 
    cd @test_suite_dir@
    #
