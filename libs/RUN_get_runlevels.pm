@@ -25,6 +25,7 @@
 sub RUN_get_runlevels{
 #
 $description="";
+$PPA="0";
 $YPP="0";
 $YPP_RT="0";
 $YPP_SC="0";
@@ -75,7 +76,7 @@ if (&RUN_feature("DBsIOoff=\"COLLs\"") eq "1"){$io_COLL="0"}else{$io_COLL="1"};
 $COLL=&RUN_feature("collisions");
 if ($COLL eq "1") { $description .= " collisions" };
 if (&RUN_feature("tdBSE") eq "1") { $description .= " TD-BSE" };
-$PPA=&RUN_feature("ppa");
+if (&RUN_feature("ppa") eq "1" and &RUN_feature("_ppa") eq "0") {$PPA=1}
 if ($PPA eq "1") { $description .= " PPA" };
 $MPA=&RUN_feature("mpa");
 if ($MPA eq "1") { $description .= " MPA" };
