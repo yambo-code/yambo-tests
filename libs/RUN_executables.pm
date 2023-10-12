@@ -107,10 +107,5 @@ if ($openmp_is_off) {
 }else{
  $ENV{'OMP_NUM_THREADS'}=$nt;
 }
-if ($mpi_is_off){
- if ( not $is_NEW_driver) {$yambo_exec="$yambo_exec -M"}
- if (     $is_NEW_driver) {$yambo_exec="$yambo_exec -nompi"}
-}
-#
 }
 1;
