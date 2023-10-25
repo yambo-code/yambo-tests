@@ -1,12 +1,12 @@
 
 
- __    __ ______           ____     _____
-/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
-\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
- `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
-   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
-     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
-      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
+  __ __  ____ ___ ___ ____   ___
+ |  |  |/    |   |   |    \ /   \
+ |  |  |  o  | _   _ |  o  )     |
+ |  ~  |     |  \_/  |     |  O  |
+ |___, |  _  |   |   |  O  |     |
+ |     |  |  |   |   |     |     |
+ |____/|__|__|___|___|_____|\___/
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -18,17 +18,26 @@
  <---> Grid dimensions      :  2  2  2
  <---> [02.05] Energies & Occupations
  <---> [03] Transferred momenta grid and indexing
+ <---> [BZ sampling] Q-grid is User defined and/or read from the database
+ <---> [03.01] X + BSE indexes
+ <---> X + BSE [eval] |                                        | [000%] --(E) --(X)
+ <---> X + BSE [eval] |########################################| [100%] --(E) --(X)
+ <---> X + BSE[REDUX] |                                        | [000%] --(E) --(X)
+ <---> X + BSE[REDUX] |########################################| [100%] --(E) --(X)
+ <---> [03.01.01] Sigma indexes
+ <---> Sigma [eval] |                                        | [000%] --(E) --(X)
+ <---> Sigma [eval] |########################################| [100%] --(E) --(X)
+ <---> Sigma[REDUX] |                                        | [000%] --(E) --(X)
+ <---> Sigma[REDUX] |########################################| [100%] --(E) --(X)
  <---> [03.01] External RT corrections (X)
  <---> [RT] Loaded Carrier components @ 0.000000 fs
  <---> [df_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
- <---> [WARNING] No completely empy band found. Include more states in the DFT run?
  <---> [WARNING] [f@ X] Metallic system
  <---> [04] External/Internal QP corrections
  <---> E<08_ypp_gw_10fs_part2/ndb.QP_merged_1_gw_cohsex_gw_ppa[ XG 59 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8]
  <---> [dE_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
  <---> [QP_apply] Action to be applied: E<08_ypp_gw_10fs_part2/ndb.QP_merged_1_gw_cohsex_gw_ppa[ XG 59 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8]
  <---> [04.01]  QP corrections report
- <---> [WARNING] [K+QP] Metallic system
  <---> [04.02] External RT corrections (K)
  <---> [RT] Loaded Carrier components @ 0.000000 fs
  <---> [df_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
@@ -44,17 +53,17 @@
  <---> [LA] SERIAL linear algebra
  <---> [WARNING] The system is a metal but Drude term not included.
  <---> [FFT-X] Mesh size:  12  12  12
- <---> [X-CG] R(p) Tot o/o(of R):   21  163  100
+ <---> [X-CG] R(p) Tot o/o(of R):   21  161  100
  <---> Xo@q[1] |                                        | [000%] --(E) --(X)
  <---> Xo@q[1] |########################################| [100%] --(E) --(X)
  <---> X@q[1] |                                        | [000%] --(E) --(X)
  <---> X@q[1] |########################################| [100%] --(E) --(X)
- <---> [X-CG] R(p) Tot o/o(of R):   32  179  100
+ <---> [X-CG] R(p) Tot o/o(of R):   30  152  100
  <---> Xo@q[2] |                                        | [000%] --(E) --(X)
  <---> Xo@q[2] |########################################| [100%] --(E) --(X)
  <---> X@q[2] |                                        | [000%] --(E) --(X)
  <---> X@q[2] |########################################| [100%] --(E) --(X)
- <---> [X-CG] R(p) Tot o/o(of R):   28  188  100
+ <---> [X-CG] R(p) Tot o/o(of R):   25  152  100
  <---> Xo@q[3] |                                        | [000%] --(E) --(X)
  <---> Xo@q[3] |########################################| [100%] --(E) --(X)
  <---> X@q[3] |                                        | [000%] --(E) --(X)
@@ -97,24 +106,22 @@
  <---> [07.01.08] Haydock Solver in the optics basis @q1 using the hermitian scheme
  <---> [Haydock] Iteration 1
  <---> [Haydock] Iteration 2
- <---> [Haydock] Iteration 3 Accuracy   1097.15| 0.020000
- <---> [Haydock] Iteration 4 Accuracy  89.53552| 0.020000
- <---> [Haydock] Iteration 5 Accuracy   2618.20| 0.020000
- <---> [Haydock] Iteration 6 Accuracy   1208.49| 0.020000
- <---> [Haydock] Iteration 7 Accuracy   1413.20| 0.020000
- <---> [Haydock] Iteration 8 Accuracy  170.3707| 0.020000
- <---> [Haydock] Iteration 9 Accuracy  324.4886| 0.020000
- <---> [Haydock] Iteration 10 Accuracy  76.13174| 0.020000
- <---> [Haydock] Iteration 11 Accuracy  100.8363| 0.020000
- <---> [Haydock] Iteration 12 Accuracy  4.658768| 0.020000
- <---> [Haydock] Iteration 13 Accuracy  80.36647| 0.020000
- <---> [Haydock] Iteration 14 Accuracy  0.096931| 0.020000
- <---> [Haydock] Iteration 15 Accuracy  0.042310| 0.020000
- <---> [Haydock] Iteration 16 Accuracy  0.050848| 0.020000
- <---> [Haydock] Iteration 17 Accuracy  0.026982| 0.020000
- <---> [Haydock] Iteration 18 Accuracy  0.044707| 0.020000
- <---> [Haydock] Iteration 19 Accuracy  0.046104| 0.020000
- <---> [Haydock] Iteration 20 Accuracy  0.007357| 0.020000
- <---> [Haydock] Iteration 21 Accuracy  0.014715| 0.020000
+ <---> [Haydock] Iteration 3 Accuracy  136.1891| 0.020000
+ <---> [Haydock] Iteration 4 Accuracy  501.2294| 0.020000
+ <---> [Haydock] Iteration 5 Accuracy  194.6497| 0.020000
+ <---> [Haydock] Iteration 6 Accuracy  17.58586| 0.020000
+ <---> [Haydock] Iteration 7 Accuracy  119.0481| 0.020000
+ <---> [Haydock] Iteration 8 Accuracy  60.24245| 0.020000
+ <---> [Haydock] Iteration 9 Accuracy  331.4373| 0.020000
+ <---> [Haydock] Iteration 10 Accuracy  0.309818| 0.020000
+ <---> [Haydock] Iteration 11 Accuracy  0.307894| 0.020000
+ <---> [Haydock] Iteration 12 Accuracy  4.252274| 0.020000
+ <---> [Haydock] Iteration 13 Accuracy  0.452139| 0.020000
+ <---> [Haydock] Iteration 14 Accuracy  1.020412| 0.020000
+ <---> [Haydock] Iteration 15 Accuracy  0.140774| 0.020000
+ <---> [Haydock] Iteration 16 Accuracy  0.147463| 0.020000
+ <---> [Haydock] Iteration 17 Accuracy  0.193342| 0.020000
+ <---> [Haydock] Iteration 18 Accuracy  0.002625| 0.020000
+ <---> [Haydock] Iteration 19 Accuracy  0.004764| 0.020000
  <---> [08] Timing Overview
  <---> [09] Game Over & Game summary

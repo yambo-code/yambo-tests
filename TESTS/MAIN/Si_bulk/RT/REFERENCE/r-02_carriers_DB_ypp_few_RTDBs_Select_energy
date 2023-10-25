@@ -1,19 +1,19 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
-                                                                          
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
                                                                           
     Version 5.1.0 Revision 22561 Hash (prev commit) 785b4fd6f             
-                      Branch is bug-fixes                                 
+                     Branch is bug-fixes                                  
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+                  http://www.yambo-code.org                               
  
- 10/25/2023 at 11:48 ypp_rt @ unimi-XPS-8930
+ 10/25/2023 at 11:47 ypp_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -27,11 +27,11 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-08_ypp_gw_10fs_Xonly_part2_QPDBs_QPDB_merge
+ Report file         : ./r-02_carriers_DB_ypp_few_RTDBs_Select_energy
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 08_ypp_gw_10fs_Xonly_part2
+ Job   string        : 02_carriers_DB_ypp_few
  Alt#1 string        : R18
 
  Precision           : SINGLE
@@ -193,106 +193,52 @@
   occ @ K [3]
    2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
 
-  [05.06] QP databases mergering
-  ==============================
+ [06] Manual carriers excitation via Energy selection
+ ====================================================
 
+ [RT] Eh pair pumped `by hand` @ k1 bands 2 -> 5 (level 1)
+ [RT] Eh pair pumped `by hand` @ k1 bands 3 -> 6 (level 1)
+ [RT] Eh pair pumped `by hand` @ k1 bands 4 -> 7 (level 1)
+ [RT] Carrier number  [USER]:  0.100000E-2
+ [RT]                 [GRID]:  0.030000
+ [RT]         density       :  0.76692E+21 [cm-3]
+ [WR./02_carriers_DB_ypp_few//ndb.RT_carriers]-----------------------------------
+  Coulomb cutoff potential                         : none
+  Fragmentation                                    : yes
+  Electronic Temperature                           :  0.000000 [K]
+  Bosonic    Temperature                           :  1.000000 [K]
+  [RT] Bands                                       :   2   7
+  [RT] K-points                                    :  3
+  [RT] Potential                                   : HARTREE+GS_xc
+  [E-E] Coulomb scattering                         : yes
+  [E-E] Coulomb correlation                        : no
+  [E-PHOTON] Scattering                            : yes
+  [RT] Time step     (initial)                     :  0.010000 [fs]
+  [RT] NE time       (planned)                     :   1000.00    [fs]
+  [RT] NE steps      (planned)                     :  1
+  [RT] Lif Extr Inte/Intr(sav)                     :  0.000000  0.000000 [fs]
+  [RT] Lifetimes extrapolation                     : no
+  [RT] Integrator                                  : RK2
+  [RT] Radiative life time                         :  0.000000 [fs]
+  [RT] Dephasing life time                         :  0.000000 [fs]
+  [RT] External Field(s)                           : no
+  [RT] Number of Fields                            :  1
+  [RT] Diamagnetic term                            : no
+  [RT] Induced field                               : no
+  [DbGd] Double Grid support                       : no
+  [DbGd] Used for e-e                              :  0.000000 [o/o]
+  [CONSTRAINS] N (ee+ep) & dN (ep)                 : yes
+  [CONSTRAINS] IP Energy      (ee)                 : yes
+  [RT] Time step(now)                              :  0.000000 [fs]
+  [RT] NE time(done)                               :  0.000000 [fs]
+  [RT] NE steps(done)                              :  1 [fs]
+  [RT] Lif Extr Inte/Intr(now)                     : -1.000000 -1.000000 [fs]
+  [dT] Time-Dependent Time step                    : no
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
+  [RT] I/O time          (input) [fs]              :  2.000000
+  [RT] I/O time            (now) [fs]              :  0.000000
 
-  [WARNING] Differenent number of descriptions in the QP DBs 
-
-
-  [WARNING] Differenent number of descriptions in the QP DBs 
-
-  [WR./08_ypp_gw_10fs_Xonly_part2//ndb.QP_merged_1_gw_cohsex_gw_ppa]--------------
-   Lattice constants                                :  10.18300  10.18300  10.18300
-   Coulomb cutoff potential                         : none
-   Electronic Temperature                           :  0.000000 [K]
-   Bosonic    Temperature                           :  0.000000 [K]
-   Green`s function   energies                      : Slater exchange(X)+Perdew & Zunger(C)
-   wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   PPA    diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
-   wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   QP tot states                                    :  18
-   [DB #1]Database                                  : 08_ypp_gw_10fs_Xonly_part1/ndb.QP_merged_1_gw_cohsex_gw_ppa
-   [DB #1]Database Operation                        : + 1.000000xE
-   [DB #1]Database                                  : 08_cohsex_10fs_Xonly/ndb.QP
-   [DB #1]Database Operation                        : + 1.000000xE
-   GW solver                                        : Newton
-   GW approximation                                 : COHSEX
-   X G`s                                            :   59 used
-   X G`s                                            :   59 disk
-   X bands                                          :   1   8
-   X poles                                          :  100.0000 o/o
-   X e/h E range                                    : -1.000000 -1.000000 ev
-   X Hxc Kernel                                     : HARTREE
-   X BZ energy Double Grid                          : no
-   Sc/G bands                                       :   1   8
-   Sc Empty Bands                                   : yes
-   Sc bands terminator                              : no
-   Sx RL components                                 :   609
-   GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-   Xs energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
-   Xs WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-   [DB #2]Database                                  : 08_cohsex_eq_emp/ndb.QP
-   [DB #2]Database Operation                        : - 1.000000xE
-   [DB #3]Database                                  : 08_gw_eq/ndb.QP
-   [DB #3]Database Operation                        : x 1.000000xZ
-   [DB #3] GW solver                                : Newton
-   [DB #3] GW approximation                         : PPA
-   [DB #3] PPA imaginary Energy                     :  27.21138 ev
-   [DB #3] dS/dw steps                              :  2
-   [DB #3] dS/dw step                               :  0.100000 ev
-   [DB #3] X G`s                                    :  1 used
-   [DB #3] X G`s                                    :  1 disk
-   [DB #3] X bands                                  :   1   8
-   [DB #3] X poles                                  :  100.0000 o/o
-   [DB #3] X e/h E range                            : -1.000000 -1.000000 ev
-   [DB #3] X Hxc Kernel                             : HARTREE
-   [DB #3] X BZ energy Double Grid                  : no
-   [DB #3] Sc/G bands                               :   1   8
-   [DB #3] Sc/G damping                             :  0.100000 ev
-   [DB #3] Sc bands terminator                      : no
-   [DB #3] Sx RL components                         :   609
-   [DB #3]                                          
-   [DB #3] GF energies kind                         : Slater exchange(X)+Perdew & Zunger(C)
-   [DB #3] GF WF`s kind                             : Slater exchange(X)+Perdew & Zunger(C)
-   [DB #3] Xs energies kind                         : Slater exchange(X)+Perdew & Zunger(C)
-   [DB #3] Xs WF`s kind                             : Slater exchange(X)+Perdew & Zunger(C)
-   GF energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
-   GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-   Xs energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
-   Xs WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-   [DB #2]Database                                  : 08_gw_eq/ndb.QP
-   [DB #2]Database Operation                        : + 1.000000xE
-   [DB #2] GW solver                                : Newton
-   [DB #2] GW approximation                         : PPA
-   [DB #2] PPA imaginary Energy                     :  27.21138 ev
-   [DB #2] dS/dw steps                              :  2
-   [DB #2] dS/dw step                               :  0.100000 ev
-   [DB #2] X G`s                                    :  1 used
-   [DB #2] X G`s                                    :  1 disk
-   [DB #2] X bands                                  :   1   8
-   [DB #2] X poles                                  :  100.0000 o/o
-   [DB #2] X e/h E range                            : -1.000000 -1.000000 ev
-   [DB #2] X Hxc Kernel                             : HARTREE
-   [DB #2] X BZ energy Double Grid                  : no
-   [DB #2] Sc/G bands                               :   1   8
-   [DB #2] Sc/G damping                             :  0.100000 ev
-   [DB #2] Sc bands terminator                      : no
-   [DB #2] Sx RL components                         :   609
-   [DB #2]                                          
-   [DB #2] GF energies kind                         : Slater exchange(X)+Perdew & Zunger(C)
-   [DB #2] GF WF`s kind                             : Slater exchange(X)+Perdew & Zunger(C)
-   [DB #2] Xs energies kind                         : Slater exchange(X)+Perdew & Zunger(C)
-   [DB #2] Xs WF`s kind                             : Slater exchange(X)+Perdew & Zunger(C)
-   QP @ state[ 1 ] K range                          :  1  3
-   QP @ state[ 1 ] b range                          :   2   7
-   GF energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
-   GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-   Xs energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
-   Xs WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
-
- [06] Timing Overview
+ [07] Timing Overview
  ====================
 
  Clock: global
@@ -301,19 +247,18 @@
                  io_KB_abinit :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
                    io_DIPOLES :      0.0000s CPU
-             io_RT_components :      0.0001s CPU (2 calls,   0.026 msec avg)
-               io_Double_Grid :      0.0001s CPU (2 calls,   0.036 msec avg)
+               io_Double_Grid :      0.0001s CPU (2 calls,   0.037 msec avg)
                   io_KB_pwscf :      0.0002s CPU
                         io_WF :      0.0011s CPU
                      io_QINDX :      0.0018s CPU
-                      io_GROT :      0.0039s CPU (3 calls,   1.307 msec avg)
-                 io_QP_and_GF :      0.0241s CPU (3 calls,   8.034 msec avg)
+                      io_GROT :      0.0039s CPU (3 calls,   1.312 msec avg)
+             io_RT_components :      0.0094s CPU (3 calls,   3.129 msec avg)
 
- [07] Game Over & Game summary
+ [08] Game Over & Game summary
  =============================
 
- 10/25/2023 at 11:48 ypp_rt @ unimi-XPS-8930 [start]
- 10/25/2023 at 11:48                         [end]
+ 10/25/2023 at 11:47 ypp_rt @ unimi-XPS-8930 [start]
+ 10/25/2023 at 11:47                         [end]
 
   
  .-ACKNOWLEDGMENT
@@ -338,10 +283,18 @@
  |
   
  .-Input file  yambo.in
- | QPDBs                            # [R] Quasiparticle Databases
- | QPDB_merge                       # [R] Mergering
- | BoseTemp= 0.000000         eV    # Bosonic Temperature
- | %Actions_and_names               # [QPDB] Format is "what"|"OP"|"prefactor"|"DB"|. OP can be +/-/x(only for Z)
- | "E" |"+" |"1" |"08_ypp_gw_10fs_Xonly_part1/ndb.QP_merged_1_gw_cohsex_gw_ppa" |
- | "E" |"+" |"1" |"08_gw_eq/ndb.QP" |
+ | RTDBs                            # [R] Carriers database generation
+ | Select_energy                    # [R] NEQ DBs from input energy window
+ | BoseTemp= 0.861734E-4      eV    # Bosonic Temperature
+ | RTpumpNel= 0.100000E-2           # [RT] Number of electrons excited by hand per unit cell
+ | % RTBands
+ |   2 |  7 |                           # [RT] Bands range
  | %
+ | RTpumpBZWd= 0.100000             # [RT][iku] K region size
+ | cooIn= "rlu"                     # Points coordinates (in) cc/rlu/iku/alat
+ | BANDS_path= ""                   # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
+ | % RTpumpEhEn
+ |  0.000000 | 2.000000 |         eV    # [RT] Energy (relative to VBM/CBM) of the levels to be inverted by hand
+ | %
+ | RTpumpDE=-1.000000         eV    # [RT] Energy difference to be matched
+ | RTpumpEhWd= 0.100000       eV    # [RT] Max Energy window used in the levels pick-up

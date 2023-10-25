@@ -1,19 +1,19 @@
                                                                           
-     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
-    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
-     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
-      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
-       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
-        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
-        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
-        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
+     **    **    **     ****     ****  ******     *******                 
+    //**  **    ****   /**/**   **/** /*////**   **/////**                
+     //****    **//**  /**//** ** /** /*   /**  **     //**               
+      //**    **  //** /** //***  /** /******  /**      /**               
+       /**   **********/**  //*   /** /*//// **/**      /**               
+       /**  /**//////**/**   /    /** /*    /**//**     **                
+       /**  /**     /**/**        /** /*******  //*******                 
+       //   //      // //         //  ///////    ///////                  
                                                                           
-    Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f             
-                     Branch is bug-fixes                                  
+    Version 5.1.0 Revision 22561 Hash (prev commit) 785b4fd6f             
+                      Branch is bug-fixes                                 
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                  http://www.yambo-code.org                               
+                   http://www.yambo-code.org                              
  
- 07/15/2023 at 00:48 yambo_rt @ unimi-XPS-8930
+ 10/25/2023 at 11:48 yambo_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 09_bse_10fs
- Alt#1 string        : R1
+ Alt#1 string        : R18
 
  Precision           : SINGLE
   
@@ -52,7 +52,7 @@
   Exact exchange fraction in XC                    :  0.000000
   Exact exchange screening in XC                   :  0.000000
   Magnetic symmetries                              : no
- - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
 
  [02] CORE Variables Setup
  =========================
@@ -179,9 +179,10 @@
   Polarization last K (ibz)                        :  3
   QP states                                        :  1  3
   X grid is uniform                                : yes
-  Grids (string)                                   :  X B C S
-  Grids (int-vector)                               :  1  1  1  1
- - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+  Grids (string)                                   :  X S
+  *ERR*Grids (int-vector)                          :  1  0  0  1
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
+ [BZ sampling] Q-grid is User defined and/or read from the database
 
  IBZ Q-points :  3
  BZ  Q-points :   8
@@ -190,8 +191,28 @@
  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
  Q [1]:  0.000000  0.000000  0.000000 [rlu]
+       : weight :  0.125000
  Q [2]:  0.000000  0.000000  0.500000 [rlu]
+       : weight :  0.500000
  Q [3]:  0.000000  0.500000  0.500000 [rlu]
+       : weight :  0.375000
+
+  [03.01] X + BSE indexes
+  =======================
+
+
+   [03.01.01] Sigma indexes
+   ========================
+
+   [WR./SAVE//ndb.kindx]-----------------------------------------------------------
+    Fragmentation                                    : no
+    Polarization last K ( bz)                        :   8
+    Polarization last K (ibz)                        :  3
+    QP states                                        :  1  3
+    X grid is uniform                                : yes
+    Grids (string)                                   :  X B S
+    Grids (int-vector)                               :  1  1  0  1
+   - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
 
   [03.01] External RT corrections (X)
   ===================================
@@ -203,13 +224,11 @@
   ==========================
 
   [f@ X] Reference Time                :  0.000000 [fs]
-  [f@ X] Bands range                   :   1   8
-  [f@ X] Maximum occupations change    :  2.000000
-  [f@ X] N of carriers                 :  1.500895
-  [f@ X] Full and metallic bands       :   0   8
+  [f@ X] Bands range                   :   2   7
+  [f@ X] Maximum occupations change    :  0.040000
+  [f@ X] N of carriers                 :  0.015000
+  [f@ X] Full and metallic bands       :   1   7
 
-
-  [WARNING] No completely empy band found. Include more states in the DFT run?
   [f@ X] === General ===
   [f@ X] Electronic Temperature                     :  0.000000  0.000000 [eV K]
   [f@ X] Bosonic    Temperature                     :  0.861734E-4   1.00000    [eV K]
@@ -221,21 +240,21 @@
   [f@ X] Conduction Band Min                        :  6.609707 [eV]
   [f@ X] Valence Band Max                           :  6.609707 [eV]
   [f@ X] Filled Bands                               :  1
-  [f@ X] Metallic Bands                             :   2   6
-  [f@ X] Empty Bands                                :   7   8
+  [f@ X] Metallic Bands                             :   2   7
+  [f@ X] Empty Bands                                :   8   8
    
   [f@ X] === Metallic Characters ===
-  [f@ X] N of el / N of met el                      :  8.000000  4.833312
-  [f@ X] Average metallic occ.                      :  0.241666
+  [f@ X] N of el / N of met el                      :  8.000000  6.000000
+  [f@ X] Average metallic occ.                      :  0.250000
 
   [WARNING] [f@ X] Metallic system
    
   OCCrt @ K [1]
-   2.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+   2.000000  1.960000  1.960000  1.960000  0.040000  0.040000  0.040000  0.000000
   OCCrt @ K [2]
-    2.00000      2.00000      1.24909      1.24909     0.175829E-2   0.00000      0.00000      0.00000   
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   OCCrt @ K [3]
-   2.000000  2.000000  2.000000  2.000000  2.000000  2.000000  0.000000  0.000000
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
 
  [04] External/Internal QP corrections
  =====================================
@@ -328,7 +347,7 @@
   GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
   Xs energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
   Xs WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
 
  E<08_ypp_gw_10fs_part2/ndb.QP_merged_1_gw_cohsex_gw_ppa[ XG 59 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8 * PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8]
 
@@ -341,31 +360,34 @@
   ==============================
 
   [K+QP] === General ===
-  [K+QP] Electronic Temperature                     :  0.861734E-5  0.100000    [eV K]
+  [K+QP] Electronic Temperature                     :  0.000000  0.000000 [eV K]
   [K+QP] Bosonic    Temperature                     :  0.000000  0.000000 [eV K]
   [K+QP] Finite Temperature mode                    : no
   [K+QP] El. density                                :  0.20451E+24 [cm-3]
-  [K+QP] Fermi Level                                :  1.232275 [eV]
+  [K+QP] Fermi Level                                :  0.705891 [eV]
 
   [K+QP] === Gaps and Widths ===
-  [K+QP] Conduction Band Min                        :  1.232275 [eV]
-  [K+QP] Valence Band Max                           :  1.232275 [eV]
-  [K+QP] Filled Bands                               :  1
-  [K+QP] Metallic Bands                             :   2   6
-  [K+QP] Empty Bands                                :   7   8
+  [K+QP] Conduction Band Min                        :  1.268426 [eV]
+  [K+QP] Valence Band Max                           :  0.000000 [eV]
+  [K+QP] Filled Bands                               :   4
+  [K+QP] Empty Bands                                :   5   8
+  [K+QP] Direct Gap                                 :  3.526875 [eV]
+  [K+QP] Direct Gap localized at k                  :  1
+  [K+QP] Indirect Gap                               :  1.268426 [eV]
+  [K+QP] Indirect Gap between kpts                  :  1  3
+  [K+QP] Last valence band width                    :  3.276423 [eV]
+  [K+QP] 1st conduction band width                  :  2.258450 [eV]
    
-  [K+QP] === Metallic Characters ===
-  [K+QP] N of el / N of met el                      :  8.000000  4.670368
-  [K+QP] Average metallic occ.                      :  0.233518
-
-  [WARNING] [K+QP] Metallic system
+   
+  [coarse-grid] Minimum Bare Gap        [ev]:  0.437631
+  [coarse-grid] Minimum Gap Correction  [ev]:  0.830795
    
   Eqp @ K [1]
-  -13.38847   0.24351   0.24353   0.24360   2.25281   2.25272   2.25274   2.29294
+   -12.8621    -0.506345E-4 -0.226056E-4   0.00000      3.52688      3.52682      3.52682      2.81933   
   Eqp @ K [2]
-  -10.96322  -8.05732  -0.94526  -0.94537   1.85499   3.43649   3.43659   6.09765
+  -10.43684  -7.92197  -1.36420  -1.36417   2.56144   4.37376   4.37380   6.62404
   Eqp @ K [3]
-   -9.12801     -8.48529     -3.49929     -3.49927     0.405481E-5 -0.425755E-5   10.6549      8.92580   
+   -8.60163  -8.87182  -3.27641  -3.27642   1.26843   1.26839  11.09639   9.45218
 
   [04.02] External RT corrections (K)
   ===================================
@@ -378,8 +400,8 @@
 
   [f@ K] Reference Time                :  0.000000 [fs]
   [f@ K] Bands range                   :   2   7
-  [f@ K] Maximum occupations change    :  2.000000
-  [f@ K] N of carriers                 :  1.500895
+  [f@ K] Maximum occupations change    :  0.040000
+  [f@ K] N of carriers                 :  0.015000
   [f@ K] Full and metallic bands       :   1   7
 
   [f@ K] === General ===
@@ -387,27 +409,27 @@
   [f@ K] Bosonic    Temperature                     :  0.861734E-4   1.00000    [eV K]
   [f@ K] Finite Temperature mode                    : no
   [f@ K] El. density                                :  0.20451E+24 [cm-3]
-  [f@ K] Fermi Level                                :  1.232275 [eV]
+  [f@ K] Fermi Level                                :  0.705891 [eV]
 
   [f@ K] === Gaps and Widths ===
-  [f@ K] Conduction Band Min                        :  1.232275 [eV]
-  [f@ K] Valence Band Max                           :  1.232275 [eV]
+  [f@ K] Conduction Band Min                        :  0.705891 [eV]
+  [f@ K] Valence Band Max                           :  0.705891 [eV]
   [f@ K] Filled Bands                               :  1
-  [f@ K] Metallic Bands                             :   2   6
-  [f@ K] Empty Bands                                :   7   8
+  [f@ K] Metallic Bands                             :   2   7
+  [f@ K] Empty Bands                                :   8   8
    
   [f@ K] === Metallic Characters ===
-  [f@ K] N of el / N of met el                      :  8.000000  3.503680
-  [f@ K] Average metallic occ.                      :  0.175184
+  [f@ K] N of el / N of met el                      :  8.000000  6.000000
+  [f@ K] Average metallic occ.                      :  0.250000
 
   [WARNING] [f@ K] Metallic system
    
   OCCrt @ K [1]
-   2.000000 -2.000000 -2.000000 -2.000000  0.000000  0.000000  0.000000  0.000000
+   2.000000  1.960000  1.960000  1.960000  0.040000  0.040000  0.040000  0.000000
   OCCrt @ K [2]
-    2.00000      2.00000      1.24909      1.24909     0.175829E-2   0.00000      0.00000      0.00000   
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   OCCrt @ K [3]
-   2.000000  2.000000  2.000000  2.000000  2.768976  3.242129  0.000000  0.000000
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
 
  [05] Dipoles
  ============
@@ -424,7 +446,7 @@
   Electronic Temperature                           :  0.000000 [K]
   Bosonic    Temperature                           :  1.000000 [K]
   DIP band range                                   :   1   8
-  DIP band range limits                            :   8   1
+  DIP band range limits                            :   7   2
   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
   RL vectors in the sum                            :   387
   [r,Vnl] included                                 : yes
@@ -433,7 +455,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
 
  [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
 
@@ -466,7 +488,7 @@
   BZ energy DbGd points                            : 0
   BZ Q point size factor                           : -1.000000
   X Optical Averaged directions                    : none
- - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
 
  [WARNING] The system is a metal but Drude term not included.
  [RD./09_bse_10fs//ndb.dipoles]--------------------------------------------------
@@ -476,7 +498,7 @@
   Electronic Temperature                           :  0.000000 [K]
   Bosonic    Temperature                           :  1.000000 [K]
   DIP band range                                   :   1   8
-  DIP band range limits                            :   8   1
+  DIP band range limits                            :   7   2
   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
   RL vectors in the sum                            :   387
   [r,Vnl] included                                 : yes
@@ -485,22 +507,22 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
- [X-CG] R(p) Tot o/o(of R):   21  163  100
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
+ [X-CG] R(p) Tot o/o(of R):   21  161  100
  [WR./09_bse_10fs//ndb.em1s_fragment_1]------------------------------------------
   Current Q-pt index                               :  1
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000  0.100000 eV
   Number of frequencies                            :  1
- - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
- [X-CG] R(p) Tot o/o(of R):   32  179  100
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
+ [X-CG] R(p) Tot o/o(of R):   30  152  100
  [WR./09_bse_10fs//ndb.em1s_fragment_2]------------------------------------------
   Current Q-pt index                               :  2
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000  0.100000 eV
   Number of frequencies                            :  1
- - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
- [X-CG] R(p) Tot o/o(of R):   28  188  100
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
+ [X-CG] R(p) Tot o/o(of R):   25  152  100
 
  [07] Bethe Salpeter Equation driver
  ===================================
@@ -534,7 +556,7 @@
     Electronic Temperature                           :  0.000000 [K]
     Bosonic    Temperature                           :  1.000000 [K]
     DIP band range                                   :   1   8
-    DIP band range limits                            :   8   1
+    DIP band range limits                            :   7   2
     DIP e/h energy range                             : -1.000000 -1.000000 [eV]
     RL vectors in the sum                            :   387
     [r,Vnl] included                                 : yes
@@ -543,7 +565,7 @@
     Approach used                                    : G-space v
     Dipoles computed                                 : R V P
     Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+   - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
 
    [07.01.04] Independent Particles properties @q1
    ===============================================
@@ -588,7 +610,7 @@
      X energy range                                   :  0.000000  0.000000 eV
      X damping range                                  :  0.100000  0.100000 eV
      Number of frequencies                            :  1
-    - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+    - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
 
     [07.01.05.02] Wave-Function Phases
     ==================================
@@ -606,7 +628,7 @@
      BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
      Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
      wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-     [K] Identifier                                   :   8706
+     [K] Identifier                                   :   6270
      [K] Dimension                                    :  100
      [K] Bands                                        :   2   7
      [K] Exchange res                                 : yes
@@ -636,7 +658,7 @@
      [SOC] Perturbative SOC                           : no
      [IO] Kernel IO mode                              : 2D_standard
      [X] Response Kind                                : BAR
-    - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+    - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
      Kernel complete                                  : no
      Kernel maxval                                    :  0.000000
      Kernel complete                                  : yes
@@ -652,7 +674,7 @@
 
    [WR./09_bse_10fs//ndb.BS_diago_Q1]----------------------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   8706
+    [K] Identifier                                   :   6270
     [K] Dimension                                    :  100
     [K] Bands                                        :   2   7
     [K] Exchange res                                 : yes
@@ -686,7 +708,7 @@
     [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
     [BSS] Eigenstates computed                       :  100
     [BSS] Number of BSE matrices                     :  1
-   - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+   - S/N 003129 ---------------------------------------------- v.05.01.00 r.22561 -
 
    [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
 
@@ -694,8 +716,8 @@
    ============================================================================
 
    Accuracy (requested)      :  0.020000 [o/o]
-   Accuracy (reached)        :  0.014715 [o/o]
-   Iterations                :  21
+   Accuracy (reached)        :  0.004764 [o/o]
+   Iterations                :  19
 
  [08] Timing Overview
  ====================
@@ -705,55 +727,55 @@
                                       Xo (REDUX) :      0.0000s CPU ( 3 calls,   0.001 msec avg)
                                 io_ATMPROJ_pwscf :      0.0000s CPU
                                     io_KB_abinit :      0.0000s CPU
-      MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0000s CPU ( 3 calls,   0.003 msec avg)
-      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU ( 3 calls,   0.004 msec avg)
+      MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0000s CPU ( 3 calls,   0.004 msec avg)
+      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU ( 3 calls,   0.005 msec avg)
                                       io_COL_CUT :      0.0000s CPU
                                        X (REDUX) :      0.0000s CPU ( 3 calls,   0.006 msec avg)
-                                         io_ELPH :      0.0000s CPU ( 2 calls,   0.013 msec avg)
                                            io_HF :      0.0000s CPU
+                                   io_COLLISIONS :      0.0000s CPU ( 3 calls,   0.013 msec avg)
                                   io_Double_Grid :      0.0000s CPU
                               BSE matrix filling :      0.0000s CPU
-                                   io_COLLISIONS :      0.0000s CPU ( 3 calls,   0.013 msec avg)
-                         IO_and_Messaging_switch :      0.0001s CPU (20 calls,   0.003 msec avg)
                           BSE components folding :      0.0001s CPU
                                     PP_uspp_init :      0.0001s CPU ( 5 calls,   0.012 msec avg)
-                                    scatter_Gamp :      0.0001s CPU ( 3 calls,   0.033 msec avg)
-                                  eval_G_minus_G :      0.0001s CPU
-                                           io_BS :      0.0002s CPU ( 6 calls,   0.041 msec avg)
-                                     io_KB_pwscf :      0.0004s CPU ( 5 calls,   0.075 msec avg)
-                                T_space EXX Osc. :      0.0010s CPU ( 3 calls,   0.335 msec avg)
-                               SERIAL_lin_system :      0.0013s CPU ( 3 calls,   0.429 msec avg)
-                                     WF_load_FFT :      0.0016s CPU ( 5 calls,   0.318 msec avg)
-                                   X (procedure) :      0.0017s CPU ( 3 calls,   0.553 msec avg)
-                                  io_BSS_Haydock :      0.0026s CPU ( 2 calls,   1.290 msec avg)
-                                       FFT_setup :      0.0027s CPU ( 6 calls,   0.454 msec avg)
-                                     BSE dipoles :      0.0028s CPU
-                                     io_fragment :      0.0029s CPU ( 7 calls,   0.414 msec avg)
-                                         io_GROT :      0.0036s CPU ( 3 calls,   1.204 msec avg)
-                                     K_WF_phases :      0.0037s CPU
-                SERIAL_HERMITIAN_diagonalization :      0.0044s CPU
-                                        io_QINDX :      0.0045s CPU ( 3 calls,   1.503 msec avg)
-                                  LINEAR ALGEBRA :      0.0057s CPU ( 4 calls,   1.421 msec avg)
-                               DIPOLE_transverse :      0.0059s CPU
-                                    io_BSS_diago :      0.0061s CPU ( 2 calls,   3.052 msec avg)
-                                    io_QP_and_GF :      0.0067s CPU
-                                           io_WF :      0.0072s CPU (20 calls,   0.358 msec avg)
-                                      io_DIPOLES :      0.0099s CPU (20 calls,   0.496 msec avg)
-                                  Xo (procedure) :      0.0129s CPU ( 3 calls,   4.311 msec avg)
-                               T_space CORR Osc. :      0.0137s CPU ( 6 calls,   2.276 msec avg)
-                                            io_X :      0.0180s CPU (15 calls,   1.202 msec avg)
-                                io_RT_components :      0.0187s CPU ( 8 calls,   2.336 msec avg)
-                                      T_space IP :      0.0571s CPU
-                                X T_space Kernel :      0.0677s CPU
-                                    Diago Solver :      0.0773s CPU
-                                  Haydock Solver :      0.1798s CPU
-                                         Dipoles :      1.0105s CPU
+                         IO_and_Messaging_switch :      0.0001s CPU (23 calls,   0.003 msec avg)
+                                    scatter_Gamp :      0.0001s CPU ( 3 calls,   0.034 msec avg)
+                                  eval_G_minus_G :      0.0002s CPU
+                                     io_KB_pwscf :      0.0004s CPU ( 5 calls,   0.076 msec avg)
+                                           io_BS :      0.0004s CPU ( 6 calls,   0.071 msec avg)
+                                T_space EXX Osc. :      0.0011s CPU ( 3 calls,   0.364 msec avg)
+                               SERIAL_lin_system :      0.0014s CPU ( 3 calls,   0.450 msec avg)
+                                     WF_load_FFT :      0.0017s CPU ( 5 calls,   0.343 msec avg)
+                                   X (procedure) :      0.0018s CPU ( 3 calls,   0.600 msec avg)
+                                     io_fragment :      0.0025s CPU ( 7 calls,   0.361 msec avg)
+                                  io_BSS_Haydock :      0.0028s CPU ( 2 calls,   1.380 msec avg)
+                                       FFT_setup :      0.0028s CPU ( 6 calls,   0.464 msec avg)
+                                     BSE dipoles :      0.0033s CPU
+                                         io_GROT :      0.0037s CPU ( 3 calls,   1.232 msec avg)
+                SERIAL_HERMITIAN_diagonalization :      0.0038s CPU
+                                     K_WF_phases :      0.0046s CPU
+                                  LINEAR ALGEBRA :      0.0052s CPU ( 4 calls,   1.300 msec avg)
+                                 bz_samp_indexes :      0.0054s CPU
+                               DIPOLE_transverse :      0.0061s CPU
+                                    io_BSS_diago :      0.0068s CPU ( 2 calls,   3.420 msec avg)
+                                    io_QP_and_GF :      0.0068s CPU
+                                           io_WF :      0.0077s CPU (20 calls,   0.383 msec avg)
+                                        io_QINDX :      0.0091s CPU ( 5 calls,   1.816 msec avg)
+                                      io_DIPOLES :      0.0106s CPU (20 calls,   0.531 msec avg)
+                                  Xo (procedure) :      0.0126s CPU ( 3 calls,   4.212 msec avg)
+                               T_space CORR Osc. :      0.0159s CPU ( 6 calls,   2.642 msec avg)
+                                io_RT_components :      0.0180s CPU ( 8 calls,   2.247 msec avg)
+                                            io_X :      0.0196s CPU (15 calls,   1.304 msec avg)
+                                      T_space IP :      0.0609s CPU
+                                X T_space Kernel :      0.0732s CPU
+                                    Diago Solver :      0.0827s CPU
+                                  Haydock Solver :      0.1274s CPU
+                                         Dipoles :      1.0108s CPU
 
  [09] Game Over & Game summary
  =============================
 
- 07/15/2023 at 00:48 yambo_rt @ unimi-XPS-8930 [start]
- 07/15/2023 at 00:48                           [end]
+ 10/25/2023 at 11:48 yambo_rt @ unimi-XPS-8930 [start]
+ 10/25/2023 at 11:48                           [end]
 
   
  .-ACKNOWLEDGMENT
@@ -799,7 +821,7 @@
  | BSENGBlk=  59              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
  | #WehCpl                        # [BSK] eh interaction included also in coupling
  | KfnQPdb= "E < 08_ypp_gw_10fs_part2/ndb.QP_merged_1_gw_cohsex_gw_ppa" # [EXTQP BSK BSS] Database action
- | KfnRTdb= "f @ 0. ps < 02_carriers_Fermi_DB/ndb.RT_carriers" # [EXTRT BSK BSS] Database
+ | KfnRTdb= "f @ 0. ps < 02_carriers_DB_ypp_few/ndb.RT_carriers" # [EXTRT BSK BSS] Database
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %
@@ -821,7 +843,7 @@
  | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
  | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
  | BSHayTrs= 0.020000               # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
- | XfnRTdb= "f @ 0. ps < 02_carriers_Fermi_DB/ndb.RT_carriers" # [EXTRT Xd] Database
+ | XfnRTdb= "f @ 0. ps < 02_carriers_DB_ypp_few/ndb.RT_carriers" # [EXTRT Xd] Database
  | % BndsRnXs
  |   1 |  8 |                           # [Xs] Polarization function bands
  | %
