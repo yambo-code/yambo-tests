@@ -16,24 +16,28 @@
 optics                           # [R] Linear Response optical properties
 bss                              # [R] BSE solver
 bse                              # [R][BSE] Bethe Salpeter Equation.
-BSEmod= "causal"                 # [BSE] resonant/retarded/coupling
-BSKmod= "Hartree"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSEmod= "retarded"              # [BSE] resonant/retarded/coupling
+BSKmod= "HF"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
 BSENGexx= 3151             RL    # [BSK] Exchange components
-BSEprop= "magn jdos"                  # [BSE] abs/kerr/magn trace
+BSENGblk=  151             RL    # [BSK] Exchange components
+BSEprop= "magn abs jdos"                  # [BSE] abs/kerr/magn trace
+% KfnQP_E
+ 0.000000 | 2.500000 | 2.500000 |        # [EXTQP BSK BSS] E parameters UP (c/v) eV|adim|adim
+%
 % BSEQptR
  1 | 1 |                             # [BSK] Transferred momenta range
 %
 % BSEBands
-  3 |  10 |                           # [BSK] Bands range
+  5 |  10 |                           # [BSK] Bands range
 %
 % BEnRange
- -10.00000 | 10.00000 |         eV    # [BSS] Energy range
+  -5.00000 | 9.00000 |         eV    # [BSS] Energy range
 %
 % BDmRange
  0.100000 | 0.100000 |         eV    # [BSS] Damping range
 %
-BEnSteps= 5001                   # [BSS] Energy steps
+BEnSteps= 3501                   # [BSS] Energy steps
 % BLongDir
  0.000000 | 1.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %

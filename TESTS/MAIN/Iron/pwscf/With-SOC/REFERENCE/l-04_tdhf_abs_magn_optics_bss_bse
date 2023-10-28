@@ -1,12 +1,12 @@
 
 
- ___ __  _____  __ __  _____   _____
-|   Y  ||  _  ||  Y  ||  _  \ |  _  |
-|   |  ||. |  ||.    ||. |  / |. |  |
- \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
-  |: |  |: |  ||: |  ||: |   \|: |  |
-  |::|  |:.|:.||:.|:.||::.   /|::.  |
-  `--"  `-- --"`-- --"`-----" `-----"
+
+_|      _|   _|_|   _|      _|  _|_|_|     _|_|
+  _|  _|   _|    _| _|_|  _|_| _|    _| _|    _|
+    _|     _|_|_|_| _|  _|  _| _|_|_|   _|    _|
+    _|     _|    _| _|      _| _|    _| _|    _|
+    _|     _|    _| _|      _| _|_|_|     _|_|
+
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -17,9 +17,7 @@
  <---> [02.04] K-grid lattice
  <---> Grid dimensions      :   4   4   4
  <---> [02.05] Energies & Occupations
- <---> [WARNING] Merged spin levels are metallic
  <---> [WARNING] [X] Metallic system
- <---> [WARNING] Merged spin levels are metallic
  <---> [03] Transferred momenta grid and indexing
  <---> [BZ sampling] Q-grid is User defined and/or read from the database
  <---> [03.01] X + BSE indexes
@@ -35,7 +33,6 @@
  <---> [04] External/Internal QP corrections
  <---> [QP_apply] Action to be applied: USER defined scissor
  <---> [04.01]  QP corrections report
- <---> [WARNING] Merged spin levels are metallic
  <---> [WARNING] [K+QP] Metallic system
  <---> [05] Dipoles
  <---> [DIP] Database not correct or missing. To be computed
@@ -48,16 +45,13 @@
  <---> [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
  <---> [WARNING] In case H contains other non local terms, these are neglected
  <---> [06] Bethe Salpeter Equation driver
- <---> [WARNING] n_sp_pol=2 and magnons requested. Spin flip BSE only is computed
  <---> [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
  <---> [06.01] Bethe Salpeter Equation @q1
  <---> [06.01.01] Transition pre-analysis @q1
- <---> [WARNING] Null BSE kernel block dimension(s) found.
- <---> [WARNING] Empty workload for CPU 1
  <---> [06.01.02] Transition Groups build-up @q1
- <---> [BSK] Size (res,ares):   894   110
- <---> [BSK]         (total):  1004
- <---> [BSK] N. of matrices :  2
+ <---> [BSK] Size (resonant):   550
+ <---> [BSK]         (total):   550
+ <---> [BSK] N. of matrices :  1
  <---> [06.01.03] Loading Dipoles @q1
  <---> BSE dipoles |                                        | [000%] --(E) --(X)
  <---> BSE dipoles |########################################| [100%] --(E) --(X)
@@ -67,28 +61,28 @@
  <---> IP properties |########################################| [100%] --(E) --(X)
  <---> [06.01.05] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
  <---> [06.01.06] Main kernel loop
- <---> [FFT-BSK-3] Mesh size:  12  12  12
- <---> [06.01.07] Wave-Function Phases
- <---> Kernel corr |                                        | [000%] --(E) --(X)
- <03s> Kernel corr |########################################| [100%] --(E) --(X)
- <03s> [06.02] BSE solver(s) @q1
- <03s> [LA] SERIAL linear algebra
- <03s> [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
- <03s> [06.03] Diago Solver @q1
- <03s> Unfolding BSE components |                                        | [000%] --(E) --(X)
- <03s> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <03s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <05s> BSK diagonalize |########################################| [100%] 02s(E) 02s(X)
+ <---> Kernel exch |                                        | [000%] --(E) --(X)
+ <04s> Kernel exch |########################################| [100%] 02s(E) 02s(X)
+ <04s> [FFT-BSK-3] Mesh size:  12  12  12
+ <04s> [06.01.07] Wave-Function Phases
+ <04s> Kernel corr |                                        | [000%] --(E) --(X)
+ <05s> Kernel corr |########################################| [100%] --(E) --(X)
+ <05s> [06.02] BSE solver(s) @q1
+ <05s> [LA] SERIAL linear algebra
+ <05s> [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+ <05s> [06.03] Diago Solver @q1
+ <05s> Unfolding BSE components |                                        | [000%] --(E) --(X)
+ <05s> Unfolding BSE components |########################################| [100%] --(E) --(X)
+ <05s> BSK diagonalize |                                        | [000%] --(E) --(X)
+ <05s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <05s> opt1 residuals |                                        | [000%] --(E) --(X)
+ <05s> opt1 residuals |########################################| [100%] --(E) --(X)
  <05s> mag1 residuals |                                        | [000%] --(E) --(X)
  <05s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <05s> mag2 residuals |                                        | [000%] --(E) --(X)
+ <05s> mag2 residuals |########################################| [100%] --(E) --(X)
  <05s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <06s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <06s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <06s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <06s> mag1 residuals |                                        | [000%] --(E) --(X)
- <06s> mag1 residuals |########################################| [100%] --(E) --(X)
- <06s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <06s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <05s> BSK resp. funct |########################################| [100%] --(E) --(X)
  <06s> [07] Timing Overview
  <06s> [08] Game Over & Game summary
  <06s> [TIMING]            [Time-Profile]: 06s
