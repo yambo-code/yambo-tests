@@ -25,6 +25,8 @@
 sub SOURCE_compile{
  chdir("$comp_folder"); 
  open( COMPLOGFILE,'>>',$comp_logfile);
+ &MY_PRINT($stdout, "distclean ...");
+ &command("make distclean >> $comp_logfile 2>&1");
  &MY_PRINT($stdout, "ext-libs ...");
  &command("make $PAR_COMP_LIBS ext-libs >> $comp_logfile 2>&1");
  @executables =  ("yambo");
