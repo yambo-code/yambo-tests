@@ -36,7 +36,7 @@ while getopts "r:ickbh" option; do
    esac
 done
 #
-robot=`uname -n`
+robot=`hostnamectl | grep Static | grep -oE '[^ ]+$'`
 CD=`pwd`
 me=`whoami`
 RED='\033[0;31m'
