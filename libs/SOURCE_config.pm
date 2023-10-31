@@ -71,6 +71,7 @@ sub SOURCE_config{
  &command("chmod +x conf_local.sh");
  #
  open( CONFLOGFILE,'>>',$conf_logfile);
+ &command("make distclean >> $conf_logfile 2>&1");
  &command("./conf_local.sh >> $conf_logfile 2>&1");
  close(CONFLOGFILE);
  #
