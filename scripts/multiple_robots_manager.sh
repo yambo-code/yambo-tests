@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() { 
-  echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -h ] " 1>&2 
+  echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -p(ause/unpause) -h ] " 1>&2 
 }
 
 message(){
@@ -32,12 +32,14 @@ while getopts "r:ickbh" option; do
       b) BOOT=1;;
       k) KILL=1;;
       c) CONF=1;;
+      p) PAUSE=1;;
       h) HELP=1;;
    esac
 done
 #
-robot=`uname -n`
+robot=`hostnamectl | grep Static | grep -oE '[^ ]+$'`
 CD=`pwd`
+LD="$HOME/yambo-testing"
 me=`whoami`
 RED='\033[0;31m'
 NC='\033[0m' 
@@ -106,6 +108,14 @@ for test in test.* ; do
   fi
  fi
  #
+ # Pause/Unpause
+ if [ ! -z $PAUSE ]; then
+  repeat "="
+  message "Booting $robot.$ID"
+  repeat "="
+  ./scripts/launch_the_robot.sh
+ fi
+ #
  # Boot
  if [ ! -z $BOOT ] && [ -z $PID ] ; then
   repeat "="
@@ -114,7 +124,7 @@ for test in test.* ; do
   ./scripts/launch_the_robot.sh
  fi
  #
- # Kill
+ # Kill 
  if [ ! -z $KILL ] && [ ! -z $PID ] ; then
   repeat "="
   message "Killing $robot.$ID with PID "$PID

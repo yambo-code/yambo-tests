@@ -125,7 +125,6 @@ if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
  $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key_no_slash";
  &command("rm -fr $conf_bin; mkdir $conf_bin");
  chdir $comp_folder;
- @executables = split(/\s+/, $exec_list);
  while($exec = shift(@executables)) {&command("cp bin/$exec $conf_bin/")};
  if (-f "lib/bin/ncdump") {
   &command("cp lib/bin/ncdump $conf_bin/");
@@ -206,20 +205,10 @@ if ($compile) {&LOGs_move};
 # LOCK
 $BRANCH_is_correctly_compiled[$ib]=1;
 #
-#$init_end_time = [gettimeofday];
-#$TT  = tv_interval($init_start_time, $init_end_time);
-#
-#$sec = &ceil(10.*$TT)/10.;
-#$msg = "Initialization time $sec s";
-#
-#&MY_PRINT($stdout, "\n$msg\n");
-#&MY_PRINT($rlog,   "\n$msg\n");
-#
 return "OK";
 }
 sub exe_check{
- @executables = split(/\s+/, $exec_list);
- while($make_exec = shift(@executables)) {
+ foreach $make_exec (@executables) { 
   if( -x "$conf_bin/$make_exec") 
   { 
    &MY_PRINT($stdout, "($make_exec $g_s OK $g_e) ");

@@ -149,6 +149,8 @@ if ($project =~ /elph/ or $project eq "all")     { $target_list .= $exec_elph; $
 if ($project =~ /phel/ or $project eq "all")     { $target_list .= $exec_phel; $exec_list  .= $exec_phel};
 if (($project =~ /nl/ or $project eq "all" ) and $do_NL_tests ) { $target_list .= $exec_nl; $exec_list  .= $exec_nl};
 #
+@executables = split(/\s+/, $exec_list);
+#
 return "OK";
 }
 sub LOAD_branches{
