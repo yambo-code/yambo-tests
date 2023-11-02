@@ -36,7 +36,7 @@ while getopts "r:ickbh" option; do
    esac
 done
 #
-robot=`uname -n`
+robot=`hostnamectl | grep Static | grep -oE '[^ ]+$'`
 CD=`pwd`
 me=`whoami`
 RED='\033[0;31m'
@@ -114,7 +114,7 @@ for test in test.* ; do
   ./scripts/launch_the_robot.sh
  fi
  #
- # Kill
+ # Kill 
  if [ ! -z $KILL ] && [ ! -z $PID ] ; then
   repeat "="
   message "Killing $robot.$ID with PID "$PID

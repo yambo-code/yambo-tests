@@ -27,10 +27,8 @@ sub SOURCE_compile{
  open( COMPLOGFILE,'>>',$comp_logfile);
  &MY_PRINT($stdout, "ext-libs ...");
  &command("make $PAR_COMP_LIBS ext-libs >> $comp_logfile 2>&1");
- @executables =  ("yambo");
  if (not $compile eq "ext-libs")  {
    &command("rm -rf bin");
-   @executables = split(/\s+/, $target_list)
  };
  foreach $make_exec (@executables) {
    &MY_PRINT($stdout, "$make_exec ...");
