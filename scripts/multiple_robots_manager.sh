@@ -25,7 +25,7 @@ clone() {
 }
 
 # Get the options
-while getopts "r:ickbh" option; do
+while getopts "r:ickbhp" option; do
    case $option in
       r) user_ID=$OPTARG;;
       i) INSTALL=1;;
@@ -111,9 +111,14 @@ for test in test.* ; do
  # Pause/Unpause
  if [ ! -z $PAUSE ]; then
   repeat "="
-  message "Booting $robot.$ID"
+  if [ -f $LD/stop_${robot}.$ID ]; then
+   message "Unpausing $robot.$ID"
+   rm -f $LD/stop_${robot}.$ID
+  else
+   message "Pausing $robot.$ID"
+   touch $LD/stop_${robot}.$ID
+  fi
   repeat "="
-  ./scripts/launch_the_robot.sh
  fi
  #
  # Boot
