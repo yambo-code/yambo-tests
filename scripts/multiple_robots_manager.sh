@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() { 
-  echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -p(ause/unpause) -h ] " 1>&2 
+	echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -p(ause/unpause) -u(pdate) -h ] " 1>&2 
 }
 
 message(){
@@ -25,7 +25,7 @@ clone() {
 }
 
 # Get the options
-while getopts "r:ickbhp" option; do
+while getopts "r:icukbhp" option; do
    case $option in
       r) user_ID=$OPTARG;;
       i) INSTALL=1;;
@@ -34,6 +34,7 @@ while getopts "r:ickbhp" option; do
       c) CONF=1;;
       p) PAUSE=1;;
       h) HELP=1;;
+      u) UPDATE=1;;
    esac
 done
 #
@@ -127,6 +128,14 @@ for test in test.* ; do
   message "Booting $robot.$ID"
   repeat "="
   ./scripts/launch_the_robot.sh
+ fi
+ #
+ # Update
+ if [ ! -z $UPDATE ]; then
+  repeat "="
+  message "Updating $robot.$ID"
+  repeat "="
+  git pull; git submodule update --merge --remote
  fi
  #
  # Kill 
