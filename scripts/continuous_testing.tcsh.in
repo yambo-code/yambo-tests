@@ -5,7 +5,7 @@ while ( 1 > 0)
  # update branch and flows
  #
  cd @test_suite_dir@
- git pull
+ git pull >& /dev/null
  ./scripts/wget_from_google_drive.sh
  set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh' | xargs rm -f`
  rm -f ROBOTS/@robot@/@user@/FLOWS/run.*
@@ -32,9 +32,9 @@ while ( 1 > 0)
    mkdir -p $branch_dir
    #
    cd @source_dir@
-   git pull
-   git checkout $ybranch
-   git pull
+   git pull >& /dev/null
+   git checkout $ybranch  >& /dev/null
+   git pull  >& /dev/null
    set last_hash=`git log --pretty=format:"%h" | head -n 1` 
    cd @test_suite_dir@
    #
@@ -49,15 +49,20 @@ while ( 1 > 0)
    if ( ! -f "$branch_dir/last_tested_hash.$last_hash" ) then
     set M=`date +%m`
     set D=`date +%d`
+    set T=`date +%T`
     set log_dir="$branch_dir/$M/$D"
+    echo "================================================================================================================="
+    date
+    echo "launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow $off_flag -r > $log_dir/log-@robot@-${flow}-${T}"
     mkdir -p $log_dir
     rm -f $branch_dir/latest_logs
     ln -s $log_dir $branch_dir/latest_logs
     @test_suite_dir@/scripts/reset.sh
     touch ~/yambo-testing/@robot@_is_running
-    set T=`date +%T`
     @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow $off_flag -r > $log_dir/log-@robot@-${flow}-${T} 
     @test_suite_dir@/driver.pl -kill > /dev/null
+    echo "done"
+    echo "================================================================================================================="
    endif
    #
   end
