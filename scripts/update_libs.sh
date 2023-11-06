@@ -25,6 +25,9 @@ while read p; do
   if [[ "$MOD" == *"PIO"* ]]; then
    CONF="parallel_io.sh"
   fi
+  if [[ "$MOD" == *"NV-"* ]]; then
+   CONF="CUDA.sh"
+  fi
   rm -fr compile_dir
   if [[ "$MOD" == *"$USER_mod"* ]] || [[ "$USER_mod" == "all" ]] ; then
    ./scripts/launcher.tcsh -y maintain/compilation -t maintain/compilation -f ext-libs -c $CONF -m $MOD
