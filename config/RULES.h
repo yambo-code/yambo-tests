@@ -25,7 +25,7 @@ call add_RULE("o-02_BSE_CPL.Esort_q1_diago_bse","skip",COL=2,MATERIAL="CH4")
 !
 ! INTEL
 !=======
-call add_RULE(".bands_built_in_spin","skip",COLS=(/6,7,8/),MATERIAL="NiBr2",Compiler="intel")
+call add_RULE(".bands_built_in_spin","skip",COLS=(/6,7,8/),MATERIAL="NiBr2")
 !
 ! RT
 !====

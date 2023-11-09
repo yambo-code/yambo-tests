@@ -24,25 +24,24 @@
 #
 sub FTP_list
 {
-if ($ncftpls) 
-{
- &command("$ncftpls -l -u 1945528\@aruba.it -p uQ\\\$66cx\\*W3T\\*Wh ftp://ftp.yambo-code.org/www.yambo-code.org/@_")
-}else{
- &command("echo 'ls -lt htdocs/@_' > cmds");
- &command("sftp -b cmds yambo.user\@media.yambo-code.eu");
- &command("rm -f cmds");
-}
+&command("echo 'ls -lt htdocs/@_' > cmds");
+&command("sftp -b cmds ${FTP_user}\@media.yambo-code.eu");
+&command("rm -f cmds");
 die "\n";
 }
 sub FTP_it
 {
-if ($ncftp) 
-{
- &command("$ncftp -u 1945528\@aruba.it -p uQ\\\$66cx\\*W3T\\*Wh ftp.yambo-code.org");
-}else{
- &command("sftp yambo.user\@media.yambo-code.eu");
-}
+&command("sftp ${FTP_user}\@media.yambo-code.eu");
 die "\n";
+}
+sub FTP_mkdir
+{
+#
+my $dir  = shift;
+#
+&command("echo 'mkdir htdocs/$dir' > cmds");
+&command("sftp -b cmds ${FTP_user}\@media.yambo-code.eu");
+&command("rm -f cmds");
 }
 sub FTP_upload_it
 {
@@ -51,16 +50,11 @@ my $what  = shift;
 my $where = shift;
 my $rec = shift;
 #
-if ($ncftpput)
-{
- &command("$ncftpput $rec -u 1945528\@aruba.it -p uQ\\\$66cx\\*W3T\\*Wh ftp.yambo-code.org www.yambo-code.org/$where $what");
-}else{
- &command("echo 'put $rec $what htdocs/$where' > cmds");
- &command("echo 'chmod 775 htdocs/$where/$what' >> cmds");
- &command("echo 'chown 1033 htdocs/$where/$what' >> cmds");
- &command("echo 'chgrp 33 htdocs/$where/$what' >> cmds");
- &command("sftp -b cmds yambo.user\@media.yambo-code.eu");
- &command("rm -f cmds");
-}
+&command("echo 'put $rec $what htdocs/$where' > cmds");
+&command("echo 'chmod 775 htdocs/$where/$what' >> cmds");
+&command("echo 'chown 1033 htdocs/$where/$what' >> cmds");
+&command("echo 'chgrp 33 htdocs/$where/$what' >> cmds");
+&command("sftp -b cmds ${FTP_user}\@media.yambo-code.eu");
+&command("rm -f cmds");
 }
 1;
