@@ -21,8 +21,6 @@ call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
 call add_RULE(".ndb.gops","skip",MATERIAL="Si_bulk hBN LiF")
 call add_RULE(".ns.wf_fragments_1_1","skip",MATERIAL="MoS2")
 call add_RULE("Lifetimes.ndb.em1d_fragment","skip",MATERIAL="Al_bulk")
-call add_RULE("o-02_BSE_CPL.Esort_q1_diago_bse","skip",COL=2,MATERIAL="CH4")
-call add_RULE("o-02_BSE_KERR_CPL.Esort_q1_diago_bse","skip",COL=2,MATERIAL="CH4")
 !
 ! INTEL
 !=======
@@ -93,6 +91,7 @@ call add_RULE("o-03_OMS_RIM.qp","double_precision",MATERIAL="Si_bulk")
 !=====
 call add_RULE(".eps_q1_haydock_bse","skip",TITLES=(/"EPS`/Im[6]","EPS`/Re[7]"/))
 call add_RULE(".eel_q1_haydock_bse","skip",TITLES=(/"EEL`/Im[6]","EEL`/Re[7]"/))
+call add_RULE(".Esort","skip",TITLE="Im(E)")
 !
 !..ypp
 call add_RULE(".exc_weights_at","skip",COLS=(/4/))
