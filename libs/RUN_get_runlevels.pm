@@ -94,6 +94,7 @@ if (&RUN_feature("Shifted_Grid") eq "1" or &RUN_feature("WFs_map") eq "1" or &RU
 if (&RUN_feature("bzgrids") eq "1" or &RUN_feature("kpts_map") eq "1" or &RUN_feature("wavefunction") eq "1"){$YPP=1}
 if (&RUN_feature("QPDBs") eq "1") {$YPP=1}
 if (&RUN_feature("exciton") eq "1") {$YPP=1}
+if (&RUN_feature("magnon") eq "1") {$YPP=1}
 if (&RUN_feature("electrons") eq "1") {$YPP=1}
 if (&RUN_feature("dipoles") eq "1" and &RUN_feature("DIP_kind") eq "1") {$YPP=1}
 if (&RUN_feature("sort") eq "1") 
