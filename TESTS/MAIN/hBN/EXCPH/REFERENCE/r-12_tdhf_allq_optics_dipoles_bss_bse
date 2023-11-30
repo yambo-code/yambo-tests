@@ -1,19 +1,19 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+     __  __   ________   ___ __ __    _______   ______                    
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
                                                                           
                                                                           
-    Version 5.1.1 Revision 21307 Hash (prev commit) a1c3037f1             
-                  Branch is devel-excph-clean                             
+    Version 5.2.0 Revision 22184 Hash (prev commit) 2871b0cee             
+                     Branch is devel-excph                                
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 04/20/2022 at 18:44 yambo_ph @ unimi-XPS-8930
+ 11/30/2023 at 13:38 yambo_ph @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 12_tdhf_allq
- Alt#1 string        : R12
+ Alt#1 string        : R13
 
  Precision           : SINGLE
   
@@ -52,7 +52,7 @@
   Exact exchange fraction in XC                    :  0.000000
   Exact exchange screening in XC                   :  0.000000
   Magnetic symmetries                              : no
- - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+ - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
 
  [02] CORE Variables Setup
  =========================
@@ -167,17 +167,17 @@
  [03] Transferred momenta grid and indexing
  ==========================================
 
+
+ [WARNING] BSE and COLL scattering equal to TRUE
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
-  Polarization last K                              :   9
+  Polarization last K ( bz)                        :   9
+  Polarization last K (ibz)                        :   9
   QP states                                        :   1   9
   X grid is uniform                                : yes
-  Grids                                            : X B S
-  BS scattering                                    : yes
-  COLL scattering                                  : no
-  Sigma scattering                                 : yes
-  X scattering                                     : yes
- - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+  Grids (string)                                   :  X B C S minus_q
+  Grids (int-vector)                               :  1  1  1  1
+ - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
 
  IBZ Q-points :   9
  BZ  Q-points :   9
@@ -187,12 +187,12 @@
 
  Q [1]:  0.000000  0.000000  0.000000 [rlu]
  Q [2]:  0.000000  0.333333  0.000000 [rlu]
- Q [3]:  0.333333  0.333333  0.000000 [rlu]
+ Q [3]: -0.333333  0.000000  0.000000 [rlu]
  Q [4]:  0.333333 -0.333333  0.000000 [rlu]
  Q [5]:  0.000000 -0.333333  0.000000 [rlu]
- Q [6]:  0.333333     0.447035E-7   0.00000    [rlu]
+ Q [6]:  0.333333  0.000000  0.000000 [rlu]
  Q [7]: -0.333333  0.333333  0.000000 [rlu]
- Q [8]: -0.333333    -0.447035E-7   0.00000    [rlu]
+ Q [8]:  0.333333  0.333333  0.000000 [rlu]
  Q [9]: -0.333333  0.666667  0.000000 [rlu]
 
  [04] External/Internal QP corrections
@@ -245,7 +245,7 @@
   Eqp @ K [9]
   -14.10328  -8.16822  -7.18639   0.00000   9.46976  17.03517  13.37120  14.48832
 
- [01] Dipoles
+ [05] Dipoles
  ============
 
  [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
@@ -269,25 +269,25 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+ - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
 
  [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
 
  [WARNING] In case H contains other non local terms, these are neglected
 
- [02] Bethe Salpeter Equation driver
+ [06] Bethe Salpeter Equation driver
  ===================================
 
 
- [03] Bethe Salpeter Equation @q1
- ================================
-
-
-  [03.01] Transition pre-analysis @q1
+  [06.01] Bethe Salpeter Equation @q1
   ===================================
 
 
-   [03.01.01] Transition Groups build-up @q1
+   [06.01.01] Transition pre-analysis @q1
+   ======================================
+
+
+   [06.01.02] Transition Groups build-up @q1
    =========================================
 
    [BSK] Transition groups (total):   9
@@ -295,7 +295,7 @@
    [BSK]         (total):   36
    [BSK] N. of matrices :  1
 
-   [03.01.02] Loading Dipoles @q1
+   [06.01.03] Loading Dipoles @q1
    ==============================
 
    [RD./12_tdhf_allq//ndb.dipoles]-------------------------------------------------
@@ -314,23 +314,23 @@
     Approach used                                    : G-space v
     Dipoles computed                                 : R V P
     Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
 
-   [03.01.03] Independent Particles properties @q1
+   [06.01.04] Independent Particles properties @q1
    ===============================================
 
 
-   [03.01.04] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
+   [06.01.05] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
    ==========================================================
 
    [BSE] Exchange components :  1005
 
-   [03.01.05] Wave-Function Phases
+   [06.01.06] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found       :  100.0000 [o/o]
 
-   [03.01.06] Main kernel loop
+   [06.01.07] Main kernel loop
    ===========================
 
    [WR./12_tdhf_allq//ndb.BS_head_Q1]----------------------------------------------
@@ -341,7 +341,7 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   4435
+    [K] Identifier                                   :  2779
     [K] Dimension                                    :   36
     [K] Bands                                        :   3   6
     [K] Exchange res                                 : yes
@@ -355,63 +355,63 @@
     [K] RL vectors correlation                       :  1005
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
+    [K] BSE L kind                                   : BAR
     [W] Interaction is diagonal                      : yes
     [W] Matrix size                                  :  1
     [RIM] RL components col                          : 0
     [RIM] Random points col                          : 0
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+    [X] Response Kind                                : BAR
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
     Kernel complete                                  : no
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
-  [03.02] BSE solver(s) @q1
+  [06.02] BSE solver(s) @q1
   =========================
 
 
-   [03.02.01] Diago Solver @q1
-   ===========================
+  [06.03] Diago Solver @q1
+  ========================
 
-   [WR./12_tdhf_allq//ndb.BS_diago_Q1]---------------------------------------------
-    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   4435
-    [K] Dimension                                    :   36
-    [K] Bands                                        :   3   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : yes
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  1005
-    [K] RL vectors correlation                       :  1005
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
-    [W] Interaction is diagonal                      : yes
-    [W] Matrix size                                  :  1
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-    [BSS] Eigenstates included                       : yes
-    [BSS] Field direction                            :   0.00000     0.100000E-4   0.00000   
-    [BSS] Eigenstates computed                       :   36
-    [BSS] Number of BSE matrices                     :  1
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-
- [04] Bethe Salpeter Equation @q2
- ================================
-
-
-  [04.01] Transition pre-analysis @q2
+  [WR./12_tdhf_allq//ndb.BS_diago_Q1]---------------------------------------------
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
+   [K] Identifier                                   :  2779
+   [K] Dimension                                    :   36
+   [K] Bands                                        :   3   6
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : yes
+   [K] Kernel`s coupling                            : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
+   [K] W interaction is bare                        : yes
+   [K] ALDA kernel in R-space                       : no
+   [K] RL vectors exchange                          :  1005
+   [K] RL vectors correlation                       :  1005
+   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+   [K] Coupling range                               :  100.0000  100.0000 [o/o]
+   [K] BSE L kind                                   : BAR
+   [W] Interaction is diagonal                      : yes
+   [W] Matrix size                                  :  1
+   [RIM] RL components col                          : 0
+   [RIM] Random points col                          : 0
+   [SOC] Perturbative SOC                           : no
+   [IO] Kernel IO mode                              : 2D_standard
+   [X] Response Kind                                : BAR
+   [BSS] Eigenstates included                       : yes
+   [BSS] Field direction                            :   0.00000     0.100000E-4   0.00000   
+   [BSS] Eigenstates computed                       :   36
+   [BSS] Number of BSE matrices                     :  1
+  - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
   ===================================
 
 
-   [04.01.01] Transition Groups build-up @q2
+   [06.02.01] Transition pre-analysis @q2
+   ======================================
+
+
+   [06.02.02] Transition Groups build-up @q2
    =========================================
 
    [BSK] Transition groups (total):   9
@@ -419,25 +419,25 @@
    [BSK]         (total):   36
    [BSK] N. of matrices :  1
 
-   [04.01.02] Loading Dipoles @q2
+   [06.02.03] Loading Dipoles @q2
    ==============================
 
 
-   [04.01.03] Independent Particles properties @q2
+   [06.02.04] Independent Particles properties @q2
    ===============================================
 
 
-   [04.01.04] BSE Kernel @q2 (Resonant CORRRELATION EXCHANGE)
+   [06.02.05] BSE Kernel @q2 (Resonant CORRRELATION EXCHANGE)
    ==========================================================
 
    [BSE] Exchange components :  1005
 
-   [04.01.05] Wave-Function Phases
+   [06.02.06] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found       :  100.0000 [o/o]
 
-   [04.01.06] Main kernel loop
+   [06.02.07] Main kernel loop
    ===========================
 
    [WR./12_tdhf_allq//ndb.BS_head_Q2]----------------------------------------------
@@ -448,7 +448,7 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   5641
+    [K] Identifier                                   :   3986
     [K] Q-point                                      :  0.000000  0.333333  0.000000
     [K] Dimension                                    :   36
     [K] Bands                                        :   3   6
@@ -463,63 +463,63 @@
     [K] RL vectors correlation                       :  1005
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
+    [K] BSE L kind                                   : BAR
     [W] Interaction is diagonal                      : yes
     [W] Matrix size                                  :  1
     [RIM] RL components col                          : 0
     [RIM] Random points col                          : 0
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+    [X] Response Kind                                : BAR
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
     Kernel complete                                  : no
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
-  [04.02] BSE solver(s) @q2
+  [06.03] BSE solver(s) @q2
   =========================
 
 
-   [04.02.01] Diago Solver @q2
-   ===========================
+  [06.04] Diago Solver @q2
+  ========================
 
-   [WR./12_tdhf_allq//ndb.BS_diago_Q2]---------------------------------------------
-    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   5641
-    [K] Q-point                                      :  0.000000  0.333333  0.000000
-    [K] Dimension                                    :   36
-    [K] Bands                                        :   3   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : yes
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  1005
-    [K] RL vectors correlation                       :  1005
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
-    [W] Interaction is diagonal                      : yes
-    [W] Matrix size                                  :  1
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-    [BSS] Eigenstates included                       : yes
-    [BSS] Eigenstates computed                       :   36
-    [BSS] Number of BSE matrices                     :  1
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-
- [05] Bethe Salpeter Equation @q3
- ================================
-
-
-  [05.01] Transition pre-analysis @q3
+  [WR./12_tdhf_allq//ndb.BS_diago_Q2]---------------------------------------------
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
+   [K] Identifier                                   :   3986
+   [K] Q-point                                      :  0.000000  0.333333  0.000000
+   [K] Dimension                                    :   36
+   [K] Bands                                        :   3   6
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : yes
+   [K] Kernel`s coupling                            : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
+   [K] W interaction is bare                        : yes
+   [K] ALDA kernel in R-space                       : no
+   [K] RL vectors exchange                          :  1005
+   [K] RL vectors correlation                       :  1005
+   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+   [K] Coupling range                               :  100.0000  100.0000 [o/o]
+   [K] BSE L kind                                   : BAR
+   [W] Interaction is diagonal                      : yes
+   [W] Matrix size                                  :  1
+   [RIM] RL components col                          : 0
+   [RIM] Random points col                          : 0
+   [SOC] Perturbative SOC                           : no
+   [IO] Kernel IO mode                              : 2D_standard
+   [X] Response Kind                                : BAR
+   [BSS] Eigenstates included                       : yes
+   [BSS] Eigenstates computed                       :   36
+   [BSS] Number of BSE matrices                     :  1
+  - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
   ===================================
 
 
-   [05.01.01] Transition Groups build-up @q3
+   [06.03.01] Transition pre-analysis @q3
+   ======================================
+
+
+   [06.03.02] Transition Groups build-up @q3
    =========================================
 
    [BSK] Transition groups (total):   9
@@ -527,25 +527,25 @@
    [BSK]         (total):   36
    [BSK] N. of matrices :  1
 
-   [05.01.02] Loading Dipoles @q3
+   [06.03.03] Loading Dipoles @q3
    ==============================
 
 
-   [05.01.03] Independent Particles properties @q3
+   [06.03.04] Independent Particles properties @q3
    ===============================================
 
 
-   [05.01.04] BSE Kernel @q3 (Resonant CORRRELATION EXCHANGE)
+   [06.03.05] BSE Kernel @q3 (Resonant CORRRELATION EXCHANGE)
    ==========================================================
 
    [BSE] Exchange components :  1005
 
-   [05.01.05] Wave-Function Phases
+   [06.03.06] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found       :  100.0000 [o/o]
 
-   [05.01.06] Main kernel loop
+   [06.03.07] Main kernel loop
    ===========================
 
    [WR./12_tdhf_allq//ndb.BS_head_Q3]----------------------------------------------
@@ -556,8 +556,8 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   5641
-    [K] Q-point                                      :  0.333333  0.500000  0.000000
+    [K] Identifier                                   :   5192
+    [K] Q-point                                      : -0.333333 -0.166667  0.000000
     [K] Dimension                                    :   36
     [K] Bands                                        :   3   6
     [K] Exchange res                                 : yes
@@ -571,63 +571,63 @@
     [K] RL vectors correlation                       :  1005
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
+    [K] BSE L kind                                   : BAR
     [W] Interaction is diagonal                      : yes
     [W] Matrix size                                  :  1
     [RIM] RL components col                          : 0
     [RIM] Random points col                          : 0
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+    [X] Response Kind                                : BAR
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
     Kernel complete                                  : no
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
-  [05.02] BSE solver(s) @q3
+  [06.04] BSE solver(s) @q3
   =========================
 
 
-   [05.02.01] Diago Solver @q3
-   ===========================
+  [06.05] Diago Solver @q3
+  ========================
 
-   [WR./12_tdhf_allq//ndb.BS_diago_Q3]---------------------------------------------
-    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   5641
-    [K] Q-point                                      :  0.333333  0.500000  0.000000
-    [K] Dimension                                    :   36
-    [K] Bands                                        :   3   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : yes
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  1005
-    [K] RL vectors correlation                       :  1005
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
-    [W] Interaction is diagonal                      : yes
-    [W] Matrix size                                  :  1
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-    [BSS] Eigenstates included                       : yes
-    [BSS] Eigenstates computed                       :   36
-    [BSS] Number of BSE matrices                     :  1
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-
- [06] Bethe Salpeter Equation @q4
- ================================
-
-
-  [06.01] Transition pre-analysis @q4
+  [WR./12_tdhf_allq//ndb.BS_diago_Q3]---------------------------------------------
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
+   [K] Identifier                                   :   5192
+   [K] Q-point                                      : -0.333333 -0.166667  0.000000
+   [K] Dimension                                    :   36
+   [K] Bands                                        :   3   6
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : yes
+   [K] Kernel`s coupling                            : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
+   [K] W interaction is bare                        : yes
+   [K] ALDA kernel in R-space                       : no
+   [K] RL vectors exchange                          :  1005
+   [K] RL vectors correlation                       :  1005
+   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+   [K] Coupling range                               :  100.0000  100.0000 [o/o]
+   [K] BSE L kind                                   : BAR
+   [W] Interaction is diagonal                      : yes
+   [W] Matrix size                                  :  1
+   [RIM] RL components col                          : 0
+   [RIM] Random points col                          : 0
+   [SOC] Perturbative SOC                           : no
+   [IO] Kernel IO mode                              : 2D_standard
+   [X] Response Kind                                : BAR
+   [BSS] Eigenstates included                       : yes
+   [BSS] Eigenstates computed                       :   36
+   [BSS] Number of BSE matrices                     :  1
+  - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
   ===================================
 
 
-   [06.01.01] Transition Groups build-up @q4
+   [06.04.01] Transition pre-analysis @q4
+   ======================================
+
+
+   [06.04.02] Transition Groups build-up @q4
    =========================================
 
    [BSK] Transition groups (total):   9
@@ -635,25 +635,25 @@
    [BSK]         (total):   36
    [BSK] N. of matrices :  1
 
-   [06.01.02] Loading Dipoles @q4
+   [06.04.03] Loading Dipoles @q4
    ==============================
 
 
-   [06.01.03] Independent Particles properties @q4
+   [06.04.04] Independent Particles properties @q4
    ===============================================
 
 
-   [06.01.04] BSE Kernel @q4 (Resonant CORRRELATION EXCHANGE)
+   [06.04.05] BSE Kernel @q4 (Resonant CORRRELATION EXCHANGE)
    ==========================================================
 
    [BSE] Exchange components :  1005
 
-   [06.01.05] Wave-Function Phases
+   [06.04.06] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found       :  100.0000 [o/o]
 
-   [06.01.06] Main kernel loop
+   [06.04.07] Main kernel loop
    ===========================
 
    [WR./12_tdhf_allq//ndb.BS_head_Q4]----------------------------------------------
@@ -664,7 +664,7 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   5641
+    [K] Identifier                                   :   6398
     [K] Q-point                                      :  0.333333 -0.166667  0.000000
     [K] Dimension                                    :   36
     [K] Bands                                        :   3   6
@@ -679,63 +679,63 @@
     [K] RL vectors correlation                       :  1005
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
+    [K] BSE L kind                                   : BAR
     [W] Interaction is diagonal                      : yes
     [W] Matrix size                                  :  1
     [RIM] RL components col                          : 0
     [RIM] Random points col                          : 0
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+    [X] Response Kind                                : BAR
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
     Kernel complete                                  : no
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
-  [06.02] BSE solver(s) @q4
+  [06.05] BSE solver(s) @q4
   =========================
 
 
-   [06.02.01] Diago Solver @q4
-   ===========================
+  [06.06] Diago Solver @q4
+  ========================
 
-   [WR./12_tdhf_allq//ndb.BS_diago_Q4]---------------------------------------------
-    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   5641
-    [K] Q-point                                      :  0.333333 -0.166667  0.000000
-    [K] Dimension                                    :   36
-    [K] Bands                                        :   3   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : yes
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  1005
-    [K] RL vectors correlation                       :  1005
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
-    [W] Interaction is diagonal                      : yes
-    [W] Matrix size                                  :  1
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-    [BSS] Eigenstates included                       : yes
-    [BSS] Eigenstates computed                       :   36
-    [BSS] Number of BSE matrices                     :  1
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-
- [07] Bethe Salpeter Equation @q5
- ================================
-
-
-  [07.01] Transition pre-analysis @q5
+  [WR./12_tdhf_allq//ndb.BS_diago_Q4]---------------------------------------------
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
+   [K] Identifier                                   :   6398
+   [K] Q-point                                      :  0.333333 -0.166667  0.000000
+   [K] Dimension                                    :   36
+   [K] Bands                                        :   3   6
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : yes
+   [K] Kernel`s coupling                            : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
+   [K] W interaction is bare                        : yes
+   [K] ALDA kernel in R-space                       : no
+   [K] RL vectors exchange                          :  1005
+   [K] RL vectors correlation                       :  1005
+   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+   [K] Coupling range                               :  100.0000  100.0000 [o/o]
+   [K] BSE L kind                                   : BAR
+   [W] Interaction is diagonal                      : yes
+   [W] Matrix size                                  :  1
+   [RIM] RL components col                          : 0
+   [RIM] Random points col                          : 0
+   [SOC] Perturbative SOC                           : no
+   [IO] Kernel IO mode                              : 2D_standard
+   [X] Response Kind                                : BAR
+   [BSS] Eigenstates included                       : yes
+   [BSS] Eigenstates computed                       :   36
+   [BSS] Number of BSE matrices                     :  1
+  - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
   ===================================
 
 
-   [07.01.01] Transition Groups build-up @q5
+   [06.05.01] Transition pre-analysis @q5
+   ======================================
+
+
+   [06.05.02] Transition Groups build-up @q5
    =========================================
 
    [BSK] Transition groups (total):   9
@@ -743,25 +743,25 @@
    [BSK]         (total):   36
    [BSK] N. of matrices :  1
 
-   [07.01.02] Loading Dipoles @q5
+   [06.05.03] Loading Dipoles @q5
    ==============================
 
 
-   [07.01.03] Independent Particles properties @q5
+   [06.05.04] Independent Particles properties @q5
    ===============================================
 
 
-   [07.01.04] BSE Kernel @q5 (Resonant CORRRELATION EXCHANGE)
+   [06.05.05] BSE Kernel @q5 (Resonant CORRRELATION EXCHANGE)
    ==========================================================
 
    [BSE] Exchange components :  1005
 
-   [07.01.05] Wave-Function Phases
+   [06.05.06] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found       :  100.0000 [o/o]
 
-   [07.01.06] Main kernel loop
+   [06.05.07] Main kernel loop
    ===========================
 
    [WR./12_tdhf_allq//ndb.BS_head_Q5]----------------------------------------------
@@ -772,7 +772,7 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   6848
+    [K] Identifier                                   :   7604
     [K] Q-point                                      :  0.000000 -0.333333  0.000000
     [K] Dimension                                    :   36
     [K] Bands                                        :   3   6
@@ -787,63 +787,63 @@
     [K] RL vectors correlation                       :  1005
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
+    [K] BSE L kind                                   : BAR
     [W] Interaction is diagonal                      : yes
     [W] Matrix size                                  :  1
     [RIM] RL components col                          : 0
     [RIM] Random points col                          : 0
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+    [X] Response Kind                                : BAR
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
     Kernel complete                                  : no
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
-  [07.02] BSE solver(s) @q5
+  [06.06] BSE solver(s) @q5
   =========================
 
 
-   [07.02.01] Diago Solver @q5
-   ===========================
+  [06.07] Diago Solver @q5
+  ========================
 
-   [WR./12_tdhf_allq//ndb.BS_diago_Q5]---------------------------------------------
-    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   6848
-    [K] Q-point                                      :  0.000000 -0.333333  0.000000
-    [K] Dimension                                    :   36
-    [K] Bands                                        :   3   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : yes
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  1005
-    [K] RL vectors correlation                       :  1005
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
-    [W] Interaction is diagonal                      : yes
-    [W] Matrix size                                  :  1
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-    [BSS] Eigenstates included                       : yes
-    [BSS] Eigenstates computed                       :   36
-    [BSS] Number of BSE matrices                     :  1
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-
- [08] Bethe Salpeter Equation @q6
- ================================
-
-
-  [08.01] Transition pre-analysis @q6
+  [WR./12_tdhf_allq//ndb.BS_diago_Q5]---------------------------------------------
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
+   [K] Identifier                                   :   7604
+   [K] Q-point                                      :  0.000000 -0.333333  0.000000
+   [K] Dimension                                    :   36
+   [K] Bands                                        :   3   6
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : yes
+   [K] Kernel`s coupling                            : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
+   [K] W interaction is bare                        : yes
+   [K] ALDA kernel in R-space                       : no
+   [K] RL vectors exchange                          :  1005
+   [K] RL vectors correlation                       :  1005
+   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+   [K] Coupling range                               :  100.0000  100.0000 [o/o]
+   [K] BSE L kind                                   : BAR
+   [W] Interaction is diagonal                      : yes
+   [W] Matrix size                                  :  1
+   [RIM] RL components col                          : 0
+   [RIM] Random points col                          : 0
+   [SOC] Perturbative SOC                           : no
+   [IO] Kernel IO mode                              : 2D_standard
+   [X] Response Kind                                : BAR
+   [BSS] Eigenstates included                       : yes
+   [BSS] Eigenstates computed                       :   36
+   [BSS] Number of BSE matrices                     :  1
+  - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
   ===================================
 
 
-   [08.01.01] Transition Groups build-up @q6
+   [06.06.01] Transition pre-analysis @q6
+   ======================================
+
+
+   [06.06.02] Transition Groups build-up @q6
    =========================================
 
    [BSK] Transition groups (total):   9
@@ -851,25 +851,25 @@
    [BSK]         (total):   36
    [BSK] N. of matrices :  1
 
-   [08.01.02] Loading Dipoles @q6
+   [06.06.03] Loading Dipoles @q6
    ==============================
 
 
-   [08.01.03] Independent Particles properties @q6
+   [06.06.04] Independent Particles properties @q6
    ===============================================
 
 
-   [08.01.04] BSE Kernel @q6 (Resonant CORRRELATION EXCHANGE)
+   [06.06.05] BSE Kernel @q6 (Resonant CORRRELATION EXCHANGE)
    ==========================================================
 
    [BSE] Exchange components :  1005
 
-   [08.01.05] Wave-Function Phases
+   [06.06.06] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found       :  100.0000 [o/o]
 
-   [08.01.06] Main kernel loop
+   [06.06.07] Main kernel loop
    ===========================
 
    [WR./12_tdhf_allq//ndb.BS_head_Q6]----------------------------------------------
@@ -880,7 +880,7 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   6848
+    [K] Identifier                                   :   7604
     [K] Q-point                                      :  0.333333  0.166667  0.000000
     [K] Dimension                                    :   36
     [K] Bands                                        :   3   6
@@ -895,63 +895,63 @@
     [K] RL vectors correlation                       :  1005
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
+    [K] BSE L kind                                   : BAR
     [W] Interaction is diagonal                      : yes
     [W] Matrix size                                  :  1
     [RIM] RL components col                          : 0
     [RIM] Random points col                          : 0
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+    [X] Response Kind                                : BAR
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
     Kernel complete                                  : no
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
-  [08.02] BSE solver(s) @q6
+  [06.07] BSE solver(s) @q6
   =========================
 
 
-   [08.02.01] Diago Solver @q6
-   ===========================
+  [06.08] Diago Solver @q6
+  ========================
 
-   [WR./12_tdhf_allq//ndb.BS_diago_Q6]---------------------------------------------
-    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   6848
-    [K] Q-point                                      :  0.333333  0.166667  0.000000
-    [K] Dimension                                    :   36
-    [K] Bands                                        :   3   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : yes
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  1005
-    [K] RL vectors correlation                       :  1005
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
-    [W] Interaction is diagonal                      : yes
-    [W] Matrix size                                  :  1
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-    [BSS] Eigenstates included                       : yes
-    [BSS] Eigenstates computed                       :   36
-    [BSS] Number of BSE matrices                     :  1
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-
- [09] Bethe Salpeter Equation @q7
- ================================
-
-
-  [09.01] Transition pre-analysis @q7
+  [WR./12_tdhf_allq//ndb.BS_diago_Q6]---------------------------------------------
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
+   [K] Identifier                                   :   7604
+   [K] Q-point                                      :  0.333333  0.166667  0.000000
+   [K] Dimension                                    :   36
+   [K] Bands                                        :   3   6
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : yes
+   [K] Kernel`s coupling                            : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
+   [K] W interaction is bare                        : yes
+   [K] ALDA kernel in R-space                       : no
+   [K] RL vectors exchange                          :  1005
+   [K] RL vectors correlation                       :  1005
+   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+   [K] Coupling range                               :  100.0000  100.0000 [o/o]
+   [K] BSE L kind                                   : BAR
+   [W] Interaction is diagonal                      : yes
+   [W] Matrix size                                  :  1
+   [RIM] RL components col                          : 0
+   [RIM] Random points col                          : 0
+   [SOC] Perturbative SOC                           : no
+   [IO] Kernel IO mode                              : 2D_standard
+   [X] Response Kind                                : BAR
+   [BSS] Eigenstates included                       : yes
+   [BSS] Eigenstates computed                       :   36
+   [BSS] Number of BSE matrices                     :  1
+  - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
   ===================================
 
 
-   [09.01.01] Transition Groups build-up @q7
+   [06.07.01] Transition pre-analysis @q7
+   ======================================
+
+
+   [06.07.02] Transition Groups build-up @q7
    =========================================
 
    [BSK] Transition groups (total):   9
@@ -959,25 +959,25 @@
    [BSK]         (total):   36
    [BSK] N. of matrices :  1
 
-   [09.01.02] Loading Dipoles @q7
+   [06.07.03] Loading Dipoles @q7
    ==============================
 
 
-   [09.01.03] Independent Particles properties @q7
+   [06.07.04] Independent Particles properties @q7
    ===============================================
 
 
-   [09.01.04] BSE Kernel @q7 (Resonant CORRRELATION EXCHANGE)
+   [06.07.05] BSE Kernel @q7 (Resonant CORRRELATION EXCHANGE)
    ==========================================================
 
    [BSE] Exchange components :  1005
 
-   [09.01.05] Wave-Function Phases
+   [06.07.06] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found       :  100.0000 [o/o]
 
-   [09.01.06] Main kernel loop
+   [06.07.07] Main kernel loop
    ===========================
 
    [WR./12_tdhf_allq//ndb.BS_head_Q7]----------------------------------------------
@@ -988,7 +988,7 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   8054
+    [K] Identifier                                   :   8811
     [K] Q-point                                      : -0.333333  0.166667  0.000000
     [K] Dimension                                    :   36
     [K] Bands                                        :   3   6
@@ -1003,63 +1003,63 @@
     [K] RL vectors correlation                       :  1005
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
+    [K] BSE L kind                                   : BAR
     [W] Interaction is diagonal                      : yes
     [W] Matrix size                                  :  1
     [RIM] RL components col                          : 0
     [RIM] Random points col                          : 0
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+    [X] Response Kind                                : BAR
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
     Kernel complete                                  : no
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
-  [09.02] BSE solver(s) @q7
+  [06.08] BSE solver(s) @q7
   =========================
 
 
-   [09.02.01] Diago Solver @q7
-   ===========================
+  [06.09] Diago Solver @q7
+  ========================
 
-   [WR./12_tdhf_allq//ndb.BS_diago_Q7]---------------------------------------------
-    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   8054
-    [K] Q-point                                      : -0.333333  0.166667  0.000000
-    [K] Dimension                                    :   36
-    [K] Bands                                        :   3   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : yes
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  1005
-    [K] RL vectors correlation                       :  1005
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
-    [W] Interaction is diagonal                      : yes
-    [W] Matrix size                                  :  1
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-    [BSS] Eigenstates included                       : yes
-    [BSS] Eigenstates computed                       :   36
-    [BSS] Number of BSE matrices                     :  1
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-
- [10] Bethe Salpeter Equation @q8
- ================================
-
-
-  [10.01] Transition pre-analysis @q8
+  [WR./12_tdhf_allq//ndb.BS_diago_Q7]---------------------------------------------
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
+   [K] Identifier                                   :   8811
+   [K] Q-point                                      : -0.333333  0.166667  0.000000
+   [K] Dimension                                    :   36
+   [K] Bands                                        :   3   6
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : yes
+   [K] Kernel`s coupling                            : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
+   [K] W interaction is bare                        : yes
+   [K] ALDA kernel in R-space                       : no
+   [K] RL vectors exchange                          :  1005
+   [K] RL vectors correlation                       :  1005
+   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+   [K] Coupling range                               :  100.0000  100.0000 [o/o]
+   [K] BSE L kind                                   : BAR
+   [W] Interaction is diagonal                      : yes
+   [W] Matrix size                                  :  1
+   [RIM] RL components col                          : 0
+   [RIM] Random points col                          : 0
+   [SOC] Perturbative SOC                           : no
+   [IO] Kernel IO mode                              : 2D_standard
+   [X] Response Kind                                : BAR
+   [BSS] Eigenstates included                       : yes
+   [BSS] Eigenstates computed                       :   36
+   [BSS] Number of BSE matrices                     :  1
+  - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
   ===================================
 
 
-   [10.01.01] Transition Groups build-up @q8
+   [06.08.01] Transition pre-analysis @q8
+   ======================================
+
+
+   [06.08.02] Transition Groups build-up @q8
    =========================================
 
    [BSK] Transition groups (total):   9
@@ -1067,25 +1067,25 @@
    [BSK]         (total):   36
    [BSK] N. of matrices :  1
 
-   [10.01.02] Loading Dipoles @q8
+   [06.08.03] Loading Dipoles @q8
    ==============================
 
 
-   [10.01.03] Independent Particles properties @q8
+   [06.08.04] Independent Particles properties @q8
    ===============================================
 
 
-   [10.01.04] BSE Kernel @q8 (Resonant CORRRELATION EXCHANGE)
+   [06.08.05] BSE Kernel @q8 (Resonant CORRRELATION EXCHANGE)
    ==========================================================
 
    [BSE] Exchange components :  1005
 
-   [10.01.05] Wave-Function Phases
+   [06.08.06] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found       :  100.0000 [o/o]
 
-   [10.01.06] Main kernel loop
+   [06.08.07] Main kernel loop
    ===========================
 
    [WR./12_tdhf_allq//ndb.BS_head_Q8]----------------------------------------------
@@ -1096,8 +1096,8 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   8054
-    [K] Q-point                                      : -0.333333 -0.166667  0.000000
+    [K] Identifier                                   :  17
+    [K] Q-point                                      :  0.333333  0.500000  0.000000
     [K] Dimension                                    :   36
     [K] Bands                                        :   3   6
     [K] Exchange res                                 : yes
@@ -1111,63 +1111,65 @@
     [K] RL vectors correlation                       :  1005
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
+    [K] BSE L kind                                   : BAR
     [W] Interaction is diagonal                      : yes
     [W] Matrix size                                  :  1
     [RIM] RL components col                          : 0
     [RIM] Random points col                          : 0
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+    [X] Response Kind                                : BAR
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
     Kernel complete                                  : no
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
-  [10.02] BSE solver(s) @q8
+  [06.09] BSE solver(s) @q8
   =========================
 
 
-   [10.02.01] Diago Solver @q8
-   ===========================
+  [06.10] Diago Solver @q8
+  ========================
 
-   [WR./12_tdhf_allq//ndb.BS_diago_Q8]---------------------------------------------
-    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   8054
-    [K] Q-point                                      : -0.333333 -0.166667  0.000000
-    [K] Dimension                                    :   36
-    [K] Bands                                        :   3   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : yes
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  1005
-    [K] RL vectors correlation                       :  1005
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
-    [W] Interaction is diagonal                      : yes
-    [W] Matrix size                                  :  1
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-    [BSS] Eigenstates included                       : yes
-    [BSS] Eigenstates computed                       :   36
-    [BSS] Number of BSE matrices                     :  1
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+  [WR./12_tdhf_allq//ndb.BS_diago_Q8]---------------------------------------------
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
+   [K] Identifier                                   :  17
+   [K] Q-point                                      :  0.333333  0.500000  0.000000
+   [K] Dimension                                    :   36
+   [K] Bands                                        :   3   6
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : yes
+   [K] Kernel`s coupling                            : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
+   [K] W interaction is bare                        : yes
+   [K] ALDA kernel in R-space                       : no
+   [K] RL vectors exchange                          :  1005
+   [K] RL vectors correlation                       :  1005
+   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+   [K] Coupling range                               :  100.0000  100.0000 [o/o]
+   [K] BSE L kind                                   : BAR
+   [W] Interaction is diagonal                      : yes
+   [W] Matrix size                                  :  1
+   [RIM] RL components col                          : 0
+   [RIM] Random points col                          : 0
+   [SOC] Perturbative SOC                           : no
+   [IO] Kernel IO mode                              : 2D_standard
+   [X] Response Kind                                : BAR
+   [BSS] Eigenstates included                       : yes
+   [BSS] Eigenstates computed                       :   36
+   [BSS] Number of BSE matrices                     :  1
+  - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
 
- [11] Bethe Salpeter Equation @q9
- ================================
-
-
-  [11.01] Transition pre-analysis @q9
+  [06.09] Bethe Salpeter Equation @q9
   ===================================
 
 
-   [11.01.01] Transition Groups build-up @q9
+   [06.09.01] Transition pre-analysis @q9
+   ======================================
+
+
+   [06.09.02] Transition Groups build-up @q9
    =========================================
 
    [BSK] Transition groups (total):   9
@@ -1175,25 +1177,25 @@
    [BSK]         (total):   36
    [BSK] N. of matrices :  1
 
-   [11.01.02] Loading Dipoles @q9
+   [06.09.03] Loading Dipoles @q9
    ==============================
 
 
-   [11.01.03] Independent Particles properties @q9
+   [06.09.04] Independent Particles properties @q9
    ===============================================
 
 
-   [11.01.04] BSE Kernel @q9 (Resonant CORRRELATION EXCHANGE)
+   [06.09.05] BSE Kernel @q9 (Resonant CORRRELATION EXCHANGE)
    ==========================================================
 
    [BSE] Exchange components :  1005
 
-   [11.01.05] Wave-Function Phases
+   [06.09.06] Wave-Function Phases
    ===============================
 
    [BSE] WF phases found       :  100.0000 [o/o]
 
-   [11.01.06] Main kernel loop
+   [06.09.07] Main kernel loop
    ===========================
 
    [WR./12_tdhf_allq//ndb.BS_head_Q9]----------------------------------------------
@@ -1204,7 +1206,7 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   9260
+    [K] Identifier                                   :  1223
     [K] Q-point                                      : -0.333333  0.500000  0.000000
     [K] Dimension                                    :   36
     [K] Bands                                        :   3   6
@@ -1219,103 +1221,107 @@
     [K] RL vectors correlation                       :  1005
     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
+    [K] BSE L kind                                   : BAR
     [W] Interaction is diagonal                      : yes
     [W] Matrix size                                  :  1
     [RIM] RL components col                          : 0
     [RIM] Random points col                          : 0
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+    [X] Response Kind                                : BAR
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
     Kernel complete                                  : no
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
-  [11.02] BSE solver(s) @q9
+  [06.10] BSE solver(s) @q9
   =========================
 
 
-   [11.02.01] Diago Solver @q9
-   ===========================
+  [06.11] Diago Solver @q9
+  ========================
 
-   [WR./12_tdhf_allq//ndb.BS_diago_Q9]---------------------------------------------
-    BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   9260
-    [K] Q-point                                      : -0.333333  0.500000  0.000000
-    [K] Dimension                                    :   36
-    [K] Bands                                        :   3   6
-    [K] Exchange res                                 : yes
-    [K] Correlation res                              : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : yes
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors exchange                          :  1005
-    [K] RL vectors correlation                       :  1005
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [K] L kind                                       : Lbar
-    [W] Interaction is diagonal                      : yes
-    [W] Matrix size                                  :  1
-    [RIM] RL components col                          : 0
-    [RIM] Random points col                          : 0
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel IO mode                              : 2D_standard
-    [BSS] Eigenstates included                       : yes
-    [BSS] Eigenstates computed                       :   36
-    [BSS] Number of BSE matrices                     :  1
-   - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
+  [WR./12_tdhf_allq//ndb.BS_diago_Q9]---------------------------------------------
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
+   [K] Identifier                                   :  1223
+   [K] Q-point                                      : -0.333333  0.500000  0.000000
+   [K] Dimension                                    :   36
+   [K] Bands                                        :   3   6
+   [K] Exchange res                                 : yes
+   [K] Correlation res                              : yes
+   [K] Kernel`s coupling                            : no
+   [K] Exchange cpl                                 : no
+   [K] Correlation cpl                              : no
+   [K] W interaction is bare                        : yes
+   [K] ALDA kernel in R-space                       : no
+   [K] RL vectors exchange                          :  1005
+   [K] RL vectors correlation                       :  1005
+   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+   [K] Coupling range                               :  100.0000  100.0000 [o/o]
+   [K] BSE L kind                                   : BAR
+   [W] Interaction is diagonal                      : yes
+   [W] Matrix size                                  :  1
+   [RIM] RL components col                          : 0
+   [RIM] Random points col                          : 0
+   [SOC] Perturbative SOC                           : no
+   [IO] Kernel IO mode                              : 2D_standard
+   [X] Response Kind                                : BAR
+   [BSS] Eigenstates included                       : yes
+   [BSS] Eigenstates computed                       :   36
+   [BSS] Number of BSE matrices                     :  1
+  - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
 
- [12] Timing Overview
+ Timing [Min/Max/Average]: 08s/08s/08s
+
+ [07] Timing Overview
  ====================
 
  Clock: global
+                    BSE matrix (REDUX) :      0.0000s CPU (  9 calls,   0.000 msec avg)
                       io_ATMPROJ_pwscf :      0.0000s CPU
-                    BSE matrix (REDUX) :      0.0000s CPU (  9 calls,   0.001 msec avg)
                             io_COL_CUT :      0.0000s CPU
                           io_KB_abinit :      0.0000s CPU
                                  io_HF :      0.0000s CPU
                          io_EXCPH_gkkp :      0.0000s CPU
                         io_Double_Grid :      0.0000s CPU
-                                  io_X :      0.0001s CPU (  4 calls,   0.016 msec avg)
-                    BSE matrix filling :      0.0001s CPU (  9 calls,   0.008 msec avg)
-               IO_and_Messaging_switch :      0.0001s CPU ( 50 calls,   0.002 msec avg)
-                          PP_uspp_init :      0.0004s CPU ( 26 calls,   0.014 msec avg)
-                           K_WF_phases :      0.0004s CPU (  9 calls,   0.044 msec avg)
-                BSE components folding :      0.0005s CPU (  9 calls,   0.053 msec avg)
-                          scatter_Gamp :      0.0008s CPU ( 81 calls,   0.009 msec avg)
-                               io_ELPH :      0.0014s CPU (  2 calls,   0.714 msec avg)
-      SERIAL_HERMITIAN_diagonalization :      0.0020s CPU (  9 calls,   0.226 msec avg)
-                        LINEAR ALGEBRA :      0.0021s CPU (  9 calls,   0.228 msec avg)
-                            T_space IP :      0.0024s CPU (  9 calls,   0.268 msec avg)
-                               io_GROT :      0.0041s CPU (  3 calls,   1.350 msec avg)
-                              io_QINDX :      0.0043s CPU (  3 calls,   1.431 msec avg)
-                                 io_BS :      0.0081s CPU (406 calls,   0.020 msec avg)
-                           io_KB_pwscf :      0.0086s CPU ( 11 calls,   0.780 msec avg)
-                            io_DIPOLES :      0.0088s CPU ( 26 calls,   0.338 msec avg)
-                     DIPOLE_transverse :      0.0375s CPU
-                           io_fragment :      0.0469s CPU (171 calls,   0.274 msec avg)
-                      T_space EXX Osc. :      0.0567s CPU ( 81 calls,   0.700 msec avg)
-                          io_BSS_diago :      0.0575s CPU ( 18 calls,   3.193 msec avg)
-                             FFT_setup :      0.0669s CPU ( 17 calls,   3.933 msec avg)
-                                 io_WF :      0.1013s CPU (215 calls,   0.471 msec avg)
-                        eval_G_minus_G :      0.1187s CPU (  2 calls,  59.326 msec avg)
-                           BSE dipoles :      0.1634s CPU (  9 calls,  18.157 msec avg)
-                           WF_load_FFT :      0.1671s CPU ( 26 calls,   6.425 msec avg)
-                     T_space CORR Osc. :      0.5607s CPU (405 calls,   1.385 msec avg)
-                      X T_space Kernel :      0.9527s CPU (  9 calls, 105.857 msec avg)
-                               Dipoles :      1.0430s CPU
-                          Diago Solver :      2.6210s CPU (  9 calls,   0.291 sec avg)
+                                  io_X :      0.0001s CPU (  5 calls,   0.014 msec avg)
+                    BSE matrix filling :      0.0001s CPU (  9 calls,   0.010 msec avg)
+               IO_and_Messaging_switch :      0.0002s CPU ( 50 calls,   0.005 msec avg)
+                           K_WF_phases :      0.0004s CPU (  9 calls,   0.045 msec avg)
+                BSE components folding :      0.0005s CPU (  9 calls,   0.054 msec avg)
+                          PP_uspp_init :      0.0007s CPU ( 26 calls,   0.028 msec avg)
+                          scatter_Gamp :      0.0008s CPU ( 81 calls,   0.010 msec avg)
+                               io_ELPH :      0.0012s CPU (  2 calls,   0.611 msec avg)
+      SERIAL_HERMITIAN_diagonalization :      0.0031s CPU (  9 calls,   0.346 msec avg)
+                        LINEAR ALGEBRA :      0.0031s CPU (  9 calls,   0.349 msec avg)
+                               io_GROT :      0.0036s CPU (  3 calls,   1.203 msec avg)
+                              io_QINDX :      0.0053s CPU (  3 calls,   1.767 msec avg)
+                                 io_BS :      0.0065s CPU (405 calls,   0.016 msec avg)
+                            io_DIPOLES :      0.0124s CPU ( 26 calls,   0.479 msec avg)
+                           io_fragment :      0.0506s CPU (171 calls,   0.296 msec avg)
+                          io_BSS_diago :      0.0518s CPU ( 18 calls,   2.875 msec avg)
+                      T_space EXX Osc. :      0.0601s CPU ( 81 calls,   0.742 msec avg)
+                             FFT_setup :      0.0726s CPU ( 17 calls,   4.269 msec avg)
+                                 io_WF :      0.1191s CPU (215 calls,   0.554 msec avg)
+                           io_KB_pwscf :      0.1416s CPU ( 11 calls,  12.873 msec avg)
+                           BSE dipoles :      0.1600s CPU (  9 calls,  17.782 msec avg)
+                           WF_load_FFT :      0.1716s CPU ( 26 calls,   6.599 msec avg)
+                        eval_G_minus_G :      0.2120s CPU (  2 calls, 106.001 msec avg)
+                     DIPOLE_transverse :      0.2452s CPU
+                     T_space CORR Osc. :      0.5829s CPU (405 calls,   1.439 msec avg)
+                      X T_space Kernel :      0.9737s CPU (  9 calls, 108.191 msec avg)
+                               Dipoles :      1.2553s CPU
+                            T_space IP :      3.5057s CPU (  9 calls,   0.390 sec avg)
+                          Diago Solver :      3.7063s CPU (  9 calls,   0.412 sec avg)
 
- [13] Game Over & Game summary
+ [08] Game Over & Game summary
  =============================
 
- 04/20/2022 at 18:44 yambo_ph @ unimi-XPS-8930 [start]
- 04/20/2022 at 18:44                           [end]
+ 11/30/2023 at 13:38 yambo_ph @ unimi-XPS-8930 [start]
+ 11/30/2023 at 13:38                           [end]
 
- Timing   [Min/Max/Average]: 04s/04s/04s
-             [Time-Profile]: 04s
+ Timing   [Min/Max/Average]: 10s/10s/10s
+             [Time-Profile]: 10s
 
  .-ACKNOWLEDGMENT
  |
@@ -1350,8 +1356,8 @@
  | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
  | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
- | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
  | BSKmod= "HF"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
  | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
  | % DipBands
  |   3 |  6 |                           # [DIP] Bands range for dipoles
@@ -1362,8 +1368,6 @@
  | % KfnQP_E
  |  5.000000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
  | %
- | BSEprop= "abs esrt"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
- | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
  | % BSEQptR
  |   1 |  9 |                           # [BSK] Transferred momenta range
  | %
@@ -1380,4 +1384,6 @@
  | % BLongDir
  |   0.00000    | 0.100000E-4 |  0.00000    # [BSS] [cc] Electric Field
  | %
+ | BSEprop= "abs esrt jdos"         # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+ | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
  | WRbsWF                         # [BSS] Write to disk excitonic the WFs

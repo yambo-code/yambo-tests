@@ -1,19 +1,19 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.               
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb              
+      `88. .8" .8"88.    888b     d"88  88     888 88      88             
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88             
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88             
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"             
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"              
                                                                           
                                                                           
-    Version 5.1.1 Revision 21307 Hash (prev commit) a1c3037f1             
-                  Branch is devel-excph-clean                             
-            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+    Version 5.2.0 Revision 22184 Hash (prev commit) 2871b0cee             
+                      Branch is devel-excph                               
+             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
+                    http://www.yambo-code.org                             
  
- 04/11/2022 at 01:33 ypp_ph @ unimi-XPS-8930
+ 11/30/2023 at 13:37 ypp_ph @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_ypp_dbgrid_freq
- Alt#1 string        : R7
+ Alt#1 string        : R13
 
  Precision           : SINGLE
   
@@ -226,67 +226,66 @@
   occ @ K [3]
    2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
 
- [06] == Electron-Phonon Databases ==
- ====================================
+   [05.05.01] PH-Double Grid initialization
+   ========================================
+
+   [RD./SAVE//ndb.elph_gkkp_expanded]----------------------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+    Fragmentation                                    : yes
+    [ELPH] Phonon modes                              :   6
+    [ELPH] Q points                                  :   9 [avail]
+    [ELPH] K points                                  :   9
+    [ELPH] El-PH bands                               :   3   6
+    [ELPH] Using the Q-grid                          : yes
+    [ELPH] Bare interaction                          : no
+    [ELPH] Debay-Waller                              : no
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
+   GKKP database : gkkp_expanded
+
+   [WARNING] ypp/el-ph/ELPH_double_grid.F: umber of bands in the GKKP different from the total number of bands
+
+   [05.05.02] Double Grid Energies-IBZ mapping and Fine Grid re-ordering
+   =====================================================================
 
 
-  [06.01] PH-Double Grid initialization
-  =====================================
+   [05.05.03] Double Grid K-points expansion ...
+   =============================================
 
-  [RD./SAVE//ndb.elph_gkkp_expanded]----------------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-   Fragmentation                                    : yes
-   [ELPH] Phonon modes                              :   6
-   [ELPH] Q points                                  :   9 [avail]
-   [ELPH] K points                                  :   9
-   [ELPH] El-PH bands                               :   8
-   [ELPH] Using the Q-grid                          : yes
-   [ELPH] Bare interaction                          : no
-  - S/N 007666 ---------------------------------------------- v.05.01.01 r.21293 -
-  GKKP database : gkkp_expanded
+   :: Found 225 (27) points in the BZ (IBZ)
 
-  [06.02] Double Grid Energies-IBZ mapping and Fine Grid re-ordering
-  ==================================================================
+   [05.05.04] Double Grid IBZ-IBZ mapping
+   ======================================
 
+   :: IBZ-IBZ Fine Grid pts per Coarse grid BZ pt :  0  12
+   :: IBZ-IBZ Fine Grid points used - read        : 21  27
+   :: IBZ-IBZ Duplicated points                   : 3
+   :: IBZ-IBZ Blocks filling (excl. coarse grid)  :  4  11
 
-  [06.03] Double Grid K-points expansion ...
-  ==========================================
+   [05.05.05] Double Grid BZ-BZ mapping
+   ====================================
 
-  :: Found 225 (27) points in the BZ (IBZ)
+   :: BZ-BZ Fine Grid pts per Coarse grid BZ pt : 21  26
+   :: BZ-BZ Fine Grid points used - read        : 216  225
+   :: BZ-BZ Duplicated points                   :  9
+   :: BZ-BZ Blocks filling (excl. coarse grid)  : 20  25
 
-  [06.04] Double Grid IBZ-IBZ mapping
-  ===================================
+   [05.05.06] Double Grid Database I/O
+   ===================================
 
-  :: IBZ-IBZ Fine Grid pts per Coarse grid BZ pt :  0  12
-  :: IBZ-IBZ Fine Grid points used - read        : 21  27
-  :: IBZ-IBZ Duplicated points                   : 3
-  :: IBZ-IBZ Blocks filling (excl. coarse grid)  :  4  11
+   [WR./04_ypp_dbgrid_freq//ndb.PH_Double_Grid]------------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+    Fragmentation                                    : yes
+    [FineGd] Brillouin Symmetry  mode                : mixed
+    [FineGd] Fine Grid  BZ mapped mode               : BZ
+    [FineGd] Fine Grid IBZ mapped mode               : IBZ
+    [FineGd] Bands                                   :   6
+    [FineGd] Number of pts (Energy grid)             :  27
+    [FineGd] Number of pts (fine+coarse, IBZ-map)    :  24
+    [FineGd] Number of pts (fine+coarse, BZ-map)     :  225
+   - S/N 007666 ---------------------------------------------- v.05.02.00 r.22184 -
+    [Ekpq_mode] E(k+q) energy mode                   : interp
 
-  [06.05] Double Grid BZ-BZ mapping
-  =================================
-
-  :: BZ-BZ Fine Grid pts per Coarse grid BZ pt : 21  26
-  :: BZ-BZ Fine Grid points used - read        : 216  225
-  :: BZ-BZ Duplicated points                   :  9
-  :: BZ-BZ Blocks filling (excl. coarse grid)  : 20  25
-
-  [06.06] Double Grid Database I/O
-  ================================
-
-  [WR./04_ypp_dbgrid_freq//ndb.PH_Double_Grid]------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-   Fragmentation                                    : yes
-   [FineGd] Brillouin Symmetry  mode                : mixed
-   [FineGd] Fine Grid  BZ mapped mode               : BZ
-   [FineGd] Fine Grid IBZ mapped mode               : IBZ
-   [FineGd] Bands                                   :   6
-   [FineGd] Number of pts (Energy grid)             :  27
-   [FineGd] Number of pts (fine+coarse, IBZ-map)    :  24
-   [FineGd] Number of pts (fine+coarse, BZ-map)     :  225
-  - S/N 007666 ---------------------------------------------- v.05.01.01 r.21307 -
-   [Ekpq_mode] E(k+q) energy mode                   : interp
-
- [07] Timing Overview
+ [06] Timing Overview
  ====================
 
  Clock: global
@@ -294,18 +293,18 @@
                    io_DIPOLES :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
              io_ATMPROJ_pwscf :      0.0000s CPU
-                        io_WF :      0.0010s CPU
-                     io_QINDX :      0.0018s CPU
-                  io_fragment :      0.0018s CPU (3 calls,   0.606 msec avg)
-               io_Double_Grid :      0.0064s CPU (3 calls,   2.149 msec avg)
-                      io_GROT :      0.0073s CPU (2 calls,   3.626 msec avg)
-                      io_ELPH :      0.0080s CPU (5 calls,   1.603 msec avg)
+                        io_WF :      0.0009s CPU
+                  io_fragment :      0.0012s CPU (3 calls,   0.391 msec avg)
+                     io_QINDX :      0.0017s CPU
+                      io_ELPH :      0.0054s CPU (5 calls,   1.072 msec avg)
+                      io_GROT :      0.0055s CPU (2 calls,   2.738 msec avg)
+               io_Double_Grid :      0.0190s CPU (3 calls,   6.348 msec avg)
 
- [08] Game Over & Game summary
+ [07] Game Over & Game summary
  =============================
 
- 04/11/2022 at 01:33 ypp_ph @ unimi-XPS-8930 [start]
- 04/11/2022 at 01:33                         [end]
+ 11/30/2023 at 13:37 ypp_ph @ unimi-XPS-8930 [start]
+ 11/30/2023 at 13:37                         [end]
 
   
  .-ACKNOWLEDGMENT

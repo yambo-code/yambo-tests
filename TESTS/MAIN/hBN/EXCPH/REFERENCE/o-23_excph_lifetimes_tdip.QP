@@ -8,8 +8,8 @@
 #      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
 #                                                                     
 #                                                                     
-# Version 5.1.0 Revision 21744 Hash (prev commit) 1d9c0d132           
-#               Branch is devel-excph-clean                           
+# Version 5.2.0 Revision 22184 Hash (prev commit) 2871b0cee           
+#                  Branch is devel-excph                              
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
@@ -19,20 +19,20 @@
 # Exciton Sum                  : 1 - 8
 # Exciton States               : 1 - 6
 # Self-Energy broadening       : 5.000000 meV
-# FAN treshold                 : 10.00000 meV
-# PH Doble-Grid                : no
+# FAN threshold                 : 10.00000 meV
+# PH Double-Grid                : no
 #
-#    Band               E [eV]             Width [meV]
+#    Band               E [eV]             Life^-1 [meV]
 #
-        1                  4.469762           2.539760
-        2                  4.469762           2.539760
-        3                  6.062106           18.37385
-         4                 6.062106           18.37385
-         5                 7.232145           10.38356
-         6                 7.232145           10.38356
+        1                  4.469762           2.515874
+        2                  4.469762           2.515874
+        3                  6.062106           14.40179
+         4                 6.062106           14.40179
+         5                 7.232145           6.622056
+         6                 7.232145           6.622056
 # 
-# 05/25/2022 at 22:59 yambo_ph @ unimi-XPS-8930 [start]
-# 05/25/2022 at 22:59                           [end]
+# 11/30/2023 at 13:38 yambo_ph @ unimi-XPS-8930 [start]
+# 11/30/2023 at 13:38                           [end]
 #
 # .-Input file  yambo.in
 # | excph                            # [R] Exction-phonon
@@ -47,9 +47,11 @@
 # | %
 # | LoutPath= "none"                 # [EXCPH] Path of the outgoing L
 # | FANdEtresh= 0.010000       eV    # [ELPH] Energy treshold for Fan denominator
+# | LDamping= 0.005000         eV    # [EXCPH] Damping of exc-ph self-energy
 # | % ElPhModes
 # |   1 |  6 |                           # [ELPH] Phonon modes included
 # | %
 # | EXCTemp= 10.00000          Kn    # [EXCPH] Excitonic Temperature (for luminescence spectra)
+# | AlphaQ= 0.000000                 # [EXCPH] Excitonic band structure 2D distortion
+# | #ExcPhOffDiago                 # [EXCPH] Exciton-Phonon off-diagonal self-energy
 # | #NoMatrxEl                     # [EXCPH] Set all exciton-phonon matrix elements to one (for testing purpose)
-# | LDamping= 0.005000         eV    # [EXCPH] Damping of exc-ph self-energy

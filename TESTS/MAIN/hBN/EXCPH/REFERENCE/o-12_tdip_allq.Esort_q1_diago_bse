@@ -1,21 +1,39 @@
 #                                                                     
-#  __  __   ________   ___ __ __    _______   ______                  
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+# Y88b    /   e           e    e      888~~\    ,88~-_                
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
+#    /   /      Y88b /          Y888b 888__/    `88_-~                
 #                                                                     
 #                                                                     
-# Version 5.1.0 Revision 21405 Hash (prev commit) d95634710           
-#               Branch is devel-excph-clean                           
+# Version 5.2.0 Revision 22184 Hash (prev commit) 2871b0cee           
+#                 Branch is devel-excph                               
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#                http://www.yambo-code.org                            
+#               http://www.yambo-code.org                             
+#
+# Sorted Interacting Energies @ Q(1):   0.00000000     0.999999975E-5   0.00000000    [q->0 direction]
+#
+# [GEN] GF Energies                               : Slater exchange(X)+Perdew & Zunger(C)
+# [GEN] Green`s Function                          : Resonant
+#
+# [GEN] Gauge                                     : Length
+# [GEN] [r,Vnl] included                          : yes
+#
+# DIP band range                                  :   3   6
+# DIP band range limits                           :   4   5
+# DIP e/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# RL vectors in the sum                           :   4653
+# [r,Vnl] included                                : yes
+# Bands ordered                                   : yes
+# Direct v evaluation                             : no
+# Approach used                                   : G-space v
+# Dipoles computed                                : R V P
+# Wavefunctions                                   : Slater exchange(X)+Perdew & Zunger(C)
 #
 #
-#
-# [K] Identifier                                  :  2436
+# [K] Identifier                                  :   7254
 # [K] Dimension                                   :   36
 # [K] Bands                                       :   3   6
 # [K] Exchange res                                : yes
@@ -28,27 +46,27 @@
 # [K] RL vectors exchange                         :  1
 # [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
 # [K] Coupling range                              :   100.000000      100.000000    [o/o]
-# [K] L kind                                      : Lbar
+# [K] BSE L kind                                  : BAR
+# [X] Response Kind                               : BAR
 #
 #
+#    E [eV]             N_deg              eps
 #
-#    E [eV]             n_deg              abs
-#
-     4.4697620          2.0000000         0.50721271E-09
-     6.0621054          2.0000000         0.13684347E-10
-     7.2321455          2.0000000         0.49377822E-18
-     9.7050633          6.0000000         0.33995521E-10
-     10.681922          6.0000000         0.11387319E-17
-     10.754755          6.0000000         0.78676735E-20
-     11.656150          2.0000000         0.12029991E-18
-     11.731614          6.0000000         0.28716182E-10
-     12.035171          2.0000000         0.67720215E-10
-     19.221558          2.0000000         0.74738144E-17
+        4.469762           2.000000           0.50721E-09
+        6.062106           2.000000           0.13685E-10
+        7.232145           2.000000           0.49379E-18
+        9.705063           6.000000           0.33995E-10
+        10.68192           6.000000           0.11387E-17
+        10.75476           6.000000           0.78695E-20
+        11.65615           2.000000           0.12018E-18
+        11.73162           6.000000           0.28716E-10
+        12.03517           2.000000           0.67720E-10
+        19.22156           2.000000           0.74736E-17
 # 
-# 04/27/2022 at 17:44 yambo_ph @ unimi-XPS-8930 [start]
-# 04/27/2022 at 17:44                           [end]
+# 11/30/2023 at 13:38 yambo_ph @ unimi-XPS-8930 [start]
+# 11/30/2023 at 13:38                           [end]
 #  
-# Timing   [Min/Max/Average]: 04s/04s/04s
+# Timing   [Min/Max/Average]: 08s/08s/08s
 #
 # .-Input file  yambo.in
 # | optics                           # [R] Linear Response optical properties
@@ -62,16 +80,14 @@
 # | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
 # | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
-# | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
 # | BSKmod= "HARTREE"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
 # | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
 # | % DipBands
 # |   3 |  6 |                           # [DIP] Bands range for dipoles
 # | %
 # | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
 # | BSENGexx= 1                RL    # [BSK] Exchange components
-# | BSEprop= "abs esrt"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
-# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
 # | % BSEQptR
 # |   1 |  9 |                           # [BSK] Transferred momenta range
 # | %
@@ -88,4 +104,6 @@
 # | % BLongDir
 # |   0.00000    | 0.100000E-4 |  0.00000    # [BSS] [cc] Electric Field
 # | %
+# | BSEprop= "abs esrt jdos"         # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
 # | WRbsWF                         # [BSS] Write to disk excitonic the WFs
