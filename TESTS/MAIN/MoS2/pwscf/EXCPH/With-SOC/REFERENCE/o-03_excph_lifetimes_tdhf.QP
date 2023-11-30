@@ -1,17 +1,17 @@
 #                                                                     
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
 #                                                                     
-# Y88b    /   e           e    e      888~~\    ,88~-_                
-#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
-#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
-#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
-#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
-#    /   /      Y88b /          Y888b 888__/    `88_-~                
 #                                                                     
-#                                                                     
-# Version 5.1.0 Revision 21427 Hash (prev commit) f5ab7223a           
-#           Branch is devel-excph-clean-fix-q                         
-#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
-#               http://www.yambo-code.org                             
+# Version 5.2.0 Revision 22427 Hash (prev commit) 49ca835f5           
+#                  Branch is phys-exc-ph                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
 #
 #
 # === Exciton LifeTimes ===
@@ -19,20 +19,20 @@
 # Exciton Sum                  : 1 - 8
 # Exciton States               : 1 - 6
 # Self-Energy broadening       : 5.000000 meV
-# FAN treshold                 : 10.00000 meV
-# PH Doble-Grid                : no
+# FAN threshold                 : 10.00000 meV
+# PH Double-Grid                : no
 #
-#    Band               E [eV]             Width [meV]
+#    Band               E [eV]             Life^-1 [meV]
 #
-        1                  1.390023           3.370008
-        2                  1.392631           3.349909
-        3                  1.435461           0.501205
-         4                 1.435969           0.501205
-         5                 1.498620           0.512913
-         6                 1.498628           0.512913
+        1                  1.390032           3.904488
+        2                  1.392642           3.491615
+        3                  1.435472           0.900371
+         4                 1.435979           0.900371
+         5                 1.498635           0.426476
+         6                 1.498636           0.426476
 # 
-# 05/06/2022 at 14:35 yambo_ph @ VivoBook [start]
-# 05/06/2022 at 14:35                     [end]
+# 11/30/2023 at 14:34 yambo_ph @ unimi-XPS-8930 [start]
+# 11/30/2023 at 14:34                           [end]
 #
 # .-Input file  yambo.in
 # | excph                            # [R] Exction-phonon
@@ -47,10 +47,11 @@
 # | %
 # | LoutPath= "none"                 # [EXCPH] Path of the outgoing L
 # | FANdEtresh= 0.010000       eV    # [ELPH] Energy treshold for Fan denominator
+# | LDamping= 0.005000         eV    # [EXCPH] Damping of exc-ph self-energy
 # | % ElPhModes
 # |   1 |  6 |                           # [ELPH] Phonon modes included
 # | %
 # | EXCTemp= 10.00000          Kn    # [EXCPH] Excitonic Temperature (for luminescence spectra)
-# | #DiagExcph                     # [EXCPH] Use only Diagonal Exciton-phonon matrix elements
+# | AlphaQ= 0.000000                 # [EXCPH] Excitonic band structure 2D distortion
+# | #ExcPhOffDiago                 # [EXCPH] Exciton-Phonon off-diagonal self-energy
 # | #NoMatrxEl                     # [EXCPH] Set all exciton-phonon matrix elements to one (for testing purpose)
-# | LDamping= 0.005000         eV    # [EXCPH] Damping of exc-ph self-energy

@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-    Version 5.1.0 Revision 21427 Hash (prev commit) f5ab7223a             
-               Branch is devel-excph-clean-fix-q                          
-              MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                          
+    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
+       ###  ###     ### ###       ### #########   ########                
+                                                                          
+                                                                          
+    Version 5.2.0 Revision 22427 Hash (prev commit) 49ca835f5             
+                     Branch is phys-exc-ph                                
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 05/06/2022 at 14:52 yambo_ph @ VivoBook
+ 11/30/2023 at 14:38 yambo_ph @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,11 +32,11 @@
  Log files           : ./LOG
 
  Job   string        : 23_excph_lifetimes
- Alt#1 string        : 21_init-serial-devel-excph-clean-fix-q
- Alt#2 string        : 22_bse_allq-serial-devel-excph-clean-fix-q
+ Alt#1 string        : 21_init-serial-phys-exc-ph
+ Alt#2 string        : 22_bse_allq-serial-phys-exc-ph
  Alt#3 string        : GKKP_expanded
- Alt#4 string        : 21_rim-serial-devel-excph-clean-fix-q
- Alt#5 string        : R10
+ Alt#4 string        : 21_rim-serial-phys-exc-ph
+ Alt#5 string        : R23
 
  Precision           : SINGLE
   
@@ -56,7 +56,7 @@
   Exact exchange fraction in XC                    :  0.000000
   Exact exchange screening in XC                   :  0.000000
   Magnetic symmetries                              : no
- - S/N 002619 ---------------------------------------------- v.05.01.00 r.21427 -
+ - S/N 002619 ---------------------------------------------- v.05.02.00 r.22427 -
 
  [02] CORE Variables Setup
  =========================
@@ -119,9 +119,11 @@
   [02.03] Reciprocal space
   ========================
 
+
+  [WARNING] wf_ng > maxval(wf_igk), probably because FFTGvecs in input. Reducing it
   nG shells         :  2835
   nG charge         :   56613
-  nG WFs            :   8845
+  nG WFs            :   8831
   nC WFs            :   7087
   G-vecs. in first 80 shells:  [ Number ]
     1   3   5   7   9  11  17  29  31
@@ -183,18 +185,17 @@
  [03] Transferred momenta grid and indexing
  ==========================================
 
+
+ [WARNING] BSE and COLL scattering equal to TRUE
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
-  Polarization last K                              :   4
+  Polarization last K ( bz)                        :   9
+  Polarization last K (ibz)                        :   4
   QP states                                        :   1   4
   X grid is uniform                                : yes
-  *ERR*Grids                                       : X S
-  *ERR*BS scattering                               : no
-  *ERR*COLL scattering                             : no
-  Sigma scattering                                 : yes
-  X scattering                                     : yes
- - S/N 002619 ---------------------------------------------- v.05.01.00 r.21427 -
- [BZ sampling] Q-grid is User defined and/or read from the database
+  Grids (string)                                   :  X B C S minus_q
+  Grids (int-vector)                               :  1  1  1  1
+ - S/N 002619 ---------------------------------------------- v.05.02.00 r.22427 -
 
  IBZ Q-points :   4
  BZ  Q-points :   9
@@ -203,38 +204,25 @@
  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
  Q [1]:  0.000000  0.000000  0.000000 [rlu]
+       : weight :  0.111111
  Q [2]:  0.000000  0.333333  0.000000 [rlu]
+       : weight :  0.333333
  Q [3]:  0.333333  0.333333  0.000000 [rlu]
+       : weight :  0.222222
  Q [4]:  0.000000 -0.333333  0.000000 [rlu]
-
-  [03.01] X + BSE indexes
-  =======================
-
-
-   [03.01.01] Sigma + COLL indexes
-   ===============================
-
-   [WR./SAVE//ndb.kindx]-----------------------------------------------------------
-    Fragmentation                                    : no
-    Polarization last K                              :   4
-    QP states                                        :   1   4
-    X grid is uniform                                : yes
-    Grids                                            : X B C S
-    BS scattering                                    : yes
-    COLL scattering                                  : yes
-    Sigma scattering                                 : yes
-    X scattering                                     : yes
-   - S/N 002619 ---------------------------------------------- v.05.01.00 r.21427 -
+       : weight :  0.333333
 
  [04] Excitonic gkkp
  ===================
 
+ RIM found and loaded
  Found Lout with dimension: 216 x 216
- L kind out: Lbar
+ L kind out: BAR
  Found Lin with dimension: 216 x 216
- L kind  in: Lbar
+ L kind  in: BAR
+ Use coupling convention from: PALEARI
 
- [WARNING]Wrong serial number for ./GKKP_expanded//ndb.elph_gkkp_expanded
+ [WARNING] Different serial number for ./GKKP_expanded//ndb.elph_gkkp_expanded
  [RD./GKKP_expanded//ndb.elph_gkkp_expanded]-------------------------------------
   *WRN*Brillouin Zone Q/K grids (IBZ/BZ)           :   3   9   3   9
   Fragmentation                                    : yes
@@ -246,13 +234,13 @@
   [ELPH] Bare interaction                          : no
  - S/N 003847 ---------------------------------------------- v.05.01.00 r.21405 -
 
- [WARNING]Q-points in Yambo and gkkp_expanded DBs have a different order !
+ [WARNING] Q-points in Yambo and gkkp_expanded DBs have a different order !
 
- [WARNING][EXCPH] Exc-ph matrix elements not correct or missing. To be computed
+ [WARNING] [EXCPH] Exc-ph matrix elements not correct or missing. To be computed
  Found Lin with dimension: 216 x 216
- L kind  in: Lbar
+ L kind  in: BAR
 
- [WARNING]Wrong serial number for ./GKKP_expanded//ndb.elph_gkkp_expanded
+ [WARNING] Different serial number for ./GKKP_expanded//ndb.elph_gkkp_expanded
  [RD./GKKP_expanded//ndb.elph_gkkp_expanded]-------------------------------------
   *WRN*Brillouin Zone Q/K grids (IBZ/BZ)           :   3   9   3   9
   Fragmentation                                    : yes
@@ -263,44 +251,25 @@
   [ELPH] Using the Q-grid                          : yes
   [ELPH] Bare interaction                          : no
  - S/N 003847 ---------------------------------------------- v.05.01.00 r.21405 -
-  Excitons renormalizations  (without Bose factor):
-  Exciton 1: R =  0.194925874         R_abs =  0.273999661
-  Exciton 2: R =  0.200802490         R_abs =  0.272020310
-  Exciton 3: R =  0.191647694         R_abs =  0.202451989
-  Exciton 4: R =  0.205865711         R_abs =  0.197654083
-  Exciton 5: R =  0.250432760         R_abs =  0.188227698
-  Exciton 6: R =  0.248599812         R_abs =  0.185573086
-  Max satellite weight:
-  Exciton 1 max(W_sat)=  0.832242191
-     for iq = 1        il = 6         ib = 1        w(iq,il) =    50.8642960     meV
-  Exciton 2 max(W_sat)=  0.848312557
-     for iq = 1        il = 6         ib = 2        w(iq,il) =    50.8642960     meV
-  Exciton 3 max(W_sat)=  0.855778515
-     for iq = 1        il = 6         ib = 3        w(iq,il) =    50.8642960     meV
-  Exciton 4 max(W_sat)=  0.857652366
-     for iq = 1        il = 6         ib = 4        w(iq,il) =    50.8642960     meV
-  Exciton 5 max(W_sat)=  0.802523553
-     for iq = 1        il = 6         ib = 5        w(iq,il) =    50.8642960     meV
-  Exciton 6 max(W_sat)=  0.802823365
-     for iq = 1        il = 6         ib = 6        w(iq,il) =    50.8642960     meV
 
- [05] EXCPH-LifTime
- ==================
+ [05] EXCPH-LifeTime
+ ===================
 
  Found Lout with dimension: 216 x 216
- L kind out: Lbar
+ L kind out: BAR
  [RD./23_excph_lifetimes//ndb.excph_gkkp]----------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   9   4   9
   Fragmentation                                    : yes
   Number of qpoints (BZ)   :  9
   Exciton states           :  1   6
-  Exciton sum (scattered) :  1   8
+  Exciton sum (scattered)  :  1   8
+  Exciton-phonon kind      : 1
   Phonon modes            :  9
- - S/N 002619 ---------------------------------------------- v.05.01.00 r.21427 -
-  [K] L_kind in                                    : Lbar
-  [K] L_kind out                                   : Lbar
+ - S/N 002619 ---------------------------------------------- v.05.02.00 r.22427 -
+  [K] L_kind in                                    : BAR
+  [K] L_kind out                                   : BAR
 
- [WARNING]Wrong serial number for ./GKKP_expanded//ndb.elph_gkkp_expanded
+ [WARNING] Different serial number for ./GKKP_expanded//ndb.elph_gkkp_expanded
  [RD./GKKP_expanded//ndb.elph_gkkp_expanded]-------------------------------------
   *WRN*Brillouin Zone Q/K grids (IBZ/BZ)           :   3   9   3   9
   Fragmentation                                    : yes
@@ -311,7 +280,7 @@
   [ELPH] Using the Q-grid                          : yes
   [ELPH] Bare interaction                          : no
  - S/N 003847 ---------------------------------------------- v.05.01.00 r.21405 -
- Minimum excitonic energy : 1.812392  eV, at q-point :1
+ Minimum excitonic energy : 1.812650  eV, at q-point :1
  FAN treshold: 80.65500  cm-1
  Self-energy broadening : 5.000000 meV
  Exciton lifetimes:
@@ -320,47 +289,34 @@
  ====================
 
  Clock: global
-             io_ATMPROJ_pwscf :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU ( 3 calls,   0.004 msec avg)
-                 io_KB_abinit :      0.0000s CPU
-                        io_BS :      0.0001s CPU
-                        io_HF :      0.0002s CPU
-               io_Double_Grid :      0.0002s CPU ( 2 calls,   0.110 msec avg)
-                   io_COL_CUT :      0.0028s CPU
-                        io_WF :      0.0028s CPU
-                  io_KB_pwscf :      0.0029s CPU
-                   io_DIPOLES :      0.0034s CPU
-                         io_X :      0.0066s CPU ( 4 calls,   1.643 msec avg)
-              bz_samp_indexes :      0.0149s CPU
-                     io_QINDX :      0.0174s CPU ( 5 calls,   3.476 msec avg)
-                      io_GROT :      0.0276s CPU ( 3 calls,   9.214 msec avg)
-                io_EXCPH_gkkp :      0.0696s CPU (22 calls,   3.166 msec avg)
-                  io_fragment :      0.0837s CPU (82 calls,   1.020 msec avg)
-                 io_BSS_diago :      0.1148s CPU (17 calls,   6.755 msec avg)
-                      io_ELPH :      0.2837s CPU (68 calls,   4.172 msec avg)
-                   EXCPH_gkkp :      0.4168s CPU
+          io_KB_abinit :      0.0000s CPU
+      io_ATMPROJ_pwscf :      0.0000s CPU
+                 io_HF :      0.0001s CPU
+        io_Double_Grid :      0.0001s CPU ( 2 calls,   0.054 msec avg)
+                 io_WF :      0.0009s CPU
+           io_KB_pwscf :      0.0011s CPU
+            io_COL_CUT :      0.0012s CPU
+            io_DIPOLES :      0.0015s CPU
+                  io_X :      0.0030s CPU ( 5 calls,   0.595 msec avg)
+              io_QINDX :      0.0047s CPU ( 3 calls,   1.564 msec avg)
+               io_GROT :      0.0101s CPU ( 3 calls,   3.351 msec avg)
+         io_EXCPH_gkkp :      0.0185s CPU (22 calls,   0.843 msec avg)
+           io_fragment :      0.0317s CPU (82 calls,   0.387 msec avg)
+          io_BSS_diago :      0.0404s CPU (17 calls,   2.379 msec avg)
+               io_ELPH :      0.1060s CPU (68 calls,   1.559 msec avg)
+            EXCPH_gkkp :      0.1533s CPU
 
- [07] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  7.486000 [Mb]
-
- [08] Game Over & Game summary
+ [07] Game Over & Game summary
  =============================
 
- 05/06/2022 at 14:52 yambo_ph @ VivoBook [start]
- 05/06/2022 at 14:52                     [end]
+ 11/30/2023 at 14:38 yambo_ph @ unimi-XPS-8930 [start]
+ 11/30/2023 at 14:38                           [end]
 
   
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
  | the YAMBO group (those specified in the GNU General Public
- | License, http://www.gnu.org/copyleft/gpl.txt). However, it is
  | common practice in the scientific literature, to acknowledge the
  | efforts of people that have made the research possible. In this
  | spirit, please find below the reference we kindly ask you to use
@@ -390,10 +346,11 @@
  | %
  | LoutPath= "none"                 # [EXCPH] Path of the outgoing L
  | FANdEtresh= 0.010000       eV    # [ELPH] Energy treshold for Fan denominator
+ | LDamping= 0.005000         eV    # [EXCPH] Damping of exc-ph self-energy
  | % ElPhModes
  |   1 |  6 |                           # [ELPH] Phonon modes included
  | %
  | EXCTemp= 10.00000          Kn    # [EXCPH] Excitonic Temperature (for luminescence spectra)
- | #DiagExcph                     # [EXCPH] Use only Diagonal Exciton-phonon matrix elements
+ | AlphaQ= 0.000000                 # [EXCPH] Excitonic band structure 2D distortion
+ | #ExcPhOffDiago                 # [EXCPH] Exciton-Phonon off-diagonal self-energy
  | #NoMatrxEl                     # [EXCPH] Set all exciton-phonon matrix elements to one (for testing purpose)
- | LDamping= 0.005000         eV    # [EXCPH] Damping of exc-ph self-energy

@@ -1,16 +1,16 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
 #                                                                     
-#  __  __   ________   ___ __ __    _______   ______                  
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
-#                                                                     
-#                                                                     
-# Version 5.1.0 Revision 21427 Hash (prev commit) f5ab7223a           
-#            Branch is devel-excph-clean-fix-q                        
-#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
+# Version 5.2.0 Revision 22427 Hash (prev commit) 49ca835f5           
+#                  Branch is phys-exc-ph                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
 #
@@ -19,20 +19,20 @@
 # Exciton Sum                  : 1 - 8
 # Exciton States               : 1 - 6
 # Self-Energy broadening       : 5.000000 meV
-# FAN treshold                 : 10.00000 meV
-# PH Doble-Grid                : no
+# FAN threshold                 : 10.00000 meV
+# PH Double-Grid                : no
 #
-#    Band               E [eV]             Width [meV]
+#    Band               E [eV]             Life^-1 [meV]
 #
-        1                  1.813296           0.963598
-        2                  1.814938           0.992473
-        3                  1.848492           0.924445
-         4                 1.858020           1.090158
-         5                 1.945640           1.263921
-         6                 1.945646           1.263921
+        1                  1.813545           0.437738
+        2                  1.815187           0.485260
+        3                  1.848745           2.196551
+         4                 1.858275           1.208981
+         5                 1.945898           0.942939
+         6                 1.945908           0.942939
 # 
-# 05/06/2022 at 14:50 yambo_ph @ VivoBook [start]
-# 05/06/2022 at 14:50                     [end]
+# 11/30/2023 at 14:37 yambo_ph @ unimi-XPS-8930 [start]
+# 11/30/2023 at 14:37                           [end]
 #
 # .-Input file  yambo.in
 # | excph                            # [R] Exction-phonon
@@ -47,10 +47,11 @@
 # | %
 # | LoutPath= "none"                 # [EXCPH] Path of the outgoing L
 # | FANdEtresh= 0.010000       eV    # [ELPH] Energy treshold for Fan denominator
+# | LDamping= 0.005000         eV    # [EXCPH] Damping of exc-ph self-energy
 # | % ElPhModes
 # |   1 |  6 |                           # [ELPH] Phonon modes included
 # | %
 # | EXCTemp= 10.00000          Kn    # [EXCPH] Excitonic Temperature (for luminescence spectra)
-# | #DiagExcph                     # [EXCPH] Use only Diagonal Exciton-phonon matrix elements
+# | AlphaQ= 0.000000                 # [EXCPH] Excitonic band structure 2D distortion
+# | #ExcPhOffDiago                 # [EXCPH] Exciton-Phonon off-diagonal self-energy
 # | #NoMatrxEl                     # [EXCPH] Set all exciton-phonon matrix elements to one (for testing purpose)
-# | LDamping= 0.005000         eV    # [EXCPH] Damping of exc-ph self-energy
