@@ -586,6 +586,8 @@ PACKAGE_URL=''
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+USE_PRIVATE_LIB
+PERL_LIB_PRIVATE
 PERL_LIB
 test_suite_dir
 grep_cmd
@@ -1879,7 +1881,10 @@ else
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: created" >&5
 $as_echo "created" >&6; }
  mkdir -p ROBOTS/$robot/$user
- echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
+ GREP=`grep $robot ROBOTS/ROBOTS_list.pl |wc -l`
+ if test x"$GREP" = "x0"; then
+  echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
+ fi
 fi
 if ! test -d ROBOTS/$robot/$user/SCRIPTS; then
   mkdir -p ROBOTS/$robot/$user/SCRIPTS
@@ -2382,11 +2387,11 @@ $as_echo "found an existing BRANCHES file" >&6; }
   *)
    if test -f ROBOTS/$robot/$user/BRANCHES; then
      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
-     if ! test x"$GREP" = "x0"; then
+     if test x"$GREP" = "x0"; then
       if test -f $with_yambo/driver/yambo.F ; then
         { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
 $as_echo "$with_yambo" >&6; }
-        echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+        echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
       else
         as_fn_error $? "could not locate the Yambo source" "$LINENO" 5
       fi
@@ -2398,7 +2403,9 @@ $as_echo "$with_yambo already in the BRANCHES file" >&6; }
      if test -f $with_yambo/driver/yambo.F ; then
        { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_yambo" >&5
 $as_echo "$with_yambo" >&6; }
-       echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+       echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
+     else
+        as_fn_error $? "could not locate the Yambo source" "$LINENO" 5
      fi
    fi
    source_dir=$with_yambo
@@ -2447,6 +2454,12 @@ git config credential.helper store
 test_suite_dir=`pwd`
 PERL_LIB="${test_suite_dir}/libs"
 
+
+# PRIVATE PART
+PERL_LIB_PRIVATE="${test_suite_dir}/ROBOTS"
+
+USE_PRIVATE_LIB="#"
+if test -f ROBOTS/FTP_utils.pm; then USE_PRIVATE_LIB="use FTP_utils;"; fi;
 
 # ============================================================================
 ac_config_files="$ac_config_files config/MODULES.pl config/TOOLS.pl ${CFG_FILES}"

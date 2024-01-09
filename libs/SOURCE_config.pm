@@ -33,7 +33,7 @@ sub SOURCE_config{
  # Configure and compilation logs (full paths)
  $conf_logfile = "$suite_dir/"."config-$ROBOT_string.log";
  $comp_logfile = "$suite_dir/"."compile-$ROBOT_string.log";
- $comp_folder  = "$suite_dir/"."compile_dir/"."${branch_key}";
+ $comp_folder  = "$suite_dir/"."compile_dir/"."${branch_key_no_slash}";
  if ($user_module) {$comp_folder  = "$comp_folder/$user_module/"};
  $comp_folder  = "$comp_folder/$conf_name/";
  #
@@ -71,6 +71,7 @@ sub SOURCE_config{
  &command("chmod +x conf_local.sh");
  #
  open( CONFLOGFILE,'>>',$conf_logfile);
+ &command("make distclean >> $conf_logfile 2>&1");
  &command("./conf_local.sh >> $conf_logfile 2>&1");
  close(CONFLOGFILE);
  #
