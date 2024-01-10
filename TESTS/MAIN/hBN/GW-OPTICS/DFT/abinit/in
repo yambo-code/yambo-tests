@@ -2,7 +2,7 @@
 #Ground state calculation (self consistent part)
  
 ndtset 2
-accesswff 3
+iomode 3
  
 #Ground state calculation (self consistent part)
 toldfe1 1.0d-10
@@ -16,10 +16,11 @@ nband1 10
 #non-self consistent calculation
 getden2 1
 nband2 60
-nbandkss2 60
+#nbandkss2 60
+prtkbff2 1
 iscf2 -2
 tolwfr2 1.0d-8
-kssform2 3
+#kssform2 3
 kptopt2 1
 nshiftk2 1
 shiftk2 0 0 0
@@ -48,6 +49,11 @@ typat  1 2 1 2
              -2.3581864000E+00 -1.3614995528E+00  0.0000000000E+00
              -2.3581864000E+00 -1.3614995528E+00  6.0879181000E+00
               2.3581864000E+00  1.3614995528E+00  6.0879181000E+00
+
+#     xcart    2.3581864000E+00  1.3614995528E+00 -3.0439590500E+00
+#             -2.3581864000E+00 -1.3614995528E+00 -3.0439590500E+00
+#             -2.3581864000E+00 -1.3614995528E+00  3.0439590500E+00
+#              2.3581864000E+00  1.3614995528E+00  3.0439590500E+00
 
 #Definition of the planewave basis set
 ecut   40.0        # Minimal kinetic energy cut-off, in Hartree
