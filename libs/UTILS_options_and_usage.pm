@@ -154,7 +154,7 @@ if ($help>=1) {
              -flow   <FILE>         Use the flow of calculations defined in <FILE> 
                                        (refer to ROBOTS/$host/$user/FLOWS/<FILE>.pl).
              -keys   <string>       Test keys (see below*).
-             -off    <string>       Switch off specific objects (mpi,openmp,io).
+             -off    <string>       Switch off specific components. At the moment it accepts mpi,openmp,io. When np>1 mpi_off applies to serial runs.
              -prec   <PREC>         Precision of data comparisons       (default: 0.01 = 1% of MAX value)
              -input                 Test input file creation
              -force                 Run even BROKEN tests.
