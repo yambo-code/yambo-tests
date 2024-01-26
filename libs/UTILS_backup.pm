@@ -72,7 +72,7 @@ sub UTILS_list_backups{
  @dirs_2024   = sort { $a1 = (split ( '2024', $a )) [1]; $b1 = (split ( '2024', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2024;
  @dirs_2025   = sort { $a1 = (split ( '2025', $a )) [1]; $b1 = (split ( '2025', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2025;
  #push(@sorted_dirs, @dirs_2021, @dirs_2022, @dirs_2023, @dirs_2024, @dirs_2025);
- push(@sorted_dirs, @dirs_2022, @dirs_2023);
+ push(@sorted_dirs, @dirs_2023 @dirs_2024);
  if ($branch_php or $report) 
  {
   @reversed_dirs = reverse @sorted_dirs
