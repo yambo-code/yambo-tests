@@ -1,0 +1,83 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+# Version 5.2.0 Revision 22664 Hash (prev commit) a130dc3aa           
+#                 Branch is yoda/develop                              
+#               MPI+SLK+SLEPC+HDF5_IO Build                           
+#                http://www.yambo-code.org                            
+#
+#
+# GW solver                                       : Newton
+# GW approximation                                : Fan + DW
+# [ph] dS/dw steps                                :  2
+# [ph] dS/dw step                                 :  0.100000001    [ev]
+# [ph] Sc/G damping                               :  0.100000001    [ev]
+# El-Ph correlation                               : yes
+# El-Ph Sc. G bands                               :   1  10
+# El-Ph phonon branches                           :   1   6
+# El-Ph momenta used                              :   50
+# Energy treshold                                 :  0.999999997E-6 [FAN]
+# Energy treshold                                 :  0.999999997E-6 [DW]
+#                                                 
+# QP @ state[ 1 ] K range                         :  1  2
+# QP @ state[ 1 ] b range                         :   3   7
+# GF energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+#                                                 
+# [ELPH] Phonon modes                             :   6
+# [ELPH] Q points                                 :   50 [avail]
+# [ELPH]                                          :   50 [used]
+# [ELPH] K points                                 :   64
+# [ELPH] El-PH bands                              :  10
+# [ELPH] Using the Q-grid                         : no
+# [ELPH] Bare interaction                         : no
+# [ELPH] PH double-grid                           : no
+#
+#
+#    K-point            Band               Eo [eV]            E [eV]             E-Eo [eV]          Re(Z)              Width [meV]
+#
+        1                  3                  0.000000           0.036771           0.036771           1.000000           2.264208
+        1                   4                 0.000000           0.036771           0.036771           1.000000           2.264208
+        1                   5                 2.556584           2.531950          -0.024634           1.000000          -48.16006
+        1                   6                 2.556584           2.531950          -0.024634           1.000000          -48.16006
+        1                   7                 2.556584           2.531950          -0.024634           1.000000          -48.16006
+        2                  3                 -0.790139          -0.740075           0.050064           1.000000           21.14858
+        2                   4                -0.790139          -0.740075           0.050064           1.000000           21.14858
+        2                   5                 2.068660           2.030734          -0.037926           1.000000          -15.65613
+        2                   6                 3.518586           3.509940          -0.008646           1.000000          -61.32702
+        2                   7                 3.518586           3.509940          -0.008646           1.000000          -61.32702
+# 
+# 02/05/2024 at 13:53 yambo_ph @ baym [start]
+# 02/05/2024 at 13:54                 [end]
+#  
+# Timing   [Min/Max/Average]: 24s/24s/24s
+#
+# .-Input file  yambo.in_generated
+# | self_energy                      # [R] Self-Energy
+# | dyson                            # [R] Dyson Equation solver
+# | el_ph_corr                       # [R] Electron-Phonon Correlation
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g","q")
+# | % GphBRnge
+# |   1 | 10 |                           # [ELPH] G[W] bands range
+# | %
+# | % ElPhModes
+# |   1 |  6 |                           # [ELPH] Phonon modes included
+# | %
+# | GDamping= 0.100000         eV    # [GW] G[W] damping
+# | RandQpts= 10000000               # [RIM] Number of random q-points in the BZ
+# | WRgFsq                         # [ELPH] Dump on file gFsq coefficients
+# | OnMassShell                    # [F GW] On mass shell approximation
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
+# | 1|2|3|7|
+# | %
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
+# | 1|8| 0.000000|-1.000000|
+# | %
