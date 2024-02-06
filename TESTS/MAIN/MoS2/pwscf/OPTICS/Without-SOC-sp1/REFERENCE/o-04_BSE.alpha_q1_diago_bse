@@ -1,19 +1,19 @@
 #                                                                     
-#   __   __     _        __  __       ____      U  ___  u             
-#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
-#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
-#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
-#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
-# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
-#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
 #                                                                     
 #                                                                     
-# Version 5.1.0 Revision 22074 Hash (prev commit) d9b7d5345           
-#                Branch is fixes/issue-540                            
-#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                                                                     
+# Version 5.2.0 Revision 22506 Hash (prev commit) baac8a203           
+#                Branch is fixes-issue-540                            
+#          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                     
 #                http://www.yambo-code.org                            
 #
-# Polarizability  ( -<<X>> ) @ Q(1):  0.999999975E-5   0.00000000      0.00000000    [q->0 direction]
+# Polarizability  ( -<<X>> ) @ Q(1):   1.00000000      0.00000000      0.00000000    [q->0 direction]
 #
 # Polarizability units: length
 #
@@ -35,7 +35,7 @@
 # Wavefunctions                                   : Slater exchange(X)+Perdew & Zunger(C)
 #
 #
-# [K] Identifier                                  :   5596
+# [K] Identifier                                  :   5157
 # [K] Dimension                                   :   54
 # [K] Bands                                       :  11  15
 # [K] Exchange res                                : yes
@@ -320,33 +320,29 @@
         4.976000           2.827369          -7.863853           4.003706          -17.39758
         5.000000           1.954917          -7.233463           3.540127          -15.69239
 # 
-# 04/10/2023 at 20:40 yambo @ unimi-XPS-8930 [start]
-# 04/10/2023 at 20:40                        [end]
+# 02/06/2024 at 12:07 yambo @ unimi-XPS-8930 [start]
+# 02/06/2024 at 12:07                        [end]
 #  
-# Timing   [Min/Max/Average]: 02s/02s/02s
+# Timing   [Min/Max/Average]: 03s/03s/03s
 #
-# .-Input file  yambo.in_generated
+# .-Input file  yambo.in
 # | optics                           # [R] Linear Response optical properties
-# | dipoles                          # [R] Oscillator strenghts (or dipoles)
 # | bss                              # [R] BSE solver
 # | bse                              # [R][BSE] Bethe Salpeter Equation.
 # | em1s                             # [R][Xs] Statically Screened Interaction
 # | BoseTemp= 0.000000         eV    # Bosonic Temperature
 # | FFTGvecs=  8845            RL    # [FFT] Plane-waves
-# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
 # | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
 # | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
 # | NonPDirs= "z"                    # [X/BSS] Non periodic chartesian directions (X,Y,Z,XY...)
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 # | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
 # | BSSmod= "hdi"                    # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
-# | % DipBands
-# |  11 | 15 |                           # [DIP] Bands range for dipoles
-# | %
 # | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
 # | BSENGexx= 109              RL    # [BSK] Exchange components
 # | BSENGBlk=  55              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
@@ -355,7 +351,7 @@
 # |  1.000000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
 # | %
 # | % BSEQptR
-# |  1 | 1 |                             # [BSK] Transferred momenta range
+# |  1 | 3 |                             # [BSK] Transferred momenta range
 # | %
 # | % BSEBands
 # |  11 | 15 |                           # [BSK] Bands range
