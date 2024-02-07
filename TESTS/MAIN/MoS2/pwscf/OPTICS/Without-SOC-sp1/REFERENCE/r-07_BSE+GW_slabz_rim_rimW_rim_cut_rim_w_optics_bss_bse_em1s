@@ -13,7 +13,7 @@
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 02/07/2024 at 15:33 yambo @ unimi-XPS-8930
+ 02/07/2024 at 15:37 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -27,14 +27,14 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-07_BSE+GW_slabz_rim_rim_cut_optics_bss_bse_em1s
+ Report file         : ./r-07_BSE+GW_slabz_rim_rimW_rim_cut_rim_w_optics_bss_bse_em1s
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 07_BSE+GW_slabz_rim
+ Job   string        : 07_BSE+GW_slabz_rim_rimW
  Alt#1 string        : rim
- Alt#2 string        : 06_GW_slabz_rim-serial-fixes-issue-540
- Alt#3 string        : R16
+ Alt#2 string        : 06_GW_slabz_rim_rimW-serial-fixes-issue-540
+ Alt#3 string        : R17
 
  Precision           : SINGLE
   
@@ -349,7 +349,7 @@
  [07] Dipoles
  ============
 
- [RD./06_GW_slabz_rim-serial-fixes-issue-540//ndb.dipoles]-----------------------
+ [RD./06_GW_slabz_rim_rimW-serial-fixes-issue-540//ndb.dipoles]------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
   RL vectors                                       :   8845 [WF]
   Fragmentation                                    : yes
@@ -374,7 +374,7 @@
  [08] Static Dielectric Matrix
  =============================
 
- [WR./07_BSE+GW_slabz_rim//ndb.em1s]---------------------------------------------
+ [WR./07_BSE+GW_slabz_rim_rimW//ndb.em1s]----------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
   RL vectors                                       :   8845 [WF]
   Coulomb cutoff potential                         : slab z
@@ -399,7 +399,7 @@
   BZ Q point size factor                           : -1.000000
   X Optical Averaged directions                    : none
  - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
- [RD./06_GW_slabz_rim-serial-fixes-issue-540//ndb.dipoles]-----------------------
+ [RD./06_GW_slabz_rim_rimW-serial-fixes-issue-540//ndb.dipoles]------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
   RL vectors                                       :   8845 [WF]
   Fragmentation                                    : yes
@@ -419,14 +419,14 @@
  [WF-X loader] Normalization (few states)  min/max  :  0.10539E-09   1.0000    
 
  [X-CG] R(p) Tot o/o(of R):   231   819   100
- [WR./07_BSE+GW_slabz_rim//ndb.em1s_fragment_1]----------------------------------
+ [WR./07_BSE+GW_slabz_rim_rimW//ndb.em1s_fragment_1]-----------------------------
   Current Q-pt index                               :  1
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000E-2  0.100000E-2 eV
   Number of frequencies                            :  1
  - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
  [X-CG] R(p) Tot o/o(of R):   406   819   100
- [WR./07_BSE+GW_slabz_rim//ndb.em1s_fragment_2]----------------------------------
+ [WR./07_BSE+GW_slabz_rim_rimW//ndb.em1s_fragment_2]-----------------------------
   Current Q-pt index                               :  2
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000E-2  0.100000E-2 eV
@@ -461,7 +461,7 @@
    [09.01.03] Loading Dipoles @q1
    ==============================
 
-   [RD./06_GW_slabz_rim-serial-fixes-issue-540//ndb.dipoles]-----------------------
+   [RD./06_GW_slabz_rim_rimW-serial-fixes-issue-540//ndb.dipoles]------------------
     Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
     RL vectors                                       :   8845 [WF]
     Fragmentation                                    : yes
@@ -491,10 +491,34 @@
 
    [BSE] Exchange components :  109
 
-    [09.01.05.01] Screened interaction header I/O
+    [09.01.05.01] RIM-W interpolation
+    =================================
+
+
+    [WARNING] RIM-W works only for 2D semiconductors with slab cutoff
+    Found compatible q grid: 2D
+    q_min[ 1 ]:  0.333333  0.000000  0.000000 [rlu]
+     0.333333  0.166667  0.000000 [iku]
+    q_min[ 2 ]:  0.000000  0.333333  0.000000 [rlu]
+     0.000000  0.333333  0.000000 [iku]
+    G-vectors :  3
+    [RD./06_GW_slabz_rim_rimW-serial-fixes-issue-540//ndb.RIM_W]--------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+     Coulomb cutoff potential                         : slab z
+     Screening RL components          : 3
+     Screening diagonal only          :no
+     RIM random points                :  5000000
+     RIM  RL volume             [a.u.]: 0.276434
+     Eps^-1 reference component                       : 0
+     Eps^-1 components                                :  0.000000  0.000000  0.000000
+     RIM anysotropy factor                            :  0.000000
+     Interpolation of PPA poles at q=0:yes
+    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+
+    [09.01.05.02] Screened interaction header I/O
     =============================================
 
-    [RD./07_BSE+GW_slabz_rim//ndb.em1s]---------------------------------------------
+    [RD./07_BSE+GW_slabz_rim_rimW//ndb.em1s]----------------------------------------
      Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
      RL vectors                                       :   8845 [WF]
      Coulomb cutoff potential                         : slab z
@@ -518,22 +542,22 @@
      BZ energy DbGd points                            : 0
      BZ Q point size factor                           : -1.000000
      X Optical Averaged directions                    : none
-    [RD./07_BSE+GW_slabz_rim//ndb.em1s_fragment_1]----------------------------------
+    [RD./07_BSE+GW_slabz_rim_rimW//ndb.em1s_fragment_1]-----------------------------
      Current Q-pt index                               :  1
      X energy range                                   :  0.000000  0.000000 eV
      X damping range                                  :  0.100000E-2  0.100000E-2 eV
      Number of frequencies                            :  1
     - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
 
-    [09.01.05.02] Wave-Function Phases
+    [09.01.05.03] Wave-Function Phases
     ==================================
 
     [BSE] WF phases found       :  60.00000 [o/o]
 
-    [09.01.05.03] Main kernel loop
+    [09.01.05.04] Main kernel loop
     ==============================
 
-    [WR./07_BSE+GW_slabz_rim//ndb.BS_head_Q1]---------------------------------------
+    [WR./07_BSE+GW_slabz_rim_rimW//ndb.BS_head_Q1]----------------------------------
      Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
      RL vectors                                       :   8845 [WF]
      Coulomb cutoff potential                         : slab z
@@ -541,7 +565,7 @@
      BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
      Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
      wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-     [K] Identifier                                   :  196
+     [K] Identifier                                   :  1410
      [K] Dimension                                    :   54
      [K] Bands                                        :  11  15
      [K] Exchange res                                 : yes
@@ -583,9 +607,9 @@
    [09.01.07] Diago Solver @q1
    ===========================
 
-   [WR./07_BSE+GW_slabz_rim//ndb.BS_diago_Q1]--------------------------------------
+   [WR./07_BSE+GW_slabz_rim_rimW//ndb.BS_diago_Q1]---------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :  196
+    [K] Identifier                                   :  1410
     [K] Dimension                                    :   54
     [K] Bands                                        :  11  15
     [K] Exchange res                                 : yes
@@ -624,15 +648,15 @@
    [09.01.08] Inversion Solver @q1
    ===============================
 
-   [PERTURBATIVE INV@EPS] Converged frequencies :  182
+   [PERTURBATIVE INV@EPS] Converged frequencies :  197
    [FULL INV@EPS] Frequencies DONE      :  251
    [FULL INV@EPS]                       :  100.0000 [o/o]
-   [WR./07_BSE+GW_slabz_rim//ndb.BS_invert_Q1]-------------------------------------
+   [WR./07_BSE+GW_slabz_rim_rimW//ndb.BS_invert_Q1]--------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    BSK Identifier                                   :  196
+    BSK Identifier                                   :  1410
     Field direction                                  :  0.100000E-4   0.00000      0.00000   
     Using energy Double Grid                         : no
-    Energy range                [ev]                 : -1.000000  5.000000
+    Energy range                [ev]                 :  2.000000  8.000000
     Damping range               [ev]                 :  0.050000  0.050000
     Damping reference energy    [ev]                 :  0.000000
     [EPS] Number of frequencies                      :  251
@@ -645,8 +669,7 @@
    ============================================================================
 
    Accuracy (requested)      :  0.100000E-2 [o/o]
-   Accuracy (reached)        :  0.802457E-3 [o/o]
-   Iterations                :   54
+   Iterations                :   44
 
    [WARNING] Coulomb cutoff at q>0. Default/Suggested Lkind= full
 
@@ -682,10 +705,34 @@
 
    [BSE] Exchange components :  109
 
-    [09.02.05.01] Screened interaction header I/O
+    [09.02.05.01] RIM-W interpolation
+    =================================
+
+
+    [WARNING] RIM-W works only for 2D semiconductors with slab cutoff
+    Found compatible q grid: 2D
+    q_min[ 1 ]:  0.333333  0.000000  0.000000 [rlu]
+     0.333333  0.166667  0.000000 [iku]
+    q_min[ 2 ]:  0.000000  0.333333  0.000000 [rlu]
+     0.000000  0.333333  0.000000 [iku]
+    G-vectors :  3
+    [RD./06_GW_slabz_rim_rimW-serial-fixes-issue-540//ndb.RIM_W]--------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+     Coulomb cutoff potential                         : slab z
+     Screening RL components          : 3
+     Screening diagonal only          :no
+     RIM random points                :  5000000
+     RIM  RL volume             [a.u.]: 0.276434
+     Eps^-1 reference component                       : 0
+     Eps^-1 components                                :  0.000000  0.000000  0.000000
+     RIM anysotropy factor                            :  0.000000
+     Interpolation of PPA poles at q=0:yes
+    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+
+    [09.02.05.02] Screened interaction header I/O
     =============================================
 
-    [RD./07_BSE+GW_slabz_rim//ndb.em1s]---------------------------------------------
+    [RD./07_BSE+GW_slabz_rim_rimW//ndb.em1s]----------------------------------------
      Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
      RL vectors                                       :   8845 [WF]
      Coulomb cutoff potential                         : slab z
@@ -709,22 +756,22 @@
      BZ energy DbGd points                            : 0
      BZ Q point size factor                           : -1.000000
      X Optical Averaged directions                    : none
-    [RD./07_BSE+GW_slabz_rim//ndb.em1s_fragment_1]----------------------------------
+    [RD./07_BSE+GW_slabz_rim_rimW//ndb.em1s_fragment_1]-----------------------------
      Current Q-pt index                               :  1
      X energy range                                   :  0.000000  0.000000 eV
      X damping range                                  :  0.100000E-2  0.100000E-2 eV
      Number of frequencies                            :  1
     - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
 
-    [09.02.05.02] Wave-Function Phases
+    [09.02.05.03] Wave-Function Phases
     ==================================
 
     [BSE] WF phases found       :  60.00000 [o/o]
 
-    [09.02.05.03] Main kernel loop
+    [09.02.05.04] Main kernel loop
     ==============================
 
-    [WR./07_BSE+GW_slabz_rim//ndb.BS_head_Q2]---------------------------------------
+    [WR./07_BSE+GW_slabz_rim_rimW//ndb.BS_head_Q2]----------------------------------
      Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
      RL vectors                                       :   8845 [WF]
      Coulomb cutoff potential                         : slab z
@@ -732,7 +779,7 @@
      BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
      Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
      wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-     [K] Identifier                                   :  1403
+     [K] Identifier                                   :  1410
      [K] Q-point                                      :  0.000000  0.333333  0.000000
      [K] Dimension                                    :   54
      [K] Bands                                        :  11  15
@@ -775,9 +822,9 @@
    [09.02.07] Diago Solver @q2
    ===========================
 
-   [WR./07_BSE+GW_slabz_rim//ndb.BS_diago_Q2]--------------------------------------
+   [WR./07_BSE+GW_slabz_rim_rimW//ndb.BS_diago_Q2]---------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :  1403
+    [K] Identifier                                   :  1410
     [K] Q-point                                      :  0.000000  0.333333  0.000000
     [K] Dimension                                    :   54
     [K] Bands                                        :  11  15
@@ -816,15 +863,15 @@
    [09.02.08] Inversion Solver @q2
    ===============================
 
-   [PERTURBATIVE INV@EPS] Converged frequencies : 0
+   [PERTURBATIVE INV@EPS] Converged frequencies :   9
    [FULL INV@EPS] Frequencies DONE      :  251
    [FULL INV@EPS]                       :  100.0000 [o/o]
-   [WR./07_BSE+GW_slabz_rim//ndb.BS_invert_Q2]-------------------------------------
+   [WR./07_BSE+GW_slabz_rim_rimW//ndb.BS_invert_Q2]--------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    BSK Identifier                                   :  1403
+    BSK Identifier                                   :  1410
     Field direction                                  :  0.100000E-4   0.00000      0.00000   
     Using energy Double Grid                         : no
-    Energy range                [ev]                 : -1.000000  5.000000
+    Energy range                [ev]                 :  2.000000  8.000000
     Damping range               [ev]                 :  0.050000  0.050000
     Damping reference energy    [ev]                 :  0.000000
     [EPS] Number of frequencies                      :  251
@@ -837,8 +884,8 @@
    ============================================================================
 
    Accuracy (requested)      :  0.100000E-2 [o/o]
-   Accuracy (reached)        :  0.265417E-3 [o/o]
-   Iterations                :   52
+   Accuracy (reached)        :  0.231849E-3 [o/o]
+   Iterations                :   50
 
    [WARNING] Coulomb cutoff at q>0. Default/Suggested Lkind= full
 
@@ -874,10 +921,34 @@
 
    [BSE] Exchange components :  109
 
-    [09.03.05.01] Screened interaction header I/O
+    [09.03.05.01] RIM-W interpolation
+    =================================
+
+
+    [WARNING] RIM-W works only for 2D semiconductors with slab cutoff
+    Found compatible q grid: 2D
+    q_min[ 1 ]:  0.333333  0.000000  0.000000 [rlu]
+     0.333333  0.166667  0.000000 [iku]
+    q_min[ 2 ]:  0.000000  0.333333  0.000000 [rlu]
+     0.000000  0.333333  0.000000 [iku]
+    G-vectors :  3
+    [RD./06_GW_slabz_rim_rimW-serial-fixes-issue-540//ndb.RIM_W]--------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+     Coulomb cutoff potential                         : slab z
+     Screening RL components          : 3
+     Screening diagonal only          :no
+     RIM random points                :  5000000
+     RIM  RL volume             [a.u.]: 0.276434
+     Eps^-1 reference component                       : 0
+     Eps^-1 components                                :  0.000000  0.000000  0.000000
+     RIM anysotropy factor                            :  0.000000
+     Interpolation of PPA poles at q=0:yes
+    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+
+    [09.03.05.02] Screened interaction header I/O
     =============================================
 
-    [RD./07_BSE+GW_slabz_rim//ndb.em1s]---------------------------------------------
+    [RD./07_BSE+GW_slabz_rim_rimW//ndb.em1s]----------------------------------------
      Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
      RL vectors                                       :   8845 [WF]
      Coulomb cutoff potential                         : slab z
@@ -901,22 +972,22 @@
      BZ energy DbGd points                            : 0
      BZ Q point size factor                           : -1.000000
      X Optical Averaged directions                    : none
-    [RD./07_BSE+GW_slabz_rim//ndb.em1s_fragment_1]----------------------------------
+    [RD./07_BSE+GW_slabz_rim_rimW//ndb.em1s_fragment_1]-----------------------------
      Current Q-pt index                               :  1
      X energy range                                   :  0.000000  0.000000 eV
      X damping range                                  :  0.100000E-2  0.100000E-2 eV
      Number of frequencies                            :  1
     - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
 
-    [09.03.05.02] Wave-Function Phases
+    [09.03.05.03] Wave-Function Phases
     ==================================
 
     [BSE] WF phases found       :  60.00000 [o/o]
 
-    [09.03.05.03] Main kernel loop
+    [09.03.05.04] Main kernel loop
     ==============================
 
-    [WR./07_BSE+GW_slabz_rim//ndb.BS_head_Q3]---------------------------------------
+    [WR./07_BSE+GW_slabz_rim_rimW//ndb.BS_head_Q3]----------------------------------
      Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
      RL vectors                                       :   8845 [WF]
      Coulomb cutoff potential                         : slab z
@@ -924,7 +995,7 @@
      BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
      Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
      wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-     [K] Identifier                                   :  1403
+     [K] Identifier                                   :  2616
      [K] Q-point                                      :  0.333333  0.500000  0.000000
      [K] Dimension                                    :   54
      [K] Bands                                        :  11  15
@@ -967,9 +1038,9 @@
    [09.03.07] Diago Solver @q3
    ===========================
 
-   [WR./07_BSE+GW_slabz_rim//ndb.BS_diago_Q3]--------------------------------------
+   [WR./07_BSE+GW_slabz_rim_rimW//ndb.BS_diago_Q3]---------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :  1403
+    [K] Identifier                                   :  2616
     [K] Q-point                                      :  0.333333  0.500000  0.000000
     [K] Dimension                                    :   54
     [K] Bands                                        :  11  15
@@ -1008,15 +1079,15 @@
    [09.03.08] Inversion Solver @q3
    ===============================
 
-   [PERTURBATIVE INV@EPS] Converged frequencies : 0
+   [PERTURBATIVE INV@EPS] Converged frequencies :  10
    [FULL INV@EPS] Frequencies DONE      :  251
    [FULL INV@EPS]                       :  100.0000 [o/o]
-   [WR./07_BSE+GW_slabz_rim//ndb.BS_invert_Q3]-------------------------------------
+   [WR./07_BSE+GW_slabz_rim_rimW//ndb.BS_invert_Q3]--------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    BSK Identifier                                   :  1403
+    BSK Identifier                                   :  2616
     Field direction                                  :  0.100000E-4   0.00000      0.00000   
     Using energy Double Grid                         : no
-    Energy range                [ev]                 : -1.000000  5.000000
+    Energy range                [ev]                 :  2.000000  8.000000
     Damping range               [ev]                 :  0.050000  0.050000
     Damping reference energy    [ev]                 :  0.000000
     [EPS] Number of frequencies                      :  251
@@ -1029,65 +1100,65 @@
    ============================================================================
 
    Accuracy (requested)      :  0.100000E-2 [o/o]
-   Accuracy (reached)        :  0.665906E-3 [o/o]
-   Iterations                :   74
+   Iterations                :   43
 
  [10] Timing Overview
  ====================
 
  Clock: global
-                                      Xo (REDUX) :      0.0000s CPU (   3 calls,   0.000 msec avg)
-                              BSE matrix (REDUX) :      0.0000s CPU (   6 calls,   0.001 msec avg)
+                                      Xo (REDUX) :      0.0000s CPU (   3 calls,   0.001 msec avg)
                                 io_ATMPROJ_pwscf :      0.0000s CPU
+                              BSE matrix (REDUX) :      0.0000s CPU (   6 calls,   0.001 msec avg)
                                     io_KB_abinit :      0.0000s CPU
       MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0000s CPU (   3 calls,   0.003 msec avg)
+                                       X (REDUX) :      0.0000s CPU (   3 calls,   0.005 msec avg)
       MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU (   3 calls,   0.005 msec avg)
-                                       X (REDUX) :      0.0000s CPU (   3 calls,   0.006 msec avg)
                          IO_and_Messaging_switch :      0.0000s CPU (  19 calls,   0.002 msec avg)
-                                  io_Double_Grid :      0.0001s CPU (   2 calls,   0.032 msec avg)
+                                  io_Double_Grid :      0.0001s CPU (   2 calls,   0.033 msec avg)
                                     PP_uspp_init :      0.0001s CPU (   6 calls,   0.014 msec avg)
                               BSE matrix filling :      0.0001s CPU (   6 calls,   0.014 msec avg)
                                      io_KB_pwscf :      0.0001s CPU
-                          BSE components folding :      0.0002s CPU (   3 calls,   0.053 msec avg)
+                          BSE components folding :      0.0002s CPU (   3 calls,   0.052 msec avg)
                                     scatter_Gamp :      0.0003s CPU (   9 calls,   0.030 msec avg)
-                                           io_BS :      0.0006s CPU (  18 calls,   0.031 msec avg)
-                               SERIAL_lin_system :      0.0010s CPU (   3 calls,   0.349 msec avg)
-                                   X (procedure) :      0.0014s CPU (   3 calls,   0.476 msec avg)
+                                           io_BS :      0.0006s CPU (  18 calls,   0.035 msec avg)
+                               SERIAL_lin_system :      0.0010s CPU (   3 calls,   0.350 msec avg)
+                                   X (procedure) :      0.0014s CPU (   3 calls,   0.475 msec avg)
                                            io_HF :      0.0015s CPU
                                          Dipoles :      0.0017s CPU
-                SERIAL_HERMITIAN_diagonalization :      0.0030s CPU (   3 calls,   0.996 msec avg)
-                                      io_COL_CUT :      0.0038s CPU (   3 calls,   1.272 msec avg)
-                                        io_QINDX :      0.0045s CPU (   3 calls,   1.507 msec avg)
-                                    io_QP_and_GF :      0.0061s CPU (   2 calls,   3.037 msec avg)
-                                  io_BSS_Haydock :      0.0072s CPU (   6 calls,   1.200 msec avg)
-                                         io_GROT :      0.0085s CPU (   2 calls,   4.267 msec avg)
-                                      io_DIPOLES :      0.0090s CPU (  14 calls,   0.641 msec avg)
-                                     io_fragment :      0.0100s CPU (  34 calls,   0.293 msec avg)
-                                   io_BSS_invert :      0.0129s CPU (   9 calls,   1.429 msec avg)
-                                  eval_G_minus_G :      0.0160s CPU (   2 calls,   7.998 msec avg)
-                                           io_WF :      0.0183s CPU (  31 calls,   0.590 msec avg)
-                                    io_BSS_diago :      0.0191s CPU (   6 calls,   3.178 msec avg)
-                                            io_X :      0.0338s CPU (  25 calls,   1.351 msec avg)
-                                T_space EXX Osc. :      0.0398s CPU (   9 calls,   4.422 msec avg)
-                                     WF_load_FFT :      0.0454s CPU (   6 calls,   7.562 msec avg)
-                                      T_space IP :      0.0639s CPU (   3 calls,  21.305 msec avg)
-                                     BSE dipoles :      0.0831s CPU (   3 calls,  27.706 msec avg)
-                                    Diago Solver :      0.0968s CPU (   3 calls,  32.280 msec avg)
-                                       FFT_setup :      0.1014s CPU (   8 calls,  12.673 msec avg)
-                                     K_WF_phases :      0.1175s CPU (   3 calls,  39.182 msec avg)
-                                SERIAL_inversion :      0.2286s CPU (1142 calls,   0.200 msec avg)
-                                  LINEAR ALGEBRA :      0.2337s CPU (1148 calls,   0.204 msec avg)
-                               T_space CORR Osc. :      0.3183s CPU (  18 calls,  17.681 msec avg)
-                                  Haydock Solver :      0.3847s CPU (   3 calls, 128.240 msec avg)
-                                Inversion Solver :      0.4741s CPU (   3 calls, 158.048 msec avg)
-                                X T_space Kernel :      0.5877s CPU (   3 calls, 195.894 msec avg)
-                                  Xo (procedure) :      0.6147s CPU (   3 calls, 204.891 msec avg)
+                SERIAL_HERMITIAN_diagonalization :      0.0029s CPU (   3 calls,   0.980 msec avg)
+                                      io_COL_CUT :      0.0039s CPU (   3 calls,   1.286 msec avg)
+                                     RIM-W-coeff :      0.0044s CPU (   3 calls,   1.452 msec avg)
+                                        io_QINDX :      0.0045s CPU (   3 calls,   1.511 msec avg)
+                                    io_QP_and_GF :      0.0061s CPU (   2 calls,   3.059 msec avg)
+                                  io_BSS_Haydock :      0.0074s CPU (   6 calls,   1.227 msec avg)
+                                         io_GROT :      0.0086s CPU (   2 calls,   4.318 msec avg)
+                                      io_DIPOLES :      0.0091s CPU (  14 calls,   0.647 msec avg)
+                                     io_fragment :      0.0100s CPU (  34 calls,   0.295 msec avg)
+                                   io_BSS_invert :      0.0128s CPU (   9 calls,   1.427 msec avg)
+                                  eval_G_minus_G :      0.0159s CPU (   2 calls,   7.966 msec avg)
+                                           io_WF :      0.0184s CPU (  31 calls,   0.592 msec avg)
+                                    io_BSS_diago :      0.0193s CPU (   6 calls,   3.225 msec avg)
+                                            io_X :      0.0337s CPU (  25 calls,   1.348 msec avg)
+                                T_space EXX Osc. :      0.0396s CPU (   9 calls,   4.398 msec avg)
+                                     WF_load_FFT :      0.0456s CPU (   6 calls,   7.599 msec avg)
+                                      T_space IP :      0.0632s CPU (   3 calls,  21.065 msec avg)
+                                     BSE dipoles :      0.0833s CPU (   3 calls,  27.760 msec avg)
+                                    Diago Solver :      0.0960s CPU (   3 calls,  31.997 msec avg)
+                                       FFT_setup :      0.1001s CPU (   8 calls,  12.511 msec avg)
+                                     K_WF_phases :      0.1171s CPU (   3 calls,  39.025 msec avg)
+                                SERIAL_inversion :      0.2132s CPU (1074 calls,   0.198 msec avg)
+                                  LINEAR ALGEBRA :      0.2182s CPU (1080 calls,   0.202 msec avg)
+                                  Haydock Solver :      0.2918s CPU (   3 calls,  97.280 msec avg)
+                               T_space CORR Osc. :      0.3221s CPU (  18 calls,  17.894 msec avg)
+                                X T_space Kernel :      0.5909s CPU (   3 calls, 196.981 msec avg)
+                                  Xo (procedure) :      0.6112s CPU (   3 calls, 203.739 msec avg)
+                                Inversion Solver :      0.6334s CPU (   3 calls, 211.144 msec avg)
 
  [11] Game Over & Game summary
  =============================
 
- 02/07/2024 at 15:33 yambo @ unimi-XPS-8930 [start]
- 02/07/2024 at 15:33                        [end]
+ 02/07/2024 at 15:37 yambo @ unimi-XPS-8930 [start]
+ 02/07/2024 at 15:38                        [end]
 
  Timing   [Min/Max/Average]: 02s/02s/02s
              [Time-Profile]: 02s
@@ -1115,6 +1186,7 @@
   
  .-Input file  yambo.in
  | rim_cut                          # [R] Coulomb potential
+ | rim_w                            # [R] Screened coulomb potential
  | optics                           # [R] Linear Response optical properties
  | bss                              # [R] BSE solver
  | bse                              # [R][BSE] Bethe Salpeter Equation.
@@ -1127,6 +1199,8 @@
  | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
  | RandQpts=  5000000               # [RIM] Number of random q-points in the BZ
  | RandGvec= 3                RL    # [RIM] Coulomb interaction RS components
+ | RandGvecW= 3               RL    # [RIM-W] Screened interaction RS components
+ | rimw_type= "default"             # [RIM-W] Screened interaction limit metal/semiconductor/graphene
  | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
  | % CUTBox
  |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
@@ -1149,7 +1223,7 @@
  |  11 | 15 |                           # [BSK] Bands range
  | %
  | % BEnRange
- | -1.000000 | 5.000000 |         eV    # [BSS] Energy range
+ |  2.000000 | 8.000000 |         eV    # [BSS] Energy range
  | %
  | % BDmRange
  |  0.050000 | 0.050000 |         eV    # [BSS] Damping range
