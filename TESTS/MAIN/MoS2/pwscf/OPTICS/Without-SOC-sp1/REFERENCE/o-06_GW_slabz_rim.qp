@@ -1,25 +1,24 @@
 #                                                                     
-#  **    **    **     ****     ****  ******     *******               
-# //**  **    ****   /**/**   **/** /*////**   **/////**              
-#  //****    **//**  /**//** ** /** /*   /**  **     //**             
-#   //**    **  //** /** //***  /** /******  /**      /**             
-#    /**   **********/**  //*   /** /*//// **/**      /**             
-#    /**  /**//////**/**   /    /** /*    /**//**     **              
-#    /**  /**     /**/**        /** /*******  //*******               
-#    //   //      // //         //  ///////    ///////                
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
 #                                                                     
-# Version 5.1.0 Revision 21689 Hash (prev commit) bd0300d4a           
-#                   Branch is bug-fixes                               
-#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#                http://www.yambo-code.org                            
+#                                                                     
+# Version 5.2.0 Revision 22515 Hash (prev commit) 4e9ef8ab7d          
+#                 Branch is fixes-issue-540                           
+#          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                     
+#                 http://www.yambo-code.org                           
 #
 #
 # GW solver                                       : Newton
 # GW approximation                                : PPA
 # PPA imaginary Energy                            :   27.2113800    [ev]
 # RIM G`s                                         :  3
-# RIM random pts                                  :   500000
-# GW SC iterations                                : 0
+# RIM random pts                                  :   5000000
 # dS/dw steps                                     :  2
 # dS/dw step                                      :  0.100000001    [ev]
 # X G`s                                           :  307 [used]
@@ -29,6 +28,7 @@
 # X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
 # X Hxc Kernel                                    : HARTREE
 # X BZ energy Double Grid                         : no
+# X Optical Averaged directions                   : none
 # Sc/G bands                                      :  11  20
 # Sc/G damping                                    :  0.100000001    [ev]
 # Sc bands terminator                             : no
@@ -46,17 +46,17 @@
 #
 #    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-        1                  11                -1.525528          -1.388495          -0.532401
-        1                  12                -1.525528          -1.389945          -0.531904
-        1                  13                -0.226543          -0.180127          -0.288397
-        1                  14                 2.900700           3.762076          -1.261766
-        1                  15                 2.900700           3.762754          -1.261930
-        1                  16                 3.193211           3.922537          -0.965313
+        1                  11                -1.525528          -1.393289          -0.535372
+        1                  12                -1.525528          -1.394862          -0.534965
+        1                  13                -0.226543          -0.180218          -0.291102
+        1                  14                 2.900700           3.699727          -1.258127
+        1                  15                 2.900700           3.700372          -1.258300
+        1                  16                 3.193211           3.858223          -0.961587
 # 
-# 10/24/2022 at 16:51 yambo @ unimi-XPS-8930 [start]
-# 10/24/2022 at 16:52                        [end]
+# 02/07/2024 at 15:15 yambo @ attacc-lavoro [start]
+# 02/07/2024 at 15:15                       [end]
 #  
-# Timing   [Min/Max/Average]: 12s/12s/12s
+# Timing   [Min/Max/Average]: 22s/22s/22s
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
@@ -72,7 +72,7 @@
 # | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
 # | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
 # | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
-# | RandQpts=  500000                # [RIM] Number of random q-points in the BZ
+# | RandQpts=  5000000               # [RIM] Number of random q-points in the BZ
 # | RandGvec= 3                RL    # [RIM] Coulomb interaction RS components
 # | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
 # | % CUTBox
@@ -92,7 +92,6 @@
 # |  0.707107E-5 | 0.707107E-5 |  0.00000    # [Xp] [cc] Electric Field
 # | %
 # | PPAPntXp= 27.21138         eV    # [Xp] PPA imaginary energy
-# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
 # | % GbndRnge
 # |  11 | 20 |                           # [GW] G[W] bands range
 # | %

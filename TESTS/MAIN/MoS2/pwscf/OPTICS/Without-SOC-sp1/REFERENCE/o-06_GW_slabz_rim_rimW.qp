@@ -1,15 +1,15 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
 #                                                                     
-#  __  __   ________   ___ __ __    _______   ______                  
-# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
-# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
-#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
-#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
-#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
-#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
-#                                                                     
-#                                                                     
-# Version 5.1.0 Revision 21700 Hash (prev commit) cb4fd9cea           
-#                   Branch is bug-fixes                               
+# Version 5.2.0 Revision 22515 Hash (prev commit) 4e9ef8ab7d          
+#                Branch is fixes-issue-540                            
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
@@ -18,8 +18,7 @@
 # GW approximation                                : PPA
 # PPA imaginary Energy                            :   27.2113800    [ev]
 # RIM G`s                                         :  3
-# RIM random pts                                  :   500000
-# GW SC iterations                                : 0
+# RIM random pts                                  :   5000000
 # dS/dw steps                                     :  2
 # dS/dw step                                      :  0.100000001    [ev]
 # X G`s                                           :  307 [used]
@@ -29,6 +28,7 @@
 # X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
 # X Hxc Kernel                                    : HARTREE
 # X BZ energy Double Grid                         : no
+# X Optical Averaged directions                   : none
 # Sc/G bands                                      :  11  20
 # Sc/G damping                                    :  0.100000001    [ev]
 # Sc bands terminator                             : no
@@ -46,23 +46,24 @@
 #
 #    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-        1                  11                -1.525528           0.155160           1.187240
-        1                  12                -1.525528           0.153652           1.187622
-        1                  13                -0.226543           1.029628           1.314020
-        1                  14                 2.900700           1.794195          -2.927144
-        1                  15                 2.900700           1.794950          -2.927104
-        1                  16                 3.193211           1.910786          -2.655813
+        1                  11                -1.525528           0.159359           1.186706
+        1                  12                -1.525528           0.157760           1.186998
+        1                  13                -0.226543           1.038430           1.313272
+        1                  14                 2.900700           1.809317          -2.925097
+        1                  15                 2.900700           1.810088          -2.925072
+        1                  16                 3.193211           1.926170          -2.653613
 # 
-# 10/25/2022 at 16:51 yambo @ unimi-XPS-8930 [start]
-# 10/25/2022 at 16:51                        [end]
+# 02/07/2024 at 15:15 yambo @ attacc-lavoro [start]
+# 02/07/2024 at 15:16                       [end]
 #  
-# Timing   [Min/Max/Average]: 12s/12s/12s
+# Timing   [Min/Max/Average]: 35s/35s/35s
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
 # | gw0                              # [R] GW approximation
 # | dyson                            # [R] Dyson Equation solver
 # | rim_cut                          # [R] Coulomb potential
+# | rim_w                            # [R] Screened coulomb potential
 # | em1d                             # [R][X] Dynamically Screened Interaction
 # | ppa                              # [R][Xp] Plasmon Pole Approximation for the Screened Interaction
 # | el_el_corr                       # [R] Electron-Electron Correlation
@@ -72,8 +73,10 @@
 # | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
 # | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
 # | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
-# | RandQpts=  500000                # [RIM] Number of random q-points in the BZ
+# | RandQpts=  5000000               # [RIM] Number of random q-points in the BZ
 # | RandGvec= 3                RL    # [RIM] Coulomb interaction RS components
+# | RandGvecW= 3               RL    # [RIM-W] Screened interaction RS components
+# | rimw_type= "default"             # [RIM-W] Screened interaction limit metal/semiconductor/graphene
 # | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
 # | % CUTBox
 # |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
@@ -92,7 +95,6 @@
 # |  0.707107E-5 | 0.707107E-5 |  0.00000    # [Xp] [cc] Electric Field
 # | %
 # | PPAPntXp= 27.21138         eV    # [Xp] PPA imaginary energy
-# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
 # | % GbndRnge
 # |  11 | 20 |                           # [GW] G[W] bands range
 # | %
