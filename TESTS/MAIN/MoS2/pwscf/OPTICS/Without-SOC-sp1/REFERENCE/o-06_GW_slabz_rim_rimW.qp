@@ -1,24 +1,24 @@
-#  __      __   ______   __       __  _______    ______               
-# |  \    /  \ /      \ |  \     /  \|       \  /      \              
-#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
-#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
-#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
-#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
-#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
-#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
-#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
+#                                                                     
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
 #                                                                     
 # Version 5.2.0 Revision 22515 Hash (prev commit) 4e9ef8ab7d          
-#                Branch is fixes-issue-540                            
+#               Branch is fixes-issue-540                             
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#                http://www.yambo-code.org                            
+#               http://www.yambo-code.org                             
 #
 #
 # GW solver                                       : Newton
 # GW approximation                                : PPA
 # PPA imaginary Energy                            :   27.2113800    [ev]
 # RIM G`s                                         :  3
-# RIM random pts                                  :   5000000
+# RIM random pts                                  :  2000000
 # dS/dw steps                                     :  2
 # dS/dw step                                      :  0.100000001    [ev]
 # X G`s                                           :  307 [used]
@@ -46,17 +46,17 @@
 #
 #    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-        1                  11                -1.525528           0.159359           1.186706
-        1                  12                -1.525528           0.157760           1.186998
-        1                  13                -0.226543           1.038430           1.313272
-        1                  14                 2.900700           1.809317          -2.925097
-        1                  15                 2.900700           1.810088          -2.925072
-        1                  16                 3.193211           1.926170          -2.653613
+        1                  11                -1.525528           0.159825           1.187487
+        1                  12                -1.525528           0.158227           1.187780
+        1                  13                -0.226543           1.038717           1.314035
+        1                  14                 2.900700           1.808796          -2.925762
+        1                  15                 2.900700           1.809548          -2.925736
+        1                  16                 3.193211           1.925627          -2.654265
 # 
-# 02/07/2024 at 15:15 yambo @ attacc-lavoro [start]
-# 02/07/2024 at 15:16                       [end]
+# 02/07/2024 at 17:18 yambo @ attacc-lavoro [start]
+# 02/07/2024 at 17:18                       [end]
 #  
-# Timing   [Min/Max/Average]: 35s/35s/35s
+# Timing   [Min/Max/Average]: 18s/18s/18s
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
@@ -68,12 +68,11 @@
 # | ppa                              # [R][Xp] Plasmon Pole Approximation for the Screened Interaction
 # | el_el_corr                       # [R] Electron-Electron Correlation
 # | BoseTemp= 0.000000         eV    # Bosonic Temperature
-# | FFTGvecs=  8845            RL    # [FFT] Plane-waves
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
 # | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
 # | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
-# | RandQpts=  5000000               # [RIM] Number of random q-points in the BZ
+# | RandQpts= 2000000                # [RIM] Number of random q-points in the BZ
 # | RandGvec= 3                RL    # [RIM] Coulomb interaction RS components
 # | RandGvecW= 3               RL    # [RIM-W] Screened interaction RS components
 # | rimw_type= "default"             # [RIM-W] Screened interaction limit metal/semiconductor/graphene
@@ -83,7 +82,7 @@
 # | %
 # | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
 # | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
-# | CUTwsGvec= 0.000000              # [CUT] WS cutoff: number of G to be modified
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
 # | EXXRLvcs= 10               Ry    # [XX] Exchange    RL components
 # | VXCRLvcs= 10               Ry    # [XC] XCpotential RL components
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
