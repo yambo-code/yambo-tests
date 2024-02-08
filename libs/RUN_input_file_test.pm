@@ -44,7 +44,7 @@ sub RUN_input_file_test{
  if ($GW=="1")     {$GW_cmd=" -se gw"};
  if ($PPA=="1")    {$GW_cmd=$GW_cmd." -X p"};
  if ($MPA=="1")    { $GW_cmd=$GW_cmd." -X m"};
- if ($COHSEX=="1") { $GW_cmd=" -se c -dyson n"};
+ if ($COHSEX=="1" && $GW=="1") { $GW_cmd=" -se c -dyson n"};
  if ($LIFE=="1")   { $GW_cmd=" -lifetimes"};
  $CMD=$CMD.$GW_cmd;
  if (&RUN_feature("DysSolver= \"n\"")=="1") {$CMD=$CMD." -dyson n"};
@@ -76,9 +76,10 @@ sub RUN_input_file_test{
  # NEGF
  if (&RUN_feature("negf")=="1") 
  {
-   if (&RUN_feature("Field1")=="1") {$CMD_tmp=" -rt p1"};
-   if (&RUN_feature("Field2")=="1") {$CMD_tmp=" -rt p2"};
-   if (&RUN_feature("Field3")=="1") {$CMD_tmp=" -rt p3"};
+   if (&RUN_feature("Field1")=="1") {$CMD_tmp=" -rt p1"}
+   elsif (&RUN_feature("Field2")=="1") {$CMD_tmp=" -rt p2"}
+   elsif (&RUN_feature("Field3")=="1") {$CMD_tmp=" -rt p3"}
+   else {$CMD_tmp=" -rt p"};
    $CMD=$CMD.$CMD_tmp;
  };
  if (&RUN_feature("collisions")=="1") {$CMD=$CMD." -collisions"};
