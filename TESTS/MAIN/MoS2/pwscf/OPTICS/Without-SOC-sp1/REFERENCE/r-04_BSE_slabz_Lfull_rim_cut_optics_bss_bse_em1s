@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-    Version 5.2.0 Revision 22512 Hash (prev commit) 0254998fd             
+     __  __   ________   ___ __ __    _______   ______                    
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+                                                                          
+                                                                          
+    Version 5.2.0 Revision 22515 Hash (prev commit) 4e9ef8ab7d            
                    Branch is fixes-issue-540                              
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 02/07/2024 at 10:33 yambo @ unimi-XPS-8930
+ 02/08/2024 at 09:40 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 04_BSE_slabz_Lfull
- Alt#1 string        : R9
+ Alt#1 string        : rim
+ Alt#2 string        : R2
 
  Precision           : SINGLE
   
@@ -123,6 +124,8 @@
   [02.03] Reciprocal space
   ========================
 
+
+  [WARNING] wf_ng > maxval(wf_igk), probably because FFTGvecs in input. Reducing it
   nG shells         :  2835
   nG charge         :   56613
   nG WFs            :   8831
@@ -195,7 +198,7 @@
   X grid is uniform                                : yes
   Grids (string)                                   :  X B S
   Grids (int-vector)                               :  1  1  0  1
- - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
  IBZ Q-points                                      :  3
  BZ  Q-points                                      :   9
@@ -210,58 +213,32 @@
  [04] Coloumb potential Random Integration (RIM)
  ===============================================
 
+ [RD./rim//ndb.RIM]--------------------------------------------------------------
+  Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+  *WRN* Coulomb cutoff potential                   : none
+  Coulombian RL components                         :  3
+  Coulombian diagonal components                   : yes
+  RIM random points                                :  2000000
+  RIM  RL volume             [a.u.]                :  0.276453
+  Real RL volume             [a.u.]                :  0.276405
+  Eps^-1 reference component                       : 0
+  Eps^-1 components                                :  0.000000  0.000000  0.000000
+  RIM anysotropy factor                            :  0.000000
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
- Performing RIM of v_slab
+ Summary of Coulomb integrals for non-metallic bands |Q|[au] RIM/Bare
 
-  [04.01] RIM initialization
-  ==========================
-
-  * Diagonal components only detected *
-
-  8 x (sBL volume)        :  0.245693 [a.u.]
-  sBZ random points       :   500000
-  Points outside the sBZ  :   3996468
-  RL volume               :  0.276405 [a.u.]
-  Integrated volume       :  0.276649 [a.u.]
-
-
-  [04.02] RIM integrals
-  =====================
-
-  Gamma point sphere radius             :  0.096619 [a.u.]
-  Points outside the sphere             :   399793
-  [Int_sBZ(q=0) 1/q^2]*(Vol_sBZ)^(-1/3) =:  7.399043
-                                 should be <:  7.795600
-  [WR./04_BSE_slabz_Lfull//ndb.RIM]-----------------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-   Coulomb cutoff potential                         : none
-   Coulombian RL components                         :  3
-   Coulombian diagonal components                   : yes
-   RIM random points                                :   500000
-   RIM  RL volume             [a.u.]                :  0.276649
-   Real RL volume             [a.u.]                :  0.276405
-   Eps^-1 reference component                       : 0
-   Eps^-1 components                                :  0.000000  0.000000  0.000000
-   RIM anysotropy factor                            :  0.000000
-  - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
-
-  Summary of Coulomb integrals for non-metallic bands |Q|[au] RIM/Bare
-
-  Q [1] 0.100000E-4 0.949131 * Q [2] 0.411488 1.157704
-  Q [3] 0.712718 1.049904
-  Non-periodic chartesian directions : none
-  Optical renormalization            :  30.00000 [au]
-  Polarizability dimension           : length
+ Q [1] 0.100000E-4 0.949257 * Q [2] 0.411488 1.155875
+ Q [3] 0.712718 1.048939
+ Non-periodic chartesian directions : none
+ Optical renormalization            :  30.00000 [au]
+ Polarizability dimension           : length
 
 
- [05] Coloumb potential CutOffslab
- =================================
+ [05] Coloumb potential CutOff slab z
+ ====================================
 
- Cut directionsZ
- Slab Cutoff:Z
- Symmetry test passed : yes
-
- [WR./04_BSE_slabz_Lfull//ndb.cutoff]--------------------------------------------
+ [RD./rim//ndb.cutoff]-----------------------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
   CutOff Geometry                                  : slab z
   Coulomb cutoff potential                         : slab z
@@ -273,7 +250,7 @@
   RIM corrections included                         : no
   RIM RL components                                : 0
   RIM random points                                : 0
- - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
  [06] External/Internal QP corrections
  =====================================
@@ -346,7 +323,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
  [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
 
@@ -379,7 +356,7 @@
   BZ energy DbGd points                            : 0
   BZ Q point size factor                           : -1.000000
   X Optical Averaged directions                    : none
- - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
  [RD./04_BSE_slabz_Lfull//ndb.dipoles]-------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
   RL vectors                                       :   8845 [WF]
@@ -396,21 +373,21 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
  [X-CG] R(p) Tot o/o(of R):   231   819   100
  [WR./04_BSE_slabz_Lfull//ndb.em1s_fragment_1]-----------------------------------
   Current Q-pt index                               :  1
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.010000  0.010000 eV
   Number of frequencies                            :  1
- - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
  [X-CG] R(p) Tot o/o(of R):   406   819   100
  [WR./04_BSE_slabz_Lfull//ndb.em1s_fragment_2]-----------------------------------
   Current Q-pt index                               :  2
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.010000  0.010000 eV
   Number of frequencies                            :  1
- - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
  [X-CG] R(p) Tot o/o(of R):   316   819   100
 
  [09] Bethe Salpeter Equation driver
@@ -456,7 +433,7 @@
     Approach used                                    : G-space v
     Dipoles computed                                 : R V P
     Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
    [09.01.04] Independent Particles properties @q1
    ===============================================
@@ -502,14 +479,9 @@
      X energy range                                   :  0.000000  0.000000 eV
      X damping range                                  :  0.010000  0.010000 eV
      Number of frequencies                            :  1
-    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
-    [09.01.05.02] Wave-Function Phases
-    ==================================
-
-    [BSE] WF phases found       :  60.00000 [o/o]
-
-    [09.01.05.03] Main kernel loop
+    [09.01.05.02] Main kernel loop
     ==============================
 
     [WR./04_BSE_slabz_Lfull//ndb.BS_head_Q1]----------------------------------------
@@ -520,7 +492,7 @@
      BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
      Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
      wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-     [K] Identifier                                   :   624
+     [K] Identifier                                   :   4137
      [K] Dimension                                    :   54
      [K] Bands                                        :  11  15
      [K] Exchange res                                 : yes
@@ -546,11 +518,11 @@
      [W] Coulomb Cutoff                               : slab z
      [W] Hxc Kernel                                   : HARTREE
      [RIM] RL components col                          :  3
-     [RIM] Random points col                          :   500000
+     [RIM] Random points col                          :  2000000
      [SOC] Perturbative SOC                           : no
      [IO] Kernel IO mode                              : 2D_standard
      [X] Response Kind                                : full
-    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
      Kernel complete                                  : no
      Kernel maxval                                    :  0.000000
      Kernel complete                                  : yes
@@ -564,7 +536,7 @@
 
    [WR./04_BSE_slabz_Lfull//ndb.BS_diago_Q1]---------------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   624
+    [K] Identifier                                   :   4137
     [K] Dimension                                    :   54
     [K] Bands                                        :  11  15
     [K] Exchange res                                 : yes
@@ -590,7 +562,7 @@
     [W] Coulomb Cutoff                               : slab z
     [W] Hxc Kernel                                   : HARTREE
     [RIM] RL components col                          :  3
-    [RIM] Random points col                          :   500000
+    [RIM] Random points col                          :  2000000
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
     [X] Response Kind                                : full
@@ -598,7 +570,7 @@
     [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
     [BSS] Eigenstates computed                       :   54
     [BSS] Number of BSE matrices                     :  1
-   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
    [09.01.08] Inversion Solver @q1
    ===============================
@@ -608,7 +580,7 @@
    [FULL INV@EPS]                       :  100.0000 [o/o]
    [WR./04_BSE_slabz_Lfull//ndb.BS_invert_Q1]--------------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    BSK Identifier                                   :   624
+    BSK Identifier                                   :   4137
     Field direction                                  :  0.100000E-4   0.00000      0.00000   
     Using energy Double Grid                         : no
     Energy range                [ev]                 : -1.000000  5.000000
@@ -620,12 +592,12 @@
     [PL]  Number of frequencies                      :  251
     [PL]  Perturbative to full ratio                 :  1.000000
     [PL]  Treshold             [o/o]                 :  0.500000
-   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
    ============================================================================
 
    Accuracy (requested)      :  0.100000E-2 [o/o]
-   Accuracy (reached)        :  0.768669E-3 [o/o]
-   Iterations                :  19
+   Accuracy (reached)        :  0.447568E-3 [o/o]
+   Iterations                :  18
 
    [WARNING] Coulomb cutoff at q>0. Default/Suggested Lkind= full
 
@@ -693,14 +665,9 @@
      X energy range                                   :  0.000000  0.000000 eV
      X damping range                                  :  0.010000  0.010000 eV
      Number of frequencies                            :  1
-    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
-    [09.02.05.02] Wave-Function Phases
-    ==================================
-
-    [BSE] WF phases found       :  60.00000 [o/o]
-
-    [09.02.05.03] Main kernel loop
+    [09.02.05.02] Main kernel loop
     ==============================
 
     [WR./04_BSE_slabz_Lfull//ndb.BS_head_Q2]----------------------------------------
@@ -711,7 +678,7 @@
      BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
      Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
      wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-     [K] Identifier                                   :  1830
+     [K] Identifier                                   :   5344
      [K] Q-point                                      :  0.000000  0.333333  0.000000
      [K] Dimension                                    :   54
      [K] Bands                                        :  11  15
@@ -738,11 +705,11 @@
      [W] Coulomb Cutoff                               : slab z
      [W] Hxc Kernel                                   : HARTREE
      [RIM] RL components col                          :  3
-     [RIM] Random points col                          :   500000
+     [RIM] Random points col                          :  2000000
      [SOC] Perturbative SOC                           : no
      [IO] Kernel IO mode                              : 2D_standard
      [X] Response Kind                                : full
-    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
      Kernel complete                                  : no
      Kernel maxval                                    :  0.000000
      Kernel complete                                  : yes
@@ -756,7 +723,7 @@
 
    [WR./04_BSE_slabz_Lfull//ndb.BS_diago_Q2]---------------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :  1830
+    [K] Identifier                                   :   5344
     [K] Q-point                                      :  0.000000  0.333333  0.000000
     [K] Dimension                                    :   54
     [K] Bands                                        :  11  15
@@ -783,14 +750,14 @@
     [W] Coulomb Cutoff                               : slab z
     [W] Hxc Kernel                                   : HARTREE
     [RIM] RL components col                          :  3
-    [RIM] Random points col                          :   500000
+    [RIM] Random points col                          :  2000000
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
     [X] Response Kind                                : full
     [BSS] Eigenstates included                       : no
     [BSS] Eigenstates computed                       :   54
     [BSS] Number of BSE matrices                     :  1
-   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
    [09.02.08] Inversion Solver @q2
    ===============================
@@ -800,7 +767,7 @@
    [FULL INV@EPS]                       :  100.0000 [o/o]
    [WR./04_BSE_slabz_Lfull//ndb.BS_invert_Q2]--------------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    BSK Identifier                                   :  1830
+    BSK Identifier                                   :   5344
     Field direction                                  :  0.100000E-4   0.00000      0.00000   
     Using energy Double Grid                         : no
     Energy range                [ev]                 : -1.000000  5.000000
@@ -812,7 +779,7 @@
     [PL]  Number of frequencies                      :  251
     [PL]  Perturbative to full ratio                 :  1.000000
     [PL]  Treshold             [o/o]                 :  0.500000
-   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
    ============================================================================
 
    Accuracy (requested)      :  0.100000E-2 [o/o]
@@ -884,14 +851,9 @@
      X energy range                                   :  0.000000  0.000000 eV
      X damping range                                  :  0.010000  0.010000 eV
      Number of frequencies                            :  1
-    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
-    [09.03.05.02] Wave-Function Phases
-    ==================================
-
-    [BSE] WF phases found       :  60.00000 [o/o]
-
-    [09.03.05.03] Main kernel loop
+    [09.03.05.02] Main kernel loop
     ==============================
 
     [WR./04_BSE_slabz_Lfull//ndb.BS_head_Q3]----------------------------------------
@@ -902,7 +864,7 @@
      BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
      Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
      wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-     [K] Identifier                                   :  1830
+     [K] Identifier                                   :   6550
      [K] Q-point                                      :  0.333333  0.500000  0.000000
      [K] Dimension                                    :   54
      [K] Bands                                        :  11  15
@@ -929,11 +891,11 @@
      [W] Coulomb Cutoff                               : slab z
      [W] Hxc Kernel                                   : HARTREE
      [RIM] RL components col                          :  3
-     [RIM] Random points col                          :   500000
+     [RIM] Random points col                          :  2000000
      [SOC] Perturbative SOC                           : no
      [IO] Kernel IO mode                              : 2D_standard
      [X] Response Kind                                : full
-    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+    - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
      Kernel complete                                  : no
      Kernel maxval                                    :  0.000000
      Kernel complete                                  : yes
@@ -947,7 +909,7 @@
 
    [WR./04_BSE_slabz_Lfull//ndb.BS_diago_Q3]---------------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :  1830
+    [K] Identifier                                   :   6550
     [K] Q-point                                      :  0.333333  0.500000  0.000000
     [K] Dimension                                    :   54
     [K] Bands                                        :  11  15
@@ -974,14 +936,14 @@
     [W] Coulomb Cutoff                               : slab z
     [W] Hxc Kernel                                   : HARTREE
     [RIM] RL components col                          :  3
-    [RIM] Random points col                          :   500000
+    [RIM] Random points col                          :  2000000
     [SOC] Perturbative SOC                           : no
     [IO] Kernel IO mode                              : 2D_standard
     [X] Response Kind                                : full
     [BSS] Eigenstates included                       : no
     [BSS] Eigenstates computed                       :   54
     [BSS] Number of BSE matrices                     :  1
-   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
    [09.03.08] Inversion Solver @q3
    ===============================
@@ -991,7 +953,7 @@
    [FULL INV@EPS]                       :  100.0000 [o/o]
    [WR./04_BSE_slabz_Lfull//ndb.BS_invert_Q3]--------------------------------------
     BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-    BSK Identifier                                   :  1830
+    BSK Identifier                                   :   6550
     Field direction                                  :  0.100000E-4   0.00000      0.00000   
     Using energy Double Grid                         : no
     Energy range                [ev]                 : -1.000000  5.000000
@@ -1003,7 +965,7 @@
     [PL]  Number of frequencies                      :  251
     [PL]  Perturbative to full ratio                 :  1.000000
     [PL]  Treshold             [o/o]                 :  0.500000
-   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22512 -
+   - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
    ============================================================================
 
    Accuracy (requested)      :  0.100000E-2 [o/o]
@@ -1013,63 +975,60 @@
  ====================
 
  Clock: global
-                                      Xo (REDUX) :      0.0000s CPU (   3 calls,   0.001 msec avg)
+                                      Xo (REDUX) :      0.0000s CPU (   3 calls,   0.000 msec avg)
                               BSE matrix (REDUX) :      0.0000s CPU (   6 calls,   0.001 msec avg)
                                 io_ATMPROJ_pwscf :      0.0000s CPU
                                     io_KB_abinit :      0.0000s CPU
       MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0000s CPU (   3 calls,   0.003 msec avg)
-      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU (   3 calls,   0.004 msec avg)
-                                       X (REDUX) :      0.0000s CPU (   3 calls,   0.006 msec avg)
+      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU (   3 calls,   0.005 msec avg)
+                                       X (REDUX) :      0.0000s CPU (   3 calls,   0.005 msec avg)
                                            io_HF :      0.0000s CPU
-                                  io_Double_Grid :      0.0000s CPU (   2 calls,   0.025 msec avg)
+                                  io_Double_Grid :      0.0001s CPU (   2 calls,   0.028 msec avg)
                          IO_and_Messaging_switch :      0.0001s CPU (  26 calls,   0.003 msec avg)
-                              BSE matrix filling :      0.0001s CPU (   6 calls,   0.015 msec avg)
-                                    PP_uspp_init :      0.0002s CPU (   9 calls,   0.017 msec avg)
-                          BSE components folding :      0.0002s CPU (   3 calls,   0.053 msec avg)
+                              BSE matrix filling :      0.0001s CPU (   6 calls,   0.014 msec avg)
+                                    PP_uspp_init :      0.0001s CPU (   9 calls,   0.013 msec avg)
+                          BSE components folding :      0.0002s CPU (   3 calls,   0.055 msec avg)
                                     scatter_Gamp :      0.0003s CPU (   9 calls,   0.030 msec avg)
-                               SERIAL_lin_system :      0.0011s CPU (   3 calls,   0.352 msec avg)
-                                           io_BS :      0.0012s CPU (  18 calls,   0.065 msec avg)
-                                   X (procedure) :      0.0014s CPU (   3 calls,   0.483 msec avg)
-                                      io_COL_CUT :      0.0023s CPU (   4 calls,   0.575 msec avg)
-                                     io_KB_pwscf :      0.0029s CPU (   5 calls,   0.574 msec avg)
-                SERIAL_HERMITIAN_diagonalization :      0.0029s CPU (   3 calls,   0.969 msec avg)
-                                  Coulomb Cutoff :      0.0033s CPU
-                                        io_QINDX :      0.0047s CPU (   3 calls,   1.561 msec avg)
-                                  io_BSS_Haydock :      0.0077s CPU (   6 calls,   1.283 msec avg)
-                                         io_GROT :      0.0085s CPU (   2 calls,   4.253 msec avg)
-                                      io_DIPOLES :      0.0100s CPU (  20 calls,   0.500 msec avg)
-                                     io_fragment :      0.0123s CPU (  39 calls,   0.315 msec avg)
-                                   io_BSS_invert :      0.0141s CPU (   9 calls,   1.567 msec avg)
-                                  eval_G_minus_G :      0.0170s CPU (   2 calls,   8.520 msec avg)
-                                    io_BSS_diago :      0.0194s CPU (   6 calls,   3.231 msec avg)
-                                            io_X :      0.0315s CPU (  25 calls,   1.260 msec avg)
-                                           io_WF :      0.0333s CPU (  40 calls,   0.833 msec avg)
-                                T_space EXX Osc. :      0.0411s CPU (   9 calls,   4.572 msec avg)
-                                     WF_load_FFT :      0.0599s CPU (   9 calls,   6.660 msec avg)
-                                      T_space IP :      0.0638s CPU (   3 calls,  21.261 msec avg)
-                                     BSE dipoles :      0.0851s CPU (   3 calls,  28.367 msec avg)
-                                    Diago Solver :      0.0988s CPU (   3 calls,  32.925 msec avg)
-                                       FFT_setup :      0.1016s CPU (   8 calls,  12.704 msec avg)
-                                     K_WF_phases :      0.1201s CPU (   3 calls,  40.026 msec avg)
-                                  Haydock Solver :      0.1458s CPU (   3 calls,  48.601 msec avg)
-                               DIPOLE_transverse :      0.2117s CPU
-                                SERIAL_inversion :      0.2388s CPU (1188 calls,   0.201 msec avg)
-                                  LINEAR ALGEBRA :      0.2440s CPU (1194 calls,   0.204 msec avg)
-                               T_space CORR Osc. :      0.3393s CPU (  18 calls,  18.852 msec avg)
-                                             RIM :      0.4512s CPU
-                                Inversion Solver :      0.4712s CPU (   3 calls, 157.058 msec avg)
-                                X T_space Kernel :      0.6177s CPU (   3 calls, 205.915 msec avg)
-                                  Xo (procedure) :      0.6296s CPU (   3 calls, 209.853 msec avg)
-                                         Dipoles :      1.2165s CPU
+                                           io_BS :      0.0006s CPU (  18 calls,   0.034 msec avg)
+                               SERIAL_lin_system :      0.0010s CPU (   3 calls,   0.341 msec avg)
+                                   X (procedure) :      0.0014s CPU (   3 calls,   0.468 msec avg)
+                                     io_KB_pwscf :      0.0026s CPU (   5 calls,   0.523 msec avg)
+                SERIAL_HERMITIAN_diagonalization :      0.0029s CPU (   3 calls,   0.964 msec avg)
+                                      io_COL_CUT :      0.0038s CPU (   3 calls,   1.283 msec avg)
+                                        io_QINDX :      0.0046s CPU (   3 calls,   1.520 msec avg)
+                                  io_BSS_Haydock :      0.0070s CPU (   6 calls,   1.168 msec avg)
+                                         io_GROT :      0.0090s CPU (   2 calls,   4.488 msec avg)
+                                      io_DIPOLES :      0.0100s CPU (  20 calls,   0.498 msec avg)
+                                     io_fragment :      0.0104s CPU (  39 calls,   0.267 msec avg)
+                                   io_BSS_invert :      0.0128s CPU (   9 calls,   1.418 msec avg)
+                                  eval_G_minus_G :      0.0158s CPU (   2 calls,   7.898 msec avg)
+                                    io_BSS_diago :      0.0189s CPU (   6 calls,   3.145 msec avg)
+                                           io_WF :      0.0234s CPU (  40 calls,   0.584 msec avg)
+                                            io_X :      0.0306s CPU (  25 calls,   1.226 msec avg)
+                                T_space EXX Osc. :      0.0397s CPU (   9 calls,   4.415 msec avg)
+                                     WF_load_FFT :      0.0505s CPU (   9 calls,   5.616 msec avg)
+                                      T_space IP :      0.0651s CPU (   3 calls,  21.698 msec avg)
+                                     BSE dipoles :      0.0824s CPU (   3 calls,  27.482 msec avg)
+                                    Diago Solver :      0.0971s CPU (   3 calls,  32.383 msec avg)
+                                       FFT_setup :      0.1013s CPU (   8 calls,  12.663 msec avg)
+                                  Haydock Solver :      0.1447s CPU (   3 calls,  48.234 msec avg)
+                               DIPOLE_transverse :      0.1970s CPU
+                                SERIAL_inversion :      0.2478s CPU (1188 calls,   0.209 msec avg)
+                                  LINEAR ALGEBRA :      0.2528s CPU (1194 calls,   0.212 msec avg)
+                                Inversion Solver :      0.4790s CPU (   3 calls, 159.674 msec avg)
+                                  Xo (procedure) :      0.6173s CPU (   3 calls, 205.783 msec avg)
+                               T_space CORR Osc. :      0.6541s CPU (  18 calls,  36.339 msec avg)
+                                X T_space Kernel :      0.8040s CPU (   3 calls, 268.014 msec avg)
+                                         Dipoles :      1.2017s CPU
 
  [11] Game Over & Game summary
  =============================
 
- 02/07/2024 at 10:33 yambo @ unimi-XPS-8930 [start]
- 02/07/2024 at 10:33                        [end]
+ 02/08/2024 at 09:40 yambo @ unimi-XPS-8930 [start]
+ 02/08/2024 at 09:40                        [end]
 
  Timing   [Min/Max/Average]: 03s/03s/03s
-             [Time-Profile]: 04s
+             [Time-Profile]: 03s
 
  .-ACKNOWLEDGMENT
  |
@@ -1099,14 +1058,13 @@
  | bse                              # [R][BSE] Bethe Salpeter Equation.
  | em1s                             # [R][Xs] Statically Screened Interaction
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
- | FFTGvecs=  8845            RL    # [FFT] Plane-waves
  | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
  | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
  | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
- | RandQpts=  500000                # [RIM] Number of random q-points in the BZ
+ | RandQpts= 2000000                # [RIM] Number of random q-points in the BZ
  | RandGvec= 3                RL    # [RIM] Coulomb interaction RS components
  | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
  | % CUTBox
@@ -1114,7 +1072,7 @@
  | %
  | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
  | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
- | CUTwsGvec= 0.000000              # [CUT] WS cutoff: number of G to be modified
+ | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
  | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
  | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
  | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
