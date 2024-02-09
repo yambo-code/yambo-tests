@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
+                                                                          
+     ____  ____     _       ____    ____  ______      ___                 
+    |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.               
+      \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \              
+       \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |              
+       _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /              
+      |______||____| |____||_____||_____||_______/  `.___."               
+                                                                          
+                                                                          
                                                                           
     Version 5.2.0 Revision 22519 Hash (prev commit) e4c1f01f0             
                    Branch is fixes-issue-540                              
-            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
                    http://www.yambo-code.org                              
  
- 02/09/2024 at 02:54 ypp @ unimi-XPS-8930
+ 02/09/2024 at 02:52 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -27,13 +27,12 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in_generated
- Report file         : ./r-05_exciton_spin_excitons_spin
+ Report file         : ./r-01_init_setup
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 05_exciton_spin
- Alt#1 string        : 04_BSE-serial-fixes-issue-540
- Alt#2 string        : R2
+ Job   string        : 01_init
+ Alt#1 string        : R2
 
  Precision           : SINGLE
   
@@ -55,23 +54,11 @@
   Magnetic symmetries                              : no
  - S/N 002619 ---------------------------------------------- v.05.01.00 r.21264 -
 
- [02] Y(ambo) P(ost)/(re) P(rocessor)
- ====================================
-
-
- [03] Core DB
- ============
-
-
- [04] K-point grid
- =================
-
-
- [05] CORE Variables Setup
+ [02] CORE Variables Setup
  =========================
 
 
-  [05.01] Unit cells
+  [02.01] Unit cells
   ==================
 
   Cell kind             :  HCP
@@ -92,17 +79,23 @@
   Direct lattice volume :  897.4163 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]:  1.000000  0.000000  0.000000  [iru]
+   5.877208  0.000000  0.000000  [cc]
    A[ 2 ]: -0.500000  1.000000  0.000000  [iru]
+  -2.938604  5.089811  0.000000  [cc]
    A[ 3 ]:  0.000000  0.000000  1.000000  [iru]
+    0.00000   0.00000  30.00000  [cc]
 
   Recip. lattice volume :  0.276405 [a.u.]
   Recip. lattice vectors:  B[ 1 ]  B[ 2 ]  B[ 3 ]
    B[ 1 ]:  1.000000  0.500000  0.000000  [iku]
+   1.069077  0.617232 -0.000000  [cc]
    B[ 2 ]:  0.000000  1.000000  0.000000  [iku]
+   0.000000  1.234463  0.000000  [cc]
    B[ 3 ]:  0.000000  0.000000  1.000000  [iku]
+   0.000000 -0.000000  0.209440  [cc]
    
 
-  [05.02] Symmetries
+  [02.02] Symmetries
   ==================
 
   Inversion symmetry    : yes
@@ -139,7 +132,7 @@
    [S*23]: -0.500000 -0.866025 -0.000000 -0.866025  0.500000 -0.000000 -0.000000 -0.000000 -1.000000
    [S*24]: -0.500000  0.866025 -0.000000  0.866025  0.500000 -0.000000 -0.000000 -0.000000 -1.000000
 
-  [05.03] Reciprocal space
+  [02.03] Reciprocal space
   ========================
 
   nG shells         :  2835
@@ -169,7 +162,7 @@
     6754.39      6857.55      6879.48      6945.28      7054.94      7100.43      7106.12      7110.18   
   ...
 
-  [05.04] K-grid lattice
+  [02.04] K-grid lattice
   ======================
 
   Compatible Grid is   : 2D
@@ -192,7 +185,7 @@
   K [3]          [rlu]:  0.333333  0.333333  0.000000
          WF components:   7047
 
-  [05.05] Energies & Occupations
+  [02.05] Energies & Occupations
   ==============================
 
   [X] === General ===
@@ -252,92 +245,60 @@
    1.000000  1.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
    0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
 
- [06] Excitonic Properties @ Q-index #1
- ======================================
-
- [RD./04_BSE-serial-fixes-issue-540//ndb.BS_diago_Q1]----------------------------
-  BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-  [K] Identifier                                   :   3479
-  [K] Dimension                                    :  216
-  [K] Bands                                        :  21  30
-  [K] Exchange res                                 : yes
-  [K] Correlation res                              : yes
-  [K] Kernel`s coupling                            : no
-  [K] Exchange cpl                                 : no
-  [K] Correlation cpl                              : no
-  [K] W interaction is bare                        : no
-  [K] ALDA kernel in R-space                       : no
-  [K] RL vectors exchange                          :  109
-  [K] RL vectors correlation                       :   55
-  [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-  [K] Coupling range                               :  100.0000  100.0000 [o/o]
-  [W] Interaction is diagonal                      : no
-  [W] Matrix size                                  :   55
-  [W] Bands                                        :    1   40
-  [W] e/h energy range                             : -1.000000 -1.000000 [eV]
-  [W] Poles                                        :  100.0000 [o/o]
-  [W] RL vectors in the sum                        :   8845
-  *WRN*[W] [r,Vnl] included                        : no
-  [W] Longitudinal Gauge                           : no
-  [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-  [W] Coulomb Cutoff                               : none
-  [W] Hxc Kernel                                   : HARTREE
-  [RIM] RL components col                          : 0
-  [RIM] Random points col                          : 0
-  [SOC] Perturbative SOC                           : no
-  [IO] Kernel IO mode                              : 2D_standard
-  [X] Response Kind                                : BAR
-  [BSS] Eigenstates included                       : yes
-  [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
-  [BSS] Eigenstates computed                       :  216
-  [BSS] Number of BSE matrices                     :  1
- - S/N 002619 ---------------------------------------------- v.05.02.00 r.22519 -
-
- [WARNING] 17 excitonic states added to the USER selection to preserve degeneracy
-
-  [06.01] Spin properties
-  =======================
-
-  [WF-EXCWF loader] Normalization (few states)  min/max  :  0.45012E-09  0.99999    
+ [03] Transferred momenta grid and indexing
+ ==========================================
 
 
-  [06.02] Degeneracy average
-  ==========================
+ IBZ Q-points                                      :  3
+ BZ  Q-points                                      :   9
+
+ K/Q-points units:
+ rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
+
+ Q [1]          [rlu]:  0.000000  0.000000  0.000000
+ Q [2]          [rlu]:  0.000000  0.333333  0.000000
+ Q [3]          [rlu]:  0.333333  0.333333  0.000000
+
+  [03.01] X indexes
+  =================
 
 
-  [06.03] Reporting sorted Energies and Strengths vs  Spin
-  ========================================================
+   [03.01.01] Sigma indexes
+   ========================
 
+   [WR./SAVE//ndb.kindx]-----------------------------------------------------------
+    Fragmentation                                    : no
+    Polarization last K ( bz)                        :   9
+    Polarization last K (ibz)                        :  3
+    QP states                                        :  1  3
+    X grid is uniform                                : yes
+    Grids (string)                                   :  X S
+    Grids (int-vector)                               :  1  0  0  1
+   - S/N 002619 ---------------------------------------------- v.05.02.00 r.22519 -
 
- Timing [Min/Max/Average]: 03s/03s/03s
-
- [07] Timing Overview
+ [04] Timing Overview
  ====================
 
  Clock: global
-      IO_and_Messaging_switch :      0.0000s CPU
-                 PP_uspp_init :      0.0000s CPU
-                   io_COL_CUT :      0.0000s CPU
-             io_ATMPROJ_pwscf :      0.0000s CPU
-               io_Double_Grid :      0.0001s CPU (2 calls,   0.036 msec avg)
-                  io_fragment :      0.0008s CPU (3 calls,   0.270 msec avg)
-                     io_QINDX :      0.0017s CPU
-                   io_DIPOLES :      0.0017s CPU
-                        io_WF :      0.0039s CPU (6 calls,   0.652 msec avg)
-                      io_GROT :      0.0086s CPU (2 calls,   4.286 msec avg)
-                 io_BSS_diago :      0.0102s CPU (4 calls,   2.546 msec avg)
-                    FFT_setup :      0.0114s CPU
-                  WF_load_FFT :      0.0169s CPU
+      io_ATMPROJ_pwscf :      0.0000s CPU
+            io_COL_CUT :      0.0000s CPU
+            io_DIPOLES :      0.0000s CPU
+          io_KB_abinit :      0.0000s CPU
+                 io_HF :      0.0000s CPU
+        io_Double_Grid :      0.0001s CPU (2 calls,   0.027 msec avg)
+                 io_WF :      0.0009s CPU
+           io_KB_pwscf :      0.0013s CPU
+              io_QINDX :      0.0051s CPU (3 calls,   1.705 msec avg)
+       bz_samp_indexes :      0.0063s CPU
+               io_GROT :      0.0072s CPU (3 calls,   2.389 msec avg)
 
- [08] Game Over & Game summary
+ [05] Game Over & Game summary
  =============================
 
- 02/09/2024 at 02:54 ypp @ unimi-XPS-8930 [start]
- 02/09/2024 at 02:54                      [end]
+ 02/09/2024 at 02:52 yambo @ unimi-XPS-8930 [start]
+ 02/09/2024 at 02:52                        [end]
 
- Timing   [Min/Max/Average]: 03s/03s/03s
-             [Time-Profile]: 03s
-
+  
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -360,9 +321,8 @@
  |
   
  .-Input file  yambo.in_generated
- | excitons                         # [R] Excitonic properties
- | spin                             # [R] Spin
- | States= "1 - 3"                  # Index of the BS state(s)
- | Res_treshold= 0.100000           # Select states above this optical strength treshold (max normalized to 1.)
- | BSQindex= 1                      # Q-Index of the BS state(s)
- | Degen_Step= 0.010000       eV    # Maximum energy separation of two degenerate states
+ | setup                            # [R] Initialization
+ | BoseTemp= 0.000000         eV    # Bosonic Temperature
+ | K_grids= " X S"                  # [KPT] Select the grids (X=response, S=sigma, C=collisions, B=bse) [default X S C B]
+ | %QptCoord                        # [KPT] [iku] Q-points coordinates (compatibility)
+ | %
