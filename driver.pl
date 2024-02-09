@@ -29,7 +29,16 @@ do "config/MODULES.pl";
 do "config/TOOLS.pl";
 do "config/RULES_renaming.pl";
 do "config/RULES_ignore.pl";
-do "ROBOTS/ROBOTS_list.pl";
+#
+# ROBOTS repo
+#
+if ( -d "ROBOTS") 
+{
+ do "ROBOTS/ROBOTS_list.pl";
+ do "ROBOTS/FTP_credentials.pl";
+}else{
+ do "config/FTP_empty_credentials.pl";
+}
 #
 # The location of the test-suite directory
 $suite_dir=abs_path();
@@ -184,10 +193,15 @@ if($download){
 # Clean and exit
 if ($clean and $backup_logs eq "no" and not $RUNNING_suite){ 
  if (not $ROBOT_id) {print "Cleaning"};
- &UTILS_clean("ALL");
- if (not $ROBOT_id) {&UTILS_clean("BINs")};
- print "... test databases outputs logfiles bin(s)";
- if ($clean > 1) {
+ if ($clean > 0 || "$clean" eq "ALL") {
+   print "... test databases outputs logfiles";
+   &UTILS_clean("ALL");
+ }
+ if (not $ROBOT_id) {
+   print "... bin(s)";
+   &UTILS_clean("BINs")
+ }
+ if ($clean > 1 || "$clean" eq "ALL") {
   print "... compiled yambo ...";
   &UTILS_clean("COMPs");
   print "... core databases ...";
@@ -196,6 +210,18 @@ if ($clean and $backup_logs eq "no" and not $RUNNING_suite){
   &UTILS_clean("TARGZ");
   print "... pwscf/abinit ...";
   &UTILS_clean("DFT");
+ }
+ if ("$clean" eq "COMPs") {
+  print "... compiled yambo ...";
+  &UTILS_clean("COMPs");
+ }
+ if ("$clean" eq "CORE") {
+  print "... core databases ...";
+  &UTILS_clean("CORE");
+ }
+ if ("$clean" eq "TARGZ") {
+  print "... .tar.gz ...";
+  &UTILS_clean("TARGZ");
  }
  print "\nCleaning done.\n";
  exit;

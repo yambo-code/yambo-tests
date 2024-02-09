@@ -187,9 +187,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    if ($error =~ "OK") { 
     #
     # Use the tool itself to generate the input file
-    if ($check_input_generation) {
-      $INFILE_CHECK=&RUN_input_file_test;
-    }
+    if ($check_input_generation) {$INFILE_CHECK=&RUN_input_file_test};
     #
     # Actual run
     $RUN_result=&RUN_it;
@@ -198,11 +196,9 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
     #
     while ($random_parallel and $CHECK_error eq "WRONG CPU configuration" and $N_random_tries<$MAX_RANDOM_PAR_TRIES) { 
      $test_ok_action="INCREASE";
-     #print "$testname INIT\n";
      &RUN_load_PAR_fields;
      $string=$MPI_CPU_conf[1];
      &command("rm -fr yambo.in LOG r-${testname}* o-${testname}*");
-     #print "$testname $ir B\n";
      # Re-Create the input (if any)
      &RUN_load_actions(".input");
      &RUN_setup("before_run");
@@ -210,7 +206,6 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
      $N_random_tries++;
      #
      $RUN_result=&RUN_it;
-     #print "$testname CHECK_error $CHECK_error\n";
     }
     #
     # Check
