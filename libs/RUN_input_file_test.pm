@@ -76,9 +76,9 @@ sub RUN_input_file_test{
  # NEGF
  if (&RUN_feature("negf")=="1") 
  {
-   if (&RUN_feature("Field1")=="1") {$CMD_tmp=" -rt p1"}
-   elsif (&RUN_feature("Field2")=="1") {$CMD_tmp=" -rt p2"}
-   elsif (&RUN_feature("Field3")=="1") {$CMD_tmp=" -rt p3"}
+   if (&RUN_feature("Field3_Int")=="1") {$CMD_tmp=" -rt p3"}
+   elsif (&RUN_feature("Field2_Int")=="1") {$CMD_tmp=" -rt p2"}
+   elsif (&RUN_feature("Field1_Int")=="1") {$CMD_tmp=" -rt p1"}
    else {$CMD_tmp=" -rt p"};
    $CMD=$CMD.$CMD_tmp;
  };
