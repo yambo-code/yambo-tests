@@ -24,19 +24,11 @@
 #
 sub RUN_feature{
 my @string = split(/\s+/, "@_");
-#print "string: @string\n "; #DEBUG
 my $result=0;
 LOOP: for (my $il=0; $il<=$#INPUT ; $il++){
  my $ir=0;
  my $in_line=$INPUT[$il];
  $in_line =~ s/\+/ /g;
-# my $ind=index($in_line,"=");
-# if ( $ind > 0 )
-# {
-#  $in_line = substr $INPUT[$il], 0, $ind;
-#  #print "operating $INPUT[$il] ($ind)=> $in_line\n"; #DEBUG
-# }
- #print "input line: $in_line $ir $#string \n"; #DEBUG
  LOOPF: for (my $if=0; $if<=$#string ; $if++){
   if ($in_line =~ /$string[$if]/){ 
    $ir++;
