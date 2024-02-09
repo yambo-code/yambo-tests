@@ -13,11 +13,18 @@ link="https://docs.google.com/spreadsheets/d"
 # This is the unique ID of the spreadsheet we want to read
 ID_spreadsheet="1RJCh6qqqdyaeqvX4Dh0I1ppEhCoNYMjIepXnRzxDhHk"
 
+# Clean
+rm -f control_room*
+
 # This is the unique ID of the specific sheet within ID_spread we want to get
-ID_single_sheet="0"
-
-# Name of the .csv output file
-csv_out="control_room.csv"
-
-# Calling wget
-wget --output-file="control_room.log" "$link/$ID_spreadsheet/export?format=csv&gid=$ID_single_sheet" -O "$csv_out"
+for ID in 0 750058484; do
+ # Name of the .csv output file
+ csv_out="control_room_$ID.csv"
+ log_out="control_room_$ID.log"
+ # Calling wget
+ wget --output-file="$log_out" "$link/$ID_spreadsheet/export?format=csv&gid=$ID" -O "$csv_out"
+ #
+ cat $log_out >> control_room.log
+ cat $csv_out >> control_room.csv
+ rm -f $log_out $csv_out
+done

@@ -1,0 +1,43 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
+#                                                                     
+# Version 5.2.0 Revision 22427 Hash (prev commit) 49ca835f5           
+#                   Branch is bug-fixes                               
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+optics                           # [R] Linear Response optical properties
+kernel                           # [R] Kernel
+chi                              # [R][CHI] Dyson equation for Chi.
+dipoles                          # [R] Oscillator strenghts (or dipoles)
+Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+NGsBlkXd= 109                RL    # [Xd] Response block size
+% QpntsRXd
+ 1 | 3 |                             # [Xd] Transferred momenta
+%
+% BndsRnXd
+  11 |  15 |                         # [Xd] Polarization function bands
+%
+% EnRngeXd
+ -1.00000 | 5.00000 |         eV    # [Xd] Energy range
+%
+% DmRngeXd
+ 0.050000 | 0.050000 |         eV    # [Xd] Damping range
+%
+ETStpsXd= 251                    # [Xd] Total Energy steps
+% LongDrXd
+ 1.000000 | 0.000000 | 0.000000 |        # [Xd] [cc] Electric Field
+%
+
+#
+rim_cut                        # [R] Coulomb potential
+RandQpts=2000000               # [RIM] Number of random q-points in the BZ
+RandGvec= 2            RL      # [RIM] Coulomb interaction RS components
+CUTGeo= "slab z"               # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
