@@ -1,12 +1,12 @@
 
 
-
-_|      _|   _|_|   _|      _|  _|_|_|     _|_|
-  _|  _|   _|    _| _|_|  _|_| _|    _| _|    _|
-    _|     _|_|_|_| _|  _|  _| _|_|_|   _|    _|
-    _|     _|    _| _|      _| _|    _| _|    _|
-    _|     _|    _| _|      _| _|_|_|     _|_|
-
+ __    __ ______           ____     _____
+/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
+\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
+ `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
+   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
+     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
+      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -37,62 +37,81 @@ _|      _|   _|_|   _|      _|  _|_|_|     _|_|
  <---> [06.01.04] Independent Particles properties @q1
  <---> IP properties |                                        | [000%] --(E) --(X)
  <---> IP properties |########################################| [100%] --(E) --(X)
+ <--->  EPS via KK, poles at w>0 reflected also in w<0
+ <---> [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
  <---> [06.01.05] TDDFT Kernel @q1 (Resonant ALDA EXCHANGE)
- <---> [06.01.06] Main kernel loop
- <---> Kernel exch |                                        | [000%] --(E) --(X)
- <---> Kernel exch |########################################| [100%] --(E) --(X)
- <---> [FFT-TDDFT] Mesh size:   15   15   80
+ <---> [FFT-BSK] Mesh size:   15   15   80
  <---> [xc] Functional : Slater exchange(X)+Perdew & Zunger(C)
  <---> [xc] LIBXC used to calculate xc functional
- <---> Kernel tddft |                                        | [000%] --(E) --(X)
- <---> Kernel tddft |########################################| [100%] --(E) --(X)
- <---> [06.02] BSE solver(s) @q1
- <---> [LA] SERIAL linear algebra
- <---> [06.03] Diago Solver @q1
- <---> Unfolding BSE components |                                        | [000%] --(E) --(X)
- <---> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <---> BSK diagonalize |                                        | [000%] --(E) --(X)
- <---> BSK diagonalize |########################################| [100%] --(E) --(X)
- <---> opt1 residuals |                                        | [000%] --(E) --(X)
- <---> opt1 residuals |########################################| [100%] --(E) --(X)
- <---> BSK resp. funct |                                        | [000%] --(E) --(X)
- <---> BSK resp. funct |########################################| [100%] --(E) --(X)
- <---> [LA] SERIAL linear algebra
- <---> [06.04] Inversion Solver @q1
- <---> IP Absorption |                                        | [000%] --(E) --(X)
- <---> IP Absorption |########################################| [100%] --(E) --(X)
- <---> Shifted GF and Absorption |                                        | [000%] --(E) --(X)
- <---> Shifted GF and Absorption |########################################| [100%] --(E) --(X)
- <---> Perturbative inversion |                                        | [000%] --(E) --(X)
- <---> Perturbative inversion |########################################| [100%] --(E) --(X)
- <---> [PERTURBATIVE INV@EPS] Converged frequencies :  300
- <---> [FULL INV@EPS] Frequencies TODO : 0
- <---> [06.05] Haydock Solver in the optics basis @q1 using the hermitian scheme
- <---> [Haydock] Iteration 1
- <---> [Haydock] Iteration 2
- <---> [Haydock] Iteration 3 Accuracy  324.8224| 0.100000E-2
- <---> [Haydock] Iteration 4 Accuracy  78.12022| 0.100000E-2
- <---> [Haydock] Iteration 5 Accuracy  350.1874| 0.100000E-2
- <---> [Haydock] Iteration 6 Accuracy  54.19344| 0.100000E-2
- <---> [Haydock] Iteration 7 Accuracy  4.452967| 0.100000E-2
- <---> [Haydock] Iteration 8 Accuracy  1.418509| 0.100000E-2
- <---> [Haydock] Iteration 9 Accuracy  2.602060| 0.100000E-2
- <---> [Haydock] Iteration 10 Accuracy  1.063792| 0.100000E-2
- <---> [Haydock] Iteration 11 Accuracy  0.144736| 0.100000E-2
- <---> [Haydock] Iteration 12 Accuracy  0.067128| 0.100000E-2
- <---> [Haydock] Iteration 13 Accuracy  0.024041| 0.100000E-2
- <---> [Haydock] Iteration 14 Accuracy  0.010039| 0.100000E-2
- <---> [Haydock] Iteration 15 Accuracy  0.018284| 0.100000E-2
- <---> [Haydock] Iteration 16 Accuracy  0.008140| 0.100000E-2
- <---> [Haydock] Iteration 17 Accuracy  0.009446| 0.100000E-2
- <---> [Haydock] Iteration 18 Accuracy  0.010214| 0.100000E-2
- <---> [Haydock] Iteration 19 Accuracy  0.009303| 0.100000E-2
- <---> [Haydock] Iteration 20 Accuracy  0.018795| 0.100000E-2
- <02s> [Haydock] Iteration 21 Accuracy  0.001423| 0.100000E-2
- <02s> [Haydock] Iteration 22 Accuracy  0.002492| 0.100000E-2
- <02s> [Haydock] Iteration 23 Accuracy  0.002477| 0.100000E-2
- <02s> [Haydock] Iteration 24 Accuracy  0.173172E-3| 0.100000E-2
- <02s> [Haydock] Iteration 25 Accuracy  0.207211E-4| 0.100000E-2
- <02s> [07] Timing Overview
- <02s> [08] Game Over & Game summary
- <02s> [TIMING]            [Time-Profile]: 02s
+ <---> [06.01.06] Main kernel loop
+ <---> Kernel |                                        | [000%] --(E) --(X)
+ <11s> Kernel |######                                  | [016%] 11s(E) 01m-09s(X)
+ <45s> Kernel |########################                | [060%] 44s(E) 01m-13s(X)
+ <01m-09s> Kernel |#####################################   | [094%] 01m-09s(E) 01m-13s(X)
+ <01m-13s> Kernel |########################################| [100%] 01m-13s(E) 01m-13s(X)
+ <01m-13s> [06.02] BSE solver(s) @q1
+ <01m-13s> [LA] SERIAL linear algebra
+ <01m-13s> [06.03] Diago Solver @q1
+ <01m-13s> Folding BSE Kernel |                                        | [000%] --(E) --(X)
+ <01m-13s> Folding BSE Kernel |########################################| [100%] --(E) --(X)
+ <01m-13s> BSK diagonalize |                                        | [000%] --(E) --(X)
+ <01m-13s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <01m-13s> EPS R residuals |                                        | [000%] --(E) --(X)
+ <01m-13s> EPS R residuals |########################################| [100%] --(E) --(X)
+ <01m-13s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <01m-13s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <01m-13s>  EPS via KK, poles at w>0 reflected also in w<0
+ <01m-13s> [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
+ <01m-13s> [LA] SERIAL linear algebra
+ <01m-13s> [06.04] Inversion Solver @q1
+ <01m-13s> IP Absorption |                                        | [000%] --(E) --(X)
+ <01m-13s> IP Absorption |########################################| [100%] --(E) --(X)
+ <01m-13s> Shifted GF and Absorption |                                        | [000%] --(E) --(X)
+ <01m-13s> Shifted GF and Absorption |########################################| [100%] --(E) --(X)
+ <01m-13s> Perturbative inversion |                                        | [000%] --(E) --(X)
+ <01m-13s> Perturbative inversion |########################################| [100%] --(E) --(X)
+ <01m-13s> [PERTURBATIVE INV@EPS] Converged frequencies :  300
+ <01m-13s>  EPS via KK, poles at w>0 reflected also in w<0
+ <01m-13s> [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
+ <01m-13s> [FULL INV@EPS] Frequencies TODO : 0
+ <01m-13s>  EPS via KK, poles at w>0 reflected also in w<0
+ <01m-13s> [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
+ <01m-13s> [06.05] Haydock Solver in the optics basis @q1 using the hermitian scheme
+ <01m-13s> [Haydock] Iteration 1
+ <01m-13s> [Haydock] Iteration 2
+ <01m-13s> [Haydock] Iteration 3 Accuracy  108.5703| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 4 Accuracy  17.53490| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 5 Accuracy  135.3190| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 6 Accuracy  424.6929| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 7 Accuracy  6.845901| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 8 Accuracy  2.945797| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 9 Accuracy  4.361299| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 10 Accuracy  0.694460| 0.100000E-2
+ <01m-13s>  EPS via KK, poles at w>0 reflected also in w<0
+ <01m-13s> [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
+ <01m-13s> [Haydock] Iteration 11 Accuracy  0.137813| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 12 Accuracy  0.048377| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 13 Accuracy  0.107947| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 14 Accuracy  0.100019| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 15 Accuracy  0.017404| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 16 Accuracy  0.054550| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 17 Accuracy  0.057874| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 18 Accuracy  0.049295| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 19 Accuracy  0.015108| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 20 Accuracy  0.008847| 0.100000E-2
+ <01m-13s>  EPS via KK, poles at w>0 reflected also in w<0
+ <01m-13s> [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
+ <01m-13s> [Haydock] Iteration 21 Accuracy  0.032767| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 22 Accuracy  0.015841| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 23 Accuracy  0.016133| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 24 Accuracy  0.010665| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 25 Accuracy  0.001229| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 26 Accuracy  0.001625| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 27 Accuracy  0.001857| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 28 Accuracy  0.969638E-3| 0.100000E-2
+ <01m-13s> [Haydock] Iteration 29 Accuracy  0.718053E-4| 0.100000E-2
+ <01m-13s>  EPS via KK, poles at w>0 reflected also in w<0
+ <01m-13s> [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
+ <01m-13s> [07] Timing Overview
+ <01m-13s> [08] Game Over & Game summary
+ <01m-13s> [TIMING]            [Time-Profile]: 01m-14s
