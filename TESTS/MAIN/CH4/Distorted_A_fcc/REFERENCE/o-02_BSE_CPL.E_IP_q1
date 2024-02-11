@@ -8,12 +8,12 @@
 #    ###  ###     ### ###       ### #########   ########              
 #                                                                     
 #                                                                     
-# Version 5.1.0 Revision 22208 Hash (prev commit) a391fb0cb           
-#                Branch is phys/dichroism                             
+# Version 5.2.0 Revision 23236 Hash (prev commit) fef8b788e7          
+#                Branch is phys-dichroism                             
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
-# Sorted IP Energies @ Q(1):  0.999999975E-5   0.00000000      0.00000000    [q->0 direction]
+# Sorted IP Energies @ Q(1):   1.00000000      0.00000000      0.00000000    [q->0 direction]
 #
 # [GEN] GF Energies                               : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
 # [GEN] Green`s Function                          : Retarded
@@ -22,34 +22,34 @@
 # [GEN] [r,Vnl] included                          : yes
 #
 # DIP band range                                  :   2   8
-# DIP band range limits                           :   4   5
+# DIP band range limits                           :   8   2
 # DIP e/h energy range                            :  -1.00000000     -1.00000000    [eV]
 # RL vectors in the sum                           :  2637
 # [r,Vnl] included                                : yes
-# Bands ordered                                   : yes
+# Bands ordered                                   : no
 # Direct v evaluation                             : no
 # Approach used                                   : G-space v
 # Dipoles computed                                : R V P
 # Wavefunctions                                   : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
 #
 #
-#    E [eV]             N_deg              eps                off
+#    E [eV]             N_deg              alpha              beta               CD
 #
-        8.925514           1.000000           0.27666E-10       -0.58905E-10
-        9.529207           1.000000           0.10654E-09        0.26825E-11
-        10.18440           1.000000           0.54842E-11        0.13726E-10
-        12.71564           1.000000           0.93976E-10       -0.42935E-10
-        13.31934           1.000000           0.14225E-10        0.15389E-10
-        13.40832           1.000000           0.20030E-10        0.20505E-10
-        13.97453           1.000000           0.43540E-13        0.83843E-12
-        14.01202           1.000000           0.14375E-12        0.30657E-11
-        14.04310           1.000000           0.24168E-14        0.18732E-12
-        14.64679           1.000000           0.10935E-10       -0.16792E-10
-        14.66721           1.000000           0.47596E-11       -0.88549E-11
-        15.30198           1.000000           0.71145E-10        0.22506E-10
+        8.925514           1.000000           0.27666E-10       -0.58905E-10        0.167193E-3
+        9.529207           1.000000           0.10654E-09        0.26825E-11        0.620708E-4
+        10.18440           1.000000           0.54842E-11        0.13726E-10       -0.676615E-3
+        12.71564           1.000000           0.93976E-10       -0.42935E-10        0.460366E-3
+        13.31934           1.000000           0.14225E-10        0.15389E-10       -0.899671E-3
+        13.40832           1.000000           0.20030E-10        0.20505E-10       -0.346201E-3
+        13.97453           1.000000           0.43540E-13        0.83843E-12       -0.252482E-3
+        14.01202           1.000000           0.14375E-12        0.30657E-11        0.001138
+        14.04310           1.000000           0.24168E-14        0.18732E-12       -0.384716E-3
+        14.64679           1.000000           0.10935E-10       -0.16792E-10        0.747403E-3
+        14.66721           1.000000           0.47596E-11       -0.88549E-11       -0.108707E-4
+        15.30198           1.000000           0.71145E-10        0.22506E-10        0.339193E-3
 # 
-# 06/20/2023 at 00:40 yambo @ unimi-XPS-8930 [start]
-# 06/20/2023 at 00:40                        [end]
+# 02/11/2024 at 10:20 yambo @ unimi-XPS-8930 [start]
+# 02/11/2024 at 10:20                        [end]
 #  
 # Timing   [Min/Max/Average]: 06s/06s/06s
 #
@@ -107,7 +107,11 @@
 # | % BLongDir
 # |  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field versor
 # | %
-# | BSEprop= "abs kerr esrt jdos"    # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | % QPropDir
+# | -0.000000 | 0.000000 |-1.000000 |        # [BSS] [cc] Propagation versor Field
+# | %
+# | BSEprop= " abs jdos dich kerr esrt" # [BSS] Can be any among abs/jdos/kerr/asymm/anHAll/magn/dich/photolum/esrt
+# | BSEdips= "xy"                    # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
 # | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
 # | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
 # | % BndsRnXs
