@@ -73,8 +73,6 @@ $branch_key_no_slash=~ s/\//-/g;
 $test_suite_branch= qx(git rev-parse --abbrev-ref HEAD);
 $test_suite_branch=~ s/^\s+|\s+$//g;
 #
-if ($is_GPL) {$branch_key.="_gpl"; $pattern.="_gpl";};
-#
 # branch and branch_key (to be used in reports/actions)
 $is_OLD_IO="no";
 if ($pattern=~m/4.1/ix) {$is_OLD_IO="yes"};

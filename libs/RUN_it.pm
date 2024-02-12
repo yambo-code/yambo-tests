@@ -30,12 +30,20 @@ if($verb ge 2) { &PRINT_input };
 my $CPU_cmd= " ";
 if ($yambo_running) {$CPU_cmd=$CPU_flag};
 #
+# MPI off?
+#
+my $mpi_off_flag=" ";
+if ($mpi_is_off){
+ if ( not $is_NEW_driver) {$mpi_off_flag="-M"}
+ if (     $is_NEW_driver) {$mpi_off_flag="-nompi"}
+}
+#
 # CMD line
 #
 if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
- $command_line = "$nice $yambo_exec $INPUT_option $INPUT_file $flags $in_dir_cmd_line $force_serial $log";
+ $command_line = "$nice $yambo_exec $mpi_off_flag  $INPUT_option $INPUT_file $flags $in_dir_cmd_line $log";
 }else{
- $command_line = "$nice $mpiexec -np $np $yambo_exec $INPUT_option $INPUT_file $flags $in_dir_cmd_line $force_serial $CPU_cmd $log";
+ $command_line = "$nice $mpiexec -np $np $yambo_exec $INPUT_option $INPUT_file $flags $in_dir_cmd_line $CPU_cmd $log";
 }
 #
 # *** RUN ***

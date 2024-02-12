@@ -58,10 +58,10 @@ if("@_" eq "ALL") {
    };
   }
  }else{
-  &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R[0-9]*' -type d | $grep -v $hostname | xargs rm -fr");
-  &command("find . -name 'ROBOT_*' -o -name '*-R[0-9]*' -type f | $grep -v $hostname | xargs rm -fr");
+  &command("find $TESTS_folder -name 'ROBOT_*' -o -name '*-R[0-9]*' -type d | $grep -v $host | xargs rm -fr");
+  &command("find . -name 'ROBOT_*' -o -name '*-R[0-9]*' -type f | $grep -v $host | xargs rm -fr");
   &command("find . -name '*.kindx' -o -name '*.gops' | grep -v REFERENCE | xargs rm -fr");
-  &command("$git ls-files --others --exclude-standard | $grep -v $hostname | grep -v MODULES.pl | grep -v TOOLS.pl | grep -v compile\_ | xargs rm -fr");
+  &command("$git ls-files --others --exclude-standard | $grep -v $host | grep -v MODULES.pl | grep -v TOOLS.pl | grep -v compile\_ | xargs rm -fr");
   &command("rm -f outputs_and_reports_ALL-* *compile*log *config*log");
  }
  &command("rm -f scripts/find_the_diff/Makefile");
@@ -90,13 +90,20 @@ if("@_" eq "DFT") {
 # COMPs
 if("@_" eq "COMPs") {
  &LOAD_branches;
+ if ($user_branch) {
+   $comp_folder  = "$suite_dir/compile_dir/${user_branch}";
+   print "\nrm -fr $comp_folder\n";
+   &command("rm -fr $comp_folder");
+ } else {
  for $ib ( 0 .. $#branches ) {
+  print "$ib @branches[$ib]\n";
   $branchdir =@branches[$ib];
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
    $comp_folder  = "$suite_dir/compile_dir/${branch_key}/${conf_file}";
    &command("rm -fr $comp_folder");
   }
+ }
  }
 }
 #
@@ -118,11 +125,11 @@ sub ROBOT_clean
 {
  $ID = shift;
  print "Cleaning ROBOT #".$ID."\n";
- $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | grep    MAIN | xargs rm -fr";
+ $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $host | grep    MAIN | xargs rm -fr";
  &command("$cmd");
- $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $hostname | grep -v MAIN | xargs rm -fr";
+ $cmd="find $TESTS_folder -name 'ROBOT_Nr_$ID' -o -name 'R$ID' -type d | $grep -v $host | grep -v MAIN | xargs rm -fr";
  &command("$cmd");
- $cmd="$git ls-files --others --exclude-standard | $grep -e 'ROBOT_Nr_$ID/' | $grep -v $hostname |  xargs rm -f";
+ $cmd="$git ls-files --others --exclude-standard | $grep -e 'ROBOT_Nr_$ID/' | $grep -v $host |  xargs rm -f";
  &command("$cmd");
  &command("rm -f outputs_and_reports_ALL-R$ID.* ROBOT_Nr_$ID KILLE*R$ID.awk scripts/find_the_diff/find_the_diff_R$ID");
  &command("rm -fr bin-precompiled-R$ID-*");

@@ -187,9 +187,7 @@ LOOP_DIRS: foreach my $testline (@input_tests_list) {
    if ($error =~ "OK") { 
     #
     # Use the tool itself to generate the input file
-    if ($check_input_generation) {
-      $INFILE_CHECK=&RUN_input_file_test;
-    }
+    if ($check_input_generation) {$INFILE_CHECK=&RUN_input_file_test};
     #
     # Actual run
     $RUN_result=&RUN_it;

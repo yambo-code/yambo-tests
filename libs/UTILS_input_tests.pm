@@ -27,7 +27,7 @@ $input_folder = "INPUTS";
 my $prefix="";
 if (@_) {$prefix="@_/"};
 if ($branch_key and -d "${prefix}INPUTS_$branch_key"){ $input_folder = "INPUTS_$branch_key"}
-if ($is_GPL and -d "${prefix}INPUTS_master_gpl"){ $input_folder = "INPUTS_master_gpl"}
+if ($is_GPL and -d "${prefix}INPUTS_gpl"){ $input_folder = "INPUTS_gpl"}
 $REF_prefix   = "";
 if ($mode eq "bench") {
  $in_dir_cmd_line = "-I ../ -O .";

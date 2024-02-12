@@ -52,7 +52,10 @@ if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -
 else
  AC_MSG_RESULT(created)
  mkdir -p ROBOTS/$robot/$user
- echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
+ GREP=`grep $robot ROBOTS/ROBOTS_list.pl |wc -l`
+ if test x"$GREP" = "x0"; then 
+  echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
+ fi
 fi
 if ! test -d ROBOTS/$robot/$user/SCRIPTS; then
   mkdir -p ROBOTS/$robot/$user/SCRIPTS
@@ -151,10 +154,10 @@ case $with_yambo in
   *) 
    if test -f ROBOTS/$robot/$user/BRANCHES; then
      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
-     if ! test x"$GREP" = "x0"; then 
+     if test x"$GREP" = "x0"; then 
       if test -f $with_yambo/driver/yambo.F ; then
         AC_MSG_RESULT($with_yambo)
-        echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+        echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
       else
         AC_MSG_ERROR([could not locate the Yambo source])
       fi
@@ -164,7 +167,9 @@ case $with_yambo in
    else
      if test -f $with_yambo/driver/yambo.F ; then
        AC_MSG_RESULT($with_yambo)
-       echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+       echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
+     else
+        AC_MSG_ERROR([could not locate the Yambo source])
      fi
    fi
    source_dir=$with_yambo
@@ -209,6 +214,12 @@ test_suite_dir=`pwd`
 PERL_LIB="${test_suite_dir}/libs"
 AC_SUBST(test_suite_dir)
 AC_SUBST(PERL_LIB)
+# PRIVATE PART
+PERL_LIB_PRIVATE="${test_suite_dir}/ROBOTS"
+AC_SUBST(PERL_LIB_PRIVATE)
+USE_PRIVATE_LIB="#"
+if test -f ROBOTS/FTP_utils.pm; then USE_PRIVATE_LIB="use FTP_utils;"; fi;
+AC_SUBST(USE_PRIVATE_LIB)
 # ============================================================================
 AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl ${CFG_FILES}])
 AC_OUTPUT
