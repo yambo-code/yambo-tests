@@ -114,13 +114,17 @@ if ($compile) {
  #
 }
 #
-# FC kind
+# FC kind/Precision & CUDA
 #
 if ($compile) { 
  &SETUP_FC_kind;
 }elsif (not $FC_kind){
  &SETUP_FC_kind;
 };
+#
+# CUDA => mpi_is_off (serial runs)
+#
+if ($CUDA_support eq "yes") { $mpi_is_off="yes"};
 #
 # BIN's
 if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
