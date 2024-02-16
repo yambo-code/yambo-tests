@@ -197,13 +197,15 @@ chomp($sys_ncdump);
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
+}elsif(-e "$comp_folder/lib/bin/ncdump") { 
+ $ncdump = "$$comp_folder/lib/bin/ncdum"; 
+ chomp($ncdump);
 }elsif(-e $sys_ncdump) { 
  $ncdump = "$sys_ncdump"; 
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
 }else{ 
  die "\n ncdump not found\n";
 }
+&MY_PRINT($stdout, "\n               ncdump : $ncdump");
 #
 # Rename the conf/comp logs
 #
