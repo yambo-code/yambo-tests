@@ -27,11 +27,11 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-04_MAGNONS_ALDA_optics_bss_bse_tddft
+ Report file         : ./r-04_MAGNONS_ALDA_Gspace_optics_chi_tddft
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 04_MAGNONS_ALDA
+ Job   string        : 04_MAGNONS_ALDA_Gspace
  Alt#1 string        : R3
 
  Precision           : SINGLE
@@ -245,7 +245,7 @@
  - S/N 007737 ---------------------------------------------- v.05.02.00 r.22884 -
  [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.36812E-09   1.0000    
 
- [WR./04_MAGNONS_ALDA//ndb.dipoles]----------------------------------------------
+ [WR./04_MAGNONS_ALDA_Gspace//ndb.dipoles]---------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :    8   64    6   64
   RL vectors                                       :  1721 [WF]
   Fragmentation                                    : yes
@@ -267,248 +267,60 @@
 
  [WARNING] In case H contains other non local terms, these are neglected
 
- [05] Bethe Salpeter Equation driver
- ===================================
+ [05] G-space response function
+ ==============================
 
-
- [WARNING] n_sp_pol=2 and magnons requested. Spin flip BSE only is computed
-
-  [05.01] Bethe Salpeter Equation @q1
-  ===================================
-
-
-   [05.01.01] Transition pre-analysis @q1
-   ======================================
-
-
-   [05.01.02] Transition Groups build-up @q1
-   =========================================
-
-   [BSK] Transition groups (total):   6
-   [BSK] Size (resonant):   756
-   [BSK]         (total):   756
-   [BSK] N. of matrices :  1
-
-   [05.01.03] Loading Dipoles @q1
-   ==============================
-
-   [RD./04_MAGNONS_ALDA//ndb.dipoles]----------------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :    8   64    6   64
-    RL vectors                                       :  1721 [WF]
-    Fragmentation                                    : yes
-    Electronic Temperature                           :  0.000000 [K]
-    Bosonic    Temperature                           :  0.000000 [K]
-    DIP band range                                   :   6  10
-    DIP band range limits                            :  10   6
-    DIP e/h energy range                             : -1.000000 -1.000000 [eV]
-    RL vectors in the sum                            :  1721
-    [r,Vnl] included                                 : yes
-    Bands ordered                                    : no
-    Direct v evaluation                              : no
-    Approach used                                    : G-space v
-    Dipoles computed                                 : R V P Spin
-    Wavefunctions                                    : Teter 93(XC)
-   - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
-
-   [05.01.04] Independent Particles properties @q1
-   ===============================================
-
-
-   [05.01.05] TDDFT Kernel @q1 ALDA
-   ================================
-
-   [BSE] ALDA        components :   79
-   [BSE] ALDA     components :   79
-
-   [05.01.06] Main kernel loop
-   ===========================
-
-   [WR./04_MAGNONS_ALDA//ndb.BS_head_Q1]-------------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :    8   64    6   64
-    RL vectors                                       :  1721 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : no
-    BS kernel          wavefunctions                 : Teter 93(XC)
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    [K] Identifier                                   :   8708
-    [K] Dimension                                    :   756
-    [K] Bands                                        :   6  10
-    [K] Exchange res                                 : no
-    [K] Correlation res                              : no
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : yes
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [IO] Kernel IO mode                              : 2D_standard
-    [X] Response Kind                                : BAR
-   - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
-    Kernel complete                                  : no
-   [xc] Functional : Teter 93(XC)
-   [xc] LIBXC used to calculate xc functional
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : yes
-
-  [05.02] BSE solver(s) @q1
-  =========================
-
-
-  [05.03] Diago Solver @q1
-  ========================
-
-  [WR./04_MAGNONS_ALDA//ndb.BS_diago_Q1]------------------------------------------
-   BS kernel          energies                      : Teter 93(XC)
-   [K] Identifier                                   :   8708
-   [K] Dimension                                    :   756
-   [K] Bands                                        :   6  10
-   [K] Exchange res                                 : no
-   [K] Correlation res                              : no
-   [K] Kernel`s coupling                            : no
-   [K] Exchange cpl                                 : no
-   [K] Correlation cpl                              : no
-   [K] W interaction is bare                        : no
-   [K] ALDA kernel in R-space                       : yes
-   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-   [K] Coupling range                               :  100.0000  100.0000 [o/o]
-   [IO] Kernel IO mode                              : 2D_standard
-   [X] Response Kind                                : BAR
-   [BSS] Eigenstates included                       : no
-   [BSS] Field direction                            :   0.00000     0.100000E-4   0.00000   
-   [BSS] Eigenstates computed                       :   756
-   [BSS] Number of BSE matrices                     :  1
-  - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
-
-  [05.02] Bethe Salpeter Equation @q2
-  ===================================
-
-
-   [05.02.01] Transition pre-analysis @q2
-   ======================================
-
-
-   [05.02.02] Transition Groups build-up @q2
-   =========================================
-
-   [BSK] Transition groups (total):   6
-   [BSK] Size (resonant):   768
-   [BSK]         (total):   768
-   [BSK] N. of matrices :  1
-
-   [05.02.03] Loading Dipoles @q2
-   ==============================
-
-
-   [05.02.04] Independent Particles properties @q2
-   ===============================================
-
-
-   [05.02.05] TDDFT Kernel @q2 ALDA
-   ================================
-
-   [BSE] ALDA        components :   79
-   [BSE] ALDA     components :   79
-
-   [05.02.06] Main kernel loop
-   ===========================
-
-   [WR./04_MAGNONS_ALDA//ndb.BS_head_Q2]-------------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :    8   64    6   64
-    RL vectors                                       :  1721 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : no
-    BS kernel          wavefunctions                 : Teter 93(XC)
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    [K] Identifier                                   :   3533
-    [K] Q-point                                      : -0.500000 -0.500000 -0.500000
-    [K] Dimension                                    :   768
-    [K] Bands                                        :   6  10
-    [K] Exchange res                                 : no
-    [K] Correlation res                              : no
-    [K] Kernel`s coupling                            : no
-    [K] Exchange cpl                                 : no
-    [K] Correlation cpl                              : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : yes
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [IO] Kernel IO mode                              : 2D_standard
-    [X] Response Kind                                : BAR
-   - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
-    Kernel complete                                  : no
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : yes
-
-  [05.03] BSE solver(s) @q2
-  =========================
-
-
-  [05.04] Diago Solver @q2
-  ========================
-
-  [WR./04_MAGNONS_ALDA//ndb.BS_diago_Q2]------------------------------------------
-   BS kernel          energies                      : Teter 93(XC)
-   [K] Identifier                                   :   3533
-   [K] Q-point                                      : -0.500000 -0.500000 -0.500000
-   [K] Dimension                                    :   768
-   [K] Bands                                        :   6  10
-   [K] Exchange res                                 : no
-   [K] Correlation res                              : no
-   [K] Kernel`s coupling                            : no
-   [K] Exchange cpl                                 : no
-   [K] Correlation cpl                              : no
-   [K] W interaction is bare                        : no
-   [K] ALDA kernel in R-space                       : yes
-   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-   [K] Coupling range                               :  100.0000  100.0000 [o/o]
-   [IO] Kernel IO mode                              : 2D_standard
-   [X] Response Kind                                : BAR
-   [BSS] Eigenstates included                       : no
-   [BSS] Eigenstates computed                       :   768
-   [BSS] Number of BSE matrices                     :  1
-  - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
-
- Timing [Min/Max/Average]: 06s/06s/06s
+ [xc] Functional : Teter 93(XC)
+ [xc] LIBXC used to calculate xc functional
+ [RD./04_MAGNONS_ALDA_Gspace//ndb.dipoles]---------------------------------------
+  Brillouin Zone Q/K grids (IBZ/BZ)                :    8   64    6   64
+  RL vectors                                       :  1721 [WF]
+  Fragmentation                                    : yes
+  Electronic Temperature                           :  0.000000 [K]
+  Bosonic    Temperature                           :  0.000000 [K]
+  DIP band range                                   :   6  10
+  DIP band range limits                            :  10   6
+  DIP e/h energy range                             : -1.000000 -1.000000 [eV]
+  RL vectors in the sum                            :  1721
+  [r,Vnl] included                                 : yes
+  Bands ordered                                    : no
+  Direct v evaluation                              : no
+  Approach used                                    : G-space v
+  Dipoles computed                                 : R V P Spin
+  Wavefunctions                                    : Teter 93(XC)
+ - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
+ [X-CG] R(p) Tot o/o(of R):    48   756   100
 
  [06] Timing Overview
  ====================
 
  Clock: global
-                    BSE matrix (REDUX) :      0.0000s CPU (  2 calls,   0.000 msec avg)
-                      io_ATMPROJ_pwscf :      0.0000s CPU
-                            io_COL_CUT :      0.0000s CPU
-                                 io_HF :      0.0000s CPU
-                        io_Double_Grid :      0.0000s CPU (  2 calls,   0.023 msec avg)
-                           io_KB_pwscf :      0.0001s CPU (  2 calls,   0.032 msec avg)
-                                  io_X :      0.0001s CPU (  5 calls,   0.016 msec avg)
-                BSE components folding :      0.0002s CPU (  2 calls,   0.076 msec avg)
-               IO_and_Messaging_switch :      0.0002s CPU ( 67 calls,   0.003 msec avg)
-                          PP_uspp_init :      0.0005s CPU ( 34 calls,   0.016 msec avg)
-                              io_QINDX :      0.0035s CPU (  2 calls,   1.766 msec avg)
-                               io_GROT :      0.0046s CPU (  2 calls,   2.300 msec avg)
-                    BSE matrix filling :      0.0047s CPU (  2 calls,   2.336 msec avg)
-                            io_DIPOLES :      0.0084s CPU ( 32 calls,   0.263 msec avg)
-                          io_BSS_diago :      0.0095s CPU (  4 calls,   2.387 msec avg)
-                          io_KB_abinit :      0.0132s CPU ( 14 calls,   0.944 msec avg)
-                   XC_potential_driver :      0.0263s CPU (  2 calls,  13.169 msec avg)
-                           io_fragment :      0.0276s CPU (108 calls,   0.255 msec avg)
-                                 io_BS :      0.0304s CPU ( 42 calls,   0.725 msec avg)
-                     DIPOLE_transverse :      0.0557s CPU
-                                 io_WF :      0.0722s CPU (165 calls,   0.438 msec avg)
-                           WF_load_FFT :      0.0973s CPU ( 34 calls,   2.863 msec avg)
-                  X T_space Kernel sum :      0.1353s CPU ( 42 calls,   3.222 msec avg)
-                             FFT_setup :      0.1610s CPU ( 23 calls,   7.001 msec avg)
-                           BSE dipoles :      0.3393s CPU (  2 calls, 169.625 msec avg)
-                            T_space IP :      0.8642s CPU (  2 calls, 432.088 msec avg)
-                     T_space ALDA Osc. :      0.8891s CPU ( 24 calls,  37.046 msec avg)
-                               Dipoles :      1.1250s CPU
-                      X T_space Kernel :      1.1703s CPU (  2 calls,   0.585 sec avg)
-      SERIAL_HERMITIAN_diagonalization :      3.1645s CPU (  2 calls,   1.582 sec avg)
-                        LINEAR ALGEBRA :      3.1645s CPU (  2 calls,   1.582 sec avg)
-                          Diago Solver :      4.1400s CPU (  2 calls,   2.070 sec avg)
+                       io_ATMPROJ_pwscf :      0.0000s CPU
+                             io_COL_CUT :      0.0000s CPU
+                             Xo (REDUX) :      0.0000s CPU (   2 calls,   0.013 msec avg)
+                                  io_HF :      0.0000s CPU
+                         io_Double_Grid :      0.0000s CPU (   2 calls,   0.023 msec avg)
+                            io_KB_pwscf :      0.0001s CPU (   2 calls,   0.031 msec avg)
+                                   io_X :      0.0001s CPU (   5 calls,   0.016 msec avg)
+                IO_and_Messaging_switch :      0.0001s CPU (  41 calls,   0.003 msec avg)
+                           PP_uspp_init :      0.0003s CPU (  21 calls,   0.015 msec avg)
+                         eval_G_minus_G :      0.0021s CPU
+                               io_QINDX :      0.0036s CPU (   2 calls,   1.790 msec avg)
+                                io_GROT :      0.0046s CPU (   2 calls,   2.298 msec avg)
+                             io_DIPOLES :      0.0085s CPU (  32 calls,   0.267 msec avg)
+                           io_KB_abinit :      0.0129s CPU (  14 calls,   0.924 msec avg)
+                    XC_potential_driver :      0.0133s CPU
+                            io_fragment :      0.0176s CPU (  72 calls,   0.244 msec avg)
+      MATRIX transfer (X_G_X_redux_1_1) :      0.0323s CPU (5002 calls,   0.006 msec avg)
+                                  io_WF :      0.0430s CPU ( 103 calls,   0.418 msec avg)
+                            WF_load_FFT :      0.0555s CPU (  21 calls,   2.642 msec avg)
+                      DIPOLE_transverse :      0.0555s CPU
+                              FFT_setup :      0.0681s CPU (   9 calls,   7.564 msec avg)
+                                Dipoles :      1.1225s CPU
+                         Xo (procedure) :      2.1541s CPU (   2 calls,   1.077 sec avg)
+                      SERIAL_lin_system :      4.7496s CPU (5002 calls,   0.001 sec avg)
+                         LINEAR ALGEBRA :      4.7554s CPU (5002 calls,   0.001 sec avg)
+                          X (procedure) :      7.7409s CPU (   2 calls,   3.870 sec avg)
 
  [07] Game Over & Game summary
  =============================
@@ -516,8 +328,8 @@
  02/16/2024 at 23:56 yambo @ unimi-XPS-8930 [start]
  02/16/2024 at 23:56                        [end]
 
- Timing   [Min/Max/Average]: 07s/07s/07s
-             [Time-Profile]: 07s
+ Timing   [Min/Max/Average]: 11s/11s/11s
+             [Time-Profile]: 11s
 
  .-ACKNOWLEDGMENT
  |
@@ -542,38 +354,31 @@
   
  .-Input file  yambo.in
  | optics                           # [R] Linear Response optical properties
- | bss                              # [R] BSE solver
- | bse                              # [R][BSE] Bethe Salpeter Equation.
+ | chi                              # [R][CHI] Dyson equation for Chi.
  | tddft                            # [R][K] Use TDDFT kernel
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
  | FFTGvecs= 1721             RL    # [FFT] Plane-waves
- | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
- | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+ | X_nCPU_LinAlg_INV= 1             # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
- | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
- | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
- | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
- | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
- | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+ | Chimod= "ALDA"                   # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+ | Chiprop= "magn"                  # [X] abs/kerr/magn
+ | FxcGRLc= 13                Ry    # [TDDFT] XC-kernel RL size
+ | NGsBlkXd= 13               Ry    # [Xd] Response block size
+ | % QpntsRXd
+ |  1 | 2 |                             # [Xd] Transferred momenta
+ | %
+ | % BndsRnXd
+ |   6 | 10 |                           # [Xd] Polarization function bands
+ | %
+ | GrFnTpXd= "r"                    # [Xd] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
+ | % EnRngeXd
+ | -2.000000 | 4.000000 |         eV    # [Xd] Energy range
+ | %
+ | % DmRngeXd
+ |  0.100000 | 0.100000 |         eV    # [Xd] Damping range
+ | %
+ | ETStpsXd= 2501                   # [Xd] Total Energy steps
+ | % LongDrXd
+ |  1.000000 | 0.000000 | 0.000000 |        # [Xd] [cc] Electric Field
+ | %
  | DipComputed= "R V P Spin"        # [DIP] [default R P V; extra P2 Spin Orb]
- | BSENGexx= 1                RL    # [BSK] Exchange components
- | BSENGfxc= 13               Ry    # [BSK] Fxc components
- | % BSEQptR
- |  1 | 2 |                             # [BSK] Transferred momenta range
- | %
- | % BSEBands
- |   6 | 10 |                           # [BSK] Bands range
- | %
- | % BEnRange
- | -2.000000 | 4.000000 |         eV    # [BSS] Energy range
- | %
- | % BDmRange
- |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
- | %
- | BEnSteps=  5001                  # [BSS] Energy steps
- | % BLongDir
- |  0.000000 | 1.000000 | 0.000000 |        # [BSS] [cc] Electric Field versor
- | %
- | BSEprop= " jdos magn"            # [BSS] Can be any among abs/jdos/kerr/asymm/anHAll/magn/dich/photolum/esrt
- | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
- | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
