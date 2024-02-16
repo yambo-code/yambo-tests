@@ -193,15 +193,18 @@ if (not "$ERROR" eq "OK") {
 # NCDUMP
 #
 my $sys_ncdump = `which ncdump`; 
+my $lib_ncdump = `find $comp_folder/lib/external/ -name 'ncdump' -type f`;
 chomp($sys_ncdump);
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
 }elsif(-e "$comp_folder/lib/bin/ncdump") { 
- $ncdump = "$$comp_folder/lib/bin/ncdum"; 
+ $ncdump = "$comp_folder/lib/bin/ncdum"; 
  chomp($ncdump);
 }elsif(-e $sys_ncdump) { 
  $ncdump = "$sys_ncdump"; 
+}elsif(-e $lib_ncdump) { 
+ $ncdump = "$lib_ncdump"; 
 }else{ 
  die "\n ncdump not found\n";
 }
