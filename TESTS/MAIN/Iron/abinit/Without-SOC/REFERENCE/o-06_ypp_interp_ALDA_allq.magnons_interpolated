@@ -1,0 +1,64 @@
+#                                                                     
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
+#                                                                     
+# Version 5.2.0 Revision 23431 Hash (prev commit) 1d2d4f21de          
+#                 Branch is phys-magnons                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+#     |q| (a.u.)         e37               q_x (rlu)          q_y (rlu)          q_z (rlu)
+#
+       0.00000000         1.82762444        0.500000000       -0.500000000       -0.500000000   
+      0.115925960         1.74562585        0.450000018       -0.450000018       -0.450000018   
+      0.231851846         1.54388404        0.400000006       -0.400000006       -0.400000006   
+      0.347777814         1.29911745        0.349999994       -0.349999994       -0.349999994   
+      0.463703692         1.06483376        0.300000012       -0.300000012       -0.300000012   
+      0.579629660        0.863793492        0.250000000       -0.250000000       -0.250000000   
+      0.695555627        0.698611379        0.199999988       -0.199999988       -0.199999988   
+      0.811481535        0.567280710        0.150000006       -0.150000006       -0.150000006   
+      0.927407503        0.466455311        0.999999940E-1    -0.999999940E-1    -0.999999940E-1
+       1.04333341        0.395960599        0.499999821E-1    -0.499999821E-1    -0.499999821E-1
+       1.15925932        0.368442595         0.00000000         0.00000000         0.00000000   
+       1.27636218        0.395655423        0.714285746E-1      0.00000000         0.00000000   
+       1.39346504        0.456498444        0.142857149         0.00000000         0.00000000   
+       1.51056790        0.519427001        0.214285731         0.00000000         0.00000000   
+       1.62767076        0.565488160        0.285714298         0.00000000         0.00000000   
+       1.74477363        0.591524839        0.357142866         0.00000000         0.00000000   
+       1.86187649        0.604800224        0.428571463         0.00000000         0.00000000   
+       1.97897935        0.609178782        0.500000000         0.00000000         0.00000000   
+# 
+# 02/17/2024 at 16:57 ypp @ unimi-XPS-8930 [start]
+# 02/17/2024 at 16:57                      [end]
+#
+# .-Input file  yambo.in
+# | magnons                          # [R] Magnonic properties
+# | interpolate                      # [R] Interpolate
+# | BANDS_built_in                 # Print the bands of the generating points of the circuit using the nearest internal point
+# | INTERP_mode= "BOLTZ"             # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
+# | INTERP_Shell_Fac= 20.00000       # The bigger it is a higher number of shells is used
+# | INTERP_NofNN= 1                  # Number of Nearest sites in the NN method
+# | BANDS_steps= 10                  # Number of divisions
+# | cooIn= "rlu"                     # Points coordinates (in) cc/rlu/iku/alat
+# | cooOut= "rlu"                    # Points coordinates (out) cc/rlu/iku/alat
+# | States= ""                       # Index of the BS state(s)
+# | % INTERP_Grid
+# | -1 |-1 |-1 |                             # Interpolation BZ Grid
+# | %
+# | #PrtDOS                        # Print Exciton Density of States
+# | % DOSERange
+# |  1.000000 |-1.000000 |         eV    # Energy range
+# | %
+# | DOSESteps=  500                  # Energy steps
+# | DOS_broad= 0.100000        eV    # Broadening of the DOS
+# | %BANDS_kpts                      # K points of the bands circuit
+# |  0.500000|-0.500000|-0.500000|
+# |  0.000000| 0.000000| 0.000000|
+# |  0.500000| 0.000000| 0.000000|
+# | %

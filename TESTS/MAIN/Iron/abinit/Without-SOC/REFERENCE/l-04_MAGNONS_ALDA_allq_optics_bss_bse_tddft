@@ -1,12 +1,12 @@
 
 
- __   __  _______  __   __  _______  _______
-|  | |  ||   _   ||  |_|  ||  _    ||       |
-|  |_|  ||  |_|  ||       || |_|   ||   _   |
-|       ||       ||       ||       ||  | |  |
-|_     _||       ||       ||  _   | |  |_|  |
-  |   |  |   _   || ||_|| || |_|   ||       |
-  |___|  |__| |__||_|   |_||_______||_______|
+ __    __ ______           ____     _____
+/\ \  /\ \\  _  \  /"\_/`\/\  _`\ /\  __`\
+\ `\`\\/"/ \ \L\ \/\      \ \ \L\ \ \ \/\ \
+ `\ `\ /" \ \  __ \ \ \__\ \ \  _ <" \ \ \ \
+   `\ \ \  \ \ \/\ \ \ \_/\ \ \ \L\ \ \ \_\ \
+     \ \_\  \ \_\ \_\ \_\\ \_\ \____/\ \_____\
+      \/_/   \/_/\/_/\/_/ \/_/\/___/  \/_____/
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -55,276 +55,571 @@
  <---> Kernel tddft |                                        | [000%] --(E) --(X)
  <02s> Kernel tddft |########################################| [100%] --(E) --(X)
  <02s> [05.02] BSE solver(s) @q1
- <02s> [LA] SERIAL linear algebra
- <02s> [05.03] Diago Solver @q1
+ <02s> [05.03] Slepc Solver @q1
+ <02s> [SLEPC] Faster alogorithm but BSE matrix diuplicated over MPI tasks
  <02s> Unfolding BSE components |                                        | [000%] --(E) --(X)
  <02s> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <02s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <03s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <02s> [SLEPC] Approach                          : Krylov-Schur
+ <02s> [SLEPC] Extraction method                 : ritz
+ <02s> [SLEPC] Number of requested eigenvalues   :   50
+ <02s> [SLEPC] Criterion is smaller eigenvalues
+ <02s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <02s> [SLEPC] Stopping condition max iterations : -2
+ <02s> [SLEPC] Iteration #1 - converged States 1 - error :  0.135188E-6  0.299240E-5
+ <02s> [SLEPC] Iteration #2 - converged States 6 - error :  0.375282E-7  0.818171E-5
+ <02s> [SLEPC] Iteration #3 - converged States 8 - error :  0.134079E-6  0.212482E-5
+ <02s> [SLEPC] Iteration #4 - converged States 9 - error :  0.530128E-6  0.113941E-3
+ <02s> [SLEPC] Iteration #5 - converged States 11 - error :  0.111714E-6  0.333713E-4
+ <02s> [SLEPC] Iteration #6 - converged States 11 - error :  0.111714E-6  0.201710E-4
+ <02s> [SLEPC] Iteration #7 - converged States 36 - error :  0.10540E-17  0.12077E-05
+ <02s> [SLEPC] Iteration #8 - converged States 36 - error :  0.10540E-17  0.16818E-05
+ <02s> [SLEPC] Iteration #9 - converged States 41 - error :  0.934373E-6  0.110988E-5
+ <02s> [SLEPC] Iteration #10 - converged States 41 - error :  0.934373E-6  0.544552E-4
+ <02s> [SLEPC] Iteration #11 - converged States 41 - error :  0.934373E-6  0.218103E-3
+ <02s> [SLEPC] Iteration #12 - converged States 41 - error :  0.934373E-6  0.260129E-3
+ <03s> [SLEPC] Iteration #13 - converged States 42 - error :  0.913026E-6  0.132237E-5
+ <03s> [SLEPC] Iteration #14 - converged States 42 - error :  0.913026E-6  0.113223E-5
+ <03s> [SLEPC] Iteration #15 - converged States 42 - error :  0.913026E-6  0.920307E-5
+ <03s> [SLEPC] Iteration #16 - converged States 42 - error :  0.913026E-6  0.670404E-4
+ <03s> [SLEPC] Iteration #17 - converged States 47 - error :  0.231031E-8  0.213635E-5
+ <03s> [SLEPC] Iteration #18 - converged States 47 - error :  0.231031E-8  0.548305E-4
+ <03s> [SLEPC] Iteration #19 - converged States 55 - error :  0.66125E-36  0.14735
+ <03s> [SLEPC] Number of iterations              :  19
+ <03s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <03s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <03s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <03s> [SLEPC] Number of converged states        :   55
  <03s> mag1 residuals |                                        | [000%] --(E) --(X)
  <03s> mag1 residuals |########################################| [100%] --(E) --(X)
  <03s> BSK resp. funct |                                        | [000%] --(E) --(X)
  <03s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <03s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <03s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <03s> [SLEPC] Approach                          : Krylov-Schur
+ <03s> [SLEPC] Extraction method                 : ritz
+ <03s> [SLEPC] Number of requested eigenvalues   :   50
+ <03s> [SLEPC] Criterion is smaller eigenvalues
+ <03s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <03s> [SLEPC] Stopping condition max iterations : -2
+ <03s> [SLEPC] Iteration #1 - converged States 5 - error :  0.29158E-11  0.10094E-04
+ <03s> [SLEPC] Iteration #2 - converged States 11 - error :  0.727775E-7  0.193635E-4
+ <03s> [SLEPC] Iteration #3 - converged States 59 - error :  0.45030E-18  0.10872E-04
+ <03s> [SLEPC] Number of iterations              :  3
+ <03s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <03s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <03s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <03s> [SLEPC] Number of converged states        :   59
  <03s> mag1 residuals |                                        | [000%] --(E) --(X)
  <03s> mag1 residuals |########################################| [100%] --(E) --(X)
  <03s> BSK resp. funct |                                        | [000%] --(E) --(X)
  <03s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <04s> [05.02] Bethe Salpeter Equation @q2
- <04s> [05.02.01] Transition pre-analysis @q2
- <04s> [05.02.02] Transition Groups build-up @q2
- <04s> [BSK] Size (res,ares):   768   128
- <04s> [BSK]         (total):   896
- <04s> [BSK] N. of matrices :  2
- <04s> [05.02.03] Loading Dipoles @q2
- <04s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
- <04s> BSE dipoles |                                        | [000%] --(E) --(X)
- <04s> BSE dipoles |########################################| [100%] --(E) --(X)
- <04s> [05.02.04] Independent Particles properties @q2
- <04s> IP properties |                                        | [000%] --(E) --(X)
- <04s> IP properties |########################################| [100%] --(E) --(X)
+ <03s> [05.02] Bethe Salpeter Equation @q2
+ <03s> [05.02.01] Transition pre-analysis @q2
+ <03s> [05.02.02] Transition Groups build-up @q2
+ <03s> [BSK] Size (res,ares):   768   128
+ <03s> [BSK]         (total):   896
+ <03s> [BSK] N. of matrices :  2
+ <03s> [05.02.03] Loading Dipoles @q2
+ <03s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
+ <03s> BSE dipoles |                                        | [000%] --(E) --(X)
+ <03s> BSE dipoles |########################################| [100%] --(E) --(X)
+ <03s> [05.02.04] Independent Particles properties @q2
+ <03s> IP properties |                                        | [000%] --(E) --(X)
+ <03s> IP properties |########################################| [100%] --(E) --(X)
  <04s> [05.02.05] TDDFT Kernel @q2 ALDA
  <04s> [05.02.06] Main kernel loop
  <04s> [FFT-TDDFT] Mesh size:  18  18  18
  <04s> [FFT-BSK-2] Mesh size:  18  18  18
  <04s> Kernel tddft |                                        | [000%] --(E) --(X)
- <05s> Kernel tddft |########################################| [100%] --(E) --(X)
- <05s> [05.03] BSE solver(s) @q2
- <05s> [LA] SERIAL linear algebra
- <05s> [05.04] Diago Solver @q2
- <05s> Unfolding BSE components |                                        | [000%] --(E) --(X)
- <05s> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <05s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <06s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <06s> mag1 residuals |                                        | [000%] --(E) --(X)
- <06s> mag1 residuals |########################################| [100%] --(E) --(X)
- <06s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <07s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <07s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <07s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <04s> Kernel tddft |########################################| [100%] --(E) --(X)
+ <04s> [05.03] BSE solver(s) @q2
+ <04s> [05.04] Slepc Solver @q2
+ <04s> [SLEPC] Faster alogorithm but BSE matrix diuplicated over MPI tasks
+ <04s> Unfolding BSE components |                                        | [000%] --(E) --(X)
+ <04s> Unfolding BSE components |########################################| [100%] --(E) --(X)
+ <04s> [SLEPC] Approach                          : Krylov-Schur
+ <04s> [SLEPC] Extraction method                 : ritz
+ <04s> [SLEPC] Number of requested eigenvalues   :   50
+ <04s> [SLEPC] Criterion is smaller eigenvalues
+ <04s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <04s> [SLEPC] Stopping condition max iterations : -2
+ <04s> [SLEPC] Iteration #1 - converged States 1 - error :  0.571299E-7  0.221183E-2
+ <05s> [SLEPC] Iteration #2 - converged States 1 - error :  0.571299E-7  0.828107E-4
+ <05s> [SLEPC] Iteration #3 - converged States 6 - error :  0.12061E-09  0.24353E-04
+ <05s> [SLEPC] Iteration #4 - converged States 7 - error :  0.558958E-7  0.166397E-4
+ <05s> [SLEPC] Iteration #5 - converged States 14 - error :  0.249318E-7  0.126399E-5
+ <05s> [SLEPC] Iteration #6 - converged States 40 - error :  0.48324E-09  0.38376E-04
+ <05s> [SLEPC] Iteration #7 - converged States 40 - error :  0.48324E-09  0.59460E-04
+ <05s> [SLEPC] Iteration #8 - converged States 40 - error :  0.48324E-09  0.20412E-05
+ <05s> [SLEPC] Iteration #9 - converged States 45 - error :  0.613591E-6  0.511082E-4
+ <05s> [SLEPC] Iteration #10 - converged States 45 - error :  0.613591E-6  0.895225E-3
+ <05s> [SLEPC] Iteration #11 - converged States 49 - error :  0.165611E-7  0.847241E-3
+ <05s> [SLEPC] Iteration #12 - converged States 49 - error :  0.165611E-7  0.620519E-3
+ <05s> [SLEPC] Iteration #13 - converged States 49 - error :  0.165611E-7  0.210046E-3
+ <05s> [SLEPC] Iteration #14 - converged States 49 - error :  0.165611E-7  0.247687E-4
+ <05s> [SLEPC] Iteration #15 - converged States 49 - error :  0.165611E-7  0.106432E-4
+ <05s> [SLEPC] Iteration #16 - converged States 52 - error :  0.170657E-6  0.164286E-5
+ <05s> [SLEPC] Number of iterations              :  16
+ <05s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <05s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <05s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <05s> [SLEPC] Number of converged states        :   52
+ <05s> mag1 residuals |                                        | [000%] --(E) --(X)
+ <05s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <05s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <05s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <05s> [SLEPC] Approach                          : Krylov-Schur
+ <05s> [SLEPC] Extraction method                 : ritz
+ <05s> [SLEPC] Number of requested eigenvalues   :   50
+ <05s> [SLEPC] Criterion is smaller eigenvalues
+ <05s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <05s> [SLEPC] Stopping condition max iterations : -2
+ <05s> [SLEPC] Iteration #1 - converged States 11 - error :  0.709909E-6  0.344249E-5
+ <05s> [SLEPC] Iteration #2 - converged States 12 - error :  0.423215E-6  0.606303E-4
+ <05s> [SLEPC] Iteration #3 - converged States 13 - error :  0.936289E-7  0.427580E-5
+ <05s> [SLEPC] Iteration #4 - converged States 15 - error :  0.832592E-7  0.407611E-5
+ <05s> [SLEPC] Iteration #5 - converged States 59 - error :  0.24951E-17  0.64193E-02
+ <05s> [SLEPC] Number of iterations              :   5
+ <05s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <05s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <05s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <05s> [SLEPC] Number of converged states        :   59
+ <05s> mag1 residuals |                                        | [000%] --(E) --(X)
+ <05s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <05s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <05s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <05s> [05.03] Bethe Salpeter Equation @q3
+ <05s> [05.03.01] Transition pre-analysis @q3
+ <05s> [05.03.02] Transition Groups build-up @q3
+ <05s> [BSK] Size (res,ares):   768   128
+ <05s> [BSK]         (total):   896
+ <05s> [BSK] N. of matrices :  2
+ <05s> [05.03.03] Loading Dipoles @q3
+ <05s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
+ <05s> BSE dipoles |                                        | [000%] --(E) --(X)
+ <06s> BSE dipoles |########################################| [100%] --(E) --(X)
+ <06s> [05.03.04] Independent Particles properties @q3
+ <06s> IP properties |                                        | [000%] --(E) --(X)
+ <06s> IP properties |########################################| [100%] --(E) --(X)
+ <06s> [05.03.05] TDDFT Kernel @q3 ALDA
+ <06s> [05.03.06] Main kernel loop
+ <06s> [FFT-TDDFT] Mesh size:  18  18  18
+ <06s> [FFT-BSK-2] Mesh size:  18  18  18
+ <06s> Kernel tddft |                                        | [000%] --(E) --(X)
+ <06s> Kernel tddft |########################################| [100%] --(E) --(X)
+ <06s> [05.04] BSE solver(s) @q3
+ <06s> [05.05] Slepc Solver @q3
+ <06s> [SLEPC] Faster alogorithm but BSE matrix diuplicated over MPI tasks
+ <06s> Unfolding BSE components |                                        | [000%] --(E) --(X)
+ <06s> Unfolding BSE components |########################################| [100%] --(E) --(X)
+ <07s> [SLEPC] Approach                          : Krylov-Schur
+ <07s> [SLEPC] Extraction method                 : ritz
+ <07s> [SLEPC] Number of requested eigenvalues   :   50
+ <07s> [SLEPC] Criterion is smaller eigenvalues
+ <07s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <07s> [SLEPC] Stopping condition max iterations : -2
+ <07s> [SLEPC] Iteration #1 - converged States 1 - error :  0.193866E-7  0.124239E-4
+ <07s> [SLEPC] Iteration #2 - converged States 8 - error :  0.152307E-7  0.106911E-4
+ <07s> [SLEPC] Iteration #3 - converged States 15 - error :  0.831229E-6  0.691866E-3
+ <07s> [SLEPC] Iteration #4 - converged States 15 - error :  0.831229E-6  0.162644E-2
+ <07s> [SLEPC] Iteration #5 - converged States 15 - error :  0.831229E-6  0.393259E-4
+ <07s> [SLEPC] Iteration #6 - converged States 26 - error :  0.190623E-6  0.305075E-4
+ <07s> [SLEPC] Iteration #7 - converged States 27 - error :  0.722644E-6  0.833073E-5
+ <07s> [SLEPC] Iteration #8 - converged States 35 - error :  0.651003E-8  0.379549E-3
+ <07s> [SLEPC] Iteration #9 - converged States 35 - error :  0.651003E-8  0.384342E-3
+ <07s> [SLEPC] Iteration #10 - converged States 43 - error :  0.161802E-7  0.330182E-5
+ <07s> [SLEPC] Iteration #11 - converged States 69 - error :  0.457717E-7  0.955526E-2
+ <07s> [SLEPC] Number of iterations              :  11
+ <07s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <07s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <07s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <07s> [SLEPC] Number of converged states        :   69
  <07s> mag1 residuals |                                        | [000%] --(E) --(X)
  <07s> mag1 residuals |########################################| [100%] --(E) --(X)
  <07s> BSK resp. funct |                                        | [000%] --(E) --(X)
  <07s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <07s> [05.03] Bethe Salpeter Equation @q3
- <07s> [05.03.01] Transition pre-analysis @q3
- <07s> [05.03.02] Transition Groups build-up @q3
- <07s> [BSK] Size (res,ares):   768   128
- <07s> [BSK]         (total):   896
- <07s> [BSK] N. of matrices :  2
- <07s> [05.03.03] Loading Dipoles @q3
- <07s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
- <07s> BSE dipoles |                                        | [000%] --(E) --(X)
- <07s> BSE dipoles |########################################| [100%] --(E) --(X)
- <07s> [05.03.04] Independent Particles properties @q3
- <07s> IP properties |                                        | [000%] --(E) --(X)
- <07s> IP properties |########################################| [100%] --(E) --(X)
- <07s> [05.03.05] TDDFT Kernel @q3 ALDA
- <07s> [05.03.06] Main kernel loop
- <07s> [FFT-TDDFT] Mesh size:  18  18  18
- <07s> [FFT-BSK-2] Mesh size:  18  18  18
- <07s> Kernel tddft |                                        | [000%] --(E) --(X)
- <08s> Kernel tddft |########################################| [100%] --(E) --(X)
- <08s> [05.04] BSE solver(s) @q3
- <08s> [LA] SERIAL linear algebra
- <08s> [05.05] Diago Solver @q3
- <08s> Unfolding BSE components |                                        | [000%] --(E) --(X)
- <08s> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <08s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <10s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <07s> [SLEPC] Approach                          : Krylov-Schur
+ <07s> [SLEPC] Extraction method                 : ritz
+ <07s> [SLEPC] Number of requested eigenvalues   :   50
+ <07s> [SLEPC] Criterion is smaller eigenvalues
+ <07s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <07s> [SLEPC] Stopping condition max iterations : -2
+ <07s> [SLEPC] Iteration #1 - converged States 12 - error :  0.35304E-10  0.16107E-05
+ <07s> [SLEPC] Iteration #2 - converged States 17 - error :  0.254864E-6  0.422543E-5
+ <07s> [SLEPC] Iteration #3 - converged States 34 - error :  0.673048E-6  0.100623E-5
+ <07s> [SLEPC] Iteration #4 - converged States 67 - error :  0.703845E-6  0.136903E-4
+ <07s> [SLEPC] Number of iterations              :   4
+ <07s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <07s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <07s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <07s> [SLEPC] Number of converged states        :   67
+ <07s> mag1 residuals |                                        | [000%] --(E) --(X)
+ <07s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <07s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <07s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <08s> [05.04] Bethe Salpeter Equation @q4
+ <08s> [05.04.01] Transition pre-analysis @q4
+ <08s> [05.04.02] Transition Groups build-up @q4
+ <08s> [BSK] Size (res,ares):   768   128
+ <08s> [BSK]         (total):   896
+ <08s> [BSK] N. of matrices :  2
+ <08s> [05.04.03] Loading Dipoles @q4
+ <08s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
+ <08s> BSE dipoles |                                        | [000%] --(E) --(X)
+ <08s> BSE dipoles |########################################| [100%] --(E) --(X)
+ <08s> [05.04.04] Independent Particles properties @q4
+ <08s> IP properties |                                        | [000%] --(E) --(X)
+ <08s> IP properties |########################################| [100%] --(E) --(X)
+ <08s> [05.04.05] TDDFT Kernel @q4 ALDA
+ <08s> [05.04.06] Main kernel loop
+ <08s> [FFT-TDDFT] Mesh size:  18  18  18
+ <08s> [FFT-BSK-2] Mesh size:  18  18  18
+ <08s> Kernel tddft |                                        | [000%] --(E) --(X)
+ <09s> Kernel tddft |########################################| [100%] --(E) --(X)
+ <09s> [05.05] BSE solver(s) @q4
+ <09s> [05.06] Slepc Solver @q4
+ <09s> [SLEPC] Faster alogorithm but BSE matrix diuplicated over MPI tasks
+ <09s> Unfolding BSE components |                                        | [000%] --(E) --(X)
+ <09s> Unfolding BSE components |########################################| [100%] --(E) --(X)
+ <09s> [SLEPC] Approach                          : Krylov-Schur
+ <09s> [SLEPC] Extraction method                 : ritz
+ <09s> [SLEPC] Number of requested eigenvalues   :   50
+ <09s> [SLEPC] Criterion is smaller eigenvalues
+ <09s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <09s> [SLEPC] Stopping condition max iterations : -2
+ <09s> [SLEPC] Iteration #1 - converged States 1 - error :  0.616226E-6  0.658357E-5
+ <09s> [SLEPC] Iteration #2 - converged States 5 - error :  0.270795E-6  0.189018E-4
+ <09s> [SLEPC] Iteration #3 - converged States 14 - error :  0.171144E-6  0.146423E-5
+ <09s> [SLEPC] Iteration #4 - converged States 14 - error :  0.171144E-6  0.773578E-3
+ <09s> [SLEPC] Iteration #5 - converged States 23 - error :  0.533823E-6  0.375043E-4
+ <09s> [SLEPC] Iteration #6 - converged States 23 - error :  0.533823E-6  0.114166E-5
+ <09s> [SLEPC] Iteration #7 - converged States 24 - error :  0.118271E-7  0.899682E-5
+ <09s> [SLEPC] Iteration #8 - converged States 24 - error :  0.118271E-7  0.608373E-4
+ <09s> [SLEPC] Iteration #9 - converged States 42 - error :  0.120157E-7  0.255933E-5
+ <10s> [SLEPC] Iteration #10 - converged States 64 - error :  0.131671E-8  0.262222E-1
+ <10s> [SLEPC] Number of iterations              :  10
+ <10s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <10s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <10s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <10s> [SLEPC] Number of converged states        :   64
  <10s> mag1 residuals |                                        | [000%] --(E) --(X)
  <10s> mag1 residuals |########################################| [100%] --(E) --(X)
  <10s> BSK resp. funct |                                        | [000%] --(E) --(X)
  <10s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <10s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <10s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <10s> [SLEPC] Approach                          : Krylov-Schur
+ <10s> [SLEPC] Extraction method                 : ritz
+ <10s> [SLEPC] Number of requested eigenvalues   :   50
+ <10s> [SLEPC] Criterion is smaller eigenvalues
+ <10s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <10s> [SLEPC] Stopping condition max iterations : -2
+ <10s> [SLEPC] Iteration #1 - converged States 16 - error :  0.413968E-7  0.245424E-3
+ <10s> [SLEPC] Iteration #2 - converged States 21 - error :  0.530157E-8  0.371563E-4
+ <10s> [SLEPC] Iteration #3 - converged States 32 - error :  0.33809E-09  0.55046E-03
+ <10s> [SLEPC] Iteration #4 - converged States 66 - error :  0.24782E-24  0.33281E-05
+ <10s> [SLEPC] Number of iterations              :   4
+ <10s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <10s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <10s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <10s> [SLEPC] Number of converged states        :   66
  <10s> mag1 residuals |                                        | [000%] --(E) --(X)
  <10s> mag1 residuals |########################################| [100%] --(E) --(X)
  <10s> BSK resp. funct |                                        | [000%] --(E) --(X)
  <10s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <10s> [05.04] Bethe Salpeter Equation @q4
- <10s> [05.04.01] Transition pre-analysis @q4
- <10s> [05.04.02] Transition Groups build-up @q4
- <10s> [BSK] Size (res,ares):   768   128
- <10s> [BSK]         (total):   896
+ <10s> [05.05] Bethe Salpeter Equation @q5
+ <10s> [05.05.01] Transition pre-analysis @q5
+ <10s> [05.05.02] Transition Groups build-up @q5
+ <10s> [BSK] Size (res,ares):   764   124
+ <10s> [BSK]         (total):   888
  <10s> [BSK] N. of matrices :  2
- <10s> [05.04.03] Loading Dipoles @q4
+ <10s> [05.05.03] Loading Dipoles @q5
  <10s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
  <10s> BSE dipoles |                                        | [000%] --(E) --(X)
  <10s> BSE dipoles |########################################| [100%] --(E) --(X)
- <10s> [05.04.04] Independent Particles properties @q4
+ <10s> [05.05.04] Independent Particles properties @q5
  <10s> IP properties |                                        | [000%] --(E) --(X)
  <10s> IP properties |########################################| [100%] --(E) --(X)
- <11s> [05.04.05] TDDFT Kernel @q4 ALDA
- <11s> [05.04.06] Main kernel loop
- <11s> [FFT-TDDFT] Mesh size:  18  18  18
- <11s> [FFT-BSK-2] Mesh size:  18  18  18
- <11s> Kernel tddft |                                        | [000%] --(E) --(X)
+ <10s> [05.05.05] TDDFT Kernel @q5 ALDA
+ <10s> [05.05.06] Main kernel loop
+ <10s> [FFT-TDDFT] Mesh size:  18  18  18
+ <10s> [FFT-BSK-2] Mesh size:  18  18  18
+ <10s> Kernel tddft |                                        | [000%] --(E) --(X)
  <11s> Kernel tddft |########################################| [100%] --(E) --(X)
- <11s> [05.05] BSE solver(s) @q4
- <11s> [LA] SERIAL linear algebra
- <11s> [05.06] Diago Solver @q4
+ <11s> [05.06] BSE solver(s) @q5
+ <11s> [05.07] Slepc Solver @q5
+ <11s> [SLEPC] Faster alogorithm but BSE matrix diuplicated over MPI tasks
  <11s> Unfolding BSE components |                                        | [000%] --(E) --(X)
  <11s> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <11s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <13s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <13s> mag1 residuals |                                        | [000%] --(E) --(X)
- <13s> mag1 residuals |########################################| [100%] --(E) --(X)
- <13s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <13s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <13s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <13s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <13s> mag1 residuals |                                        | [000%] --(E) --(X)
- <13s> mag1 residuals |########################################| [100%] --(E) --(X)
- <13s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <13s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <13s> [05.05] Bethe Salpeter Equation @q5
- <13s> [05.05.01] Transition pre-analysis @q5
- <13s> [05.05.02] Transition Groups build-up @q5
- <13s> [BSK] Size (res,ares):   764   124
- <13s> [BSK]         (total):   888
- <13s> [BSK] N. of matrices :  2
- <13s> [05.05.03] Loading Dipoles @q5
- <13s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
- <13s> BSE dipoles |                                        | [000%] --(E) --(X)
- <14s> BSE dipoles |########################################| [100%] --(E) --(X)
- <14s> [05.05.04] Independent Particles properties @q5
- <14s> IP properties |                                        | [000%] --(E) --(X)
- <14s> IP properties |########################################| [100%] --(E) --(X)
- <14s> [05.05.05] TDDFT Kernel @q5 ALDA
- <14s> [05.05.06] Main kernel loop
- <14s> [FFT-TDDFT] Mesh size:  18  18  18
- <14s> [FFT-BSK-2] Mesh size:  18  18  18
- <14s> Kernel tddft |                                        | [000%] --(E) --(X)
- <15s> Kernel tddft |########################################| [100%] --(E) --(X)
- <15s> [05.06] BSE solver(s) @q5
- <15s> [LA] SERIAL linear algebra
- <15s> [05.07] Diago Solver @q5
- <15s> Unfolding BSE components |                                        | [000%] --(E) --(X)
- <15s> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <15s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <16s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <11s> [SLEPC] Approach                          : Krylov-Schur
+ <11s> [SLEPC] Extraction method                 : ritz
+ <11s> [SLEPC] Number of requested eigenvalues   :   50
+ <11s> [SLEPC] Criterion is smaller eigenvalues
+ <11s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <11s> [SLEPC] Stopping condition max iterations : -2
+ <11s> [SLEPC] Iteration #1 - converged States 2 - error :  0.808789E-6  0.401161E-5
+ <11s> [SLEPC] Iteration #2 - converged States 6 - error :  0.594110E-7  0.317065E-4
+ <11s> [SLEPC] Iteration #3 - converged States 12 - error :  0.200458E-6  0.278125E-5
+ <11s> [SLEPC] Iteration #4 - converged States 15 - error :  0.234680E-8  0.972089E-3
+ <12s> [SLEPC] Iteration #5 - converged States 15 - error :  0.234680E-8  0.109164E-5
+ <12s> [SLEPC] Iteration #6 - converged States 27 - error :  0.178573E-6  0.497754E-5
+ <12s> [SLEPC] Iteration #7 - converged States 28 - error :  0.918675E-7  0.374570E-5
+ <12s> [SLEPC] Iteration #8 - converged States 29 - error :  0.940624E-7  0.253112E-5
+ <12s> [SLEPC] Iteration #9 - converged States 30 - error :  0.154663E-7  0.165465E-3
+ <12s> [SLEPC] Iteration #10 - converged States 30 - error :  0.154663E-7  0.673564E-5
+ <12s> [SLEPC] Iteration #11 - converged States 55 - error :  0.43730E-10  0.15114E-05
+ <12s> [SLEPC] Number of iterations              :  11
+ <12s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <12s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <12s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <12s> [SLEPC] Number of converged states        :   55
+ <12s> mag1 residuals |                                        | [000%] --(E) --(X)
+ <12s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <12s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <12s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <12s> [SLEPC] Approach                          : Krylov-Schur
+ <12s> [SLEPC] Extraction method                 : ritz
+ <12s> [SLEPC] Number of requested eigenvalues   :   50
+ <12s> [SLEPC] Criterion is smaller eigenvalues
+ <12s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <12s> [SLEPC] Stopping condition max iterations : -2
+ <12s> [SLEPC] Iteration #1 - converged States 14 - error :  0.198551E-6  0.504113E-2
+ <12s> [SLEPC] Iteration #2 - converged States 19 - error :  0.204002E-7  0.335558E-4
+ <12s> [SLEPC] Iteration #3 - converged States 33 - error :  0.693417E-6  0.216330E-4
+ <12s> [SLEPC] Iteration #4 - converged States 66 - error :  0.17702E-16  0.11225E-05
+ <12s> [SLEPC] Number of iterations              :   4
+ <12s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <12s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <12s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <12s> [SLEPC] Number of converged states        :   66
+ <12s> mag1 residuals |                                        | [000%] --(E) --(X)
+ <12s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <12s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <12s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <12s> [05.06] Bethe Salpeter Equation @q6
+ <12s> [05.06.01] Transition pre-analysis @q6
+ <12s> [05.06.02] Transition Groups build-up @q6
+ <12s> [BSK] Size (res,ares):   768   128
+ <12s> [BSK]         (total):   896
+ <12s> [BSK] N. of matrices :  2
+ <12s> [05.06.03] Loading Dipoles @q6
+ <12s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
+ <12s> BSE dipoles |                                        | [000%] --(E) --(X)
+ <12s> BSE dipoles |########################################| [100%] --(E) --(X)
+ <12s> [05.06.04] Independent Particles properties @q6
+ <12s> IP properties |                                        | [000%] --(E) --(X)
+ <12s> IP properties |########################################| [100%] --(E) --(X)
+ <13s> [05.06.05] TDDFT Kernel @q6 ALDA
+ <13s> [05.06.06] Main kernel loop
+ <13s> [FFT-TDDFT] Mesh size:  18  18  18
+ <13s> [FFT-BSK-2] Mesh size:  18  18  18
+ <13s> Kernel tddft |                                        | [000%] --(E) --(X)
+ <13s> Kernel tddft |########################################| [100%] --(E) --(X)
+ <13s> [05.07] BSE solver(s) @q6
+ <13s> [05.08] Slepc Solver @q6
+ <13s> [SLEPC] Faster alogorithm but BSE matrix diuplicated over MPI tasks
+ <13s> Unfolding BSE components |                                        | [000%] --(E) --(X)
+ <13s> Unfolding BSE components |########################################| [100%] --(E) --(X)
+ <13s> [SLEPC] Approach                          : Krylov-Schur
+ <13s> [SLEPC] Extraction method                 : ritz
+ <13s> [SLEPC] Number of requested eigenvalues   :   50
+ <13s> [SLEPC] Criterion is smaller eigenvalues
+ <13s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <13s> [SLEPC] Stopping condition max iterations : -2
+ <14s> [SLEPC] Iteration #1 - converged States 1 - error :  0.385400E-6  0.123384E-5
+ <14s> [SLEPC] Iteration #2 - converged States 6 - error :  0.860689E-7  0.141539E-4
+ <14s> [SLEPC] Iteration #3 - converged States 11 - error :  0.256321E-7  0.267746E-2
+ <14s> [SLEPC] Iteration #4 - converged States 13 - error :  0.535895E-6  0.106722E-5
+ <14s> [SLEPC] Iteration #5 - converged States 17 - error :  0.104067E-7  0.377220E-3
+ <14s> [SLEPC] Iteration #6 - converged States 18 - error :  0.258292E-6  0.198254E-5
+ <14s> [SLEPC] Iteration #7 - converged States 32 - error :  0.218675E-7  0.362972E-4
+ <14s> [SLEPC] Iteration #8 - converged States 32 - error :  0.218675E-7  0.608303E-5
+ <14s> [SLEPC] Iteration #9 - converged States 33 - error :  0.526951E-7  0.476966E-5
+ <14s> [SLEPC] Iteration #10 - converged States 34 - error :  0.100292E-6  0.397245E-5
+ <14s> [SLEPC] Iteration #11 - converged States 37 - error :  0.952523E-6  0.124839E-5
+ <14s> [SLEPC] Iteration #12 - converged States 60 - error :  0.588741E-7  0.636566E-5
+ <14s> [SLEPC] Number of iterations              :  12
+ <14s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <14s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <14s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <14s> [SLEPC] Number of converged states        :   60
+ <14s> mag1 residuals |                                        | [000%] --(E) --(X)
+ <14s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <14s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <14s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <14s> [SLEPC] Approach                          : Krylov-Schur
+ <14s> [SLEPC] Extraction method                 : ritz
+ <14s> [SLEPC] Number of requested eigenvalues   :   50
+ <14s> [SLEPC] Criterion is smaller eigenvalues
+ <14s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <14s> [SLEPC] Stopping condition max iterations : -2
+ <14s> [SLEPC] Iteration #1 - converged States 11 - error :  0.276473E-6  0.462618E-4
+ <14s> [SLEPC] Iteration #2 - converged States 12 - error :  0.152723E-6  0.466563E-4
+ <14s> [SLEPC] Iteration #3 - converged States 31 - error :  0.161025E-6  0.696236E-5
+ <14s> [SLEPC] Iteration #4 - converged States 66 - error :  0.35738E-16  0.94591E-03
+ <14s> [SLEPC] Number of iterations              :   4
+ <14s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <14s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <14s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <14s> [SLEPC] Number of converged states        :   66
+ <14s> mag1 residuals |                                        | [000%] --(E) --(X)
+ <14s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <14s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <14s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <14s> [05.07] Bethe Salpeter Equation @q7
+ <14s> [05.07.01] Transition pre-analysis @q7
+ <14s> [05.07.02] Transition Groups build-up @q7
+ <14s> [BSK] Size (res,ares):   772   132
+ <14s> [BSK]         (total):   904
+ <14s> [BSK] N. of matrices :  2
+ <14s> [05.07.03] Loading Dipoles @q7
+ <14s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
+ <14s> BSE dipoles |                                        | [000%] --(E) --(X)
+ <15s> BSE dipoles |########################################| [100%] --(E) --(X)
+ <15s> [05.07.04] Independent Particles properties @q7
+ <15s> IP properties |                                        | [000%] --(E) --(X)
+ <15s> IP properties |########################################| [100%] --(E) --(X)
+ <15s> [05.07.05] TDDFT Kernel @q7 ALDA
+ <15s> [05.07.06] Main kernel loop
+ <15s> [FFT-TDDFT] Mesh size:  18  18  18
+ <15s> [FFT-BSK-2] Mesh size:  18  18  18
+ <15s> Kernel tddft |                                        | [000%] --(E) --(X)
+ <16s> Kernel tddft |########################################| [100%] --(E) --(X)
+ <16s> [05.08] BSE solver(s) @q7
+ <16s> [05.09] Slepc Solver @q7
+ <16s> [SLEPC] Faster alogorithm but BSE matrix diuplicated over MPI tasks
+ <16s> Unfolding BSE components |                                        | [000%] --(E) --(X)
+ <16s> Unfolding BSE components |########################################| [100%] --(E) --(X)
+ <16s> [SLEPC] Approach                          : Krylov-Schur
+ <16s> [SLEPC] Extraction method                 : ritz
+ <16s> [SLEPC] Number of requested eigenvalues   :   50
+ <16s> [SLEPC] Criterion is smaller eigenvalues
+ <16s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <16s> [SLEPC] Stopping condition max iterations : -2
+ <16s> [SLEPC] Iteration #1 - converged States 2 - error :  0.586170E-7  0.160018E-5
+ <16s> [SLEPC] Iteration #2 - converged States 4 - error :  0.120057E-6  0.637770E-5
+ <16s> [SLEPC] Iteration #3 - converged States 11 - error :  0.14326E-11  0.41624E-03
+ <16s> [SLEPC] Iteration #4 - converged States 11 - error :  0.14326E-11  0.15157E-04
+ <16s> [SLEPC] Iteration #5 - converged States 19 - error :  0.642971E-6  0.492788E-5
+ <16s> [SLEPC] Iteration #6 - converged States 20 - error :  0.296096E-6  0.318034E-4
+ <16s> [SLEPC] Iteration #7 - converged States 24 - error :  0.226767E-6  0.130733E-5
+ <16s> [SLEPC] Iteration #8 - converged States 29 - error :  0.925756E-6  0.130306E-5
+ <16s> [SLEPC] Iteration #9 - converged States 36 - error :  0.917849E-7  0.342947E-4
+ <16s> [SLEPC] Iteration #10 - converged States 38 - error :  0.119547E-6  0.105619E-4
+ <16s> [SLEPC] Iteration #11 - converged States 42 - error :  0.239995E-6  0.299476E-5
+ <16s> [SLEPC] Iteration #12 - converged States 69 - error :  0.261286E-6  0.237808E-3
+ <16s> [SLEPC] Number of iterations              :  12
+ <16s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <16s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <16s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <16s> [SLEPC] Number of converged states        :   69
  <16s> mag1 residuals |                                        | [000%] --(E) --(X)
  <16s> mag1 residuals |########################################| [100%] --(E) --(X)
  <16s> BSK resp. funct |                                        | [000%] --(E) --(X)
  <16s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <16s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <16s> BSK diagonalize |########################################| [100%] --(E) --(X)
+ <16s> [SLEPC] Approach                          : Krylov-Schur
+ <16s> [SLEPC] Extraction method                 : ritz
+ <16s> [SLEPC] Number of requested eigenvalues   :   50
+ <16s> [SLEPC] Criterion is smaller eigenvalues
+ <16s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <16s> [SLEPC] Stopping condition max iterations : -2
+ <16s> [SLEPC] Iteration #1 - converged States 12 - error :  0.23509E-09  0.19347E-02
+ <16s> [SLEPC] Iteration #2 - converged States 15 - error :  0.148157E-8  0.145934E-3
+ <16s> [SLEPC] Iteration #3 - converged States 30 - error :  0.191420E-7  0.105174E-5
+ <16s> [SLEPC] Iteration #4 - converged States 67 - error :  0.35236E-17  0.31976E-01
+ <16s> [SLEPC] Number of iterations              :   4
+ <16s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <16s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <16s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <16s> [SLEPC] Number of converged states        :   67
  <16s> mag1 residuals |                                        | [000%] --(E) --(X)
  <16s> mag1 residuals |########################################| [100%] --(E) --(X)
  <16s> BSK resp. funct |                                        | [000%] --(E) --(X)
  <16s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <17s> [05.06] Bethe Salpeter Equation @q6
- <17s> [05.06.01] Transition pre-analysis @q6
- <17s> [05.06.02] Transition Groups build-up @q6
- <17s> [BSK] Size (res,ares):   768   128
- <17s> [BSK]         (total):   896
+ <17s> [05.08] Bethe Salpeter Equation @q8
+ <17s> [05.08.01] Transition pre-analysis @q8
+ <17s> [WARNING] Null BSE kernel block dimension(s) found.
+ <17s> [WARNING] Empty workload for CPU 1
+ <17s> [05.08.02] Transition Groups build-up @q8
+ <17s> [BSK] Size (res,ares):   780   140
+ <17s> [BSK]         (total):   920
  <17s> [BSK] N. of matrices :  2
- <17s> [05.06.03] Loading Dipoles @q6
+ <17s> [05.08.03] Loading Dipoles @q8
  <17s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
  <17s> BSE dipoles |                                        | [000%] --(E) --(X)
  <17s> BSE dipoles |########################################| [100%] --(E) --(X)
- <17s> [05.06.04] Independent Particles properties @q6
+ <17s> [05.08.04] Independent Particles properties @q8
  <17s> IP properties |                                        | [000%] --(E) --(X)
  <17s> IP properties |########################################| [100%] --(E) --(X)
- <17s> [05.06.05] TDDFT Kernel @q6 ALDA
- <17s> [05.06.06] Main kernel loop
+ <17s> [05.08.05] TDDFT Kernel @q8 ALDA
+ <17s> [05.08.06] Main kernel loop
  <17s> [FFT-TDDFT] Mesh size:  18  18  18
  <17s> [FFT-BSK-2] Mesh size:  18  18  18
  <17s> Kernel tddft |                                        | [000%] --(E) --(X)
  <18s> Kernel tddft |########################################| [100%] --(E) --(X)
- <18s> [05.07] BSE solver(s) @q6
- <18s> [LA] SERIAL linear algebra
- <18s> [05.08] Diago Solver @q6
+ <18s> [05.09] BSE solver(s) @q8
+ <18s> [05.10] Slepc Solver @q8
+ <18s> [SLEPC] Faster alogorithm but BSE matrix diuplicated over MPI tasks
  <18s> Unfolding BSE components |                                        | [000%] --(E) --(X)
  <18s> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <18s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <20s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <20s> mag1 residuals |                                        | [000%] --(E) --(X)
- <20s> mag1 residuals |########################################| [100%] --(E) --(X)
- <20s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <20s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <20s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <20s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <20s> mag1 residuals |                                        | [000%] --(E) --(X)
- <20s> mag1 residuals |########################################| [100%] --(E) --(X)
- <20s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <20s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <20s> [05.07] Bethe Salpeter Equation @q7
- <20s> [05.07.01] Transition pre-analysis @q7
- <20s> [05.07.02] Transition Groups build-up @q7
- <20s> [BSK] Size (res,ares):   772   132
- <20s> [BSK]         (total):   904
- <20s> [BSK] N. of matrices :  2
- <20s> [05.07.03] Loading Dipoles @q7
- <20s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
- <20s> BSE dipoles |                                        | [000%] --(E) --(X)
- <20s> BSE dipoles |########################################| [100%] --(E) --(X)
- <20s> [05.07.04] Independent Particles properties @q7
- <20s> IP properties |                                        | [000%] --(E) --(X)
- <20s> IP properties |########################################| [100%] --(E) --(X)
- <21s> [05.07.05] TDDFT Kernel @q7 ALDA
- <21s> [05.07.06] Main kernel loop
- <21s> [FFT-TDDFT] Mesh size:  18  18  18
- <21s> [FFT-BSK-2] Mesh size:  18  18  18
- <21s> Kernel tddft |                                        | [000%] --(E) --(X)
- <21s> Kernel tddft |########################################| [100%] --(E) --(X)
- <21s> [05.08] BSE solver(s) @q7
- <21s> [LA] SERIAL linear algebra
- <21s> [05.09] Diago Solver @q7
- <21s> Unfolding BSE components |                                        | [000%] --(E) --(X)
- <21s> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <21s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <23s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <23s> mag1 residuals |                                        | [000%] --(E) --(X)
- <23s> mag1 residuals |########################################| [100%] --(E) --(X)
- <23s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <23s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <23s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <23s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <23s> mag1 residuals |                                        | [000%] --(E) --(X)
- <23s> mag1 residuals |########################################| [100%] --(E) --(X)
- <23s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <23s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <23s> [05.08] Bethe Salpeter Equation @q8
- <23s> [05.08.01] Transition pre-analysis @q8
- <23s> [WARNING] Null BSE kernel block dimension(s) found.
- <23s> [WARNING] Empty workload for CPU 1
- <23s> [05.08.02] Transition Groups build-up @q8
- <23s> [BSK] Size (res,ares):   780   140
- <23s> [BSK]         (total):   920
- <23s> [BSK] N. of matrices :  2
- <23s> [05.08.03] Loading Dipoles @q8
- <23s> [FFT-Oscillators/R space/K_IP] Mesh size:  18  18  18
- <23s> BSE dipoles |                                        | [000%] --(E) --(X)
- <24s> BSE dipoles |########################################| [100%] --(E) --(X)
- <24s> [05.08.04] Independent Particles properties @q8
- <24s> IP properties |                                        | [000%] --(E) --(X)
- <24s> IP properties |########################################| [100%] --(E) --(X)
- <24s> [05.08.05] TDDFT Kernel @q8 ALDA
- <24s> [05.08.06] Main kernel loop
- <24s> [FFT-TDDFT] Mesh size:  18  18  18
- <24s> [FFT-BSK-2] Mesh size:  18  18  18
- <24s> Kernel tddft |                                        | [000%] --(E) --(X)
- <25s> Kernel tddft |########################################| [100%] --(E) --(X)
- <25s> [05.09] BSE solver(s) @q8
- <25s> [LA] SERIAL linear algebra
- <25s> [05.10] Diago Solver @q8
- <25s> Unfolding BSE components |                                        | [000%] --(E) --(X)
- <25s> Unfolding BSE components |########################################| [100%] --(E) --(X)
- <25s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <26s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <26s> mag1 residuals |                                        | [000%] --(E) --(X)
- <26s> mag1 residuals |########################################| [100%] --(E) --(X)
- <26s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <26s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <26s> BSK diagonalize |                                        | [000%] --(E) --(X)
- <26s> BSK diagonalize |########################################| [100%] --(E) --(X)
- <26s> mag1 residuals |                                        | [000%] --(E) --(X)
- <26s> mag1 residuals |########################################| [100%] --(E) --(X)
- <26s> BSK resp. funct |                                        | [000%] --(E) --(X)
- <26s> BSK resp. funct |########################################| [100%] --(E) --(X)
- <27s> [06] Timing Overview
- <27s> [07] Game Over & Game summary
- <27s> [TIMING]            [Time-Profile]: 27s
+ <18s> [SLEPC] Approach                          : Krylov-Schur
+ <18s> [SLEPC] Extraction method                 : ritz
+ <18s> [SLEPC] Number of requested eigenvalues   :   50
+ <18s> [SLEPC] Criterion is smaller eigenvalues
+ <18s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <18s> [SLEPC] Stopping condition max iterations : -2
+ <18s> [SLEPC] Iteration #1 - converged States 0 - error :  0.996484E-3   0.00000
+ <18s> [SLEPC] Iteration #2 - converged States 6 - error :  0.326777E-7  0.869788E-5
+ <18s> [SLEPC] Iteration #3 - converged States 7 - error :  0.191255E-6  0.188766E-3
+ <18s> [SLEPC] Iteration #4 - converged States 7 - error :  0.191255E-6  0.223259E-4
+ <18s> [SLEPC] Iteration #5 - converged States 11 - error :  0.787191E-6  0.170259E-5
+ <19s> [SLEPC] Iteration #6 - converged States 13 - error :  0.657257E-6  0.351592E-5
+ <19s> [SLEPC] Iteration #7 - converged States 39 - error :  0.81503E-09  0.30327E-03
+ <19s> [SLEPC] Iteration #8 - converged States 39 - error :  0.81503E-09  0.13444E-04
+ <19s> [SLEPC] Iteration #9 - converged States 42 - error :  0.362576E-6  0.160754E-5
+ <19s> [SLEPC] Iteration #10 - converged States 45 - error :  0.333879E-6  0.125319E-3
+ <19s> [SLEPC] Iteration #11 - converged States 45 - error :  0.333879E-6  0.122497E-3
+ <19s> [SLEPC] Iteration #12 - converged States 45 - error :  0.333879E-6  0.185998E-4
+ <19s> [SLEPC] Iteration #13 - converged States 45 - error :  0.333879E-6  0.137256E-4
+ <19s> [SLEPC] Iteration #14 - converged States 45 - error :  0.333879E-6  0.336424E-5
+ <19s> [SLEPC] Iteration #15 - converged States 46 - error :  0.461726E-6  0.484922E-5
+ <19s> [SLEPC] Iteration #16 - converged States 48 - error :  0.152181E-6  0.403676E-4
+ <19s> [SLEPC] Iteration #17 - converged States 48 - error :  0.152181E-6  0.105167E-3
+ <19s> [SLEPC] Iteration #18 - converged States 48 - error :  0.152181E-6  0.456727E-4
+ <19s> [SLEPC] Iteration #19 - converged States 48 - error :  0.152181E-6  0.132549E-4
+ <19s> [SLEPC] Iteration #20 - converged States 48 - error :  0.152181E-6  0.447620E-5
+ <19s> [SLEPC] Iteration #21 - converged States 48 - error :  0.152181E-6  0.184079E-4
+ <19s> [SLEPC] Iteration #22 - converged States 48 - error :  0.152181E-6  0.281692E-4
+ <19s> [SLEPC] Iteration #23 - converged States 48 - error :  0.152181E-6  0.188510E-5
+ <19s> [SLEPC] Iteration #24 - converged States 49 - error :  0.472984E-7  0.116702E-5
+ <19s> [SLEPC] Iteration #25 - converged States 49 - error :  0.472984E-7  0.517723E-5
+ <19s> [SLEPC] Iteration #26 - converged States 51 - error :  0.478607E-6  0.103018E-4
+ <19s> [SLEPC] Number of iterations              :  26
+ <19s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <19s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <19s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <19s> [SLEPC] Number of converged states        :   51
+ <19s> mag1 residuals |                                        | [000%] --(E) --(X)
+ <19s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <19s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <19s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <19s> [SLEPC] Approach                          : Krylov-Schur
+ <19s> [SLEPC] Extraction method                 : ritz
+ <19s> [SLEPC] Number of requested eigenvalues   :   50
+ <19s> [SLEPC] Criterion is smaller eigenvalues
+ <19s> [SLEPC] Stopping condition tolerance      :  0.100000E-5
+ <19s> [SLEPC] Stopping condition max iterations : -2
+ <19s> [SLEPC] Iteration #1 - converged States 9 - error :  0.17755E-11  0.21389E-04
+ <19s> [SLEPC] Iteration #2 - converged States 21 - error :  0.229963E-7  0.415470E-4
+ <19s> [SLEPC] Iteration #3 - converged States 22 - error :  0.276962E-6  0.186318E-5
+ <19s> [SLEPC] Iteration #4 - converged States 28 - error :  0.555938E-6  0.113429E-5
+ <19s> [SLEPC] Iteration #5 - converged States 30 - error :  0.108703E-6  0.281004E-5
+ <19s> [SLEPC] Iteration #6 - converged States 65 - error :  0.14025E-16  0.51112E-05
+ <19s> [SLEPC] Number of iterations              :   6
+ <19s> [SLEPC] Number of eigenvalues        [NEV]:   50
+ <19s> [SLEPC] Max. subspace size of solver [NCV]:  100
+ <19s> [SLEPC] Max. allowed dim             [MPD]:  100
+ <19s> [SLEPC] Number of converged states        :   65
+ <19s> mag1 residuals |                                        | [000%] --(E) --(X)
+ <19s> mag1 residuals |########################################| [100%] --(E) --(X)
+ <19s> BSK resp. funct |                                        | [000%] --(E) --(X)
+ <19s> BSK resp. funct |########################################| [100%] --(E) --(X)
+ <19s> [06] Timing Overview
+ <19s> [07] Game Over & Game summary
+ <19s> [TIMING]            [Time-Profile]: 20s
