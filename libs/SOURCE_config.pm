@@ -61,6 +61,10 @@ sub SOURCE_config{
   $PAR_LINALGs =~ s/"//g;
   $PAR_IOs =~ s/"//g;
   close(FH);
+  chomp($OPENMP_IOs);
+  chomp($MPIs);
+  chomp($PAR_LINALGs);
+  chomp($PAR_IOs);
   &command("echo YAMBO_EXT_LIBS=$ext_libs_path/${user_module}/MPI-${MPIs}_PAR_IO-${PAR_IOs}_PAR_LINALG-${PAR_LINALGs} > conf_local.sh");
  };
  if ($flow eq "ext-libs") {&command("echo YAMBO_EXT_LIBS=$comp_folder/lib/external > conf_local.sh")}
