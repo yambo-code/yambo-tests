@@ -86,8 +86,10 @@ if ($compile) {
  &MY_PRINT($stdout, "\n -   Source configure :");
  chdir $BRANCH;
  &MY_PRINT($stdout, " Checking out as $branch_id ...");
+ &MY_PRINT($stdout, "Updating (1) ...");
+ &command("$git pull -q --no-rebase");
  &command("$git checkout $branch_id -q");
- &MY_PRINT($stdout, "Updating ...");
+ &MY_PRINT($stdout, "Updating (2) ...");
  &command("$git pull -q --no-rebase");
  &command("$git submodule update --recursive --remote");
  #
@@ -119,6 +121,10 @@ if ($compile) {
 }elsif (not $FC_kind){
  &SETUP_FC_kind;
 };
+#
+# CUDA => mpi_is_off (serial runs)
+#
+if ($CUDA_support eq "yes") { $mpi_is_off="yes"};
 #
 # BIN's
 if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
@@ -187,17 +193,22 @@ if (not "$ERROR" eq "OK") {
 # NCDUMP
 #
 my $sys_ncdump = `which ncdump`; 
+my $lib_ncdump = `find $comp_folder/lib/external/ -name 'ncdump' -type f`;
 chomp($sys_ncdump);
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
+}elsif(-e "$comp_folder/lib/bin/ncdump") { 
+ $ncdump = "$comp_folder/lib/bin/ncdum"; 
+ chomp($ncdump);
 }elsif(-e $sys_ncdump) { 
  $ncdump = "$sys_ncdump"; 
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
+}elsif(-e $lib_ncdump) { 
+ $ncdump = "$lib_ncdump"; 
 }else{ 
  die "\n ncdump not found\n";
 }
+&MY_PRINT($stdout, "\n               ncdump : $ncdump");
 #
 # Rename the conf/comp logs
 #
