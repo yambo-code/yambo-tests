@@ -88,6 +88,8 @@ for test in test.* ; do
   repeat "="
   message "Configuring $robot.$ID"
   repeat "="
+  git pull
+  git submodule update --merge --remote
   echo "./configure --with-yambo=$CD/sources/master.$ID --with-host=$robot.$ID"
   ./configure --with-yambo=$CD/sources/master.$ID --with-host=$robot.$ID
   if [ ! -z $NEW ]; then
