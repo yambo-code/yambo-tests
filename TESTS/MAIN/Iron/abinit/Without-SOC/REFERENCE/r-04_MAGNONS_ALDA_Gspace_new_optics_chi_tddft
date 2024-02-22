@@ -1,19 +1,19 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
                                                                           
-                                                                          
-    Version 5.2.0 Revision 23431 Hash (prev commit) 1d2d4f21de            
+    Version 5.2.0 Revision 23451 Hash (prev commit) 9db46ede5e            
                     Branch is phys-magnons                                
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+                  http://www.yambo-code.org                               
  
- 02/20/2024 at 16:21 yambo @ unimi-XPS-8930
+ 02/23/2024 at 00:25 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_MAGNONS_ALDA_Gspace_new
- Alt#1 string        : R14
+ Alt#1 string        : R17
 
  Precision           : SINGLE
   
@@ -229,7 +229,7 @@
   X grid is uniform                                : yes
   Grids (string)                                   :  X S
   Grids (int-vector)                               :  1  0  0  1
- - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
+ - S/N 007737 ---------------------------------------------- v.05.02.00 r.23451 -
 
  IBZ Q-points                                      :   8
  BZ  Q-points                                      :   64
@@ -270,7 +270,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P Spin
   Wavefunctions                                    : Teter 93(XC)
- - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
+ - S/N 007737 ---------------------------------------------- v.05.02.00 r.23451 -
 
  [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
 
@@ -297,7 +297,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P Spin
   Wavefunctions                                    : Teter 93(XC)
- - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
+ - S/N 007737 ---------------------------------------------- v.05.02.00 r.23451 -
  [X-CG] R(p) Tot o/o(of R):    57   872   100
  [RD./04_MAGNONS_ALDA_Gspace_new//ndb.dipoles]-----------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :    8   64    6   64
@@ -315,49 +315,47 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P Spin
   Wavefunctions                                    : Teter 93(XC)
- - S/N 007737 ---------------------------------------------- v.05.02.00 r.23431 -
-
- [06] Timing Overview
+ - S/N 007737 ---------------------------------------------- v.05.02.00 r.23451 -
  ====================
 
  Clock: global
                              io_ATMPROJ_pwscf :      0.0000s CPU
+                               Xo*Fxc (REDUX) :      0.0000s CPU (   2 calls,   0.004 msec avg)
+                                   Xo (REDUX) :      0.0000s CPU (   2 calls,   0.005 msec avg)
                                    io_COL_CUT :      0.0000s CPU
                                         io_HF :      0.0000s CPU
-                                   Xo (REDUX) :      0.0000s CPU (   2 calls,   0.014 msec avg)
-                               Xo*Fxc (REDUX) :      0.0000s CPU (   2 calls,   0.015 msec avg)
-                               io_Double_Grid :      0.0000s CPU (   2 calls,   0.023 msec avg)
+                               io_Double_Grid :      0.0000s CPU (   2 calls,   0.024 msec avg)
                                   io_KB_pwscf :      0.0001s CPU (   2 calls,   0.029 msec avg)
                                          io_X :      0.0001s CPU (   5 calls,   0.016 msec avg)
                       IO_and_Messaging_switch :      0.0001s CPU (  41 calls,   0.003 msec avg)
-                                 PP_uspp_init :      0.0003s CPU (  23 calls,   0.014 msec avg)
-                                     io_QINDX :      0.0035s CPU (   2 calls,   1.758 msec avg)
-                                      io_GROT :      0.0045s CPU (   2 calls,   2.267 msec avg)
-                                   io_DIPOLES :      0.0119s CPU (  47 calls,   0.253 msec avg)
-                                 io_KB_abinit :      0.0131s CPU (  14 calls,   0.937 msec avg)
+                                 PP_uspp_init :      0.0003s CPU (  23 calls,   0.013 msec avg)
+      MATRIX transfer (X_G_X_tddft_redux_1_1) :      0.0035s CPU (1602 calls,   0.002 msec avg)
+                                     io_QINDX :      0.0035s CPU (   2 calls,   1.750 msec avg)
+            MATRIX transfer (X_G_X_redux_1_1) :      0.0036s CPU (1602 calls,   0.002 msec avg)
+                                      io_GROT :      0.0045s CPU (   2 calls,   2.263 msec avg)
+                                   io_DIPOLES :      0.0118s CPU (  47 calls,   0.251 msec avg)
+                                 io_KB_abinit :      0.0130s CPU (  14 calls,   0.927 msec avg)
                           XC_potential_driver :      0.0133s CPU
-                                  io_fragment :      0.0242s CPU (  96 calls,   0.252 msec avg)
-      MATRIX transfer (X_G_X_tddft_redux_1_1) :      0.0315s CPU (5002 calls,   0.006 msec avg)
-            MATRIX transfer (X_G_X_redux_1_1) :      0.0327s CPU (5002 calls,   0.007 msec avg)
-                            DIPOLE_transverse :      0.0539s CPU
-                                        io_WF :      0.0586s CPU ( 131 calls,   0.447 msec avg)
-                                  WF_load_FFT :      0.0811s CPU (  23 calls,   3.526 msec avg)
-                                    FFT_setup :      0.0876s CPU (  11 calls,   7.962 msec avg)
-                                      Dipoles :      1.1201s CPU
-                               Xo (procedure) :      2.1521s CPU (   2 calls,   1.076 sec avg)
-                           Xo*Fxc (procedure) :      4.3033s CPU (   2 calls,   2.152 sec avg)
-                            SERIAL_lin_system :      4.9018s CPU (5002 calls,   0.001 sec avg)
-                               LINEAR ALGEBRA :      4.9081s CPU (5002 calls,   0.001 sec avg)
-                                X (procedure) :      5.0333s CPU (   2 calls,   2.517 sec avg)
+                                  io_fragment :      0.0230s CPU (  96 calls,   0.240 msec avg)
+                            DIPOLE_transverse :      0.0536s CPU
+                                        io_WF :      0.0544s CPU ( 131 calls,   0.415 msec avg)
+                                  WF_load_FFT :      0.0765s CPU (  23 calls,   3.327 msec avg)
+                                    FFT_setup :      0.0925s CPU (  11 calls,   8.412 msec avg)
+                            SERIAL_lin_system :      0.2720s CPU (1602 calls,   0.170 msec avg)
+                               LINEAR ALGEBRA :      0.2732s CPU (1602 calls,   0.171 msec avg)
+                                X (procedure) :      0.2888s CPU (   2 calls, 144.421 msec avg)
+                               Xo (procedure) :      0.3198s CPU (   2 calls, 159.919 msec avg)
+                           Xo*Fxc (procedure) :      0.6639s CPU (   2 calls, 331.939 msec avg)
+                                      Dipoles :      1.1223s CPU
 
  [07] Game Over & Game summary
  =============================
 
- 02/20/2024 at 16:21 yambo @ unimi-XPS-8930 [start]
- 02/20/2024 at 16:21                        [end]
+ 02/23/2024 at 00:25 yambo @ unimi-XPS-8930 [start]
+ 02/23/2024 at 00:25                        [end]
 
- Timing   [Min/Max/Average]: 13s/13s/13s
-             [Time-Profile]: 13s
+ Timing   [Min/Max/Average]: 02s/02s/02s
+             [Time-Profile]: 02s
 
  .-ACKNOWLEDGMENT
  |
@@ -390,9 +388,9 @@
  | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
  | Chimod= "ALDA"                   # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
  | Chiprop= "magn"                  # [X] abs/kerr/magn
- | FxcGRLc= 13                Ry    # [TDDFT] XC-kernel RL size
+ | FxcGRLc=  8                Ry    # [TDDFT] XC-kernel RL size
  | FxcMode= "G-Fxc_in_Xo"           # [TDDFT] ("G-XXX" or "R-XXX" with XXX=def/full/cut_Gmax/cut_GmGp")
- | NGsBlkXd= 13               Ry    # [Xd] Response block size
+ | NGsBlkXd=  8               Ry    # [Xd] Response block size
  | % QpntsRXd
  |  1 | 2 |                             # [Xd] Transferred momenta
  | %
@@ -401,12 +399,12 @@
  | %
  | GrFnTpXd= "r"                    # [Xd] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
  | % EnRngeXd
- | -2.000000 | 4.000000 |         eV    # [Xd] Energy range
+ | -1.000000 | 3.000000 |         eV    # [Xd] Energy range
  | %
  | % DmRngeXd
  |  0.100000 | 0.100000 |         eV    # [Xd] Damping range
  | %
- | ETStpsXd= 2501                   # [Xd] Total Energy steps
+ | ETStpsXd=  801                   # [Xd] Total Energy steps
  | % LongDrXd
  |  1.000000 | 0.000000 | 0.000000 |        # [Xd] [cc] Electric Field
  | %
