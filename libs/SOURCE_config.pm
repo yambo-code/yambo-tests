@@ -48,16 +48,22 @@ sub SOURCE_config{
  if(!-d $comp_folder) { &command("mkdir -p $comp_folder"); };
  chdir("$comp_folder");
  &command("rm -f conf_local.sh");
- if (not $ext_libs_path eq "none") {
+ if (not $ext_libs_path eq "none" and not $flow eq "ext-libs") {
   open(FH, '<', "$suite_dir/$conf_path") or die $!;
   while(<FH>){
-   if ($_ =~ /par-io/) {$PAR_IO=(split(" ",(split("=",$_))[1]))[0]};
-   if ($_ =~ /par-linalg/) {$PAR_LINALG=(split(" ",(split("=",$_))[1]))[0]};
-   if ($_ =~ /slepc-linalg/) {$SLEPC=(split(" ",(split("=",$_))[1]))[0]};
+   if ($_ =~ /OPENMP=/) {$OPENMP_IOs=(split("=",$_))[1]};
+   if ($_ =~ /MPI=/) {$MPIs=(split("=",$_))[1]};
+   if ($_ =~ /PAR_LINALG=/) {$PAR_LINALGs=(split("=",$_))[1]};
+   if ($_ =~ /PAR_IO=/) {$PAR_IOs=(split("=",$_))[1]};
   }
+  $OPENMP_IOs =~ s/"//g;
+  $MPIs =~ s/"//g;
+  $PAR_LINALGs =~ s/"//g;
+  $PAR_IOs =~ s/"//g;
   close(FH);
-  &command("echo YAMBO_EXT_LIBS=$ext_libs_path/${user_module}/PAR_IO-${PAR_IO}_PAR_LINALG-${PAR_LINALG}_SLEPC-${SLEPC} > conf_local.sh");
+  &command("echo YAMBO_EXT_LIBS=$ext_libs_path/${user_module}/MPI-${MPIs}_PAR_IO-${PAR_IOs}_PAR_LINALG-${PAR_LINALGs} > conf_local.sh");
  };
+ if ($flow eq "ext-libs") {&command("echo YAMBO_EXT_LIBS=$comp_folder/lib/external > conf_local.sh")}
  if (not $driver_branch eq "none") {
   &command("echo DRIVER_LINE=--with-yambo-libs-branch=$driver_branch >> conf_local.sh");
  }
