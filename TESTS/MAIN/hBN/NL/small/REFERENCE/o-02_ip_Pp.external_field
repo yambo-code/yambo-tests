@@ -8,8 +8,8 @@
 #  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
 #                                                                     
 #                                                                     
-# Version 5.1.0 Revision 21618 Hash (prev commit) 5b9ac68d8           
-#                   Branch is devel-nl                                
+# Version 5.2.0 Revision 22884 Hash (prev commit) 74e12b5c7b          
+#                Branch is phys-non-linear                            
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
@@ -129,7 +129,7 @@
       9.70000000        -0.00000000         3643813.18        -0.00000000        -0.00000000        -0.00000000        -0.00000000         6369006.97         3524.37438         0.00000000   
       9.80000000        -0.00000000        -387965.836        -0.00000000        -0.00000000        -0.00000000        -0.00000000         5930010.78         39.9536812         0.00000000   
       9.90000000        -0.00000000        -3714784.01        -0.00000000        -0.00000000        -0.00000000        -0.00000000         5509040.25         3663.00041         0.00000000   
-      10.0000000        -0.00000000        -5044432.35        -0.00000000        -0.00000000        -0.00000000        -0.00000000         5106614.94         6754.51914         0.00000000   
+      10.0000000        -0.00000000        -349490.859        -0.00000000        -0.00000000        -0.00000000        -0.00000000         9801556.44         12605.5205         0.00000000   
       10.1000000        -0.00000000        -4102687.60        -0.00000000        -0.00000000        -0.00000000        -0.00000000         4723098.28         4467.93379         0.00000000   
       10.2000000        -0.00000000        -1608239.38        -0.00000000        -0.00000000        -0.00000000        -0.00000000         4358705.81         686.548486         0.00000000   
       10.3000000        -0.00000000         1173232.16        -0.00000000        -0.00000000        -0.00000000        -0.00000000         4013514.50         365.374096         0.00000000   
@@ -682,10 +682,10 @@
       65.00000          -0.000000         -0.4186190E-157     -0.000000          -0.000000          -0.000000          -0.000000           0.000000           0.000000           0.000000     
       65.02000          -0.000000         -0.3138621E-157     -0.000000          -0.000000          -0.000000          -0.000000           0.000000           0.000000           0.000000     
 # 
-# 07/19/2022 at 17:28 yambo_nl @ VivoBook [start]
-# 07/19/2022 at 17:29                     [end]
+# 02/27/2024 at 15:22 yambo_nl @ unimi-XPS-8930 [start]
+# 02/27/2024 at 15:22                           [end]
 #  
-# Timing   [Min/Max/Average]: 11s/11s/11s
+# Timing   [Min/Max/Average]: 09s/09s/09s
 #
 # .-Input file  yambo.in
 # | nloptics                         # [R] Non-linear spectroscopy
@@ -703,7 +703,7 @@
 # | NLCorrelation= "IPA"             # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
 # | NLLrcAlpha= 0.000000             # [NL] Long Range Correction
 # | % NLEnRange
-# |  2.000000 | 8.000000 |         eV    # [NL] Energy range
+# | -2.000000 |-2.000000 |         eV    # [NL] Energy range
 # | %
 # | NLEnSteps= 1                     # [NL] Energy steps
 # | NLDamping= 0.200000        eV    # [NL] Damping (or dephasing)
@@ -715,6 +715,7 @@
 # | % Field1_Freq
 # |  0.100000 | 0.100000 |         eV    # [RT Field1] Frequency
 # | %
+# | Field1_NFreqs= 1                 # [RT Field1] Frequency
 # | Field1_Int=  1000.00       kWLm2 # [RT Field1] Intensity
 # | Field1_Width= 0.000000     fs    # [RT Field1] Width
 # | Field1_FWHM= 0.000000      fs    # [RT Field1] Full Width at Half Maximum (overwrite width if set)
@@ -723,10 +724,11 @@
 # | % Field1_Dir
 # |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor
 # | %
-# | Field1_Tstart= 0.010000    fs    # [RT Field1] Initial Time
+# | Field1_Tstart= 10.00000    fs    # [RT Field1] Initial Time
 # | % Field2_Freq
 # |  4.440000 | 0.000000 |         eV    # [RT Field2] Frequency
 # | %
+# | Field2_NFreqs= 1                 # [RT Field2] Frequency
 # | Field2_Int=  100000.       kWLm2 # [RT Field2] Intensity
 # | Field2_Width= 2.123305     fs    # [RT Field2] Width
 # | Field2_FWHM= 5.000000      fs    # [RT Field2] Full Width at Half Maximum (overwrite width if set)
