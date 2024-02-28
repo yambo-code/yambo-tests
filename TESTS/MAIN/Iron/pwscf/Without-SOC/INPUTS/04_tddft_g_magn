@@ -1,0 +1,40 @@
+#                                                                     
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
+#                                                                     
+# Version 5.2.0 Revision 23451 Hash (prev commit) 9db46ede5e          
+#                 Branch is phys-magnons                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+optics                           # [R] Linear Response optical properties
+chi                              # [R][CHI] Dyson equation for Chi.
+tddft                            # [R][K] Use TDDFT kernel
+Chimod= "ALDA"                   # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+FxcMode="G-Fxc_in_Xo"
+Chiprop= "magn"                   # [X] abs/kerr/magn
+FxcGRLc=  151               RL    # [TDDFT] XC-kernel RL size
+NGsBlkXd= 151                RL    # [Xd] Response block size
+GrFnTpXd= "r"                    # [Xd] Green`s function (T)ordered,(R)etarded,(r)senant,(a)ntiresonant [T, R, r, Ta, Ra]
+% QpntsRXd
+ 1 | 2 |                             # [Xd] Transferred momenta
+%
+% BndsRnXd
+ 2 | 6 |                               # [Xd] Polarization function bands
+%
+% EnRngeXd
+ -2.00000 | 1.00000 |         eV    # [Xd] Energy range
+%
+% DmRngeXd
+ 0.100000 | 0.100000 |         eV    # [Xd] Damping range
+%
+ETStpsXd= 301                    # [Xd] Total Energy steps
+% LongDrXd
+ 1.000000 | 0.000000 | 0.000000 |        # [Xd] [cc] Electric Field
+%
