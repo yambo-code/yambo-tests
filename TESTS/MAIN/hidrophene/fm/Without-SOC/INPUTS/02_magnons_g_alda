@@ -1,0 +1,40 @@
+#                                                                     
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
+#                                                                     
+# Version 5.2.0 Revision 23455 Hash (prev commit) 4b9e8e27e8          
+#                 Branch is phys-magnons                              
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#               http://www.yambo-code.org                             
+#
+optics                           # [R] Linear Response optical properties
+chi                              # [R][CHI] Dyson equation for Chi.
+tddft                            # [R][K] Use TDDFT kernel
+X_Threads=0                      # [OPENMP/X] Number of threads for response functions
+Chimod= "ALDA"                   # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+Chiprop= "magn"                  # [X] abs/kerr/magn
+FxcMode="G-Fxc_in_Xo"
+FxcGRLc=  4               Ry    # [TDDFT] XC-kernel RL size
+NGsBlkXd= 4               Ry    # [Xd] Response block size
+% QpntsRXd
+  1 |  2 |                           # [Xd] Transferred momenta
+%
+% BndsRnXd
+  1 | 10 |                           # [Xd] Polarization function bands
+%
+% EnRngeXd
+  -1.00000 | 6.00000 |         eV    # [Xd] Energy range
+%
+% DmRngeXd
+ 0.100000 | 0.100000 |         eV    # [Xd] Damping range
+%
+ETStpsXd= 351                    # [Xd] Total Energy steps
+% LongDrXd
+ 1.000000 | 0.000000 | 0.000000 |        # [Xd] [cc] Electric Field
+%

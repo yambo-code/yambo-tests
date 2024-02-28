@@ -17,10 +17,10 @@ optics                           # [R] Linear Response optical properties
 bss                              # [R] BSE solver
 bse                              # [R][BSE] Bethe Salpeter Equation.
 tddft                            # [R][K] Use TDDFT kernel
-BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
+BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
 BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
-BSENGfxc= 10             Ry    # [BSK] Exchange components
+BSENGfxc= 40             Ry    # [BSK] Exchange components
 #FxcMode="R-def"
 BSEprop= "magn jdos"                   # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
 BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
@@ -28,15 +28,15 @@ BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to de
  1 | 2 |                             # [BSK] Transferred momenta range
 %
 % BSEBands
-  1 | 10 |                           # [BSK] Bands range
+  1 | 4 |                           # [BSK] Bands range
 %
 % BEnRange
-  -0.50000 | 1.50000 |         eV    # [BSS] Energy range
+  -1.0000 | 5.00000 |         eV    # [BSS] Energy range
 %
 % BDmRange
  0.020000 | 0.020000 |         eV    # [BSS] Damping range
 %
-BEnSteps= 1001                    # [BSS] Energy steps
+BEnSteps= 1201                    # [BSS] Energy steps
 % BLongDir
  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %

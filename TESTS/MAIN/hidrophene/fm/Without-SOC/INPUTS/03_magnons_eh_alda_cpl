@@ -1,0 +1,43 @@
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+# Version 5.1.0 Revision 21121 Hash (prev commit) fd6a68313           
+#                    Branch is unknown                                
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+optics                           # [R] Linear Response optical properties
+bss                              # [R] BSE solver
+bse                              # [R][BSE] Bethe Salpeter Equation.
+tddft                            # [R][K] Use TDDFT kernel
+BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
+BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+BSENGfxc= 40             Ry    # [BSK] Exchange components
+#FxcMode="R-def"
+BSEprop= "magn jdos"                   # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+% BSEQptR
+ 1 | 2 |                             # [BSK] Transferred momenta range
+%
+% BSEBands
+  1 | 4 |                           # [BSK] Bands range
+%
+% BEnRange
+  -1.0000 | 5.00000 |         eV    # [BSS] Energy range
+%
+% BDmRange
+ 0.020000 | 0.020000 |         eV    # [BSS] Damping range
+%
+BEnSteps= 1201                    # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+#WRbsWF                        # [BSS] Write to disk excitonic the WFs
