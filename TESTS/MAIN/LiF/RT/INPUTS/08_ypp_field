@@ -1,0 +1,40 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+# Version 5.2.0 Revision 22884 Hash (prev commit) 74e12b5c7b          
+#                Branch is phys-non-linear                            
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+TDplots                          # [R] TD observables plot
+RTtime                           # [R] Post-Processing kind: function of time
+RTfields                         # [R] Analize time-dependent fields
+TimeStep=  5.000000         as    # Time step
+% TimeRange
+ 0.000000 | 40.000000 |         fs    # Time-window where processing is done
+%
+% EnRngeRt
+  0.00000 | 20.00000 |         eV    # Energy range
+%
+ETStpsRt= 200                    # Total Energy steps
+ChirpFac= 0.000000         fs    # Prefactor for linear chirping in frequency space
+
+% Field1_Freq
+ 12.70     | 12.70     | eV    # [RT Probe] Frequency
+%
+Field1_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Field1_Int= 1.E+4    kWLm2    # [RT Probe] Intensity
+Field1_FWHM= 10.00000   fs    # [RT Probe] Damping
+Field1_kind= "QSSIN"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"
+% Field1_Dir
+ 1.00     | 1.00     | 1.00     |        # [RT Probe] Versor
+%
+Field1_Tstart=  0.0   fs      # [RT Field1] Initial Time

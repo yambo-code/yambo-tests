@@ -1,0 +1,61 @@
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+#                                                           
+#               Version 3.4.0 Revision 2811                 
+#                http://www.yambo-code.org                  
+#
+negf                         # [R] Real-Time dynamics
+ElecTemp=0 K                 #
+Gauge= "length"               # [Xd,RT] Gauge type (length|velocity)
+% RTBands
+  3 |  5 |                   # [RT] Bands
+%
+
+% GfnQP_E
+ 5.80000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
+
+HARRLvcs= 339        RL    # [XX] HARTREE  RL components
+EXXRLvcs= 51         RL    # [XX] Exchange RL components
+CORRLvcs= 51         RL    # [XX] Exchange RL components
+
+#
+# RT Parameters
+#
+Integrator= "RK2 RWA"    # [RT] Integrator ( "RK2 / EULER" "EXP" "RWA" )
+NETime=  50.00000       fs   # [RT] Simulation Time (alternative to NEsteps)
+RTstep=   10           as    # [RT] Real Time step length
+
+#
+# ELEL CORR
+#
+HXC_Potential= "HARTREE+SEX CVONLY"          # [SC] SC Potential
+
+# NEW IO FORMAT
+% Field1_Freq
+ 12.70     | 12.70     | eV    # [RT Probe] Frequency
+%
+Field1_FrStep= 0.000000 eV    # [RT Probe] Frequency step
+Field1_Int= 1.E+4    kWLm2    # [RT Probe] Intensity
+Field1_FWHM= 10.00000   fs    # [RT Probe] Damping
+Field1_kind= "FROM_FILE YPP_EXTFIELD_1.time"          # [RT Probe] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+Field1_pol= "linear"
+% Field1_Dir
+ 1.00     | 1.00     | 1.00     |        # [RT Probe] Versor
+%
+Field1_Tstart=  0.5   fs      # [RT Field1] Initial Time
+
+
+#
+# OTHER
+#
+% IOtime
+ 0.5 |5.0 |0.5 |  fs    # [RT] Time between to consecutive I/O (J,P,OCCs - GF - OUTPUT)
+%
+DBsIOoff= "DIP"         # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,OCCs,WF,SC)
+#SaveGhistory
