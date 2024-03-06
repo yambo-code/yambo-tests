@@ -24,6 +24,6 @@ foreach i (`seq 1 $NLINES`)
  echo
  cat ROBOTS/$ROBOT/$USER/CONFIGURATIONS/base.sh | sed  "s/OPENMP_STRING/yes/g" | \
  sed "s/MPI_STRING/$MPI/g" | sed "s/PAR_LINALG_STRING/$PAR_LINALG/g" | sed "s/PAR_IO_STRING/$PAR_IO/g" > ROBOTS/$ROBOT/$USER/CONFIGURATIONS/running.sh
- ./driver.pl -flow test -branch develop -module $MOD
+ ./driver.pl -flow test -branch develop -module $NAME
  exit
 end
