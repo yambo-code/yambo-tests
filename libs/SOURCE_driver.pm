@@ -198,7 +198,7 @@ if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
 }elsif(-e "$comp_folder/lib/bin/ncdump") { 
- $ncdump = "$$comp_folder/lib/bin/ncdum"; 
+ $ncdump = "$comp_folder/lib/bin/ncdump"; 
  chomp($ncdump);
 }elsif(-e $sys_ncdump) { 
  $ncdump = "$sys_ncdump"; 
