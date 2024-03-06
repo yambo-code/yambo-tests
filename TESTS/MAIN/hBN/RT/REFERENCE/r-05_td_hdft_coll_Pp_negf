@@ -1,19 +1,19 @@
                                                                           
-    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
-    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
-     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
-      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
-       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
-       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
-       ###  ###     ### ###       ### #########   ########                
+                                                                          
+    Y88b    /   e           e    e      888~~\    ,88~-_                  
+     Y88b  /   d8b         d8b  d8b     888   |  d888   \                 
+      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |                
+       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |                
+        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /                 
+       /   /      Y88b /          Y888b 888__/    `88_-~                  
                                                                           
                                                                           
-          Version 5.0.1 Revision 20001 Hash 5119e2e9b                     
-                Branch is devel-rt-vel-and-magn                           
+    Version 5.2.0 Revision 22884 Hash (prev commit) 74e12b5c7b            
+                  Branch is phys-non-linear                               
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+                  http://www.yambo-code.org                               
  
- 04/13/2021 at 15:01 yambo_rt @ VivoBook
+ 03/06/2024 at 01:44 yambo_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,9 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 05_td_hdft_coll_Pp
- Alt#1 string        : 02_collisions_HDFT-serial-devel-rt-vel-and-magn
- Alt#2 string        : 05_td_hdft_coll_Pp_REF
- Alt#3 string        : R2
+ Alt#1 string        : 02_collisions_HDFT-serial-phys-non-linear
+ Alt#2 string        : R1
 
  Precision           : SINGLE
   
@@ -67,8 +66,14 @@
   Atoms in the cell     :  B  N
   number of B  atoms    :  2
   number of N  atoms    :  2
-  Alat factors          :   4.71637   4.08450  12.17584 [a.u.]
 
+  List of atomic coordinates    : [cc]
+  B1       :  2.358186  1.361500  0.000000
+  B2       : -2.358186 -1.361500  6.087918
+  N1       : -2.358186 -1.361500  0.000000
+  N2       :  2.358186  1.361500  6.087918
+
+  Alat factors          :   4.71637   4.08450  12.17584 [a.u.]
   Direct lattice volume :  234.5556 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]:  1.000000  0.000000  0.000000  [iru]
@@ -80,6 +85,7 @@
    B[ 1 ]:  1.000000  0.500000  0.000000  [iku]
    B[ 2 ]:  0.000000  1.000000  0.000000  [iku]
    B[ 3 ]:  0.000000  0.000000  1.000000  [iku]
+   
 
   [02.02] Symmetries
   ==================
@@ -149,9 +155,9 @@
   [X] Filled Bands                                  :   8
   [X] Empty Bands                                   :    9   60
   [X] Direct Gap                                    :  4.439179 [eV]
-  [X] Direct Gap localized at k-point               :  2
+  [X] Direct Gap localized at k                     :  2
   [X] Indirect Gap                                  :  4.439179 [eV]
-  [X] Indirect Gap between k-points                 :  2  2
+  [X] Indirect Gap between kpts                     :  2  2
   [X] Last valence band width                       :  0.903504 [eV]
   [X] 1st conduction band width                     :  1.130507 [eV]
    
@@ -162,32 +168,28 @@
 
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
-  Polarization last K                              :   4
+  Polarization last K ( bz)                        :   4
+  Polarization last K (ibz)                        :   4
   QP states                                        :   1   4
   X grid is uniform                                : yes
-  Grids                                            : X S
-  BS scattering                                    : no
-  COLL scattering                                  : no
-  Sigma scattering                                 : yes
-  X scattering                                     : yes
- - S/N 001718 ---------------------------------------------- v.05.00.01 r.20001 -
+  Grids (string)                                   :  X S
+  Grids (int-vector)                               :  1  0  0  1
+ - S/N 001718 ---------------------------------------------- v.05.02.00 r.22884 -
 
- IBZ Q-points :   4
- BZ  Q-points :   4
+ IBZ Q-points                                      :   4
+ BZ  Q-points                                      :   4
 
  K/Q-points units:
  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
- Q [1]:  0.000000  0.000000  0.000000 [rlu]
- Q [2]:  0.500000  0.000000  0.000000 [rlu]
- Q [3]:  0.103439E-7 -0.500000      0.00000    [rlu]
- Q [4]: -0.500000  0.500000  0.000000 [rlu]
+ Q [1]          [rlu]:  0.000000  0.000000  0.000000
+ Q [2]          [rlu]:  0.500000  0.000000  0.000000
+ Q [3]          [rlu]:  0.103439E-7 -0.500000      0.00000   
+ Q [4]          [rlu]: -0.500000  0.500000  0.000000
 
  [04] Dipoles
  ============
 
-
- [WARNING] DIPOLES database not correct or missing
  [RD./SAVE//ns.kb_pp]------------------------------------------------------------
   Fragmentation                                    : yes
  - S/N 001718 ---------------------------------------------- v.05.00.01 r.18807 -
@@ -209,14 +211,18 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P P2
   Wavefunctions                                    : Teter 93(XC)
- - S/N 001718 ---------------------------------------------- v.05.00.01 r.20001 -
+ - S/N 001718 ---------------------------------------------- v.05.02.00 r.22884 -
 
  [05] HARTREE+GS_xc Real-Time Dynamics
  =====================================
 
 
-  [05.01] Initialization
-  ======================
+  [05.01] Pre-Initialization
+  ==========================
+
+
+  [05.02] Dipoles
+  ===============
 
   [RD./05_td_hdft_coll_Pp//ndb.dipoles]-------------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
@@ -234,148 +240,20 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P P2
    Wavefunctions                                    : Teter 93(XC)
-  - S/N 001718 ---------------------------------------------- v.05.00.01 r.20001 -
+  - S/N 001718 ---------------------------------------------- v.05.02.00 r.22884 -
 
-   [05.01.01] Dephasing matrix setup
+  [05.03] Initialization
+  ======================
+
+
+   [05.03.01] Dephasing matrix setup
    =================================
 
 
-    Rabi term transition indexes             :   1   7   9 (ik,iv,ic)
-              degenerate states              :  2  1 (n_v,n_c)
-              transition energy and detuning :  6.473190 -0.773190 [eV]
-              coupling frequency             :  0.164305 [THz]
-
-
-    Rabi term transition indexes             :   1   7  10 (ik,iv,ic)
-              degenerate states              :  2  1 (n_v,n_c)
-              transition energy and detuning :  5.251391  0.448609 [eV]
-              coupling frequency             :  0.115777E-4 [THz]
-
-
-    Rabi term transition indexes             :   1   9  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  5.251391  0.448609 [eV]
-              coupling frequency             :  0.731711E-5 [THz]
-
-
-    Rabi term transition indexes             :   2   7   8 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  1.219913  4.480086 [eV]
-              coupling frequency             :  15.60502 [THz]
-
-
-    Rabi term transition indexes             :   2   7   9 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  4.439179  1.260821 [eV]
-              coupling frequency             :  12.55423 [THz]
-
-
-    Rabi term transition indexes             :   2   7  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  6.074031 -0.374031 [eV]
-              coupling frequency             :  0.158209E-4 [THz]
-
-
-    Rabi term transition indexes             :   2   8   9 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  4.439179  1.260821 [eV]
-              coupling frequency             :  0.816479E-5 [THz]
-
-
-    Rabi term transition indexes             :   2   8  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  1.634852  4.065148 [eV]
-              coupling frequency             :  10.44394 [THz]
-
-
-    Rabi term transition indexes             :   2   9  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  1.634852  4.065148 [eV]
-              coupling frequency             :  5.747998 [THz]
-
-
-    Rabi term transition indexes             :   3   7   8 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  1.219913  4.480086 [eV]
-              coupling frequency             :  0.598933E-4 [THz]
-
-
-    Rabi term transition indexes             :   3   7   9 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  4.439179  1.260821 [eV]
-              coupling frequency             :  0.978967E-5 [THz]
-
-
-    Rabi term transition indexes             :   3   7  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  6.074031 -0.374031 [eV]
-              coupling frequency             :  0.256843E-4 [THz]
-
-
-    Rabi term transition indexes             :   3   8   9 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  4.439179  1.260821 [eV]
-              coupling frequency             :  0.388926E-5 [THz]
-
-
-    Rabi term transition indexes             :   3   8  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  1.634852  4.065148 [eV]
-              coupling frequency             :  0.102165E-4 [THz]
-
-
-    Rabi term transition indexes             :   3   9  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  1.634852  4.065148 [eV]
-              coupling frequency             :  0.231746E-4 [THz]
-
-
-    Rabi term transition indexes             :   4   7   8 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  1.219913  4.480086 [eV]
-              coupling frequency             :  15.60501 [THz]
-
-
-    Rabi term transition indexes             :   4   7   9 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  4.439179  1.260821 [eV]
-              coupling frequency             :  12.55422 [THz]
-
-
-    Rabi term transition indexes             :   4   7  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  6.074031 -0.374031 [eV]
-              coupling frequency             :  0.158040E-4 [THz]
-
-
-    Rabi term transition indexes             :   4   8   9 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  4.439179  1.260821 [eV]
-              coupling frequency             :  0.814914E-5 [THz]
-
-
-    Rabi term transition indexes             :   4   8  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  1.634852  4.065148 [eV]
-              coupling frequency             :  10.44394 [THz]
-
-
-    Rabi term transition indexes             :   4   9  10 (ik,iv,ic)
-              degenerate states              :  1  1 (n_v,n_c)
-              transition energy and detuning :  1.634852  4.065148 [eV]
-              coupling frequency             :  5.747998 [THz]
-
-
-    Main Rabi term transition indexes             :   2   7   9 (ik,iv,ic)
-                   degenerate states              :  1  1 (n_v,n_c)
-                   transition energy and detuning :  5.659092  0.040908 [eV]
-                   coupling frequency             :  12.55423 [THz]
-
-
-   [05.01.02] Electronic Collisions loading and setup
+   [05.03.02] Electronic Collisions loading and setup
    ==================================================
 
-   [RD./02_collisions_HDFT-serial-devel-rt-vel-and-magn//ndb.COLLISIONS_HXC]-------
+   [RD./02_collisions_HDFT-serial-phys-non-linear//ndb.COLLISIONS_HXC_header]------
     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   4   4   4
     RL vectors                                       :   3583 [WF]
     COLLISIONS name                                  : HARTREE+GS_XC
@@ -383,11 +261,12 @@
     COLLISIONS kind                                  :  1003
     Bands                                            :   7  10
     Bands mixing                                     :  100.0000
-    Exchange Cutoff                                  :  0.500000E-3
+    CV only scattering                               : no
+    Collisions Cutoff                                :  0.000000
     Hartree  RL vectors                              :   3415
-   - S/N 001718 ---------------------------------------------- v.05.00.01 r.20001 -
+   - S/N 001718 ---------------------------------------------- v.05.02.00 r.22884 -
 
-   [05.01.03] Messaging
+   [05.03.03] Messaging
    ====================
 
    ---General---
@@ -423,12 +302,14 @@
    K-points            (TOTAL):   4
 
    ---Fields---
-   Gauge                       : length
-   Field#1 field                       DELTA
-   Field#1 polarization                linear
-   Field#1 energy window/period        :   0.0000       0.0000         Infinity     Infinity [eV/fs]
+   Gauge                               : length
+   Field#1 field                       : DELTA
+   Field#1 polarization                : linear
+   Field#1 frequency range             :   0.0000       0.0000         Infinity     Infinity [eV/fs]
    Field#1 elemental oscillation       :  0.000000 [fs]
-   Field#1 width                       :  0.000000 [fs]
+   Field#1 Fourier limited width       :  0.000000 [fs]
+   Field#1 Real time  width            :          NaN [fs]
+   Field#1 start time                  :  20.00000 [fs]
    Field#1 energy steps                :  1
    Field#1 electric field              :  0.194095E+7 [V/m]
    Field#1 max intensity               :   1000.00    [kW/cm^2]
@@ -436,25 +317,27 @@
    Field#1 area at selected Rabi trans.:  0.000000
    Field#1 final time                  :  20.02000 [fs]
    Field#1 half maximum full width     :  0.000000 [fs]
-   Field#2 field                       QSSIN
-   Field#2 polarization                linear
-   Field#2 energy window/period        :  5.700000  0.000000  0.725556  Infinity [eV/fs]
+   Field#2 field                       : QSSIN
+   Field#2 polarization                : linear
+   Field#2 frequency range             :  5.700000  0.000000  0.725556  Infinity [eV/fs]
    Field#2 elemental oscillation       :  0.725556 [fs]
-   Field#2 width                       :  2.123305 [fs]
+   Field#2 Fourier limited width       :  2.123305 [fs]
+   Field#2 Real time  width            :  2.123305 [fs]
+   Field#2 start time                  :  0.010000 [fs]
    Field#2 energy steps                :  1
-   Field#2 electric field              :  0.613783E+8 [V/m]
-   Field#2 max intensity               :  0.100000E+7 [kW/cm^2]
-   Field#2 max fluence                 :   1881.68    [nJ/cm^2]
-   Field#2 area at selected Rabi trans.:  0.066630
-   Field#2 final time                  :  12.73000 [fs]
+   Field#2 electric field              :  0.194095E+9 [V/m]
+   Field#2 max intensity               :  0.100000E+8 [kW/cm^2]
+   Field#2 max fluence                 :  0.292354E-8 [nJ/cm^2]
+   Field#2 area at selected Rabi trans.:  0.211070
+   Field#2 final time                  :  21.21000 [fs]
    Field#2 half maximum full width     :  5.000000 [fs]
 
-  [05.02] Start and Restart
+  [05.04] Start and Restart
   =========================
 
    
 
-  [05.03] Real-Time dynamics
+  [05.05] Real-Time dynamics
   ==========================
 
 
@@ -463,57 +346,45 @@
 
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
-                  io_KB_pwscf :      0.0000s CPU (    2 calls,   0.010 msec avg)
-                   io_COL_CUT :      0.0001s CPU
-                        io_BS :      0.0001s CPU
+                   io_COL_CUT :      0.0000s CPU
+                        io_HF :      0.0000s CPU
              RT output (INIT) :      0.0001s CPU
-               io_Double_Grid :      0.0001s CPU
-                        io_HF :      0.0001s CPU
-                      io_ELPH :      0.0001s CPU (    2 calls,   0.050 msec avg)
-                 PP_uspp_init :      0.0001s CPU (    4 calls,   0.027 msec avg)
-                         io_X :      0.0002s CPU (    4 calls,   0.060 msec avg)
-           COLLISIONS (redux) :      0.0051s CPU ( 8001 calls,   0.001 msec avg)
-                 RT avg redux :      0.0056s CPU ( 8002 calls,   0.001 msec avg)
-                  WF_load_FFT :      0.0073s CPU (    4 calls,   1.833 msec avg)
-                     io_QINDX :      0.0100s CPU (    2 calls,   4.982 msec avg)
-                      io_GROT :      0.0126s CPU (    3 calls,   4.214 msec avg)
-                 io_KB_abinit :      0.0206s CPU (    6 calls,   3.432 msec avg)
-                        io_WF :      0.0209s CPU (   13 calls,   1.606 msec avg)
-      IO_and_Messaging_switch :      0.0235s CPU ( 8139 calls,   0.003 msec avg)
-                   io_DIPOLES :      0.0293s CPU (   16 calls,   1.830 msec avg)
-               RT Apply Field :      0.0307s CPU ( 8001 calls,   0.004 msec avg)
-            DIPOLE_transverse :      0.0920s CPU
-                RT integrator :      0.0947s CPU ( 8000 calls,   0.012 msec avg)
-                RT average Op :      0.1078s CPU ( 8002 calls,   0.013 msec avg)
-                      Dipoles :      0.1131s CPU
-               RT observables :      0.1245s CPU ( 4001 calls,   0.031 msec avg)
-                    RT output :      0.1960s CPU ( 1604 calls,   0.122 msec avg)
-                  io_fragment :      0.2371s CPU (  168 calls,   1.412 msec avg)
-             io_RT_components :      0.3197s CPU (  155 calls,   2.063 msec avg)
-              RT databases IO :      0.3222s CPU ( 4001 calls,   0.081 msec avg)
-         COLLISIONS (compose) :      0.3331s CPU (16002 calls,   0.021 msec avg)
-               RT Hamiltonian :      0.3981s CPU ( 8001 calls,   0.050 msec avg)
-              COLLISIONS_load :      0.5020s CPU (    2 calls, 251.014 msec avg)
-                io_COLLISIONS :      0.5065s CPU (   85 calls,   5.959 msec avg)
+               io_Double_Grid :      0.0001s CPU (   2 calls,   0.029 msec avg)
+                  io_KB_pwscf :      0.0001s CPU (   2 calls,   0.032 msec avg)
+                 PP_uspp_init :      0.0001s CPU (   4 calls,   0.017 msec avg)
+                         io_X :      0.0001s CPU (   5 calls,   0.021 msec avg)
+                  WF_load_FFT :      0.0020s CPU (   4 calls,   0.500 msec avg)
+                  io_fragment :      0.0025s CPU (   8 calls,   0.318 msec avg)
+                     io_QINDX :      0.0033s CPU (   2 calls,   1.659 msec avg)
+                      io_GROT :      0.0034s CPU (   3 calls,   1.125 msec avg)
+                 RT avg redux :      0.0035s CPU (8002 calls,   0.000 msec avg)
+         COLLISIONS (sym-red) :      0.0045s CPU (8001 calls,   0.001 msec avg)
+       COLLISIONS (G average) :      0.0048s CPU (8001 calls,   0.001 msec avg)
+                        io_WF :      0.0056s CPU (  13 calls,   0.433 msec avg)
+              COLLISIONS_load :      0.0060s CPU (   2 calls,   3.023 msec avg)
+                io_COLLISIONS :      0.0073s CPU (  88 calls,   0.083 msec avg)
+                   io_DIPOLES :      0.0073s CPU (  16 calls,   0.457 msec avg)
+                 io_KB_abinit :      0.0091s CPU (   6 calls,   1.510 msec avg)
+      IO_and_Messaging_switch :      0.0131s CPU (8016 calls,   0.002 msec avg)
+               RT Apply Field :      0.0165s CPU (8001 calls,   0.002 msec avg)
+            DIPOLE_transverse :      0.0332s CPU
+                    RT output :      0.0376s CPU (1604 calls,   0.023 msec avg)
+                RT average Op :      0.0551s CPU (8002 calls,   0.007 msec avg)
+               RT observables :      0.0645s CPU (4001 calls,   0.016 msec avg)
+             io_RT_components :      0.0898s CPU ( 160 calls,   0.561 msec avg)
+                RT integrator :      0.0900s CPU (8000 calls,   0.011 msec avg)
+              RT databases IO :      0.1089s CPU (4001 calls,   0.027 msec avg)
+         COLLISIONS (compose) :      0.2194s CPU (8001 calls,   0.027 msec avg)
+               RT Hamiltonian :      0.2634s CPU (8001 calls,   0.033 msec avg)
+                      Dipoles :      1.0380s CPU
 
- [07] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  1.657000 [Mb]
-
- [08] Game Over & Game summary
+ [07] Game Over & Game summary
  =============================
 
- 04/13/2021 at 15:01 yambo_rt @ VivoBook [start]
- 04/13/2021 at 15:01                     [end]
+ 03/06/2024 at 01:44 yambo_rt @ unimi-XPS-8930 [start]
+ 03/06/2024 at 01:44                           [end]
 
- Timing   [Min/Max/Average]: 02s/02s/02s
-             [Time-Profile]: 02s
-
+  
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -550,11 +421,12 @@
  | % RTehEny
  |  -1.21991 | 10.82108 |         eV    # [RT] Electron-hole energy range
  | %
+ | RADLifeTime= 0.000000      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
  | PhLifeTime= 0.000000       fs    # [RT] Constant Dephasing Time
  | RTstep= 10.00000           as    # [RT] Real Time step length
  | NETime= 40.00000           fs    # [RT] Simulation Time
  | % IOtime
- |  1.000000 | 1.000000 | 0.100000 |  fs    # [RT] Time between two consecutive I/O (CARRIERs - GF - OUTPUT)
+ |  1.000000 | 1.000000 | 0.100000 |  fs    # [RT] Time between two consecutive I/O (CARRIERs - GF/WF - OUTPUT)
  | %
  | % IOCachetime
  |  0.010000 | 2.000000 |         fs    # [RT] Time between two consecutive (caching - I/O) of OBSERVABLES
@@ -562,30 +434,26 @@
  | % Field1_Freq
  |  0.000000 | 0.000000 |         eV    # [RT Field1] Frequency
  | %
+ | Field1_NFreqs= 1                 # [RT Field1] Frequency
  | Field1_Int=  1000.00       kWLm2 # [RT Field1] Intensity
  | Field1_Width= 0.000000     fs    # [RT Field1] Width
- | Field1_kind= "DELTA"             # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+ | Field1_kind= "DELTA"             # [RT Field1] Kind(SIN|COS|RES|ANTIRES|GAUSS|DELTA|QSSIN)
  | Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
  | % Field1_Dir
  |  1.000000 | 0.000000 | 0.000000 |        # [RT Field1] Versor
- | %
- | % Field1_Dir_circ
- |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
  | %
  | Field1_Tstart= 20.00000    fs    # [RT Field1] Initial Time
  | % Field2_Freq
  |  5.700000 | 0.000000 |         eV    # [RT Field2] Frequency
  | %
- | Field2_Int= 0.100000E+7    kWLm2 # [RT Field2] Intensity
+ | Field2_NFreqs= 1                 # [RT Field2] Frequency
+ | Field2_Int= 0.100000E+8    kWLm2 # [RT Field2] Intensity
  | Field2_Width= 2.123305     fs    # [RT Field2] Width
  | Field2_FWHM= 5.000000      fs    # [RT Field2] Full Width at Half Maximum (overwrite width if set)
- | Field2_kind= "QSSIN"             # [RT Field2] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+ | Field2_kind= "QSSIN"             # [RT Field2] Kind(SIN|COS|RES|ANTIRES|GAUSS|DELTA|QSSIN)
  | Field2_pol= "linear"             # [RT Field2] Pol(linear|circular)
  | % Field2_Dir
  |  1.000000 | 0.000000 | 0.000000 |        # [RT Field2] Versor
- | %
- | % Field2_Dir_circ
- |  0.000000 | 1.000000 | 0.000000 |        # [RT Field2] Versor_circ
  | %
  | Field2_Tstart= 0.010000    fs    # [RT Field2] Initial Time
  | %DephMatrix                      # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
