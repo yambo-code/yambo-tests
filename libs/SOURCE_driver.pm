@@ -114,17 +114,13 @@ if ($compile) {
  #
 }
 #
-# FC kind/Precision & CUDA
+# FC kind
 #
 if ($compile) { 
  &SETUP_FC_kind;
 }elsif (not $FC_kind){
  &SETUP_FC_kind;
 };
-#
-# CUDA => mpi_is_off (serial runs)
-#
-if ($CUDA_support eq "yes") { $mpi_is_off="yes"};
 #
 # BIN's
 if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
@@ -197,15 +193,13 @@ chomp($sys_ncdump);
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
-}elsif(-e "$comp_folder/lib/bin/ncdump") { 
- $ncdump = "$comp_folder/lib/bin/ncdump"; 
- chomp($ncdump);
+ &MY_PRINT($stdout, "\n               ncdump : $ncdump");
 }elsif(-e $sys_ncdump) { 
  $ncdump = "$sys_ncdump"; 
+ &MY_PRINT($stdout, "\n               ncdump : $ncdump");
 }else{ 
  die "\n ncdump not found\n";
 }
-&MY_PRINT($stdout, "\n               ncdump : $ncdump");
 #
 # Rename the conf/comp logs
 #
