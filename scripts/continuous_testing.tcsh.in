@@ -7,10 +7,27 @@ while ( 1 > 0)
  cd @test_suite_dir@
  git pull >& /dev/null
  git submodule update --merge --remote >& /dev/null
+ ./configure
  ./scripts/wget_from_google_drive.sh
  set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh' | xargs rm -f`
  rm -f ROBOTS/@robot@/@user@/FLOWS/run.*
  cat control_room.csv | awk -f scripts/robot_update.awk
+ #
+ # Time to update the databases?
+ #
+ set update_databases="no"
+ if ( -f ~/yambo-testing/database_updated_@robot@ ) then
+  set day_last_update=`stat -c '%y' ~/yambo-testing/database_updated_@robot@ | cut -d " " -f 1 | cut -d "-" -f 3`
+  set today=`date +"%d"`
+  if ( $today != $day_last_update) set update_databases="yes"
+ else
+  set update_databases="yes"
+ endif
+ if ( "$update_databases" == "yes" ) then
+   ./driver.pl -c -c
+   ./driver.pl -d all
+   touch  ~/yambo-testing/database_updated_@robot@
+ endif
  #
  # Files to run
  #
