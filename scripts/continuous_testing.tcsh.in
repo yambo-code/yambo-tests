@@ -13,22 +13,6 @@ while ( 1 > 0)
  rm -f ROBOTS/@robot@/@user@/FLOWS/run.*
  cat control_room.csv | awk -f scripts/robot_update.awk
  #
- # Time to update the databases?
- #
- set update_databases="no"
- if ( -f ~/yambo-testing/database_updated_@robot@ ) then
-  set day_last_update=`stat -c '%y' ~/yambo-testing/database_updated_@robot@ | cut -d " " -f 1 | cut -d "-" -f 3`
-  set today=`date +"%d"`
-  if ( $today != $day_last_update) set update_databases="yes"
- else
-  set update_databases="yes"
- endif
- if ( "$update_databases" == "yes" ) then
-  ./driver.pl -c -c
-  ./driver.pl -d all
-  touch  ~/yambo-testing/database_updated_@robot@
- endif
- #
  # Files to run
  #
  set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh'`
@@ -72,7 +56,6 @@ while ( 1 > 0)
     ln -s $log_dir $branch_dir/latest_logs
     @test_suite_dir@/scripts/reset.sh
     touch ~/yambo-testing/@robot@_is_running
-    @test_suite_dir@/driver.pl -d all > /dev/null
     @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
     @test_suite_dir@/driver.pl -kill > /dev/null
     echo "done"
