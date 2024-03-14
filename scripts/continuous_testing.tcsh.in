@@ -24,9 +24,9 @@ while ( 1 > 0)
   set update_databases="yes"
  endif
  if ( "$update_databases" == "yes" ) then
-   ./driver.pl -c -c
-   ./driver.pl -d all
-   touch  ~/yambo-testing/database_updated_@robot@
+  ./driver.pl -c -c
+  ./driver.pl -d all
+  touch  ~/yambo-testing/database_updated_@robot@
  endif
  #
  # Files to run
@@ -72,6 +72,7 @@ while ( 1 > 0)
     ln -s $log_dir $branch_dir/latest_logs
     @test_suite_dir@/scripts/reset.sh
     touch ~/yambo-testing/@robot@_is_running
+    @test_suite_dir@/driver.pl -d all > /dev/null
     @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
     @test_suite_dir@/driver.pl -kill > /dev/null
     echo "done"
