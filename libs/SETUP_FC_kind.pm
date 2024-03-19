@@ -23,6 +23,8 @@
 # Software Foundation, Inc., 59 Temple Place - Suite 330,Boston,
 #
 sub SETUP_FC_kind{
+#
+# FC & Yambo precision
 open(SETUP_file,"<","$comp_folder/config/setup");
 $MPI_kind="unknown";
 $MPI_kind_short="unknown";
@@ -49,7 +51,6 @@ while(<SETUP_file>) {
  }
 };
 close(SETUP_file);
-#($FC_kind)=split(/\s+/,$FC_kind_ext); 
 $FC_kind_ext="$FC_kind $FC_version";
 if($MPI_kind =="Serial") { $MPI_kind_short="Serial" }; 
 if($MPI_kind =~ /Open/ ) { $MPI_kind_short="OpenMPI" }; 
@@ -58,5 +59,13 @@ if($MPI_kind =~ /Intel/) { $MPI_kind_short="IntelMPI"};
 #
 if($Yambo_precision =~ /single/ ) { $Yambo_precision="single" }; 
 if($Yambo_precision =~ /double/ ) { $Yambo_precision="double" }; 
+#
+#CUDA
+open(REPORT_file,"<","$comp_folder/config/report");
+$CUDA_support="no";
+while(<REPORT_file>) {
+ if($_ =~ /CUDA/ && $_ =~ /X/) {$CUDA_support="yes"}
+};
+close(REPORT_file);
 }
 1;
