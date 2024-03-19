@@ -6,6 +6,8 @@ while ( 1 > 0)
  #
  cd @test_suite_dir@
  git pull >& /dev/null
+ git submodule update --merge --remote >& /dev/null
+ ./configure >& /dev/null
  ./scripts/wget_from_google_drive.sh
  set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh' | xargs rm -f`
  rm -f ROBOTS/@robot@/@user@/FLOWS/run.*
@@ -38,11 +40,6 @@ while ( 1 > 0)
    set last_hash=`git log --pretty=format:"%h" | head -n 1` 
    cd @test_suite_dir@
    #
-   set off_flag=" "
-   if ( "$options" == "mpioff" ) then
-     set off_flag="-o mpi"
-   endif
-   #
    # stop if needed
    if ( -f ~/yambo-testing/stop_@robot@ ) break
    #
@@ -53,13 +50,13 @@ while ( 1 > 0)
     set log_dir="$branch_dir/$M/$D"
     echo "================================================================================================================="
     date
-    echo "launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow $off_flag -r > $log_dir/log-@robot@-${flow}-${T}"
+    echo "launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T}"
     mkdir -p $log_dir
     rm -f $branch_dir/latest_logs
     ln -s $log_dir $branch_dir/latest_logs
     @test_suite_dir@/scripts/reset.sh
     touch ~/yambo-testing/@robot@_is_running
-    @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow $off_flag -r > $log_dir/log-@robot@-${flow}-${T} 
+    @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
     @test_suite_dir@/driver.pl -kill > /dev/null
     echo "done"
     echo "================================================================================================================="

@@ -5,10 +5,10 @@
  };
  if (a[1] == "@robot@") { 
   HEAD=0;
-  if (a[2] != "NONE" && a[3] != "NONE" && a[2] != "none") {
+  if (tolower(a[2]) != "none" && tolower(a[3]) != "none") {
    FLOWS= " ";
-   for (i = 6; i <= 11; i++){ 
-    if (a[i] != "NONE") {
+   for (i = 9; i <= 14; i++){ 
+    if (tolower(a[i]) != "none") {
      if (HEAD==0) {
       NRUNS=NRUNS+1;
       flow_file="ROBOTS/@robot@/@user@/FLOWS/run."NRUNS".pl";
@@ -17,17 +17,21 @@
       print "@flow = (" >> flow_file;
       print "{" >> flow_file;
       print "ACTIVE      => \"yes\"," >> flow_file;
-      print "CONFIG      => \""a[5]"\"," >> flow_file;
+      print "CONFIG      => \"default_"NRUNS".sh\"," >> flow_file;
       print "TESTS       => \"all\"," >> flow_file;
       print "KEYS        => \"all hard\"," >> flow_file;
       HEAD=1;
       print "set module  = "a[4] > env_file;
       print "set ybranch = "a[2] >> env_file;
       print "set tbranch = "a[3] >> env_file;
-      print "set options = "a[12] >> env_file;
      }else{
       print "{" >> flow_file;
      };
+     #
+     BASE="ROBOTS/@robot@/@user@/CONFIGURATIONS/base.sh";
+     NEW="ROBOTS/@robot@/@user@/CONFIGURATIONS/default_"NRUNS".sh";
+     system("cat "BASE " | sed 's/MPI_STRING/"a[5]"/g'| sed 's/PAR_LINALG_STRING/"a[6]"/g'| sed 's/OPENMP_STRING/"a[7]"/g' | sed 's/PAR_IO_STRING/"a[8]"/g' > " NEW );
+     #
      PAR=0;
      SLK=0;
      OMP=0;
