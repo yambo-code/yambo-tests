@@ -70,20 +70,21 @@ if("@_" eq "ALL") {
 #
 # CORE
 if("@_" eq "CORE") {
- &command("$git status --ignored | $grep -e '/ns.' -e '/ndb.' | xargs rm -fr");
+ &command("$git ls-files --others --ignored --exclude-standard | $grep -e '/ns.' -e '/ndb.' | xargs rm -fr");
+ &command("$git ls-files --others --ignored --exclude-standard | $grep -e '.empty' | xargs rm -fr");
  &command("find . -type d -empty | xargs rm -fr");
 };
 #
 # TARGZ
 if("@_" eq "TARGZ") {
- &command("$git status --ignored | $grep -e '.tar.gz' | xargs rm -fr");
+ &command("$git ls-files --others --ignored --exclude-standard | $grep -e '.tar.gz' | xargs rm -fr");
  &command("find . -type d -empty | xargs rm -fr");
 };
 #
 # TARGZ
 if("@_" eq "DFT") {
- &command("$git status --ignored | $grep -e 'WFK.nc' | xargs rm -fr");
- &command("$git status --ignored | $grep -e 'QEX' | xargs rm -fr");
+ &command("$git ls-files --others --ignored --exclude-standard | $grep -e 'WFK.nc' | xargs rm -fr");
+ &command("$git ls-files --others --ignored --exclude-standard | $grep -e 'QEX' | xargs rm -fr");
  &command("find . -type d -empty | xargs rm -fr");
 };
 #
@@ -92,11 +93,9 @@ if("@_" eq "COMPs") {
  &LOAD_branches;
  if ($user_branch) {
    $comp_folder  = "$suite_dir/compile_dir/${user_branch}";
-   print "\nrm -fr $comp_folder\n";
    &command("rm -fr $comp_folder");
  } else {
  for $ib ( 0 .. $#branches ) {
-  print "$ib @branches[$ib]\n";
   $branchdir =@branches[$ib];
   foreach $conf_file (<ROBOTS/$host/$user/CONFIGURATIONS/*>){
    $conf_file = (split(/\//, $conf_file))[-1];
