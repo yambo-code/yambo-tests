@@ -44,6 +44,9 @@ call add_RULE("_FIT_electrons","whitelist")
 call add_RULE(".YPP-RT_E_Fermi","whitelist")
 call add_RULE(".YPP-RT_Temperatures","whitelist")
 !
+! The Hall signal is very noisy (AM March 2024)
+call add_RULE(".YPP-TR_Anomalous_Hall_IP","Whitelist",MATERIAL="Black-Phosphorus")
+!
 ! Requested by Davide for devel-rt
 call add_RULE(".energy","whitelist")
 !
@@ -98,13 +101,3 @@ call add_RULE("o-16_ypp_weight_BSE_allq.exc_qpt2_weights","whitelist",MATERIAL="
 ! SC
 !=====
 call add_RULE("o-06_h_using_colls.SC_E_History","whitelist",MATERIAL="Si_bulk")
-!
-! DP NOISE
-!===========
-! skip
-!call add_RULE(".ndb.gops","skip",MATERIAL="Si_surface")
-!call add_RULE("elph_0K_adaptative","skip",MATERIAL="Si_bulk")
-!call add_RULE("0K_field_ad","skip",MATERIAL="Si_bulk")
-! whitelist
-!call add_RULE("o-04_elel+elph_0K.carriers","whitelist",MATERIAL="Si_bulk")
-!call add_RULE(".YPP-RT_","whitelist",MATERIAL="MoS2")
