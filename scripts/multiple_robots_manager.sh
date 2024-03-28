@@ -60,7 +60,7 @@ for test in test.* ; do
    if [ ! $user_ID == $ID ]; then  continue; fi
  fi
  #
- # Update 
+ # Pause/Unpause 
  #
  if [ ! -z $PAUSE ] ; then
   STOP_file="yambo-testing/stop_${robot}.$ID"
