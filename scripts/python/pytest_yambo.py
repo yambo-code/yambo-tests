@@ -18,8 +18,8 @@ https://github.com/hplgit/scitools
 ##### DEFAUL TINPUT PARAMETERS ##############
 #############################################
 yambo_dir     = '/home/sangalli/data/Codes/yambo/yambo-gpl/master/bin/'
-#test_dir      = '/home/sangalli/data/Codes/yambo/yambo-tests/master/TESTS/MAIN/Al_bulk/GW-OPTICS/'
-test_dir      = '/home/sangalli/data/Codes/yambo/yambo-tests/master/TESTS/MAIN/NiBr2/Without-SOC/GW-OPTICS/'
+test_dir      = '/home/sangalli/data/Codes/yambo/yambo-tests/master/TESTS/MAIN/Al_bulk/GW-OPTICS/'
+#test_dir      = '/home/sangalli/data/Codes/yambo/yambo-tests/master/TESTS/MAIN/NiBr2/Without-SOC/GW-OPTICS/'
 scratch       = './tmp'  #used to run the tests
 yambo_file    = "yambo"
 ypp_file      = "ypp"
@@ -55,8 +55,8 @@ yambo          = yambo_bin.joinpath(args.yambo_file)
 ypp            = yambo_bin.joinpath(args.ypp_file)
 
 inputs_dir   = test_folder.joinpath("INPUTS")
-save_dir     = test_folder.joinpath("SAVE_old")
-save_conv_dir= test_folder.joinpath("SAVE")
+save_dir     = test_folder.joinpath("SAVE")
+save_conv_dir= test_folder.joinpath("SAVE_converted")
 reference_dir= test_folder.joinpath("REFERENCE")
 
 ##########################################
