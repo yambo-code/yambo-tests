@@ -2,8 +2,9 @@
 import sys
 import json
 import shutil
+import string
+import random
 import argparse
-import tempfile
 import numpy as np
 from pathlib import Path,os
 from misc    import getstatusoutput,os_system,run,copy_all_files,read_files_list,check_ypp,check_ypp_sort
@@ -131,11 +132,14 @@ if __name__ == "__main__":
     
     tollerance = float(args.tollerance)
     try:
-        tmpdir = tempfile.TemporaryDirectory(prefix="runtest_", dir=args.scratch, delete=args.delscratch)
+        N = 6
+        res = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase+string.digits, k=N))
+        tmpdir = Path(os.path.join(os.path.abspath(args.scratch),'runtest_{}'.format(res)))
+        tmpdir.mkdir()
     except:
         print("Error creating runtest folder into {}".format(args.scratch))
         exit(1)
-    scratch_dir    = Path(tmpdir.name)  #used to run the tests
+    scratch_dir    = tmpdir  #used to run the tests
     test_folder    = Path(os.path.abspath(args.test_dir))
     yambo_bin      = Path(os.path.abspath(args.yambo_dir)) if args.yambo_dir else None 
     yambo          = yambo_bin.joinpath(args.yambo_file) if yambo_bin else Path(shutil.which(args.yambo_file))
