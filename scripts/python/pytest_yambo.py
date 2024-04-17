@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 import sys
+import json
+import shutil
 import argparse
 import tempfile
 import numpy as np
 from pathlib import Path,os
-from misc    import getstatusoutput,os_system,run,copy_all_files,read_files_list
+from misc    import getstatusoutput,os_system,run,copy_all_files,read_files_list,check_ypp,check_ypp_sort
 
 """
 Simple python script to test yambo
@@ -15,10 +17,57 @@ https://github.com/hplgit/scitools
 
 """
 
+
+def get_args():
+    yambo_dir = ""
+    test_dir = "../../TESTS/MAIN/Al_bulk/GW-OPTICS"
+    scratch = "."
+    yambo_file = "yambo"
+    ypp_file = "ypp"
+    nprocs = 1
+    mpi_launcher = "mpirun"
+    tollerance = 0.1
+
+    infile = Path("parameters.json")
+    if infile.is_file():
+        with open(infile.name, 'r') as jf:
+            defargs = json.load(jf)
+    if "yambo_dir" in defargs: yambo_dir = defargs["yambo_dir"]
+    if "test_dir" in defargs: test_dir = defargs["test_dir"]
+    if "scratch" in defargs: scratch = defargs["scratch"]
+    if "yambo_file" in defargs: yambo_file = defargs["yambo_file"]
+    if "ypp_file" in defargs: ypp_file = defargs["ypp_file"]
+    if "nprocs" in defargs: nprocs = defargs["nprocs"]
+    if "mpi_launcher" in defargs: mpi_launcher = defargs["mpi_launcher"]
+    if "tollerance" in defargs: tollerance = defargs["tollerance"]
+
+    # ########################################
+    # ############## parse command line ######
+    # ########################################
+    parser = argparse.ArgumentParser(prog='pytest_yambo',description='Simple python driver for the yambo-tests',epilog="Copyright Claudio Attaccalite 2019")
+    #parser.add_argument('-i',help='input file in json format',metavar='FILE',type=str,dest='infile',default='parameters.json')
+    parser.add_argument('-tol',help='tollerance (between 0 - 100%%)',type=float,dest='tollerance',default=tollerance)
+    parser.add_argument('-scr',help='scratch directory',type=str,dest='scratch',default=scratch)
+    parser.add_argument('-test',help='test directory',type=str,dest='test_dir',default=test_dir)
+    parser.add_argument('-bin',help='yambo bin directory',type=str,dest='yambo_dir',default=yambo_dir)
+    parser.add_argument('-mpi',help='mpi launcher',type=str,dest='mpi_launcher',default=mpi_launcher)
+    parser.add_argument('-np',help='number of mpi tasks',type=int,dest='nprocs',default=nprocs)
+    parser.add_argument('-yambo',help='yambo executable',type=str,dest='yambo_file',default=yambo_file)
+    parser.add_argument('-ypp ',help='ypp exectuable',type=str,dest='ypp_file',default=ypp_file)
+    parser.add_argument('-skip-run',help='skip runs just compare the results',dest='skiprun',action='store_true')
+    parser.add_argument('-skip-comp',help='skip comparison just run the tests',dest='skipcomp',action='store_true')
+    parser.add_argument('-del-scratch',help='skip comparison just run the tests',dest='delscratch',action='store_true',default=False)
+    parser.set_defaults(skiprun=False)
+    parser.set_defaults(skipcomp=False)
+    args = parser.parse_args()
+
+    return args
+
+
 def check_code():
     print("Checking codes and foldes: ")
     try:
-        print("Yambo bin is..."+str(yambo_bin.is_dir())+"; ", end = '')
+        #print("Yambo bin is..."+str(yambo_bin.is_dir())+"; ", end = '')
         print("Test folder is..."+str(test_folder.is_dir())+"; ", end = '')
         print("Yambo is..."+str(yambo.exists())+"; ", end = '')
         print("Ypp is..."+str(ypp.exists()))
@@ -74,57 +123,31 @@ def copy_SAVE_and_INPUTS():
 
 
 if __name__ == "__main__":
-    #############################################
-    ##### DEFAUL TINPUT PARAMETERS ##############
-    #############################################
-    yambo_dir     = '/unimore_home/labswmgr/SPACK/opt/linux-rocky8-icelake/gcc-12.1.1/yambo-5.2.2-46z4b2ykuihsvmazpvphmzbksqpim25h/bin'
-    test_dir      = '/scratch1/nspallan/yambo-tests/TESTS/MAIN/hBN/GW-OPTICS'
-    scratch       = './scratch'  #used to run the tests
-    yambo_file    = "yambo"
-    ypp_file      = "ypp"
-    nprocs        = 2
-    #mpirun        = ""
-    mpirun        = "mpirun -np "+str(nprocs)+"  "
-    tollerance    = 0.1 # between 0 and 100%
+    # SETTING PARAMETERS
     zero_dfl      = 1e-6
     too_large     = 10e99
-    #############################################
-                    
-    # ########################################
-    # ############## parse command line ######
-    # ########################################
-    parser = argparse.ArgumentParser(prog='pytest_yambo',description='Simple python driver for the yambo-tests',epilog="Copyright Claudio Attaccalite 2019")
-    parser.add_argument('-t',    help='tollerance (between 0 - 100%%)' ,type=float,dest='tollerance',default=tollerance)
-    parser.add_argument('-s',    help='scratch directory' ,type=str,dest='scratch'    ,default=scratch)
-    parser.add_argument('-test', help='test directory' ,type=str,dest='test_folder',default=test_dir)
-    parser.add_argument('-bin',  help='yambo bin directory' ,type=str,dest='yambo_dir',default=yambo_dir)
-    parser.add_argument('-yambo',help='yambo executable' ,type=str,dest='yambo_file',default=yambo_file)
-    parser.add_argument('-ypp ', help='ypp exectuable' ,type=str,dest='ypp_file',default=ypp_file)
-    parser.add_argument('-skip-run',help='skip runs just compare the results',dest='skiprun',action='store_true')
-    parser.add_argument('-skip-comp',help='skip comparison just run the tests',dest='skipcomp',action='store_true')
-    parser.add_argument('-del-scratch',help='skip comparison just run the tests',dest='delscratch',action='store_true',default=False)
-    parser.set_defaults(skiprun =False)
-    parser.set_defaults(skipcomp=False)
+
+    args = get_args()
     
-    args = parser.parse_args()
-    tollerance     = float(args.tollerance)
+    tollerance = float(args.tollerance)
     try:
         tmpdir = tempfile.TemporaryDirectory(prefix="runtest_", dir=args.scratch, delete=args.delscratch)
     except:
         print("Error creating runtest folder into {}".format(args.scratch))
         exit(1)
     scratch_dir    = Path(tmpdir.name)  #used to run the tests
-    test_folder    = Path(args.test_folder)
-    yambo_bin      = Path(args.yambo_dir)
-    yambo          = yambo_bin.joinpath(args.yambo_file)
-    ypp            = yambo_bin.joinpath(args.ypp_file)
+    test_folder    = Path(os.path.abspath(args.test_dir))
+    yambo_bin      = Path(os.path.abspath(args.yambo_dir)) if args.yambo_dir else None 
+    yambo          = yambo_bin.joinpath(args.yambo_file) if yambo_bin else Path(shutil.which(args.yambo_file))
+    ypp            = yambo_bin.joinpath(args.ypp_file) if yambo_bin else Path(shutil.which(args.ypp_file))
+    mpi_launcher   = args.mpi_launcher
+    nprocs         = args.nprocs
     
     inputs_dir   = test_folder.joinpath("INPUTS")
     save_dir     = test_folder.joinpath("SAVE")
     save_conv_dir= test_folder.joinpath("SAVE_converted")
     reference_dir= test_folder.joinpath("REFERENCE")
     
-    ##########################################
     # 
     # ************* MAIN PROGRAM ********************
     #
@@ -133,11 +156,10 @@ if __name__ == "__main__":
     if sys.version_info[0] < 3:
         raise Exception("Must be using Python 3")
     
-    #check the code
     check_code()
     
     #read test list
-    tests_list=read_files_list(inputs_dir,noext='.flags')
+    tests_list=read_files_list(inputs_dir,noext='',nocontains='_shi')
     print("\nNumber of tests: "+str(len(tests_list)))
     
     # copy SAVE and INPUTS in the SCRATCH directory 
@@ -170,16 +192,27 @@ if __name__ == "__main__":
     
             inputfile=Path("INPUTS/"+test.name).as_posix()
     
-            if "ypp" in test.name:
+            if "ypp" in test.name or check_ypp(inputfile):
                 # ********* Running ypp **************
-                program  =str(ypp)
+                program = str(ypp) + " -nompi"
+            elif check_ypp_sort(inputfile):
+                # ********* Running ypp **************
+                program = str(ypp) + " -nompi -e s -q {}".format(check_ypp_sort(inputfile))
             else:
                 # ********** Running Yambo ***********
-                if not mpirun=="":
-                    program = mpirun+str(yambo)
+                if mpi_launcher:
+                    program = mpi_launcher + " -n {} ".format(nprocs) + str(yambo)
                 else:
                     program = str(yambo)
     
+            # ******** Setup actions for the test ******
+            actions_file = Path("INPUTS/"+test.name+".actions")
+        
+            if actions_file.is_file():
+                with open(str(actions_file), 'r') as afile:
+                    for line in afile:
+                        failure, output = os_system(line.rstrip(), verbose=False)
+
             # ******** Setup flags for the test ******
             flag_file = Path("INPUTS/"+test.name+".flags")
         

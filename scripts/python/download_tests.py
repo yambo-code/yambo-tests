@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import tarfile
 import argparse
 import subprocess
@@ -11,6 +12,7 @@ def get_args():
     parser.add_argument('-test', help='test directory', type=str, dest='test_main', default=test_main)
     parser.add_argument('-link', help='download link', type=str, dest='link', default=download_link)
     args = parser.parse_args()
+    args.test_main = os.path.abspath(args.test_main)
     return args
 
 
@@ -35,14 +37,20 @@ def download_test(test, download_link, test_main):
 
     try:
         os.chdir(str(test_dir))
+        print("LOG: moved to {:s}".format(test_dir.name))
     except:
-        print("ERROR: not able to find test directory {:s}".format(test_dir))
+        print("ERROR: not able to find test directory {:s}".format(test_dir.name))
         exit(1)
-    
-    wget(download_link+'/'+tar_name, verbose=True)
 
-    with open(tar_name) as tar:
-        tar.extractall(filter='data')
+    if Path(tar_name).exists():
+        print("LOG: file {:s} already available".format(tar_name))
+    else:
+        print("LOG: downloading file {:s}".format(tar_name))
+        wget(download_link+'/'+tar_name, verbose=False)
+
+    if not Path(test['run']+'/SAVE/ns.wf').exists():
+        with tarfile.open(tar_name) as tar:
+            tar.extractall(filter='data')
 
     
 if __name__ == '__main__':
@@ -50,6 +58,9 @@ if __name__ == '__main__':
 
     tests = [
         {'name':'Al_bulk', 'run':'GW-OPTICS'},
+        {'name':'Si_bulk', 'run':'GW-OPTICS'},
+        {'name':'LiF', 'run':'GW-OPTICS'},
+        {'name':'hBN', 'run':'GW-OPTICS'},
         ]
 
     for test in tests:

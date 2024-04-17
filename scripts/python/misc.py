@@ -66,12 +66,10 @@ def os_system(command, verbose=True, failure_handling='exit', fake=False):
 
     return failure, output
 
-def run(program='',options='', inputfile='',logfile='logfile'):
+def run(program='',options='', inputfile='',logfile='logfile',verbose=False):
     """Run program, store output on logfile."""
     # the logfile is always opened in the constructor so
     # we can safely append here
-
-    verbose=False
 
     vfile = open(logfile, 'a')
     vfile.write('\n#### Test: %s' % (program+"_"+inputfile))
@@ -115,14 +113,35 @@ def copy_all_files(source, dest):
 def getKey(custom):
     return custom.name
 
-def read_files_list(directory,noext='',begin=''):
+def read_files_list(directory,noext='',begin='',nocontains=''):
     flist = []
     for p in directory.iterdir():
         if p.is_file():
+            if p.name.endswith('.flags'):
+                continue
+            if p.name.endswith('.actions'):
+                continue
             if noext != '' and p.name.endswith(noext):
                 continue
             if begin != '' and not p.name.startswith(begin):
                 continue
+            if nocontains != '' and nocontains in p.name:
+                continue
         flist.append(p)
     flist=sorted(flist,key=getKey)
     return flist
+
+def check_ypp(infile):
+    vals = ['Shifted_Grid', 'bzgrids', 'QPDBs', 'exciton', 'electrons', 'dipoles']
+    with open(infile, 'r') as inf:
+        inypp = inf.read()
+    for val in vals:
+        if val in inypp: return True
+    return False
+
+def check_ypp_sort(infile):
+    with open(infile, 'r') as inf:
+        inypp = inf.read()
+    if 'sort_2' in inypp: return "2"
+    if 'sort' in inypp: return "1"
+    return False
