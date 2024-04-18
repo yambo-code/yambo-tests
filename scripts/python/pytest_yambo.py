@@ -7,7 +7,8 @@ import random
 import argparse
 import numpy as np
 from pathlib import Path,os
-from misc    import getstatusoutput,os_system,run,copy_all_files,read_files_list,check_ypp,check_ypp_sort
+from download_tests import download_test
+from misc import getstatusoutput,os_system,run,copy_all_files,read_files_list,check_ypp,check_ypp_sort
 
 """
 Simple python script to test yambo
@@ -20,36 +21,38 @@ https://github.com/hplgit/scitools
 
 
 def get_args():
+    # Default parameters
     yambo_dir = ""
-    test_dir = "../../TESTS/MAIN/Al_bulk/GW-OPTICS"
+    tests_dir = "../../TESTS/MAIN"
     scratch = "."
     yambo_file = "yambo"
     ypp_file = "ypp"
     nprocs = 1
     mpi_launcher = "mpirun"
     tollerance = 0.1
-
-    infile = Path("parameters.json")
+    download_link = 'https://media.yambo-code.eu/robots/databases/tests'
+    
+    # Parsing configuration file
+    infile = Path("config.json")
     if infile.is_file():
         with open(infile.name, 'r') as jf:
-            defargs = json.load(jf)
-    if "yambo_dir" in defargs: yambo_dir = defargs["yambo_dir"]
-    if "test_dir" in defargs: test_dir = defargs["test_dir"]
-    if "scratch" in defargs: scratch = defargs["scratch"]
-    if "yambo_file" in defargs: yambo_file = defargs["yambo_file"]
-    if "ypp_file" in defargs: ypp_file = defargs["ypp_file"]
-    if "nprocs" in defargs: nprocs = defargs["nprocs"]
-    if "mpi_launcher" in defargs: mpi_launcher = defargs["mpi_launcher"]
-    if "tollerance" in defargs: tollerance = defargs["tollerance"]
+            config = json.load(jf)
+    if "yambo_dir" in config["parameters"]: yambo_dir = config["parameters"]["yambo_dir"]
+    if "tests_dir" in config["parameters"]: tests_dir = config["parameters"]["tests_dir"]
+    if "scratch" in config["parameters"]: scratch = config["parameters"]["scratch"]
+    if "yambo_file" in config["parameters"]: yambo_file = config["parameters"]["yambo_file"]
+    if "ypp_file" in config["parameters"]: ypp_file = config["parameters"]["ypp_file"]
+    if "nprocs" in config["parameters"]: nprocs = config["parameters"]["nprocs"]
+    if "mpi_launcher" in config["parameters"]: mpi_launcher = config["parameters"]["mpi_launcher"]
+    if "tollerance" in config["parameters"]: tollerance = config["parameters"]["tollerance"]
 
-    # ########################################
-    # ############## parse command line ######
-    # ########################################
+    # Parsing command line
     parser = argparse.ArgumentParser(prog='pytest_yambo',description='Simple python driver for the yambo-tests',epilog="Copyright Claudio Attaccalite 2019")
     #parser.add_argument('-i',help='input file in json format',metavar='FILE',type=str,dest='infile',default='parameters.json')
+    parser.add_argument('-link', help='download link', type=str, dest='link', default=download_link)
     parser.add_argument('-tol',help='tollerance (between 0 - 100%%)',type=float,dest='tollerance',default=tollerance)
     parser.add_argument('-scr',help='scratch directory',type=str,dest='scratch',default=scratch)
-    parser.add_argument('-test',help='test directory',type=str,dest='test_dir',default=test_dir)
+    parser.add_argument('-tests',help='tests directory',type=str,dest='tests_dir',default=tests_dir)
     parser.add_argument('-bin',help='yambo bin directory',type=str,dest='yambo_dir',default=yambo_dir)
     parser.add_argument('-mpi',help='mpi launcher',type=str,dest='mpi_launcher',default=mpi_launcher)
     parser.add_argument('-np',help='number of mpi tasks',type=int,dest='nprocs',default=nprocs)
@@ -62,16 +65,23 @@ def get_args():
     parser.set_defaults(skipcomp=False)
     args = parser.parse_args()
 
-    return args
+    return args, config["tests"]
 
 
 def check_code():
-    print("Checking codes and foldes: ")
+    print("Checking codes: ")
     try:
-        #print("Yambo bin is..."+str(yambo_bin.is_dir())+"; ", end = '')
-        print("Test folder is..."+str(test_folder.is_dir())+"; ", end = '')
         print("Yambo is..."+str(yambo.exists())+"; ", end = '')
         print("Ypp is..."+str(ypp.exists()))
+    except:
+       print(" KO!\n")
+       exit(1)
+
+
+def check_folders():
+    print("Checking codes and foldes: ")
+    try:
+        print("Test folder is..."+str(test_folder.is_dir())+"; ", end = '')
         print("\nChecking sub-folders: ")
         print("SAVE folder is..."+str(save_dir.is_dir())+"; ", end = '')
         print("SAVE_converted folder is..."+str(save_conv_dir.is_dir())+"; ", end = '')
@@ -123,45 +133,23 @@ def copy_SAVE_and_INPUTS():
     copy_all_files(inputs_dir,new_inputs_dir)
 
 
-if __name__ == "__main__":
-    # SETTING PARAMETERS
-    zero_dfl      = 1e-6
-    too_large     = 10e99
-
-    args = get_args()
-    
-    tollerance = float(args.tollerance)
-    try:
-        N = 6
+def make_tmpdir(scratch, name, run_type):
+    N = 6
+    #try:
+    if True:
         res = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase+string.digits, k=N))
-        tmpdir = Path(os.path.join(os.path.abspath(args.scratch),'runtest_{}'.format(res)))
+        tmpdir = scratch.joinpath('runtest_{0}_{1}_{2}'.format(name,run_type,res))
         tmpdir.mkdir()
-    except:
-        print("Error creating runtest folder into {}".format(args.scratch))
-        exit(1)
-    scratch_dir    = tmpdir  #used to run the tests
-    test_folder    = Path(os.path.abspath(args.test_dir))
-    yambo_bin      = Path(os.path.abspath(args.yambo_dir)) if args.yambo_dir else None 
-    yambo          = yambo_bin.joinpath(args.yambo_file) if yambo_bin else Path(shutil.which(args.yambo_file))
-    ypp            = yambo_bin.joinpath(args.ypp_file) if yambo_bin else Path(shutil.which(args.ypp_file))
-    mpi_launcher   = args.mpi_launcher
-    nprocs         = args.nprocs
-    
-    inputs_dir   = test_folder.joinpath("INPUTS")
-    save_dir     = test_folder.joinpath("SAVE")
-    save_conv_dir= test_folder.joinpath("SAVE_converted")
-    reference_dir= test_folder.joinpath("REFERENCE")
-    
-    # 
-    # ************* MAIN PROGRAM ********************
-    #
-    print("\n * * * Yambo python tests * * * \n\n")
-    
-    if sys.version_info[0] < 3:
-        raise Exception("Must be using Python 3")
-    
-    check_code()
-    
+    #except:
+    #    print("Error creating runtest folder into {}".format(scratch))
+    #    exit(1)
+    return tmpdir
+
+
+# 
+# ************* MAIN PROGRAM ********************
+#
+def main():
     #read test list
     tests_list=read_files_list(inputs_dir,noext='',nocontains='_shi')
     print("\nNumber of tests: "+str(len(tests_list)))
@@ -182,8 +170,7 @@ if __name__ == "__main__":
         exit(1)
     
     # convert the WF
-    if not args.skiprun: convert_wf()
-    
+    if not args.skiprun: convert_wf()    
     
     if not args.skiprun:
         #
@@ -313,3 +300,39 @@ if __name__ == "__main__":
         log_file.write(report)
         log_file.close()
 
+
+if __name__ == "__main__":
+    # SETTING PARAMETERS
+    zero_dfl      = 1e-6
+    too_large     = 10e99
+
+    args, tests = get_args()
+    
+    tollerance = float(args.tollerance)
+    scratch        = Path(os.path.abspath(args.scratch))
+    tests_dir      = Path(os.path.abspath(args.tests_dir))
+    yambo_bin      = Path(os.path.abspath(args.yambo_dir)) if args.yambo_dir else None 
+    yambo          = yambo_bin.joinpath(args.yambo_file) if yambo_bin else Path(shutil.which(args.yambo_file))
+    ypp            = yambo_bin.joinpath(args.ypp_file) if yambo_bin else Path(shutil.which(args.ypp_file))
+    mpi_launcher   = args.mpi_launcher
+    nprocs         = args.nprocs
+    
+    print("\n * * * Yambo python tests * * * \n\n")
+    
+    if sys.version_info[0] < 3:
+        raise Exception("Must be using Python 3")
+    
+    check_code()
+
+    for name, runs in tests.items():
+        for run_type in runs:
+            download_test(name, run_type, args.link, str(tests_dir))
+            scratch_dir  = make_tmpdir(scratch, name, run_type) #used to run the tests
+            test_folder  = tests_dir.joinpath(name).joinpath(run_type)
+            inputs_dir   = test_folder.joinpath("INPUTS")
+            save_dir     = test_folder.joinpath("SAVE")
+            save_conv_dir= test_folder.joinpath("SAVE_converted")
+            reference_dir= test_folder.joinpath("REFERENCE")
+            check_folders()
+            main()
+            

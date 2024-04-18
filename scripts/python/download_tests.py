@@ -6,13 +6,13 @@ from pathlib import Path, os
 
 
 def get_args():
-    test_main = '../../TESTS/MAIN'
+    tests_dir = '../../TESTS/MAIN'
     download_link = 'https://media.yambo-code.eu/robots/databases/tests'
     parser = argparse.ArgumentParser()
-    parser.add_argument('-test', help='test directory', type=str, dest='test_main', default=test_main)
+    parser.add_argument('-test', help='test directory', type=str, dest='tests_dir', default=tests_dir)
     parser.add_argument('-link', help='download link', type=str, dest='link', default=download_link)
     args = parser.parse_args()
-    args.test_main = os.path.abspath(args.test_main)
+    args.tests_dir = os.path.abspath(args.tests_dir)
     return args
 
 
@@ -31,9 +31,9 @@ def wget(wargs, verbose=False):
     pass
 
 
-def download_test(test, download_link, test_main):
-    test_dir = Path(test_main) / test['name']
-    tar_name = test['name'] + "_" + test['run'] + ".tar.gz"
+def download_test(name, run_type, download_link, tests_dir):
+    test_dir = Path(tests_dir) / name
+    tar_name = name + "_" + run_type + ".tar.gz"
 
     try:
         os.chdir(str(test_dir))
@@ -48,7 +48,7 @@ def download_test(test, download_link, test_main):
         print("LOG: downloading file {:s}".format(tar_name))
         wget(download_link+'/'+tar_name, verbose=False)
 
-    if not Path(test['run']+'/SAVE/ns.wf').exists():
+    if not Path(run_type+'/SAVE/ns.wf').exists():
         with tarfile.open(tar_name) as tar:
             tar.extractall(filter='data')
 
@@ -56,13 +56,14 @@ def download_test(test, download_link, test_main):
 if __name__ == '__main__':
     args = get_args()
 
-    tests = [
-        {'name':'Al_bulk', 'run':'GW-OPTICS'},
-        {'name':'Si_bulk', 'run':'GW-OPTICS'},
-        {'name':'LiF', 'run':'GW-OPTICS'},
-        {'name':'hBN', 'run':'GW-OPTICS'},
-        ]
+    tests = {
+	"Al_bulk": ["GW-OPTICS"],
+	"Si_bulk": ["GW-OPTICS"],
+	"hBN": ["GW-OPTICS"],
+	"LiF": ["GW-OPTICS"]
+    }
 
-    for test in tests:
-        download_test(test, args.link, args.test_main)
+    for name, runs in tests.items():
+        for run_type in runs:
+            download_test(name, run_type, args.link, args.tests_dir)
 
