@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-import json
+import yaml
 import shutil
 import string
 import random
@@ -33,10 +33,10 @@ def get_args():
     download_link = 'https://media.yambo-code.eu/robots/databases/tests'
     
     # Parsing configuration file
-    infile = Path("config.json")
+    infile = Path("config.yaml")
     if infile.is_file():
-        with open(infile.name, 'r') as jf:
-            config = json.load(jf)
+        with open(infile.name, 'r') as yf:
+            config = yaml.safe_load(yf)
     if "yambo_dir" in config["parameters"]: yambo_dir = config["parameters"]["yambo_dir"]
     if "tests_dir" in config["parameters"]: tests_dir = config["parameters"]["tests_dir"]
     if "scratch" in config["parameters"]: scratch = config["parameters"]["scratch"]
@@ -119,37 +119,33 @@ def convert_wf():
     print("OK")
 
 
-def copy_SAVE_and_INPUTS():
-    new_save=scratch_dir.joinpath('SAVE/')
-    Path(new_save).mkdir(parents=True,exist_ok=True)
-    copy_all_files(save_dir,new_save)
-
-    new_save_conv=scratch_dir.joinpath('SAVE_converted/')
-    Path(new_save_conv).mkdir(parents=True,exist_ok=True)
-    copy_all_files(save_conv_dir,new_save_conv)
-
-    new_inputs_dir=scratch_dir.joinpath('INPUTS/')
-    Path(new_inputs_dir).mkdir(parents=True,exist_ok=True)
-    copy_all_files(inputs_dir,new_inputs_dir)
+def copy_SAVE_and_INPUTS(scratch_dir, test_folder):
+    for a_dir in test_folder.iterdir():
+        if a_dir.is_dir():
+            new_dir=scratch_dir.joinpath(a_dir.name)
+            Path(new_dir).mkdir(parents=False,exist_ok=False)
+            copy_all_files(a_dir,new_dir)
 
 
-def make_tmpdir(scratch, name, run_type):
+def make_tmpdir(scratch, run_name, run_type):
     N = 6
-    #try:
-    if True:
+    try:
         res = ''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase+string.digits, k=N))
-        tmpdir = scratch.joinpath('runtest_{0}_{1}_{2}'.format(name,run_type,res))
+        tmpdir = scratch.joinpath('runtest_{0}_{1}_{2}'.format(run_name,run_type,res))
         tmpdir.mkdir()
-    #except:
-    #    print("Error creating runtest folder into {}".format(scratch))
-    #    exit(1)
+    except:
+        print("Error creating runtest folder into {}".format(scratch))
+        exit(1)
     return tmpdir
 
 
 # 
 # ************* MAIN PROGRAM ********************
 #
-def main():
+def main(run_name, run_type):
+    if not args.skiprun:
+        print("\n\n ********** RUNNING TESTS {}_{} ***********\n\n".format(run_name,run_type))
+
     #read test list
     tests_list=read_files_list(inputs_dir,noext='',nocontains='_shi')
     print("\nNumber of tests: "+str(len(tests_list)))
@@ -157,7 +153,7 @@ def main():
     # copy SAVE and INPUTS in the SCRATCH directory 
     if not args.skiprun:
         try:
-            copy_SAVE_and_INPUTS()
+            copy_SAVE_and_INPUTS(scratch_dir, test_folder)
         except:
             print("Error copying SAVE and INPUTS folders to SCRATCH! ")
             exit(1)
@@ -175,7 +171,6 @@ def main():
     if not args.skiprun:
         #
         # Run all tests
-        print("\n\n ********** RUNNING TESTS ***********\n\n")
         #
         for test in tests_list:
             # ************ Running test **************
@@ -207,17 +202,16 @@ def main():
             # ******** Setup flags for the test ******
             flag_file = Path("INPUTS/"+test.name+".flags")
         
+            options = " -J "+test.name
+            
             if flag_file.is_file():
-                flag_file=open(str(flag_file),"r")
-                flag=flag_file.read().strip()
-                flag_file.close()
-                previous_test_dir=Path(flag)
-                new_test_dir     =Path(test.name)
-                Path(new_test_dir).mkdir(parents=True,exist_ok=True)
-                copy_all_files(previous_test_dir,new_test_dir)
-    
-    
-            options=" -J "+test.name
+                with open(str(flag_file),"r") as flag_file:
+                    flag=flag_file.read().strip()
+                options += ",{}".format(flag)
+                #previous_test_dir=Path(flag)
+                #new_test_dir     =Path(test.name)
+                #Path(new_test_dir).mkdir(parents=True,exist_ok=True)
+                #copy_all_files(previous_test_dir,new_test_dir)
     
         # ****** run yambo or ypp *****************
             failure=run(program=program,options=options,inputfile=inputfile,logfile=test.name+".log")
@@ -324,15 +318,15 @@ if __name__ == "__main__":
     
     check_code()
 
-    for name, runs in tests.items():
+    for run_name, runs in tests.items():
         for run_type in runs:
-            download_test(name, run_type, args.link, str(tests_dir))
-            scratch_dir  = make_tmpdir(scratch, name, run_type) #used to run the tests
-            test_folder  = tests_dir.joinpath(name).joinpath(run_type)
+            download_test(run_name, run_type, args.link, str(tests_dir))
+            scratch_dir  = make_tmpdir(scratch, run_name, run_type) #used to run the tests
+            test_folder  = tests_dir.joinpath(run_name).joinpath(run_type)
             inputs_dir   = test_folder.joinpath("INPUTS")
             save_dir     = test_folder.joinpath("SAVE")
             save_conv_dir= test_folder.joinpath("SAVE_converted")
             reference_dir= test_folder.joinpath("REFERENCE")
             check_folders()
-            main()
+            main(run_name, run_type)
             
