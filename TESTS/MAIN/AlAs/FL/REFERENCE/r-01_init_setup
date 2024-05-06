@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-    Version 5.1.0 Revision 21686 Hash (prev commit) 8febcbe64             
-                   Branch is devel-fl-merged                              
-                MPI+SLK+SLEPC+HDF5_MPI_IO Build                           
-                   http://www.yambo-code.org                              
+                                                                          
+    Y88b    /   e           e    e      888~~\    ,88~-_                  
+     Y88b  /   d8b         d8b  d8b     888   |  d888   \                 
+      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |                
+       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |                
+        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /                 
+       /   /      Y88b /          Y888b 888__/    `88_-~                  
+                                                                          
+                                                                          
+    Version 5.2.0 Revision 23078 Hash (prev commit) 0f188900c2            
+                    Branch is phys-floquet                                
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+                   http://www.yambo-code.eu                               
  
- 10/03/2022 at 19:55 yambo_nl @ asellota08
+ 05/06/2024 at 18:17 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -25,15 +25,16 @@
  Fragmented WFs      : yes
  CORE databases      : .
  Additional I/O      : .
- Communications      : out01
- Input file          : out01/01_init
- Report file         : out01/r-01_init_setup
+ Communications      : .
+ Input file          : yambo.in
+ Report file         : ./r-01_init_setup
  Verbose log/report  : no
- Log files           : out01/LOG
+ Log files           : ./LOG
 
  Job   string        : 01_init
+ Alt#1 string        : R2
 
- Precision           : DOUBLE
+ Precision           : SINGLE
   
  [RD./SAVE//ns.db1]--------------------------------------------------------------
   Bands                                            :  10
@@ -118,34 +119,34 @@
 
   Compatible Grid is   : 3D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.500000    -0.459254E-8 -0.459254E-8 [rlu]
-  K_min[ 2 ] :  0.459254E-8  0.500000    -0.459254E-8 [rlu]
-  K_min[ 3 ] :  0.459254E-8  0.459254E-8  0.500000    [rlu]
+  K_min[ 1 ] :  0.000000  0.500000  0.000000 [rlu]
+  K_min[ 2 ] :  0.500000  0.000000  0.000000 [rlu]
+  K_min[ 3 ] :  0.000000  0.000000  0.500000 [rlu]
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.101358 [a.u.]
 
-  IBZ K-points :   8
-  BZ  K-points :   8
+  IBZ K-points                                      :   8
+  BZ  K-points                                      :   8
 
   K/Q-points units:
   rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
-  K [1]:  0.000000  0.000000  0.000000 [rlu]
-        : wf components:  1291
-  K [2]:  0.500000  0.000000  0.000000 [rlu]
-        : wf components:  1308
-  K [3]:  0.000000  0.500000  0.000000 [rlu]
-        : wf components:  1308
-  K [4]:  0.500000  0.500000  0.000000 [rlu]
-        : wf components:  1298
-  K [5]:  0.000000  0.000000  0.500000 [rlu]
-        : wf components:  1308
-  K [6]:  0.500000  0.000000  0.500000 [rlu]
-        : wf components:  1298
-  K [7]:  0.000000  0.500000  0.500000 [rlu]
-        : wf components:  1298
-  K [8]:  0.500000  0.500000  0.500000 [rlu]
-        : wf components:  1308
+  K [1]          [rlu]:  0.000000  0.000000  0.000000
+         WF components:  1291
+  K [2]          [rlu]:  0.500000  0.000000  0.000000
+         WF components:  1308
+  K [3]          [rlu]:  0.000000  0.500000  0.000000
+         WF components:  1308
+  K [4]          [rlu]:  0.500000  0.500000  0.000000
+         WF components:  1298
+  K [5]          [rlu]:  0.000000  0.000000  0.500000
+         WF components:  1308
+  K [6]          [rlu]:  0.500000  0.000000  0.500000
+         WF components:  1298
+  K [7]          [rlu]:  0.000000  0.500000  0.500000
+         WF components:  1298
+  K [8]          [rlu]:  0.500000  0.500000  0.500000
+         WF components:  1308
 
   [02.05] Energies & Occupations
   ==============================
@@ -155,7 +156,7 @@
   [X] Bosonic    Temperature                        :  0.000000  0.000000 [eV K]
   [X] Finite Temperature mode                       : no
   [X] El. density                                   :  0.17648E+24 [cm-3]
-  [X] Fermi Level                                   :  3.723834 [eV]
+  [X] Fermi Level                                   :  3.723835 [eV]
 
   [X] === Gaps and Widths ===
   [X] Conduction Band Min                           :  1.358279 [eV]
@@ -171,7 +172,7 @@
    
    
   E @ K [1]:  [eV]
-  -11.90136   0.00000   0.00000   0.00000   1.96183   4.24737   4.24737   4.24737
+  -11.90136   0.00000   0.00000   0.00000   1.96183   4.24738   4.24738   4.24738
   occ @ K [1]
    2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [2]:  [eV]
@@ -183,7 +184,7 @@
   occ @ K [3]
    2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [4]:  [eV]
-   -9.94975  -5.44342  -2.17239  -2.17239   1.35828   2.19031  10.26011  10.26011
+   -9.94975  -5.44342  -2.17238  -2.17238   1.35828   2.19031  10.26011  10.26011
   occ @ K [4]
    2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [5]:  [eV]
@@ -191,11 +192,11 @@
   occ @ K [5]
    2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [6]:  [eV]
-   -9.94975  -5.44342  -2.17239  -2.17239   1.35828   2.19031  10.26011  10.26011
+   -9.94975  -5.44342  -2.17238  -2.17238   1.35828   2.19031  10.26011  10.26011
   occ @ K [6]
    2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [7]:  [eV]
-   -9.94975  -5.44342  -2.17239  -2.17239   1.35828   2.19031  10.26011  10.26011
+   -9.94975  -5.44342  -2.17238  -2.17238   1.35828   2.19031  10.26011  10.26011
   occ @ K [7]
    2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
   E @ K [8]:  [eV]
@@ -207,20 +208,20 @@
  ==========================================
 
 
- IBZ Q-points :   8
- BZ  Q-points :   8
+ IBZ Q-points                                      :   8
+ BZ  Q-points                                      :   8
 
  K/Q-points units:
  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
- Q [1]:  0.000000  0.000000  0.000000 [rlu]
- Q [2]:  0.500000    -0.459254E-8 -0.459254E-8 [rlu]
- Q [3]:  0.459254E-8  0.500000    -0.459254E-8 [rlu]
- Q [4]:  0.500000     0.500000    -0.918507E-8 [rlu]
- Q [5]:  0.459254E-8  0.459254E-8  0.500000    [rlu]
- Q [6]:  0.500000  0.000000  0.500000 [rlu]
- Q [7]:  0.918507E-8  0.500000     0.500000    [rlu]
- Q [8]:  0.500000  0.500000  0.500000 [rlu]
+ Q [1]          [rlu]:  0.000000  0.000000  0.000000
+ Q [2]          [rlu]:  0.500000  0.000000  0.000000
+ Q [3]          [rlu]:  0.000000  0.500000  0.000000
+ Q [4]          [rlu]:  0.500000     0.500000    -0.918507E-8
+ Q [5]          [rlu]:  0.000000  0.000000  0.500000
+ Q [6]          [rlu]:  0.500000  0.000000  0.500000
+ Q [7]          [rlu]:  0.000000  0.500000  0.500000
+ Q [8]          [rlu]:  0.500000  0.500000  0.500000
 
   [03.01] X indexes
   =================
@@ -231,39 +232,35 @@
 
    [WR./SAVE//ndb.kindx]-----------------------------------------------------------
     Fragmentation                                    : no
-    Polarization last K                              :   8
+    Polarization last K ( bz)                        :   8
+    Polarization last K (ibz)                        :   8
     QP states                                        :   1   8
     X grid is uniform                                : yes
-    Grids                                            : X S
-    BS scattering                                    : no
-    COLL scattering                                  : no
-    Sigma scattering                                 : yes
-    X scattering                                     : yes
-   - S/N 002631 ---------------------------------------------- v.05.01.00 r.21686 -
+    Grids (string)                                   :  X S
+    Grids (int-vector)                               :  1  0  0  1
+   - S/N 002631 ---------------------------------------------- v.05.02.00 r.23078 -
 
  [04] Timing Overview
  ====================
 
  Clock: global
-           io_KB_pwscf :      0.0001s CPU
-      io_ATMPROJ_pwscf :      0.0001s CPU
-            io_DIPOLES :      0.0001s CPU
-            io_COL_CUT :      0.0001s CPU
-        io_Double_Grid :      0.0001s CPU
-      io_RT_components :      0.0002s CPU (2 calls,   0.090 msec avg)
-                 io_HF :      0.0002s CPU
-         io_COLLISIONS :      0.0003s CPU (3 calls,   0.099 msec avg)
-          io_KB_abinit :      0.0067s CPU
-                 io_WF :      0.0071s CPU
-               io_GROT :      0.0081s CPU (3 calls,   2.710 msec avg)
-              io_QINDX :      0.0103s CPU (3 calls,   3.421 msec avg)
-       bz_samp_indexes :      0.0116s CPU
+           io_KB_pwscf :      0.0000s CPU
+      io_ATMPROJ_pwscf :      0.0000s CPU
+            io_COL_CUT :      0.0000s CPU
+            io_DIPOLES :      0.0000s CPU
+                 io_HF :      0.0000s CPU
+        io_Double_Grid :      0.0000s CPU (2 calls,   0.024 msec avg)
+                 io_WF :      0.0011s CPU
+          io_KB_abinit :      0.0013s CPU
+               io_GROT :      0.0018s CPU (3 calls,   0.601 msec avg)
+              io_QINDX :      0.0031s CPU (3 calls,   1.034 msec avg)
+       bz_samp_indexes :      0.0037s CPU
 
  [05] Game Over & Game summary
  =============================
 
- 10/03/2022 at 19:55 yambo_nl @ asellota08 [start]
- 10/03/2022 at 19:55                       [end]
+ 05/06/2024 at 18:17 yambo @ unimi-XPS-8930 [start]
+ 05/06/2024 at 18:17                        [end]
 
   
  .-ACKNOWLEDGMENT
@@ -287,23 +284,10 @@
  | Computer Physics Communications 180, 1392 (2009).
  |
   
- .-Input file  out01/01_init
+ .-Input file  yambo.in
  | setup                            # [R] Initialization
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
  | MaxGvecs=  645             RL    # [INI] Max number of G-vectors planned to use
- | K_grids= "X S"                   # [KPT] Select the grids (X=response, S=sigma, C=collisions, B=bse) [default X S C B]
- | % Field1_Freq
- |  0.100000 | 0.100000 |         eV    # [RT Field1] Frequency
- | %
- | Field1_NFreqs= 1                 # [RT Field1] Frequency
- | Field1_Int=  1000.00       kWLm2 # [RT Field1] Intensity
- | Field1_Width= 0.000000     fs    # [RT Field1] Width
- | Field1_FWHM= 0.000000      fs    # [RT Field1] Full Width at Half Maximum (overwrite width if set)
- | Field1_kind= "SOFTSIN"           # [RT Field1] Kind(SIN|COS|RES|ANTIRES|GAUSS|DELTA|QSSIN)
- | Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
- | % Field1_Dir
- |  0.000000 | 0.000000 | 0.000000 |        # [RT Field1] Versor
- | %
- | Field1_Tstart= 0.010000    fs    # [RT Field1] Initial Time
+ | K_grids= " X S"                  # [KPT] Select the grids (X=response, S=sigma, C=collisions, B=bse) [default X S C B]
  | %QptCoord                        # [KPT] [iku] Q-points coordinates (compatibility)
  | %

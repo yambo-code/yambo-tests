@@ -92,6 +92,14 @@ if (-e "SC") {
   {$yambo_exec = "$conf_bin/yambo_sc";
    $yambo_running=1}
 }
+if (-e "FL") {
+ undef $yambo_running;
+ if ($YPP_FL=="1" or $YPP=="1") 
+  {$yambo_exec = "$conf_bin/ypp_fl"}
+ else
+  {$yambo_exec = "$conf_bin/yambo_fl";
+   $yambo_running=1}
+}
 if (-e "MAGNETIC") {
  undef $yambo_running;
  if ($YPP_MAGNETIC=="1" or $YPP=="1") 
