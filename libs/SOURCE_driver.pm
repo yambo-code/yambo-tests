@@ -86,8 +86,10 @@ if ($compile) {
  &MY_PRINT($stdout, "\n -   Source configure :");
  chdir $BRANCH;
  &MY_PRINT($stdout, " Checking out as $branch_id ...");
+ &MY_PRINT($stdout, "Updating (1) ...");
+ &command("$git pull -q --no-rebase");
  &command("$git checkout $branch_id -q");
- &MY_PRINT($stdout, "Updating ...");
+ &MY_PRINT($stdout, "Updating (2) ...");
  &command("$git pull -q --no-rebase");
  &command("$git submodule update --recursive --remote");
  #
@@ -122,7 +124,7 @@ if ($compile) {
 #
 # BIN's
 if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
- $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key";
+ $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key_no_slash";
  &command("rm -fr $conf_bin; mkdir $conf_bin");
  chdir $comp_folder;
  @executables = split(/\s+/, $exec_list);
@@ -132,12 +134,12 @@ if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
  }
  chdir $suite_dir;
 }elsif (not $keep_bin){
- $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind-$ROBOT_string-$branch_key";
+ $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind-$ROBOT_string-$branch_key_no_slash";
 }
 #
 # branch string
 #
-$branch=$branch_key."-".$conf_file;
+$branch=$branch_key_no_slash."-".$conf_file;
 #
 if ($compile)
 {
@@ -187,17 +189,22 @@ if (not "$ERROR" eq "OK") {
 # NCDUMP
 #
 my $sys_ncdump = `which ncdump`; 
+my $lib_ncdump = `find $comp_folder/lib/external/ -name 'ncdump' -type f`;
 chomp($sys_ncdump);
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
+}elsif(-e "$comp_folder/lib/bin/ncdump") { 
+ $ncdump = "$comp_folder/lib/bin/ncdump"; 
+ chomp($ncdump);
 }elsif(-e $sys_ncdump) { 
  $ncdump = "$sys_ncdump"; 
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
+}elsif(-e $lib_ncdump) { 
+ $ncdump = "$lib_ncdump"; 
 }else{ 
  die "\n ncdump not found\n";
 }
+&MY_PRINT($stdout, "\n               ncdump : $ncdump");
 #
 # Rename the conf/comp logs
 #
@@ -246,7 +253,7 @@ sub SOURCE_delay{
 }
 sub LOGs_move{
  chdir $comp_folder;
- my $extension=$branch_key.'-'.$FC_kind.'-'.$conf_file.'-'.$ROBOT_string.'-'.$host;
+ my $extension=$branch_key_no_slash.'-'.$FC_kind.'-'.$conf_file.'-'.$ROBOT_string.'-'.$host;
  &command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
  &command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");
  chdir $suite_dir;

@@ -27,7 +27,7 @@ $input_folder = "INPUTS";
 my $prefix="";
 if (@_) {$prefix="@_/"};
 if ($branch_key and -d "${prefix}INPUTS_$branch_key"){ $input_folder = "INPUTS_$branch_key"}
-if ($is_GPL and -d "${prefix}INPUTS_master_gpl"){ $input_folder = "INPUTS_master_gpl"}
+if ($is_GPL and -d "${prefix}INPUTS_gpl"){ $input_folder = "INPUTS_gpl"}
 $REF_prefix   = "";
 if ($mode eq "bench") {
  $in_dir_cmd_line = "-I ../ -O .";
@@ -79,7 +79,7 @@ if($user_tests){
    $TESTS_folder_scan = "$TESTS_folder/$user_tests";
   }
   elsif($user_tests eq "all"){
-   &MY_PRINT($stdout, " -     Test selection : full suite");
+   if (not $download and not $upload_test) {&MY_PRINT($stdout, " -     Test selection : full suite")};
    $TESTS_folder_scan = $TESTS_folder;
   }
   # If I find SAVE and $input_folder, treat as a working test dir.

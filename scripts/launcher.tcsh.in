@@ -8,10 +8,11 @@ set flow="validate"
 set conf=" "
 set report=" "
 set backup=" "
+set off=" "
 #
 if ( $#argv == 0 ) then
  echo 
- echo "launcher.tcsh -y YBRANCH -t [TBRANCH] -m MODULE -f FLOW/ext-libs -c [CONFFILE] -r -b"
+ echo "launcher.tcsh -y YBRANCH -t [TBRANCH] -m MODULE -f FLOW/ext-libs -c [CONFFILE] -o [OFF] -r -b"
  echo 
  echo  "-r -> report"
  echo  "-b -> backup"
@@ -44,6 +45,10 @@ while ( $n < $#argv)
   @ n += 1
   set conf="-conf $argv[$n]"
  endif
+ if ( "$argv[$n]" == "-o" ) then
+  @ n += 1
+  set off="-off $argv[$n]"
+ endif
  if ( "$argv[$n]" == "-r" ) then
   set report="-report"
  endif
@@ -69,8 +74,10 @@ source module.tcsh
 rm -f module.tcsh script.awk
 git checkout $tbranch 
 git pull 
+./configure
+./driver.pl -d all
 if ( "$flow" == "ext-libs" ) then
- ./driver.pl -compile ext-libs -branch $ybranch -module $module $conf
+ ./driver.pl -flow test -branch $ybranch -module $module
 else
- ./driver.pl -flow $flow $report $backup -branch $ybranch -input -module $module $conf
+ ./driver.pl -flow $flow $off $report $backup -branch $ybranch -input -module $module $conf
 endif

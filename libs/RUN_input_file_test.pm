@@ -35,9 +35,10 @@ sub RUN_input_file_test{
 
  if ($SETUP=="1")   { $CMD=$CMD." -setup" };
  if ($HF=="1")      { $CMD=$CMD." -hf"};
- if ($GW=="1" && &RUN_feature("_gw_")==0) { $CMD=$CMD." -dyson n"};
- if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )    { $CMD=$CMD." -gw0 p"};
+ if ($GW=="1"  &&  &RUN_feature("_gw_")==0) { $CMD=$CMD." -dyson n"};
+ if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -gw0 p"};
  if ($PPA=="1" &&  &RUN_feature("gw")==0  &&  &RUN_feature("_gw_")==0)    { $CMD=$CMD." -X p"};
+ if ($MPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -gw0 m"};
  if ($COHSEX=="1" &&  &RUN_feature("_gw_")==0)  { $CMD=$CMD." -gw0 c"};
  if ($BSE=="1")     { $CMD=$CMD." -optics b"};
  if ($CHI=="1")     { $CMD=$CMD." -optics c"};
@@ -47,6 +48,7 @@ sub RUN_input_file_test{
  if ($LIFE=="1")    { $CMD=$CMD." -lifetimes"};
 
  if (&RUN_feature("rim_cut")=="1") {$CMD=$CMD." -coulomb"};
+ if (&RUN_feature("rim_w")=="1")   {$CMD=$CMD." -rw"};
  if ($GW=="1" && $EM1D=="1") {$CMD=$CMD." -gw0 r"}
 
  if (&RUN_feature("DysSolver= \"n\"")=="1") {$CMD=$CMD." -dyson n"};
@@ -164,8 +166,22 @@ sub RUN_input_file_test{
  if (&RUN_feature("p2y")=="1")   { return "OK" };
  if (&RUN_feature("a2y")=="1")   { return "OK" };
 
+ #
+ # MPI off?
+ #
+ my $mpi_off_flag=" ";
+ my $mpi_command=" ";
+ if ($mpi_is_off){
+  if ( not $is_NEW_driver) {$mpi_off_flag="-M"}
+  if (     $is_NEW_driver) {$mpi_off_flag="-nompi"}
+ }else{
+   if ($mpiexec) { $mpi_command="$mpiexec -quiet -np 1"}
+ }
+
  if ($CMD and $NEW_file) {
-  &command("$yambo_exec -Q $CMD -F $NEW_file $log");
+  &command("$mpi_command $yambo_exec $mpi_off_flag -Q $CMD -F $NEW_file $log");
+  # This is likely due to a missing call to MPI_init
+  if ($system_error == 256) { $system_error=0 }
   if (compare("$INPUT_file","$NEW_file") == 0) {
    return "Input not Generated";
   }else{

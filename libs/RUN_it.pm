@@ -30,12 +30,20 @@ if($verb ge 2) { &PRINT_input };
 my $CPU_cmd= " ";
 if ($yambo_running) {$CPU_cmd=$CPU_flag};
 #
+# MPI off?
+#
+my $mpi_off_flag=" ";
+if ($mpi_is_off){
+ if ( not $is_NEW_driver) {$mpi_off_flag="-M"}
+ if (     $is_NEW_driver) {$mpi_off_flag="-nompi"}
+}
+#
 # CMD line
 #
-if ($np==1 or $MPI_CPU_conf[1] eq "serial") {
- $command_line = "$nice $yambo_exec $INPUT_option $INPUT_file $flags $in_dir_cmd_line $force_serial $log";
+if ($mpiexec) {
+ $command_line = "$nice $mpiexec -np $np $yambo_exec $INPUT_option $INPUT_file $flags $in_dir_cmd_line $CPU_cmd $log";
 }else{
- $command_line = "$nice $mpiexec -np $np $yambo_exec $INPUT_option $INPUT_file $flags $in_dir_cmd_line $force_serial $CPU_cmd $log";
+ $command_line = "$nice $yambo_exec $mpi_off_flag $INPUT_option $INPUT_file $flags $in_dir_cmd_line $log";
 }
 #
 # *** RUN ***
@@ -92,8 +100,11 @@ if ($system_error == 0) {
   &MESSAGE("LOG",$msg."s");
  }
 }elsif ($system_error == 256) {
+ # This happens because perl returns a 16 bit value, with the exit code in the higher 8 bits
+ # If not properly converted, this is equal to the value multipliued by 256
+ # So 256 is error code 1, e.g. EPERM /* Operation not permitted *
  my $msg = sprintf("%8.1f", $elapsed);
- &MESSAGE("LOG",$msg."s [WARNING Exit Code 256]");
+ &MESSAGE("LOG",$msg."s [WARNING Exit Code 256, EPERM /* Operation not permitted */]");
 }else{
  $CHECK_error="FAILED (exit code $system_error)";
  &RUN_stats("NOT_RUN");
