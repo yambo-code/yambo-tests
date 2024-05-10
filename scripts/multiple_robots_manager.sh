@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() { 
-  echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -h ] " 1>&2 
+	echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -c(l)ean -(u)pdate -(p)ause/unpause -h ] " 1>&2 
 }
 
 message(){
@@ -25,14 +25,17 @@ clone() {
 }
 
 # Get the options
-while getopts "r:ickbh" option; do
+while getopts "r:icklubhp" option; do
    case $option in
       r) user_ID=$OPTARG;;
       i) INSTALL=1;;
+      u) UPDATE=1;;
       b) BOOT=1;;
       k) KILL=1;;
       c) CONF=1;;
+      l) CLEAN=1;;
       h) HELP=1;;
+      p) PAUSE=1;;
    esac
 done
 #
@@ -55,6 +58,37 @@ for test in test.* ; do
  PID=`pgrep -f $robot.$ID`
  if  [ ! -z $user_ID ] ; then
    if [ ! $user_ID == $ID ]; then  continue; fi
+ fi
+ #
+ # Update 
+ #
+ if [ ! -z $PAUSE ] ; then
+  STOP_file="yambo-testing/stop_${robot}.$ID"
+  if [ -f ~/$STOP_file ] ; then 
+   rm -f ~/$STOP_file
+  else
+   touch ~/$STOP_file
+  fi
+ fi
+ #
+ # Update 
+ #
+ if [ ! -z $UPDATE ] ; then
+  cd $test
+  git pull
+  git submodule init
+  git submodule update --merge --remote
+  git pull
+  cd ..
+ fi
+ #
+ # Clean 
+ #
+ if [ ! -z $CLEAN ] ; then
+  cd $test
+  ./driver.pl -c
+  rm -fr compile_dir
+  cd ..
  fi
  #
  # Install
@@ -88,6 +122,8 @@ for test in test.* ; do
   repeat "="
   message "Configuring $robot.$ID"
   repeat "="
+  git pull
+  git submodule update --merge --remote
   echo "./configure --with-yambo=$CD/sources/master.$ID --with-host=$robot.$ID"
   ./configure --with-yambo=$CD/sources/master.$ID --with-host=$robot.$ID
   if [ ! -z $NEW ]; then

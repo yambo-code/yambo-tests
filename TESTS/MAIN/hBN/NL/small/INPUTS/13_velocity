@@ -1,0 +1,46 @@
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+# Version 5.2.0 Revision 22368 Hash (prev commit) b42959ab6a          
+#                   Branch is devel-hhg                               
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+nloptics                         # [R] Non-linear spectroscopy
+DIP_Threads=0                    # [OPENMP/X] Number of threads for dipoles
+NL_Threads=0                     # [OPENMP/NL] Number of threads for nl-optics
+% NLBands
+  7 |  12 |                           # [NL] Bands range
+%
+NLverbosity= "high"              # [NL] Verbosity level (low | high)
+NLstep= 0.010000           fs    # [NL] Time step length
+NLtime= 20.00000           fs    # [NL] Simulation Time
+NLintegrator= "RK4"              # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
+NLCorrelation= "IPA"             # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX")
+NLLrcAlpha= 0.000000             # [NL] Long Range Correction
+NLDamping= 0.00000        eV    # [NL] Damping (or dephasing)
+RADLifeTime=-1.000000      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
+EvalCurrent                   # [NL] Evaluate the current
+#FrPolPerdic                   # [DIP] Force periodicity of polarization respect to the external field
+Gauge= "velocity"                # [BSE/X] Gauge (length|velocity)
+HARRLvcs=  797             RL    # [HA] Hartree     RL components
+EXXRLvcs=  797             RL    # [XX] Exchange    RL components
+% Field1_Freq
+ 2.000000 | 2.000000 |         eV    # [RT Field1] Frequency
+%
+Field1_NFreqs= 1                 # [RT Field1] Frequency
+Field1_Int=  10000.00       kWLm2 # [RT Field1] Intensity
+Field1_Width= 10.00000     fs    # [RT Field1] Width
+Field1_kind= "PHHG"              # [RT Field1] Kind(SIN|SOFTSIN| see more on src/modules/mod_fields.F)
+Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
+% Field1_Dir
+ 0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor
+%
+Field1_Tstart= 0.010000    fs    # [RT Field1] Initial Time
