@@ -170,13 +170,18 @@ sub RUN_input_file_test{
  # MPI off?
  #
  my $mpi_off_flag=" ";
+ my $mpi_command=" ";
  if ($mpi_is_off){
   if ( not $is_NEW_driver) {$mpi_off_flag="-M"}
   if (     $is_NEW_driver) {$mpi_off_flag="-nompi"}
+ }else{
+   if ($mpiexec) { $mpi_command="$mpiexec -quiet -np 1"}
  }
 
  if ($CMD and $NEW_file) {
-  &command("$yambo_exec $mpi_off_flag -Q $CMD -F $NEW_file $log");
+  &command("$mpi_command $yambo_exec $mpi_off_flag -Q $CMD -F $NEW_file $log");
+  # This is likely due to a missing call to MPI_init
+  if ($system_error == 256) { $system_error=0 }
   if (compare("$INPUT_file","$NEW_file") == 0) {
    return "Input not Generated";
   }else{

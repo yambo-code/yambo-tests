@@ -185,7 +185,6 @@ if($download){
   else {&FTP_list("robots/databases/tests")};
  }else{
   &UTILS_download;
-  print "Download complete.\n";
   exit;
  }
 }

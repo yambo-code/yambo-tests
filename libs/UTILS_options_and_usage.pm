@@ -87,6 +87,7 @@ print <<ROBOT_info
 
   Running on host    : $host
   Yambo libs path    : $ext_libs_path
+  Yambo modules path : $ext_modules_path
   By user            : $user
   Version            : $version
   Available     CPU's: $SYSTEM_NP
