@@ -36,6 +36,7 @@ if (-e "$failed"){
    $line =~ s/\://g;
    my @build = split(/\s+/, $line);
    $theme_file="failed_"."@build[1]".".pl";
+   $theme_file =~ s\/\-\;
    if (not -f "$theme_file") 
    {
     open(THEME,">","$theme_file"); 
