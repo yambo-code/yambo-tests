@@ -74,6 +74,7 @@ source module.tcsh
 rm -f module.tcsh script.awk
 git checkout $tbranch 
 git pull 
+./configure
 ./driver.pl -d all
 if ( "$flow" == "ext-libs" ) then
  ./driver.pl -flow test -branch $ybranch -module $module
