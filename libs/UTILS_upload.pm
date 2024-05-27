@@ -51,13 +51,13 @@ foreach  my $test (@all_tests)
   print "\n$r_s Uploading $test ... $r_e\n";
   &command("find $path -name 'ns.*' -o -name 'ndb*gkkp*' -o -name 'ndb*Double*' -o -name '*.save*' -o -name '*io_files*' | $grep -v 'ROBOT_'| xargs tar cf $test_string.tar");
   &command("gzip -f $test_string.tar");
-  &FTP_upload_it("$test_string.tar.gz","$UPLOAD_PATH");
+  &FTP_upload_it("$test_string.tar.gz","$UPLOAD_PATH"," ");
   @dirs=();
   find( sub { push @dirs, $File::Find::name if -d }, ("$path") );
   foreach $dir (@dirs){
    if ( $dir  =~ /SAVE/ ) {
     &command("touch $dir/.empty");
-    &command("git add $dir/.empty");
+    &command("git add -f $dir/.empty");
    }
   }
  }

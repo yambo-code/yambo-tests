@@ -41,10 +41,11 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
  #
  $branchdir =@branches[$ib];
  $branch_id =@branch_identity[$ib];
+ $driver_branch =@driver_branch[$ib];
  #
  if ($user_branch) {
-  if ( not @branch_robot[$ib] eq ""     ) {next LOOP_BRANCH};
-  if ( not $branch_id eq $user_branch )   {next LOOP_BRANCH};
+  if (     $branch_id eq "any"          ) {$branch_id=$user_branch};
+  if ( not $branch_id eq $user_branch   ) {next LOOP_BRANCH};
  }
  #
  # Stats
@@ -52,14 +53,6 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
  #
  $error=&SETUP_branch( );
  if ($error eq "FAIL") {next LOOP_BRANCH};
- #
- if (not @branch_robot[$ib] eq "" ) {
-  if (not @branch_robot[$ib] eq $ROBOT_string) 
-  {
-   &MY_PRINT($stdout, "\n Branch is assigned to robot Nr.@branch_robot[$ib] while current Robot is $ROBOT_string.\n") if ($verb);
-   next LOOP_BRANCH;
-  }
- }
  #
  &RUN_global_report("BRANCH_KEY");
  #
@@ -76,7 +69,17 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   &SETUP("DIR");
   #
   $error=&SOURCE_driver( );
-  if ($error eq "FAIL") {next LOOP_CONF};
+  #
+  if ($error =~ "FAIL") {
+    if ( $error eq "COMP FAIL" or $error eq "CONF FAIL") {
+      $compilation_failed="yes";
+      &UTILS_title($stdout);
+      &MY_PRINT($stdout, "\n$line");
+      &RUN_global_report("TITLE");
+      goto REPORT;
+    };
+    next LOOP_CONF;
+  }
   #
   # MSGs
   #
@@ -100,6 +103,7 @@ LOOP_BRANCH: for $ib ( 0 .. $#branches ) {
   # Report total passes/failures
   &RUN_stats("REPORT");
   # 
+  REPORT:
   &RUN_global_report("RUNTIME");
   # 
   # Files closing

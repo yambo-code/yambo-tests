@@ -26,52 +26,30 @@ sub UTILS_list_backups{
  my $n_backups_to_save=50;
  my $n_backups=0;
  my @dir = ( "backup_and_www/$host/$user/" );
- print "checking folder backup_and_www/$host/$user/";
  if ($mode eq "bench") {@dir="benchmark-results/"};
  my @dirs;
  find( sub { push @dirs, $File::Find::name if -d }, @dir );
- my @dirs_to_process;
- foreach $dir (@dirs) {
-  @reps  = glob("$dir/REPORT*");
-  @comps = glob("$dir/compilation/*");
-  next if (scalar(@reps) eq 0 and scalar(@comps) eq 0);
-  if ($dir =~ /\/2017\//) {
-   #print "check 2017: $dir\n";
-   push @dirs_to_process_2017, $dir;
-   $n_backups++;
-  }
-  if ($dir =~ /\/2018\//) {
-   #print "check 2018: $dir\n";
-   push @dirs_to_process_2018, $dir;
-   $n_backups++;
-  }
-  if ($dir =~ /\/2019\//) {
-   #print "check 2019: $dir\n";
-   push @dirs_to_process_2019, $dir;
-   $n_backups++;
-  }
-  if ($dir =~ /\/2020\//) {
-   #print "check 2020: $dir\n";
-   push @dirs_to_process_2020, $dir;
-   $n_backups++;
-  }
-  if ($dir =~ /\/2021\//) {
-   #print "check 2021: $dir\n";
-   push @dirs_to_process_2021, $dir;
-   $n_backups++;
-  }
+ my @sorted_dirs;
+
+ for $year (2010...2100) {
+  my @year_dirs;
+  foreach $dir (@dirs) {
+   @reps  = glob("$dir/REPORT*");
+   @comps = glob("$dir/compilation/*");
+   next if (scalar(@reps) eq 0 and scalar(@comps) eq 0);
+   if ($dir =~ /\/$year\//) {
+    push(@year_dirs, $dir);
+    $n_backups++;
+   }
+  };
+  @sorted_year_dirs  = sort { $a1 = (split ( "$year", $a )) [1]; $b1 = (split ( "$year", $b )) [1]; $a1 cmp $b1} @year_dirs;
+  push(@sorted_dirs, @sorted_year_dirs);
  }
  #
  if ($clean and $backup_logs eq "yes") {
   $first_to_keep=$n_backups-$n_backups_to_save+1;
   print "\nCleaning backups with ID < $first_to_keep\n";
  };
- @sorted_dirs = sort { $a1 = (split ( '2017', $a )) [1]; $b1 = (split ( '2017', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2017;
- @dirs_2018   = sort { $a1 = (split ( '2018', $a )) [1]; $b1 = (split ( '2018', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2018;
- @dirs_2019   = sort { $a1 = (split ( '2019', $a )) [1]; $b1 = (split ( '2019', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2019;
- @dirs_2020   = sort { $a1 = (split ( '2020', $a )) [1]; $b1 = (split ( '2020', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2020;
- @dirs_2021   = sort { $a1 = (split ( '2021', $a )) [1]; $b1 = (split ( '2021', $b )) [1]; $a1 cmp $b1} @dirs_to_process_2021;
- push(@sorted_dirs, @dirs_2018, @dirs_2019, @dirs_2020, @dirs_2021);
  if ($branch_php or $report) 
  {
   @reversed_dirs = reverse @sorted_dirs
@@ -87,7 +65,6 @@ sub UTILS_list_backups{
  {
   foreach $dir (@reversed_dirs) {
    #
-   #print "Dir sorted $dir pippo\n";
    @REPS = glob("$dir/REPORT*");
    open(REPORT,"<","$suite_dir/$REPS[0]");
    @lines = <REPORT>;
@@ -103,6 +80,7 @@ sub UTILS_list_backups{
     if ($date) {
      print "DATE      : $date\n";
      print "TIME      : $time\n";
+     print "DURATION  : $duration\n";
      print "ROBOT     : $robot_id\n";
      print "BRANCH (Y): $yambo_branch\n";
      print "BRANCH(TS): $tsuite_branch\n";

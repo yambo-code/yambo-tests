@@ -8,12 +8,12 @@
          \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
                                                                           
                                                                           
-          Version 5.0.1 Revision 19435 Hash 90a894eb3                     
-                      Branch is issue414                                  
-              MPI+OpenMP+SLK+SLEPC+HDF5_IO Build                          
+    Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f             
+                      Branch is bug-fixes                                 
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 01/31/2021 at 00:25 yambo_rt @ unimi-XPS-8930
+ 07/15/2023 at 00:59 yambo_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 07_IP_eh_space_10fs
- Alt#1 string        : R11
+ Alt#1 string        : R4
 
  Precision           : SINGLE
   
@@ -52,7 +52,7 @@
   Exact exchange fraction in XC                    :  0.000000
   Exact exchange screening in XC                   :  0.000000
   Magnetic symmetries                              : no
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
 
  [02] CORE Variables Setup
  =========================
@@ -64,8 +64,15 @@
   Cell kind             :  FCC
   Atoms in the cell     :  Si
   number of Si atoms    :  2
-  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
 
+  List of atomic masses
+  Mass of Si    :  0.000000
+
+  List of atomic coordinates    : [cc]
+  Si1       :  0.000000  0.000000  0.000000  order 1
+  Si2       :  2.545750  2.545750  2.545750  order 1
+
+  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
   Direct lattice volume :  263.9777 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]: -0.500000  0.000000  0.500000  [iru]
@@ -77,6 +84,7 @@
    B[ 1 ]: -1.000000 -1.000000  1.000000  [iku]
    B[ 2 ]:  1.000000  1.000000  1.000000  [iku]
    B[ 3 ]: -1.000000  1.000000 -1.000000  [iku]
+   
 
   [02.02] Symmetries
   ==================
@@ -154,9 +162,9 @@
   [X] Filled Bands                                  :   4
   [X] Empty Bands                                   :   5   8
   [X] Direct Gap                                    :  2.440868 [eV]
-  [X] Direct Gap localized at k-point               :  1
+  [X] Direct Gap localized at k                     :  1
   [X] Indirect Gap                                  :  0.437631 [eV]
-  [X] Indirect Gap between k-points                 :  1  3
+  [X] Indirect Gap between kpts                     :  1  3
   [X] Last valence band width                       :  3.010587 [eV]
   [X] 1st conduction band width                     :  2.003237 [eV]
    
@@ -167,16 +175,13 @@
 
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
-  Polarization last K                              :  3
+  Polarization last K ( bz)                        :   8
+  Polarization last K (ibz)                        :  3
   QP states                                        :  1  3
   X grid is uniform                                : yes
-  Grids                                            : X B S
-  *ERR*BS scattering                               : yes
-  COLL scattering                                  : no
-  Sigma scattering                                 : yes
-  X scattering                                     : yes
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
- [BZ sampling] Q-grid is User defined and/or read from the database
+  Grids (string)                                   :  X B C S
+  Grids (int-vector)                               :  1  1  1  1
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
 
  IBZ Q-points :  3
  BZ  Q-points :   8
@@ -188,26 +193,7 @@
  Q [2]:  0.000000  0.000000  0.500000 [rlu]
  Q [3]:  0.000000  0.500000  0.500000 [rlu]
 
-  [03.01] X indexes
-  =================
-
-
-   [03.01.01] Sigma indexes
-   ========================
-
-   [WR./SAVE//ndb.kindx]-----------------------------------------------------------
-    Fragmentation                                    : no
-    Polarization last K                              :  3
-    QP states                                        :  1  3
-    X grid is uniform                                : yes
-    Grids                                            : X S
-    BS scattering                                    : no
-    COLL scattering                                  : no
-    Sigma scattering                                 : yes
-    X scattering                                     : yes
-   - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
-
-  [03.01] External RT corrections (R)
+  [03.01] External RT corrections (K)
   ===================================
 
 
@@ -216,47 +202,53 @@
   Updated Carrier components
   ==========================
 
-  [f@ R] Reference Time                :  100.0000 [fs]
-  [f@ R] Bands range                   :   2   7
-  [f@ R] Maximum occupations change    :  0.738709
-  [f@ R] N of carriers                 :  0.789726
-  [f@ R] Full and metallic bands        :   1   7
+  [f@ K] Reference Time                :  0.000000 [fs]
+  [f@ K] Bands range                   :   2   7
+  [f@ K] Maximum occupations change    :  2.000000
+  [f@ K] N of carriers                 :  1.500895
+  [f@ K] Full and metallic bands       :   1   7
 
-  [f@ R] === General ===
-  [f@ R] Electronic Temperature                     :  0.000000  0.000000 [eV K]
-  [f@ R] Bosonic    Temperature                     :  0.000000  0.000000 [eV K]
-  [f@ R] Finite Temperature mode                    : no
-  [f@ R] El. density                                :  0.20451E+24 [cm-3]
-  [f@ R] Fermi Level                                :  6.609707 [eV]
+  [f@ K] === General ===
+  [f@ K] Electronic Temperature                     :  0.000000  0.000000 [eV K]
+  [f@ K] Bosonic    Temperature                     :  0.861734E-4   1.00000    [eV K]
+  [f@ K] Finite Temperature mode                    : no
+  [f@ K] El. density                                :  0.20451E+24 [cm-3]
+  [f@ K] Fermi Level                                :  6.609707 [eV]
 
-  [f@ R] === Gaps and Widths ===
-  [f@ R] Conduction Band Min                        :  6.609707 [eV]
-  [f@ R] Valence Band Max                           :  6.609707 [eV]
-  [f@ R] Filled Bands                               :  1
-  [f@ R] Metallic Bands                             :   2   7
-  [f@ R] Empty Bands                                :   8   8
+  [f@ K] === Gaps and Widths ===
+  [f@ K] Conduction Band Min                        :  6.609707 [eV]
+  [f@ K] Valence Band Max                           :  6.609707 [eV]
+  [f@ K] Filled Bands                               :  1
+  [f@ K] Metallic Bands                             :   2   6
+  [f@ K] Empty Bands                                :   7   8
    
-  [f@ R] === Metallic Characters ===
-  [f@ R] N of el / N of met el                      :  8.000000  5.684128
-  [f@ R] Average metallic occ.                      :  0.473677
+  [f@ K] === Metallic Characters ===
+  [f@ K] N of el / N of met el                      :  8.000000  4.833312
+  [f@ K] Average metallic occ.                      :  0.241666
 
-  [WARNING][f@ R] Metallic system
+  [WARNING] [f@ K] Metallic system
    
+  OCCrt @ K [1]
+   2.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+  OCCrt @ K [2]
+    2.00000      2.00000      1.24909      1.24909     0.175829E-2   0.00000      0.00000      0.00000   
+  OCCrt @ K [3]
+   2.000000  2.000000  2.000000  2.000000  2.000000  2.000000  0.000000  0.000000
 
  [04] Dipoles
  ============
 
-
- [WARNING] DIPOLES database not correct or missing
  [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
   Fragmentation                                    : no
  - S/N 003129 ---------------------------------------------- v.03.04.00 r.02830 -
+ [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.434271E-8   1.00000   
+
  [WR./07_IP_eh_space_10fs//ndb.dipoles]------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   8   3   8
   RL vectors                                       :   387 [WF]
   Fragmentation                                    : yes
   Electronic Temperature                           :  0.000000 [K]
-  Bosonic    Temperature                           :  0.000000 [K]
+  Bosonic    Temperature                           :  1.000000 [K]
   DIP band range                                   :   2   7
   DIP band range limits                            :   7   2
   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
@@ -267,39 +259,57 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
 
- [05] Bethe Salpeter Equation @q1
- ================================
+ [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
 
+ [WARNING] In case H contains other non local terms, these are neglected
 
-  [05.01] Transition Groups build-up @q1
-  ======================================
-
-  [BSK] Transition groups (total):  3
-
-  [05.02] Independent Particles properties @q1
-  ============================================
+ [05] Bethe Salpeter Equation driver
+ ===================================
 
 
-  [WARNING] The system is a metal but Drude term not included.
-  [RD./07_IP_eh_space_10fs//ndb.dipoles]------------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   8   3   8
-   RL vectors                                       :   387 [WF]
-   Fragmentation                                    : yes
-   Electronic Temperature                           :  0.000000 [K]
-   Bosonic    Temperature                           :  0.000000 [K]
-   DIP band range                                   :   2   7
-   DIP band range limits                            :   7   2
-   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
-   RL vectors in the sum                            :   387
-   [r,Vnl] included                                 : yes
-   Bands ordered                                    : yes
-   Direct v evaluation                              : no
-   Approach used                                    : G-space v
-   Dipoles computed                                 : R V P
-   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 003129 ---------------------------------------------- v.05.00.01 r.19435 -
+ [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+
+  [05.01] Bethe Salpeter Equation @q1
+  ===================================
+
+
+   [05.01.01] Transition pre-analysis @q1
+   ======================================
+
+
+   [05.01.02] Transition Groups build-up @q1
+   =========================================
+
+   [BSK] Transition groups (total):  3
+
+   [05.01.03] Loading Dipoles @q1
+   ==============================
+
+   [RD./07_IP_eh_space_10fs//ndb.dipoles]------------------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :   3   8   3   8
+    RL vectors                                       :   387 [WF]
+    Fragmentation                                    : yes
+    Electronic Temperature                           :  0.000000 [K]
+    Bosonic    Temperature                           :  1.000000 [K]
+    DIP band range                                   :   2   7
+    DIP band range limits                            :   7   2
+    DIP e/h energy range                             : -1.000000 -1.000000 [eV]
+    RL vectors in the sum                            :   387
+    [r,Vnl] included                                 : yes
+    Bands ordered                                    : yes
+    Direct v evaluation                              : no
+    Approach used                                    : G-space v
+    Dipoles computed                                 : R V P
+    Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
+   - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
+
+   [05.01.04] Independent Particles properties @q1
+   ===============================================
+
+
+   [WARNING] The system is a metal but Drude term not included.
 
  [06] Timing Overview
  ====================
@@ -308,32 +318,30 @@
              io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
-                        io_BS :      0.0000s CPU
                       io_ELPH :      0.0000s CPU ( 2 calls,   0.013 msec avg)
                         io_HF :      0.0000s CPU
-                 PP_uspp_init :      0.0000s CPU ( 3 calls,   0.009 msec avg)
-      IO_and_Messaging_switch :      0.0000s CPU (12 calls,   0.002 msec avg)
                io_Double_Grid :      0.0000s CPU
-                io_COLLISIONS :      0.0000s CPU ( 3 calls,   0.012 msec avg)
-                         io_X :      0.0001s CPU ( 4 calls,   0.013 msec avg)
-                  io_KB_pwscf :      0.0004s CPU ( 5 calls,   0.077 msec avg)
-                  WF_load_FFT :      0.0006s CPU ( 3 calls,   0.208 msec avg)
-                  io_fragment :      0.0031s CPU ( 6 calls,   0.509 msec avg)
-              bz_samp_indexes :      0.0053s CPU
-                      io_GROT :      0.0067s CPU ( 3 calls,   2.239 msec avg)
-                        io_WF :      0.0078s CPU (10 calls,   0.777 msec avg)
-                     io_QINDX :      0.0095s CPU ( 3 calls,   3.168 msec avg)
-            DIPOLE_transverse :      0.0101s CPU
-                   io_DIPOLES :      0.0218s CPU (10 calls,   2.177 msec avg)
-             io_RT_components :      0.0227s CPU ( 5 calls,   4.531 msec avg)
-                      Dipoles :      0.0232s CPU
-                   T_space IP :      0.0399s CPU
+                io_COLLISIONS :      0.0000s CPU ( 3 calls,   0.013 msec avg)
+      IO_and_Messaging_switch :      0.0000s CPU (13 calls,   0.004 msec avg)
+                 PP_uspp_init :      0.0000s CPU ( 3 calls,   0.016 msec avg)
+                         io_X :      0.0001s CPU ( 5 calls,   0.013 msec avg)
+                  WF_load_FFT :      0.0003s CPU ( 3 calls,   0.105 msec avg)
+                  io_KB_pwscf :      0.0011s CPU ( 5 calls,   0.212 msec avg)
+                  BSE dipoles :      0.0028s CPU
+                     io_QINDX :      0.0035s CPU ( 2 calls,   1.750 msec avg)
+                      io_GROT :      0.0035s CPU ( 3 calls,   1.176 msec avg)
+                   io_DIPOLES :      0.0070s CPU (14 calls,   0.497 msec avg)
+                        io_WF :      0.0071s CPU (10 calls,   0.709 msec avg)
+            DIPOLE_transverse :      0.0089s CPU
+             io_RT_components :      0.0090s CPU ( 5 calls,   1.808 msec avg)
+                   T_space IP :      0.2162s CPU
+                      Dipoles :      1.0136s CPU
 
  [07] Game Over & Game summary
  =============================
 
- 01/31/2021 at 00:25 yambo_rt @ unimi-XPS-8930 [start]
- 01/31/2021 at 00:25                           [end]
+ 07/15/2023 at 00:59 yambo_rt @ unimi-XPS-8930 [start]
+ 07/15/2023 at 00:59                           [end]
 
   
  .-ACKNOWLEDGMENT
@@ -360,25 +368,25 @@
  .-Input file  yambo.in
  | optics                           # [R] Linear Response optical properties
  | bse                              # [R][BSE] Bethe Salpeter Equation.
- | BoseTemp= 0.000000         eV    # Bosonic Temperature
+ | BoseTemp= 0.861734E-4      eV    # Bosonic Temperature
  | FFTGvecs=  387             RL    # [FFT] Plane-waves
  | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
  | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
  | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
- | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | BSKmod= "IP"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx= 2085             RL    # [BSK] Exchange components
- | RfnRTdb= "f @ 0.1 ps < 04_elel+elph_0K/ndb.RT_carriers" # [EXTRT R] Database
- | BSEprop= "abs"                   # [BSS] abs/kerr/magn/dichr trace
+ | KfnRTdb= "f @ 0. ps < 02_carriers_Fermi_DB/ndb.RT_carriers" # [EXTRT BSK BSS] Database
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %
  | % BSEBands
  |   2 |  7 |                           # [BSK] Bands range
  | %
+ | RTOccMode= "R"                   # [RT-BSE] (K)ernel/(R)esiduals. BSE components to be corrected with the TD occupations
  | % BEnRange
  |   0.00000 | 10.00000 |         eV    # [BSS] Energy range
  | %
@@ -389,3 +397,5 @@
  | % BLongDir
  |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
  | %
+ | BSEprop= "abs jdos"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+ | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane

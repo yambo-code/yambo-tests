@@ -36,13 +36,14 @@ my $ret = &GetOptions("h+"   => \$help,
             "l:s"            => \$listtests,
             "d=s"            => \$download,
             "c+"             => \$clean,
-            "compile"        => \$compile,
+            "clean=s"        => \$clean,
+            "compile=s"      => \$compile,
             "i"              => \$info,
             "u"              => \$upload,
             "b:s"            => \$backup_logs,
             "v+"             => \$verb,
             "cpu_conf=s"     => \$cpu_conf_file,
-            "conf=s"         => \$select_conf_file,
+            "conf=s"         => \$user_conf_file,
             "gpl"            => \$is_GPL,
             "tests=s"        => \$user_tests,
             "prec=s"         => \$prec,
@@ -50,9 +51,10 @@ my $ret = &GetOptions("h+"   => \$help,
             "status"         => \$repo_check,
             "broken=s"       => \$tag_test_as_broken,
             "update=s"       => \$update_test,
+            "as_master"      => \$update_as_master,
             "upload=s"       => \$upload_test,
             "colors"         => \$use_colors,
-            "kill:s"         => \$kill_me,
+            "kill"           => \$kill_me,
             "edit:s"         => \$edit,
             "flow=s"         => \$flow,
             "autotest"       => \$autotest,
@@ -67,12 +69,13 @@ my $ret = &GetOptions("h+"   => \$help,
             "host=s"         => \$USER_host,
             "failed=s"       => \$failed,
             "php=s"          => \$branch_php,
-            "safe"           => \$safe_mode,
+            "unsafe"         => \$unsafe_mode,
             "input"          => \$check_input_generation,
             "keep_bin"       => \$keep_bin,
             "profile:s"      => \$profile,
             "cron:s"         => \$cron,
             "branch:s"       => \$user_branch,
+            "compdir:s"      => \$user_comp_folder,
             "mpirun:s"       => \$user_mpirun,
             "module:s"       => \$user_module,
             "mode=s"         => \$mode
@@ -83,6 +86,8 @@ sub UTILS_robot_info {
 print <<ROBOT_info
 
   Running on host    : $host
+  Yambo libs path    : $ext_libs_path
+  Yambo modules path : $ext_modules_path
   By user            : $user
   Version            : $version
   Available     CPU's: $SYSTEM_NP
@@ -101,6 +106,8 @@ for( $i = 1; $i <= $n_modules; $i = $i + 1 )
 }
 print "\n";
 
+if ($#scripts_avail>0)
+{
 print <<SCRIPTS_info
   Available   scripts: 
 SCRIPTS_info
@@ -111,6 +118,8 @@ for( $i = 0; $i <= $#scripts_avail; $i = $i + 1 )
 }
 print "\n";
 }
+
+}
 sub UTILS_usage {
 
 if ($help>=1) {
@@ -120,30 +129,33 @@ if ($help>=1) {
            
    where <ARGS> must include at least one of:
              -h                     This help & status (use -h -h to see more options).
-             -kill    <USER>        Kill the test-suite runs for user <USER>. If not given use the current one.
+             -kill                  Kill and stop all current test-suite components running. 
              -i                     Robot info
              -l       [<SET>]       List available SETs (-l) or input files for a SET (-l <SET>).
-             -c                     Clean.
+             -c                     Clean default (-c -c for cleaning everything).
+             -clean  [WHAT]         Clean specific features (use togther with -branch=branchname)
              -d      <SET>|all|list Download & Update the core databases.
-             -compile               Compile the sources.
+             -compile<WHAT>         Compile the sources. WHAT=all|ext-libs.
              -tests  <TESTS>|all    List* of tests to perform, or all "-tests all".
 
    (Running options)
              -host   [HOST]         Use HOST instead of current hostname.
              -dry                   Run in dry mode. Not actual job is launched.
              -nice   [VALUE]        Run with priority VALUE. With no VALUE max nice level is used (lower priority).
-             -safe                  Safe run
+             -unsafe                Avoid safe running that uses perl time selection
              -no_net                Skip network assisted operations
              -keep_bin              Do not overwrite the robot specific bin-precompiled folder
              -robot  <ID's>         Robot ID. [ID's can be of the form N or N-M]
              -branch [WHAT]         Branch selection.
+             -compdir[WHAT]         Folder where the branch was compiled (i.e. compile_dir/devel-rt-vel-and-magn/default.sh ).
              -module [WHAT]         Environment module selection.
+             -mpirun [WHAT]         Command name for mpirun if different from standard (default: mpirun)
 
    (TEST selection)
              -flow   <FILE>         Use the flow of calculations defined in <FILE> 
                                        (refer to ROBOTS/$host/$user/FLOWS/<FILE>.pl).
              -keys   <string>       Test keys (see below*).
-             -off    <string>       Switch off specific objects (mpi,openmp,io).
+             -off    <string>       Switch off specific components. At the moment it accepts mpi,openmp,io. When np>1 mpi_off applies to serial runs.
              -prec   <PREC>         Precision of data comparisons       (default: 0.01 = 1% of MAX value)
              -input                 Test input file creation
              -force                 Run even BROKEN tests.
@@ -166,6 +178,7 @@ if ($help==2) {
    (TEST control)
              -mode   <MODE>         Running mode. Can be: bench,validate. Optional.
              -update <TEST>         Update all REFERENCE files of <TEST>. The test path is <TEST_folder>/<TEST>.
+             -as_master             Update treating the current branch as it is master
              -upload <TEST>         Upload the <TEST_folder>/<TEST> directory.
              -broken <TEST>         Tag <TEST_folder>/<TEST> as Broken.
 
