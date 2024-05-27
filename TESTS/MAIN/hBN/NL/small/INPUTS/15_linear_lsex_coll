@@ -1,0 +1,36 @@
+nloptics                         # [R] Non-linear spectroscopy
+DIP_Threads=0                    # [OPENMP/X] Number of threads for dipoles
+NL_Threads=0                     # [OPENMP/NL] Number of threads for nl-optics
+OSCLL_Threads=0                  # [OPENMP/X] Number of threads for Oscillators
+% NLBands
+  5 |  10 |                           # [NL] Bands range
+%
+NLverbosity= "high"              # [NL] Verbosity level (low | high)
+NLstep= 0.010000           fs    # [NL] Time step length
+NLtime=33.00000           fs    # [NL] Simulation Time
+NLintegrator= "INVINT"         # [NL] Integrator ("EULEREXP/RK2/RK4/RK2EXP/HEUN/INVINT/CRANKNIC")
+NLCorrelation= "LSEX"            # [NL] Correlation ("IPA/HARTREE/TDDFT/LRC/LRW/JGM/SEX/LSEX/LHF")
+NLLrcAlpha= 0.000000             # [NL] Long Range Correction
+NLDamping= 0.200000        eV    # [NL] Damping (or dephasing)
+RADLifeTime=-1.000000      fs    # [RT] Radiative life-time (if negative RADLifeTime=Phase_LifeTime)
+#EvalCurrent                   # [NL] Evaluate the current
+#FrPolPerdic                   # [DIP] Force periodicity of polarization respect to the external field
+HARRLvcs= 1                RL    # [HA] Hartree     RL components
+EXXRLvcs= 3                RL    # [XX] Exchange    RL components
+CORRLvcs= 3                RL    # [GW] Correlation RL components
+% GfnQP_E
+ 3.000000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
+%
+% Field1_Freq
+ 0.100000 | 0.100000 |         eV    # [RT Field1] Frequency
+%
+Field1_NFreqs= 1                 # [RT Field1] Frequency
+Field1_Int= 100.0000       kWLm2 # [RT Field1] Intensity
+Field1_Width= 0.000000     fs    # [RT Field1] Width
+Field1_kind= "DELTA"             # [RT Field1] Kind(SIN|SOFTSIN| see more on src/modules/mod_fields.F)
+Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
+% Field1_Dir
+ 0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor
+%
+Field1_Tstart= 0.010000    fs    # [RT Field1] Initial Time
+
