@@ -43,6 +43,19 @@ if ($select_conf_file){
   $precompiled_is_run = "yes";
  }
 }
+# Compilation folder
+#
+if ( $user_comp_folder eq "" ){
+  $comp_folder = $BRANCH ;
+}else{
+  chdir "/";
+  if ( -d $user_comp_folder){
+    $comp_folder = "$user_comp_folder" ;
+  } else {
+    $comp_folder="${suite_dir}/$user_comp_folder";
+  }
+  chdir $suite_dir;
+}
 #
 if ($BRANCH_is_correctly_compiled[$ib]) {
  if($BUILD =~ /OpenMP/ and !$nt) {$openmp_is_off="yes"};
@@ -58,7 +71,7 @@ if ($FAILED_conf_comp_branches) {
 # Precompiled (bin) exe's test
 #
 if ("$precompiled_is_run" eq "yes") {
- $conf_bin  = "$BRANCH/bin";
+ $conf_bin  = "$comp_folder/bin";
  if ($keep_bin) {$conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key"};
  &MY_PRINT($stdout, "\n -       Source Check : precompiled ($conf_bin) ... ");
  $bin_check=&exe_check;
@@ -73,8 +86,10 @@ if ($compile) {
  &MY_PRINT($stdout, "\n -   Source configure :");
  chdir $BRANCH;
  &MY_PRINT($stdout, " Checking out as $branch_id ...");
+ &MY_PRINT($stdout, "Updating (1) ...");
+ &command("$git pull -q --no-rebase");
  &command("$git checkout $branch_id -q");
- &MY_PRINT($stdout, "Updating ...");
+ &MY_PRINT($stdout, "Updating (2) ...");
  &command("$git pull -q --no-rebase");
  &command("$git submodule update --recursive --remote");
  #
@@ -90,7 +105,9 @@ if ($compile) {
  if ("$ERROR" eq "FAIL") {
   &LOGs_move;
   $FAILED_conf_comp_branches.="$branch_id ";
-  return "FAIL";
+  $REVISION="unknown";
+  $BUILD="FAILED";
+  return "CONF FAIL";
  }
  #
  chdir $suite_dir;
@@ -102,30 +119,27 @@ if ($compile) {
 if ($compile) { 
  &SETUP_FC_kind;
 }elsif (not $FC_kind){
- &SETUP_FC_kind 
+ &SETUP_FC_kind;
 };
 #
 # BIN's
 if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
- $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key";
- chdir $BRANCH;
+ $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key_no_slash";
  &command("rm -fr $conf_bin; mkdir $conf_bin");
+ chdir $comp_folder;
  @executables = split(/\s+/, $exec_list);
  while($exec = shift(@executables)) {&command("cp bin/$exec $conf_bin/")};
-# if (-d "lib/bin" ) {&command("cp lib/bin/* $conf_bin/")};
-# if (-d "bin-libs") {&command("cp bin-libs/* $conf_bin/")};
-# if (-d "lib/bin")  {&command("find ./lib/bin/  | xargs cp -t $conf_bin/ 2> /dev/null")};
-# if (-d "bin-libs") {&command("find ./bin-libs/ | xargs cp -t $conf_bin/ 2> /dev/null")};
- if (-e "lib/bin/ncdump")  {&command("cp lib/bin/ncdump  $conf_bin/")};
- if (-e "bin-libs/ncdump") {&command("cp bin-libs/ncdump $conf_bin/")};
+ if (-f "lib/bin/ncdump") {
+  &command("cp lib/bin/ncdump $conf_bin/");
+ }
  chdir $suite_dir;
 }elsif (not $keep_bin){
- $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind-$ROBOT_string-$branch_key";
+ $conf_bin  = "$suite_dir/bin-$conf_file-$FC_kind-$ROBOT_string-$branch_key_no_slash";
 }
 #
 # branch string
 #
-$branch=$branch_key."-".$conf_file;
+$branch=$branch_key_no_slash."-".$conf_file;
 #
 if ($compile)
 {
@@ -142,9 +156,11 @@ if ($compile)
    &LOGs_move;
    $FAILED_conf_comp_branches.="$branch_id ";
    if ($backup_logs eq "yes"){ &UTILS_backup };
-   return "FAIL";
+   $REVISION="unknown";
+   $BUILD="FAILED";
+   return "COMP FAIL";
   }
-  chdir $BRANCH;
+  chdir("$comp_folder");
   &command("rm -fr $conf_bin; cp -fr bin $conf_bin");
   &command("if [ -d lib/bin  ]; then cp lib/bin/*  $conf_bin/; fi");
   &command("if [ -d bin-libs ]; then cp bin-libs/* $conf_bin/; fi");
@@ -170,30 +186,27 @@ if (not "$ERROR" eq "OK") {
  return "FAIL";
 }
 #
-# NCDUMP/NCCOPY
+# NCDUMP
 #
-my $sys_ncdump = `which ncdump`; chomp($sys_ncdump);
-my $sys_nccopy = `which nccopy`; chomp($sys_nccopy);
+my $sys_ncdump = `which ncdump`; 
+if (-d "$comp_folder/lib/external/") {
+ my $lib_ncdump = `find $comp_folder/lib/external/ -name 'ncdump' -type f`;
+ chomp($sys_ncdump);
+}
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
+}elsif(-e "$comp_folder/lib/bin/ncdump") { 
+ $ncdump = "$comp_folder/lib/bin/ncdump"; 
+ chomp($ncdump);
 }elsif(-e $sys_ncdump) { 
  $ncdump = "$sys_ncdump"; 
- &MY_PRINT($stdout, "\n               ncdump : $ncdump");
+}elsif(-e $lib_ncdump) { 
+ $ncdump = "$lib_ncdump"; 
 }else{ 
  die "\n ncdump not found\n";
 }
-if (-e "$conf_bin/nccopy") {
- $nccopy = "$conf_bin/nccopy"; 
- chomp($nccopy);
- &MY_PRINT($stdout, "\n               nccopy : $nccopy");
-}elsif(-e $sys_nccopy) { 
- $nccopy = "$sys_nccopy"; 
- &MY_PRINT($stdout, "\n               nccopy : $nccopy");
-}else{ 
- &MY_PRINT($stdout, "\n               nccopy : not found");
-}
+&MY_PRINT($stdout, "\n               ncdump : $ncdump");
 #
 # Rename the conf/comp logs
 #
@@ -241,8 +254,8 @@ sub SOURCE_delay{
  }
 }
 sub LOGs_move{
- chdir $BRANCH;
- my $extension=$branch_key.'-'.$FC_kind.'-'.$conf_file.'-'.$ROBOT_string.'-'.$host;
+ chdir $comp_folder;
+ my $extension=$branch_key_no_slash.'-'.$FC_kind.'-'.$conf_file.'-'.$ROBOT_string.'-'.$host;
  &command ("mv $conf_logfile $suite_dir/$extension"."_config.log");
  &command ("mv $comp_logfile $suite_dir/$extension"."_compile.log");
  chdir $suite_dir;

@@ -68,13 +68,15 @@ if ("$what" eq "BASIC") {
  #
  # Off's 
  if ($is_off){
-  if ($is_off =~ /mpi/ and $np_min==1 and $np_max==1 ){$mpi_is_off="yes"};
-  if ($is_off =~ /openmp/ ){$openmp_is_off="yes"};
+  if ($is_off =~    /mpi/ ) {$mpi_is_off="yes"};
+  if ($is_off =~ /openmp/ ) {$openmp_is_off="yes"};
  }
  #
  &MY_PRINT($stdout, "\n$double_line") if (!$reduced_log);
  &MY_PRINT($stdout, "\n= Starting Yambo test-suite") if (!$reduced_log);
  &MY_PRINT($stdout, "\n$double_line\n") if (!$reduced_log);
+ #
+ if (! -f "KILLER_yambo_".$ROBOT_string.".awk" ) { &command("$suite_dir/scripts/job_stopper.sh $ROBOT_string &")};
  #
 }elsif ("$what" == "DIR"){
  #
@@ -91,6 +93,11 @@ if ("$what" eq "BASIC") {
  if ($random_parallel) {$PAR_string="$PAR_string-rand_par"};
  #
  if (!$np_min and !$np_single and !$nt) {$PAR_string="SERIAL"};
+ #
+ $REF_folder="REFERENCE_".$branch_key_no_slash;
+ if ($branch_key eq "master" or $branch_key eq "bug-fixes" or $branch_key eq "develop")  {$REF_folder="REFERENCE"};
+ if ($is_GPL)  {$REF_folder="REFERENCE_gpl"};
+ if ($update_test and $update_as_master)  {$REF_folder="REFERENCE"};
  #
 }
 }

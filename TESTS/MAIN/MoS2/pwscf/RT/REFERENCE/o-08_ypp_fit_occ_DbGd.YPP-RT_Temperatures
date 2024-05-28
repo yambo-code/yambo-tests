@@ -8,26 +8,53 @@
 #    /**  /**     /**/**        /** /*******  //*******               
 #    //   //      // //         //  ///////    ///////                
 #                                                                     
-#       Version 5.0.0 Revision 18576 Hash 35d9a199c                   
+# Version 5.2.0 Revision 22360 Hash (prev commit) d1e631634           
 #                   Branch is bug-fixes                               
-#              MPI+OpenMP+HDF5_MPI_IO Build                           
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
 #                http://www.yambo-code.org                            
 #
 #
-# [RT] Bands                                      :  23  30
-# [RT] K-points                                   :   36
+# [RT] Bands                                      :  25  28
+# [RT] K-points                                   :  106
 # [RT] Potential                                  : HARTREE+SEX
 # [E-P] Electron-phonon                           : yes
-# [E-P] Completed Collision(CCA)                  : yes
+# [E-P] Iterative time evolution                  : no
 # [E-P] Branches                                  :   1   9
 # [E-P] GF`s Memory steps                         :  2
 # [E-E] Coulomb scattering                        : no
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
-# [RT] Time step         (now)[fs]                :  0.400000028E-1
-# [RT] NE time          (done)[fs]                :   49.9200020   
-# [RT] NE steps         (done)[fs]                :  1249
-# [RT] Lif Extr Inte/Intr(now)[fs]                :   1.44000006     0.480000019   
+# [RT] Time step     (initial)                    :  0.400000028E-1 [fs]
+# [RT] NE time       (planned)                    :   49.9999962    [fs]
+# [RT] NE steps      (planned)                    :  1251
+# [RT] Lif Extr Inte/Intr(sav)                    :   1.44000006     0.480000019    [fs]
+# [RT] Lifetimes extrapolation                    : no
+# [RT] Integrator                                 : EULER + RK2 + RWA
+# [RT] Radiative life time                        :   0.00000000    [fs]
+# [RT] Dephasing life time                        :   0.00000000    [fs]
+# [RT] External Field(s)                          : yes
+# [RT] Number of Fields                           :  1
+# [RT] Diamagnetic term                           : no
+# [RT] Induced field                              : no
+# [DbGd] Double Grid support                      : yes
+# [DbGd] Used for e-e                             :   0.00000000    [o/o]
+# [CONSTRAINS] N (ee+ep) & dN (ep)                : yes
+# [CONSTRAINS] IP Energy      (ee)                : yes
+# [FIELDs] Gauge Type                             : length
+# [FIELDs] Type                                   : QSSIN
+# [FIELDs] Polarization                           : linear
+# [FIELDs] Versor                                 :  0.999999940      0.00000000      0.00000000   
+# [FIELDs] Versor_circ                            :   0.00000000      1.00000000      0.00000000   
+# [FIELDs] Intensity                              :   3000.00024    [kWCMm2]
+# [FIELDs] Damping                                :   3.00000000    [fs]
+# [FIELDs] Frequency range                        :   2.68499994      2.68499994    [eV]
+# [FIELDs] Frequency steps                        :  1
+# [FIELDs] Frequency step                         :   0.00000000    [eV]
+# [FIELDs] Initial time                           :  0.240000010    [fs]
+# [RT] Time step(now)                             :  0.400000028E-1 [fs]
+# [RT] NE time(done)                              :   50.0000038    [fs]
+# [RT] NE steps(done)                             :  1251 [fs]
+# [RT] Lif Extr Inte/Intr(now)                    :   1.44000006     0.480000019    [fs]
 # [dT] Time-Dependent Time step                   : no
 # [RT] I/O time          (input) [fs]             :  0.240000010   
 # [RT] I/O time            (now) [fs]             :  0.240000010   
@@ -40,24 +67,33 @@
 # [Gr] Damping (v)                                :  0.100000001      0.00000000      0.00000000    [ev,adim,ev^-1]
 #
 #
+# [FineGd] Brillouin Symmetry  mode               : expanded
+# [FineGd] Fine Grid  BZ mapped mode              : BZ
+# [FineGd] Fine Grid IBZ mapped mode              : BZ
+# [FineGd] Bands                                  :   40
+# [FineGd] Number of pts (Energy grid)            :   98
+# [FineGd] Number of pts (fine+coarse, IBZ-map)   :  106
+# [FineGd] Number of pts (fine+coarse, BZ-map)    :  106
+#
+#
 # Fitted temperatures [K]
 #
 #    Time [fs]          T(e)               T(h)               T(e-up)            T(h-up)            T(e-dn)            T(h-dn)            T(e-EP)            T(h-EP)
 #
      0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000   
-     5.03999996         153.332733         0.00000000         144.297470         4714.67236         157.083939         997.410461         594.354858         215.695694   
-     10.0799999         4436.99316         5084.10596         855.498474         5630.39404         6188.36182         5553.98584         571.189270         207.366226   
-     15.1200008         4370.50244         3443.14087         936.363159         4120.25586         4679.52979         805.169495         541.835144         204.806686   
-     20.1599998         3410.56421         2677.11743         1090.47180         2918.09180         4027.24487         744.391418         524.658142         203.866043   
-     25.2000027         2983.65771         2188.40112         1455.20959         2722.53516         3381.46753         666.099182         521.483459         202.928467   
-     30.2400017         2814.72998         1858.63428         2362.14355         2249.22925         3116.72119         592.963135         523.504517         201.619247   
-     35.2800026         2550.89600         1601.23645         2293.43652         2088.54565         2996.52734         511.289124         526.095581         199.511902   
-     40.3199997         2405.73950         983.968933         2212.82544         2001.76489         2729.02368         98.8796768         528.923462         197.330612   
-     45.3600044         2303.63892         800.948853         1974.43237         1992.60718         2517.07446         97.9255219         530.805664         195.181152   
-     49.9200020         2222.08472         690.035217         1881.06775         1881.69702         2484.57910         96.6834412         532.177551         192.568787   
+     5.03999996         165.859299         0.00000000         157.300491         237.454071         155.384506         237.446121         176.817429         1009.98346   
+     10.0799999         1548.72046         1912.09302         1481.86938         1912.04785         1322.04358         1912.15088         1207.98938         963.921570   
+     15.1200008         1498.81848         1702.75317         1475.74976         1702.69214         1475.49316         1702.80762         1253.23389         889.730896   
+     20.1599998         1422.63013         1512.38220         1413.24915         1512.36438         1413.83838         1512.41943         1326.00305         799.153809   
+     25.2000027         1401.54297         1363.89819         1399.72803         1363.90955         1400.72571         1363.92834         1376.29150         706.435974   
+     30.2400017         1396.56287         1248.53760         1398.62122         1248.56030         1401.07458         1248.56946         1415.50830         526.161255   
+     35.2800026         1377.11047         1156.25000         1388.09424         1185.92517         1388.00439         1185.87842         1440.43262         476.442169   
+     40.3199997         1365.73071         1081.25208         1380.38013         1099.47522         1378.54150         1099.45496         1442.93945         453.368896   
+     45.3600044         1369.99207         1031.58862         1369.08215         1031.58826         1368.55457         1031.55798         1447.18176         443.544312   
+     49.9200020         1368.43201         982.252258         1363.50867         982.278320         1363.07190         982.231934         1446.99036         438.292908   
 # 
-# 07/19/2020 at 17:19 ypp_rt @ VivoBook [start]
-# 07/19/2020 at 17:19                   [end]
+# 10/29/2023 at 19:08 ypp_rt @ attacc-lavoro [start]
+# 10/29/2023 at 19:08                        [end]
 #  
 # Timing   [Min/Max/Average]: 02s/02s/02s
 #
@@ -65,6 +101,7 @@
 # | RealTime                         # [R] TD Post-Processing
 # | RToccupations                    # [R] Analize time-dependent occupations
 # | RTenergy                         # [R] Post-Processing kind: function of energy
+# | ElecTemp= 0.258520E-4      eV    # Electronic Temperature
 # | TimeStep= 5.039972         fs    # Time step
 # | % TimeRange
 # |   0.00000 | 49.92000 |         fs    # Time-window where processing is done

@@ -30,7 +30,7 @@ $user_tests="all";
 &UTILS_get_inputs_tests_list();
 @all_tests = split(/ /,$alltests);
 #
-my $LINK="http://www.yambo-code.org/robots/databases/$mode";
+my $LINK="https://media.yambo-code.eu/robots/databases/$mode";
 my $EXTENSION=".tar.gz";
 if ($mode eq "bench") {
  $LINK="http://potzie.fisica.unimo.it/ferretti/yambo-benchmarks-databases";
@@ -51,8 +51,6 @@ foreach $dir (<*>) {
    if ($dir =~ /docs/) { $do_it = "no" };
  }
  if ( $do_it eq "yes"){
-  #
-  &MY_PRINT($stdout, "\n=> [".$dir."]\n");
   #
   # Filename choosing
   #
@@ -104,28 +102,35 @@ foreach $dir (<*>) {
   $i1=0;
   WWW: while($i1 < $imax+1) {
    $cmd = "$wget --spider -q $LINK/$filename[$i1]$EXTENSION && echo exists || echo not exist";
-   $show_progress= `$wget --help | grep show-progress | head -c 30`;
-   $show_progress=~ s/^\s+|\s+$//g;
    my $file_exist = `$cmd`;
    if ($mode eq "tests" or $mode eq "cheers" or $mode eq "validate"){
     if ( "$file_exist" eq "exists\n") {
      chdir("$suite_dir/$TESTS_folder/$position[$i1]");
-     &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
-     &MY_PRINT($stdout, " downloading ...\n");
+     $cmd="curl -sI $LINK/$filename[$i1]$EXTENSION | grep Content-Len | cut -f2 -d ':'";
+     my $remote_file_size = `$cmd`; 
      if ($force) {&command("rm -f $filename[$i1]$EXTENSION ")};
-     &command( "$wget -qc $LINK/$filename[$i1]$EXTENSION $show_progress --progress=bar:force:noscroll");
-     &MY_PRINT($stdout, "   opening ...");
-     &command( "tar zxf $filename[$i1]$EXTENSION");
-     &MY_PRINT($stdout, "done\n");
+     my $local_file_size = 1;
+     if (-f "$filename[$i1]$EXTENSION") {$local_file_size = `du -b $filename[$i1]$EXTENSION`};
+     undef $get_it;
+     if (not $remote_file_size == $local_file_size) {$get_it=1};
+     #
+     if ($get_it){
+      &command("rm -f $filename[$i1]$EXTENSION ");
+      &MY_PRINT($stdout, "$filename[$i1]$EXTENSION...");
+      &command( "$wget -qc $LINK/$filename[$i1]$EXTENSION");
+      &MY_PRINT($stdout, " [downloaded]...");
+      &command( "tar zxf $filename[$i1]$EXTENSION");
+      &MY_PRINT($stdout, "  [opened]\n");
+     }
+     #
     }else {
-     &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [NO]");
-     &MY_PRINT($stdout, "\n");
+     &MY_PRINT($stdout, "$filename[$i1]$EXTENSION [not found]\n");
     }
    }else{
     if ( "$file_exist" eq "exists\n" and  not -f $BASE) {
      &MY_PRINT($stdout, "...$filename[$i1]$EXTENSION [YES] ...");
      &MY_PRINT($stdout, " downloading ...\n");
-     &command( "$wget -qc $LINK/$filename[$i1] $show_progress --progress=bar:force:noscroll");
+     &command( "$wget -qc $LINK/$filename[$i1]");
      $CAT_cmd.=" $filename[$i1]";
     }else{
      &MY_PRINT($stdout, "...$BASE [FOUND]\n");

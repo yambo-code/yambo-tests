@@ -100,13 +100,13 @@ if ("@_" =~ "after_run"){
  #
  if (-d $testname or $update_test){
   if (!-d $dir_name and -d $testname) {&command("mv $testname $dir_name")};
-  if (!-d $dir_name and !-d $testname) {&command("mkdir $dir_name")};
+  if (!-d $dir_name and !-d $testname) {&command("mkdir -p $dir_name")};
   if ($LAST_COMPLETED_RUN) {
    &command("rm -f $testname");
    &command("ln -s $LAST_COMPLETED_RUN $testname");
   };
  }else{
-  if (!-d $dir_name) {&command("mkdir $dir_name"); };
+  if (!-d $dir_name) {&command("mkdir -p $dir_name"); };
  }
  #
  if (-e $INPUT_file and -f $INPUT_file ) { copy($INPUT_file, $dir_name) or &MESSAGE("ERROR WHITE","\nError copying file $INPUT_file to $dir_name $!\n"); };

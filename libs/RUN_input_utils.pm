@@ -32,7 +32,8 @@ LOOP: for (my $il=0; $il<=$#INPUT ; $il++){
  LOOPF: for (my $if=0; $if<=$#string ; $if++){
   if ($in_line =~ /$string[$if]/){ 
    $ir++;
-   #print "$in_line $string[$if] $ir $#string\n";
+   #print "$ir check gives \n";  #DEBUG
+   #print " $string[$if] $if\n"; #DEBUG
   };
  }
  if ($ir == $#string+1) {  return 1 };

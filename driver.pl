@@ -29,7 +29,16 @@ do "config/MODULES.pl";
 do "config/TOOLS.pl";
 do "config/RULES_renaming.pl";
 do "config/RULES_ignore.pl";
-do "config/ROBOTS_list.pl";
+#
+# ROBOTS repo
+#
+if ( -d "ROBOTS") 
+{
+ do "ROBOTS/ROBOTS_list.pl";
+ do "ROBOTS/FTP_credentials.pl";
+}else{
+ do "config/FTP_empty_credentials.pl";
+}
 #
 # The location of the test-suite directory
 $suite_dir=abs_path();
@@ -48,31 +57,28 @@ if ($user_tests or $theme or $compile or $flow or $autotest or $update_test) {$R
 $hostname=hostname();
 $host=$ROBOTS{$hostname};
 if ($USER_host and -d "ROBOTS/$USER_host") {$host=$USER_host};
-if (-f "./.running_robot.pl")  {do ".running_robot.pl"};
+if (-f ".running_robot.pl")  {do ".running_robot.pl"};
 #
 if ("$host" eq "") {
   print "\n** WARNING ** Hostname empty.\n";
-  print " Check that the host is specified in config/ROBOTS_list.pl or run with driver.pl -host {YOUR_HOSTNAME}\n\n";
+  print " Check that the host is specified in ROBOTS/ROBOTS_list.pl or run with driver.pl -host {YOUR_HOSTNAME}\n\n";
 }
 #
 # Glob available configurations/flows
 #
 &SETUP_files;
 #
-my $len= length($kill_me);
-if ($len eq 0) {
- $kill_me=`whoami`;
- chomp($kill_me);
-}
 if ($kill_me){
  if ($ROBOT_id) {
   &KILL_me("driver.pl","perl",$ROBOT_id);
   &KILL_me("yambo",$ROBOT_id);
   &KILL_me("ypp",$ROBOT_id);
+  &KILL_me("job_stopper",$ROBOT_id);
  }else{
   &KILL_me("driver.pl","perl");
   &KILL_me("yambo");
   &KILL_me("ypp");
+  &KILL_me("job_stopper");
  }
  print "Killing action finalized.\n";
  exit;
@@ -86,7 +92,8 @@ if ($len eq 1) {$nice_level="19"};
 if ($mode eq "bench" or $nice_level) { $run_duration = 24*60*60*7 };
 if ($verb ge 2) { $log = "" };
 if ($nice_level) {$nice="nice -n"."$nice_level"};
-#
+my $len= length($as_master);
+if ($len eq 0) {$as_master="yes"};
 my $len= length($backup_logs);
 if ($len eq 0) {$backup_logs="yes"};
 if ($report) {$backup_logs="yes"};
@@ -178,7 +185,6 @@ if($download){
   else {&FTP_list("robots/databases/tests")};
  }else{
   &UTILS_download;
-  print "Download complete.\n";
   exit;
  }
 }
@@ -186,16 +192,35 @@ if($download){
 # Clean and exit
 if ($clean and $backup_logs eq "no" and not $RUNNING_suite){ 
  if (not $ROBOT_id) {print "Cleaning"};
- &UTILS_clean("ALL");
- if (not $ROBOT_id) {&UTILS_clean("BINs")};
- print "... test databases outputs logfiles bin(s)";
- if ($clean > 1) {
+ if ($clean > 0 || "$clean" eq "ALL") {
+   print "... test databases outputs logfiles";
+   &UTILS_clean("ALL");
+ }
+ if (not $ROBOT_id) {
+   print "... bin(s)";
+   &UTILS_clean("BINs")
+ }
+ if ($clean > 1 || "$clean" eq "ALL") {
+  print "... compiled yambo ...";
+  &UTILS_clean("COMPs");
   print "... core databases ...";
   &UTILS_clean("CORE");
   print "... .tar.gz ...";
   &UTILS_clean("TARGZ");
   print "... pwscf/abinit ...";
   &UTILS_clean("DFT");
+ }
+ if ("$clean" eq "COMPs") {
+  print "... compiled yambo ...";
+  &UTILS_clean("COMPs");
+ }
+ if ("$clean" eq "CORE") {
+  print "... core databases ...";
+  &UTILS_clean("CORE");
+ }
+ if ("$clean" eq "TARGZ") {
+  print "... .tar.gz ...";
+  &UTILS_clean("TARGZ");
  }
  print "\nCleaning done.\n";
  exit;
@@ -261,6 +286,10 @@ if (!$RUNNING_suite) {
 # RUNNING SECTION
 #=================
 if ($RUNNING_suite) {
+ #
+ $select_conf_file=$user_conf_file;
+ #
+ $compilation_failed="no";
  #
  if ($clean) {
   &UTILS_clean("ALL");
@@ -329,7 +358,7 @@ if ($RUNNING_suite) {
    #
    my $ERROR=&FLOW_load();
    #
-   if ("$active" eq "yes" and "$ERROR" eq "OK" ) 
+   if ("$active" eq "yes" and "$ERROR" eq "OK" and $compilation_failed eq "no") 
    {
     if ($cpu_conf_file) { &CPU_CONF_setup }; 
     &driver();
@@ -368,6 +397,8 @@ if ($RUNNING_suite) {
  exit "\n";
 }
 #
+&command("touch ${ROBOT_string}_DONE &");
+#
 &COMPILE_find_the_diff("clean");
 #
 if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
@@ -375,17 +406,22 @@ if ( (not $FLOWS_done or not $AT_LEAST_ONE) and not $compile) {
  exit "\n";
 }
 #
-&RUN_global_report("FINAL");
+if($AT_LEAST_ONE) { &RUN_global_report("FINAL"); }
 #
 close $rlog;
-#close $tlog; # This is closed in driver.pm inside the branches loop
 close $slog;
 close $elog;
 close $wlog;
 close $ulog;
 close $flog;
 #
-if ( ($backup_logs eq "yes" and $RUNNING_suite and $AT_LEAST_ONE) or ($backup_logs eq "yes" and not $RUNNING_suite)) {
+# Kill the job stoppers 
+&KILL_me("job_stopper",$ROBOT_string);
+#
+# Delete KILLER files created by scripts/job_stopper.sh
+&command("rm KILLER_*_${ROBOT_string}.awk");
+#
+if ( ($backup_logs eq "yes" and $RUNNING_suite) or ($backup_logs eq "yes" and not $RUNNING_suite)) {
  &UTILS_backup();
  &UTILS_backup_save();
  if ($report){ 

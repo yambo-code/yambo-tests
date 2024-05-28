@@ -36,7 +36,7 @@ BSENGexx= 28671            RL    # [BSK] Exchange components
 #ALLGexx                       # [BSS] Force the use use all RL vectors for the exchange part
 #NoCondSumRule                 # [BSE/X] Do not impose the conductivity sum rule in velocity gauge
 #MetDamp                       # [BSE] Define \w+=sqrt(\w*(\w+i\eta))
-BSEprop= "abs trace dichr"                 # [BSE] abs/kerr/magn/dichr trace
+BSEprop= "abs trace dichr jdos"                 # [BSE] abs/kerr/magn/dichr trace
 DrudeWBS= ( 0.000000 , 0.000000 )  eV    # [BSE] Drude plasmon
 #Reflectivity                  # [BSS] Compute reflectivity at normal incidence
 % BSEQptR
@@ -63,3 +63,7 @@ BEnSteps= 2001                    # [BSS] Energy steps
 % BLongDir
  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
 %
+
+rim_cut
+CUTGeo= "ws xyz"             # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere
+CUTwsGvec= 0.700000            # [CUT] WS cutoff: number of G to be modified

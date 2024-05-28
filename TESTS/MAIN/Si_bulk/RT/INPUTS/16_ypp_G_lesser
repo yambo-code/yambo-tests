@@ -1,0 +1,51 @@
+#                                                           
+#                                                           
+# Y88b    /   e           e    e      888~~\    ,88~-_      
+#  Y88b  /   d8b         d8b  d8b     888   |  d888   \     
+#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |    
+#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |    
+#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /     
+#    /   /      Y88b /          Y888b 888__/    `88_-~      
+#                                                           
+#                                                           
+#      Version 4.4.0 Revision 16822 Hash e05532515          
+#                  MPI+SLK+OpenMP Build                     
+#               http://www.yambo-code.org                   
+#
+TDplots                       # [R] Real-Time Post-Processing
+RTGtwotimes                      # [R] Construct G<(t,tp)
+RTtime                         # [R] Post-Processing kind: function of time
+TimeStep= 0.01      fs      # Time step
+% TimeRange
+ 25.00000 | 75.0000 | fs      # Time-window where processing is done
+%
+LoadGhistory                  # [NEGF] Build the NEQ density from the G_lesser
+% EnRngeRt
+ -2.00000 | 14.00000 | eV      # Energy range
+% 
+ETStpsRt= 501                 # Total Energy steps
+
+BuildGles
+
+#IncludeEQocc
+KeepCC
+#KeepCV
+#KeepVC
+DampFactor= 50.0    meV
+RhoDeph= 5.0    meV
+
+INTERP_mode= "BOLTZ"              # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
+OutputAlat= 3.851738           # [a.u.] Lattice constant used for "alat" ouput format
+cooIn= "rlu"                   # Points coordinates (in) cc/rlu/iku/alat
+cooOut= "rlu"                  # Points coordinates (out) cc/rlu/iku/alat
+
+INTERP_Shell_Fac= 2.00000     # The bigger it is a higher number of shells is used
+#BANDS_path= "L G X"            # BANDS path points labels (G,M,K,L...)
+BANDS_steps= 50                # Number of divisions
+BANDS_built_in                 # Print the bands of the generating points of the circuit using the nearest internal point
+%BANDS_kpts                    # K points of the bands circuit
+   0.5000000 |  0.5000000 |  0.5000000 | #L(111)
+   0.0000000 |  0.0000000 |  0.0000000 | #G
+   0.0000000 |  0.5000000 |  0.5000000 | #X
+%
+

@@ -35,9 +35,10 @@ sub RUN_input_file_test{
 
  if ($SETUP=="1")   { $CMD=$CMD." -setup" };
  if ($HF=="1")      { $CMD=$CMD." -hf"};
- if ($GW=="1" && &RUN_feature("_gw_")==0) { $CMD=$CMD." -dyson n"};
- if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )    { $CMD=$CMD." -gw0 p"};
+ if ($GW=="1"  &&  &RUN_feature("_gw_")==0) { $CMD=$CMD." -dyson n"};
+ if ($PPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -gw0 p"};
  if ($PPA=="1" &&  &RUN_feature("gw")==0  &&  &RUN_feature("_gw_")==0)    { $CMD=$CMD." -X p"};
+ if ($MPA=="1" &&  &RUN_feature("gw")==1  &&  &RUN_feature("_gw_")==0 )   { $CMD=$CMD." -gw0 m"};
  if ($COHSEX=="1" &&  &RUN_feature("_gw_")==0)  { $CMD=$CMD." -gw0 c"};
  if ($BSE=="1")     { $CMD=$CMD." -optics b"};
  if ($CHI=="1")     { $CMD=$CMD." -optics c"};
@@ -47,6 +48,7 @@ sub RUN_input_file_test{
  if ($LIFE=="1")    { $CMD=$CMD." -lifetimes"};
 
  if (&RUN_feature("rim_cut")=="1") {$CMD=$CMD." -coulomb"};
+ if (&RUN_feature("rim_w")=="1")   {$CMD=$CMD." -rw"};
  if ($GW=="1" && $EM1D=="1") {$CMD=$CMD." -gw0 r"}
 
  if (&RUN_feature("DysSolver= \"n\"")=="1") {$CMD=$CMD." -dyson n"};
@@ -57,12 +59,19 @@ sub RUN_input_file_test{
  if (&RUN_feature("BSSmod= \"d\"")=="1")  {$CMD=$CMD." -Ksolver d"};
  if (&RUN_feature("BSSmod= \"s\"")=="1")  {$CMD=$CMD." -Ksolver s"};
  if (&RUN_feature("BSSmod= \"h\"")=="1")  {$CMD=$CMD." -Ksolver h"};
+ if (&RUN_feature("BSSmod= \"hi\"")=="1")  {$CMD=$CMD." -Ksolver hi"};
  if (&RUN_feature("BSSmod= \"hd\"")=="1")  {$CMD=$CMD." -Ksolver hd"};
  if (&RUN_feature("BSSmod= \"dh\"")=="1")  {$CMD=$CMD." -Ksolver hd"};
  if (&RUN_feature("BSSmod= \"hdi\"")=="1")  {$CMD=$CMD." -Ksolver hdi"};
  if (&RUN_feature("BSSmod= \"i\"")=="1")  {$CMD=$CMD." -Ksolver i"};
 
- if (&RUN_feature("negf")=="1") {$CMD=$CMD." -rt p"};
+ if (&RUN_feature("negf")=="1") 
+ {
+   if (&RUN_feature("Field1")=="1") {$CMD_tmp=" -rt p1"};
+   if (&RUN_feature("Field2")=="1") {$CMD_tmp=" -rt p2"};
+   if (&RUN_feature("Field3")=="1") {$CMD_tmp=" -rt p3"};
+   $CMD=$CMD.$CMD_tmp;
+ };
  if (&RUN_feature("collisions")=="1") {$CMD=$CMD." -collisions"};
  
  if (&RUN_feature("el_photon_scatt")=="1") {
@@ -82,17 +91,17 @@ sub RUN_input_file_test{
  }
 
  my $POT;
- if (&RUN_feature("HXC_Potential= IP")=="1") {$POT="ip"};
- if (&RUN_feature("HXC_Potential= HARTREE")=="1") {$POT=$POT."h"};
- if (&RUN_feature("HXC_Potential= HARTREE+SEX")=="1") {$POT=$POT."hsex"};
- if (&RUN_feature("HXC_Potential= GS_xc")=="1") {$POT=$POT."gs"};
- if (&RUN_feature("HXC_Potential= COH")=="1") {$POT=$POT."coh"}
- if (&RUN_feature("HXC_Potential= SEX")=="1") {$POT=$POT."sex"}
- if (&RUN_feature("HXC_Potential= FOCK")=="1") {$POT=$POT."f"}
- if (&RUN_feature("HXC_Potential= LDA_X")=="1") {$POT=$POT."ldax"};
- if (&RUN_feature("HXC_Potential= PZ")=="1") {$POT=$POT."pz"};
- if (&RUN_feature("HXC_Potential= DEFAULT")=="1") {$POT="d"};
- if (&RUN_feature("HXC_Potential= default")=="1") {$POT="d"};
+ if (&RUN_feature("HXC_Potential IP")=="1") {$POT="ip"};
+ if (&RUN_feature("HXC_Potential HARTREE")=="1") {$POT=$POT."h"};
+ if (&RUN_feature("HXC_Potential SEX")=="1") {$POT=$POT."sex"};
+ if (&RUN_feature("HXC_Potential CVONLY")=="1") {$POT=$POT."cvonly"};
+ if (&RUN_feature("HXC_Potential GS_xc")=="1") {$POT=$POT."gs"};
+ if (&RUN_feature("HXC_Potential COH")=="1") {$POT=$POT."coh"}
+ if (&RUN_feature("HXC_Potential FOCK")=="1") {$POT=$POT."f"}
+ if (&RUN_feature("HXC_Potential LDA_X")=="1") {$POT=$POT."ldax"};
+ if (&RUN_feature("HXC_Potential PZ")=="1") {$POT=$POT."pz"};
+ if (&RUN_feature("HXC_Potential DEFAULT")=="1") {$POT="d"};
+ if (&RUN_feature("HXC_Potential default")=="1") {$POT="d"};
  if ($POT) {$CMD=$CMD." -potential ".$POT};
 
  if (&RUN_feature("magnetic")=="1") 
@@ -102,7 +111,8 @@ sub RUN_input_file_test{
    if (&RUN_feature("Hamiltonian= \"all\"")=="1") { $CMD=$CMD." -magnetic a"};
  };
 
- if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation p -gw0 fan"};
+ if (&RUN_feature("el_ph_corr")=="1")      { $CMD=$CMD." -correlation ep -gw0 fan"};
+ if (&RUN_feature("ph_el_corr")=="1")      { $CMD=$CMD." -correlation pe -gw0 X"};
 
  if (&RUN_feature("BSKmod= \"SEX\"")=="1")      { $CMD=$CMD." -kernel sex"};
  if (&RUN_feature("BSKmod= \"ALDA\"")=="1")      { $CMD=$CMD." -kernel alda"};
@@ -121,11 +131,14 @@ sub RUN_input_file_test{
  if (&RUN_feature("fixsyms")=="1") { $CMD=$CMD." -fixsym"};
  if (&RUN_feature("RToccupations")=="1") { $CMD=$CMD." -rtplot o"};
  if (&RUN_feature("RTdeltaRho")=="1") { $CMD=$CMD." -rtplot d"};
+ if (&RUN_feature("RTGtwotimes")=="1") { $CMD=$CMD." -rtplot g"};
  if (&RUN_feature("RTenergy")=="1") { $CMD=$CMD." -rtmode e"};
  if (&RUN_feature("RTfitbands")=="1") { $CMD=$CMD." -rtmode b"};
  if (&RUN_feature("RTdos")=="1") { $CMD=$CMD." -rtmode d"};
  if (&RUN_feature("RTtime")=="1") { $CMD=$CMD." -rtmode t"};
+ if (&RUN_feature("RTabs")=="1") { $CMD=$CMD." -rtplot a"};
  if (&RUN_feature("RT_X")=="1") { $CMD=$CMD." -rtplot X"};
+ if (&RUN_feature("RTGtwotimes")=="1") { $CMD=$CMD." -rtplot g"};
  if (&RUN_feature("K_grid")=="1") { $CMD=$CMD." -grid k"};
  if (&RUN_feature("QPDB_edit")=="1") { $CMD=$CMD." -qpdb g"};
  if (&RUN_feature("QPDB_merge")=="1") { $CMD=$CMD." -qpdb m"};
@@ -153,8 +166,22 @@ sub RUN_input_file_test{
  if (&RUN_feature("p2y")=="1")   { return "OK" };
  if (&RUN_feature("a2y")=="1")   { return "OK" };
 
+ #
+ # MPI off?
+ #
+ my $mpi_off_flag=" ";
+ my $mpi_command=" ";
+ if ($mpi_is_off){
+  if ( not $is_NEW_driver) {$mpi_off_flag="-M"}
+  if (     $is_NEW_driver) {$mpi_off_flag="-nompi"}
+ }else{
+   if ($mpiexec) { $mpi_command="$mpiexec -quiet -np 1"}
+ }
+
  if ($CMD and $NEW_file) {
-  &command("$yambo_exec -Q $CMD -F $NEW_file $log");
+  &command("$mpi_command $yambo_exec $mpi_off_flag -Q $CMD -F $NEW_file $log");
+  # This is likely due to a missing call to MPI_init
+  if ($system_error == 256) { $system_error=0 }
   if (compare("$INPUT_file","$NEW_file") == 0) {
    return "Input not Generated";
   }else{

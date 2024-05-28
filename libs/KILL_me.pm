@@ -26,12 +26,13 @@ sub KILL_me
 {
 $numParameters = @_ ;
 $process=@_[0];
+my $running_dir=  (split(/\//,$suite_dir))[-1];
 if ($numParameters eq 1){
- $cmd="ps uax | $grep $kill_me | $grep $process | $grep -v $grep | $grep -v vim | $grep -v kill";
+ $cmd="ps uax | $grep $user | $grep $process | $grep $running_dir | $grep -v $grep | $grep -v vim | $grep -v kill";
 }elsif ($numParameters eq 2){
- $cmd="ps uax | $grep $kill_me | $grep $process | $grep @_[1] | $grep -v $grep | $grep -v vim | $grep -v kill";
+ $cmd="ps uax | $grep $user | $grep $process | $grep $running_dir| $grep @_[1] | $grep -v $grep | $grep -v vim | $grep -v kill";
 }elsif ($numParameters eq 3){
- $cmd="ps uax | $grep $kill_me | $grep $process | $grep @_[1] | $grep @_[2] | $grep -v $grep | $grep -v vim | $grep -v kill";
+ $cmd="ps uax | $grep $user | $grep $process | $grep $running_dir | $grep @_[1] | $grep @_[2] | $grep -v $grep | $grep -v vim | $grep -v kill";
 }
 $list =`$cmd | awk '{print \$2}'`;
 $name =`$cmd`;
@@ -39,10 +40,10 @@ $list  =~ tr/\n/ /d;
 my @pids  = split(/ /,$list);
 my @names = split(/\n/,$name);
 $i=0;
-print "Killing $process related jobs...\n";
+if ($verb) {print "\n\n Killing $process related jobs...\n"};
 foreach my $pid (@pids)
 {
- print "$names[$i]\n";
+ if ($verb) {print "$names[$i]\n"};
  &command("kill -9 $pid");
  $i++;
 }
