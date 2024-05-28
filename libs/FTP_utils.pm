@@ -52,7 +52,7 @@ my $rec = shift;
 #
 &command("echo 'put $rec $what htdocs/$where' > cmds");
 &command("echo 'chmod 775 htdocs/$where/$what' >> cmds");
-&command("echo 'chown yambo.user htdocs/$where/$what' >> cmds");
+&command("echo 'chown 1033 htdocs/$where/$what' >> cmds");
 &command("echo 'chgrp 33 htdocs/$where/$what' >> cmds");
 &command("sftp -b cmds ${FTP_user}\@media.yambo-code.eu");
 &command("rm -f cmds");

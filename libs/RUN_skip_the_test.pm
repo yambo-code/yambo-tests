@@ -99,6 +99,22 @@ if ( "@_" eq "INPUT") {
   return "FAIL";
  };
  #
+ # Skipping tests which are not GPU ported
+ if ($BUILD =~ m/CUDA/ || $BUILD =~ m/GPU/ ) {
+  if ($testname =~ m/DBGD/ || $testname =~ m/dbgd/ || $testname =~ m/DbGd/ ) {
+   my $msg = sprintf("%-"."$left_length"."s", "$testname");
+   $CHECK_error= $msg." skipped (Double grid test is not gpu ported)";
+   &RUN_stats("SKIPPED");
+   return "FAIL";
+  }
+  #if ($testname =~ m/YPP/ || $testname =~ m/ypp/ ) {
+  # my $msg = sprintf("%-"."$left_length"."s", "$testname");
+  # $CHECK_error= $msg." skipped (ypp is not gpu ported)";
+  # &RUN_stats("SKIPPED");
+  # return "FAIL";
+  #}
+ };
+ #
  # Tests with Covariant dipoles are broken in parallel
  #if ($testname =~ m/Covariant/ && $np>1 && not ($PAR_covariant eq "yes")) { 
  # my $msg = sprintf("%-"."$left_length"."s", "$testname");

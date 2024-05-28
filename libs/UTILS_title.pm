@@ -53,6 +53,7 @@ if ($branch) {
  &MY_PRINT( $fh,  "\n                  mpi : $MPI_kind ") if (!$reduced_log);
  &MY_PRINT( $fh,  "\n                 CUDA : $CUDA_support ") if (!$reduced_log);
  &MY_PRINT( $fh,  "\n              bin dir : $conf_bin");
+ &MY_PRINT( $fh,  "\n            repo kind : $GIT_repo_kind");
  &MY_PRINT( $fh,  "\n            shortname : $branch_key") if (!$reduced_log);
 }
 #

@@ -286,7 +286,9 @@ chdir($dir);
 $compress="no";
 foreach $file (<compilation/*comp*.log>) {  $compress="yes"; };
 if ( "$compress" eq "yes" ){ &command("tar -czf $comp_tgz compilation/*comp*.log"); };
-&command("tar -czf $logs_tgz LOG*.log");
+$compress_LOG="no";
+foreach $file (<LOG*.log>) {  $compress_LOG="yes"; };
+if ( "$compress_LOG" eq "yes" ){ &command("tar -czf $logs_tgz LOG*.log"); };
 &CWD_go;
 &command("mv $dir/*.tgz ./");
 #
