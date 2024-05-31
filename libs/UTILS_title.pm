@@ -63,7 +63,7 @@ if ($branch) {
 #
 # PARALLEL stuff
 #
-$PAR_mode="none";
+$PAR_mode="SERIAL";
 if($#NP_set > 1 or $NP_set[0]>1) { 
  if ($default_parallel) {
   $PAR_mode="single, default parallelization";
@@ -74,12 +74,10 @@ if($#NP_set > 1 or $NP_set[0]>1) {
  }else{
   $PAR_mode="loop over combinations";
  }
- &MY_PRINT($fh,  "\n        Parallel conf : $PAR_mode ");
- &MY_PRINT($fh,  "\n                  MPI : $mpiexec ");
- &MY_PRINT($fh,  "\n                 CPUs : @NP_set ");
-}else{
-  &MY_PRINT($fh, "\n        Parallel Loop : SERIAL");
 }
+&MY_PRINT($fh,  "\n        Parallel conf : $PAR_mode ");
+&MY_PRINT($fh,  "\n          MPI command : $mpiexec ");
+&MY_PRINT($fh,  "\n                 CPUs : @NP_set ");
 if($nt and $nt>1) { 
  &MY_PRINT($fh,  "\n              Threads : $nt ");
 }
