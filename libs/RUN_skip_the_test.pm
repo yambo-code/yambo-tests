@@ -107,12 +107,12 @@ if ( "@_" eq "INPUT") {
    &RUN_stats("SKIPPED");
    return "FAIL";
   }
-  #if ($testname =~ m/YPP/ || $testname =~ m/ypp/ ) {
-  # my $msg = sprintf("%-"."$left_length"."s", "$testname");
-  # $CHECK_error= $msg." skipped (ypp is not gpu ported)";
-  # &RUN_stats("SKIPPED");
-  # return "FAIL";
-  #}
+  if ($testname =~ m/YPP/ || $testname =~ m/ypp/ ) {
+   my $msg = sprintf("%-"."$left_length"."s", "$testname");
+   $CHECK_error= $msg." skipped (ypp is not gpu ported)";
+   &RUN_stats("SKIPPED");
+   return "FAIL";
+  }
  };
  #
  # Tests with Covariant dipoles are broken in parallel
