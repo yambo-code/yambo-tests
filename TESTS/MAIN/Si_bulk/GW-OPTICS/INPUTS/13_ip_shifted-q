@@ -1,0 +1,39 @@
+#                                                           
+#  __  __   ________   ___ __ __    _______   ______        
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\       
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \      
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \     
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \    
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \   
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/   
+#                                                           
+#                                                           
+#               Version 4.0.2 Revision 5139                 
+#                        MPI Build                          
+#                http://www.yambo-code.org                  
+#
+optics                       # [R OPT] Optics
+bse                          # [R BSE] Bethe Salpeter Equation.
+BSEmod= "causal"             # [BSE] resonant/causal/coupling
+BSKmod= "IP"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+Gauge= "length"              # [BSE] Gauge (length|velocity)
+BSEprop= "abs jdos"
+
+#BSEqAppr="Shifted grids"
+DipApproach= "Shifted grids" # [Xd] [G-space v/R-space x/Covariant/Shifted grids]
+ShiftedPaths="SHIFTED_GRID_BSE/shift_1"
+
+#KfnQPdb= "E < 03_GoWo_PPA_corrections/ndb.QP"              # [EXTQP BSK BSS] Database
+% BEnRange
+  0.00000 | 5.0000 | eV    # [BSS] Energy range
+%
+% BDmRange
+  0.10000 |  0.10000 | eV    # [BSS] Damping range
+%
+BEnSteps= 101                # [BSS] Energy steps
+% BLongDir
+ 1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+% BSEBands
+   2 |  7 |                 # [BSK] Bands range
+%
