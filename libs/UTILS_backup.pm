@@ -86,7 +86,7 @@ sub UTILS_list_backups{
      print "BRANCH(TS): $tsuite_branch\n";
      print "FC        : $FC_kind $MPI_kind\n";
      print "BUILD     : $BUILD\n";
-     print "Scheme    : $scheme\n";
+     print "REPO kind : $REPO_kind\n";
     }
     print "DIR       : $dir\n";
     print "\n";

@@ -72,6 +72,7 @@ sub PHP_key_words{
  if ($n_patterns eq 0)
  {
    undef $BUILD;
+   undef $REPO_kind;
    undef $MPI_kind;
    undef $FC_kind;
    undef $REVISION;
@@ -91,8 +92,9 @@ sub PHP_key_words{
   $MPI_kind=" ";
  }
 #
-&get_line("Compilation Scheme");
-$scheme=$pattern[0][2]; 
+$REPO_kind="unknown"; 
+&get_line("Repo Kind");
+if ($n_patterns > 0) { $REPO_kind=$pattern[0][2];  };
 $Yambo_precision="unknown";
 &get_line("Compilation Precision");
 if ($n_patterns > 0) { $Yambo_precision=$pattern[0][2];  };
@@ -294,6 +296,8 @@ if ( "$compress_LOG" eq "yes" ){ &command("tar -czf $logs_tgz LOG*.log"); };
 #
 # Final copying
 #
+#&command("mkdir -p backup_and_www/$host/www/$REPO_kind/$local_branch");
+#&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$REPO_kind/$local_branch");   
 &command("mkdir -p backup_and_www/$host/www/$local_branch");
 &command("mv *.php *.dat *.tgz backup_and_www/$host/www/$local_branch");   
 #
@@ -305,6 +309,17 @@ sub PHP_upload
 chdir("$suite_dir/backup_and_www/$host/www");
 &FTP_mkdir("robots/$local_branch");
 &FTP_upload_it("$local_branch","robots","-R");
+ #foreach $kind ("GPL","devel")
+ #{ 
+ # if (-d "$suite_dir/backup_and_www/$host/www/$kind")
+ # {
+ #  chdir("$suite_dir/backup_and_www/$host/www/$kind");
+ #  &FTP_mkdir("robots");
+ #  &FTP_mkdir("robots/$kind");
+ #  &FTP_mkdir("robots/$kind/$local_branch");
+ #  &FTP_upload_it("$local_branch","robots/$kind","-R");
+ # };
+ #}
 }
 #
 sub get_line{
