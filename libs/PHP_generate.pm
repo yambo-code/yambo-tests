@@ -61,6 +61,7 @@ sub PHP_key_words{
  $robot_id = (split(/-/,$robot_id))[0];
  &get_line("Yambo      branch");
  $yambo_branch=$pattern[0][2];
+ if ($yambo_branch eq "bug-fixes") {$yambo_branch="maintenance-master"};
  &get_line("Test-suite branch");
  $tsuite_branch=$pattern[0][2];
  if( $yambo_branch eq ""){$yambo_branch="none";}
