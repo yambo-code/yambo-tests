@@ -98,7 +98,7 @@ if ($SC=="0" and $NLOPTICS=="1" and $COLL=="0") {
  foreach $f1 (@WK){ foreach $f2 (@KCV){
   if ($Nr==10) {next};
   $Nr++;
-  $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\"";
+  $MPI_CPU_conf[$Nr]="NL_CPU=\"@$f1[0].@$f1[1]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" DIP_CPU=\"@$f2[0].@$f2[1].@$f2[2]\" OSCLL_CPU=\"@$f2[0].@$f2[1]\"";
  }}
  return;
 }
