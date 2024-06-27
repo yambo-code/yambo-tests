@@ -1,19 +1,19 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+                                                                          
+    Y88b    /   e           e    e      888~~\    ,88~-_                  
+     Y88b  /   d8b         d8b  d8b     888   |  d888   \                 
+      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |                
+       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |                
+        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /                 
+       /   /      Y88b /          Y888b 888__/    `88_-~                  
                                                                           
                                                                           
-    Version 5.1.0 Revision 21952 Hash (prev commit) 8bef448ae             
-                      Branch is bug-fixes                                 
+    Version 5.2.0 Revision 23202 Hash (prev commit) d35fae3f4e            
+               Branch is refact_fast-collisions                           
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+                   http://www.yambo-code.eu                               
  
- 03/01/2023 at 10:15 ypp_nl @ attacc-lavoro
+ 06/27/2024 at 13:34 ypp_nl @ attacc-lavoro
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 07_ypp_nl_lrw
- Alt#1 string        : 07_non_linear_lrw-serial-bug-fixes
+ Alt#1 string        : 07_non_linear_lrw-serial-refact_fast-collisions
  Alt#2 string        : R1
 
  Precision           : DOUBLE
@@ -119,20 +119,20 @@
   Grid dimensions      :  2  2
   K lattice UC volume  :  0.264383 [a.u.]
 
-  IBZ K-points :   4
-  BZ  K-points :   4
+  IBZ K-points                                      :   4
+  BZ  K-points                                      :   4
 
   K/Q-points units:
   rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
-  K [1]:  0.000000  0.000000  0.000000 [rlu]
-        : wf components:  2831
-  K [2]:  0.500000    -0.149012E-7   0.00000    [rlu]
-        : wf components:  2834
-  K [3]:  0.447035E-7 -0.500000      0.00000    [rlu]
-        : wf components:  2834
-  K [4]: -0.500000  0.500000  0.000000 [rlu]
-        : wf components:  2834
+  K [1]          [rlu]:  0.000000  0.000000  0.000000
+         WF components:  2831
+  K [2]          [rlu]:  0.500000    -0.149012E-7   0.00000   
+         WF components:  2834
+  K [3]          [rlu]:  0.447035E-7 -0.500000      0.00000   
+         WF components:  2834
+  K [4]          [rlu]: -0.500000  0.500000  0.000000
+         WF components:  2834
 
   [05.05] Energies & Occupations
   ==============================
@@ -195,25 +195,25 @@
       IO_and_Messaging_switch :      0.0000s CPU
                   io_KB_pwscf :      0.0000s CPU
              io_ATMPROJ_pwscf :      0.0000s CPU
-                   io_COL_CUT :      0.0000s CPU
+                   io_COL_CUT :      0.0001s CPU
              RT output (INIT) :      0.0001s CPU
-             io_RT_components :      0.0001s CPU ( 2 calls,   0.070 msec avg)
-               io_Double_Grid :      0.0002s CPU ( 2 calls,   0.080 msec avg)
-                     io_QINDX :      0.0036s CPU
-                   io_DIPOLES :      0.0038s CPU
-                        io_WF :      0.0041s CPU
-                 io_KB_abinit :      0.0048s CPU
-             SERIAL_inversion :      0.0057s CPU (15 calls,   0.382 msec avg)
-               LINEAR ALGEBRA :      0.0058s CPU (15 calls,   0.386 msec avg)
-                  io_fragment :      0.0075s CPU ( 5 calls,   1.490 msec avg)
-                      io_GROT :      0.0078s CPU ( 3 calls,   2.590 msec avg)
-                        io_NL :      0.0428s CPU ( 7 calls,   6.110 msec avg)
+             io_RT_components :      0.0001s CPU ( 2 calls,   0.075 msec avg)
+               io_Double_Grid :      0.0002s CPU ( 2 calls,   0.103 msec avg)
+             SERIAL_inversion :      0.0002s CPU (12 calls,   0.019 msec avg)
+               LINEAR ALGEBRA :      0.0003s CPU (12 calls,   0.025 msec avg)
+                        io_WF :      0.0042s CPU
+                   io_DIPOLES :      0.0045s CPU
+                     io_QINDX :      0.0049s CPU
+                 io_KB_abinit :      0.0051s CPU
+                      io_GROT :      0.0093s CPU ( 3 calls,   3.097 msec avg)
+                  io_fragment :      0.0123s CPU ( 4 calls,   3.069 msec avg)
+                        io_NL :      0.0680s CPU ( 6 calls,  11.332 msec avg)
 
  [08] Game Over & Game summary
  =============================
 
- 03/01/2023 at 10:15 ypp_nl @ attacc-lavoro [start]
- 03/01/2023 at 10:15                        [end]
+ 06/27/2024 at 13:34 ypp_nl @ attacc-lavoro [start]
+ 06/27/2024 at 13:34                        [end]
 
   
  .-ACKNOWLEDGMENT
