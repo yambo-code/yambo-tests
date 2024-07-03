@@ -29,11 +29,13 @@ sub FTP_list
 &command("rm -f cmds");
 die "\n";
 }
+
 sub FTP_it
 {
 &command("sftp ${FTP_user}\@media.yambo-code.eu");
 die "\n";
 }
+
 sub FTP_mkdir
 {
 #
@@ -43,6 +45,7 @@ my $dir  = shift;
 &command("sftp -b cmds ${FTP_user}\@media.yambo-code.eu");
 &command("rm -f cmds");
 }
+
 sub FTP_upload_it
 {
 #
