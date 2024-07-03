@@ -91,7 +91,6 @@ sub PHP_key_words{
   $FC_kind=$MPI_kind;
   $MPI_kind=" ";
  }
-#
 &get_line("Repo Kind");
 if ($n_patterns > 0) { $REPO_kind=$pattern[0][2];  };
 $Yambo_precision="unknown";
@@ -309,7 +308,6 @@ return
 #
 sub PHP_upload
 {
-# TO FIX
  if ($REPO_kind){
   foreach $kind ("GPL","devel")
   { 
