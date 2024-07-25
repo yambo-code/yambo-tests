@@ -52,7 +52,10 @@ if test -d ROBOTS/$robot && test -d ROBOTS/$robot/$user/CONFIGURATIONS && test -
 else
  AC_MSG_RESULT(created)
  mkdir -p ROBOTS/$robot/$user
- echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
+ GREP=`grep $robot ROBOTS/ROBOTS_list.pl |wc -l`
+ if test x"$GREP" = "x0"; then 
+  echo '$'"ROBOTS{'"$hostname"'} = '"$robot"';" >> ROBOTS/ROBOTS_list.pl
+ fi
 fi
 if ! test -d ROBOTS/$robot/$user/SCRIPTS; then
   mkdir -p ROBOTS/$robot/$user/SCRIPTS
@@ -147,10 +150,10 @@ case $with_yambo in
   *) 
    if test -f ROBOTS/$robot/$user/BRANCHES; then
      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
-     if ! test x"$GREP" = "x0"; then 
+     if test x"$GREP" = "x0"; then 
       if test -f $with_yambo/driver/yambo.F ; then
         AC_MSG_RESULT($with_yambo)
-        echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+        echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
       else
         AC_MSG_ERROR([could not locate the Yambo source])
       fi
@@ -160,7 +163,9 @@ case $with_yambo in
    else
      if test -f $with_yambo/driver/yambo.F ; then
        AC_MSG_RESULT($with_yambo)
-       echo "$with_yambo" >> ROBOTS/$robot/$user/BRANCHES
+       echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
+     else
+        AC_MSG_ERROR([could not locate the Yambo source])
      fi
    fi
    source_dir=$with_yambo
@@ -168,15 +173,25 @@ case $with_yambo in
 esac
 AC_SUBST(source_dir)
 #
+# ... modules
+#
+AC_ARG_WITH(yambo_modules, AC_HELP_STRING([--with-yambo-modules=<path>],[Path to the folder where the test-suite will install the Yambo modules],[32]))
+if test "$with_yambo_modules" = ""; then with_yambo_modules="none"; fi
+if test -f .running_robot.pl; then
+ with_yambo_modules=`sed -n '3,3 p' .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+fi
+#
 # ... libraries
 #
 AC_ARG_WITH(yambo_libs, AC_HELP_STRING([--with-yambo-libs=<path>],[Path to the folder where the test-suite will install the Yambo ext-libs],[32]))
 if test "$with_yambo_libs" = ""; then with_yambo_libs="none"; fi
 if test -f .running_robot.pl; then
- with_yambo_libs=`tail -n 1 .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+ with_yambo_libs=`sed -n '2,2 p' .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
 fi
+#
 echo '$'"host='"$robot"';" > .running_robot.pl
 echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
+echo '$'"ext_modules_path='"$with_yambo_modules"';" >> .running_robot.pl
 # ============================================================================
 # System specific setups
 case "${host}" in

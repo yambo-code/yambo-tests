@@ -8,12 +8,12 @@
      \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
                                                                           
                                                                           
-          Version 5.0.0 Revision 19547 Hash 53446ff7e                     
-                      Branch is bug-fixes                                 
+    Version 5.2.0 Revision 22368 Hash (prev commit) b42959ab6a            
+                       Branch is develop                                  
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 03/05/2021 at 17:13 yambo @ VivoBook
+ 11/10/2023 at 10:04 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 01_IP_dichroism
- Alt#1 string        : R5
+ Alt#1 string        : R4
 
  Precision           : SINGLE
   
@@ -65,8 +65,15 @@
   Atoms in the cell     :  H  C
   number of H  atoms    :   4
   number of C  atoms    :  1
-  Alat factors          :  6.683429  6.683429  6.683429 [a.u.]
 
+  List of atomic coordinates    : [cc]
+  H1       :  1.403122  1.403122  1.403122
+  H2       : -1.148009 -1.148009  1.148009
+  H3       :  1.530678 -1.530678 -1.530678
+  H4       : -1.275565  1.275565 -1.275565
+  C1       :  0.000000  0.000000  0.000000
+
+  Alat factors          :  6.683429  6.683429  6.683429 [a.u.]
   Direct lattice volume :  597.0737 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]: -1.000000  0.000000  1.000000  [iru]
@@ -78,6 +85,7 @@
    B[ 1 ]: -0.500000 -0.500000  0.500000  [iku]
    B[ 2 ]:  0.500000  0.500000  0.500000  [iku]
    B[ 3 ]: -0.500000  0.500000 -0.500000  [iku]
+   
 
   [02.02] Symmetries
   ==================
@@ -134,7 +142,7 @@
   [X] Filled Bands                                  :   4
   [X] Empty Bands                                   :   5  20
   [X] Direct Gap                                    :  5.525514 [eV]
-  [X] Direct Gap localized at k-point               :  1
+  [X] Direct Gap localized at k                     :  1
    
    
 
@@ -143,15 +151,13 @@
 
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
-  Polarization last K                              :  1
+  Polarization last K ( bz)                        :  1
+  Polarization last K (ibz)                        :  1
   QP states                                        :  1  1
   X grid is uniform                                : yes
-  Grids                                            : X S
-  BS scattering                                    : no
-  COLL scattering                                  : no
-  Sigma scattering                                 : yes
-  X scattering                                     : yes
- - S/N 009277 ---------------------------------------------- v.05.00.00 r.19547 -
+  Grids (string)                                   :  X S
+  Grids (int-vector)                               :  1  0  0  1
+ - S/N 009277 ---------------------------------------------- v.05.02.00 r.22368 -
 
  IBZ Q-points :  1
  BZ  Q-points :  1
@@ -160,6 +166,7 @@
  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
  Q [1]:  0.000000  0.000000  0.000000 [rlu]
+       : weight :  1.000000
  Non-periodic chartesian directions : none
  Optical renormalization            :  597.0737 [au]
  Polarizability dimension           : volume
@@ -196,13 +203,11 @@
   RIM corrections included                         : no
   RIM RL components                                : 0
   RIM random points                                : 0
- - S/N 009277 ---------------------------------------------- v.05.00.00 r.19547 -
+ - S/N 009277 ---------------------------------------------- v.05.02.00 r.22368 -
 
  [05] Dipoles
  ============
 
-
- [WARNING] DIPOLES database not correct or missing
  [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
   Fragmentation                                    : yes
  - S/N 009277 ---------------------------------------------- v.05.00.00 r.19528 -
@@ -226,44 +231,60 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
- - S/N 009277 ---------------------------------------------- v.05.00.00 r.19547 -
+ - S/N 009277 ---------------------------------------------- v.05.02.00 r.22368 -
 
- [WARNING] Only commutator with non-local pseudopotential contribution included in position and velocity dipol
+ [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
+
+ [WARNING] In case H contains other non local terms, these are neglected
+
+ [06] Bethe Salpeter Equation driver
+ ===================================
+
 
  [WARNING] BSE calculation with minimal memory utilization
 
- [06] Bethe Salpeter Equation @q1
- ================================
+ [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+
+  [06.01] Bethe Salpeter Equation @q1
+  ===================================
 
 
-  [06.01] Transition Groups build-up @q1
-  ======================================
+   [06.01.01] Transition pre-analysis @q1
+   ======================================
 
-  [BSK] Transition groups (total):  1
 
-  [06.02] Independent Particles properties @q1
-  ============================================
+   [06.01.02] Transition Groups build-up @q1
+   =========================================
 
-  Optical renormalization       :  597.0737 [a.u.]
-  Polarizability dimension      : volume
+   [BSK] Transition groups (total):  1
 
-  [RD./01_IP_dichroism//ndb.dipoles]----------------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
-   RL vectors                                       :  2637 [WF]
-   Fragmentation                                    : yes
-   Electronic Temperature                           :  300.1000 [K]
-   Bosonic    Temperature                           :  300.1000 [K]
-   DIP band range                                   :   1  20
-   DIP band range limits                            :  20   1
-   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
-   RL vectors in the sum                            :  2637
-   [r,Vnl] included                                 : yes
-   Bands ordered                                    : no
-   Direct v evaluation                              : no
-   Approach used                                    : G-space v
-   Dipoles computed                                 : R V P
-   Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-  - S/N 009277 ---------------------------------------------- v.05.00.00 r.19547 -
+   [06.01.03] Loading Dipoles @q1
+   ==============================
+
+   [RD./01_IP_dichroism//ndb.dipoles]----------------------------------------------
+    Brillouin Zone Q/K grids (IBZ/BZ)                :  1  1  1  1
+    RL vectors                                       :  2637 [WF]
+    Fragmentation                                    : yes
+    Electronic Temperature                           :  300.1000 [K]
+    Bosonic    Temperature                           :  300.1000 [K]
+    DIP band range                                   :   1  20
+    DIP band range limits                            :  20   1
+    DIP e/h energy range                             : -1.000000 -1.000000 [eV]
+    RL vectors in the sum                            :  2637
+    [r,Vnl] included                                 : yes
+    Bands ordered                                    : no
+    Direct v evaluation                              : no
+    Approach used                                    : G-space v
+    Dipoles computed                                 : R V P
+    Wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
+   - S/N 009277 ---------------------------------------------- v.05.02.00 r.22368 -
+
+   [06.01.04] Independent Particles properties @q1
+   ===============================================
+
+   Optical renormalization       :  597.0737 [a.u.]
+   Polarizability dimension      : volume
+
 
  [07] Timing Overview
  ====================
@@ -271,46 +292,36 @@
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
                  PP_uspp_init :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU ( 6 calls,   0.004 msec avg)
                  io_KB_abinit :      0.0000s CPU
-                        io_BS :      0.0000s CPU
-                        io_HF :      0.0001s CPU
-               io_Double_Grid :      0.0001s CPU
-                         io_X :      0.0001s CPU ( 4 calls,   0.034 msec avg)
-                  WF_load_FFT :      0.0028s CPU
-                  io_fragment :      0.0028s CPU ( 2 calls,   1.424 msec avg)
-                      io_GROT :      0.0079s CPU ( 2 calls,   3.926 msec avg)
-                   io_COL_CUT :      0.0080s CPU ( 4 calls,   1.999 msec avg)
-                        io_WF :      0.0085s CPU ( 4 calls,   2.119 msec avg)
-                     io_QINDX :      0.0097s CPU ( 2 calls,   4.832 msec avg)
-                  io_KB_pwscf :      0.0134s CPU ( 3 calls,   4.468 msec avg)
-               Coulomb Cutoff :      0.0178s CPU
-                   io_DIPOLES :      0.0292s CPU (10 calls,   2.924 msec avg)
-                   T_space IP :      0.1616s CPU
-            DIPOLE_transverse :      1.5684s CPU
-                      Dipoles :      1.5899s CPU
+                        io_HF :      0.0000s CPU
+               io_Double_Grid :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0000s CPU ( 9 calls,   0.004 msec avg)
+                         io_X :      0.0001s CPU ( 5 calls,   0.017 msec avg)
+                  io_fragment :      0.0008s CPU ( 2 calls,   0.396 msec avg)
+                  WF_load_FFT :      0.0010s CPU
+                      io_GROT :      0.0022s CPU ( 2 calls,   1.123 msec avg)
+                   io_COL_CUT :      0.0023s CPU ( 4 calls,   0.565 msec avg)
+                        io_WF :      0.0025s CPU ( 4 calls,   0.637 msec avg)
+                  BSE dipoles :      0.0028s CPU
+                     io_QINDX :      0.0033s CPU ( 2 calls,   1.658 msec avg)
+                   io_DIPOLES :      0.0071s CPU (10 calls,   0.712 msec avg)
+               Coulomb Cutoff :      0.0072s CPU
+                  io_KB_pwscf :      0.0075s CPU ( 3 calls,   2.500 msec avg)
+            DIPOLE_transverse :      0.0512s CPU
+                   T_space IP :      0.6184s CPU
+                      Dipoles :      1.0563s CPU
 
- [08] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  6.279000 [Mb]
-
- [09] Game Over & Game summary
+ [08] Game Over & Game summary
  =============================
 
- 03/05/2021 at 17:13 yambo @ VivoBook [start]
- 03/05/2021 at 17:13                  [end]
+ 11/10/2023 at 10:04 yambo @ unimi-XPS-8930 [start]
+ 11/10/2023 at 10:05                        [end]
 
   
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
  | the YAMBO group (those specified in the GNU General Public
- | License, http://www.gnu.org/copyleft/gpl.txt). However, it is
  | common practice in the scientific literature, to acknowledge the
  | efforts of people that have made the research possible. In this
  | spirit, please find below the reference we kindly ask you to use
@@ -341,19 +352,20 @@
  | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
  | RandQpts=0                       # [RIM] Number of random q-points in the BZ
  | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
- | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+ | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
  | % CUTBox
  |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
  | %
  | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
  | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
  | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
- | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | BSKmod= "IP"                     # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+ | Lkind= "Lbar"                    # [BSE,X] bar(default)/full
  | DipBandsALL                    # [DIP] Compute all bands range, not only valence and conduction
  | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+ | DbGdQsize= 1.000000              # [X,DbGd][o/o] Percentual of the total DbGd transitions to be used
  | BSENGexx= 20395            RL    # [BSK] Exchange components
- | BSEprop= "abs dichr"             # [BSS] abs/kerr/magn/dichr trace
  | % BSEQptR
  |  1 | 1 |                             # [BSK] Transferred momenta range
  | %
@@ -370,3 +382,5 @@
  | % BLongDir
  |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
  | %
+ | BSEprop= "abs dichr jdos"        # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+ | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
