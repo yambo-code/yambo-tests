@@ -89,6 +89,7 @@ call add_RULE("o-03_OMS_RIM.qp","double_precision",MATERIAL="Si_bulk")
 !=====
 call add_RULE(".eps_q1_haydock_bse","skip",TITLES=(/"EPS`/Im[6]","EPS`/Re[7]"/))
 call add_RULE(".eel_q1_haydock_bse","skip",TITLES=(/"EEL`/Im[6]","EEL`/Re[7]"/))
+call add_RULE(".alpha_q3_inv_bse","skip",TITLES=(/"Im(alpha`)","Re(alpha`)"/))
 call add_RULE(".Esort","skip",TITLE="Im(E)")
 !
 !..ypp
