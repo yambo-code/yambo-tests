@@ -42,3 +42,18 @@ BEnSteps=  20001               # [BSS] Energy steps
 %
 BSHayTrs=  0.02000           # [BSS] Relative [o/o] Haydock treshold. Strict(>0)/Average(<0)
 #WRbsWF
+
+# Without the following input the code runs fine.
+# However the test-suite regenerate the input setting different paramenters and the test fails
+
+Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+% BndsRnXs
+   1 |  20 |                   # [Xs] Polarization function bands
+%
+NGsBlkXs= 10            RL      # [Xs] Response block size
+% DmRngeXs
+  0.00100 |  0.00100 | eV      # [Xs] Damping range
+%
+% LongDrXs
+ 1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
+%
