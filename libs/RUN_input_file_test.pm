@@ -95,6 +95,7 @@ sub RUN_input_file_test{
  if (&RUN_feature("HXC_Potential HARTREE")=="1") {$POT=$POT."h"};
  if (&RUN_feature("HXC_Potential SEX")=="1") {$POT=$POT."sex"};
  if (&RUN_feature("HXC_Potential CVONLY")=="1") {$POT=$POT."cvonly"};
+ if (&RUN_feature("HXC_Potential KBSE")=="1") {$POT=$POT."kbse"};
  if (&RUN_feature("HXC_Potential GS_xc")=="1") {$POT=$POT."gs"};
  if (&RUN_feature("HXC_Potential COH")=="1") {$POT=$POT."coh"}
  if (&RUN_feature("HXC_Potential FOCK")=="1") {$POT=$POT."f"}
