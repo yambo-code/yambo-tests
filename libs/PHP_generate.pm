@@ -93,7 +93,7 @@ sub PHP_key_words{
   $MPI_kind=" ";
  }
 &get_line("Repo Kind");
-$REPO_kind="";
+$REPO_kind="GPL";
 if ($n_patterns > 0) { $REPO_kind=$pattern[0][2];  };
 $Yambo_precision="unknown";
 &get_line("Compilation Precision");
