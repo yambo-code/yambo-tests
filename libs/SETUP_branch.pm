@@ -73,12 +73,15 @@ $branch_key_no_slash=~ s/\//-/g;
 $test_suite_branch= qx(git rev-parse --abbrev-ref HEAD);
 $test_suite_branch=~ s/^\s+|\s+$//g;
 #
-# GPL?
+# GPL or DEVEL?
 chdir $BRANCH;
-my $git_origin= qx(git remote -v | grep origin | grep fetch);
-$git_origin=~ s/\// /g;
-$git_origin=~ s/.git/ /g;
-if ((split(/ /, $git_origin))[3] eq "yambo-devel") 
+my $git_cmd= qx(git branch -vv | grep '\*');
+my $git_origin=(split(/\s+/,$git_cmd))[3];
+$git_origin=~ s/\[/ /g;
+$git_origin=~ s/\]/ /g;
+$git_origin=(split(/\//,$git_origin))[0];
+my $git_origin_url= qx(git remote get-url $git_origin );
+if ($git_origin_url =~ m/yambo-devel/ ) 
 {
  $GIT_repo_kind="devel";
 }else{
