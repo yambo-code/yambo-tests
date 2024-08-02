@@ -69,6 +69,10 @@ call add_RULE(".carriers","skip",TITLES=(/"T_hole [K]","T_elec [K]","Ef(h) [eV]"
 !====
 call add_RULE(".YPP-X_probe_order_1","skip",COLS=(/4,5,6,7/),Material="hBN")
 call add_RULE(".polarization_F","skip",COLS=(/5,6,7/),MATERIAL="hBN")
+call add_RULE(".NL_pol_F","skip",COLS=(/5,6,7/),MATERIAL="hBN")
+! The next two rules are to mimic rule which is there for RT files but also affects NL files
+call add_RULE(".NL_curr","average",COLS=(/2,3,4/),VAL_treshold=1.E-10,MATERIAL="hBN")
+call add_RULE(".NL_pol","average",COLS=(/2,3,4/),MATERIAL="hBN")
 !
 ! KERR
 !======
