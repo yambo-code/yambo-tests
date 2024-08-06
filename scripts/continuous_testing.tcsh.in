@@ -59,7 +59,7 @@ while ( 1 > 0)
     ln -s $log_dir $branch_dir/latest_logs
     @test_suite_dir@/scripts/reset.sh
     touch ~/yambo-testing/@robot@_is_running
-    @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow > $log_dir/log-@robot@-${flow}-${T} 
+    @test_suite_dir@/scripts/launcher.tcsh -b -y $ybranch -t $tbranch -m $module -f $flow > $log_dir/log-@robot@-${flow}-${T} 
     @test_suite_dir@/driver.pl -php $ybranch > /dev/null
     @test_suite_dir@/driver.pl -kill > /dev/null
     echo "done"
