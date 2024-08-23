@@ -1,0 +1,52 @@
+#                                                                     
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
+#                                                                     
+#                                                                     
+# Version 5.2.0 Revision 23126 Hash (prev commit) 3d7b25df8           
+#              Branch is phys-rt-integrators                          
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.eu                             
+#
+negf                             # [R] NEQ Real-time dynamics
+HXC_Potential= "SEX+HARTREE"     # [SC] SC HXC Potential
+HARRLvcs= 2733             RL    # [HA] Hartree     RL components
+% GfnQP_E
+ 1.500000 | 1.000000 | 1.000000 |        # [EXTQP G] E parameters  (c/v) eV|adim|adim
+%
+RTEvalEnergy                   # [RT] Energy variation computed on the fly
+RTEvalEntropy                  # [RT] Entropy variation computed on the fly
+dTupdateTimeSet=-0.024189  fs    # [RT] Time for manual deltaT update
+% RTBands
+  7 | 10 |                           # [RT] Bands
+%
+Integrator= "INT SLOW"                # [RT] Time-evolution (TE) integrator: "EULER", "RK2/RK4", "HEUN"
+#SlowDynamics= "SLOW"              # [RT] Slow-TE approximations: "EXPn" (n<=6), "EXP" (n=3), "INV+ACC", "EXP+ACC", "INV+DIAG"
+RADLifeTime= 0.000000      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
+PhLifeTime= 0.000000       fs    # [RT] Constant Dephasing Time
+DephEThresh= 0.272114E-3   eV    # [RT] Threshold on the energy difference between two states to dephase them
+% DephTRange
+-0.024189 |-0.024189 |         fs    # [RT] Time range in which Dephasing is applied
+%
+RTstep= 10.00000           as    # [RT] Real Time step length
+NETime= 19.90000           fs    # [RT] Simulation Time
+% IOtime
+ 0.010000 | 1.000000 | 0.100000 |  fs    # [RT] Time between two consecutive I/O (CARRIERs - GF - OUTPUT)
+%
+% Field1_Freq
+ 0.000000 | 0.000000 |         eV    # [RT Field1] Frequency
+%
+Field1_NFreqs= 1                 # [RT Field1] Frequency
+Field1_Int=  EFIELD       kWLm2 # [RT Field1] Intensity
+Field1_Width= 0.000000     fs    # [RT Field1] Width
+Field1_kind= "DELTA"             # [RT Field1] Kind(SIN|SOFTSIN| see more on src/modules/mod_fields.F)
+Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
+% Field1_Dir
+ 1.000000 | 0.000000 | 0.000000 |        # [RT Field1] Versor
+%
+Field1_Tstart= 0.010000    fs    # [RT Field1] Initial Time
