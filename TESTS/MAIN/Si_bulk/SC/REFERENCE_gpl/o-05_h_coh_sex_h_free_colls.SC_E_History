@@ -1,0 +1,64 @@
+#                                                                     
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
+#                                                                     
+# Version 5.2.0 Revision 23129 Hash (prev commit) 3a51862bc           
+#            Branch is phys-levels_degeneracy                         
+#                   MPI+HDF5_IO Build                                 
+#                http://www.yambo-code.eu                             
+#
+#
+# [SC] Unit cell atoms                            : Si2
+# [SC] xc Functional                              : HARTREE+COHSEX
+# [SC] Local Potential                            : no
+# [SC] Bands                                      :   1   8
+# [SC] K-points                                   :   4
+# [SC] Bands mixing                               :   100.000000   
+# [SC] Sx RL components                           :   363
+# [SC] Response function bands                    :   1  13
+# [SC] Response function size                     :   51
+# [SC] COHSEX use empty bands                     : yes
+# [SC] W update steps                             : 0
+# [SC] Diagonal approximation                     : no
+# [SC] FFT mesh points                            :  1728
+#
+#    Iteration          E_b3_k1            E_b4_k1            E_b5_k1            E_b3_k2            E_b4_k2            E_b5_k2            E_b3_k3            E_b4_k3            E_b5_k3            E_b3_k4            E_b4_k4            E_b5_k4
+#
+     1.00000000       -0.279376545E-3      0.00000000         3.59037328        -1.53349268        -1.53325319         2.39358926        -3.66567016        -3.66542077         1.02227771        -1.53338242        -1.53330839         2.39326334   
+     2.00000000       -0.293162913E-3      0.00000000         3.59453011        -1.53256834        -1.53232074         2.39997935        -3.66300130        -3.66275764         1.03089201        -1.53245103        -1.53235936         2.39965773   
+     3.00000000       -0.297420484E-3      0.00000000         3.59653568        -1.53212678        -1.53186977         2.40307927        -3.66173553        -3.66147590         1.03511465        -1.53200579        -1.53189111         2.40276432   
+# 
+# 09/17/2024 at 14:09 yambo_sc @ baym [start]
+# 09/17/2024 at 14:09                 [end]
+#
+# .-Input file  yambo.in
+# | scrun                            # [R] Self-Consistent Single-Particle Calculations
+# | cohsex                           # [R][Xp] COlumb Hole Screened EXchange
+# | em1s                             # [R][Xs] Statically Screened Interaction
+# | FFTGvecs=  363             RL    # [FFT] Plane-waves
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | SE_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | % BndsRnXs
+# |   1 | 13 |                           # [Xs] Polarization function bands
+# | %
+# | NGsBlkXs=  51              RL    # [Xs] Response block size
+# | % LongDrXs
+# |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
+# | %
+# | HXC_Potential= "HARTREE+COHSEX"  # [SC] SC HXC Potential
+# | HARRLvcs=  363             RL    # [HA] Hartree     RL components
+# | ALLGHAR                        # [HA] Force the use use all RL vectors for the Hartree potential
+# | % SCBands
+# |   1 |  8 |                           # [SC] Bands
+# | %
+# | SCIter= 3                        # [SC] SC Iterations
+# | SCRhoTresh= 0.100000E-4          # [SC] Rho convergence threshold
+# | SCnlMix                        # [SC] Use SC non-local mixing
+# | BandMix= 100.0000                # [SC] Band mixing
