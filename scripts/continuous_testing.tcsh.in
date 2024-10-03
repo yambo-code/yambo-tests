@@ -6,6 +6,8 @@ while ( 1 > 0)
  #
  cd @test_suite_dir@
  git pull >& /dev/null
+ git submodule update --merge --remote >& /dev/null
+ ./configure >& /dev/null
  ./scripts/wget_from_google_drive.sh
  set files=`find ROBOTS/@robot@/@user@/FLOWS -name 'run*tcsh' | xargs rm -f`
  rm -f ROBOTS/@robot@/@user@/FLOWS/run.*
@@ -28,10 +30,13 @@ while ( 1 > 0)
    set flow=`basename $run_file`
    set flow=`echo $flow |sed 's/.tcsh//'`
    #
-   set branch_dir=~/yambo-testing/$ybranch
+   set branch_dir=~/yambo-testing/$repo/$ybranch
    mkdir -p $branch_dir
    #
-   cd @source_dir@
+   set source_dir=`cat ROBOTS/@robot@/@user@/BRANCHES.base | cut -d " " -f1 | sed "s/REPO/$repo/"`
+   echo "$source_dir any" > ROBOTS/@robot@/@user@/BRANCHES
+   # 
+   cd $source_dir
    git pull >& /dev/null
    git checkout $ybranch  >& /dev/null
    git pull  >& /dev/null

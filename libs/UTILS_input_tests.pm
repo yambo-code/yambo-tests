@@ -80,7 +80,7 @@ if($user_tests){
    $TESTS_folder_scan = "$TESTS_folder/$user_tests";
   }
   elsif($user_tests eq "all"){
-   &MY_PRINT($stdout, " -     Test selection : full suite");
+   if (not $download and not $upload_test) {&MY_PRINT($stdout, " -     Test selection : full suite")};
    $TESTS_folder_scan = $TESTS_folder;
   }
   # If I find SAVE and $input_folder, treat as a working test dir.
