@@ -124,6 +124,10 @@ AC_SUBST(txt2html)
 AC_ARG_WITH(rsync, AC_HELP_STRING([--with-rsync=<exe>],[User-defined rsync],[32]),[],[with_rsync="rsync"]) 
 AC_CHECK_PROGS(rsync,[$with_rsync],[none])
 if test $rsync = "none"; then AC_MSG_ERROR([Please provide the path to a working rsync]); fi
+# yambopy
+#AC_ARG_WITH(yambopy, AC_HELP_STRING([--with-yambopy=<exe>],[User-defined yambopy],[32]),[],[with_yambopy="yambopy"]) 
+AC_CHECK_PROGS(yambopy,[yambopy],[none])
+if test $yambopy = "none"; then AC_MSG_ERROR([yambopy not found]); fi
 # ============================================================================
 # COMPILATION MODULES
 #

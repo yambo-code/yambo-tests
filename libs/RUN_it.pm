@@ -109,7 +109,13 @@ if ($system_error == 0) {
  $CHECK_error="FAILED (exit code $system_error)";
  &RUN_stats("NOT_RUN");
  return "FAIL";
-};
+}
+#
+if( -f "INPUTS/$testname.yambopy"){
+ &MESSAGE("LOG","\n  Running yambopy test for $testname");
+ $command_line="python3 INPUTS/$testname.yambopy";
+ &RUN_wait_and_kill();
+}
 #
 $LAST_COMPLETED_RUN=$dir_name;
 return "OK";
