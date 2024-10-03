@@ -1,17 +1,17 @@
 #                                                                     
-# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
-#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
-#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
-#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
-#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
-#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
-#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
 #                                                                     
 #                                                                     
 # Version 5.2.0 Revision 23130 Hash (prev commit) 3b61fa0e1           
-#             Branch is phys-levels_degeneracy                        
-#                     MPI+HDF5_IO Build                               
-#                 http://www.yambo-code.eu                            
+#            Branch is phys-levels_degeneracy                         
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.eu                             
 #
 #
 #
@@ -44,15 +44,15 @@
 #
 #    Eo [eV]            DeltaE [eV]
 #
-    -1.32998908         3.35377598   
-    0.793320298         4.65646648   
-    0.793320417         4.62574720   
-     3.59133577         2.91542935   
+    -1.32998908         3.35380459   
+    0.793320298         4.65649462   
+    0.793320417         4.62575054   
+     3.59133577         2.91540599   
 # 
-# 09/17/2024 at 14:00 yambo @ baym [start]
-# 09/17/2024 at 14:00              [end]
+# 10/03/2024 at 13:56 yambo @ mo.farah [start]
+# 10/03/2024 at 13:56                  [end]
 #  
-# Timing   [Min/Max/Average]: 06s/06s/06s
+# Timing   [Min/Max/Average]: 09s/09s/09s
 #
 # .-Input file  yambo.in
 # | optics                           # [R] Linear Response optical properties
@@ -62,8 +62,11 @@
 # | ElecTemp= 0.025878         eV    # Electronic Temperature
 # | FFTGvecs=  759             RL    # [FFT] Plane-waves
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
 # | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
 # | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
