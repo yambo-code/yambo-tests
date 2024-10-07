@@ -1,16 +1,16 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
 #                                                                     
-# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
-# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
-#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
-#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
-#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
-#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
-#    ###  ###     ### ###       ### #########   ########              
-#                                                                     
-#                                                                     
-# Version 5.2.0 Revision 23130 Hash (prev commit) 3b61fa0e1           
+# Version 5.2.0 Revision 23132 Hash (prev commit) 0aefd4da0           
 #            Branch is phys-levels_degeneracy                         
-#                    MPI+HDF5_IO Build                                
+#              MPI+OpenMP+HDF5_MPI_IO Build                           
 #                http://www.yambo-code.eu                             
 #
 #
@@ -34,7 +34,7 @@
 # Sx RL components                                :   65
 #                                                 
 # QP @ state[ 1 ] K range                         :  1  1
-# QP @ state[ 1 ] b range                         :  15  18
+# QP @ state[ 1 ] b range                         :  14  18
 # GF energies kind                                : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
 # GF WF`s kind                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
 # Xs energies kind                                : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
@@ -45,17 +45,21 @@
 #
 #    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]         Spin_Pol
 #
-        1                  15                -1.891603           1.062649           2.341817           1
-        1                  15                -1.329989           3.353776           1.484761          -1
-        1                  16                -0.637484           2.250285           1.775795           1
-        1                  16                 0.793320           4.656466          -1.082715          -1
-        1                  17                -0.637484           2.251014           1.760803           1
-        1                  17                 0.793320           4.625747          -1.119638          -1
-        1                  18                 3.443357           3.088267          -1.735717           1
-        1                  18                 3.591336           2.915429          -1.779302          -1
+        1                  14                -1.891603           1.080667           2.325716           1
+        1                  14                -1.598187           3.532447           1.526065          -1
+        1                  15                -1.891603           1.062643           2.341817           1
+        1                  15                -1.329989           3.353804           1.484760          -1
+        1                  16                -0.637484           2.250304           1.775795           1
+        1                  16                 0.793320           4.656494          -1.082715          -1
+        1                  17                -0.637484           2.251022           1.760803           1
+        1                  17                 0.793320           4.625751          -1.119638          -1
+        1                  18                 3.443357           3.088278          -1.735717           1
+        1                  18                 3.591336           2.915406          -1.779301          -1
 # 
-# 09/17/2024 at 14:00 yambo @ baym [start]
-# 09/17/2024 at 14:00              [end]
+# 10/07/2024 at 11:29 yambo @ baym [start]
+# 10/07/2024 at 11:29              [end]
+#  
+# Timing   [Min/Max/Average]: 02s/02s/02s
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
@@ -65,6 +69,9 @@
 # | ElecTemp= 0.025869         eV    # Electronic Temperature
 # | FFTGvecs= 10               Ry    # [FFT] Plane-waves
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
 # | EXXRLvcs= 2                Ry    # [XX] Exchange    RL components
 # | VXCRLvcs=  82711           RL    # [XC] XCpotential RL components
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
@@ -85,7 +92,7 @@
 # | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
 # | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g","q")
 # | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
-# | 1|1|15|18|
+# | 1|1|14|18|
 # | %
 # | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
 # | 1|1| 0.000000|-1.000000|

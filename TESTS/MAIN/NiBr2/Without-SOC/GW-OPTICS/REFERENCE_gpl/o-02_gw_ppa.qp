@@ -1,16 +1,16 @@
 #                                                                     
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
 #                                                                     
-# Y88b    /   e           e    e      888~~\    ,88~-_                
-#  Y88b  /   d8b         d8b  d8b     888   |  d888   \               
-#   Y88b/   /Y88b       d888bdY88b    888 _/  88888    |              
-#    Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |              
-#     Y   /____Y88b   /   YY   Y888b  888   |  Y888   /               
-#    /   /      Y88b /          Y888b 888__/    `88_-~                
-#                                                                     
-#                                                                     
-# Version 5.2.0 Revision 23130 Hash (prev commit) 3b61fa0e1           
+# Version 5.2.0 Revision 23132 Hash (prev commit) 0aefd4da0           
 #            Branch is phys-levels_degeneracy                         
-#                   MPI+HDF5_IO Build                                 
+#              MPI+OpenMP+HDF5_MPI_IO Build                           
 #                http://www.yambo-code.eu                             
 #
 #
@@ -33,7 +33,7 @@
 # Sx RL components                                :   65
 #                                                 
 # QP @ state[ 1 ] K range                         :  1  1
-# QP @ state[ 1 ] b range                         :  15  18
+# QP @ state[ 1 ] b range                         :  14  18
 # GF energies kind                                : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
 # GF WF`s kind                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
 # Xs energies kind                                : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
@@ -44,6 +44,8 @@
 #
 #    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]         Spin_Pol
 #
+        1                  14                -1.891603           1.173306           2.320115           1
+        1                  14                -1.598187           3.735981           1.536996          -1
         1                  15                -1.891603           1.155859           2.338803           1
         1                  15                -1.329989           3.538013           1.497105          -1
         1                  16                -0.637484           2.376541           1.812461           1
@@ -53,8 +55,8 @@
         1                  18                 3.443357           3.169106          -1.780984           1
         1                  18                 3.591336           3.008252          -1.820364          -1
 # 
-# 09/17/2024 at 14:00 yambo @ baym [start]
-# 09/17/2024 at 14:00              [end]
+# 10/07/2024 at 11:29 yambo @ baym [start]
+# 10/07/2024 at 11:29              [end]
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
@@ -65,6 +67,9 @@
 # | ElecTemp= 0.025869         eV    # Electronic Temperature
 # | FFTGvecs= 10               Ry    # [FFT] Plane-waves
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
 # | EXXRLvcs= 2                Ry    # [XX] Exchange    RL components
 # | VXCRLvcs=  82711           RL    # [XC] XCpotential RL components
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
@@ -82,7 +87,7 @@
 # | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
 # | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g","q")
 # | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
-# | 1|1|15|18|
+# | 1|1|14|18|
 # | %
 # | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
 # | 1|1| 0.000000|-1.000000|
