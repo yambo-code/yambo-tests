@@ -54,7 +54,7 @@ if($branchdir =~ /^#/ || $branchdir eq "") {
 if( ! -f "$BRANCH/driver/yambo.F")  { &MY_PRINT($stdout, "ERROR: cannot find $branchdir, skipping!\n"); return "FAIL"; };
 #
 my $pattern;
-if ($branch_id eq "") 
+if ($branch_id eq "" or $branch_id eq "any") 
 {
  chdir $BRANCH;
  $branch_key= qx(git rev-parse --abbrev-ref HEAD);
