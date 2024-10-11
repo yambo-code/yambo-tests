@@ -1,0 +1,49 @@
+#                                                                     
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+# Version 5.2.0 Revision 23129 Hash (prev commit) 3a51862bc           
+#             Branch is phys-levels_degeneracy                        
+#                    MPI+HDF5_IO Build                                
+#                 http://www.yambo-code.eu                            
+#
+# Computing the density from the G lesser
+#
+#    ||a1 [A]           
+#
+     0.00000000       -0.380928350E-5
+    0.317526937       -0.263815537E-5
+    0.635053873        0.166824663E-6
+    0.952580869        0.150236872E-5
+     1.27010775        0.741326630E-6
+     1.58763492       -0.738938581E-6
+     1.90516174       -0.149327229E-5
+     2.22268867       -0.153269298E-6
+     2.54021549        0.264522600E-5
+     2.85774255        0.380055963E-5
+     3.17526984        0.175075024E-5
+     3.49279642       -0.177413347E-5
+# 
+# 09/17/2024 at 14:08 ypp_rt @ baym [start]
+# 09/17/2024 at 14:08               [end]
+#
+# .-Input file  yambo.in
+# | RealTime                         # [R] TD Post-Processing
+# | RTdeltaRho                       # [R] Analize the density
+# | RTtime                           # [R] Post-Processing kind: function of time
+# | TimeStep= 0.500017         fs    # Time step
+# | % TimeRange
+# |   0.00000 | 15.00000 |         fs    # Time-window where processing is done
+# | %
+# | LoadGhistory                   # [NEGF] Build the NEQ density from G<(t,t)
+# | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
+# | Format= "g"                      # Output format [(c)ube/(g)nuplot/(x)crysden]
+# | Direction= "1"                   # [rlu] [1/2/3] for 1d or [12/13/23] for 2d [123] for 3D
+# | FFTGvecs=  387             RL    # [FFT] Plane-waves
+# | #NormToOne                     # Normalize to one the maximum value of the plot

@@ -193,7 +193,7 @@ if($download){
 if ($clean and $backup_logs eq "no" and not $RUNNING_suite){ 
  if (not $ROBOT_id) {print "Cleaning"};
  if ($clean > 0 || "$clean" eq "ALL") {
-   print "... test databases outputs logfiles";
+   print "... test databases outputs logfiles\n";
    &UTILS_clean("ALL");
  }
  if (not $ROBOT_id) {

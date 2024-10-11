@@ -1,6 +1,6 @@
 #!/usr/bin/tcsh
 #
-set temp=(`getopt -s tcsh -o m:pilh -- $argv:q`)
+set temp=(`getopt -s tcsh -o m:b:pilh -- $argv:q`)
 if ($? != 0) then 
   echo "Terminating..." >/dev/stderr
   exit 1
@@ -10,6 +10,7 @@ eval set argv=\($temp:q\)
 set mpi="no"
 set par_io="no"
 set par_lib="no"
+set branch=`git rev-parse --abbrev-ref HEAD`
 #
 while (1)
 	switch($1:q)
@@ -31,11 +32,18 @@ while (1)
 		endif
 		shift; shift
 		breaksw
+	case -b:
+		if ($2:q != "") then
+ 		  set branch=$2:q
+		endif
+		shift; shift
+		breaksw
 	case -h:
                 echo $0 "\t-p : parallel (optional)"
                 echo    "\t\t\t\t-i : parallel I/O (optional)"
                 echo    "\t\t\t\t-l : parallel linear algebra (optional)"
                 echo    "\t\t\t\t-m : specific module (optional)"
+                echo    "\t\t\t\t-b : branch (optional)"
 		exit
 	case --:
 		shift
@@ -48,7 +56,6 @@ end
 set ROBOT=`./driver.pl -i | grep 'host'| awk '{print $5}'`
 set USER=`./driver.pl -i | grep 'user'| awk '{print $4}'`
 set NLINES=`./driver.pl -i | grep '#'|wc -l`
-set branch=`git rev-parse --abbrev-ref HEAD`
 rm -fr compile_dir
 
 foreach i (`seq 1 $NLINES`)
