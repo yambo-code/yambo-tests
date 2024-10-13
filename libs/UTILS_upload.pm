@@ -57,7 +57,7 @@ foreach  my $test (@all_tests)
   foreach $dir (@dirs){
    if ( $dir  =~ /SAVE/ ) {
     &command("touch $dir/.empty");
-    &command("git add $dir/.empty");
+    &command("git add -f $dir/.empty");
    }
   }
  }

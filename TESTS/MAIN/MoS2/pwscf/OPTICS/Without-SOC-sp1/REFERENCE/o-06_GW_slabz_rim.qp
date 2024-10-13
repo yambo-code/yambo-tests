@@ -1,25 +1,24 @@
 #                                                                     
-#  **    **    **     ****     ****  ******     *******               
-# //**  **    ****   /**/**   **/** /*////**   **/////**              
-#  //****    **//**  /**//** ** /** /*   /**  **     //**             
-#   //**    **  //** /** //***  /** /******  /**      /**             
-#    /**   **********/**  //*   /** /*//// **/**      /**             
-#    /**  /**//////**/**   /    /** /*    /**//**     **              
-#    /**  /**     /**/**        /** /*******  //*******               
-#    //   //      // //         //  ///////    ///////                
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
 #                                                                     
-# Version 5.1.0 Revision 21689 Hash (prev commit) bd0300d4a           
-#                   Branch is bug-fixes                               
+# Version 5.2.0 Revision 22515 Hash (prev commit) 4e9ef8ab7d          
+#               Branch is fixes-issue-540                             
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#                http://www.yambo-code.org                            
+#               http://www.yambo-code.org                             
 #
 #
 # GW solver                                       : Newton
 # GW approximation                                : PPA
 # PPA imaginary Energy                            :   27.2113800    [ev]
 # RIM G`s                                         :  3
-# RIM random pts                                  :   500000
-# GW SC iterations                                : 0
+# RIM random pts                                  :  2000000
 # dS/dw steps                                     :  2
 # dS/dw step                                      :  0.100000001    [ev]
 # X G`s                                           :  307 [used]
@@ -29,6 +28,7 @@
 # X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
 # X Hxc Kernel                                    : HARTREE
 # X BZ energy Double Grid                         : no
+# X Optical Averaged directions                   : none
 # Sc/G bands                                      :  11  20
 # Sc/G damping                                    :  0.100000001    [ev]
 # Sc bands terminator                             : no
@@ -46,17 +46,17 @@
 #
 #    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
 #
-        1                  11                -1.525528          -1.388495          -0.532401
-        1                  12                -1.525528          -1.389945          -0.531904
-        1                  13                -0.226543          -0.180127          -0.288397
-        1                  14                 2.900700           3.762076          -1.261766
-        1                  15                 2.900700           3.762754          -1.261930
-        1                  16                 3.193211           3.922537          -0.965313
+        1                  11                -1.525528          -1.384599          -0.532455
+        1                  12                -1.525528          -1.386046          -0.531957
+        1                  13                -0.226543          -0.177449          -0.288497
+        1                  14                 2.900700           3.764920          -1.261196
+        1                  15                 2.900700           3.765624          -1.261362
+        1                  16                 3.193211           3.925159          -0.964754
 # 
-# 10/24/2022 at 16:51 yambo @ unimi-XPS-8930 [start]
-# 10/24/2022 at 16:52                        [end]
+# 02/08/2024 at 09:40 yambo @ unimi-XPS-8930 [start]
+# 02/08/2024 at 09:41                        [end]
 #  
-# Timing   [Min/Max/Average]: 12s/12s/12s
+# Timing   [Min/Max/Average]: 08s/08s/08s
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
@@ -67,12 +67,11 @@
 # | ppa                              # [R][Xp] Plasmon Pole Approximation for the Screened Interaction
 # | el_el_corr                       # [R] Electron-Electron Correlation
 # | BoseTemp= 0.000000         eV    # Bosonic Temperature
-# | FFTGvecs=  8845            RL    # [FFT] Plane-waves
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
 # | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
 # | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
-# | RandQpts=  500000                # [RIM] Number of random q-points in the BZ
+# | RandQpts= 2000000                # [RIM] Number of random q-points in the BZ
 # | RandGvec= 3                RL    # [RIM] Coulomb interaction RS components
 # | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
 # | % CUTBox
@@ -80,7 +79,7 @@
 # | %
 # | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
 # | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
-# | CUTwsGvec= 0.000000              # [CUT] WS cutoff: number of G to be modified
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
 # | EXXRLvcs= 10               Ry    # [XX] Exchange    RL components
 # | VXCRLvcs= 10               Ry    # [XC] XCpotential RL components
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
@@ -92,7 +91,6 @@
 # |  0.707107E-5 | 0.707107E-5 |  0.00000    # [Xp] [cc] Electric Field
 # | %
 # | PPAPntXp= 27.21138         eV    # [Xp] PPA imaginary energy
-# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
 # | % GbndRnge
 # |  11 | 20 |                           # [GW] G[W] bands range
 # | %
