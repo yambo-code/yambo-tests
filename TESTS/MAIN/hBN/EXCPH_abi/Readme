@@ -1,0 +1,59 @@
+To use this test you need:
+===========================
+a) compiled a2y and yambo_ph executables of the branch devel-exch-clean of yambo-devel
+b) compiled abinit, mrgddb and mrgdv of the branch ibte, in the gmatteo fork of the abinit repository
+
+How to use this test:
+======================
+1) enter in the DFT folder,
+      $cd DFT
+   open the script generate_dbs_new.sh and have a look to the flow.
+   - check that the needed executable variables point to the correct executables mentioned above
+   - the working version is with expand="yes" which also implies qkind="bz".
+     Other otions also run, but yambo is not yet able to use the generated ndb.gkkp*
+   - run the script (it should take few minutes overall) :
+      $./generate_dbs_new.sh
+2) exit the DFT folder and enter into the NoSymm folder
+      $cd ../NoSymm
+   - run the initialization, also reading the ndb.gkkp_expanded:
+      $yambo_ph -J GKKP_expanded
+   - run the finite-q BSE
+      $yambo_ph -F INPUTS/02_bse_allq -J 02_bse_allq -C 02_bse_allq
+   - run the excph-lifetimes simulation
+      $yambo_ph -F INPUTS/03_excph_lifetimes -J "03_excph_lifetimes,02_bse_allq,GKKP_expanded" -C 03_excph_lifetimes
+
+
+Open points / issues to be investigated:
+========================================
+1) The expand="yes" with qkind="bz" implies that abinit defines both the k and the q grid
+   in the full primitive cell of the reciprocal lattice.
+   However the k-points are defined in a primitive unit cell ]-0.5,0.5] which differs from the BZ
+   --> To check and probably fix how yambo handles this for the BSE in particular
+   For testing this can be compared with a BSE run using the SAVE with Symmetries.
+   It can be generated re-runnning the script ./generate_dbs_new.sh with expand="yes" and qkind="ibz"
+      $cd DFT
+      $./generate_dbs_new.sh
+   It will put the SAVE inside the AllSymm folder
+      $cd ../AllSymm
+      $yambo_ph
+      $yambo_ph -F INPUTS/02_bse_allq -J 02_bse_allq -C 02_bse_allq
+
+2) The q-points seems to be defined inside the BZ.
+   For testing this at the BSE level, a run done using the q-point chosen by yambo inside the NoSymm folder can be done
+      $cd ../NoSymm
+      $rm SAVE/ndb.*
+      $yambo_ph
+      $yambo_ph -F INPUTS/02_bse_allq -J 02_bse_allq -C 02_bse_allq
+
+3) There is a different convention between yambo and abinit k --> k+q (abinit as well as QE) vs k-q --> k (yambo).
+   To check if this is handled correctly
+
+4) In the expand="yes" mode the WFK.nc file of abinit defined in the full BZ does not contain the KB form factors
+   To be fixed in the expansion step of abinit
+
+5) The handling of symmetries, i.e. the run of the test 03_excph_lifetimes in the AllSymm folder at present is not coded
+   Yambo needs to load all the conventions for the symmetries expansion from abinit both in k and q.
+   In particular for k it has to learn the use of the primitive unit cell ]-0.5,0.5] which differs from the BZ
+
+
+

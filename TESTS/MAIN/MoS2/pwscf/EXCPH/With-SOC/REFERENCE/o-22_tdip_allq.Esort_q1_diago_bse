@@ -1,0 +1,126 @@
+#                                                                     
+#  __  __   ________   ___ __ __    _______   ______                  
+# /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                 
+# \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                
+#  \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \               
+#   \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \              
+#     \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \             
+#      \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/             
+#                                                                     
+#                                                                     
+# Version 5.1.0 Revision 21427 Hash (prev commit) f5ab7223a           
+#            Branch is devel-excph-clean-fix-q                        
+#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
+#                http://www.yambo-code.org                            
+#
+#
+#
+# [K] Identifier                                  :   5188
+# [K] Dimension                                   :  216
+# [K] Bands                                       :  21  30
+# [K] Exchange res                                : yes
+# [K] Correlation res                             : no
+# [K] Kernel`s coupling                           : no
+# [K] Exchange cpl                                : no
+# [K] Correlation cpl                             : no
+# [K] W interaction is bare                       : no
+# [K] ALDA kernel in R-space                      : no
+# [K] RL vectors exchange                         :  1
+# [K] E/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# [K] Coupling range                              :   100.000000      100.000000    [o/o]
+# [K] L kind                                      : Lbar
+#
+#
+#
+#    E [eV]             n_deg              abs
+#
+     1.7947747          2.0000000         0.46049213E-25
+     1.79965258         2.00000000        0.177451909E-8
+     1.92267358         2.00000000        0.151930313E-8
+     1.9275515          2.0000000         0.90906990E-24
+     2.8821373          2.0000000         0.12525752E-23
+     2.9293511          2.0000000         0.97918716E-13
+     3.0100362          2.0000000         0.30767448E-11
+     3.0572500          2.0000000         0.99972155E-24
+     3.0991237          4.0000000         0.52096291E-23
+     3.1354086          4.0000000         0.61173028E-11
+     3.4357023          24.000000         0.48986839E-10
+     3.5353286          24.000000         0.11820567E-09
+     3.6637599          24.000000         0.49306562E-10
+     3.7633862          24.000000         0.69135739E-10
+     4.1193209          24.000000         0.20945595E-12
+     4.1422844          2.0000000         0.71178046E-12
+     4.1471624          2.0000000         0.62486999E-24
+     4.1653471          2.0000000         0.51757134E-24
+     4.1702251          2.0000000         0.45337916E-25
+     4.2189493          24.000000         0.33335680E-12
+     4.3713541          4.0000000         0.22923224E-09
+     4.4076390          4.0000000         0.13770592E-21
+     4.4237809          4.0000000         0.14206397E-21
+     4.4600658          4.0000000         0.21328050E-09
+     4.9777484          2.0000000         0.54143200E-13
+     4.9804826          2.0000000         0.25592763E-25
+     4.9826260          2.0000000         0.19853330E-24
+     4.9853601          2.0000000         0.34480119E-13
+     5.2296472          2.0000000         0.12631814E-09
+     5.2527099          2.0000000         0.27549103E-26
+     5.2768612          2.0000000         0.12401635E-25
+     5.2999239          2.0000000         0.12248501E-09
+     6.0651112          2.0000000         0.14457578E-09
+     6.0678453          2.0000000         0.36334302E-26
+     6.1123247          2.0000000         0.50919750E-26
+     6.1150589          2.0000000         0.13881862E-09
+# 
+# 05/06/2022 at 14:52 yambo_ph @ VivoBook [start]
+# 05/06/2022 at 14:52                     [end]
+#  
+# Timing   [Min/Max/Average]: 05s/05s/05s
+#
+# .-Input file  yambo.in
+# | rim_cut                          # [R] Coulomb potential
+# | optics                           # [R] Linear Response optical properties
+# | dipoles                          # [R] Oscillator strenghts (or dipoles)
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | RandQpts= 3000000                # [RIM] Number of random q-points in the BZ
+# | RandGvec= 17               RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
+# | % CUTBox
+# |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
+# | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "HARTREE"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | % DipBands
+# |  21 | 30 |                           # [DIP] Bands range for dipoles
+# | %
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 1                RL    # [BSK] Exchange components
+# | BSEprop= "abs esrt"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+# | % BSEQptR
+# |   1 |  4 |                           # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |  21 | 30 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# |  0.000000 | 4.000000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 300                    # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | WRbsWF                         # [BSS] Write to disk excitonic the WFs

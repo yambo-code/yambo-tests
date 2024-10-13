@@ -1,0 +1,40 @@
+#h-BN
+# Read previous WFK in IBZ and use symmetries
+# to produce new WFK in full BZ with istwfk == 1
+ 
+ecut   20.0  #40      # Minimal kinetic energy cut-off, in Hartree
+iomode 3             # Thi sis needed only for the WFs
+
+optdriver 8
+wfk_task  "wfk_fullbz"
+getwfk_filepath "io_dir_new/hbn_out_DS2_WFK.nc"    # Read WKF in the IBZ
+
+pseudos "B.psp8, N.psp8"
+
+prtwf 1
+prtkbff 1
+
+ngkpt 6 6 1
+shiftk  0 0 0
+kptopt 1
+
+symmorphi 0
+
+acell  4.7163728  4.7163728 12.1758362
+rprim    1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+        -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
+         0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
+ 
+#Definition of the atom types
+ntypat 2           # There are two types of atoms
+znucl 5 7        # The keyword "zatnum" refers to the atomic number of the
+                  # possible type(s) of atom. The pseudopotential(s)
+                  # mentioned in the "files" file must correspond
+                  # to the type(s) of atom.
+#Definition of the atoms
+natom 4           # There are four  atoms
+typat  1 2 1 2
+     xcart    2.3581864000E+00  1.3614995528E+00  0.0000000000E+00
+             -2.3581864000E+00 -1.3614995528E+00  0.0000000000E+00
+             -2.3581864000E+00 -1.3614995528E+00  6.0879181000E+00
+              2.3581864000E+00  1.3614995528E+00  6.0879181000E+00

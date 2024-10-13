@@ -1,0 +1,30 @@
+&control
+ calculation  = 'scf'
+ restart_mode = 'from_scratch'
+ pseudo_dir   = './pseudo'
+ outdir       = './'
+ prefix       = 'hchain'
+ wf_collect   = .TRUE.
+ verbosity = 'high'
+/
+&system
+ ibrav           = 8
+ celldm(1)       = 5.17785 ! 2.74 angstrom H2_H2 distance is 2, H2 bond is 0.74
+ celldm(2)       = 1.931303533  ! 10 bohr
+ celldm(3)       = 1.931303533  ! 10 bohr
+ nat             = 2
+ ntyp            = 1
+ nbnd            = 8
+ ecutwfc         = 40.0
+ force_symmorphic=.true.
+/
+&electrons
+        conv_thr = 1.e-8
+/
+ATOMIC_SPECIES
+ H  1.00794  H_ONCV_PBE.upf
+ATOMIC_POSITIONS angstrom
+H 0.0 0.0 0.0
+H 0.74 0.0 0.0
+K_POINTS automatic
+   6 1 1 0 0 0

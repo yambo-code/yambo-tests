@@ -1,0 +1,61 @@
+#h-BN
+#Ground state calculation (self consistent part)
+ 
+ecut   20.0  #40      # Minimal kinetic energy cut-off, in Hartree
+iomode 3             # This is needed just for the WFs
+
+
+#######################################################################
+# EPH stuff
+#######################################################################
+getddb_filepath "io_dir_new/hbn_DDB"
+ddb_ngqpt 2 2 1        # this must be the same as the DFPT step
+ddb_shiftq 0 0 0
+ph_ngqpt 6 6 1         # just for phonon stuff 
+eph_ngqpt_fine 6 6 1   # for electron phonon potential interpolation and integration of self energies etc...
+                       # (both must be a sub-mesh, or the same, of the k-mesh)
+
+# interpolate potential into new DVDB file
+eph_task 11            # new version by Matteo
+getwfk_filepath "io_dir_new/hbn_out_DS2_WFK.nc"  2 getdvdb_filepath "io_dir_new/hbn_DVDB"
+gstore_kzone "bz"
+gstore_qzone "bz"
+
+#######################################################################
+#Common input variables
+#######################################################################
+toldfe 1.0d-10
+ 
+pseudos "B.psp8, N.psp8"
+
+optdriver 7 # need to repeat this for each qpt
+ngkpt 6 6 1
+kptopt 1
+
+shiftk  0 0 0
+
+acell  4.7163728  4.7163728 12.1758362
+rprim    1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+        -5.0000000000E-01  8.6602540378E-01  0.0000000000E+00
+         0.0000000000E+00  0.0000000000E+00  1.0000000000E+00
+ 
+#Definition of the atom types
+ntypat 2           # There are two types of atoms
+znucl 5 7        # The keyword "zatnum" refers to the atomic number of the
+                  # possible type(s) of atom. The pseudopotential(s)
+                  # mentioned in the "files" file must correspond
+                  # to the type(s) of atom.
+#Definition of the atoms
+natom 4           # There are four  atoms
+typat  1 2 1 2
+     xcart    2.3581864000E+00  1.3614995528E+00  0.0000000000E+00
+             -2.3581864000E+00 -1.3614995528E+00  0.0000000000E+00
+             -2.3581864000E+00 -1.3614995528E+00  6.0879181000E+00
+              2.3581864000E+00  1.3614995528E+00  6.0879181000E+00
+
+#Definition of the planewave basis set
+symmorphi 0
+ 
+#Definition of the SCF procedure
+nstep 100          # Maximal number of SCF cycles
+diemac 4.50

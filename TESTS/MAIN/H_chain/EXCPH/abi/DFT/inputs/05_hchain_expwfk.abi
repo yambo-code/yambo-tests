@@ -1,0 +1,46 @@
+# h-BN
+# Expand WFK
+
+# Control
+pp_dirpath     "pseudo" # QE: pseudo_dir
+pseudos        "H.psp8" # QE: ATOMIC_SPECIES 
+output_file    "output/05_hchain_expwfk.abo"
+outdata_prefix "io_dir/05_hchain_expwfk_o"
+ indata_prefix "io_dir/05_hchain_expwfk_i"
+tmpdata_prefix "io_dir/05_hchain_expwfk_tmp"
+
+ecut   20.0   # In Hartree. QE: ecutwfc=40 (Ry)
+iomode 3      # Binary files in netCDF format
+
+# Main system
+tolwfr 1.e-12
+nband 10
+nbdbuf 2
+
+optdriver 8
+wfk_task "wfk_fullbz"
+getwfk_filepath "io_dir/01_hchain_o_DS2_WFK.nc"
+
+prtwf 1
+prtkbff 1
+
+kptopt 1
+ngkpt 6 1 1 # QE: K_POINTS automatic
+nshiftk 1
+shiftk  0 0 0
+acell  5.17785  10.0 10.0 # QE: celldm(1:3)
+#QE: ibrav= 4
+rprim    1.0000  0.0000  0.0000
+         0.0000  1.0000  0.0000
+         0.0000  0.0000  1.0000
+ntypat 1        # QE: ntyp
+znucl 1        # QE: ATOMIC_SPECIES
+natom 2          # QE: nat
+typat  1 1   # QE: ATOMIC_POSITIONS
+ xcart  0.00  0.0  0.0
+        0.74  0.0  0.0
+        Angstrom
+symmorphi 0        # QE: force_symmorphic=.true.
+nstep 200          # QE: electron_maxstep
+diemac 4.5        # Unique to abinit. Large gaps -> 2:4
+iprcel 21

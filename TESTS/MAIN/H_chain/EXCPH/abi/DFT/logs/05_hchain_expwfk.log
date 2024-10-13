@@ -1,0 +1,514 @@
+  ABINIT 9.7.4
+  
+-instrng: 45 lines of input have been read from file inputs/05_hchain_expwfk.abi
+
+
+.Version 9.7.4 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_gnu9.4 computer) 
+
+.Copyright (C) 1998-2022 ABINIT group . 
+ ABINIT comes with ABSOLUTELY NO WARRANTY.
+ It is free software, and you are welcome to redistribute it
+ under certain conditions (GNU General Public License,
+ see ~abinit/COPYING or http://www.gnu.org/copyleft/gpl.txt).
+
+ ABINIT is a project of the Universite Catholique de Louvain,
+ Corning Inc. and other collaborators, see ~abinit/doc/developers/contributors.txt .
+ Please read https://docs.abinit.org/theory/acknowledgments for suggested
+ acknowledgments of the ABINIT effort.
+ For more information, see https://www.abinit.org .
+
+.Starting date : Tue 13 Dec 2022.
+- ( at 10h09 )
+  
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ === Build Information === 
+  Version       : 9.7.4
+  Build target  : x86_64_linux_gnu9.4
+  Build date    : 20220527
+
+ === Compiler Suite === 
+  C compiler       : gnu9.4
+  C++ compiler     : gnu9.4
+  Fortran compiler : gnu9.4
+  CFLAGS           : -g -O2
+  CXXFLAGS         : -g -O2 -mtune=native -march=native
+  FCFLAGS          : -g -ffree-line-length-none  -fopenmp   -I/data/shared/yambo-libs/de ...
+  FC_LDFLAGS       : 
+
+ === Optimizations === 
+  Debug level        : basic
+  Optimization level : standard
+  Architecture       : unknown_unknown
+
+ === Multicore === 
+  Parallel build : yes
+  Parallel I/O   : yes
+  openMP support : yes
+  GPU support    : 
+
+ === Connectors / Fallbacks === 
+  LINALG flavor  : netlib
+  FFT flavor     : goedecker
+  HDF5           : yes
+  NetCDF         : yes
+  NetCDF Fortran : yes
+  LibXC          : yes
+  Wannier90      : no
+
+ === Experimental features === 
+  Exports             : 
+  GW double-precision : 
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Default optimizations:
+   -O2 -mtune=native -march=native
+
+
+ Optimizations for 43_ptgroups:
+   -O0
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ CPP options activated during the build:
+
+                    CC_GNU                   CXX_GNU                    FC_GNU
+ 
+ HAVE_FC_ALLOCATABLE_DT...             HAVE_FC_ASYNC         HAVE_FC_BACKTRACE
+ 
+  HAVE_FC_COMMAND_ARGUMENT      HAVE_FC_COMMAND_LINE        HAVE_FC_CONTIGUOUS
+ 
+           HAVE_FC_CPUTIME              HAVE_FC_EXIT             HAVE_FC_FLUSH
+ 
+             HAVE_FC_GAMMA            HAVE_FC_GETENV   HAVE_FC_IEEE_ARITHMETIC
+ 
+   HAVE_FC_IEEE_EXCEPTIONS          HAVE_FC_INT_QUAD             HAVE_FC_IOMSG
+ 
+     HAVE_FC_ISO_C_BINDING  HAVE_FC_ISO_FORTRAN_2008        HAVE_FC_LONG_LINES
+ 
+        HAVE_FC_MOVE_ALLOC  HAVE_FC_ON_THE_FLY_SHAPE           HAVE_FC_PRIVATE
+ 
+         HAVE_FC_PROTECTED           HAVE_FC_SHIFTLR         HAVE_FC_STREAM_IO
+ 
+            HAVE_FC_SYSTEM          HAVE_FORTRAN2003                 HAVE_HDF5
+ 
+             HAVE_HDF5_MPI        HAVE_LIBPAW_ABINIT      HAVE_LIBTETRA_ABINIT
+ 
+                HAVE_LIBXC                  HAVE_MPI                 HAVE_MPI2
+ 
+       HAVE_MPI_IALLGATHER       HAVE_MPI_IALLREDUCE        HAVE_MPI_IALLTOALL
+ 
+       HAVE_MPI_IALLTOALLV           HAVE_MPI_IBCAST         HAVE_MPI_IGATHERV
+ 
+        HAVE_MPI_INTEGER16               HAVE_MPI_IO HAVE_MPI_TYPE_CREATE_S...
+ 
+               HAVE_NETCDF       HAVE_NETCDF_FORTRAN   HAVE_NETCDF_FORTRAN_MPI
+ 
+           HAVE_NETCDF_MPI                HAVE_NUMPY         HAVE_OMP_COLLAPSE
+ 
+               HAVE_OPENMP             HAVE_OS_LINUX         HAVE_TIMER_ABINIT
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+- input  file    -> inputs/05_hchain_expwfk.abi
+- output file    -> output/05_hchain_expwfk.abo
+- root for input  files -> io_dir/05_hchain_expwfk_i
+- root for output files -> io_dir/05_hchain_expwfk_o
+
+ Netcdf library supports MPI-IO
+-instrng: 45 lines of input have been read from file inputs/05_hchain_expwfk.abi
+
+ For atom type 1, psp file is pseudo/H.psp8
+  read the values zionpsp=  1.0 , pspcod=   8 , lmax=   1
+
+ inpspheads: deduce mpsang = 2, n1xccc = 0.
+
+======================================================= 
+ invars1m : enter jdtset= 0
+
+ symlatt: the Bravais lattice is tP (primitive tetragonal)
+  xred   is defined in input file
+ ingeo: takes atomic coordinates from input array xred
+
+--- !COMMENT
+src_file: m_ingeo.F90
+src_line: 900
+message: |
+    The tolerance on symmetries =   1.000E-05 is bigger than 1.0e-8.
+    In order to avoid spurious effects, the atomic coordinates have been
+    symmetrized before storing them in the dataset internal variable.
+    So, do not be surprised by the fact that your input variables (xcart, xred, ...)
+    do not correspond exactly to the ones echoed by ABINIT, the latter being used to do the calculations.
+    This is not a problem per se.
+    Still, in order to avoid this symmetrization (e.g. for specific debugging/development), decrease tolsym to 1.0e-8 or lower,
+    or (much preferred) use input primitive vectors that are accurate to better than 1.0e-8.
+    This message will only be printed once, even if there are other datasets where tolsym is bigger than 1.0e-8.
+...
+
+
+ symlatt: the Bravais lattice is tP (primitive tetragonal)
+
+ symlatt: the Bravais lattice is tP (primitive tetragonal)
+ symspgr: spgroup= 123  P4/m m m   (=D4h^1)
+ symspgr: optical characteristics = uniaxial
+ Optical axis (in reduced coordinates, real space ) :   1   0   0
+ For input ecut=  1.000000E+01 best grid ngfft=      16      60      60
+       max ecut=  1.178015E+01
+
+ ==== FFT mesh ====
+  FFT mesh divisions ........................    16   60   60
+  Augmented FFT divisions ...................    17   61   60
+  FFT algorithm .............................   112
+  FFT cache size ............................    16
+ getmpw: optimal value of mpw= 2932
+
+ Symmetries : space group P4/m m m (#123); Bravais tP (primitive tetrag.)
+
+ getdim_nloc : deduce lmnmax  =   5, lnmax  =   3,
+                      lmnmaxso=   5, lnmaxso=   3.
+ For input ecut=  3.810104E+00 best grid ngfft=      10      36      36
+       max ecut=  4.286623E+00
+
+ ==== FFT mesh ====
+  FFT mesh divisions ........................    10   36   36
+  Augmented FFT divisions ...................    11   37   36
+  FFT algorithm .............................   101
+  FFT cache size ............................    16
+ getmpw: optimal value of mpw= 315
+memory: analysis of memory needs
+================================================================================
+ Values of the parameters that define the memory need of the present run
+     intxc =       0    ionmov =       0      iscf =       7    lmnmax =       3
+     lnmax =       3     mgfft =      60  mpssoang =       2    mqgrid =    3001
+     natom =       2  nloc_mem =       1    nspden =       1   nspinor =       1
+    nsppol =       1      nsym =       8    n1xccc =       0    ntypat =       1
+    occopt =       1   xclevel =       2
+-    mband =          10        mffmem =           1         mkmem =           4
+       mpw =        2932          nfft =       57600          nkpt =           4
+ For the susceptibility and dielectric matrices, or tddft :
+   mgfft =        36  nbnd_in_blk=     5    nfft =     12960     npw =       315
+================================================================================
+P This job should need less than                      23.478 Mbytes of memory.
+  Rough estimation (10% accuracy) of disk space for files :
+_ WF disk file :      1.792 Mbytes ; DEN or POT disk file :      0.441 Mbytes.
+================================================================================
+
+ Biggest array : f_fftgr(disk), with      7.0333 MBytes.
+ memana : allocated an array of      7.033 Mbytes, for testing purposes.
+ memana: allocated      23.478Mbytes, for testing purposes. 
+ The job will continue.
+--------------------------------------------------------------------------------
+------------- Echo of variables that govern the present computation ------------
+--------------------------------------------------------------------------------
+-
+- outvars: echo of selected default values                                      
+-   iomode0 =  0 , fftalg0 =112 , wfoptalg0 =  0
+-
+- outvars: echo of global parameters not present in the input file              
+-  max_nthreads =    1
+-
+ -outvars: echo values of preprocessed input variables --------
+ 
+ These variables are accessible in NetCDF format (io_dir/05_hchain_expwfk_o_OUT.nc)
+
+-          iomode           3
+            acell      5.1778500000E+00  1.0000000000E+01  1.0000000000E+01 Bohr
+              amu      1.00794000E+00
+           diemac      4.50000000E+00
+             ecut      1.00000000E+01 Hartree
+-          fftalg         112
+           iprcel          21
+           istwfk        2    0    0    3
+              ixc          11
+              kpt      0.00000000E+00  0.00000000E+00  0.00000000E+00
+                       1.66666667E-01  0.00000000E+00  0.00000000E+00
+                       3.33333333E-01  0.00000000E+00  0.00000000E+00
+                       5.00000000E-01  0.00000000E+00  0.00000000E+00
+         kptrlatt        6    0    0      0    1    0      0    0    1
+          kptrlen      3.10671000E+01
+P           mkmem           4
+            natom           2
+            nband          10
+           nbdbuf           2
+            ngfft          16      60      60
+             nkpt           4
+            nstep         200
+             nsym           8
+           ntypat           1
+              occ      2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+                       0.000000  0.000000  0.000000  0.000000
+        optdriver           8
+          prtkbff           1
+            rprim      1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  1.9313000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  1.9313000000E+00
+          spgroup         123
+        symmorphi           0
+           symrel      1  0  0   0  1  0   0  0  1       1  0  0   0  1  0   0  0 -1
+                       1  0  0   0 -1  0   0  0 -1       1  0  0   0 -1  0   0  0  1
+                       1  0  0   0  0  1   0  1  0       1  0  0   0  0  1   0 -1  0
+                       1  0  0   0  0 -1   0 -1  0       1  0  0   0  0 -1   0  1  0
+           tolwfr      1.00000000E-12
+            typat      1  1
+         wfk_task           1
+              wtk        0.16667    0.33333    0.33333    0.16667
+           xangst      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       7.4000007658E-01  0.0000000000E+00  0.0000000000E+00
+            xcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       1.3983974831E+00  0.0000000000E+00  0.0000000000E+00
+             xred      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.7007300000E-01  0.0000000000E+00  0.0000000000E+00
+            znucl        1.00000
+
+================================================================================
+
+ chkinp: Checking input parameters for consistency.
+ DATA TYPE INFORMATION: 
+ REAL:      Data type name: REAL(DP) 
+            Kind value:      8
+            Precision:      15
+            Smallest nonnegligible quantity relative to 1: 0.22204460E-015
+            Smallest positive number:                      0.22250739E-307
+            Largest representable number:                  0.17976931E+309
+ INTEGER:   Data type name: INTEGER(default) 
+            Kind value: 4
+            Bit size:   32
+            Largest representable number: 2147483647
+ LOGICAL:   Data type name: LOGICAL 
+            Kind value: 4
+ CHARACTER: Data type name: CHARACTER             Kind value: 1
+
+  ==== OpenMP parallelism is ON ====
+- Max_threads:       1
+- Num_threads:       1
+- Num_procs:         6
+- Dynamic:           F
+ 
+  ==== Using MPI-2 specifications ==== 
+  MPI-IO support is ON
+  xmpi_tag_ub ................    268435455
+  xmpi_bsize_ch ..............            1
+  xmpi_bsize_int .............            4
+  xmpi_bsize_sp ..............            4
+  xmpi_bsize_dp ..............            8
+  xmpi_bsize_spc .............            8
+  xmpi_bsize_dpc .............           16
+  xmpio_bsize_frm ............            4
+  xmpi_address_kind ..........            8
+  xmpi_offset_kind ...........            8
+  MPI_WTICK ..................    1.0000000000000001E-009
+
+================================================================================
+== DATASET  1 ==================================================================
+-   mpi_nproc: 1, omp_nthreads: 1 (-1 if OMP is not activated)
+
+
+--- !COMMENT
+src_file: m_xgScalapack.F90
+src_line: 236
+message: |
+    xgScalapack in auto mode
+...
+
+ mkfilename: getwfk from: io_dir/01_hchain_o_DS2_WFK.nc
+
+
+ getdim_nloc : deduce lmnmax  =   5, lnmax  =   3,
+                      lmnmaxso=   5, lnmaxso=   3.
+ Exchange-correlation functional for the present dataset will be:
+  GGA: Perdew-Burke-Ernzerhof functional - ixc=11
+ Citation for XC functional:
+  J.P.Perdew, K.Burke, M.Ernzerhof, PRL 77, 3865 (1996)
+
+ Reading eigenvalues from: io_dir/01_hchain_o_DS2_WFK.nc , with iomode: IO_MODE_ETSF
+ wfk_read_eigenvalues_io completed. cpu:  0.03 [s] , wall:  0.03 [s] <<< TIME
+ wfk_read_eigenvalues completed. cpu:  0.03 [s] , wall:  0.03 [s] <<< TIME
+
+--- !COMMENT
+src_file: m_hdr.F90
+src_line: 5133
+message: |
+    istwfk read from Header differs from the values specified in the input file (this is not critical)
+...
+
+
+  ==== Crystal structure from WFK file ====
+ Real(R)+Recip(G) space primitive vectors, cartesian coordinates (Bohr,Bohr^-1):
+ R(1)=  5.1778500  0.0000000  0.0000000  G(1)=  0.1931304  0.0000000  0.0000000
+ R(2)=  0.0000000 19.3130000  0.0000000  G(2)=  0.0000000  0.0517786  0.0000000
+ R(3)=  0.0000000  0.0000000 19.3130000  G(3)=  0.0000000  0.0000000  0.0517786
+ Unit cell volume ucvol=  1.9312965E+03 bohr^3
+ Angles (23,13,12)=  9.00000000E+01  9.00000000E+01  9.00000000E+01 degrees
+ Time-reversal symmetry is present
+ Reduced atomic positions [iatom, xred, symbol]:
+    1)    0.0000000  0.0000000  0.0000000   H
+    2)    0.2700730  0.0000000  0.0000000   H
+ ==== Ground state energies ====
+  Number of spinorial components ...... 1
+  Number of spin polarizations ........ 1
+  Number of k-points in the IBZ ....... 4
+  kptopt .............................. 1
+  Maximum number of bands ............. 10
+  Occupation option ................... 1
+
+  kptrlatt .............. [6, 0, 0, 0, 1, 0, 0, 0, 1]
+  shiftk ................ [   0.0000E+00,    0.0000E+00,    0.0000E+00]
+  Number of valence electrons .........           2.00
+  Extra cell charge (from GS run)......           0.00
+  Extra electrons (after GS run).......           0.00
+  Fermi level  ........................      -0.346389
+  Entropy .............................       0.000000
+  Tsmear value ........................       0.010000
+  Tphysel value .......................       0.000000
+
+
+ getcut: wavevector=  0.0000  0.0000  0.0000  ngfft=  16  60  60
+         ecut(hartree)=     10.000   => boxcut(ratio)=   2.17073
+
+ ==== Coarse FFT mesh used for the wavefunctions ====
+  FFT mesh divisions ........................    16   60   60
+  Augmented FFT divisions ...................    17   61   60
+  FFT algorithm .............................   112
+  FFT cache size ............................    16
+
+ ==== Dense FFT mesh used for densities and potentials ====
+  FFT mesh divisions ........................    16   60   60
+  Augmented FFT divisions ...................    17   61   60
+  FFT algorithm .............................   112
+  FFT cache size ............................    16
+- pspini: atom type   1  psp file is pseudo/H.psp8
+- pspatm: opening atomic psp file    pseudo/H.psp8
+- H     ONCVPSP-3.2.3.1  r_core=   1.00957   0.70586
+-  1.00000   1.00000    170501                znucl, zion, pspdat
+    8   11    1    4       300   0.00000      pspcod,pspxc,lmax,lloc,mmax,r2well
+    2.99000000000000    0.00000000000000    0.00000000000000   rchrg,fchrg,qchrg
+     nproj     2     1
+     extension_switch     1
+  valence charge integrates to:   0.90326502730061875     
+  pspatm : epsatm=    0.36235122
+         --- l  ekb(1:nproj) -->
+             0   -1.701123   -0.534484
+             1   -0.503321
+ pspatm: atomic psp has been read  and splines computed
+
+   1.44940486E+00                                ecore*ucvol(ha*bohr**3)
+ ==== Info on pseudopotentials ====
+  Norm-conserving pseudopotentials
+  Number of pseudopotentials ..    1
+  Number of types of atoms   ..    1
+  Scalar calculation (no spin-orbit term)
+  Nonlocal part applied using Legendre polynomials
+  Max number of non-local projectors over l and type   2
+  Highest angular momentum +1 .......   2
+  Max number of (l,n)   components ..   3
+  Max number of (l,m,n) components ..   3
+
+ Info on the Q-grid used for form factors in spline form: 
+   Number of q-points for radial functions ffspl ..   3001
+   Number of q-points for vlspl ...................   3001
+   vloc is computed in Reciprocal Space
+   model core charge treated in real-space
+
+  XC functional for type 1 is 11
+  Pseudo valence available: yes
+
+ Converting: io_dir/01_hchain_o_DS2_WFK.nc to io_dir/05_hchain_expwfk_o_WFK.nc
+ Reading eigenvalues from: io_dir/01_hchain_o_DS2_WFK.nc , with iomode: IO_MODE_ETSF
+ wfk_read_eigenvalues_io completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
+ wfk_read_eigenvalues completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
+Using Netcdf-IO to generate full WFK file
+ FULL_WFK written to: io_dir/05_hchain_expwfk_o_WFK.nc completed. cpu:  0.06 [s] , wall:  0.18 [s] <<< TIME
+
+== END DATASET(S) ==============================================================
+================================================================================
+  
+ -outvars: echo values of variables after computation  --------
+ 
+ These variables are accessible in NetCDF format (io_dir/05_hchain_expwfk_o_OUT.nc)
+
+-          iomode           3
+            acell      5.1778500000E+00  1.0000000000E+01  1.0000000000E+01 Bohr
+              amu      1.00794000E+00
+           diemac      4.50000000E+00
+             ecut      1.00000000E+01 Hartree
+           etotal      0.0000000000E+00
+            fcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+-          fftalg         112
+           iprcel          21
+           istwfk        2    0    0    3
+              ixc          11
+              kpt      0.00000000E+00  0.00000000E+00  0.00000000E+00
+                       1.66666667E-01  0.00000000E+00  0.00000000E+00
+                       3.33333333E-01  0.00000000E+00  0.00000000E+00
+                       5.00000000E-01  0.00000000E+00  0.00000000E+00
+         kptrlatt        6    0    0      0    1    0      0    0    1
+          kptrlen      3.10671000E+01
+P           mkmem           4
+            natom           2
+            nband          10
+           nbdbuf           2
+            ngfft          16      60      60
+             nkpt           4
+            nstep         200
+             nsym           8
+           ntypat           1
+              occ      2.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+                       0.000000  0.000000  0.000000  0.000000
+        optdriver           8
+          prtkbff           1
+            rprim      1.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  1.9313000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  1.9313000000E+00
+          spgroup         123
+           strten      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+        symmorphi           0
+           symrel      1  0  0   0  1  0   0  0  1       1  0  0   0  1  0   0  0 -1
+                       1  0  0   0 -1  0   0  0 -1       1  0  0   0 -1  0   0  0  1
+                       1  0  0   0  0  1   0  1  0       1  0  0   0  0  1   0 -1  0
+                       1  0  0   0  0 -1   0 -1  0       1  0  0   0  0 -1   0  1  0
+           tolwfr      1.00000000E-12
+            typat      1  1
+         wfk_task           1
+              wtk        0.16667    0.33333    0.33333    0.16667
+           xangst      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       7.4000007658E-01  0.0000000000E+00  0.0000000000E+00
+            xcart      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       1.3983974831E+00  0.0000000000E+00  0.0000000000E+00
+             xred      0.0000000000E+00  0.0000000000E+00  0.0000000000E+00
+                       2.7007300000E-01  0.0000000000E+00  0.0000000000E+00
+            znucl        1.00000
+
+================================================================================
+  
+ Proc.   0 individual time (sec): cpu=          0.2  wall=          0.5
+
+ Calculation completed.
+.Delivered   0 WARNINGs and   3 COMMENTs to log file.
+
+--- !FinalSummary
+program: abinit
+version: 9.7.4
+start_datetime: Tue Dec 13 10:09:56 2022
+end_datetime: Tue Dec 13 10:09:57 2022
+overall_cpu_time:           0.2
+overall_wall_time:           0.5
+exit_requested_by_user: no 
+timelimit: 0
+pseudos: 
+    H   : 20698c48a21fe3532638b4d685fd1c8b
+usepaw: 0
+mpi_procs: 1
+omp_threads: 1
+num_warnings: 0
+num_comments: 3
+...

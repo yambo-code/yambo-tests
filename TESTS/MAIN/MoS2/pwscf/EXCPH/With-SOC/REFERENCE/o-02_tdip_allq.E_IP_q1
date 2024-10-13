@@ -1,0 +1,108 @@
+#                                                                     
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
+#                                                                     
+#                                                                     
+# Version 5.1.0 Revision 21427 Hash (prev commit) f5ab7223a           
+#             Branch is devel-excph-clean-fix-q                       
+#            MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                       
+#                 http://www.yambo-code.org                           
+#
+#
+#    E [eV]             n_deg              abs
+#
+     1.7947747          2.0000000         0.33593407E-25
+     1.79965258         2.00000000        0.177451909E-8
+     1.92267358         2.00000000        0.151930324E-8
+     1.9275515          2.0000000         0.90733105E-24
+     2.8821373          2.0000000         0.11982797E-23
+     2.9293511          2.0000000         0.97918716E-13
+     3.0100362          2.0000000         0.30767448E-11
+     3.0572500          2.0000000         0.64268074E-24
+     3.0991237          4.0000000         0.52096295E-23
+     3.1354086          4.0000000         0.61173028E-11
+     3.4357023          24.000000         0.48986832E-10
+     3.5353286          24.000000         0.11820597E-09
+     3.6637599          24.000000         0.49306548E-10
+     3.7633862          24.000000         0.69135718E-10
+     4.1193209          24.000000         0.20945635E-12
+     4.1422844          2.0000000         0.71178046E-12
+     4.1471624          2.0000000         0.83379294E-24
+     4.1653471          2.0000000         0.41278993E-24
+     4.1702251          2.0000000         0.45730966E-25
+     4.2189493          24.000000         0.33335780E-12
+     4.3713541          4.0000000         0.22923224E-09
+     4.4076390          4.0000000         0.13770593E-21
+     4.4237809          4.0000000         0.14206397E-21
+     4.4600658          4.0000000         0.21328052E-09
+     4.9777484          2.0000000         0.54143207E-13
+     4.9804826          2.0000000         0.99237488E-25
+     4.9826260          2.0000000         0.38780907E-24
+     4.9853601          2.0000000         0.34480106E-13
+     5.2296472          2.0000000         0.12631812E-09
+     5.2527099          2.0000000         0.37192592E-26
+     5.2768612          2.0000000         0.12683056E-25
+     5.2999239          2.0000000         0.12248501E-09
+     6.0651112          2.0000000         0.14457577E-09
+     6.0678453          2.0000000         0.33229525E-26
+     6.1123247          2.0000000         0.48662799E-26
+     6.1150589          2.0000000         0.13881861E-09
+# 
+# 05/06/2022 at 14:27 yambo_ph @ VivoBook [start]
+# 05/06/2022 at 14:27                     [end]
+#  
+# Timing   [Min/Max/Average]: 04s/04s/04s
+#
+# .-Input file  yambo.in
+# | rim_cut                          # [R] Coulomb potential
+# | optics                           # [R] Linear Response optical properties
+# | dipoles                          # [R] Oscillator strenghts (or dipoles)
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | RandQpts= 3000000                # [RIM] Number of random q-points in the BZ
+# | RandGvec= 17               RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
+# | % CUTBox
+# |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
+# | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
+# | BSKmod= "HARTREE"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | % DipBands
+# |  21 | 30 |                           # [DIP] Bands range for dipoles
+# | %
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx= 1                RL    # [BSK] Exchange components
+# | BSEprop= "abs esrt"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+# | % BSEQptR
+# |  1 | 3 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |  21 | 30 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# |  0.000000 | 4.000000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 300                    # [BSS] Energy steps
+# | % BLongDir
+# |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+# | %
+# | WRbsWF                         # [BSS] Write to disk excitonic the WFs
