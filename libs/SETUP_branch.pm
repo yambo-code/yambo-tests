@@ -73,6 +73,20 @@ $branch_key_no_slash=~ s/\//-/g;
 $test_suite_branch= qx(git rev-parse --abbrev-ref HEAD);
 $test_suite_branch=~ s/^\s+|\s+$//g;
 #
+# GPL?
+chdir $BRANCH;
+my $git_origin= qx(git remote -v | grep origin | grep fetch);
+$git_origin=~ s/\// /g;
+$git_origin=~ s/.git/ /g;
+if ((split(/ /, $git_origin))[3] eq "yambo-devel") 
+{
+ $GIT_repo_kind="devel";
+}else{
+ $GIT_repo_kind="GPL";
+ $is_GPL="yes";
+}
+chdir $suite_dir;
+#
 # branch and branch_key (to be used in reports/actions)
 $is_OLD_IO="no";
 if ($pattern=~m/4.1/ix) {$is_OLD_IO="yes"};

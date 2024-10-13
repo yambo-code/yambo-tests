@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() { 
-  echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -h ] " 1>&2 
+	echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -c(l)ean -(u)pdate -(p)ause/unpause -h ] " 1>&2 
 }
 
 message(){
@@ -25,14 +25,17 @@ clone() {
 }
 
 # Get the options
-while getopts "r:ickbh" option; do
+while getopts "r:icklubhp" option; do
    case $option in
       r) user_ID=$OPTARG;;
       i) INSTALL=1;;
+      u) UPDATE=1;;
       b) BOOT=1;;
       k) KILL=1;;
       c) CONF=1;;
+      l) CLEAN=1;;
       h) HELP=1;;
+      p) PAUSE=1;;
    esac
 done
 #
@@ -57,14 +60,54 @@ for test in test.* ; do
    if [ ! $user_ID == $ID ]; then  continue; fi
  fi
  #
+ # Update 
+ #
+ if [ ! -z $PAUSE ] ; then
+  STOP_file="yambo-testing/stop_${robot}.$ID"
+  if [ -f ~/$STOP_file ] ; then 
+   rm -f ~/$STOP_file
+  else
+   touch ~/$STOP_file
+  fi
+ fi
+ #
+ # Update 
+ #
+ if [ ! -z $UPDATE ] ; then
+  cd $test
+  git pull
+  git submodule init
+  git submodule update --merge --remote
+  git pull
+  cd ..
+ fi
+ #
+ # Clean 
+ #
+ if [ ! -z $CLEAN ] ; then
+  cd $test
+  ./driver.pl -c
+  rm -fr compile_dir
+  cd ..
+ fi
+ #
  # Install
  #
  if [ ! -z $INSTALL ] ; then
-  if [ ! -f sources/master.$ID/configure ]; then
+  if [ ! -f sources/gpl/master.$ID/configure ]; then
    repeat "="
-   message "Cloning master.$ID..."
+   message "Cloning master.$ID (GPL)..."
    repeat "="
-   INSTALL_dir="$CD/sources"
+   INSTALL_dir="$CD/sources/gpl"
+   INSTALL_goal="master.$ID"
+   INSTALL_repo="git@github.com:yambo-code/yambo.git"
+   clone
+  fi
+  if [ ! -f sources/devel/master.$ID/configure ]; then
+   repeat "="
+   message "Cloning master.$ID (DEVEL)..."
+   repeat "="
+   INSTALL_dir="$CD/sources/devel"
    INSTALL_goal="master.$ID"
    INSTALL_repo="git@github.com:yambo-code/yambo-devel.git"
    clone
@@ -88,14 +131,16 @@ for test in test.* ; do
   repeat "="
   message "Configuring $robot.$ID"
   repeat "="
-  echo "./configure --with-yambo=$CD/sources/master.$ID --with-host=$robot.$ID"
-  ./configure --with-yambo=$CD/sources/master.$ID --with-host=$robot.$ID
+  git pull
+  git submodule update --merge --remote
+  echo "./configure --with-yambo=$CD/sources/gpl/master.$ID --with-host=$robot.$ID"
+  ./configure --with-yambo=$CD/sources/gpl/master.$ID --with-host=$robot.$ID
   if [ ! -z $NEW ]; then
    repeat "="
    message "Cloning $robot.1 => $robot.$ID" 
    repeat "="
    cd ROBOTS/$robot.$ID/$me/
-   for fold in CONFIGURATIONS  CPU_CONFIGURATIONS CRONTAB MODULES; do
+   for fold in CONFIGURATIONS CPU_CONFIGURATIONS CRONTAB MODULES; do
     rm -fr $fold
     ln -s ../../$robot.1/$me/$fold .
    done
@@ -104,6 +149,7 @@ for test in test.* ; do
      cat ../test.1/.running_robot.pl | sed s/$robot.1/$robot.$ID/ > .running_robot.pl
    fi
   fi
+  cat ROBOTS/$robot.$ID/$me/BRANCHES | sed s/gpl/REPO/ > ROBOTS/$robot.$ID/$me/BRANCHES.base
  fi
  #
  # Boot

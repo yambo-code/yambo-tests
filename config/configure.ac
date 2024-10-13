@@ -173,15 +173,25 @@ case $with_yambo in
 esac
 AC_SUBST(source_dir)
 #
+# ... modules
+#
+AC_ARG_WITH(yambo_modules, AC_HELP_STRING([--with-yambo-modules=<path>],[Path to the folder where the test-suite will install the Yambo modules],[32]))
+if test "$with_yambo_modules" = ""; then with_yambo_modules="none"; fi
+if test -f .running_robot.pl; then
+ with_yambo_modules=`sed -n '3,3 p' .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+fi
+#
 # ... libraries
 #
 AC_ARG_WITH(yambo_libs, AC_HELP_STRING([--with-yambo-libs=<path>],[Path to the folder where the test-suite will install the Yambo ext-libs],[32]))
 if test "$with_yambo_libs" = ""; then with_yambo_libs="none"; fi
 if test -f .running_robot.pl; then
- with_yambo_libs=`tail -n 1 .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
+ with_yambo_libs=`sed -n '2,2 p' .running_robot.pl | cut -d '=' -f 2 | sed "s/'//g" | sed "s/;//g"`
 fi
+#
 echo '$'"host='"$robot"';" > .running_robot.pl
 echo '$'"ext_libs_path='"$with_yambo_libs"';" >> .running_robot.pl
+echo '$'"ext_modules_path='"$with_yambo_modules"';" >> .running_robot.pl
 # ============================================================================
 # System specific setups
 case "${host}" in
@@ -210,12 +220,6 @@ test_suite_dir=`pwd`
 PERL_LIB="${test_suite_dir}/libs"
 AC_SUBST(test_suite_dir)
 AC_SUBST(PERL_LIB)
-# PRIVATE PART
-PERL_LIB_PRIVATE="${test_suite_dir}/ROBOTS"
-AC_SUBST(PERL_LIB_PRIVATE)
-USE_PRIVATE_LIB="#"
-if test -f ROBOTS/FTP_utils.pm; then USE_PRIVATE_LIB="use FTP_utils;"; fi;
-AC_SUBST(USE_PRIVATE_LIB)
 # ============================================================================
 AC_CONFIG_FILES([config/MODULES.pl config/TOOLS.pl ${CFG_FILES}])
 AC_OUTPUT
