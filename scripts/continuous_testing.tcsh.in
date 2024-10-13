@@ -37,9 +37,10 @@ while ( 1 > 0)
    echo "$source_dir any" > ROBOTS/@robot@/@user@/BRANCHES
    # 
    cd $source_dir
-   git pull >& /dev/null
-   git checkout $ybranch  >& /dev/null
+   git reset --hard  >& /dev/null
    git pull  >& /dev/null
+   git checkout $ybranch   >& /dev/null
+   git pull   >& /dev/null
    set last_hash=`git log --pretty=format:"%h" | head -n 1` 
    cd @test_suite_dir@
    #
@@ -51,15 +52,23 @@ while ( 1 > 0)
     set D=`date +%d`
     set T=`date +%T`
     set log_dir="$branch_dir/$M/$D"
+    #
+    # launcher.tcsh options 
+    set LAUNCHER_options="-b"
+    if ( "$repo" == "gpl" ) then 
+     set LAUNCHER_options="-b -g" 
+    endif
+    #
     echo "================================================================================================================="
     date
-    echo "launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T}"
+    echo "launcher.tcsh $LAUNCHER_options -y $ybranch -t $tbranch -m $module -f $flow  > $log_dir/log-@robot@-${flow}-${T}"
     mkdir -p $log_dir
     rm -f $branch_dir/latest_logs
     ln -s $log_dir $branch_dir/latest_logs
     @test_suite_dir@/scripts/reset.sh
     touch ~/yambo-testing/@robot@_is_running
-    @test_suite_dir@/scripts/launcher.tcsh -y $ybranch -t $tbranch -m $module -f $flow -r > $log_dir/log-@robot@-${flow}-${T} 
+    @test_suite_dir@/scripts/launcher.tcsh $LAUNCHER_options -y $ybranch -t $tbranch -m $module -f $flow > $log_dir/log-@robot@-${flow}-${T} 
+    @test_suite_dir@/driver.pl -php $ybranch > /dev/null
     @test_suite_dir@/driver.pl -kill > /dev/null
     echo "done"
     echo "================================================================================================================="
