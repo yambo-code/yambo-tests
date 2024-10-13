@@ -122,10 +122,6 @@ if ($compile) {
  &SETUP_FC_kind;
 };
 #
-# CUDA => mpi_is_off (serial runs)
-#
-if ($CUDA_support eq "yes") { $mpi_is_off="yes"};
-#
 # BIN's
 if ("$precompiled_is_run" eq "yes" and not $keep_bin) {
  $conf_bin  = "$suite_dir/bin-precompiled-$ROBOT_string-$branch_key_no_slash";
@@ -193,8 +189,10 @@ if (not "$ERROR" eq "OK") {
 # NCDUMP
 #
 my $sys_ncdump = `which ncdump`; 
-my $lib_ncdump = `find $comp_folder/lib/external/ -name 'ncdump' -type f`;
-chomp($sys_ncdump);
+if (-d "$comp_folder/lib/external/") {
+ my $lib_ncdump = `find $comp_folder/lib/external/ -name 'ncdump' -type f`;
+ chomp($sys_ncdump);
+}
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);

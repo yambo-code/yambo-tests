@@ -94,11 +94,20 @@ for test in test.* ; do
  # Install
  #
  if [ ! -z $INSTALL ] ; then
-  if [ ! -f sources/master.$ID/configure ]; then
+  if [ ! -f sources/gpl/master.$ID/configure ]; then
    repeat "="
-   message "Cloning master.$ID..."
+   message "Cloning master.$ID (GPL)..."
    repeat "="
-   INSTALL_dir="$CD/sources"
+   INSTALL_dir="$CD/sources/gpl"
+   INSTALL_goal="master.$ID"
+   INSTALL_repo="git@github.com:yambo-code/yambo.git"
+   clone
+  fi
+  if [ ! -f sources/devel/master.$ID/configure ]; then
+   repeat "="
+   message "Cloning master.$ID (DEVEL)..."
+   repeat "="
+   INSTALL_dir="$CD/sources/devel"
    INSTALL_goal="master.$ID"
    INSTALL_repo="git@github.com:yambo-code/yambo-devel.git"
    clone
@@ -124,14 +133,14 @@ for test in test.* ; do
   repeat "="
   git pull
   git submodule update --merge --remote
-  echo "./configure --with-yambo=$CD/sources/master.$ID --with-host=$robot.$ID"
-  ./configure --with-yambo=$CD/sources/master.$ID --with-host=$robot.$ID
+  echo "./configure --with-yambo=$CD/sources/gpl/master.$ID --with-host=$robot.$ID"
+  ./configure --with-yambo=$CD/sources/gpl/master.$ID --with-host=$robot.$ID
   if [ ! -z $NEW ]; then
    repeat "="
    message "Cloning $robot.1 => $robot.$ID" 
    repeat "="
    cd ROBOTS/$robot.$ID/$me/
-   for fold in CONFIGURATIONS  CPU_CONFIGURATIONS CRONTAB MODULES; do
+   for fold in CONFIGURATIONS CPU_CONFIGURATIONS CRONTAB MODULES; do
     rm -fr $fold
     ln -s ../../$robot.1/$me/$fold .
    done
@@ -140,6 +149,7 @@ for test in test.* ; do
      cat ../test.1/.running_robot.pl | sed s/$robot.1/$robot.$ID/ > .running_robot.pl
    fi
   fi
+  cat ROBOTS/$robot.$ID/$me/BRANCHES | sed s/gpl/REPO/ | sed s/devel/REPO/ > ROBOTS/$robot.$ID/$me/BRANCHES.base
  fi
  #
  # Boot
