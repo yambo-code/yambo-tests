@@ -133,4 +133,9 @@ $RUNLVLRN_branch[$N_RUNLVLRN]="yoda/develop";
 $RUNLVLRN[$N_RUNLVLRN][1]="gw0";
 $RUNLVLRN[$N_RUNLVLRN][2]="self_energy";
 #
+$N_RUNLVLRN++;
+$RUNLVLRN_branch[$N_RUNLVLRN]="yoda/advanced";
+$RUNLVLRN[$N_RUNLVLRN][1]="gw0";
+$RUNLVLRN[$N_RUNLVLRN][2]="self_energy";
+#
 
