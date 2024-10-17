@@ -1,82 +1,52 @@
 
 
-____    ____    ___      .___  ___.  .______     ______
-\   \  /   /   /   \     |   \/   |  |   _  \   /  __  \
- \   \/   /   /  ^  \    |  \  /  |  |  |_)  | |  |  |  |
-  \_    _/   /  /_\  \   |  |\/|  |  |   _  <  |  |  |  |
-    |  |    /  _____  \  |  |  |  |  |  |_)  | |  `--"  |
-    |__|   /__/     \__\ |__|  |__|  |______/   \______/
+ ___ __  _____  __ __  _____   _____
+|   Y  ||  _  ||  Y  ||  _  \ |  _  |
+|   |  ||. |  ||.    ||. |  / |. |  |
+ \_  _/ |. _  ||.\_/ ||. _  \ |. |  |
+  |: |  |: |  ||: |  ||: |   \|: |  |
+  |::|  |:.|:.||:.|:.||::.   /|::.  |
+  `--"  `-- --"`-- --"`-----" `-----"
 
 
-
- <---> [01] CPU structure, Files & I/O Directories
+ <---> [01] MPI/OPENMP structure, Files & I/O Directories
  <---> [02] CORE Variables Setup
  <---> [02.01] Unit cells
  <---> [02.02] Symmetries
- <---> [02.03] RL shells
+ <---> [02.03] Reciprocal space
  <---> [02.04] K-grid lattice
- <---> [02.05] Energies [ev] & Occupations
- <---> [03] Transferred momenta grid
- <---> [04] HARTREE+SEX Real-Time Dynamics
- <---> Scattering(s):none
- <---> [04.01] Initialization
- <---> [04.02] External/Internal QP corrections
+ <---> Grid dimensions      :  2  2  2
+ <---> [02.05] Energies & Occupations
+ <---> [03] Transferred momenta grid and indexing
+ <---> [WARNING] [Real-Time] User bands 2-7 break level degeneracy
+ <---> [WARNING] [Real-Time] Bands redefined to be 1-8
+ <---> [04] Dipoles
+ <---> [WARNING] Cannot use DIP_P on the flight at the moment. Setting io_DIP=.true.
+ <---> [DIP] Database not correct or missing. To be computed
  <---> [x,Vnl] computed using 8 projectors
- <---> [WF-Oscillators/G space] Performing Wave-Functions I/O from ./SAVE
- <---> [X] Using energies without QP corrections for the dipoles
- <---> Dipoles: iR, P and P2 (T): |                                        | [000%] --(E) --(X)
- <---> Dipoles: iR, P and P2 (T): |########################################| [100%] --(E) --(X)
- <---> Integrator: EULER + RK2 + RWA
- <---> [04.03] Dephasing matrix setup
+ <---> Dipoles: iR, P, V and P2 (T) |                                        | [000%] --(E) --(X)
+ <---> Dipoles: iR, P, V and P2 (T) |########################################| [100%] --(E) --(X)
+ <---> [05] HARTREE+SEX Real-Time Dynamics
+ <---> [05.01] Pre-Initialization
+ <---> [05.01.01] External/Internal QP corrections
+ <---> [QP_apply] Action to be applied: USER defined scissor
+ <---> [05.02] Dipoles
+ <---> [05.03] Initialization
+ <---> Integrator EULER + RK2 + RWA
+ <---> [05.03.01] Dephasing matrix setup
  <---> [RT] Quasiparticle Dephasing applied
- <---> [WARNING]Field starting time corrected to respect the I/O times.
- <---> [04.04] Electronic Collisions loading and setup
- <---> [04.05] Messaging
- <---> [04.06] Start and Restart
- <---> HARTREE+SEX collisions I/O: |                                        | [000%] --(E) --(X)
- <---> HARTREE+SEX collisions I/O: |########################################| [100%] --(E) --(X)
- <---> Reference Lifetimes, GF, Self-Energy ...
+ <---> [05.03.02] Electronic Collisions loading and setup
+ <---> [05.03.03] Messaging
+ <---> [05.04] Start and Restart
+ <---> HARTREE+SEX collisions I/O |                                        | [000%] --(E) --(X)
+ <---> HARTREE+SEX collisions I/O |########################################| [100%] --(E) --(X)
  <---> Output files definition ...
- <---> [04.07] Real-Time dynamics
- <---> [RT] Dynamics (T< 80.000000 fs) : |                                        | [000%] --(E) --(X)
- <05s> [RT] Dynamics (T< 80.000000 fs) : |######################                  | [056%] 05s(E) 08s(X)
- <09s> [RT] Dynamics (T< 80.000000 fs) : |########################################| [100%] 08s(E) 08s(X)
- <09s> [RT] Dynamics (pump-free region) : |                                        | [000%] --(E) --(X)
- <14s> [RT] Dynamics (pump-free region) : |#########################               | [064%] 05s(E) 07s(X)
- <17s> [RT] Dynamics (pump-free region) : |########################################| [100%] 07s(E) 07s(X)
- <17s> [05] Timing Overview
- <17s> [TIMING]                                   io_WF :     0.00s CPU (         7 calls,   0.680 millisec avg)
- <17s> [TIMING]                                 io_GROT :     0.00s CPU (         3 calls,   2.013 millisec avg)
- <17s> [TIMING]                                io_QINDX :     0.00s CPU (         2 calls,   2.274 millisec avg)
- <17s> [TIMING]                              io_COL_CUT :     0.00s CPU
- <17s> [TIMING]                          io_Double_Grid :     0.00s CPU
- <17s> [TIMING]                                   io_HF :     0.00s CPU
- <17s> [TIMING]                              io_DIPOLES :     0.00s CPU
- <17s> [TIMING]                             io_KB_pwscf :     0.00s CPU (         6 calls,   0.120 millisec avg)
- <17s> [TIMING]                            io_KB_abinit :     0.00s CPU
- <17s> [TIMING]                                    io_X :     0.00s CPU (         4 calls,   1.177 millisec avg)
- <17s> [TIMING]                             io_fragment :     0.00s CPU (      1541 calls,   0.508 millisec avg)
- <17s> [TIMING]                                   io_BS :     0.00s CPU
- <17s> [TIMING]                                 io_ELPH :     0.00s CPU (         2 calls,   0.028 millisec avg)
- <17s> [TIMING]                        io_RT_components :    10.00s CPU (      2716 calls,   0.004 sec avg)
- <17s> [TIMING]                           io_COLLISIONS :     0.00s CPU (       173 calls,   4.177 millisec avg)
- <17s> [TIMING]                          eval_G_minus_G :     0.00s CPU
- <17s> [TIMING]                 IO_and_Messaging_switch :     0.00s CPU (     15910 calls,   0.003 millisec avg)
- <17s> [TIMING]                                 Dipoles :     0.00s CPU
- <17s> [TIMING]                       DIPOLE_transverse :     0.00s CPU
- <17s> [TIMING]                            PP_uspp_init :     0.00s CPU
- <17s> [TIMING]                             WF_load_FFT :     0.00s CPU
- <17s> [TIMING]                         COLLISIONS_load :     0.00s CPU (         2 calls, 359.682 millisec avg)
- <17s> [TIMING]                        RT output (INIT) :     0.00s CPU
- <17s> [TIMING]                          RT Hamiltonian :     4.00s CPU (     15001 calls,   0.000 sec avg)
- <17s> [TIMING]                    COLLISIONS (compose) :     4.00s CPU (     30002 calls,   0.000 sec avg)
- <17s> [TIMING]                      COLLISIONS (redux) :     0.00s CPU (     15001 calls,   0.001 millisec avg)
- <17s> [TIMING]                          RT Apply Field :     0.00s CPU (     60004 calls,   0.002 millisec avg)
- <17s> [TIMING]                          RT observables :     0.00s CPU (       301 calls,   0.087 millisec avg)
- <17s> [TIMING]                           RT average Op :     0.00s CPU (       602 calls,   0.039 millisec avg)
- <17s> [TIMING]                            RT avg redux :     0.00s CPU (       602 calls,   0.001 millisec avg)
- <17s> [TIMING]                         RT databases IO :    10.00s CPU (      7501 calls,   0.001 sec avg)
- <17s> [TIMING]                               RT output :     0.00s CPU (      1204 calls,   0.142 millisec avg)
- <17s> [TIMING]                           RT integrator :     0.00s CPU (     15000 calls,   0.015 millisec avg)
- <17s> [06] Game Over & Game summary
- <17s> [TIMING]            [Time-Profile]: 17s
+ <---> [05.05] Real-Time dynamics
+ <---> [RT] Dynamics (T< 80.00000 fs) : |                                        | [000%] --(E) --(X)
+ <02s> [RT] Dynamics (T< 80.00000 fs) : |########################################| [100%] 02s(E) 02s(X)
+ <02s> [RT] Dynamics (pump-free region) |                                        | [000%] --(E) --(X)
+ <04s> [RT] Dynamics (pump-free region) |########################################| [100%] --(E) --(X)
+ <04s> [06] Timing Overview
+ <04s> [07] Memory Overview
+ <04s> [08] Game Over & Game summary
+ <04s> [TIMING]            [Time-Profile]: 04s

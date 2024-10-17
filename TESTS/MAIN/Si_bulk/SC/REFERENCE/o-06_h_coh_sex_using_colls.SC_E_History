@@ -1,71 +1,64 @@
-#                                                           
-# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.   
-#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb  
-#   `88. .8" .8"88.    888b     d"88  88     888 88      88 
-#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88 
-#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88 
-#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8" 
-#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"  
-#                                                           
-#                                                           
-#         Version 4.2.0 Revision 14580 Hash b498665         
-#                   MPI+SLK+OpenMP Build                    
-#                 http://www.yambo-code.org                 
+#                                                                     
+#  ____  ____     _       ____    ____  ______      ___               
+# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
+#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
+#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
+#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
+#   |______||____| |____||_____||_____||_______/  `.___."             
+#                                                                     
+#                                                                     
+#                                                                     
+# Version 5.2.0 Revision 23129 Hash (prev commit) 3a51862bc           
+#             Branch is phys-levels_degeneracy                        
+#                    MPI+HDF5_IO Build                                
+#                 http://www.yambo-code.eu                            
 #
-# Unit cell atoms                 :2Si
-# xc Functional                   :HARTREE+COHSEX
-# [SC] Local Potential            : no
-# [SC] Bands                      :1 - 8
-# [SC] K-points                   :4
-# [SC] Bands mixing               : 100.0000
-# [SC] Sx RL components           :363
-# [SC] Response function bands    :1 - 10
-# [SC] Response function size     :51
-# [SC] COHSEX use empty bands     : yes
-# [SC] W update steps             :0
-# [SC] Diagonal approximation     : no
-# [SC] FFT mesh points            :1728
 #
-#    Iteration    E_b3_k1      E_b4_k1      E_b5_k1      E_b3_k2      E_b4_k2      E_b5_k2      E_b3_k3      E_b4_k3      E_b5_k3      E_b3_k4      E_b4_k4      E_b5_k4
+# [SC] Unit cell atoms                            : Si2
+# [SC] xc Functional                              : HARTREE+COHSEX
+# [SC] Local Potential                            : no
+# [SC] Bands                                      :   1   8
+# [SC] K-points                                   :   4
+# [SC] Bands mixing                               :   100.000000   
+# [SC] Sx RL components                           :   363
+# [SC] Response function bands                    :   1  13
+# [SC] Response function size                     :   51
+# [SC] COHSEX use empty bands                     : yes
+# [SC] W update steps                             : 0
+# [SC] Diagonal approximation                     : no
+# [SC] FFT mesh points                            :  1728
 #
-    1.000000    -0.513384    -0.513253     3.261503    -2.041017    -2.039987     2.038841    -4.162750    -4.162026     0.701101    -2.040139    -2.038425     2.038425
-    2.000000    -0.638565    -0.638466     3.138986    -2.165660    -2.164688     1.918738    -4.286302    -4.285552     0.581899    -2.164813    -2.163082     1.918293
-    3.000000    -0.639173    -0.639086     3.139678    -2.166003    -2.165062     1.920619    -4.286117    -4.285350     0.584212    -2.165173    -2.163434     1.920157
+#    Iteration          E_b3_k1            E_b4_k1            E_b5_k1            E_b3_k2            E_b4_k2            E_b5_k2            E_b3_k3            E_b4_k3            E_b5_k3            E_b3_k4            E_b4_k4            E_b5_k4
+#
+     1.00000000       -0.282620400E-3      0.00000000         3.59037471        -1.53349149        -1.53325462         2.39359140        -3.66567111        -3.66542578         1.02228117        -1.53338063        -1.53331137         2.39326024   
+     2.00000000       -0.287283445E-3      0.00000000         3.59453344        -1.53257179        -1.53232229         2.39998651        -3.66300130        -3.66276240         1.03089583        -1.53244042        -1.53236377         2.39966369   
+     3.00000000       -0.290121825E-3      0.00000000         3.59653497        -1.53213382        -1.53187442         2.40308094        -3.66172075        -3.66148162         1.03512037        -1.53198946        -1.53190732         2.40275955   
 # 
-# 06/07/2017 at 16:30 YAMBO_SC @ anomaly [start]
-# 06/07/2017 at 16:30                    [end]
+# 09/17/2024 at 14:09 yambo_sc @ baym [start]
+# 09/17/2024 at 14:09                 [end]
 #
-# .-Input file : yambo.in
-# | em1s                           # [R Xs] Static Inverse Dielectric Matrix
-# | cohsex                         # [R Xp] COlumb Hole Screened EXchange
-# | scrun                          # [R] Self-Consistent single-particle calculation
-# | ElecTemp=0.3447E-4     eV      # Electronic Temperature
-# | FFTGvecs=  363         RL      # [FFT] Plane-waves
-# | X_Threads= 1                   # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads= 1                 # [OPENMP/X] Number of threads for dipoles
-# | SE_Threads= 1                  # [OPENMP/GW] Number of threads for self-energy
-# | Chimod= "hartree"              # [X] IP/Hartree/ALDA/LRC/BSfxc
+# .-Input file  yambo.in
+# | scrun                            # [R] Self-Consistent Single-Particle Calculations
+# | cohsex                           # [R][Xp] COlumb Hole Screened EXchange
+# | em1s                             # [R][Xs] Statically Screened Interaction
+# | FFTGvecs=  363             RL    # [FFT] Plane-waves
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | SE_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | % BndsRnXs
-# |   1 | 10 |                     # [Xs] Polarization function bands
+# |   1 | 13 |                           # [Xs] Polarization function bands
 # | %
-# | NGsBlkXs=  51          RL      # [Xs] Response block size
-# | % DmRngeXs
-# | 0.1000E-2 |0.1000E-2 | eV      # [Xs] Damping range
-# | %
+# | NGsBlkXs=  51              RL    # [Xs] Response block size
 # | % LongDrXs
-# | 0.1000E-4 | 0.000    | 0.000    |        # [Xs] [cc] Electric Field
+# |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
 # | %
-# | HXC_Potential= "HARTREE+COHSEX" # [SC] SC HXC Potential
-# | HARRLvcs=  363         RL      # [HA] Hartree  RL components
+# | HXC_Potential= "HARTREE+COHSEX"  # [SC] SC HXC Potential
+# | HARRLvcs=  363             RL    # [HA] Hartree     RL components
 # | ALLGHAR                        # [HA] Force the use use all RL vectors for the Hartree potential
-# | EXXRLvcs=  363         RL      # [XX] Exchange RL components
-# | CORRLvcs=  51          RL      # [GW] Correlat RL components
-# | ALLGexx                        # [XX] Force the use use all RL vectors for the exchange part
 # | % SCBands
-# |   1 |  8 |                     # [SC] Bands
+# |   1 |  8 |                           # [SC] Bands
 # | %
-# | SCIter= 3                      # [SC] SC Iterations
-# | SCEtresh=   0.0100     eV      # [SC] Energy convergence threshold
-# | SCRhoTresh=0.1000E-4           # [SC] Rho convergence threshold
+# | SCIter= 3                        # [SC] SC Iterations
+# | SCRhoTresh= 0.100000E-4          # [SC] Rho convergence threshold
 # | SCnlMix                        # [SC] Use SC non-local mixing
-# | BandMix= 100.0000              # [SC] Band mixing
+# | BandMix= 100.0000                # [SC] Band mixing

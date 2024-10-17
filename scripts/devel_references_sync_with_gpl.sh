@@ -8,7 +8,10 @@ foreach src ($DIRS)
  set FILES=`find $src -type f`
  foreach obj ($FILES)
   set file=`basename $obj`
-  cp $src/$file $dest >& /dev/null
-  git add $dest/$file >& /dev/null
+  set DF=`diff $src/$file  $dest/$file| wc -l`
+  if ($DF > 0) then
+   cp $src/$file $dest >& /dev/null
+   git add $dest/$file >& /dev/null
+  endif
  end
 end

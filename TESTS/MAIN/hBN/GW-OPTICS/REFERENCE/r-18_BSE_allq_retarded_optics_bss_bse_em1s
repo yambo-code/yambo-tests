@@ -1,19 +1,19 @@
                                                                           
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.               
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb              
+      `88. .8" .8"88.    888b     d"88  88     888 88      88             
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88             
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88             
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"             
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"              
                                                                           
-    Y88b    /   e           e    e      888~~\    ,88~-_                  
-     Y88b  /   d8b         d8b  d8b     888   |  d888   \                 
-      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |                
-       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |                
-        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /                 
-       /   /      Y88b /          Y888b 888__/    `88_-~                  
                                                                           
-                                                                          
-         Version 5.0.0 Revision 19454 Hash 250261569                      
-                     Branch is bug-fixes                                  
-            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                  http://www.yambo-code.org                               
+    Version 5.2.0 Revision 23130 Hash (prev commit) 3b61fa0e1             
+                Branch is phys-levels_degeneracy                          
+                        MPI+HDF5_IO Build                                 
+                    http://www.yambo-code.eu                              
  
- 02/05/2021 at 12:25 yambo @ attacc-lavoro
+ 09/17/2024 at 13:50 yambo @ baym
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 18_BSE_allq_retarded
- Alt#1 string        : R2
+ Alt#1 string        : R7
 
  Precision           : SINGLE
   
@@ -63,8 +63,14 @@
   Atoms in the cell     :  B  N
   number of B  atoms    :  2
   number of N  atoms    :  2
-  Alat factors          :   4.71637   4.08450  12.17584 [a.u.]
 
+  List of atomic coordinates    : [cc]
+  B1       :  2.358186  1.361500  0.000000
+  B2       : -2.358186 -1.361500  6.087918
+  N1       : -2.358186 -1.361500  0.000000
+  N2       :  2.358186  1.361500  6.087918
+
+  Alat factors          :   4.71637   4.08450  12.17584 [a.u.]
   Direct lattice volume :  234.5556 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]:  1.000000  0.000000  0.000000  [iru]
@@ -76,6 +82,7 @@
    B[ 1 ]:  1.000000  0.500000  0.000000  [iku]
    B[ 2 ]:  0.000000  1.000000  0.000000  [iku]
    B[ 3 ]:  0.000000  0.000000  1.000000  [iku]
+   
 
   [02.02] Symmetries
   ==================
@@ -159,9 +166,9 @@
   [X] Filled Bands                                  :   8
   [X] Empty Bands                                   :    9   60
   [X] Direct Gap                                    :  4.094734 [eV]
-  [X] Direct Gap localized at k-point               :  2
+  [X] Direct Gap localized at k                     :  2
   [X] Indirect Gap                                  :  4.094734 [eV]
-  [X] Indirect Gap between k-points                 :  2  2
+  [X] Indirect Gap between kpts                     :  2  2
   [X] Last valence band width                       :  0.908688 [eV]
   [X] 1st conduction band width                     :  3.866872 [eV]
    
@@ -172,35 +179,37 @@
 
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
-  Polarization last K                              :   4
+  Polarization last K ( bz)                        :   8
+  Polarization last K (ibz)                        :   4
   QP states                                        :   1   4
   X grid is uniform                                : yes
-  Grids                                            : X B S
-  BS scattering                                    : yes
-  COLL scattering                                  : no
-  Sigma scattering                                 : yes
-  X scattering                                     : yes
- - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
+  Grids (string)                                   :  X B S
+  Grids (int-vector)                               :  1  1  0  1
+ - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
 
- IBZ Q-points :   4
- BZ  Q-points :   8
+ IBZ Q-points                                      :   4
+ BZ  Q-points                                      :   8
 
  K/Q-points units:
  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
- Q [1]:  0.000000  0.000000  0.000000 [rlu]
- Q [2]:  0.500000    -0.149012E-7   0.00000    [rlu]
- Q [3]:  0.000000  0.000000  0.500000 [rlu]
- Q [4]:  0.500000    -0.149012E-7  0.500000    [rlu]
+ Q [1]          [rlu]:  0.000000  0.000000  0.000000
+ Q [2]          [rlu]:  0.500000    -0.149012E-7   0.00000   
+ Q [3]          [rlu]:  0.000000  0.000000  0.500000
+ Q [4]          [rlu]:  0.500000    -0.149012E-7  0.500000   
+
+ [WARNING] [BS] User bands 7-10 break level degeneracy
+
+ [WARNING] [BS] Bands redefined to be 5-10
 
  [04] Dipoles
  ============
 
-
- [WARNING] DIPOLES database not correct or missing
  [RD./SAVE//ns.kb_pp]------------------------------------------------------------
   Fragmentation                                    : yes
  - S/N 006125 ---------------------------------------------- v.05.00.01 r.18825 -
+ [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.52655E-11   1.0000    
+
  [WR./18_BSE_allq_retarded//ndb.dipoles]-----------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
   RL vectors                                       :   3473 [WF]
@@ -217,7 +226,11 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Teter 93(XC)
- - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
+ - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+ [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
+
+ [WARNING] In case H contains other non local terms, these are neglected
 
  [05] Static Dielectric Matrix
  =============================
@@ -236,7 +249,7 @@
   X band range                                     :    1   60
   X e/h energy range                               : -1.000000 -1.000000 [eV]
   X Time ordering                                  : T
-  X xc-Kernel                                      : none
+  X Hxc Kernel                                     : HARTREE
   X Drude frequency                                :  0.000000  0.000000
   X poles                                          :  100.0000 [o/o]
   RL vectors in the sum                            :   3473
@@ -244,8 +257,9 @@
   Field direction                                  :  0.100000E-4   0.00000      0.00000   
   BZ energy Double Grid                            : no
   BZ energy DbGd points                            : 0
-  BZ Q point size factor                           :  1.000000
- - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
+  BZ Q point size factor                           : -1.000000
+  X Optical Averaged directions                    : none
+ - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
  [RD./18_BSE_allq_retarded//ndb.dipoles]-----------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
   RL vectors                                       :   3473 [WF]
@@ -262,170 +276,171 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Teter 93(XC)
- - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
- [FFT-X] Mesh size:   15   15   35
-
+ - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
  [X-CG] R(p) Tot o/o(of R):    796   3328    100
  [WR./18_BSE_allq_retarded//ndb.em1s_fragment_1]---------------------------------
   Current Q-pt index                               :  1
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000E-2  0.100000E-2 eV
   Number of frequencies                            :  1
- - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
+ - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
  [X-CG] R(p) Tot o/o(of R):   1284   3328    100
  [WR./18_BSE_allq_retarded//ndb.em1s_fragment_2]---------------------------------
   Current Q-pt index                               :  2
   X energy range                                   :  0.000000  0.000000 eV
   X damping range                                  :  0.100000E-2  0.100000E-2 eV
   Number of frequencies                            :  1
- - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
+ - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
  [X-CG] R(p) Tot o/o(of R):    648   3328    100
  [X-CG] R(p) Tot o/o(of R):   1040   3328    100
 
- Timing [Min/Max/Average]: 02s/02s/02s
-
- [06] Bethe Salpeter Equation @q1
- ================================
+ [06] Bethe Salpeter Equation driver
+ ===================================
 
 
-  [06.01] Transition Groups build-up @q1
-  ======================================
+  [06.01] Bethe Salpeter Equation @q1
+  ===================================
 
-  [BSK] Transition groups (total):   4
-  [BSK] Size (resonant):   32
-  [BSK]         (total):   32
-  [BSK] Matricies      :  1
 
-  [06.02] Independent Particles properties @q1
-  ============================================
+   [06.01.01] Transition pre-analysis @q1
+   ======================================
 
-  [RD./18_BSE_allq_retarded//ndb.dipoles]-----------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
-   RL vectors                                       :   3473 [WF]
-   Fragmentation                                    : yes
-   Electronic Temperature                           :  0.000000 [K]
-   Bosonic    Temperature                           :  0.000000 [K]
-   DIP band range                                   :    1   60
-   DIP band range limits                            :   8   9
-   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
-   RL vectors in the sum                            :   3473
-   [r,Vnl] included                                 : yes
-   Bands ordered                                    : yes
-   Direct v evaluation                              : no
-   Approach used                                    : G-space v
-   Dipoles computed                                 : R V P
-   Wavefunctions                                    : Teter 93(XC)
-  - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
 
-  [06.03] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
-  =======================================================
+   [06.01.02] Transition Groups build-up @q1
+   =========================================
 
-  [BSE] Exchange components :   51
+   [BSK] Transition groups (total):   4
+   [BSK] Size (resonant):   64
+   [BSK]         (total):   64
+   [BSK] N. of matrices :  1
 
-   [06.03.01] Screened interaction header I/O
-   ==========================================
+   [06.01.03] Loading Dipoles @q1
+   ==============================
 
-   [RD./18_BSE_allq_retarded//ndb.em1s]--------------------------------------------
+   [RD./18_BSE_allq_retarded//ndb.dipoles]-----------------------------------------
     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
     RL vectors                                       :   3473 [WF]
-    Coulomb cutoff potential                         : none
     Fragmentation                                    : yes
     Electronic Temperature                           :  0.000000 [K]
     Bosonic    Temperature                           :  0.000000 [K]
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    Global Gauge                                     : length
-    X matrix size                                    :   51
-    X band range                                     :    1   60
-    X e/h energy range                               : -1.000000 -1.000000 [eV]
-    X Time ordering                                  : T
-    X xc-Kernel                                      : none
-    X Drude frequency                                :  0.000000  0.000000
-    X poles                                          :  100.0000 [o/o]
+    DIP band range                                   :    1   60
+    DIP band range limits                            :   8   9
+    DIP e/h energy range                             : -1.000000 -1.000000 [eV]
     RL vectors in the sum                            :   3473
     [r,Vnl] included                                 : yes
-    Field direction                                  :  0.100000E-4   0.00000      0.00000   
-    BZ energy Double Grid                            : no
-    BZ energy DbGd points                            : 0
-    BZ Q point size factor                           :  1.000000
-   [RD./18_BSE_allq_retarded//ndb.em1s_fragment_1]---------------------------------
-    Current Q-pt index                               :  1
-    X energy range                                   :  0.000000  0.000000 eV
-    X damping range                                  :  0.100000E-2  0.100000E-2 eV
-    Number of frequencies                            :  1
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-   [FFT-BSK] Mesh size:   15   15   35
+    Bands ordered                                    : yes
+    Direct v evaluation                              : no
+    Approach used                                    : G-space v
+    Dipoles computed                                 : R V P
+    Wavefunctions                                    : Teter 93(XC)
+   - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+   [06.01.04] Independent Particles properties @q1
+   ===============================================
+
+   ==========================================================
+
+   [BSE] Exchange components :   51
+
+    [06.01.05.01] Screened interaction header I/O
+    =============================================
+
+    [RD./18_BSE_allq_retarded//ndb.em1s]--------------------------------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
+     RL vectors                                       :   3473 [WF]
+     Coulomb cutoff potential                         : none
+     Fragmentation                                    : yes
+     Electronic Temperature                           :  0.000000 [K]
+     Bosonic    Temperature                           :  0.000000 [K]
+     Static diel. fun.  energies                      : Teter 93(XC)
+     wavefunctions                                    : Teter 93(XC)
+     Global Gauge                                     : length
+     X matrix size                                    :   51
+     X band range                                     :    1   60
+     X e/h energy range                               : -1.000000 -1.000000 [eV]
+     X Time ordering                                  : T
+     X Hxc Kernel                                     : HARTREE
+     X Drude frequency                                :  0.000000  0.000000
+     X poles                                          :  100.0000 [o/o]
+     RL vectors in the sum                            :   3473
+     [r,Vnl] included                                 : yes
+     Field direction                                  :  0.100000E-4   0.00000      0.00000   
+     BZ energy Double Grid                            : no
+     BZ energy DbGd points                            : 0
+     BZ Q point size factor                           : -1.000000
+     X Optical Averaged directions                    : none
+    [RD./18_BSE_allq_retarded//ndb.em1s_fragment_1]---------------------------------
+     Current Q-pt index                               :  1
+     X energy range                                   :  0.000000  0.000000 eV
+     X damping range                                  :  0.100000E-2  0.100000E-2 eV
+     Number of frequencies                            :  1
+    - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+    [06.01.05.02] Wave-Function Phases
+    ==================================
+
+    [BSE] WF phases found       :  33.33334 [o/o]
+
+    [06.01.05.03] Main kernel loop
+    ==============================
+
+    [WR./18_BSE_allq_retarded//ndb.BS_Q1_CPU_0]-------------------------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
+     RL vectors                                       :   3473 [WF]
+     Coulomb cutoff potential                         : none
+     Parallel CPUs                                    
+     Parallel Roles                                   
+     Fragmentation                                    : no
+     BS kernel          wavefunctions                 : Teter 93(XC)
+     Static diel. fun.  energies                      : Teter 93(XC)
+     wavefunctions                                    : Teter 93(XC)
+     [K] Identifier                                   :  1457
+     [K] Dimension                                    :   64
+     [K] Bands                                        :   5  10
+     [K] Exchange                                     : yes [res]
+     [K] Correlation                                  : yes [res]
+     [K] Kernel`s coupling                            : no
+     [K] Exchange                                     : no [cpl]
+     [K] Correlation                                  : no [cpl]
+     [K] W interaction is bare                        : no
+     [K] ALDA kernel in R-space                       : no
+     [K] RL vectors                                   :   51 [exchange]
+     [K] RL vectors                                   :   51 [correlation]
+     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+     [K] Coupling range                               :  100.0000  100.0000 [o/o]
+     [W] Interaction is diagonal                      : no
+     [W] Matrix size                                  :   51
+     [W] Bands                                        :    1   60
+     [W] e/h energy range                             : -1.000000 -1.000000 [eV]
+     [W] Poles                                        :  100.0000 [o/o]
+     [W] RL vectors in the sum                        :   3473
+     [W] [r,Vnl] included                             : yes
+     [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
+     [W] Coulomb Cutoff                               : none
+     [W] Hxc Kernel                                   : HARTREE
+     [RIM] RL components                              : 0 [col]
+     [RIM] Random points                              : 0 [col]
+     [SOC] Perturbative SOC                           : no
+     [K] Kernel long-range exchange                   : BAR
+    - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+   [06.01.06] BSE solver(s) @q1
+   ============================
 
 
-   [06.03.02] Wave-Function Phases
-   ===============================
-
-   [BSE] WF phases found       :  39.06250 [o/o]
-
-   [06.03.03] Main kernel loop
-   ===========================
-
-   [WR./18_BSE_allq_retarded//ndb.BS_PAR_Q1]---------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
-    RL vectors                                       :   3473 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : no
-    BS kernel          wavefunctions                 : Teter 93(XC)
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    [K] Identifier                                   :   8284
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors                                   :   51 [exchange]
-    [K] RL vectors                                   :   51 [correlation]
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [W] Interaction is diagonal                      : no
-    [W] Matrix size                                  :   51
-    [W] Bands                                        :    1   60
-    [W] e/h energy range                             : -1.000000 -1.000000 [eV]
-    [W] Poles                                        :  100.0000 [o/o]
-    [W] RL vectors in the sum                        :   3473
-    [W] [r,Vnl] included                             : yes
-    [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-    [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
-    [RIM] RL components                              : 0 [col]
-    [RIM] Random points                              : 0 [col]
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-    Kernel cutoff                                    :  0.000000
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : no
-    Kernel cutoff                                    :  0.000000
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : yes
-
-  [06.04] BSE solver(s) @q1
-  =========================
-
-
-   [06.04.01] Diago Solver @q1
+   [06.01.07] Diago Solver @q1
    ===========================
 
    [WR./18_BSE_allq_retarded//ndb.BS_diago_Q1]-------------------------------------
     BS kernel          energies                      : Teter 93(XC)
-    [K] Identifier                                   :   8284
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
+    [K] Identifier                                   :  1457
+    [K] Dimension                                    :   64
+    [K] Bands                                        :   5  10
+    [K] Exchange                                     : yes [res]
+    [K] Correlation                                  : yes [res]
     [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
+    [K] Exchange                                     : no [cpl]
+    [K] Correlation                                  : no [cpl]
     [K] W interaction is bare                        : no
     [K] ALDA kernel in R-space                       : no
     [K] RL vectors                                   :   51 [exchange]
@@ -441,146 +456,143 @@
     [W] [r,Vnl] included                             : yes
     [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
     [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
+    [W] Hxc Kernel                                   : HARTREE
     [RIM] RL components                              : 0 [col]
     [RIM] Random points                              : 0 [col]
     [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
+    [K] Kernel long-range exchange                   : BAR
     [BSS] Eigenstates included                       : no
     [BSS] Field direction                            :  0.577350E-5  0.577350E-5  0.577350E-5
-    [BSS] Eigenstates computed                       :   32
-    [BSS] Number of BSE matricies                    :  1
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-
- [07] Bethe Salpeter Equation @q2
- ================================
+    [BSS] Eigenstates computed                       :   64
+    [BSS] Number of BSE matrices                     :  1
+   - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+  ===================================
 
 
-  [07.01] Transition Groups build-up @q2
-  ======================================
-
-  [BSK] Transition groups (total):   8
-  [BSK] Size (res,ares):   32   32
-  [BSK]         (total):   64
-  [BSK] Matricies      :  2
-
-  [07.02] Independent Particles properties @q2
-  ============================================
-
-  [FFT-Oscillators/R space/K_IP] Mesh size:   15   15   35
+   [06.02.01] Transition pre-analysis @q2
+   ======================================
 
 
-  [07.03] BSE Kernel @q2 (Resonant CORRRELATION EXCHANGE)
-  =======================================================
+   [06.02.02] Transition Groups build-up @q2
+   =========================================
 
-  [BSE] Exchange components :   51
+   [BSK] Transition groups (total):   4
+   [BSK] Size (resonant):   64
+   [BSK]         (total):   64
+   [BSK] N. of matrices :  1
 
-   [07.03.01] Screened interaction header I/O
-   ==========================================
-
-   [RD./18_BSE_allq_retarded//ndb.em1s]--------------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
-    RL vectors                                       :   3473 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : yes
-    Electronic Temperature                           :  0.000000 [K]
-    Bosonic    Temperature                           :  0.000000 [K]
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    Global Gauge                                     : length
-    X matrix size                                    :   51
-    X band range                                     :    1   60
-    X e/h energy range                               : -1.000000 -1.000000 [eV]
-    X Time ordering                                  : T
-    X xc-Kernel                                      : none
-    X Drude frequency                                :  0.000000  0.000000
-    X poles                                          :  100.0000 [o/o]
-    RL vectors in the sum                            :   3473
-    [r,Vnl] included                                 : yes
-    Field direction                                  :  0.100000E-4   0.00000      0.00000   
-    BZ energy Double Grid                            : no
-    BZ energy DbGd points                            : 0
-    BZ Q point size factor                           :  1.000000
-   [RD./18_BSE_allq_retarded//ndb.em1s_fragment_1]---------------------------------
-    Current Q-pt index                               :  1
-    X energy range                                   :  0.000000  0.000000 eV
-    X damping range                                  :  0.100000E-2  0.100000E-2 eV
-    Number of frequencies                            :  1
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-   [FFT-BSK] Mesh size:   15   15   35
+   [06.02.03] Loading Dipoles @q2
+   ==============================
 
 
-   [07.03.02] Wave-Function Phases
-   ===============================
+   [06.02.04] Independent Particles properties @q2
+   ===============================================
 
-   [BSE] WF phases found       :  39.06250 [o/o]
+   ==========================================================
 
-   [07.03.03] Main kernel loop
-   ===========================
+   [BSE] Exchange components :   51
 
-   [WR./18_BSE_allq_retarded//ndb.BS_PAR_Q2]---------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
-    RL vectors                                       :   3473 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : no
-    BS kernel          wavefunctions                 : Teter 93(XC)
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    [K] Identifier                                   :   8284
-    [K] Q-point                                      :  0.500000  0.250000  0.000000
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors                                   :   51 [exchange]
-    [K] RL vectors                                   :   51 [correlation]
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [W] Interaction is diagonal                      : no
-    [W] Matrix size                                  :   51
-    [W] Bands                                        :    1   60
-    [W] e/h energy range                             : -1.000000 -1.000000 [eV]
-    [W] Poles                                        :  100.0000 [o/o]
-    [W] RL vectors in the sum                        :   3473
-    [W] [r,Vnl] included                             : yes
-    [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-    [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
-    [RIM] RL components                              : 0 [col]
-    [RIM] Random points                              : 0 [col]
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-    Kernel cutoff                                    :  0.000000
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : no
-    Kernel cutoff                                    :  0.000000
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : yes
+    [06.02.05.01] Screened interaction header I/O
+    =============================================
 
-  [07.04] BSE solver(s) @q2
-  =========================
+    [RD./18_BSE_allq_retarded//ndb.em1s]--------------------------------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
+     RL vectors                                       :   3473 [WF]
+     Coulomb cutoff potential                         : none
+     Fragmentation                                    : yes
+     Electronic Temperature                           :  0.000000 [K]
+     Bosonic    Temperature                           :  0.000000 [K]
+     Static diel. fun.  energies                      : Teter 93(XC)
+     wavefunctions                                    : Teter 93(XC)
+     Global Gauge                                     : length
+     X matrix size                                    :   51
+     X band range                                     :    1   60
+     X e/h energy range                               : -1.000000 -1.000000 [eV]
+     X Time ordering                                  : T
+     X Hxc Kernel                                     : HARTREE
+     X Drude frequency                                :  0.000000  0.000000
+     X poles                                          :  100.0000 [o/o]
+     RL vectors in the sum                            :   3473
+     [r,Vnl] included                                 : yes
+     Field direction                                  :  0.100000E-4   0.00000      0.00000   
+     BZ energy Double Grid                            : no
+     BZ energy DbGd points                            : 0
+     BZ Q point size factor                           : -1.000000
+     X Optical Averaged directions                    : none
+    [RD./18_BSE_allq_retarded//ndb.em1s_fragment_1]---------------------------------
+     Current Q-pt index                               :  1
+     X energy range                                   :  0.000000  0.000000 eV
+     X damping range                                  :  0.100000E-2  0.100000E-2 eV
+     Number of frequencies                            :  1
+    - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+    [06.02.05.02] Wave-Function Phases
+    ==================================
+
+    [BSE] WF phases found       :  33.33334 [o/o]
+
+    [06.02.05.03] Main kernel loop
+    ==============================
+
+    [WR./18_BSE_allq_retarded//ndb.BS_Q2_CPU_0]-------------------------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
+     RL vectors                                       :   3473 [WF]
+     Coulomb cutoff potential                         : none
+     Parallel CPUs                                    
+     Parallel Roles                                   
+     Fragmentation                                    : no
+     BS kernel          wavefunctions                 : Teter 93(XC)
+     Static diel. fun.  energies                      : Teter 93(XC)
+     wavefunctions                                    : Teter 93(XC)
+     [K] Identifier                                   :  1457
+     [K] Q-point                                      :  0.500000  0.250000  0.000000
+     [K] Dimension                                    :   64
+     [K] Bands                                        :   5  10
+     [K] Exchange                                     : yes [res]
+     [K] Correlation                                  : yes [res]
+     [K] Kernel`s coupling                            : no
+     [K] Exchange                                     : no [cpl]
+     [K] Correlation                                  : no [cpl]
+     [K] W interaction is bare                        : no
+     [K] ALDA kernel in R-space                       : no
+     [K] RL vectors                                   :   51 [exchange]
+     [K] RL vectors                                   :   51 [correlation]
+     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+     [K] Coupling range                               :  100.0000  100.0000 [o/o]
+     [W] Interaction is diagonal                      : no
+     [W] Matrix size                                  :   51
+     [W] Bands                                        :    1   60
+     [W] e/h energy range                             : -1.000000 -1.000000 [eV]
+     [W] Poles                                        :  100.0000 [o/o]
+     [W] RL vectors in the sum                        :   3473
+     [W] [r,Vnl] included                             : yes
+     [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
+     [W] Coulomb Cutoff                               : none
+     [W] Hxc Kernel                                   : HARTREE
+     [RIM] RL components                              : 0 [col]
+     [RIM] Random points                              : 0 [col]
+     [SOC] Perturbative SOC                           : no
+     [K] Kernel long-range exchange                   : BAR
+    - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+   [06.02.06] BSE solver(s) @q2
+   ============================
 
 
-   [07.04.01] Diago Solver @q2
+   [06.02.07] Diago Solver @q2
    ===========================
 
    [WR./18_BSE_allq_retarded//ndb.BS_diago_Q2]-------------------------------------
     BS kernel          energies                      : Teter 93(XC)
-    [K] Identifier                                   :   8284
+    [K] Identifier                                   :  1457
     [K] Q-point                                      :  0.500000  0.250000  0.000000
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
+    [K] Dimension                                    :   64
+    [K] Bands                                        :   5  10
+    [K] Exchange                                     : yes [res]
+    [K] Correlation                                  : yes [res]
     [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
+    [K] Exchange                                     : no [cpl]
+    [K] Correlation                                  : no [cpl]
     [K] W interaction is bare                        : no
     [K] ALDA kernel in R-space                       : no
     [K] RL vectors                                   :   51 [exchange]
@@ -596,180 +608,142 @@
     [W] [r,Vnl] included                             : yes
     [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
     [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
+    [W] Hxc Kernel                                   : HARTREE
     [RIM] RL components                              : 0 [col]
     [RIM] Random points                              : 0 [col]
     [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
+    [K] Kernel long-range exchange                   : BAR
     [BSS] Eigenstates included                       : no
-    [BSS] Eigenstates computed                       :   32
-    [BSS] Number of BSE matricies                    :  2
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-   [WR./18_BSE_allq_retarded//ndb.BS_diago_Q2_ares]--------------------------------
-    BS kernel          energies                      : Teter 93(XC)
-    [K] Identifier                                   :   8284
-    [K] Q-point                                      :  0.500000  0.250000  0.000000
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors                                   :   51 [exchange]
-    [K] RL vectors                                   :   51 [correlation]
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [W] Interaction is diagonal                      : no
-    [W] Matrix size                                  :   51
-    [W] Bands                                        :    1   60
-    [W] e/h energy range                             : -1.000000 -1.000000 [eV]
-    [W] Poles                                        :  100.0000 [o/o]
-    [W] RL vectors in the sum                        :   3473
-    [W] [r,Vnl] included                             : yes
-    [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-    [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
-    [RIM] RL components                              : 0 [col]
-    [RIM] Random points                              : 0 [col]
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
-    [BSS] Eigenstates included                       : no
-    [BSS] Eigenstates computed                       :   32
-    [BSS] Number of BSE matricies                    :  2
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-
- [08] Bethe Salpeter Equation @q3
- ================================
+    [BSS] Eigenstates computed                       :   64
+    [BSS] Number of BSE matrices                     :  1
+   - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+  ===================================
 
 
-  [08.01] Transition Groups build-up @q3
-  ======================================
-
-  [BSK] Transition groups (total):   8
-  [BSK] Size (res,ares):   32   32
-  [BSK]         (total):   64
-  [BSK] Matricies      :  2
-
-  [08.02] Independent Particles properties @q3
-  ============================================
-
-  [FFT-Oscillators/R space/K_IP] Mesh size:   15   15   35
+   [06.03.01] Transition pre-analysis @q3
+   ======================================
 
 
-  [08.03] BSE Kernel @q3 (Resonant CORRRELATION EXCHANGE)
-  =======================================================
+   [06.03.02] Transition Groups build-up @q3
+   =========================================
 
-  [BSE] Exchange components :   51
+   [BSK] Transition groups (total):   4
+   [BSK] Size (resonant):   64
+   [BSK]         (total):   64
+   [BSK] N. of matrices :  1
 
-   [08.03.01] Screened interaction header I/O
-   ==========================================
-
-   [RD./18_BSE_allq_retarded//ndb.em1s]--------------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
-    RL vectors                                       :   3473 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : yes
-    Electronic Temperature                           :  0.000000 [K]
-    Bosonic    Temperature                           :  0.000000 [K]
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    Global Gauge                                     : length
-    X matrix size                                    :   51
-    X band range                                     :    1   60
-    X e/h energy range                               : -1.000000 -1.000000 [eV]
-    X Time ordering                                  : T
-    X xc-Kernel                                      : none
-    X Drude frequency                                :  0.000000  0.000000
-    X poles                                          :  100.0000 [o/o]
-    RL vectors in the sum                            :   3473
-    [r,Vnl] included                                 : yes
-    Field direction                                  :  0.100000E-4   0.00000      0.00000   
-    BZ energy Double Grid                            : no
-    BZ energy DbGd points                            : 0
-    BZ Q point size factor                           :  1.000000
-   [RD./18_BSE_allq_retarded//ndb.em1s_fragment_1]---------------------------------
-    Current Q-pt index                               :  1
-    X energy range                                   :  0.000000  0.000000 eV
-    X damping range                                  :  0.100000E-2  0.100000E-2 eV
-    Number of frequencies                            :  1
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-   [FFT-BSK] Mesh size:   15   15   35
+   [06.03.03] Loading Dipoles @q3
+   ==============================
 
 
-   [08.03.02] Wave-Function Phases
-   ===============================
+   [06.03.04] Independent Particles properties @q3
+   ===============================================
 
-   [BSE] WF phases found       :  39.06250 [o/o]
+   ==========================================================
 
-   [08.03.03] Main kernel loop
-   ===========================
+   [BSE] Exchange components :   51
 
-   [WR./18_BSE_allq_retarded//ndb.BS_PAR_Q3]---------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
-    RL vectors                                       :   3473 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : no
-    BS kernel          wavefunctions                 : Teter 93(XC)
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    [K] Identifier                                   :   8284
-    [K] Q-point                                      :  0.000000  0.000000  0.500000
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors                                   :   51 [exchange]
-    [K] RL vectors                                   :   51 [correlation]
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [W] Interaction is diagonal                      : no
-    [W] Matrix size                                  :   51
-    [W] Bands                                        :    1   60
-    [W] e/h energy range                             : -1.000000 -1.000000 [eV]
-    [W] Poles                                        :  100.0000 [o/o]
-    [W] RL vectors in the sum                        :   3473
-    [W] [r,Vnl] included                             : yes
-    [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-    [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
-    [RIM] RL components                              : 0 [col]
-    [RIM] Random points                              : 0 [col]
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-    Kernel cutoff                                    :  0.000000
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : no
-    Kernel cutoff                                    :  0.000000
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : yes
+    [06.03.05.01] Screened interaction header I/O
+    =============================================
 
-  [08.04] BSE solver(s) @q3
-  =========================
+    [RD./18_BSE_allq_retarded//ndb.em1s]--------------------------------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
+     RL vectors                                       :   3473 [WF]
+     Coulomb cutoff potential                         : none
+     Fragmentation                                    : yes
+     Electronic Temperature                           :  0.000000 [K]
+     Bosonic    Temperature                           :  0.000000 [K]
+     Static diel. fun.  energies                      : Teter 93(XC)
+     wavefunctions                                    : Teter 93(XC)
+     Global Gauge                                     : length
+     X matrix size                                    :   51
+     X band range                                     :    1   60
+     X e/h energy range                               : -1.000000 -1.000000 [eV]
+     X Time ordering                                  : T
+     X Hxc Kernel                                     : HARTREE
+     X Drude frequency                                :  0.000000  0.000000
+     X poles                                          :  100.0000 [o/o]
+     RL vectors in the sum                            :   3473
+     [r,Vnl] included                                 : yes
+     Field direction                                  :  0.100000E-4   0.00000      0.00000   
+     BZ energy Double Grid                            : no
+     BZ energy DbGd points                            : 0
+     BZ Q point size factor                           : -1.000000
+     X Optical Averaged directions                    : none
+    [RD./18_BSE_allq_retarded//ndb.em1s_fragment_1]---------------------------------
+     Current Q-pt index                               :  1
+     X energy range                                   :  0.000000  0.000000 eV
+     X damping range                                  :  0.100000E-2  0.100000E-2 eV
+     Number of frequencies                            :  1
+    - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+    [06.03.05.02] Wave-Function Phases
+    ==================================
+
+    [BSE] WF phases found       :  33.33334 [o/o]
+
+    [06.03.05.03] Main kernel loop
+    ==============================
+
+    [WR./18_BSE_allq_retarded//ndb.BS_Q3_CPU_0]-------------------------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
+     RL vectors                                       :   3473 [WF]
+     Coulomb cutoff potential                         : none
+     Parallel CPUs                                    
+     Parallel Roles                                   
+     Fragmentation                                    : no
+     BS kernel          wavefunctions                 : Teter 93(XC)
+     Static diel. fun.  energies                      : Teter 93(XC)
+     wavefunctions                                    : Teter 93(XC)
+     [K] Identifier                                   :  2663
+     [K] Q-point                                      :  0.000000  0.000000  0.500000
+     [K] Dimension                                    :   64
+     [K] Bands                                        :   5  10
+     [K] Exchange                                     : yes [res]
+     [K] Correlation                                  : yes [res]
+     [K] Kernel`s coupling                            : no
+     [K] Exchange                                     : no [cpl]
+     [K] Correlation                                  : no [cpl]
+     [K] W interaction is bare                        : no
+     [K] ALDA kernel in R-space                       : no
+     [K] RL vectors                                   :   51 [exchange]
+     [K] RL vectors                                   :   51 [correlation]
+     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+     [K] Coupling range                               :  100.0000  100.0000 [o/o]
+     [W] Interaction is diagonal                      : no
+     [W] Matrix size                                  :   51
+     [W] Bands                                        :    1   60
+     [W] e/h energy range                             : -1.000000 -1.000000 [eV]
+     [W] Poles                                        :  100.0000 [o/o]
+     [W] RL vectors in the sum                        :   3473
+     [W] [r,Vnl] included                             : yes
+     [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
+     [W] Coulomb Cutoff                               : none
+     [W] Hxc Kernel                                   : HARTREE
+     [RIM] RL components                              : 0 [col]
+     [RIM] Random points                              : 0 [col]
+     [SOC] Perturbative SOC                           : no
+     [K] Kernel long-range exchange                   : BAR
+    - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+   [06.03.06] BSE solver(s) @q3
+   ============================
 
 
-   [08.04.01] Diago Solver @q3
+   [06.03.07] Diago Solver @q3
    ===========================
 
    [WR./18_BSE_allq_retarded//ndb.BS_diago_Q3]-------------------------------------
     BS kernel          energies                      : Teter 93(XC)
-    [K] Identifier                                   :   8284
+    [K] Identifier                                   :  2663
     [K] Q-point                                      :  0.000000  0.000000  0.500000
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
+    [K] Dimension                                    :   64
+    [K] Bands                                        :   5  10
+    [K] Exchange                                     : yes [res]
+    [K] Correlation                                  : yes [res]
     [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
+    [K] Exchange                                     : no [cpl]
+    [K] Correlation                                  : no [cpl]
     [K] W interaction is bare                        : no
     [K] ALDA kernel in R-space                       : no
     [K] RL vectors                                   :   51 [exchange]
@@ -785,180 +759,142 @@
     [W] [r,Vnl] included                             : yes
     [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
     [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
+    [W] Hxc Kernel                                   : HARTREE
     [RIM] RL components                              : 0 [col]
     [RIM] Random points                              : 0 [col]
     [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
+    [K] Kernel long-range exchange                   : BAR
     [BSS] Eigenstates included                       : no
-    [BSS] Eigenstates computed                       :   32
-    [BSS] Number of BSE matricies                    :  2
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-   [WR./18_BSE_allq_retarded//ndb.BS_diago_Q3_ares]--------------------------------
-    BS kernel          energies                      : Teter 93(XC)
-    [K] Identifier                                   :   8284
-    [K] Q-point                                      :  0.000000  0.000000  0.500000
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors                                   :   51 [exchange]
-    [K] RL vectors                                   :   51 [correlation]
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [W] Interaction is diagonal                      : no
-    [W] Matrix size                                  :   51
-    [W] Bands                                        :    1   60
-    [W] e/h energy range                             : -1.000000 -1.000000 [eV]
-    [W] Poles                                        :  100.0000 [o/o]
-    [W] RL vectors in the sum                        :   3473
-    [W] [r,Vnl] included                             : yes
-    [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-    [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
-    [RIM] RL components                              : 0 [col]
-    [RIM] Random points                              : 0 [col]
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
-    [BSS] Eigenstates included                       : no
-    [BSS] Eigenstates computed                       :   32
-    [BSS] Number of BSE matricies                    :  2
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-
- [09] Bethe Salpeter Equation @q4
- ================================
+    [BSS] Eigenstates computed                       :   64
+    [BSS] Number of BSE matrices                     :  1
+   - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+  ===================================
 
 
-  [09.01] Transition Groups build-up @q4
-  ======================================
-
-  [BSK] Transition groups (total):   8
-  [BSK] Size (res,ares):   32   32
-  [BSK]         (total):   64
-  [BSK] Matricies      :  2
-
-  [09.02] Independent Particles properties @q4
-  ============================================
-
-  [FFT-Oscillators/R space/K_IP] Mesh size:   15   15   35
+   [06.04.01] Transition pre-analysis @q4
+   ======================================
 
 
-  [09.03] BSE Kernel @q4 (Resonant CORRRELATION EXCHANGE)
-  =======================================================
+   [06.04.02] Transition Groups build-up @q4
+   =========================================
 
-  [BSE] Exchange components :   51
+   [BSK] Transition groups (total):   4
+   [BSK] Size (resonant):   64
+   [BSK]         (total):   64
+   [BSK] N. of matrices :  1
 
-   [09.03.01] Screened interaction header I/O
-   ==========================================
-
-   [RD./18_BSE_allq_retarded//ndb.em1s]--------------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
-    RL vectors                                       :   3473 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : yes
-    Electronic Temperature                           :  0.000000 [K]
-    Bosonic    Temperature                           :  0.000000 [K]
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    Global Gauge                                     : length
-    X matrix size                                    :   51
-    X band range                                     :    1   60
-    X e/h energy range                               : -1.000000 -1.000000 [eV]
-    X Time ordering                                  : T
-    X xc-Kernel                                      : none
-    X Drude frequency                                :  0.000000  0.000000
-    X poles                                          :  100.0000 [o/o]
-    RL vectors in the sum                            :   3473
-    [r,Vnl] included                                 : yes
-    Field direction                                  :  0.100000E-4   0.00000      0.00000   
-    BZ energy Double Grid                            : no
-    BZ energy DbGd points                            : 0
-    BZ Q point size factor                           :  1.000000
-   [RD./18_BSE_allq_retarded//ndb.em1s_fragment_1]---------------------------------
-    Current Q-pt index                               :  1
-    X energy range                                   :  0.000000  0.000000 eV
-    X damping range                                  :  0.100000E-2  0.100000E-2 eV
-    Number of frequencies                            :  1
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-   [FFT-BSK] Mesh size:   15   15   35
+   [06.04.03] Loading Dipoles @q4
+   ==============================
 
 
-   [09.03.02] Wave-Function Phases
-   ===============================
+   [06.04.04] Independent Particles properties @q4
+   ===============================================
 
-   [BSE] WF phases found       :  39.06250 [o/o]
+   ==========================================================
 
-   [09.03.03] Main kernel loop
-   ===========================
+   [BSE] Exchange components :   51
 
-   [WR./18_BSE_allq_retarded//ndb.BS_PAR_Q4]---------------------------------------
-    Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
-    RL vectors                                       :   3473 [WF]
-    Coulomb cutoff potential                         : none
-    Fragmentation                                    : no
-    BS kernel          wavefunctions                 : Teter 93(XC)
-    Static diel. fun.  energies                      : Teter 93(XC)
-    wavefunctions                                    : Teter 93(XC)
-    [K] Identifier                                   :   9490
-    [K] Q-point                                      :  0.500000  0.250000  0.500000
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors                                   :   51 [exchange]
-    [K] RL vectors                                   :   51 [correlation]
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [W] Interaction is diagonal                      : no
-    [W] Matrix size                                  :   51
-    [W] Bands                                        :    1   60
-    [W] e/h energy range                             : -1.000000 -1.000000 [eV]
-    [W] Poles                                        :  100.0000 [o/o]
-    [W] RL vectors in the sum                        :   3473
-    [W] [r,Vnl] included                             : yes
-    [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-    [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
-    [RIM] RL components                              : 0 [col]
-    [RIM] Random points                              : 0 [col]
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-    Kernel cutoff                                    :  0.000000
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : no
-    Kernel cutoff                                    :  0.000000
-    Kernel maxval                                    :  0.000000
-    Kernel complete                                  : yes
+    [06.04.05.01] Screened interaction header I/O
+    =============================================
 
-  [09.04] BSE solver(s) @q4
-  =========================
+    [RD./18_BSE_allq_retarded//ndb.em1s]--------------------------------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
+     RL vectors                                       :   3473 [WF]
+     Coulomb cutoff potential                         : none
+     Fragmentation                                    : yes
+     Electronic Temperature                           :  0.000000 [K]
+     Bosonic    Temperature                           :  0.000000 [K]
+     Static diel. fun.  energies                      : Teter 93(XC)
+     wavefunctions                                    : Teter 93(XC)
+     Global Gauge                                     : length
+     X matrix size                                    :   51
+     X band range                                     :    1   60
+     X e/h energy range                               : -1.000000 -1.000000 [eV]
+     X Time ordering                                  : T
+     X Hxc Kernel                                     : HARTREE
+     X Drude frequency                                :  0.000000  0.000000
+     X poles                                          :  100.0000 [o/o]
+     RL vectors in the sum                            :   3473
+     [r,Vnl] included                                 : yes
+     Field direction                                  :  0.100000E-4   0.00000      0.00000   
+     BZ energy Double Grid                            : no
+     BZ energy DbGd points                            : 0
+     BZ Q point size factor                           : -1.000000
+     X Optical Averaged directions                    : none
+    [RD./18_BSE_allq_retarded//ndb.em1s_fragment_1]---------------------------------
+     Current Q-pt index                               :  1
+     X energy range                                   :  0.000000  0.000000 eV
+     X damping range                                  :  0.100000E-2  0.100000E-2 eV
+     Number of frequencies                            :  1
+    - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+    [06.04.05.02] Wave-Function Phases
+    ==================================
+
+    [BSE] WF phases found       :  33.33334 [o/o]
+
+    [06.04.05.03] Main kernel loop
+    ==============================
+
+    [WR./18_BSE_allq_retarded//ndb.BS_Q4_CPU_0]-------------------------------------
+     Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
+     RL vectors                                       :   3473 [WF]
+     Coulomb cutoff potential                         : none
+     Parallel CPUs                                    
+     Parallel Roles                                   
+     Fragmentation                                    : no
+     BS kernel          wavefunctions                 : Teter 93(XC)
+     Static diel. fun.  energies                      : Teter 93(XC)
+     wavefunctions                                    : Teter 93(XC)
+     [K] Identifier                                   :  2663
+     [K] Q-point                                      :  0.500000  0.250000  0.500000
+     [K] Dimension                                    :   64
+     [K] Bands                                        :   5  10
+     [K] Exchange                                     : yes [res]
+     [K] Correlation                                  : yes [res]
+     [K] Kernel`s coupling                            : no
+     [K] Exchange                                     : no [cpl]
+     [K] Correlation                                  : no [cpl]
+     [K] W interaction is bare                        : no
+     [K] ALDA kernel in R-space                       : no
+     [K] RL vectors                                   :   51 [exchange]
+     [K] RL vectors                                   :   51 [correlation]
+     [K] E/h energy range                             : -1.000000 -1.000000 [eV]
+     [K] Coupling range                               :  100.0000  100.0000 [o/o]
+     [W] Interaction is diagonal                      : no
+     [W] Matrix size                                  :   51
+     [W] Bands                                        :    1   60
+     [W] e/h energy range                             : -1.000000 -1.000000 [eV]
+     [W] Poles                                        :  100.0000 [o/o]
+     [W] RL vectors in the sum                        :   3473
+     [W] [r,Vnl] included                             : yes
+     [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
+     [W] Coulomb Cutoff                               : none
+     [W] Hxc Kernel                                   : HARTREE
+     [RIM] RL components                              : 0 [col]
+     [RIM] Random points                              : 0 [col]
+     [SOC] Perturbative SOC                           : no
+     [K] Kernel long-range exchange                   : BAR
+    - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
+
+   [06.04.06] BSE solver(s) @q4
+   ============================
 
 
-   [09.04.01] Diago Solver @q4
+   [06.04.07] Diago Solver @q4
    ===========================
 
    [WR./18_BSE_allq_retarded//ndb.BS_diago_Q4]-------------------------------------
     BS kernel          energies                      : Teter 93(XC)
-    [K] Identifier                                   :   9490
+    [K] Identifier                                   :  2663
     [K] Q-point                                      :  0.500000  0.250000  0.500000
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
+    [K] Dimension                                    :   64
+    [K] Bands                                        :   5  10
+    [K] Exchange                                     : yes [res]
+    [K] Correlation                                  : yes [res]
     [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
+    [K] Exchange                                     : no [cpl]
+    [K] Correlation                                  : no [cpl]
     [K] W interaction is bare                        : no
     [K] ALDA kernel in R-space                       : no
     [K] RL vectors                                   :   51 [exchange]
@@ -974,104 +910,77 @@
     [W] [r,Vnl] included                             : yes
     [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
     [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
+    [W] Hxc Kernel                                   : HARTREE
     [RIM] RL components                              : 0 [col]
     [RIM] Random points                              : 0 [col]
     [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
+    [K] Kernel long-range exchange                   : BAR
     [BSS] Eigenstates included                       : no
-    [BSS] Eigenstates computed                       :   32
-    [BSS] Number of BSE matricies                    :  2
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-   [WR./18_BSE_allq_retarded//ndb.BS_diago_Q4_ares]--------------------------------
-    BS kernel          energies                      : Teter 93(XC)
-    [K] Identifier                                   :   9490
-    [K] Q-point                                      :  0.500000  0.250000  0.500000
-    [K] Dimension                                    :   32
-    [K] Bands                                        :   7  10
-    [K] Exchange                                     : yes
-    [K] Correlation                                  : yes
-    [K] Kernel`s coupling                            : no
-    [K] Exchange                                     : no
-    [K] Correlation                                  : no
-    [K] W interaction is bare                        : no
-    [K] ALDA kernel in R-space                       : no
-    [K] RL vectors                                   :   51 [exchange]
-    [K] RL vectors                                   :   51 [correlation]
-    [K] E/h energy range                             : -1.000000 -1.000000 [eV]
-    [K] Coupling range                               :  100.0000  100.0000 [o/o]
-    [W] Interaction is diagonal                      : no
-    [W] Matrix size                                  :   51
-    [W] Bands                                        :    1   60
-    [W] e/h energy range                             : -1.000000 -1.000000 [eV]
-    [W] Poles                                        :  100.0000 [o/o]
-    [W] RL vectors in the sum                        :   3473
-    [W] [r,Vnl] included                             : yes
-    [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
-    [W] Coulomb Cutoff                               : none
-    [W] xc-Kernel                                    : none
-    [RIM] RL components                              : 0 [col]
-    [RIM] Random points                              : 0 [col]
-    [SOC] Perturbative SOC                           : no
-    [IO] Kernel triangular                           : no
-    [BSS] Eigenstates included                       : no
-    [BSS] Eigenstates computed                       :   32
-    [BSS] Number of BSE matricies                    :  2
-   - S/N 006125 ---------------------------------------------- v.05.00.00 r.19454 -
-
- [10] Timing Overview
+    [BSS] Eigenstates computed                       :   64
+    [BSS] Number of BSE matrices                     :  1
+   - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
  ====================
 
  Clock: global
-                                      Xo (REDUX) :      0.0000s CPU ( 4 calls,   0.003 msec avg)
+                                      Xo (REDUX) :      0.0000s CPU ( 4 calls,   0.001 msec avg)
+                              BSE matrix (REDUX) :      0.0000s CPU ( 4 calls,   0.001 msec avg)
                                 io_ATMPROJ_pwscf :      0.0000s CPU
-                              BSE matrix (REDUX) :      0.0000s CPU ( 7 calls,   0.002 msec avg)
-                                     io_KB_pwscf :      0.0000s CPU ( 2 calls,   0.013 msec avg)
-      MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0000s CPU ( 4 calls,   0.008 msec avg)
+      MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0000s CPU ( 4 calls,   0.002 msec avg)
+      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU ( 4 calls,   0.004 msec avg)
+                                       X (REDUX) :      0.0000s CPU ( 4 calls,   0.005 msec avg)
                                       io_COL_CUT :      0.0000s CPU
-      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0000s CPU ( 4 calls,   0.011 msec avg)
-                          BSE components folding :      0.0001s CPU ( 4 calls,   0.013 msec avg)
-                                       X (REDUX) :      0.0001s CPU ( 4 calls,   0.015 msec avg)
-                                           io_HF :      0.0001s CPU
-                              BSE matrix filling :      0.0001s CPU ( 7 calls,   0.011 msec avg)
-                                  io_Double_Grid :      0.0001s CPU
-                         IO_and_Messaging_switch :      0.0002s CPU (25 calls,   0.007 msec avg)
-                                    PP_uspp_init :      0.0004s CPU (12 calls,   0.030 msec avg)
-                               SERIAL_lin_system :      0.0008s CPU ( 4 calls,   0.195 msec avg)
-                                    scatter_Gamp :      0.0009s CPU (16 calls,   0.055 msec avg)
-                SERIAL_HERMITIAN_diagonalization :      0.0016s CPU ( 7 calls,   0.231 msec avg)
-                                   X (procedure) :      0.0019s CPU ( 4 calls,   0.480 msec avg)
-                                  LINEAR ALGEBRA :      0.0025s CPU (11 calls,   0.225 msec avg)
-                                  eval_G_minus_G :      0.0030s CPU ( 2 calls,   1.496 msec avg)
-                                           io_BS :      0.0087s CPU (71 calls,   0.123 msec avg)
-                                         io_GROT :      0.0104s CPU ( 2 calls,   5.188 msec avg)
-                                        io_QINDX :      0.0125s CPU ( 2 calls,   6.256 msec avg)
-                                    io_KB_abinit :      0.0250s CPU ( 6 calls,   4.171 msec avg)
-                                T_space EXX Osc. :      0.0323s CPU (28 calls,   1.154 msec avg)
-                                      io_DIPOLES :      0.0528s CPU (23 calls,   2.298 msec avg)
-                                     K_WF_phases :      0.0777s CPU ( 4 calls,  19.434 msec avg)
-                                    io_BSS_diago :      0.0959s CPU (14 calls,   6.849 msec avg)
-                                       FFT_setup :      0.1043s CPU (11 calls,   9.479 msec avg)
-                                     io_fragment :      0.1060s CPU (64 calls,   1.657 msec avg)
-                                           io_WF :      0.1244s CPU (61 calls,   2.040 msec avg)
-                                      T_space IP :      0.1344s CPU ( 4 calls,  33.601 msec avg)
-                                     WF_load_FFT :      0.1529s CPU (12 calls,  12.743 msec avg)
-                                            io_X :      0.2002s CPU (34 calls,   5.888 msec avg)
-                               T_space CORR Osc. :      0.2442s CPU (70 calls,   3.488 msec avg)
-                               DIPOLE_transverse :      0.3620s CPU
-                                         Dipoles :      0.3847s CPU
-                                X T_space Kernel :      0.5678s CPU ( 4 calls, 141.955 msec avg)
-                                    Diago Solver :      0.8784s CPU ( 4 calls, 219.605 msec avg)
-                                  Xo (procedure) :      2.0504s CPU ( 4 calls,   0.513 sec avg)
+                                     io_KB_pwscf :      0.0000s CPU ( 2 calls,   0.012 msec avg)
+                                           io_HF :      0.0000s CPU
+                              BSE matrix filling :      0.0000s CPU ( 4 calls,   0.012 msec avg)
+                                  io_Double_Grid :      0.0001s CPU ( 2 calls,   0.029 msec avg)
+                         IO_and_Messaging_switch :      0.0001s CPU (43 calls,   0.002 msec avg)
+                                    PP_uspp_init :      0.0001s CPU (12 calls,   0.012 msec avg)
+                                    scatter_Gamp :      0.0002s CPU (16 calls,   0.014 msec avg)
+                          BSE components folding :      0.0003s CPU ( 4 calls,   0.068 msec avg)
+                               SERIAL_lin_system :      0.0010s CPU ( 4 calls,   0.253 msec avg)
+                                  eval_G_minus_G :      0.0013s CPU ( 2 calls,   0.656 msec avg)
+                                   X (procedure) :      0.0019s CPU ( 4 calls,   0.471 msec avg)
+                                         io_GROT :      0.0020s CPU ( 2 calls,   1.004 msec avg)
+                                        io_QINDX :      0.0029s CPU ( 3 calls,   0.971 msec avg)
+                SERIAL_HERMITIAN_diagonalization :      0.0036s CPU ( 4 calls,   0.888 msec avg)
+                                    io_KB_abinit :      0.0041s CPU ( 6 calls,   0.690 msec avg)
+                                  LINEAR ALGEBRA :      0.0046s CPU ( 8 calls,   0.573 msec avg)
+                                    io_BSS_diago :      0.0091s CPU ( 8 calls,   1.138 msec avg)
+                                      io_DIPOLES :      0.0115s CPU (17 calls,   0.678 msec avg)
+                                           io_BS :      0.0131s CPU (56 calls,   0.234 msec avg)
+                                     io_fragment :      0.0159s CPU (76 calls,   0.209 msec avg)
+                                T_space EXX Osc. :      0.0188s CPU (16 calls,   1.176 msec avg)
+                                           io_WF :      0.0204s CPU (61 calls,   0.334 msec avg)
+                                            io_X :      0.0295s CPU (35 calls,   0.843 msec avg)
+                                     K_WF_phases :      0.0350s CPU ( 4 calls,   8.742 msec avg)
+                                       FFT_setup :      0.0359s CPU (11 calls,   3.261 msec avg)
+                                     BSE dipoles :      0.0417s CPU ( 4 calls,  10.433 msec avg)
+                                     WF_load_FFT :      0.0424s CPU (12 calls,   3.529 msec avg)
+                               DIPOLE_transverse :      0.0549s CPU
+                                         Dipoles :      0.0615s CPU
+                               T_space CORR Osc. :      0.1567s CPU (40 calls,   3.917 msec avg)
+                                X T_space Kernel :      0.2728s CPU ( 4 calls,  68.206 msec avg)
+                                      T_space IP :      0.6337s CPU ( 4 calls, 158.427 msec avg)
+                                    Diago Solver :      0.7264s CPU ( 4 calls, 181.598 msec avg)
+                                  Xo (procedure) :      0.9130s CPU ( 4 calls, 228.240 msec avg)
 
- [11] Game Over & Game summary
+ [08] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
+
+
+         Max memory used   :  18.16300 [Mb]
+
+ [09] Game Over & Game summary
  =============================
 
- 02/05/2021 at 12:25 yambo @ attacc-lavoro [start]
- 02/05/2021 at 12:25                       [end]
+ 09/17/2024 at 13:50 yambo @ baym [start]
+ 09/17/2024 at 13:50              [end]
 
- Timing   [Min/Max/Average]: 04s/04s/04s
-             [Time-Profile]: 04s
+ Timing   [Min/Max/Average]: 02s/02s/02s
+             [Time-Profile]: 02s
 
  .-ACKNOWLEDGMENT
  |
@@ -1102,25 +1011,21 @@
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
  | FFTGvecs=  3473            RL    # [FFT] Plane-waves
  | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
- | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
- | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
  | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
- | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
  | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
- | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+ | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
  | BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
  | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
  | BSENGexx=  51              RL    # [BSK] Exchange components
  | BSENGBlk=  51              RL    # [BSK] Screened interaction block size [if -1 uses all the G-vectors of W(q,G,Gp)]
  | #WehCpl                        # [BSK] eh interaction included also in coupling
- | BSEprop= "abs"                   # [BSS] abs/kerr/magn/dichr trace
  | % BSEQptR
  |   1 |  4 |                           # [BSK] Transferred momenta range
  | %
  | % BSEBands
- |   7 | 10 |                           # [BSK] Bands range
+ |   5 | 10 |                           # [BSK] Bands range
  | %
  | % BEnRange
  | -10.00000 | 10.00000 |         eV    # [BSS] Energy range
@@ -1132,6 +1037,8 @@
  | % BLongDir
  |  0.577350E-5 | 0.577350E-5 | 0.577350E-5 # [BSS] [cc] Electric Field
  | %
+ | BSEprop= "abs jdos"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+ | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
  | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
  | % BndsRnXs
  |    1 |  60 |                         # [Xs] Polarization function bands
@@ -1140,4 +1047,3 @@
  | % LongDrXs
  |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
  | %
- | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)

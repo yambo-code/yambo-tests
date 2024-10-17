@@ -1,27 +1,46 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
 #                                                                     
-#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
-# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
-#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
-#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
-#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
-#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
-#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
-#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
-#                                                                     
-#      Version 5.0.0 Revision 19355 Hash c56584a64                    
-#                Branch is devel-magnons                              
-#           MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                        
-#               http://www.yambo-code.org                             
+# Version 5.2.0 Revision 23130 Hash (prev commit) 3b61fa0e1           
+#            Branch is phys-levels_degeneracy                         
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.eu                             
+#
+# Sorted IP Energies @ Q(1):   1.00000000      0.00000000      0.00000000    [q->0 direction]
+#
+# [GEN] GF Energies                               : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
+# [GEN] Green`s Function                          : Retarded
+#
+# [GEN] Gauge                                     : Length
+# [GEN] [r,Vnl] included                          : yes
+#
+# DIP band range                                  :   2  10
+# DIP band range limits                           :   4   5
+# DIP e/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# RL vectors in the sum                           :   3695
+# [r,Vnl] included                                : yes
+# Bands ordered                                   : yes
+# Direct v evaluation                             : no
+# Approach used                                   : G-space v
+# Dipoles computed                                : R V P
+# Wavefunctions                                   : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
 #
 #
-#    E [eV]             n_deg              abs
+#    E [eV]             N_deg              alpha
 #
-     10.446344          3.0000000         0.20274757E-10
-     14.859436          6.0000000         0.13638723E-10
-     15.795781          3.0000000         0.91692280E-11
+        10.44634           3.000000           0.20275E-10
+        14.85944           6.000000           0.13639E-10
+        15.79578           9.000000           0.11833E-10
 # 
-# 01/04/2021 at 15:46 yambo @ unimi-XPS-8930 [start]
-# 01/04/2021 at 15:46                        [end]
+# 09/17/2024 at 13:46 yambo @ baym [start]
+# 09/17/2024 at 13:47              [end]
 #
 # .-Input file  yambo.in
 # | rim_cut                          # [R] Coulomb potential
@@ -32,15 +51,12 @@
 # | em1s                             # [R][Xs] Statically Screened Interaction
 # | ElecTemp= 0.025869         eV    # Electronic Temperature
 # | BoseTemp= 0.025861         eV    # Bosonic Temperature
-# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
-# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
 # | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
 # | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
-# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
 # | RandQpts=0                       # [RIM] Number of random q-points in the BZ
 # | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
-# | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws X/Y/Z/XY..
+# | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
 # | % CUTBox
 # |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
 # | %
@@ -48,11 +64,11 @@
 # | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
 # | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
-# | BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
 # | BSKmod= "SEX"                    # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
 # | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
 # | % DipBands
-# |   2 |  8 |                           # [DIP] Bands range for dipoles
+# |   2 | 10 |                           # [DIP] Bands range for dipoles
 # | %
 # | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
 # | BSENGexx=  4067            RL    # [BSK] Exchange components
@@ -61,12 +77,11 @@
 # | % KfnQP_E
 # |  3.400000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
 # | %
-# | BSEprop= "abs esrt"              # [BSS] abs/kerr/magn/dichr trace
 # | % BSEQptR
 # |  1 | 1 |                             # [BSK] Transferred momenta range
 # | %
 # | % BSEBands
-# |   2 |  8 |                           # [BSK] Bands range
+# |   2 | 10 |                           # [BSK] Bands range
 # | %
 # | % BEnRange
 # | -20.00000 | 20.00000 |         eV    # [BSS] Energy range
@@ -78,6 +93,8 @@
 # | % BLongDir
 # |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
 # | %
+# | BSEprop= "abs jdos esrt"         # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
 # | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
 # | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
 # | % BndsRnXs
@@ -88,4 +105,3 @@
 # | % LongDrXs
 # |  0.577350E-5 | 0.577350E-5 | 0.577350E-5 # [Xs] [cc] Electric Field
 # | %
-# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)

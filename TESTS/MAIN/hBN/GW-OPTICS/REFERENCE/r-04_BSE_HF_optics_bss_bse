@@ -1,19 +1,19 @@
                                                                           
-     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
-    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
-     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
-      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
-       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
-        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
-        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
-        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
+     __  __   ________   ___ __ __    _______   ______                    
+    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
+    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
+     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
+      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
+        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
+         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+                                                                          
                                                                           
     Version 5.2.0 Revision 23130 Hash (prev commit) 3b61fa0e1             
                Branch is phys-levels_degeneracy                           
-                 MPI+SLK+SLEPC+HDF5_IO Build                              
+                       MPI+HDF5_IO Build                                  
                    http://www.yambo-code.eu                               
  
- 09/18/2024 at 16:32 yambo @ baym
+ 09/17/2024 at 13:49 yambo @ baym
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 04_BSE_HF
- Alt#1 string        : R1
+ Alt#1 string        : R7
 
  Precision           : SINGLE
   
@@ -344,7 +344,7 @@
     BS kernel          wavefunctions                 : Teter 93(XC)
     Static diel. fun.  energies                      : Teter 93(XC)
     wavefunctions                                    : Teter 93(XC)
-    [K] Identifier                                   :   8416
+    [K] Identifier                                   :  1719
     [K] Dimension                                    :   64
     [K] Bands                                        :   5  10
     [K] Exchange                                     : yes [res]
@@ -375,7 +375,7 @@
 
   [WR./04_BSE_HF//ndb.BS_diago_Q1]------------------------------------------------
    BS kernel          energies                      : Teter 93(XC)
-   [K] Identifier                                   :   8416
+   [K] Identifier                                   :  1719
    [K] Dimension                                    :   64
    [K] Bands                                        :   5  10
    [K] Exchange                                     : yes [res]
@@ -411,34 +411,34 @@
                     BSE matrix filling :      0.0000s CPU
                             io_COL_CUT :      0.0000s CPU
                                  io_HF :      0.0000s CPU
+                           io_KB_pwscf :      0.0000s CPU ( 2 calls,   0.020 msec avg)
                IO_and_Messaging_switch :      0.0000s CPU (16 calls,   0.003 msec avg)
-                           io_KB_pwscf :      0.0000s CPU ( 2 calls,   0.021 msec avg)
                           PP_uspp_init :      0.0001s CPU ( 5 calls,   0.010 msec avg)
-                        io_Double_Grid :      0.0001s CPU ( 2 calls,   0.030 msec avg)
                 BSE components folding :      0.0001s CPU
+                        io_Double_Grid :      0.0001s CPU ( 2 calls,   0.033 msec avg)
                                   io_X :      0.0001s CPU ( 5 calls,   0.020 msec avg)
                         eval_G_minus_G :      0.0003s CPU
       SERIAL_HERMITIAN_diagonalization :      0.0009s CPU
                         LINEAR ALGEBRA :      0.0009s CPU
-                               io_GROT :      0.0019s CPU ( 2 calls,   0.972 msec avg)
-                          io_BSS_diago :      0.0020s CPU ( 2 calls,   1.002 msec avg)
-                             FFT_setup :      0.0022s CPU
-                      T_space EXX Osc. :      0.0029s CPU ( 4 calls,   0.721 msec avg)
-                              io_QINDX :      0.0029s CPU ( 3 calls,   0.974 msec avg)
-                                 io_BS :      0.0032s CPU (17 calls,   0.188 msec avg)
-                           BSE dipoles :      0.0034s CPU
-                          io_KB_abinit :      0.0041s CPU ( 6 calls,   0.688 msec avg)
-                           io_fragment :      0.0046s CPU (20 calls,   0.232 msec avg)
-                           WF_load_FFT :      0.0053s CPU ( 5 calls,   1.067 msec avg)
-                                 io_WF :      0.0070s CPU (19 calls,   0.370 msec avg)
-                            io_DIPOLES :      0.0081s CPU (12 calls,   0.678 msec avg)
+                               io_GROT :      0.0019s CPU ( 2 calls,   0.951 msec avg)
+                          io_BSS_diago :      0.0020s CPU ( 2 calls,   0.988 msec avg)
+                             FFT_setup :      0.0023s CPU
+                      T_space EXX Osc. :      0.0029s CPU ( 4 calls,   0.715 msec avg)
+                              io_QINDX :      0.0029s CPU ( 3 calls,   0.964 msec avg)
+                                 io_BS :      0.0031s CPU (17 calls,   0.184 msec avg)
+                           BSE dipoles :      0.0033s CPU
+                          io_KB_abinit :      0.0041s CPU ( 6 calls,   0.681 msec avg)
+                           io_fragment :      0.0045s CPU (20 calls,   0.227 msec avg)
+                           WF_load_FFT :      0.0052s CPU ( 5 calls,   1.045 msec avg)
+                                 io_WF :      0.0068s CPU (19 calls,   0.357 msec avg)
+                            io_DIPOLES :      0.0079s CPU (12 calls,   0.654 msec avg)
                            K_WF_phases :      0.0086s CPU
-                     DIPOLE_transverse :      0.0167s CPU
-                               Dipoles :      0.0235s CPU
-                     T_space CORR Osc. :      0.0338s CPU (10 calls,   3.383 msec avg)
-                      X T_space Kernel :      0.0573s CPU
+                     DIPOLE_transverse :      0.0165s CPU
+                               Dipoles :      0.0230s CPU
+                     T_space CORR Osc. :      0.0334s CPU (10 calls,   3.341 msec avg)
+                      X T_space Kernel :      0.0564s CPU
                             T_space IP :      0.0611s CPU
-                          Diago Solver :      0.0722s CPU
+                          Diago Solver :      0.0715s CPU
 
  [08] Memory Overview
  ====================
@@ -452,8 +452,8 @@
  [09] Game Over & Game summary
  =============================
 
- 09/18/2024 at 16:32 yambo @ baym [start]
- 09/18/2024 at 16:32              [end]
+ 09/17/2024 at 13:49 yambo @ baym [start]
+ 09/17/2024 at 13:49              [end]
 
   
  .-ACKNOWLEDGMENT

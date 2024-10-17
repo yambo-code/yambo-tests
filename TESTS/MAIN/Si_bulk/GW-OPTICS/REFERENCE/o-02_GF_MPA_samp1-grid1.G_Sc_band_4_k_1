@@ -8,26 +8,26 @@
 #     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
 #      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
 #                                                                     
-# Version 5.1.0 Revision 21813 Hash (prev commit) d80c078a9           
-#               Branch is devel-fullfreqGW                            
-#              MPI+OpenMP+SLK+HDF5_IO Build                           
-#                http://www.yambo-code.org                            
+# Version 5.2.0 Revision 23130 Hash (prev commit) 3b61fa0e1           
+#            Branch is phys-levels_degeneracy                         
+#                    MPI+HDF5_IO Build                                
+#                http://www.yambo-code.eu                             
 #
 # GW [Green`s function & Self-Energy]
 #
 # GW solver                                       : Full Green`s function
 # GW approximation                                : MPA
 # MPA number of poles                             :   0.00000000   
-# GW SC iterations                                : 0
 # X G`s                                           :   9 [used]
 # X G`s                                           :   9 [disk]
-# X bands                                         :   1  12
+# X bands                                         :   1  13
 # X poles                                         :   100.000000    [o/o]
 # X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
 # X Hxc Kernel                                    : HARTREE
 # X damping range                                 :  0.272113830E-3   2.72113848    [ev]
 # X Steps                                         :   4
 # X BZ energy Double Grid                         : no
+# X Optical Averaged directions                   : none
 # Sc/G bands                                      :   1  10
 # Sc/G damping                                    :  0.100000001    [ev]
 # Sc bands terminator                             : no
@@ -42,31 +42,31 @@
 # QP @ state[ 1 ] b range                         :   4   5
 #
 #
-# Spectral function at this point integrates to:  0.141351983   
+# Spectral function at this point integrates to:  0.145913973   
 #
 #
 #    Energy [eV]        Re(G) [eVm1]       Im(G) [eVm1]       Re(S_tot) [eV]     Im(S_c) [eV]       Re(S_c) [eV]
 #
-       -1.000000          -0.488167           0.004004           1.048342           0.016801           2.297363
-       -0.857143          -0.535040           0.004612           1.011737           0.016108           2.260758
-       -0.714286          -0.591711           0.005406           0.975586           0.015439           2.224607
-       -0.571429          -0.661612           0.006475           0.939887           0.014792           2.188908
-       -0.428571          -0.750006           0.007969           0.904600           0.014166           2.153621
-       -0.285714          -0.865354           0.010155           0.869722           0.013559           2.118743
-       -0.142857          -1.022219           0.013555           0.835235           0.012970           2.084255
-        0.000000          -1.247947           0.019314           0.801124           0.012399           2.050145
-        0.142857          -1.600683           0.030356           0.767366           0.011843           2.016387
-        0.285714          -2.229538           0.056219           0.733953           0.011303           1.982973
-        0.428571          -3.666693           0.145105           0.700870           0.010776           1.949891
-        0.571429          -10.22930           1.085903           0.668098           0.010262           1.917118
-        0.714286           12.52095           1.553680           0.635631           0.009760           1.884652
-        0.857143           3.936370           0.143816           0.603440           0.009269           1.852461
-        1.000000           2.332868           0.047848           0.571523           0.008788           1.820544
+       -1.000000          -0.486826           0.003972           1.053985           0.016757           2.303006
+       -0.857143          -0.533395           0.004565           1.017504           0.016044           2.266525
+       -0.714286          -0.589657           0.005340           0.981476           0.015357           2.230497
+       -0.571429          -0.658997           0.006381           0.945885           0.014693           2.194906
+       -0.428571          -0.746581           0.007832           0.910720           0.014051           2.159740
+       -0.285714          -0.860725           0.009950           0.875942           0.013429           2.124962
+       -0.142857          -1.015658           0.013233           0.841559           0.012826           2.090580
+        0.000000          -1.238048           0.018767           0.807538           0.012241           2.056559
+        0.142857          -1.584204           0.029305           0.773873           0.011673           2.022894
+        0.285714          -2.197303           0.053722           0.740546           0.011120           1.989567
+        0.428571          -3.579404           0.135774           0.707546           0.010582           1.956567
+        0.571429          -9.577808           0.931332           0.674859           0.010057           1.923879
+        0.714286           13.68153           1.818267           0.642463           0.009545           1.891484
+        0.857143           4.046503           0.148295           0.610347           0.009044           1.859368
+        1.000000           2.371521           0.048130           0.578503           0.008554           1.827524
 # 
-# 12/22/2022 at 22:07 yambo @ corvina [start]
-# 12/22/2022 at 22:08                 [end]
+# 09/17/2024 at 14:03 yambo @ baym [start]
+# 09/17/2024 at 14:03              [end]
 #  
-# Timing   [Min/Max/Average]: 08s/08s/08s
+# Timing   [Min/Max/Average]: 02s/02s/02s
 #
 # .-Input file  yambo.in
 # | HF_and_locXC                     # [R] Hartree-Fock
@@ -77,9 +77,6 @@
 # | BoseTemp= 0.000000         eV    # Bosonic Temperature
 # | FFTGvecs=  411             RL    # [FFT] Plane-waves
 # | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
-# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
-# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
-# | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
 # | EXXRLvcs= 2085             RL    # [XX] Exchange    RL components
 # | VXCRLvcs= 2085             RL    # [XC] XCpotential RL components
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
@@ -87,13 +84,14 @@
 # |   1 | 19 |                           # [Xm] Transferred momenta
 # | %
 # | % BndsRnXm
-# |   1 | 12 |                           # [Xm] Polarization function bands
+# |   1 | 13 |                           # [Xm] Polarization function bands
 # | %
 # | NGsBlkXm= 1                Ry    # [Xm] Response block size
 # | % LongDrXm
 # |  0.100000E-4 |  0.00000    |  0.00000    # [Xm] [cc] Electric Field
 # | %
 # | EnSampXm= "2l"                   # [Xm] Frequency sampling in the complex plane ("1l" one line, "2l" two lines)
+# | EnGridXm= "lP"                   # [Xm] Partition along the real axis ("ho" homogeneous, "lP" linear, "qP" quadratic, "cP" cubic)
 # | % EnRngeXm
 # |  0.000000 | 0.900000 |         Ha    # [Xm] Energy range
 # | %

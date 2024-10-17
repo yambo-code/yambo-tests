@@ -1,19 +1,19 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
+       ###  ###     ### ###       ### #########   ########                
                                                                           
                                                                           
-          Version 5.0.1 Revision 19712 Hash 2697a63c3                     
-                      Branch is bug-fixes                                 
+    Version 5.2.0 Revision 23129 Hash (prev commit) 3a51862bc             
+               Branch is phys-levels_degeneracy                           
                        MPI+HDF5_IO Build                                  
-                   http://www.yambo-code.org                              
+                   http://www.yambo-code.eu                               
  
- 04/06/2021 at 13:59 ypp @ baym
+ 09/17/2024 at 13:49 ypp @ baym
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 05_ypp_exc_dipoles
- Alt#1 string        : 04_BSE-serial-bug-fixes
- Alt#2 string        : R2
+ Alt#1 string        : 04_BSE-serial-phys-levels_degeneracy
+ Alt#2 string        : R7
 
  Precision           : SINGLE
   
@@ -76,8 +76,14 @@
   Atoms in the cell     :  B  N
   number of B  atoms    :  2
   number of N  atoms    :  2
-  Alat factors          :   4.71637   4.08450  12.17584 [a.u.]
 
+  List of atomic coordinates    : [cc]
+  B1       :  2.358186  1.361500  0.000000
+  B2       : -2.358186 -1.361500  6.087918
+  N1       : -2.358186 -1.361500  0.000000
+  N2       :  2.358186  1.361500  6.087918
+
+  Alat factors          :   4.71637   4.08450  12.17584 [a.u.]
   Direct lattice volume :  234.5556 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]:  1.000000  0.000000  0.000000  [iru]
@@ -89,6 +95,7 @@
    B[ 1 ]:  1.000000  0.500000  0.000000  [iku]
    B[ 2 ]:  0.000000  1.000000  0.000000  [iku]
    B[ 3 ]:  0.000000  0.000000  1.000000  [iku]
+   
 
   [05.02] Symmetries
   ==================
@@ -156,20 +163,20 @@
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.132192 [a.u.]
 
-  IBZ K-points :   4
-  BZ  K-points :   8
+  IBZ K-points                                      :   4
+  BZ  K-points                                      :   8
 
   K/Q-points units:
   rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
-  K [1]:  0.000000  0.000000  0.000000 [rlu]
-        : wf components:  2831
-  K [2]:  0.500000    -0.149012E-7   0.00000    [rlu]
-        : wf components:  2834
-  K [3]:  0.000000  0.000000  0.500000 [rlu]
-        : wf components:  2854
-  K [4]:  0.500000    -0.149012E-7  0.500000    [rlu]
-        : wf components:  2840
+  K [1]          [rlu]:  0.000000  0.000000  0.000000
+         WF components:  2831
+  K [2]          [rlu]:  0.500000    -0.149012E-7   0.00000   
+         WF components:  2834
+  K [3]          [rlu]:  0.000000  0.000000  0.500000
+         WF components:  2854
+  K [4]          [rlu]:  0.500000    -0.149012E-7  0.500000   
+         WF components:  2840
 
   [05.05] Energies & Occupations
   ==============================
@@ -187,9 +194,9 @@
   [X] Filled Bands                                  :   8
   [X] Empty Bands                                   :    9   60
   [X] Direct Gap                                    :  4.094734 [eV]
-  [X] Direct Gap localized at k-point               :  2
+  [X] Direct Gap localized at k                     :  2
   [X] Indirect Gap                                  :  4.094734 [eV]
-  [X] Indirect Gap between k-points                 :  2  2
+  [X] Indirect Gap between kpts                     :  2  2
   [X] Last valence band width                       :  0.908688 [eV]
   [X] 1st conduction band width                     :  3.866872 [eV]
    
@@ -222,16 +229,16 @@
  [06] Excitonic Properties @ Q-index #1
  ======================================
 
- [RD./04_BSE-serial-bug-fixes//ndb.BS_diago_Q1]----------------------------------
+ [RD./04_BSE-serial-phys-levels_degeneracy//ndb.BS_diago_Q1]---------------------
   BS kernel          energies                      : Teter 93(XC)
-  [K] Identifier                                   :   5977
-  [K] Dimension                                    :   32
-  [K] Bands                                        :   7  10
-  [K] Exchange                                     : yes
-  [K] Correlation                                  : yes
+  [K] Identifier                                   :   5688
+  [K] Dimension                                    :   64
+  [K] Bands                                        :   5  10
+  [K] Exchange                                     : yes [res]
+  [K] Correlation                                  : yes [res]
   [K] Kernel`s coupling                            : no
-  [K] Exchange                                     : no
-  [K] Correlation                                  : no
+  [K] Exchange                                     : no [cpl]
+  [K] Correlation                                  : no [cpl]
   [K] W interaction is bare                        : no
   [K] ALDA kernel in R-space                       : no
   [K] RL vectors                                   :   51 [exchange]
@@ -247,22 +254,23 @@
   [W] [r,Vnl] included                             : yes
   [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
   [W] Coulomb Cutoff                               : none
-  [W] xc-Kernel                                    : none
+  [W] Hxc Kernel                                   : HARTREE
   [RIM] RL components                              : 0 [col]
   [RIM] Random points                              : 0 [col]
   [SOC] Perturbative SOC                           : no
+  [K] Kernel long-range exchange                   : BAR
   [BSS] Eigenstates included                       : yes
   [BSS] Field direction                            :  0.577350E-5  0.577350E-5  0.577350E-5
-  [BSS] Eigenstates computed                       :   32
-  [BSS] Number of BSE matricies                    :  1
- - S/N 006125 ---------------------------------------------- v.05.00.01 r.19712 -
+  [BSS] Eigenstates computed                       :   64
+  [BSS] Number of BSE matrices                     :  1
+ - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
 
  [WARNING] 1 excitonic states added to the USER selection to preserve degeneracy
 
  [07] Amplitude and weights
  ==========================
 
- [RD./04_BSE-serial-bug-fixes//ndb.dipoles]--------------------------------------
+ [RD./04_BSE-serial-phys-levels_degeneracy//ndb.dipoles]-------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   4   8   4   8
   *WRN*RL vectors                                  :   3473 [WF]
   Fragmentation                                    : yes
@@ -278,7 +286,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Teter 93(XC)
- - S/N 006125 ---------------------------------------------- v.05.00.01 r.19712 -
+ - S/N 006125 ---------------------------------------------- v.05.02.00 r.23130 -
 
  [08] Timing Overview
  ====================
@@ -287,13 +295,13 @@
       IO_and_Messaging_switch :      0.0000s CPU (4 calls,   0.002 msec avg)
              io_ATMPROJ_pwscf :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
-               io_Double_Grid :      0.0001s CPU (2 calls,   0.033 msec avg)
-                        io_WF :      0.0010s CPU
-                     io_QINDX :      0.0014s CPU
-                  io_fragment :      0.0017s CPU (4 calls,   0.434 msec avg)
-                      io_GROT :      0.0027s CPU (2 calls,   1.335 msec avg)
-                 io_BSS_diago :      0.0059s CPU (4 calls,   1.487 msec avg)
-                   io_DIPOLES :      0.0060s CPU (6 calls,   1.005 msec avg)
+               io_Double_Grid :      0.0001s CPU (2 calls,   0.032 msec avg)
+                  io_fragment :      0.0010s CPU (4 calls,   0.255 msec avg)
+                     io_QINDX :      0.0011s CPU
+                        io_WF :      0.0012s CPU
+                      io_GROT :      0.0018s CPU (2 calls,   0.914 msec avg)
+                 io_BSS_diago :      0.0036s CPU (4 calls,   0.906 msec avg)
+                   io_DIPOLES :      0.0044s CPU (6 calls,   0.729 msec avg)
 
  [09] Memory Overview
  ====================
@@ -302,13 +310,13 @@
  Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
 
 
-         Max memory used   :  511.0000 [Kb]
+         Max memory used   :  535.0000 [Kb]
 
  [10] Game Over & Game summary
  =============================
 
- 04/06/2021 at 13:59 ypp @ baym [start]
- 04/06/2021 at 13:59            [end]
+ 09/17/2024 at 13:49 ypp @ baym [start]
+ 09/17/2024 at 13:49            [end]
 
   
  .-ACKNOWLEDGMENT

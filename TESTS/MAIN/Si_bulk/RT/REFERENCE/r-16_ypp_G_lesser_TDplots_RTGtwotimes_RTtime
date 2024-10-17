@@ -1,19 +1,19 @@
-     __      __   ______   __       __  _______    ______                 
-    |  \    /  \ /      \ |  \     /  \|       \  /      \                
-     \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\               
-      \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$               
-       \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$               
-        \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$               
-        | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$               
-        | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$               
-         \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$                
                                                                           
-          Version 5.0.1 Revision 19633 Hash 705d3e552                     
-                Branch is devel-sc-rt-excitons                            
-              MPI+OpenMP+SLEPC+HDF5_MPI_IO Build                          
-                   http://www.yambo-code.org                              
+                                                                          
+    Y88b    /   e           e    e      888~~\    ,88~-_                  
+     Y88b  /   d8b         d8b  d8b     888   |  d888   \                 
+      Y88b/   /Y88b       d888bdY88b    888 _/  88888    |                
+       Y8Y   /  Y88b     / Y88Y Y888b   888  \  88888    |                
+        Y   /____Y88b   /   YY   Y888b  888   |  Y888   /                 
+       /   /      Y88b /          Y888b 888__/    `88_-~                  
+                                                                          
+                                                                          
+    Version 5.2.0 Revision 23130 Hash (prev commit) 3b61fa0e1             
+               Branch is phys-levels_degeneracy                           
+               MPI+SLK+SLEPC+HDF5_MPI_IO Build                            
+                   http://www.yambo-code.eu                               
  
- 01/22/2021 at 17:38 ypp_rt @ unimi-XPS-8930
+ 09/18/2024 at 18:26 ypp_rt @ baym
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 16_ypp_G_lesser
- Alt#1 string        : 15_td_sex-serial-devel-sc-rt-excitons
- Alt#2 string        : R3
+ Alt#1 string        : 15_td_sex-serial-phys-levels_degeneracy
+ Alt#2 string        : R2
 
  Precision           : SINGLE
   
@@ -60,8 +60,15 @@
   Cell kind             :  FCC
   Atoms in the cell     :  Si
   number of Si atoms    :  2
-  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
 
+  List of atomic masses
+  Mass of Si    :  0.000000
+
+  List of atomic coordinates    : [cc]
+  Si1       :  0.000000  0.000000  0.000000  order 1
+  Si2       :  2.545750  2.545750  2.545750  order 1
+
+  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
   Direct lattice volume :  263.9777 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]: -0.500000  0.000000  0.500000  [iru]
@@ -73,6 +80,7 @@
    B[ 1 ]: -1.000000 -1.000000  1.000000  [iku]
    B[ 2 ]:  1.000000  1.000000  1.000000  [iku]
    B[ 3 ]: -1.000000  1.000000 -1.000000  [iku]
+   
 
   [05.02] Symmetries
   ==================
@@ -116,24 +124,20 @@
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
 
-  IBZ K-points :   4
-  BZ  K-points :   8
+  IBZ K-points                                      :   4
+  BZ  K-points                                      :   8
 
   K/Q-points units:
   rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
-  K [1]:  0.000000  0.000000  0.000000 [rlu]
-        : wf components:  259
-        : BZ grid      : X S
-  K [2]:  0.000000  0.000000 -0.500000 [rlu]
-        : wf components:  266
-        : BZ grid      : X S
-  K [3]:  0.000000 -0.500000 -0.500000 [rlu]
-        : wf components:  254
-        : BZ grid      : X S
-  K [4]:  0.000000 -0.500000  0.000000 [rlu]
-        : wf components:  266
-        : BZ grid      : X S
+  K [1]          [rlu]:  0.000000  0.000000  0.000000
+         WF components:  259
+  K [2]          [rlu]:  0.000000  0.000000 -0.500000
+         WF components:  266
+  K [3]          [rlu]:  0.000000 -0.500000 -0.500000
+         WF components:  254
+  K [4]          [rlu]:  0.000000 -0.500000  0.000000
+         WF components:  266
 
   [05.05] Energies & Occupations
   ==============================
@@ -151,9 +155,9 @@
   [X] Filled Bands                                  :   4
   [X] Empty Bands                                   :   5   8
   [X] Direct Gap                                    :  2.440868 [eV]
-  [X] Direct Gap localized at k-point               :  1
+  [X] Direct Gap localized at k                     :  1
   [X] Indirect Gap                                  :  0.437631 [eV]
-  [X] Indirect Gap between k-points                 :  1  3
+  [X] Indirect Gap between kpts                     :  1  3
   [X] Last valence band width                       :  3.010587 [eV]
   [X] 1st conduction band width                     :  2.003237 [eV]
    
@@ -208,25 +212,35 @@
  ====================
 
  Clock: global
-         io_ATMPROJ_pwscf :      0.0000s CPU
-             io_KB_abinit :      0.0000s CPU
-               io_COL_CUT :      0.0000s CPU
-           INTERPOLATE bz :      0.0000s CPU
-         RT output (INIT) :      0.0001s CPU
-           io_Double_Grid :      0.0001s CPU (  2 calls,   0.034 msec avg)
-              io_KB_pwscf :      0.0001s CPU
-      INTERPOLATE Fourier :      0.0008s CPU (  2 calls,   0.387 msec avg)
-                    io_WF :      0.0020s CPU
-                 io_QINDX :      0.0028s CPU
-               io_DIPOLES :      0.0030s CPU
-                  io_GROT :      0.0063s CPU (  3 calls,   2.107 msec avg)
-         io_RT_components :      0.4806s CPU (504 calls,   0.954 msec avg)
+      IO_and_Messaging_switch :      0.0000s CPU
+             io_ATMPROJ_pwscf :      0.0000s CPU
+                 io_KB_abinit :      0.0000s CPU
+               INTERPOLATE bz :      0.0000s CPU
+                   io_COL_CUT :      0.0000s CPU
+             RT output (INIT) :      0.0000s CPU
+               io_Double_Grid :      0.0001s CPU (  2 calls,   0.034 msec avg)
+                  io_KB_pwscf :      0.0001s CPU
+          INTERPOLATE Fourier :      0.0005s CPU (  2 calls,   0.245 msec avg)
+                        io_WF :      0.0008s CPU
+                   io_DIPOLES :      0.0010s CPU
+                     io_QINDX :      0.0011s CPU
+                      io_GROT :      0.0024s CPU (  3 calls,   0.787 msec avg)
+             io_RT_components :      0.1589s CPU (504 calls,   0.315 msec avg)
 
- [10] Game Over & Game summary
+ [10] Memory Overview
+ ====================
+
+ Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
+ Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
+
+
+         Max memory used   :  1.074000 [Mb]
+
+ [11] Game Over & Game summary
  =============================
 
- 01/22/2021 at 17:38 ypp_rt @ unimi-XPS-8930 [start]
- 01/22/2021 at 17:38                         [end]
+ 09/18/2024 at 18:26 ypp_rt @ baym [start]
+ 09/18/2024 at 18:26               [end]
 
   
  .-ACKNOWLEDGMENT
@@ -255,13 +269,13 @@
  | RTGtwotimes                      # [R] Construct G</G>/G(r)/G(a)/A(t,tp) from rho within GKBA
  | RTtime                           # [R] Post-Processing kind: function of time
  | INTERP_mode= "BOLTZ"             # Interpolation mode (NN=nearest point, BOLTZ=boltztrap aproach)
+ | INTERP_Shell_Fac= 2.000000       # The bigger it is a higher number of shells is used
+ | INTERP_NofNN= 1                  # Number of Nearest sites in the NN method
  | OutputAlat= 3.851738             # [a.u.] Lattice constant used for "alat" ouput format
  | cooIn= "rlu"                     # Points coordinates (in) cc/rlu/iku/alat
  | cooOut= "rlu"                    # Points coordinates (out) cc/rlu/iku/alat
  | #NormN                         # Nel on the bands is renormalized to Nel in the IBZ
  | NelFac= 1.000000                 # Rescale the total number of electrons
- | INTERP_Shell_Fac= 2.000000       # The bigger it is a higher number of shells is used
- | INTERP_NofNN= 1                  # Number of Nearest sites in the NN method
  | CIRCUIT_E_DB_path= "none"        # SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)
  | BANDS_path= " G"                 # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
  | BANDS_steps=  50                 # Number of divisions
@@ -270,7 +284,7 @@
  | % TimeRange
  |  25.00000 | 75.00001 |         fs    # Time-window where processing is done
  | %
- | LoadGhistory                   # [NEGF] Build the NEQ density from the G_lesser
+ | LoadGhistory                   # [NEGF] Build the NEQ density from G<(t,t)
  | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
  | % EnRngeRt
  |  -2.00000 | 14.00000 |         eV    # Energy range
@@ -278,6 +292,8 @@
  | ETStpsRt=  501                   # Total Energy steps
  | DampFactor= 50.00000       meV   # Damping parameter
  | RhoDeph= 5.000000          meV   # Dephasing parameter for G_GKBA
+ | BuildGles                      # [NEGF] Build G<(t,tp) with GKBA
+ | KeepCC                         # [NEGF] Use only the cc channel when reconstructuing G<(t,tp)
  | %BANDS_kpts                      # K points of the bands circuit
  |  0.500000| 0.500000| 0.500000|
  |  0.000000| 0.000000| 0.000000|

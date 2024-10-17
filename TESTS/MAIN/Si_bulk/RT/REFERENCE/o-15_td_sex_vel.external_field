@@ -1,26 +1,22 @@
 #                                                                     
-#  ____  ____     _       ____    ____  ______      ___               
-# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
-#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
-#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
-#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
-#   |______||____| |____||_____||_____||_______/  `.___."             
+# ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.             
+#  `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb            
+#   `88. .8" .8"88.    888b     d"88  88     888 88      88           
+#    `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88           
+#     `88" .88ooo888.  8  `888"   88  88    `88b 88      88           
+#      88 .8"     `88. 8    Y     88  88    .88P `8b    d8"           
+#     o88o88o      888o8          88 o88bood8P"   `Ybod8P"            
 #                                                                     
 #                                                                     
-#                                                                     
-#       Version 5.1.0 Revision 20784 Hash b1e2a6e78                   
-#             Branch is devel-rt-vel-and-magn                         
+# Version 5.2.0 Revision 23132 Hash (prev commit) 0aefd4da0           
+#               Branch is maintenance-master                          
 #          MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                     
-#                http://www.yambo-code.org                            
+#                 http://www.yambo-code.eu                            
 #
 #
-# [RT] Bands                                      :   2   7
+# [RT] Bands                                      :   1   8
 # [RT] K-points                                   :   4
 # [RT] Potential                                  : HARTREE+SEX
-# [E-P] Electron-phonon                           : no
-# [E-P] Iterative time evolution                  : no
-# [E-P] Branches                                  : 0 0
-# [E-P] GF`s Memory steps                         :  2
 # [E-E] Coulomb scattering                        : no
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
@@ -64,7 +60,7 @@
 #    Time[fs]           E_x/Re[V/m]        E_y/Re[V/m]        E_z/Re[V/m]        E_x/Im[V/m]        E_y/Im[V/m]        E_z/Im[V/m]        Profile  [V/m]     Int. [kW/cm^2]     Fluence[nJ/cm^2]
 #
       0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000         0.00000000   
-     0.500000060        -463634.844        -463634.844        -463634.844        -0.00000000        -0.00000000        -0.00000000         31888.1484         171.176117        0.342352246E-2
+     0.500000060        -463634.844        -463634.844        -463634.844        -0.00000000        -0.00000000        -0.00000000         771152.500         171.176117        0.342352246E-2
       1.00000012         39324.4688         39324.4688         39324.4688        -0.00000000        -0.00000000        -0.00000000         74082.8750         1.23144984        0.382684451E-2
       1.50000012        -35846.3984        -35846.3984        -35846.3984        -0.00000000        -0.00000000        -0.00000000         85845.2422         1.02325082        0.405517640E-2
       2.00000024        -20076.5586        -20076.5586        -20076.5586        -0.00000000        -0.00000000        -0.00000000         99226.6172        0.320973814        0.483676651E-2
@@ -365,10 +361,10 @@
       149.50000        -0.72589590E-24    -0.72589590E-24    -0.72589590E-24     -0.0000000         -0.0000000         -0.0000000          0.0000000          0.0000000          88.625046    
       150.00002        -0.36216462E-25    -0.36216462E-25    -0.36216462E-25     -0.0000000         -0.0000000         -0.0000000          0.0000000          0.0000000          88.625046    
 # 
-# 07/26/2021 at 17:51 yambo_rt @ unimi-XPS-8930 [start]
-# 07/26/2021 at 17:51                           [end]
+# 10/09/2024 at 10:08 yambo_rt @ baym [start]
+# 10/09/2024 at 10:08                 [end]
 #  
-# Timing   [Min/Max/Average]: 06s/06s/06s
+# Timing   [Min/Max/Average]: 03s/03s/03s
 #
 # .-Input file  yambo.in
 # | negf                             # [R] NEQ Real-time dynamics
@@ -388,12 +384,13 @@
 # | Gauge= "velocity"                # [BSE/X] Gauge (length|velocity)
 # | SaveGhistory                   # [RT] Save the history of the green function
 # | % RTBands
-# |   2 |  7 |                           # [RT] Bands
+# |   1 |  8 |                           # [RT] Bands
 # | %
 # | Integrator= "EULER + RK2 + RWA"  # [RT] Integrator. Use keywords space separated  ( "EULER/EXPn/INV" "SIMPLE/RK2/RK4/HEUN" "RWA")
 # | % RTehEny
-# |  -7.89573 | 10.15807 |         eV    # [RT] Electron-hole energy range
+# | -12.15619 | 10.15807 |         eV    # [RT] Electron-hole energy range
 # | %
+# | RADLifeTime= 0.000000      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
 # | PhLifeTime= 0.000000       fs    # [RT] Constant Dephasing Time
 # | RTstep= 20.00000           as    # [RT] Real Time step length
 # | NETime= 150.0000           fs    # [RT] Simulation Time
@@ -406,16 +403,14 @@
 # | % Field1_Freq
 # |  2.600000 | 2.600000 |         eV    # [RT Field1] Frequency
 # | %
+# | Field1_NFreqs= 1                 # [RT Field1] Frequency
 # | Field1_Int=  10000.0       kWLm2 # [RT Field1] Intensity
 # | Field1_Width= 10.00000     fs    # [RT Field1] Width
 # | Field1_FWHM= 23.54820      fs    # [RT Field1] Full Width at Half Maximum (overwrite width if set)
-# | Field1_kind= "QSSIN"             # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
+# | Field1_kind= "QSSIN"             # [RT Field1] Kind(SIN|SOFTSIN| see more on src/modules/mod_fields.F)
 # | Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
 # | % Field1_Dir
 # |  0.577350 | 0.577350 | 0.577350 |        # [RT Field1] Versor
-# | %
-# | % Field1_Dir_circ
-# |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
 # | %
 # | Field1_Tstart= 0.500000    fs    # [RT Field1] Initial Time
 # | %DephMatrix                      # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)
