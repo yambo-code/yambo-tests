@@ -1,39 +1,34 @@
 #                                                                     
-#  ____  ____     _       ____    ____  ______      ___               
-# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
-#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
-#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
-#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
-#   |______||____| |____||_____||_____||_______/  `.___."             
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
 #                                                                     
-#                                                                     
-#                                                                     
-#       Version 4.5.0 Revision 18068 Hash 2b0c3aab2                   
-#                    Branch is develop                                
-#                        MPI Build                                    
-#                http://www.yambo-code.org                            
+# Version 5.2.0 Revision 23355 Hash (prev commit) cc0e22c74           
+#                 Branch is yoda/advanced                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.eu                             
 #
 #
-# [RT] Bands                                      :   2   7
+# [RT] Bands                                      :   1   8
 # [RT] K-points                                   :  3
 # [RT] Potential                                  : HARTREE+GS_xc
 # [E-P] Electron-phonon                           : yes
-# [E-P] Completed Collision(CCA)                  : yes
+# [E-P] Iterative time evolution                  : no
 # [E-P] Branches                                  :   1   6
 # [E-P] GF`s Memory steps                         :  2
 # [E-E] Coulomb scattering                        : yes
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
-# [RT] Time step (initial)                        :  0.200000014E-1 [fs]
-# [RT]           (now)                            :  0.200000014E-1 [fs]
-# [RT] NE time (planned)                          :   99.9999924    [fs]
-# [RT]         (done)                             :   100.000008    [fs]
-# [RT] Lifetimes Inter/Intra (user)               :   37.2072372      12.4024124    [fs]
-# [RT]                       (running)            :   37.2072372      12.4024124    [fs]
-# [RT] I/O time                                   :   20.6706886    [fs]
-# [RT] NE steps (done)                            :   5001
+# [RT] Time step     (initial)                    :  0.200000014E-1 [fs]
+# [RT] NE time       (planned)                    :   99.9999924    [fs]
+# [RT] NE steps      (planned)                    :   5001
+# [RT] Lif Extr Inte/Intr(sav)                    :  0.900000036     0.300000012    [fs]
 # [RT] Lifetimes extrapolation                    : yes
-# [dT] Time-Dependent Time step                   : no
 # [RT] Integrator                                 : EULER + RK2 + RWA
 # [RT] Radiative life time                        :   0.00000000    [fs]
 # [RT] Dephasing life time                        :   0.00000000    [fs]
@@ -42,10 +37,16 @@
 # [RT] Diamagnetic term                           : no
 # [RT] Induced field                              : no
 # [DbGd] Double Grid support                      : no
-# [DbGd] Number of k-points                       : 0
 # [DbGd] Used for e-e                             :   0.00000000    [o/o]
 # [CONSTRAINS] N (ee+ep) & dN (ep)                : yes
 # [CONSTRAINS] IP Energy      (ee)                : yes
+# [RT] Time step(now)                             :  0.200000014E-1 [fs]
+# [RT] NE time(done)                              :   100.000008    [fs]
+# [RT] NE steps(done)                             :   5001 [fs]
+# [RT] Lif Extr Inte/Intr(now)                    :  0.900000036     0.300000012    [fs]
+# [dT] Time-Dependent Time step                   : no
+# [RT] I/O time          (input) [fs]             :  0.500000060   
+# [RT] I/O time            (now) [fs]             :  0.500000060   
 #
 #
 # [Gr] Retarded Green`s function                  : HS
@@ -60,41 +61,41 @@
 #    #1                 #2                 #3                 #4
 #   E [eV]             @ 40.0000          @ 45.0000          @ 50.0000
 #
-    -7.89573145         6.35121679         6.44417286         6.53813314   
-    -7.20042992         11.3372240         11.4834871         11.6311054   
-    -3.01058745         171.139557         172.484482         173.826477   
-    -3.01058745         171.141861         172.486526         173.828537   
-    -1.26205385         371.977264         374.235138         376.481934   
-    -1.26205385         371.984497         374.241364         376.488708   
-     0.00000000         653.410828         656.318420         659.190552   
-     0.00000000         653.380066         656.286377         659.157471   
-     0.00000000         653.369202         656.273682         659.147827   
-    0.437631011         548.990540         550.908386         552.783936   
-    0.437639922         550.692078         552.621216         554.504700   
-     1.51905835         1016.27686         1017.76947         1019.21735   
-     2.44086790         1061.54224         1063.88770         1066.18335   
-     2.44086790         1061.38318         1063.72827         1066.01941   
-     2.44086790         1061.35303         1063.69775         1065.98816   
-     3.18587971         1173.05017         1174.55920         1176.02307   
-     3.18587971         1173.09570         1174.60815         1176.07263   
-     10.1580734         295.603027         295.738739         295.874298   
+    -7.89573145         8.86445522         9.23252678         9.61302185   
+    -7.20042992         15.4754839         16.0394897         16.6199055   
+    -3.01058745         187.371414         191.488785         195.649734   
+    -3.01058745         187.384933         191.502777         195.663742   
+    -1.26205385         399.939423         406.777740         413.653290   
+    -1.26205385         399.932098         406.768738         413.643250   
+     0.00000000         698.053345         706.907532         715.748352   
+     0.00000000         698.065002         706.915649         715.756165   
+     0.00000000         698.104736         706.957825         715.804321   
+    0.437631011         582.428162         588.234741         593.949341   
+    0.437639922         583.875549         589.692627         595.420349   
+     1.51905835         1177.43115         1183.42407         1189.32593   
+     2.44086790         1115.09021         1122.18396         1129.18164   
+     2.44086790         1114.96680         1122.06555         1129.05334   
+     2.44086790         1114.98279         1122.07800         1129.07239   
+     3.18587971         1226.90222         1231.77148         1236.55139   
+     3.18587971         1226.92981         1231.80249         1236.58362   
+     10.1580734         722.621582         724.429993         726.244080   
 # 
-# 04/07/2020 at 10:13 ypp_rt @ marini-Galago-UltraPro [start]
-# 04/07/2020 at 10:13                                 [end]
+# 10/18/2024 at 12:08 ypp_rt @ baym [start]
+# 10/18/2024 at 12:08               [end]
 #
 # .-Input file  yambo.in
-# | RealTime                       # [R] TD Post-Processing
-# | RToccupations                  # [R] Analize time-dependent occupations
-# | RTenergy                       # [R] Post-Processing kind: function of energy
-# | TimeStep= 5.000051     fs      # Time step
+# | RealTime                         # [R] TD Post-Processing
+# | RToccupations                    # [R] Analize time-dependent occupations
+# | RTenergy                         # [R] Post-Processing kind: function of energy
+# | TimeStep= 4.999992         fs    # Time step
 # | % TimeRange
-# |   0.00000 | 50.00000 | fs      # Time-window where processing is done
+# |   0.00000 | 50.00000 |         fs    # Time-window where processing is done
 # | %
 # | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
 # | #SkipFermiFIT                  # [NEGF] Do a Fermi Fit of occupations (and lifetimes ratio)
-# | %QPkrange                      #  generalized Kpoint/Band indices
+# | %QPkrange                        #  generalized Kpoint/Band indices
 # | 1|3|2|7|
 # | %
-# | %QPerange                      #  generalized Kpoint/Energy indices
+# | %QPerange                        #  generalized Kpoint/Energy indices
 # | 1|3| 0.000000|-1.000000|
 # | %
