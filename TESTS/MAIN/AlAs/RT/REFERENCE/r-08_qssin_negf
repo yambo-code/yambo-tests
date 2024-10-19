@@ -1,17 +1,17 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.               
+     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb              
+      `88. .8" .8"88.    888b     d"88  88     888 88      88             
+       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88             
+        `88" .88ooo888.  8  `888"   88  88    `88b 88      88             
+         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"             
+        o88o88o      888o8          88 o88bood8P"   `Ybod8P"              
                                                                           
                                                                           
     Version 5.2.0 Revision 23684 Hash (prev commit) d58ade5261            
-                   Branch is phys-non-linear                              
-            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.eu                               
+                    Branch is phys-non-linear                             
+             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
+                    http://www.yambo-code.eu                              
  
  10/19/2024 at 16:48 yambo_rt @ unimi-XPS-8930
  ==================================================
@@ -27,11 +27,11 @@
  Additional I/O      : .
  Communications      : .
  Input file          : yambo.in
- Report file         : ./r-08_qssin_adaptative_negf
+ Report file         : ./r-08_qssin_negf
  Verbose log/report  : no
  Log files           : ./LOG
 
- Job   string        : 08_qssin_adaptative
+ Job   string        : 08_qssin
  Alt#1 string        : R11
 
  Precision           : SINGLE
@@ -182,7 +182,7 @@
  - S/N 002631 ---------------------------------------------- v.05.00.01 r.18808 -
  [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.831867E-8  0.999994   
 
- [WR./08_qssin_adaptative//ndb.dipoles]------------------------------------------
+ [WR./08_qssin//ndb.dipoles]-----------------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   8   8   8   8
   RL vectors                                       :   645 [WF]
   Fragmentation                                    : yes
@@ -211,7 +211,7 @@
   [05.02] Dipoles
   ===============
 
-  [RD./08_qssin_adaptative//ndb.dipoles]------------------------------------------
+  [RD./08_qssin//ndb.dipoles]-----------------------------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :   8   8   8   8
    RL vectors                                       :   645 [WF]
    Fragmentation                                    : yes
@@ -247,14 +247,9 @@
    Basic time step            :  0.010000 [fs]
               steps           :   5001
          time step   (now)    :  0.010000 [fs]
-   ---Time Step Update---
-   Initial time               :  10.00000 [fs]
-   Time Interval              :  2.000000 [fs]
-   Treshold                   :  1.000000 [o/o]
-   dT maximum value          :  0.200000 [fs]
    ---Memory---
    Memory depth(G)            :  0.000000 [fs]
-   Memory steps(G)            :  3
+   Memory steps(G)            :  2
 
    ---Lifetimes---
    Evaluated Time points          : 0
@@ -312,67 +307,39 @@
   ==========================
 
 
-  Dynamics steps update @ TIME  10.00000 fs
-  [T= 10.000] Time step                           :  0.020000 [fs]
-  [T= 10.000] Update time                         :  2.000000 [fs]
-  [T= 10.000] I/O cache interval(J-P-M)           :  0.020000 [fs]
-  [T= 10.000] I/O interval(J-P-M)                 :  2.000000 [fs]
-  [T= 10.000] I/O interval(Carr)                  :  0.060000 [fs]
-  [T= 10.000] I/O interval(OUT)                   :  0.100000 [fs]
-  [T= 10.000] I/O interval(GF)                    :  0.500000 [fs]
-   
-
-  Dynamics steps update @ TIME  12.00000 fs
-  [T= 12.000] Time step                           :  0.040000 [fs]
-  [T= 12.000] Update time                         :  2.000000 [fs]
-  [T= 12.000] I/O cache interval(J-P-M)           :  0.040000 [fs]
-  [T= 12.000] I/O interval(J-P-M)                 :  2.000000 [fs]
-  [T= 12.000] I/O interval(Carr)                  :  0.080000 [fs]
-  [T= 12.000] I/O interval(OUT)                   :  0.120000 [fs]
-  [T= 12.000] I/O interval(GF)                    :  0.520000 [fs]
-   
-
  [06] Timing Overview
  ====================
 
  Clock: global
-              V_qp_basis_to_H :      0.0000s CPU (   8 calls,   0.001 msec avg)
              io_ATMPROJ_pwscf :      0.0000s CPU
+                  io_KB_pwscf :      0.0000s CPU (    2 calls,   0.009 msec avg)
                    io_COL_CUT :      0.0000s CPU
-                  io_KB_pwscf :      0.0000s CPU (   2 calls,   0.009 msec avg)
                         io_HF :      0.0000s CPU
-                io_COLLISIONS :      0.0000s CPU (   3 calls,   0.014 msec avg)
-               io_Double_Grid :      0.0000s CPU (   2 calls,   0.024 msec avg)
-                         io_X :      0.0001s CPU (   5 calls,   0.017 msec avg)
+                io_COLLISIONS :      0.0000s CPU (    3 calls,   0.014 msec avg)
+               io_Double_Grid :      0.0000s CPU (    2 calls,   0.023 msec avg)
              RT output (INIT) :      0.0001s CPU
-                    V_Hartree :      0.0001s CPU
-                 PP_uspp_init :      0.0002s CPU (  17 calls,   0.012 msec avg)
-          XC_potential_driver :      0.0005s CPU
+                         io_X :      0.0001s CPU (    5 calls,   0.017 msec avg)
+                 PP_uspp_init :      0.0001s CPU (    8 calls,   0.014 msec avg)
                       io_kpts :      0.0012s CPU
-            V_real_space_to_H :      0.0013s CPU (  24 calls,   0.054 msec avg)
-                    XCo_local :      0.0014s CPU
-                    FFT_setup :      0.0017s CPU (  10 calls,   0.169 msec avg)
-             Bare_Hamiltonian :      0.0020s CPU
-                      io_GROT :      0.0033s CPU (   3 calls,   1.094 msec avg)
-                     io_QINDX :      0.0033s CPU (   2 calls,   1.655 msec avg)
-                 RT avg redux :      0.0043s CPU (9358 calls,   0.000 msec avg)
-                 io_KB_abinit :      0.0069s CPU (  10 calls,   0.688 msec avg)
-      IO_and_Messaging_switch :      0.0073s CPU (4144 calls,   0.002 msec avg)
-                   io_DIPOLES :      0.0077s CPU (  24 calls,   0.322 msec avg)
-                  io_fragment :      0.0094s CPU (  32 calls,   0.294 msec avg)
-               RT Apply Field :      0.0106s CPU (4101 calls,   0.003 msec avg)
-            el_density_matrix :      0.0109s CPU
-                  WF_load_FFT :      0.0111s CPU (  17 calls,   0.654 msec avg)
-               RT Hamiltonian :      0.0148s CPU (4101 calls,   0.004 msec avg)
-                        io_WF :      0.0227s CPU (  59 calls,   0.385 msec avg)
-            DIPOLE_transverse :      0.0361s CPU
-                RT integrator :      0.0519s CPU (4100 calls,   0.013 msec avg)
-                RT average Op :      0.0674s CPU (9358 calls,   0.007 msec avg)
-                    RT output :      0.0678s CPU (2628 calls,   0.026 msec avg)
-               RT observables :      0.0781s CPU (2051 calls,   0.038 msec avg)
-             io_RT_components :      0.7190s CPU ( 957 calls,   0.751 msec avg)
-              RT databases IO :      0.7587s CPU (2053 calls,   0.370 msec avg)
-                      Dipoles :      1.0410s CPU
+                     io_QINDX :      0.0033s CPU (    2 calls,   1.639 msec avg)
+                      io_GROT :      0.0033s CPU (    3 calls,   1.107 msec avg)
+                  WF_load_FFT :      0.0036s CPU (    8 calls,   0.446 msec avg)
+                 RT avg redux :      0.0042s CPU (10002 calls,   0.000 msec avg)
+                  io_fragment :      0.0050s CPU (   16 calls,   0.314 msec avg)
+                 io_KB_abinit :      0.0070s CPU (   10 calls,   0.702 msec avg)
+                   io_DIPOLES :      0.0076s CPU (   24 calls,   0.317 msec avg)
+                        io_WF :      0.0101s CPU (   25 calls,   0.406 msec avg)
+      IO_and_Messaging_switch :      0.0163s CPU (10024 calls,   0.002 msec avg)
+               RT Apply Field :      0.0258s CPU (10001 calls,   0.003 msec avg)
+               RT Hamiltonian :      0.0346s CPU (10001 calls,   0.003 msec avg)
+            DIPOLE_transverse :      0.0363s CPU
+                    RT output :      0.0475s CPU ( 2004 calls,   0.024 msec avg)
+                RT integrator :      0.1225s CPU (10000 calls,   0.012 msec avg)
+                RT average Op :      0.1231s CPU (10002 calls,   0.012 msec avg)
+               RT observables :      0.1371s CPU ( 5001 calls,   0.027 msec avg)
+             io_RT_components :      0.3835s CPU ( 1245 calls,   0.308 msec avg)
+              RT databases IO :      0.4255s CPU ( 5001 calls,   0.085 msec avg)
+                      Dipoles :      1.0411s CPU
 
  [07] Game Over & Game summary
  =============================
@@ -380,9 +347,7 @@
  10/19/2024 at 16:48 yambo_rt @ unimi-XPS-8930 [start]
  10/19/2024 at 16:48                           [end]
 
- Timing   [Min/Max/Average]: 02s/02s/02s
-             [Time-Profile]: 02s
-
+  
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -411,12 +376,6 @@
  | HXC_Potential= "IP"              # [SC] SC HXC Potential
  | FFTGvecs=  645             RL    # [FFT] Plane-waves
  | HARRLvcs=  645             RL    # [HA] Hartree     RL components
- | RTEvalEnergy                   # [RT] Energy variation computed on the fly
- | RTEvalEntropy                  # [RT] Entropy variation computed on the fly
- | dTupdateTime= 10.00000     fs    # [RT] Initial Time for deltaT update (active only if non-zero)
- | dTupdateJump= 2.000000     fs    # [RT] Time betweem two deltaT updates
- | dTupdateTresh= 1.000000          # [RT][o/o] Treshold of deltaT updates
- | dT_MAX= 0.200000           fs    # [RT] Maximum value for the time-dependent dT
  | % RTBands
  |   2 |  5 |                           # [RT] Bands
  | %
