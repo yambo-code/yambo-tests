@@ -100,7 +100,7 @@ if ( "@_" eq "INPUT") {
  };
  #
  # Skipping tests which are not GPU ported
- if ($BUILD =~ m/CUDA/ || $BUILD =~ m/GPU/ ) {
+ if ( ($BUILD =~ m/CUDA/ || $BUILD =~ m/GPU/ ) && $skip_not_gpu ) {
   if ($testname =~ m/DBGD/ || $testname =~ m/dbgd/ || $testname =~ m/DbGd/ ) {
    my $msg = sprintf("%-"."$left_length"."s", "$testname");
    $CHECK_error= $msg." skipped (Double grid test is not gpu ported)";
