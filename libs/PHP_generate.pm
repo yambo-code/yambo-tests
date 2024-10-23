@@ -61,6 +61,7 @@ sub PHP_key_words{
  $robot_id = (split(/-/,$robot_id))[0];
  &get_line("Yambo      branch");
  $yambo_branch=$pattern[0][2];
+ if ($yambo_branch eq "bug-fixes") {$yambo_branch="maintenance-master"};
  &get_line("Test-suite branch");
  $tsuite_branch=$pattern[0][2];
  if( $yambo_branch eq ""){$yambo_branch="none";}
@@ -91,9 +92,8 @@ sub PHP_key_words{
   $FC_kind=$MPI_kind;
   $MPI_kind=" ";
  }
-#
-$REPO_kind="unknown"; 
 &get_line("Repo Kind");
+$REPO_kind="";
 if ($n_patterns > 0) { $REPO_kind=$pattern[0][2];  };
 $Yambo_precision="unknown";
 &get_line("Compilation Precision");
@@ -128,7 +128,7 @@ sub PHP_extract{
 #
 # Name choosing
 $MAX_phps=20;
-chdir("backup_and_www/$host/www");
+chdir("backup_and_www/$host/www/$REPO_kind");
 for( $j = 1; $j < $MAX_phps ; $j = $j + 1 )
 {
  $main_dat = $yambo_branch."/".$host."_".$yambo_branch."_".$j."_main.dat";
@@ -296,30 +296,26 @@ if ( "$compress_LOG" eq "yes" ){ &command("tar -czf $logs_tgz LOG*.log"); };
 #
 # Final copying
 #
-#&command("mkdir -p backup_and_www/$host/www/$REPO_kind/$local_branch");
-#&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$REPO_kind/$local_branch");   
-&command("mkdir -p backup_and_www/$host/www/$local_branch");
-&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$local_branch");   
+&command("mkdir -p backup_and_www/$host/www/$REPO_kind/$local_branch");
+&command("mv *.php *.dat *.tgz backup_and_www/$host/www/$REPO_kind/$local_branch");
 #
 return
 }
 #
 sub PHP_upload
 {
-chdir("$suite_dir/backup_and_www/$host/www");
-&FTP_mkdir("robots/$local_branch");
-&FTP_upload_it("$local_branch","robots","-R");
- #foreach $kind ("GPL","devel")
- #{ 
- # if (-d "$suite_dir/backup_and_www/$host/www/$kind")
- # {
- #  chdir("$suite_dir/backup_and_www/$host/www/$kind");
- #  &FTP_mkdir("robots");
- #  &FTP_mkdir("robots/$kind");
- #  &FTP_mkdir("robots/$kind/$local_branch");
- #  &FTP_upload_it("$local_branch","robots/$kind","-R");
- # };
- #}
+foreach $kind ("GPL","devel")
+{ 
+ if (-d "$suite_dir/backup_and_www/$host/www/$kind")
+ {
+  print "$suite_dir/backup_and_www/$host/www/$kind";
+  chdir("$suite_dir/backup_and_www/$host/www/$kind");
+  &FTP_mkdir("robots");
+  &FTP_mkdir("robots/$kind");
+  &FTP_mkdir("robots/$kind/$local_branch");
+  &FTP_upload_it("$local_branch","robots/$kind","-R");
+ }
+}
 }
 #
 sub get_line{
