@@ -189,8 +189,10 @@ if (not "$ERROR" eq "OK") {
 # NCDUMP
 #
 my $sys_ncdump = `which ncdump`; 
-my $lib_ncdump = `find $comp_folder/lib/external/ -name 'ncdump' -type f`;
-chomp($sys_ncdump);
+if (-d "$comp_folder/lib/external/") {
+ my $lib_ncdump = `find $comp_folder/lib/external/ -name 'ncdump' -type f`;
+ chomp($sys_ncdump);
+}
 if (-e "$conf_bin/ncdump") {
  $ncdump = "$conf_bin/ncdump"; 
  chomp($ncdump);
