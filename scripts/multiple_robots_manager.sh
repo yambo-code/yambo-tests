@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() { 
-	echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -c(l)ean -(u)pdate -(p)ause/unpause -h ] " 1>&2 
+	echo "Usage: $0 [ -r ID (optional)] [ -i(install) -b(oot) -k(ill) -c(onf) -c(l)ean -(u)pdate -(p)ause/unpause -h -upl(o)ad ] " 1>&2 
 }
 
 message(){
@@ -25,7 +25,7 @@ clone() {
 }
 
 # Get the options
-while getopts "r:icklubhp" option; do
+while getopts "r:icklubhpo" option; do
    case $option in
       r) user_ID=$OPTARG;;
       i) INSTALL=1;;
@@ -36,6 +36,7 @@ while getopts "r:icklubhp" option; do
       l) CLEAN=1;;
       h) HELP=1;;
       p) PAUSE=1;;
+      o) UPLOAD=1;;
    esac
 done
 #
@@ -69,6 +70,18 @@ for test in test.* ; do
   else
    touch ~/$STOP_file
   fi
+ fi
+ #
+ # Upload 
+ #
+ if [ ! -z $UPLOAD ] ; then
+  cd $test
+  branch=`./driver.pl -b | grep BRANCH | grep '(Y)' | tail -n 1  | sed 's/.* //'`
+  repeat "="
+  message "Uploading results of $branch relative to Robot test.$ID..."
+  repeat "="
+  ./driver.pl -php $branch
+  cd ..
  fi
  #
  # Update 
