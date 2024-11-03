@@ -33,6 +33,7 @@ sub FLOW_load
   if ( "$field" eq "THREADS" ) {$nt = $flow[$i]{$field}};
   if ( "$field" eq "TESTS"   ) {$user_tests = $flow[$i]{$field}};
   if ( "$field" eq "KEYS"    ) {$keys = $flow[$i]{$field}};
+  if ( "$field" eq "SKIP_GPU") {$skip_not_gpu = $flow[$i]{$field}};
   if ( "$field" eq "PAR_MODE") {$par_mode = $flow[$i]{$field}};
   if ( "$field" eq "CPU_CONF") {$cpu_conf_file = $flow[$i]{$field}};
  }
