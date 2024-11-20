@@ -1,19 +1,19 @@
                                                                           
-    ooooo   oooo ..     ooo        ooo ooooooooo.    .oooo.               
-     `88.   .8" .88.    `88.       .88 `88"   `Y8b  dP"  `Yb              
-      `88. .8" .8"88.    888b     d"88  88     888 88      88             
-       `88.8" .8" `88.   8 Y88. .P  88  88oooo888" 88      88             
-        `88" .88ooo888.  8  `888"   88  88    `88b 88      88             
-         88 .8"     `88. 8    Y     88  88    .88P `8b    d8"             
-        o88o88o      888o8          88 o88bood8P"   `Ybod8P"              
+      __   __     _        __  __       ____      U  ___  u               
+      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
+       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
+      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
+        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
+    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
+     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
                                                                           
                                                                           
-           Version 4.5.0 Revision 18384 Hash 08087686d                    
-                        Branch is develop                                 
-             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                       
-                    http://www.yambo-code.org                             
+    Version 5.2.0 Revision 23297 Hash (prev commit) c470f668ea            
+                     Branch is tech-master                                
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+                   http://www.yambo-code.eu                               
  
- 05/07/2020 at 10:16 ypp_rt @ narro
+ 10/13/2024 at 21:28 ypp_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,7 +32,7 @@
  Log files           : ./LOG
 
  Job   string        : 15_ypp_abs_vel
- Alt#1 string        : 15_td_sex_vel-serial-develop
+ Alt#1 string        : 15_td_sex_vel-serial-tech-master
  Alt#2 string        : R4
 
  Precision           : SINGLE
@@ -60,8 +60,15 @@
   Cell kind             :  FCC
   Atoms in the cell     :  Si
   number of Si atoms    :  2
-  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
 
+  List of atomic masses
+  Mass of Si    :  0.000000
+
+  List of atomic coordinates    : [cc]
+  Si1       :  0.000000  0.000000  0.000000  order 1
+  Si2       :  2.545750  2.545750  2.545750  order 1
+
+  Alat factors          :  10.18300  10.18300  10.18300 [a.u.]
   Direct lattice volume :  263.9777 [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]: -0.500000  0.000000  0.500000  [iru]
@@ -73,6 +80,7 @@
    B[ 1 ]: -1.000000 -1.000000  1.000000  [iku]
    B[ 2 ]:  1.000000  1.000000  1.000000  [iku]
    B[ 3 ]: -1.000000  1.000000 -1.000000  [iku]
+   
 
   [05.02] Symmetries
   ==================
@@ -94,24 +102,16 @@
   [05.03] Reciprocal space
   ========================
 
+  nG shells         :   54
   nG charge         :  2085
   nG WFs            :   369
   nC WFs            :  266
-  G-vecs. in shell  :  [ Number ]
-     1    9   15   27   51   59   65   89  113
-    137   169   181   229   259   283   307   331   339
-    387   411   459   531   537   561   609   645   701
-    725   749   821   869   893   941   965  1037  1067
-   1139  1211  1243  1291  1363  1411  1459  1471  1591
-   1639  1687  1759  1807  1837  1893  1917  1989  2085
-
-  Shells energy     :  [ mHa ]
-    0.00000      571.083      761.445      1522.89      2093.97      2284.33      3045.78      3616.86      3807.22   
-    4568.67      5139.75      6091.56      6662.64      6853.00      7614.45      8185.53      8375.89      9137.34   
-    9708.42      9898.78      10660.2      11231.3      12183.1      12754.2      12944.6      13706.0      14277.1   
-    14467.4      15228.9      15800.0      15990.3      16751.8      17322.9      18274.7      18845.8      19036.1   
-    19797.6      20368.6      20559.0      21891.5      22081.9      22843.3      23414.4      24366.2      24937.3   
-    25127.7      25889.1      26460.2      26650.6      27412.0      27983.1      28173.4      28934.9      29506.0   
+  G-vecs. in first 5 shells:  [ Number ]
+     1    9   15   27   51
+  ...
+  Shell energy in first 5 shells:  [ mHa ]
+    0.00000      571.083      761.445      1522.89      2093.97   
+  ...
 
   [05.04] K-grid lattice
   ======================
@@ -123,6 +123,21 @@
   K_min[ 3 ] :  0.000000  0.000000 -0.500000 [rlu]
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
+
+  IBZ K-points                                      :   4
+  BZ  K-points                                      :   8
+
+  K/Q-points units:
+  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
+
+  K [1]          [rlu]:  0.000000  0.000000  0.000000
+         WF components:  259
+  K [2]          [rlu]:  0.000000  0.000000 -0.500000
+         WF components:  266
+  K [3]          [rlu]:  0.000000 -0.500000 -0.500000
+         WF components:  254
+  K [4]          [rlu]:  0.000000 -0.500000  0.000000
+         WF components:  266
 
   [05.05] Energies & Occupations
   ==============================
@@ -140,51 +155,71 @@
   [X] Filled Bands                                  :   4
   [X] Empty Bands                                   :   5   8
   [X] Direct Gap                                    :  2.440868 [eV]
+  [X] Direct Gap localized at k                     :  1
   [X] Indirect Gap                                  :  0.437631 [eV]
+  [X] Indirect Gap between kpts                     :  1  3
   [X] Last valence band width                       :  3.010587 [eV]
   [X] 1st conduction band width                     :  2.003237 [eV]
    
    
+  E @ K [1]:  [eV]
+  -12.15619   0.00000   0.00000   0.00000   2.44087   2.44087   2.44087   3.52522
+  occ @ K [1]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
+  E @ K [2]:  [eV]
+  -9.730945 -7.200430 -1.262054 -1.262054  1.519058  3.185880  3.185880  7.329928
+  occ @ K [2]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
+  E @ K [3]:  [eV]
+   -7.89574  -7.89573  -3.01059  -3.01059   0.43763   0.43764  10.15807  10.15807
+  occ @ K [3]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
+  E @ K [4]:  [eV]
+  -9.730945 -7.200430 -1.262054 -1.262054  1.519058  3.185880  3.185880  7.329928
+  occ @ K [4]
+   2.000000  2.000000  2.000000  2.000000  0.000000  0.000000  0.000000  0.000000
 
  [06] == Real-Time Post-Processing ==
  ====================================
 
 
-  [06.01] Current and Polarization Database
-  =========================================
+  [06.01] Pump and Probe(s)
+  =========================
 
 
-  [06.02] Optics
+  [06.02] Pump and Probe(s) databases I/O
+  =======================================
+
+
+  [06.03] Optics
   ==============
 
-
- Timing [Min/Max/Average] 01s/01s/01s
 
  [07] Timing Overview
  ====================
 
- Routines: global (Only MASTER cpu here)
-                 io_WF :    0.0023 s CPU
-               io_GROT :    0.0059 s CPU (           3 calls,    0.0020 s avg)
-      io_RT_components :    0.2672 s CPU (           8 calls,    0.0334 s avg)
-           io_KB_pwscf :    0.0003 s CPU
-          io_KB_abinit :    0.0000 s CPU
-      io_ATMPROJ_pwscf :    0.0000 s CPU
-            io_COL_CUT :    0.0000 s CPU
-              io_QINDX :    0.0025 s CPU
-        io_Double_Grid :    0.0002 s CPU (           2 calls,    0.0001 s avg)
-      RT output (INIT) :    0.0001 s CPU
-             RT output :    0.0487 s CPU (        1503 calls,    0.0000 s avg)
+ Clock: global
+      IO_and_Messaging_switch :      0.0000s CPU
+             io_ATMPROJ_pwscf :      0.0000s CPU
+                 io_KB_abinit :      0.0000s CPU
+                   io_COL_CUT :      0.0000s CPU
+             RT output (INIT) :      0.0000s CPU
+               io_Double_Grid :      0.0001s CPU (   2 calls,   0.036 msec avg)
+                  io_KB_pwscf :      0.0001s CPU
+                        io_WF :      0.0011s CPU
+                     io_QINDX :      0.0017s CPU
+                   io_DIPOLES :      0.0021s CPU
+                      io_GROT :      0.0033s CPU (   3 calls,   1.115 msec avg)
+                    RT output :      0.0277s CPU (1503 calls,   0.018 msec avg)
+             io_RT_components :      0.1133s CPU (   8 calls,  14.161 msec avg)
 
  [08] Game Over & Game summary
  =============================
 
- 05/07/2020 at 10:16 ypp_rt @ narro [start]
- 05/07/2020 at 10:16                [end]
+ 10/13/2024 at 21:28 ypp_rt @ unimi-XPS-8930 [start]
+ 10/13/2024 at 21:28                         [end]
 
- Timing   [Min/Max/Average] 01s/01s/01s
-             [Time-Profile]: 01s
-
+  
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -207,16 +242,16 @@
  |
   
  .-Input file  yambo.in
- | RealTime                       # [R] TD Post-Processing
- | RT_X                           # [R] Response functions Post-Processing
- | Xorder= 1                      # Max order of the response/exc functions
+ | RealTime                         # [R] TD Post-Processing
+ | RT_X                             # [R] Response functions Post-Processing
+ | Xorder= 1                        # Max order of the response/exc functions
  | % EnRngeRt
- |  0.000000 | 5.000000 | eV      # Energy range
+ |  0.000000 | 5.000000 |         eV    # Energy range
  | %
- | ETStpsRt=  501                 # Total Energy steps
+ | ETStpsRt=  501                   # Total Energy steps
  | % TimeRange
- |    0.0000 | 150.0000 | fs      # Time-window where processing is done
+ |    0.0000 | 150.0000 |         fs    # Time-window where processing is done
  | %
- | DampMode= "LORENTZIAN"         # Damping type ( NONE | LORENTZIAN | GAUSSIAN )
- | DampFactor= 0.100000   eV      # Damping parameter
+ | DampMode= "LORENTZIAN"           # Damping type ( NONE | LORENTZIAN | GAUSSIAN )
+ | DampFactor= 0.100000       eV    # Damping parameter
  | SkipOBS_IO                     # Do not dump on file the RT observables (P(t),J(t),D(t)...)
