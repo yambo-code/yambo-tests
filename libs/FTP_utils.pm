@@ -29,11 +29,13 @@ sub FTP_list
 &command("rm -f cmds");
 die "\n";
 }
+
 sub FTP_it
 {
 &command("sftp ${FTP_user}\@media.yambo-code.eu");
 die "\n";
 }
+
 sub FTP_mkdir
 {
 #
@@ -43,6 +45,7 @@ my $dir  = shift;
 &command("sftp -b cmds ${FTP_user}\@media.yambo-code.eu");
 &command("rm -f cmds");
 }
+
 sub FTP_upload_it
 {
 #
@@ -52,7 +55,7 @@ my $rec = shift;
 #
 &command("echo 'put $rec $what htdocs/$where' > cmds");
 &command("echo 'chmod 775 htdocs/$where/$what' >> cmds");
-&command("echo 'chown 1033 htdocs/$where/$what' >> cmds");
+&command("echo 'chown ${FTP_user_id} htdocs/$where/$what' >> cmds");
 &command("echo 'chgrp 33 htdocs/$where/$what' >> cmds");
 &command("sftp -b cmds ${FTP_user}\@media.yambo-code.eu");
 &command("rm -f cmds");
