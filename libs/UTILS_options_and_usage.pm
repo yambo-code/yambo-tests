@@ -70,6 +70,7 @@ my $ret = &GetOptions("h+"   => \$help,
             "failed=s"       => \$failed,
             "php=s"          => \$branch_php,
             "unsafe"         => \$unsafe_mode,
+            "skip_not_gpu"   => \$skip_not_gpu,
             "input"          => \$check_input_generation,
             "keep_bin"       => \$keep_bin,
             "profile:s"      => \$profile,
@@ -143,6 +144,7 @@ if ($help>=1) {
              -dry                   Run in dry mode. Not actual job is launched.
              -nice   [VALUE]        Run with priority VALUE. With no VALUE max nice level is used (lower priority).
              -unsafe                Avoid safe running that uses perl time selection
+             -skip_not_gpu          Skip tests which are not GPU ported
              -no_net                Skip network assisted operations
              -keep_bin              Do not overwrite the robot specific bin-precompiled folder
              -robot  <ID's>         Robot ID. [ID's can be of the form N or N-M]

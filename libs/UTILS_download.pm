@@ -102,6 +102,7 @@ foreach $dir (<*>) {
   $i1=0;
   WWW: while($i1 < $imax+1) {
    $cmd = "$wget --spider -q $LINK/$filename[$i1]$EXTENSION && echo exists || echo not exist";
+   print "\n$cmd\n" if ($verb);
    my $file_exist = `$cmd`;
    if ($mode eq "tests" or $mode eq "cheers" or $mode eq "validate"){
     if ( "$file_exist" eq "exists\n") {
