@@ -1,19 +1,19 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
                                                                           
-                                                                          
-    Version 5.3.0 Revision 23895 Hash (prev commit) fb4cbba4f1            
-                         Branch is 5.3                                    
+    Version 5.2.0 Revision 22515 Hash (prev commit) 4e9ef8ab7d            
+                  Branch is fixes-issue-540                               
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.eu                               
+                  http://www.yambo-code.org                               
  
- 12/17/2024 at 10:01 yambo @ attacc-lavoro
+ 02/08/2024 at 09:40 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -124,6 +124,8 @@
   [02.03] Reciprocal space
   ========================
 
+
+  [WARNING] wf_ng > maxval(wf_igk), probably because FFTGvecs in input. Reducing it
   nG shells         :  2835
   nG charge         :   56613
   nG WFs            :   8831
@@ -196,7 +198,7 @@
   X grid is uniform                                : yes
   Grids (string)                                   :  X B S
   Grids (int-vector)                               :  1  1  0  1
- - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
  IBZ Q-points                                      :  3
  BZ  Q-points                                      :   9
@@ -216,18 +218,18 @@
   *WRN* Coulomb cutoff potential                   : none
   Coulombian RL components                         :  3
   Coulombian diagonal components                   : yes
-  RIM random points                                :  2500000
-  RIM  RL volume             [a.u.]                :  0.276472
+  RIM random points                                :  2000000
+  RIM  RL volume             [a.u.]                :  0.276453
   Real RL volume             [a.u.]                :  0.276405
   Eps^-1 reference component                       : 0
   Eps^-1 components                                :  0.000000  0.000000  0.000000
   RIM anysotropy factor                            :  0.000000
- - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
  Summary of Coulomb integrals for non-metallic bands |Q|[au] RIM/Bare
 
- Q [1] 0.100000E-4 0.949115 * Q [2] 0.411488 1.156176
- Q [3] 0.712718 1.049154
+ Q [1] 0.100000E-4 0.949257 * Q [2] 0.411488 1.155875
+ Q [3] 0.712718 1.048939
  Non-periodic chartesian directions : none
  Optical renormalization            :  30.00000 [au]
  Polarizability dimension           : length
@@ -248,37 +250,33 @@
   RIM corrections included                         : no
   RIM RL components                                : 0
   RIM random points                                : 0
- - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
  [06] Dipoles
  ============
 
+ [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
+  Fragmentation                                    : yes
+ - S/N 000547 ---------------------------------------------- v.04.01.05 r.14051 -
+ [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.22572E-14   1.0000    
 
-  [06.01] Setup: observables and procedures
-  =========================================
-
-  [RD./SAVE//ns.kb_pp_pwscf]------------------------------------------------------
-   Fragmentation                                    : yes
-  - S/N 000547 ---------------------------------------------- v.04.01.05 r.14051 -
-  [WF-Oscillators/G space/Transverse up loader] Normalization (few states)  min/max  :  0.22572E-14   1.0000    
-
-  [WR./06_GW_slabz_rim//ndb.dipoles]----------------------------------------------
-   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-   RL vectors                                       :   8845 [WF]
-   Fragmentation                                    : yes
-   Electronic Temperature                           :  0.000000 [K]
-   Bosonic    Temperature                           :  0.000000 [K]
-   DIP band range                                   :    1   40
-   DIP band range limits                            :  13  14
-   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
-   RL vectors in the sum                            :   8845
-   [r,Vnl] included                                 : yes
-   Bands ordered                                    : yes
-   Direct v evaluation                              : no
-   Approach used                                    : G-space v
-   Dipoles computed                                 : R V P [G-space]
-   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+ [WR./06_GW_slabz_rim//ndb.dipoles]----------------------------------------------
+  Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+  RL vectors                                       :   8845 [WF]
+  Fragmentation                                    : yes
+  Electronic Temperature                           :  0.000000 [K]
+  Bosonic    Temperature                           :  0.000000 [K]
+  DIP band range                                   :    1   40
+  DIP band range limits                            :  13  14
+  DIP e/h energy range                             : -1.000000 -1.000000 [eV]
+  RL vectors in the sum                            :   8845
+  [r,Vnl] included                                 : yes
+  Bands ordered                                    : yes
+  Direct v evaluation                              : no
+  Approach used                                    : G-space v
+  Dipoles computed                                 : R V P
+  Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
  [07] Dynamic Dielectric Matrix (PPA)
  ====================================
@@ -307,7 +305,7 @@
   BZ energy DbGd points                            : 0
   BZ Q point size factor                           : -1.000000
   X Optical Averaged directions                    : none
- - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
  [RD./06_GW_slabz_rim//ndb.dipoles]----------------------------------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
   RL vectors                                       :   8845 [WF]
@@ -322,20 +320,20 @@
   Bands ordered                                    : yes
   Direct v evaluation                              : no
   Approach used                                    : G-space v
-  Dipoles computed                                 : R V P [G-space]
+  Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
  [X-CG] R(p) Tot o/o(of R):   907  3159   100
  [WR./06_GW_slabz_rim//ndb.pp_fragment_1]----------------------------------------
   PPA Im  energy                                   :  27.21138 eV
- - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
  [X-CG] R(p) Tot o/o(of R):  1578  3159   100
  [WR./06_GW_slabz_rim//ndb.pp_fragment_2]----------------------------------------
   PPA Im  energy                                   :  27.21138 eV
- - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
  [X-CG] R(p) Tot o/o(of R):  1235  3159   100
 
- Timing [Min/Max/Average]: 08s/08s/08s
+ Timing [Min/Max/Average]: 04s/04s/04s
 
  [08] Local Exchange-Correlation + Non-Local Fock
  ================================================
@@ -360,8 +358,8 @@
   Exchange RL vectors                              :   457
   Exchange summation bands                         :  13
   RIM RL components                                :  3
-  RIM random points                                :  2500000
- - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+  RIM random points                                :  2000000
+ - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
  [xc] E_xc :  -12.26947 [Ha]
       E_xc :  -24.53895 [Ry]
@@ -370,13 +368,37 @@
   Non-Local XC kind (nlXC) : Hartree-Fock
 
   Corrections @ K [1] :  [eV]
- <11|nlXC|11> = -17.00008  0.000000 <11|lXC|11> = -16.02147  0.820127E-8
- <12|nlXC|12> = -17.00243  0.000000 <12|lXC|12> = -16.02148  0.872722E-8
- <13|nlXC|13> = -14.79676  0.000000 <13|lXC|13> = -14.88480  0.136831E-7
- <14|nlXC|14> = -10.01573  0.000000 <14|lXC|14> = -15.36094  0.131003E-7
- <15|nlXC|15> = -10.01471  0.000000 <15|lXC|15> = -15.36096  0.178060E-7
- <16|nlXC|16> = -10.09359  0.000000 <16|lXC|16> = -15.32510  0.923155E-8
+ <11|nlXC|11> = -16.99972 -0.93004E-09 <11|lXC|11> = -16.02147  0.820127E-8
+ <12|nlXC|12> = -17.00206  0.769095E-8 <12|lXC|12> = -16.02148  0.872722E-8
+ <13|nlXC|13> = -14.79660 -0.409293E-8 <13|lXC|13> = -14.88480  0.136831E-7
+ <14|nlXC|14> = -10.01534 -0.134110E-7 <14|lXC|14> = -15.36094  0.131003E-7
+ <15|nlXC|15> = -10.01433 -0.523989E-8 <15|lXC|15> = -15.36096  0.178060E-7
+ <16|nlXC|16> = -10.09324 -0.730340E-8 <16|lXC|16> = -15.32510  0.923155E-8
 
+
+  [08.01] Hartree-Fock occupations report
+  =======================================
+
+  [Hartree-Fock] === General ===
+  [Hartree-Fock] Electronic Temperature             :  0.000000  0.000000 [eV K]
+  [Hartree-Fock] Bosonic    Temperature             :  0.000000  0.000000 [eV K]
+  [Hartree-Fock] Finite Temperature mode            : no
+  [Hartree-Fock] El. density                        :  0.19551E+24 [cm-3]
+  [Hartree-Fock] Fermi Level                        :  0.463993 [eV]
+
+  [Hartree-Fock] === Gaps and Widths ===
+  [Hartree-Fock] Conduction Band Min                :  1.876019 [eV]
+  [Hartree-Fock] Valence Band Max                   :  0.000000 [eV]
+  [Hartree-Fock] Filled Bands                       :  13
+  [Hartree-Fock] Empty Bands                        :   14   40
+  [Hartree-Fock] Direct Gap                         :  1.876019 [eV]
+  [Hartree-Fock] Direct Gap localized at k          :  3
+  [Hartree-Fock] Indirect Gap                       :  1.876019 [eV]
+  [Hartree-Fock] Indirect Gap between kpts          :  3  3
+  [Hartree-Fock] Last valence band width            :  1.124831 [eV]
+  [Hartree-Fock] 1st conduction band width          :  6.370275 [eV]
+   
+   
 
  [09] Dyson equation: Newton solver
  ==================================
@@ -418,18 +440,18 @@
    X Optical Averaged directions                    : none
   [RD./06_GW_slabz_rim//ndb.pp_fragment_1]----------------------------------------
    PPA Im  energy                                   :  27.21138 eV
-  - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+  - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
    Current Q-pt index             :  1
    :: PP condition fails/total    :  0.286157
-   :: Time ordering fails/rest    :  0.498833
+   :: Time ordering fails/rest    :  0.500097
    :: Mean rel dev of PP cond     :  0.286136
    Current Q-pt index             :  2
    :: PP condition fails/total    :  0.283908
-   :: Time ordering fails/rest    :  0.499593
+   :: Time ordering fails/rest    :  0.500141
    :: Mean rel dev of PP cond     :  0.283887
    Current Q-pt index             :  3
    :: PP condition fails/total    :  0.276035
-   :: Time ordering fails/rest    :  0.499758
+   :: Time ordering fails/rest    :  0.500330
    :: Mean rel dev of PP cond     :  0.276009
 
   [09.02] QP properties and I/O
@@ -445,12 +467,12 @@
   -nlXC: non-Local XC (Hartree-Fock)
 
   QP [eV] @ K [1] (iku):  0.000000  0.000000  0.000000
-   B=11 Eo= -1.53 E= -2.91 E-Eo= -1.38 Re(Z)=0.92 Im(Z)=-0.150179E-1 nlXC= -17.0001 lXC= -16.0215 So=-0.532430
-   B=12 Eo= -1.53 E= -2.91 E-Eo= -1.39 Re(Z)=0.92 Im(Z)=-0.150204E-1 nlXC= -17.0024 lXC= -16.0215 So=-0.531932
-   B=13 Eo= -0.23 E= -0.40 E-Eo= -0.18 Re(Z)=0.89 Im(Z)=-0.133759E-1 nlXC= -14.7968 lXC= -14.8848 So=-0.288468
-   B=14 Eo=  2.90 E=  6.67 E-Eo=  3.76 Re(Z)=0.92 Im(Z)=-0.548041E-2 nlXC= -10.0157 lXC= -15.3609 So= -1.26131
-   B=15 Eo=  2.90 E=  6.67 E-Eo=  3.77 Re(Z)=0.92 Im(Z)=-0.547250E-2 nlXC= -10.0147 lXC= -15.3610 So= -1.26147
-   B=16 Eo=  3.19 E=  7.12 E-Eo=  3.92 Re(Z)=0.92 Im(Z)=-0.323690E-2 nlXC= -10.0936 lXC= -15.3251 So=-0.964861
+   B=11 Eo= -1.53 E= -2.91 E-Eo= -1.38 Re(Z)=0.92 Im(Z)=-0.150180E-1 nlXC= -16.9997 lXC= -16.0215 So=-0.532455
+   B=12 Eo= -1.53 E= -2.91 E-Eo= -1.39 Re(Z)=0.92 Im(Z)=-0.150205E-1 nlXC= -17.0021 lXC= -16.0215 So=-0.531957
+   B=13 Eo= -0.23 E= -0.40 E-Eo= -0.18 Re(Z)=0.89 Im(Z)=-0.133761E-1 nlXC= -14.7966 lXC= -14.8848 So=-0.288497
+   B=14 Eo=  2.90 E=  6.67 E-Eo=  3.76 Re(Z)=0.92 Im(Z)=-0.548041E-2 nlXC= -10.0153 lXC= -15.3609 So= -1.26120
+   B=15 Eo=  2.90 E=  6.67 E-Eo=  3.77 Re(Z)=0.92 Im(Z)=-0.547257E-2 nlXC= -10.0143 lXC= -15.3610 So= -1.26136
+   B=16 Eo=  3.19 E=  7.12 E-Eo=  3.93 Re(Z)=0.92 Im(Z)=-0.323690E-2 nlXC= -10.0932 lXC= -15.3251 So=-0.964754
 
   [WR./06_GW_slabz_rim//ndb.QP]---------------------------------------------------
    Lattice constants                                :   5.87721   5.08981  30.00000
@@ -466,7 +488,7 @@
    GW approximation                                 : PPA
    PPA imaginary Energy                             :  27.21138 ev
    RIM G`s                                          :  3
-   RIM random pts                                   :  2500000
+   RIM random pts                                   :  2000000
    dS/dw steps                                      :  2
    dS/dw step                                       :  0.100000 ev
    X G`s                                            :  307 used
@@ -488,57 +510,57 @@
    GF WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
    Xs energies kind                                 : Slater exchange(X)+Perdew & Zunger(C)
    Xs WF`s kind                                     : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 000547 ---------------------------------------------- v.05.03.00 r.23895 -
+  - S/N 000547 ---------------------------------------------- v.05.02.00 r.22515 -
 
- Timing [Min/Max/Average]: 04s/04s/04s
+ Timing [Min/Max/Average]: 02s/02s/02s
 
  [10] Timing Overview
  ====================
 
  Clock: global
-                                       HF(REDUX) :      0.0000s CPU
                                        GW(REDUX) :      0.0000s CPU
-                                      Xo (REDUX) :      0.0000s CPU ( 3 calls,   0.003 msec avg)
+                                       HF(REDUX) :      0.0000s CPU
+                                      Xo (REDUX) :      0.0000s CPU ( 3 calls,   0.001 msec avg)
                                 io_ATMPROJ_pwscf :      0.0000s CPU
                                     io_KB_abinit :      0.0000s CPU
-                         IO_and_Messaging_switch :      0.0001s CPU (21 calls,   0.005 msec avg)
-                                  io_Double_Grid :      0.0001s CPU ( 2 calls,   0.069 msec avg)
-                                    PP_uspp_init :      0.0002s CPU ( 6 calls,   0.033 msec avg)
-      MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0007s CPU ( 6 calls,   0.112 msec avg)
-      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0007s CPU ( 6 calls,   0.115 msec avg)
-                                       X (REDUX) :      0.0007s CPU ( 3 calls,   0.237 msec avg)
-                                     io_KB_pwscf :      0.0028s CPU ( 5 calls,   0.554 msec avg)
-                                           io_HF :      0.0082s CPU ( 3 calls,   2.720 msec avg)
-                                        io_QINDX :      0.0102s CPU ( 2 calls,   5.085 msec avg)
-                                      io_COL_CUT :      0.0105s CPU ( 3 calls,   3.505 msec avg)
-                                    scatter_Gamp :      0.0150s CPU (27 calls,   0.556 msec avg)
-                                     io_fragment :      0.0169s CPU (22 calls,   0.770 msec avg)
-                                         io_GROT :      0.0190s CPU ( 2 calls,   9.501 msec avg)
-                                      io_DIPOLES :      0.0201s CPU (14 calls,   1.436 msec avg)
-                                    io_QP_and_GF :      0.0214s CPU
-                             XC_potential_driver :      0.0248s CPU ( 2 calls,  12.422 msec avg)
-                                       XCo_local :      0.0254s CPU
-                                            io_X :      0.0525s CPU (15 calls,   3.502 msec avg)
-                                           io_WF :      0.0631s CPU (25 calls,   2.522 msec avg)
-                                       FFT_setup :      0.0896s CPU ( 5 calls,  17.922 msec avg)
-                                     WF_load_FFT :      0.1448s CPU ( 6 calls,  24.135 msec avg)
-                                              HF :      0.3199s CPU
-                               SERIAL_lin_system :      0.5705s CPU ( 6 calls,  95.089 msec avg)
-                                  LINEAR ALGEBRA :      0.5706s CPU ( 6 calls,  95.095 msec avg)
-                                   X (procedure) :      0.5925s CPU ( 3 calls, 197.495 msec avg)
-                                  DIPOLE_g_space :      0.6463s CPU
-                                         Dipoles :      1.6585s CPU
-                                         GW(ppa) :      4.0845s CPU
-                                  Xo (procedure) :      7.9657s CPU ( 3 calls,   2.655 sec avg)
+                                  io_Double_Grid :      0.0001s CPU ( 2 calls,   0.027 msec avg)
+                         IO_and_Messaging_switch :      0.0001s CPU (21 calls,   0.003 msec avg)
+                                    PP_uspp_init :      0.0001s CPU ( 6 calls,   0.011 msec avg)
+      MATRIX transfer (X_G_finite_q_X_redux_2_1) :      0.0004s CPU ( 6 calls,   0.075 msec avg)
+                                       X (REDUX) :      0.0005s CPU ( 3 calls,   0.153 msec avg)
+      MATRIX transfer (X_G_finite_q_X_redux_1_1) :      0.0005s CPU ( 6 calls,   0.080 msec avg)
+                                    scatter_Gamp :      0.0024s CPU (21 calls,   0.116 msec avg)
+                                     io_KB_pwscf :      0.0027s CPU ( 5 calls,   0.538 msec avg)
+                                           io_HF :      0.0032s CPU ( 3 calls,   1.052 msec avg)
+                                        io_QINDX :      0.0036s CPU ( 2 calls,   1.801 msec avg)
+                                      io_COL_CUT :      0.0038s CPU ( 3 calls,   1.280 msec avg)
+                                     io_fragment :      0.0059s CPU (22 calls,   0.270 msec avg)
+                                      io_DIPOLES :      0.0075s CPU (14 calls,   0.533 msec avg)
+                                    io_QP_and_GF :      0.0083s CPU
+                                         io_GROT :      0.0089s CPU ( 2 calls,   4.460 msec avg)
+                                            io_X :      0.0193s CPU (15 calls,   1.287 msec avg)
+                                           io_WF :      0.0256s CPU (25 calls,   1.024 msec avg)
+                             XC_potential_driver :      0.0298s CPU ( 2 calls,  14.922 msec avg)
+                                       XCo_local :      0.0303s CPU
+                                       FFT_setup :      0.0571s CPU ( 5 calls,  11.421 msec avg)
+                                     WF_load_FFT :      0.0800s CPU ( 6 calls,  13.326 msec avg)
+                                              HF :      0.2092s CPU
+                               SERIAL_lin_system :      0.3158s CPU ( 6 calls,  52.641 msec avg)
+                                  LINEAR ALGEBRA :      0.3159s CPU ( 6 calls,  52.643 msec avg)
+                                   X (procedure) :      0.3272s CPU ( 3 calls, 109.071 msec avg)
+                               DIPOLE_transverse :      0.4785s CPU
+                                         Dipoles :      1.4835s CPU
+                                         GW(ppa) :      2.0783s CPU
+                                  Xo (procedure) :      4.4337s CPU ( 3 calls,   1.478 sec avg)
 
  [11] Game Over & Game summary
  =============================
 
- 12/17/2024 at 10:01 yambo @ attacc-lavoro [start]
- 12/17/2024 at 10:02                       [end]
+ 02/08/2024 at 09:40 yambo @ unimi-XPS-8930 [start]
+ 02/08/2024 at 09:41                        [end]
 
- Timing   [Min/Max/Average]: 15s/15s/15s
-             [Time-Profile]: 15s
+ Timing   [Min/Max/Average]: 08s/08s/08s
+             [Time-Profile]: 08s
 
  .-ACKNOWLEDGMENT
  |
@@ -570,13 +592,11 @@
  | ppa                              # [R][Xp] Plasmon Pole Approximation for the Screened Interaction
  | el_el_corr                       # [R] Electron-Electron Correlation
  | BoseTemp= 0.000000         eV    # Bosonic Temperature
- | #DegFix                        # Force the code to impose the energy levels to respect their degeneracy
- | FFTGvecs=  8845            RL    # [FFT] Plane-waves
  | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
  | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
  | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
- | RandQpts= 2500000                # [RIM] Number of random q-points in the BZ
+ | RandQpts= 2000000                # [RIM] Number of random q-points in the BZ
  | RandGvec= 3                RL    # [RIM] Coulomb interaction RS components
  | CUTGeo= "slab z"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
  | % CUTBox
