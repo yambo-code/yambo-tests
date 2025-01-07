@@ -18,27 +18,26 @@ bse                          # [R BSE] Bethe Salpeter Equation.
 bsk                          # [R BSK] Bethe Salpeter Equation kernel
 bss                          # [R BSS] Bethe Salpeter Equation solver
 Chimod= "hartree"            # [X] IP/Hartree/ALDA/LRC/BSfxc
-BSEmod= "retarded"             # [BSE] resonant/causal/x_coupling/xc_coupling
+BSEmod= "coupling"           # [BSE] resonant/causal/x_coupling/xc_coupling
 BSKmod= "SEX"                # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
-BSSmod= "d"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSSmod= "s"                  # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSSSlepcShell
+BSSNEig=8
 BSENGexx=  51          RL    # [BSK] Exchange components
 BSENGBlk=  51          RL    # [BSK] Screened interaction block size
-#% KfnQP_E
-# 2.400000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
-#%
+% KfnQP_E
+ 2.400000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
+%
 Gauge= "length"              # [BSE/Xd] Gauge (length|velocity)
 % BEnRange
- -10.000000 | 10.000000 | eV    # [BSS] Energy range
+ 4.000000 | 8.000000 | eV    # [BSS] Energy range
 %
 % BDmRange
-  0.100 |  0.100 | eV    # [BSS] Damping range
+  0.02500 |  0.02500 | eV    # [BSS] Damping range
 %
-BEnSteps= 2001               # [BSS] Energy steps
+BEnSteps=  400               # [BSS] Energy steps
 % BLongDir
  1.000000 | 1.000000 | 1.000000 |        # [BSS] [cc] Electric Field
-%
-% BSEQptR
- 1 | 4 |                       # [BSK] Transferred momenta range
 %
 % BSEBands
   7 | 10 |                   # [BSK] Bands range
@@ -53,5 +52,3 @@ NGsBlkXs=  51          RL    # [Xs] Response block size
 % LongDrXs
  1.000000 | 0.000000 | 0.000000 |        # [Xs] [cc] Electric Field
 %
-BSEprop= "abs jdos"
-SkipDegFix
