@@ -46,7 +46,7 @@ if ( "@_" eq "DIR" ){
   if (-e "P2Y" && $project !~ /p2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && $project !~ /a2y/) {$message=" skipped (wrong PJ)"};
   if (-e "A2Y" && not $do_A2Y_tests) {$message=" skipped (wrong BRANCH)"};
-  if (!-e "KPT_1" && "$GAMMA_ONLY_SUPPORT" eq "yes") {$message=" skipped (only molecules in GAMMA_ONLY mode)"};
+  if (!-e "GAMMA_ONLY" && "$GAMMA_ONLY_SUPPORT" eq "yes") {$message=" skipped (only molecules in GAMMA_ONLY mode)"};
   if ( $ANY eq "NO" and $project !~ /nopj/) {$message=" skipped (running only $project tests)"};
  }
  if ($is_GPL) {
