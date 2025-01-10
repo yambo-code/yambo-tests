@@ -51,7 +51,7 @@ if($branchdir =~ /^#/ || $branchdir eq "") {
  &MY_PRINT($stdout, "Skipping branch: $branchdir\n") if ($verb);
  return "FAIL";
 }
-if( ! -f "$BRANCH/driver/yambo.F")  { &MY_PRINT($stdout, "ERROR: cannot find $branchdir, skipping!\n"); return "FAIL"; };
+if( ! -f "$BRANCH/yambo_main/yambo.F")  { &MY_PRINT($stdout, "ERROR: cannot find $branchdir, skipping!\n"); return "FAIL"; };
 #
 my $pattern;
 if ($branch_id eq "" or $branch_id eq "any") 
