@@ -61,6 +61,7 @@ $PAR_field[3]="BS_ROLEs= \"k.eh.t\""; # => KEHT
 $PAR_field[4]="SE_ROLEs= \"q.qp.b\""; # => QSB
 $PAR_field[5]="RT_ROLEs= \"q.k.qp.b\""; # => QKSB
 $PAR_field[6]="NL_ROLEs= \"w.k\""; # => WK
+$PAR_field[7]="OSCLL_ROLEs= \"k.b\""; # => WK
 #
 # Resets
 #

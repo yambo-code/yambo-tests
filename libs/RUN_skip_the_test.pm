@@ -100,36 +100,20 @@ if ( "@_" eq "INPUT") {
  };
  #
  # Skipping tests which are not GPU ported
- if ($BUILD =~ m/CUDA/ || $BUILD =~ m/GPU/ ) {
+ if ( ($BUILD =~ m/CUDA/ || $BUILD =~ m/GPU/ ) && $skip_not_gpu ) {
   if ($testname =~ m/DBGD/ || $testname =~ m/dbgd/ || $testname =~ m/DbGd/ ) {
    my $msg = sprintf("%-"."$left_length"."s", "$testname");
    $CHECK_error= $msg." skipped (Double grid test is not gpu ported)";
    &RUN_stats("SKIPPED");
    return "FAIL";
   }
-  #if ($testname =~ m/YPP/ || $testname =~ m/ypp/ ) {
-  # my $msg = sprintf("%-"."$left_length"."s", "$testname");
-  # $CHECK_error= $msg." skipped (ypp is not gpu ported)";
-  # &RUN_stats("SKIPPED");
-  # return "FAIL";
-  #}
+  if ($testname =~ m/YPP/ || $testname =~ m/ypp/ ) {
+   my $msg = sprintf("%-"."$left_length"."s", "$testname");
+   $CHECK_error= $msg." skipped (ypp is not gpu ported)";
+   &RUN_stats("SKIPPED");
+   return "FAIL";
+  }
  };
- #
- # Tests with Covariant dipoles are broken in parallel
- #if ($testname =~ m/Covariant/ && $np>1 && not ($PAR_covariant eq "yes")) { 
- # my $msg = sprintf("%-"."$left_length"."s", "$testname");
- # $CHECK_error= $msg." skipped (Covariant test not working in parallel)";
- # &RUN_stats("SKIPPED");
- # return "FAIL";
- #};
- #
- # Magnetic Tests are broken in parallel
- #if ($testdir =~ m/MAGNETIC/ && $np>1) { 
- # my $msg = sprintf("%-"."$left_length"."s", "$testname");
- # $CHECK_error= $msg." skipped (MAGNETIC tests not working in parallel)";
- # &RUN_stats("SKIPPED");
- # return "FAIL";
- #};
  #
  # Features
  #
