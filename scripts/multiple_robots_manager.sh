@@ -149,7 +149,7 @@ for test in test.* ; do
      cat ../test.1/.running_robot.pl | sed s/$robot.1/$robot.$ID/ > .running_robot.pl
    fi
   fi
-  cat ROBOTS/$robot.$ID/$me/BRANCHES | sed s/gpl/REPO/ > ROBOTS/$robot.$ID/$me/BRANCHES.base
+  cat ROBOTS/$robot.$ID/$me/BRANCHES | sed s/gpl/REPO/ | sed s/devel/REPO/ > ROBOTS/$robot.$ID/$me/BRANCHES.base
  fi
  #
  # Boot
