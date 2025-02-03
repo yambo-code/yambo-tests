@@ -1,19 +1,19 @@
                                                                           
-      __   __     _        __  __       ____      U  ___  u               
-      \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/                
-       \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |                
-      U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |                
-        |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/                 
-    .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                   
-     \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                  
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
                                                                           
-                                                                          
-          Version 5.0.1 Revision 19773 Hash 47c9c190c                     
-                      Branch is bug-fixes                                 
+    Version 5.2.0 Revision 22885 Hash (prev commit) 41fc9d87d4            
+                   Branch is phys-dichroism                               
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+                  http://www.yambo-code.org                               
  
- 05/17/2021 at 17:04 ypp @ VivoBook
+ 10/29/2023 at 16:32 ypp @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 04_ypp_bands_gw_ppa
- Alt#1 string        : 02_gw_ppa-serial-bug-fixes
- Alt#2 string        : R2
+ Alt#1 string        : 02_gw_ppa-serial-phys-dichroism
+ Alt#2 string        : R5
 
  Precision           : SINGLE
   
@@ -78,8 +78,13 @@
   Atoms in the cell     :  Ni  Br
   number of Ni atoms    :  1
   number of Br atoms    :  2
-  Alat factors          :   6.94511   6.01464  25.00000 [a.u.]
 
+  List of atomic coordinates    : [cc]
+  Ni1       :  0.000000  0.000000  0.000000
+  Br1       :  3.472554  2.004880  2.597221
+  Br2       : -0.347255E-7   4.00976     -2.59722   
+
+  Alat factors          :   6.94511   6.01464  25.00000 [a.u.]
   Direct lattice volume :   1044.31    [a.u.]
   Direct lattice vectors:  A[ 1 ]  A[ 2 ]  A[ 3 ]
    A[ 1 ]:  1.000000  0.000000  0.000000  [iru]
@@ -91,6 +96,7 @@
    B[ 1 ]:  1.000000  0.500000  0.000000  [iku]
    B[ 2 ]:  0.000000  1.000000  0.000000  [iku]
    B[ 3 ]:  0.000000  0.000000  1.000000  [iku]
+   
 
   [05.02] Symmetries
   ==================
@@ -119,8 +125,8 @@
   [05.03] Reciprocal space
   ========================
 
-  nG shells         :   3844
-  nG charge         :   82363
+  nG shells         :   3794
+  nG charge         :   82711
   nG WFs            :  12405
   nC WFs            :  10351
   G-vecs. in first 80 shells:  [ Number ]
@@ -163,10 +169,13 @@
   rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
   K [1]:  0.000000  0.000000  0.000000 [rlu]
+        : weight :  0.111111
         : wf components:  10351
   K [2]:  0.000000  0.333333  0.000000 [rlu]
+        : weight :  0.666667
         : wf components:  10350
   K [3]:  0.333333  0.333333  0.000000 [rlu]
+        : weight :  0.222222
         : wf components:  10281
 
   [05.05] Energies & Occupations
@@ -185,11 +194,11 @@
   [X] Filled Bands                         [spin UP]:  17
   [X] Empty Bands                          [spin UP]:   18   60
   [X] Direct Gap                           [spin UP]:  4.080841 [eV]
-  [X] Direct Gap localized at k-point      [spin UP]:  1
-  [X] Indirect Gap                         [spin UP]:  1.564397 [eV]
-  [X] Indirect Gap between k-points        [spin UP]:  1  1
-  [X] Last valence band width              [spin UP]:  0.131233 [eV]
-  [X] 1st conduction band width            [spin UP]:  0.427679 [eV]
+  [X] Direct Gap localized at k            [spin UP]:  1
+  [X] Indirect Gap                         [spin UP]:  4.080841 [eV]
+  [X] Indirect Gap between kpts            [spin UP]:  1  1
+  [X] Last valence band width              [spin UP]:  0.651136 [eV]
+  [X] 1st conduction band width            [spin UP]:  1.420981 [eV]
    
   [X] === Spin dn channel ===
   [X] Conduction Band Min                  [spin DN]:  0.365641 [eV]
@@ -197,16 +206,16 @@
   [X] Filled Bands                         [spin DN]:  15
   [X] Empty Bands                          [spin DN]:   16   60
   [X] Direct Gap                           [spin DN]:  1.564397 [eV]
-  [X] Direct Gap localized at k-point      [spin DN]:  2
-  [X] Indirect Gap                         [spin DN]:  0.000000 [eV]
-  [X] Indirect Gap between k-points        [spin DN]:  2  2
-  [X] Last valence band width              [spin DN]:  0.000000 [eV]
-  [X] 1st conduction band width            [spin DN]:  0.000000 [eV]
+  [X] Direct Gap localized at k            [spin DN]:  2
+  [X] Indirect Gap                         [spin DN]:  1.564397 [eV]
+  [X] Indirect Gap between kpts            [spin DN]:  2  2
+  [X] Last valence band width              [spin DN]:  0.131233 [eV]
+  [X] 1st conduction band width            [spin DN]:  0.427679 [eV]
    
   [X] === Overall gap ===
   [X] Direct Gap                                    :  1.186769 [eV]
   [X] Direct Gap localized at k-point               :  1
-  [X] Indirect Gap                                  :  4.080841 [eV]
+  [X] Indirect Gap                                  :  1.003126 [eV]
   [X] Indirect Gap between k-points                 :  1  2
    
   E [up] @ K [1]:  [eV]
@@ -214,6 +223,7 @@
   -4.579061 -2.619119 -2.619119 -2.427144 -2.144253 -1.891604 -1.891604 -0.637484
   -0.637484  3.443357  4.712665  5.117421  5.359208  7.554787  7.554787  7.693596
     9.70235  10.30435  10.30435  10.73200  12.42476  12.98662  12.98662  13.16318
+   13.81235  13.81235  14.24197  15.06131  17.16923  17.16923  18.24863  18.69091
   E [dn] @  [eV]:  [eV]
   -103.1630  -63.3948  -63.3948  -63.3745  -15.9017  -15.0395   -5.2004   -3.3745
   -3.374503 -2.163979 -1.618502 -1.618502 -1.598187 -1.598187 -1.329989  0.793320
@@ -223,6 +233,7 @@
    1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000
    1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000
    1.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
    0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
   occ [dn] @
    1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000
@@ -234,6 +245,7 @@
   -4.476583 -4.245734 -3.196284 -2.949204 -2.556125 -2.166059 -2.029919 -1.231377
   -0.821128  4.208985  5.486224  6.261950  6.628663  7.870880  8.634698  8.709211
     8.87499   9.67943  10.59906  11.23365  11.98473  12.10025  12.74993  13.51470
+   13.80419  14.39603  14.63116  14.83403  15.10089  16.28225  16.57576  17.35195
   E [dn] @  [eV]:  [eV]
   -103.1632  -63.3974  -63.3947  -63.3757  -15.3119  -14.8426   -5.3170   -4.6826
   -3.644044 -3.280077 -2.791053 -2.407087 -1.565123 -1.316297 -1.198756  0.365641
@@ -243,6 +255,7 @@
    1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000
    1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000
    1.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
    0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
   occ [dn] @
    1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000
@@ -254,6 +267,7 @@
   -5.048760 -4.076536 -4.076536 -3.863569 -2.383153 -2.095145 -2.095145 -1.288620
   -1.288620  4.864337  7.157120  7.157121  8.258430  8.517932  8.763959  8.763959
     9.51125  10.00126  10.00126  10.27035  10.93766  10.93766  12.25883  12.25883
+   12.51792  13.19110  13.48276  13.48276  15.99487  15.99487  16.91072  16.91072
   E [dn] @  [eV]:  [eV]
   -103.1627  -63.3943  -63.3943  -63.3741  -14.8542  -14.8542   -5.3291   -4.7156
   -4.715645 -3.647187 -3.018099 -3.018099 -1.517513 -1.258931 -1.258931  0.399585
@@ -263,6 +277,7 @@
    1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000
    1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000
    1.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+   0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
    0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
   occ [dn] @
    1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000  1.000000
@@ -283,12 +298,9 @@
     PPA    diel. fun.  energies                      : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
     wavefunctions                                    : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
     QP tot states                                    :   8
-    GWo SC iterations                                : 0
-    GW  SC iterations                                : 0
     GW solver                                        : Newton
     GW approximation                                 : PPA
     PPA imaginary Energy                             :  27.21138 ev
-    GW SC iterations                                 : 0
     dS/dw steps                                      :  2
     dS/dw step                                       :  0.100000 ev
     X G`s                                            :   9 used
@@ -296,8 +308,9 @@
     X bands                                          :  11  30
     X poles                                          :  100.0000 o/o
     X e/h E range                                    : -1.000000 -1.000000 ev
-    X xc-Kernel                                      : none
+    X Hxc Kernel                                     : HARTREE
     X BZ energy Double Grid                          : no
+    X Optical Averaged directions                    : none
     Sc/G bands                                       :   1  30
     Sc/G damping                                     :  0.100000 ev
     Sc bands terminator                              : no
@@ -309,9 +322,9 @@
     GF WF`s kind                                     : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
     Xs energies kind                                 : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
     Xs WF`s kind                                     : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
-   - S/N 007559 ---------------------------------------------- v.05.00.01 r.19773 -
+   - S/N 007559 ---------------------------------------------- v.05.02.00 r.22885 -
 
-   E<./02_gw_ppa/ndb.QP[ PPA@E  27.21138 = XG 9 = Xb 11-30 = Scb 1-30]
+   E<./02_gw_ppa/ndb.QP[ PPA@E  27.21138 * XG 9 * Xb 11-30 * Scb 1-30]
 
    [dE_from_DB-Nearest K] Exact matches       :  33.33334 [o/o]
    [dE_from_DB-Nearest K] Neighbours    [user]:  1
@@ -319,7 +332,7 @@
    [dE_from_DB-Nearest K] Interpolations      :  66.66667 [o/o]
     
 
-   [QP_apply] Action to be applied: E<./02_gw_ppa/ndb.QP[ PPA@E  27.21138 = XG 9 = Xb 11-30 = Scb 1-30]
+   [QP_apply] Action to be applied: E<./02_gw_ppa/ndb.QP[ PPA@E  27.21138 * XG 9 * Xb 11-30 * Scb 1-30]
 
     [05.05.01.01]  QP corrections report
     ====================================
@@ -329,68 +342,76 @@
     [G+QP] Bosonic    Temperature                     :  0.258606E-1   300.100    [eV K]
     [G+QP] Finite Temperature mode                    : yes
     [G+QP] El. density                                :  0.20678E+24 [cm-3]
-    [G+QP] Fermi Level                                :  3.611951 [eV]
+    [G+QP] Fermi Level                                :  3.769548 [eV]
 
     [G+QP] === Spin up channel ===
-    [G+QP] Conduction Band Min               [spin UP]:  3.137962 [eV]
-    [G+QP] Valence Band Max                  [spin UP]: -1.994616 [eV]
+    [G+QP] Conduction Band Min               [spin UP]:  2.980119 [eV]
+    [G+QP] Valence Band Max                  [spin UP]: -2.152201 [eV]
     [G+QP] Filled Bands                      [spin UP]:  17
     [G+QP] Empty Bands                       [spin UP]:   18   60
-    [G+QP] Direct Gap                        [spin UP]:  5.132579 [eV]
-    [G+QP] Direct Gap localized at k-point   [spin UP]:  1
-    [G+QP] Indirect Gap                      [spin UP]:  3.090024 [eV]
-    [G+QP] Indirect Gap between k-points     [spin UP]:  1  1
-    [G+QP] Last valence band width           [spin UP]:  0.131233 [eV]
-    [G+QP] 1st conduction band width         [spin UP]:  0.427678 [eV]
+    [G+QP] Direct Gap                        [spin UP]:  5.132321 [eV]
+    [G+QP] Direct Gap localized at k         [spin UP]:  1
+    [G+QP] Indirect Gap                      [spin UP]:  5.132321 [eV]
+    [G+QP] Indirect Gap between kpts         [spin UP]:  1  1
+    [G+QP] Last valence band width           [spin UP]:  0.651136 [eV]
+    [G+QP] 1st conduction band width         [spin UP]:  1.420981 [eV]
      
     [G+QP] === Spin dn channel ===
-    [G+QP] Conduction Band Min               [spin DN]:  1.715788 [eV]
-    [G+QP] Valence Band Max                  [spin DN]: -1.374236 [eV]
+    [G+QP] Conduction Band Min               [spin DN]:  1.558049 [eV]
+    [G+QP] Valence Band Max                  [spin DN]: -1.531818 [eV]
     [G+QP] Filled Bands                      [spin DN]:  15
     [G+QP] Empty Bands                       [spin DN]:   16   60
-    [G+QP] Direct Gap                        [spin DN]:  3.090024 [eV]
-    [G+QP] Direct Gap localized at k-point   [spin DN]:  2
-    [G+QP] Indirect Gap                      [spin DN]:  0.000000 [eV]
-    [G+QP] Indirect Gap between k-points     [spin DN]:  2  2
-    [G+QP] Last valence band width           [spin DN]:  0.000000 [eV]
-    [G+QP] 1st conduction band width         [spin DN]:  0.000000 [eV]
+    [G+QP] Direct Gap                        [spin DN]:  3.089867 [eV]
+    [G+QP] Direct Gap localized at k         [spin DN]:  2
+    [G+QP] Indirect Gap                      [spin DN]:  3.089867 [eV]
+    [G+QP] Indirect Gap between kpts         [spin DN]:  2  2
+    [G+QP] Last valence band width           [spin DN]:  0.131233 [eV]
+    [G+QP] 1st conduction band width         [spin DN]:  0.427679 [eV]
      
     [G+QP] === Overall gap ===
-    [G+QP] Direct Gap                                 :  3.090024 [eV]
+    [G+QP] Direct Gap                                 :  3.089867 [eV]
     [G+QP] Direct Gap localized at k-point            :  1
-    [G+QP] Indirect Gap                               :  5.132579 [eV]
+    [G+QP] Indirect Gap                               :  3.089867 [eV]
     [G+QP] Indirect Gap between k-points              :  1  2
      
+    [coarse-grid] Minimum Bare Gap         (up)[ev]:  4.080841
+    [coarse-grid] Minimum Gap Correction   (up)[ev]:  1.051480
+    [coarse-grid]                        (down)[ev]:  1.564397
+    [coarse-grid]                        (down)[ev]:  1.525470
+     
     Eqp [up] @ K [1]
-    -108.2747  -68.6408  -68.6408  -68.5989  -19.7725  -18.9366   -9.0531   -8.1910
-    -8.191011 -6.231071 -6.231071 -6.039094 -5.756204 -5.503555 -4.505980 -1.997719
-    -1.994616  3.137962  1.100714  1.505469  1.747257  3.942836  3.942836  4.081645
-     6.090396  6.692395  6.692395  7.120044  8.812807  9.374672  9.374672  9.551230
+    -107.4347  -67.8008  -67.8008  -67.7589  -18.9325  -18.0966   -8.2131   -7.3510
+    -7.351027 -5.391086 -5.391086 -5.199110 -4.916220 -4.663570 -4.663570 -2.155392
+    -2.152201  2.980119  4.249428  4.654184  4.895971  7.091552  7.091552  7.230360
+      9.23911   9.84111   9.84111  10.26876  11.96152  12.52339  12.52339  12.69995
+     13.34911  13.34911  13.77873  14.59808  16.70599  16.70599  17.78539  18.22767
     Eqp [dn] @
-    -106.7750  -67.0068  -67.0068  -66.9865  -19.5137  -18.6515   -8.8124   -6.9865
-    -6.986454 -5.775931 -5.230453 -5.230453 -5.210138 -5.210138 -1.505469  2.143467
-     2.120148  3.125753  1.176099  1.607289  1.838447  4.069945  4.069945  4.188266
-     6.178803  6.900432  6.900432  7.326793  8.960845  9.617369  9.712708  9.712708
+    -103.4961  -63.7279  -63.7279  -63.7076  -16.2348  -15.3726   -5.5335   -3.7076
+    -3.707565 -2.497041 -1.951564 -1.951564 -1.931249 -1.931249 -1.663051  1.985728
+     1.962519  2.967926  4.164640  4.595831  4.826988  7.058487  7.058487  7.176808
+      9.16735   9.88897   9.88898  10.31534  11.94939  12.60591  12.70125  12.70125
     Eqp [up] @ K [2]
-    -108.2748  -68.6431  -68.6407  -68.6001  -19.1975  -18.7516   -9.1440   -8.6817
-    -8.088533 -7.857686 -6.808235 -6.561156 -6.168077 -5.778010 -4.644296 -2.591612
-    -2.178260  3.903591  1.874272  2.649999  3.016712  4.258929  5.022747  5.097260
-     5.263034  6.067480  6.987111  7.621703  8.372778  8.488295  9.137980  9.902748
+    -107.4349  -67.8031  -67.8007  -67.7602  -18.3576  -17.9117   -8.3040   -7.8417
+    -7.248549 -7.017701 -5.968250 -5.721171 -5.328092 -4.938025 -4.801886 -2.749285
+    -2.335845  3.745748  5.022986  5.798713  6.165425  7.407642  8.171460  8.245973
+      8.41175   9.21619  10.13582  10.77042  11.52149  11.63701  12.28669  13.05146
+     13.34095  13.93280  14.16793  14.37079  14.63765  15.81901  16.11252  16.88872
     Eqp [dn] @
-    -106.7751  -67.0093  -67.0067  -66.9876  -18.9238  -18.4545   -8.9289   -8.2945
-    -7.255996 -6.892027 -6.403005 -6.019038 -5.177074 -4.928249 -1.374236  1.715788
-     2.001795  3.964468  1.995790  2.755391  3.127589  4.410751  5.151890  5.252453
-      5.38288   6.22348   7.13559   7.72075   8.45176   8.68797   9.25531  10.08655
+    -103.4962  -63.7304  -63.7278  -63.7087  -15.6449  -15.1756   -5.6500   -5.0156
+    -3.977106 -3.613138 -3.124115 -2.740148 -1.898185 -1.649359 -1.531818  1.558049
+     1.844167  3.806641  4.984332  5.743933  6.116131  7.399292  8.140431  8.240993
+      8.37143   9.21202  10.12413  10.70929  11.44030  11.67651  12.24385  13.07509
     Eqp [up] @ K [3]
-    -108.2743  -68.6403  -68.6403  -68.5986  -18.7599  -18.7599   -9.1226   -8.6607
-    -8.660711 -7.688488 -7.688488 -7.475520 -5.995104 -5.707097 -4.709522 -2.648855
-    -2.645752  4.558943  3.545168  3.545169  4.646478  4.905981  5.152008  5.152008
-     5.899302  6.389308  6.389308  6.658402  7.325706  7.325706  8.646879  8.646879
+    -107.4344  -67.8003  -67.8003  -67.7586  -17.9199  -17.9199   -8.2826   -7.8207
+    -7.820727 -6.848503 -6.848503 -6.635536 -5.155119 -4.867112 -4.867112 -2.806528
+    -2.803337  4.401100  6.693882  6.693883  7.795191  8.054694  8.300723  8.300723
+      9.04801   9.53802   9.53802   9.80712  10.47442  10.47442  11.79559  11.79559
+     12.05468  12.72786  13.01952  13.01952  15.53163  15.53163  16.44749  16.44749
     Eqp [dn] @
-    -106.7747  -67.0062  -67.0062  -66.9860  -18.4662  -18.4662   -8.9410   -8.3276
-    -8.327597 -7.259138 -6.630050 -6.630050 -5.129465 -4.870882 -1.434411  1.749732
-     1.726413  4.660661  3.686865  3.686865  4.801872  5.022280  5.291213  5.291213
-     6.059769  6.494021  6.494021  6.725956  7.434462  7.434462  8.740426  8.740426
+    -103.4958  -63.7274  -63.7274  -63.7071  -15.1873  -15.1873   -5.6621   -5.0487
+    -5.048707 -3.980249 -3.351161 -3.351161 -1.850575 -1.591993 -1.591993  1.591993
+     1.568784  4.502834  6.675407  6.675407  7.790415  8.010821  8.279755  8.279755
+      9.04831   9.48256   9.48256   9.71450  10.42301  10.42301  11.72897  11.72897
 
  [06] Interpolation tool
  =======================
@@ -421,39 +442,29 @@
  ====================
 
  Clock: global
-      IO_and_Messaging_switch :      0.0000s CPU
                INTERPOLATE bz :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
              io_ATMPROJ_pwscf :      0.0000s CPU
-               io_Double_Grid :      0.0001s CPU (2 calls,   0.042 msec avg)
-          INTERPOLATE Fourier :      0.0011s CPU (2 calls,   0.526 msec avg)
-                        io_WF :      0.0017s CPU
-                     io_QINDX :      0.0027s CPU
-                   io_DIPOLES :      0.0033s CPU
-                 io_QP_and_GF :      0.0051s CPU
-                      io_GROT :      0.0104s CPU (2 calls,   5.224 msec avg)
+               io_Double_Grid :      0.0001s CPU (2 calls,   0.036 msec avg)
+                        io_WF :      0.0009s CPU
+          INTERPOLATE Fourier :      0.0010s CPU (2 calls,   0.510 msec avg)
+                     io_QINDX :      0.0016s CPU
+                   io_DIPOLES :      0.0017s CPU
+                 io_QP_and_GF :      0.0032s CPU
+                      io_GROT :      0.0071s CPU (2 calls,   3.564 msec avg)
 
- [08] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  5.410000 [Mb]
-
- [09] Game Over & Game summary
+ [08] Game Over & Game summary
  =============================
 
- 05/17/2021 at 17:04 ypp @ VivoBook [start]
- 05/17/2021 at 17:04                [end]
+ 10/29/2023 at 16:32 ypp @ unimi-XPS-8930 [start]
+ 10/29/2023 at 16:32                      [end]
 
   
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
  | the YAMBO group (those specified in the GNU General Public
- | License, http://www.gnu.org/copyleft/gpl.txt). However, it is
  | common practice in the scientific literature, to acknowledge the
  | efforts of people that have made the research possible. In this
  | spirit, please find below the reference we kindly ask you to use
@@ -485,7 +496,7 @@
  |  15 | 18 |                           # Number of bands
  | %
  | CIRCUIT_E_DB_path= "none"        # SAVE obtained from the QE `bands` run (alternative to %BANDS_kpts)
- | BANDS_path= " M"                 # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
+ | BANDS_path= " G Mmp G"           # High-Symmetry points labels (G,M,K,L...) also using composed positions (0.5xY+0.5xL).
  | BANDS_steps= 30                  # Number of divisions
  | BANDS_built_in                 # Print the bands of the generating points of the circuit using the nearest internal point
  | GfnQPdb= "E < ./02_gw_ppa/ndb.QP" # [EXTQP G] Database action

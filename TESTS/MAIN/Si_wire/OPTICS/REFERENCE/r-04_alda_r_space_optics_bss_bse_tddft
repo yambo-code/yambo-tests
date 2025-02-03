@@ -1,19 +1,19 @@
                                                                           
-     __  __   ________   ___ __ __    _______   ______                    
-    /_/\/_/\ /_______/\ /__//_//_/\ /_______/\ /_____/\                   
-    \ \ \ \ \\::: _  \ \\::\| \| \ \\::: _  \ \\:::_ \ \                  
-     \:\_\ \ \\::(_)  \ \\:.      \ \\::(_)  \/_\:\ \ \ \                 
-      \::::_\/ \:: __  \ \\:.\-/\  \ \\::  _  \ \\:\ \ \ \                
-        \::\ \  \:.\ \  \ \\. \  \  \ \\::(_)  \ \\:\_\ \ \               
-         \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
+    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
+       ###  ###     ### ###       ### #########   ########                
                                                                           
                                                                           
-    Version 5.1.0 Revision 22026 Hash (prev commit) 3ddfa14f2             
-                     Branch is devel-tddft                                
+    Version 5.2.0 Revision 22885 Hash (prev commit) 41fc9d87d4            
+                   Branch is phys-dichroism                               
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
                    http://www.yambo-code.org                              
  
- 03/10/2023 at 10:43 yambo @ unimi-XPS-8930
+ 10/30/2023 at 18:29 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -26,14 +26,14 @@
  CORE databases      : .
  Additional I/O      : .
  Communications      : .
- Input file          : yambo.in
+ Input file          : yambo.in_generated
  Report file         : ./r-04_alda_r_space_optics_bss_bse_tddft
  Verbose log/report  : no
  Log files           : ./LOG
 
  Job   string        : 04_alda_r_space
- Alt#1 string        : 02_RPA_no_LF_par-serial-devel-tddft
- Alt#2 string        : R11
+ Alt#1 string        : 02_RPA_no_LF_par-serial-phys-dichroism
+ Alt#2 string        : R6
 
  Precision           : SINGLE
   
@@ -190,15 +190,13 @@
 
  [RD./SAVE//ndb.kindx]-----------------------------------------------------------
   Fragmentation                                    : no
-  Polarization last K                              :  2
+  Polarization last K ( bz)                        :   4
+  Polarization last K (ibz)                        :  2
   QP states                                        :  1  2
   X grid is uniform                                : yes
-  Grids                                            : X S
-  BS scattering                                    : no
-  COLL scattering                                  : no
-  Sigma scattering                                 : yes
-  X scattering                                     : yes
- - S/N 002577 ---------------------------------------------- v.05.01.00 r.22026 -
+  Grids (string)                                   :  X S
+  Grids (int-vector)                               :  1  0  0  1
+ - S/N 002577 ---------------------------------------------- v.05.02.00 r.22885 -
 
  IBZ Q-points :  3
  BZ  Q-points :   4
@@ -207,13 +205,16 @@
  rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
  Q [1]:  0.000000  0.000000  0.000000 [rlu]
+       : weight :  0.250000
  Q [2]: -0.250000  0.000000  0.000000 [rlu]
+       : weight :  0.500000
  Q [3]: -0.500000  0.000000  0.000000 [rlu]
+       : weight :  0.250000
 
  [04] Dipoles
  ============
 
- [RD./02_RPA_no_LF_par-serial-devel-tddft//ndb.dipoles]--------------------------
+ [RD./02_RPA_no_LF_par-serial-phys-dichroism//ndb.dipoles]-----------------------
   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   4   2   4
   RL vectors                                       :   989 [WF]
   Fragmentation                                    : yes
@@ -229,7 +230,7 @@
   Approach used                                    : G-space v
   Dipoles computed                                 : R V P
   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 002577 ---------------------------------------------- v.05.01.00 r.22026 -
+ - S/N 002577 ---------------------------------------------- v.05.02.00 r.22885 -
 
  [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
 
@@ -260,7 +261,7 @@
    [05.01.03] Loading Dipoles @q1
    ==============================
 
-   [RD./02_RPA_no_LF_par-serial-devel-tddft//ndb.dipoles]--------------------------
+   [RD./02_RPA_no_LF_par-serial-phys-dichroism//ndb.dipoles]-----------------------
     Brillouin Zone Q/K grids (IBZ/BZ)                :   3   4   2   4
     RL vectors                                       :   989 [WF]
     Fragmentation                                    : yes
@@ -276,7 +277,7 @@
     Approach used                                    : G-space v
     Dipoles computed                                 : R V P
     Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   - S/N 002577 ---------------------------------------------- v.05.01.00 r.22026 -
+   - S/N 002577 ---------------------------------------------- v.05.02.00 r.22885 -
 
    [05.01.04] Independent Particles properties @q1
    ===============================================
@@ -289,10 +290,6 @@
    ====================================================
 
    [BSE] Exchange components :  107
-   [WF-BSK loader] Normalization (few states)  min/max  :  0.235846E-7  0.986686   
-
-   [xc] Functional : Slater exchange(X)+Perdew & Zunger(C)
-   [xc] LIBXC used to calculate xc functional
 
    [05.01.06] Main kernel loop
    ===========================
@@ -305,7 +302,7 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   912
+    [K] Identifier                                   :   6313
     [K] Dimension                                    :   96
     [K] Bands                                        :   30   40
     [K] Exchange res                                 : yes
@@ -320,8 +317,10 @@
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
     [IO] Kernel IO mode                              : 2D_standard
     [X] Response Kind                                : BAR
-   - S/N 002577 ---------------------------------------------- v.05.01.00 r.22026 -
+   - S/N 002577 ---------------------------------------------- v.05.02.00 r.22885 -
     Kernel complete                                  : no
+   [xc] Functional : Slater exchange(X)+Perdew & Zunger(C)
+   [xc] LIBXC used to calculate xc functional
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
@@ -335,45 +334,45 @@
   =========================================================================
 
   Accuracy (requested)      :  0.005000 [o/o]
-  Accuracy (reached)        :  0.001254 [o/o]
-  Iterations                :  15
+  Accuracy (reached)        :  0.774682E-3 [o/o]
+  Iterations                :  16
 
  [06] Timing Overview
  ====================
 
  Clock: global
              io_ATMPROJ_pwscf :      0.0000s CPU
-                 PP_uspp_init :      0.0000s CPU
-      IO_and_Messaging_switch :      0.0000s CPU (   7 calls,   0.002 msec avg)
                   io_KB_pwscf :      0.0000s CPU
                    io_COL_CUT :      0.0000s CPU
-                        io_HF :      0.0000s CPU
                io_Double_Grid :      0.0000s CPU
-                         io_X :      0.0001s CPU (   5 calls,   0.020 msec avg)
-                        io_BS :      0.0002s CPU (   3 calls,   0.064 msec avg)
-                    FFT_setup :      0.0004s CPU
-                  io_fragment :      0.0009s CPU (   2 calls,   0.437 msec avg)
-                 io_KB_abinit :      0.0012s CPU
-             T_space EXX Osc. :      0.0015s CPU (   2 calls,   0.738 msec avg)
-                      Dipoles :      0.0018s CPU
-                      io_GROT :      0.0022s CPU (   2 calls,   1.119 msec avg)
-               io_BSS_Haydock :      0.0025s CPU (   2 calls,   1.241 msec avg)
-                     io_QINDX :      0.0027s CPU (   2 calls,   1.329 msec avg)
+                        io_HF :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0001s CPU (19 calls,   0.003 msec avg)
+                         io_X :      0.0001s CPU ( 5 calls,   0.020 msec avg)
+                 PP_uspp_init :      0.0001s CPU ( 7 calls,   0.015 msec avg)
+                        io_BS :      0.0003s CPU ( 3 calls,   0.100 msec avg)
+                 io_KB_abinit :      0.0011s CPU
+                      Dipoles :      0.0017s CPU
+                      io_GROT :      0.0021s CPU ( 2 calls,   1.043 msec avg)
+               io_BSS_Haydock :      0.0026s CPU ( 2 calls,   1.282 msec avg)
+                  io_fragment :      0.0028s CPU ( 8 calls,   0.349 msec avg)
                   BSE dipoles :      0.0030s CPU
-          XC_potential_driver :      0.0044s CPU
-                   io_DIPOLES :      0.0063s CPU (   7 calls,   0.898 msec avg)
-                        io_WF :      0.0110s CPU (   5 calls,   2.192 msec avg)
-                  WF_load_FFT :      0.0119s CPU
-                   T_space IP :      0.0232s CPU
-               Haydock Solver :      0.0727s CPU
-          T_space ALDA scatt. :      0.1334s CPU (4656 calls,   0.029 msec avg)
-             X T_space Kernel :      0.1695s CPU
+                    FFT_setup :      0.0032s CPU ( 9 calls,   0.354 msec avg)
+                     io_QINDX :      0.0034s CPU ( 2 calls,   1.709 msec avg)
+          XC_potential_driver :      0.0043s CPU
+                   io_DIPOLES :      0.0062s CPU ( 7 calls,   0.881 msec avg)
+             T_space EXX Osc. :      0.0089s CPU ( 2 calls,   4.462 msec avg)
+            T_space ALDA Osc. :      0.0176s CPU ( 4 calls,   4.401 msec avg)
+                  WF_load_FFT :      0.0205s CPU ( 7 calls,   2.929 msec avg)
+                        io_WF :      0.0214s CPU (23 calls,   0.929 msec avg)
+                   T_space IP :      0.0244s CPU
+             X T_space Kernel :      0.0583s CPU
+               Haydock Solver :      0.0755s CPU
 
  [07] Game Over & Game summary
  =============================
 
- 03/10/2023 at 10:43 yambo @ unimi-XPS-8930 [start]
- 03/10/2023 at 10:43                        [end]
+ 10/30/2023 at 18:29 yambo @ unimi-XPS-8930 [start]
+ 10/30/2023 at 18:29                        [end]
 
   
  .-ACKNOWLEDGMENT
@@ -397,7 +396,7 @@
  | Computer Physics Communications 180, 1392 (2009).
  |
   
- .-Input file  yambo.in
+ .-Input file  yambo.in_generated
  | optics                           # [R] Linear Response optical properties
  | bss                              # [R] BSE solver
  | bse                              # [R][BSE] Bethe Salpeter Equation.
@@ -427,8 +426,8 @@
  | %
  | BEnSteps= 200                    # [BSS] Energy steps
  | % BLongDir
- |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+ |  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field versor
  | %
- | BSEprop= "abs"                   # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+ | BSEprop= " abs"                  # [BSS] Can be any among abs/jdos/kerr/asymm/anHAll/magn/dich/photolum/esrt
  | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
  | BSHayTrs= 0.005000               # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
