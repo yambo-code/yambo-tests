@@ -1,49 +1,48 @@
 #                                                                     
-#  ____  ____     _       ____    ____  ______      ___               
-# |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.             
-#   \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \            
-#    \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |            
-#    _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /            
-#   |______||____| |____||_____||_____||_______/  `.___."             
+# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
+# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
+#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
+#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
+#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
+#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
+#    ###  ###     ### ###       ### #########   ########              
 #                                                                     
 #                                                                     
-#                                                                     
-# Version 5.2.0 Revision 23129 Hash (prev commit) 3a51862bc           
-#             Branch is phys-levels_degeneracy                        
-#                    MPI+HDF5_IO Build                                
-#                 http://www.yambo-code.eu                            
+#       Version 5.1.0 Revision 20241 Hash a72896abc                   
+#             Branch is devel-rt-vel-and-magn                         
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
 #
 # Computing the density from the G lesser
 #
 #    ||a1 [A]           
 #
-     0.00000000        0.430386535E-5
-    0.317526937        0.216584135E-5
-    0.635053873       -0.178755897E-5
-    0.952580869       -0.321942844E-5
-     1.27010775       -0.143966531E-5
-     1.58763492        0.144555872E-5
-     1.90516174        0.322856931E-5
-     2.22268867        0.179841015E-5
-     2.54021549       -0.216087324E-5
-     2.85774255       -0.431278659E-5
-     3.17526984       -0.214461534E-5
-     3.49279642        0.212268151E-5
+     0.00000000        0.451074129E-5
+    0.317526937        0.268080862E-5
+    0.635053873       -0.920306888E-6
+    0.952580869       -0.238955067E-5
+     1.27010775       -0.108689994E-5
+     1.58763492        0.118297203E-5
+     1.90516174        0.247088769E-5
+     2.22268867        0.960198918E-6
+     2.54021549       -0.269931684E-5
+     2.85774255       -0.458741988E-5
+     3.17526984       -0.227221244E-5
+     3.49279642        0.215010323E-5
 # 
-# 09/17/2024 at 14:08 ypp_rt @ baym [start]
-# 09/17/2024 at 14:08               [end]
+# 07/26/2021 at 02:05 ypp_rt @ unimi-XPS-8930 [start]
+# 07/26/2021 at 02:05                         [end]
 #
 # .-Input file  yambo.in
 # | RealTime                         # [R] TD Post-Processing
 # | RTdeltaRho                       # [R] Analize the density
 # | RTtime                           # [R] Post-Processing kind: function of time
-# | TimeStep= 0.500017         fs    # Time step
+# | TimeStep= 0.500005         fs    # Time step
 # | % TimeRange
 # |   0.00000 | 15.00000 |         fs    # Time-window where processing is done
 # | %
-# | LoadGhistory                   # [NEGF] Build the NEQ density from G<(t,t)
+# | LoadGhistory                   # [NEGF] Build the NEQ density from the G_lesser
 # | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
 # | Format= "g"                      # Output format [(c)ube/(g)nuplot/(x)crysden]
 # | Direction= "1"                   # [rlu] [1/2/3] for 1d or [12/13/23] for 2d [123] for 3D
 # | FFTGvecs=  387             RL    # [FFT] Plane-waves
-# | #NormToOne                     # Normalize to one the maximum value of the plot

@@ -1,19 +1,19 @@
                                                                           
-     ____  ____     _       ____    ____  ______      ___                 
-    |_  _||_  _|   / \     |_   \  /   _||_   _ \   ."   `.               
-      \ \  / /    / _ \      |   \/   |    | |_) | /  .-.  \              
-       \ \/ /    / ___ \     | |\  /| |    |  __". | |   | |              
-       _|  |_  _/ /   \ \_  _| |_\/_| |_  _| |__) |\  `-"  /              
-      |______||____| |____||_____||_____||_______/  `.___."               
+    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
+    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
+     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
+      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
+       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
+       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
+       ###  ###     ### ###       ### #########   ########                
                                                                           
                                                                           
-                                                                          
-    Version 5.2.0 Revision 23129 Hash (prev commit) 3a51862bc             
-                Branch is phys-levels_degeneracy                          
-                       MPI+HDF5_IO Build                                  
-                    http://www.yambo-code.eu                              
+          Version 5.1.0 Revision 20241 Hash a72896abc                     
+                Branch is devel-rt-vel-and-magn                           
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+                   http://www.yambo-code.org                              
  
- 09/17/2024 at 14:08 ypp_rt @ baym
+ 07/26/2021 at 02:05 ypp_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,8 +32,8 @@
  Log files           : ./LOG
 
  Job   string        : 16_ypp_density
- Alt#1 string        : 15_td_sex-serial-phys-levels_degeneracy
- Alt#2 string        : R17
+ Alt#1 string        : 15_td_sex-serial-devel-rt-vel-and-magn
+ Alt#2 string        : R23
 
  Precision           : SINGLE
   
@@ -102,11 +102,9 @@
   [05.03] Reciprocal space
   ========================
 
-
-  [WARNING] wf_ng > maxval(wf_igk), probably because FFTGvecs in input. Reducing it
   nG shells         :   54
   nG charge         :  2085
-  nG WFs            :   369
+  nG WFs            :   387
   nC WFs            :  266
   G-vecs. in first 5 shells:  [ Number ]
      1    9   15   27   51
@@ -120,26 +118,26 @@
 
   Compatible Grid is   : 3D
   Base K vectors       :  K_min[ 1 ]  K_min[ 2 ]  K_min[ 3 ]
-  K_min[ 1 ] :  0.000000 -0.500000  0.000000 [rlu]
-  K_min[ 2 ] : -0.500000  0.000000  0.000000 [rlu]
-  K_min[ 3 ] :  0.000000  0.000000 -0.500000 [rlu]
+  K_min[ 1 ] :  0.238269E-8 -0.500000     0.238269E-8 [rlu]
+  K_min[ 2 ] : -0.500000     0.238269E-8 -0.238269E-8 [rlu]
+  K_min[ 3 ] : -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
 
-  IBZ K-points                                      :   4
-  BZ  K-points                                      :   8
+  IBZ K-points :   4
+  BZ  K-points :   8
 
   K/Q-points units:
   rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
-  K [1]          [rlu]:  0.000000  0.000000  0.000000
-         WF components:  259
-  K [2]          [rlu]:  0.000000  0.000000 -0.500000
-         WF components:  266
-  K [3]          [rlu]:  0.000000 -0.500000 -0.500000
-         WF components:  254
-  K [4]          [rlu]:  0.000000 -0.500000  0.000000
-         WF components:  266
+  K [1]:  0.000000  0.000000  0.000000 [rlu]
+        : wf components:  259
+  K [2]: -0.238269E-8 -0.238269E-8 -0.500000    [rlu]
+        : wf components:  266
+  K [3]:  0.000000 -0.500000 -0.500000 [rlu]
+        : wf components:  254
+  K [4]:  0.238269E-8 -0.500000     0.238269E-8 [rlu]
+        : wf components:  266
 
   [05.05] Energies & Occupations
   ==============================
@@ -157,9 +155,9 @@
   [X] Filled Bands                                  :   4
   [X] Empty Bands                                   :   5   8
   [X] Direct Gap                                    :  2.440868 [eV]
-  [X] Direct Gap localized at k                     :  1
+  [X] Direct Gap localized at k-point               :  1
   [X] Indirect Gap                                  :  0.437631 [eV]
-  [X] Indirect Gap between kpts                     :  1  3
+  [X] Indirect Gap between k-points                 :  1  3
   [X] Last valence band width                       :  3.010587 [eV]
   [X] 1st conduction band width                     :  2.003237 [eV]
    
@@ -188,45 +186,35 @@
  [07] Time dependent density plot
  ================================
 
- [WF-WF loader] Normalization (few states)  min/max  :  0.95157E-09   1.0000    
+ [WF-WF loader] Normalization (few states)  min/max  :  0.100824E-7   1.00000   
 
 
  [08] Timing Overview
  ====================
 
  Clock: global
-      IO_and_Messaging_switch :      0.0000s CPU (  2 calls,   0.002 msec avg)
              io_ATMPROJ_pwscf :      0.0000s CPU
                  io_KB_abinit :      0.0000s CPU
                  PP_uspp_init :      0.0000s CPU
+      IO_and_Messaging_switch :      0.0000s CPU ( 2 calls,   0.009 msec avg)
                    io_COL_CUT :      0.0000s CPU
-             RT output (INIT) :      0.0000s CPU
-               io_Double_Grid :      0.0001s CPU (  2 calls,   0.040 msec avg)
+             RT output (INIT) :      0.0001s CPU
+               io_Double_Grid :      0.0001s CPU ( 2 calls,   0.046 msec avg)
                   io_KB_pwscf :      0.0001s CPU
-                    FFT_setup :      0.0002s CPU
-                  WF_load_FFT :      0.0008s CPU
-                   io_DIPOLES :      0.0009s CPU
-                     io_QINDX :      0.0011s CPU
-                        io_WF :      0.0019s CPU (  7 calls,   0.273 msec avg)
-            el_density_matrix :      0.0023s CPU ( 31 calls,   0.075 msec avg)
-                      io_GROT :      0.0023s CPU (  3 calls,   0.781 msec avg)
-                  io_fragment :      0.0266s CPU (124 calls,   0.215 msec avg)
-             io_RT_components :      0.0546s CPU (127 calls,   0.430 msec avg)
+                    FFT_setup :      0.0008s CPU
+                  WF_load_FFT :      0.0010s CPU
+                   io_DIPOLES :      0.0017s CPU
+                     io_QINDX :      0.0017s CPU
+                        io_WF :      0.0028s CPU ( 7 calls,   0.399 msec avg)
+                      io_GROT :      0.0036s CPU ( 3 calls,   1.214 msec avg)
+            el_density_matrix :      0.0105s CPU (31 calls,   0.339 msec avg)
+             io_RT_components :      0.0268s CPU (34 calls,   0.789 msec avg)
 
- [09] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  676.0000 [Kb]
-
- [10] Game Over & Game summary
+ [09] Game Over & Game summary
  =============================
 
- 09/17/2024 at 14:08 ypp_rt @ baym [start]
- 09/17/2024 at 14:08               [end]
+ 07/26/2021 at 02:05 ypp_rt @ unimi-XPS-8930 [start]
+ 07/26/2021 at 02:05                         [end]
 
   
  .-ACKNOWLEDGMENT
@@ -254,13 +242,12 @@
  | RealTime                         # [R] TD Post-Processing
  | RTdeltaRho                       # [R] Analize the density
  | RTtime                           # [R] Post-Processing kind: function of time
- | TimeStep= 0.500017         fs    # Time step
+ | TimeStep= 0.500005         fs    # Time step
  | % TimeRange
  |   0.00000 | 15.00000 |         fs    # Time-window where processing is done
  | %
- | LoadGhistory                   # [NEGF] Build the NEQ density from G<(t,t)
+ | LoadGhistory                   # [NEGF] Build the NEQ density from the G_lesser
  | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
  | Format= "g"                      # Output format [(c)ube/(g)nuplot/(x)crysden]
  | Direction= "1"                   # [rlu] [1/2/3] for 1d or [12/13/23] for 2d [123] for 3D
  | FFTGvecs=  387             RL    # [FFT] Plane-waves
- | #NormToOne                     # Normalize to one the maximum value of the plot
