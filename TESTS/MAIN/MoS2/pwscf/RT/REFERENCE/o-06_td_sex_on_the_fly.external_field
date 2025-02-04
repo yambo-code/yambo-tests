@@ -8,15 +8,19 @@
 #     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
 #      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
 #                                                                     
-# Version 5.2.0 Revision 23130 Hash (prev commit) 3b61fa0e1           
-#            Branch is phys-levels_degeneracy                         
+#       Version 5.1.0 Revision 20241 Hash a72896abc                   
+#             Branch is devel-rt-vel-and-magn                         
 #         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#                http://www.yambo-code.eu                             
+#                http://www.yambo-code.org                            
 #
 #
 # [RT] Bands                                      :  25  28
 # [RT] K-points                                   :   9
 # [RT] Potential                                  : HARTREE+SEX
+# [E-P] Electron-phonon                           : no
+# [E-P] Iterative time evolution                  : no
+# [E-P] Branches                                  : 0 0
+# [E-P] GF`s Memory steps                         :  2
 # [E-E] Coulomb scattering                        : no
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
@@ -181,10 +185,10 @@
       59.5000038        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000        0.117020011   
       60.0000038        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000        -0.00000000         0.00000000         0.00000000        0.117020011   
 # 
-# 10/03/2024 at 12:42 yambo_rt @ mo.farah [start]
-# 10/03/2024 at 12:43                     [end]
+# 07/26/2021 at 00:29 yambo_rt @ unimi-XPS-8930 [start]
+# 07/26/2021 at 00:30                           [end]
 #  
-# Timing   [Min/Max/Average]: 06s/06s/06s
+# Timing   [Min/Max/Average]: 24s/24s/24s
 #
 # .-Input file  yambo.in
 # | collisions                       # [R] Collisions
@@ -193,21 +197,16 @@
 # | BoseTemp= 0.000000         eV    # Bosonic Temperature
 # | DBsIOoff= "DIP COLLs"            # [IO] Space-separated list of DB with NO I/O. DB=(DIP,X,HF,COLLs,J,GF,CARRIERs,OBS,W,SC,BS,ALL)
 # | FFTGvecs= 2005             RL    # [FFT] Plane-waves
-# | X_and_IO_CPU= "2.2.2.1.1"        # [PARALLEL] CPUs for each role
-# | X_and_IO_ROLEs= "g.v.c.k.q"      # [PARALLEL] CPUs roles (q,g,k,c,v)
-# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
-# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
-# | RT_CPU= "2.2.2.1"                # [PARALLEL] CPUs for each role
-# | RT_ROLEs= "k.b.qp.q"             # [PARALLEL] CPUs roles (k,b,q,qp)
 # | RT_Threads= 1                    # [OPENMP/RT] Number of threads for real-time
 # | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
 # | % BndsRnXs
-# |   9 | 30 |                           # [Xs] Polarization function bands
+# |  10 | 30 |                           # [Xs] Polarization function bands
 # | %
 # | NGsBlkXs= 29               RL    # [Xs] Response block size
 # | % LongDrXs
 # |  0.100000E-4 |  0.00000    |  0.00000    # [Xs] [cc] Electric Field
 # | %
+# | XTermKind= "none"                # [X] X terminator ("none","BG" Bruneval-Gonze)
 # | % COLLBands
 # |  25 | 28 |                           # [COLL] Bands for the collisions
 # | %
@@ -231,7 +230,6 @@
 # | % RTehEny
 # | -1.164204 | 4.318231 |         eV    # [RT] Electron-hole energy range
 # | %
-# | RADLifeTime= 0.000000      fs    # [RT] Radiative life-time (if negative Yambo sets it equal to Phase_LifeTime in NL)
 # | PhLifeTime= 60.00000       fs    # [RT] Constant Dephasing Time
 # | RTstep= 5.000000           as    # [RT] Real Time step length
 # | NETime= 60.00000           fs    # [RT] Simulation Time
@@ -244,13 +242,15 @@
 # | % Field1_Freq
 # |  0.000000 | 0.000000 |         eV    # [RT Field1] Frequency
 # | %
-# | Field1_NFreqs= 1                 # [RT Field1] Frequency
 # | Field1_Int=  1000.00       kWLm2 # [RT Field1] Intensity
 # | Field1_Width= 0.000000     fs    # [RT Field1] Width
-# | Field1_kind= "DELTA"             # [RT Field1] Kind(SIN|SOFTSIN| see more on src/modules/mod_fields.F)
+# | Field1_kind= "DELTA"             # [RT Field1] Kind(SIN|RES|ANTIRES|GAUSS|DELTA|QSSIN)
 # | Field1_pol= "linear"             # [RT Field1] Pol(linear|circular)
 # | % Field1_Dir
 # |  1.000000 | 0.000000 | 0.000000 |        # [RT Field1] Versor
+# | %
+# | % Field1_Dir_circ
+# |  0.000000 | 1.000000 | 0.000000 |        # [RT Field1] Versor_circ
 # | %
 # | Field1_Tstart= 0.240000    fs    # [RT Field1] Initial Time
 # | %DephMatrix                      # [RT] Dephasing Matrix (bnd1 | bnd2 | kpt | dephasing(fs) |)

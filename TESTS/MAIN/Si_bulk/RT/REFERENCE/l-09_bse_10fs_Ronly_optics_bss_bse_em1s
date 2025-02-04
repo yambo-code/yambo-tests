@@ -1,12 +1,12 @@
 
 
-  __ __  ____ ___ ___ ____   ___
- |  |  |/    |   |   |    \ /   \
- |  |  |  o  | _   _ |  o  )     |
- |  ~  |     |  \_/  |     |  O  |
- |___, |  _  |   |   |  O  |     |
- |     |  |  |   |   |     |     |
- |____/|__|__|___|___|_____|\___/
+ __   __  _______  __   __  _______  _______
+|  | |  ||   _   ||  |_|  ||  _    ||       |
+|  |_|  ||  |_|  ||       || |_|   ||   _   |
+|       ||       ||       ||       ||  | |  |
+|_     _||       ||       ||  _   | |  |_|  |
+  |   |  |   _   || ||_|| || |_|   ||       |
+  |___|  |__| |__||_|   |_||_______||_______|
 
 
  <---> [01] MPI/OPENMP structure, Files & I/O Directories
@@ -18,26 +18,23 @@
  <---> Grid dimensions      :  2  2  2
  <---> [02.05] Energies & Occupations
  <---> [03] Transferred momenta grid and indexing
- <---> [WARNING] [BS] User bands 2-7 break level degeneracy
- <---> [WARNING] [BS] Bands redefined to be 1-8
  <---> [04] External/Internal QP corrections
  <---> E<08_gw_eq/ndb.QP[ PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8]
  <---> [dE_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
- <---> [04.01] FIT on E < 08_gw_eq/ndb.QP
  <---> [QP_apply] Action to be applied: E<08_gw_eq/ndb.QP[ PPA@E  27.21138 * XG 1 * Xb 1-8 * Scb 1-8]
- <---> [05.01]  QP corrections report
- <---> [05.02] External RT corrections (K)
+ <---> [04.01]  QP corrections report
+ <---> [04.02] External RT corrections (K)
  <---> [RT] Loaded Carrier components @ 0.000000 fs
  <---> [df_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
  <---> [WARNING] [f@ K] Metallic system
- <---> [06] Dipoles
+ <---> [05] Dipoles
  <---> [DIP] Database not correct or missing. To be computed
  <---> [x,Vnl] computed using 8 projectors
  <---> Dipoles: P, V and iR (T) |                                        | [000%] --(E) --(X)
  <---> Dipoles: P, V and iR (T) |########################################| [100%] --(E) --(X)
  <---> [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
  <---> [WARNING] In case H contains other non local terms, these are neglected
- <---> [07] Static Dielectric Matrix
+ <---> [06] Static Dielectric Matrix
  <---> [LA] SERIAL linear algebra
  <---> [FFT-X] Mesh size:  12  12  12
  <---> [X-CG] R(p) Tot o/o(of R):   17  128  100
@@ -55,30 +52,32 @@
  <---> Xo@q[3] |########################################| [100%] --(E) --(X)
  <---> X@q[3] |                                        | [000%] --(E) --(X)
  <---> X@q[3] |########################################| [100%] --(E) --(X)
- <---> [08] Bethe Salpeter Equation driver
- <---> [08.01] Bethe Salpeter Equation @q1
- <---> [08.01.01] Transition pre-analysis @q1
- <---> [08.01.02] Transition Groups build-up @q1
- <---> [BSK] Size (resonant):  198
- <---> [BSK]         (total):  198
+ <---> [07] Bethe Salpeter Equation driver
+ <---> [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+ <---> [07.01] Bethe Salpeter Equation @q1
+ <---> [07.01.01] Transition pre-analysis @q1
+ <---> [07.01.02] Transition Groups build-up @q1
+ <---> [BSK] Size (resonant):  100
+ <---> [BSK]         (total):  100
  <---> [BSK] N. of matrices :  1
- <---> [08.01.03] Loading Dipoles @q1
+ <---> [07.01.03] Loading Dipoles @q1
  <---> BSE dipoles |                                        | [000%] --(E) --(X)
  <---> BSE dipoles |########################################| [100%] --(E) --(X)
- <---> [08.01.04] Independent Particles properties @q1
+ <---> [07.01.04] Independent Particles properties @q1
  <---> [WARNING] The system is a metal but Drude term not included.
  <---> IP properties |                                        | [000%] --(E) --(X)
  <---> IP properties |########################################| [100%] --(E) --(X)
- <---> [08.01.05] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
- <---> [08.01.05.01] Screened interaction header I/O
+ <---> [07.01.05] BSE Kernel @q1 (Resonant CORRRELATION EXCHANGE)
+ <---> [07.01.05.01] Screened interaction header I/O
  <---> [FFT-BSK] Mesh size:  12  12  12
- <---> [08.01.05.02] Wave-Function Phases
- <---> [08.01.05.03] Main kernel loop
+ <---> [07.01.05.02] Wave-Function Phases
+ <---> [07.01.05.03] Main kernel loop
  <---> Kernel |                                        | [000%] --(E) --(X)
  <---> Kernel |########################################| [100%] --(E) --(X)
- <---> [08.01.06] BSE solver(s) @q1
+ <---> [07.01.06] BSE solver(s) @q1
  <---> [LA] SERIAL linear algebra
- <---> [08.01.07] Diago Solver @q1
+ <---> [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+ <---> [07.01.07] Diago Solver @q1
  <---> Folding BSE Kernel |                                        | [000%] --(E) --(X)
  <---> Folding BSE Kernel |########################################| [100%] --(E) --(X)
  <---> BSK diagonalize |                                        | [000%] --(E) --(X)
@@ -87,30 +86,26 @@
  <---> EPS R residuals |########################################| [100%] --(E) --(X)
  <---> BSK resp. funct |                                        | [000%] --(E) --(X)
  <---> BSK resp. funct |########################################| [100%] --(E) --(X)
- <---> [08.01.08] Haydock Solver in the optics basis @q1 using the hermitian scheme
+ <---> [WARNING] Anti-Resonant kernel but no coupling: EELs evaluation switched-off
+ <---> [07.01.08] Haydock Solver in the optics basis @q1 using the hermitian scheme
  <---> [Haydock] Iteration 1
  <---> [Haydock] Iteration 2
- <---> [Haydock] Iteration 3 Accuracy  44.23849| 0.020000
- <---> [Haydock] Iteration 4 Accuracy  27.33365| 0.020000
- <---> [Haydock] Iteration 5 Accuracy  75.84045| 0.020000
- <---> [Haydock] Iteration 6 Accuracy  4.289237| 0.020000
- <---> [Haydock] Iteration 7 Accuracy  2.786635| 0.020000
- <---> [Haydock] Iteration 8 Accuracy  80.44442| 0.020000
- <---> [Haydock] Iteration 9 Accuracy  4.152742| 0.020000
- <---> [Haydock] Iteration 10 Accuracy  2.180265| 0.020000
- <---> [Haydock] Iteration 11 Accuracy  0.514757| 0.020000
- <---> [Haydock] Iteration 12 Accuracy  0.509895| 0.020000
- <---> [Haydock] Iteration 13 Accuracy  2.710879| 0.020000
- <---> [Haydock] Iteration 14 Accuracy  1.032235| 0.020000
- <---> [Haydock] Iteration 15 Accuracy  0.801077| 0.020000
- <---> [Haydock] Iteration 16 Accuracy  0.887576| 0.020000
- <---> [Haydock] Iteration 17 Accuracy  0.320886| 0.020000
- <---> [Haydock] Iteration 18 Accuracy  0.560561| 0.020000
- <---> [Haydock] Iteration 19 Accuracy  0.139381| 0.020000
- <---> [Haydock] Iteration 20 Accuracy  0.487131| 0.020000
- <---> [Haydock] Iteration 21 Accuracy  0.490557| 0.020000
- <---> [Haydock] Iteration 22 Accuracy  0.005124| 0.020000
- <---> [Haydock] Iteration 23 Accuracy  0.352404E-3| 0.020000
- <---> [09] Timing Overview
- <---> [10] Memory Overview
- <---> [11] Game Over & Game summary
+ <---> [Haydock] Iteration 3 Accuracy  94.89625| 0.020000
+ <---> [Haydock] Iteration 4 Accuracy  38.99719| 0.020000
+ <---> [Haydock] Iteration 5 Accuracy  45.91133| 0.020000
+ <---> [Haydock] Iteration 6 Accuracy  13.31702| 0.020000
+ <---> [Haydock] Iteration 7 Accuracy  4.594738| 0.020000
+ <---> [Haydock] Iteration 8 Accuracy  3.280572| 0.020000
+ <---> [Haydock] Iteration 9 Accuracy  48.92599| 0.020000
+ <---> [Haydock] Iteration 10 Accuracy  0.546660| 0.020000
+ <---> [Haydock] Iteration 11 Accuracy  1.815691| 0.020000
+ <---> [Haydock] Iteration 12 Accuracy  14.40886| 0.020000
+ <---> [Haydock] Iteration 13 Accuracy  1.387202| 0.020000
+ <---> [Haydock] Iteration 14 Accuracy  1.618204| 0.020000
+ <---> [Haydock] Iteration 15 Accuracy  0.376642| 0.020000
+ <---> [Haydock] Iteration 16 Accuracy  0.113413| 0.020000
+ <---> [Haydock] Iteration 17 Accuracy  0.167977| 0.020000
+ <---> [Haydock] Iteration 18 Accuracy  0.003499| 0.020000
+ <---> [Haydock] Iteration 19 Accuracy  0.005208| 0.020000
+ <---> [08] Timing Overview
+ <---> [09] Game Over & Game summary

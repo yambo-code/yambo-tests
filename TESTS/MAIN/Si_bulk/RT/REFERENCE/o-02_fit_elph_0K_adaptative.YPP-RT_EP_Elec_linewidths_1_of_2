@@ -1,34 +1,43 @@
 #                                                                     
-# :   :::   :::     ::::    ::::  :::::::::   ::::::::                
-# :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+              
-#  +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+             
-#   +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+             
-#    +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+             
-#    #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#             
-#    ###  ###     ### ###       ### #########   ########              
+#  /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$               
+# |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$              
+#  \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$              
+#   \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$              
+#    \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$              
+#     | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$              
+#     | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/              
+#     |__/   |__/  |__/|__/     |__/|_______/  \______/               
 #                                                                     
-#                                                                     
-# Version 5.2.0 Revision 23355 Hash (prev commit) cc0e22c74           
-#                 Branch is yoda/advanced                             
-#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#                http://www.yambo-code.eu                             
+#      Version 4.5.0 Revision 18068 Hash 2b0c3aab2                    
+#                   Branch is develop                                 
+#                       MPI Build                                     
+#               http://www.yambo-code.org                             
 #
 #
-# [RT] Bands                                      :   1   8
+# [RT] Bands                                      :   2   7
 # [RT] K-points                                   :  3
 # [RT] Potential                                  : IP
 # [E-P] Electron-phonon                           : yes
-# [E-P] Iterative time evolution                  : no
+# [E-P] Completed Collision(CCA)                  : yes
 # [E-P] Branches                                  :   1   6
 # [E-P] GF`s Memory steps                         :  3
 # [E-E] Coulomb scattering                        : no
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
-# [RT] Time step     (initial)                    :  0.200000014E-1 [fs]
-# [RT] NE time       (planned)                    :   199.999985    [fs]
-# [RT] NE steps      (planned)                    :  10001
-# [RT] Lif Extr Inte/Intr(sav)                    :   1.50000012     0.500000060    [fs]
+# [RT] Time step (initial)                        :  0.200000014E-1 [fs]
+# [RT]           (now)                            :   1.28000009    [fs]
+# [RT] NE time (planned)                          :   199.999985    [fs]
+# [RT]         (done)                             :   199.560013    [fs]
+# [RT] Lifetimes Inter/Intra (user)               :   62.0120659      20.6706886    [fs]
+# [RT]                       (running)            :   158.750885      52.9169617    [fs]
+# [RT] I/O time                                   :   20.6706886    [fs]
+# [RT] NE steps (done)                            :  10001
 # [RT] Lifetimes extrapolation                    : no
+# [dT] Time-Dependent Time step                   : yes
+# [dT] Starting Time                              :   41.3413734    [fs]
+# [dT] Update interval                            :   124.024132    [fs]
+# [dT] Update interval tresh                      :   1.00000000    [o/o]
+# [dT] Max step in dynamics                       :   82.6827469    [fs]
 # [RT] Integrator                                 : EULER + RK2 + RWA
 # [RT] Radiative life time                        :   0.00000000    [fs]
 # [RT] Dephasing life time                        :   0.00000000    [fs]
@@ -37,20 +46,10 @@
 # [RT] Diamagnetic term                           : no
 # [RT] Induced field                              : no
 # [DbGd] Double Grid support                      : no
+# [DbGd] Number of k-points                       : 0
 # [DbGd] Used for e-e                             :   0.00000000    [o/o]
 # [CONSTRAINS] N (ee+ep) & dN (ep)                : yes
 # [CONSTRAINS] IP Energy      (ee)                : yes
-# [RT] Time step(now)                             :   1.28000009    [fs]
-# [RT] NE time(done)                              :   199.680008    [fs]
-# [RT] NE steps(done)                             :   9985 [fs]
-# [RT] Lif Extr Inte/Intr(now)                    :   3.84000015      1.28000009    [fs]
-# [dT] Time-Dependent Time step                   : yes
-# [dT] Starting Time                              :   1.00000000    [fs]
-# [dT] Update interval                            :   3.00000024    [fs]
-# [dT] Update interval tresh                      :   1.00000000    [o/o]
-# [dT] Max step in dynamics                       :   2.00000000    [fs]
-# [RT] I/O time          (input) [fs]             :  0.500000060   
-# [RT] I/O time            (now) [fs]             :   1.28000009   
 #
 #
 # [Gr] Retarded Green`s function                  : QP
@@ -61,59 +60,47 @@
 #
 #
 # [T= 3.0000] Time step                           :  0.400000028E-1 [fs]
-# [T= 3.0000] Update time                         :   3.00000024    [fs]
-# [T= 3.0000] I/O cache interval(J-P-M)           :  0.400000028E-1 [fs]
-# [T= 3.0000] I/O interval(J-P-M)                 :   2.00000024    [fs]
-# [T= 3.0000] I/O interval(Carr)                  :  0.520000041    [fs]
-# [T= 3.0000] I/O interval(OUT)                   :  0.520000041    [fs]
-# [T= 3.0000] I/O interval(GF)                    :  0.520000041    [fs]
+# [T= 3.0000] Update time                         :   3.12000036    [fs]
+# [T= 3.0000] I/O steps(J-P-C)                    :  0.520000041    [fs]
+# [T= 3.0000] I/O steps(OUT)                      :  0.520000041    [fs]
+# [T= 3.0000] I/O steps(GF)                       :  0.520000041    [fs]
 # [T= 3.0000] Life Inter-Intra                    :   1.56000018     0.520000041    [fs]
-# [T= 6.0000] Time step                           :  0.800000057E-1 [fs]
-# [T= 6.0000] Update time                         :   3.00000024    [fs]
-# [T= 6.0000] I/O cache interval(J-P-M)           :  0.800000057E-1 [fs]
-# [T= 6.0000] I/O interval(J-P-M)                 :   2.00000024    [fs]
-# [T= 6.0000] I/O interval(Carr)                  :  0.560000002    [fs]
-# [T= 6.0000] I/O interval(OUT)                   :  0.560000002    [fs]
-# [T= 6.0000] I/O interval(GF)                    :  0.560000002    [fs]
-# [T= 6.0000] Life Inter-Intra                    :   1.68000007     0.560000002    [fs]
-# [T= 12.000] Time step                           :  0.160000011    [fs]
-# [T= 12.000] Update time                         :   3.00000024    [fs]
-# [T= 12.000] I/O cache interval(J-P-M)           :  0.160000011    [fs]
-# [T= 12.000] I/O interval(J-P-M)                 :   2.08000016    [fs]
-# [T= 12.000] I/O interval(Carr)                  :  0.640000045    [fs]
-# [T= 12.000] I/O interval(OUT)                   :  0.640000045    [fs]
-# [T= 12.000] I/O interval(GF)                    :  0.640000045    [fs]
-# [T= 12.000] Life Inter-Intra                    :   1.92000008     0.640000045    [fs]
-# [T= 24.000] Time step                           :  0.320000023    [fs]
-# [T= 24.000] Update time                         :   3.00000024    [fs]
-# [T= 24.000] I/O cache interval(J-P-M)           :  0.320000023    [fs]
-# [T= 24.000] I/O interval(J-P-M)                 :   2.24000001    [fs]
-# [T= 24.000] I/O interval(Carr)                  :  0.640000045    [fs]
-# [T= 24.000] I/O interval(OUT)                   :  0.640000045    [fs]
-# [T= 24.000] I/O interval(GF)                    :  0.640000045    [fs]
-# [T= 24.000] Life Inter-Intra                    :   1.92000008     0.640000045    [fs]
-# [T= 48.000] Time step                           :  0.640000045    [fs]
-# [T= 48.000] Update time                         :   3.00000024    [fs]
-# [T= 48.000] I/O cache interval(J-P-M)           :  0.640000045    [fs]
-# [T= 48.000] I/O interval(J-P-M)                 :   2.56000018    [fs]
-# [T= 48.000] I/O interval(Carr)                  :  0.640000045    [fs]
-# [T= 48.000] I/O interval(OUT)                   :  0.640000045    [fs]
-# [T= 48.000] I/O interval(GF)                    :  0.640000045    [fs]
-# [T= 48.000] Life Inter-Intra                    :   1.92000008     0.640000045    [fs]
-# [T= 96.000] Time step                           :   1.28000009    [fs]
-# [T= 96.000] Update time                         :   3.00000024    [fs]
-# [T= 96.000] I/O cache interval(J-P-M)           :   1.28000009    [fs]
-# [T= 96.000] I/O interval(J-P-M)                 :   2.56000018    [fs]
-# [T= 96.000] I/O interval(Carr)                  :   1.28000009    [fs]
-# [T= 96.000] I/O interval(OUT)                   :   1.28000009    [fs]
-# [T= 96.000] I/O interval(GF)                    :   1.28000009    [fs]
-# [T= 96.000] Life Inter-Intra                    :   3.84000015      1.28000009    [fs]
+# [T= 6.1200] Time step                           :  0.800000057E-1 [fs]
+# [T= 6.1200] Update time                         :   3.36000013    [fs]
+# [T= 6.1200] I/O steps(J-P-C)                    :  0.560000002    [fs]
+# [T= 6.1200] I/O steps(OUT)                      :  0.560000002    [fs]
+# [T= 6.1200] I/O steps(GF)                       :  0.560000002    [fs]
+# [T= 6.1200] Life Inter-Intra                    :   1.68000007     0.560000002    [fs]
+# [T= 9.4800] Time step                           :  0.160000011    [fs]
+# [T= 9.4800] Update time                         :   3.20000005    [fs]
+# [T= 9.4800] I/O steps(J-P-C)                    :  0.640000045    [fs]
+# [T= 9.4800] I/O steps(OUT)                      :  0.640000045    [fs]
+# [T= 9.4800] I/O steps(GF)                       :  0.640000045    [fs]
+# [T= 9.4800] Life Inter-Intra                    :   1.92000008     0.640000045    [fs]
+# [T= 12.680] Time step                           :  0.320000023    [fs]
+# [T= 12.680] Update time                         :   3.20000005    [fs]
+# [T= 12.680] I/O steps(J-P-C)                    :  0.640000045    [fs]
+# [T= 12.680] I/O steps(OUT)                      :  0.640000045    [fs]
+# [T= 12.680] I/O steps(GF)                       :  0.640000045    [fs]
+# [T= 12.680] Life Inter-Intra                    :   1.92000008     0.640000045    [fs]
+# [T= 15.880] Time step                           :  0.640000045    [fs]
+# [T= 15.880] Update time                         :   3.20000005    [fs]
+# [T= 15.880] I/O steps(J-P-C)                    :  0.640000045    [fs]
+# [T= 15.880] I/O steps(OUT)                      :  0.640000045    [fs]
+# [T= 15.880] I/O steps(GF)                       :  0.640000045    [fs]
+# [T= 15.880] Life Inter-Intra                    :   1.92000008     0.640000045    [fs]
+# [T= 19.080] Time step                           :   1.28000009    [fs]
+# [T= 19.080] Update time                         :   3.84000015    [fs]
+# [T= 19.080] I/O steps(J-P-C)                    :   1.28000009    [fs]
+# [T= 19.080] I/O steps(OUT)                      :   1.28000009    [fs]
+# [T= 19.080] I/O steps(GF)                       :   1.28000009    [fs]
+# [T= 19.080] Life Inter-Intra                    :   3.84000015      1.28000009    [fs]
 #
 #
 # Lifetimes distribution [meV] at different times
 #
 #    #1                 #2                 #3                 #4                 #5                 #6                 #7                 #8                 #9
-#   E [eV]             @ 0.00000          @ 5.08000          @ 10.4800          @ 15.8400          @ 20.9600          @ 25.9200          @ 31.0400          @ 36.1600
+#   E [eV]             @ 0.50000          @ 5.08000          @ 10.1200          @ 15.2400          @ 20.3600          @ 25.4800          @ 30.6000          @ 35.7200
 #
     -7.89573145         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000   
     -7.20042992         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000   
@@ -121,35 +108,35 @@
     -3.01058745         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000   
     -1.26205385         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000   
     -1.26205385         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000         0.00000000   
-     0.00000000         40.6256409         40.6256447         40.6256371         40.6256371         40.6256218         40.6256409         40.6256447         40.6256371   
-     0.00000000         40.6256409         40.6256447         40.6256371         40.6256371         40.6256218         40.6256409         40.6256447         40.6256371   
-     0.00000000         40.6256409         40.6256447         40.6256371         40.6256371         40.6256218         40.6256409         40.6256447         40.6256371   
-    0.437631011         10.8022089         10.6229773         10.4265451         10.2260380         10.0317278         9.84271145         9.64792156         9.45403099   
-    0.437639922         21.6044369         21.2591419         20.9071217         20.5700588         20.2602749         19.9719296         19.6860237         19.4111061   
-     1.51905835         6.27928209         6.16557932         6.05268764         5.94740057         5.85279179         5.76640940         5.68225765         5.60269880   
-     2.44086790         9.73123264         10.9521618         12.1305733         13.1973667         14.1305485         14.9623775         15.7542887         16.4859638   
-     2.44086790         9.73123264         10.9521618         12.1305733         13.1973667         14.1305485         14.9623775         15.7542887         16.4859638   
-     2.44086790         9.73123264         10.9521618         12.1305733         13.1973667         14.1305485         14.9623775         15.7542887         16.4859638   
-     3.18587971         63.1271858         63.8805084         64.6056061         65.2600708         65.8309937         66.3386612         66.8207626         67.2650375   
-     3.18587971         63.1271858         63.8805084         64.6056061         65.2600708         65.8309937         66.3386612         66.8207626         67.2650375   
-     10.1580734         16.8011494         16.8034191         16.8056126         16.8076096         16.8093586         16.8109360         16.8124390         16.8138275   
+     0.00000000         40.6255646         40.6256447         40.6256447         40.6256447         40.6256599         40.6256256         40.6256409         40.6256256   
+     0.00000000         40.6255646         40.6256447         40.6256447         40.6256447         40.6256599         40.6256256         40.6256409         40.6256256   
+     0.00000000         40.6255646         40.6256447         40.6256447         40.6256447         40.6256599         40.6256256         40.6256409         40.6256256   
+    0.437631011         10.7848539         10.6229773         10.4393816         10.2479897         10.0557575         9.86386490         9.67177486         9.48036098   
+    0.437639922         21.5698013         21.2591419         20.9295025         20.6061535         20.2977886         20.0035229         19.7203979         19.4479218   
+     1.51905835         6.26773739         6.16557932         6.05982828         5.95862913         5.86402559         5.77539635         5.69170189         5.61253834   
+     2.44086790         9.85667038         10.9521618         12.0564613         13.0841599         14.0224648         14.8816967         15.6738234         16.4058228   
+     2.44086790         9.85667038         10.9521618         12.0564613         13.0841599         14.0224648         14.8816967         15.6738234         16.4058228   
+     2.44086790         9.85667038         10.9521618         12.0564613         13.0841599         14.0224648         14.8816967         15.6738234         16.4058228   
+     3.18587971         63.2045593         63.8805084         64.5600281         65.1906586         65.7651138         66.2897873         66.7723312         67.2170563   
+     3.18587971         63.2045593         63.8805084         64.5600281         65.1906586         65.7651138         66.2897873         66.7723312         67.2170563   
+     10.1580734         5.74548864         5.74390793         5.74248648         5.74135065         5.74046135         5.73977280         5.73927736         5.73893642   
 # 
-# 10/18/2024 at 12:06 ypp_rt @ baym [start]
-# 10/18/2024 at 12:06               [end]
+# 04/07/2020 at 10:09 ypp_rt @ marini-Galago-UltraPro [start]
+# 04/07/2020 at 10:09                                 [end]
 #
 # .-Input file  yambo.in
-# | RealTime                         # [R] TD Post-Processing
-# | RToccupations                    # [R] Analize time-dependent occupations
-# | RTenergy                         # [R] Post-Processing kind: function of energy
-# | TimeStep= 5.120003         fs    # Time step
+# | RealTime                       # [R] TD Post-Processing
+# | RToccupations                  # [R] Analize time-dependent occupations
+# | RTenergy                       # [R] Post-Processing kind: function of energy
+# | TimeStep= 5.120003     fs      # Time step
 # | % TimeRange
-# |   0.00000 | 49.92000 |         fs    # Time-window where processing is done
+# |   0.50000 | 49.80000 | fs      # Time-window where processing is done
 # | %
 # | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
 # | #SkipFermiFIT                  # [NEGF] Do a Fermi Fit of occupations (and lifetimes ratio)
-# | %QPkrange                        #  generalized Kpoint/Band indices
+# | %QPkrange                      #  generalized Kpoint/Band indices
 # | 1|3|2|7|
 # | %
-# | %QPerange                        #  generalized Kpoint/Energy indices
+# | %QPerange                      #  generalized Kpoint/Energy indices
 # | 1|3| 0.000000|-1.000000|
 # | %

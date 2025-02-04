@@ -8,12 +8,12 @@
          \__\/   \__\/\__\/ \__\/ \__\/ \_______\/ \_____\/               
                                                                           
                                                                           
-    Version 5.2.0 Revision 23129 Hash (prev commit) 3a51862bc             
-               Branch is phys-levels_degeneracy                           
-                       MPI+HDF5_IO Build                                  
-                   http://www.yambo-code.eu                               
+    Version 5.1.0 Revision 22214 Hash (prev commit) aa5047c1f             
+                      Branch is bug-fixes                                 
+            MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
+                   http://www.yambo-code.org                              
  
- 09/17/2024 at 14:08 ypp_rt @ baym
+ 07/15/2023 at 00:48 ypp_rt @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -32,9 +32,9 @@
  Log files           : ./LOG
 
  Job   string        : 10_bse_10fs_Ronly_ypp
- Alt#1 string        : 09_bse_eq-serial-phys-levels_degeneracy
- Alt#2 string        : 02_carriers_Fermi_DB-serial-phys-levels_degeneracy
- Alt#3 string        : R17
+ Alt#1 string        : 09_bse_eq-serial-bug-fixes
+ Alt#2 string        : 02_carriers_Fermi_DB-serial-bug-fixes
+ Alt#3 string        : R1
 
  Precision           : SINGLE
   
@@ -143,18 +143,18 @@
   Grid dimensions      :  2  2  2
   K lattice UC volume  :  0.117458 [a.u.]
 
-  IBZ K-points                                      :  3
-  BZ  K-points                                      :   8
+  IBZ K-points :  3
+  BZ  K-points :   8
 
   K/Q-points units:
   rlu = crystal or reduced units; cc = cartesian coordinates; iku = interal k-units
 
-  K [1]          [rlu]:  0.000000  0.000000  0.000000
-         WF components:  259
-  K [2]          [rlu]:  0.000000  0.000000 -0.500000
-         WF components:  266
-  K [3]          [rlu]:  0.000000 -0.500000 -0.500000
-         WF components:  254
+  K [1]:  0.000000  0.000000  0.000000 [rlu]
+        : wf components:  259
+  K [2]:  0.000000  0.000000 -0.500000 [rlu]
+        : wf components:  266
+  K [3]:  0.000000 -0.500000 -0.500000 [rlu]
+        : wf components:  254
 
   [05.05] Energies & Occupations
   ==============================
@@ -199,20 +199,20 @@
  [07] Excitonic Properties @ Q-index #1
  ======================================
 
- [RD./09_bse_eq-serial-phys-levels_degeneracy//ndb.BS_diago_Q1]------------------
+ [RD./09_bse_eq-serial-bug-fixes//ndb.BS_diago_Q1]-------------------------------
   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-  [K] Identifier                                   :   9870
-  [K] Dimension                                    :  128
-  [K] Bands                                        :   1   8
-  [K] Exchange                                     : yes [res]
-  [K] Correlation                                  : yes [res]
+  [K] Identifier                                   :   9562
+  [K] Dimension                                    :   72
+  [K] Bands                                        :   2   7
+  [K] Exchange res                                 : yes
+  [K] Correlation res                              : yes
   [K] Kernel`s coupling                            : no
-  [K] Exchange                                     : no [cpl]
-  [K] Correlation                                  : no [cpl]
+  [K] Exchange cpl                                 : no
+  [K] Correlation cpl                              : no
   [K] W interaction is bare                        : no
   [K] ALDA kernel in R-space                       : no
-  [K] RL vectors                                   :   531 [exchange]
-  [K] RL vectors                                   :   59 [correlation]
+  [K] RL vectors exchange                          :   531
+  [K] RL vectors correlation                       :   59
   [K] E/h energy range                             : -1.000000 -1.000000 [eV]
   [K] Coupling range                               :  100.0000  100.0000 [o/o]
   [W] Interaction is diagonal                      : no
@@ -221,19 +221,21 @@
   [W] e/h energy range                             : -1.000000 -1.000000 [eV]
   [W] Poles                                        :  100.0000 [o/o]
   [W] RL vectors in the sum                        :   387
-  [W] [r,Vnl] included                             : yes
+  *WRN*[W] [r,Vnl] included                        : no
+  [W] Longitudinal Gauge                           : no
   [W] Field direction                              :  0.100000E-4   0.00000      0.00000   
   [W] Coulomb Cutoff                               : none
   [W] Hxc Kernel                                   : HARTREE
-  [RIM] RL components                              : 0 [col]
-  [RIM] Random points                              : 0 [col]
+  [RIM] RL components col                          : 0
+  [RIM] Random points col                          : 0
   [SOC] Perturbative SOC                           : no
-  [K] Kernel long-range exchange                   : BAR
+  [IO] Kernel IO mode                              : 2D_standard
+  [X] Response Kind                                : BAR
   [BSS] Eigenstates included                       : yes
   [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
-  [BSS] Eigenstates computed                       :  128
+  [BSS] Eigenstates computed                       :   72
   [BSS] Number of BSE matrices                     :  1
- - S/N 003129 ---------------------------------------------- v.05.02.00 r.23129 -
+ - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
 
   [07.01] Transient Optical Properties
   ====================================
@@ -242,7 +244,7 @@
   [WARNING] Empty workload for CPU 1
 
   [WARNING] No off-diagonal components => Kerr switched-off
-  [RD./09_bse_eq-serial-phys-levels_degeneracy//ndb.dipoles]----------------------
+  [RD./09_bse_eq-serial-bug-fixes//ndb.dipoles]-----------------------------------
    Brillouin Zone Q/K grids (IBZ/BZ)                :   3   8   3   8
    *WRN*RL vectors                                  :   387 [WF]
    Fragmentation                                    : yes
@@ -258,7 +260,7 @@
    Approach used                                    : G-space v
    Dipoles computed                                 : R V P
    Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-  - S/N 003129 ---------------------------------------------- v.05.02.00 r.23129 -
+  - S/N 003129 ---------------------------------------------- v.05.01.00 r.22214 -
 
   [df_from_DB-Nearest K] Exact matches       :  100.0000 [o/o]
 
@@ -266,13 +268,11 @@
   ==========================
 
   [f@YPP] Reference Time                :  0.000000 [fs]
-  [f@YPP] Bands range                   :   1   8
+  [f@YPP] Bands range                   :   2   7
   [f@YPP] Maximum occupations change    :  2.000000
   [f@YPP] N of carriers                 :  1.500895
-  [f@YPP] Full and metallic bands       :   0   8
+  [f@YPP] Full and metallic bands       :   1   7
 
-
-  [WARNING] No empty bands found. Include more states in the DFT run?
   [f@YPP] === General ===
   [f@YPP] Electronic Temperature                    :  0.000000  0.000000 [eV K]
   [f@YPP] Bosonic    Temperature                    :  0.861734E-4   1.00000    [eV K]
@@ -309,30 +309,20 @@
       IO_and_Messaging_switch :      0.0000s CPU (4 calls,   0.002 msec avg)
                    io_COL_CUT :      0.0000s CPU
              RT output (INIT) :      0.0000s CPU
-               io_Double_Grid :      0.0001s CPU (2 calls,   0.042 msec avg)
-                  io_KB_pwscf :      0.0001s CPU
-                        io_WF :      0.0008s CPU
-                  io_fragment :      0.0008s CPU (3 calls,   0.264 msec avg)
-                     io_QINDX :      0.0012s CPU
-                      io_GROT :      0.0023s CPU (3 calls,   0.774 msec avg)
-                 io_BSS_diago :      0.0037s CPU (4 calls,   0.913 msec avg)
-                   io_DIPOLES :      0.0038s CPU (5 calls,   0.770 msec avg)
-             io_RT_components :      0.0098s CPU (7 calls,   1.407 msec avg)
+               io_Double_Grid :      0.0001s CPU (2 calls,   0.039 msec avg)
+                  io_KB_pwscf :      0.0002s CPU
+                        io_WF :      0.0010s CPU
+                     io_QINDX :      0.0016s CPU
+                      io_GROT :      0.0038s CPU (3 calls,   1.262 msec avg)
+                   io_DIPOLES :      0.0042s CPU (7 calls,   0.603 msec avg)
+                 io_BSS_diago :      0.0098s CPU (4 calls,   2.449 msec avg)
+             io_RT_components :      0.0160s CPU (7 calls,   2.282 msec avg)
 
- [09] Memory Overview
- ====================
-
- Memory Usage: global (Only MASTER cpu here). [O] stands for group 'O'
- Memory treshold are: 51.20000 [Mb] (basic treshold)  512.0000 [Mb] (SAVEs treshold)
-
-
-         Max memory used   :  513.0000 [Kb]
-
- [10] Game Over & Game summary
+ [09] Game Over & Game summary
  =============================
 
- 09/17/2024 at 14:08 ypp_rt @ baym [start]
- 09/17/2024 at 14:08               [end]
+ 07/15/2023 at 00:48 ypp_rt @ unimi-XPS-8930 [start]
+ 07/15/2023 at 00:48                         [end]
 
   
  .-ACKNOWLEDGMENT

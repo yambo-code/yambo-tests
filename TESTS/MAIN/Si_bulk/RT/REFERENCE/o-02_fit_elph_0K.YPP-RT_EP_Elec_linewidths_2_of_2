@@ -8,27 +8,32 @@
 #    ###  ###     ### ###       ### #########   ########              
 #                                                                     
 #                                                                     
-# Version 5.2.0 Revision 23355 Hash (prev commit) cc0e22c74           
-#                 Branch is yoda/advanced                             
-#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
-#                http://www.yambo-code.eu                             
+#       Version 4.5.0 Revision 18068 Hash 2b0c3aab2                   
+#                    Branch is develop                                
+#                        MPI Build                                    
+#                http://www.yambo-code.org                            
 #
 #
-# [RT] Bands                                      :   1   8
+# [RT] Bands                                      :   2   7
 # [RT] K-points                                   :  3
 # [RT] Potential                                  : IP
 # [E-P] Electron-phonon                           : yes
-# [E-P] Iterative time evolution                  : no
+# [E-P] Completed Collision(CCA)                  : yes
 # [E-P] Branches                                  :   1   6
 # [E-P] GF`s Memory steps                         :  2
 # [E-E] Coulomb scattering                        : no
 # [E-E] Coulomb correlation                       : no
 # [E-PHOTON] Scattering                           : no
-# [RT] Time step     (initial)                    :  0.200000014E-1 [fs]
-# [RT] NE time       (planned)                    :   199.999985    [fs]
-# [RT] NE steps      (planned)                    :  10001
-# [RT] Lif Extr Inte/Intr(sav)                    :   1.50000012     0.500000060    [fs]
+# [RT] Time step (initial)                        :  0.200000014E-1 [fs]
+# [RT]           (now)                            :  0.200000014E-1 [fs]
+# [RT] NE time (planned)                          :   199.999985    [fs]
+# [RT]         (done)                             :   200.000015    [fs]
+# [RT] Lifetimes Inter/Intra (user)               :   62.0120659      20.6706886    [fs]
+# [RT]                       (running)            :   62.0120659      20.6706886    [fs]
+# [RT] I/O time                                   :   20.6706886    [fs]
+# [RT] NE steps (done)                            :  10001
 # [RT] Lifetimes extrapolation                    : no
+# [dT] Time-Dependent Time step                   : no
 # [RT] Integrator                                 : EULER + RK2 + RWA
 # [RT] Radiative life time                        :   0.00000000    [fs]
 # [RT] Dephasing life time                        :   0.00000000    [fs]
@@ -37,16 +42,10 @@
 # [RT] Diamagnetic term                           : no
 # [RT] Induced field                              : no
 # [DbGd] Double Grid support                      : no
+# [DbGd] Number of k-points                       : 0
 # [DbGd] Used for e-e                             :   0.00000000    [o/o]
 # [CONSTRAINS] N (ee+ep) & dN (ep)                : yes
 # [CONSTRAINS] IP Energy      (ee)                : yes
-# [RT] Time step(now)                             :  0.200000014E-1 [fs]
-# [RT] NE time(done)                              :   200.000015    [fs]
-# [RT] NE steps(done)                             :  10001 [fs]
-# [RT] Lif Extr Inte/Intr(now)                    :   1.50000012     0.500000060    [fs]
-# [dT] Time-Dependent Time step                   : no
-# [RT] I/O time          (input) [fs]             :  0.500000060   
-# [RT] I/O time            (now) [fs]             :  0.500000060   
 #
 #
 # [Gr] Retarded Green`s function                  : QP
@@ -78,24 +77,24 @@
      2.44086790         16.9926777         17.6179543         18.1998043   
      3.18587971         67.5722580         67.9502945         68.3012238   
      3.18587971         67.5722580         67.9502945         68.3012238   
-     10.1580734         16.8147907         16.8159866         16.8171062   
+     10.1580734         5.73881340         5.73872185         5.73872948   
 # 
-# 10/18/2024 at 12:06 ypp_rt @ baym [start]
-# 10/18/2024 at 12:06               [end]
+# 04/07/2020 at 10:09 ypp_rt @ marini-Galago-UltraPro [start]
+# 04/07/2020 at 10:09                                 [end]
 #
 # .-Input file  yambo.in
-# | RealTime                         # [R] TD Post-Processing
-# | RToccupations                    # [R] Analize time-dependent occupations
-# | RTenergy                         # [R] Post-Processing kind: function of energy
-# | TimeStep= 5.000051         fs    # Time step
+# | RealTime                       # [R] TD Post-Processing
+# | RToccupations                  # [R] Analize time-dependent occupations
+# | RTenergy                       # [R] Post-Processing kind: function of energy
+# | TimeStep= 5.000051     fs      # Time step
 # | % TimeRange
-# |   0.00000 | 50.00000 |         fs    # Time-window where processing is done
+# |   0.00000 | 50.00000 | fs      # Time-window where processing is done
 # | %
 # | #IncludeEQocc                  # [NEGF] Include also equilibrium occupations
 # | #SkipFermiFIT                  # [NEGF] Do a Fermi Fit of occupations (and lifetimes ratio)
-# | %QPkrange                        #  generalized Kpoint/Band indices
+# | %QPkrange                      #  generalized Kpoint/Band indices
 # | 1|3|2|7|
 # | %
-# | %QPerange                        #  generalized Kpoint/Energy indices
+# | %QPerange                      #  generalized Kpoint/Energy indices
 # | 1|3| 0.000000|-1.000000|
 # | %
