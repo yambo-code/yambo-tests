@@ -55,12 +55,10 @@ if [ ! -z $user_ID ] && [ ! -d test.$user_ID ] ; then mkdir test.$user_ID; fi
 #
 for test in test.* ; do
  ID=`echo $test | sed s/test.//`
- PID=`pgrep -f $robot.$ID`
+ PID=`pgrep -f "usr/bin/tcsh ./scripts/continuous_testing.tcsh -r $robot.$ID"`
  if  [ ! -z $user_ID ] ; then
    if [ ! $user_ID == $ID ]; then  continue; fi
  fi
-echo $
-exit 
  #
  # Update 
  #
