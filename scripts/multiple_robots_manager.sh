@@ -59,6 +59,8 @@ for test in test.* ; do
  if  [ ! -z $user_ID ] ; then
    if [ ! $user_ID == $ID ]; then  continue; fi
  fi
+echo $
+exit 
  #
  # Update 
  #
