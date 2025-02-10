@@ -42,6 +42,7 @@ my $path="$dir/$input_folder";
 LOOP: foreach $test ( <$path/*> ) { 
  if (index($test, ".conf")>0) {next LOOP};
  if (index($test, ".actions")>0) {next LOOP};
+ if (index($test, ".yambopy")>0) {next LOOP};
  if (index($test, ".input")>0) {next LOOP};
  if (index($test, ".flags")>0) {next LOOP};
  if (index($test, ".Double_Grid_MAP")>0) {next LOOP};
