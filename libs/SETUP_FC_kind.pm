@@ -66,6 +66,13 @@ $CUDA_support="no";
 while(<REPORT_file>) {
  if($_ =~ /CUDA/ && $_ =~ /X/) {$CUDA_support="yes"}
 };
+#
+#GAMMA_ONLY mode
+open(REPORT_file,"<","$comp_folder/config/report");
+$GAMMA_ONLY_support="no";
+while(<REPORT_file>) {
+ if($_ =~ /GAMMA_ONLY/ && $_ =~ /X/) {$GAMMA_ONLY_support="yes"}
+};
 close(REPORT_file);
 }
 1;
