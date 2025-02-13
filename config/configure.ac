@@ -151,7 +151,7 @@ case $with_yambo in
    if test -f ROBOTS/$robot/$user/BRANCHES; then
      GREP=`grep $with_yambo ROBOTS/$robot/$user/BRANCHES |wc -l`
      if test x"$GREP" = "x0"; then 
-      if test -f $with_yambo/yambo_def/yambo.F ; then
+      if test -f $with_yambo/yambo_main/yambo.F ; then
         AC_MSG_RESULT($with_yambo)
         echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
       else
@@ -161,7 +161,7 @@ case $with_yambo in
       AC_MSG_RESULT($with_yambo already in the BRANCHES file)
      fi
    else
-     if test -f $with_yambo/yambo_def/yambo.F ; then
+     if test -f $with_yambo/yambo_main/yambo.F ; then
        AC_MSG_RESULT($with_yambo)
        echo "$with_yambo any" >> ROBOTS/$robot/$user/BRANCHES
      else
