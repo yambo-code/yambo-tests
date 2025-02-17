@@ -54,7 +54,7 @@ if($branchdir =~ /^#/ || $branchdir eq "") {
 if( ! -f "$BRANCH/driver/yambo.F")  { &MY_PRINT($stdout, "ERROR: cannot find $branchdir, skipping!\n"); return "FAIL"; };
 #
 my $pattern;
-if ($branch_id eq "") 
+if ($branch_id eq "" or $branch_id eq "any") 
 {
  chdir $BRANCH;
  $branch_key= qx(git rev-parse --abbrev-ref HEAD);
@@ -85,6 +85,8 @@ if ((split(/ /, $git_origin))[3] eq "yambo-devel")
  $GIT_repo_kind="GPL";
  $is_GPL="yes";
 }
+if ($is_GPL) {$GIT_repo_kind="GPL"} ; # USER provided
+#
 chdir $suite_dir;
 #
 # branch and branch_key (to be used in reports/actions)
