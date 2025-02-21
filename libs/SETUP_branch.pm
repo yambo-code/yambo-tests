@@ -51,7 +51,7 @@ if($branchdir =~ /^#/ || $branchdir eq "") {
  &MY_PRINT($stdout, "Skipping branch: $branchdir\n") if ($verb);
  return "FAIL";
 }
-if( ! -f "$BRANCH/driver/yambo.F")  { &MY_PRINT($stdout, "ERROR: cannot find $branchdir, skipping!\n"); return "FAIL"; };
+if( ! -f "$BRANCH/driver/yambo.F" and ! -f "$BRANCH/driver/driver.c" )  { &MY_PRINT($stdout, "ERROR: cannot find $branchdir, skipping!\n"); return "FAIL"; };
 #
 my $pattern;
 if ($branch_id eq "" or $branch_id eq "any") 
@@ -106,7 +106,6 @@ $is_NEW_driver="yes";
 undef $is_OLD_makeinterfcs;
 if ($pattern=~m/3.4/ix)  {$is_OLD_makeinterfcs="yes"};
 if ($pattern=~m/4.0/ix)  {$is_OLD_makeinterfcs="yes"};
-if ($is_OLD_makeinterfcs){$target_list_basic = "yambo ypp interfaces ";}
 #
 $is_NEW_DBGD="v3";
 if ($pattern=~m/5.0/ix){$is_NEW_DBGD="v2"};
@@ -157,16 +156,33 @@ if ($pattern=~m/4.1/ix)   {undef $do_A2Y_tests; undef $PAR_covariant;};
 if ($pattern=~m/4.0/ix)   {undef $do_A2Y_tests; undef $PAR_covariant;};
 if ($pattern=~m/3.4/ix)   {undef $do_A2Y_tests; undef $PAR_covariant;};
 #
-# Define list of required executables
+# Fine the active projects and the corresponding list of executables
+#
+if ($is_OLD_makeinterfcs){$target_list_basic = "yambo ypp interfaces ";}
 $target_list = $target_list_basic; 
 $exec_list   = $exec_list_basic;
-#
-# If project = all or user-selected 
-if ($project =~ /magnetic/ or $project =~ /sc/ or  $project eq "all") { $target_list .= $exec_sc; $exec_list  .= $exec_sc};
-if ($project =~ /rt/ or $project eq "all")       { $target_list .= $exec_rt; $exec_list  .= $exec_rt};
-if ($project =~ /elph/ or $project eq "all")     { $target_list .= $exec_elph; $exec_list  .= $exec_elph};
-if ($project =~ /phel/ or $project eq "all")     { $target_list .= $exec_phel; $exec_list  .= $exec_phel};
-if (($project =~ /nl/ or $project eq "all" ) and $do_NL_tests ) { $target_list .= $exec_nl; $exec_list  .= $exec_nl};
+&MY_PRINT($stdout, "\n -      Projects check: ");
+chdir $branchdir;
+my @PJmk="";
+if ( -d "./projects" ) {
+ find( sub { push @PJmk, $File::Find::name if /targets.mk/ }, ("projects") );
+ for $tar (@PJmk){
+  $PJ = (split /\//,$tar)[1];
+  &MY_PRINT($stdout,$PJ." ");
+  open (TF, "<","$tar");
+  while(<TF>) {
+   if ( $_ =~ /_PROJ/ and not $_ =~ /ALL/ ) { 
+    $list = (split( /=/,$_))[1];
+    chomp($list);
+    $target_list .= $list; 
+   }
+  }
+  close(TF);
+ }
+}
+chdir $suite_dir;
+&MY_PRINT($stdout, "\n -         Executables: $target_list\n");
+$exec_list=$target_list;
 #
 return "OK";
 }

@@ -112,7 +112,7 @@ if (&RUN_feature("RealTime") eq "1" or &RUN_feature("RT_X") eq "1" or &RUN_featu
 if (&RUN_feature("TDplots") eq "1") {$YPP_RT=1}
 if ($YPP_RT eq "1") { $description .= " post-processing rt" };
 #
-if (&RUN_feature("ypp_sc") eq "1" ) {$YPP_SC=1}
+if (&RUN_feature("ypp_sc") eq "1" ) {$YPP_SC=1};
 if ($YPP_SC eq "1") { $description .= " sc" };
 #
 if (&RUN_feature("gkkp") eq "1" and &RUN_feature("el_ph_corr") ne "1") {$YPP_PH=1}
@@ -123,5 +123,6 @@ if ($YPP_PH eq "1") { $description .= " post-processing ph" };
 $YPP_NL=&RUN_feature("nonlinear");
 if ($YPP_NL eq "1") { $description .= " post-processing nl" };
 #
+if ($YPP_SC eq "1" or $YPP_PH eq "1") {$YPP=1};
 }
 1;

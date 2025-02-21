@@ -46,8 +46,6 @@ if (-e "RT") {
  undef $yambo_running;
  if ($YPP_RT=="1" or $YPP=="1") 
   {$yambo_exec = "$conf_bin/ypp_rt"}
- elsif ($YPP_SC=="1" or $YPP=="1") 
-  {$yambo_exec = "$conf_bin/ypp_sc"}
  else
   {$yambo_exec = "$conf_bin/yambo_rt";
    $yambo_running=1}
@@ -70,30 +68,6 @@ if (-e "NL") {
   {$yambo_exec = "$conf_bin/ypp_nl"}
  else
   {$yambo_exec = "$conf_bin/yambo_nl";
-   $yambo_running=1}
-}
-if (-e "ELPH") {
- undef $yambo_running;
- if ($YPP_PH=="1" or $YPP=="1") 
-  {$yambo_exec = "$conf_bin/ypp_ph"}
- else
-  {$yambo_exec = "$conf_bin/yambo_ph";
-   $yambo_running=1}
-}
-if (-e "SC") {
- undef $yambo_running;
- if ($YPP_SC=="1" or $YPP=="1") 
-  {$yambo_exec = "$conf_bin/ypp_sc"}
- else
-  {$yambo_exec = "$conf_bin/yambo_sc";
-   $yambo_running=1}
-}
-if (-e "MAGNETIC") {
- undef $yambo_running;
- if ($YPP_MAGNETIC=="1" or $YPP=="1") 
-  {$yambo_exec = "$conf_bin/ypp_sc"}
- else
-  {$yambo_exec = "$conf_bin/yambo_sc";
    $yambo_running=1}
 }
 if ($CHEERS =="1") {

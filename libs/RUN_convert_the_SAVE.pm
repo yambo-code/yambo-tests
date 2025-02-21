@@ -53,8 +53,6 @@ sub RUN_convert_the_SAVE{
  $YPP_local="$nice $conf_bin/ypp $ypp_extension";
  if(-e "$conf_bin/yambo_rt") { $YAMBO_local="$nice $conf_bin/yambo_rt"; }
  if(-e "$conf_bin/ypp_rt")   { $YPP_local="$nice $conf_bin/ypp_rt $ypp_extension"; }
- if(-e "$conf_bin/yambo_ph") { $YAMBO_local="$nice $conf_bin/yambo_ph"; }
- if(-e "$conf_bin/ypp_ph")   { $YPP_local="$nice $conf_bin/ypp_ph $ypp_extension"; }
  if(-e "$conf_bin/yambo_nl") { $YAMBO_local="$nice $conf_bin/yambo_nl"; }
  if(-e "$conf_bin/ypp_nl")   { $YPP_local="$nice $conf_bin/ypp_nl $ypp_extension"; }
  #
