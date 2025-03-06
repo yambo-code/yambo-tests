@@ -1,0 +1,44 @@
+#                                                                     
+#   __   __     _        __  __       ____      U  ___  u             
+#   \ \ / / U  /"\  U u |" \/ "| u U | __") u    \/"_ \/              
+#    \ V /   \/ _ \/   \| |\/| |/   \|  _ \/     | | | |              
+#   U_|"|_u  / ___ \    | |  | |     | |_) | .-,_| |_| |              
+#     |_|   /_/   \_\   |_|  |_|     |____/   \_)-\___/               
+# .-,//|(_   \\    >>  <<,-,,-.     _|| \\_        \\                 
+#  \_) (__) (__)  (__)  (./  \.)   (__) (__)      (__)                
+#                                                                     
+#                                                                     
+#       Version 5.0.1 Revision 18778 Hash 29c838efc                   
+#                 Branch is devel-magnons                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+optics                           # [R] Linear Response optical properties
+bss                              # [R] BSE solver
+bse                              # [R][BSE] Bethe Salpeter Equation.
+tddft                            # [R][K] Use TDDFT kernel
+BSEmod= "resonant"                 # [BSE] resonant/retarded/coupling
+BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSSmod= "d"                      # [BSS] (h)aydock/(d)iagonalization/(i)nversion/(t)ddft`
+BSENGexx= 1151             RL    # [BSK] Exchange components
+BSENGfxc= 1151             RL    # [BSK] Fxc components
+BSEprop= "abs jdos"                  # [BSE] abs/kerr/magn trace
+% BSEQptR
+ 1 | 2 |                             # [BSK] Transferred momenta range
+%
+% BSEBands
+  2 |  6 |                           # [BSK] Bands range
+%
+% BEnRange
+ -2.00000 | 4.00000 |         eV    # [BSS] Energy range
+%
+% BDmRange
+ 0.100000 | 0.100000 |         eV    # [BSS] Damping range
+%
+BEnSteps=  1501                   # [BSS] Energy steps
+% BLongDir
+ 0.000000 | 1.000000 | 0.000000 |        # [BSS] [cc] Electric Field
+%
+BSSNEig=  5                      # [SLEPC] Number of eigenvalues to compute
+#WRbsWF                        # [BSS] Write to disk excitonic the WFs
+#UseNLCC

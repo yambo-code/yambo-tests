@@ -1,0 +1,104 @@
+#                                                                     
+#  **    **    **     ****     ****  ******     *******               
+# //**  **    ****   /**/**   **/** /*////**   **/////**              
+#  //****    **//**  /**//** ** /** /*   /**  **     //**             
+#   //**    **  //** /** //***  /** /******  /**      /**             
+#    /**   **********/**  //*   /** /*//// **/**      /**             
+#    /**  /**//////**/**   /    /** /*    /**//**     **              
+#    /**  /**     /**/**        /** /*******  //*******               
+#    //   //      // //         //  ///////    ///////                
+#                                                                     
+# Version 5.2.0 Revision 23236 Hash (prev commit) fef8b788e7          
+#                Branch is phys-dichroism                             
+#         MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                      
+#                http://www.yambo-code.org                            
+#
+# Sorted IP Energies @ Q(1):   1.00000000      0.00000000      0.00000000    [q->0 direction]
+#
+# [GEN] GF Energies                               : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
+# [GEN] Green`s Function                          : Retarded
+#
+# [GEN] Gauge                                     : Length
+# [GEN] [r,Vnl] included                          : yes
+#
+# DIP band range                                  :   2   7
+# DIP band range limits                           :   7   2
+# DIP e/h energy range                            :  -1.00000000     -1.00000000    [eV]
+# RL vectors in the sum                           :  2637
+# [r,Vnl] included                                : yes
+# Bands ordered                                   : no
+# Direct v evaluation                             : no
+# Approach used                                   : R-space x
+# Dipoles computed                                : R V P
+# Wavefunctions                                   : Perdew, Burke & Ernzerhof(X)+Perdew, Burke & Ernzerhof(C)
+#
+#
+#    E [eV]             N_deg              alpha              beta               CD
+#
+        5.525514           1.000000           0.34932E-11       -0.65664E-11        0.000000
+        6.129208           1.000000           0.10589E-10       -0.10545E-11        0.000000
+        6.784398           1.000000           0.83165E-12        0.12460E-11        0.000000
+        9.315642           1.000000           0.61784E-10       -0.35178E-10        0.000000
+        9.919335           1.000000           0.43643E-11        0.65847E-11        0.000000
+        10.00832           1.000000           0.70552E-11        0.90034E-11        0.000000
+        10.57453           1.000000           0.15558E-13       -0.36286E-12        0.000000
+        10.61202           1.000000           0.24484E-11        0.75632E-11        0.000000
+        11.26721           1.000000           0.38217E-11       -0.56678E-11        0.000000
+# 
+# 02/11/2024 at 10:30 yambo @ unimi-XPS-8930 [start]
+# 02/11/2024 at 10:30                        [end]
+#  
+# Timing   [Min/Max/Average]: 04s/04s/04s
+#
+# .-Input file  yambo.in
+# | rim_cut                          # [R] Coulomb potential
+# | optics                           # [R] Linear Response optical properties
+# | bss                              # [R] BSE solver
+# | bse                              # [R][BSE] Bethe Salpeter Equation.
+# | ElecTemp= 0.025861         eV    # Electronic Temperature
+# | BoseTemp= 0.025861         eV    # Bosonic Temperature
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | K_Threads= 1                     # [OPENMP/BSK] Number of threads for response functions
+# | RandQpts=0                       # [RIM] Number of random q-points in the BZ
+# | RandGvec= 1                RL    # [RIM] Coulomb interaction RS components
+# | CUTGeo= "ws xyz"                 # [CUT] Coulomb Cutoff geometry: box/cylinder/sphere/ws/slab X/Y/Z/XY..
+# | % CUTBox
+# |  0.000000 | 0.000000 | 0.000000 |        # [CUT] [au] Box sides
+# | %
+# | CUTRadius= 0.000000              # [CUT] [au] Sphere/Cylinder radius
+# | CUTCylLen= 0.000000              # [CUT] [au] Cylinder length
+# | CUTwsGvec= 0.700000              # [CUT] WS cutoff: number of G to be modified
+# | BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+# | BSEmod= "retarded"               # [BSE] resonant/retarded/coupling
+# | BSSmod= "hd"                     # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
+# | % DipBands
+# |   2 |  7 |                           # [DIP] Bands range for dipoles
+# | %
+# | DipApproach= "R-space x"         # [DIP] [G-space v/R-space x/Covariant/Shifted grids]
+# | DipComputed= "R V P"             # [DIP] [default R P V; extra P2 Spin Orb]
+# | BSENGexx=  4015            RL    # [BSK] Exchange components
+# | FxcLibxc                       # [BSK] force computing Fxc via libxc
+# | % BSEQptR
+# |  1 | 1 |                             # [BSK] Transferred momenta range
+# | %
+# | % BSEBands
+# |   2 |  7 |                           # [BSK] Bands range
+# | %
+# | % BEnRange
+# | -20.00000 | 20.00000 |         eV    # [BSS] Energy range
+# | %
+# | % BDmRange
+# |  0.100000 | 0.100000 |         eV    # [BSS] Damping range
+# | %
+# | BEnSteps= 2001                   # [BSS] Energy steps
+# | % BLongDir
+# |  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field versor
+# | %
+# | BSEprop= " abs jdos dich kerr esrt" # [BSS] Can be any among abs/jdos/kerr/asymm/anHAll/magn/dich/photolum/esrt
+# | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
+# | #WRbsWF                        # [BSS] Write to disk excitonic the WFs
+# | BSHayTrs= 0.100000E-2            # [BSS] Relative [o/o] Haydock threshold. Strict(>0)/Average(<0)
+# | BSHayItrMAX= 200                 # [BSS] MaX number of Haydock iterations.
