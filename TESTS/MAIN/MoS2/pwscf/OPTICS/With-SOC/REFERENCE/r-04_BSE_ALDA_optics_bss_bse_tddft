@@ -1,19 +1,19 @@
                                                                           
-    :   :::   :::     ::::    ::::  :::::::::   ::::::::                  
-    :+:   :+: :+: :+:   +:+:+: :+:+:+ :+:    :+: :+:    :+                
-     +:+ +:+ +:+   +:+  +:+ +:+:+ +:+ +:+    +:+ +:+    +:+               
-      +#++: +#++:++#++: +#+  +:+  +#+ +#++:++#+  +#+    +:+               
-       +#+  +#+     +#+ +#+       +#+ +#+    +#+ +#+    +#+               
-       #+#  #+#     #+# #+#       #+# #+#    #+# #+#    #+#               
-       ###  ###     ### ###       ### #########   ########                
+     /$$     /$$ /$$$$$$  /$$      /$$ /$$$$$$$   /$$$$$$                 
+    |  $$   /$$//$$__  $$| $$$    /$$$| $$__  $$ /$$__  $$                
+     \  $$ /$$/| $$  \ $$| $$$$  /$$$$| $$  \ $$| $$  \ $$                
+      \  $$$$/ | $$$$$$$$| $$ $$/$$ $$| $$$$$$$ | $$  | $$                
+       \  $$/  | $$__  $$| $$  $$$| $$| $$__  $$| $$  | $$                
+        | $$   | $$  | $$| $$\  $ | $$| $$  \ $$| $$  | $$                
+        | $$   | $$  | $$| $$ \/  | $$| $$$$$$$/|  $$$$$$/                
+        |__/   |__/  |__/|__/     |__/|_______/  \______/                 
                                                                           
-                                                                          
-    Version 5.2.0 Revision 22519 Hash (prev commit) e4c1f01f0             
-                   Branch is fixes-issue-540                              
+    Version 5.3.0 Revision 23927 Hash (prev commit) 1730222ea             
+                       Branch is master                                   
             MPI+OpenMP+SLK+SLEPC+HDF5_MPI_IO Build                        
-                   http://www.yambo-code.org                              
+                   http://www.yambo-code.eu                               
  
- 02/09/2024 at 02:52 yambo @ unimi-XPS-8930
+ 03/12/2025 at 21:24 yambo @ unimi-XPS-8930
  ==================================================
 
  Cores               :  1
@@ -33,7 +33,7 @@
 
  Job   string        : 04_BSE_ALDA
  Alt#1 string        : DIPOLES
- Alt#2 string        : R2
+ Alt#2 string        : R4
 
  Precision           : SINGLE
   
@@ -202,7 +202,7 @@
   X grid is uniform                                : yes
   Grids (string)                                   :  X B S
   Grids (int-vector)                               :  1  1  0  1
- - S/N 002619 ---------------------------------------------- v.05.02.00 r.22519 -
+ - S/N 002619 ---------------------------------------------- v.05.03.00 r.23927 -
 
  IBZ Q-points                                      :  3
  BZ  Q-points                                      :   9
@@ -267,27 +267,31 @@
  [05] Dipoles
  ============
 
- [RD./DIPOLES//ndb.dipoles]------------------------------------------------------
-  Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
-  RL vectors                                       :   8845 [WF]
-  Fragmentation                                    : yes
-  Electronic Temperature                           :  0.000000 [K]
-  Bosonic    Temperature                           :  0.000000 [K]
-  DIP band range                                   :    1   40
-  DIP band range limits                            :  26  27
-  DIP e/h energy range                             : -1.000000 -1.000000 [eV]
-  RL vectors in the sum                            :   8845
-  [r,Vnl] included                                 : yes
-  Bands ordered                                    : yes
-  Direct v evaluation                              : no
-  Approach used                                    : G-space v
-  Dipoles computed                                 : R V P
-  Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
- - S/N 002619 ---------------------------------------------- v.05.02.00 r.22519 -
 
- [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
+  [05.01] Setup: observables and procedures
+  =========================================
 
- [WARNING] In case H contains other non local terms, these are neglected
+  [RD./DIPOLES//ndb.dipoles]------------------------------------------------------
+   Brillouin Zone Q/K grids (IBZ/BZ)                :   3   9   3   9
+   RL vectors                                       :   8845 [WF]
+   Fragmentation                                    : yes
+   Electronic Temperature                           :  0.000000 [K]
+   Bosonic    Temperature                           :  0.000000 [K]
+   DIP band range                                   :    1   40
+   DIP band range limits                            :  26  27
+   DIP e/h energy range                             : -1.000000 -1.000000 [eV]
+   RL vectors in the sum                            :   8845
+   [r,Vnl] included                                 : yes
+   Bands ordered                                    : yes
+   Direct v evaluation                              : no
+   Approach used                                    : G-space v
+   Dipoles computed                                 : R V P [G-space]
+   Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
+  - S/N 002619 ---------------------------------------------- v.05.03.00 r.23927 -
+
+  [WARNING] [r,Vnl^pseudo] included in position and velocity dipoles.
+
+  [WARNING] In case H contains other non local terms, these are neglected
 
  [06] Bethe Salpeter Equation driver
  ===================================
@@ -326,9 +330,9 @@
     Bands ordered                                    : yes
     Direct v evaluation                              : no
     Approach used                                    : G-space v
-    Dipoles computed                                 : R V P
+    Dipoles computed                                 : R V P [G-space]
     Wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-   - S/N 002619 ---------------------------------------------- v.05.02.00 r.22519 -
+   - S/N 002619 ---------------------------------------------- v.05.03.00 r.23927 -
 
    [06.01.04] Independent Particles properties @q1
    ===============================================
@@ -340,13 +344,7 @@
    ====================================================
 
    [BSE] Exchange components :  109
-   [WF-BSK loader] Normalization (few states)  min/max  :  0.23856E-09   1.0000    
-
-   [xc] Functional : Slater exchange(X)+Perdew & Zunger(C)
-   [xc] LIBXC used to calculate xc functional
-    PP Number of Atomic Species                      :  2
-    NLCC RL compoments                               :   56613
-   - S/N 002619 ---------------------------------------------- v.05.01.00 r.21264 -
+   [BSE] ALDA        components :  109
 
    [06.01.06] Main kernel loop
    ===========================
@@ -359,7 +357,7 @@
     BS kernel          wavefunctions                 : Slater exchange(X)+Perdew & Zunger(C)
     Static diel. fun.  energies                      : Slater exchange(X)+Perdew & Zunger(C)
     wavefunctions                                    : Slater exchange(X)+Perdew & Zunger(C)
-    [K] Identifier                                   :   6748
+    [K] Identifier                                   :   7093
     [K] Dimension                                    :  216
     [K] Bands                                        :  21  30
     [K] Exchange res                                 : yes
@@ -374,8 +372,13 @@
     [K] Coupling range                               :  100.0000  100.0000 [o/o]
     [IO] Kernel IO mode                              : 2D_standard
     [X] Response Kind                                : BAR
-   - S/N 002619 ---------------------------------------------- v.05.02.00 r.22519 -
+   - S/N 002619 ---------------------------------------------- v.05.03.00 r.23927 -
     Kernel complete                                  : no
+   [xc] Functional : Slater exchange(X)+Perdew & Zunger(C)
+   [xc] LIBXC used to calculate xc functional
+    PP Number of Atomic Species                      :  2
+    NLCC RL compoments                               :   56613
+   - S/N 002619 ---------------------------------------------- v.05.01.00 r.21264 -
     Kernel maxval                                    :  0.000000
     Kernel complete                                  : yes
 
@@ -387,8 +390,8 @@
   ========================
 
   [WR./04_BSE_ALDA//ndb.BS_diago_Q1]----------------------------------------------
-   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-   [K] Identifier                                   :   6748
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)+ user defined corrections @E
+   [K] Identifier                                   :   7093
    [K] Dimension                                    :  216
    [K] Bands                                        :  21  30
    [K] Exchange res                                 : yes
@@ -407,7 +410,7 @@
    [BSS] Field direction                            :  0.100000E-4   0.00000      0.00000   
    [BSS] Eigenstates computed                       :  216
    [BSS] Number of BSE matrices                     :  1
-  - S/N 002619 ---------------------------------------------- v.05.02.00 r.22519 -
+  - S/N 002619 ---------------------------------------------- v.05.03.00 r.23927 -
 
   [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
 
@@ -419,8 +422,8 @@
   [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
   [FULL INV@EPS] Frequencies TODO : 0
   [WR./04_BSE_ALDA//ndb.BS_invert_Q1]---------------------------------------------
-   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)
-   BSK Identifier                                   :   6748
+   BS kernel          energies                      : Slater exchange(X)+Perdew & Zunger(C)+ user defined corrections @E
+   BSK Identifier                                   :   7093
    Field direction                                  :  0.100000E-4   0.00000      0.00000   
    Using energy Double Grid                         : no
    Energy range                [ev]                 :  0.100000  4.000000
@@ -432,7 +435,7 @@
    [PL]  Number of frequencies                      :  300
    [PL]  Perturbative to full ratio                 :  1.000000
    [PL]  Treshold             [o/o]                 :  0.500000
-  - S/N 002619 ---------------------------------------------- v.05.02.00 r.22519 -
+  - S/N 002619 ---------------------------------------------- v.05.03.00 r.23927 -
 
   [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
 
@@ -446,60 +449,57 @@
   [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
 
   [WARNING] [EPS_extend] Possible inaccuracy in the EPS prolungation
-  Accuracy (reached)        :  0.718053E-4 [o/o]
-  Iterations                :  29
-
- Timing [Min/Max/Average]: 01m-13s/01m-13s/01m-13s
+  Accuracy (reached)        :  0.208766E-3 [o/o]
+  Iterations                :  27
 
  [07] Timing Overview
  ====================
 
  Clock: global
-                    BSE matrix (REDUX) :      0.0000s CPU (    2 calls,   0.000 msec avg)
+                    BSE matrix (REDUX) :      0.0000s CPU ( 2 calls,   0.000 msec avg)
                       io_ATMPROJ_pwscf :      0.0000s CPU
-                          PP_uspp_init :      0.0000s CPU
                           io_KB_abinit :      0.0000s CPU
-               IO_and_Messaging_switch :      0.0000s CPU (    7 calls,   0.002 msec avg)
                             io_COL_CUT :      0.0000s CPU
                                  io_HF :      0.0000s CPU
-                        io_Double_Grid :      0.0001s CPU (    2 calls,   0.028 msec avg)
+                        io_Double_Grid :      0.0001s CPU ( 2 calls,   0.026 msec avg)
                 BSE components folding :      0.0001s CPU
-                                  io_X :      0.0001s CPU (    5 calls,   0.019 msec avg)
-                    BSE matrix filling :      0.0004s CPU (    2 calls,   0.195 msec avg)
-                           io_fragment :      0.0008s CPU (    3 calls,   0.271 msec avg)
-                                 io_BS :      0.0009s CPU (    6 calls,   0.144 msec avg)
-                           io_KB_pwscf :      0.0012s CPU
+               IO_and_Messaging_switch :      0.0001s CPU (25 calls,   0.003 msec avg)
+                                  io_X :      0.0001s CPU ( 5 calls,   0.018 msec avg)
+                          PP_uspp_init :      0.0003s CPU (10 calls,   0.030 msec avg)
+                    BSE matrix filling :      0.0004s CPU ( 2 calls,   0.216 msec avg)
+                                 io_BS :      0.0009s CPU ( 6 calls,   0.143 msec avg)
+                           io_KB_pwscf :      0.0011s CPU
                                Dipoles :      0.0018s CPU
-                        io_BSS_Haydock :      0.0024s CPU (    2 calls,   1.194 msec avg)
-                           BSE dipoles :      0.0029s CPU
-                              io_QINDX :      0.0036s CPU (    2 calls,   1.792 msec avg)
-                         io_BSS_invert :      0.0041s CPU (    3 calls,   1.359 msec avg)
-                          io_BSS_diago :      0.0047s CPU (    2 calls,   2.349 msec avg)
-                                 io_WF :      0.0051s CPU (    6 calls,   0.849 msec avg)
-                            io_DIPOLES :      0.0060s CPU (    8 calls,   0.754 msec avg)
-                               io_GROT :      0.0086s CPU (    2 calls,   4.295 msec avg)
-                             FFT_setup :      0.0110s CPU
-                      T_space EXX Osc. :      0.0279s CPU (    3 calls,   9.298 msec avg)
-      SERIAL_HERMITIAN_diagonalization :      0.0446s CPU
-                        LINEAR ALGEBRA :      0.0446s CPU
-                           WF_load_FFT :      0.0470s CPU
-                            T_space IP :      0.0546s CPU
-                   XC_potential_driver :      0.0754s CPU
-                          Diago Solver :      0.1093s CPU
-                      Inversion Solver :      0.1727s CPU
-                        Haydock Solver :      0.1974s CPU
-                   T_space ALDA scatt. :     73.0873s CPU (23436 calls,   0.003 sec avg)
-                      X T_space Kernel :     73.3398s CPU
+                        io_BSS_Haydock :      0.0024s CPU ( 2 calls,   1.222 msec avg)
+                           BSE dipoles :      0.0031s CPU
+                           io_fragment :      0.0034s CPU (12 calls,   0.279 msec avg)
+                              io_QINDX :      0.0035s CPU ( 2 calls,   1.744 msec avg)
+                         io_BSS_invert :      0.0041s CPU ( 3 calls,   1.367 msec avg)
+                          io_BSS_diago :      0.0048s CPU ( 2 calls,   2.402 msec avg)
+                            io_DIPOLES :      0.0062s CPU ( 8 calls,   0.772 msec avg)
+                               io_GROT :      0.0093s CPU ( 2 calls,   4.640 msec avg)
+                                 io_WF :      0.0178s CPU (33 calls,   0.540 msec avg)
+                  X T_space Kernel sum :      0.0298s CPU (12 calls,   2.480 msec avg)
+      SERIAL_HERMITIAN_diagonalization :      0.0394s CPU
+                        LINEAR ALGEBRA :      0.0394s CPU
+                   XC_potential_driver :      0.0408s CPU
+                            T_space IP :      0.0510s CPU
+                      T_space EXX Osc. :      0.0818s CPU ( 3 calls,  27.259 msec avg)
+                           WF_load_FFT :      0.0927s CPU (10 calls,   9.271 msec avg)
+                          Diago Solver :      0.0989s CPU
+                             FFT_setup :      0.1165s CPU (12 calls,   9.705 msec avg)
+                      Inversion Solver :      0.1703s CPU
+                        Haydock Solver :      0.1841s CPU
+                     T_space ALDA Osc. :      0.9016s CPU ( 6 calls, 150.263 msec avg)
+                      X T_space Kernel :      1.1235s CPU
 
  [08] Game Over & Game summary
  =============================
 
- 02/09/2024 at 02:52 yambo @ unimi-XPS-8930 [start]
- 02/09/2024 at 02:54                        [end]
+ 03/12/2025 at 21:24 yambo @ unimi-XPS-8930 [start]
+ 03/12/2025 at 21:25                        [end]
 
- Timing   [Min/Max/Average]: 01m-13s/01m-13s/01m-13s
-             [Time-Profile]: 01m-14s
-
+  
  .-ACKNOWLEDGMENT
  |
  | The users of YAMBO have little formal obligations with respect to
@@ -526,6 +526,7 @@
  | bss                              # [R] BSE solver
  | bse                              # [R][BSE] Bethe Salpeter Equation.
  | tddft                            # [R][K] Use TDDFT kernel
+ | #DegFix                        # Force the code to impose the energy levels to respect their degeneracy
  | FFTGvecs=  8845            RL    # [FFT] Plane-waves
  | BS_nCPU_LinAlg_INV= 1            # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
  | BS_nCPU_LinAlg_DIAGO= 1          # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
@@ -536,7 +537,7 @@
  | BSEmod= "resonant"               # [BSE] resonant/retarded/coupling
  | BSSmod= "hdi"                    # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft`
  | BSENGexx= 109              RL    # [BSK] Exchange components
- | BSENGfxc=  55              RL    # [BSK] Fxc components
+ | BSENGfxc= 109              RL    # [BSK] Fxc components
  | FxcLibxc                       # [BSK] force computing Fxc via libxc
  | % KfnQP_E
  |  1.000000 | 1.000000 | 1.000000 |        # [EXTQP BSK BSS] E parameters  (c/v) eV|adim|adim
@@ -555,9 +556,9 @@
  | %
  | BEnSteps= 300                    # [BSS] Energy steps
  | % BLongDir
- |  0.100000E-4 |  0.00000    |  0.00000    # [BSS] [cc] Electric Field
+ |  1.000000 | 0.000000 | 0.000000 |        # [BSS] [cc] Electric Field versor
  | %
- | BSEprop= "abs jdos"              # [BSS] Can be any among abs/jdos/kerr/magn/dich/photolum/esrt
+ | BSEprop= " abs jdos"             # [BSS] Can be any among abs/jdos/kerr/asymm/anHAll/magn/dich/photolum/esrt
  | BSEdips= "none"                  # [BSS] Can be "trace/none" or "xy/xz/yz" to define off-diagonal rotation plane
  | BSSInvMode= "pf"                 # [BSS] Inversion solver modality `(f)ull/(p)erturbative`
  | BSEPSInvTrs= 0.010000            # [BSS EPS] Inversion treshold. Relative[o/o](>0)/Absolute(<0)
