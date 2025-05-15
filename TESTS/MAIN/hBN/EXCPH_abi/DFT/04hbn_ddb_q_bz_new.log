@@ -1,4 +1,4 @@
-  ABINIT 9.9.0
+  ABINIT 9.7.4
   
  DeprecationWarning: 
 
@@ -19,8 +19,24 @@ io_dir_new/hbn_q_bz_out
   Give root name for generic temporary files:
 io_dir_new/hbn_q_bz_t
 
-.Version 9.9.0 of ABINIT 
-.(MPI version, prepared for a x86_64_linux_gnu11.2 computer) 
+--- !COMMENT
+src_file: m_dtfil.F90
+src_line: 1486
+message: |
+    Output file: 04hbn_ddb_q_bz_new.out already exists.
+...
+
+
+--- !COMMENT
+src_file: m_dtfil.F90
+src_line: 1510
+message: |
+    Renaming old: 04hbn_ddb_q_bz_new.out to: 04hbn_ddb_q_bz_new.out0001
+...
+
+
+.Version 9.7.4 of ABINIT 
+.(MPI version, prepared for a x86_64_linux_gnu9.4 computer) 
 
 .Copyright (C) 1998-2022 ABINIT group . 
  ABINIT comes with ABSOLUTELY NO WARRANTY.
@@ -34,24 +50,24 @@ io_dir_new/hbn_q_bz_t
  acknowledgments of the ABINIT effort.
  For more information, see https://www.abinit.org .
 
-.Starting date : Sun  9 Oct 2022.
-- ( at 15h38 )
+.Starting date : Tue 12 Mar 2024.
+- ( at 17h39 )
   
 
  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
  === Build Information === 
-  Version       : 9.9.0
-  Build target  : x86_64_linux_gnu11.2
-  Build date    : 20221002
+  Version       : 9.7.4
+  Build target  : x86_64_linux_gnu9.4
+  Build date    : 20220527
 
  === Compiler Suite === 
-  C compiler       : gnu11.2
-  C++ compiler     : gnu11.2
-  Fortran compiler : gnu11.2
+  C compiler       : gnu9.4
+  C++ compiler     : gnu9.4
+  Fortran compiler : gnu9.4
   CFLAGS           : -g -O2
   CXXFLAGS         : -g -O2 -mtune=native -march=native
-  FCFLAGS          : -g -ffree-line-length-none -fallow-argument-mismatch  -fopenmp   -I ...
+  FCFLAGS          : -g -ffree-line-length-none  -fopenmp   -I/data/shared/yambo-libs/de ...
   FC_LDFLAGS       : 
 
  === Optimizations === 
@@ -158,7 +174,7 @@ io_dir_new/hbn_q_bz_t
 
 --- !COMMENT
 src_file: m_ingeo.F90
-src_line: 890
+src_line: 900
 message: |
     The tolerance on symmetries =   1.000E-05 is bigger than 1.0e-8.
     In order to avoid spurious effects, the atomic coordinates have been
@@ -306,12 +322,12 @@ P           mkmem           7
   ==== OpenMP parallelism is ON ====
 - Max_threads:       1
 - Num_threads:       1
-- Num_procs:         12
+- Num_procs:         6
 - Dynamic:           F
  
   ==== Using MPI-2 specifications ==== 
   MPI-IO support is ON
-  xmpi_tag_ub ................   2147483647
+  xmpi_tag_ub ................    268435455
   xmpi_bsize_ch ..............            1
   xmpi_bsize_int .............            4
   xmpi_bsize_sp ..............            4
@@ -330,7 +346,7 @@ P           mkmem           7
 
 --- !COMMENT
 src_file: m_xgScalapack.F90
-src_line: 230
+src_line: 236
 message: |
     xgScalapack in auto mode
 ...
@@ -350,14 +366,14 @@ message: |
   J.P.Perdew, K.Burke, M.Ernzerhof, PRL 77, 3865 (1996)
 
  Reading eigenvalues from: io_dir_new/hbn_out_DS2_WFK.nc , with iomode: IO_MODE_ETSF
- wfk_read_eigenvalues_io completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
- wfk_read_eigenvalues completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
+ wfk_read_eigenvalues_io completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
+ wfk_read_eigenvalues completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
 
 --- !COMMENT
 src_file: m_hdr.F90
-src_line: 4913
+src_line: 5133
 message: |
-    istwfk from header differs from the values specified in the input file (not critical)
+    istwfk read from Header differs from the values specified in the input file (this is not critical)
 ...
 
 
@@ -396,9 +412,19 @@ message: |
   Tsmear value ........................       0.010000
   Tphysel value .......................       0.000000
 
- eph%init completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
+ eph%init completed. cpu:  0.01 [s] , wall:  0.01 [s] <<< TIME
  eph%ebands_postprocess: completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
  Opening DDB file: io_dir_new/hbn_DDB
+  inprep8 : nband(1)=           9
+        occ  0.20000000000000D+01  0.20000000000000D+01  0.20000000000000D+01
+             0.20000000000000D+01  0.20000000000000D+01  0.20000000000000D+01
+             0.20000000000000D+01  0.20000000000000D+01  0.00000000000000D+00
+ Opening DDB file: io_dir_new/hbn_DDB
+  inprep8 : nband(1)=           9
+        occ  0.20000000000000D+01  0.20000000000000D+01  0.20000000000000D+01
+             0.20000000000000D+01  0.20000000000000D+01  0.20000000000000D+01
+             0.20000000000000D+01  0.20000000000000D+01  0.00000000000000D+00
+ About to open file io_dir_new/hbn_DDB
  Unit cell volume ucvol=  2.3455553E+02 bohr^3
  Angles (23,13,12)=  9.00000000E+01  9.00000000E+01  1.20000000E+02 degrees
 
@@ -476,7 +502,7 @@ message: |
 
 --- !COMMENT
 src_file: m_phonons.F90
-src_line: 2821
+src_line: 2919
 message: |
     ph_nqpath <= 0 or ph_ndivsm <= 0. Phonon bands won't be produced. Returning
 ...
@@ -495,8 +521,8 @@ message: |
 -Debye temperature from partial sums:     0.1294645290E+04 (K)
 
  Allocating tetra%ibz%indexes with memory: 0.0  [Mb] <<< MEM
- tetra accumulate completed. cpu:  0.07 [s] , wall:  0.07 [s] <<< TIME
- mkphdos completed. cpu:  0.22 [s] , wall:  0.22 [s] <<< TIME
+ tetra accumulate completed. cpu:  0.05 [s] , wall:  0.05 [s] <<< TIME
+ mkphdos completed. cpu:  0.20 [s] , wall:  0.20 [s] <<< TIME
 Initial frequency mesh not large enough. Recomputing PHDOS with wmin, wmax: -0.00150 0.00807
 
  mkphdos: calculating phonon DOS using tetrahedron method:
@@ -511,10 +537,10 @@ Initial frequency mesh not large enough. Recomputing PHDOS with wmin, wmax: -0.0
 -Debye temperature from partial sums:     0.1294645290E+04 (K)
 
  Allocating tetra%ibz%indexes with memory: 0.0  [Mb] <<< MEM
- tetra accumulate completed. cpu:  0.08 [s] , wall:  0.08 [s] <<< TIME
- mkphdos completed. cpu:  0.23 [s] , wall:  0.23 [s] <<< TIME
+ tetra accumulate completed. cpu:  0.06 [s] , wall:  0.06 [s] <<< TIME
+ mkphdos completed. cpu:  0.21 [s] , wall:  0.21 [s] <<< TIME
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_q_bz_out_PHDOS.nc
- eph%ifc: completed. cpu:  0.63 [s] , wall:  0.78 [s] <<< TIME
+ eph%ifc: completed. cpu:  0.60 [s] , wall:  0.87 [s] <<< TIME
 - Analyzing DVDB file: io_dir_new/hbn_DVDB ...
 - dvdb_new completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
  Comparing WFK crystal with DVDB crystal
@@ -674,44 +700,25 @@ Initial frequency mesh not large enough. Recomputing PHDOS with wmin, wmax: -0.0
   Pseudo valence available: yes
 
 === Gstore parameters ===
- ==== Electron bands ====
-  Number of spinorial components ...... 1
-  Number of spin polarizations ........ 1
-  Number of k-points in the IBZ ....... 7
-  kptopt .............................. 1
-  Maximum number of bands ............. 10
-  Occupation option ................... 1
-
-  kptrlatt .............. [6, 0, 0, 0, 6, 0, 0, 0, 1]
-  shiftk ................ [   0.0000E+00,    0.0000E+00,    0.0000E+00]
-  Number of valence electrons .........          16.00
-  Extra cell charge (from GS run)......           0.00
-  Extra electrons (after GS run).......           0.00
-  Fermi level  ........................       0.202129
-  Entropy .............................       0.000000
-  Tsmear value ........................       0.010000
-  Tphysel value .......................       0.000000
-
  kzone: bz
- kfilter: none
- nkibz, nkbz: 7 36
- glob_nk_spin: [36]
  qzone: bz
+ kfilter: none
+ with_vk: 0
  nqibz, nqbz: 7 36
  glob_nq_spin: [36]
- with_vk: 1
+ nkibz, nkbz: 7 36
+ glob_nk_spin: [36]
 
-  === MPI distribution ===
+ === Gstore MPI distribution ===
 P Number of CPUs for parallelism over perturbations: 1
 P Number of perturbations treated by this CPU: 12
 P Number of CPUs for parallelism over q-points: 1
 P Number of CPUs for parallelism over k-points: 1
 - Creating HDf5 file with MPI-IO support: io_dir_new/hbn_q_bz_out_GSTORE.nc
- gstore_new: completed. cpu:  0.15 [s] , wall:  0.68 [s] <<< TIME
- Begin computation of e-ph matrix elements with qbuf_size: 4
+ gstore_new: completed. cpu:  0.12 [s] , wall:  0.58 [s] <<< TIME
 
  Building W(R,r) using q-mesh ngqpt: [2, 2, 1] , with nprocs_rpt: 1
- Using Gaussian filter with qdamp: 0.1
+ Gaussian filter with qdamp: 0.1
 
  Note: this part may take some time depending on the number of MPI procs, ngqpt and nfft points.
  Use boxcutmin < 2.0 (> 1.1) to decrease nfft, reduce memory requirements and speedup the calculation.
@@ -721,23 +728,12 @@ P Number of CPUs for parallelism over k-points: 1
  ngfft: 20 20 50
  dvdb_add_lr: 1
  Memory required for W(R,r): 7.3 [Mb] <<< MEM
- IBZ q-point [1/2] completed. cpu:  0.14 [s] , wall:  0.14 [s] <<< TIME
- IBZ q-point [2/2] completed. cpu:  0.28 [s] , wall:  0.28 [s] <<< TIME
+ IBZ q-point [1/2] completed. cpu:  0.06 [s] , wall:  0.06 [s] <<< TIME
+ IBZ q-point [2/2] completed. cpu:  0.17 [s] , wall:  0.17 [s] <<< TIME
 
 
 
- Construction of W(R,r) completed. cpu:  0.45 [s] , wall:  0.45 [s] <<< TIME
- Using cache for Vscf(q) with MAX input size: 0.00  [Mb]
- Max number of q-points stored in memory: 0
- Use extra cache with 3 natom potentials: no
- One DFPT potential requires: 0.15  [Mb]
- QCACHE_KIND: 4
- Memory allocated for Q-cache: 0.0  [Mb] <<< MEM
- Max memory inside MPI comm: 0.0  [Mb] <<< MEM
- Qcache from W(R, r) + symmetrization completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
-
-
- gstore_fill_bks_mask completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
+ Construction of W(R,r) completed. cpu:  0.24 [s] , wall:  0.24 [s] <<< TIME
  Memory needed for Fourier components u(G):      0.5 [Mb] <<< MEM
  Storing wavefunctions in single precision array as `enable_gw_dpc="no"`
  Memory needed for real-space u(r):      0.0 [Mb] <<< MEM
@@ -769,7 +765,7 @@ P Number of CPUs for parallelism over k-points: 1
 
  wfd_read_wfk: Reading file: io_dir_new/hbn_out_DS2_WFK.nc  with iomode: IO_MODE_ETSF , master_only: yes
  About to read: 70  (b, k, s) states in total.
- For spin: 1 , will read: 7  k-points out of: 7
+ For spin: 1 , will read: 7  k-points.
  Reading k-point [1/7] spin [1/1] completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
  Reading k-point [2/7] spin [1/1] completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
  Reading k-point [3/7] spin [1/1] completed. cpu:  0.00 [s] , wall:  0.00 [s] <<< TIME
@@ -782,91 +778,46 @@ P Number of CPUs for parallelism over k-points: 1
 
  Computing mpw. This may take some time for dense k/q meshes...
  Optimal value of mpw: 1016
- gmax and mpw completed. cpu:  0.03 [s] , wall:  0.03 [s] <<< TIME
+ gmax and mpw completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
 - Opening HDf5 file with MPI-IO support: io_dir_new/hbn_q_bz_out_GSTORE.nc
+ My q-point [1/36] completed. cpu:  1.63 [s] , wall:  1.63 [s] <<< TIME
+ My q-point [2/36] completed. cpu:  1.64 [s] , wall:  1.64 [s] <<< TIME
+ My q-point [3/36] completed. cpu:  1.64 [s] , wall:  1.64 [s] <<< TIME
+ My q-point [4/36] completed. cpu:  1.64 [s] , wall:  1.64 [s] <<< TIME
+ My q-point [5/36] completed. cpu:  1.64 [s] , wall:  1.64 [s] <<< TIME
+ My q-point [6/36] completed. cpu:  1.64 [s] , wall:  1.64 [s] <<< TIME
+ My q-point [7/36] completed. cpu:  1.64 [s] , wall:  1.64 [s] <<< TIME
+ My q-point [8/36] completed. cpu:  1.65 [s] , wall:  1.65 [s] <<< TIME
+ My q-point [9/36] completed. cpu:  1.64 [s] , wall:  1.64 [s] <<< TIME
+ My q-point [10/36] completed. cpu:  1.63 [s] , wall:  1.63 [s] <<< TIME
+ Estimated time to completion: 42.49 [s]
+ >>> Will print next iteration when mod(my_iq, 20) == 0) ...
+ My q-point [20/36] completed. cpu:  1.65 [s] , wall:  1.65 [s] <<< TIME
+
+
+ gstore_compute completed. cpu: 59.48 [s] , wall: 59.50 [s] <<< TIME
+
+
+ Initializing gstore object from: io_dir_new/hbn_q_bz_out_GSTORE.nc 
+
+ Comparing input crystal with the one from GSTORE file
 === Gstore parameters ===
- ==== Electron bands ====
-  Number of spinorial components ...... 1
-  Number of spin polarizations ........ 1
-  Number of k-points in the IBZ ....... 7
-  kptopt .............................. 1
-  Maximum number of bands ............. 10
-  Occupation option ................... 1
-
-  kptrlatt .............. [6, 0, 0, 0, 6, 0, 0, 0, 1]
-  shiftk ................ [   0.0000E+00,    0.0000E+00,    0.0000E+00]
-  Number of valence electrons .........          16.00
-  Extra cell charge (from GS run)......           0.00
-  Extra electrons (after GS run).......           0.00
-  Fermi level  ........................       0.202129
-  Entropy .............................       0.000000
-  Tsmear value ........................       0.010000
-  Tphysel value .......................       0.000000
-
  kzone: bz
- kfilter: none
- nkibz, nkbz: 7 36
- glob_nk_spin: [36]
  qzone: bz
+ kfilter: none
+ with_vk: 0
  nqibz, nqbz: 7 36
  glob_nq_spin: [36]
- with_vk: 1
+ nkibz, nkbz: 7 36
+ glob_nk_spin: [36]
 
-  === MPI distribution ===
+ === Gstore MPI distribution ===
 P Number of CPUs for parallelism over perturbations: 1
 P Number of perturbations treated by this CPU: 12
 P Number of CPUs for parallelism over q-points: 1
 P Number of CPUs for parallelism over k-points: 1
- Computing phonon frequencies and displacements in the IBZ
- phonon computation + output completed. cpu:  0.15 [s] , wall:  0.15 [s] <<< TIME
- Computing and writing velocity operator matrix elements in the IBZ
- Note that not all the k-points in the IBZ are computed when kfilter is activated!
- Computation of vk completed. cpu:  0.04 [s] , wall:  0.04 [s] <<< TIME
- My q-point [1/36] completed. cpu:  3.21 [s] , wall:  3.21 [s] <<< TIME
- My q-point [2/36] completed. cpu:  3.24 [s] , wall:  3.24 [s] <<< TIME
- My q-point [3/36] completed. cpu:  3.23 [s] , wall:  3.23 [s] <<< TIME
- My q-point [4/36] completed. cpu:  3.22 [s] , wall:  3.22 [s] <<< TIME
- My q-point [5/36] completed. cpu:  3.39 [s] , wall:  3.40 [s] <<< TIME
- My q-point [6/36] completed. cpu:  3.49 [s] , wall:  3.49 [s] <<< TIME
- My q-point [7/36] completed. cpu:  3.43 [s] , wall:  3.43 [s] <<< TIME
- My q-point [8/36] completed. cpu:  3.34 [s] , wall:  3.34 [s] <<< TIME
- My q-point [9/36] completed. cpu:  3.28 [s] , wall:  3.28 [s] <<< TIME
- My q-point [10/36] completed. cpu:  3.22 [s] , wall:  3.22 [s] <<< TIME
- >>> Will print next iteration when mod(my_iq, 10) == 0) ...
- Estimated time to completion: 01:23 [minutes]
- My q-point [11/36] completed. cpu:  3.22 [s] , wall:  3.22 [s] <<< TIME
- My q-point [12/36] completed. cpu:  3.23 [s] , wall:  3.23 [s] <<< TIME
- My q-point [13/36] completed. cpu:  3.21 [s] , wall:  3.21 [s] <<< TIME
- My q-point [14/36] completed. cpu:  3.26 [s] , wall:  3.26 [s] <<< TIME
- My q-point [15/36] completed. cpu:  3.22 [s] , wall:  3.22 [s] <<< TIME
- My q-point [16/36] completed. cpu:  3.23 [s] , wall:  3.23 [s] <<< TIME
- My q-point [17/36] completed. cpu:  3.24 [s] , wall:  3.24 [s] <<< TIME
- My q-point [18/36] completed. cpu:  3.21 [s] , wall:  3.21 [s] <<< TIME
- My q-point [19/36] completed. cpu:  3.22 [s] , wall:  3.22 [s] <<< TIME
- My q-point [20/36] completed. cpu:  3.29 [s] , wall:  3.29 [s] <<< TIME
- Estimated time to completion: 52.69 [s]
- My q-point [21/36] completed. cpu:  3.30 [s] , wall:  3.30 [s] <<< TIME
- My q-point [22/36] completed. cpu:  3.29 [s] , wall:  3.29 [s] <<< TIME
- My q-point [23/36] completed. cpu:  3.29 [s] , wall:  3.29 [s] <<< TIME
- My q-point [24/36] completed. cpu:  3.30 [s] , wall:  3.30 [s] <<< TIME
- My q-point [25/36] completed. cpu:  3.41 [s] , wall:  3.41 [s] <<< TIME
- My q-point [26/36] completed. cpu:  3.26 [s] , wall:  3.26 [s] <<< TIME
- My q-point [27/36] completed. cpu:  3.22 [s] , wall:  3.22 [s] <<< TIME
- My q-point [28/36] completed. cpu:  3.23 [s] , wall:  3.23 [s] <<< TIME
- My q-point [29/36] completed. cpu:  3.23 [s] , wall:  3.23 [s] <<< TIME
- My q-point [30/36] completed. cpu:  3.21 [s] , wall:  3.21 [s] <<< TIME
- Estimated time to completion: 19.28 [s]
- My q-point [31/36] completed. cpu:  3.22 [s] , wall:  3.22 [s] <<< TIME
- My q-point [32/36] completed. cpu:  3.38 [s] , wall:  3.38 [s] <<< TIME
- My q-point [33/36] completed. cpu:  3.30 [s] , wall:  3.30 [s] <<< TIME
- My q-point [34/36] completed. cpu:  3.23 [s] , wall:  3.23 [s] <<< TIME
- My q-point [35/36] completed. cpu:  3.27 [s] , wall:  3.27 [s] <<< TIME
- My q-point [36/36] completed. cpu:  3.24 [s] , wall:  3.24 [s] <<< TIME
-
-
- My gstore computation completed. cpu: 01:58 [minutes] , wall: 01:58 [minutes] <<< TIME
-
-
+ Local memory for e-ph matrix elements: 11.9  [Mb] <<< MEM
+ Reading completed. cpu:  0.02 [s] , wall:  0.02 [s] <<< TIME
 
 == END DATASET(S) ==============================================================
 ================================================================================
@@ -935,18 +886,18 @@ P           mkmem           7
 
 ================================================================================
   
- Proc.   0 individual time (sec): cpu=        119.9  wall=        120.8
+ Proc.   0 individual time (sec): cpu=         60.6  wall=         61.6
 
  Calculation completed.
-.Delivered   0 WARNINGs and   4 COMMENTs to log file.
+.Delivered   0 WARNINGs and   6 COMMENTs to log file.
 
 --- !FinalSummary
 program: abinit
-version: 9.9.0
-start_datetime: Sun Oct 09 15:38:50 2022
-end_datetime: Sun Oct 09 15:40:51 2022
-overall_cpu_time:         119.9
-overall_wall_time:         120.8
+version: 9.7.4
+start_datetime: Tue Mar 12 17:39:06 2024
+end_datetime: Tue Mar 12 17:40:07 2024
+overall_cpu_time:          60.6
+overall_wall_time:          61.6
 exit_requested_by_user: no 
 timelimit: 0
 pseudos: 
@@ -956,5 +907,5 @@ usepaw: 0
 mpi_procs: 1
 omp_threads: 1
 num_warnings: 0
-num_comments: 4
+num_comments: 6
 ...
