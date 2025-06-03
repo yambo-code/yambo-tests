@@ -1,0 +1,123 @@
+#  __      __   ______   __       __  _______    ______               
+# |  \    /  \ /      \ |  \     /  \|       \  /      \              
+#  \$$\  /  $$|  $$$$$$\| $$\   /  $$| $$$$$$$\|  $$$$$$\             
+#   \$$\/  $$ | $$__| $$| $$$\ /  $$$| $$__/ $$| $$  | $$             
+#    \$$  $$  | $$    $$| $$$$\  $$$$| $$    $$| $$  | $$             
+#     \$$$$   | $$$$$$$$| $$\$$ $$ $$| $$$$$$$\| $$  | $$             
+#     | $$    | $$  | $$| $$ \$$$| $$| $$__/ $$| $$__/ $$             
+#     | $$    | $$  | $$| $$  \$ | $$| $$    $$ \$$    $$             
+#      \$$     \$$   \$$ \$$      \$$ \$$$$$$$   \$$$$$$              
+#                                                                     
+# Version 5.3.0 Revision 23927 Hash (prev commit) 1730222ea           
+#                    Branch is master                                 
+#              MPI+OpenMP+HDF5_MPI_IO Build                           
+#                http://www.yambo-code.eu                             
+#
+#
+# GW solver                                       : Newton
+# GW approximation                                : MPA
+# MPA number of poles                             :   0.00000000   
+# dS/dw steps                                     :  2
+# dS/dw step                                      :  0.100000001    [ev]
+# X G`s                                           :   57 [used]
+# X G`s                                           :   57 [disk]
+# X bands                                         :    1   40
+# X poles                                         :   100.000000    [o/o]
+# X e/h E range                                   :  -1.00000000     -1.00000000    [ev]
+# X Hxc Kernel                                    : HARTREE
+# X damping range                                 :  0.100000000E-5   2.72113800    [ev]
+# X Steps                                         :  16
+# X BZ energy Double Grid                         : no
+# X Optical Averaged directions                   : none
+# Sc/G bands                                      :    1   40
+# Sc/G damping                                    :  0.100000001    [ev]
+# Sc bands terminator                             : no
+# Sx RL components                                :   56613
+#                                                 
+# QP @ state[ 1 ] K range                         :  1  3
+# QP @ state[ 1 ] b range                         :   9  14
+# GF energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# GF WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+# Xs energies kind                                : Slater exchange(X)+Perdew & Zunger(C)
+# Xs WF`s kind                                    : Slater exchange(X)+Perdew & Zunger(C)
+#
+# Vxc  =Slater exchange(X)+Perdew & Zunger(C)
+# Vnlxc=Hartree-Fock
+#
+#    K-point            Band               Eo [eV]            E-Eo [eV]          Sc|Eo [eV]
+#
+        1                   9                -2.682226           0.417098           3.250336
+        1                  10                -2.032602          -0.275268           2.928316
+        1                  11                -1.525528           0.386730           2.516613
+        1                  12                -1.525528           0.379297           2.506581
+        1                  13                -0.226543           0.481634           1.685207
+        1                  14                 2.900700           1.695217          -2.467683
+        2                   9                -4.074126          -0.060618           3.687934
+        2                  10                -2.991468           0.240682           3.184204
+        2                  11                -1.784904          -0.170216           2.871144
+        2                  12                -1.322132           0.153410           2.701327
+        2                  13                -1.124831           0.495936           2.230903
+        2                  14                 2.375299           1.726891          -2.511448
+        3                   9                -4.369637          -0.084570           3.396577
+        3                  10                -3.659432          -0.030223           3.690365
+        3                  11                -3.120429          -0.159437           3.175099
+        3                  12                -2.305701          -0.054264           3.149652
+        3                  13                 0.000000           0.680148           1.913062
+        3                  14                 1.876019           1.960497          -2.446749
+# 
+# 06/03/2025 at 14:13 yambo @ corvina [start]
+# 06/03/2025 at 14:14                 [end]
+#  
+# Timing   [Min/Max/Average]: 40s/40s/40s
+#
+# .-Input file  yambo.in
+# | HF_and_locXC                     # [R] Hartree-Fock
+# | gw0                              # [R] GW approximation
+# | em1d                             # [R][X] Dynamically Screened Interaction
+# | mpa                              # [R][Xm] Multi Pole Approximation for the Screened Interaction
+# | el_el_corr                       # [R] Electron-Electron Correlation
+# | BoseTemp= 0.000000         eV    # Bosonic Temperature
+# | #DegFix                        # Force the code to impose the energy levels to respect their degeneracy
+# | FFTGvecs=  8845            RL    # [FFT] Plane-waves
+# | X_and_IO_nCPU_LinAlg_INV= 1      # [PARALLEL] CPUs for Linear Algebra (if -1 it is automatically set)
+# | X_Threads= 1                     # [OPENMP/X] Number of threads for response functions
+# | DIP_Threads= 1                   # [OPENMP/X] Number of threads for dipoles
+# | SE_Threads= 1                    # [OPENMP/GW] Number of threads for self-energy
+# | EXXRLvcs=  56613           RL    # [XX] Exchange    RL components
+# | VXCRLvcs=  56613           RL    # [XC] XCpotential RL components
+# | Chimod= "HARTREE"                # [X] IP/Hartree/ALDA/LRC/PF/BSfxc
+# | % QpntsRXm
+# |  1 | 3 |                             # [Xm] Transferred momenta
+# | %
+# | % BndsRnXm
+# |    1 |  40 |                         # [Xm] Polarization function bands
+# | %
+# | NGsBlkXm= 2                Ry    # [Xm] Response block size
+# | % LongDrXm
+# |  0.100000E-4 |  0.00000    |  0.00000    # [Xm] [cc] Electric Field
+# | %
+# | EnSampXm= "2l"                   # [Xm] Frequency sampling in the complex plane ("1l" one line, "2l" two lines)
+# | EnGridXm= "lP"                   # [Xm] Partition along the real axis ("ho" homogeneous, "lP" linear, "qP" quadratic, "cP" cubic)
+# | % EnRngeXm
+# |   0.00000 | 20.00000 |         eV    # [Xm] Energy range
+# | %
+# | % ImRngeXm
+# |  27.21138 | 27.21138 |         eV    # [Xm] Imaginary range
+# | %
+# | % DmRngeXm
+# |  0.100000E-5 |  2.72114    |   eV    # [Xm] Damping range
+# | %
+# | ETStpsXm= 16                     # [Xm] Total Energy steps
+# | IntSolXm= "PT"                   # [Xm] MPA interpolation solver ("LA" linear algebra, "PT" Pade-Thiele)
+# | #mpERdb                        # [Xm] Write to disk MPA poles and residues
+# | % GbndRnge
+# |    1 |  40 |                         # [GW] G[W] bands range
+# | %
+# | GTermKind= "none"                # [GW] GW terminator ("none","BG" Bruneval-Gonze,"BRS" Berger-Reining-Sottile)
+# | DysSolver= "n"                   # [GW] Dyson Equation solver ("n","s","g","q")
+# | %QPkrange                        # [GW] QP generalized Kpoint/Band indices
+# | 1|3|9|14|
+# | %
+# | %QPerange                        # [GW] QP generalized Kpoint/Energy indices
+# | 1|3| 0.000000|-1.000000|
+# | %
