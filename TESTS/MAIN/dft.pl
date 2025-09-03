@@ -12,8 +12,8 @@ use Net::Domain qw(hostname hostfqdn hostdomain domainname);
 $pwd=abs_path();
 $hostname=hostname();
 #
-find({ wanted => \&process_ref, no_chdir => 1 }, ".");
-sub process_ref {
+find({ wanted => \&process_dir, no_chdir => 1 }, ".");
+sub process_dir {
  if (-d $_ and $_ =~ /DFT/) {
   $last=(split("/",$_))[-1];
   if ( $last eq "DFT" ) { push @dirs,$_};
@@ -21,7 +21,15 @@ sub process_ref {
 }
 #
 for $dir (@dirs) {
-  system("ls $dir");
+ @files=( );
+ find({ wanted => \&process_files, no_chdir => 0 }, "$dir");
+ sub process_files {
+  if (-f $_ and $_ =~ /in/ ) { push @files,$_};
+ };
+ print "\n DIRECTORY: $dir\n";
+ for my $file (@files) {
+  print "file: $file\n";
+ }
 }
 
 #$options="-azri";
